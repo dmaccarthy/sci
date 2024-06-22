@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en-ca">
+<head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unicode Lookup</title>
+<meta name="description" content=""/>
+<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<style type="text/css">
+  
+body {text-align:center}
+
+input {
+    margin-top:0.5em;
+    width:384px;
+    text-align:center;
+    font-size:175%;
+}
+    
+</style>
+<script>
+
+let names = {7:"Bell", 8:"Backspace", 9:"Tab", 10:"Line Feed", 13:"Carriage Return", 27:"Escape", 32:"Space", 127:"Delete"};
+    
+function getChar(e) {
+    let c = e.value.trim();
+    if (c.length == 0) c = "65";
+    c = c.substring(0, 2) == "0b" ? parseInt(c.substring(2), 2) : parseInt(c);
+    if (isNaN(c)) c = 65;
+    document.getElementById("Code").value = c;
+    if (names[c]) c = `[${names[c]}]`;
+    else if (c < 33) c = "[Control Character]"
+    else c = String.fromCharCode(c);
+    document.getElementById("Char").value = c;
+}
+
+function getCode(e) {
+    let c = e.value.charAt(0);
+    if (c.length) {
+        e.value = c;
+        document.getElementById("Code").value = c.charCodeAt(0);
+    }
+}
+
+</script>
+</head>
+<body><h1>Unicode Lookup</h1>
+<p>To use a binary or hexadecimal code, prefix the value with <code>0b</code> or <code>0x</code>.</code></p>
+<p>
+    <input id="Code" placeholder="Code" onchange="getChar(this)"><br/>
+    <input id="Char" placeholder="Character" type="text" onchange="getCode(this)"> 
+</p>
+</body>
+</html>

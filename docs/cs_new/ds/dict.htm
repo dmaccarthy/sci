@@ -1,0 +1,150 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Sets</h2><div class="Collapse Expand">
+<p>All of the iterable data types that we have looked at so far — strings, tuples, lists, and range objects — represent <em>ordered</em> sequences.
+    Python includes a <code>set</code> class that can be used for <em>unordered</em> collections of objects.</p>
+<p>Suppose we wanted to create a data structure to represent the four suits in a deck of cards. Although we <em>could</em> use a tuple or list, the order of the suits usually doesn’t matter.  For such a circumstance, we might choose to use a <code>set</code> rather than a <code>tuple</code>...</p>
+<pre data-echo="d03_ex1.py" data-title="1" class="Code" contenteditable="true">suits = {"Hearts", "Spades", "Diamonds", "Clubs"}
+for suit in suits:
+    print(suit)
+print(type(suits))</pre>
+
+<p>Recall that square brackets signify a <code>list</code> in Python, no brackets or <em>parentheses</em> (round brackets)
+    signify a <code>tuple</code>. As the example above illustrates, curly brackets (braces) signify a <code>set</code>.</p>
+<p>Because the order of the items in a <code>set</code> is not significant, the <code>for-in</code> loop in the example might
+    print the suits in a different order than they were listed when the <code>set</code> was created. Since the items in a
+    <code>set</code> have no specific order, you cannot use indices or slices. Like lists, sets are <em>mutable</em>; you can
+    modify the contents of a <code>set</code> with the <code>add</code> and <code>remove</code> methods...</p>
+<pre data-echo="d03_ex2.py" data-title="1" class="Code" contenteditable="true">suits = {"Hearts", "Spades", "Diamonds", "Unicorns"}
+suits.add("Clubs")
+suits.remove("Unicorns")
+print(suits)</pre>
+
+<p>Python includes an immutable version of a <code>set</code> that is named <code>frozenset</code>...</p>
+<pre data-echo="d03_ex3.py" data-title="1" class="Code" contenteditable="true">suits = frozenset({"Hearts", "Spades", "Diamonds", "Unicorns"})
+suits.remove("Unicorns")      <span class="Comment"># AttributeError</span></pre>
+
+<p>A special property of the <code>set</code> and <code>frozenset</code> classes is that they cannot contain duplicate items.
+    In the program below, the duplicates (<code>"Hearts"</code> and <code>"Spades"</code>) will only be included in the <code>set</code> once...</p>
+<pre data-echo="d03_ex4.py" data-title="1" class="Code" contenteditable="true">suits = {"Hearts", "Spades", "Diamonds", "Hearts", "Clubs", "Spades"}
+print(suits)</pre>
+
+<p>This property makes sets useful for removing duplicates from a list or tuple...</p>
+<pre data-echo="d03_ex5.py" data-title="1" class="Code" contenteditable="true">data = [1, 4, 0, 7, 4, 5, 1, 12]
+dataAsSet = frozenset(data)
+data = sorted(dataAsSet)
+print(data)                     <span class="Comment"># [0, 1, 4, 5, 7, 12]</span></pre>
+
+<p>See the <a target="Py" href="https://docs.python.org/3/library/stdtypes.html?#set-types-set-frozenset">Python docmentation</a> for more information on the set and frozenset classes.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Dictionaries</h2><div class="Collapse Expand">
+<p>Suppose you wanted to create an object to represent personal data for one of your friends (name, email, birthday, phone
+    number). You might use a <code>set</code> because the order in which the items are stored is not important...</p>
+<pre data-echo="py" class="Code" contenteditable="true">
+myFriend = {"Jane Doe", "jdoe@eips.ca", "2005-11-02",
+    "780-555-5555"}</pre>
+<p>Unfortunately there is no way to extract a specific item from a <code>set</code>; if you want to print the email address
+    for example, the Python interpreter has no way of knowing which of the four items that is.</p>
+<p>When you have an unordered collection of items from which you need to be able to reference a specific item, you can use a
+    <em class="Defn">dictionary</em> (abbreviated <code>dict</code>).  A dictionary is like a <code>set</code> for which each item
+    has a descriptive <em class="Defn">key</em> that can be used to identify it...</p>
+<pre data-echo="d03_ex6.py" data-title="1" class="Code" contenteditable="true">myFriend = {
+    "name": "Jane Doe",
+    "email": "jdoe@eips.ca",
+    "birthday": "2009-11-02",
+    "phone": "780-555-5555"
+}
+
+print(myFriend["email"])   <span class="Comment"># jdoe@eips.ca</span></pre>
+
+<p>You can add additional items to an existing dictionary by assigning them with a new key, and you can delete items
+    with the <code>del</code> operator...</p>
+<pre data-echo="d03_ex7.py" data-title="1" class="Code" contenteditable="true">myFriend = {
+    "name": "Jane Doe",
+    "email": "jdoe@eips.ca",
+    "birthday": "2005-11-02",
+    "phone": "780-555-5555"
+    }
+myFriend["hobbies"] = "Soccer", "Running", "Computer Programming"
+del myFriend["email"]
+print(myFriend)</pre>
+
+<p>Note that dictionaries use a similar syntax to lists and tuples when referring to a single item, with a key used in place
+    of an index: <code>myFriend["hobbies"]</code>.  String objects are often used as keys since strings can describe what
+    information the item contains. However, the Python interpreter allows you to use any immutable object as a key,
+    including <code>int</code>, <code>float</code>, <code>bool</code> and <code>tuple</code> instances. (In the case of tuples,
+    all of the items in the <code>tuple</code> must also be immutable).</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Dictionaries &amp; Iteration</h2><div class="Collapse Expand">
+<p>When you use a <code>for-in</code> loop with a <code>dict</code> instance as the iterable, the loop iterates through the
+    <em>keys</em>, not the item <em>values</em>. The <code>dict</code> class has a <code>values</code> method that you can use if you want to
+    iterate through the item values rather than the keys, and a <code>items</code> method to iterate through (key, value)
+    pairs as <code>tuples</code>. Run the following program to see how the different ways of iterating through a dictionary
+    work...</p>
+<pre data-echo="d03_ex8.py" data-title="1" class="Code" contenteditable="true">myFriend = {
+    "name": "Jane Doe",
+    "email": "jdoe@eips.ca",
+    "birthday": "2005-11-02",
+    "phone": "780-555-5555"
+    }
+
+print("Keys...")
+for x in myFriend:
+    print(x)
+
+print("\nValues...")
+for x in myFriend.values():
+    print(x)
+
+print("\n(Key, Value) Tuples...")
+for x in myFriend.items():
+    print(x)</pre>
+
+<p>The <code>in</code> operator (without <code>for</code>) works in the same way...</p>
+<pre data-echo="d03_ex9.py" data-title="1" class="Code" contenteditable="true">myFriend = {
+    "name": "Jane Doe",
+    "email": "jdoe@eips.ca",
+    "birthday": "2005-11-02",
+    "phone": "780-555-5555"
+    }
+
+print("Jane Doe" in myFriend)             <span class="Comment"># False</span>
+print("name" in myFriend)                 <span class="Comment"># True</span>
+print("Jane Doe" in myFriend.values())    <span class="Comment"># True</span>
+print("name" in myFriend.values())        <span class="Comment"># False</span></pre>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>Open the current standings from the <a target="NHL" href="https://www.nhl.com/standings/">National Hockey League</a> website.
+    Complete the program <code>d03_pacific.py</code> to encode the data for the Pacific Division as a Python 3 dictionary.
+    Use the city names (<code>"Edmonton"</code>) as keys for the dictionary (<code>pacific</code>) and use the column headings
+    (<code>"W"</code> for wins) as keys for each team’s data. It is <em>not</em> necessary to encode the "GP", "PTS", "P%", "DIFF", and "AWAY" data as these can be calculated from other data if needed!</li>
+
+<li><p>A playing card can be represented by a dictionary with the keys <code>"suit"</code> and <code>"value"</code>. The suit is one of the strings <code>"Hearts"</code>,
+    <code>"Spades"</code>, <code>"Diamonds"</code>, or <code>"Clubs"</code> and the value is a number between 1 (Ace) and 13 (King). A deck of cards can be
+    represented by a <code>list</code> of the 52 different cards.</p>
+    <ol style="list-style:lower-alpha">
+        <li>In the program <code>d03_cards.py</code>, complete the function <code>makeDeck</code> to create a card deck as described above.
+    <li>Also complete the function <code>deal</code> to deal the cards. Calling <code>deal(deck, 5, 2)</code> should create
+        and return a <code>list</code> of 2 hands containing 5 cards each and should remove those ten cards from the deck.</li>
+    <li>Finally, complete the function <code>prettyFormat</code> to display a card in a user-friendly format. For example,
+        rather than printing <code>{"suit": "Hearts", "value": 12}</code>, we would like the card to be displayed as <code>"Queen of Hearts"</code>.</li>
+    </ol>
+</li></ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Dictionaries & Sets",
+    up: `cs_new/cs20`,
+    prev: "cs_new/ds/iter",
+    next: "cs_new/ds/args",
+}
+
+</script>

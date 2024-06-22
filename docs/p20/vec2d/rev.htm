@@ -1,0 +1,52 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
+<div id="LessonNotes">
+
+<section class="Slide">
+<p><em class="Defn">Vectors</em> are quantities that involve a direction, such as displacement, velocity, acceleration, and force.</p>
+<ul>
+    <li>We can illustrate vectors using a <em class="Defn">vector diagram</em>, in which each vector is drawn as an arrow illustrating the direction and the magnitude (size) of the vector.</li>
+    <li>To illustrate the addition of two or more vectors, the vectors are drawn in a <em>tip-to-tail</em> fashion.</li>
+</ul>
+<p class="Center"><svg data-js="p20/vec2d/img/diag_p#Q4" id="Q4" class="VDiag"></svg></p>
+<p><em class="Defn">Cartesian Form</em> means that a 2D vector is described as separate <span class="TeX">x</span>- and <span class="TeX">y</span>-<em class="Defn">components</em>; <span class="TeX NoWrap">\Delta \vec{\mathbf d} = \mathrm{(-16.6, 10.4)\ m}</span>.</p>
+<p><em class="Defn">Polar Form</em> describes a vector by its <em class="Defn">magnitude</em> and its <em class="Defn">direction</em>; <span class="TeX NoWrap">\Delta \vec{\mathbf d}_1 = \mathrm{19.6\ m\ [148°]}</span>.</p>
+<ul>
+    <li>The direction is an angle measured <em>counter-clockwise</em> from the <span class="NoWrap"><span class="TeX">+x</span>-direction</span>.</li>
+    <li>We can convert a vector from polar to Cartesian form:
+        <p class="TeX">{\vec{\mathbf{v}}}_x=\left|\vec{\mathbf{v}}\right|\cos{\theta}</p>
+        <p class="TeX">{\vec{\mathbf{v}}}_y=\left|\vec{\mathbf{v}}\right|\sin{\theta}</p></li>
+    <li>We can also convert a vector from Cartesian to polar form:
+        <p class="TeX">\left|\vec{\mathbf{v}}\right|=\sqrt{v_x^2+v_y^2}</p>
+        <p class="TeX">\tan{\theta}=\frac{{\vec{\mathbf{v}}}_y}{{\vec{\mathbf{v}}}_x}</p></li>
+    <li>To isolate <span class="TeX">\theta</span>, you need to apply <span class="TeX">\tan^{-1}</span> to the last equation; this will give only one of two possible answers.</li>
+    <li>If the <span class="NoWrap"><span class="TeX">x</span>-component</span> of a vector is negative (if the vector points into the second or third quadrant), you will need to add 180° to find the second (correct) solution for <span class="TeX">\theta</span>.</li>
+    <li>When performing arithmetic or algebra involving vector quantities, treat the <span class="TeX">x</span>- and <span class="TeX">y</span>-components independently;
+        perform your calculations on the <span class="NoWrap"><span class="TeX">x</span>-components</span> alone, and then on the <span class="NoWrap"><span class="TeX">y</span>-components</span> alone.
+        (Some problems may require you to solve the <span class="TeX">y</span>-component first.)</li>
+    <li>Alternatively, some 2D vector problems can be solved by applying trigonometric relationships to the vector diagram.</li>
+    <li>Remember that the Pythagoras equation and “SOH CAH TOA” apply only to triangles containing a right angle. For triangles that don’t (or may not) have a 90° angle, you can use the Law of Cosines and Law of Sines instead.</li>
+</ul>
+
+<p><em class="Defn">Projectile Motion</em> is the 2D version of uniform accelerated motion.</p>
+<ul>
+    <li>Gravity causes a constant acceleration in the <span class="TeX NoWrap">-y</span> direction; thus we can use the UAM equations to solve for the <span class="NoWrap"><span class="TeX">y</span>-components</span> of the kinematics vectors.</li>
+    <li>There are no forces in the <span class="NoWrap"><span class="TeX">x</span>-direction</span>span>, so the <span class="NoWrap"><span class="TeX">x</span>-motion</span> is simply uniform motion (constant velocity).</li>
+    <li>The <em class="Defn">hang time</em> means the total time it takes the projectile to first land on the ground.</li>
+    <li>The <em class="Defn">range</em> means the hortizontal displacment of the projectile when it first lands on the ground.</li>
+</ul>
+</section>
+
+</div></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}Two-Dimensional Motion Review`,
+    num: "2.6",
+    up: "p20/home",
+    prev: ["p20/vec2d/proj", "p20/kin/rev"][clickLink.course],
+    next: ["p20/dyn/n2", "p20/dyn/rev"][clickLink.course],
+}
+
+</script>

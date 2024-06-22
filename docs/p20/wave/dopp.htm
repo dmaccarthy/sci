@@ -1,0 +1,205 @@
+<section class="Post" data-icon="video">
+    <h2 class="Collapse">Video</h2>
+    <div class="Collapse" data-yt="a3RfULw7aAY"></div>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Doppler Effect</h1>
+<!-- https://xkcd.com/2926/ -->
+<p class="Center Present"><img src="https://qph.cf2.quoracdn.net/main-qimg-b6008dbba74be2b77700e8f57794f87c-lq" alt="Cartoon" class="s16"/></p>
+</section>
+
+<section id="de" class="Slide"><h3>Doppler Effect</h3>
+<p>The <em class="Defn">Doppler Effect</em> (also called the Doppler Shift) refers to an apparent change in the frequency of a wave when the source of the waves is moving relative to the observer of the waves.</p>
+<ul data-cue="+">
+    <li>An everyday example is an ambulance siren: the frequency (pitch) sounds higher when the ambulance (source) is coming towards you (observer) and lower when it is going away.</li>
+    <!-- <p class="Center"><iframe class="SD" width="560" src="https://www.youtube.com/embed/a3RfULw7aAY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p> -->
+</ul>
+<div data-cue="+">
+    <ul><li>If the source of the waves is stationary and the waves travel at the same speed in all directions, then the crests (or compressions) will form concentric circular or spherical “wavefronts”.</li></ul>
+    <p class="Center"><b>Stationary Source</b><br/>
+        <iframe data-aspect="16/9" src="https://www.desmos.com/calculator/vhqlt7uvpr?embed" class="s24" width="640" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+</div>
+<div data-cue="+">
+    <p>When the source of the waves is moving, the circular wavefronts will no longer be concentric.</p>
+    <p class="Center"><b>Moving Source</b><br/>
+        <iframe data-aspect="16/9" src="https://www.desmos.com/calculator/epjt33jwpn?embed" class="s24" width="640" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+</div>
+<ul data-cue="+">
+    <li>The larger (older) wavefronts will be centred on where the source was when it emitted those waves, while the smaller (newer) wavefronts will be centred closer to where the source is now.</li>
+    <li data-cue="+">The result is that the waves will be closer together (smaller <span class="TeX">\lambda</span>, higher <span class="TeX">f</span>) in front of the source, and farther apart (larger <span class="TeX">\lambda</span>, lower <span class="TeX">f</span>) behind the source.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Doppler Equation</h3>
+<p>If the observer is in motion, the apparent frequency will be affected as well.</p>
+<ul data-cue="+">
+    <li>When the observer moves toward the waves, the time between waves will be shortened (higher <span class="TeX">f</span>) and if the observer is moving away, the time will be increased (lower <span class="TeX">f</span>).</li>
+    <li data-cue="+">The relation between the actual source frequency (<span class="TeX">f_s</span>) and the observed frequency (<span class="TeX">f_o</span>), accounting for motion of both the source (<span class="TeX">v_s</span>) and the observer (<span class="TeX">v_o</span>) is: <p class="TeX">f_o=\frac{v-v_o}{v-v_s}f_s</p></li>
+    <li data-cue="+">The symbol <span class="TeX">v</span> is the speed of the waves.</li>
+    <li data-cue="+">For sound waves travelling through air at normal temperature and pressure, the speed of sound will be about 343 m/s.</li>
+    <li data-cue="+">This equation is only valid when the source and observer are moving in line (1D) with each other.</li>
+    <li data-cue="+">A more complicated equation is needed when the motion is 2D or 3D.</li>
+    <li data-cue="+">Although the Doppler Effect does occur with light waves, the equation is different due to relativistic effects. (Einstein tells us that time behaves weirdly at extreme speeds!)</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Derivation</h3>
+    <p>Imagine an observer directly in front of the source as the wavefronts approach.</p>
+    <div data-cue="+">
+        <p>The <em>observed</em> wavelength is the distance the wavefronts move each period (<span class="TeX">vT</span>) minus the distance the source moves in the same time (<span class="TeX">v_s T</span>):</p>
+        <p class="TeX">\lambda_o = vT - v_s T</p>
+    </div>
+    <div data-cue="+">
+        <p>The <em>observed</em> period is this distance, divided by the speed of the waves <em>relative to the observer</em>:</p>
+        <p class="TeX">T_o = {\lambda_o \over v - v_o}</p>
+    </div>
+    <div data-cue="+">
+        <p>We can combine these equations by substituting for <span class="TeX">\lambda_o</span>:</p>
+        <p class="TeX">T_o = { vT - v_s T \over v - v_o} = {v - v_s \over v - v_o} T</p>
+    </div>
+    <div data-cue="+">
+        <p>Finally, take the reciprocal to express the relation in terms of frequency instead of period:</p>
+        <p class="TeX">f_o = \frac{v - v_o}{v - v_s} f_s</p>
+    </div>
+</section>
+
+<section class="Slide"><h3>Example 1</h3>
+<p class="Blue">A fire truck siren emits sound waves at 850 Hz. When the fire truck is moving at +20.0 m/s, what frequency will a pedestrian in front of the fire trick hear if the pedestrian is (i) at rest, (ii) moving at 3.00 m/s away from the fire truck, and (iii) moving at 3.00 m/s toward the fire truck.</p>
+<p class="TeX" data-cue="+">f_o = \frac{v - v_o}{v - v_s} f_s</p>
+<p class="TeX" data-cue="+">f_o = \rm \frac{(343 - 0.00)\ m/s}{(343 - 20.0)\ m/s}\ 850\ Hz = 903\ Hz</p>
+<p class="TeX" data-cue="+">f_o = \rm \frac{(343 - 3.00)\ m/s}{(343 - 20.0)\ m/s}\ 850\ Hz = 895\ Hz</p>
+<p class="TeX" data-cue="+">f_o = \rm \frac{(343 - (-3.00))\ m/s}{(343 - 20.0)\ m/s}\ 850\ Hz = 911\ Hz</p>
+</section>
+
+<section class="Slide"><h3>Example 2</h3>
+<p class="Blue">Repeat Example 1 for a pedestrian who is behind the fire truck.</p>
+<p class="TeX" data-cue="+">f_o = \frac{v - v_o}{v - v_s} f_s</p>
+<p class="TeX" data-cue="+">f_o = \rm \frac{(-343 - 0.00)\ m/s}{(-343 - 20.0)\ m/s}\ 850\ Hz = 803\ Hz</p>
+<p class="TeX" data-cue="+">f_o = \rm \frac{(-343 - (-3.00))\ m/s}{(-343 - 20.0)\ m/s}\ 850\ Hz = 796\ Hz</p>
+<p class="TeX" data-cue="+">f_o = \rm \frac{(-343 - 3.00)\ m/s}{(-343 - 20.0)\ m/s}\ 850\ Hz = 810\ Hz</p>
+</section>
+
+<section class="Slide"><h3>Example 3</h3>
+<p class="Blue">How fast is an ambulance moving if a stationary observer hears a 1000 Hz siren at 950 Hz. Is the observer in front of or behind the ambulance?</p>
+<p data-cue="+">Since the observer hears the sound at a lower frequency, the ambulance is moving <em>away</em> from the observer; the observer is <em>behind</em> the ambulance.</p>
+<div data-cue="+">
+    <p>We can ignore the <span class="TeX">v_o</span> in the equation since the observer is at rest:</p>
+    <p class="TeX">f_o = \frac{v}{v - v_s} f_s</p>
+    <p class="TeX" data-cue="+">f_o (v - v_s) = v f_s</p>
+    <p class="TeX" data-cue="+">v - v_s = \frac{v f_s}{f_o}</p>
+    <p class="TeX" data-cue="+">-v_s = \frac{v f_s}{f_o} - v</p>
+    <p class="TeX" data-cue="+">v_s = -\frac{v f_s}{f_o} + v</p>
+    <div data-cue="+">
+        <p>Note that <span class="TeX">v</span> is negative because the observer is behind the ambulance:</p>
+        <p class="TeX">v_s = \rm -\frac{(-343\ m/s)\cdot 1000\ Hz}{950\ Hz} + (-343\ m/s) = 18.1\ m/s</p>
+    </div>
+</div>
+</section>
+
+<section class="Slide"><h3>Applications</h3>
+<p>Doppler radar is used to determine the speed of a moving object by bouncing radio waves off the object.</p>
+<ul data-cue="+">
+    <li>Because of the Doppler Effect, the frequency of the reflected waves will be different than the original waves.</li>
+    <li data-cue="+">The greater the difference in frequency, the faster the object is moving.</li>
+    <li data-cue="+">This technology is used by law enforcement to determine the speed of vehicles, by air traffic control to determine the velocity of planes, and by meteorologists to determine the velocity of storm cloud formations.</li>
+    <li data-cue="+">Astronomers also use the Doppler Effect to determine the speed of astronomical objects, such as the rotation of the Sun and the motion of distant galaxies.</li>
+    <li data-cue="+">When astrophysicists tell us that the universe is expanding, they are basing this statement on Doppler Shift measurements that show distant galaxies are moving away from us at increasing speeds.</li>
+</ul>
+</section>
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Doppler Effect</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/wave/dopp"></p>
+</div>
+</section>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <li>The siren of a fire engine emits sound waves at 1250 Hz. What frequency does a pedestrian hear if the pedestrian is walking toward the siren at 2.00 m/s and the fire truck is moving toward the pedestrian at 24.0 m/s?</li>
+    <div class="Answer">
+<p class="Center"><svg data-js="p20/wave/img/dopp#Q1"></svg></p>
+<p class="TeX">f_o = \frac{v - v_o}{v - v_s} f_s</p>
+<p class="TeX">f_o = \rm{\frac{343\ m/s - (-2.00\ m/s)}{343\ m/s - 24.0\ m/s}\ 1250\ Hz = 1352\ Hz}</p>
+    </div>
+
+    <li>What frequency does a guitar string produce if a person walking away from the sound at 1.20 m/s hears the sound at 718 Hz?</li>
+    <div class="Answer">
+<p class="Center"><svg data-js="p20/wave/img/dopp#Q2"></svg></p>
+<p class="TeX">\begin{align}f_o &= \frac{v - v_o}{v - v_s} f_s
+\\\\f_s &= \frac{v - v_s}{v - v_o} f_o
+\\\\&= \rm{\frac{343\ m/s - 0.00\ m/s}{343\ m/s - 1.20\ m/s}\ 718\ Hz}
+\\\\&= \rm{721\ Hz}\end{align}</p>
+    </div>
+
+    <li>A school bell produces sound waves at 920 Hz. If a student hears the sound at 912 Hz, with what speed is the student running away from the bell?</li>
+    <div class="Answer"><p>The diagram is basically the same as for #2...</p>
+<p class="TeX">f_o = \frac{v - v_o}{v - v_s} f_s</p>
+<p class="TeX">\frac{f_o}{f_s} (v - v_s) = v - v_o</p>
+<p class="TeX">v_o = v - \frac{f_o}{f_s} (v - v_s)</p>
+<p class="TeX">v_o = \rm{343 m/s - \frac{912\ Hz}{920\ Hz} (343\ m/s - 0.00\ m/s) = 2.98\ m/s}</p>
+
+    </div>
+
+    <li>Two wrestlers run toward each other with speeds of 3.25 m/s. One of them yells, emitting a sound wave at 250 Hz. What frequency will the other wrestler hear when the speed of sound is 332 m/s?</li>
+    <div class="Answer">
+<p>The diagram is basically the same as for #1...</p>
+<p class="TeX">f_o = \frac{v - v_o}{v - v_s} f_s</p>
+<p class="TeX">f_o = \rm{\frac{332\ m/s - (-3.25\ m/s)}{332\ m/s - 3.25\ m/s}\ 250\ Hz = 255\ Hz}</p>
+    </div>
+
+    <li>One student spins an electronic bell that he has attached to the end of a rope. A second student hears the sound at 1284 Hz when it is moving towards her and 1274 Hz when moving away. Determine the speed at which the bell is spinning and the actual frequency of the source.</li>
+    <div class="Answer">
+<p class="Center"><svg data-js="p20/wave/img/dopp#Q3"></svg></p>
+<p class="TeX">f_o = \frac{v - v_o}{v - v_s} f_s</p>
+Set <span class="TeX">v_o</span> = 0.00 m/s. There are two different values of <span class="TeX">v_s</span> which have the same magnitude but opposite directions: <span class="TeX">v_s = \pm u</span>...
+<p class="TeX">f_+ = \frac{v}{v - u}\ f_s</p>
+<p class="TeX">f_- = \frac{v}{v + u}\ f_s</p>
+
+This is a system of two equations with two unknowns. We can eliminate <span class="TeX">f_s</span> by dividing the equations...
+<p class="TeX">\frac{f_+}{f_-} = \frac{v + u}{v - u}</p>
+
+Now “cross multiply” and solve for <span class="TeX">u</span>...
+<p class="TeX">f_+ (v - u) = (v + u) f_-</p>
+<p class="TeX">f_+ v - f_+ u = f_- v + f_- u</p>
+<p class="TeX">f_+ v - f_- v = f_- u + f_+ u</p>
+<p class="TeX">(f_+ - f_-) v = (f_- + f_+) u</p>
+<p class="TeX">u = \frac{f_+ - f_-}{f_- + f_+}\ v</p>
+<p class="TeX">u = \rm{\frac{(1284 - 1274)\ Hz}{(1274 + 1284)\ Hz}\ 343\ m/s = 1.34\ m/s}</p>
+Solve for <span class="TeX">f_s</span>...
+<p class="TeX">f_+ = \frac{v}{v - u}\ f_s</p>
+<p class="TeX">f_s = \frac{v - u}{v}\ f_+</p>
+<p class="TeX">f_s = \rm{\frac{343\ m/s - 1.34\ m/s}{343\ m/s}\ 1284\ Hz = 1279\ Hz}</p>
+    </div>
+</ol>
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li>Explain what the <em class="Defn">Doppler Effect</em> (also called <em class="Defn">Doppler Shift</em>) is and derive the equation for the one-dimensional, non-relativistic Doppler Effect.</li>
+    <li>Explain how the Doppler Effect is of practical use in traffic enforcement, meteorology, aviation, and astrophysics.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}8.2 — Doppler Effect`,
+    answerDate: "2024.6.6.16",
+    num: "8.2",
+    up: "p20/home",
+    prev: "p20/wave/harm",
+    next: "p20/wave/beat",
+}
+
+</script>

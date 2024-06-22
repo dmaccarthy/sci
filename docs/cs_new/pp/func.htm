@@ -1,0 +1,179 @@
+<section class="Post" data-icon="replit">
+<h2>CS 20 repl</h2>
+    <p>Before your start, please login to <a href="https://replit.com" target="Repl0">replit</a> and create your own fork of the <a href="https://replit.com/@DavidMacCarthy/CS20-2024" target="Repl1">CS20 repl</a>.</p>
+</section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Functions</h2><div class="Collapse Expand">
+<p>A <b class="Red">function</b> is a named sequence of instructions that performs a <em>particular task</em>.
+    The Python builtins and standard library include functions to display text on the screen (<code>print</code>),
+    generate random numbers (<code>randint</code>), and perform mathematical calculations (<code>sqrt</code>), just to name a few examples. Functions have a number of advantages, including:</p>
+<ul>
+    <li><b>Code Reuse</b>: We can “call” a single function at many different places in our program rather than duplicating the same instructions. Functions that are particularly useful can be kept in a module (file) that we can <code>import</code> into many different programs.</li>
+    <li><b>Readability</b>: Having separate functions for each task that our program needs to perform makes the program easier to read and understand.</li>
+    <li><b>Modularity</b>: Using functions allows us to focus on writing and testing one task at a time rather than the entire program at once.</li>
+    <li><b>Data Protection</b>: Each function can maintain its own data separate from the rest of the program, reducing the risk that different parts of the program can accidentally corrupt each other's data. </li>
+    <li><b>Maintenance</b>: Functions can be imported from a single location (module) into many programs, making it easier to make improvements to a function without having to change all of the programs that use the function.</li>
+</ul>
+
+<p>Some programming languages use the term “procedure” to describe functions that perform an action (like <code>print</code>)
+    and only use the term “function” when a resulting value is produced (like <code>sqrt</code> and <code>randint</code>).
+    In Python, both types are usually just called functions.</p>
+<p>The terms “subroutine” and “subprogram” can also be used to mean a function or procedure. Object-oriented programming languages like Python, Java, and C++ also use the term “method” to describe a particular type of function; however, we will not be learning about object-oriented programming in this course.</p>
+<p>Python programs can use the <code>import</code> statement to load function definitions
+    from the Python standard library and from third-party packages such as <code>pygame</code> and <code>sc8pr</code>.
+    You can also define your own custom functions using the <code>def</code> statement.</p>
+
+<pre class="Code" contenteditable="true" data-echo="p01_ex1.py" data-title="1">from random import randint
+
+def coinFlip():
+    <span class="Comment">"Flip a coin"</span>
+    if randint(0, 1):
+        coin = "Heads"
+    else:
+        coin = "Tails"
+    return coin
+
+<span class="Comment"># Run the program...</span>
+for flip in range(10):
+    print(coinFlip())
+</pre>
+
+<p>The example above shows the typical structure of a Python program:
+    <code>import</code> statements appear at the top of the program, function definitions come next, and the main program comes last.
+    This program defines a function <code>coinFlip</code> that flips a coin once and then <em>returns</em> the result,
+    <em>Heads</em> or <em>Tails</em>. The main program uses a <code>for</code> loop to call <code>coinFlip</code> ten times.</p>
+<p>Let’s examine the function line-by-line. The first line of the function uses the keyword <code>def</code> (short for
+    <em>define</em>) followed by the <em>name</em> we want to use for the function.
+    This name is followed by parentheses and a colon. The rules for naming functions are the
+    same as for variables.</p>
+
+<pre class="Code" contenteditable="true" data-echo="py">def coinFlip():</pre>
+
+<p>In this example, the parentheses are empty because the function can perform its task without any additional information.</p>
+<p>The instructions that make up the function are <em>indented</em>.
+    Just as Python uses indentation to tell which instructions are part of an <code>if</code>, <code>while</code>, or <code>for</code> statement, it does the same for function definitions.</p>
+<p>The next line after the <code>def</code> statement is an optional <u>documentation string</u> or “docstring” that describes what the function’s task is.
+    If the docstring does not fit on a single line, you can use triple quotes (<code>"""</code>) to create a multi-line string.</p>
+
+<pre class="Code" contenteditable="true" data-echo="py"><span class="Comment">"Flip a coin"</span></pre>
+
+<p>After the docstring come the instructions that we want the function to perform.
+    Any variables that are created within the function are <u>local</u>: these variables belong to the function and cannot be accessed by other functions or by the main program, even if using a variable that has the same name.</p>
+<pre class="Code" contenteditable="true" data-echo="py">if randint(0, 1):
+    coin = "Heads"
+else:
+    coin = "Tails"
+</pre>
+
+<p>If the function produces a result, in this case a string containing either <code>"Heads"</code>
+    or <code>"Tails"</code> represented by the variable name <code>coin</code>, the last line
+    of the function is a <code>return</code> statement, which sends the result back to the main program.</p>
+<pre class="Code" contenteditable="true" data-echo="py">return coin</pre>
+
+<p>This allows the result to be printed, assigned to a variable that the main program can access, or otherwise processed.</p>
+<p>Once the function definition is complete, it is important to <em>unindent</em> the next line of code so that the Python interpreter knows the function definition is done.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Parameters &amp; Arguments</h2><div class="Collapse Expand">
+
+<p>In the example program above (<code>p01_ex1.py</code>), the parentheses in the first line of the function definition are empty
+    because the <code>coinFlip</code> function does not require any data on which to perform its task.</p>
+<p>Sometimes functions <em>do</em> require additional data; for example, the <code>sqrt</code> function needs to be provided with a number for which the square root is to be calculated...</p>
+
+<pre class="Code" contenteditable="true" data-echo="py">x = sqrt(20.0) <span class="Comment"># 20.0 is the argument passed to sqrt</span></pre>
+
+<p>To define a function that receives data when it is called, you can assign variable names
+    to the data within the parentheses. These variable names are called the function’s <b class="Red">parameters</b>
+    and the data that is passed when the function is called are called <b class="Red">arguments</b>.</p>
+<p>In the example below, the functions <code>circumference</code> and <code>area</code> are tasked with calculating the circumference and area of a circle using the formulas <span class="TeX">C = 2\pi r</span> and <span class="TeX">A = \pi r^2</span>. To perform these calculations, the functions must be provided with the radius, <span class="TeX">r</span>. The functions are both defined with a parameter named <code class="Blue">radius</code>.</p>
+
+<pre class="Code" contenteditable="true" data-echo="p01_ex2.py" data-title="1">from math import pi
+
+def circumference(<span class="Blue">radius</span>):
+    <span class="Comment">"Circumference of a circle, 2πr"</span>
+    return 2 * pi * radius
+
+def area(<span class="Blue">radius</span>):
+    <span class="Comment">"Area of a circle, πr**2"</span>
+    return pi * radius**2
+
+def main():
+    <span class="Comment"># Input...</span>
+    r = float(input("Radius? "))
+
+    <span class="Comment"># Processing...</span>
+    C = circumference(<span class="Blue">r</span>)
+    A = area(<span class="Blue">r</span>)
+
+    <span class="Comment"># Output...</span>
+    print(f"Circumference = {C:.2f}")
+    print(f"Area = {A:.2f}")
+
+main()
+</pre>
+
+<p>Notice that the <code>main</code> function uses the variable name <code>r</code> for the radius.
+    Each function can define its own variable names, so there is no problem with different functions
+    (<code>main</code>, <code>area</code>) using different names (<code>r</code>, <code>radius</code>) to refer to the same data.</p>
+<p>Python allows you to define a <u>default value</u> for the arguments.
+    The example below defines a function <code>roll</code> to simulate rolling dice.
+    The parameter <code>dice</code> specifies the number of dice and the parameter
+    <code>faces</code> specifies how many faces there are on each die.
+    The function definition gives a default value of 1 for <code>dice</code> and 6 for <code>faces</code>.</p>
+
+<pre class="Code" contenteditable="true" data-echo="p01_ex3.py" data-title="1">from random import randint
+
+def roll(dice=<span class="Blue">1</span>, faces=<span class="Blue">6</span>):
+    <span class="Comment">"Roll one or more dice"</span>
+    total = 0
+    for i in range(dice):
+        total += randint(1, faces)
+    return total
+
+print(roll())
+print(roll(2, 12))
+print(roll(<span class="Blue">faces</span>=10))
+</pre>
+
+<p>The first <code>print</code> statement calls <code>roll</code> with no arguments.
+    Python will run the <code>roll</code> function using its default arguments,
+    1 die with 6 faces.</p>
+<p>The second <code>print</code> calls <code>roll</code> using 2 dice with 12 faces each. This will give a result between 2 and 24.</p>
+<p>The third print uses the default value of 1 for <code>dice</code> and a value of 10 for
+<code>faces</code>, giving a result between 1 and 10. Note that the function call specifies
+that the argument (<code>10</code>) refers to the parameter <code>faces</code>. If we had called <code>roll(10)</code>,
+Python would assume that 10 is the value of the <em>first</em> parameter (<code>dice</code>)
+and <code>faces</code> would default to 6.</p>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+    <li>In Math, you may have learned about the Pythagoras formula, which lets you solve for the unknown side
+        of a right angle triangle. The formula is <p class="TeX">c^2 = a^2 + b^2</p>where <span class="TeX">c</span> is the longest side
+        of the triangle (the hypotenuse) and <span class="TeX">a</span> and <span class="TeX">b</span> are the two shorter sides (the legs). The program <code>p01_pythag.py</code>
+        uses a function <code>pythag_hyp</code> to calculate the hypotenuse from <span class="TeX">a</span> and <span class="TeX">b</span>
+        and a function <code>pythag_leg</code> to calculate one of the legs from <span class="TeX">c</span> and <span class="TeX">a</span>.
+        Complete these functions so the program works properly. Include docstrings for each function.</li>
+    <li>In some sports leagues, teams are awarded 2 points for each game won and 1 point for each tie or game
+        lost in overtime or a shootout. No points are earned when the game is lost in regulation time. Complete
+        the program <code>p01_sports.py</code> by finishing the functions <code>points</code> (which calculates
+        the total points earned by a team) and <code>games_played</code> (which calculates the total number of
+        games played). Include docstrings for each function. Also, give your points function three optional
+        arguments that can be used to change the default points awarded for wins, ties/overtime losses, and regular losses.
+</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Functions",
+    up: `cs_new/cs20`,
+    next: "cs_new/pp/scope",
+}
+
+</script>

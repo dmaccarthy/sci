@@ -1,0 +1,266 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Vector Arithmetic</h1>
+</section>
+
+<!-- <section class="Slide Present">
+    <div class="Assign"><p>Individually, complete the <i>Review</i> section of the <i>?</i> handout.</p></div>
+    <div class="Assign" data-cue="+"><p>In a small group, complete the <i>Activity</i> section of the <i>?</i> handout.</p></div>
+</section> -->
+
+<section class="Slide"><h3>Vector Diagram</h3>
+<p>A <em class="Defn">vector diagram</em> is a <u>tip-to-tail</u> illustration of two or more vectors being added.</p>
+<p class="Blue" data-cue="+">Example: Illustrate the displacement of an object that moves 50 m [60°] and then 40 m [340°].
+<!-- <p>To <em class="Defn">add 2D vectors</em>, imagine an object undergoing two successive displacements as illustrated in the vector diagram below.</p> -->
+<p class="Center" data-cue="+"><svg id="Ex1" data-js="p20/vec2d/img/arith#Ex1" class="VDiag w24 s22"></svg></p>
+<ul data-cue="+">
+    <li>We can take the original starting point as the origin.</li>
+    <li data-cue="+">Note that the second part of the displacement begins from the point where the first displacement ends.</li>
+    <!-- <li data-cue="+">As a result, the two displacement vectors must be drawn <em class="Defn">tip-to-tail</em>.</li> -->
+    <li data-cue="+">The object’s <em class="Defn">total displacement</em> is from its original starting point (origin) to its final end point.</li>
+    <li data-cue="+">This vector, representing the <em>sum</em> of the two vectors, is called the <em class="Defn">resultant vector</em>.</li>
+    <li data-cue="+">Because <span class="TeX">\Delta{\vec{\bf{d}}}_1</span> and <span class="TeX">\Delta{\vec{\bf{d}}}_2</span> have different directions, the magnitude of the resultant vector will <b>not</b> equal the magnitudes of the two vectors added together.</li>
+    <li data-cue="+">The <em>distance</em> travelled may be 90 m, but the magnitude of the displacement will be smaller.</li>
+    <li data-cue="+">If we draw the vector diagram carefully using a protractor, ruler, and graph paper, we can measure the resultant vector from the diagram.</li>
+    <li data-cue="+">This is called the <em class="Defn">graphical method</em> of vector addition.</li>
+    <li data-cue="+">The accuracy of this method is limitted by how precisely we can draw and measure.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Component Method</h3>
+<p>A more accurate and reliable method of vector addition is the <em class="Defn">component method</em>.</p>
+<ul data-cue="+">
+    <li>Convert each vector to Cartesian form:</li>
+</ul>
+<div data-cue="+">
+    <p class="TeX">\Delta{\vec{\bf d}}_{1x} = 50\ {\rm m}\cdot\cos(60^\circ) = 25\ {\rm m}</p>
+    <p class="TeX">\Delta{\vec{\bf d}}_{1y} = 50\ {\rm m}\cdot\sin(60^\circ) = 43\ {\rm m}</p>
+</div>
+<div data-cue="+">
+    <p class="TeX">\Delta{\vec{\bf d}}_{2x} = 40\ {\rm m}\cdot\cos(340^\circ) = 38\ {\rm m}</p>
+    <p class="TeX">\Delta{\vec{\bf d}}_{2y} = 40\ {\rm m}\cdot\sin(340^\circ) = -14\ {\rm m}</p>
+</div>
+<p class="Center" data-cue="+"><svg id="Ex1r" data-js="p20/vec2d/img/arith#Ex1" class="VDiag s22 Present"></svg></p>
+<ul data-cue="+">
+    <li>Now total the <span class="TeX">x</span>- and <span class="TeX">y</span>-components independently:</li>
+</ul>
+<div data-cue="+">
+    <p class="TeX">\Delta{\vec{\bf d}}_x = \rm{25\ m + 38\ m = 63\ m}</p>
+    <p class="TeX">\Delta{\vec{\bf d}}_y = \rm{43\ m + (-14\ m) = 30\ m}</p>
+</div>
+<ul data-cue="+"><li>You can convert the answer back to polar form if necessary.</li></ul>
+</section>
+
+<section class="Slide"><h3>Trigonometry Method</h3>
+<p>You could also find the resultant vector by solving the triangle using trigonometry.</p>
+<p class="Center" data-cue="+"><svg id="Ex1t" data-js="p20/vec2d/img/arith#Trig" class="VDiag w24 s22"></svg></p>
+<!-- <p class="Center Present"><img src="img/arith.png" alt="VecDiag" class="w16"/></p> -->
+<ul data-cue="+">
+    <li>Because the triangle does not contain a right angle, you must use the Law of Cosines and Law of Sines.</li>
+    <li data-cue="+">This method is never required; you can always use the component method.</li>
+    <li data-cue="+">For some problems the trigonometry method may be easier, especially when the triangle <em>does</em> contain a right angle.</li>
+</ul>
+<!-- <p data-cue="+"><p class="TeX">|\Delta\vec{\bf d}| = \sqrt{|\Delta\vec{\bf d}_1|^2 + |\Delta\vec{\bf d}_2|^2 - 2\cdot |\Delta\vec{\bf d}_1| \cdot |\Delta\vec{\bf d}_2| \cos(100^\circ)}</p></p>
+<p data-cue="+"><p class="TeX">= \sqrt{\rm{(50\ m)^2 + (40\ m)^2 - 2\cdot 50\ m \cdot 40\ m \cdot\cos(100^\circ)}} = 69\ {\rm m}</p></p>
+<p data-cue="+"><p class="TeX">\sin \theta_O = {\sin\theta_A \over |\Delta\vec{\bf d}|} |\Delta\vec{\bf d}_2|</p></p> -->
+</section>
+
+<section class="Slide"><h3>Summary</h3>
+<p>The procedures for adding vectors and drawing vector diagrams (“tip-to-tail”) are not just for displacement vectors but for any kind of vector, including velocity, acceleration, and force.</p>
+<p data-cue="+">To <em class="Defn">subtract</em> a vector, add its negative.</p>
+<ul data-cue="+">
+    <li>In Cartesian form, reverse the sign of both components.</li>
+    <li data-cue="+">In polar form, add or subtract 180º to the direction.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Example</h3>
+<p class="Blue">Calculate the net force acting on a mass that experiences a gravitational force of 98.1 N, a normal force of 96.6 N [80.0°] and a friction force of 8.00 N [170°].</p>
+<p class="Center" data-cue="+"><svg id="Ex2" data-js="p20/vec2d/img/arith#Ex2" class="VDiag w24 s22"></svg></p>
+<table class="Center Five Bottom" data-cue="+">
+    <tr><th>Force</th><th><span class="TeX">|\vec{\bf F}|</span> / N</th><th><span class="TeX">\theta</span></th><th><span class="TeX">\vec{\bf F}_x = |\vec{\bf F}|\cos\theta</span></th><th><span class="TeX">\vec{\bf F}_y = |\vec{\bf F}|\sin\theta</span></th></tr>
+    <tr><td>Gravity</td><td>98.1</td><td>270°</td><td>0</td><td>–98.1</td></tr>
+    <tr><td>Normal</td><td>96.6</td><td>80.0°</td><td class="Reveal"><span>16.8</span></td><td class="Reveal"><span>95.1</span></td></tr>
+    <tr><td>Friction</td><td>8.00</td><td>170°</td><td class="Reveal"><span>–7.88</span></td><td class="Reveal"><span>1.39</span></td></tr>
+    <tr><td>Net</td><td class="Reveal"><span>9.04</span></td><td class="Reveal"><span>350°</span></td><td class="Reveal"><span>8.90</span></td><td class="Reveal"><span>–1.57</span></td></tr>
+</table>
+<!--p data-cue="+">Now use Newton’s 2nd Law: <p class="TeX">\vec{\bf a} = {\vec{\bf F}_{net} \over m}</p></p>
+<p data-cue="+">The acceleration is 0.904 m/s<sup>2</sup> [350°] in polar form, or (0.890, –0.157) m/s<sup>2</sup> in Cartesian form.</p-->
+</section>
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Vector Arithmetic</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/vec2d/arith"></p>
+</div>
+</section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    let rev = $("td.Reveal").on("click", (ev) => {
+        $(ev.currentTarget).find("span").fadeToggle();
+    });
+}
+
+</script>
+
+</div></div></section>
+
+<!-- <section class="Post" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="">Assignment 2.4</button>
+    </p>
+</div></section> -->
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <li>Three students (Kelly, Chris, and Sam) are pulling on a backpack, each trying to get the backpack away from the others. Kelly exerts a force of 82.0 N [+25.0°] on the backpack; Chris exerts a force of (–57.4, +48.2) N; Sam exerts a force of 86.0 N [–63.5°].<ol type="a">
+        <li>Express Kelly and Sam’s force in Cartesian form and use the results to calculate the net force acting on the backpack.</li>
+        <div class="Answer">
+<p>For Kelly...</p>
+<p class="TeX">\begin{align}
+\vec{\mathbf F}_x &= |\vec{\mathbf F}|\cos\theta
+\\ &= \mathrm{82.0\ N\cdot \cos(+25.0^\circ)}
+\\ &= \mathrm{+74.3\ N}
+\end{align}</p>
+
+<p class="TeX">\begin{align}
+\vec{\mathbf F}_y &= |\vec{\mathbf F}|\sin\theta
+\\ &= \mathrm{82.0\ N\cdot \sin(+25.0^\circ)}
+\\ &= \mathrm{+34.7\ N}
+\end{align}</p>
+
+<p>For Sam...</p>
+<p class="TeX">\begin{align}
+\vec{\mathbf F}_x &= |\vec{\mathbf F}|\cos\theta
+\\ &= \mathrm{86.0\ N\cdot \cos(-63.5^\circ)}
+\\ &= \mathrm{+38.4\ N}
+\end{align}</p>
+
+<p class="TeX">\begin{align}
+\vec{\mathbf F}_y &= |\vec{\mathbf F}|\sin\theta
+\\ &= \mathrm{86.0\ N\cdot \sin(-63.5^\circ)}
+\\ &= \mathrm{-77.0\ N}
+\end{align}</p>
+</div>
+        <li>Calculate the net force on the backpack by adding the three forces to each other</li>
+        <li>Express the net force in polar form.</li>
+        <li>Draw an accurate “tip-to-tail” vector diagram to illustrate the addition of the vectors. </li>
+        <li>Measure the magnitude and direction of the resultant vector and compare your measurements to your calculated net force from (c).</li>
+    </ol></li>
+<p class="Answer"><a target="Q1" href="/?{%22symbol%22:%22F%22,%22square%22:[7.5,0],%22corner%22:[-37.5,-30],%22vectors%22:[{%22mag%22:82,%22dir%22:25},[-57.4,48.2],{%22mag%22:86,%22dir%22:-63.5}],%22unit%22:%22N%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+
+    <li>Two Physics 20 students are riding in the bumper cars while on a field trip to an amusement park. One student is driving her car with a “momentum” of 200 N·s [+60.0º]. She crashes her car into a classmate whose car has a momentum of 175 N·s [+160.0º]. Determine the total momentum of the system (i.e. the combined momentum of the two cars) using both the graphical and component methods. (The symbol for momentum is <span class="TeX">\vec{\mathbf{p}}</span>. The SI unit of momentum is newton-seconds, N·s.)</li>
+<p class="Answer"><a target="Q2" href="/?{%22symbol%22:%22p%22,%22square%22:[1.5,1],%22corner%22:[-135,-30],%22vectors%22:[{%22mag%22:200,%22dir%22:60},{%22mag%22:175,%22dir%22:160}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+    
+    <li>Andy jogs with a velocity of 2.50 m/s [N 35.0° W]. Julie jogs with a velocity of 2.62 m/s [E 35.0° N].
+    <ol type="a">
+        <li>Calculate Julie’s velocity relative to Andy:
+<p class="TeX">\Delta\vec{\mathbf{v}}={\vec{\mathbf{v}}}_{Julie}-{\vec{\mathbf{v}}}_{Andy}</p></li>
+        <li>Draw a vector diagram.</li>
+    </ol></li>
+    <div class="Answer">
+        <p><a target="Q3" href="/?{%22symbol%22:%22v%22,%22square%22:[3,-1],%22corner%22:[-1.2,-2.4],%22vectors%22:[{%22mag%22:2.62,%22dir%22:35},{%22mag%22:-2.5,%22dir%22:125}],%22unit%22:%22m/s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+        <p>Note that since we are subtracting, we have added 180º to Andy’s direction to change <span class="TeX">\vec{\mathbf v}_{Andy}</span> to <span class="TeX">-\vec{\mathbf v}_{Andy}</span>)</p>
+    </div>
+
+    <li>A student can paddle a canoe with a speed of 5.00 m/s. The student wants to cross a stream that has a current of 1.85 m/s. The actual velocity of the student will be the vector sum of the paddling velocity added to the current velocity. Determine the direction that the student should paddle (i.e. how many degrees upstream) so that the resultant velocity will be straight across the stream (i.e. neither upstream nor downstream.) Also, determine the magnitude of the resultant velocity. Take the current direction to be the x-axis and the direction of the resultant velocity to be the y-axis.</li>
+    <div class="Answer">
+        <p><a target="Q4" href="/?{%22symbol%22:%22v%22,%22square%22:[3,-1],%22corner%22:[-3.9,-0.6],%22vectors%22:[{%22mag%22:5,%22dir%22:111.7156},[1.85,0]],%22unit%22:%22m/s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+        <p>Since we know the magnitudes of the current and paddling velocity, we can calculate the magnitude of the resultant velocity using Pythagoras:
+<p class="TeX">\vec{\mathbf v}_{net} = \mathrm{\sqrt{(5.00\ m/s)^2 - (1.85\ m/s)^2} = 4.65\ m/s}</p>
+We can now calculate the paddling velocty in Cartesian form:
+<p class="TeX">\begin{align}
+\vec{\mathbf v}_{paddle} &= \vec{\mathbf v}_{net} - \vec{\mathbf v}_{current}
+\\ &= \mathrm{(0.00, +4.65)\ m/s - (1.85, 0.00)\ m/s}
+\\ &= \mathrm{(-1.85, +4.65)\ m/s}
+\end{align}</p>
+
+<p>The direction of the paddling velocity is:</p>
+<p class="TeX">\theta = \mathrm{\tan^{-1}\left(\frac{+4.65}{-1.85}\right) + 180^\circ = 112^\circ}</p> (i.e. 22° upstream from straight across)</p>
+    </div>
+    
+    <li>A spacecraft moves between a planet and its moon as illustrated below. The observed acceleration of the spacecraft due to the combined gravity of the planet and moon has a direction of +270º. Mission Control calculates that the gravity due to the planet only is 0.462 m/s<sup>2</sup> [+230º]. The moon’s direction relative to the spacecraft is +300º, however the moon’s mass is unknown so Mission Control cannot calculate its gravitational field strength.<ol type="a">
+        <li>Sketch and label a vector diagram (“tip-to-tail”) of the two gravitational fields and the resultant (net) gravitational field.</li>
+        <div class="Answer"><a target="Q5" href="/?{%22symbol%22:%22g%22,%22square%22:[7.5,-2],%22corner%22:[-0.9,-1.2],%22vectors%22:[{%22mag%22:0.462,%22dir%22:230},{%22mag%22:0.5939,%22dir%22:300}],%22unit%22:%22m/s^2%22}#p20/vec2d/vec2d">Vector Diagram</a></div>
+
+        <li>Solve for all unknowns in the table below.
+        </li>
+        <table class="Auto Center TD">
+            <tr><th>Object</th><th><span class="TeX">|\vec{\mathbf g}|</span></th><th><span class="TeX">\theta</span></th><th><span class="TeX">\vec{\mathbf g}_x</span></th><th><span class="TeX">\vec{\mathbf g}_y</span></th></tr>
+            <tr><td>Planet</td><td>0.462</td><td>230°</td><td></td><td></td></tr>
+            <tr><td>Moon</td><td></td><td>300°</td><td></td><td></td></tr>
+            <tr><td>Net</td><td></td><td>270°</td><td></td><td></td></tr>
+        </table>
+        <div class="Answer">
+        <p>Convert the planet’s gravity to Cartesian form by multiplying 0.462 m/s<sup>2</sup> by the cosine and the sine of 230°:
+<p class="TeX">\vec{\mathbf g}_x = \mathrm{0.462\ m/s^2\cdot\cos(230^\circ) = -0.297\ m/s^2}</p>
+<p class="TeX">\vec{\mathbf g}_y = \mathrm{0.462\ m/s^2\cdot\sin(230^\circ) = -0.354\ m/s^2}</p>
+        </p>
+        <p>We know that the net gravity has an <i>x</i>-component of exactly zero because the direction is 270°, so the <i>x</i>-component for the moon must be the exact opposite of the planet’s...</i></p>
+        <table class="Auto Center TD Black">
+            <tr><th>Object</th><th><span class="TeX">|\vec{\mathbf g}|</span></th><th><span class="TeX">\theta</span></th><th><span class="TeX">\vec{\mathbf g}_x</span></th><th><span class="TeX">\vec{\mathbf g}_y</span></th></tr>
+            <tr><td>Planet</td><td>0.462</td><td>230°</td><td class="Red">-0.297</td><td class="Red">-0.354</td></tr>
+            <tr><td>Moon</td><td></td><td>300°</td><td class="Red">+0.297</td><td></td></tr>
+            <tr><td>Net</td><td></td><td>270°</td><td class="Red">0.00</td><td></td></tr>
+        </table>
+        <p>Next, solve for the magnitude of the moon’s gravity and then its <i>y</i>-component:</p>
+<p class="TeX">\vec{\mathbf g}_x = |\vec{\mathbf g}|\cos\theta</p>
+<p class="TeX">|\vec{\mathbf g}| = \frac{\vec{\mathbf g}_x}{\cos\theta} = \mathrm{\frac{+0.297\ m/s^2}{\cos(300^\circ)} = 0.594\ m/s^2}</p>
+<p class="TeX">\vec{\mathbf g}_y = |\vec{\mathbf g}|\sin\theta = \mathrm{0.594\ m/s^2\cdot\sin(300^\circ) = -0.514\ m/s^2}</p>
+        <p>Finally, add the <i>y</i>-components to determine the resultant gravity:</p>
+        <p class="TeX">\Sigma\vec{\mathbf g}_y = \mathrm{-0.354\ m/s^2 + (-0.514\ m/s^2) = -0.868\ m/s^2}</p>
+        <table class="Auto Center TD Black">
+            <tr><th>Object</th><th><span class="TeX">|\vec{\mathbf g}|</span></th><th><span class="TeX">\theta</span></th><th><span class="TeX">\vec{\mathbf g}_x</span></th><th><span class="TeX">\vec{\mathbf g}_y</span></th></tr>
+            <tr><td>Planet</td><td>0.462</td><td>230°</td><td class="Red">-0.297</td><td class="Red">-0.354</td></tr>
+            <tr><td>Moon</td><td class="Red">0.594</td><td>300°</td><td class="Red">+0.297</td><td class="Red">-0.514</td></tr>
+            <tr><td>Net</td><td class="Red">0.868</td><td>270°</td><td class="Red">0.00</td><td class="Red">-0.868</td></tr>
+        </table>
+        </div>
+    </ol></li>
+</ol>
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li>Which form of 2D vector (polar or Cartesian) is more convenient when adding or subtracting vectors?</li>
+    <div class="Answer">Cartesian</div>
+
+    <li>What do we mean by the resultant vector?</li>
+    <div class="Answer">The total of the vectors being added.</div>
+
+    <li>Explain how to add vectors using each of these methods: (a) graphical method, (b) component method, (c) trigonometry method.</li>
+    <div class="Answer">
+        <ul>
+            <li>In the graphical method, draw the vectors accurately — tip-to-tail! — on graph paper using a protractor and ruler. Use the same scale for both axes. Draw the resultant vector (preferably in a different colour) as an arrow from the tail of the <em>first</em> vector to the tip of the <em>last</em> vector. The order in which vectors are added/drawn does not affect the resultant. Label all vectors. Measure the direction (angle) and magnitude (length of the arrow, based on the scale of the diagram) for the resultant vector.</li>
+            <li>In the component method, write all vectors in Cartesian form. Use the <span class="TeX">\sin</span> and <span class="TeX">\cos</span> functions to convert polar vectors to Cartesian form. Next add the <span class="TeX">x</span>-components together to the get the <span class="TeX">x</span>-component of the resultant. Now repeat for the <span class="TeX">y</span>-components. If necessary, convert the resultant vector back to polar form using the Pythagoras and <span class="TeX">\tan^{-1}</span> equations. This is the most precise and reliable method of vector addition!</li>
+            <li>Draw a sketch of the (tip-to-tail) vector diagram. Label all known sides and angles. Use the Pythagoras and/or <span class="TeX">\sin</span>, <span class="TeX">\cos</span>, or <span class="TeX">\tan</span> equations to solve the triangle <b>only</b> if it <b>must</b> contain a 90° angle. Otherwise use the Sine Law and/or Cosine Law. This method can only be used to add <em>two</em> vectors at a time.</li>
+        </ul>
+    </div>
+
+    <li>Explain how to subtract vectors.</li>
+    <div class="Answer">To subtract a vector, add its negative! In Cartesian form, reverse the signs of both the <span class="TeX">x</span>- and <span class="TeX">y</span>-components. In polar form, add or subtract 180° from the direction.</div>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}2.4 — Vector Arithmetic`,
+    answerDate: "2024.3.7.16",
+    num: "2.4",
+    up: "p20/home",
+    prev: "p20/vec2d/polar",
+    next: "p20/vec2d/proj",
+}
+
+</script>

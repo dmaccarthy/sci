@@ -1,0 +1,104 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Exceptions</h2><div class="Collapse Expand">
+<p>An <b class="Red">exception</b> is an error or other circumstance in which the Python interpreter is unable to execute the intended instruction. Errors can result from programming mistakes; e.g. a syntax error or a reference to a name that has not been bound to an object...</p>
+<pre class="Code" contenteditable="true" data-echo="p05_ex1.py" data-title="1">print(hi)  <span class="Comment"># NameError: name 'hi' is not defined</span>
+7 = x      <span class="Comment"># SyntaxError: can't assign to literal</span></pre>
+
+<p>Programming errors should be fixed before your program is deployed.</p>
+<p>Some exceptions, such as invalid user input, are not the result of programmer error. One way to avoid such exceptions is to check that the user input is valid before using it. Sometimes, we can do this with an <code>if-else</code> statement...</p>
+<pre class="Code" contenteditable="true" data-echo="p05_ex2.py" data-title="1">num1 = float(input("Please enter a number: "))
+num2 = float(input("Enter another number: "))
+if num2 != 0.0:
+    num3 = num1 / num2
+    print(f"The quotient of {num1} and {num2} is {num3}.")
+else:
+    print("Division by zero is undefined!")</pre>
+
+<p>Unfortunately, division by zero is not the only possible error.  If the user enters a response that cannot be converted to a float (i.e. a word instead of a number), a <code>ValueError</code> exception will occur. (Try it!)</p>
+<p>A program will crash when an uncaught exception occurs. An uncaught exception is an exception that the program does not know how to deal with. A program can “catch” an exception by telling the interpreter how to recover from the error.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Python’s <code>try-except</code> Statement</h2><div class="Collapse Expand">
+<p>Suppose we want our example program to be able to “catch” both <code>ZeroDivisionError</code> and <code>ValueError</code> exceptions.  I.e. we want the program to be able to recover if the user attempts to divide by zero or if the user enters something that cannot be converted to a number.  Here is how we catch exceptions in Python...</p>
+<pre class="Code" contenteditable="true" data-echo="p05_ex3.py" data-title="1"><span class="Blue">try</span>:
+    num1 = float(input("Please enter a number: "))
+    num2 = float(input("Enter another number: "))
+    num3 = num1 / num2
+<span class="Blue">except ZeroDivisionError</span>:
+    print("Division by zero is undefined!")
+<span class="Blue">except ValueError</span>:
+    print("Invalid input!")
+<span class="Blue">else</span>:
+    print(f"The quotient of {num1} and {num2} is {num3}.")</pre>
+
+<p>The <code>try</code> statement identifies a block of instructions during which an exception might occur.
+    The <code>try</code> block is immediately followed by one or more <code>except</code> statements.
+    The <code>except</code> keyword is followed by an exception class which identifies the type of exception that occurs. Exception classes such as <code>ZeroDivisionError</code> and <code>ValueError</code> are built-in Python classes just like <code>int</code>, <code>float</code>, and <code>str</code>.</p>
+<p>Each <code>except</code> statement is followed by an indented block of one or more statements that will be run only if an instance of the specified exception class occurs.
+    The last <code>except</code> block can be followed by an optional <code>else</code> block that will be run only if no exceptions occur.
+    You can also add a <code>finally</code> block after the <code>else</code> block (or after the last <code>except</code> block if there is no <code>else</code> block).
+    The <code>finally</code> block is executed whether or not any exceptions occur. Even if an exception occurs that does not match one of the included exception classes, the <code>finally</code> block will be run before the program crashes!</p>
+<p>You can use one block to catch two or more exception classes as shown in the example below. List the exception classes you want to catch in parentheses and separated by commas (as shown in blue) following the <code>except</code> keyword...</p>
+<pre class="Code" contenteditable="true" data-echo="p05_ex4.py" data-title="1">try:
+    num1 = float( input("Please enter a number: ") )
+    num2 = float( input("Enter another number: ") )
+    num3 = num1 / num2
+<span class="Blue">except (ZeroDivisionError, ValueError) as error</span>:
+    print(type(error), error)
+else:
+    print(f"The quotient of {num1} and {num2} is {num3}.")</pre>
+
+<p>You can also use the <code>as</code> keyword to create a reference (name) that refers to the exception instance. You can use this name to get details about the exception such as its class or a description. In the example above, the name <code>error</code> gives us a description of the exception and the type function is used to find the exception’s class (i.e. what kind of exception occurred).</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse"><code>Exception</code> Class</h2><div class="Collapse Expand">
+<p>Sometimes we cannot anticipate all possible exceptions that might occur. For example, it is possible to run a program so that the input is taken from a file rather than the user’s keyboard. Our program can encounter an <code>EOFError</code> (end of file) if we attempt to input data after reaching the end of the file. Python provides an <code>Exception</code> base class that we can use as a “catch-all” to catch unanticipated exceptions.</p>
+<p>The <code>Exception</code> class will match any exception instance. This exception class should be used in the very last except statement because we do not want it to catch exceptions that we <em>do</em> anticipate...</p>
+
+<pre class="Code" contenteditable="true" data-echo="p05_ex5.py" data-title="1">try:
+    num1 = float( input("Please enter a number: ") )
+    num2 = float( input("Enter another number: ") )
+    num3 = num1 / num2
+except ZeroDivisionError:
+    print("Division by zero is undefined!")
+except ValueError:
+    print("Invalid input!")
+<span class="Blue">except Exception as error</span>:
+    print("An unknown error occurred...")
+    print(type(error), error, sep=": ")
+else:
+    print(f"The quotient of {num1} and {num2} is {num3}.")</pre>
+
+<p>For more information on Python exceptions and exception handling, see the <a href="https://docs.python.org/3.6/tutorial/errors.html" target="PyDoc">Python documentation</a>.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">The <code>raise</code> Statement</h2><div class="Collapse Expand">
+<p>Sometimes, you may not be able to eliminate violations of preconditions during the debugging phase, for example when the violation results from bad input.  In such circumstances, you will want an exception to occur so that you can handle it using a <code>try-except</code> structure.  You can use Python’s <code>raise</code> statement to force an exception to occur.</p>
+<p>The <code>raise</code> keyword is followed by the name of an <code>Exception</code> class. You can use any of Python’s built-in exception classes or you can make your own exception class (once you have learned how to define classes).  The exception constructor will accept a description of the error as an argument...</p>
+<pre class="Code" contenteditable="true" data-echo="p05_ex6.py" data-title="1">num = float(input("Enter a positive number: "))
+if num <= 0:
+    <span class="Blue">raise ValueError("A positive number is required")</span></pre>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+    <li>When trying to obtain numerical input from the user, one problem is that the user may provide input that cannot be converted to a number resulting in an exception.
+        In the program <code>p05_numInput.py</code>, complete the function <code>numInput</code> to handle any exceptions that occur. The first argument passed to <code>numInput</code> is a string prompt; the second argument is either <code>int</code> or <code>float</code>, specifying the <em>type</em> of number required.
+        If the user enters invalid data, your program must keep asking the user to re-enter the input until it receives valid data.</li>
+    <li>The program <code>p05_http.py</code> prompts the user to enter a web URL (such as <a class="Code" target="Sal" href="https://www.salcomp.ca">https://www.salcomp.ca</a>). The program then sends a request over the web for that URL and prints the data it receives. There are a number of things that could go wrong: the computer might not be connected to the internet, the URL might not be valid, or the server that the URL refers to may be unavailable. Modify the program to handle any of these exceptions by giving the user an opportunity to enter a different URL or quit the program.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Exception Handling",
+    up: `cs_new/cs20`,
+    prev: "cs_new/pp/pre",
+}
+
+</script>

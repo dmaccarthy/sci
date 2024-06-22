@@ -1,0 +1,143 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">I/O</h2><div class="Collapse Expand">
+
+<p>Two of the key operations that programs can perform are input and output (I/O). <em class="Defn">Input</em>
+	involves moving information into the computer’s memory from somewhere else, such as the keyboard or mouse;
+	a file stored on a hard disk, DVD, or USB drive; or a network connection (e.g. WiFi, Bluetooth, or Ethernet).
+	<em class="Defn">Output</em> involves sending information from the computer’s memory to another location,
+	such as a monitor or printer, a file, or a network connection.</p>
+
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Console Output</h2><div class="Collapse Expand">
+
+<p>Python contains a <code>print</code> function that prints data to the <em class="Defn">console</em>, a text-only
+	area of the screen. The <code>print</code> function is one of several <em>built-in</em> functions, which means
+	that Python always loads it automatically. Unlike most functions, built-ins do not need to be imported.</p>
+
+<p>Each <code>print</code> statement prints its data on a separate line. If the argument is an expression, Python
+	<em class="Defn">evaluates</em> it before printing. In the example below, the second line will print <code>10</code>.</p>
+
+<pre data-echo="s06_ex1.py" data-title="1" class="Code">print("Hello!")
+print(5 * 2)</pre>
+
+<p>You can print several pieces of data on a single line by passing multiple arguments to the same
+	<code>print</code> call...</p>
+
+<pre data-echo="s06_ex2.py" data-title="1" class="Code">print("Hello!", 5 * 2)</pre>
+
+<p>Python adds a space character between the data being printed. If you want to specify a separator other than
+	a space, you can specify the separator as the final argument...</p>
+
+<pre data-echo="s06_ex3.py" data-title="1" class="Code">pi = 3.14
+print("Hello!", pi, 5 * 2, <span class="Blue">sep=</span>" ;-) ")</pre>
+
+<p>Note that you have to explicitly tell Python that you are using a custom separator using the keyword
+	<code>sep</code>, as shown in blue in the example above. Otherwise, Python will just think that the last
+	argument is a regular argument to be printed.</p>
+
+<p>Also note that literal text like <code>"Hello!"</code> needs to be in quotes. You can use either double quotes
+	as in the example, or single quotes like <code>'Hello!'</code>. Python assumes that <em>unquoted</em> text
+	like <code>pi</code> or <code>print</code> is a variable or function name, or a reserved word like
+	<code>import</code>.</p>
+
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Console Input</h2><div class="Collapse Expand">
+
+<p>Python has another built-in function called <code>input</code> that asks the user to enter some data. The
+	data will be saved in the computer’s memory. Your program will need to assign a variable name to the data if
+	it wants to use it later...</p>
+
+<pre data-echo="s06_ex4.py" data-title="1" class="Code">user_name = <span class="Blue">input("Please tell me your name? ")</span>
+print("Hello, ", user_name, "!", sep="")</pre>
+
+<p>Note again that <em>literal</em> text is quoted (<code>"Hello, "</code>) while variable names are not (<code>user_name</code>).</p>
+
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Turtle Graphics Input</h2><div class="Collapse Expand">
+
+<p>When running a turtle graphics program, you might want to ask the user to input some data to control how the
+	turtle behaves. Rather than having to switch between the turtle graphics window and the console, you can use the
+	function <code>textinput</code> (which has to be imported from <code>turtle</code>) instead of
+	<code>input</code>...</p>
+
+<pre data-echo="s06_ex5.py" data-title="1" class="Code">from turtle import textinput, setup, speed, penup, pendown, pencolor, left, forward, exitonclick
+
+<span class="Comment"># Ask for color</span>
+color = <span class="Blue">textinput("Color", "What color triangle do you want?")</span>
+
+<span class="Comment"># Assign canvas and triangle size</span>
+canvas_size = 300
+sides = 3
+side_length = 2 / sides * canvas_size
+
+<span class="Comment"># Set the canvas size and turtle speed</span>
+setup(canvas_size, canvas_size)
+speed(1)
+
+<span class="Comment"># Move turtle into position</span>
+penup()
+left(90)
+forward(side_length / 2)
+left(150)
+
+<span class="Comment"># Draw a triangle</span>
+pencolor(color)
+pendown()
+for side in range(int(sides)):
+    forward(side_length)
+    left(360 / sides)
+
+<span class="Comment"># Finished!</span>
+exitonclick()</pre>
+
+<p>The <code>textinput</code> function uses a popup window to obtain input from the user. The function takes two
+	arguments: a title for the popup window, and a message to prompt the user.</p>
+
+<p>When asking for numerical input, use the <code>numinput</code> function instead of <code>textinput</code>.
+	This will reject any user response that cannot be interpreted as a number.</p>
+
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">IPO Structure</h2><div class="Collapse Expand">
+<p>Wherever possible, you should perform all input at the beginning of the program, then perform any calculations
+	or other processing, and finally output the results. This is called the IPO (Input-Processing-Output) structure.<p> 
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand"><ol class="Assign">
+<li>Copy your completed program <code>s05_polygon.py</code> as <code>s06_polygon.py</code>. Modify the program so that it asks the user for the size, number of sides, and color of the shape.
+    All user input should be performed in turtle graphics; do not make the user switch between the console and graphics windows.</li>
+
+<li>Write a console program <code>s06_userInfo.py</code> to prompt the user to enter his or her name, age, and grade. Then print the information back to the user as in the example below. The black text is printed by the program and the blue text is entered by the user. Include a docstring and comments, and use the IPO program structure.
+<pre data-echo="ex6.io" class="Code" style="color:black">Please tell me your name: <span class="Blue">Chris</span>
+Please tell me your age: <span class="Blue">15</span>
+What grade are you in? <span class="Blue">10</span>
+
+Your information...
+Name: Chris
+Age: 15
+Grade: 10</pre></li>
+
+<li>The program does not behave the way its programmer intended! Read the program to figure out what it is <em>supposed</em> to do. Then run the program to see what it actually does. Describe what the program is supposed to do and actually does in the comments at the end of the file.
+<pre data-echo="s06_number.py" data-title="1" class="Code">num = input("What is your favourite number? ")
+print(2 * num)
+print(2 + num)</pre></li>
+</ol></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Input & Output",
+    up: "cs_new/cs10",
+    next: "cs_new/sp1/type",
+    prev: "cs_new/sp1/var",
+}
+  
+</script>

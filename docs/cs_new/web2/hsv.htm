@@ -1,0 +1,136 @@
+<style type="text/css">
+
+#HSV {display: none}
+
+#HSV_Controls {
+    margin: auto;
+    margin-bottom: 1em;
+    text-align: right;
+}
+
+#HSV_Controls tr {height: 2.5em}
+#HSV_Controls tr * {vertical-align: middle}
+#HSV_Controls td {border: none}
+
+#HSV_Controls td:last-child {
+    text-align: left;
+    padding-left: 1em;
+}
+
+#RGB {padding: 0.25em}
+#RGB.White {color: white}
+
+</style>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+
+</div></section>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Color Wheel</h2><div class="Collapse Expand">
+
+<p class="Center"><svg id="HSV" data-aspect="1" xmlns="http://www.w3.org/2000/svg" width="361" height="361" viewBox="-180 -180 361 361">
+<style>
+
+#HSV circle, #HSV line {
+    fill: none;
+    stroke: black;
+    stroke-width: 2;
+}
+
+#HSV.White circle, #HSV.White line {stroke: white}
+#HSV.White g line, #HSV g line {stroke: #808080}
+
+</style>
+<g>
+    <line x1="-181" y1="0" x2="181" y2="0"></line>
+    <line x1="-181" y1="0" x2="181" y2="0" transform="rotate(60)"></line>
+    <line x1="-181" y1="0" x2="181" y2="0" transform="rotate(-60)"></line>
+    <image id="HSV_Wheel" x="-172.8" y="-172.8"></image>    
+</g>
+<circle id="HSV_Sat" cx="0" cy="0"></circle>
+<line id="HSV_Hue" x1="0" y1="0" x2="181" y2="0"></line>
+</svg></p>
+<table id="HSV_Controls" class="Center">
+    <tr>
+        <td><input id="HSV_H" type="range" min="0" max="360" value="0"/></td>
+        <td><span>Hue = </span><span id="HSV_Hval"></span></td>
+    </tr>
+    <tr>
+        <td><input id="HSV_S" type="range" min="0" max="100" value="100"/></td>
+        <td><span>Saturation = </span><span id="HSV_Sval"></span></td>
+    </tr>
+    <tr>
+        <td><input id="HSV_V" type="range" min="0" max="100" value="100"/></td>
+        <td><span>Value = </span><span id="HSV_Vval"></span></td>
+    </tr>
+</table>
+<p class="Center"><span id="RGB"></span></p>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse">
+<ol class="Assign">
+
+</ol>
+</div></section>
+
+<script type="text/javascript" data-init="sim">
+
+loadFeed.sim = () => {
+    $.getScript("./cs_new/web2/hsv.js").then(() => {
+        loadFeed.sim.redraw();
+        $("#HSV").show();
+    });
+    $("#HSV_Controls input").on("change", loadFeed.sim.redraw);
+    $("#HSV").on("click", (e) => {
+        let s = e.currentTarget;
+        let r = s.getBoundingClientRect();
+        let [x, y] = [(e.clientX - r.x) / r.width - 0.5, (e.clientY - r.y) / r.height - 0.5];
+        r = Math.sqrt(x*x + y*y) / 0.96;
+        if (r > 0.5) r = 0.5;
+        let h = Math.atan2(-y, x) / Math.PI * 180;
+        if (h < 0) h += 360;
+        $("#HSV_S").val(200 * r);
+        $("#HSV_H").val(h).trigger("change");
+    });
+}
+
+loadFeed.sim.redraw = () => {
+    let hex = (n) => {
+        let x = n.toString(16).toUpperCase();
+        while (x.length < 2) x = "0" + x;
+        return x;
+    }
+    let h = parseFloat($("#HSV_H").val());
+    let s = parseFloat($("#HSV_S").val());
+    let v = parseFloat($("#HSV_V").val());
+    $("#HSV_Hval").html(h.toFixed(0));
+    $("#HSV_Sval").html(s.toFixed(0));
+    $("#HSV_Vval").html(v.toFixed(0));
+    $("#HSV_Hue").attr("transform", `rotate(-${h})`);
+    let w = 0.96 / 2 * ($("#HSV").width() - 1);
+    $("#HSV_Sat").attr("r", `${w * s / 100}`);
+    let rgb = HSVtoRGB(h, s, v);
+    hex = `${hex(rgb.r)}${hex(rgb.g)}${hex(rgb.b)}`;
+    $("#RGB").html(`RGB = (${rgb.r}, ${rgb.g}, ${rgb.b}) = #${hex}`);
+    $("#RGB").css("background-color", `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`);
+    if (v < 75) $("#HSV").addClass("White");
+    else $("#HSV").removeClass("White");
+    if (rgb.r + rgb.g + rgb.b < 420) $("#RGB").addClass("White");
+    else $("#RGB").removeClass("White");
+    $("#HSV_Wheel").attr({href: colorWheelURL(Math.round(w), v / 100)});
+}
+
+tmp = localStorage.getItem("cs_course") == "20" ? "cs20" : "cs10";
+
+loadFeed.data = {
+    title: "HSV Color",
+    up: `cs_new/${tmp}`,
+    // prev: "cs_new/web2/",
+    // next: "cs_new/web2/",
+}
+  
+</script>

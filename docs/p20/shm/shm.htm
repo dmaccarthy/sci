@@ -1,0 +1,223 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Simple Harmonic Motion</h1>
+</section>
+
+<section id="shm" class="Slide"><h3>Simple Harmonic Motion</h3>
+<p><em class="Defn">Simple harmonic motion</em> is an oscillation where the motion of the object is described exactly by a sine-shaped function.</p>
+<p class="Center"><svg class="Graph s24" data-js="p20/shm/img/eqm#x_t"></svg></p>
+<ul data-cue="+">
+    <li>SHM occurs near an equilibrium when the restoring force is <em>directly proportional</em> to the object’s position, measured relative to equilibrium.</li>
+    <li data-cue="+">We will sometimes use the symbol <span class="TeX">\vec{\bf{x}}</span> to represent the position relative to equilibrium, rather than <span class="TeX">\vec{\bf{d}}</span> for position relative to an arbitrary origin.</li>
+    <li data-cue="+">The relationship between the restoring force and position can be described by the equation:
+        <p class="TeX">\vec{\bf F}_{net} = -k\vec{\bf x}</p></li>
+</ul>
+</section>
+
+<section class="Slide"><h3>SHM Graphs</h3>
+<ul>
+    <li>The object’s velocity and position are “out of sync” with each other in SHM: when the object is furthest from equilibrium (the highest and lowest points of the <span class="TeX">\vec{\bf{x}}{\rm -}t</span> graph) the velocity is zero and when the object passes through equilibrium its speed is a maximum.</li>
+</ul>
+<p class="Center"><svg class="Graph s24" data-js="p20/shm/img/shm#v_t"></svg></p>
+<ul data-cue="+">
+    <li>This can be understood in terms of energy conservation: kinetic energy (related to speed) is at a maximum when potential energy (related to distance from equilibrium) is at a minimum.</li>
+    <li data-cue="+">One interesting property of sinusoidal functions is that the slope will also be sinusoidal but <em>shifted by one-quarter of a period</em>!</li>
+    <li data-cue="+">If the <span class="TeX">\vec{\bf{x}}{\rm -}t</span> graph can be described by a sine function, the <span class="TeX">\vec{\bf{v}}{\rm -}t</span> graph will be a cosine function and the <span class="TeX">\vec{\bf{a}}{\rm -}t</span> graph will be a negative sine function. (Click on the graph!)</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>SHM Equations</h3>
+<p>All three motion graphs have the same <em>time</em> scale (period).</p>
+<p data-cue="+">The <em>vertical</em> scales of the three motion graphs are related by the following relationships:</p>
+<p data-cue="+" class="TeX">v_{max} ={2\pi A\over T}</p>
+<p data-cue="+" class="TeX">a_{max} = {v_{max}^2 \over A} = {4\pi^2 A\over T^2}</p>
+<ul data-cue="+">
+    <li>The proof of these equations requires calculus; however, we can demonstrate experimentally that these relationships are correct.</li>
+    <li data-cue="+">These formulas are very similar to the formulas for uniform circular motion, because each <em>component</em> of UCM can be described by a sine or cosine function.
+        <p class="Center"><svg class="s24" data-js="p20/shm/img/shm#ucm"></svg></p>
+    </li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Example</h3>
+<p class="Blue">A simple pendulum is constructed so that it will have a period of 2.00 seconds and a maximum acceleration of 0.500 m/s<sup>2</sup>. Assuming the motion is SHM, calculate the speed of the mass as it passes through equilibrium and the amplitude of the motion.</p>
+<div data-cue="+">
+    <p>Since we know the period and maximum acceleration, we can find the amplitude from the <span class="TeX">a_{max}</span> equation above:</p>
+    <p class="TeX">a_{max} = {4\pi^2 A\over T^2}</p>
+</div>
+<p data-cue="+" class="TeX">a_{max}T^2 = 4\pi^2 A</p>
+<p data-cue="+" class="TeX">{a_{max}T^2 \over 4\pi^2} = A</p>
+<div data-cue="+">
+    <p>Evaluating:</p>
+    <p class="TeX">A = \rm{{(0.500\ m/s^2) (2.00\ s)^2 \over 4\pi^2} = 0.0507\ m}</p>
+</div>
+<div data-cue="+">
+    <p>We can then calculate <span class="TeX">v_{max}</span> from the other equation:</p>
+    <p class="TeX">v_{max} = {2\pi A \over T} = \rm{{2\pi (0.0507\ m) \over (2.00\ s)} = 0.159\ m/s}</p>
+</div>
+</section>
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Simple Harmonic Motion</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/shm/shm"></p>
+</div>
+</section>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <li>A mass executes SHM with a period of 0.36 s and an amplitude of 4.0 cm.
+    <ol type="a">
+        <li>Calculate the frequency of the SHM.</li>
+        <div class="Answer"><p class="TeX">f = \frac{1}{T} = \rm{\frac{1}{0.36\ s} = 2.8\ Hz}</p></div>
+
+        <li>Calculate the maximum velocity and maximum acceleration of the mass.</li>
+        <div class="Answer">
+<p class="TeX">v_{max} = \frac{2\pi A}{T} = \rm{\frac{2\pi\cdot 0.040\ m}{0.36\ s} = 0.70\ m/s}</p>
+<p class="TeX">a_{max} = \frac{4\pi^2 A}{T^2} = \rm{\frac{4\pi^2\cdot 0.040\ m}{(0.36\ s)^2} = 12\ m/s^2}</p>
+        </div>
+
+        <li>Draw accurate graphs of <span class="TeX">\vec{\bf{x}}</span>, <span class="TeX">\vec{\bf{v}}</span> and <span class="TeX">\vec{\bf{a}}</span> for two complete periods.</li>
+        <div class="Answer">
+            <p>Graphs: 
+                <a href="/?{%22T%22:0.36,%22A%22:4,%22dt%22:0.1,%22plot%22:%22x%22,%22fix%22:0,%22dy%22:1,%22unit%22:%22cm%22}#p20/shm/shm_graph" target="d_t">Position</a> |
+                <a href="/?{%22T%22:0.36,%22A%22:4,%22dt%22:0.1,%22plot%22:%22v%22,%22fix%22:0,%22dy%22:15,%22unit%22:%22cm%22}#p20/shm/shm_graph" target="v_t">Velocity</a> |
+                <a href="/?{%22T%22:0.36,%22A%22:0.04,%22dt%22:0.1,%22plot%22:%22a%22,%22fix%22:0,%22dy%22:3}#p20/shm/shm_graph" target="a_t">Acceleration</a>
+            </p>
+        </div>
+
+    </ol></li>
+
+    <li>When a car hits a bump in the road, it executes SHM (it bounces up and down on the springs in its shock absorbers.) If the maximum velocity of the SHM is 25.0 cm/s and the maximum acceleration is 1.50 m/s<sup>2</sup>, determine the period, frequency, and amplitude of the SHM.</li>
+    <div class="Answer">
+Calculate the amplitude: <p class="TeX">a_{max} = \frac{v_{max}^2}{A}</p>
+<p class="TeX">a_{max} A = v_{max}^2</p>
+<p class="TeX">A = \frac{v_{max}^2}{a_{max}} = \rm{\frac{(0.250\ m/s))^2}{1.50\ m/s^2} = 0.0417\ m}</p>
+
+Calculate the period: <p class="TeX">v_{max} = \frac{2\pi A}{T}</p>
+<p class="TeX">v_{max}T = 2\pi A</p>
+<p class="TeX">T = \frac{2\pi A}{v_{max}}= \rm{\frac{2\pi\cdot 0.0417\ m}{0.250\ m/s} = 1.05\ s}</p>
+
+Calculate frequency: <p class="TeX">f = \frac{1}{T} = \rm{\frac{1}{1.05\ s} = 0.955\ Hz}</p>
+    </div>
+
+    <li>A pendulum has an amplitude of 42.0 cm and a maximum acceleration of 1.34 m/s<sup>2</sup>. Calculate the pendulum’s period, frequency, and maximum velocity.</li>
+    <div class="Answer">
+Calculate period: <p class="TeX">a_{max} = \frac{4\pi^2 A}{T^2}</p>
+<p class="TeX">a_{max} T^2 = 4\pi^2 A</p>
+<p class="TeX">T^2 = \frac{4\pi^2 A}{a_{max}}</p>
+<p class="TeX">T = \sqrt{\frac{4\pi^2 A}{a_{max}}}
+    = \rm{\sqrt{\frac{4\pi^2\cdot 0.420\ m}{1.34\ m/s^2}} = 3.52\ s}</p>
+
+Calculate frequency: <p class="TeX">f = \frac{1}{T} = \rm{\frac{1}{3.52\ s} = 0.284\ Hz}</p>
+
+Calculate <span class="TeX">v_{max}</span>: <p class="TeX">v_{max} = \frac{2\pi A}{T}
+    = \rm{\frac{2\pi\cdot 0.420\ m}{3.52\ s} = 0.750\ m/s}</p>
+    </div>
+
+    <li>When a tuning fork is struck with a hammer, it begins to vibrate in SHM with an amplitude of 1.8 mm and a frequency of 360 Hz.
+    <ol type="a">
+        <li>Calculate the period of the motion.</li>
+        <div class="Answer">
+<p class="TeX">T = \frac{1}{f} = \rm{\frac{1}{360\ Hz} = 0.00278\ s}</p>
+        </div>
+
+        <li>Draw and label an accurate graph of the motion for two complete periods.</li>
+        <div class="Answer"><a target="Desmos4" href="https://www.desmos.com/calculator/ta947s1fmm">Graph</a></div>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>A 50.0 g mass hangs vertically from a spring. Calculate the elastic force that the spring exerts on the mass when the mass is at equilibrium*. Include a free body diagram. (*Recall that this means the forces are balanced.)</li>
+        <div class="Answer">
+<p class="TeX">\vec{\bf F}_g = m\vec{\bf g}
+    = \rm{0.0500\ kg (-9.81\ m/s^2) = -0.491\ N}</p>
+Since the net force is zero, the elastic force is <span class="TeX">\vec{\bf F}_{elas}</span> = +0.491 N.
+        </div>
+
+        <li>When the mass is pulled 1.00 cm down from its equilibrium position, the spring exerts an upward elastic force of 0.720 N. Calculate the restoring force that acts on the mass.</li>
+        <div class="Answer">
+<p class="TeX">\vec{\bf F}_{net} = \vec{\bf F}_g + \vec{\bf F}_{elas}
+    = \rm{(-0.491\ N) + 0.720\ N = +0.230\ N}</p>
+        </div>
+
+        <li>Calculate the acceleration of the mass. Will the acceleration remain constant? Describe the motion of the mass.</li>
+        <div class="Answer">
+<p class="TeX">\vec{\bf a} = \frac{\vec{\bf F}_{net}}{m}
+    = \rm{\frac{+0.230\ N}{0.0500\ kg} = +4.59\ m/s^2}</p>
+This acceleration will not be constant since the elastic force changes as the spring becomes more or less stretched. The mass will oscillate in SHM.
+        </div>
+
+        <li>Calculate the speed of the mass as it passes through equilibrium and use this speed to calculate the kinetic energy.</li>
+        <div class="Answer">
+<p class="TeX">a_{max} = \frac{v_{max}^2}{A}</p>
+<p class="TeX">a_{max} A = v_{max}^2</p>
+<p class="TeX">v_{max} = \sqrt{a_{max} A}
+    = \rm{\sqrt{4.59\ m/s^2\cdot 0.0100\ m} = 0.214\ m/s}</p>
+
+<p class="TeX">E_k = \frac{1}{2} mv^2
+    = \rm{\frac{1}{2} (0.0500\ kg) (0.214\ m/s)^2 = 0.00115\ J}</p>
+        </div>
+
+        <li>Verify that the kinetic energy calculated in (d) is equal to the work done by the restoring force in moving the mass from its initial position (<span class="TeX">\vec{\bf{x}} = \rm{-1.00\ cm}</span>) to its final position (<span class="TeX">\vec{\bf{x}} = \rm{0.00\ cm}</span>).</li>
+        <div class="Answer">
+First, calculate the average net force:
+<p class="TeX">\vec{\bf F}_{avg} = \rm{\frac{0.230\ N + 0.00\ N}{2} = 0.115\ N}</p>
+Now calculate the work:
+<p class="TeX">W = \vec{\bf F}_{avg}\cdot \Delta \vec{\bf d} = \rm{0.115\ N\cdot 0.0100\ m = 0.00115\ J}</p>
+        </div>
+    </ol></li>
+</ol>
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li>Identify the similarities and differences among the <span class="TeX">\vec{\bf{d}}{\rm -}t</span>, <span class="TeX">\vec{\bf{v}}{\rm -}t</span>, and <span class="TeX">\vec{\bf{a}}{\rm -}t</span> graphs of SHM.</li>
+    <div class="Answer">All three graphs have the same shape and repeat with the same period. Each graph is shifted one-quarter of a period relative to the previous graph. The vertical scales of the graphs are different because they measure different quantities with different units.</div>
+
+    <li>What does the symbol <span class="TeX">\vec{\bf{x}}</span> mean in the context of SHM?</li>
+    <div class="Answer">This is the <em>position</em> of the object relative to the equilibrium position.</div>
+
+    <li><ol type="a">
+        <li>State the relationships between period, amplitude, maximum velocity, and maximum acceleration for SHM.</li>
+        <div class="Answer">
+            <p class="TeX">v_max = \frac{2\pi A}{T}</p>
+            <p class="TeX">a_max = \frac{v_max^2}{A} = \frac{4\pi^2 A}{T^2}</p>
+        </div>
+    
+        <li>Describe and explain the similarity of these equations to the uniform circular motion equations.</li>
+        <div class="Answer">
+            <p>If we were to look at the <i>x-</i> and <em>y-</em>components of UCM separately, they would appear as SHM since:</p>
+            <p class="TeX">x = r\cos\theta</p>
+            <p class="TeX">y = r\sin\theta</p>
+            <p>Graphs of the components would be sine-shaped.</p>
+        </div>
+    </ol></li>
+
+    <li>Explain the cause of SHM in terms of the restoring force and relate this to the <span class="TeX">\vec{\bf{x}}{\rm -}t</span> and <span class="TeX">\vec{\bf{a}}{\rm -}t</span> graphs.</li>
+    <div class="Answer">If the <span class="TeX">\vec{\bf{x}}{\rm -}t</span> graph is a sine function, the <span class="TeX">\vec{\bf{a}}{\rm -}t</span> graph will be the <em>negative</em> of a sine function (because it’s shifted exactly one-half of a period).
+        This means that the net (restoring) force must be directly proportional and in the opposite direction to <span class="TeX">\vec{\bf{x}}</span>:
+        <p class="TeX">\vec{\bf F}_{net} = -k\vec{\bf x}</p>
+    </div>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}7.2 — Simple Harmonic Motion`,
+    answerDate: "2024.5.24.16",
+    num: "7.2",
+    up: "p20/home",
+    prev: "p20/shm/eqm",
+    next: "p20/shm/T",
+}
+
+</script>

@@ -1,0 +1,148 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Scope</h2><div class="Collapse Expand">
+
+<p>Here is a program that uses a function <code>pythag_hyp</code> to calculate the hypotenuse of a triangle
+    using the Pythagoras formula. The <code>pythag_hyp</code> function defines three variable names,
+    <code>a</code>, <code>b</code>, and <code>c</code>. The main program defines variables named
+    <code>x</code>, <code>y</code>, and <code>z</code>.</p>
+<p>Variables defined with a function definition have <b class="Red">local scope</b>. This means that those names are accessible only
+    within the function where they are defined. In the example below, the last line raises an error
+    because there is no variable <code>c</code> accessible to the main program.</p>
+
+<pre class="Code" contenteditable="true" data-echo="p02_ex1.py" data-title="1">from math import sqrt
+
+def pythag_hyp(a, b):
+    <span class="Comment">"Calculate hypotenuse using Pythagoras"</span>
+    c = sqrt(a*a + b*b)
+    return c
+
+x = 3.0
+y = 4.0
+z = pythag_hyp(x, y)
+print(z)  <span class="Comment"># 5.0</span>
+print(c)  <span class="Comment"># NameError</span>
+</pre>
+
+<p>Variable names defined outside of a function definition have <b class="Red">global scope</b>. This means that the
+    main program’s variable names, <code>x</code>, <code>y</code>, and <code>z</code>, can be
+    accessed from anywhere in the program. In the example below, the <code>pythag_hyp</code> function
+    accesses the global names <code>x</code>, and <code>y</code>.</p>
+
+<pre class="Code" contenteditable="true" data-echo="p02_ex2.py" data-title="1">from math import sqrt
+
+def pythag_hyp(a, b):
+    <span class="Comment">"Calculate hypotenuse using Pythagoras"</span>
+    print(x, y)  <span class="Comment"># 3.0 4.0</span>
+    c = sqrt(a*a + b*b)
+    return c
+
+x = 3.0
+y = 4.0
+z = pythag_hyp(x, y)
+print(z)  <span class="Comment"># 5.0</span>
+</pre>
+
+<p>The example below is a bit tricky! The main program defines a variable name <code>a</code> that has global scope, and refers to the value 1. The <code>test</code> function assigns the value 2 to <code>a</code> and then prints it. After the test function is complete, the main program prints the value of <code>a</code>. The value that is printed will be 1!</p>
+<pre class="Code" contenteditable="true" data-echo="p02_ex3.py" data-title="1">def test():
+    a = 2
+    print(a)
+
+a = 1
+test()       <span class="Comment"># 2</span>
+print(a)     <span class="Comment"># 1</span>
+</pre>
+
+<p>What has happened here is that the Python interpreter treats <code>a</code> as two separate names
+    referring to two different objects! The name <code>a</code> is a local variable referring to the
+    value 2 when used within the <code>test</code> function. The name <code>a</code> is a global variable referring
+    to the value 1 when used in the main program.</p>
+<p>You can declare the name <code>a</code> as global before using it within the <code>test</code>
+    function. This prevents Python from treating it as a separate local variable.</p>
+
+<pre class="Code" contenteditable="true" data-echo="p02_ex4.py" data-title="1">def test():
+    <span class="Blue">global a</span>
+    a = 2
+    print(a)
+
+a = 1
+test()       <span class="Comment"># 2</span>
+print(a)     <span class="Comment"># 2</span>
+</pre>
+
+<p>Most computer programmers consider global scope to be a dangerous, or at best inelegant technique for referencing data. Using local variables protects a function’s data from other parts of the program and allows the computer memory to be be reclaimed when the function terminates and its variables are no longer needed.</p>
+<p>Local variables should be used whenever possible. Following this advice, the main program
+    should not define any variable names. If we were to rewrite example <code>p02_ex1.py</code> above, the statements
+    that make up the main program should be placed inside a function definition (often called
+    <code>main</code>) to make the variables have local scope.</p>
+
+<pre class="Code" contenteditable="true" data-echo="p02_ex5.py" data-title="1">from math import sqrt
+
+def pythag_hyp(a, b):
+    <span class="Comment">"Calculate hypotenuse using Pythagoras"</span>
+    c = sqrt(a*a + b*b)
+    return c
+
+def main():
+    x = 3.0
+    y = 4.0
+    z = pythag_hyp(x, y)
+    print(z)
+
+main()
+</pre>
+
+<p>Global scope may be appropriate for constants.  Constants are data that can be assigned once and
+    will never change.  Many programmers use the convention of naming constants in all capitals
+    so that they are easily distinguishable from variables that refer to data that may change.</p>
+<p>The example below performs some chemistry calculations that use three chemical constants. Constant definitions can be placed in the program after any <code>import</code> statements and before any function definitions.</p>
+
+<pre class="Code" contenteditable="true" data-echo="p02_ex6.py" data-title="1">ABSOLUTE_ZERO = -273.15
+IDEAL_GAS_CONST = 8.314
+AVOGADROS_NUM = 6.02e23
+
+def pressure(n, T, V):
+    <span class="Comment">"Calculate ideal gas pressure"</span>
+    P = n * IDEAL_GAS_CONST * (T - ABSOLUTE_ZERO) / V
+    return P
+
+def main():
+    <span class="Comment"># Input...</span>
+    T = float(input("Temperature in Celsius: "))
+    V = float(input("Volume in litres: "))
+    n = float(input("Number of moles: "))
+
+    <span class="Comment"># Processing...</span>
+    P = pressure(n, T, V)
+    N = n * AVOGADROS_NUM
+
+    <span class="Comment"># Output...</span>
+    print("The pressure is {:.2f} kPa.".format(P))
+    print("There are {:.2e} molecules of gas.".format(N))
+
+main()
+</pre>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+    <li>Examine the program <code>p02_scope.py</code>. Predict the output of the program. Record your answer as a comment at the top of the source code.</li>
+    <li>Open and run the program <code>p02_turtle.py</code> to familiarize yourself with what the
+        program does. Modify the program by writing <em>functions</em> to perform each “task”. Your program
+        should use at least two functions, a <code>draw</code> function that performs the actual
+        drawing, and a <code>main</code> function. Ensure that all variables (names referring to non-constant data) have <em>local</em> scope.
+        Include a docstring for each function to exaplin what task it performs.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Variable Scope",
+    up: `cs_new/cs20`,
+    prev: "cs_new/pp/func",
+    next: "cs_new/pp/top",
+}
+
+</script>

@@ -1,0 +1,185 @@
+<section class="Post" data-icon="simulation.svg">
+<style type="text/css">
+
+#SimControls td {
+    border: none;
+    padding: 0.5em;
+    text-align: left;
+}
+
+#SimControls * {vertical-align: middle}
+#SimControls input {width: 8em}
+
+</style>
+
+<h2 class="Collapse">Simulation</h2>
+<div class="Collapse Expand Center">
+<p><svg id="Sim" data-aspect="24/19" width="480" height="380">
+<style>
+
+* {stroke: black; stroke-width: 1}
+rect {fill: tan}
+circle:not(*.Pulley) {fill: #606060; stroke-width: 0.5}
+circle.Pulley {fill: #D0D0D0}
+
+text.Timer {
+    text-anchor: middle;
+    font-family: Inconsolata, monospace;
+    stroke: none;
+    font-size: 28px;
+}
+
+</style>
+</svg></p>
+<table id="SimControls" class="Bottom">
+    <tr><td style="color:#fe6500">Vertical Mass / kg</td><td><input type="number" id="Mass1" value="6" min="0.25" max="10" step="0.25" onchange="loadFeed.run.reset(0)"/></td></tr>
+    <tr><td style="color:#0065fe">Horizontal Mass / kg</td><td><input type="number" id="Mass2" value="3" min="0.5" max="10" step="0.25" onchange="loadFeed.run.reset(1)"/></td></tr>
+    <tr><td>Coefficient of Friction</td><td><input type="range" id="Fric" value="0" min="0" max="1" step="0.01" onchange="loadFeed.run.reset()"/></td></tr>
+    <tr><td>Animation Speed</td><td><input type="range" id="ASpeed" value="1" min="0.05" max="1" step="0.05" onchange="loadFeed.run.speed()"/></td></tr>
+</table>
+
+</div></section>
+
+<section class="Post" data-icon="help">
+<h2 class="Collapse">Help</h2>
+<div class="Collapse">
+    <p>Use the controls below the animation to set the masses, the coefficient of friction, and the animation speed.</p>
+    <p>Click on the animation to play, pause, or reset.</p>
+    <p>The ruler markings on the table top and leg have a total length of 1 metre and are marked at 5 cm intervals.</p>
+    <p class="Fric">You can set the <a href="javascript:loadFeed.run.randMu()">coefficent of friction</a> randomly and try to figure outs its value.</p>
+    <p>To avoid accidentally changing the controlled variables, you can <a href="javascript:loadFeed.run.enable(0)">deactivate</a> the controls except for the last mass changed.
+        You can also <a href="javascript:loadFeed.run.enable(1)">reactivate</a> the controls if you want to.</p>
+</div></section>
+
+<script type="text/javascript" data-init="run">
+
+loadFeed.run = () => {
+    let svg = loadFeed.run.svg = new SVG_Animation("#Sim", -2.28, 0.18, -1.62);
+
+    // Draw the table
+    svg.rect([0.06, 0.02], [-0.765, 0.006]).css({fill: "black"});
+    svg.rect([0.16, 1.6], [-0.2, -0.8]);
+    svg.rect([0.16, 1.6], [-2.05, -0.8]);
+    svg.rect([2.25, 0.16], [-1.125, -0.08]);
+
+    // Draw the rulers
+    for (let i=0;i<21;i++) {
+        let x = -i / 20;
+        let l = i % 5 ? 0.04 : 0.07;
+        svg.line([x-0.8, 0], [x-0.8, -l]);
+        if (i < 20) svg.line([-0.12-l, x-0.6], [-0.12, x-0.6]);
+    }
+    svg.final();
+
+    // Draw the pulley
+    let r = svg.r = 0.05;
+    let pulley = svg.pulley = svg.group().after("style");
+    svg.circle(r, [0, 0], pulley).addClass("Pulley").final();
+    svg.line([-r, 0], [r, 0], pulley).final();
+    svg.circle("2", [0, 0], pulley).final();
+
+    // Create/update the timer
+    svg.text("", [-1.125, -1.5]).addClass("Timer").beforeupdate = function() {
+        this.$.html(`${this.svg.time.toFixed(3)} s`);
+    };
+
+    // Move the masses and strings, assuming uniform accelerated motion
+    svg.beforeupdate = function() {
+        let t = this.time;
+        if (t >= this.endTime) {
+            this.pause();
+            this.done = true;
+        }
+        let x = this.accel / 2 * t * t;
+        if (x > 1) x = 1;
+        this.pulley.config({theta: 45 - x / this.r * RAD});
+        this.sys[0].setPoints([[x - 2, r]], true);
+        this.sys[1].setPoints([[r, -x - 0.6]], true);
+        this.sys[2].position = [0, -x];
+        this.sys[3].position = [x, 0];
+    }
+
+    // Play, pause, reset
+    svg.$.on("click", () => {
+        if (svg.done) loadFeed.run.reset();
+        else svg.toggle();
+    });
+
+    // Initialize the simulation
+    svg.sys = [];
+    loadFeed.run.randMu();
+    loadFeed.run.reset(1);
+}
+
+loadFeed.run.speed = () => { // Read the animation speed control
+    loadFeed.run.svg.timeFactor = parseFloat($("#ASpeed").val());
+}
+
+loadFeed.run.enable = (active) => { // Deactive/reactivate controls
+    let e = $("#SimControls input").attr({disabled: false});
+    if (active) $(".Fric").show();
+    else {
+        $(".Fric").hide();
+        for (let i=0;i<3;i++) if (i != loadFeed.run.svg.manipulated)
+            $(e[i]).attr({disabled: true});
+    }
+}
+
+loadFeed.run.randMu = () => { // Set random coefficient of friction
+    let f = $("#Fric");
+    f.val(parseFloat(f.attr("max") * uniform(0.05, 0.95)));
+}
+    
+loadFeed.run.reset = (n) => { // Reset the animation to t = 0
+    let svg = loadFeed.run.svg;
+    if (n != null) svg.manipulated = n;
+    svg.pause();
+
+    // Delete old masses/strings and create new ones
+    for (let i=0;i<svg.sys.length;i++) svg.sys[i].final(1);
+    let r = svg.r;
+    let sys = [
+        svg.line([-2, r], [0, r]),
+        svg.line([r, -0.6], [r, 0]),
+        svg.group(),
+        svg.group()
+    ];
+
+    // Read control values
+    let getVal = (s) => {
+        let e = $(s);
+        let v = parseFloat(e.val());
+        let v0 = parseFloat(e.attr("min"));
+        let v1 = parseFloat(e.attr("max"));
+        if (v < v0) v = v0;
+        else if (v > v1) v = v1;
+        e.val(v.toFixed(2));
+        return v;
+    }
+    let m1 = getVal("#Mass1");
+    let m2 = getVal("#Mass2");
+    let mu = getVal("#Fric");
+    loadFeed.run.speed();
+
+    // Calculate acceleration
+    let a = (m1 - mu * m2) * 9.81 / (m1 + m2); 
+    if (a < 0.25) a = 0;
+
+    // Draw the new masses
+    m1 = root(m1, 2.5) / 18;
+    m2 = root(m2 - 0.5, 2.5) / 12;
+    svg.rect([m1, 3 * m1], [r, 1.5 * m1 - 0.6], sys[2]).css({fill: "#FE6500"}).final();
+    svg.rect([m2, m2], [-2, 1.18 * r + m2 / 2], sys[3]).css({fill: "#778899"}).final();
+    svg.rect([0.4, 1.2 * r], [-2, 0.6 * r], sys[3]).css({fill: "#2085FF"}).final();
+
+    // Update the animation
+    svg.config({done: false, time: 0, sys: sys, accel: a, endTime: a == 0 ? Infinity : root(2 / a)});
+    svg.update(0);
+}
+
+loadFeed.data = {
+    title: "Pulley Dynamics",
+    up: "p20/dyn/adv",
+}
+
+</script>

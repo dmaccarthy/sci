@@ -1,0 +1,90 @@
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Tables</h2><div class="Collapse Expand">
+
+<p>HTML documents can also include tables. Let’s start with what we want our table to look
+	like:</p>
+<table class="Center">
+	<thead>
+		<tr><th>Team</th><th>W</th><th>L</th><th>Pts</th></tr>
+	</thead>
+	<tbody>
+		<tr><td>Edmonton</td><td>5</td><td>2</td><td>10</td></tr>
+		<tr><td>Vancouver</td><td>4</td><td>3</td><td>8</td></tr>
+		<tr><td>Saskatoon</td><td>4</td><td>4</td><td>8</td></tr>
+		<tr><td>Calgary</td><td>2</td><td>4</td><td>4</td></tr>
+	</tbody>
+</table>
+
+<p>Each of the cells in our table needs to be enclosed in a <code>&lt;td&gt;</code> (table data)
+	tag, except for the headings, which are enclosed in a <code>&lt;th&gt;</code> (table heading)
+	tag. A <code>&lt;tr&gt;</code> tag is used to organize the cells into rows. The HTML looks like
+	this:</p>
+
+<pre class="CodeScroll" contenteditable="true" data-echo="html">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;<span class="Blue">Team</span>&lt;/th&gt;
+      &lt;th&gt;<span class="Blue">W</span>&lt;/th&gt;
+      &lt;th&gt;<span class="Blue">L</span>&lt;/th&gt;
+      &lt;th&gt;<span class="Blue">Pts</span>&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;<span class="Blue">Edmonton</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">5</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">2</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">10</span>&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;<span class="Blue">Vancouver</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">4</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">3</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">8</span>&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;<span class="Blue">Saskatoon</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">4</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">4</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">8</span>&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;<span class="Blue">Calgary</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">2</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">4</span>&lt;/td&gt;
+      &lt;td&gt;<span class="Blue">4</span>&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+
+<p>In the example above, the row that makes up the column headings has been enclosed in
+	a <code>&lt;thead&gt;</code> tag and the remaining rows have enclosed in a <code>&lt;tbody&gt;</code> tag.
+	These tags are recommended, but most browsers will display the table correctly even
+	without these tags.</p>
+  
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>Create an HTML5 document <code>w11_baseball.html</code> that shows the Major League
+    Baseball standings (up to the WCGB column) for the <a target="MLB" href="https://www.mlb.com/standings">American
+    League East Division</a> (go Blue Jays!) as a table.</li>
+
+<li>Create an HTML5 document <code>w11_Canada.html</code> that displays the Canadian
+    provinces and territories, theor populations, and their capital cities as a table.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+tmp = localStorage.getItem("cs_course") == "20" ? "cs20" : "cs10";
+
+loadFeed.data = {
+    title: "Tables",
+    up: `cs_new/${tmp}`,
+    prev: "cs_new/web1/list",
+}
+
+</script>

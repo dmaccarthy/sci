@@ -1,0 +1,94 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Python</h2><div class="Collapse Expand">
+
+<p>Python is a widely used programming language that is popular as a first language because it is easy to learn.<p>
+
+<p>Use your IDE (i.e. <a href="https://replit.com" target="replit">replit</a>) to create the following program in the file <code>s03_turtle.py</code>. (If you have
+    created a fork of this course’s repl, the program should already be there. Otherwise, you can copy the example from this webpage and paste it into your Python file.)</p>
+
+<pre class="Code" contenteditable="true" data-echo="s03_turtle.py" data-title="1">
+from turtle import setup, speed, pencolor, penup, pendown, left, circle, backward, forward, exitonclick
+
+setup(600, 480)
+speed(1)
+penup()
+
+backward(200)
+left(45)
+forward(100)
+
+pencolor("red")
+pendown()
+circle(-200, 180)
+
+exitonclick()</pre>
+
+<p>Try to predict what the program will do. Run the program to see if you were right.
+    (In <code>replit</code>, you need to open the configuration file <code>.replit</code> and indicate the file name
+    you want on the <code>entrypoint</code> line. If this file is not visible, choose “Show hidden files” under the menu.)</p>
+
+<p>The program consists of a sequence of individual instructions that the computer will execute one
+	at a time. Some programming languages use punctuation marks (often a semi-colon) to mark the end
+	of each instruction. Python prefers to use as little punctuation as possible, so each Python
+	instruction is typed on a separate line.</p>
+
+<p>Most of the instructions in this program are function calls. A <b class="Red">function</b> is
+	a named instruction that performs a specific task. In Python (and many other languages), you call
+	a function by typing its name, followed by parentheses. Inside the parentheses, you type any
+	additional information that the function needs to perform its task. The data that are passed to
+	the function are called <b class="Red">arguments</b>...</p>
+<pre data-echo="py" class="Code">setup(600, 480)</pre>
+
+<p>This instruction tells Python to run a function named <code>setup</code>, which sets the size of
+	the graphics canvas. This function takes two arguments. The first argument (<code>600</code>) tells
+	<code>setup</code> what we want the canvas width to be; the second argument (<code>480</code>)
+	is the height.</p>
+
+<p>When calling a function, the parentheses are required even if the function does not require any
+	arguments. For example, the <code>penup()</code> and <code>pendown()</code> instructions.</p>
+
+<p>This program is an example of “Turtle Graphics.” Imagine a turtle walking around the screen,
+	drawing as it moves. We can think of this program as instructions that we are giving to the turtle.
+	The <code>forward</code> and <code>backward</code> functions tell the turtle to move a certain distance
+	in pixels. The <code>left</code> and <code>right</code> functions tell the turtle to turn by so many
+	degrees. The <code>penup</code> and <code>pendown</code> and <code>pencolor</code> functions control
+	the pen that the turtle is drawing with.</p>
+
+<p>Python keeps the definitions for many of its functions in separate files called
+	<b class="Red">modules</b>. Before your program can use a function, you need to tell Python
+	to <code>import</code> (load) the function definition. The first line of the program above tells
+	Python to import several functions located in the <code>turtle</code> module. If you try to
+	call a function that you haven’t imported, an error will occur. (Try running the program after
+	deleting the first line.)</p>
+<pre data-echo="py" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, circle, backward, forward, exitonclick</pre>
+
+<!--p>The asterix at the end of the <code>import</code> statement tells Python to import everything
+	that it finds in the <code>turtle</code> module. Importing functions and data that your program
+	doesn’t need wastes computer memory and processing power. If you only need to use a few of the
+	features of a module, you should import only what you need...</p>
+<pre class="Code">from turtle import forward, backward, left, right</pre-->
+
+<p>There are a few functions that are so important or so common that Python loads them automatically; you do not need to import them. These functions are called <b class="Red">built-ins</b>. One built in function that we used in the last lesson is <code>print</code>.</p>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand"><ol class="Assign">
+<li>Create a Python file called <code>s03_Q.py</code>. You can copy and paste the example program as a starting point.
+    Modify the program so that it makes the turtle trace out the letter “Q” in your favourite colour.
+	You can refer to the <a href="https://docs.python.org/3/library/turtle.html#overview-of-available-turtle-and-screen-methods"
+	target="ref">documentation for the <code>turtle</code> module</a> to see what functions are
+	available for controlling the turtle, in addition to the functions used in the example.</li>
+<li>Create a Python file called <code>s03_letter.py</code>. Write a program that draws a different letter. (Don’t choose an easy letter like ‘O’ or ‘I’!)</li>
+</ol></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Programming in Python",
+    up: "cs_new/cs10",
+    next: "cs_new/sp1/comment",
+    prev: "cs_new/sp1/ide",
+}
+  
+</script>

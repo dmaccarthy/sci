@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>    
+<head>
+<meta charset="UTF-8"/>
+<title>Clock</title>
+<link rel="shortcut icon" type="image/svg+xml" href="./media/rocket.svg" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+function twoDigit(x) {
+    let s = `${x}`;
+    return s.length < 2 ? "0" + s : s;
+}
+
+function update() {
+    let d = new Date();
+    let w = d.toLocaleString(update.locale, {weekday: 'long'});
+    let m = d.toLocaleString(update.locale, {month: 'long'});
+    $("#Date").html(`${w}<br/>${m} ${d.getDate()}`);
+    m = twoDigit(d.getMinutes());
+    let t = `${d.getHours()}:${m}`;
+    if (update.seconds)
+        t += `:${twoDigit(d.getSeconds())}`;
+    $("#Time").html(t);
+    update.timeout = setTimeout(update, 250);
+}
+
+update.seconds = false;
+update.locale = "default";
+
+window.onclick = function(ev) {
+    if (ev.ctrlKey) {
+        clearTimeout(update.timeout);
+        update.seconds = !update.seconds;
+        update();    
+    }
+}
+
+console.log("Ctrl + Click to toggle seconds.");
+$(update);
+    
+</script>
+<style type="text/css">
+
+body {
+    text-align: center;
+    font-size: 750%;
+    font-family: "Lucida Console", "Source Code Pro", Consolas, monospace;
+}
+
+body > p {
+    margin: 0.5em;
+}
+    
+#Time {
+    font-size: 150%;
+    color: blue;
+}
+    
+</style>
+</head>
+<body>
+    <p id="Time"></p>
+    <p id="Date"></p>
+</body>
+</html>

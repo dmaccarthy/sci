@@ -1,0 +1,120 @@
+<style type="text/css">
+
+#RGB_Controls {
+    margin: auto;
+    margin-bottom: 1em;
+    text-align: right;
+}
+
+#RGB_Controls tr {height: 2.5em}
+#RGB_Controls tr * {vertical-align: middle}
+#RGB_Controls td {border: none}
+
+#RGB_Controls td:last-child {
+    text-align: left;
+    padding-left: 1em;
+}
+
+#RGB_Hex {padding: 0.25em}
+#RGB_Hex.White {color: white}
+
+</style>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+
+</div></section>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">RGB Colors</h2><div class="Collapse Expand">
+
+<p class="Center"><canvas data-aspect="1" id="RGB" width="361" height="361"></canvas></p>
+<table id="RGB_Controls" class="Center">
+    <tr>
+        <td><input id="RGB_R" type="range" min="0" max="255" value="255"/></td>
+        <td><span>Red = </span><span id="RGB_Rval"></span></td>
+    </tr>
+    <tr>
+        <td><input id="RGB_G" type="range" min="0" max="255" value="128"/></td>
+        <td><span>Green = </span><span id="RGB_Gval"></span></td>
+    </tr>
+    <tr>
+        <td><input id="RGB_B" type="range" min="0" max="255" value="192"/></td>
+        <td><span>Blue = </span><span id="RGB_Bval"></span></td>
+    </tr>
+</table>
+<p class="Center"><span id="RGB_Hex"></span></p>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse">
+<ol class="Assign">
+
+</ol>
+</div></section>
+
+<script type="text/javascript" data-init="sim">
+
+loadFeed.sim = () => {
+    loadFeed.sim.redraw();
+    $("#RGB_Controls input").on("change", loadFeed.sim.redraw);
+}
+
+loadFeed.sim.redraw = () => {
+    let hex = (n) => {
+        let x = n.toString(16).toUpperCase();
+        while (x.length < 2) x = "0" + x;
+        return x;
+    }
+    let r = parseInt($("#RGB_R").val());
+    let g = parseInt($("#RGB_G").val());
+    let b = parseInt($("#RGB_B").val());
+    $("#RGB_Rval").html(r);
+    $("#RGB_Gval").html(g);
+    $("#RGB_Bval").html(b);
+    loadFeed.sim.drawCanvas(r, g, b);
+    $("#RGB_Hex").html(`Hex Code: #${hex(r)}${hex(g)}${hex(b)}`).css("background-color", `rgb(${r}, ${g}, ${b})`);
+    if (r + g + b < 420) $("#RGB_Hex").addClass("White");
+    else $("#RGB_Hex").removeClass("White");
+}
+
+loadFeed.sim.drawCanvas = (r, g, b) => {
+    let cv = $("#RGB");  
+    let w = cv[0].width;
+    let center = (w - 1) / 2;
+    let radius = (w - 1) / 3;
+    let rSq = 0.9 * radius * radius;
+    let [xr, yr] = [w - radius, w - radius];
+    let [xg, yg] = [center, radius];
+    let [xb, yb] = [radius, w - radius];
+    let fill = (x, y, a, b) => Math.pow(x - a, 2) + Math.pow(y - b, 2) < rSq;
+    let img = new ImageData(w, w);
+    let data = img.data;
+    for (let x=0; x<w; x++)
+        for (let y=0; y<w; y++) {
+            let i = 4 * (x + w * y);
+            let rFill = fill(x, y, xr, yr);
+            let gFill = fill(x, y, xg, yg);
+            let bFill = fill(x, y, xb, yb);
+            data[i + 3] = 255;
+            if (rFill) data[i] = r;
+            if (gFill) data[i + 1] = g;
+            if (bFill) data[i + 2] = b;
+            
+        }
+    let cx = cv[0].getContext("2d");
+    cx.clearRect(0, 0, w, w);
+    cx.putImageData(img, 0, 0);
+}
+
+tmp = localStorage.getItem("cs_course") == "20" ? "cs20" : "cs10";
+
+loadFeed.data = {
+    title: "RGB Color",
+    up: `cs_new/${tmp}`,
+    // prev: "cs_new/web2/",
+    // next: "cs_new/web2/",
+}
+  
+</script>

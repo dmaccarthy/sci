@@ -1,0 +1,115 @@
+:root{
+    --blue: #0065fe;
+    --grey1: #f4f4f4;
+    --grey2: #d0d0d0;
+}
+
+body:not(.Slides) .Present {display: none}
+/* .katex .vlist > span > span.eqn-num {display: none} */
+.Center {text-align: center}
+.Left {text-align: left}
+.Right {text-align: right}
+.Hide {display: none}
+
+a[href], .Blue {color: var(--blue);}
+.Answer, .Red {color: red}
+.Comment {color: #999999}
+.DocString {color: green}
+.Black {color: black}
+.NoBold {font-weight: normal}
+.NoWrap {white-space: nowrap}
+
+.Defn {
+    text-decoration: underline;
+    /* color: green; */
+}
+
+[data-aspect], .Wide {
+    max-width: 96%;
+    /* max-height: 70vh; */
+}
+
+.Code, .CodeScroll, code {
+    font-family: Inconsolata, monospace;
+    font-weight:bold;
+}
+
+pre.Code, pre.CodeScroll {
+    background-color: var(--grey1);
+    margin-top: 0;
+    padding: 0.5em;
+    color: black;
+    overflow: auto;
+}
+
+pre.CodeScroll {max-height: 20em}
+
+div.WideScroll {
+    margin: auto;
+    margin-bottom: 1em;
+    max-width: calc(100% - 2px);
+    overflow: auto;
+}
+
+.MathSerif {font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+table.Two td {width: 50%}
+table.Three td {width: 33.33%}
+table.Four td {width: 25%}
+table.Five td {width: 20%}
+table.Six td {width: 16.667%}
+
+table td, table th {
+    min-width: 4em;
+    border: 1px solid black;
+    padding: 0.2em;
+}
+
+table.TD6 td {min-width: 6em}
+li p {margin-bottom: 0}
+div.Answer {margin-bottom: 0.75em}
+.Bottom {margin-bottom: 1em}
+.Top {margin-top: 1em}
+.NoBottom {margin-bottom: 0}
+.NoTop {margin-top: 0}
+
+p.Caption {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+td.Reveal span {
+    color: red;
+    display: none;
+}
+
+/* body.Slides .w10 {width: 8em}
+body.Slides .w12 {width: 10em}
+body.Slides .w16 {width: 14em}
+body.Slides .w20 {width: 17em}
+body.Slides .w24 {width: 20em}
+body.Slides .w28 {width: 24em}
+body.Slides .w32 {width: 28em} */
+
+/* :not(.Slides) */
+
+.w4, body.Slides .s4 {width: 4em}
+.w6, body.Slides .s6 {width: 6em}
+.w8, body.Slides .s8 {width: 8em}
+.w10, body.Slides .s10 {width: 10em}
+.w11, body.Slides .s11 {width: 11em}
+.w12, body.Slides .s12 {width: 12em}
+.w14, body.Slides .s14 {width: 14em}
+.w16, body.Slides .s16 {width: 16em}
+.w18, body.Slides .s18 {width: 18em}
+.w20, body.Slides .s20 {width: 20em}
+.w22, body.Slides .s22 {width: 22em}
+.w24, body.Slides .s24 {width: 24em}
+.w28, body.Slides .s28 {width: 28em}
+.w32, body.Slides .s32 {width: 32em}

@@ -1,0 +1,116 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Preconditions</h2><div class="Collapse Expand">
+<p>The <code>resource.wholeNum</code> module (provided in the repl for this course) contains a function <code>isPrime</code> that tests whether a number is prime or not. A prime number is a number that has no factors other than 1 and itself.</p>
+<pre class="Code" contenteditable="true" data-echo="p04_ex1.py" data-title="1">from resource.wholeNum import isPrime
+
+print(isPrime(6))     <span class="Comment"># False</span>
+print(isPrime(7))     <span class="Comment"># True</span>
+print(isPrime(-7))    <span class="Comment"># False</span>
+print(isPrime("Hi"))  <span class="Comment"># TypeError</span></pre>
+
+<p>The <code>isPrime</code> function <em>assumes</em> that its argument is a positive whole number, since the idea of being “prime” does not make sense for negative numbers, strings, and other non-integers.
+    Assumptions that a function makes about its arguments (or any other aspect of the computer’s or program’s state) are called <em class="Defn">preconditions</em>.  When a function’s preconditions are violated, this can cause the program to crash or to behave unpredictably.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">The <code>assert</code> Statement</h2><div class="Collapse Expand">
+<p>One of the preconditions for almost any function that accepts arguments is that the classes (data types) of the arguments are suitable for the task the function performs.
+    For example, our <code>isPrime</code> function only makes sense with instances of the <code>int</code> class.</p>
+<p>In <em class="Defn">statically typed</em> programming languages such as Java or C/C++, this is not an issue since the class of each argument must be declared and the compiler or interpreter only permits arguments of the correct class.</p>
+<p>Python is a <em class="Defn">dynamically typed</em> language. It allows you to specify a type <em>hint</em> for the parameters of a function (shown in blue in the example below), but does not enforce the hint as a requirement.
+    It is possible to pass a non-integer object to a function that is expecting an integer.</p>
+<p>Python has an <code>assert</code> statement that can be used for type checking. If the function defined below is called with an argument that is not an integer, 
+    the <code>assert</code> statement will raise an <code>AssertionError</code> exception...</p>
+<pre class="Code" contenteditable="true" data-echo="p04_ex2.py" data-title="1">def intOnly(num<span class="Blue">: int</span>):
+    assert type(num) is int, "Argument must be an integer"
+
+intOnly("Bad data")</pre>
+
+<p>The error message provided at the end of the <code>assert</code> statement is optional.</p>
+<p>The <code>assert</code> statement can be used to check any precondition that can be expressed as a Boolean (<code>True</code> or <code>False</code>) expression, not just that the arguments have the correct class.
+    For example, a function may require not only that an argument is an integer but that it is within a specific range of values...</p>
+<pre class="Code" contenteditable="true" data-echo="p04_ex3.py" data-title="1">def recentYear(year: int):
+    assert type(year) is int, "Argument must be an integer"
+    assert year >= <span class="LastYear5"></span> and year <= <span class="LastYear"></span>, "Invalid year!"
+    print(f"{year} is a good year.")
+
+recentYear(<span class="LastYear2"></span>)
+recentYear(1996)</pre>
+
+<p>The <code>assert</code> statement serves to help document your preconditions and to help debug your program by making it easier to identify errors resulting from arguments (and other circumstances) that violate those preconditions.</p>
+<p>It is expected that once you have finished debugging your program and are ready to deploy it, the <code>assert</code> statements will actually have no effect on your program;
+    i.e. all of the circumstances leading to an <code>AssertionError</code> will have been eliminated during the debugging process.
+    For this reason, the Python interpreter can run programs in optimization mode. In this mode, the interpreter ignores all of the <code>assert</code> statements to allow your program to run more efficiently.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Postconditions</h2><div class="Collapse Expand">
+<p><em class="Defn">Postconditions</em> are statements about what is guaranteed to be true at the end of a function, provided that the function’s preconditions were satisfied.
+    In Python programs, the <code>assert</code> statement can be used to declare postconditions as well as preconditions.</p>
+<pre class="Code" contenteditable="true" data-echo="p04_ex4.py" data-title="1">def sortThree(num1: float, num2: float, num3: float) -> tuple:
+    <span class="Comment">"Sort three numbers from lowest to highest"</span>
+
+    <span class="Comment"># Preconditions...</span>
+    errorMsg = "All arguments must be integers or floats"
+    assert type(num1) in (int, float), errorMsg
+    assert type(num2) in (int, float), errorMsg
+    assert type(num3) in (int, float), errorMsg
+
+    <span class="Comment"># Sort the numbers...</span>
+    lowest = min(num1, num2, num3)
+    highest = max(num1, num2, num3)
+    total = num1 + num2 + num3
+    middle = total - lowest - highest
+
+    <span class="Comment"># Postcondition...</span>
+    assert lowest &lt;= middle and middle &lt;= highest
+
+    return lowest, middle, highest
+
+
+<span class="Comment"># Main program</span>
+print(sortThree(3, 1, -2.5))
+print(sortThree(3, 1, False))</pre>
+
+<p>Conditions that are true at both the beginning and the end of a function are called <em class="Defn">invariants</em>.</p>
+<p>Preconditions, postconditions, and invariants can be used with loops (<code>while</code> and <code>for</code>) and conditional blocks (<code>if-elif-else</code>) as well as with functions.</p>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>The program <code>p04_salesTax.py</code> asks the user to enter the price of an item and the sales tax rate, and then calculates the amount of sales tax and the total cost including the tax.
+    Complete the program by writing the <code>salesTax</code> function. Use the <code>assert</code> statement to include pre- and post-conditions for your function. Test that calling a function with bad data raises an <code>AssertionError</code>.</li>
+<li>The module <code>resource/wholeNum.py</code> defines several functions for working with whole numbers:
+    <ul>
+        <li><code>smallestFactor(n)</code> calculates the smallest whole number that is a factor of <code>n</code>.</li>
+        <li><code>isPrime(n)</code> tests whether n is a prime number.</li>
+        <li><code>factor(n)</code> calculates the prime factors of <code>n</code>.</li>
+        <li><code>primes(n)</code> calculates the first <code>n</code> prime numbers.</li>
+    </ul>
+    <p>Edit the file to add pre- and/or post-conditions as appropriate using the <code>assert</code> statement.</p>
+    <p>The <code>p04_wholeNumTest.py</code> program is provided to test these functions. Modify the tests to check that all four functions work as intended with good data and raise an <code>AssertionError</code> with bad data. No other exceptions should occur.</p>
+</li>
+<li>Copy your completed program <code>p01_pythag.py</code> into <code>p04_pythag.py</code>.
+    Add <code>assert</code> statements to document the pre- and post-conditions for each function.
+    (For postconditions, you can verify that the hypotenuse is longer than the other sides, but shorter than the <em>sum</em> of the two other sides.) Test that calling a function with bad data raises an <code>AssertionError</code>.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.init = () => {
+    let y = new Date().getYear();
+    $(".LastYear").html(y + 1899);
+    $(".LastYear5").html(y + 1894);
+    $(".LastYear2").html(y + 1897);
+}
+
+loadFeed.data = {
+    title: "Pre- & Post-Conditions",
+    up: `cs_new/cs20`,
+    prev: "cs_new/pp/top",
+    next: "cs_new/pp/except",
+}
+
+</script>

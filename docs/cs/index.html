@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mr. Mac’s Website</title>
+<link rel="shortcut icon" type="image/png" href="../media/laptop.svg" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+<link rel="stylesheet" href="./script/ui2023.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=default"></script>
+<script type="text/javascript" src="./script/util.js"></script>
+<script type="text/javascript" src="./script/touch.js"></script>
+<script type="text/javascript" src="./script/ui2023.js"></script>
+<!--script type="text/javascript" src="../script/sketch5.js"></script-->
+<script type="text/javascript">
+
+let layout = {}, today = "home";
+let pu_form = "https://docs.google.com/forms/d/e/1FAIpQLScc6vWg7WYI8r3XNSjF10SsQT82rCdTm42ZnoN83U1NQ5kKDw/viewform?usp=sf_link";
+    
+</script>
+<script type="text/javascript" src="cs10.js"></script>
+<!-- 
+<script type="text/javascript" src="web.js"></script>
+-->
+<script type="text/javascript" src="cs20.js"></script>
+<script type="text/javascript" src="cs30.js"></script>
+<script type="text/javascript">
+
+Object.assign(getIcon, {
+    python: "https://www.python.org/static/favicon.ico",
+    replit: "https://replit.com/public/icons/favicon-196.png",
+    html5: "../media/html5.svg",
+    laptop: "../media/laptop.svg",
+    robot: "../media/robot.svg",
+    video: "../media/video.svg",
+    gdrv: "../media/gdrv.svg",
+});
+
+// let cs = {title:"Computing Science", id:"home", icon:"python", menu:[cs10, web, cs20, cs30]};
+let home = {title:"Mr. Mac’s Website", id:"~", icon:"python", menu:[cs10, cs20, cs30], href:"../"};
+
+let homeIcons = [
+    {icons:[
+        {text:"repl.it", url:"https://repl.it"},
+        // {text:"Progress Update", url:pu_form},
+        // {icon:"mail", text:"Email Mr. MacCarthy", url:"mailto://david.maccarthy@eips.ca"},
+        {text:"PowerSchool", url:"https://powerschool.eips.ca/public/"},
+/*        {icon:"more", text:"More", action:function() {swapIcons(homeIcons[1])}}
+    ]},
+    {icons:[*/
+        {icon:"open", text:"Salisbury Composite", url:"https://salcomp.ca"},
+        {icon:"gdrv", text:"Course Outline", url:""},
+        {icon:"open", text:"Program of Studies", url:"https://education.alberta.ca/career-and-technology-studies/bit-cluster-businessadminfinanceit/everyone/bit-occupational-areas/"},
+        // {icon:"more", text:"More", action:function() {swapIcons(homeIcons[0])}},
+    ]}
+];
+
+layout.home = [homeIcons[0], 0, COPY];
+// {html:`<p>Use your EIPS Google account to create / login to your <a target="_" href="https://repl.it">repl.it</a> account.</p>`}
+
+</script>
+</head>
+<body data-swipe="1">
+<nav id="Location"><select title="Select a page"></select></nav>
+<article id="Main">
+</article>
+</body>
+</html>

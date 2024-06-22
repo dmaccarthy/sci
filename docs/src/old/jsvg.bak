@@ -1,0 +1,917 @@
+class JSVG_Location {
+
+    constructor(cv, rc, offset) {
+        this.canvas = cv;
+        if (cv) {
+            if (rc == null) rc = [0, 0]
+            this._rc = new RArray(...rc);            
+            this._offset = offset ? new RArray(...offset) : new RArray(0, 0);
+            this._shiftAnchor = new RArray(0, 0);
+            this._theta = 0;
+            this._changed = true;
+        }
+    }
+
+    _shift(vx, vy, t) {return new RArray(vx, vy).times(t == null ? 1 : t)}
+
+    moveBy(vx, vy, t) {
+        let s = this._shift(vx, vy, t);
+        this._rc = this._rc.plus(s);
+        this._changed = true;
+    }
+
+    get _anchor_xy() {
+        return RArray.add(this._rc, this._offset, this._shiftAnchor);
+    }
+
+    get position() {return this._rc}
+    get pivot() {return this._rc}
+    get offset() {return this._offset}
+    get theta() {return this._theta}
+
+    get bbox() {
+        let [w, h] = this.size;
+        return [-w/2, h / 2, w, h * this.svg.angleDir];
+    }
+
+    customAnchor() {throw(`Invalid argument`)}
+
+    anchor(x, y) {
+        // Move anchor point relative to default position
+        // Named anchors cannot be used with <text> or <line>
+        if (y == null) {
+            let [x0, y1, w, h] = this.bbox;
+            let x1 = x0 + w;
+            let y0 = y1 + h;
+            let cx = (x0 + x1) / 2;
+            let cy = (y0 + y1) / 2;
+            let a = {
+                topleft: [x0, y1],
+                top: [cx, y1],
+                topright: [x1, y1],
+                left: [x0, cy],
+                center: [cx, cy],
+                right: [x1, cy],
+                bottomleft: [x0, y0],
+                bottom: [cx, y0],
+                bottomright: [x1, y0]
+            };
+            if (a[x] == null) a = this.customAnchor(x);
+            else a = a[x];
+            [x, y] = new RArray(...a).neg();
+        }
+        this._shiftAnchor = new RArray(x, y);
+        this._changed = true;
+        return this;
+    }
+
+    set position(xy) {
+        this._rc = new RArray(...xy);
+        this._changed = true;
+    }
+
+    set offset(xy) {
+        this._offset = new RArray(...xy);
+        this._changed = true;        
+    }
+
+    set theta(t) {
+        while (t <= -180) t += 360;
+        while (t > 180) t -= 360;
+        this._theta = t;
+        this._changed = true;        
+    }
+
+    get rotate_str() {
+        let svg = this.svg;
+        let t = this._theta * svg.angleDir;
+        let r = svg.a2p(...this._rc);
+        return t ? `rotate(${JSVG.fix(t, ...r)})` : "";
+    }
+
+    set pivot(rc) {
+        if (typeof(rc) == "number") rc = this.getPoint(rc);
+        let delta = new RArray(...rc).minus(this._rc);
+        this._offset = this._offset.minus(delta);
+        this._rc = new RArray(...rc);
+        this._changed = true;
+    }
+    
+}
+
+
+class JSVG_Graphic extends JSVG_Location {
+
+    static create(tag) {return document.createElementNS(JSVG.svgNS, tag)}
+
+    constructor(cv, tag) {
+        super(cv);
+        if (cv) {
+            let e = this.element = JSVG_Graphic.create(tag);
+            cv.$.append(e);
+            cv.items.push(this);
+            this.canvas = cv; 
+            this.$ = $(e);
+            e.graphic = this;
+            this.sprite = false;
+        }
+    }
+
+    attr(attr) {
+        this.$.attr(attr);
+        return this;
+    }
+
+    config(attr) {
+        this._changed = true;
+        return Object.assign(this, attr);
+    }
+
+    get svg() {return this.$.closest("svg")[0].graphic}
+    get parent() {return this.$.parent()[0].graphic}
+
+    get vel() {return this._vel}
+    get acc() {return this._acc}
+    get omega() {return this._omega}
+
+    set vel(xy) {
+        this._vel = new RArray(...xy);
+        this.sprite = true;
+    }
+
+    set acc(xy) {
+        this._acc = new RArray(...xy);
+        if (this._vel == null) this._vel = new RArray(0, 0);
+        this.sprite = true;
+    }
+
+    set omega(a) {
+        this._omega = a;
+        this.sprite = true;
+    }
+
+    final() {
+        let items = this.parent.items;
+        let i = items.indexOf(this);
+        items.splice(i, 1);
+        // this.update(0);
+        return this;
+    }
+
+    update(dt) {
+        if (dt && this.sprite) this.kinematics(dt);
+        if (this.beforeupdate) this.beforeupdate.call(this);
+        this.draw();
+        if (this.onupdate) this.onupdate.call(this);
+        return this;
+    }
+
+    kinematics(dt) {
+        if (this._omega) this.theta += dt * this._omega;
+        let v = this.vel;
+        let a = this.acc;
+        if (v || a) {
+            let dv = a.times(dt / 2);
+            // console.log(0, v, a, dv);
+            v = v.plus(dv);
+            this.vel = v.plus(dv);
+            this.moveBy(...v, dt);
+            // console.log(1, v, this.vel);
+        }
+        return this;
+    }
+
+}
+
+
+class JSVG_Text extends JSVG_Graphic {
+
+    constructor(cv, txt, xy) {
+        super(cv, "text");
+        this.text = txt;
+        if (xy != null) this.position = xy;
+    }
+
+    get text() {return this.$.html()}
+    set text(t) {this.$.html(t)}
+
+    draw() {
+        if (this._changed) {
+            let svg = this.svg;
+            let xy = svg.a2p(...this._anchor_xy);
+            this.$.attr({x: JSVG.fix(xy[0]), y: JSVG.fix(xy[1])});
+            let t = this.rotate_str;
+            if (t) this.$.attr({transform: t});
+            this._changed = false;
+        }
+    }
+
+}
+
+
+class JSVG_Circle extends JSVG_Graphic {
+
+    constructor(cv, r, xy) {
+        super(cv, "circle");
+        this._r = r;
+        if (xy != null) this.position = xy;
+    }
+
+    get r() {return this._r}
+    
+    get size() {
+        let d = 2 * this._r;
+        return new RArray(d, d);
+    }
+
+    set r(x) {
+        this._r = x;
+        this._changed = true;
+    }
+
+    draw() {
+        if (this._changed) {
+            let svg = this.svg;
+            let center = svg.a2p(...this._anchor_xy);
+            this.$.attr({
+                cx: JSVG.fix(center[0]),
+                cy: JSVG.fix(center[1]),
+                r: JSVG.fix(this.r * svg.unit)
+            });
+            let t = this.rotate_str;
+            if (t) this.$.attr({transform: t});
+            this._changed = false;
+        }
+    }
+
+}
+
+
+class JSVG_Ellipse extends JSVG_Graphic {
+
+    constructor(cv, rx, ry, xy) {
+        super(cv, "ellipse");
+        this.size = [rx, ry];
+        if (xy != null) this.position = xy;
+    }
+
+    get size() {return this._size}
+
+    set size(r) {
+        let [rx, ry] = r;
+        this._semi = new RArray(rx, ry);
+        this._size = new RArray(2 * rx, 2 * ry);
+        this._changed = true;
+    }
+
+    draw() {
+        if (this._changed) {
+            let svg = this.svg;
+            let center = svg.a2p(...this._anchor_xy);
+            let [rx, ry] = this._semi;
+            this.$.attr({cx: JSVG.fix(center[0]), cy: JSVG.fix(center[1]),
+                rx: JSVG.fix(rx * svg.unit), ry: JSVG.fix(ry * svg.unit)});
+            let t = this.rotate_str;
+            if (t) this.$.attr({transform: t});
+            this._changed = false;
+        }
+    }
+
+}
+
+
+class JSVG_Line extends JSVG_Graphic {
+
+    constructor(cv, a, b, c) {
+        super(cv, "line");
+        let seg = c == null ? new Segment(...a, ...b) : Segment.pointSlope(a, b, c, true);
+        this.segment = seg;
+        this.length = seg.length;
+        this.position = seg.midpoint;
+    }
+
+    draw() {
+        if (this._changed) {
+            let svg = this.svg;
+            let c = this._anchor_xy;
+            let r = this.segment.vector.times(0.5);
+            let p1 = svg.a2p(...c.minus(r));
+            let p2 = svg.a2p(...c.plus(r));
+            this.$.attr({x1: JSVG.fix(p1[0]), y1: JSVG.fix(p1[1]), x2: JSVG.fix(p2[0]), y2: JSVG.fix(p2[1])});
+            let t = this.rotate_str;
+            if (t) this.$.attr({transform: t});
+            this._changed = false;
+        }
+    }
+
+}
+
+
+class JSVG_Poly extends JSVG_Graphic {
+
+    constructor(cv, pts, closed) {
+        super(cv, closed ? "polygon" : "polyline");
+        this.points = pts;
+    }
+
+    get points() {
+        let delta = this._anchor_xy;
+        let pts = [];
+        for (let pt of this._points) pts.push(pt.plus(delta));
+        return pts;
+    }
+
+    set points(pts) {
+        this._changed = true;
+        this._offset = new RArray(0, 0);
+        let p0 = this._rc = new RArray(...pts[0]);
+        let pts_rel = this._points = [];
+        for (let i=0;i<pts.length;i++)
+            pts_rel.push(new RArray(...pts[i]).minus(p0));
+    }
+
+    getPoint(n) {return this._points[n].plus(this._anchor_xy)}
+
+    get bbox() {
+        let pts = this._points;
+        let x0 = pts[0][0];
+        let y0 = pts[0][1];
+        let x1 = x0;
+        let y1 = y0;
+        for (let i=1;i<pts.length;i++) {
+            let x = pts[i][0];
+            let y = pts[i][1];
+            if (x < x0) x0 = x;
+            else if (x > x1) x1 = x;
+            if (y < y0) y0 = y;
+            else if (y > y1) y1 = y;
+        }
+        let s = this.svg.angleDir;
+        return [x0, s > 0 ? y0 : y1, x1-x0, (y1-y0) * s];
+    }
+
+    customAnchor() {throw(`Invalid argument`)}
+
+    anchor(x, y) {
+        if (y == null) {
+            if (typeof(x) == "number") super.anchor(...this._points[x].neg());
+            else if (x == "average") {
+                let pts = this._points;
+                let sx = 0;
+                let sy = 0;
+                let n = pts.length;
+                for (let i=1;i<n;i++) {
+                    sx += pts[i][0];
+                    sy += pts[i][1];
+                }
+                super.anchor(-sx / n, -sy / n);
+            }
+            else super.anchor(x);
+        }
+        else super.anchor(x, y);
+        return this;
+    }
+
+    draw() {
+        if (this._changed) {
+            let svg = this.svg;
+            let pts = this.points;
+            let s = "";
+            for (let pt of pts) s += JSVG.fix(...svg.a2p(...pt)) + " ";
+            s = {points: s.trim()};
+            let t = this.rotate_str;
+            if (t) s.transform = t;
+            this.$.attr(s);
+            this._changed = false;
+        }
+    }
+
+}
+
+
+class JSVG_Locus extends JSVG_Poly {
+
+    *locus() {
+        let [x0, x1, n] = this._param;
+        let dx = (x1 - x0) / n;
+        let t = this.svg.time;
+        for (let i=0;i<=n;i++) {
+            let x = x0 + i * dx;
+            yield this._f(x, t, this.args);
+        }
+    }
+
+    get points() {
+        return [...this.locus()];
+    }
+
+    set points(p) {}
+
+    constructor(cv, f, param, args, closed) {
+        super(cv, 0, closed);
+        this._f = f;
+        this._param = param.length < 3 ? [...param, this.svg.$.attr("width")] : [...param];
+        this.args = args;
+    }
+
+    draw() {
+        this._changed = true;
+        super.draw();
+    }
+
+}
+
+
+class JSVG_Image extends JSVG_Graphic {
+
+    constructor(cv, href, w, h, xy) {
+        href = href.trim();
+        let use = href.charAt(0) == "#";
+        super(cv, use ? "use" : "image");
+        if (use) {
+            let svg = this.svg;
+            let e = svg.$.find(href);
+            if (w && h) e.attr({
+                width: Math.abs(w * svg.scaleX),
+                height: h * Math.abs(svg.scaleY)
+            });
+            else {
+                w = Math.abs(e.attr("width") * svg.pixelX);
+                h = Math.abs(e.attr("height") * svg.pixelY);
+            }
+        }
+        this._size = new RArray(w, h);
+        if (xy != null) this.position = xy;
+        this.$.attr({href: href});
+    }
+
+    get size() {return this._size}
+    
+    set size(sz) {
+        this._size = new RArray(...sz);
+        this._changed = true;
+    }
+
+    draw() {JSVG_Rect.prototype.draw.call(this)}
+
+}
+
+
+class JSVG_Rect extends JSVG_Graphic {
+
+    constructor(cv, w, h, xy) {
+        super(cv, "rect");
+        this._size = new RArray(w, h);
+        if (xy != null) this.position = xy;
+    }
+
+    get size() {return this._size}
+    
+    set size(sz) {
+        this._size = new RArray(...sz);
+        this._changed = true;
+    }
+
+    draw() {
+        if (this._changed) {
+            let svg = this.svg;
+            let [w, h] = this.size;
+            let xy = svg.a2p(...this._anchor_xy.plus([-w/2, -h/2 * svg.angleDir]));
+            this.$.attr({x: JSVG.fix(xy[0]), y: JSVG.fix(xy[1]),
+                width: JSVG.fix(w * svg.scaleX), height: JSVG.fix(Math.abs(h * svg.scaleY))});
+            let t = this.rotate_str;
+            if (t) this.$.attr({transform: t});
+            this._changed = false;
+        }
+    }
+
+}
+
+
+class JSVG_Canvas extends JSVG_Graphic {
+
+    get scale() {return this._scale}
+
+    set scale(s) {
+        this._scale = typeof(s) == "number" ? [s, s] : s;
+    }
+
+    constructor(cv, w, h) {
+        super(cv, "g");
+        this.items = [];
+        if (cv) this._scale = [1, 1];
+    }
+
+    group(w, h) {return new JSVG_Canvas(this, w, h)}
+    circle(r, xy) {return new JSVG_Circle(this, r, xy)}
+    ellipse(rx, ry, xy) {return new JSVG_Ellipse(this, rx, ry, xy)}
+    rect(w, h, xy) {return new JSVG_Rect(this, w, h, xy)}
+    line(a, b, c) {return new JSVG_Line(this, a, b, c)}
+    polygon(...pts) {return new JSVG_Poly(this, pts, true)}
+    polyline(...pts) {return new JSVG_Poly(this, pts, false)}
+    locus(f, p, args, c) {return new JSVG_Locus(this, f, p, args, c)}
+    text(t, xy) {return new JSVG_Text(this, t, xy)}
+    image(href, w, h, xy) {return new JSVG_Image(this, href, w, h, xy)}
+
+    _remove(r, ...items) {
+        this.update(0);
+        if (items.length == 0) items = [...this.items];
+        else if (items.length == 1 && typeof(items[0]) == "string")
+            items = this.findAll(items[0]);
+        for (let item of items) {
+            item.final();
+            if (r) item.$.remove();
+        }
+        return this;
+    }
+
+    remove(...items) {return this._remove(1, ...items)}
+    finalize(...items) {return this._remove(0, ...items)}
+
+    update(dt) {
+        JSVG_Graphic.prototype.update.call(this, dt);
+        for (let item of this.items) {
+            try {item.update(dt, this)}
+            catch(err) {}
+        }
+        return this;
+    }
+
+    draw() {
+        // Can only rotate around its origin!
+        if (this._changed) {
+            let origin = this.svg.a2p(0, 0);
+            let [dx, dy] = this.position.minus(this.svg.p2a(...origin.times(this._scale)));
+            dx *= this.svg.scaleX;
+            dy *= this.svg.scaleY;
+            let tr = dx || dy ? `translate(${JSVG.fix(dx, dy)})` : "";
+            let [sx, sy] = this._scale;
+            if (sx != 1 || sy != 1) tr += ` scale(${JSVG._fixed_(4, sx, sy)})`
+            let t = this.theta * this.svg.angleDir;
+            if (t) tr += ` rotate(${JSVG.fix(t, ...origin)})`;
+            if (tr) this.attr({transform: tr});
+            this._changed = false;
+        }
+    }
+
+    grid(x, y, omitAxes) { // Draw horizontal and/or vertical grid lines
+        let axes = omitAxes ? null : [];
+        let x0 = x[0]; let x1 = x[1]; let dx = x[2];
+        let y0 = y[0]; let y1 = y[1]; let dy = y[2];
+        if (dx) this._grid(axes, 0, x0, x1, dx, y0, y1);
+        if (dy) this._grid(axes, 1, y0, y1, dy, x0, x1);
+        if (axes != null) for (let a of axes) a.$.appendTo(this.$);
+        return this;
+    }
+
+    _grid(axes, dim, x0, x1, dx, y0, y1) {
+        let e = this.element;
+        let ddx = dx / 1000;
+        x1 += ddx;
+        let c = "VH".charAt(dim);
+        for (let x=x0; x<=x1; x+=dx) {
+            let xy = dim ? [(y0 + y1) / 2, x] : [x, (y0 + y1) / 2];
+            let axis = Math.abs(x) < ddx;
+            if (!axis || axes != null) {
+                let line = this.line(xy, y1 - y0, dim ? 0 : Infinity);
+                let cls = axis ? `Axis${c}` : `Grid${c}`;
+                line.$.addClass(cls);
+                if (axis) axes.push(line);
+            }
+        }
+    }
+
+    axis(opt) {
+        let v = opt.y instanceof Array;
+        let x1, x2, y1, y2, c;
+        if (v) {
+            c = "Y";
+            x1 = x2 = opt.x ? opt.x : 0;
+            [y1, y2] = opt.y;
+        }
+        else {
+            c = "X";
+            y1 = y2 = opt.y ? opt.y : 0;
+            [x1, x2] = opt.x;        
+        }
+        this.line([x1, y1], [x2, y2]).$.addClass(`Axis${c}`);
+        if (opt.ticks) {
+            let ticks = opt.ticks;
+            let fmt = ticks.format ? ticks.format : (x) => {
+                return ticks.fixed ? x.toFixed(ticks.fixed) : x;
+            }
+            let dx = ticks.interval;
+            let l = ticks.length;
+            let minor = ticks.minor;
+            let n1 = Math.floor((v ? y1 : x1) / dx);
+            let n2 = Math.ceil((v ? y2 : x2) / dx);
+            while (n1 <= n2) {
+                let drawZero = n1 || !ticks.omitZero;
+                let x = dx * n1;
+                let [a1, a2] = v ? [y1, y2] : [x1, x2];
+                if (x >= a1 && x <= a2) {
+                    let pts = v ? [[x1, x], [x1 - l, x]] : [[x, y1], [x, y1 - l]];
+                    if (drawZero) {
+                        if (l) this.line(...pts).$.addClass(`Tick${c}`);
+                        let label = fmt(x);
+                        if (label) {
+                            let pt = new RArray(...pts[0]);
+                            if (ticks.offset) pt = pt.plus(ticks.offset);
+                            this.text(label, pt).$.addClass(`TickLabel${c}`);;
+                        }
+                    }
+                    if (minor && l) {
+                        for (let m=1;m<minor;m++) {
+                            x += dx / minor;
+                            if (x <= a2) {
+                            pts = v ? [[x1, x], [x1 - l/2, x]] : [[x, y1], [x, y1 - l/2]];
+                            this.line(...pts).$.addClass(`Tick${c}`);
+                            }
+                        }
+                    }
+                }
+                n1 += 1;
+           }
+        }
+        if (opt.title) {
+            let txt = this.text(opt.title.text, opt.title.position);
+            if (v) txt.theta = 90;
+            txt.$.addClass(`Title${c}`);
+        }
+        return this;
+    }
+
+    plot(pts, marker, cls) {
+        for (let pt of pts) {
+            let gr = typeof(marker) == "string" ? this.image(marker) : this.circle(marker);
+            gr.position = pt;
+            gr.$.addClass(cls ? cls : "Marker");
+        }
+        return this;
+    }
+
+    _vector(tail, tip, arrow, cls) {
+        let seg = new Segment(...tail, ...tip);
+        let p = this.polygon(...arrow_points(seg.length, arrow));
+        p.$.addClass(cls);
+        return p.config({position: seg.point2, theta: seg.deg}); 
+    }
+
+    vectors(vectors, opt) {
+        // opt = {arrow: {tail, head, angle, shape}, shift, vector, resultant, component, res_component}
+        if (!opt) opt = {};
+        let arrow = Object.assign({tail: 8 * this.svg.pixelX}, opt.arrow);
+        let shift = opt.shift ? opt.shift : [0, 0];
+        let tail = new RArray(...shift);
+        for (let v of vectors) {
+            v = tail.plus(v);
+            if (v[0] || v[1]) {
+                if (opt.component) {
+                    let pt = [v[0], tail[1]];
+                    this._vector(tail, pt, arrow, "Component");
+                    this._vector(pt, v, arrow, "Component");
+                }
+                if (opt.vector != false) this._vector(tail, v, arrow, "Vector");                
+            }
+            tail = v;
+        }
+        if (vectors.length > 1 && (tail[0] || tail[1])) {
+            if (opt.res_component) {
+                let pt = [tail[0], shift[1]];
+                this._vector(shift, pt, arrow, "Res_Component");
+                this._vector(pt, tail, arrow, "Res_Component");
+            }
+            if (opt.resultant) this._vector(shift, tail, arrow, "Resultant");
+        }
+   }
+
+}
+
+
+class JSVG extends JSVG_Canvas {
+
+    static _fixed_(n, ...args) {
+        let s = "";
+        for (let a of args) {
+            let x = a.toFixed(n);
+            let len = x.length - 1;
+            let i = 0;
+            while (x.charAt(len-i) == "0") i++;
+            if (x.charAt(len-i) == ".") i++;
+            s += (s.length ? " " : "") + (JSVG.fixed ? `${i ? x.substr(0, len+1-i) : x}` : `${a}`);
+        }
+        return s;
+    }
+
+    static fix(...args) {return JSVG._fixed_(JSVG.fixed, ...args)}
+
+    static create(w, h, ...args) {
+        let e = $(JSVG_Graphic.create("svg")).attr({width: w, height: h});
+        return new JSVG(e, ...args);
+    }
+
+    get size() {return new RArray(parseFloat(this.$.attr("width")), parseFloat(this.$.attr("height")))}
+    get pixelX() {return 1 / Math.abs(this.scaleX)}
+    get pixelY() {return 1 / Math.abs(this.scaleY)}
+    get scaleRatio() {return Math.abs(this.scaleX / this.scaleY)}
+
+    find(sel) {
+        try {
+             return this.$.find(sel)[0].graphic;
+        } catch(err) {}
+    }
+    
+    *_findAll(sel) {
+        let elems = this.$.find(sel);
+        for (let e of elems) yield e.graphic;
+    }
+
+    findAll(sel) {return [...this._findAll(sel)]}
+
+    g() {return new JSVG_Canvas(this)}
+
+    constructor(elem, l, r, b, t) {
+        super();
+        let e = $(elem)[0];
+        this.element = e;
+        this.$ = $(e);
+        e.graphic = this;
+        let sz = this.size;
+        this.$.attr({
+            viewBox: `0 0 ${sz[0]} ${sz[1]}`,
+            xmlns: JSVG.svgNS,
+        });
+        this.coords(l, r, b, t);
+
+        // Animation
+        this.playing = false;
+        this.frameRate = 60;
+        this.frameCount = 0;
+        this.timeFactor = 1;
+        this.time = 0;
+
+        // this.play().pause();
+    }
+
+    coords(l, r, b, t) {
+        let sz = this.size;
+        if (l == null) {
+            this.a2p = this.p2a = (x, y) => {return new RArray(x, y)}
+            this.scaleX = this.scaleY = this.unit = this.angleDir = 1;            
+        }
+        else {
+            if (r == null) {
+                r = Math.abs(l);
+                l = -r;
+            }
+            let scaleX = (sz[0] - 0) / (r - l);
+            let scaleY; 
+            if (t == null) {
+                scaleY = -scaleX;
+                let dy = (sz[1] - 0) / scaleX;
+                if (b == null) b = -dy / 2;
+                t = b + dy;
+            }
+            else scaleY = (sz[1] - 0) / (b - t);
+            Object.assign(this, {scaleX: scaleX, scaleY: scaleY, angleDir: (scaleX*scaleY<0 ? -1 : 1),
+                unit: Math.sqrt((scaleX * scaleX + scaleY * scaleY) / 2)});
+            this.a2p = (x, y) => {return new RArray(scaleX * (x - l), scaleY * (y - t))};
+            this.p2a = (x, y) => {return new RArray(l + x / scaleX, t + y / scaleY)};
+        }
+        return this;
+    }
+
+    play() {
+        this._fDelay = new RArray();
+        delete this._fTime;
+        this.playing = true;
+        // _time.start = new Date().getTime();
+        return this.update();
+    }
+
+    pause() {
+        clearTimeout(this._animate);
+        this.playing = false;
+        return this;
+    }
+
+    toggle() {return this.playing ? this.pause() : this.play()}
+
+    // convertImages() {
+    //     let imgs = this.$.find("image");
+    //     for (let img of imgs) convertImageHrefs(img);
+    //     return this;
+    // }
+
+    bdata(filename) {return new BData(this.element, filename)} // Defined in util.js
+    blob() {return this.bdata().blob}
+    save(filename) {return this.bdata(filename).save()}
+    open(filename) {return this.bdata(filename).open()}
+
+    update(dt) {
+        clearTimeout(this._animate);
+        let ft = 1000 / this.frameRate;
+        if (dt == null) {
+            dt = this.timeFactor / this.frameRate;
+            this.frameCount++;
+            // if (this.frameCount % 600 == 0) console.warn(`Average FPS = ${1000 / (_time() / this.frameCount)}`);
+            let t = new Date().getTime();
+            let d = this._fDelay;
+            if (d && this._fTime) {
+                d.push(t - this._fTime - ft);
+                if (d.length > 5) {
+                    ft = Math.max(0.6 * ft, ft - Math.max(0, 1.4 * d.sum() / d.length))
+                    if (d.length > 80) d.splice(0, 30);
+                }
+            }
+            this._fTime = t;            
+        }
+        this.time += dt;
+        super.update(dt);
+        if (this.playing) this._animate = setTimeout(() => {this.update()}, ft);
+        return this;
+    }
+
+    draw() {}
+
+}
+
+JSVG.svgNS = "http://www.w3.org/2000/svg";
+JSVG.fixed = 1;
+
+// function _time() {return new Date().getTime() - _time.start}
+
+function vectorDiagram(sel, vectors, options, scale, x1, y1) {
+    let grid = options.grid ? options.grid : 20;
+    if (scale == null) [scale, x1, y1] = vectorDiagram.auto(vectors, grid, options);
+    let dx = scale / 20;
+    let x2 = x1 + grid * scale;
+    let y2 = y1 + grid * scale;
+    let svg = new JSVG(sel, x1 - dx, x2 + dx, y1 -dx, y2 + dx);
+    svg.group().grid([x1, x2, scale], [y1, y2, scale], options.omitAxes);
+    svg.group().vectors(vectors, options);
+    svg.finalize();
+    let n = Math.floor(log(scale, 10));
+    if (scale >= Math.pow(10, n + 1)) n++; // !!!
+    let p = Math.pow(10, n);
+    svg.scaleInfo = {interval: scale, x: [x1, x2], y: [y1, y2],
+        intervalSci: [scale / p, n, p]};
+    return svg;
+}
+
+vectorDiagram.minmax = function(vectors, shift) {
+    if (shift == null) shift = [0, 0];
+    let tail = new RArray(...shift);
+    let [x1, y1] = shift;
+    let [x2, y2] = shift;
+    for (let v of vectors) {
+        tail = tail.plus(v);
+        let [x, y] = tail;
+        if (x < x1) x1 = x;
+        if (x > x2) x2 = x;
+        if (y < y1) y1 = y;
+        if (y > y2) y2 = y;
+    }
+    return [x1, y1, x2, y2];
+}
+
+vectorDiagram.auto = function(v, grid, options) {
+    let [x1, y1, x2, y2] = vectorDiagram.minmax(v, options.shift);
+    if (!options.allowNoOrigin) {
+        x1 = Math.min(x1, -Math.abs(x2) / 10);
+        y1 = Math.min(y1, -Math.abs(y2) / 10);
+        x2 = Math.max(x2, Math.abs(x1) / 20);
+        y2 = Math.max(y2, Math.abs(y1) / 20);
+    }
+    let s = Math.max(x2 - x1, y2 - y1) / grid * (options.padFactor ? options.padFactor : 1.1);
+    if (!s) s = 1;
+    let n = Math.floor(log(s, 10));
+    let p = Math.pow(10, n);
+    let interval = [1, 1.25, 1.5, 2, 2.5, 3, 5, 7.5, 10];
+    let i = 0;
+    while (s > interval[i] * p) i++;
+    s = interval[i] * p;
+    let cx = Math.round((x1 + x2) / (2 * s) - grid / 2);
+    let cy = Math.round((y1 + y2) / (2 * s) - grid / 2);
+    return [s, cx * s, cy * s];
+}
+
+function protractor(cv, r, freq) {
+    let circle = (a, t, r) => {return [r * cos(a), r * sin(a)]};
+
+    cv = cv.group();
+    cv.$.addClass("Protractor");
+    cv.locus(circle, [0, 180, 360], r);
+    cv.locus(circle, [0, 180, 360], 0.1 * r);
+    cv.locus(circle, [-4, 184, 376], 1.075 * r, 1);
+    if (!freq) freq = 1;
+    for (let i=0;i<19;i++)
+        cv.line([i % 9 ? 0.1 * r : 0, 0], [i % 18 && i % freq == 0 ? 0.85 * r : 0.94 * r, 0]).config({pivot:[0,0], theta: 10*i});
+    for (let i=0;i<37;i++)
+        cv.line([0.94 * r, 0], [r, 0]).config({pivot:[0,0], theta: 5*i});
+    for (let i=1;i<181;i++) if (i % 5)
+        cv.line([0.97 * r, 0], [r, 0]).config({pivot:[0,0], theta: i});
+    for (let i=1;i<18;i++) if (i % freq == 0)
+        cv.text(`${10*i}`, [0, 0.89 * r]).config({pivot:[0,0], theta: 10*(i-9)});
+    return cv.finalize();
+}

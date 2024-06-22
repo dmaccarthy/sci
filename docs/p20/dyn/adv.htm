@@ -1,0 +1,408 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Examples<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Advanced Dynamics</h1>
+</section>
+
+<section class="Slide"><h3>Example 1</h3>
+<p class="Blue">A 2000 kg rail car is hauled by a truck driving on a road parallel to the tracks.
+    The cable connecting the truck to the rail car exerts a force of 1500 newtons <span class="NoWrap">[–30.0°].</span>
+    Because the rail car can only move parallel to the tracks, assume that the track exerts a force that exactly balances the perpendicular component.
+    Find the rail car’s acceleration.
+</p>
+<p data-cue="+" class="Center"><svg data-js="p20/dyn/img/adv#fbd1" id="FBD1" class="FBD s20"></svg></p>
+<div data-cue="+">
+    <p>Convert all vectors to Cartesian form and record all known components:</p>
+    <table class="Center Four">
+        <tr><th>Force</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td><th>Unit</th></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_1</span></td><td>+1299</td><td>–750</td><td>N</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_2</span></td><td>0.00</td><td class="Reveal"><span>+750</span></td><td>N</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td class="Reveal"><span>+1299</span></td><td>0.00</td><td>N</td></tr>
+    </table>
+</div>
+<p data-cue="+">Solve for the <span class="TeX">x</span> and <span class="TeX">y</span> unknowns independently.</p>
+<p data-cue="+" class="TeX">\vec{\bf a}_x = \frac{{\vec{\bf F}_{net}}_x}{m} = \rm{\frac{+1299\ N}{2000\ kg} = +0.650\ m/s^2}</p>
+</section>
+
+<section class="Slide"><h3>Example 2a</h3>
+<p class="Blue">A student pushes a 2.00 kg box from rest, 2.00 metres up an 8.00° frictionless incline, using an applied force of 10.0 newtons parallel to the ramp.
+    Find the acceleration of the box, the normal force, and the speed at the top of the ramp.</p>
+<p data-cue="+" class="Center"><svg data-js="p20/dyn/img/adv#fbd3" id="FBD3" class="FBD s20"></svg></p>
+
+<!--p data-cue="+"><b>Work-Energy Method</b></p>
+<p data-cue="="><p class="TeX">W_a = \vec{\bf F}_a \cdot \Delta\vec{\bf d} = \rm{10.0\ N\cdot 2.00\ m = 20.0\ J}</p></p>
+<p data-cue="+"><p class="TeX">h = \rm{2.00\ m\cdot\sin(8.00^\circ) = 0.278\ m}</p></p>
+<p data-cue="+"><p class="TeX">\begin{align}E_{gf} &= mgh \\&= \rm{2.00\ kg\cdot 9.81\ m/s^2 \cdot 0.278\ m}\\&= \rm{5.46\ J}\end{align}</p></p>
+<p data-cue="+"><p class="TeX">E_k = \rm{20.0\ J-5.46\ J} = \rm{14.5\ J}</p></p>
+<p data-cue="+"><p class="TeX">v_f = \sqrt{2E_k\over m} = \rm{\sqrt{2(14.5\ J)\over 2.00\ kg} = 3.81\ m/s}</p></p>
+<p data-cue="+"><p class="TeX">\vec{\bf a} = {v_f^2 - v_i^2\over 2\Delta\vec{\bf d}} = \rm{{(3.81\ m/s)^2 \over 2\cdot 2.00\ m} = 3.64\ m/s^2}</p></p>
+<ul data-cue="+">
+    <li>The normal force is not relevant to the solution because it acts perpendicular to the motion and does no work.</li>
+</ul-->
+
+<p data-cue="+">Use the direction parallel to the ramp as <span class="TeX">x</span> and the perpendicular direction as <span class="TeX">y</span>.</li>
+<div data-cue="+">
+    <p>Calculate the force of gravity and convert it to Cartesian form:</p>
+    <p class="TeX">F_g = mg = \rm{2.00\ kg\cdot 9.81\ m/s^2 = 19.6\ N}</p>
+</div>
+<p data-cue="+" class="TeX">\vec{\bf F}_{gx} = \rm{19.6\ N\cdot \cos(262^\circ) = -2.73\ N}</p>
+<p data-cue="+" class="TeX">\vec{\bf F}_{gy} = \rm{19.6\ N\cdot \sin(262^\circ) = -19.4\ N}</p>
+
+<table class="Center Four" data-cue="+">
+    <tr><th>Force</th><td>∥ [<span class="TeX">x</span>]</td><td>⟂ [<span class="TeX">y</span>]</td><th>Unit</th></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_a</span></td><td>10.0</td><td>0.00</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td>–2.73</td><td>–19.4</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_n</span></td><td>0.00</td><td class="Reveal"><span>+19.4</span></td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td class="Reveal"><span>+7.27</span></td><td>0.00</td><td>N</td></tr>
+</table>
+<p data-cue="+">The normal force acts only in the perpendicular (<span class="TeX">y</span>) direction.</p>
+<p data-cue="+">We can determine the normal force because the net force acts parallel to the ramp; the <span class="TeX">y</span>-component is zero.</p>
+<p data-cue="+">The normal force balances the <em>perpendicular component</em> of gravity.</p>
+<p data-cue="+" class="TeX">\vec{\bf a}_x = {\vec{\bf F}_{net}\over m} = \rm{{+7.27\ N\over 2.00\ kg} = +3.64\ m/s^2}</p>
+<p data-cue="+" class="TeX">v_{fx} = \sqrt{v_{ix}^2 + 2\vec{\bf a}_x\cdot\Delta\vec{\bf d}_x} = \rm{\sqrt{2\cdot 3.64\ m/s^2 \cdot 2.00\ m} = 3.81\ m/s}</p>
+<!-- </section>
+
+<section class="Slide"> -->
+<div data-cue="+">
+<h3>Example 2b</h3>
+<p class="Blue">Re-solve the problem when the coefficient of kinetic friction is 0.200.</p>
+</div>
+<table class="Center Four" data-cue="+">
+    <tr><th>Force</th><td>∥ [<span class="TeX">x</span>]</td><td>⟂ [<span class="TeX">y</span>]</td><th>Unit</th></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_a</span></td><td>10.0</td><td>0.00</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td>–2.73</td><td>–19.4</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_n</span></td><td>0.00</td><td>+19.4</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_f</span></td><td class="Reveal"><span>–3.89</span></td><td>0.00</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td class="Reveal"><span>+3.38</span></td><td>0.00</td><td>N</td></tr>
+</table>
+<p data-cue="+">Since friction acts parallel to the ramp, none of the perpendicular forces is affected.</p>
+<p class="TeX" data-cue="+">F_f = \mu F_n = \rm{0.200\cdot 19.4\ N = 3.89\ N}</p>
+<p data-cue="+">The friction force acts only in the <em>negative</em>, parallel (<span class="TeX">x</span>) direction.</p>
+<p data-cue="+" class="TeX">\vec{\bf a}_x = {\vec{\bf F}_{net}\over m} = \rm{{+3.38\ N\over 2.00\ kg} = +1.69\ m/s^2}</p>
+<p data-cue="+" class="TeX">v_{fx} = \sqrt{v_{ix}^2 + 2\vec{\bf a}_x\cdot\Delta\vec{\bf d}_x} = \rm{\sqrt{2\cdot 1.69\ m/s^2 \cdot 2.00\ m} = 2.60\ m/s}</p>
+<!--p data-cue="+">Is energy conserved?<p>
+<p data-cue="+"><p class="TeX">E_k = {1\over 2}mv^2 = \rm {{1\over 2} 2.00\ kg (2.60\ m/s)^2 = 6.76\ J}</p></p>
+<p data-cue="+"><p class="TeX">W_f = \rm{-3.89\ J\cdot 2.00\ m = -7.78\ J}</p></p>
+<p data-cue="+">The kinetic energy (6.76 J), gravitational potential energy (5.46 J) and waste (7.78 J), add up to the energy added (20.0 J)!<p-->
+</section>
+
+<section class="Slide"><h3>Example 3</h3>
+<p class="Blue">A 100 kg sign is attached to a building by a cable that exerts a force at 140°.
+    The coefficient of static friction between the left edge of the sign and the building is 0.250.
+    Calculate the tension in the cable.
+</p>
+<p class="Center"><svg data-js="p20/dyn/img/adv#fbd2" id="FBD2" class="FBD s12"></svg></p>
+<table class="Center Four" data-cue="+">
+    <tr><th>Force</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td><th>Unit</th></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td>0.00</td><td>–981</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_t</span></td><td><span class="TeX">F_t\cos 140^\circ</span></td><td><span class="TeX">F_t\sin 140^\circ</span></td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_n</span></td><td><span class="TeX">F_n</span></td><td>0.00</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_f</span></td><td>0.00</td><td><span class="TeX">\mu F_n</span></td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td>0.00</td><td>0.00</td><td>N</td></tr>
+</table>
+<div data-cue="+">
+    <p>This is a system of two equations in two unknowns!</p>
+    <p class="TeX">F_t\cos 140^\circ + F_n = 0</p>
+    <p class="TeX">{\rm -981\ N} + F_t\sin 140^\circ + \mu F_n = 0</p>
+</div>
+<div data-cue="+">
+    <p>Isolate <span class="TeX">F_n</span> in the <span class="TeX">x</span> equation:</p>
+    <p class="TeX">F_n = -F_t\cos 140^\circ</p>
+</div>
+<div data-cue="+">
+    <p>Now substitute for <span class="TeX">F_n</span> in the <span class="TeX">y</span> equation:</p>
+    <p class="TeX">{\rm -981\ N} + F_t\sin 140^\circ - \mu F_t\cos 140^\circ = 0</p>
+</div>
+<div data-cue="+">
+    <p>Simplify:</p>
+    <p class="TeX">F_t\sin 140^\circ - \mu F_t\cos 140^\circ = \rm 981\ N</p>
+    <p class="TeX" data-cue="+">F_t(\sin 140^\circ - \mu \cos 140^\circ) = \rm 981\ N</p>
+    <p class="TeX" data-cue="+">F_t = \frac{\rm 981\ N}{\sin 140^\circ - \mu \cos 140^\circ} = \rm 1176\ N</p>
+</div>
+<div data-cue="+">
+    <p>Now solve for the remaining forces:</p>
+    <p class="TeX">F_n = -F_t\cos 140^\circ = \rm -1176\ N\cdot \cos 140^\circ = \rm 901\ N</p>
+</div>
+<p class="TeX" data-cue="+">F_f = \mu F_n = \rm 0.250\cdot 901\ N = 225\ N</p>
+<div data-cue="+">
+    <p>Finally, fill in the unknowns in the table to check our solution:</p>
+    <table class="Center Four Bottom">
+        <tr><th>Force</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td><th>Unit</th></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td>0.00</td><td>–981</td><td>N</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_t</span></td><td><span class="Red">–901</span></td><td><span class="Red">+756</span></td><td>N</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_n</span></td><td><span class="Red">+901</span></td><td>0.00</td><td>N</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_f</span></td><td>0.00</td><td><span class="Red">+225</span></td><td>N</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td>0.00</td><td>0.00</td><td>N</td></tr>
+    </table>
+</div>
+</section>
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Advanced Dynamics</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/dyn/adv"></p>
+</div>
+</section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    let rev = $("td.Reveal").on("click", (ev) => {
+        $(ev.currentTarget).find("span").fadeToggle();
+    });
+}
+
+</script>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <li>A student pulls a 12.8 kg wagon along a horizontal surface using an applied force of 26.2 N [25.0°].
+        Other forces acting on the wagon are: air resistance and other forms of friction (<span class="TeX">{\vec{\bf{F}}}_f</span> = 1.65 N [180°]), gravity,
+        and the normal force of the ground pushing up on the wagon’s wheels.
+    <ol type="a">
+        <li>Draw a free body diagram (on the illustration of the wagon above) showing all forces acting on the wagon.</li>
+        <li>Express all forces in Cartesian form. Fill in the table with all known quantities and show your work below.</li>
+        <div class="Answer">
+    <p class="TeX">\vec{\bf F}_{ax} = \rm{26.2\ N \cos(25.0^\circ) = +23.7\ N}</p>
+    <p class="TeX">\vec{\bf F}_{ay} = \rm{26.2\ N \sin(25.0^\circ) = +11.1\ N}</p>
+    <table class="Center Three">
+        <tr><td></td><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_a</span></td><td>+23.7</td><td>+11.1</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td>0</td><td>–126</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_n</span></td><td>0</td><td>?</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_f</span></td><td>–1.65</td><td>0</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td>?</td><td>0</td></tr>
+    </table>
+        </div>
+    
+        <li>Find the normal force by solving the <span class="TeX">y</span>-component of Newton’s 2nd Law.</li>
+        <div class="Answer">The normal force must balance the other two <span class="TeX">y</span>-forces:
+        <p class="TeX">\vec{\bf F}_{ny} = \rm{0\ N - (-126 + 11.1)\ N = +114.9\ N}</p></div>
+    
+        <li>Find the acceleration by solving the <span class="TeX">x</span>-component of Newton’s 2nd Law.</li>
+        <div class="Answer">
+            <p class="TeX">\vec{\bf F}_{net} = \rm{+23.7\ N + (-1.65\ N) = +22.1\ N}</p>
+            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf F}_{net}}{m} = \rm{\frac{+22.1\ N}{12.8\ kg} = +1.73\ m/s^2}</p>
+        </div>
+        <li>Calculate the speed of the wagon after it has moved 3.00 metres. Assume it started from rest.</li>
+        <div class="Answer"><p class="TeX">\begin{align}
+v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
+\\[10pt] &= \rm{\sqrt{0 + 2(+1.73\ m/s^2)(+3.00\ m)}}
+\\[10pt] &= \rm{3.22\ m/s}
+        \end{align}</p></div>
+    </ol></li>
+
+    <li>A 50.0-kilogram sign is designed to hang from two cables at 45.0° angles from the top corners as illustrated.
+    <p class="Center"><svg data-js="p20/dyn/img/adv#sign"></svg></p>
+    <ol type="a">
+        <li>Under normal circumstances (e.g. no strong winds, etc.) how much force does each of the cables exert? Include a vector diagram as part of your solution.</li>
+        <div class="Answer">
+            <p>Draw a vector diagram of the three forces. The net force must be zero because the sign is not accelerating.</p>
+            <p class=" Center"><svg data-js="p20/dyn/img/adv#sign_vec" class="VDiag"></svg></p>
+            <p class="Center">
+                <p class="TeX">F_g = mg = \rm{50.0\ kg\cdot 9.81\ m/s^2 = 491\ N}</p>
+                <p class="TeX">F_1 = F_2 = F_g\cos(45.0^\circ) = \rm{347\ N}</p>
+            </p>
+        </div>
+
+        <li>Suppose that the sign was mounted incorrectly so that the cable on the right makes an angle of 60.0° from horizontal instead of 45.0°. What would the forces in the cables be? Assume that the left cable remains attached at the correct angle.</li>
+        <div class="Answer">
+            <p>Draw a new vector diagram with the new angles:</p>
+            <p class=" Center"><svg data-js="p20/dyn/img/adv#sign_uneven" class="VDiag"></svg></p>
+            <p>The easy way to find the forces (if you have taken Math 20) is to use the Law of Sines:</p>
+            <p class="TeX">F_1 = \frac{F_g}{\sin(105^\circ)} \sin(45.0^\circ) = \rm{359\ N}</p>
+            <p class="TeX">F_2 = \frac{F_g}{\sin(105^\circ)} \sin(30.0^\circ) = \rm{254\ N}</p>
+            <p>Without using the Sine Law, we have to use components:</p>
+    <table class="Center Three">
+        <tr><td></td><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td>0</td><td>–491</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_1</span></td><td><span class="TeX">F_1\cos(60^\circ)</span><br/><span class="TeX">= 0.500F_1</span></td><td><span class="TeX">F_1\sin(60^\circ)</span><br/><span class="TeX">= 0.866F_1</span></td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_2</span></td><td><span class="TeX">F_2\cos(135^\circ)</span><br/><span class="TeX">= -0.707F_2</span></td><td><span class="TeX">F_2\sin(135^\circ)</span><br/><span class="TeX">= 0.707F_2</span></td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td>0</td><td>0</td></tr>
+    </table>
+    <p>The <span class="TeX">x</span>-equation is:
+<p class="TeX">0.500 F_1 - 0.707 F_2 = 0</p>
+<p class="TeX">0.707 F_2 = 0.500 F_1</p>
+The <span class="TeX">y</span>-equation is:
+<p class="TeX">0.866 F_1 + 0.707 F_2 - \rm{491\ N} = 0</p>
+We can eliminate <span class="TeX">0.707 F_2</span> by substituting the <span class="TeX">x</span>-equation into the <span class="TeX">y</span>...
+<p class="TeX">0.866 F_1 + 0.500 F_1 - \rm{491\ N} = 0</p>
+<p class="TeX">1.366 F_1 = \rm{491\ N}</p>
+<p class="TeX">F_1 = \rm{\frac{491\ N}{1.366} = 359\ N}</p>
+We can now use the <span class="TeX">x</span>-equation to find the other force...</p>
+<p class="TeX">F_2 = \frac{0.500 F_1}{0.707} = \rm{254\ N}</p>
+        </div>
+    </ol></li>
+    
+    <li>A 1.25 kg physics textbook slides from rest down a 3.00 m long ramp that is inclined at a 15.0° angle. When the book reaches the bottom of the ramp, its speed is found to be 2.42 m/s.
+    <p class="Center Answer"><svg data-js="p20/dyn/img/adv#Q3" class="FBD"></svg></p>
+    <ol type="a">
+        <li>Calculate the acceleration of the book using kinematics and use the result to calculate the net force.
+            If you take the direction parallel to the ramp as the <span class="TeX">x</span>-axis, you can solve the problem as a 1D uniform accelerated motion situation since there is no motion in the <span class="TeX">y</span>-direction. </li>
+        <div class="Answer">
+            <p>Use the uniform accelerated motion equations to find the acceleration. Since we’ve drawn the right side of the ramp higher than the left, the displacment, velocity, and acceleration will be negative.
+                If you draw the left side higher, these vectors will all be positive.</p>
+<p class="TeX">\begin{align}
+\vec{\bf a} &= \frac{v_f^2-v_i^2}{2\Delta\vec{\bf d}}
+\\[10pt] &= \rm{\frac{(-2.42\ m/s)^2- (0.00\ m/s)^2}{2\cdot(-3.00)\ m}}
+\\[10pt] &= \rm{-0.976\ m/s^2}
+\end{align}</p></div>
+
+        <li>Express the force of gravity in Cartesian form. Since we are taking the <span class="TeX">x</span>-axis as the direction parallel to the ramp, the direction of gravity is not 270° in this coordinate system.</li>
+        <div class="Answer">
+<p>The direction of gravity is 270° – 15° = 255°. If you draw the ramp with the left side higher, the angle will be 270° + 15° = 285°.</p>
+<p class="TeX">F_g = mg = \rm{1.25\ kg\cdot 9.81\ m/s^2 = 12.3\ N}</p>
+<p class="TeX">\vec{\bf F}_g = \rm{(12.3\ \cos(255^\circ), 12.3\ \sin(255^\circ))\ N}
+    = \rm{(-3.17, -11.8)\ N}</p></div>
+
+    <li>Find the normal force by solving the <span class="TeX">y</span>-component (perpendicular to the ramp) of Newton’s 2nd Law.</li>
+    <div class="Answer">
+    <table class="Center Four Bottom">
+        <tr><th>Force</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td><th>Unit</th></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td>–3.17</td><td>–11.8</td><td>N</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_n</span></td><td>0.00</td><td class="Reveal"><span>+11.8</span></td><td>N</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_f</span></td><td class="Reveal"><span>+1.95</span></td><td>0.00</td><td>N</td></tr>
+        <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td class="Reveal"><span>–1.22</span></td><td>0.00</td><td>N</td></tr>
+    </table>
+    <p>The normal force must be +11.8 newtons since the net force is zero in the <span class="TeX">y</span>-direction.</p>
+    </div>
+    
+        <li>Calculate the force of friction from the net force you obtained in (a). Use the answer to calculate the coefficient of kinetic friction.</li>
+        <div class="Answer">In the <span class="TeX">x</span>-direction...
+<p class="TeX">\vec{\bf F}_{net} = m\vec{\bf a} = \rm{1.25\ kg\cdot (-0.976\ m/s^2) = -1.22\ N}</p>
+<p class="TeX">\vec{\bf F}_{net} = \vec{\bf F}_f + \vec{\bf F}_{gx}</p>
+<p class="TeX">\vec{\bf F}_f = \vec{\bf F}_{net} - \vec{\bf F}_{gx} = \rm{-1.22\ N - (-3.17\ N) = +1.95\ N}</p>
+<p class="TeX">\mu_k = \frac{F_f}{F_n} = \rm{\frac{1.95\ N}{11.8\ N} = 0.165}</p>
+<p>the signs of all <span class="TeX">x</span>-forces will be reversed if you draw the left side of the ramp higher, but the coefficient of friction will be the same!</p>
+</div>
+    </ol></li>
+
+    <li>A 5.00 kg object sits at rest on a ramp inclined at 12.0°.<ol type="a">
+        <li>Using the direction parallel to the ramp as the <span class="TeX">x</span>-axis, express the force of gravity in Cartesian form.</li>
+<div class="Answer">
+<p>The free body diagram is the same as for #3. The direction of gravity is 270° – 12.0° = 258° and the net force must be zero since the object remains at rest.</p>
+<p class="TeX">F_g = mg = \rm{5.00\ kg\cdot 9.81\ m/s^2 = 49.1\ N}</p>
+<p class="TeX">\vec{\bf F}_g = \rm{(49.1\ \cos(258^\circ), 49.1\ \sin(258^\circ))\ N}
+    = \rm{(-10.2, -48.0)\ N}</p>
+<table class="Center Four Bottom">
+    <tr><th>Force</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td><th>Unit</th></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td>–10.2</td><td>–48.0</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_n</span></td><td>0.00</td><td class="Reveal"><span>+48.0</span></td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_f</span></td><td class="Reveal"><span>+10.2</span></td><td>0.00</td><td>N</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td>0.00</td><td>0.00</td><td>N</td></tr>
+</table>
+</div>
+
+        <li>Determine the normal force and the force of friction. [Hint: What must the acceleration and the net force equal if the block remains at rest?]</li>
+<div class="Answer">
+<p>The normal force must be <span class="TeX">\rm +48.0\ N</span> and the force of friction must be <span class="TeX">\rm +10.2\ N</span> since the net force is zero in both directions.</p>
+</div>
+
+<li>Students observe that they can incline the ramp up to a maximum angle of 18.0°. For inclinations higher than this, the object no longer remains at rest but begins to slide down the ramp. Determine the coefficient of friction between the ramp and the object. Is this coefficient the static or the dynamic friction?</li>
+<div class="Answer">
+<p>Repeat the above calculation changing the angle to 270° – 18.0° = 252°:</p>
+<p class="TeX">\vec{\bf F}_g = \rm{(49.1\ \cos(252^\circ), 49.1\ \sin(252^\circ))\ N}
+    = \rm{(-15.2, -46.6)\ N}</p>
+<p>Since the net force must be zero, the normal force is +46.6 newtons amd the friction is +15.2 N.</p>
+<p class="TeX">\mu = \frac{F_f}{F_n} = \rm{\frac{15.2\ N}{46.6\ N} = 0.325}</p>
+</div>
+
+<li>Show that in general, the coefficient of static friction is <span class="TeX">\mu_s=\sin{\theta}/\cos{\theta}</span> where is the incline <span class="TeX">\theta</span> at which the mass begins to slide down the ramp.</li>
+<div class="Answer">
+<table class="Center Three">
+    <tr><td></td><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td><span class="TeX">mg\sin\theta</span></td><td><span class="TeX">-mg\cos\theta</span></td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_n</span></td><td>0</td><td>?</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_f</span></td><td>?</td><td>0</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td>0</td><td>0</td></tr>
+</table>
+<p>For the net force to be zero, the friction and normal forces must balance the <span class="TeX">x</span>- and <span class="TeX">y</span>-components of the gravitational force:
+<p class="TeX">\begin{align}
+\mu &= \frac{F_f}{F_n}
+\\[10pt] &= \frac{mg\sin\theta}{mg\cos\theta}
+\\[10pt] &= \frac{\sin\theta}{\cos\theta}
+ = \rm{\frac{\frac{Opp}{Hyp}}{\frac{Adj}{Hyp}}}
+\\[10pt] &= \rm{\frac{Opp}{Adj}}
+ = \tan\theta
+\end{align}</p>
+</p>
+        </div>
+
+    </ol></li>
+
+    <li>A pulley system is combined with an inclined plane as illustrated below and released from rest.
+    <p class="Bottom Center"><svg data-js="p20/dyn/img/adv#pulley"></svg></p>
+    <ol type="a">
+        <li>Using <span class="TeX">m_1</span> = 5.00 kg,<span class="TeX">m_2</span> = 2.50 kg, <span class="TeX">h</span> = 60.0 cm, and a ramp inclination of <span class="TeX">\theta</span> = 10.0° from the horizontal, determine the acceleration and the speed of the system just before <span class="TeX">m_2</span> strikes the ground. Assume the ramp is frictionless.</li>
+        <li>Repeat your calculations for a coefficient of friction of <span class="TeX">\mu_k</span> = 0.150.</li>
+<div class="Answer">
+<p class="Center"><img alt="Ramp &amp; Pulley" src="p20/dyn/img/pulley-ramp.png"/></p>
+<p>For a 10° incline, the direction of gravity acting on <span class="TeX">m_1</span> is 270° – 10° = 260°. This force of gravity is...</p>
+<p class="TeX">F_g = mg = \rm{5.00\ kg\cdot 9.81\ m/s^2 = 49.1\ N}</p>
+<p class="TeX">\vec{\bf F}_g = \rm{(49.1\ \cos(260^\circ), 49.1\ \sin(260^\circ))\ N}
+ = {\rm(-8.52, -48.3)\ N}</p>
+<p>All of the forces acting on <span class="TeX">m_1</span>, and the net force, are...</p>
+<table class="Center Three">
+    <tr><td></td><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_g</span></td><td>–8.52</td><td>–48.3</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_t</span></td><td><span class="TeX">F_t</span></td><td>0</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_n</span></td><td>0</td><td><span class="TeX">F_n</span></td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_f</span></td><td><span class="TeX">-\mu F_n</span></td><td>0</td></tr>
+    <tr><td><span class="TeX">\vec{\bf F}_{net}</span></td><td><span class="TeX">m_1a</span></td><td>0</td></tr>
+</table>
+<p>Because the net <span class="TeX">y</span>-force is zero, the normal force must be +48.3 N. We can then write the <span class="TeX">x</span>-equation as:</p>
+<p class="TeX">{\rm -8.52\ N} + F_t - \mu{\rm(48.3\ N)} = m_1a</p>
+<p>The second mass moves moves only in the vertical direction. Newton’s 2<sup>nd</sup> Law is:
+<p class="TeX">F_t - m_2 g = -m_2a</p> becase <span class="TeX">m_2</span> has the same acceleration as <span class="TeX">m_1</span> but in the negative (downward) direction.</p>
+<p>We can combine the equations and eliminate <span class="TeX">F_t</span> by subtracting the two equations from each other:</p>
+<p class="TeX">{\rm -8.52\ N} - \mu{\rm (48.3\ N)} + m_2g = m_1a + m_2a</p>
+<p class="TeX">a = \frac{{\rm -8.52\ N} - \mu{\rm (48.3\ N)} + m_2g}{m_1 + m_2}</p>
+<p>When there is no friction:</p>
+<p class="TeX">a = \rm{\frac{-8.52\ N + 2.50\ kg\cdot 9.81\ m/s^2}{7.50\ kg} = 2.13\ m/s^2}</p>
+</p>
+<p>If <span class="TeX">\mu = 0.150</span>:</p>
+<p class="TeX">\begin{align}a &= \rm{\frac{-8.52\ N - 0.150(48.3\ N)+ 2.50\ kg\cdot 9.81\ m/s^2}{7.50\ kg}}
+\\[10pt] &= \rm{1.17\ m/s^2} \end{align}</p>
+</p>
+<p>We know the displacment is 0.600 metres and the initial velocity is zero, so the final velocity is:</p>
+<p class="TeX">v_f = \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}} = \sqrt{2\vec{\bf a}\cdot\Delta\vec{\bf d}}</p>
+<p>Using the acceleration for zero friction gives:</p>
+<p class="TeX">v_f = \rm{\sqrt{2\cdot 2.13\ m/s^2\cdot 0.600\ m} = 1.60\ m/s}</p>
+<p>Using the acceleration for <span class="TeX">\mu = 0.150</span> gives:</p>
+<p class="TeX">v_f = \rm{\sqrt{2\cdot 1.17\ m/s^2\cdot 0.600\ m} = 1.18\ m/s}</p>
+</div>
+    </ol></li>
+</ol>
+  
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li><ol type="a">
+        <li>What makes a problem <em class="Defn">2D</em> as opposed to <em class="Defn">1D</em>?</li>
+        <li>In general, how can we solve 2D dynamics problems with Newton’s 2nd Law?</li>
+    </ol></li>
+
+    <li>When using Newton’s Laws to solve problems involving motion along an inclined plane (ramp), why is it better to use a coordinate system where the x-axis is parallel to the ramp and the y-axis is perpendicular to the ramp rather than using the usual horizontal and vertical directions for the axes?</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}3.6 — Advanced Dynamics`,
+    answerDate: "2024.4.4.16",
+    num: "3.6",
+    up: "p20/home",
+    prev: "p20/dyn/fric",
+    next: "p20/dyn/rev",
+}
+
+</script>

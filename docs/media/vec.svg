@@ -1,0 +1,19 @@
+<svg viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg">
+<style>
+
+* {
+    fill: none;
+    stroke: red;
+    stroke-width: 5;
+    stroke-linejoin: round;
+}
+
+.Blue {stroke: #0065fe}
+
+</style>
+<polyline points="5 90 90 90 70 5"></polyline>
+<polyline points="75 105 90 90 75 75" transform=""></polyline>
+<polyline points="55 20 70 5 55 -10" transform="rotate(-107.1 70 5)"></polyline>
+<polyline class="Blue" points="5 90 70 5"></polyline>
+<polyline class="Blue" points="55 20 70 5 55 -10" transform="rotate(-52.6 70 5)"></polyline>
+</svg>

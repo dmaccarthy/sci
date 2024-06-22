@@ -1,0 +1,61 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
+<div id="LessonNotes">
+
+<section class="Slide">
+<p><em class="Defn">Mechanical energy</em> (measured in joules) includes kinetic, rotational, gravitational potential, and elastic potential energy.
+    <p class="TeX">E_k = {1\over 2}mv^2</p>
+    <p class="TeX">E_g = mgh</p>
+    <p class="TeX">E_{elas} = {1\over 2}k(\Delta L)^2</p>
+</p>
+<ul>
+    <li>The equation for rotational energy depends on the shape (e.g. sphere or cylinder) and mass distribution (e.g. solid or hollow)</li>
+    <li>Other (non-mechanical) forms of energy include thermal energy, sound, chemical, nuclear, electrical and electromagnetic energy.</li>
+</ul>
+
+<p><em class="Defn">Law of Energy Conservation</em>: Energy can be transformed from one form to another, but the <b>total</b> energy always remains constant.
+    <p class="TeX">\Sigma E_i = \Sigma E_f</p>
+</p>
+<ul><li>On an energy bar chart, the <em>total</em> of all bars will always be constant. (Click chart for animation.)</li></ul>
+<p class="Center"><svg data-js="p20/energy/img/cons#bar" id="Bar" class="EnergyBar"></svg></p>
+<ul>
+    <li>Any energy that is going to be <em>added</em> to a system must be included with the <em>initial</em> energy.</li>
+    <li>Any energy that is <em>removed</em> from a system must be included with the <em>final</em> energy.</li>
+</ul>
+
+<p>Mechanical energy transformations are caused by <em class="Defn">forces</em> (measured in newtons). The <em>amount</em> of energy that a force transforms is called the <em class="Defn">work</em>.
+    <p class="TeX">W = \vec{\bf F}_\parallel \cdot \Delta\vec{\bf d} = |\vec{\bf F}|\cdot|\Delta\vec{\bf d}|\cos\theta</p>
+</p>
+<ul>
+    <li>When more than one force does work, the change in kinetic energy will equal the <em>total</em> work done by all forces:
+        <p class="TeX">\Delta E_k = \Sigma W</p></li>
+</ul>
+
+<p><em class="Defn">Power</em> (measured in watts) is the <em>rate</em> at which a force does work.
+    <p class="TeX">P = {\Delta E\over \Delta t}</p></p>
+<p><em class="Defn">Efficiency</em> is the ratio of the <em>useful</em> energy output compared to the energy input.
+    <p class="TeX">\epsilon = {\Delta E_{useful}\over |\Delta E_{input}|}</p></p>
+</section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    applet.energygraph.click("svg.EnergyBar");
+}
+
+</script>
+
+</div></div>
+</section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}Energy & Work Review`,
+    num: "6.7",
+    up: "p20/home",
+    prev: ["p20/energy/power", "p20/dyn/rev"][clickLink.course],
+    next: ["p20/da/eqn", "p20/circ/rev"][clickLink.course],
+}
+
+</script>

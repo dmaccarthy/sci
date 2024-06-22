@@ -1,0 +1,46 @@
+<section class="Post" data-feed="p30/units/A" data-title="Unit A: Momentum &amp; Impulse" data-icon="train.svg"></section>
+<section class="Post" data-show="2025" data-feed="p30/units/B" data-title="Unit B: Electricity &amp; Magnetism" data-icon="magnet.svg"></section>
+<section class="Post" data-show="2025" data-feed="p30/units/B" data-title="Unit C: Electromagnetic Radiation" data-icon="xray.svg"></section>
+<section class="Post" data-show="2025" data-feed="p30/units/B" data-title="Unit D: Physics of Matter" data-icon="atom.svg"></section>
+
+<section class="Post" data-icon="link.svg">
+    <h2 class="Collapse">Course Links</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="pdf.svg" data-open="https://www.alberta.ca/system/files/custom_downloaded_images/edc-physics30-data-booklet.pdf">Data Booklet</button>
+        <button data-icon="gdrv" data-gdrv="1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE">Graph Paper</button>
+        <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/">Brightspace</button>
+        <button data-icon="ps" data-open="https://powerschool.eips.ca/public/">PowerSchool</button>
+        <button data-icon="sal" data-open="https://salcomp.ca">Salisbury Composite</button>
+        <button data-icon="gdrv" data-gdrv="">Course Outline</button>
+        <button data-icon="link.svg" data-open="https://www.alberta.ca/writing-diploma-exams">Diploma Exam Info</button>
+        <!-- <button data-icon="pdf.svg" data-open="https://www.alberta.ca/system/files/custom_downloaded_images/edc-calculator-information-and-rules.pdf">Approved Calculators</button> -->
+        <button data-icon="link.svg" data-open="https://education.alberta.ca/science-10-12/programs-of-study/">Program of Studies</button>
+        <button data-icon="link.svg" data-open="https://www.physicsclassroom.com/calcpad/energy/problems">Physics Classroom</button>
+    </p>
+</div></section>
+
+<script type="text/javascript" data-init="today">
+
+loadFeed.today = () => {
+    if (qsArgs("today")) {
+        history.replaceState({}, "", feedURL(loadFeed.current));
+        loadFeed("_today_");
+    }
+}
+
+loadFeed.data = {
+    title: "Physics 30",
+    folder: "p30/",
+    up: "home",
+    today: [
+       ["2023.8.29", "$mom/energy"],
+       ["2024.8.30", "$mom/mom"],
+       // ["2024.9.3", "$mom/imp"],
+       // ["2024.9.", "$mom/cons"],
+       // ["2024.9.", "$mom/coll1d"],
+       // ["2024.9.", "$mom/vec"],
+       // ["2024.9.", "$mom/coll2d"],
+    ],
+}
+
+</script>

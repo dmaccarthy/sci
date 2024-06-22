@@ -1,0 +1,84 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">List Comprehensions</h2><div class="Collapse Expand">
+<p>Python includes a feature for making lists by performing the same operation on a sequence of objects. Suppose that we have a sequence of ordered pairs representing points on a drawing (e.g. the alien spacecraft locations in a space invaders type game).  We need to calculate the distance between each point and some other point (e.g. the player’s ship).  We might write the following...</p>
+<pre data-echo="d05_ex1.py" data-title="1" class="Code" contenteditable="true">from math import hypot
+
+def distance(p1, p2):
+    <span class="Comment">"""Calculate the distance between two points,
+    rounded to the nearest whole number"""</span>
+    x = p1[0] - p2[0]
+    y = p1[1] - p2[1]
+    return round(hypot(x, y))
+
+def main():
+    invaders = (5, 100), (30, 150), (55, 200), (80, 150), (105, 200)
+    player = (300, 620)
+    distanceList = []
+    for ship in invaders:
+        distanceList.append(distance(ship, player))
+    print(distanceList)      <span class="Comment"># [598, 542, 486, 519, 463]</span>
+
+main()</pre>
+
+<p>In the <code>main</code> procedure above, we created an empty list, <code>distanceList</code>, and then used a <code>for</code> loop to iterate through the sequence of invader ships, appending each result to the list.
+    Below is an abbreviated version of the procedure that uses a <b class="Red">list comprehension</b> (shown in blue)...</p>
+<pre data-echo="d05_ex2.py" data-title="1" class="Code" contenteditable="true">def main():
+    invaders = (5,100), (30, 150), (55, 200), (80, 150), (105, 200)
+    player = (300, 620)
+    distanceList = <span class="Blue">[distance(ship, player) for ship in invaders]</span>
+    print(distanceList)      <span class="Comment"># [598, 542, 486, 519, 463]</span></pre>
+
+<p>The list comprehension shortens the <code>for</code> loop into a single statement, while automatically assembling the results into a list. We do not need to initialize the list or append items explicitly.  The syntax for a list comprehension is...</p>
+<pre class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt;]</pre>
+<p>...where <code>&lt;Sequence&gt;</code> is any <code>list</code>, <code>tuple</code>, string, or other iterable object;
+    <code>&lt;Item&gt;</code> is the local variable name you want to use for the items in the sequence;
+    and <code>&lt;Expression&gt;</code> is the expression to be evaluated and appended to the <code>list</code> for each item.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Conditional Comprehensions</h2><div class="Collapse Expand">
+<p>Suppose in the previous example, we wanted to obtain a <code>list</code> of invaders that were within
+    a certain distance of the player’s ship. We could do this with a <em>conditional</em> list comprehension.</p>
+<pre data-echo="d05_ex3.py" data-title="1" class="Code" contenteditable="true">def main():
+    invaders = (5,100), (30, 150), (55, 200), (80, 150), (105, 200)
+    player = (300, 620)
+    nearby = [ship for ship in invaders <span class="Blue">if distance(ship, player) < 500</span>]
+    print(nearby)      <span class="Comment"># [(55, 200), (105, 200)]</span></pre>
+
+<p>The <code>if</code> condition at the end of the comprehension specifies which items are to be included in the <code>list</code>.
+    In this example, the sequence (<code>invaders</code>) contains five items, but only two of those items
+    satisfy the condition <code>distance(ship, player) < 500</code>. The result of this comprehension will be a <code>list</code>
+    containing the two invader ships that are within 500 pixels of the player’s ship.</p>
+<p>The general syntax for a conditional list comprehension is...</p>
+<pre class="IO">[&lt;Expression&gt; for &lt;Item&gt; in &lt;Sequence&gt; if &lt;Condition&gt;]</pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Nested Comprehensions</h2><div class="Collapse Expand">
+<p>Python also supports nested <code>for...in</code> clauses within list comprehensions...</p>
+<pre data-echo="d05_ex4.py" data-title="1" class="Code" contenteditable="true">suits = "Hearts", "Diamonds", "Clubs", "Spades"
+values = list(range(2, 11)) + ["Jack", "Queen", "King", "Ace"]
+deck = [(suit, val) <span class="Blue">for suit in suits for val in values</span>]
+for card in deck:
+    print(card)</pre>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+    <li>Suppose we want to apply a formula or calculation to many different data points. For example, we might start with a list of numbers and want to calculate the square root of each number and collect the results in a list. The data might be [1.0, 25.0, 6.25, 16.0], and the results would be [1.0, 5.0, 2.5, 4.0]. Complete the program <code>d05_sqrt.py</code> to perform this calculation using a list comprehension.</li>
+    <li>Complete the program <code>d05_noVowel.py</code> to use a list comprehension to remove all of the vowels* from a string.  (*Assume ‘y’ is not a vowel.) The input <code>"Toronto Blue Jays!"</code> should produce output <code>"Trnt Bl Jys!"</code>.</li>
+    <li>Complete the program <code>d05_numsOnly.py</code> to use a list comprehension to collect a <code>list</code> of numbers (data that has either <code>int</code> or <code>float</code> as its type) from a <code>list</code> that may contain other types of data.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "List Comprehensions",
+    up: `cs_new/cs20`,
+    prev: "cs_new/ds/args",
+    next: "cs_new/ds/gen",
+}
+
+</script>

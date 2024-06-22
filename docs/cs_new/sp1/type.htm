@@ -1,0 +1,104 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Python Data Types</h2><div class="Collapse Expand">
+
+<p>We saw in the last assignment that the program below did not produce the expected output!</p>
+
+<pre data-echo="s06_number.py" data-title="1" class="Code">num = input("What is your favourite number? ")
+print(2 * num)
+print(2 + num)</pre>
+
+<p>If you type <code>5</code> when prompted for your favourite number, you might expect
+	the program to print <code>10</code> (2 * 5) and <code>7</code> (2 + 5) as its output.
+	What the program actually does is print <code>55</code>, and then crash when it tries
+	to run the last instruction. The reason this happens is that Python encodes text data
+	differently than it encodes numerical data. Python is not smart enough to realize that
+	we are asking the user to input a number, so it encodes whatever the user types as
+	text. When your program multiplies text by a number, it repeats the text the specified
+	number of times...</p>
+
+<pre data-echo="s07_ex1.py" data-title="1" class="Code">print(2 * "Hi")   <span class="Comment"># HiHi</span>
+print(2 * 5)      <span class="Comment"># 10</span>
+print(2 * "5")    <span class="Comment"># 55</span></pre>
+
+<p>Python crashes when you try to add text to a number because it doesn’t know how to do
+	this! When Python keeps track of your program’s data, it also tracks the <em>type</em>
+	of data. It does this using something called a <b class="Red">class</b>. Text data
+	is encoded as a sequence or “string” of individual characters. The Python class for
+	text data is called <code>str</code>.</p>
+
+<p>There are two different types of encoding for
+	numbers. Numbers that have a decimal part are encoded using something called “floating
+	point” and the Python class for this type of number is <code>float</code>.  Numbers
+	without a decimal part use the class <code>int</code> (integer).</p>
+</div>
+
+<h3>Converting Types</h3><div class="Note">
+<p>Python classes can be used like a function to convert data from one type to another,
+	as shown in blue below. Python also has a function called <code>type</code> that lets
+	you find out the class of any data or expression...</p>
+
+<pre data-echo="s07_ex2.py" data-title="1" class="Code">fiveText = "5"
+fiveNum = <span class="Blue">float</span>(fiveText)
+fiveInt = <span class="Blue">int</span>(fiveText)
+
+print(2 * fiveText)     <span class="Comment"># 55</span>
+print(2 * fiveNum)      <span class="Comment"># 10.0</span>
+print(2 * fiveInt)      <span class="Comment"># 10</span>
+
+print(type(fiveText))   <span class="Comment"># &lt;class 'str'&gt;</span>
+print(type(fiveNum))    <span class="Comment"># &lt;class 'float'&gt;</span>
+print(type(fiveInt))    <span class="Comment"># &lt;class 'int'&gt;</span></pre>
+
+<p>When using Python’s <code>input</code> function to obtain user input, remember that
+	the data will always be encoded as a <code>str</code>. If you want numerical input,
+	you must use the <code>int</code> or <code>float</code> functions to convert the text
+	data to the desired data type.</p>
+<p>The program below will
+	work as expected, as long as you provide input that can be converted to an integer.
+	If you provided invalid input, the program will crash...</p>
+
+<pre data-echo="s07_ex3.py" data-title="1" class="Code">num = <span class="Blue">int(</span>input("What is your favourite number? ")<span class="Blue">)</span>
+print(2 * num)
+print(2 + num)</pre>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand"><ol class="Assign">
+<li>Write a program <code>s07_average.py</code> to prompt the user for four numbers,
+    and then calculate and print the average of the four numbers. Use comments and a docstring,
+    and the IPO program structure. Here is some sample output with user input shown in blue...</li>
+<pre data-echo="text" class="IO">Please enter a number: <span class="Blue">4</span>
+Please enter another number: <span class="Blue">5</span>
+Please enter another number: <span class="Blue">6</span>
+Please enter another number: <span class="Blue">7</span>
+The average is 5.5</pre>
+
+<li>The program below calculates the sales tax and total price for an item that costs $4.99 when the sales tax rate is 5%. Modify the program so that user can input the tax rate and price from the keyboard.</li>
+<pre data-echo="s07_tax.py" data-title="1" class="Code"><span class="Comment"># Input</span>
+taxRate = 0.05
+price = 4.99
+
+<span class="Comment"># Processing</span>
+tax = round(taxRate * price, 2)
+total = price + tax
+
+<span class="Comment"># Output</span>
+msg = "The sales tax is ${} and the total is ${}."
+print(msg.format(tax, total))</pre>
+
+<li>Make a copy of this <a target="Doc" href="https://docs.google.com/document/d/1AFw9km_FdFE9XM_94prllrsY5OSxcYQ3SLh_IJ9P98M">Google Doc</a> in the <code>CS10</code> of your EIPS Google Drive.
+    Answer the questions in the document. Use the program <code>s07_test.py</code> to test your answers for question 3 in the document.</li>
+
+</ol></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Data Types (Classes)",
+    up: "cs_new/cs10",
+    next: "cs_new/sp1/mod",
+    prev: "cs_new/sp1/io",
+}
+  
+</script>

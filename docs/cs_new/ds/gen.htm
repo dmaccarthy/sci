@@ -1,0 +1,142 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">List Comprehensions</h2><div class="Collapse Expand">
+<p>We saw is the last lesson that list comprehensions provide a “shortcut” for producing lists from existing sequences. In the example below <code>range(5)</code> creates a sequence of the numbers 0 through 4, and the list comprehension (shown in blue) squares each of these numbers to produce a new <code>list</code>.</p>
+
+<pre data-echo="py" class="Code" contenteditable="true">
+squares = <span class="Blue">[n**2 for n in range(5)]</span>
+print(squares)     <span class="Comment"># [0, 1, 4, 9, 16]</span></pre>
+
+<p>Without list comprehensions we would need to explicitly initialize an empty <code>list</code> and then append the items one at a time as we calculate them...</p>
+<pre data-echo="py" class="Code" contenteditable="true">
+squares = []
+for n in range(5):
+    squares.append(n**2)
+print(squares)     <span class="Comment"># [0, 1, 4, 9, 16]</span></pre>
+
+<p>List comprehensions are limited to situations where we are applying a specific formula (<code>n**2</code> in the example above) to an existing sequence (<code>range(5)</code>). To generate a sequence that is not based on an existing sequence (e.g. the Fibonacci sequence or a list of prime numbers), we would need to use a <code>while</code> loop.</p>
+<p>The example below defines a function that returns the first <code>n</code> terms of the Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, etc.  Each term is obtained by adding the two previous terms.  Note the three statements shown below in blue. Before entering the loop, the list is initialized to empty. An item is appended to the sequence during each loop iteration. The entire list is returned after the loop has finished.</p>
+
+<pre data-echo="d06_ex1.py" data-title="1" class="Code" contenteditable="true">def fib(n):
+    <span class="Comment">"Return the first n terms of the Fibonacci sequence"</span>
+    a = 0
+    b = 1
+    <span class="Blue">fibSeq = []</span>
+    while n>0:
+        <span class="Blue">fibSeq.append(a)</span>
+        a, b = b, a+b
+        n -= 1
+    <span class="Blue">return fibSeq</span>
+
+for n in fib(10): print(n)  <span class="Comment"># 0 1 1 2 3 5 8 13 21 34</span></pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Generator Functions</h2><div class="Collapse Expand">
+<p>Python provides a shortcut for situations like the example above...</p>
+<pre data-echo="d06_ex2.py" data-title="1" class="Code" contenteditable="true">def fib(n):
+    <span class="Comment">"Yield the first n terms of the Fibonacci sequence"</span>
+    a = 0
+    b = 1
+    while n > 0:
+        <span class="Blue">yield a</span>
+        a, b = b, a+b
+        n -= 1
+
+for n in fib(10): print(n)   <span class="Comment"># 0 1 1 2 3 5 8 13 21 34</span></pre>
+
+<p>The <code>fib</code> function above is called a <em class="Defn">generator function</em>. Generator functions are used to create sequences.
+    Generator functions use a <code>yield</code> statement rather than <code>return</code>. In a normal function, only one
+    <code>return</code> statement can be executed, since <code>return</code> terminates the function.</p>
+<p>A generator function can execute the <code>yield</code> statement as many times as we need it to. Each time a <code>yield</code>
+    is executed, one item of the sequence is generated. We do not have to initialize an empty list, append items to the list,
+    or return the completed list as we would in <code>d06_ex1.py</code> above. The Python interpreter automatically generates the
+    sequence for us from the results of the <code>yield</code> statement.</p>
+<p>The main program is the same for both of the previous examples. Regardless of whether the <code>fib</code> function is
+    implemented as a generator or as a regular function that returns a <code>list</code>, the output will be the same.</p>
+<pre data-echo="py" class="Code" contenteditable="true">
+for n in fib(10):
+    print(n)</pre>
+
+<p>There is however, a difference in how the Python interpreter runs the program in the two cases. With a regular function,
+    the entire sequence is determined and is stored as a <code>list</code> object. Only after the complete <code>list</code>
+    has been produced does the interpreter begin to execute the body of the <code>for-in</code> loop in the main program above.</p>
+<p>This can be problematic for very long sequences. The program can appear to pause for a long time as the <code>list</code>
+    is calculated. Also, a long <code>list</code> can occupy a large amount of memory and thereby make the program run less
+    efficiently. If the <code>list</code> is too long, a memory error can occur and, of course, infinitely long sequences
+    cannot be represented as a <code>list</code>.</p>
+<p>When a generator function is used, Python runs the function <em>only up to the first <code>yield</code> statement</em>. The
+    interpreter then “pauses” the generator function as it runs the body of the <code>for-in</code> loop with the first item
+    yielded in the sequence. When it reaches the end of the loop body, it resumes the generator function until another <code>yield</code>
+    statement occurs, at which point it runs the <code>for-in</code> loop’s body again with the second item of the sequence.
+    This process continues until the generator function reaches its end.</p>
+<p>Using this method, the sequence is generated one item at a time as the items become needed. At no point does the program have to store the entire sequence in memory. As a result, the potential problems mentioned above do not occur when a generator function is used. A generator function can, if we want it to, generate <em>infinitely long</em> sequences.</p>
+<p>The output of our program <em>will</em> be different if we try to print the sequence all at once rather than one item at a
+    time using a <code>for-in</code> loop. Suppose our main program consisted of the single statement...</p>
+<pre data-echo="py" class="Code" contenteditable="true">
+print(fib(10))</pre>
+
+<p>If <code>fib</code> is a regular function, it should return a <code>list</code> and the program output should be...</p>
+<pre class="IO">[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</pre>
+
+<p>If <code>fib</code> is a generator function, it returns a generator object and the program output will resemble...</p>
+<pre class="IO">&lt;generator object fib at 0x0326AD78&gt;</pre>
+
+<p>Printing a generator object cannot result in the entire sequence because the entire sequence is never generated at one time!
+    You can pass the result of a generator function to the <code>list</code> or <code>tuple</code> constructor to obtain the
+    same result that a regular function would produce...</p>
+<pre data-echo="py" class="Code" contenteditable="true">
+print(list(fib(10)))   <span class="Comment"># [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span></pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Infinite Sequences</h2><div class="Collapse Expand">
+<p>In math, there is a special number known as Euler’s number (<span class="TeX">e</span>) that can be calculated as the sum of an infinite series...</p>
+<p class="TeX">e = 1 + 1 + \frac{1}{2} + \frac{1}{6} + \frac{1}{24} + ...</p>
+<p>Each term in the series is calculated by dividing the previous term by the total number of previous terms; i.e. the second term is the first term divided by 1, the third term is the second term divided by 2, etc.  We can use a generator function to represent the entire infinite sequence...</p>
+<pre data-echo="d06_ex3.py" data-title="d06_ex3.py — Part 1" class="Code" contenteditable="true">def eulerTerms():
+    <span class="Comment">"Generate the terms of the infinite series for e"</span>
+    terms = 0
+    nextTerm = 1.0
+    while True:    <span class="Comment"># Loop runs forever!!</span>
+        yield nextTerm
+        terms += 1
+        nextTerm /= terms</pre>
+
+<p>Iterating through an infinite sequence would take an infinite amount of time. We can use the <code>break</code> statement
+    to terminate the loop early. For example, if we wanted to sum the series, eventually the terms would become so small that
+    adding them would make no difference when rounded to the precision that Python uses for floats. At this point, we could
+    use <code>break</code> to end the loop...</p>
+<pre data-echo="d06_ex3.py" data-title="d06_ex3.py — Part 2" class="Code" contenteditable="true">
+def eulerSum():
+    <span class="Comment">"Sum the Euler series until terms become too small to matter"</span>
+    euler = 0.0
+    for term in eulerTerms():
+        prev = euler
+        euler += term
+        print(term)
+        <span class="Blue">if euler == prev: break</span>
+    return euler
+
+print("e =", eulerSum())</pre>
+<p>It should be noted that many programmers consider the use of <code>break</code> to be inelegant and a technique that produces less readable code.
+    Therefore, <code>break</code> should not be used if there is an alternative way to achieve your algorithm without making it much more complex.</p>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+    <li>Complete the program <code>d06_askNums.py</code> to use a <u>generator function</u> to collect a sequence of numbers from the user, one at a time. The user will determine how many numbers to enter. Ignore any input that cannot be converted to a number.</li>
+    <li>Complete the program <code>d06_primes.py</code> to use a <u>generator function</u> to create a sequence of prime numbers. Remember that a prime number is a positive integer that has exactly two whole-number factors: itself and the number 1. The function should take one optional argument that specifies the number of terms to generate. If no arguments are passed, the function should generate the entire (infinite) sequence!</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Generator Functions",
+    up: `cs_new/cs20`,
+    prev: "cs_new/ds/comp",
+    next: "cs_new/ds/array",
+}
+
+</script>

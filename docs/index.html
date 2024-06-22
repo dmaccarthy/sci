@@ -1,9 +1,81 @@
 <!DOCTYPE html>
-<html lang="en-CA">
+<html lang="en-ca">
 <head>
-    <title>Test</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Feeds</title>
+<link rel="shortcut icon" type="image/svg+xml" href="/media/rocket.svg" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+<link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-roman.css" type="text/css" charset="utf-8" />
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<link rel="stylesheet" href="/style/common.css"/>
+<link rel="stylesheet" href="/style/feed.css"/>
+<link rel="stylesheet" href="/style/svg.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script> -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.1/lib/browser/math.min.js"></script>
+<script type="text/javascript" src="/media/dataimg.js"></script>
+<script type="text/javascript" src="/script/feed.js"></script>
+<script type="text/javascript" src="/src/util.js"></script>
+<script type="text/javascript" src="/src/bdata.js"></script>
+<script type="text/javascript" src="/src/math.js"></script>
+<script type="text/javascript" src="/src/matrix.js"></script>
+<script type="text/javascript" src="/script/phys.js"></script>
+<script type="text/javascript" src="/src/svg_anim.js"></script>
+<script type="text/javascript" src="/src/applet.js"></script>
+<style type="text/css">
+
+#Top, #Main, #Copy {display:none;}
+#Copy {font-size: 80%;}
+
+</style>
+<script type="text/javascript">
+
+siteData.handouts = "These are printable versions of the handouts provided in class. If you lose a handout or are absent when it is given out, you can download and print from here.";
+siteData.linkHand = "Here are the handouts and links for this lesson:";
+siteData.useful = "Here are some links that may be useful for this chapter...";
+siteData.practice = "Here is a printable version of the <em>Practice &amp; Review</em> questions for this chapter...";
+siteData.cs = `Assignments must be completed in <a href="https://replit.com" target="replit">replit</a> (coding assignments) and <a href="https://docs.google.com" target="GDocs">Google Docs</a> (non-coding assignments) to establish a ‘History’ of your work.
+    Work that is pasted or retyped from another location, or authored by an AI tool, will not be awarded credit!`;
+
+let tmp, _;
+    
+let svgTrack = () => {
+    let svg = $("svg").on("mousemove", (ev) => {
+        if (ev.ctrlKey) console.log(ev.currentTarget.graphic.eventCoords(ev).coords);
+    });
+    return svg[0].graphic;
+}
+    
+</script>
 </head>
 <body>
-    <p>Testing...</p>
+<nav id="Top">
+<span id="TopTitle">Mr. Mac’s Website</span>
+<span id="Buttons">
+    <a data-id="today" title="Click to open the current lesson">
+    <svg id="TodayIcon" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <style>
+    #TodayIcon * {fill: none; stroke: #0065fe; stroke-width: 5}
+    #TodayIcon rect {fill: #0065fe}
+    #TodayIcon circle {fill: white; stroke: none}
+    #TodayIcon text {stroke-width: 1; fill: red; stroke: red; text-anchor: middle;
+        dominant-baseline: middle; font-size: 400%}
+    </style>
+    <polyline points="2 2 2 126 126 126 126 2"></polyline>
+    <rect x="2" y="2" width="124" height="22"></rect>
+    <circle cx="36" cy="13" r="7"></circle><circle cx="92" cy="13" r="7"></circle>
+    <text id="DateToday" x="64" y="84"></text>
+    </svg></a>
+    <a data-id="prev" title="Click to go to the previous lesson"><img src="./media/prev.svg"/></a>
+    <a data-id="next" title="Click to go to the next lesson"><img src="./media/next.svg"/></a>
+</span>
+</nav>
+<article id="Main"></article>
+<p class="Center" id="Copy">© 2022-2024 by <a href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
 </body>
 </html>

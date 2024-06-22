@@ -1,0 +1,95 @@
+<section class="Post" data-icon="laptop.svg">
+<h2 class="Collapse">Hexadecimal</h2><div class="Collapse Expand">
+<p>In computer programming, it is common to use a <em>base 16</em> number system called <em class="Defn">hexadecimal</em>.</p>
+<ul>
+    <li>We have already learned that binary (base 2) uses two symbols (<code>0</code> and <code>1</code>) and the <em>place value</em> of each digit is two times as big as the next digit (1, 2, 4, 8, 16, ...)</li>
+    <li>Binary numbers are often prefixed with <code>0b</code> to allow compilers and interpreters (like Python or Javascript) to tell them apart from regular decimal numbers.</li>
+    <li>Decimal (base 10) uses ten symbols (<code>0...9</code>) and the <em>place value</em> of each digit is ten times as big as the next digit (1, 10, 100, 1000, ...)</li>
+</ul>
+<p>Hexadecimal uses <em>sixteen</em> symbols...</p>
+<table class="Center Two TD6">
+    <tr><th>Hex Digit</th><th>Decimal Value</th></tr>
+    <tr><td>0</td><td>0</td></tr>
+    <tr><td>1</td><td>1</td></tr>
+    <tr><td>2</td><td>2</td></tr>
+    <tr><td>3</td><td>3</td></tr>
+    <tr><td>4</td><td>4</td></tr>
+    <tr><td>5</td><td>5</td></tr>
+    <tr><td>6</td><td>6</td></tr>
+    <tr><td>7</td><td>7</td></tr>
+    <tr><td>8</td><td>8</td></tr>
+    <tr><td>9</td><td>9</td></tr>
+    <tr><td>A</td><td>10</td></tr>
+    <tr><td>B</td><td>11</td></tr>
+    <tr><td>C</td><td>12</td></tr>
+    <tr><td>D</td><td>13</td></tr>
+    <tr><td>E</td><td>14</td></tr>
+    <tr><td>F</td><td>15</td></tr>
+</table>
+<ul>
+    <li>Hexadecimal numbers are often prefixed with <code>0x</code> to distinguish them from decimal numbers.</li>
+    <li>The place value of each digit is <em>sixteen</em> times larger than the next digit!</li>
+</ul>
+<p>Suppose we encountered a hexadecimal number <code>0xA3E</code>...</p>
+<table class="Center Four">
+    <tr class="Red"><td>Hex Digits</td><td>A = 10</td><td>3</td><td>E = 14</td></tr>
+    <tr><td>Place Value</td><td>16<sup>2</sup> = 256</td><td>16</td><td>1</td></tr>
+    <tr><td>Value</td><td>10 × 256 = 2560</td><td>3 × 16 = 48</td><td>14</td></tr>
+</table>
+<ul>
+    <li>The last digit (<code>E</code>) is in the 1’s column and is equivalent to the decimal number 14.</li>
+    <li>The next digit (<code>3</code>) is in the 16’s column, so it is counted as 3 × 16 which is 48.</li>
+    <li>The next digit (<code>A</code>) is in the 256’s column and is equivalent to the decimal number 10, so it is counted as 10 × 256 which is 2560.</li>
+    <li>The decimal equivalent of this number is 2622...</li>
+</ul>
+<pre class="Code" data-echo="ex1.py">print(0xA3E)    <span class="Comment"># 2622 = 10 * 256 + 3 * 16 + 14</span>
+print(0x7D2)    <span class="Comment"># 2002 = 7 * 256 + 13 * 16 + 2</span>
+</pre>
+<ul><li>If we add a fourth digit, the place value of the largest column will be 16<sup>3</sup>, or 4096.</li></ul>
+
+<p>The reason that hexadecimal is popular in computer programming is that each hexadecimal digit requires four bits, or one-half of an 8-bit byte for storage.
+    Suppose we have a byte containing the binary number <code>0b<span class="Red">1100</span><span class="Blue">1001</span></code>. We can separate the byte into two halves of four bits each...</p>
+<pre class="Code" data-echo="text"><span class="Red">0b1100 = 8 + 4 = 12</span>
+<span class="Blue">0b1001 = 8 + 1 = 9</span></pre>
+<p>We can represent the byte in hexadecimal as <code>0xC9</code>, where the <code>C</code> (12) represents the first four bits and the <code>9</code> represents the last four bits.</p>
+
+<p>To convert a decimal number to hexadecimal, we can:</p>
+<ul>
+    <li>Write the number using powers of 16, or</li>
+    <li>Convert the number to binary, and then encode every group of four bits as a hex digit.</li>
+</ul>
+<p>Use the Python format code <code>x</code> to inidicate a hexidecimal number...</p>
+<pre class="Code" data-echo="ex2.py">dec = 12351
+print(f"0x{dec:<span class="Blue">x</span>}")    <span class="Comment"># 0x303F = 3 * (16**3) + 3 * (16) + 15 * (1)</span>
+print(f"0b{dec:<span class="Blue">b</span>}")    <span class="Comment"># 0b<span class="Red">11</span><span class="Blue">0000</span><span class="Red">0011</span><span class="Blue">1111</span></span>
+</pre>
+<p>Notice that in the binary encoding, the groups of four bits shown by the red and blue digits encode to 3, 0, 3, and 15(F)!!</p>
+</div></section>
+
+<section class="Post" data-icon="video"><h2 class="Collapse">Video</h2>
+    <div class="Collapse Expand" data-yt="#PLpVmtCaB-lyl6yBCPxoqbvxqOWhTfme3I"></div>
+</section>
+
+<!--section class="Post" data-icon="laptop.svg">
+<h2 class="Collapse">Binary to Decimal</h2><div class="Collapse Expand">
+    
+</div></section-->
+
+<section class="Post" data-icon="gdoc.svg">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+    <p>Watch the video above and then complete this assignment:</p>
+    <p class="BtnGrid">
+        <button data-icon="gdoc.svg" data-gdoc="1WvpGhItt4-KMexGiqEMRgorlnQ-e7YENaOOmKicCG-Y">Hexadecimal &amp; Floating Point</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Hexadecimal & Floating Point",
+    up: `cs_new/ct1/home`,
+    prev: "cs_new/ct1/bin",
+    next: "cs_new/ct1/text",
+}
+
+</script>

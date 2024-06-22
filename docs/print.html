@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head><title>Lesson Notes</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="shortcut icon" type="image/svg+xml" href="./media/rocket.svg" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+<link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-roman.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="./style/common.css"/>
+<link rel="stylesheet" href="./style/svg.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script> -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.1/lib/browser/math.min.js"></script>
+<script type="text/javascript" src="./src/util.js"></script>
+<script type="text/javascript" src="./src/bdata.js"></script>
+<script type="text/javascript" src="./src/math.js"></script>
+<script type="text/javascript" src="/src/matrix.js"></script>
+<script type="text/javascript" src="./src/svg_anim.js"></script>
+<script type="text/javascript" src="./src/applet.js"></script>
+<style type="text/css">
+
+body {font-family: "Noto Sans", "Open Sans", Oxygen, sans-serif}
+.NoPrint {display: none}
+    
+</style>
+<script type="text/javascript">
+
+function isSlideshow() {return false}
+function isPrintPage() {return true}
+    
+let loadFeed = {init: renderTeX};
+let tmp, _;
+
+$(() => {
+    document.title = opener.document.title;
+    $("h2").html(document.title);
+    let id = qsArgs("id");
+    if (!id) id = "LessonNotes";
+    $("body").append(opener.printable(id));
+    $("#Title").closest("section.Slide").remove();
+    $("[data-if]").remove();
+    loadAllSVG(() => {
+        loadFeed.init();
+        for (let s of $("script[data-init]")) {
+            try {loadFeed[$(s).attr("data-init")]()} catch(err) {console.error(err)};
+        }
+        // try {loadFeed.initNotes()} catch(err) {};
+        // try {loadFeed.initSoln()} catch(err) {};
+        aspect();
+        if (!qsArgs("show")) setTimeout(print, 1000);
+    });
+})
+
+</script>
+</head>
+<body class="Print">
+<h2></h2>
+</body>
+</html>

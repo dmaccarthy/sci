@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Movie</title>
+<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../src/util.js"></script>
+<script type="text/javascript" src="../src/bdata.js"></script>
+<script type="text/javascript" src="../src/math.js"></script>
+<script type="text/javascript" src="../src/svg_anim.js"></script>
+<script type="text/javascript">
+
+function run(n) {
+    if (!n) n = 0;
+    if (n >= script.length) {
+        console.log("Done!");
+        return;
+    }
+    let [t, fn] = script[n];
+    run.cue = n;
+    fn();
+    if (run.timed) setTimeout(() => {run(n+1)}, t);    
+}
+
+let script = [
+    [2000, () => {
+        $("#S1").fadeIn();
+    }],
+
+    [2000, () => {
+        $("#S1").hide();
+        $("#S2").fadeIn();
+    }],
+
+    [0, () => {
+        $("#Screen *").fadeOut();
+    }],
+
+];
+
+$(() => {
+    $("#Screen *").hide();
+    run.timed = true;
+});
+
+</script>
+<style type="text/css">
+
+#Screen {
+    width: calc(1280px + 16px);
+    height: calc(720px + 16px);
+    position: absolute;
+    top: 0; left: 0;
+    /* background-color: pink; */
+    overflow: scroll;
+}
+
+</style>
+</head>
+<body>
+<article id="Screen">
+
+<section id="S1">Section 1</section>
+<section id="S2">Section 2</section>
+<section id="S3">Section 3</section>
+<section id="S4">Section 4</section>
+
+</article>
+<!-- <svg xmlns="http://www.w3.org/2000/svg"></svg> -->
+</body>
+</html>

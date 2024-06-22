@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Test</title>
+<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"/> -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<link rel="stylesheet" href="../style/common.css"/>
+<link rel="stylesheet" href="../style/feed.css"/>
+<link rel="stylesheet" href="../style/svg.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script> -->
+<!-- <script type="text/javascript" src="https://jscdn.davidmaccarthy.repl.co/dist/abjmu.js"></script> -->
+<!-- <script type="text/javascript" src="../script/feed.js"></script> -->
+<script type="text/javascript" src="./util.js"></script>
+<script type="text/javascript" src="./bdata.js"></script>
+<script type="text/javascript" src="./math.js"></script>
+<script type="text/javascript" src="./svg_anim.js"></script>
+<script type="text/javascript" src="./applet.js"></script>
+<script type="text/javascript">
+
+let svg;
+
+function init() {
+    svg = new SVG_Animation("#Graph1", -6);
+    svg.grid([-5, 5, 1], [-5, 5, 1]);
+
+    let pro = save.cache.protractor;
+    pro.create(svg, 5).config({position: [0, -2]}).$.on("wheel", pro.wheel);    
+
+    svg.update(0);
+    svg.$.click(() => {svg.toggle()});
+}
+
+$(() => {
+    $.getScript({url: "/svg_js/protractor.js", success: init});
+});
+
+// let images;
+
+// $(() => {
+//     loadDataURLs("../media/slides.png").then(imgs => {
+//         images = imgs;
+//         init();
+//     });
+//     // loadDataURLs.wait(images, init); 
+// });
+
+// function format(template, data) {
+//     return JSON.parse(`{"t": "${data}"}`).t;
+// }
+
+    
+</script>
+</head>
+<body>
+<p><svg id="Graph1" data-aspect="1" width="600" height="600">
+<!--def>
+    <image id="Marker" href="../media/slides.png" width="64" height="64"></image>
+</def-->
+<style>
+
+svg g.Grid line {stroke: lightgrey}
+
+/* svg g.Protractor *:is(line, path) {stroke: #404040; fill: none}
+svg g.Protractor path.Plastic {fill: grey; fill-opacity: 0.1; stroke: none}
+
+svg g.Protractor text {
+    fill: #404040;
+    dominant-baseline: middle;
+    text-anchor: middle;
+    font-family: "Noto Sans", sans-serif;
+} */
+
+</style>
+</svg></p>
+<p></p>
+</body>
+</html>

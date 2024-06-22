@@ -1,0 +1,32 @@
+<div class="Note">
+<p>Suppose we have some data in the form of a <code>list</code>. The data can be numbers, students, bus schedules, data from a Science experiment, or any other type of information.</p>
+<p>We may want to search for a particular <b class="Red">record</b> (item) within the data. For example, when a student wants to change their course registration, the school counsellor would need to search the student records for that particular student.</p>
+<p>The simplest algorithm for performing a search is called a <b class="Red">linear search</b>. In this algorithm, we start at
+    the beginning of the data and we examine the records one by one, comparing each to the data we are searching for, until
+    we locate a record that matches our desired criteria or until we reach the end of the <code>list</code>. In some cases,
+    we might want to search for more than one single record. For example, we can search a school’s registration data for <em>all</em>
+    students registered in Computing Science 30.</p>
+<p>Algorithms like a linear sort, which rely on repetition, are called <b class="Red">iterative algorithms</b>.</p>
+</div>
+
+<h3>Assignment</h3>
+<p class="Red">Do not use any of Python’s list searching methods for any of these tasks; you must impelement the algorithm’s logic yourself.</p>
+<ol class="Assign">
+<li>The program <code>iter1_linear1.py</code> generates an unsorted <code>list</code> of one thousand random numbers between
+    0 and 100. The <code>search</code> function in this program is intended to search through the <code>list</code> for all
+    occurrences of the value that the user enters when prompted. Whenever the search value is found in the data, the <code>search</code>
+    function should yield the index. Complete the program by writing and testing this function.</li>
+<li>Sometimes we might want to search using more complicated data and search criteria. The program <code>iter1_linear2.py</code>
+    generates data for students registered at a school. Each record in the data is a dictionary that has keys <code>"studentNumber"</code>,
+    <code>"surname"</code>, <code>"givenName"</code>, <code>"grade"</code>, and <code>"birthday"</code>. The data is sorted by
+    student number. We might want to search the data for all students born in the year 2004, or all students with the surname
+    “Smith”.
+<ol style="list-style:lower-alpha">
+    <li>Complete the <code>matchYear</code> function that checks whether a single record is a match for the specified birth
+    year. Also complete the <code>search</code> function to implement the linear search algorithm and print the records
+    (dictionaries) that match the birth year.</li>
+    <li>In the <code>main</code> function, move the comment character so that the program searches for students with the
+    surname “Smith”. Complete the <code>matchSurname</code> function so that the program works properly. You should not need
+    to modify your <code>search</code> function.</li>
+</ol>
+</ol>

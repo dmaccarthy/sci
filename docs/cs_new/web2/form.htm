@@ -1,0 +1,161 @@
+<style type="text/css">
+    
+form {margin:2em auto}
+
+</style>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Forms</h2><div class="Collapse Expand">
+
+<p>So far, we have only learned about static “Web 1.0” webpages. The user cannot
+	interact with the webpage except by clicking a link to move to a different page.
+	One way to increase the interactivity of a page is to include forms.</p>
+<p>A <em class="Defn">form</em> is one or more <em class="Defn">inputs</em> that allows the user to enter
+	information or choose between options. When the user “submits” the form, the page
+	responds by doing something. For example, when you submit an order form to an online
+	bookstore, it causes a program to run on the server that records the order, bills
+	your account, sends a copy of the order to the bookstore’s shipping department, and
+	then sends you a confirmation of your order.</p>
+
+<p>A simpler example of a form is a login page. The form below consists of three inputs:
+	the username is a <em>text input</em>, the password is a <em>password input</em> and
+	the login button is a <em>submit input</em>.</p>
+<form class="Center" action="javascript:alert('Thanks for visiting!')">
+	Username: <input type="text" name="user" value="guest"/>
+	Password: <input type="password" name="pass"/>
+	<input type="submit" value="Login"/>
+</form>
+
+<p>The HTML code for the form is:</p>
+
+<pre class="Code" contenteditable="true" data-echo="html">
+&lt;form&gt;
+  Username: &lt;input type="text" name="user" value="guest"/&gt;
+  Password: &lt;input type="password" name="pass"/&gt;
+  &lt;input type="submit" value="Login"/&gt;
+&lt;/form&gt;</pre>
+
+<p>Each <code>input</code> is a self-closing tag. The <code>type</code> attribute is
+	used to specify the kind of input you want.</p>
+<ul>
+	<li><code>text</code>: A rectangular area where the user can type text.</li>
+	<li><code>password</code>: The same as text, except that the characters are hidden as dots or asterisks.</li>
+	<li><code>submit</code>: A button that submits the form data to the server.</li>
+</ul>
+
+<p>The <code>name</code> attribute identifies the input. Giving each input a name
+	allows the server to tell which data goes with which input. The <code>submit</code>
+	input does not need a name.</p>
+
+<p>The <code>value</code> attribute specifies the default text to displayed for the
+	text and password inputs, and the message displayed on the button for the submit
+	input.</p>
+
+<p>The input elements and their labels need to be nested inside a <code>form</code>
+	element. The form element usually has an <code>action</code> attribute that identifies
+	the URL where the form data is to be sent when the submit button is clicked. The
+	form may also have a <code>method="post"</code> attribute, which submits the form
+	more securely than the default method. Whether a form needs to use the <em>post</em> method
+	or the default method is determined by the server to which it is being submitted.</p>
+
+<pre class="Code" contenteditable="true" data-echo="html">
+&lt;form <span class="Blue">action</span>="https://webapp2023-davidmaccarthy.replit.app/formecho" <span class="Blue">method</span>="post"&gt;
+  Username: &lt;input type="text" name="user" value="guest"/&gt;
+  Password: &lt;input type="password" name="pass"/&gt;
+  &lt;input type="submit" value="Login"/&gt;
+&lt;/form&gt;</pre>
+
+</div></section>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Other Inputs</h2><div class="Collapse Expand">
+
+<p>Forms can also include other inputs such as check boxes, radio buttons, selects, and file
+	uploads.</p>
+
+<p>A check box is an input that can be checked or unchecked. Radio buttons are a group of inputs
+	with the same <code>name</code> attribute, from which the user can check only one.
+	Checking one radio button unchecks all of the others that have the same name.</p>
+<p>A <code>select</code> input creates a menu with several options to choose from.</p>
+
+<form class="Center" target="Echo" action="https://webapp2023-davidmaccarthy.replit.app/formecho" method="post" enctype="multipart/form-data">
+	<p><input type="checkbox" name="student" value="yes" /> Current Student</p>
+	<p>
+		<input type="radio" name="grade" value="10" checked="checked" /> Grade 10<br/>
+		<input type="radio" name="grade" value="11" />Grade 11<br/>
+		<input type="radio" name="grade" value="12" />Grade 12
+	</p>
+    <p>Residence: <select name="res">
+        <option value="ShPk">Sherwood Park</option>
+        <option value="Fort">Fort Saskatchewan</option>
+        <option value="Ard">Ardrossan</option>
+        <option value="County">Strathcona County</option>
+        <option value="Edm">Edmonton</option>
+        <option value="Other">Other</option>
+    </select></p>
+	<p>Application Form: <input type="file" name="file"/></p>
+	<p><input type="submit" value="Send"/></p>
+</form>
+
+<p>Here is the HTML code for the form above:</p>
+<pre class="Code" contenteditable="true" data-echo="html">
+&lt;form action="https://webapp2023-davidmaccarthy.replit.app/formecho" method="post" enctype="multipart/form-data"&gt;
+  &lt;p&gt;&lt;input type="checkbox" name="student" value="yes" /&gt; Current Student&lt;/p&gt;
+  &lt;p&gt;
+    &lt;input type="radio" name="grade" value="10" checked="checked" /&gt; Grade 10&lt;br/&gt;
+    &lt;input type="radio" name="grade" value="11" /&gt;Grade 11&lt;br/&gt;
+    &lt;input type="radio" name="grade" value="12" /&gt;Grade 12
+  &lt;/p&gt;
+  &lt;p&gt;Residence: &lt;select name="res"&gt;
+    &lt;option value="ShPk"&gt;Sherwood Park&lt;/option&gt;
+    &lt;option value="Fort"&gt;Fort Saskatchewan&lt;/option&gt;
+    &lt;option value="Ard"&gt;Ardrossan&lt;/option&gt;
+    &lt;option value="County"&gt;Strathcona County&lt;/option&gt;
+    &lt;option value="Edm"&gt;Edmonton&lt;/option&gt;
+    &lt;option value="Other"&gt;Other&lt;/option&gt;
+  &lt;/select&gt;&lt;/p&gt;
+  &lt;p&gt;Application Form: &lt;input type="file" name="file"/&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input type="submit" value="Send"/&gt;&lt;/p&gt;
+&lt;/form&gt;</pre>
+
+<p>The file input allows the user to select a file from their computer and upload it to
+	the server. To permit the file to be uploaded, you have to add an additional attribute
+	called <code>enctype</code> (encoding type) to the <code>form</code> element:<p>
+
+<pre class="Code" data-echo="copy">
+enctype="multipart/form-data"</pre>
+
+<p>Without this extra attribute, the browser will only submit the file name, not the actual
+	contents of the file. (You can edit the form above to remove this attribute and see how the server
+    responds differently when you submit the form.)</p>
+</div>
+    
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+	<li><p>Create a HTML5 document, <code>x01_catalog.html</code>, containing a form like
+		the one illustrated below. Your form should submit to:</p>
+        <p class="Center"><code>https://webapp2023-davidmaccarthy.replit.app/formecho</code></p>
+		<p class="Center"><img class="Wide" src="./cs_new/web2/img/search.png" alt="Form"/></p>
+	</li>
+	<li>Design a survey containing four questions about a topic of your choice, to be
+		administered (hypothetically) to your classmates. Your survey should be implemented
+		using forms in an HTML document <code>x01_survey.html</code>. Your webpage should
+		also collect demographic data such as the students’ age, gender, grade, and student
+		ID number. Submit the form to the same URL as the previous question.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+tmp = localStorage.getItem("cs_course") == "20" ? "cs20" : "cs10";
+
+loadFeed.data = {
+    title: "HTML5 Forms",
+    up: `cs_new/${tmp}`,
+    next: "cs_new/web2/css"
+}
+  
+</script>

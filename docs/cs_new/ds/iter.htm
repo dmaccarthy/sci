@@ -1,0 +1,81 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Iterating through Sequences</h2><div class="Collapse Expand">
+<p>In Python 3, tuples, lists, and strings are examples of <em class="Defn">iterable</em> objects.
+    This means that the data is a <em>sequence</em> that can be looped through. You saw in CS 10 that Python
+    includes a <code>while</code> loop that can be used to repeat one or more instructions until the
+    boolean condition controlling the loop becomes <code>False</code>. We can use this to print
+    (or perform some other operation) on the items of a sequence one at a time...</p>
+<pre data-echo="d02_ex1.py" data-title="1" class="Code" contenteditable="true">data = 1, "two", 3.14
+index = 0
+while index < len(data):
+    print(data[index])
+    index += 1</pre>
+
+<p>Python provides another type of loop, called a <code>for</code> loop, that is more concise when looping through iterable objects...</p>
+<pre data-echo="d02_ex2.py" data-title="1" class="Code" contenteditable="true">data = 1, "two", 3.14
+for item in data:
+    print(item)</pre>
+
+<p>When using a <code>for</code> loop, Python will automatically assign each item in the sequence to the
+    specified variable.  We used <code>item</code> as the variable name in the example above but you can use any valid name.  Our program does not need to check the length of the sequence or use an index to access the items: Python does this for us!</p>
+<p>We used a <em>counter</em> variable in CS 10 to make a <code>while</code> loop that ran a specified
+    number of times. For example, the program below prints 10 random numbers...</p>
+<pre data-echo="d02_ex3.py" data-title="1" class="Code" contenteditable="true">from random import random
+
+counter = 0
+while counter < 10:
+    print(random())
+    counter += 1</pre>
+
+<p>Python includes a built-in function called <code>range</code> that generates an iterable sequence of
+    numbers. The <code>range</code> function provides us with an alternative to a <code>while</code> loop when we want to use a counter.</p>
+
+<pre data-echo="d02_ex4.py" data-title="1" class="Code" contenteditable="true">from random import random
+
+for counter in range(10):
+    print(random())</pre>
+
+<p>Both programs (<code>d02_ex3.py</code> and <code>d02_ex4.py</code>) run the loop ten times, with the variable <code>counter</code> starting at 0 and having a value of 9 the last time the loop is run.</p>
+<ul>
+    <li>Using the <code>while</code> version of the loop, the program has to initialize and increment the counter variable.</li>
+    <li>With the <code>for-in</code> version of the loop, the <code>range</code> function generates the sequence 0..9 for us, so there is no need to initialize or increment the counter!</li>
+    <li>The <code>range</code> function can be called with two or three arguments if we want to start the sequence at a number other than 0, or if we want to count by something other than 1...</li>
+</ul>
+<pre data-echo="d02_ex5.py" data-title="1" class="Code" contenteditable="true">for num in range(10, 20, 3):  <span class="Comment"># 10, 13, 16, 19</span>
+    print(num)</pre>
+
+<p>The <code>in</code> keyword can also be used without the <code>for</code> keyword as an operator
+    that tests whether an object occurs within an iterable sequence. The operator evaluates to a boolean
+    value; i.e. either <code>True</code> or <code>False</code>.</p>
+<pre data-echo="d02_ex6.py" data-title="1" class="Code" contenteditable="true">print("a" in "Sal")      <span class="Comment"># True</span>
+print(15 in range(8))    <span class="Comment"># False</span></pre>
+
+<p>Python has a builtin function called <code>enumerate</code> that returns a sequence of tuples from an iterable object. Each <code>tuple</code> contains an index or counter, and a value...</p>
+<pre data-echo="d02_ex7.py" data-title="1" class="Code" contenteditable="true">phrase = "Salisbury Composite"
+for index, letter in enumerate(phrase):
+    print(f"The {index}th letter is '{letter}'.")
+</pre>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign"><li>How common are each of the 26 letters in an English text? Complete the function <code>letterFrequency</code>
+    in the program <code>d02_letters.py</code> to find out. The program will load and print some text, and then
+    pass the text as a single string object to the <code>letterFrequency</code> function. Your function should
+    then iterate through the string, one letter at a time, and keep a running frequency count as a <code>list</code>.
+    The list contains 26 numbers, representing the frequency of each letter. Use index 0 for the letter ‘A’,
+    1 for ‘B’ and so on, up to 25 for ‘Z’. Also complete the function <code>printResults</code> to display
+    the results in a user-friendly way. Your functions should use a <code>for-in</code> loop to iterate through
+    strings and lists rather than a <code>while</code> loop.</li></ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Iteration",
+    up: `cs_new/cs20`,
+    prev: "cs_new/ds/list",
+    next: "cs_new/ds/dict",
+}
+
+</script>

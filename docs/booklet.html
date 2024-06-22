@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<title>Practice Questions</title>
+<link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<link rel="stylesheet" href="/style/common.css"/>
+<link rel="stylesheet" href="/style/feed.css"/>
+<link rel="stylesheet" href="/style/svg.css"/>
+<style type="text/css">
+
+body {font-size: 90%}
+
+section.Post {
+    padding-left: 1em;
+    border-bottom: none;
+}
+
+h1, h2, h3 {
+    break-after: avoid;    
+}
+    
+table, ol[type='a'], .NoPageBreak {
+    break-inside: avoid;
+}
+
+.PageBreak {
+    break-before: page;
+}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script> -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.1/lib/browser/math.min.js"></script>
+<script type="text/javascript" src="/media/dataimg.js"></script>
+<script type="text/javascript" src="/src/util.js"></script>
+<script type="text/javascript" src="/src/bdata.js"></script>
+<script type="text/javascript" src="/src/math.js"></script>
+<script type="text/javascript" src="/src/matrix.js"></script>
+<script type="text/javascript" src="/script/phys.js"></script>
+<script type="text/javascript" src="/src/svg_anim.js"></script>
+<script type="text/javascript" src="/src/applet.js"></script>
+<script>
+
+let loadFeed = {}, siteData = {};
+
+function isPractice(s) {
+    let h = $(s).children("h2");
+    let include = ["Pre-Test", "Practice", "Review"];
+    let i = include.indexOf(h.text());
+    if (i != -1) {
+        h.replaceWith($("<h3>").html(include[i]));
+        return true;
+    }
+}
+    
+function collect(folder, i) {
+    if (i == null) i = 0;
+    let urls = collect.urls[folder];
+    if (i >= urls.length) return;
+    let url = urls[i];
+    $.ajax({url: `/${folder}/${url[0]}.htm`, success: (e) => {
+        e = $(`<div>${e}</div>`);
+        let s = e.children("section");
+        e = [];
+        for (let j=0;j<s.length;j++)
+            if (isPractice(s[j])) e.push($(s[j]));
+        if (e.length) {
+            let s = $("<section>");
+            for (let k=0;k<e.length;k++) {
+                let ek = $(e[k]);
+                ek.find(".Answer").remove();
+                s.append(ek);
+            }
+            let h2 = $("<h2>").html(url[1]);
+            if (i) h2.addClass("PageBreak");
+            $("body").append(h2).append(s);
+            loadAllSVG(() => {
+                for (let s of $("script[data-init]")) {
+                    s = $(s);
+                    try {loadFeed[s.attr("data-init")]()} catch(err) {};
+                    s.removeAttr("data-init");
+                }
+                // try {loadFeed.initSoln()} catch(err) {};
+                aspect();
+                s = s.find(".TeX");
+                if (s.length) renderTeX(s);
+                collect(folder, i+1);
+            });
+        }
+    }});
+}
+
+$(window).on("click", (ev) => {
+    let e = $(ev.target);
+    if (ev.ctrlKey) e.toggleClass("NoPageBreak");
+    else if (ev.altKey) e.toggleClass("PageBreak");
+    else if (ev.shiftKey) e.hide();
+    console.log(ev.target);
+})
+
+console.log(`Ctrl  + Click = Toggle 'No Page Break Inside'
+ Alt  + Click = Toggle 'Page Break Before'
+Shift + Click = Hide`);
+
+$(() => {
+    let chap = location.hash.substr(1);
+    let crs = chap.split('/')[0];
+    $.getScript(`/${crs}/booklet.js`, (e) => {
+        let title = collect.titles[chap];
+        if (title.charAt(0) == "*") title = title.substr(1);
+        else title = "Chapter " + title;
+        document.title = title;
+        $("#Title").html(`${course}<br/>${title.replace('&', '&amp;')}`);
+        $("#Course").html(course);
+        collect(chap);
+    });
+});
+
+</script>
+</head>
+<body class="Print">
+<h1 id="Title" class="Center"></h1>
+<ul style="font-style: italic">
+    <li>Answer all questions on a separate sheet of paper.</li>
+    <li>Use graph paper for all graphs and vector diagrams. (If the question says to “sketch” the graph or diagram, a rough drawing without graph paper is acceptable.)</li>
+    <li>Show all work!</li>
+    <li>Use SI units, significant digits, and scientific notation appropriately.</li>
+    <li>If you use more than a single page, staple the pages together in the correct order.</li>
+    <li>Write each lesson title at the top of the first page and keep all of your work — in order! — in your <span id="Course"></span> binder.</li>
+    <li>Be prepared to hand in your notebook when the teacher asks you to.</li>
+    <li>The “Pre-Test” sections are intended to see what you already know based on previous courses and lessons; they are not summative assessments.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<section class="Post" data-icon="laptop.svg">
+<h2 class="Collapse">ASCII</h2><div class="Collapse Expand">
+<p>We saw in previous lessons that computers can store numbers in binary form using electronic circuits that can be turned off (<code>0</code>) or on (<code>1</code>).
+    Binary can be used to encode unsigned integers, signed integers, and floating pointing numbers.</p>
+<p>Another type of data that we may need to represent is text data, consisting of sequences of individual letters, numerals, punctuation marks, and possibly other characters.</p>
+<p>The American Standard Code for Information Interchange, better known as <em class="Defn">ASCII</em>, is a system for representing common characters that was developed for use with teletype machines, before the widespread use of personal computers.</p>
+<p>ASCII uses seven bits per character, meaning it is only possible to encode a maximum of 128 different characters. On modern computers that use 8-bit bytes, ASCII characters use only the last seven bits and the first bit is set to zero.</p>
+<p>The ASCII binary code for the character <code>‘A’</code> is:</p>
+<pre data-echo="text" class="Code">0b1000001</pre>
+
+<p>The first two bits (<code>10</code>) identify the character as a capital letter, and the last five bits (<code>00001</code>) identify it as the first letter. Thus the binary code for the letter <code>‘A’</code> is the same as for the unsigned number <code>65</code>.
+    The letter <code>‘B’</code> uses the same binary code as the number <code>66</code>, and so on.</p>
+<p>Python has functions called <code>ord</code> and <code>chr</code> that convert a character to its corresponding code, and vice versa.</p>
+<pre data-echo="ex1a.py" class="Code">print(ord('A'))   <span class="Comment"># 65</span>
+print(ord('B'))   <span class="Comment"># 66</span>
+print(chr(67))    <span class="Comment"># C</span>
+print(chr(68))    <span class="Comment"># D</span></pre>
+
+<p>Lower case letters have <code>11</code> as the first two bits, meaning that each lower case letter has a code that equals the code of the corresponding upper case letter plus 32:</p>
+<pre data-echo="ex1b.py" class="Code">print(ord('a'))   <span class="Comment"># 97</span>
+print(chr(98))    <span class="Comment"># b</span></pre>
+
+<p>The ten numerals (<code>0...9</code>) have ASCII codes beginning with bits <code>011</code>...</p>
+<pre data-echo="ex2.py" class="Code">print(ord('0'))   <span class="Comment"># 48</span>
+print(chr(50))    <span class="Comment"># 2</span></pre>
+
+<p>Sequences of bits not used for letters or numerals are used for spaces, punctuation marks, and control characters such as <em>Tab</em>, <em>Line Feed</em>, <em>Escape</em> or <em>Backspace</em>.</p>
+<pre data-echo="ex3.py" class="Code">for code in range(128):
+    print(f"{code:3d} {code:07b} '{chr(code)}'")</pre>
+</div></section>
+
+<section class="Post" data-icon="laptop.svg">
+<h2 class="Collapse">Unicode</h2><div class="Collapse Expand">
+<p>Because ASCII has codes for only 128 characters, it is of limited use for languages other than English and for mathematical symbols.
+    To resolve this issue, the <em class="Defn">Unicode</em> standard was created in 1991.</p>
+<p>Unicode assigns each character a 4-byte (32-bit) code, allowing for over 4 billion possible characters! The first 128 characters in Unicode are identical to the ASCII characters, so that ASCII is a <em>subset</em> of Unicode. The drawback of being able to encode more characters is that each character requires more computer memory.</p>
+<p>Unicode uses multiple different encoding schemes. The two most common ones are UTF-8 and UTF-32:</p>
+<ul>
+    <li>UTF-8 is the most commonly used encoding. It uses only one byte for the ASCII characters, two bytes for the non-ASCII characters that are most common in Western languages, and three or four bytes for less common characters. Older files that use ASCII are still valid as UTF-8.</li>
+    <li>UTF-32 stores each character using its full 4-byte code. This encoding scheme is useful for non-Western languages.</li>
+</ul>
+<p>Python 3.x’s <code>ord</code> and <code>chr</code> functions work with Unicode:</p>
+<pre data-echo="ex4.py" class="Code">print(ord('©'))    <span class="Comment"># 169</span>
+print(chr(8486))   <span class="Comment"># Ω</span></pre>
+</div></section>
+
+<section class="Post" data-icon="video"><h2 class="Collapse Expand">Video</h2>
+    <div class="Collapse Expand" data-yt="MijmeoH9LT4"></div>
+</section>
+
+<section class="Post" data-icon="gdoc.svg">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+    <p>Watch the video above and then complete this assignment:</p>
+    <p class="BtnGrid">
+        <button data-icon="gdoc.svg" data-gdoc="1wGMBQAUTTSNcbZPeNOf8BO6yVw7p2yHcHxeQ-acCbyM">ASCII & Unicode</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "ASCII & Unicode",
+    up: `cs_new/ct1/home`,
+    prev: "cs_new/ct1/hex",
+    next: "cs_new/ct1/vonN",
+}
+
+</script>

@@ -1,0 +1,83 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
+<div id="LessonNotes">
+
+<section class="Slide"><h3>Scientific Notation</h3>
+<p>Numbers can be written in <em class="Defn">decimal notation</em>:</p>
+<p class="TeX">\rm 149\,600\,000\,000\ m</p>
+<p>..or <em class="Defn">scientific notation</em>:</p>
+<p class="TeX">\rm 1.496\times 10^{11}\ m</p>
+<p>The exponent in the power of 10 indicates how many positions to move the decimal point when changing between decimal and scientific notation.</p>
+<ul>
+    <li>In scientific notation, the decimal point is always positioned immediately after the first non-zero digit of the number.</li>
+    <li>Numbers smaller than 1 have a negative exponent when expressed in scientific notation.</li>
+    <li>Numbers equal to or larger than 10 have a positive exponent when expressed in scientific notation.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>SI Units</h3>
+<p>The <em class="Defn">fundamental units</em> of the <em>Système Internationale</em> include metres, amperes, seconds, kilograms, and kelvins.</p>
+<ul>
+    <li>Fundamental units have an arbitrary defintion.</li>
+    <li><em class="Defn">Derived units</em>, such as m/s, are based on combining fundamental units.</li>
+    <li>Some derived units are given their own name: newton, joule, watt, pascal, etc.</li>
+    <li>Metric prefixes (e.g. kilo, centi, micro) are used to make larger or smaller units.</li>
+</ul>
+<p>To convert units using the <em class="Defn">unit factor method</em>...</p>
+<ul>
+    <li>Decide how many of each unit you are converting <em>to</em> equal how many of the units you are converting <em>from</em>.
+        You may need to refer to your <a data-gdrv="1W1GLdlJP6u0ivIPomSkc_ZqimbXxW0xa">Physics 20 Data Sheet</a> if you have not memorized all of the prefixes.
+        <p class="TeX">\rm \color{red} 1\ kg = 10^3\ g</p>
+        <p class="TeX">\rm \color{blue} 1\ cm = 10^{-2}\ m</p>
+    </li>
+    <li>Multiply your measurement by a <em>fraction</em> with the equivalent units on the top and bottom:
+        <p class="TeX">\rm 5.0\ \frac{g}{cm^3} {\color{red}\left(\frac{1\ kg}{10^3\ g}\right) \color{blue}\left(\frac{1\ cm}{10^{-2}\ m}\right)^3}
+            = 5.0\times 10^3\ \frac{kg}{m^3}</p>
+    </li>
+    <li>Make sure that the original units cancel by placing them in the opposite location (numerator and denominator) compared to the original units.</li>
+    <li>If the original unit is squared or cubed, you must use the same exponent with the unit conversion fraction.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Algebra</h3>
+<p>When using an equation to solve for an unknown variable, you must first <em class="Defn">isolate</em> the unknown.</p>
+<ul>
+    <li>Each operation that involves the unknown must be <em>cancelled</em> by performing the <em class="Defn">inverse</em> operation. E.g. division cancels multiplication, squaring cancels square root, <span class="TeX">\sin^{-1}</span> cancels <span class="TeX">\sin</span>.</li>
+    <li>You must perform the same operation on both sides of the equation.</li>
+    <li>Order of operations matters! When you have more than one operation to cancel, proceed in the <em>reverse</em> order of operations, since cancelling only works when the inverse operations are consecutive.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Trigonometry</h3>
+<p>For all triangles:</p>
+<p class="TeX">\angle A + \angle B + \angle C = 180^\circ</p>
+<p>When a triangle <em>contains a right angle</em>, we can solve for the missing sides or angles using the following additional relationships:</p>
+<p class="TeX">\rm Hyp^2 = Opp^2 + Adj^2</p>
+<p class="TeX">\sin\theta = \rm \frac{Opp}{Hyp}</p>
+<p class="TeX">\cos\theta = \rm \frac{Adj}{Hyp}</p>
+<p class="TeX">\tan\theta = \rm \frac{Opp}{Adj}</p>
+<ul>
+    <li>When solving for an angle, you must use <span class="TeX">\sin^{-1}</span>, <span class="TeX">\cos^{-1}</span>, or <span class="TeX">\tan^{-1}</span>,
+        which are the inverse operations of <span class="TeX">\sin</span>, <span class="TeX">\cos</span>, and <span class="TeX">\tan</span>.
+    <li>In Physics 20, you will want to make sure your calculator is set to “Degree” mode. (You will use “Radian” mode in Math 30-1 and Math 31.)</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>More...</h3>
+<p>There are additional <a id="daLink" data-feed="p20/da/rev">review notes</a> for Experiment Design and Data Analysis (including non-linear data and regression analysis, which we will learn about later in the course).</p>
+</section>
+
+<script type="text/javascript" data-init="link">
+
+loadFeed.data = {
+    title: `${siteData.lesson}Science & Math Skills Review`,
+    up: "p20/home",
+    prev: ["p20/skill/trig", null][clickLink.course],
+    next: ["p20/kin/displ", "p20/da/rev"][clickLink.course],
+}
+
+loadFeed.link = () => {
+    if (clickLink.course) $("#daLink").attr("data-course", "1");
+}
+
+</script>

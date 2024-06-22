@@ -1,0 +1,78 @@
+<section class="Post" data-icon="laptop.svg">
+<h2 class="Collapse">Bits &amp; Bytes</h2><div class="Collapse Expand">
+
+<p>Information is encoded in a computer using electronic circuits that have two possible states: on or off. We use the symbol <code>0</code> to indicate the off state and <code>1</code> to indicate the on state. Each such circuit is called a <em class="Defn">bit</em> (short for <em class="Defn">binary digit</em>).</p>
+<p>Most computers organize their memory into groups of eight bits; each such group is called a <em class="Defn">byte</em>. There are a total of 256 different combinations of eight <code>0</code>’s and <code>1</code>’s, meaning that one byte of memory is sufficient to count from 0 to 255.</p>
+<pre class="Code">00000000 → 0
+11111111 → 255</pre>
+</div></section>
+
+<section class="Post" data-icon="laptop.svg">
+<h2 class="Collapse">Binary to Decimal</h2><div class="Collapse Expand">
+
+<p>The “normal” way of writing numbers is called <em class="Defn">decimal notation</em> because our number system is based on ten symbols (<code>0..9</code>). When we run out of digits, we start making two-digit numbers. When we reach <code>99</code> and have exhausted all two-digit combinations, we add another digit to continue counting.</p>
+<p>For a number system based on ten symbols, the <em class="Defn">place value</em> of each column is ten times more than the previous column.</p>
+<pre class="Code">3179</pre>
+<p>In the number above, the <code>9</code> is in the “ones” column, the <code>7</code> is in the “tens”, the <code>1</code> is the “hundreds”, etc.</p>
+<pre class="Code">3179 = (<span class="Red">3</span> × 1000) + (<span class="Red">1</span> × 100) + (<span class="Red">7</span> × 10) + (<span class="Red">9</span> × 1)</pre>
+<p>Because computers have only two symbols (<code>0</code> and <code>1</code>), they use a <em class="Defn">binary</em> (or “base two”) system. The place value of each binary digit (bit) increases by factors of <em>two</em> rather than ten!</p>
+<p>Let’s suppose we have a binary number <code>1010</code>. The last zero is in the “ones” column. Beside it, the one is in the “twos” column. Then the next zero is in the “fours” column and the one is in the “eights” column.</p>
+<table class="Center">
+    <tr class="Red"><td>Binary Digits</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>Place Value</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+    <tr><td>Value</td><td>8</td><td>0</td><td>2</td><td>0</td></tr>
+</table>
+<p>The sequence of bits <code>1010</code> is binary for the number ten (<code>8</code> + <code>2</code>).</p>
+<p>To tell the difference between a regular decimal number and a binary number, programming languages often prefix binary numbers with <code>0b</code>...</p>
+<pre class="Code" data-echo="ex1.py">print(0b1010)    <span class="Comment"># 10 = 8 + 2</span>
+print(0b100111)  <span class="Comment"># 39 = 32 + 4 + 2 + 1</span>
+</pre>
+<p>Here’s how the second conversion works...</p>
+<table class="Center">
+    <tr class="Red"><td>Binary Digits</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>Place Value</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+    <tr><td>Value</td><td>32</td><td>0</td><td>0</td><td>4</td><td>2</td><td>1</td></tr>
+</table>
+<p>Note that the place value of each digit keeps doubling. For an eight-bit binary number, the additional digits would have place values of 64 and 128.</p>
+</div></section>
+
+<section class="Post" data-icon="laptop.svg">
+<h2 class="Collapse">Decimal to Binary</h2><div class="Collapse Expand">
+<p>Suppose we have a decimal number like <code>600</code> and we want to convert it to binary. We would start by figuring out the largest binary place value (powers of 2... 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, ...) that is less than <code>600</code>.
+    This would be <code>512</code>. We can express <code>600</code> as <code>512</code> plus a remainder of <code>88</code>...</p>
+<pre class="Code">600 = 512 + 88
+    = 512 + 64 + 24
+    = 512 + 64 + 16 + 8</pre>
+<p>Then we do the same for <code>88</code>, and continue until we have a remainder of zero. Now we can write <code>1</code>’s for the place values listed and <code>0</code>’s for those not listed...</p>
+<div class="WideScroll Bottom"><table class="Center">
+    <tr class="Red"><td>Binary Digits</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>Place Value</td><td>512</td><td>256</td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+    <tr><td>Value</td><td>512</td><td>0</td><td>0</td><td>64</td><td>0</td><td>16</td><td>8</td><td>0</td><td>0</td><td>0</td></tr>
+</table></div>
+<pre class="Code">600 = 0b1001011000</pre>
+<p>In Python, you can use the <code>str.format</code> method or an f-string to format an integer as binary; use the code <code>b</code> for binary instead of <code>d</code> for decimal.</p>
+<pre class="Code" data-echo="ex2.py">dec = 600
+print(f"0b{dec:<span class="Blue">b</span>}")  <span class="Comment"># 0b1001011000</span></pre>
+</div></section>
+
+<section class="Post" data-icon="video"><h2 class="Collapse">Video</h2>
+    <div class="Collapse Expand" data-yt="#PLpVmtCaB-lykMzpjcg79la6effekhfsJq"></div>
+</section>
+
+<section class="Post" data-icon="gdoc.svg">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+    <p>Watch the video above and then complete this assignment:</p>
+    <p class="BtnGrid">
+        <button data-icon="gdoc.svg" data-gdoc="1uD73FDAhv1AiH5rVPLIsZn-acMjGY09gNxLbEozjDA4">Binary Encoding</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Binary Encoding",
+    up: `cs_new/ct1/home`,
+    next: "cs_new/ct1/hex",
+}
+
+</script>

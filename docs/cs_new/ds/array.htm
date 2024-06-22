@@ -1,0 +1,116 @@
+<style type="text/css">
+
+th {background-color:lightblue}
+th, td {min-width:5em}
+tr:nth-child(1) > th:nth-child(1) {border:none; background-color:#ffffff00}
+
+</style>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Arrays</h2><div class="Collapse Expand">
+<p>An <em class="Defn">array</em> is a list-like data structure. The main difference between a <code>list</code> and an
+    <code>array</code> is that the items within an <code>array</code> must all be the same data type. This has the advantage
+    that every item in the <code>array</code> uses the same number of bytes and can therefore be located very easily. For
+    example, in an <code>array</code> of integers that use 4 bytes of memory each, each item is located <code>4*i</code> bytes
+    from the beginning of the <code>array</code>, where <code>i</code> is the item’s index.
+<p>The Python 3 program below shows how to create the first 94 numbers of the Fibonacci sequence as both a <code>tuple</code>
+    and as an <code>array</code>. Note the <code>array</code> constructor shown in blue. The first argument is a code
+    indicating the type of data; <code> "Q"</code>  is the code for the longest (most bytes) supported unsigned integer.
+    (The complete list of type codes is available from the <a target="Py" href="https://docs.python.org/3.6/library/array.html">Python
+    documentation</a>.) The second argument is an iterable (<code>list</code>, <code>tuple</code>, generator, etc.) from which
+    the <code>array</code> is to be created.
+<pre class="Code" contenteditable="true" data-echo="d07_ex1.py" data-title="1">from array import array
+
+def fib(n):
+    <span class="Comment">"Yield the first n terms of the Fibonacci sequence"</span>
+    a = 0
+    b = 1
+    while n > 0:
+        yield a
+        a, b = b, a+b
+        n -= 1
+
+fibTuple = tuple(fib(94))
+fibArray = <span class="Blue">array("Q", fib(94))</span>
+
+print(fibTuple)
+print(fibArray)
+print(fibArray.itemsize) <span class="Comment"># Probably 8</span></pre>
+
+<p>One disadvantage of using arrays is that the byte size is fixed and can vary depending on the Python implementation.
+    For 8-byte unsigned integers, we are limited to 94 terms in the Fibonacci sequence since the 95th term is too large to
+    represent with 8 bytes. For a 4-byte implementation, we can only represent 48 terms.</p>
+<p>The main advantage is the increased efficiency of arrays compared to tuples or lists.  A sequence of 94 numbers is small
+    enough that the efficiency advantage of arrays is probably outweighed by the 8-byte restriction. For large sequences,
+    such as a complicated scientific or engineering calculation, the efficiency of arrays is probably worth the limitations.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">2D Lists &amp; Arrays</h2><div class="Collapse Expand">
+<p>Lists and tuples can contain items that are themselves lists or tuples. A list of lists is often called a 2D list. (A list of 2D lists would be a 3D list!) Multidimensional lists are useful for storing matrices and other table-like data. Suppose we have the following data table:</p>
+
+<table class="Auto Center TD">
+    <tr><th></th><th>Column 0</th><th>Column 1</th><th>Column 2</th></tr>
+    <tr><th>Row 0</th><td>1</td><td>5</td><td>9</td></tr>
+    <tr><th>Row 1</th><td>2</td><td>6</td><td>10</td></tr>
+    <tr><th>Row 2</th><td>3</td><td>7</td><td>11</td></tr>
+    <tr><th>Row 3</th><td>4</td><td>8</td><td>12</td></tr>
+</table>
+
+<p>We could create a list to represent each column, and then a list of columns to represent the entire table...</p>
+<pre class="Code" contenteditable="true" data-echo="d07_ex2.py" data-title="1">col0 = [1, 2, 3, 4]
+col1 = [5, 6, 7, 8]
+col2 = [9, 10, 11, 12]
+table1 = [col0, col1, col2]</pre>
+
+<p>To access an item in the table, we use two indices: one for the column and one for the row.</p>
+<pre class="Code" contenteditable="true" data-echo="py">
+print(table1[1][0])  <span class="Comment"># Column 1, Row 0 = 5</span>
+print(table1[0][1])  <span class="Comment"># Column 0, Row 1 = 2</span></pre>
+
+<p>Alternatively, we could create the table by row rather than column...</p>
+<pre class="Code" contenteditable="true" data-echo="d07_ex3.py" data-title="1">row0 = [1, 5, 9]
+row1 = [2, 6, 10]
+row2 = [3, 7, 11]
+row3 = [4, 8, 12]
+table2 = [row0, row1, row2]
+print(table2[1][0])  <span class="Comment"># Row 1, Column 0 = 2</span>
+print(table2[0][1])  <span class="Comment"># Row 0, Column 1 = 5</span></pre>
+
+<p>Note that the <em>order</em> of the indices depends on whether the 2D list is created by row or column. In both of the previous examples, we could create the 2D list in one step rather than creating separate variables for each column or row...</p>
+<pre class="Code" contenteditable="true" data-echo="py">
+table1 = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+table2 = [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</pre>
+
+<p>Python does not support 2D arrays using the standard library <code>array</code> module. There are third-party libraries such as <a target="numpy" href="https://www.numpy.org/">numpy</a> that have this feature. 2D arrays are usually required to be <em>rectangular</em>; that is, each row must contain the same number of columns.</p>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>The program <code>d07_arrays.py</code> generates one million random numbers (type <code>float</code>) into a <code>list</code>
+    (using the <code>makeList</code> function) and then performs a calculation on each item in the <code>list</code>. It
+    prints out the time required to generate and process the data.
+<ol style="list-style:lower-alpha">
+<li>Run the program several times and record the average time for data generation and processing. Space is provided at the top of the file to record the results as a comment.</li>
+<li>Complete the function <code>makeArray</code> that generates one million random <code>floats</code> into an
+    <code>array</code> rather than a <code>list</code>. Run the program several times again and record the average time for
+    data generation and processing using an <code>array</code>.</li>
+<li>Complete the function <code>makeTuple</code> that generates one million random <code>floats</code> into a
+    <code>tuple</code> rather than a <code>list</code>. Run the program several times again and record the average time for
+    data generation and processing using a <code>tuple</code>. Note that because tuples are immutable the data can be
+    generated but not processed the same way as the <code>list</code> and <code>array</code>.</li>
+</ol></li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Arrays",
+    up: `cs_new/cs20`,
+    prev: "cs_new/ds/gen",
+}
+
+</script>

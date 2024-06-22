@@ -1,0 +1,113 @@
+/* SVG */
+
+svg g:is(.Symbol, .Serif) text, svg span.SymbolMetrics, svg text.Serif {font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif}
+svg text {font-family: "Noto Sans", "Open Sans", sans-serif}
+svg text.Mono {font-family: Inconsolata, monospace}
+svg text.Start {text-anchor: start}
+svg text:is(.Mid, .TickLabelX) {text-anchor: middle}
+svg line:is(.Axis, .AxisX, .AxisY, .TickX, .TickY) {stroke: black; stroke-width: 1.5}
+svg *:is(text, tspan):is(.Small, .Sup, .Sub) {font-size: 14px}
+svg line.Medium {stroke: #808080; stroke-width: 1.5}
+svg text {text-anchor: middle; dominant-baseline: middle}
+svg g.StickMan {stroke-width: 4px; stroke: black; fill: none}
+
+/* Graph */
+
+svg.Graph line:not(.AxisX, .AxisY, .TickX, .TickY) {stroke: #0065fe; stroke-width: 3}
+svg.Graph .Shade {fill: #0065fe; stroke: none; fill-opacity: 0.2}
+svg.Graph polyline {fill: none; stroke: #0065fe; stroke-width: 3}
+svg.Graph *:is(circle, rect, polygon) {fill: #0065fe; stroke: black}
+    
+svg.Graph text:not(.Small, .Sup, .Sub) {
+    /* text-anchor: middle;
+    dominant-baseline: middle; */
+    stroke-width: 0;
+    font-size: 18px;
+}
+
+svg.Graph g.Grid text, text:is(.TickLabelX, .TickLabelY) {
+    font-size: 16px;
+    fill: black;
+}
+
+svg.Graph text:is(.TickLabelY, .End) {text-anchor: end}
+
+/* VDiag */
+
+svg.VDiag *:is(.Resultant, circle, polygon) {
+    fill: #0065fe;
+    stroke: black;
+    stroke-width: 0.5;
+}
+
+svg.VDiag line:is(.Axis, .AxisX, .AxisY, .TickX, .TickY) {stroke: #808080; stroke-width: 1.5}
+svg.VDiag polygon:is(.Vector, .Resultant, .Component, .Res_Component) {fill-opacity: 0.6}
+svg.VDiag polygon.Vector {fill: red}
+svg.VDiag polygon.Component {fill: #ffc0c0}
+svg.VDiag polygon.Res_Component {fill: #c0c0ff}
+
+svg.VDiag text.Annotate {
+    /* text-anchor: middle;
+    dominant-baseline: middle; */
+    font-family: Inconsolata, monospace;
+    font-size: 22px;
+    fill: black;
+}
+
+svg.VDiag g.Grid text, svg.VDiag text:is(.TickLabelX, .TickLabelY) {
+    font-family: Inconsolata, monospace;
+    /* dominant-baseline: middle; */
+    font-size: 14px;
+    fill: #808080;
+}
+
+svg.VDiag text:is(.TickLabelY) {text-anchor: end}
+
+/* FBD */
+
+svg.FBD polygon {
+    stroke: black;
+    stroke-width: 0.5;    
+}
+
+svg.FBD polygon.Vector {fill: red}
+svg.FBD polygon.Blue {fill: #0065FE}
+svg.FBD polygon.Green {fill: limegreen}
+
+/* EnergyBar */
+
+svg.EnergyBar g.Labels g.Symbol text.Symbol {
+    font-size: 24px;
+    font-style: italic;
+    fill: #0065fe;
+}
+
+svg.EnergyBar text:not(.Symbol) {
+    font-size: 18px;
+    text-anchor: end;
+}
+
+svg.EnergyBar .Bars rect {
+    fill: #0065fe;
+    stroke: black;
+}
+
+svg.EnergyBar line.TotalEnergy {
+    stroke: black;
+    stroke-width: 3;
+}
+
+/* Protractor */
+
+svg g.Protractor *:is(line, path) {stroke: black; fill: none}
+svg g.Protractor path.Plastic {fill: grey; fill-opacity: 0.1; stroke: none}
+
+svg g.Protractor text {
+    fill: black;
+    /* dominant-baseline: middle;
+    text-anchor: middle; */
+}
+
+/* SVG */
+
+svg g.Grid line:not(.AxisX, .AxisY, .TickX, .TickY, .Axis) {stroke: lightgrey; stroke-width: 0.5}

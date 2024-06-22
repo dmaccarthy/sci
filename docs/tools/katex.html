@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KaTeX Renderer</title>
+<link rel="shortcut icon" type="image/svg+xml" href="/media/rocket.svg" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script type="text/javascript" src="/src/util.js"></script>
+<script type="text/javascript" src="/src/bdata.js"></script>
+<style type="text/css">
+
+body {
+    text-align: center;
+    font-family: "Noto Sans", sans-serif;
+}
+ 
+textarea {
+    font-family: monospace;
+    width: 800px;
+    max-width: 98%;
+    height: 12em;
+}
+
+article {border-top: 1px solid blue}
+section {border-bottom: 1px solid blue}
+
+article > section > p:first-child {
+    text-align: left;
+    cursor: pointer;
+}
+
+button {
+    border: 1px solid grey;
+    border-radius: 3px;
+}
+
+canvas.KaTeX {
+    padding: 2px;
+    border: 1px solid black;
+}
+
+p.Code {padding: 4px}
+p.Code, p.KaTeX {cursor: pointer}
+section p:hover {background-color: #0065FE40}
+
+</style>
+<script type="text/javascript">
+
+function render() {
+    let code = $("#Main").val();
+    let s = $("<section>").appendTo("article").on("click", (e) => {
+        if (e.ctrlKey) $(e.currentTarget).remove();
+    });
+    s.attr({title: "Ctrl+Click to delete"});
+    $("<p>").html(code).attr({title: "Click to copy code as input"}).addClass("Code").appendTo(s).on("click", (e) => {
+        $("textarea").val(e.currentTarget.innerHTML);
+        return false;
+    });
+    let p = $("<p>").html(code).attr({title: "Click to render as canvas"});
+    p.addClass("TeX Display").css("color", render.color).appendTo(s);
+    renderTeX(p);
+    p.on("click", (e) => {
+        let p = $(e.currentTarget).css({padding: "2em"});
+        html2canvas(p[0]).then(cv => {
+            $(p).append(cv);
+            let c = [255, 255, 255, 255];
+            let cropped = crop(cv, c).addClass("KaTeX");
+            replaceColor(cropped, c, [0, 0, 0, 0]);
+            let img = $("<p>").html(cropped).appendTo(p.closest("section"));
+            p.css({padding: "0"});
+            $(cv).remove();
+            console.log(cropped[0].toDataURL());
+            img.on("click", (e) => {
+                if (e.ctrlKey) $(e.currentTarget).remove();
+                return false;
+            });
+        });
+    });
+    fontSize();
+}
+
+render.color = "black";
+
+function replaceColor(cv, oldColor, newColor) {
+    cv = $(cv)[0];
+    let w = cv.width, h = cv.height;
+    let imgdata = cv.getContext("2d").getImageData(0, 0, w, h);
+    let data = imgdata.data;
+    for (let x=0;x<w;x++)
+        for (let y=0;y<h;y++)
+            if (sameColor(colorAt(data, w, x, y), oldColor)) {
+                let i = 4 * (w * y + x);
+                for (let j=0;j<4;j++) data[i+j] = newColor[j];
+            }
+    cv.getContext("2d").putImageData(imgdata, 0, 0);
+    return cv;
+}
+
+function crop(cv, bg) {
+    cv = $(cv)[0];
+    let w = cv.width;
+    let imgdata = cv.getContext("2d").getImageData(0, 0, w, cv.height);
+    let data = imgdata.data;
+    let x0 = 0, y0 = 0;
+    let x1 = w - 1, y1 = cv.height - 1;
+    while (oneColorCol(data, w, x0, bg)) x0++;
+    while (oneColorCol(data, w, x1, bg)) x1--;
+    while (oneColorRow(data, w, y0, bg)) y0++;
+    while (oneColorRow(data, w, y1, bg)) y1--;
+    w = x1 - x0 + 1;
+    let h = y1 - y0 + 1;
+    imgdata = cv.getContext("2d").getImageData(x0, y0, w, h);
+    cv = $("<canvas>").attr({width: w, height: h});
+    cv[0].getContext("2d").putImageData(imgdata, 0, 0);
+    return cv;
+}
+
+function sameColor(a, b) {
+    for (let i=0;i<4;i++) if (a[i] != b[i]) return false;
+    return true;
+};
+
+function colorAt(data, width, x, y) {
+    let i = 4 * (width * y + x);
+    return data.slice(i, i+4);
+};
+
+function oneColorRow(data, width, row, color, x0, x1) {
+    if (!x0) x0 = 0;
+    if (!x1) x1 = width;
+    let c = colorAt(data, width, x0, row);
+    if (color && !sameColor(color, c)) return false;
+    for (let x=x0+1;x<x1;x++) {
+        if (!sameColor(colorAt(data, width, x, row), c)) return false;
+    }
+    return c;
+}
+
+function oneColorCol(data, width, col, color) {
+    let c = colorAt(data, width, col, 0);
+    if (color && !sameColor(color, c)) return false;
+    let h = data.length / (4 * width);
+    for (let y=1;y<h;y++) {
+        if (!sameColor(colorAt(data, width, col, y), c)) return false;
+    }
+    return c;
+}
+
+function fontSize() {
+    $("p.KaTeX").css("font-size", `${$("#FontSize").val()}%`);
+}
+
+$(() => {
+    let btns = $("button").on("click", (e) => {
+        let c = $(e.currentTarget).attr("data-color");
+        if (!c) c = prompt("Colour?", "#00ff00");
+        if (c) {
+            render.color = c;
+            $("p.KaTeX").css("color", c);
+        }
+    });
+    for (let i=0;i<btns.length-1;i++) {
+        let b = $(btns[i]);
+        b.css("background-color", b.attr("data-color"));
+    }
+});
+
+</script>
+</head>
+<body>
+<h1>KaTeX Renderer</h1>
+<p><textarea id="Main"></textarea></p>
+<p>
+    <input type="button" value="Render" onclick="render()"/> &nbsp;
+    <input id="FontSize" type="number" min="30" step="10" value="100" max="1000" onchange="fontSize()"/> &nbsp;
+    <button data-color="black">&nbsp;</button>
+    <button data-color="blue">&nbsp;</button>
+    <button data-color="red">&nbsp;</button>
+    <button>&nbsp;</button>
+</p>
+<article></article>
+<p class="Center" id="Copy">© 2024 by <a href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
+</body>
+</html>

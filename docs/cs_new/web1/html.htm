@@ -1,0 +1,218 @@
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">XML Applications</h2><div class="Collapse Expand">
+
+<p>The XML format is used to store data for many common applications, including:</p>
+<ul>
+	<li>Office Documents: Many Office programs such as Microsoft Office (Word, Excel, etc.), LibreOffice
+		and OpenOffice use XML to save document information and content.</li>
+	<li>Scalable Vector Graphics: Most graphics formats (jpeg, png, bmp) store images as an array of
+		pixels. When the image is resized it creates distortion. SVG uses XML to describe the image
+		geometrically instead of as individual pixels. SVG images can be resized without loss of image
+		quality.</li>
+	<li>MathML & SMIL: These are XML applications for describing mathematics and multimedia content
+		respectively.</li>
+	<li>GeoGebra: This is a geometry and algebra program that stores data using XML. This application can
+		be used to embed dynamic drawings in webpages.</li>
+</ul>
+
+</div></section>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Hypertext Markup Language</h2><div class="Collapse Expand">
+
+<p>The World Wide Web was created in the early 1990’s with the development of the
+	<em class="Defn">Hypertext Markup Language</em>. HTML is a markup language that describes documents
+	(webpages) available for viewing over the Internet. HTML was based on (but not completely compatible
+	with) an earlier markup language known as Standard Generalized Markup Language (SGML) which was
+	formalized in 1986.</p>
+
+<p>XML is actually a subset of SGML. The first XML specification was published in 1998.  XML and HTML
+	are similar as a result of their shared SGML ancestry. Once the XML specification was released, work
+	began on revising HTML to make it fully compatible with XML. The result, in 2000, was the eXtensible
+	Hypertext Markup Language (XHTML): a language for encoding web pages using XML.</p>
+
+<p>More recently, the newer HTML5 language was created. HTML5 is similar to, but not completely
+	compatible with XML. Below is an HTML5 document that describes a blank webpage.</p>
+
+<!-- <p>To preview the page, click your mouse in the code area while holding the Alt key and paste the data into your browser’s address bar.
+    Use the Shift key instead if you want to paste the HTML code into an IDE or <a target="edit"
+    href="https://www.tutorialspoint.com/online_html_editor.php">online editor</a>.
+</p> -->
+
+<pre class="Code" contenteditable="true" data-echo="html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en-CA"&gt;
+  &lt;head&gt;
+    &lt;title&gt;<span class="Blue">Blank</span>&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<p>The root element node in an HTML5 document uses the tag <code>&lt;html&gt;</code> in lower case. It
+	often contains a <code>lang</code> attribute to specify the language in which the document is written.
+	The <code>&lt;!DOCTYPE&gt;</code> declaration is also <code>html</code>.</p>
+
+<p>The <code>&lt;html&gt;</code> element has two child elements, <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>. The
+	<code>&lt;head&gt;</code> element has a child element <code>&lt;title&gt;</code> which contains the document title
+	as a text node.</p>
+
+<p>The content of the document will be placed in the <code>&lt;body&gt;</code>. The <code>&lt;head&gt;</code> can
+	contain other data such as style information to alter the layout and appearance of the document.</p>
+
+</div></section>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse"><code>meta</code> Tags</h2><div class="Collapse Expand">
+
+<p>HTML documents may contain one or more <code>&lt;meta&gt;</code> elements in the <code>&lt;head&gt;</code> of
+	the document...</p>
+
+<pre class="Code" contenteditable="true" data-echo="html">
+&lt;head&gt;
+  &lt;title&gt;<span class="Blue">Example</span>&lt;/title&gt;
+  &lt;meta charset="utf-8" /&gt;
+&lt;/head&gt;</pre>
+
+<p>The <code>&lt;meta&gt;</code> tag is used to include information about your webpage that can be used by
+	browsers, search engines, and other programs that read the document. In the example above, the
+	<code>charset</code> meta tag identifies the encoding, so that the browser can decode the bytes that
+	make up the HTML file into characters. When creating HTML documents, make sure that you save your
+	files using the same encoding that you have declared in your meta tag.</p>
+
+<!-- <p>The <code>X-UA-Compatible</code> meta tag is used to tell the Internet Explorer web browser which compatibility
+	mode to use so that the webpage will be rendered properly. Other browsers will ignore this tag.</p> -->
+
+</div></section>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Paragraphs</h2><div class="Collapse Expand">
+
+<p>The simplest kind of content that you can include in your webpage is text. In HTML, text is added
+	using a <code>&lt;p&gt;</code> tag, which is short for paragraph. Paragraph elements are included as
+	child nodes of the <code>&lt;body&gt;</code> element, and the text content is a child text node of the
+	<code>&lt;p&gt;</code> element. As you can see in the example below, XML comments are supported in HTML...</p>
+
+<pre class="Code" contenteditable="true" data-echo="html">
+<span class="Black">&lt;!DOCTYPE html&gt;
+&lt;html lang="en-CA"&gt;
+&lt;head&gt;
+    &lt;title&gt;<span class="Blue">Poem</span>&lt;/title&gt;
+&lt;/head&gt;</span>
+&lt;body&gt;
+    &lt;p&gt;<span class="Comment">&lt;!-- Verse 1 --&gt;</span>
+        <span class="Blue">Mary had a little lamb,
+        little lamb, little lamb,
+        Mary had a little lamb,
+        whose fleece was white as snow.</span>
+    &lt;/p&gt;
+    &lt;p&gt;<span class="Comment">&lt;!-- Verse 2 --&gt;</span>
+        <span class="Blue">And everywhere that Mary went,
+        Mary went, Mary went,
+        and everywhere that Mary went,
+        the lamb was sure to go.</span>
+    &lt;/p&gt;
+&lt;/body&gt;
+<span class="Black">&lt;/html&gt;</span>
+</pre>
+
+<p>When you preview the HTML in your browser, it does not display the data tree like it would for an
+	XML file. The web browser recognizes the file as HTML and displays the content as a webpage. If you
+	want to see the HTML markup, activate the browser's “developer tools” (usually by pressing F12), and
+	going to the “Elements” or “Inspector” tab.</p>
+<p>The blue text is the content that will be displayed by the browser with the tags organizing the information for the browser.</p>
+
+<p>For our poem webpage, something appears to be wrong! The lines of each verse run together as a
+	single line! This is because web browsers ignore whitespace in HTML. Whitespace means space
+	characters, tab characters, or end-of-line characters. Web browsers treat all whitespace as if it
+	were just a single space. As a result, even though our HTML document has each verse of the poem
+	written as four lines, the poem is rendered with each verse as a single line.</p>
+
+<p>One option is to make each line into its own paragraph. If we did this, the browser would add space
+	between every line. The other option is to use line break (<code>&lt;br/&gt;</code>) tags as shown below.</p>
+
+<p>Note that we have only shown the <code>&lt;body&gt;</code> portion of the document. The <code>&lt;html&gt;</code> and <code>&lt;head&gt;</code>
+    elements shown in black in the previous example must also be included.</p>
+
+<pre class="Code" contenteditable="true" data-echo="html">
+&lt;body&gt;
+   &lt;p&gt;<span class="Comment">&lt;!-- Verse 1 --&gt;</span>
+      <span class="Blue">Mary had a little lamb,&lt;br/&gt;
+      little lamb, little lamb,&lt;br/&gt;
+      Mary had a little lamb,&lt;br/&gt;
+      whose fleece was white as snow.</span>
+   &lt;/p&gt;
+   &lt;p&gt;<span class="Comment">&lt;!-- Verse 2 --&gt;</span>
+      <span class="Blue">And everywhere that Mary went,&lt;br/&gt;
+      Mary went, Mary went,&lt;br/&gt;
+      and everywhere that Mary went,&lt;br/&gt;
+      the lamb was sure to go.</span>
+   &lt;/p&gt;
+&lt;/body&gt;</pre>
+
+</div></section>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Headings</h2><div class="Collapse Expand">
+
+<p>HTML provides six levels of heading tags (<code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>..<code>&lt;h6&gt;</code>) that
+	work just like the paragraph tag, except that they are used for titles, subtitles, and section
+	headings rather than regular text. Text in a heading tag is displayed more emphatically that text in
+	a normal paragraph; <code>&lt;h1&gt;</code> is the most emphatic, while <code>&lt;h6&gt;</code> is the least emphatic
+	heading.</p>
+
+<p>The examples below only show the <code>&lt;body&gt;</code>. A proper HTML document would also include the <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;title&gt;</code> tags.</p>
+
+<pre class="Code" contenteditable="true" data-echo="html">
+&lt;body&gt;
+  &lt;h1&gt;<span class="Blue">Heading 1</span>&lt;/h1&gt;
+  &lt;h2&gt;<span class="Blue">Heading 2</span>&lt;/h2&gt;
+  &lt;h3&gt;<span class="Blue">Heading 3</span>&lt;/h3&gt;
+  &lt;h4&gt;<span class="Blue">Heading 4</span>&lt;/h4&gt;
+  &lt;h5&gt;<span class="Blue">Heading 5</span>&lt;/h5&gt;
+  &lt;h6&gt;<span class="Blue">Heading 6</span>&lt;/h6&gt;
+  &lt;p&gt;<span class="Blue">Regular Paragraph</span>&lt;/p&gt;
+&lt;/body&gt;</pre>
+
+<p>Here is out poem with the title as a heading...</p>
+
+<pre class="Code" contenteditable="true" data-echo="html">
+&lt;body&gt;
+  &lt;h1&gt;<span class="Blue">Mary Had a Little Lamb</span>&lt;/h1&gt;
+   &lt;p&gt;<span class="Comment">&lt;!-- Verse 1 --&gt;</span>
+      <span class="Blue">Mary had a little lamb,&lt;br/&gt;
+      little lamb, little lamb,&lt;br/&gt;
+      Mary had a little lamb,&lt;br/&gt;
+      whose fleece was white as snow.</span>
+   &lt;/p&gt;
+   &lt;p&gt;<span class="Comment">&lt;!-- Verse 2 --&gt;</span>
+      <span class="Blue">And everywhere that Mary went,&lt;br/&gt;
+      Mary went, Mary went,&lt;br/&gt;
+      and everywhere that Mary went,&lt;br/&gt;
+      the lamb was sure to go.</span>
+   &lt;/p&gt;
+&lt;/body&gt;</pre>
+    
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+	<li>The document <code>w06_poem.html</code> contains the poem <i>Human Family</i> by Maya Angelou. Add appropriate
+		markup (tags) so that the poem <a href="https://allpoetry.com/Human-Family" target="Poem">displays as intended</a>
+		in the web browser.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+tmp = localStorage.getItem("cs_course") == "20" ? "cs20" : "cs10";
+
+loadFeed.data = {
+    title: "Hypertext Markup Language (HTML)",
+    up: `cs_new/${tmp}`,
+    prev: "cs_new/web1/entity",
+    next: "cs_new/web1/char",
+}
+  
+</script>

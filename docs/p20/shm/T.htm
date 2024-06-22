@@ -1,0 +1,237 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Period of SHM</h1>
+</section>
+
+<section id="T" class="Slide"><h3>Period of SHM</h3>
+<p>For SHM, graphs of <span class="TeX">\vec{\bf{x}}</span> and <span class="TeX">\vec{\bf{a}}</span> have identical shapes but are negatives of each other.</p>
+<p class="Center"><svg class="Graph s24" id="SHM_Graph" data-js="p20/shm/img/shm#v_t"></svg></p>
+<ul data-cue="+">
+    <li>This means that these quantities are <em>directly proportional</em> to each other but in <em>opposite directions</em>.</li>
+    <li data-cue="+">Mathematically, sinusoidal functions are the only functions that have this property.</li>
+</ul>
+<div data-cue="+">
+    <p>We can write Newton’s 2nd Law as:</p>
+    <p class="TeX">{\vec{\bf{F}}}_{net}=m\vec{\bf{a}}=-k\vec{\bf{x}}</p>
+</div>
+<ul data-cue="+">
+    <li>SHM is caused by a restoring force that is <em>directly proportional</em> to the distance from equilibrium.</li>
+    <li data-cue="+">The constant <span class="TeX">k</span> in this equation is a measure of the strength of the restoring force.</li>
+    <li data-cue="+">The unit of <span class="TeX">k</span> is newtons per metre, N/m.</li>
+</ul>
+<div data-cue="+">
+    <p>The <em>maximum</em> amount of restoring force occurs when the mass if furthest from equilibrium:</p>
+    <p class="TeX">F_{max} = ma_{max} = kA</p>
+</div>
+<div data-cue="+"><p>We can substitute:</p><p class="TeX">a_{max}=\frac{4\pi^2A}{T^2}</p></div>
+<div data-cue="+"><p>...to get:</p><p class="TeX">m\frac{4\pi^2A}{T^2}=kA</p></div>
+<div data-cue="+">
+    <p>We can cancel the <span class="TeX">A</span> and rearrange to isolate <span class="TeX">T</span>:</p>
+    <p class="TeX">m\frac{4\pi^2}{T^2}=k</p>
+</div>
+<p data-cue="+" class="TeX">4\pi^2m=kT^2</p>
+<p data-cue="+" class="TeX">\frac{4\pi^2m}{k}=T^2</p>
+<p data-cue="+" class="TeX">T=2\pi\sqrt\frac{m}{k}</p>
+    
+<p data-cue="+">If we know the mass and the coefficient <span class="TeX">k</span> (which determines the restoring force) we can calculate what the period of the SHM will be.</p>
+<ul data-cue="+">
+    <li>The period does not depend on the amplitude. Increasing the amplitude causes the object’s speed and distance both to increase by the same proportion, so that the time required to complete each cycle does not change.</li>
+    <li data-cue="+">Larger masses will oscillate with a longer period.</li>
+	<li data-cue="+">A stronger restoring force will cause the period to be shorter.</li>
+</ul>
+</section>
+
+<section id="Hooke" class="Slide"><h3>Hooke’s Law</h3>
+<p><em class="Defn">Hooke’s Law</em> states that for most elastic objects, the elastic force is directly proportional to the distance that the object is stretched or compressed, at least over some range of distances:
+    <p class="TeX">{\vec{\bf{F}}}_{elas}=-k\Delta L</p></p>
+<ul data-cue="+">
+    <li>An elastic object (e.g. a spring) will cease to obey Hooke’s Law if it is overstretched.</li>
+</ul>
+<p data-cue="+">For a mass attached to a horizontal or vertical spring, the motion will be SHM if:</p>
+<ul data-cue="+">
+    <li>there are no unbalanced forces except for gravity and the elastic force, and</li>
+	<li data-cue="+">the spring remains within the “elastic limit” where Hooke’s Law remains valid.</li>
+</ul>
+</section>
+
+<section id="ex1" class="Slide"><h3>Example 1</h3>
+<p class="Blue">A 100 gram mass oscillates with an amplitude of 1.20 cm on the end of a spring with <span class="TeX">k</span> = 30.0 N/m. Calculate the period and the maximum velocity and acceleration.</p>
+<p data-cue="+" class="TeX">T=2\pi\sqrt{m\over k} = \rm{2\pi\sqrt{0.100\ kg\over 30.0\ N/m} = 0.363\ s}</p>
+<p data-cue="+" class="TeX">v_{max} ={2\pi A\over T} = \rm{{2\pi\cdot 0.0120\ m\over 0.363\ s} = 0.208\ m/s}</p>
+<p data-cue="+" class="TeX">a_{max} = {v_{max}^2 \over A} = \rm{{(0.208\ m/s)^2 \over 0.0120\ m} = 3.60\ m/s^2}</p>
+</section>
+
+<section id="ex2" class="Slide"><h3>Example 2</h3>
+<p class="Blue">A 2.00 kg mass exhibits SHM with a period of 1.50 seconds. Find the restoring force coefficient <span class="TeX">k</span>.</p>
+<p data-cue="+" class="TeX">T=2\pi\sqrt{m\over k}</p>
+<p data-cue="+" class="TeX">T^2 = 4\pi^2 {m\over k}</p>
+<p data-cue="+" class="TeX">kT^2 = 4\pi^2 m</p>
+<p data-cue="+" class="TeX">k = {4\pi^2 m \over T^2} = \rm{{4\pi^2\cdot 2.00\ kg \over (1.50\ s)^2} = 35.1\ N/m}</p>
+</section>
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Period of SHM</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/shm/T"></p>
+</div>
+</section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    $("#SHM_Graph").trigger("click");
+}
+
+</script>
+
+</div></div></section>
+
+<section class="Post" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1HhsW-f-BCSXcy9pbWwEJZBLYnRZiAG5R">Mass on a Spring Lab</button>
+    </p>
+</div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <li><ol type="a">
+        <li>A vertical spring with <span class="TeX">k</span> = 850 N/m compresses 2.80 cm (at equilibrium) when an object is placed on top of it. Determine the weight and mass of the object. [hint: At equilibrium, the elastic and gravity forces are balanced!]</li>
+        <div class="Answer">
+<p class="TeX">\vec{\mathbf F}_{elas} = -k\Delta L = \mathrm{-850\ N/m\cdot (-0.0280\ m) = +23.8\ N}</p>
+Since the elastic force is 23.8 N up, the force of gravity (weight) is 23.8 N down because the forces are balanced at equilibrium.
+<p class="TeX">m = \frac{F_g}{g} = \mathrm{\frac{23.8\ N}{9.81\ m/s^2} = 2.43\ kg}</p>
+        </div>
+    
+        <li>If the object is set in motion vertically, what will its period be?</li>
+        <div class="Answer">
+<p class="TeX">T = 2\pi\sqrt{\frac{m}{k}} = \mathrm{2\pi\sqrt{\frac{2.43\ kg}{850\ N/m }} = 0.336\ s}</p>
+        </div>
+    
+    </ol></li>
+
+    <li>A vertical spring stretches 5.20 cm when a 63.0 g mass is attached to its end.
+    <ol type="a">
+        <li>What is the elastic constant of the spring?</li>
+        <div class="Answer">
+<p class="TeX">F_{elas} = F_g = mg = \mathrm{0.0630\ kg\cdot 9.81\ m/s^2 = 0.618\ N}</p>
+<p class="TeX">k = \frac{F_{elas}}{\Delta L} = \mathrm{\frac{0.618\ N}{0.0520\ m} = 11.9\ N/m}</p>
+        </div>
+    
+        <li>If the 63.0 g mass is replaced by a 105 g mass, what will the total stretch of the spring be?</li>
+        <div class="Answer">
+<p class="TeX">F_{elas} = F_g = mg = \mathrm{0.105\ kg \cdot 9.81\ m/s^2 = 1.03\ N}</p>
+<p class="TeX">\Delta L = \frac{F_{elas}}{k} = \mathrm{\frac{1.03\ N}{11.9\ N/m} = 0.0867\ m}</p>
+        </div>
+
+        <li>Calculate the period of the oscillations for both masses.</li>
+        <div class="Answer">
+<p class="TeX">T_1 = 2\pi\sqrt{\frac{m_1}{k}} = \mathrm{2\pi\sqrt{\frac{0.0630\ kg}{11.9\ N/m }} = 0.457\ s}</p>
+<p class="TeX">T_2 = 2\pi\sqrt{\frac{m_2}{k}} = \mathrm{2\pi\sqrt{\frac{0.105\ kg}{11.9\ N/m }} = 0.590\ s}</p>
+        </div>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>A spring with <span class="TeX">k</span> = 65.0 N/m is attached to a 95.0 g mass. Predict the period and frequency of the SHM when the mass is set in motion.</li>
+        <div class="Answer">
+<p class="TeX">T = 2\pi\sqrt{\frac{m}{k}} = \mathrm{2\pi\sqrt{\frac{0.0950\ kg}{65.0\ N/m }} = 0.240\ s}</p>
+<p class="TeX">f = \frac{1}{T} = \mathrm{\frac{1}{0.240\ s} = 4.16\ Hz}</p>
+        </div>
+
+        <li>Calculate the maximum velocity and acceleration of the mass if its amplitude is 1.50 cm.</li>
+        <div class="Answer">
+<p class="TeX">v_{max} = \frac{2\pi A}{T} = \mathrm{\frac{2\pi\cdot 0.0150\ m}{0.240\ s} = 0.392\ m/s}</p>
+<p class="TeX">a_{max} = \frac{4\pi^2 A}{T^2} = \mathrm{\frac{4\pi^2\cdot 0.0150\ m}{(0.240\ s)^2} = 10.3\ m/s^2}</p>
+        </div>    
+    </ol></li>
+
+    <li><ol type="a">
+        <li>A 275 g mass attached to the end of spring executes SHM with a period of 0.950 s. Calculate the <span class="TeX">k</span> value of the spring.</li>
+        <div class="Answer">
+<p class="TeX">T = 2\pi\sqrt{\frac{m}{k}}</p>
+<p class="TeX">T^2 = \frac{4\pi^2 m}{k}</p>
+<p class="TeX">kT^2 = 4\pi^2 m</p>
+<p class="TeX">k = \frac{4\pi^2 m}{T^2} = \mathrm{\frac{4\pi^2\cdot 0.275\ kg}{(0.950\ s)^2} = 12.0\ N/m}</p>
+        </div>
+    
+        <li>If the mass has a maximum velocity of 0.580 m/s, determine its amplitude.</li>
+        <div class="Answer">
+<p class="TeX">v_{max} = \frac{2\pi A}{T}</p>
+<p class="TeX">v_{max}T = 2\pi A</p>
+<p class="TeX">A = \frac{v_{max}T}{2\pi} = \mathrm{\frac{0.580\ m/s\cdot0.950\ s}{2\pi} = 0.0877\ m}</p>
+        </div>
+    
+        <li>Draw accurate graphs of the object’s position, velocity, and acceleration as functions of time.</li>
+        <div class="Answer">
+<p class="TeX">a_{max} = \frac{4\pi^2 A}{T^2} = \mathrm{\frac{4\pi^2\cdot 0.0877\ m}{(0.950\ s)^2} = 3.84\ m/s^2}</p>
+<p>Graphs: 
+    <a href="/?{%22T%22:0.95,%22vmax%22:58,%22dt%22:0.2,%22plot%22:%22x%22,%22fix%22:0,%22dy%22:2,%22unit%22:%22cm%22}#p20/shm/shm_graph" target="d_t">Position</a> |
+    <a href="/?{%22T%22:0.95,%22vmax%22:58,%22dt%22:0.2,%22plot%22:%22v%22,%22fix%22:0,%22dy%22:15,%22unit%22:%22cm%22}#p20/shm/shm_graph" target="v_t">Velocity</a> |
+    <a href="/?{%22T%22:0.95,%22vmax%22:0.58,%22dt%22:0.2,%22plot%22:%22a%22,%22fix%22:0,%22dy%22:1,%22unit%22:%22m%22}#p20/shm/shm_graph" target="a_t">Acceleration</a>
+</p>
+        </div>    
+    </ol></li>
+
+    <li>A spring has <span class="TeX">k</span> = 32.0 N/m. What mass would need to be attached to the spring to produce SHM with a period of 1.00 s?</li>
+    <div class="Answer">
+<p class="TeX">T = 2\pi\sqrt{\frac{m}{k}}</p>
+<p class="TeX">T^2 = \frac{4\pi^2 m}{k}</p>
+<p class="TeX">kT^2 = 4\pi^2 m</p>
+<p class="TeX">m = \frac{kT^2}{4\pi^2} = \mathrm{\frac{32.0\ N/m\cdot (1.00\ s)^2}{4\pi^2} = 0.811\ kg}</p>
+    </div>
+    
+    <li><p>While stretching a spring, students measured the force applied and the length of the spring. They collected the following data. (a) Graph the data, and (b) use the graph to determine the elastic constant and the natural length (neither stretched nor compressed) of the spring.</p>
+<table class="Two Center">
+    <tr><td><span class="TeX">F</span> / N</td><td><span class="TeX">L</span> / cm</td></tr>
+    <tr><td>0.50</td><td>3.51</td></tr>
+    <tr><td>1.00</td><td>3.75</td></tr>
+    <tr><td>1.50</td><td>3.99</td></tr>
+    <tr><td>2.00</td><td>4.23</td></tr>
+    <tr><td>2.50</td><td>4.47</td></tr>
+    <tr><td>3.00</td><td>4.71</td></tr>
+    <tr><td>3.50</td><td>4.95</td></tr>
+    <tr><td>4.00</td><td>5.19</td></tr>
+</table></li>
+    <div class="Answer">
+<a target="Q6" href="https://www.desmos.com/calculator/s3gjplomgp">Graph</a>
+<p>The natural length of the spring occurs when there is no force stretching or compressing the spring. Using the best-fit line, when <span class="TeX">F</span> = 0.00 N (at the x-intercept), the length is about 3.27 cm.
+If we apply a force of 4.00 newtons the spring stretches from 3.27 cm to 5.19 cm:
+<p class="TeX">\Delta L = \mathrm{(5.19 - 3.27)\ cm = 1.92\ cm}</p>
+<p class="TeX">k = \frac{F}{\Delta L} = \mathrm{\frac{4.00\ N}{0.0192\ m} = 208\ N/m}</p>
+</p></div>
+</ol>
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li><ol type="a">
+        <li>Derive the equation for the period of SHM.</li>
+        <li>Explain why the amplitude of the SHM has no effect on the period.</li>
+    </ol></li>
+    
+    <li><ol type="a">
+        <li>Explain what Hooke’s Law means.</li>
+        <li>Strictly speaking, Hooke’s Law is an “empirical relationship” rather than a true “law”. What does this mean?</li>
+    </ol></li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}7.3 — Period of SHM`,
+    answerDate: "2024.5.27.16",
+    num: "7.3",
+    up: "p20/home",
+    prev: "p20/shm/shm",
+    next: "p20/shm/pend",
+}
+
+</script>

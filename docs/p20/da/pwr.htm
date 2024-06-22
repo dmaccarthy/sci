@@ -1,0 +1,295 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Transforming Power Data</h1>
+</section>
+
+<!-- <section class="Slide Present">
+    <div class="Assign"><p>Individually, complete the <i>Review</i> section of the <i>?</i> handout.</p></div>
+    <div class="Assign" data-cue="+"><p>In a small group, complete the <i>Activity</i> section of the <i>?</i> handout.</p></div>
+</section> -->
+
+<section id="non" class="Slide"><h3>Non-Linear Data</h3>
+<p>Sometimes, a graph of our data will be curved rather than a straight line...</p>
+<div data-cue="+">
+<p class="Caption">Light Bulb Intensity</p>
+<table class="Two Center">
+    <tr><th>Separation<br/><span class="TeX">r / \rm{m}</span></th><th>Intensity<br/><span class="TeX">I / (\rm{W/m^2})</span></th></tr>
+    <tr><td>0.750</td><td>1.60</td></tr>
+    <tr><td>1.00</td><td>0.846</td></tr>
+    <tr><td>1.25</td><td>0.585</td></tr>
+    <tr><td>1.50</td><td>0.395</td></tr>
+    <tr><td>1.75</td><td>0.280</td></tr>
+    <tr><td>2.00</td><td>0.217</td></tr>
+    <tr><td>2.25</td><td>0.170</td></tr>
+    <tr><td>2.50</td><td>0.134</td></tr>
+    <tr><td>2.75</td><td>0.111</td></tr>
+    <tr><td>3.00</td><td>0.098</td></tr>
+</table>
+</div>
+<p data-cue="+" class="Center"><svg class="Graph s24" data-js="p20/da/img/pwr#lightbulb"></svg></p>
+<!-- <p class="Center"><iframe data-aspect="16/9" class="s32" src="https://www.desmos.com/calculator/ztbpyvcnyn?embed" width="720" height="405" style="border: 1px solid #ccc" frameborder=0></iframe></p> -->
+<ul data-cue="+">
+    <li>One way to obtain a model equation is to perform a non-linear (quadratic, power, exponential) regression.</li>
+    <li data-cue="+">When we have reason to believe the relationship will be a <em>power</em>, there is a better way...</li>
+</ul>
+</section>
+
+<section id="tr" class="Slide"><h3>Transforming Power Data</h3>
+<p>Suppose our hypothesis is an equation (from our Data Sheet?) that predicts the relationship between manipulated and responding variables:</p>
+    <p class="TeX">I=\frac{P}{4\pi r^2}</p>
+<ul data-cue="+">
+    <li>Variables that appear in the denominator are considered to have a <em>negative</em> exponent:
+        <p class="TeX">I=\frac{P}{4\pi} r^{-2}</p></li>
+    <li data-cue="+">Any equation of the form <span class="TeX">y = ax^n</span> is classified as a <em class="Defn">power relationship</em>.</li>
+    <!--li data-cue="+">In this example, the exponent is <span class="TeX">n = -2</span> and the constant or coefficient is <span class="TeX">a=GM</span>.</li-->
+    <li data-cue="+">The responding variable, <span class="TeX">I</span>, does not have an exponent so it does not need to be transformed.</li>
+    <li data-cue="+">We can <em class="Defn">transform</em> the manipulated variable by calculating <span class="TeX">r^{-2}</span>.</li>
+    <li data-cue="+">We do this because <span class="TeX">-2</span> is the exponent that appears with <span class="TeX">r</span> in the equation!</li>
+    <li data-cue="+">The first two points in the data table are...</li>
+</ul>
+<p data-cue="+" class="TeX">\rm{(0.750\ m)^{-2} = 1.78\ m^{-2}}</p>
+<p data-cue="+" class="TeX">\rm{(1.00\ m)^{-2} = 1.00\ m^{-2}}</p>
+<ul data-cue="+">
+    <li>Transform the remaining data, and tabulate and graph the <em class="Defn">transformed data</em>...</li>
+</ul>
+<table data-cue="+" class="Two Center">
+    <tr><th>Separation<sup>–2</sup><br/><span class="TeX">r^{-2} / \rm{m}^{-2}</span></th><th>Intensity<br/><span class="TeX">I / (\rm{W/m^2})</span></th></tr>
+    <tr><td>1.78</td><td>1.60</td></tr>
+    <tr><td>1.00</td><td>0.846</td></tr>
+    <tr><td>0.640</td><td>0.585</td></tr>
+    <tr><td>0.444</td><td>0.395</td></tr>
+    <tr><td>0.327</td><td>0.280</td></tr>
+    <tr><td>0.250</td><td>0.217</td></tr>
+    <tr><td>0.198</td><td>0.170</td></tr>
+    <tr><td>0.160</td><td>0.134</td></tr>
+    <tr><td>0.132</td><td>0.111</td></tr>
+    <tr><td>0.111</td><td>0.098</td></tr>
+</table>
+<ul data-cue="+">
+    <li>If the data <em>does</em> follow a power relationship and we have used the correct exponent, <span class="TeX">-2</span> in this case, the transformed data will now be linear!
+        <p class="Center"><svg class="Graph s24" data-js="p20/da/img/pwr#linear"></svg></p>
+        <!-- <p><iframe class="HD" src="https://www.desmos.com/calculator/7mw5lk3qfy?embed" width="720" height="405" style="border: 1px solid #ccc" frameborder=0></iframe></p> -->
+    </li>
+</ul>
+<!-- <p class="Center" data-cue="="></p> -->
+</section>
+
+<section id="eq" class="Slide"><h3>Model Equation</h3>
+<p>Now that the graph has been <em class="Defn">linearized</em>, we can calculate its slope and <span class="TeX">y</span>-intercept as with any other line.</p>
+<p data-cue="+" class="TeX">b = \rm{0.0\ W/m^2}</p>
+<p data-cue="+" class="TeX">k = \rm{\frac{(1.79 - 0.00)\ W/m^2}{(2.00 - 0.00)\ m^{-2}} = 0.895\ W}</p>
+<ul data-cue="+">
+    <li>When you write the <em class="Defn">model equation</em>, <span class="TeX">y=kx+b</span>, remember to include the <em>power</em>:
+        <p class="TeX">I = {\rm (0.895\ W)}\ r^{-2}</p></li>
+    <li data-cue="+">The <span class="TeX">y</span>-variable is <span class="TeX">I</span>; what was graphed on the <span class="TeX">y</span>-axis.</li>
+    <li data-cue="+">The <span class="TeX">x</span>-variable is <span class="TeX">r^{-2}</span>; what was graphed on the <span class="TeX">x</span>-axis.</li>
+    <li data-cue="+">You can substitute the model equation into the <em class="Defn">theoretical equation</em>:
+        <p class="TeX">I= \frac{P}{4\pi} r^{-2} = {\rm (0.895\ W)}\ r^{-2}</p></li>
+    <li data-cue="+">You could then algebraically solve for <span class="TeX">P</span>:
+        <p class="TeX">\frac{P}{4\pi} = {\rm 0.895\ W}</p>
+        <p class="TeX">P = 4\pi\cdot {\rm 0.895\ W} = \rm 11.2\ W</p>
+    </li>
+</ul>
+</section>
+
+<section id="ex1" class="Slide"><h3>Example 1</h3>
+<p class="Blue">Students conducted an experiment on sound waves to test the equation <span class="TeX">v=f\lambda</span>. They manipulated the frequency of the waves <span class="TeX">(f)</span> and controlled the speed <span class="TeX">(v)</span>. The wavelength <span class="TeX">(\lambda)</span> was the responding variable. How should they transform the data?</p>
+<div data-cue="+">
+    <p>Isolate the responding variable:</p>
+    <p class="TeX">\lambda = \frac{v}{f}</p>
+</div>
+<div data-cue="+">
+    <p>Since <span class="TeX">f</span> appears in the denominator, use a negative power:</p>
+    <p class="TeX">\lambda = vf^{-1}</p>
+</div>
+<p data-cue="+">Transform the data by calculating <span class="TeX">f^{-1}</span> for each data point.</p>
+</section>
+
+<section id="ex2" class="Slide"><h3>Example 2</h3>
+<div class="Blue">
+    <p>Students conducted an experiment on a simple pendulum to see how the length <span class="TeX">(L)</span> of the pendulum affected its period <span class="TeX">(T)</span>, the time for one swing. Their hypothesis was:</p>
+    <p class="TeX">T = 2\pi\sqrt{\frac{L}{g}}</p>
+    <p>How should they transform the data?</p>
+</div>
+<div data-cue="+">
+    <p>The square root sign is equivalent to a power of <span class="TeX">\frac{1}{2}</span>:</p>
+    <p class="TeX">T = 2\pi\frac{L^{\frac{1}{2}}}{g^{\frac{1}{2}}}</p>
+</div>
+<p data-cue="+">Transform the data by calculating <span class="TeX">L^{\frac{1}{2}}</span> for each data point.</p>
+<ul data-cue="+">
+    <li>Since <span class="TeX">g</span> is a <em>controlled</em> variable, it will not be graphed, so it doesn’t matter that it has an exponent!</li>
+    <li data-cue="+">Alternatively, we could get rid of the square root sign by squaring the original equation:
+        <p class="TeX">T^2 = 4\pi^2\frac{L}{g}</p></li>
+    <li data-cue="+">This alternative says we can transform the data by calculating <span class="TeX">T^2</span>, while not transforming <span class="TeX">L</span>.</li>
+</ul>
+</section>
+
+<!--If the data is not linear and you have reason to suspect that there is a power relationship, transform the data by applying the expected exponent and then graph the transformed data. For example, if your data is testing the hypothesis:
+you would calculate and graph r^{-2} rather than just r.
+You can also use the regression analysis features of a graphing calculator or statistics software to find a model equation. Specify the type of model you want (linear, power, quadratic, exponential, etc.) and the software will determine the equation that best fits the data. Have the software graph the model equation on the scatter plot of the data to see how well it fits.
+</section-->
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Transforming Power Data</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/da/pwr"></p>
+</div>
+</section>
+
+</div></div></section>
+
+<!-- <section class="Post" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="">Assignment D.x</button>
+    </p>
+</div></section> -->
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <li><ol type="a">
+        <li>Referring to the Earth’s Gravity data from the <a data-feed="p20/da/regr">previous assignment</a>, transform the data (based on the results of your power regression) to produce a linear graph. Include a table of the transformed data, the graph with best-fit line, and a calculation of the slope.</li>
+        <div class="Answer">
+        <p>The model equation obtained from a power regression is:</p>
+        <p class="TeX">g = ({\rm 3.99\times 10^{14}\ m^3/s^2})\ r^{-2}</p>
+        <p class="Bottom">This suggests we need to transform the data by calculating <span class="TeX">r^{-2}</span>...</p>
+        <table class="Two Center">
+            <tr>
+                <td>Orbital Radius<sup>–2</sup><br/><span class="TeX">r^{-2}</span> / 10<sup>–14</sup> m<sup>2</sup></td>
+                <td>Gravitational Field<br/><span class="TeX">g</span> / (m/s<sup>2</sup>)</td>
+            </tr>
+            <tr><td>2.37</td><td>9.44</td></tr>
+            <tr><td>2.04</td><td>8.14</td></tr>
+            <tr><td>1.78</td><td>7.09</td></tr>
+            <tr><td>1.56</td><td>6.23</td></tr>
+            <tr><td>1.38</td><td>5.52</td></tr>
+            <tr><td>1.24</td><td>4.92</td></tr>
+            <tr><td>1.11</td><td>4.42</td></tr>
+            <tr><td>1.00</td><td>3.99</td></tr>
+        </table>
+        <p><a target="D1" href="https://www.desmos.com/calculator/vflff6tmyp">Graph</a></p>
+        </div>
+    
+        <li>Do the results of your calculation agree with the power regression?</li>
+        <div class="Answer">Yes...the graph of the transformed data is a straight line and the slope is close to <span class="TeX">\rm 3.99\times 10^{14}\ m^3/s^2</span>.</div>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>Referring to the Sound Waves data from the <a data-feed="p20/da/regr">previous assignment</a>, transform the data (based on the results of your power regression) to produce a linear graph. Include a table of the transformed data, the graph with best-fit line, and a calculation of the slope.</li>
+        <div class="Answer">
+        <p>The model equation obtained from a power regression is:</p>
+        <p class="TeX">\lambda = {\rm 338\ m/s} \cdot f^{-1}</p>
+        <p class="Bottom">This suggests we need to transform the data by calculating <span class="TeX">f^{-1}</span>...</p>
+        <table class="Two Center">
+            <tr>
+                <td>Frequency<sup>–1</sup><br/><span class="TeX">f^{-1}</span> / Hz<sup>–1</sup></td>
+                <td>Wavelength<br/><span class="TeX">\lambda</span> / m</td>
+            </tr>
+            <tr><td>0.00909</td><td>3.07</td></tr>
+            <tr><td>0.00455</td><td>1.54</td></tr>
+            <tr><td>0.00227</td><td>0.77</td></tr>
+            <tr><td>0.00152</td><td>0.51</td></tr>
+            <tr><td>0.00114</td><td>0.38</td></tr>
+            <tr><td>0.000909</td><td>0.31</td></tr>
+            <tr><td>0.000758</td><td>0.26</td></tr>
+            <tr><td>0.000649</td><td>0.22</td></tr>
+        </table>
+        <p><a target="D2" href="https://www.desmos.com/calculator/selb3hwfhj">Graph</a></p>
+        </div>
+    
+        <li>Do the results of your calculation agree with the power regression?</li>
+        <div class="Answer">Yes...the graph of the transformed data is a straight line and the slope is close to <span class="TeX">\rm 338\ m/s</span>.</div>
+        <li>The Physics 20 data sheet predicts the relationship should be described by the equation <p class="TeX">\lambda=vf^{-1}</p> where <span class="TeX">v</span> is the speed of sound waves. Algebraically determine the speed of sound from the data.</li>
+        <div class="Answer">
+<p class="TeX">\lambda = vf^{-1} = {\rm 338\ m/s} \cdot f^{-1}</p>
+<p class="TeX">v = \rm{338\ m/s}</p>
+        </div>
+    </ol></li>
+
+    <li><p>Physics students collected the following data as part of an experiment on the motion of a simple pendulum:</p>
+    <table class="Two Center">
+        <tr>
+            <td>Length<br/><span class="TeX">L</span> / m</td>
+            <td>Period<br/><span class="TeX">T</span> / s</td>
+        </tr>
+        <tr><td>0.25</td><td>1.01</td></tr>
+        <tr><td>0.50</td><td>1.43</td></tr>
+        <tr><td>0.75</td><td>1.75</td></tr>
+        <tr><td>1.00</td><td>2.02</td></tr>
+        <tr><td>1.25</td><td>2.26</td></tr>
+        <tr><td>1.50</td><td>2.47</td></tr>
+        <tr><td>1.75</td><td>2.67</td></tr>
+        <tr><td>2.00</td><td>2.86</td></tr>
+    </table>
+    <p>The Physics 20 data sheet suggests that the relationship between these variables can be described by the following equation: <p class="TeX">T=2\pi\sqrt{\frac{L}{g}}</p>
+    It may be more helpful for your analysis to write this equation as: <p class="TeX">T=\frac{2\pi}{\sqrt g}L^{1/2}</p>
+    Analyze the data completely. Include a linearized table of values and graph, a model equation from your graph, and a regression equation. Also, use your equation to calculate the experimental value of <span class="TeX">g</span>.</p></li>
+    <div class="Answer">
+    <table class="Two Center">
+        <tr>
+            <td>Length<sup>1/2</sup><br/><span class="TeX">L^{1/2}</span> / m<sup>1/2</sup></td>
+            <td>Period<br/><span class="TeX">T</span> / s</td>
+        </tr>
+        <tr><td>0.50</td><td>1.01</td></tr>
+        <tr><td>0.71</td><td>1.43</td></tr>
+        <tr><td>0.87</td><td>1.75</td></tr>
+        <tr><td>1.00</td><td>2.02</td></tr>
+        <tr><td>1.12</td><td>2.26</td></tr>
+        <tr><td>1.22</td><td>2.47</td></tr>
+        <tr><td>1.32</td><td>2.67</td></tr>
+        <tr><td>1.41</td><td>2.86</td></tr>
+    </table>
+        <p><a target="D3" href="https://www.desmos.com/calculator/fyuzvo9vps">Graph</a>
+<p class="TeX">k = \rm{Slope = \frac{(2.86 - 0)\ s}{(1.41 - 0)\ m^{1/2}} = 2.03\ s/m^{1/2}}</p>
+<p class="TeX">b = 0</p>
+<p class="TeX">y = kx + b \rightarrow T = {\rm (2.03\ s/m^{1/2})}\ L^{1/2}</p>
+<p>Substitute the formula for <span class="TeX">T</span>...</p>
+<p class="TeX">\frac{2\pi}{\sqrt g}L^{1/2} = {\rm (2.03\ s/m^{1/2})}\ L^{1/2}</p>
+<p>Cancel <span class="TeX">L^{1/2}</span>...</p>
+<p class="TeX">\frac{2\pi}{\sqrt g} = {\rm (2.03\ s/m^{1/2})}</p>
+<p>Square both sides...</p>
+<p class="TeX">\frac{4\pi^2}{g} = {\rm (2.03\ s/m^{1/2})^2 = 4.11\ s^2/m}</p>
+<p class="TeX">g = \frac{4\pi^2}{\rm{4.11\ s^2/m}} = \rm{9.60\ m/s^2}</p>
+    </div>
+</ol>
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li><ol type="a">
+        <li>Explain how to <em class="Defn">transform</em> or <em class="Defn">linearize</em> the raw data when the data is expected to follow a power relationship.</li>
+        <div class="Answer">For each data point, calculate a new value by applying the expected exponent to the raw data. For example, calculate <span class="TeX">r^{-2}</span> for each value of <span class="TeX">r</span> if the expected relationship has an exponent of –2.</div>
+    
+        <li>Describe two possible ways of determining the appropriate exponent to use when transforming power data.</li>
+        <div class="Answer">If there is a relationship (formula) on your data sheet (or elsewhere) that you believe applies to the data, determine the exponent from the equation. Otherwise, perform a power regression on the data and use the exponent that the software produces.</div>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>Describe how to determine the <em class="Defn">model equation</em> from the scatter plot of transformed data.</li>
+        <div class="Answer">The transformed data should produce a linear graph, so calculate the slope and <i>y</i>-intercept as you would for any other line. When writing the equation, remember to use the transformed variables (e.g. <span class="TeX">r^{-2}</span>), rather than the original variables (<span class="TeX">r</span>).</div>
+
+        <li>How can the model equation be used to evaluate constants or controlled variables that appear in the “formula”?</li>
+        <div class="Answer">When you substitute your model equation into the relationship (formula) from your data sheet, the manipulated and responding variables should cancel, and you can use algebra to solve for any remaining unknown.</div>
+    </ol></li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}D.3 — Transforming Power Data`,
+    answerDate: "2024.4.22.16",
+    num: "D.3",
+    up: "p20/home",
+    prev: "p20/da/regr",
+    next: "p20/da/rev",
+}
+
+</script>

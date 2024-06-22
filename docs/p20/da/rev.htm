@@ -1,0 +1,78 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
+<div id="LessonNotes">
+
+<section class="Slide"><h3>Experiment Design</h3>
+<p>The <em class="Defn">manipulated</em> variable is the quantity that you are intentionally changing during an experiment.
+    The <em class="Defn">responding</em> variable is the quantity that you are testing, to see how it is affected by the manipulated variable.<p>
+<ul>
+    <li>Your <em class="Defn">hypothesis</em> is a prediction of how changes to the manipulated variable will affect the responding variable.</li>
+    <li>All independent variables (ones that <em>could</em> be changed directly) except for the one being manipulated, must be kept constant during an experiment.</li>
+    <li>These are called <em class="Defn">controlled</em> variables.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Scatter Plots</h3>
+<p>When the manipulated and responding variables are both numerical values, you will need to draw a <em class="Defn">scatter plot</em> of the data.</p>
+<ul>
+    <li>The manipulated variable goes on the horizontal <span class="NoWrap">(<span class="TeX">x</span>)</span> axis. The responding variable goes on the vertical <span class="NoWrap">(<span class="TeX">y</span>)</span> axis.</li>
+    <li>Label both axes with the variable name, symbol, and unit.</li>
+    <li>Label the “tick marks” on the axes using a constant interval, chosen to fit all data points while using all available space.</li>
+    <li>Give your graph a descriptive title.</li>
+    <li>Add a <em class="Defn">best-fit line</em> only if the data follows a linear trend; do not use a best-fit line for obviously curved data.</li>
+    <li>The best-fit line should pass through the mean (average) of all data points and should minimize the average distance between the line and the data points.</li>
+</ul>
+
+</section>
+
+<section class="Slide"><h3>Non-Linear Data</h3>
+<p>When the data is <em class="Defn">non-linear</em> and believed to follow a <em>power</em> relationship, you can <em class="Defn">transform</em> the data by applying the appropriate power.</p>
+<ul>
+    <li>For example, if the expected relationship between the length <span class="NoWrap">(<span class="TeX">L</span>)</span> and period <span class="NoWrap">(<span class="TeX">T</span>)</span> of a simple pendulum is
+        <p class="TeX">T = 2\pi\sqrt{\frac{L}{g}} = \frac{2\pi}{\sqrt{g}} L^{\frac{1}{2}}</p>
+        you would calculate <span class="TeX">L^{\frac{1}{2}}</span> for each data point, and graph the results instead of just <span class="TeX">L</span>.</li>
+    <li>When the variable being transformed appears in the denominator, you must make the exponent negative.</li>
+    <li>When the variable appears under a square root or cube root sign, the exponent is 1/2 or 1/3 respectively.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Model Equations</h3>
+<p>Calculate the <em class="Defn">slope</em> of your best-fit line by identifying the coordinates of two points that lie on the best-fit line and are far apart: <span class="NoWrap"><span class="TeX">(x_1, y_1)</span></span> and <span class="NoWrap"><span class="TeX">(x_2, y_2)</span></span>.</p>
+<ul>
+    <li>Calculate the “rise” between the two points, <span class="TeX NoWrap">\Delta y = y_2 - y_1</span>.</li>
+    <li>Calculate the “run” between the two points, <span class="TeX NoWrap">\Delta x = x_2 - x_1</span>.</li>
+    <li>The slope, <span class="TeX">k</span>, is “rise / run”:<p class="TeX NoWrap">k = \frac{\Delta y}{\Delta x}</p></li>
+</ul>
+
+<p>The <em class="Defn"><span class="TeX">y</span>-intercept</em>, <span class="TeX">b</span>, is the coordinate where the best-fit line crosses the <span class="TeX">y</span>-axis.</p>
+<ul>
+    <li>If <span class="TeX">b</span> is not visible on your graph, you can calculate it:<p class="TeX">b = y - kx</p></li>
+    <li><span class="TeX">k</span> is the slope of the line.</li>
+    <li><span class="TeX">x</span> and <span class="TeX">y</span> refer to the coordinates of <em>either</em> of the two points you used to calculate the slope.</li>
+</ul>
+
+<p>Your <em class="Defn">model equation</em> has the form:</p><p class="TeX">y = kx+b</p>
+<ul>
+    <li>Replace <span class="TeX">k</span> and <span class="TeX">b</span> by the calculated values, including units.</li>
+    <li>Replace <span class="TeX">x</span> and <span class="TeX">y</span> by the symbols for the quantites you graphed.</li>
+    <li>If you transformed your data to obtain a linear graph, remember to include the exponent...</li>
+    <li>For example, replace <span class="TeX">x</span> by <span class="TeX">L^{\frac{1}{2}}</span> instead of just <span class="TeX">L</span> if that is how your transformed the data.</li>
+</ul>
+
+<p>You can use your <a data-feed="p20/da/regr" data-gdrvx="0B_gX0kaqRFXTenBOOTNNNkczZ3M">TI-83/84 Calculator</a> to
+    construct scatter plots and use regression analysis to find a model equation for linear, power, quadratic, and other non-linear type of data.</p>
+
+</section>
+</div></div>
+</section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}Data Analysis Review`,
+    up: "p20/home",
+    prev: ["p20/da/pwr", "p20/skill/rev"][clickLink.course],
+    next: ["p20/circ/ucm", "p20/kin/rev"][clickLink.course],
+}
+
+</script>

@@ -1,0 +1,8 @@
+<svg viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg">
+<style>
+
+* {fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round}
+
+</style>
+<polygon points="16,0 16,100 50,75 84,100 84,0"></polygon>
+</svg>

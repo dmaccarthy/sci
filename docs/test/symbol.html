@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<title>SVG Symbols</title>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-roman.css" type="text/css" charset="utf-8" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../src/util.js"></script>
+<script type="text/javascript" src="../src/bdata.js"></script>
+<script type="text/javascript" src="../src/math.js"></script>
+<script type="text/javascript" src="../src/svg_anim.js"></script>
+<script type="text/javascript">
+
+// 
+
+// function symbol(s, v, m) {
+//     let elem = (t, a) => {
+//         let e = document.createElementNS(SVG_Item.nsURI, t);
+//         return $(e).attr(a == null ? {} : a);
+//     }
+
+//     let g = elem("g").addClass("Symbol");
+//     g.append(elem("text", {x:0, y:0}).html(s));
+//     if (v) g.append(elem("text", {x:0, y:-12}).html("→").addClass("Unicode2192"));
+
+
+// // $("text")[0].getBBox();
+
+//     return g;
+// }
+
+$(() => {
+    let svg = new SVG_Animation("svg", -1, 1);
+    svg.line([-1, 0], [1, 0]).css({stroke: "red"});
+    svg.line([0, -1], [0, 1]).css({stroke: "red"});
+    let g = svg.symbol("F", {scale: 2, vec:1, recenter:0, q1: 2, q4: "net"}, [0.5, 0.5]).css({fill: "blue"});
+    g.config({position: [-0.5, 0.2]});
+    // let sym = $("g.Symbol");
+    // let v = sym.find("g");
+    // if (v) for (let i=0;i<v.length;i++) {
+    //     let vi = v[i];
+    //     let rect = vi.getBBox();
+    // }
+    // console.log();
+    svg.update(0);
+});
+
+</script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+<style>
+
+g.Symbol text {
+    font-family: "Latin Modern Roman", "Droid Serif", "Noto Serif", serif;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+</style>
+<!--g class="Symbol" transform="translate(200 200)">
+    <g class="Vec">
+    <text x="0" y="0">a</text>
+    <text class="Arrow" x="0" y="-16">→</text>
+    </g>
+    <text y="0" class="Subscript">net</text>
+</g-->
+</svg>
+</body></html>

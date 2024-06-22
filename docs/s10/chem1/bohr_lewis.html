@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTD-8" />
+<title>Energy Level Diagrams</title>
+<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic" />
+<link rel="stylesheet" href="/style/svg.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.1/lib/browser/math.min.js"></script>
+<script type="text/javascript" src="/src/util.js"></script>
+<!-- <script type="text/javascript" src="/src/bdata.js"></script> -->
+<script type="text/javascript" src="/src/math.js"></script>
+<script type="text/javascript" src="/src/svg_anim.js"></script>
+<script type="text/javascript" src="/src/applet.js"></script>
+<style type="text/css">
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    text-align: center;
+}
+
+</style>
+<script type="text/javascript">
+
+function draw(opt) {
+    $("#Bohr").html("").attr({
+        "data-js": "s10/chem1/img/bohr#bohr",
+        "data-args": opt,
+    });
+    opt = JSON.parse(opt);
+    $("h1").html(opt[5]);
+    if (opt[6] == 1) $("#DotDiag").hide();
+    else if (opt[6] == 2) $("#BohrDiag").hide();
+    $("#Lewis").html("").attr({
+        "data-js": "s10/chem1/img/bohr#dot",
+        "data-args": `["${opt[0]}", ${opt[3]}, ${opt[4]}]`,
+    }).css({width: `${10 * (opt[3] ? 27/22 : 1)}em`});
+    loadAllSVG();
+}
+  
+$(() => {
+    draw(decodeURIComponent(location.search.substr(1)));
+});
+
+</script>
+</head>
+
+<body>
+<h1></h1>
+<hr/>
+<div id="BohrDiag" style="margin-bottom: 3em">
+<h2>“Bohr” Energy Level Diagram</h2>
+<p><svg id="Bohr"></svg></p>
+</div>
+
+<div id="DotDiag">
+<h2>“Lewis” Electron Dot Diagram</h2>
+<p><svg id="Lewis"></svg></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+class xxxJSVG_Poly_ extends JSVG_Graphic {
+
+    get points() {return this._points}
+    // get offset() {return [0, 0]}
+    // get offset() {return this._points[0].minus(this._rc)}
+
+    set rotationCenter(xy) {
+        this._rc = [...xy];
+        this._offset = this._points[0].minus(xy);
+        this._changed = true;
+    }
+
+    set points(pts) {
+        this._points = pts;
+        let s = "";
+        let svg = this.svg;
+        for (let pt of pts) {
+            pt = svg.a2p(...pt);
+            s += ` ${pt[0]},${pt[1]}`;
+        }
+        this.$.attr({points: s});
+        this.rotationCenter = pts[0];
+        // this._offset = [0, 0];
+        // this._shiftAnchor = [0, 0];
+        this._changed = true;
+    }
+
+    center(n) {
+        let c;
+        let pts = this._points;
+        if (n) c = Array.add(...pts).times(1 / pts.length);
+        else {
+            let x0 = pts[0][0];
+            let y0 = pts[0][1];
+            let x1 = x0;
+            let y1 = y0;
+            for (let i=1;i<pts.length;i++) {
+                let x = pts[i][0];
+                let y = pts[i][1];
+                if (x < x0) x0 = x;
+                else if (x > x1) x1 = x;
+                if (y < y0) y0 = y;
+                else if (y > y1) y1 = y;
+            }
+            c = [(x0 + x1) / 2, (y0 + y1) / 2];
+        }
+        return c;
+    }
+
+    rotateAround(n) {
+        this.rotationCenter = n >= 0 ? this._points[n] : this.center(n+2);
+    }
+
+    draw() {
+        if (this._changed) {
+            let svg = this.svg;
+            let r = this.rotate_str;
+            let t = this._rc.plus(this._offset).minus(this._points[0]);
+            t = `translate(${t[0]} ${t[1]}) `;
+            this.$.attr({transform: t+r});
+            this._changed = false;
+        }
+    }
+
+}

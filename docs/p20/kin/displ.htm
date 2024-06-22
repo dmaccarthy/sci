@@ -1,0 +1,266 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Position &amp; Displacement</h1>
+</section>
+
+<section class="Slide Present">
+    <div class="Assign"><p>Individually, complete the <i>Review</i> assignment based on the last few lessons.</p></div>
+</section>
+
+<section class="Slide"><h3>Motion</h3>
+<p>The branch of physics that studies motion is called <em class="Defn">mechanics</em>.</p>
+<p data-cue="+">Mechanics has two main branches:</p>
+<ul data-cue="+">
+    <li><em class="Defn">Kinematics</em> aims to <em>describe</em> the motion of objects.</li>
+    <li data-cue="+"><em class="Defn">Dynamics</em> aims to <em>explain</em> why objects move as they do.</li>
+</ul>    
+</section>
+
+<section class="Slide"><h3>Position</h3>
+<p>A first step in describing an object’s motion is being able to describe where the object is: this is called the object’s <em class="Defn">position</em>.</p>
+<p class="Center">
+<svg id="BikeImg" xmlns="http://www.w3.org/2000/svg" data-aspect="8/3" class="w32" viewBox="-675 -375 1600 600">
+<defs>
+	<image id="Bike" href="./p20/kin/img/bike.svg" x="0" y="0" width="200" transform="scale(-1 1) translate(-100 0)"></image>
+</defs>
+<filter id="gray"><feColorMatrix type="saturate" values="0.2"/></filter>
+<style>
+
+#BikeImg :is(line, rect, polygon) {stroke: black; stroke-width:2}
+#BikeImg rect {fill: #C4B6A6}
+#BikeImg polygon {fill: #0065FE}
+
+#BikeImg text {
+	font-family: Inconsolata, monospace;
+	font-size: 48px;
+	text-anchor: middle;
+	dominant-baseline: middle;
+}
+
+</style>
+<rect width="1610" height="50" x="-680" y="0"></rect>
+<g transform="translate(0 -155)">
+    <image href="./p20/kin/img/tree.svg" x="-100" y="-100" width="200" transform="scale(1 1.8)"></image>
+    <use href="#Bike" filter="url(#gray)" x="-500" y="0"></use>
+    <use href="#Bike" filter="url(#gray)" x="-200" y="0"></use>
+    <use href="#Bike" filter="url(#gray)" x="100" y="0"></use>
+    <use href="#Bike" filter="url(#gray)" x="400" y="0"></use>
+    <use href="#Bike" x="700" y="0"></use>
+</g>
+<g class="Axis"><text x="835" y="145">m</text></g>
+<polygon points="600,0 534,46 523,30 551,10 -600,10 -600,-10 551,-10 523,-30 534,-46" transform="translate(100, 82.5)"></polygon>
+</svg>
+</p>
+    
+<ul data-cue="+">
+    <li>The object’s position is represented by its distance from the origin, with the positions on one side of the origin assigned positive values and the other side of the origin assigned negative values.</li>
+    <li data-cue="+">A measurement that describes a position is called a <em class="Defn">coordinate</em>.</li>
+    <li data-cue="+">The <em class="Defn">origin</em> is an arbitrarily chosen point which is assigned a coordinate of exactly 0.</li>
+    <li data-cue="+">The symbol for position is <span class="TeX">{\vec{\mathbf d}}</span> and the SI unit is metres (m).</li>
+    <li data-cue="+">The bike’s initial position in the above illustration is <span class="TeX">{\vec{\mathbf d}}_i = {\mathrm{-5.0\ m}}</span> and its final position is <span class="TeX">{\vec{\mathbf d}}_f = {\mathrm{+7.0\ m}}</span>.</li>
+    <li data-cue="+">The illustration uses the tree as the origin: the bike is initially 5.0 metres to the left of the tree, and after some time it has moved to 7.0 metres to the right of the tree.</li>
+    <li data-cue="+">When an object moves only in a straight line (either forward or backward), we call this <em class="Defn">one-dimensional (1D) motion</em>, because we only need to make one measurement to describe the position.</li>
+</ul>
+<p data-cue="+">We can describe the motion of the bike with a data table.</p>
+<p data-cue="+">If the data points shown in the illustration were measured at 1-second intervals...</p>
+<div data-cue="+">
+<p class="Caption">Motion of a Bicycle</p>
+<table class="Center Two TD6">
+    <tr><td><b>Time</b><br/><span class="TeX">t</span> / s</td><td><b>Position</b><br/><span class="TeX">{\vec{\mathbf d}}</span> / m</td></tr>
+    <tr><td>0.0</td><td>–5.0</td></tr>
+    <tr><td>1.0</td><td>–2.0</td></tr>
+    <tr><td>2.0</td><td>+1.0</td></tr>
+    <tr><td>3.0</td><td>+4.0</td></tr>
+    <tr><td>4.0</td><td>+7.0</td></tr>
+</table>
+</div>
+</section>
+
+<section class="Slide"><h3>Displacement</h3>
+<p>The change in an object’s position between any two points on its trajectory is called the <em class="Defn">displacement</em>.</p>
+<ul data-cue="+">
+	<li><em class="Defn">Trajectory</em> means the path that the object follows.</li>
+	<li data-cue="+">The symbol for displacement is <span class="TeX">\Delta{\vec{\mathbf d}}</span>:<p class="TeX">\Delta{\vec{\mathbf d}}_{1\rightarrow 2} = {\vec{\mathbf d}}_2 - {\vec{\mathbf d}}_1</p></li>
+</ul>
+<div data-cue="+">
+<ul>
+    <li>The bicycle’s displacement for the entire 4.0-second time interval is:<p class="TeX">\Delta{\vec{\mathbf d}} = {\mathrm{(+7.0\ m) − (−5.0\ m) = +12.0\ m}}</p></li>
+</ul>
+<p id="BikeCopy" class="Center Present"></p>
+</div>
+
+<p data-cue="+">Displacment is represented on the diagram by the red arrow connecting the intial and final positions.</p>
+<ul data-cue="+">
+	<li>The displacement of +12.0 m means that the red arrow is 12.0 metres long and points in the positive direction.</li>
+	<li data-cue="+">Displacement is classified as a <em class="Defn">vector</em> quantity because it involves a direction.</li>
+	<li data-cue="+">Quantities that do not involve a direction (like mass, time, or energy) are classified as <em class="Defn">scalars</em>.</li>
+	<li data-cue="+">The length of the arrow (without direction) is called the <em class="Defn">magnitude</em> of the vector.</li>
+</ul>
+</section>
+
+<section id="vec" class="Slide"><h3>Vector Diagrams</h3>
+<p>When the motion contains more than a single displacement, the vector diagram consists of all displacements drawn in a “tip-to-tail” manner.</p>
+<p class="Center"><svg id="SoccerField" class="w24" data-aspect="104/64" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 104 64">
+<style>
+
+#SoccerField rect {fill: #28A058}
+#SoccerField rect.Green {fill: #40B070}
+#SoccerField polyline {fill: none}
+
+#SoccerField rect.White, #SoccerField line, #SoccerField circle {
+	fill: none;
+	stroke: white;
+	stroke-width: 0.2;
+}
+
+#SoccerField g.Red * {
+	stroke: red;
+	stroke-width: 0.4;
+}
+
+#SoccerField g.Blue * {
+	stroke: blue;
+	stroke-width: 0.4;
+}
+
+</style>
+<rect x="-2" y="-2" width="104" height="64"></rect>
+<rect class="Green" x="0" y="0" width="10" height="60"></rect>
+<rect class="Green" x="20" y="0" width="10" height="60"></rect>
+<rect class="Green" x="40" y="0" width="10" height="60"></rect>
+<rect class="Green" x="60" y="0" width="10" height="60"></rect>
+<rect class="Green" x="80" y="0" width="10" height="60"></rect>
+<rect class="White" x="0" y="0" width="100" height="60"></rect>
+<rect class="White" x="0" y="15" width="12" height="30"></rect>
+<rect class="White" x="88" y="15" width="12" height="30"></rect>
+<line x1="50" y1="0" x2="50" y2="60"></line>
+<circle cx="50" cy="30" r="12"></circle>
+<circle cx="50" cy="30" r="0.4" style="fill: white"></circle>
+<g class="Red" transform="rotate(-45 40,20) translate(40,20)">
+	<line x1="0" y1="0" x2="-42.4264" y2="0"></line>
+	<polyline points="-3,-2 0,0 -3,2"></polyline>
+</g>
+<g class="Red" transform="translate(80,20)">
+	<line x1="0" y1="0" x2="-40" y2="0"></line>
+	<polyline points="-3,-2 0,0 -3,2"></polyline>
+</g>
+<g class="Blue" transform="rotate(-23.1986 80,20) translate(80,20)">
+	<line x1="0" y1="0" x2="-76.1577" y2="0"></line>
+	<polyline points="-3,-2 0,0 -3,2"></polyline>
+</g>
+</svg></p>
+<ul data-cue="+">
+	<li>The <em class="Defn">resultant</em> (total) displacement is drawn from the starting position of the first vector to the final position of the last vector.</li>
+	<li data-cue="+">Displacement is always measured in a straight line, even if the object’s trajectory is not straight.</li>
+    <li data-cue="+">This means the magnitude of the displacement will be less than the distance travelled by the object whenever the object follows an indirect path.</li>
+    <li data-cue="+">If the bike (in the 1D example above) rode <em>past</em> the 7.0 metre mark, and then turned around and came back, its displacement would still be +12.0 m but its distance travelled would be greater.</li>
+</ul>
+</section>
+    
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Position & Displacement</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/kin/displ"></p>
+</div>
+</section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    $("#SoccerField").on("click", (e) => {$(e.currentTarget).find("g.Blue").toggle()});
+
+    let g = $("#BikeImg > g.Axis");
+    let elem = (tag) => document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (let x=-600;x<801;x+=100) {
+        let e = elem("line");
+        g.append($(e).attr({x1:x, x2:x, y1:60, y2:105}));
+        if (x % 200 == 0) {
+            e = elem("text");
+            g.append($(e).html(Math.round(x/100)).attr({x:x, y:145}));            
+        }
+    }
+    if (isSlideshow()) $("#BikeCopy").html($("#BikeImg")[0].outerHTML);
+}
+
+</script>
+  
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+
+<ol>
+<li>A hiker moving in 1D has an initial position of –4.0 km and a final position of +3.2 km relative to some arbitrary origin.
+<ol type="a">
+    <li>Draw a vector diagram of the hiker’s motion. Label <span class="TeX">\vec{\mathbf d}_i</span> (the initial position), <span class="TeX">\vec{\mathbf d}_f</span> (the final position), and <span class="TeX">\Delta\vec{\mathbf d}</span> (the displacement).
+    <p class="Answer Center"><svg class="VDiag" data-js="p20/kin/img/displ#Q1a" id="Q1a"></svg></p>
+    </li>
+
+    <li>Calculate the hiker’s displacement. Show your work.
+    <div class="Answer">
+        <p class="TeX">\Delta\vec{\mathbf d} = \vec{\mathbf d}_f - \vec{\mathbf d}_i = \mathrm{(+3.2 - (-4.0))\ km = +7.2\ km}</p>
+    </div>
+    </li>
+
+    <li>The hiker now walks to a third position of +1.0 km. Draw and label a new vector diagram showing both parts of the motion and the resultant displacement.
+    <p class="Answer Center"><svg class="VDiag" data-js="p20/kin/img/displ#Q1b" id="Q1b"></svg></p>
+    </li>
+
+    <li>Calculate the resultant displacement and the total distance the hiker walked.
+    <div class="Answer">
+        <p><p class="TeX">\Delta\vec{\mathbf d} = \vec{\mathbf d}_f - \vec{\mathbf d}_i = \mathrm{(+1.0 - (-4.0))\ km = +5.0\ km}</p></p>
+        <p>Alternatively, you could calculate the second part of the displacement: <span class="TeX">\Delta\vec{\mathbf d}_2 = \mathrm{(+1.0 - 3.2)\ km = -2.2\ km}</span>, and then add thtis to the first displacement (<span class="TeX">\mathrm{+7.2\ km}</span>) to get the same answer.</p>
+    </li> 
+</ol>
+</li>
+
+<li>A student rides her bicycle 5.00 km north in 12.0 min. After a 5.0 min rest, she rides back south to her starting point in 15.0 min. Determine the student’s displacement and distance traveled for the entire trip.
+<div class="Answer">
+    <p>The <em>displacment</em> is zero because her final position is the same as her initial position. </p>
+    <p class="Center"><svg class="VDiag" data-js="p20/kin/img/displ#Q2" id="Q2"></svg></p>
+    <p>You can show this by adding the two displacement vectors:
+        <p class="TeX">\Delta\vec{\mathbf d} = \Delta\vec{\mathbf d}_1 + \Delta\vec{\mathbf d}_2 = \mathrm{+5.00\ km + (-5.00\ km) = 0.00\ km}</p></p>
+    <p><em>Distance</em> is not a vector, so we ignore the direction:
+        <p class="TeX">\Delta d = |\Delta\vec{\mathbf d}_1| + |\Delta\vec{\mathbf d}_2| = \mathrm{5.00\ km + 5.00\ km = 10.0\ km}</p></p>
+</div>
+</li>
+    
+<li>A hiker walks 6.00 km north and then 5.00 km east. By drawing an accurate vector diagram of the motion, estimate the magnitude of the hiker’s displacement. Can you think of a way to calculate the magnitude of the displacement?
+<div class="Answer">
+    <p>Draw an accurate “tip-to-tail” diagram as shown by the red arrows below. The blue arrow is the total displacment.</p>
+    <p class="Center"><svg class="VDiag" data-js="p20/kin/img/displ#Q3" id="Q3"></svg></p>
+    <p>You can measaure the magnitude of the displacment (the length of the blue arrow) using the scale of the diagram, or you can calculate it using the Pythagoras equation.</p>
+</div>
+</li>
+</ol></div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li>Define: (a) <em class="Defn">mechanics</em>, (b) <em class="Defn">kinematics</em>, (c) <em class="Defn">dynamics</em>.</li>
+    <li>Define: (a) <em class="Defn">origin</em>, (b) <em class="Defn">coordinate</em>, (c) <em class="Defn">coordinate axis</em>, (d) <em class="Defn">position</em>, (e) <em class="Defn">trajectory</em>, (f) <em class="Defn">scalar</em>, (g) <em class="Defn">vector</em>, (h) <em class="Defn">magnitude</em>.</li>
+    <li>Explain what we mean by <em class="Defn">one-dimensional (1D) motion</em> as opposed to 2D or 3D motion.</li>
+    <li>Define and explain the similarities and differences between <em class="Defn">displacement</em> and <em class="Defn">distance</em> travelled. Include the mathematical definition (formula) for displacement.</li>
+    <li><ol type="a">
+        <li>Explain how to draw a <em class="Defn">vector diagram</em> for motion that involves one or more direction changes.</li>
+        <li>What do we mean by the <em class="Defn">resultant vector</em>?</li>
+</ol></li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}1.7 — Position & Displacement`,
+    answerDate: "2024.2.14.16",
+    num: "1.7",
+    up: "p20/home",
+    prev: "p20/skill/trig",
+    next: "p20/kin/vel",
+}
+
+</script>

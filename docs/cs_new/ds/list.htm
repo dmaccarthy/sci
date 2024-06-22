@@ -1,0 +1,168 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Classes (Data Types)</h2><div class="Collapse Expand">
+<p>In <a href="./#cs_new/sp1/type">Structured Programming 1</a>, you learned that all data objects stored by a Python program have an associated <em class="Defn">class</em> which describes the type
+    of data being represented. (Classes are also known simply as “data types”.)  Python 3 classes include <code>bool</code>
+    (<code>True</code> or <code>False</code>), <code>int</code> (numbers with no decimal part), <code>float</code> (numbers that
+    include a decimal part), and <code>str</code> (sequences of Unicode characters). The class of a data object determines how
+    much memory is allocated to store the data, how the data is encoded, and what operations can be performed with it.</p>
+<pre data-echo="d01_ex1.py" data-title="1" class="Code" contenteditable="true">print(3 + 5)       <span class="Comment"># 8</span>
+print("3" + "5")   <span class="Comment"># 35</span>
+print(3 + "5")     <span class="Comment"># Exception!!</span></pre>
+
+<p>For example, the code above shows that adding two objects of class <code>int</code> will add the integers in the expected way.
+    Adding two <code>str</code> objects will join the strings together. Attempting to add an integer to a string will cause an
+    exception to occur.</p>
+<p>The <code>bool</code>, <code>int</code>, and <code>float</code> classes are <em class="Defn">primitive</em> data types because
+    their encoding and behaviour is built into the computer’s hardware. The <code>str</code> class is more complicated; it can
+    be thought of as a sequence of integer values where each integer represents a specific character encoded in Unicode
+    (e.g. the character “A” is represented by the integer 65).</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Tuples</h2><div class="Collapse Expand">
+<p>Sometimes, we may need to encode sequences of other data. For example, graphics coordinates can be represented by sequences
+    of two numbers that represent the <i>x</i> and <i>y</i> positions, and colours are represented by sequences of 3 (RGB) or 4 (RGBA) values
+    between 0 and 255...</p>
+<pre data-echo="d01_ex2.py" data-title="1" class="Code" contenteditable="true">location = 200, 128     <span class="Comment"># x, y coordinates</span>
+purple = 160, 32, 240   <span class="Comment"># RGB code</span>
+print(type(purple))     <span class="Comment"># &lt;class 'tuple'&gt;</span></pre>
+
+<p>Python considers sequences of data to have the class <code>tuple</code>. In creating a <code>tuple</code>, Python “packs”
+    the individual items into a <em class="Defn">data structure</em> that can be referred to by a single name and passed to a
+    function as a single argument.</p>
+
+<p>Data can also be “unpacked” from a <code>tuple</code> to assign separate names to each of the items...</p>
+<pre data-echo="d01_ex3.py" data-title="1" class="Code" contenteditable="true">purple = 160, 32, 240
+r, g, b = purple
+print(r)   <span class="Comment"># 160</span>
+print(g)   <span class="Comment"># 32</span>
+print(b)   <span class="Comment"># 240</span></pre>
+
+<p>A Python <code>tuple</code> can contain items of different data types. If we used a <code>tuple</code> to represent a date,
+    the Python code might look like this...</p>
+<pre data-echo="py" class="Code" contenteditable="true">birthDay = 2009, "January", 9</pre>
+
+<p>You can also have an “empty” tuple (a sequence of zero items) or a singleton (a sequence of one item). Note that the comma after <code>99</code>
+    in the example below is important in telling the Python interpreter that <code>faves</code> is a <code>tuple</code>; without the comma it would just be an <code>int</code>.</p>
+<pre data-echo="py" class="Code" contenteditable="true">
+empty = ()      <span class="Comment"># Empty tuple</span>
+faves = (99,)   <span class="Comment"># Singleton</span></pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Indexing</h2><div class="Collapse Expand">
+<p>You may not want to “unpack” a tuple into a large number of individual variables to access the data. Python uses
+    indices (plural of index) to allow access to items without unpacking. An <em class="Defn">index</em> is an integer that tells us how far from the beginning of the tuple each object is located. Thus, the first item in the tuple has an index of 0, while the second item has an index of 1, and so on. Python also supports negative indices, which describe an object’s position from the end of the tuple: an index of -1 refers to the last item while -2 refers to the second last one.</p>
+<p>Individual objects in a <code>tuple</code> can be referenced by the <code>tuple</code>’s variable name, followed by the
+    index in square brackets...</p>
+<pre data-echo="d01_ex4.py" data-title="1" class="Code" contenteditable="true">favNumbers = 4, 8, 15, 16, 23, 42
+print(favNumbers[2])      <span class="Comment"># 15</span>
+print(favNumbers[-1])     <span class="Comment"># 42</span></pre>
+<p>Note that <code>favNumbers[2]</code> actually refers to the <em>third</em> object in the tuple, since indices begin at zero, not one!</p>
+
+<p>In Python, tuples are <em class="Defn">immutable</em>. This means you cannot change the <code>tuple</code> once it has been
+    created. In the example below, the second statement will result in a <code>TupleError</code> exception since it attempts
+    to assign a new value to an existing item in the <code>tuple</code>...</p>
+<pre data-echo="d01_ex5.py" data-title="1" class="Code" contenteditable="true">favNumbers = 4, 8, 15, 16, 23, 42
+favNumbers[1] = 9</pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Other <code>tuple</code> Operations</h2><div class="Collapse Expand">
+<p>Python has an <code>in</code> operator that tests whether a particular value exists in a <code>tuple</code>, a <code>len</code>
+    function that determines the number of items in a <code>tuple</code>, and an <code>index</code> method that returns the
+    index of the first occurrence of a value in the <code>tuple</code>...</p>
+<pre data-echo="d01_ex6.py" data-title="1" class="Code" contenteditable="true">favNumbers = 4, 8, 15, 16, 23, 42
+print(len(favNumbers))         <span class="Comment"># 6</span>
+print(9 in favNumbers)         <span class="Comment"># False</span>
+print(favNumbers.index(23))    <span class="Comment"># 4</span></pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Slicing</h2><div class="Collapse Expand">
+<p>Python allows you to extract <em class="Defn">slices</em> of a <code>tuple</code> into a new <code>tuple</code>. Consider the following example...</p>
+<pre data-echo="d01_ex7.py" data-title="1" class="Code" contenteditable="true">favNumbers = 4, 8, 15, 16, 23, 42
+teens = favNumbers[2:4]
+oneDigit = favNumbers[:2]
+biggies = favNumbers[-2:]
+print(oneDigit, teens, biggies)</pre>
+
+<p>The notation <code>favNumbers[2:4]</code> tells the interpreter to take a slice from the <code>favNumbers</code> tuple,
+    beginning with the index 2 and ending at (but not including!) the index 4. The result is a new <code>tuple</code> containing
+    the third and fourth items from the original <code>tuple</code>. If either the starting or ending index is omitted, Python
+    assumes the start (end) of the slice should be the start (end) of the <code>tuple</code>. Thus <code>favNumbers[:2]</code>
+    takes a slice from the beginning up to (but not including) index 2. The expression <code>favNumbers[-2:]</code> means a
+    slice starting with the second last item and going to the end.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Strings</h2><div class="Collapse Expand">
+<p>The string data type (class <code>str</code>) is similar to a <code>tuple</code> in the sense that it is a sequence of items,
+    the items being individual Unicode characters. The constructor for the <code>tuple</code> class can explicitly convert a
+    string to a <code>tuple</code>...</p>
+<pre data-echo="d01_ex8.py" data-title="1" class="Code" contenteditable="true">place = "Sherwood Park"
+letters = tuple(place)
+print(letters)</pre>
+
+<p>Many of the features of <code>tuple</code>, such as indexing and slicing, can be applied to string objects even without
+    converting them to <code>tuple</code>...</p>
+<pre data-echo="d01_ex9.py" data-title="1" class="Code" contenteditable="true">place = "Sherwood Park"
+print(place[-4:])</pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Lists</h2><div class="Collapse Expand">
+<p>A <code>list</code> is a Python data structure that is similar to a <code>tuple</code>, except that where a <code>tuple</code> is immutable,
+    a <code>list</code> is <em class="Defn">mutable</em>. You can add, remove, and modify items within a <code>list</code> without
+    having to copy all of the data into a new data structure. In Python, lists are created using <em>square</em> brackets...</p>
+<pre data-echo="d01_ex10.py" data-title="1" class="Code" contenteditable="true">favNumbers = [4, 8, 15, 16, 23, 42]
+favNumbers[1] = 9
+print(favNumbers)</pre>
+<p>When we tried code similar to the example above with a <code>tuple</code>, an exception occurred, since tuples cannot be
+    changed. However, the program works fine with a <code>list</code>. You can use the <code>list</code> and <code>tuple</code>
+    constructors to convert a sequence from a <code>tuple</code> to a <code>list</code> or vice versa. The constructors will
+    also convert strings to lists or tuples.</p>
+<pre data-echo="d01_ex11.py" data-title="1" class="Code" contenteditable="true">favNumbers = 4, 8, 15, 16, 23, 42
+favNumList = list(favNumbers)
+print(favNumbers)
+print(favNumList)</pre>
+<p>Most <code>tuple</code> features (<code>len</code> function, <code>in</code> operator, indexing and slicing operations, etc.)
+    are also available for lists. Because lists are mutable, Python provides additional methods for inserting, removing, and
+    appending items to a <code>list</code>, and for sorting lists. These methods are described in the <a target="Py" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">Python documentation</a>.
+    You should be familiar with the <code>append</code>, <code>extend</code>, <code>remove</code>, and <code>insert</code> methods in particular.</p>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>The program <code>d01_copy.py</code> creates a <code>list</code> of data, and then runs the assignment <code>dataCopy = data</code>.
+    This line does not copy the <code>list</code>; it simply creates a duplicate reference (name) for the same <code>list</code> object!
+    Modify the program so that the <code>list</code> data is copied into a new <code>list</code> object named <code>dataCopy</code>
+    by using slices. The <code>assert</code> statements describe the post-conditions: the two lists (<code>data</code> and
+    <code>dataCopy</code>) should be equal (i.e. they should contain the same data), but they should be separate lists rather
+    than different names for the same <code>list</code> object.</li>
+<li>The Fibonacci numbers are a mathematical sequence that begins with 0 and 1, and then continues by adding the last two numbers together to get the next number: 0, 1, 1, 2, 3, 5, 8, 13, etc.</li>
+<ol style="list-style:lower-alpha">
+    <li>Write a Python 3 function in <code>d01_fib1.py</code> that is passed an integer <code>n</code> as an argument and
+        returns the first <code>n</code> elements of the Fibonacci sequence as a <code>list</code>. Include appropriate
+        pre-conditions, and write a main program to test the function.</li>
+    <li>Create a program in <code>d01_fib2.py</code> that prints a portion of the Fibonacci sequence. Allow the user to enter
+        a where to start in the sequence, and how many terms to print. For example, if the user types 3 for the starting index
+        and 4 for the number of items, the result should be a <code>list</code> [2, 3, 5, 8].</li>
+</ol>
+<li>Complete the program <code>d01_primefactor.py</code> by writing the function <code>primeFactors</code>. This function takes
+    a positive integer argument and should return the number’s prime factors as a sorted list. For example, if the user enters
+    300, the program should print [2, 2, 3, 5, 5], a <code>list</code> of prime numbers whose product is the number provided.
+    Use appropriate modular programming and exception handling techniques. Hint: Write a separate function to calculate the
+    smallest prime factor of a number.</li></ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Tuples & Lists",
+    up: `cs_new/cs20`,
+    next: "cs_new/ds/iter",
+}
+
+</script>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="svg3977"
+   viewBox="0 0 112.19999 112.2"
+   version="1.0"
+   sodipodi:docname="train.svg"
+   width="112.2"
+   height="112.2"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.5390625"
+     inkscape:cx="53.969095"
+     inkscape:cy="45.350993"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3977" />
+  <g
+     id="layer1"
+     fill-rule="evenodd"
+     transform="matrix(-1,0,0,1,122.16,-12.656)">
+    <path
+       id="path2399"
+       stroke-linejoin="round"
+       d="m 72,24.656 c -2.216,0 -4,1.784 -4,4 V 32 c 0,2.216 1.784,4 4,4 h 1.25 C 72.502,36.504 72,37.368 72,38.344 v 24.937 c 0,-2.216 -1.784,-4 -4,-4 H 48 V 38.156 C 48,36.961 47.039,36 45.844,36 H 33.906 c -1.195,0 -2.156,0.961 -2.156,2.156 V 59.281 H 20.406 c -2.216,0 -4,1.784 -4,4 V 84 c 0,2.216 1.784,4 4,4 H 20 c -2.216,0 -4,1.784 -4,4 v 8 c 0,2.22 1.784,4 4,4 h 2.5 v 0.12 c 0,6.57 5.31,11.91 11.875,11.91 6.565,0 11.906,-5.34 11.906,-11.91 0,-0.04 10e-4,-0.08 0,-0.12 h 3.75 v 0.12 c 0,6.57 5.342,11.91 11.907,11.91 6.564,0 11.874,-5.34 11.874,-11.91 0,-0.04 0.001,-0.08 0,-0.12 h 4.126 c 1.276,6.97 7.378,12.25 14.718,12.25 7.34,0 13.444,-5.28 14.724,-12.25 H 108 c 2.22,0 4,-1.78 4,-4 v -8 c 0,-2.216 -1.78,-4 -4,-4 h 0.34 c 1.56,0 2.82,-1.251 2.82,-2.812 V 38.344 c 0,-0.976 -0.51,-1.84 -1.25,-2.344 h 2.25 c 2.21,0 4,-1.784 4,-4 v -3.344 c 0,-2.216 -1.79,-4 -4,-4 z"
+       stroke="#000000"
+       stroke-linecap="round"
+       stroke-width="12"
+       fill="#0000ff" />
+    <path
+       id="path2397"
+       stroke-linejoin="round"
+       d="m 81.219,44 h 21.061 c 0.98,0 1.75,0.77 1.75,1.75 V 66 c 0,0.98 -0.77,1.781 -1.75,1.781 H 81.219 c -0.98,0 -1.75,-0.801 -1.75,-1.781 V 45.75 c 0,-0.98 0.77,-1.75 1.75,-1.75 z"
+       stroke="#000000"
+       stroke-linecap="round"
+       stroke-width="12"
+       fill="#0000ff" />
+    <path
+       id="path2395"
+       stroke-linejoin="round"
+       d="m 72,84 v 1.188 C 72,86.749 73.251,88 74.812,88 H 68 c 2.216,0 4,-1.784 4,-4 z"
+       stroke="#000000"
+       stroke-linecap="round"
+       stroke-width="12"
+       fill="#0000ff" />
+    <rect
+       id="rect4509"
+       stroke-linejoin="round"
+       rx="2.1584001"
+       transform="rotate(90)"
+       height="16.259001"
+       width="51.800999"
+       stroke="#000000"
+       stroke-linecap="round"
+       y="-48"
+       x="36"
+       stroke-width="3"
+       fill="#0000ff" />
+    <rect
+       id="rect3989"
+       stroke-linejoin="round"
+       rx="4"
+       height="16"
+       width="96"
+       stroke="#000000"
+       stroke-linecap="round"
+       y="88"
+       x="16"
+       stroke-width="3"
+       fill="#e9c6af" />
+    <rect
+       id="rect4500"
+       stroke-linejoin="round"
+       rx="4"
+       height="28.73"
+       width="55.591999"
+       stroke="#000000"
+       stroke-linecap="round"
+       y="59.27"
+       x="16.408001"
+       stroke-width="3"
+       fill="#00ff00" />
+    <rect
+       id="rect4504"
+       stroke-linejoin="round"
+       rx="4"
+       height="11.333"
+       width="48.157001"
+       stroke="#000000"
+       stroke-linecap="round"
+       y="23.66"
+       x="68"
+       stroke-width="3"
+       fill="#ff0000" />
+    <path
+       id="rect4511"
+       stroke-linejoin="round"
+       d="M 74.812,35.531 C 73.251,35.531 72,36.783 72,38.344 V 85.188 C 72,86.749 73.251,88 74.812,88 h 33.528 c 1.56,0 2.82,-1.251 2.82,-2.812 V 38.344 c 0,-1.561 -1.26,-2.813 -2.82,-2.813 z M 81.219,44 h 21.061 c 0.98,0 1.75,0.77 1.75,1.75 V 66 c 0,0.98 -0.77,1.781 -1.75,1.781 H 81.219 c -0.98,0 -1.75,-0.801 -1.75,-1.781 V 45.75 c 0,-0.98 0.77,-1.75 1.75,-1.75 z"
+       stroke="#000000"
+       stroke-linecap="round"
+       stroke-width="3"
+       fill="#ffff00" />
+    <path
+       id="path4513"
+       stroke-linejoin="round"
+       d="m 108,110 a 14,14 0 1 1 -28,0 14,14 0 1 1 28,0 z"
+       transform="matrix(1.0695,0,0,1.0695,-7.8749,-16.36)"
+       stroke="#000000"
+       stroke-linecap="round"
+       stroke-width="3.7401"
+       fill="#ff0000" />
+    <path
+       id="path4515"
+       transform="matrix(0.53474,0,0,0.53474,42.391,42.461)"
+       d="m 108,110 a 14,14 0 1 1 -28,0 14,14 0 1 1 28,0 z" />
+    <path
+       id="path4523"
+       stroke-linejoin="round"
+       d="m 108,110 a 14,14 0 1 1 -28,0 14,14 0 1 1 28,0 z"
+       transform="matrix(0.84945,0,0,0.84945,-45.46,10.698)"
+       stroke="#000000"
+       stroke-linecap="round"
+       stroke-width="4.7089"
+       fill="#ff0000" />
+    <path
+       id="path4525"
+       transform="matrix(0.42472,0,0,0.42472,-5.5363,57.418)"
+       d="m 108,110 a 14,14 0 1 1 -28,0 14,14 0 1 1 28,0 z" />
+    <path
+       id="path4529"
+       stroke-linejoin="round"
+       d="m 108,110 a 14,14 0 1 1 -28,0 14,14 0 1 1 28,0 z"
+       transform="matrix(0.84945,0,0,0.84945,-17.921,10.698)"
+       stroke="#000000"
+       stroke-linecap="round"
+       stroke-width="4.7089"
+       fill="#ff0000" />
+    <path
+       id="path4531"
+       transform="matrix(0.42472,0,0,0.42472,22.003,57.418)"
+       d="m 108,110 a 14,14 0 1 1 -28,0 14,14 0 1 1 28,0 z" />
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Toy train icon</dc:title>
+        <dc:date>2009-03-18T12:53:11</dc:date>
+        <dc:description>choochoo, choochoo, clip art, clipart, contour, contour, icon, icon, image, locomotive, locomotive, media, png, public domain, svg, toy, toy, train, train, wooden, wooden, </dc:description>
+        <dc:source>http://openclipart.org/detail/22533/toy-train-icon-by-pitr</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>pitr</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>choochoo</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>contour</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>locomotive</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>toy</rdf:li>
+            <rdf:li>train</rdf:li>
+            <rdf:li>wooden</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

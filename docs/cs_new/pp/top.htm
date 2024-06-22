@@ -1,0 +1,93 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Top-Down Design</h2><div class="Collapse Expand">
+
+<p>Programming languages that allow us to use functions to decompose a problem into separate tasks are called <em class="Defn">procedural programming languages</em>. (Python is actually a “multi-paradigm” language that permits programs to be written in a structured, procedural, or object-oriented style.)</p>
+<p>One approach to procedural programming is called <em class="Defn">top-down design</em>.  In this approach, we write a function for each task by focussing on the “big picture”. We don’t worry about any details that are distinct tasks; instead we assume that any such tasks can be handled by separate functions that we can write and test separately.</p>
+<p>Suppose we wanted to write a word guessing game similar to “Hangman”. The game consists of presenting the player with a clue and asking them to guess a letter...</p>
+
+<pre class="IO">Sports Team: TO*ONTO *APTO*S
+Bad Guesses: EJDI
+Guess a Letter? <span class="Blue">R</span></pre>
+
+The game keeps asking the player to guess a letter, and ends when the player guesses the puzzle correctly or when the number of bad guesses exceeds the number allowed. Using a top-down approach, let’s start by writing the <code>main</code> <em>function</em>. First, we need to initialize the relevant variables...
+<pre class="Code" contenteditable="true" data-echo="py">clue, answer = puzzle()
+guesses = ""
+wrong = 0
+display = hideLetters(answer, guesses)
+</pre>
+
+<p>We need a <code>clue</code> (“Sports Team”) and an <code>answer</code> (“TORONTO RAPTORS”). Let’s assume that there is a function <code>puzzle</code> that will create the clue and answer for us. We can go back and write the <code>puzzle</code> function later.
+<p>We also need a variable (<code>guesses</code>) to keep track of the letters guessed, and a variable to keep count of how many bad guesses have been made (<code>wrong</code>). Finally, we need to be able to display the answer with the unguessed letters hidden. For example, initially the game will display the clue and answer as...</p>
+<pre class="IO">Sports Team: ******* *******</pre>
+
+<p>This display string will change whenever the player makes a correct guess. We can assume a function <code>hideLetters</code> which will create the appropriate string for us; we can go back and write this function later.</p>
+<p>The next part of the program is the guessing loop...</p>
+
+<pre class="Code" contenteditable="true" data-echo="py">while wrong < WRONG_LOSE and "*" in display:
+    letter = askPlayer(clue, display, guesses, wrong)
+    guesses += letter
+    if letter in answer:
+        display = hideLetters(answer, guesses)
+    else:
+        wrong += 1
+</pre>
+
+<p>Again, let’s assume we will later write a function called <code>askPlayer</code>, which will prompt the user to guess a letter after printing all necessary information.
+    The program will then add the newly guessed letter to the previous guesses. If the guess is correct, the <code>display</code> string will need to be updated by calling
+    <code>hideLetters</code> again. If the guess is incorrect, the value of the variable <code>wrong</code> will increase by 1. The guessing loop continues until the number of wrong guesses gets too big, or until there are no more missing letters to guess.</p>
+<p>Once the guessing loop is finished, the program will print the outcome of the game...</p>
+
+<pre class="Code" contenteditable="true" data-echo="py">if wrong == WRONG_LOSE:
+    print("You lose!")
+else:
+    print("You win!")
+print(answer)
+</pre>
+
+<p>The constant <code>WRONG_LOSE</code> is the number of bad guesses at which the player loses the game.</p>
+<p>Now that we have finished the top level (the <code>main</code> function), we can set to work on writing and testing the other needed functions
+    (<code>puzzle</code>, <code>hideLetters</code>, <code>askPlayer</code>) one at a time. We can continue to take a top-down approach.
+    For example, when writing the <code>askPlayer</code> function, we might want to create another subordinate function to compare the <code>answer</code> and the
+    <code>guesses</code> to figure out which guessed letters are incorrect, so that this information can be printed for the player.</p>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>The program <code>p03_wordGuess.py</code> implements the word guessing game described above as a function called <code>play</code>.
+    The subordinate functions (<code>puzzle</code>, <code>hideLetters</code>, and <code>askPlayer</code>) have been provided so that the program runs without errors, but it does not yet do what it is supposed to do. Complete these functions so that the game runs correctly. Include docstrings for all functions. Some things to consider:
+    <ul>
+        <li>The game should not treat uppercase and lowercase letters as different.</li>
+        <li>Punctuation (e.g. spaces, commas, hyphens, colons) does not need to be guessed; these characters should be displayed when the clue is first shown.</li>
+        <li>The program should ignore the user’s input if it does not contain exactly one letter, or if the letter has already been guessed.</li>
+    </ul>
+</li>
+
+<li class="Bottom">Complete the program <code>p03_rock.py</code> to play “Rock, Paper, Scissors” against the computer. Use a top-down design.
+    The player should be able to type <code>R</code>, <code>P</code>, or <code>S</code> to play and <code>Q</code> to quit the game. Any other input should be ignored.</li>
+
+<pre class="IO">Rock, Paper, Scissors? <span class="Blue">R</span>
+Player chose Rock.
+Computer chose Paper.
+Computer wins!
+
+The score is:
+  Computer 1
+  Player   0
+
+Rock, Paper, Scissors? <span class="Blue">Q</span>
+Thanks for playing! Goodbye.</pre>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+    
+loadFeed.data = {
+    title: "Top-Down Design",
+    up: `cs_new/cs20`,
+    prev: "cs_new/pp/scope",
+    next: "cs_new/pp/pre",
+}
+
+</script>

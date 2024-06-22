@@ -1,0 +1,127 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Standard Library</h2><div class="Collapse Expand">
+
+<p>The <code>print</code> and <code>input</code> functions are examples of Python “built-ins”.
+	Built-ins are functions, classes, and other features that are part of the Python interpreter
+	itself, or that the interpreter loads automatically. Built-in features are always available
+	to your programs. Other built-ins that we have already seen include the <code>type</code>
+	function and the classes <code>int</code>, <code>str</code>, and <code>float</code>.  Other
+	useful built-ins that we have not seen yet include functions <code>round</code>, <code>min</code>,
+	<code>max</code>, <code>sum</code>, and <code>len</code>. You can get a complete list of built-ins
+	by running the following:</p>
+
+<pre data-echo="s08_ex1.py" data-title="1" class="Code">for b in sorted(vars(__builtins__)):
+    print(b)</pre>
+
+<p>Python does not load all available features automatically. If it did, programs would use far
+	more memory than they need to and would take much longer to load. Instead, most available features
+	are stored in separate files called <em class="Defn">modules</em> that are only loaded when
+	requested. We have used the <code>turtle</code> module in previous lessons to load turtle graphics
+	functions. Use the <code>from-import</code> statement to import functions, classes, and data from
+	a module. Import statements are usually placed at the beginning of the source code, right after the docstring.</p>
+
+<pre data-echo="s08_ex2.py" data-title="1" class="Code">from turtle import setup, forward, exitonclick
+
+setup(500, 500)
+forward(200)
+exitonclick()</pre>
+
+<p>It is also possible to use a “wildcard” to import <b>all</b> names of functions, classes, and data
+	from a module...<p>
+<pre data-echo="py" class="Code">from turtle import *</pre>
+
+<p>It is generally better to avoid wildcard imports. Importing names that your program does not actually
+	use requires more memory and makes Python run less efficiently. It also increases the likelihood of
+	conflicts when the same name is used by more than one module.</p>
+
+<p>The collection of modules that is included with the Python interpreter is called the
+	<em class="Defn">standard library</em>. In addition to <code>turtle</code> the standard library
+	includes <a href="https://docs.python.org/3/library/math.html" target="_m"><code>math</code></a>
+	and <a href="https://docs.python.org/3/library/random.html" target="_r"><code>random</code></a>,
+	modules for performing mathematical and random number calculations.</p>
+
+<pre data-echo="s08_ex3.py" data-title="1" class="Code">from math import pi, sqrt
+from random import randint, uniform
+
+print(pi)
+print(sqrt(2))
+print(randint(1,6))
+print(uniform(1,6))</pre>
+
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Site Packages</h2><div class="Collapse Expand">
+
+<p>Sometimes, related modules are placed in a folder which is called a <em class="Defn">package</em>.
+	After installing Python and its standard library, you can add additional packages from other sources
+	to add more functionality to Python. These are often called <em class="Defn">site packages</em>.</p>
+
+<p>The repl.it IDE can often recognize which packages your program uses and install them automatically.
+    You can add or remove site packages by clicking “Packages” in the “Tools” panel.</p>
+<p>When using Thonny to run Python programs locally, you can use “Manage packages...” under the “Tools” menu to choose the packages you want.</p>
+<p>You can also use the Package Installer for Python (PIP) that is included with Python to install packages so that they can be used with all local IDEs.</p>
+<p>Some useful site packages include:</p>
+<ul>
+	<li><a href="https://www.pygame.org" target="_p"><code>pygame</code></a>: Provides supports for
+		graphics, sound, and mouse and keyboard events; useful for creating games.</li>
+	<li><a href="https://dmaccarthy.github.io/sc8pr" target="_8"><code>sc8pr</code></a>: Adds more
+		features to <code>pygame</code> including a robotics simulator.</li>
+	<li><a href="https://www.numpy.org" target="_n"><code>numpy</code></a> and <a href="https://scipy.org/scipylib/"
+		target="_s"><code>scipy</code></a>: Used for scientific computing.</li>
+	<li><a href="https://pillow.readthedocs.io/en/stable/" target="_8"><code>pillow</code></a>: Use for encoding,
+		decoding, and manipulation of image files.</li>
+	<li><a href="http://flask.pocoo.org/docs/1.0/" target="_f"><code>flask</code></a> or <a href="https://www.djangoproject.com//" target="_j"><code>django</code></a>:
+		Simplify the process of creating web applications in Python.</li>
+</ul>
+<p>The Python Software Foundation maintains an extensive <a href="https://pypi.org/" target="_pypi">index
+	of available packages</a>.</p>
+
+<p>Here is an example of how to import from a package. As long as the package (<code>resource</code>) has been properly installed,
+    there is no difference between importing from the standard library and from the package. If <code>resource</code> is not installed,
+    the program will raise a <code>ModuleNotFoundError</code>. (To see this, try misspelling <code>resource</code> as <code>resourse</code>.)</p>
+<pre data-echo="s08_ex4.py" data-title="1" class="Code">from resource import student_marks
+
+print(student_marks)</pre>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand"><ol class="Assign">
+<li>Write a program <code>s08_sphere.py</code> that prompts the user to enter the radius of a sphere and then calculates the volume and surface area of the sphere using the formulas:
+    <p class="TeX">V = {4 \over 3}\pi r^3</p>
+    <p class="TeX">A = 4\pi r^2</p>
+    Use the value of <span class="TeX">\pi</span> imported from the <code>math</code> module.</li>
+
+<li>You may have learned about the Pythagoras equation in Math class:<p class="TeX">c = \sqrt{a^2 + b^2}</p>
+    This equation lets us calculate the longest side of a right triangle, <span class="TeX">c</span>, if we know the other two sides, <span class="TeX">a</span> and <span class="TeX">b</span>.
+    Write a program <code>s08_pythag.py</code> that prompts the user to enter <span class="TeX">a</span> and <span class="TeX">b</span> and then calculates <span class="TeX">c</span> using the <code>sqrt</code> function from the <code>math</code> module.</li>
+
+<li>The program below is supposed to simulate rolling a pair of dice. Currently, the program
+    always rolls a 6 and a 3. Modify the program to randomize the roll using the <code>randint</code>
+    function from the <code>random</code> module.</li>
+<pre data-echo="s08_dice.py" data-title="1" class="Code"><span class="DocString">"Simulate rolling a pair of dice"</span>
+
+<span class="Comment"># Input</span>
+die1 = 6
+die2 = 3
+
+<span class="Comment"># Processing</span>
+total = die1 + die2
+
+<span class="Comment"># Output</span>
+print("You rolled {} + {} = {}".format(die1, die2, total))</pre>
+</ol>
+
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Modules & Packages",
+    up: "cs_new/cs10",
+    next: "cs_new/sp1/oper",
+    prev: "cs_new/sp1/type",
+}
+  
+</script>

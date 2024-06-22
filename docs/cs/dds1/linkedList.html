@@ -1,0 +1,112 @@
+<h3>Arrays & Pointers</h3><div class="Note">
+<p>You learned in previous courses that programs in high-level languages such as Python,
+    Java, or C typically use a <b class="Red">stack</b> and <b class="Red">heap</b> for their memory requirements. The stack is a last in / first out (LIFO) structure where local variables are typically stored, while the heap contains extra memory that can be allocated or deallocated as needed.</p>
+<p>An <b class="Red">array</b> is a data structure whereby several data objects, all having
+    the same length in bytes, are stored in a <em>contiguous</em> section of the heap. A
+    <b class="Red">pointer</b> (memory address) to the first item in the array is kept in the stack. The illustration below shows a simplified map of the computer’s memory. An array occupies the orange memory locations and the address of the first byte of the array (53) is stored on the stack (<span class="Blue">blue</span>).</p>
+<p class="Center"><img src="dds1/img/array.png" alt="Array"/></p>
+<p>Suppose our program needs to access the 5th item (i.e. index 4) in the array, and that each item in the array occupies 2 bytes. Our interpreter or compiler could calculate the location of the desired item as (in hexadecimal) 53 + 4 * 2 = 5B. That is, we multiply the index (4) by the size of the objects in bytes (2) and add it to the array pointer stored in the stack (53) to get a pointer for the 5th item in the array. Thus we can locate any item in the array very easily, but this is dependent on the array items all having the same byte size and being stored contiguously in the heap.</p>
+</div>
+
+<h3>Lists</h3><div class="Note">
+<p>Suppose we need to store a sequence of objects such as strings or dictionaries, that require varying amounts of memory. We cannot use a traditional array as described above because of the requirement that the items all use the same number of bytes.</p>
+<p>What we can do instead is to create an <em>array of pointers</em> to the data. As shown in
+    the illustration below, the data (<span class="Green">green</span>) is stored in the heap. The pointers that describe the locations of the data are assembled into an array (<span style="color:#ecd4c6">orange</span>) and the pointer describing the location of that array is stored in the stack.</p>
+<p class="Center"><img src="dds1/img/heap.png" alt="heap"/></p>
+<p>The price we pay for being able to store variable-length data is that there is one extra
+    step in locating the data. When we want to locate the item with a particular index, we
+    use the index to locate the item’s <em>pointer</em> in the pointer array (<span style="color:#ecd4c6">orange</span>) and then we use that pointer to locate the item itself (<span class="Green">green</span>).</p>
+</div>
+
+<h3>Linked Lists</h3><div class="Note">
+
+<p>Arrays (and lists which are implemented as an array of pointers) only work if the array
+    data can be stored in a <em>contiguous</em> section of memory. This creates problems if
+    we need to insert or append more data to an existing array. To insert data requires that
+    all of the array items following the insertion point be <em>shifted</em> to make room for the data being inserted. Any operation that increases the size of the array will not work if there are not sufficient unallocated bytes immediately following the last byte of the array. In this situation the entire array will need to be moved to a larger section of the heap; the operation would fail if a sufficiently large section is not available.</p>
+<p>A <b class="Red">linked list</b> is a structure for storing sequences that does not require
+    a large contiguous area of the heap. The stack contains a pointer to the <em>first</em>
+    item in the list. That item then contains a pointer (“link”) to the <em>second</em> item, which then links to the third item, and so forth. Since there are no special requirements for how the data is arranged in memory, there are no issues with inserting or appending to the list. The new data can be located anywhere in the heap; all that is necessary is to adjust the link pointers of the item being inserted and the item immediately before it so that the desired sequence is retained.</p>
+<p>The price we pay for using a linked list is that it is no longer easy to locate an arbitrary item within the list. If we need to access the 100th item in a linked list, the only place that item’s location is stored is with the 99th item, and the only place that item’s location is stored is in the 98th item and so on. Therefore, we must start at the beginning of the list (using the pointer kept in the stack) and <b class="Red">traverse</b> the items one at a time to locate the next item until we have found the one we are looking for.</p>
+<p class="Center"><img src="dds1/img/link.png" alt="Linked List"/></p>
+</div>
+
+<h3>Assignment</h3>
+<p>All programs require the use of good programming techniques, including:</p><ul>
+<li>Internal documentation (docstrings and comments)</li>
+<li>Descriptive variable names</li>
+<li>No global variables (constants are okay)</li>
+<li>Procedures that perform a single task</li>
+<li>IPO structure within each procedure (input first, then processing, and output only after all processing is complete)</li>
+</ul>
+
+<ol class="Assign">
+<li><p>To create a linked list in Python 3, each object in the list needs to be “attached” to a pointer that references the next item (“node”) in the list. This can be done using the class below:</p>
+<pre class="Code" contenteditable="true" data-echo="copy">
+<span class="Comment"># A portion of program 'dds1_ll1.py'...</span>
+
+class ListNode:
+
+    def __init__(self, obj):
+        self.data = obj
+        self._nextNode = None
+
+    def __str__(self):
+        return "<ListNode: {}>".format(str(self.data))</pre>
+
+<p>Complete program <code>dds1_ll1.py</code> by creating a second class, <code>LinkedList</code>, to represent the list as a whole. The main program below should produce the output indicated by the comments.</p>
+<pre class="Code" contenteditable="true" data-echo="copy">
+<span class="Comment"># Another portion of program 'dds1_ll1.py'...</span>
+
+myList = LinkedList(1, True, "three", 4.0)
+print(len(myList))   <span class="Comment"># 4</span>
+print(myList.first)  <span class="Comment"># &lt;ListNode: 1&gt;</span>
+print(myList.last)   <span class="Comment"># &lt;ListNode: 4.0&gt;</span></pre>
+
+<p>The <code>LinkedList</code> constructor should take an arbitrary number of objects,
+    encapsulate them as ListNode instances, and set each instance’s <code>_nextNode</code>
+    attribute. It should also record the <code>first</code> and <code>last</code> nodes as
+    attributes. The class requires a <code>__len__</code> method to determine the length of
+    the list. I would recommend using the constructor to set a private attribute representing
+    the length so that the list does not need to count all of the nodes each time the length
+    is needed.</p>
+</li>
+
+<li>Duplicate your program as <code>dds1_ll2.py</code>. Add a <code>__getitem__</code> method
+    to enable access to the <code>ListNode</code> instances using their index. Also add an
+    <code>index</code> method that returns the index of a <code>ListNode</code> instance or the encapsulated data object.
+<pre class="Code" contenteditable="true" data-echo="copy">
+<span class="Comment"># A portion of program 'dds1_ll2.py'...</span>
+
+myList = LinkedList(1, True, "three", 4.0)
+print(myList[1])           <span class="Comment"># &lt;ListNode: True&gt;</span>
+print(myList.index(4.0))   <span class="Comment"># 3</span></pre>
+</li>
+
+<li>
+<p>By adding the <code>__getitem__</code> and <code>__len__</code> methods, you have made
+    your <code>LinkedList</code> instances <em>iterable</em>. Python understands how to use
+    a <code>for</code> loop with linked lists...</p>
+<pre class="Code" contenteditable="true" data-echo="copy">
+for node in myList:
+    print(node.data)</pre>
+
+<p>Unfortunately, iterating with <code>__getitem__</code> is not efficient; each time Python
+    needs a node from the sequence, <code>__getitem__</code> goes back to the first node even
+    though it could locate the desired node much more easily from the previous node. Duplicate
+    your program <code>dds1_ll2.py</code> as <code>dds1_ll3.py</code> and add a
+    <code>traverse</code> method as a <em>generator</em> that iterates through the nodes
+    efficiently. This method should take two optional arguments specifying the starting and
+    ending index. In keeping with convention, the ending index is not included in the
+    iteration.</p>
+<pre class="Code" contenteditable="true" data-echo="copy">
+for node in myList.traverse(1, 3):
+    print(node)</pre>
+
+<p>The loop above should print the data for the nodes with indices 1 and 2 only. Have the
+    first argument default to <code>0</code> (the first node in the list) and the second
+    argument default to <code>None</code> (indicating the end of the list). Finally, add the
+    following statement to your class definition to make Python use the <code>traverse</code>
+    method (with its default arguments) as the default iterator...</p>
+<pre class="Code" contenteditable="true" data-echo="copy">__iter__ = traverse</pre>
+</li>

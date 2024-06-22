@@ -1,0 +1,106 @@
+<section class="Post" data-icon="sc8pr">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<p>We saw in an <a href="./#cs_new/game/custom">earlier lesson</a> that you can use an <code>ondraw</code> function
+    to customize your <code>sc8pr</code> animations while they are running. Your sketch’s <code>ondraw</code>
+    function is an example of an <em class="Defn">event handler</em>: a function that gets called in response
+    to an event that occurs in your program. In this case, the event is that <code>sc8pr</code> has finished
+    drawing a frame of your animation. This is only one of many possible events. You can visit the
+    <code>sc8pr</code> documentation for a <a target="sc8" href="https://dmaccarthy.github.io/sc8pr/?evList">complete list</a> of events.</p>
+<p>When creating games or other interactive graphics programs, you may want to use event handlers to make your
+    program respond to mouse and keyboard events. In the example below, we give the sketch an event handler
+    called <code>onkeydown</code> which will be called every time a key is pressed. This event handler has
+    two arguments, the sketch itself, and a description of the event. The event description has a property
+    <code>ev.unicode</code> which is a string that tells us the letter pressed. In this example, when the
+    <code>"a"</code> is pressed, the sprite is moved 5 pixels left (by changing its <code>pos</code> attribute)
+    and when the <code>"s"</code> is pressed it is moved 5 pixels right.</p>
+<p>Note that the code below shows only the event handler; you still need imports, a <code>setup</code> function, and a main program for the animation to work.</p>
+<pre class="Code" data-echo="v04_ex1.py" data-title="1">def onkeydown(sk, ev):
+    <span class="DocString">"Move the alien with the keyboard"</span>
+    player = sk["player"]
+    x, y = player.pos
+    letter = ev.unicode.lower()
+    if letter == "a":
+        player.pos = x - 5, y
+    elif letter == "s":
+        player.pos = x + 5, y</pre>
+
+<p>A computer keyboard has several special keys, such as the arrows and the Shift key, that are not represented
+    by a string. For these keys, the <code>ev.unicode</code> value will be an empty string. To use these keys,
+    you can use the <code>ev.key</code> property which gives a numerical code describing the key. Here is the
+    same event handler as above, but using the left and right arrow keys to move the alien instead of the
+    <code>"a"</code> and <code>"s"</code>. You can import the key codes (such as <code>K_LEFT</code>) from
+    <code>pygame.constants</code>.</p>
+<pre class="Code" data-echo="v04_ex2.py" data-title="1">def onkeydown(sk, ev):
+    <span class="DocString">"Move the alien with the keyboard"</span>
+    player = sk["player"]
+    x, y = player.pos
+    key = ev.key
+    if key == K_LEFT:
+        player.pos = x - 5, y
+    elif key == K_RIGHT:
+        player.pos = x + 5, y</pre>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>Use <code>sc8pr</code> to create a simple, graphics-based Rock-Paper-Scissors game, <code>v04_rps1.py</code>.
+    (You might have already written a console-based version of this game in an earlier course!)
+    <p id="RPS1" class="Center"></p>
+    <p>The user should type one of the three letters: R, P, or S. The program should display the player’s choice on the left and the computer’s (random) choice on the right. It should also display “Winner” below the winning choice, or “Tie” in the middle. The player can play as many rounds of the game as she or he wants.</p>
+</li>
+<li>Duplicate your Rock-Paper-Scissors game as <code>v04_rps2.py</code> and modify it to display the score in the upper corners...
+<p id="RPS2" class="Center">
+<svg class="RPS" data-aspect="20/7" width="400" height="140" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 140">
+<style>
+
+svg.RPS rect {fill: none; stroke: black; stroke-width:1}
+
+svg.RPS text {
+    font-family: "NotoSans", sans-serif;
+    font-weight: bold;
+    text-anchor: middle;
+    fill: black;
+    font-size: 200%;
+}
+
+svg.RPS text.Red {
+    fill: red;
+    font-size: 150%;    
+}
+
+svg.RPS text.Blue {
+    fill: #0065fe;
+    font-size: 150%;    
+}
+
+</style>
+<rect width="398" height="138" x="1" y="1"></rect>
+<text x="300" y="80">Rock</text>
+<text x="100" y="80">Scissors</text>
+<text x="100" y="120" class="Red">Winner</text>
+<text x="25" y="30" class="Blue">5</text>
+<text x="375" y="30" class="Blue">7</text>
+</svg>
+</p>
+</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.init = () => {
+    let p2 = $("#RPS2");
+    let p1 = $("#RPS1").html(p2.html());
+    p2.find("style").remove();
+    p1.find("text.Blue").remove();
+}
+    
+loadFeed.data = {
+    title: "Keyboard Events",
+    up: `cs_new/cs20`,
+    prev: "cs_new/game/text",
+    next: "cs_new/game/mouse",
+}
+  
+</script>

@@ -1,0 +1,88 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
+<div id="LessonNotes">
+
+<section class="Slide">
+
+<p><em class="Defn">Forces</em> are interactions that affect how objects move.</p>
+<ul>
+    <li><em class="Defn">Newton’s 1st Law</em>: Also known as the <em class="Defn">Law of Inertia</em>, this states that when the net force acting on an object is zero, the object will remain at rest or, if already in motion, will move with constant velocity (uniform motion).</li>
+    <li><em class="Defn">Newton’s 2nd Law</em>: When a mass experiences an unbalanced force, the acceleration will be related to the force by the equation:
+        <p class="TeX">{\vec{\bf{F}}}_{net}=m\vec{\bf{a}}</p></li>
+    <li><em class="Defn">Newton’s 3rd Law</em>: When objects interact, they exert equal and opposite forces on each other:
+        <p class="TeX">{\vec{\bf{F}}}_{AB}=-{\vec{\bf{F}}}_{BA}</p></li>
+    <li>This law is key to jet and rocket propulsion.</li>
+</ul>
+
+<p>When more than once force acts on an object, we need to calculate the <em class="Defn">net</em> or <em class="Defn">unbalanced</em> force.</p>
+<ul>
+    <li>An illustration of an object and the forces it experiences (showing the direction and strength of each force) is called a <em class="Defn">free body diagram</em>.</li>
+</ul>
+<p class="Center"><svg data-js="p20/dyn/img/adv#fbd3" id="FBD" class="FBD"></svg></p>
+<ul>
+    <li>Draw a <em class="Defn">vector diagram</em> by redrawing the forces <em>tip-to-tail</em>.</li>
+    <li>The net force is the resultant vector from the vector diagram.</li>
+    <li>To solve problems involving unbalanced force, first calculate the net force either by adding all of the forces (if known) or using Newton’s 2nd Law...</li>
+    <li>Then use the net force to find the unknown.</li>
+    <li>When the motion is 1D (e.g. horizontal), the forces in the perpendicular dimension (e.g. vertical) will always balance.</li>
+</ul>
+
+<p>Common types of force include:</p>
+<ul>
+    <li><b>Elastic</b>: The force exerted by a stretched or compressed object trying to return to its original shape</li>
+    <li><b>Tension</b>: The force exerted by a non-elastic object like a rope or rod</li>
+    <li><b>Applied</b>: The force exerted by a persion, machine, or animal</li>
+    <li><b>Air Resistance</b>: A force exerted by the air that has to be moved out of the way for an object to move.</li>
+</ul>
+
+<p>The <em class="Defn">force of gravity</em> is an attraction that objects  experience due to planets, stars, and other large masses:
+    <p class="TeX">{\vec{\bf{F}}}_g=m\vec{\bf{g}}</p></p>
+<ul>
+    <li>The force of gravity is also called the <em class="Defn">weight</em> of the object.</li>
+    <li>The symbol <span class="TeX">\vec{\bf g}</span> is the <em class="Defn">gravitational field strength</em> of the planet/star causing the force.</li>
+    <li>The acceleration <span class="TeX">\vec{\bf a}</span> of the object will equal <span class="TeX">\vec{\bf g}</span>, when gravity is the <em>only</em> force acting on the object; otherwise <span class="TeX">\vec{\bf a} \ne \vec{\bf g}</span>.</li>
+    <li>The symbol <span class="TeX">m</span> is the <em class="Defn">mass</em> of the object; this measures how much matter the object contains and is not affected by <span class="TeX">g</span>.</li>
+</ul>
+
+<p><em class="Defn">Contact Forces</em> are present when an object is in contact with a surface such as the ground or a table.</p>
+<ul>
+    <li>The force <em>parallel</em> to the surface is called the <em class="Defn">friction</em> force.</li>
+    <li>The force <em>perpendicular</em> to the surface is the <em class="Defn">normal</em> force.</li>
+    <li>The friction force acts in the opposite direction to the motion and is proportional to the normal force:
+        <p class="TeX">\mu=\frac{|{\vec{\bf{F}}}_f|}{|{\vec{\bf{F}}}_n|}</p></li>
+    <li>The symbol <span class="TeX">\mu</span> is called the <em class="Defn">coefficient of friction</em> and it measures the relative strength of friction between two materials.</li>
+    <li>The coefficient of <em class="Defn">static</em> friction applies when there is no relative motion.</li>
+    <li>The coefficient of <em class="Defn">kinetic</em> friction which applies when there is relative motion.</li>
+    <li>Static friction is usually a bit stronger than kinetic friction.</li>
+</ul>
+
+<p>For <em class="Defn">2D motion</em>, we can express all vectors (forces, acceleration) in Cartesian form and then apply Newton’s 2<sup>nd</sup> Law to the <span class="TeX">x</span>- and <span class="TeX">y</span>-components separately, just as we do with the uniform accelerated motion equations for projectile motion.</p>
+<ul>
+    <li>For <em class="Defn">inclined plane</em> (ramp) problems, we can usually simplify the solution by using the direction <em>parallel</em> to the incline as the <span class="TeX">x</span>-axis and the direction <em>perpendicular</em> to the incline as <span class="TeX">y</span>.</li>
+    <li>By doing this, the friction force and acceleration vector will only have an <span class="TeX">x</span>-component, and the normal force will only have a <span class="TeX">y</span>-component.</li>
+    <li>When the axes are rotated this way, the direction of <span class="TeX">\vec{\bf F}_g</span> will be 270° plus or minus the angle of incline, depending on whether the axes are rotated clockwise or counterclockwise.</li>
+</ul>
+
+</section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    $("svg.FBD .Friction").show();
+}
+
+</script>
+</div></div>
+</section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}Newton’s Laws Review`,
+    num: "3.7",
+    up: "p20/home",
+    prev: ["p20/dyn/adv", "p20/vec2d/rev"][clickLink.course],
+    next: ["p20/energy/mech", "p20/energy/rev"][clickLink.course],
+}
+
+</script>

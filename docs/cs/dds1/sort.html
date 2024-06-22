@@ -1,0 +1,69 @@
+<h3>Assignment</h3>
+<p>All programs require the use of good programming techniques, including:</p><ul>
+<li>Internal documentation (docstrings and comments)</li>
+<li>Descriptive variable names</li>
+<li>No global variables (constants are okay)</li>
+<li>Procedures that perform a single task</li>
+<li>IPO structure within each procedure (input first, then processing, and output only after all processing is complete)</li>
+</ul>
+
+<ol class="Assign">
+<li>
+<ol type="a">
+<li>
+<p>Duplicate your classes from the previous assignment into <code>dds3_search.py</code>.</p>
+<p>Your <code>LinkedList</code> class already has an <code>index</code> method that searches
+    for a node containing a specific data object. More generally, we may need to search a
+    linked list by some arbitrary criteria. For example, if the list contains enrollment data
+    for a school, we might want to search for all students born in 1999 who are enrolled in
+    Computing Science 30. Add a <code>find</code> method as a <em>generator</em> to locate
+    nodes that match criteria specified by a supplied <code>match</code> function...</p>
+<pre class="Code" contenteditable="true" data-echo="copy">
+<span class="Comment"># Program 'dds3_sort.py'...</span>
+
+from resource.school import Student
+
+<span class="Comment"># Randomly generate data for 1200 students</span>
+students = LinkedList()
+students.insert(Student() for i in range(1200))
+
+<span class="Comment"># Search criteria</span>
+crit = {"birthyear":1999, "courses":["Computing Science 30"]}
+
+<span class="Comment"># Perform search</span>
+for student in students.find(match, 20, **crit):
+    print(student.data)</pre>
+
+<p>In the example above, the <code>Student</code> constructor generates random data for one
+    student. The <code>find</code> method should yield the students who match the search
+    criteria up to a maximum of 20. If you omit the 20 argument, it should yield <em>all</em>
+    students who match the criteria. The <code>match</code> function (which you will have to
+    write) determines whether any given node satisfies the search criteria.</p>
+</li>
+<li>
+<p>Duplicate your <code>LinkedList</code> class from the question (a) into <code>dds3_sort.py</code>.</p>
+<p>Add an <code>iSort</code> method that sorts the items in the linked list using an
+    <a href="/cs/index.html#insert">insertion sort</a> iterative algorithm and an <code>mSort</code>
+    method that sorts the linked list using a <a href="/cs/index.html#rsort">merge sort</a> recursive algorithm.
+    Do not use any built-in or standard library sorting functions. Test the algorithm by
+    sorting the students by birthday. In the program below, the <code>compareBirthday</code> function
+    (which you will need to write) should take two nodes as arguments; it should return 0 if both students have the same birthday, 1 if the second node is greater than the first, and -1 if the second node is less than the first.</p>
+<pre class="Code" contenteditable="true" data-echo="copy">
+from resource.school import Student
+
+<span class="Comment"># Randomly generate data for 1200 students</span>
+students = LinkedList()
+students.insert(Student() for i in range(1200))
+
+<span class="Comment"># Sort</span>
+recursive = False
+if recursive:
+    students.mSort(compareBirthday)
+else:
+    students.iSort(compareBirthday)
+
+<span class="Comment"># Print results</span>
+for student in students:
+    print(student.data)</pre>
+</li></ol>
+</ol>

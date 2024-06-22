@@ -1,0 +1,198 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Magnitude &amp; Direction</h1>
+</section>
+
+<section class="Slide"><h3>Direction</h3>
+<p>Motion in a straight line is called <em>one-dimensional</em> (1D) because we only need one coordinate axis to describe an object’s position.</p>
+<p class="Center">
+<svg id="BikeImg" xmlns="http://www.w3.org/2000/svg" data-aspect="8/3" class="w32" viewBox="-675 -375 1600 600">
+<defs>
+	<image id="Bike" href="./p20/kin/img/bike.svg" x="0" y="0" width="200" transform="scale(-1 1) translate(-100 0)"></image>
+</defs>
+<filter id="gray"><feColorMatrix type="saturate" values="0.2"/></filter>
+<style>
+
+#BikeImg :is(line, rect, polygon) {stroke: black; stroke-width:2}
+#BikeImg rect {fill: #C4B6A6}
+#BikeImg polygon {fill: #0065FE}
+
+#BikeImg text {
+	font-family: Inconsolata, monospace;
+	font-size: 48px;
+	text-anchor: middle;
+	dominant-baseline: middle;
+}
+
+</style>
+<rect width="1610" height="50" x="-680" y="0"></rect>
+<g transform="translate(0 -155)">
+    <image href="./p20/kin/img/tree.svg" x="-100" y="-100" width="200" transform="scale(1 1.8)"></image>
+    <use href="#Bike" filter="url(#gray)" x="-500" y="0"></use>
+    <use href="#Bike" filter="url(#gray)" x="-200" y="0"></use>
+    <use href="#Bike" filter="url(#gray)" x="100" y="0"></use>
+    <use href="#Bike" filter="url(#gray)" x="400" y="0"></use>
+    <use href="#Bike" x="700" y="0"></use>
+</g>
+<g class="Axis"><text x="835" y="145">m</text></g>
+<polygon points="600,0 534,46 523,30 551,10 -600,10 -600,-10 551,-10 523,-30 534,-46" transform="translate(100, 82.5)"></polygon>
+</svg></p>
+<ul data-cue="+"><li>There are only two possible directions that a vector can have: positive or negative.</li></ul>
+
+<p data-cue="+">Motion in a plane (like a sports field) is <em>two-dimensional</em> (2D) because we need two axes to describe the motion (<span class="TeX">x</span> and <span class="TeX">y</span>).</p>
+<ul data-cue="+">
+    <li>There are infinitely many possible directions.</li>
+    <li data-cue="+">The conventional method of describing a direction is to use an angle.
+        <p class="Center"><img src="./p20/vec2d/img/dir2d.png" alt="2D" class="w20"/></p></li>
+    <li data-cue="+">The direction parallel to the positive <span class="TeX">x</span>-axis is assigned an angle of 0°.</li>
+    <li data-cue="+">Angles are measured counter-clockwise from 0°.</li>
+    <li data-cue="+">Negative angles can be used to describe directions measured clockwise.</li>
+    <li data-cue="+">The negative and positive descriptions of an angle will differ by 360°.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Compass Directions</h3>
+<ul>
+    <li>Compass directions should always be converted to a conventional angle.</li>
+    <li data-cue="+">When compass directions are used, we usually (but not always!) orient the <span class="TeX">x</span>-axis from west to east and the <span class="TeX">y</span>-axis from south to north, so that east is 0°, north is 90°, west is 180°, and south is 270°.</li>
+    <li data-cue="+">When a direction is not exactly along one of the cardinal directions, we start with the direction it is closest to, and then specify the angle to turn.</li>
+    <li data-cue="+">For example, a direction of “N 20° E” means: start by facing north (90°) and then turn 20° toward the east. This is equivalent to a direction of 70° using the conventional angle.</li>
+    <li data-cue="+">When a direction is exactly halfway between two cardinal directions, the angle can be omitted; “NE” is assumed to mean “N 45° E”.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Magnitude</h3>
+<p>The size of a vector (i.e. the length of the arrow on a vector diagram) is called the vector’s <em class="Defn">magnitude</em>.</p>
+<ul data-cue="+">
+    <li>When we use a magnitude and a direction to describe a 2D vector, we call this the <em class="Defn">polar form</em> of the vector.</li>
+    <li data-cue="+">For example, <span class="TeX">\Delta\vec{\mathbf{d}} = 12\ \mathrm{m}\ [−14°]</span> means a displacement of 12 metres in a direction 14° clockwise from the +<span class="TeX">x</span>-direction.</li>
+</ul>
+</section>
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Magnitude &amp; Direction</i> webpage. Keep your completed answers in your Physics 20 binder.</p>
+    <p data-qr="p20/vec2d/mag"></p>
+</div>
+</section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    let g = $("#BikeImg > g.Axis");
+    let elem = (tag) => document.createElementNS(SVG_Item.nsURI, tag);
+    for (let x=-600;x<801;x+=100) {
+        let e = elem("line");
+        g.append($(e).attr({x1:x, x2:x, y1:60, y2:105}));
+        if (x % 200 == 0) {
+            e = elem("text");
+            g.append($(e).html(Math.round(x/100)).attr({x:x, y:145}));            
+        }
+    }
+}
+
+</script>
+    
+</div></div></section>
+
+<section class="Post" data-icon="video">
+    <h2 class="Collapse">Video</h2>
+    <div class="Collapse" data-yt="lMbTTjejaug"></div>
+</section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <li>Express each of these directions as a positive angle.
+    <ol type="a">
+        <li>–25.0°</li>
+        <li>–195.0°</li>
+        <li>–325.0°</li>
+    </ol></li>
+    <div class="Answer">+335.0°<br/>+165.0°<br/>+35.0°</div>
+
+    <li>Express each of these directions as a negative angle.
+    <ol type="a">
+        <li>+200.0°</li>
+        <li>+90.0°</li>
+        <li>+135.0°</li>
+    </ol>
+    <div class="Answer">–160.0°<br/>–265.0°<br/>–225.0°</div>
+    </li>
+
+    <li>Express each of these compass directions as an angle, taking “East” as 0°.
+    <ol type="a">
+        <li>W</li>
+        <li>S</li>
+        <li>NW</li>
+        <li>SE</li>
+        <li>SSE</li>
+    </ol>
+    <div class="Answer">±180.0°<br/>+270° or –90°<br/>+135° or –225°<br/>+315° or –45°<br/>+292.5° or –67.5°</div>
+    </li>
+
+    <li>A direction of “N 20° E” means “face north (90°) and turn 20° toward the east.” This gives an angle of 70°. Convert each of these compass directions to an angle.
+    <ol type="a">
+        <li>W 15° N</li>
+        <li>N 15° W</li>
+        <li>S 35° W</li>
+        <li>E 27° S</li>
+    </ol>
+    <div class="Answer">+165°<br/>+105°<br/>+235° or –125°<br/>+333° or –27°</div>
+    </li>
+
+    <p class="Center"><em>Use graph paper for the remaining questions!</em></p>
+    <li>A hiker with an initial position of <span class="TeX">{\vec{\mathbf{d}}}_i</span> = (–2.0, +5.0) km follows a winding path to a final position of <span class="TeX">{\vec{\mathbf{d}}}_f</span> = (+5.0, +1.0) km.<ol type="a">
+        <li>Illustrate the hiker’s displacement as an arrow from <span class="TeX">{\vec{\mathbf{d}}}_i</span> to <span class="TeX">{\vec{\mathbf{d}}}_f</span>. Remember to use the same scale for both axes.</li>
+        <p class="Answer Center"><svg class="VDiag" data-js="p20/vec2d/img/mag#hiker" id="mag5"></svg></p>
+        <li>Use a protractor to measure the direction of the displacement vector. Label this angle as <span class="TeX">\theta</span> on your diagram.</li>
+        <div class="Answer">–30°</div>
+        <li>Use a ruler or other straight edge to measure the magnitude of the displacement vector. Remember to account for the scale of the drawing.</li>
+        <div class="Answer">8.1 km</div>
+        <li>Is the distance that the hiker travelled the same as, more, or less than your answer to (c)? Explain.</li>
+        <div class="Answer">The distance is more than 8.1 km since the hiker followed an indirect route.</div>
+    </ol>
+    </li>
+
+    <li>A student kicks a soccer ball, causing it to undergo a displacement of 20.0 metres [120°].<ol type="a">
+        <li>Using a protractor and a ruler or other straight edge, draw an accurate illustration of the displacement vector. Indicate the scale of your diagram. (Since the choice of origin is arbitrary, take the initial position of the ball as the origin.)</li>
+        <p class="Answer Center"><svg class="VDiag" data-js="p20/vec2d/img/mag#soccer" id="mag6" ></svg></p>
+        <li>Measure the coordinates of the soccer ball’s final position.</li>
+        <div class="Answer">(–10.0, +17.3) m</div>
+    </ol>
+    </li>
+</ol>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li>Explain what the difference is between <em class="Defn">“1D” motion</em>, <em class="Defn">“2D” motion</em>, and <em class="Defn">“3D” motion</em>.</li>
+
+    <li><ol type="a">
+        <li>State how we describe <em class="Defn">directions</em> for 1D motion.</li>
+        <li>Explain the convention used in math and physics for describing directions for 2D motion.</li>
+        <li>Explain how to convert compass directions to a conventional angle.</li>
+    </ol></li>
+
+    <li>Define the <em class="Defn">magnitude</em> of a vector.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}2.1 — Magnitude & Direction`,
+    answerDate: "2024.2.28.16",
+    num: "2.1",
+    up: "p20/home",
+    prev: "p20/kin/rev",
+    next: "p20/vec2d/diag",
+}
+
+</script>

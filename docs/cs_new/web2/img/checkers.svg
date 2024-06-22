@@ -1,0 +1,59 @@
+<svg width="256" height="256" xmlns="http://www.w3.org/2000/svg">
+<defs>
+	<rect id="Grey" width="32" height="32" style="fill:#a0a0a0"></rect>
+	<circle id="RedChq" r="12" style="fill:red;stroke:black"></circle>
+	<circle id="BlkChq" r="12" style="fill:black;stroke:black"></circle>
+</defs>
+<g>
+	<use href="#Grey" x="32" y="0"></use>
+	<use href="#Grey" x="96" y="0"></use>
+	<use href="#Grey" x="160" y="0"></use>
+	<use href="#Grey" x="224" y="0"></use>
+</g>
+<g transform="translate(-32,32)">
+	<use href="#Grey" x="32" y="0"></use>
+	<use href="#Grey" x="96" y="0"></use>
+	<use href="#Grey" x="160" y="0"></use>
+	<use href="#Grey" x="224" y="0"></use>
+</g>
+<g transform="translate(0,64)">
+	<use href="#Grey" x="32" y="0"></use>
+	<use href="#Grey" x="96" y="0"></use>
+	<use href="#Grey" x="160" y="0"></use>
+	<use href="#Grey" x="224" y="0"></use>
+</g>
+<g transform="translate(-32,96)">
+	<use href="#Grey" x="32" y="0"></use>
+	<use href="#Grey" x="96" y="0"></use>
+	<use href="#Grey" x="160" y="0"></use>
+	<use href="#Grey" x="224" y="0"></use>
+</g>
+<g transform="translate(0,128)">
+	<use href="#Grey" x="32" y="0"></use>
+	<use href="#Grey" x="96" y="0"></use>
+	<use href="#Grey" x="160" y="0"></use>
+	<use href="#Grey" x="224" y="0"></use>
+</g>
+<g transform="translate(-32,160)">
+	<use href="#Grey" x="32" y="0"></use>
+	<use href="#Grey" x="96" y="0"></use>
+	<use href="#Grey" x="160" y="0"></use>
+	<use href="#Grey" x="224" y="0"></use>
+</g>
+<g transform="translate(0,192)">
+	<use href="#Grey" x="32" y="0"></use>
+	<use href="#Grey" x="96" y="0"></use>
+	<use href="#Grey" x="160" y="0"></use>
+	<use href="#Grey" x="224" y="0"></use>
+</g>
+<g transform="translate(-32,224)">
+	<use href="#Grey" x="32" y="0"></use>
+	<use href="#Grey" x="96" y="0"></use>
+	<use href="#Grey" x="160" y="0"></use>
+	<use href="#Grey" x="224" y="0"></use>
+</g>
+<use href="#BlkChq" x="112" y="80"></use>
+<use href="#RedChq" x="112" y="208"></use>
+<use href="#RedChq" x="208" y="80"></use>
+<use href="#RedChq" x="80" y="16"></use>
+</svg>

@@ -1,0 +1,60 @@
+<section class="Post" data-icon="atom.svg">
+    <h2 data-feed="s10/unitA">Unit A: Chemistry</h2>
+</section>
+
+<section class="Post" data-icon="soccer.svg">
+    <h2 data-feed="s10/unitB">Unit B: Physics</h2>
+</section>
+
+<section class="Post" data-icon="microscope.svg">
+    <h2 data-feed="s10/unitC">Unit C: Biology</h2>
+</section>
+
+<section class="Post" data-icon="earth.svg">
+    <h2 data-feed="s10/unitD">Unit D: Climate</h2>
+</section>
+
+<section class="Post" data-show="2025" data-icon="atom.svg">
+    <h2 class="Collapse">Course Review</h2><div class="Collapse">
+    <h3 class="Collapse">Chapter Summaries</h3><div class="Indent Collapse Expand">
+    <ul>
+        <li><a data-feed="$chem3/rev" data-course="1">Unit 1: Chemistry</a></li>
+    </ul></div>
+
+</div></section>
+
+<section class="Post" data-icon="link.svg">
+    <h2 class="Collapse">Course Links</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1LKvFJ5g8151lKNbhlDPKlcnZhztq-6uF">Data Booklet</button>
+        <button data-icon="gdrv" data-gdrv="1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE">Graph Paper</button>
+        <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/">Brightspace</button>
+        <button data-icon="ps" data-open="https://powerschool.eips.ca/public/">PowerSchool</button>
+        <button data-icon="gdrv" data-gdrv="">Course Outline</button>
+        <button data-icon="sal" data-open="https://salcomp.ca">Salisbury Composite</button>
+        <button data-icon="pdf.svg" data-open="https://www.alberta.ca/system/files/custom_downloaded_images/edc-calculator-information-and-rules.pdf">Approved Calculators</button>
+        <button data-icon="link.svg" data-open="https://education.alberta.ca/science-10-12/programs-of-study/">Program of Studies</button>
+    </p>
+</div></section>
+
+<script type="text/javascript" data-init="today">
+
+loadFeed.today = () => {
+    if (qsArgs("today")) {
+        history.replaceState({}, "", feedURL(loadFeed.current));
+        loadFeed("_today_");
+    }
+}
+
+loadFeed.data = {
+    title: "Science 10",
+    folder: "s10/",
+    up: "home",
+    today: [
+       ["2024.2.1", "$chem1/whmis"],
+       ["2025.2.2", "$chem1/"],
+       // ["2025.2.3", "$chem1/"],
+    ],
+}
+
+</script>

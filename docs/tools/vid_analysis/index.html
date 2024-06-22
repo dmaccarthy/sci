@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en-ca">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Video Analysis</title>
+<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="va.js"></script>
+<style type="text/css">
+
+body {text-align:center}
+.Hidden {display:none}
+nav {margin:8px}
+nav p {margin:0}
+#Player {max-width:calc(100% - 16px)}
+input[type=file] {width:20em}
+
+input {
+	width:7em;
+	text-align:center;
+}
+
+</style>
+</head>
+<body class="Center">
+<nav>
+	<p class="Open"><input type="file" id="VideoFile" />
+		<input type="button" onclick="openFile()" value="Open" /></p>
+	<p class="Hidden">
+		<input type="text" id="Time" onchange="setTime(this)" value="0.000"/>
+		<input type="text" id="FPS" value="30.00 fps"/>
+		<button id="Prev" onclick="frame(-1)">&larr;</button>
+		<button id="Next" onclick="frame(1)">&rarr;</button>
+	</p>
+</nav>
+<div class="Hidden" title="Click to pause or resume play">
+	<video id="Player" onclick="togglePlay()" ontimeupdate="timeDisplay()"></video>
+</div>
+</body>
+</html>

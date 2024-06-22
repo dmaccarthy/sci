@@ -1,0 +1,130 @@
+<section class="Post" data-icon="simulation">
+<h2 class="Collapse">Simulation</h2><div class="Collapse Expand">
+    <p class="Center"><svg id="CoulombSim"></svg></p>
+    <p class="Center">Calibration: <span id="mN_per_deg"></span> mN/°</p>
+    <p class="Center"><a href="javascript:loadFeed.verify()">Experiment Code</a>: <span id="ExpCode"></span></p>
+</div>
+
+<script type="text/javascript" data-init="sim">
+
+loadFeed.sim = () => {
+    let e = $("#CoulombSim").attr({width: 600, height: 600, "data-aspect": "1"});
+    let R = 44;
+    let svg = new SVG_Animation(e, -R, R, -R, R, 1);
+
+    // Set charge and force calibration
+    svg.charge = 1e-6 * uniform(2, 6);
+    let q = (svg.charge * 1e6).toFixed(4);
+    $("#ExpCode").html(btoa(btoa(q)));
+    let f = (8.99e12 * sq(svg.charge / 0.4) / uniform(50, 80)).toPrecision(3);
+    $("#mN_per_deg").html(f);
+    svg.force = -parseFloat(f) / 1000;
+
+    // Draw protractor
+    svg.circle(R, [0, 0]).css({fill: "#F0F0F0", "fill-opacity": 0.4, stroke: "#C0C0C0"});
+    let g = svg.group().css({stroke: "#C0C0C0"});
+    let t = svg.group().css({fill: "#909090"});
+    for (let i=0;i<360;i++) {
+        let p = vec2d(R, i);
+        if (i % 20) {
+            let r = i % 10 ? (i % 5 ? 1 : 2 ) : 3;
+            svg.line(vec2d(R - r, i), p, g);
+        }
+        else {
+            svg.line([0, 0], p, g);
+            svg.text(i > 270 ? i - 360 : i, vec2d(38, i), t);
+        }
+    }
+
+    let pivot = svg.circle(0.7, [0, 0]).css({fill: "white", stroke: "black"});
+    svg.final();
+
+    // Draw spheres
+    g = svg.group().config({thetaMode: 0}).before(pivot.$);
+    let [p1, p2] = [[40, 0], [-25, 0]];
+    svg.line(p1, p2, g).css({stroke: "black", "stroke-width": "4px"});
+    svg.circle(2.4, p1, g).css({fill: "red", stroke: "black"});
+    svg.circle(3.4, p2, g).css({fill: "#B0B0B0", stroke: "black"});
+    svg.blue = svg.circle(2.4, vec2d(40, -60)).css({fill: "#0065FE", stroke: "black"});
+    svg.blue.dragging = false;
+
+    // Event handlers for mouse actions
+    svg.$.on("mouseup", () => {svg.blue.dragging = false});
+    svg.$.on("mousemove", (ev) => {svg.mouseTheta = svg.eventCoords(ev).coords.dir()});
+    svg.blue.$.on("mousedown", () => {svg.blue.dragging = true; return false});
+
+    svg.blue.beforeupdate = function() {
+        // Drag the blue sphere
+        if (this.dragging) this.position = vec2d(40, this.svg.mouseTheta);
+    }
+
+    g.beforeupdate = function() {
+        // Calculate angular speed of torsion balance
+        let svg = this.svg;
+        let p = vec2d(40, this.theta);
+        let dx = p.minus(svg.blue.position);
+        let r = dx.mag() / 100;
+        let Fe = vec2d(8.99e9 * sq(svg.charge) / sq(r), dx.dir());
+        let unit = vec2d(1, this.theta + 90);
+        let F = Fe.dot(unit) + svg.force * this.theta;
+        let omega = 0.95 * this.omega + 10 * F;
+        this.omega = Math.max(-200, Math.min(omega, 200));
+    }
+
+    svg.play();
+}
+
+loadFeed.verify = (a) => {
+    let q = parseFloat(prompt("Enter your charge in microcoulombs..."));
+    if (!isNaN(q)) {
+        let c = prompt("Enter your Experiment Code", $("#ExpCode").html());
+        c = parseFloat(atob(atob(c)));
+        c = (q - c) / c * 100;
+        alert(`Your calculated charge is off by ${c.toFixed(2)}%`);
+    }
+}
+
+</script>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">?</h1>
+<!-- <p class="Present"><img src="" class="s24" alt="Picture"/></p> -->
+</section>
+
+<section class="Slide"><h3>?</h3>
+</section>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+
+<ol></ol>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review<span data-print="Practice"></h2><div class="Collapse">
+<div id="Review">
+<ol>
+</ol>
+</div></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}?.? — Coulomb’s Law`,
+    answerDate: "2025.2.?.16",
+    num: "?.?",
+    up: "p30/units/B",
+    // prev: "p30/",
+    // next: "p30/mom",
+}
+
+</script>

@@ -1,0 +1,334 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Energy of SHM</h1>
+</section>
+
+<section id="E" class="Slide"><h3>Energy of SHM</h3>
+<p>An object in SHM has the greatest amount of kinetic energy and the least amount of potential energy at the equilibrium position.</p>
+<ul data-cue="+">
+    <li>We therefore use equilibrium as the origin or “reference level” when calculating potential energy for SHM.</li>
+    <li data-cue="+">
+        When an object has a position <span class="TeX">\vec{\bf{x}}</span> relative to equilibrium, its potential energy equals the work that will be done on the object as it moves back to the equilibrium position.
+        <p class="Center"><svg id="SpringAnim" data-js="p20/shm/img/E#spring" class="s28"></svg></p>
+    </li>
+</ul>
+<ul data-cue="+">
+    <li>Initially, the restoring (net) force on the object is <span class="TeX">{\vec{\bf{F}}}_i=-k{\vec{\bf{x}}}_i</span>.</li>
+    <li data-cue="+">As the mass moves back to equilibrium, the net force will get smaller because the restoring force is directly proportional to the distance from equilibrium.</li>
+    <li data-cue="+">When it reaches equilibrium, the net force will be zero.</li>
+    <li data-cue="+">The average net force will therefore be one-half of the initial force:
+        <p class="TeX">{\vec{\bf{F}}}_{avg}=-\frac{1}{2}k{\vec{\bf{x}}}_i</p></li>
+    <li data-cue="+">To calculate the work done on the mass (the kinetic energy gained, and the potential energy lost) we multiply the average force by the displacement:
+    <p class="TeX">\Delta\vec{\bf{d}}={\vec{\bf{x}}}_f-{\vec{\bf{x}}}_i=-{\vec{\bf{x}}}_i</p>
+    <p class="TeX">W={\vec{\bf{F}}}_{avg}\cdot\Delta\vec{\bf{d}}=\left(-\frac{1}{2}k{\vec{\bf{x}}}_i\right)\left(-{\vec{\bf{x}}}_i\right)\ =\frac{1}{2}kx_i^2</p></li>
+</ul>
+<div data-cue="+">
+    <p>The potential energy, relative to equilibrium, of an object exhibiting SHM is given by the equation:</p>
+    <p class="TeX">E_p=\frac{1}{2}kx^2</p>
+</div>
+<ul data-cue="+">
+    <li>Since the restoring force is the net force, it includes both gravity and elastic forces; therefore, this potential energy formula includes both the gravitational and elastic potential energy!</li>
+    <li data-cue="+">When using energy conservation with SHM, remember that the mechanical energy is entirely kinetic at equilibrium <span class="TeX">(\vec{\bf{x}} = 0)</span>, entirely potential at <span class="TeX">\vec{\bf{x}} = ±A</span>, and a mix of kinetic and potential at any other position.</li>
+</ul>
+</section>
+
+<section id="ex1" class="Slide"><h3>Example 1</h3>
+<p class="Blue">A 60.0-gram mass exhibits SHM with an amplitude of 3.00 cm when attached to a spring with <span class="TeX">k</span> = 20.0 N/m. Calculate the (i) mechanical energy of the system, and (iii) maximum speed of the mass.</p>
+<div data-cue="+">
+    <p><b>Alternative 1 (Energy Conservation)</b>: The mechanical energy is the total of the kinetic and potential energy:</p>
+    <p class="TeX">E=\frac{1}{2}mv^2+\frac{1}{2}kx^2</p>
+</div>
+<div data-cue="+">
+    <p>When the mass is furthest from equilibrium, <span class="TeX">x = A</span> and <span class="TeX">v = 0</span>:</p>
+    <p class="TeX">E = \rm{0\ J + {1\over 2}(20.0\ N/m)(0.0300\ m)^2 = 0.00900\ J}</p>
+</div>
+<div data-cue="+">
+    <p>When the mass is passing through equilibrium, <span class="TeX">x = 0</span>, the energy is entirely kinetic:</p>
+    <p class="TeX">E=\frac{1}{2}mv^2</p>
+    <p data-cue="+" class="TeX">\frac{2E}{m}=v^2</p>
+    <p data-cue="+" class="TeX">v = \sqrt{\frac{2E}{m}}= \rm{\sqrt{2\cdot 0.00900\ J\over 0.0600\ kg} = 0.548\ m/s}</p>
+</div>
+
+<div data-cue="+">
+    <p><b>Alternative 2 (SHM Relations)</b>: As an alternative to using energy conservation, we could have calculated the period of the motion first:</p>
+    <p class="TeX">T = 2\pi\sqrt{m\over k} = \rm{2\pi \sqrt{0.0600\ kg \over 20.0\ N/m} = 0.344\ s}</p>
+</div>
+<div data-cue="+">
+    <p>Now use the equation for <span class="TeX">v_{max}</span>:</p>
+    <p class="TeX">v_{max} = {2\pi A \over T} = \rm{{2\pi\cdot 0.0300\ m \over 0.344\ s} = 0.548\ m/s}</p>
+</div>
+<p data-cue="+">Both methods give the same answer!</p>
+</section>
+
+<section id="ex2" class="Slide"><h3>Example 2</h3>
+<p class="Blue">Calculate the speed of the mass from Example 1 when the mass is halfway between equilibrium and its amplitude.</p>
+<div data-cue="+">
+    <p>The mass now has both potential energy (because it’s not at equilibrium) and kinetic energy (because it’s not at its maximum extension). Calculate the potential energy first using <span class="TeX">x = A/2 = \rm{1.50\ cm}</span>:</p>
+    <p class="TeX">E_p = {1\over 2} kx^2 = \rm{{1\over 2} (20.0\ N/m) (0.0150\ m)^2 = 0.00225\ J}</p>
+</div>
+<div data-cue="+">
+    <p>Because the mechanical energy is conserved, we can calculate the kinetic energy:</p>
+    <p class="TeX">E_k = E - E_p = \rm{0.00900\ J - 0.00225\ J = 0.00675\ J}</p>
+</div>
+<p data-cue="+" class="Center"><svg data-js="p20/shm/img/E#bar" id="Bar" class="EnergyBar s20"></svg></p>
+<div data-cue="+">
+    <p>Now evaluate the speed just as in Example 1:</p>
+    <p class="TeX">v = \rm{\sqrt{2\cdot 0.00675\ J \over 0.0600\ kg} = 0.474\ m/s}</p>
+</div>
+<p data-cue="+">There is no alternative solution this time, because the <span class="TeX">v_{max}</span> equation can only tell us the speed at equilibrium, not at any other point.</p>
+</section>
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Energy of SHM</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/shm/E"></p>
+</div>
+</section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    applet.energygraph.click('#Bar');
+}
+
+</script>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <!--li>A mass oscillates with an amplitude of 3.00 cm, at the end of a spring with <span class="TeX">k</span> = 20.0 N/m.
+    <ol type="a">
+        <li>Sketch a graph of the equation <span class="TeX">{\vec{\bf{F}}}_{net}=-k\vec{\bf{x}}</span> from <span class="TeX">\vec{\bf{x}}</span> = –3.00 cm to +3.00 cm. Start by calculating and plotting the force at these two points and at equilibrium.</li>
+        <div class="Answer">At <span class="TeX">\vec{\bf{x}}</span> = 0.0300 m...
+<p class="TeX">\vec{\bf{F}} = -k\vec{\bf{x}} = \rm{-20.0\ N/m\cdot 0.0300\ m = -0.600\ N}</p>
+<a target="Q1" href="https://www.desmos.com/calculator/jpxlckldbh">Desmos Graph</a>
+        </div>
+
+        <li>Calculate the areas of the two triangles formed by the line and the x-axis. Be sure to use standard SI units.</li>
+        <div class="Answer">
+For the right half of the graph, the base is 0.0300 cm and the height is –0.600 newtons...
+<p class="TeX">\rm{Area = \frac{Base\times Height}{2} = \frac{-0.600\ N\times 0.0300\ m}{2} = -0.00900\ J}</p>
+This is the negative of the work done in moving the object from +0.0300 cm back to equilibrium.
+        </div>
+
+        <li>Does the expression <span class="TeX">\frac{1}{2}kx^2</span> give the correct result for the area? Why does this work? </li>
+        <div class="Answer">
+<p class="TeX">E_p = \frac{1}{2}kx^2 = \rm{\frac{1}{2} (20.0\ N/m)\ (0.0300\ m)^2 = 0.00900\ J}</p>
+        </div>
+
+        <li>Calculate the potential energy of the system when the mass is halfway to its maximum (<span class="TeX">\vec{\bf{x}}</span> = 1.50 cm).</li>
+        <div class="Answer">
+<p class="TeX">E_p = \frac{1}{2}kx^2 = \rm{\frac{1}{2} (20.0\ N/m)\ (0.0150\ m)^2 = 0.00225\ J}</p>
+        </div>
+
+        <li>Why is the answer to (b) less than half of the answer to (a), even though <span class="TeX">\vec{\bf{x}}</span> is exactly half?</li>
+        <div class="Answer">According to <span class="TeX">E_p = \frac{1}{2}kx^2</span>, the potential energy varies as the <em>square</em> of the position;
+            at half the maximum position, there is only one-quarter as much potential energy.</div>
+    </ol></li-->
+
+    <li>A 250-gram mass executes SHM with <span class="TeX">k</span> = 32.0 N/m. Calculate the potential energy of the system at the following positions relative to equilibrium: (a) <span class="TeX">\vec{\bf{x}}</span> = 5.00 cm, (b) <span class="TeX">\vec{\bf{x}}</span> = –10.0 cm, and (c) <span class="TeX">\vec{\bf{x}}</span> = 25.0 cm.</li>
+    <div class="Answer">
+<p class="TeX">E_p = \frac{1}{2}kx^2 = \rm{\frac{1}{2} (32.0\ N/m)\ (0.050\ m)^2 = 0.0400\ J}</p>
+<p class="TeX">E_p = \frac{1}{2}kx^2 = \rm{\frac{1}{2} (32.0\ N/m)\ (-0.100\ m)^2 = 0.160\ J}</p>
+<p class="TeX">E_p = \frac{1}{2}kx^2 = \rm{\frac{1}{2} (32.0\ N/m)\ (0.250\ m)^2 = 1.00\ J}</p>
+    </div>
+
+    <li>A mass oscillating on a spring with <span class="TeX">k</span> = 100 N/m has 0.320 joules of potential energy. How far is the mass from its equilibrium position?</li>
+    <div class="Answer">
+<p class="TeX">E_p = \frac{1}{2}kx^2</p>
+<p class="TeX">\frac{2E_p}{k} = x^2</p>
+<p class="TeX">x = \pm\sqrt{\frac{2E_p}{k}} = \rm{\pm\sqrt{\frac{2\cdot 0.320\ J}{100\ N/m}} = \pm 0.0800\ m}</p>
+    </div>
+
+    <li>A 68.0-gram mass oscillates with an amplitude of 3.00 cm at the end of a spring with <span class="TeX">k</span> = 18.0 N/m.
+    <ol type="a">
+        <li>Calculate the potential energy at <span class="TeX">\vec{\bf{x}}</span> = 3.00 cm. Note that when <span class="TeX">\vec{\bf{x}}=\pm A</span>, the kinetic energy is zero!</li>
+        <div class="Answer">
+<p class="TeX">E_p = \frac{1}{2}kx^2 = \rm{\frac{1}{2} (18.0\ N/m)\ (0.030\ m)^2 = 0.00810\ J}</p>
+        </div>
+
+        <li>Using mechanical energy conservation, calculate the speed of the mass as it passes through equilibrium.</li>
+        <div class="Answer">
+At equilibrium, all of the energy is kinetic...
+<p class="TeX">E = \frac{1}{2} mv_{max}^2</p>
+<p class="TeX">\frac{2E}{m} = v_{max}^2</p>
+<p class="TeX">v_{max} = \sqrt{\frac{2E}{m}} = \rm{\sqrt{\frac{2\cdot 0.00810\ J}{0.0680\ kg}} = 0.488\ m/s}</p>
+        </div>
+
+        <li>Use the SHM equations to calculate first <span class="TeX">T</span>, and then <span class="TeX">v_{max}</span>. Does the maximum speed agree with your answer from (b)?</li>
+        <div class="Answer">
+<p class="TeX">T = 2\pi\sqrt{\frac{m}{k}} = \rm{2\pi\sqrt{\frac{0.0680\ kg}{18.0\ N/m}} = 0.386 \ s}</p>
+<p class="TeX">v_{max} = \frac{2\pi A}{T} = \rm{\frac{2\pi\cdot 0.0300\ m}{0.386\ s} = 0.488\ m/s}</p>
+        </div>
+
+        <li>Calculate the potential energy at <span class="TeX">\vec{\bf{x}}</span> = 1.00 cm and use the result to calculate the mass’s kinetic energy. Draw energy bar charts for the initial and “final” energy.</li>
+        <div class="Answer">
+<p class="TeX">E_p = \frac{1}{2} kx^2 = \rm{\frac{1}{2} (18.0\ N/m) (0.0100\ m)^2 = 0.000900\ J}</p>
+<p class="TeX">E_k = E - E_p = \rm{0.00810\ J - 0.000900\ J = 0.0720\ J}</p>
+<p><a target="Q3" href="/?{%22sym%22:[%22E_k%22,%22E_p%22],%22calc_fn%22:%22Q3%22,%22xMargin%22:[-0.6,0.05],%22yMargin%22:[-1.2,0.5],%22Emax%22:10,%22dE%22:1,%22interval%22:2,%22yTitle%22:%22Energy%20/%20mJ%22,%22fixed%22:0,%22duration%22:120}#p20/energy/bar">Energy Bar Chart</a></p>
+        </div>
+
+        <li>Calculate the speed of the mass when it is 1.00 cm from equilibrium.</li>
+        <div class="Answer">
+<p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm{\sqrt{\frac{2\cdot 0.0720\ J}{0.0680\ kg}} = 0.460\ m/s}</p>
+        </div>
+
+        <li>Calculate the speed of the mass when it is 2.00 cm from equilibrium. Include another energy bar chart.</li>
+        <div class="Answer">
+<p class="TeX">E_p = \frac{1}{2} kx^2 = \rm{\frac{1}{2} (18.0\ N/m) (0.0200\ m)^2 = 0.00360\ J}</p>
+<p class="TeX">E_k = E - E_p = \rm{0.00810\ J - 0.00360\ J = 0.0450\ J}</p>
+<p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm{\sqrt{\frac{2\cdot 0.0450\ J}{0.0680\ kg}} = 0.364\ m/s}</p>
+        </div>
+    </ol></li>
+
+    <li>A 175 g mass is attached to the end of an ideal spring and allowed to settle at its equilibrium position. The mass is then moved 4.20 cm from equilibrium and then released from rest. The resulting motion is observed to have a period of 0.420 s.
+    <ol type="a">
+        <li>Calculate the elastic constant, <span class="TeX">k</span>.</li>
+        <div class="Answer">
+<p class="TeX">T = 2\pi\sqrt{\frac{m}{k}}</p>
+<p class="TeX">T^2 = \frac{4\pi^2m}{k}</p>
+<p class="TeX">kT^2 = 4\pi^2m</p>
+<p class="TeX">k = \frac{4\pi^2m}{T^2} = \rm{\frac{4\pi^2 (0.175\ kg)}{(0.420\ s)^2} = 39.0\ N/m}</p>
+        </div>
+
+        <li>Determine the total mechanical energy of the system.</li>
+        <div class="Answer">
+Initially, <span class="TeX">x_i = -A</span> and <span class="TeX">v_i = 0</span>...
+<p class="TeX">\begin{align}E &= \frac{1}{2} kx^2 + \frac{1}{2} mv^2
+\\\\&= \rm{\frac{1}{2} (39.0\ N/m) (-0.0420\ m)^2 + 0.00\ J}
+\\\\&= \rm{0.0344\ J}\end{align}</p>
+        </div>
+
+        <li>Determine the speed of the mass when it passes through its equilibrium position.</li>
+        <div class="Answer">
+At equilibrium, all of the energy is kinetic...
+<p class="TeX">E = \frac{1}{2} mv_{max}^2</p>
+<p class="TeX">\frac{2E}{m} = v_{max}^2</p>
+<p class="TeX">v_{max} = \sqrt{\frac{2E}{m}} = \rm{\sqrt{\frac{2\cdot 0.0344\ J}{0.175\ kg}} = 0.627\ m/s}</p>
+        </div>
+
+        <li>Determine the speed of the mass when it passes through a point 1.00 cm from equilibrium.</li>
+        <div class="Answer">
+<p class="TeX">E_p = \frac{1}{2} kx^2 = \rm{\frac{1}{2} (39.0\ N/m) (0.0100\ m)^2 = 0.00195\ J}</p>
+<p class="TeX">E_k = E - E_p = \rm{0.0344\ J - 0.00195\ J = 0.0325\ J}</p>
+<p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm{\sqrt{\frac{2\cdot 0.0325\ J}{0.175\ kg}} = 0.609\ m/s}</p>
+        </div>
+
+        <li>Determine the speed of the mass when it passes through a point 4.00 cm from equilibrium.</li>
+        <div class="Answer">
+<p class="TeX">E_p = \frac{1}{2} kx^2 = \rm{\frac{1}{2} (39.0\ N/m) (0.0400\ m)^2 = 0.0312\ J}</p>
+<p class="TeX">E_k = E - E_p = \rm{0.0344\ J - 0.0312\ J = 0.00320\ J}</p>
+<p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm{\sqrt{\frac{2\cdot 0.00320\ J}{0.175\ kg}} = 0.191\ m/s}</p>
+        </div>
+
+    </ol></li>
+
+    <li>A 79.0 g mass attached to an ideal spring with <span class="TeX">k</span> = 19.0 N/m is released with an initial speed of 35.0 cm/s from a position 3.60 cm from equilibrium.
+    <ol type="a">
+        <li>Determine the total mechanical energy of the system.</li>
+        <div class="Answer">
+<p class="TeX">E_k = \frac{1}{2} mv^2 = \rm{\frac{1}{2} (0.0790 kg) (0.350 m/s)^2 = 0.00484\ J}</p>
+<p class="TeX">E_p = \frac{1}{2} kx^2 = \rm{\frac{1}{2} (19.0\ N/m) (0.0360\ m)^2 = 0.0123\ J}</p>
+<p class="TeX">E = E_k + E_p = \rm{0.00484\ J + 0.0123\ J = 0.0172\ J}</p>
+<a target="Q5i" href="/?{%22sym%22:[%22E_k%22,%22E_p%22],%22calc_fn%22:%22Q5%22,%22xMargin%22:[-0.6,0.05],%22yMargin%22:[-1.8,0.5],%22Emax%22:18,%22dE%22:1,%22interval%22:3,%22yTitle%22:%22Energy%20/%20mJ%22,%22fixed%22:0,%22duration%22:120}#p20/energy/bar">Energy Bar Chart</a>
+        </div>
+
+        <li>Determine the amplitude of the motion.</li>
+        <div class="Answer">
+At the furthest point in the motion, <span class="TeX">x = \pm A</span> and the energy is all potential...
+<p class="TeX">E = \frac{1}{2} kA^2</p>
+<p class="TeX">\frac{2E}{k} = A^2</p>
+<p class="TeX">A = \sqrt{\frac{2E}{k}} = \rm{\sqrt{\frac{2\cdot 0.0172\ J}{19.0\ N/m}} = 0.0425\ m}</p>
+        </div>
+
+        <li>Determine the speed of the mass as it passes through equilibrium.</li>
+        <div class="Answer">
+At equilibrium, all of the energy is kinetic...
+<p class="TeX">E = \frac{1}{2} mv_{max}^2</p>
+<p class="TeX">\frac{2E}{m} = v_{max}^2</p>
+<p class="TeX">v_{max} = \sqrt{\frac{2E}{m}} = \rm{\sqrt{\frac{2\cdot 0.0172\ J}{0.0790\ kg}} = 0.659\ m/s}</p>
+        </div>
+
+    </ol></li>
+
+    <li><b>Challenge!</b> Show that for a simple pendulum with a small amplitude, the equation for potential energy of SHM gives <em>approximately</em> the same result as
+        the gravitational potential energy equation <span class="NoWrap">(<span class="TeX">E_g=mgh</span>)</span>
+        when <span class="TeX">h</span> is measured relative to equilibrium. While it is difficult to prove this in general,
+        it is easier to show for a specific length, angle, and mass; assume <span class="TeX">L</span> = 1.00 m, <span class="TeX">\theta</span> = 15.0°, and <span class="TeX">m</span> = 1.00 kg.
+        You will need to draw a diagram!
+    </li>
+    <div class="Answer">
+<p class="Center"><svg class="" data-js="p20/shm/img/E#pend"></svg></p>
+<p>Use trig to calculate the height at 15.0°. The vertical side of the diagram consists of two segments —
+    the adjacent side of the triangle (<span class="TeX">L\cos\theta</span>) and the height relative to equilibrium <span class="NoWrap">(<span class="TeX">h</span>)</span> —
+    which together equal the length of the pendulum.</p>
+<p class="TeX">h + L\cos\theta = L</p>
+<p class="TeX">h = L - L\cos\theta = \rm{1.00\ m - 1.00\ m\cdot \cos 15.0^\circ = 0.0341 m}</p>
+<p>Calculate the “exact” potential energy...</p>
+<p class="TeX">E_g = mgh = \rm{1.00\ kg\cdot 9.81\ m/s^2\cdot 0.0341\ m = 0.334\ J}</p>
+<p>The potential energy for SHM is:</p>
+<p class="TeX">E_p=\frac{1}{2}kx^2</p>
+<p>We can find <span class="TeX">k</span> for a simple pendulum by equating the two formulas for the period...</p>
+<p class="TeX">2\pi\sqrt{\frac{L}{g}} = T = 2\pi\sqrt{\frac{m}{k}}</p>
+<p>Cancel the <span class="TeX">2\pi</span> and then square both sides...</p>
+<p class="TeX">\frac{L}{g}=\frac{m}{k}</p>
+<p class="TeX">kL=mg</p>
+<p class="TeX">k=\frac{mg}{L} = {\rm \frac{1.00\ kg\cdot 9.81\ m/s^2}{1.00\ m} = 9.81\ N/m}</p>
+<p>The distance from equilibrium, measured along the circular arc (shown in blue on the diagram) is 15/360 of a complete circle, which would have a circumference of <span class="TeX">2\pi L</span>...</p>
+<p class="TeX">x = 2\pi L \frac{15}{360} = \rm{2\pi\cdot 1.00\ m \frac{15}{360} = 0.262\ m}</p>
+<p class="TeX">E_p = \frac{1}{2} kx^2 = {\rm \frac{1}{2} (9.81\ N/m) (0.262\ m)^2 = 0.336\ J}</p>
+
+<p>If we had measured the distance from equilbrium horizontally (as labelled <span class="TeX">x_H</span>)...</p>
+<p class="TeX">x_H = L\sin\theta = {\rm 1.00\ m\cdot \sin 15.0^\circ = 0.259\ m}</p>
+<p>Using this distance to calculate the potential energy gives...</p>
+<p class="TeX">E_p = \frac{1}{2} kx_H^2 = {\rm \frac{1}{2} (9.81\ N/m) (0.259\ m)^2 = 0.329\ J}</p>
+<p>The potential energy that we calculate using the SHM formula is close to, but slightly higher (0.336 J) or lower (0.329 J) than the true energy (0.334 J) depending on how we measure <span class="TeX">x</span>.
+    This is because the motion of a simple pendulum is only <em>approximately</em> SHM.</p>
+    </div>
+
+</ol>
+
+<script type="text/javascript">
+
+ebgCalc.fn = {
+
+Q3: (t) => {let E = 8.1, k = sq(sin(3600 * t)); return [E*k, E*(1-k)]},
+Q5: (t) => {let E = 17.15075, k = sq(sin(32.0838 + 3600 * t)); return [E*k, E*(1-k)]},
+
+}
+    
+</script>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li><ol type="a">
+        <li>Derive an expression for the potential energy of an object under SHM.</li>
+        <li>Where is the origin or “reference level” for this equation? Why is this a convenient choice for calculating potential energy?</li>
+        <li>Does it matter if this potential energy is gravitational, elastic, or a combination of the two types of potential energy? Explain.</li>
+    </ol></li>
+
+    <li>Explain how we can use energy conservation to calculate the speed of an object at any point in the motion. (Recall that <span class="TeX">v_{max}</span> only tells us the speed at equilibrium.)</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}7.5 — Energy of SHM`,
+    answerDate: "2024.5.30.16",
+    num: "7.5",
+    up: "p20/home",
+    prev: "p20/shm/pend",
+    next: "p20/shm/res",
+}
+
+</script>

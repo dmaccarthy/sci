@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SVG Graph</title>
+<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+<link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-roman.css" type="text/css" charset="utf-8" />
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<style type="text/css">
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+textarea {
+    max-width: calc(100% - 16px);
+    width: 960px;
+    font-size: 125%;
+    overflow: scroll;
+    white-space: pre;
+}
+
+#Main {
+    background-color: white;
+    width: 480px;
+    margin: auto;
+}
+
+#Main > p {margin: 0}
+    
+#Main > h2 {
+    margin: 4px 0;
+    padding-top: 4px;
+}
+
+.NoBold {font-weight: normal}
+input, button {width: 6em}
+
+</style>
+<!-- <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script> -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/src/util.js"></script>
+<script type="text/javascript" src="/src/bdata.js"></script>
+<script type="text/javascript" src="/src/math.js"></script>
+<script type="text/javascript" src="/src/svg_anim.js"></script>
+<script type="text/javascript" src="/src/applet.js"></script>
+<script type="text/javascript" src="/src/matrix.js"></script>
+<script type="text/javascript">
+    
+function setSize() {
+    let svg = $("#Graph");
+    let a = eval(svg.attr("data-aspect"));
+    let w = Math.round(parseFloat($("#Width").val()));
+    let h = Math.round(w / a);
+    svg.css({width:w, height:h});
+    $("#Main").css({width:w});
+    $("#Main > h2").css("font-size", `${w/4}%`);
+}
+
+function editTitle(e) {
+    e = $(e);
+    let text = prompt("New title...", e.text());
+    if (text) {
+        text = text.replaceAll("$$", '<span class="TeX">').replaceAll("$", "</span>");
+        text = text.replace(" vs ", '<span class="NoBold"> vs. </span>');
+        text = text.replace(": ", "<br/>");
+        text = prompt("Confirm...", text);
+        e.html(text);
+        renderTeX();
+    }
+}
+
+function drawIt() {
+    let e = $("#Graph").html(init.stylesheet).attr({width: 480, height: 360, "data-aspect": "4/3"});
+    drawIt.js = $("textarea").val();
+    let js = eval(`(sel) => {
+${drawIt.js}
+}`);
+    let style = (a) => {
+        $("#Graph").removeClass("VDiag Graph").addClass(a);
+    }
+    js("#Graph");
+    e[0].graphic.final();
+    $("#Width").val(Math.round(e.width()));
+    setSize();
+}
+
+function activeStyles(sel, svg) {
+    let style = $(sel);
+    let s0 = style.html().split("/* "), s1 = "";
+    for (let i=0;i<s0.length;i++) {
+        let si = s0[i];
+        if (si.length) {
+            let c = si.split(" ")[0];
+            if (c == "SVG" || svg.hasClass(c)) s1 += "/* " + si;
+        }
+    }
+    return s1;
+}
+
+function saveDrawing(ev) {
+    let svg = $($("#Graph")[0].outerHTML).removeAttr("data-aspect");
+    let style = svg.find("style");
+    style.html(activeStyles(style, svg));
+    svg.prepend(`\n<!--\n${drawIt.js}\n-->\n`);
+    new BData(svg[0].outerHTML, "drawing.svg").save();
+}
+
+drawIt.graph = `let svg = applet.graph(sel, {
+    grid: [[0, 10, 1], [0, 50, 5], 1],
+    margin: [0.15, 0.03, 0.09, 0.04],
+    x: ["Time / s", [">", "12"], {length: "8", interval: 2, fixed: 0, offset: [0, "-20"]}],
+    y: ["Position / m", ["-48", ">"], {length: "8", interval: 10, fixed: 0, offset: ["-12", 0]}],   
+});
+style("Graph");
+svg.$.find(".TitleX, .TitleY").addClass("End");
+svg.line([0, 10], [10, 50]).css({stroke: "red"});
+let parab = (t) => 10 + t * (8 - t / 2);
+svg.locus(parab, [0, 10], 0, 0).css({stroke: "violet"});
+svg.plot({x: [...range(0, 10)], y: parab}, {cross: "6", config: {theta:45}, css: {fill: "violet"}});
+`;
+
+drawIt.vec =`$(sel).attr({width: 400, height: 400, "data-aspect": 1});
+let svg = applet.vecDiagram.diagram(sel,
+    [[-2, 4]],
+    {omitAxes: 1, shift: [3, -2], component: 1},
+    0.5, -3, -5
+);
+style("VDiag");
+let attr = {interval: 1, fixed: 0, length: "8", omitZero: 1, offset: [0, "-18"]};
+svg.axis({x: [-3, 7], ticks: attr});
+attr.offset = ["-14", 0];
+svg.axis({y: [-5, 5], ticks: attr});
+svg.line([3, -2], [5, -2]).$.css({stroke: "black", "stroke-width": 2});
+svg.plot([[3, -2], [1, 2]], "5").after("g.Grid");
+svg.symbol("d", {vec:1, delta:1}, [2.7, 0.5]).css({fill: "red"});
+svg.text("m", [0.5, 4.5]).addClass("Annotate");
+`;
+
+function sample() {
+    let n = sample.next;
+    if (confirm("Replace current script?")) {
+        $("textarea").val(drawIt[n ? "vec" : "graph"]);
+        sample.next = 1 - n;
+        drawIt();
+    }
+}
+
+sample.next = 1;
+
+function init(e) {
+    let s = init.stylesheet = document.createElementNS(SVG_Item.nsURI, "style");
+    $(s).append(e);
+    let svg = $("#Graph").on("click", (ev) => {
+        try {
+            let e = svg[0].graphic;
+            console.log(e.eventCoords(ev).coords);            
+        } catch(err) {};
+    });
+    $("#Save").on("click", saveDrawing);
+    $("textarea").val(drawIt.graph);
+    drawIt();
+}
+    
+$(() => {
+    $.ajax({url: "/style/svg.css", success: init})
+});
+
+</script>
+</head>
+<body>
+<p><textarea rows="18" spellcheck="false" autocomplete="off"></textarea></p>
+<p>
+    <input id="Width" type="number" value="480" min="80" step="16" onchange="setSize()"/> &nbsp;
+    <button onclick="drawIt()">Draw</button> &nbsp;
+    <button onclick="sample()">Sample</button> &nbsp;
+    <button id="Save">Save</button>
+</p>
+<div id="Main">
+<h2 class="Center" onclick="editTitle(this)">Title</h2>    
+<p><svg id="Graph" width="480" height="360"></svg></p>
+</div>
+</body>
+</html>

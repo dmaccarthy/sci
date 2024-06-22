@@ -1,0 +1,246 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">String Literals</h2><div class="Collapse Expand">
+
+<p>Python string literals are enclosed in quotes. Either the single quote or the double
+	quote character may be used; however, you cannot use one type of quote to start the
+	string literal and the other quote character to end the string.</p>
+
+<pre data-echo="s17_ex1.py" data-title="1" class="Code">print("Hi there!")
+print('Greetings!')
+print("This is bad.')    <span class="Comment"># Syntax Error!</span></pre>
+
+<p>As we have already seen with docstrings, Python also allows you to create “long”
+	string literals that are identified by three consecutive single or double quote
+	characters to start and end the string. String literals expressed this way may extend
+	over multiple lines.</p>
+
+<pre data-echo="s17_ex2.py" data-title="1" class="Code">print("""This string
+   takes up
+  three lines.""")</pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Escape Characters</h2><div class="Collapse Expand">
+
+<p>The backslash character is used to create <em class="Defn">escape sequences</em>: characters that for one
+	reason or another cannot be typed directly in a string literal. For example, if you use
+	single quotes to start and end the string literal, you cannot include the single quote
+	character (which also serves as the apostrophe) within the string data.</p>
+
+<pre data-echo="s17_ex3.py" data-title="1" class="Code">print('That's mine!')   <span class="Comment"># Syntax Error!</span></pre>
+
+<p>Normally, you would use double quotes to enclose a string that contains a single quote
+	character, and single quotes to enclose a string that contains double quotes.</p>
+
+<pre data-echo="s17_ex4.py" data-title="1" class="Code">print("That's mine!")
+print('"Sabre Pride"')</pre>
+
+<p>Things become difficult when a string contains both single and double quote characters.
+	In cases like this, the character that would otherwise confuse the interpreter must be
+	“escaped”.</p>
+
+<p>In the example below, the backslash character indicates that the single quote immediately
+	following it is part of the string data and does not mark the end of the string literal.</p>
+
+<pre data-echo="s17_ex5.py" data-title="1" class="Code">print('She said, "That<span class="Blue">\'</span>s mine!"')</pre>
+
+<p>Other common escape sequences are <code>\n</code> which represents a “new line” (also called line
+	feed or LF) character and <code>\t</code> which represents a tab character. These are
+	demonstrated in the first line below.</p>
+
+<pre data-echo="s17_ex6.py" data-title="1" class="Code">print('Line 1<span class="Blue">\n</span>Line 2\<span class="Blue">n\t</span>Line 3')
+print('<span class="Blue">\u00A9</span> 2023')
+print('C:<span class="Blue">\\</span>Python38<span class="Blue">\\</span>python.exe')</pre>
+
+<p>You can use escape sequences to include Unicode characters in string data even when
+	the character cannot be typed from your keyboard. Unicode escape sequences consist of
+	<code>\u</code> followed by a four digit hexadecimal code, or <code>\U</code> followed
+	by an eight digit hexadecimal code. For example, <code>\u00A9</code> is the escape
+	sequence for the © character as shown in the second line above.</p>
+
+<p>Python 3 does allow you to type (or paste) Unicode characters directly into your
+	program.  If your editor allows you to, you can use the © symbol without escaping it.
+	Just be sure that your source file is saved using UTF-8 encoding if it contains
+	non-ASCII characters.</p>
+
+<p>String data that contains a backslash character (as in the final line of the example
+	above) should always be escaped.</p>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Operators</h2><div class="Collapse Expand">
+
+<p>The <code>+</code> operator can be used to join two or more strings to make a new, larger string.</p>
+
+<pre data-echo="s17_ex7.py" data-title="1" class="Code">str1 = 'Hello, '
+str2 = 'world!'
+str3 = str1 + str2
+print(str3)          <span class="Comment"># Hello, world!</span></pre>
+
+<p>The <code>*</code> operator can be used to repeat a string several times.</p>
+
+<pre data-echo="s17_ex8.py" data-title="1" class="Code">print(3 * 'Hi!')     <span class="Comment"># Hi!Hi!Hi!</pre>
+
+<p>The <code>in</code> operator can be used to check if a string contains a specific
+	letter or sequence of letters.</p>
+
+<pre data-echo="s17_ex9.py" data-title="1" class="Code">print('a' in 'Hi!')   <span class="Comment"># False</span></pre>
+
+<p>Python has a <code>len</code> (length) function that will return the number
+	of characters in a string.</p>
+
+<pre data-echo="s17_ex10.py" data-title="1" class="Code">print(len("Hi there!"))   <span class="Comment"># 9</span></pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Indices &amp; Slices</h2><div class="Collapse Expand">
+
+<p>Python provides a mechanism for slicing strings into smaller strings. Each character in
+	a string has its own index.  An <em class="Defn">index</em> is an integer that describes how far the
+	character is located from the beginning of the string.  The first character in any
+	string always has an index of 0, the second character has an index of 1, etc.</p>
+
+<p>Python also allows negative indices that describe a character’s location compared to
+	the end of the string; e.g. the last character in the string has an index of −1, etc.
+	To select a single character from a string, the string expression is followed by square
+	brackets enclosing the index to be selected.</p>
+
+<pre data-echo="s17_ex11.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
+print(sal[0])        <span class="Comment"># S</span>
+print(sal[1])        <span class="Comment"># a</span>
+print(sal[10])       <span class="Comment"># C</span>
+print(sal[-1])       <span class="Comment"># l</span>
+print(sal[-8])       <span class="Comment"># h</span></pre>
+
+<p>To select several consecutive characters from a string, we use the same notation with
+	the starting and ending indices separated by a colon. Python calls this a <em class="Defn">slice</em>. Note that the starting index is
+	included in the result but the ending index is not. For example, the slice <code>sal[10:14]</code>
+	creates a string from the characters with indices 10 through 13 with the index 14 not
+	included.</p>
+
+<pre data-echo="s17_ex12.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
+print(sal[10:14])    <span class="Comment"># Comp</span></pre>
+
+<p>If you include the colon but omit the starting index, Python assumes you want to
+	start from the beginning of the string. If you include the colon but omit the ending
+	index, Python assumes you want to go to the end of the string.</p>
+
+<pre data-echo="s17_ex13.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
+print(sal[:3])       <span class="Comment"># Sal</span>
+print(sal[20:])      <span class="Comment"># High School</span>
+print(sal[-6:])      <span class="Comment"># School</span></pre>
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">String Methods</h2><div class="Collapse Expand">
+
+<p>A method is a function that is defined as part of a class definition. One of the
+	methods defined for the <code>str</code> class is called <code>find</code>: it is used
+	to find the index of the first occurrence of a character or sequence of characters
+	within a string. The <code>str.find</code> method uses object-oriented syntax just like
+	the <code>str.format</code> method we used for formatting output. Rather than passing
+	the string as an argument, type the string or its variable followed by <code>.find</code>.</p>
+
+<pre data-echo="s17_ex14.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
+index = sal.find("is")
+print(index)                 <span class="Comment"># 3</span></pre>
+
+<p>Some additional string methods that you may find useful are.</p>
+<ul>
+	<li><code>upper</code>: Convert a string to all uppercase letters.</li>
+	<li><code>lower</code>: Convert a string to all lowercase letters.</li>
+	<li><code>replace</code>: Replace all occurrences of a substring with another substring.</li>
+	<li><code>strip</code>: Remove whitespace (spaces, tabs, line feeds, etc.) from the beginning and end of the string.</li>
+	<li><code>format</code>: Inserts numbers and other objects into a string and controls how they are formatted.</li>
+</ul>
+
+<p>Here are some examples.</p>
+
+<pre data-echo="s17_ex15.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
+print(sal.upper())
+print(sal.lower())
+print(sal.replace("o", "q"))</pre>
+
+<p>See the <a href="https://docs.python.org/3/library/stdtypes.html?#str"
+	target="Py3">Python documentation</a> for more information on string methods.</p>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2>
+<div class="Collapse Expand"><ol class="Assign">
+<li>Copy your program <code>s16_hangman.py</code> as <code>s17_hangman.py</code>. Complete the program to make it a working word-guessing game.
+<ul>
+    <li>When the user guesses a letter correctly, replace the appropriate stars by the guessed letter.</li>
+    <li>The user wins when they have guessed all the letters (no <code>*</code> remaining) and loses when they make 6 incorrect guesses.</li>
+    <li>Display the clue, the number of chances remaining, and the letters guessed with each prompt.</li>
+    <li>Convert all guesses to upper case.</li>
+    <li>Do not penalize the player for guessing the same letter more than once; just tell them the letter has already been guessed.</li>
+    <li>Ask the user whether they want to play again at the end of the game.</li>
+    <li>Keep track of how many games the user won and lost.</li>
+</ul>
+<p>Here is a sample of what the program output could look like, and some code you can use to randomly select a clue and answer...</p>
+</li>
+
+<pre data-echo="hangman.io" class="CodeScroll">70's Movie: **** ****
+Guess a letter: <span class="Blue">a</span>
+
+Correct! You have 6 chances left.
+Letters Used: A
+
+70's Movie: **A* *A**
+Guess a letter: <span class="Blue">e</span>
+
+Incorrect! You have 5 chances left.
+Letters Used: AE
+
+70's Movie: **A* *A**
+Guess a letter: <span class="Blue">s</span>
+
+Correct! You have 5 chances left.
+Letters Used: AES
+
+70's Movie: S*A* *A*S
+Guess a letter: <span class="Blue">r</span>
+
+Correct! You have 5 chances left.
+Letters Used: AESR
+
+70's Movie: S*AR *ARS
+Guess a letter: <span class="Blue">t</span>
+
+Correct! You have 5 chances left.
+Letters Used: AESRT
+
+70's Movie: STAR *ARS
+Guess a letter: <span class="Blue">w</span>
+
+Correct! You WIN!!
+STAR WARS
+
+Play again? [y/n] <span class="Blue">n</span>
+Thanks for playing.
+Your record: 1 win and 0 losses.
+Goodbye.</pre>
+
+<pre data-echo="py" class="Code">from random import choice
+
+clue, answer = choice([
+    ("70's Movie", "STAR WARS"),
+    ("Canadian City", "VANCOUVER, BC"),
+    ("Pro Athlete", "CONNOR MCDAVID")
+])
+</pre>
+<!-- <li>You are now ready for the final programming project for <em>Structured Programming 2</em>. Please contact your teacher.</li> -->
+</ol>
+
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "String Methods",
+    up: "cs_new/cs10",
+    prev: "cs_new/sp2/accum",
+}
+  
+</script>

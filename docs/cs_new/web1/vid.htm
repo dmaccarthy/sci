@@ -1,0 +1,55 @@
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Adding Video</h2><div class="Collapse Expand">
+
+<p>HTML5 introduced a <code>&lt;video&gt;</code> tag for embedding video files in web pages.
+	Because different browsers may support different video formats, you can list multiple
+	versions of the video in the <code>&lt;source&gt;</code> tags which are children of the
+	<code>&lt;video&gt;</code> tag.</p>
+
+<p>In the example below, the HTML embeds a video resized to 640 by 360 pixels with user controls (play, pause, etc.) displayed.
+    Two versions of the video are provided for the browser to choose from: an MP4 and an OGV format.</p>
+
+<pre class="Code" contenteditable="true" data-echo="html">&lt;video width="640" height="360" controls="1"&gt;
+  &lt;source src="https://media-davidmaccarthy.replit.app/movie.mp4" type="video/mp4"&gt;
+  &lt;source src="https://media-davidmaccarthy.replit.app/movie.ogv" type="video/ogg"&gt;
+&lt;/video&gt;</pre>
+
+</div></section>
+
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">YouTube</h2><div class="Collapse Expand">
+
+<p>Rather than upload videos to your own web server, many web pages rely on video hosting
+	services such as YouTube to provide embedded video. By including videos in this manner,
+	you do not need to worry about the video format. To embed a YouTube video in your web
+	page, visit the video’s YouTube page and obtain the HTML code from the Share/Embed
+	section.</p>
+
+<pre class="Code" contenteditable="true" data-title="1" data-echo="youtube_embed.html">&lt;iframe src="https://www.youtube.com/embed/Vd5duzNtBuI"
+    width="640" height="360" frameborder="0" allowfullscreen&gt;&lt/iframe&gt;</pre>
+<p><em>Depending on your web browser settings, you may or may not be able to preview the example as a “data blob”. Instead, you can download the example and then open the downloaded file with your web browser.
+    <b>Important</b>: Never open downloaded files that do not come from a trusted source!</em></p>
+</div>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+    <li>Use the file <code>w09_myPage.html</code> to create a webpage on a topic of your choice. It can be about
+    you; a hobby, game, or TV show you like; your favourite musician or sports team, etc. Make your page visually
+    appealing to your viewers and include video.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+tmp = localStorage.getItem("cs_course") == "20" ? "cs20" : "cs10";
+    
+loadFeed.data = {
+    title: "Video",
+    up: `cs_new/${tmp}`,
+    prev: "cs_new/web1/img",
+    next: "cs_new/web1/list",
+}
+  
+</script>

@@ -1,0 +1,118 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Comments</h2><div class="Collapse Expand">
+
+<p><b class="Red">Comments</b> are extra information added to your source code (program)
+	to make it easier for human readers to understand. In Python, the <code>#</code> symbol
+	is used to mark the beginning of a comment. The Python interpreter ignores everything
+	from the <code>#</code> to the end of the line.</p>
+
+<p>Here is an example from the previous lesson with four comment lines added to	explain what
+    the program is doing.</p>
+
+<pre data-echo="s04_ex1.py" data-title="1" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+
+<span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
+setup(600, 480)
+speed(1)
+pencolor("red")
+
+<span class="Comment"># Move turtle into position</span>
+penup()
+backward(200)
+left(45)
+
+<span class="Comment"># Start drawing</span>
+pendown()
+forward(200)
+
+<span class="Comment"># Finished!</span>
+exitonclick()</pre>
+
+<p>Comments can also be used to temporarily disable one or more instructions without
+	actually deleting the code. If we want to see what the program would do if we took
+	out the <code>penup()</code> instruction, we could add a <code>#</code> character to
+	the beginning of the line. This is commonly called “commenting out” the instruction.</p>
+
+<pre data-echo="py" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+
+<span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
+setup(600, 480)
+speed(1)
+pencolor("red")
+
+<span class="Comment"># Move turtle into position</span>
+<span class="Blue"># penup()</span>
+backward(200)
+left(45)
+
+<span class="Comment"># Start drawing</span>
+pendown()
+forward(200)
+
+<span class="Comment"># Finished!</span>
+exitonclick()</pre>
+
+</div></section>
+
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Docstrings</h2><div class="Collapse Expand">
+
+<p>Python allows programs to contain a special comment known as a
+	<b class="Red">documentation string</b> or <b class="Red">docstring</b>.
+	The purpose of the docstring is to describe the purpose of the program and to
+	give additional information such as the author, version, copyright and license
+	notices, etc.</p>
+
+<p>The docstring is usually the first non-blank line in the file. Docstrings must be enclosed
+    in quotation marks. If the docstring does not fit on a single line, it needs to be enclosed
+    in <em>triple</em> quotes, as in the example below.</p>
+
+<pre data-echo="py" class="Code"><span class="DocString">"""
+An example of a Python 3 'Turtle Graphics' program.
+
+Author: D. MacCarthy &lt;david.maccarthy@eips.ca&gt;
+
+"""</span>
+    
+from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+
+<span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
+setup(600, 480)
+speed(1)
+pencolor("red")
+
+<span class="Comment"># Move turtle into position</span>
+penup()
+backward(200)
+left(45)
+
+<span class="Comment"># Start drawing</span>
+pendown()
+forward(200)
+
+<span class="Comment"># Finished!</span>
+exitonclick()</pre>
+
+<p>Most IDE’s will display comments and docstrings in different colours from the
+	program instructions to make them easy to identify.</p>
+
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand"><ol class="Assign">
+    <li>Copy your programs from the previous assignment into the files <code>s04_turtle.py</code>,
+    <code>s04_Q.py</code>, and <code>s04_letter.py</code>. Add a suitable docstring to each
+    program and add comments to describe each group of instructions, such as “move
+    the turtle into position”, “draw the circle”, “draw the 'tail' of the Q”.</li>
+</ol></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Comments & Docstrings",
+    up: "cs_new/cs10",
+    next: "cs_new/sp1/var",
+    prev: "cs_new/sp1/py",
+}
+  
+</script>

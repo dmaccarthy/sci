@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head><title>Binary &amp; Hexadecimal Encoding</title>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Converting between binary, decimal, and hexadecimal numbers"/>
+<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oxygen:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:400,700" />
+<link rel="stylesheet" href="../script/ui2023.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">//<!--
+
+function toggle() {
+	this.innerHTML = 1 - parseInt(this.innerHTML);
+	update();
+}
+
+function update() {
+	var d = 0, v = 1, i, j, n;
+	var b = $("tr.Bits td");
+	var p = $("tr.PlaceValue td");
+	for (j=0;j<16;j++) {
+		i = (j < 8 ? 16 : 15) - j;
+		n = parseInt(b[i].innerHTML);
+		if (n) {
+			d += v;
+			$(p[i]).addClass("On");
+		}
+		else $(p[i]).removeClass("On");
+		v *= 2;
+	}
+	$("#Decimal").html(d);
+	b = d.toString(2);
+	if (b.length > 8) b = b.slice(0, -8) + " " + b.slice(-8);
+	$("#Binary").html(b);
+	d = d.toString(16);
+	$("#Hexadecimal").html(d);
+	while (d.length < 4) d = "0" + d;
+	s = $("tr.Hex td");
+	for (j=0;j<4;j++) {
+		i = j + (j < 2 ? 0 : 1);
+		$(s[i]).html(d[j]);
+	}
+}
+
+function promptNum(b) {
+	var d = parseInt(prompt("Enter a base-" + b + " number:"), b);
+	if (!isNaN(d) && d >= 0 && d <= 65535) {
+		d = d.toString(2);
+		while (d.length < 16) d = "0" + d;
+		var b = $("tr.Bits td");
+		for (var i=0;i<16;i++)
+			b[i + (i > 7 ? 1 : 0)].innerHTML = d[i];
+		update();
+	}
+	else alert("Input is not valid.");
+}
+
+$(function() {
+	update();
+	$("tr.Bits td").click(toggle);
+})
+
+//--></script>
+<style>
+
+table {margin:auto}
+
+td {
+	width:3.5em;
+	border:1px solid black;
+}
+
+td.Space {
+	width:0.5em;
+	border:none;	
+}
+
+tr.Bits td {
+	color:red;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+tr.Bits td.Space {
+	cursor:auto;
+}
+
+table.Hex td {
+	width:14em;
+}
+
+tr.Hex td {
+	color:blue;
+	font-weight:bold;
+}
+
+tr.PlaceValue td {
+	color:#e0e0e0;
+}
+
+tr.PlaceValue td.On {
+	color:white;
+	background-color:red;
+	font-weight:bold;
+}
+
+#Numbers {
+	font-family:"SourceCodePro", monospace;
+	font-size:1.2em;
+}
+
+#Decimal, #Binary, #Hexadecimal {
+	text-decoration:underline;
+	color:blue;
+	cursor:pointer;
+}
+
+</style>
+</head>
+<body style="text-align:center;margin:0">
+<h2>Binary &amp; Hexadecimal Encoding</h2>
+<table>
+	<tr class="PlaceValue">
+		<td>32768</td>
+		<td>16384</td>
+		<td>8192</td>
+		<td>4096</td>
+		<td>2048</td>
+		<td>1024</td>
+		<td>512</td>
+		<td>256</td>
+		<td class="Space">&nbsp;</td>
+		<td>128</td>
+		<td>64</td>
+		<td>32</td>
+		<td>16</td>
+		<td>8</td>
+		<td>4</td>
+		<td>2</td>
+		<td>1</td>
+	</tr>
+	<tr class="Bits">
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td class="Space">&nbsp;</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+	</tr>
+	<!--tr class="PlaceValue">
+		<td colspan="4">4096</td>
+		<td colspan="4">256</td>
+		<td class="Space">&nbsp;</td>
+		<td colspan="4">16</td>
+		<td colspan="4">1</td>
+	</tr-->
+	<tr class="Hex">
+		<td colspan="4">0</td>
+		<td colspan="4">0</td>
+		<td class="Space">&nbsp;</td>
+		<td colspan="4">0</td>
+		<td colspan="4">0</td>
+	</tr>
+</table>
+<p id="Numbers"><span id="Decimal" onclick="promptNum(10)">0</span> =
+	b<span id="Binary" onclick="promptNum(2)">0</span> =
+	x<span id="Hexadecimal" onclick="promptNum(16)">0</span></p>
+</body>
+</html>

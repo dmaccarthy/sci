@@ -1,0 +1,50 @@
+<h3>Assignment</h3><ol class="Assign">
+<p>Complete each of these challenges using only the robot sensors and actuators. Do not access or modify the simulation code or reconfigure the robot’s sensors.</p>
+<p class="Center"><img src="robo/img/park.png" alt="Image"/></p>
+<li>Teach the robot how to follow the <em>edge</em> of the blue line by completing the <code>followLine</code> function.
+    To do this, the robot needs to move forward when it’s on the <em>edge</em> of the line, turn in
+    one direction when it’s on the <em>centre</em> of the line, and turn in the opposite direction
+    when it’s off the line completely. When it’s on the <em>edge</em>, the colour sensor will detect
+    bluish-white, which will have the same H and V values as ordinary blue, but a smaller S value.
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r07_line1.py'</span>
+
+from sc8pr.robot.park import ParkingLot
+
+def followLine(robot):
+    <span class="Comment">"Follow the blue line"</span>
+
+def brain(robot):
+    followLine(robot)
+
+ParkingLot.run(brain)</pre>
+</li>
+<li>Duplicate your program <code>r07_line1.py</code> as <code>r07_line2.py</code>. Modify the
+    <code>followLine</code> function so that it takes a second argument which tells it how long to follow the
+    line. For example, if the program calls <code>followLine(robot, 5)</code>, the robot should
+    follow the line for five seconds and then stop. You can use the robot’s built-in timer
+    (<code>robot.uptime</code>) to accomplish this.</li>
+<li>Duplicate your program <code>r07_line2.py</code> as <code>r07_line3.py</code>. Create a new
+    function called <code>followToEnd</code> that follows the line until it reaches one of the
+    ends. You can do this by monitoring the robot’s gyroscope. The example below calls
+    <code>robot.gyroSample(3)</code> to monitor the gyroscope for three seconds at a time. The
+    expression <code>robot.gyroChange</code> will indicate by how many degrees this reading has changed
+    over the last three seconds. The gryroscope should change by very little when moving along the line
+    and by a much larger amount when it turns around at the end.
+<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r07_ex1.py'</span>
+
+from sc8pr.robot.park import ParkingLot
+
+def brain(robot):
+    robot.gyroSample(3)
+    robot.motors = 0.5, -0.5
+    while robot.active:
+        robot.updateSensors()
+        print(robot.gyroChange)
+
+ParkingLot.run(brain)</pre>
+
+</li>
+<li>Finally, make a program <code>r07_park.py</code> that parks the robot in an unoccupied space. To
+    avoid colliding with another robot, you can use the robot’s proximity sensor (<code>robot.proximity</code>)
+    which indicates how far away the nearest obstacle is.</li>
+</ol>

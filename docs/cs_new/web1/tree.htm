@@ -1,0 +1,141 @@
+<section class="Post" data-icon="html5.svg">
+<h2 class="Collapse">Nodes</h2><div class="Collapse Expand">
+<p>Data that can be represented in the form of a tree is called <em class="Defn">hierarchical data</em>.
+	One example could be a database of Canadian government jurisdictions. Only a small portion of the data tree
+	is shown below as the complete database would be huge!</p>
+<p class="Center"><svg id="CanadaTree" xmlns="http://www.w3.org/2000/svg" data-aspect="58/56" width="580" height="560" viewBox="-316 0 580 560">
+<style>
+
+#CanadaTree * {stroke: black; stroke-width: 1}
+#CanadaTree *:is(rect, polyline) {fill: none}
+
+#CanadaTree text {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 85%;
+    fill: black;
+    stroke: none;
+    text-anchor: middle;
+    dominant-baseline: hanging;
+}
+
+#CanadaTree text.Tag {
+    font-size: 125%;
+    font-weight: bold;
+}
+
+</style>
+<defs>
+    <rect id="NodeBox" style="fill:none" width="150" height="85"></rect>
+    <polygon id="NodeArrow" points="0,10 -10,-10 10,-10"></polygon>
+</defs>
+<g transform="translate(25 0)">
+    <use href="#NodeBox" x="-75" y="10"></use>
+    <text class="Tag" x="0" y="15">Country</text>
+    <text x="0" y="45">name = "Canada"</text>
+    <text x="0" y="70">capital = "Ottawa"</text>
+</g>
+<g transform="translate(175 150)">
+    <use href="#NodeArrow" x="0" y="0"></use>
+    <use href="#NodeBox" x="-75" y="10"></use>
+    <text class="Tag" x="0" y="15">Province</text>
+    <text x="0" y="45">name = "Ontario"</text>
+    <text x="0" y="70">capital = "Toronto"</text>
+    <polyline points="0,0 0,-25 -150,-25 -150,-55"></polyline>
+</g>
+<g transform="translate(175 300)">
+    <use href="#NodeArrow" x="0" y="0"></use>
+    <use href="#NodeBox" x="-75" y="10"></use>
+    <text class="Tag" x="0" y="15">Municipality</text>
+    <text x="0" y="45">type = "City"</text>
+    <text x="0" y="70">name = "London"</text>
+    <line x1="0" y1="0" x2="0" y2="-55"></line>
+</g>
+<g transform="translate(-125 150)">
+    <use href="#NodeArrow" x="0" y="0"></use>
+    <use href="#NodeBox" x="-75" y="10"></use>
+    <text class="Tag" x="0" y="15">Province</text>
+    <text x="0" y="45">name = "Alberta"</text>
+    <text x="0" y="70">capital = "Edmonton"</text>
+    <polyline points="0,0 0,-25 150,-25 150,-55"></polyline>
+</g>
+<g transform="translate(-225 300)">
+    <use href="#NodeArrow" x="0" y="0"></use>
+    <use href="#NodeBox" x="-75" y="10"></use>
+    <text class="Tag" x="0" y="15">Municipality</text>
+    <text x="0" y="45">type = "City"</text>
+    <text x="0" y="70">name = "Edmonton"</text>
+    <polyline points="0,0 0,-25 100,-25 100,-55"></polyline>
+</g>
+<g transform="translate(-25 300)">
+    <use href="#NodeArrow" x="0" y="0"></use>
+    <use href="#NodeBox" x="-75" y="10"></use>
+    <text class="Tag" x="0" y="15">Municipality</text>
+    <text x="0" y="45">type = "County"</text>
+    <text x="0" y="70">name = "Strathcona"</text>
+    <polyline points="0,0 0,-25 -100,-25 -100,-55"></polyline>
+</g>
+<g transform="translate(75 450)">
+    <use href="#NodeArrow" x="0" y="0"></use>
+    <use href="#NodeBox" x="-75" y="10"></use>
+    <text class="Tag" x="0" y="15">Community</text>
+    <text x="0" y="45">name =</text>
+    <text x="0" y="70">"Lakeland Ridge"</text>
+    <polyline points="0,0 0,-25 -100,-25 -100,-55"></polyline>
+</g>
+<g transform="translate(-125 450)">
+    <use href="#NodeArrow" x="0" y="0"></use>
+    <use href="#NodeBox" x="-75" y="10"></use>
+    <text class="Tag" x="0" y="15">Community</text>
+    <text x="0" y="45">name =</text>
+    <text x="0" y="70">"Sherwood Heights"</text>
+    <polyline points="0,0 0,-25 100,-25 100,-55"></polyline>
+</g>
+</svg></p>
+
+<p>As the example shows, the country consists of several provinces (or territories), each of which may be
+	divided into numerous cities, counties, towns, and districts. These municipalities may each contain several
+	communities.</p>
+<ul>
+<li>Each item within the data tree (i.e. each box in the diagram above) is called a <em class="Defn">node</em>.</li>
+<li>Nodes that are connected directly to each other have a parent-child relationship. The “higher” level node
+	is called the <em class="Defn">parent</em> and the “lower” level node is the <em class="Defn">child</em>.</li>
+<li>For example, the <code>Municipality</code> nodes representing Edmonton and Strathcona County are children
+	of the <code>Province</code> node representing Alberta. The <code>Province</code> node is the parent of
+	the <code>Municipality</code> nodes.</li>
+<li>Any node may have many children; however, a node can only have one parent. In fact, every node has exactly
+	one parent, except for the very top level node (<code>Country</code> in this example) which does not have
+	a parent at all. This top level node is called the <em class="Defn">root</em> node of the data tree.</li>
+<li>Nodes that have the same parent are <em class="Defn">siblings</em>. For example, the <code>Municipality</code>
+	nodes for Edmonton and Strathcona County are siblings because they both have the Alberta <code>Province</code>
+	node as their parent.</li>
+<li>The node representing London, Ontario is not a sibling to Edmonton or Strathcona County since it has a
+	different parent. (Although London would be siblings with other municipalities in Ontario, like Toronto or
+	Niagara Falls.)</li>
+<li>The node names (<code>Country</code>, <code>Province</code>, <code>Municipality</code>,
+	<code>Community</code>) are general descriptions of the type of information they represent.</li>
+<li>Each node may have several pieces of data attached to it. Each piece of data is called an
+	<em class="Defn">attribute</em> of the node. For example, each <code>Province</code> node has a
+	<code>name</code> attribute and a <code>capital</code> attribute. For the <code>Province</code> node
+	representing Alberta, the capital attribute has the value “Edmonton”.</li>
+</ul>
+</div></section>
+
+<section class="Post" data-icon="gdrv">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ul class="Assign">
+    <li>Complete the assignment in <a target="Doc" href="https://docs.google.com/document/d/1Qa8PdgI-cISquYGZlziu_Gr3SPxffAc8yFzD1ePHGps">Google Docs</a>.</li>
+</ul>
+</div></section>
+
+<script type="text/javascript">
+
+tmp = localStorage.getItem("cs_course") == "20" ? "cs20" : "cs10";
+    
+loadFeed.data = {
+    title: "Data Trees",
+    up: `cs_new/${tmp}`,
+    prev: "cs_new/web1/www",
+    next: "cs_new/web1/xml",
+}
+  
+</script>

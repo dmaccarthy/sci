@@ -1,0 +1,367 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Projectile Motion</h1>
+</section>
+
+<!-- <section class="Slide Present">
+    <div class="Assign"><p>Individually, complete the <i>Review</i> section of the <i>?</i> handout.</p></div>
+    <div class="Assign" data-cue="+"><p>In a small group, complete the <i>Activity</i> section of the <i>?</i> handout.</p></div>
+</section> -->
+
+<section class="Slide"><h3>Projectile Motion</h3>
+<p><em class="Defn">Projectile motion</em> is the 2D version of uniformly accelerated motion.</p>
+<ul data-cue="+">
+    <li>This type of motion typically occurs when gravity causes a <em>constant acceleration</em> (if we ignore air resistance) in the <span class="TeX">-y</span> direction while the object’s velocity has both <span class="TeX">x</span>- and <span class="TeX">y</span>-components.</li>
+    <li data-cue="+">The shape of a projectile’s trajectory is a <em>parabola</em>.</li>
+    <li data-cue="+">We know this because the relationship between the <span class="TeX">x</span>- and <span class="TeX">y</span>-components of the displacement is quadratic.</li>
+    <li data-cue="+">(You will study quadratic functions in Math 20.)</li>
+    <li data-cue="+">For a typical projectile problem, you will express all four of your kinematic vectors (acceleration, initial and final velocity, displacement) in <b><u>Cartesian</u></b> form.</li>
+    <!-- <li data-cue="+">The fifth variable, time, is a scalar so it does not have separate <span class="TeX">x</span>- and <span class="TeX">y</span>-values.</li>
+    <li data-cue="+">Also, because there is no <span class="TeX">x</span>-acceleration (gravity acts only in the <span class="TeX">y</span>-direction), the initial and final <span class="TeX">x</span>-velocities are the same.</li> -->
+    <li data-cue="+">To solve for any unknowns, treat the <span class="TeX">x</span> and <span class="TeX">y</span>-parts of the motions as two separate problems to be solved independently.</li>
+    <!-- <li data-cue="+">The only mathematical connection between the components is that they occur over the same amount of time.</li> -->
+</ul>
+</section>
+
+<section class="Slide"><h3>Example 1</h3>
+<p class="Blue">A golfer imparts an initial velocity of 40.0 m/s [52.0°] to a ball. The ball lands on the green 3.00 metres lower than the tee area. Calculate the “hang time” and “range” of the ball.</p>
+<ul data-cue="+">
+    <li><em class="Defn">Hang time</em> means the time the projectile is in motion before it contacts the ground.</li>
+    <li data-cue="+"><em class="Defn">Range</em> means the horizontal displacement of the projectile before it hits the ground.</li>
+    <li data-cue="+">Since there is no acceleration in the <span class="TeX">x</span>-direction, the intial and final velocities are the same.</li>
+    <li data-cue="+">Since time is a scalar, it does not have separate <span class="TeX">x</span>- and <span class="TeX">y</span>-components.</li>
+</ul>
+<table class="Center Four" data-cue="+">
+    <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+    <tr><td><span class="TeX">\vec{\mathbf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
+    <tr><td><span class="TeX">\vec{\mathbf v}_i</span></td><td>m/s</td><td rowspan="2">40.0 cos 52.0°<br/>= +24.6</td><td>40.0 sin 52.0°<br/>= +31.5</td></tr>
+    <tr><td><span class="TeX">\vec{\mathbf v}_f</span></td><td>m/s</td><td class="Reveal"><span>–32.4</span></td></tr>
+    <tr><td><span class="TeX">\Delta\vec{\mathbf d}</span></td><td>m</td><td class="Reveal"><span>+161</span></td><td>–3.00</td></tr>
+    <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2" class="Reveal"><span>6.52</span></td></tr>
+</table>
+<p data-cue="+">Solve the <span class="TeX">y</span>-motion as uniform accelerated motion. First find the final velocity...</p>
+<p data-cue="+" class="TeX">v_{fy}^2 = v_{iy}^2 + 2\vec{\mathbf a}_y\cdot\Delta\vec{\mathbf d}_y</p>
+<p data-cue="+" class="TeX">v_{fy} = \sqrt{v_{iy}^2 + 2\vec{\mathbf a}_y\cdot\Delta\vec{\mathbf d}_y}</p>
+<p data-cue="+" class="TeX">v_{fy} = \sqrt{\mathrm{(31.5\ m/s)^2 + 2(-9.81\ m/s^2)(-3.00\ m)}}</p>
+<p data-cue="+" class="TeX">\vec{\mathbf v}_{fy} = \mathrm{-32.4\ m/s}</p>
+
+<p data-cue="+">Next find the time...</p>
+<p data-cue="+" class="TeX">\vec{\mathbf a}_y = {\vec{\mathbf v}_{fy} - \vec{\mathbf v}_{iy} \over \Delta t}</p>
+<p data-cue="+" class="TeX">\Delta t = {\vec{\mathbf v}_{fy} - \vec{\mathbf v}_{iy} \over \vec{\mathbf a}_y}</p>
+<p data-cue="+" class="TeX">\Delta t = \mathrm{{-32.4\ m/s - 31.5\ m/s \over -9.81\ m/s^2} = 6.52\ s}</p>
+
+<p data-cue="+">Now solve the <span class="TeX">x</span>-motion as uniform motion...</p>
+<p data-cue="+" class="TeX">\Delta\vec{\mathbf d}_x = \vec{\mathbf v}_x\Delta t = \mathrm{+24.6\ m/s\cdot 6.52\ s = +161\ m}</p>
+
+<!-- <p data-cue="+"><p class="TeX">{\vec{\mathbf{F}}}_x=\left|\vec{\mathbf{F}}\right|\cos{\theta}=-47.0\ \mathrm{N}</p></p>
+<p data-cue="+"><p class="TeX">{\vec{\mathbf{F}}}_y=\left|\vec{\mathbf{F}}\right|\sin{\theta=+17.1\ \mathrm{N}}</p></p> -->
+</section>
+
+<section class="Slide"><h3>Example 2</h3>
+<p class="Blue">A soccer ball is kicked from the ground with an initial velocity of 20.0 m/s [60.0°]. A spectator sitting in the stands 10.0 metres above the field observes the ball passing the 10.0-metre mark on the way up and again on the way down. Find the times at which these events occur and how far down the field the ball has travelled.</p>
+<table class="Center Four" data-cue="+">
+    <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+    <tr><td><span class="TeX">\vec{\mathbf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
+    <tr><td><span class="TeX">\vec{\mathbf v}_i</span></td><td>m/s</td><td rowspan="2">20.0 cos(60.0°)<br/>= +10.0</td><td>20.0 sin(60.0°)<br/>= +17.3</td></tr>
+    <tr><td><span class="TeX">\vec{\mathbf v}_f</span></td><td>m/s</td><td class="Reveal"><span>±10.2</span></td></tr>
+    <tr><td><span class="TeX">\Delta\vec{\mathbf d}</span></td><td>m</td><td class="Reveal"><span>7.27 or 28.0</span></td><td>10.0</td></tr>
+    <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2" class="Reveal"><span>0.727 or 2.80</span></td></tr>
+</table>
+<p data-cue="+">Solve the <span class="TeX">y</span>-motion as uniform accelerated motion. First find the final velocity...</p>
+<p data-cue="+" class="TeX">v_{fy} = \sqrt{v_{iy}^2 + 2\vec{\mathbf a}_y\cdot\Delta\vec{\mathbf d}_y}</p>
+<p data-cue="+" class="TeX">v_{fy} = \sqrt{\mathrm{(17.3\ m/s)^2 + 2(-9.81\ m/s^2)(-10.0\ m)}} = \mathrm{\pm 10.2\ m/s}</p>
+
+<p data-cue="+">Next find the time. Use the positive answer for the final velocity to find the time for the ball to reach 10-metres on the way up...</p>
+<p data-cue="+" class="TeX">\Delta t = {\vec{\mathbf v}_{fy} - \vec{\mathbf v}_{iy} \over \vec{\mathbf a}_y}</p>
+<p data-cue="+" class="TeX">\Delta t = \mathrm{{+10.2\ m/s - 17.3\ m/s \over -9.81\ m/s^2} = 0.727\ s}</p>
+
+<p data-cue="+">Now solve the <span class="TeX">x</span>-motion as uniform motion...</p>
+<p data-cue="+" class="TeX">\Delta\vec{\mathbf d}_x = \vec{\mathbf v}_x\Delta t = \mathrm{10.0\ m/s\cdot 0.727\ s = 7.27\ m}</p>
+
+<p data-cue="+">To find the solution for when the ball is on the way back down, repeat the above calculations using the negative answer for <span class="TeX">\vec{\mathbf v}_{fy}</span>...</p>
+<p data-cue="+" class="TeX">\Delta t = \mathrm{{-10.2\ m/s - 17.3\ m/s \over -9.81\ m/s^2} = 2.80\ s}</p>
+<p data-cue="+" class="TeX">\Delta\vec{\mathbf d}_x = \vec{\mathbf v}_x\Delta t = \mathrm{10.0\ m/s\cdot 2.80\ s = 28.0\ m}</p>
+    
+</section>
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Projectile Motion</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/vec2d/proj"></p>
+</div>
+</section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    let rev = $("td.Reveal").on("click", (ev) => {
+        $(ev.currentTarget).find("span").fadeToggle();
+    });
+}
+
+</script>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+<li>An object is thrown horizontally (i.e. with a direction of 0°) with a speed of 8.00 m/s from the top of a 12.5 m tall building. A Physics 20 students made a table of the <span class="TeX">x</span>- and <span class="TeX">y</span>-components of all kinematics vectors and filled in the known quantities, as shown below. Note that since the acceleration has no <span class="TeX">x</span>-component, this means that the initial and final <span class="TeX">x</span>-velocities are the same. Also note that time is a scalar, so it does not have separate <span class="TeX">x</span>- and <span class="TeX">y</span>-components.
+    <table class="Center Bottom">
+        <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_i</span></td><td>m/s</td><td rowspan="2">8.00</td><td>0.00</td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_f</span></td><td>m/s</td><td></td></tr>
+        <tr><td><span class="TeX">\Delta\vec{\mathbf d}</span></td><td>m</td><td></td><td>–12.5</td></tr>
+        <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
+    </table>
+    <ol type="a">
+        <li>Illustrate the motion of the object. Show the object’s trajectory and label the vectors:
+            <span class="TeX">\vec{\mathbf a}</span>, <span class="TeX">\vec{\mathbf v}_i</span>, <span class="TeX">\vec{\mathbf v}_f</span>, <span class="TeX">\Delta\vec{\mathbf d}</span> and <span class="TeX">\Delta t</span>.</li>
+        <div class="Center Bottom Answer">
+            <p><svg data-js="p20/vec2d/img/proj_p#Q1" id="Q1" class="Graph"><style>
+                
+svg.Graph .Vel {fill: red; fill-opacity: 0.4}
+svg.Graph .Acc {fill-opacity: 0.4}
+svg.Graph .Disp {fill: lime; fill-opacity: 0.4}
+                
+            </style></svg></p>
+            <p>Black = Trajectory<br/>Red = <span class="TeX">\vec{\bf v}_i</span> and <span class="TeX">\vec{\bf v}_f</span><br/>Blue = <span class="TeX">\vec{\bf a}</span><br/>Green = <span class="TeX">\Delta\vec{\bf d}</span><br/>Tan = Building</p>
+        </div>
+        <li>Recall from when we studied 1D uniform accelerated motion, we need to know three of the five variables before we can solve for the missing two. Since we know three of the <span class="TeX">y</span>-variables, solve for the two missing <span class="TeX">y</span>-variables (i.e. the final <span class="TeX">y</span>-velocity and time).</li>
+        <div class="Answer">
+<p class="TeX">\begin{align}
+    \vec{\mathbf v}_{fy} &= -\sqrt{v_{iy}^2 + 2\vec{\mathbf a}\cdot \Delta\vec{\mathbf d}}
+    \\[10pt] &= \mathrm{-\sqrt{(8.00\ m/s)^2 + 2(-9.81\ m/s^2)(-12.5\ m)}}
+    \\[10pt] &= \mathrm{-15.7\ m/s}
+    \\[16pt]\Delta t &= \frac{\vec{\mathbf v}_{fy} - \vec{\mathbf v}_{iy}}{\vec{\mathbf a}}
+    \\[10pt] &= \mathrm{\frac{-15.7\ m/s - 0.00\ m/s}{-9.81\ m/s^2}}
+    \\[10pt] &= \mathrm{1.60\ s}
+\end{align}</p>
+        </div>
+
+        <li>Using the time you just calculated, solve for the <span class="TeX">x</span>-motion.</li>
+        <div class="Answer">
+<p class="TeX">\Delta\vec{\mathbf d}_x = \vec{\mathbf v}_x \Delta t
+= \mathrm{8.00\ m/s\cdot 1.60\ s = +12.8\ m}</p>
+        </div>
+
+        <li>Express the final velocity vector in polar form.</li>
+        <div class="Answer">
+<p class="TeX">|\vec{\mathbf v}_f| = \mathrm{\sqrt{8.00^2 + (-15.7)^2}\ m/s = 17.6\ m/s}</p>
+<p class="TeX">\theta = \mathrm{\tan^{-1}\left(\frac{-15.7}{8.00}\right) = -62.9^\circ}</p>
+        </div>
+    </ol></li>
+
+    <li>A cannonball is shot from the top of a 15.0 m tall castle, with a launch velocity of 35.3 m/s [50.0°].<ol type="a">
+        <li>Express the initial velocity in Cartesian form.</li>
+        <div class="Answer">
+<p class="TeX">\vec{\mathbf v}_x = |\vec{\mathbf v}_i| \cos\theta = \mathrm{35.3\ m/s\cdot\cos(50.0^\circ) = 22.7\ m/s}</p>
+<p class="TeX">\vec{\mathbf v}_{iy} = |\vec{\mathbf v}_i| \sin\theta = \mathrm{35.3\ m/s\cdot\sin(50.0^\circ) = 27.0\ m/s}</p>
+        </div>
+
+        <li>Calculate the hang time and range (<span class="TeX">x</span>-displacement) of the ball.</li>
+    <div class="Answer">
+    <table class="Center">
+        <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_i</span></td><td>m/s</td><td rowspan="2">22.7</td><td>27.0</td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_f</span></td><td>m/s</td><td></td></tr>
+        <tr><td><span class="TeX">\Delta\vec{\mathbf d}</span></td><td>m</td><td></td><td>–15.0</td></tr>
+        <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
+    </table>
+<p class="TeX">\begin{align}
+    \vec{\mathbf v}_{fy} &= -\sqrt{v_{iy}^2 + 2\vec{\mathbf a}\cdot \Delta\vec{\mathbf d}}
+    \\[10pt] &= \mathrm{-\sqrt{(27.0\ m/s)^2 + 2(-9.81\ m/s^2)(-15.0\ m)}}
+    \\[10pt] &= \mathrm{-32.0\ m/s}
+    \\[16pt]\Delta t &= \frac{\vec{\mathbf v}_{fy} - \vec{\mathbf v}_{iy}}{\vec{\mathbf a}}
+    \\[10pt] &= \mathrm{\frac{-32.0\ m/s - 27.0\ m/s}{-9.81\ m/s^2}}
+    \\[10pt] &= \mathrm{6.01\ s}
+    \\[16pt]\Delta\vec{\mathbf d}_x &= \vec{\mathbf v}_x \Delta t
+    \\[10pt] &= \mathrm{22.7\ m/s\cdot 6.01\ s}
+    \\[10pt] &= \mathrm{136\ m}
+\end{align}</p>
+    </div>
+
+        <li>Calculate the maximum height the ball reaches. You will need to make a new table since the “final” position is different than in (b).</li>
+    <div class="Answer">
+    <table class="Center">
+        <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_i</span></td><td>m/s</td><td rowspan="2">22.7</td><td>27.0</td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_f</span></td><td>m/s</td><td>0.00</td></tr>
+        <tr><td><span class="TeX">\Delta\vec{\mathbf d}</span></td><td>m</td><td></td><td></td></tr>
+        <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
+    </table>
+<p class="TeX">\begin{align}
+    \Delta t &= \frac{\vec{\mathbf v}_f - \vec{\mathbf v}_i}{\vec{\mathbf a}}
+    \\[10pt] &= \mathrm{\frac{0.00\ m/s - 27.0\ m/s}{-9.81\ m/s^2}}
+    \\[10pt] &= \mathrm{2.76\ s}
+    \\[16pt]\Delta\vec{\mathbf d}_y &= \frac{\vec{\mathbf v}_i + \vec{\mathbf v}_f}{2}\Delta t
+    \\[10pt] &= \mathrm{\frac{27.0\ m/s + 0.00\ m/s}{2} 2.76\ s}
+    \\[10pt] &= \mathrm{37.2\ m}
+\end{align}</p>
+    <p>Note that this is 37.2 m above the initial height of 15.0 m, for a total height of 52.2 m above the ground!</p>
+    </div>
+    </ol></li>
+
+    <li>An object thrown from the ground reaches its maximum height in 1.75 s, at which point its horizontal displacement is 7.00 m. Determine the object’s initial velocity and the maximum height it reaches.</li>
+    <div class="Answer">
+    <table class="Center">
+        <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_i</span></td><td>m/s</td><td rowspan="2"></td><td></td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_f</span></td><td>m/s</td><td>0.00</td></tr>
+        <tr><td><span class="TeX">\Delta\vec{\mathbf d}</span></td><td>m</td><td>7.00</td><td></td></tr>
+        <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2">1.75</td></tr>
+    </table>
+<p class="TeX">\begin{align}
+    \vec{\mathbf v}_x &= \frac{\Delta\vec{\mathbf d}_x}{\Delta t}
+    \\[10pt] &= \mathrm{\frac{7.00\ m}{1.75\ s}}
+    \\[10pt] &= \mathrm{4.00\ m/s}
+    \\[16pt]\vec{\mathbf v}_{iy} &= \vec{\mathbf v}_{fy} - \vec{\mathbf a}\Delta t
+    \\[10pt] &= \mathrm{0.00\ m/s - (-9.81\ m/s^2)\ 1.75\ s}
+    \\[10pt] &= \mathrm{17.2\ m/s}
+    \\[16pt]\Delta\vec{\mathbf d}_y &= \frac{\vec{\mathbf v}_i + \vec{\mathbf v}_f}{2}\Delta t
+    \\[10pt] &= \mathrm{\frac{17.2\ m/s + 0.00\ m/s}{2} 1.75\ s}
+    \\[10pt] &= \mathrm{15.0\ m}
+\end{align}</p>
+    </div>
+
+    <li>A golfer drives the ball with an initial velocity of 42.5 m/s [52.4°]. The ball lands on top of a hill that is 2.50 metres higher than the ground from where the shot was made.<ol type="a">
+        <li>Express the initial velocity in Cartesian form.</li>
+        <div class="Answer">
+<p class="TeX">\vec{\mathbf v}_x = |\vec{\mathbf v}_i| \cos\theta = \mathrm{42.5\ m/s\cdot\cos(52.4^\circ) = 25.9\ m/s}</p>
+<p class="TeX">\vec{\mathbf v}_{iy} = |\vec{\mathbf v}_i| \sin\theta = \mathrm{42.5\ m/s\cdot\sin(52.4^\circ) = 33.7\ m/s}</p>
+        </div>
+
+        <li>Determine the hang time and range of the ball.</li>
+        <div class="Answer">
+<table class="Center">
+    <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+    <tr><td><span class="TeX">\vec{\mathbf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
+    <tr><td><span class="TeX">\vec{\mathbf v}_i</span></td><td>m/s</td><td rowspan="2">25.9</td><td>33.7</td></tr>
+    <tr><td><span class="TeX">\vec{\mathbf v}_f</span></td><td>m/s</td><td></td></tr>
+    <tr><td><span class="TeX">\Delta\vec{\mathbf d}</span></td><td>m</td><td></td><td>2.50</td></tr>
+    <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
+</table>
+<p class="TeX">\begin{align}
+    \vec{\mathbf v}_{fy} &= -\sqrt{v_{iy}^2 + 2\vec{\mathbf a}\cdot \Delta\vec{\mathbf d}}
+    \\[10pt] &= \mathrm{-\sqrt{(33.7\ m/s)^2 + 2(-9.81\ m/s^2)(2.50\ m)}}
+    \\[10pt] &= \mathrm{-32.9\ m/s}
+    \\[16pt]\Delta t &= \frac{\vec{\mathbf v}_{fy} - \vec{\mathbf v}_{iy}}{\vec{\mathbf a}}
+    \\[10pt] &= \mathrm{\frac{-32.9\ m/s - 33.7\ m/s}{-9.81\ m/s^2}}
+    \\[10pt] &= \mathrm{6.79\ s}
+    \\[16pt]\Delta\vec{\mathbf d}_x &= \vec{\mathbf v}_x \Delta t
+    \\[10pt] &= \mathrm{25.9\ m/s\cdot 6.79\ s}
+    \\[10pt] &= \mathrm{176\ m}
+\end{align}</p>
+        </div>
+    </ol></li>
+
+    <li>During a football game a kicker punts the football 80.0 m. The football’s hang time is 5.25 s. Determine the velocity (magnitude and direction!) of the football as it leaves the kicker’s foot.</li>
+    <div class="Answer">
+    <table class="Center">
+        <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_i</span></td><td>m/s</td><td rowspan="2"></td><td></td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_f</span></td><td>m/s</td><td></td></tr>
+        <tr><td><span class="TeX">\Delta\vec{\mathbf d}</span></td><td>m</td><td>80.0</td><td>0.00</td></tr>
+        <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2">5.25</td></tr>
+    </table>
+<p class="TeX">\begin{align}
+    \vec{\mathbf v}_x &= \frac{\Delta\vec{\mathbf d}_x}{\Delta t}
+    \\[10pt] &= \mathrm{\frac{80.0\ m}{5.25\ s}}
+    \\[10pt] &= \mathrm{15.2\ m/s}
+    \\[16pt]\vec{\mathbf v}_{iy} &= \frac{\Delta\vec{\mathbf d} - \frac{1}{2}\vec{\mathbf a}_y (\Delta t)^2}{\Delta t}
+    \\[10pt] &= \mathrm{\frac{0.00\ m - \frac{1}{2}(-9.81\ m/s^2) (5.25\ s)^2}{5.25\ s}}
+    \\[10pt] &= \mathrm{25.8\ m/s}
+    \\[16pt]|\vec{\mathbf v}_i| &= \mathrm{\sqrt{15.2^2 + 25.8^2}\ m/s = 29.9\ m/s}
+    \\[10pt]\theta &= \mathrm{\tan^{-1}\left(\frac{25.8}{15.2}\right) = 59.5^\circ}
+\end{align}</p>
+    </div>
+
+    <li>A basketball player releases the ball from a point 2.25 m above the ground and 4.00 m in front of the basket. The basket itself is 3.50 m above the ground. If the ball is released so that its initial direction is 70.0º above the horizontal, what should the ball’s initial speed be so that it lands in the basket? Ignore the effects of air resistance.</li>
+    <div class="Answer">
+    <table class="Center">
+        <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_i</span></td><td>m/s</td><td rowspan="2"><span class="TeX">v_i\cos(70^\circ)</span></td><td><span class="TeX">v_i\sin(70^\circ)</span></td></tr>
+        <tr><td><span class="TeX">\vec{\mathbf v}_f</span></td><td>m/s</td><td></td></tr>
+        <tr><td><span class="TeX">\Delta\vec{\mathbf d}</span></td><td>m</td><td>4.00</td><td>1.25</td></tr>
+        <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
+    </table>
+    <p>For the <span class="TeX">x</span>-motion...</p>
+<p class="TeX">\begin{align}
+    \Delta\vec{\mathbf d}_x &= \vec{\mathbf v}_x \Delta t
+    \\[10pt]\mathrm{4.00\ m} &= v_i\cos(70^\circ)\cdot \Delta t
+\end{align}</p>
+    <p>For the <span class="TeX">y</span>-motion...</p>
+<p class="TeX">\begin{align}
+    \Delta\vec{\mathbf d}_y &= \vec{\mathbf v}_{iy} \Delta t + \frac{1}{2} \vec{\mathbf a}_y (\Delta t)^2
+    \\[10pt]\mathrm{1.25\ m} &= v_i\sin(70^\circ)\cdot \Delta t + \frac{1}{2}\vec{\mathbf g}(\Delta t)^2
+\end{align}</p>
+    <p>We can rearrange the <span class="TeX">x</span>-equation...</p>
+<p class="TeX">v_i \Delta t = \frac{\mathrm{4.00\ m}}{\cos(70^\circ)} = \mathrm{11.7\ m}</p>
+    <p>...and substitute into the <span class="TeX">y</span>-equation...</p>
+<p class="TeX">\mathrm{1.25\ m} = \mathrm{11.7\ m}\cdot\sin(70^\circ) + \frac{1}{2}\vec{\mathbf g}(\Delta t)^2</p>
+<p class="TeX">\frac{2}{\vec{\mathbf g}} (\mathrm{1.25\ m} - \mathrm{11.7\ m}\cdot\sin(70^\circ)) = (\Delta t)^2</p>
+<p class="TeX">\mathrm{1.99\ s^2} = (\Delta t)^2</p>
+<p class="TeX">\Delta t = \mathrm{\sqrt{1.99\ s^2} = 1.41\ s}</p>
+    <p>We’ve already calculated (see above)...</p>
+<p class="TeX">v_i \Delta t = \mathrm{11.7\ m}</p>
+    <p>Use the time to find the initial speed...</p>
+<p class="TeX">v_i = \mathrm{\frac{11.7\ m}{1.41\ s} = 8.30\ m/s}</p>
+    </div>
+</ol>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li>Define <em class="Defn">projectile motion</em>, including<ol type="a">
+        <li>the shape of the trajectory,</li>
+        <li>the cause of the motion,</li>
+        <li>how to analyze the motion.</li>
+    </ol></li>
+    <div class="Answer">
+        <p>Projectile motion is 2D motion with contant acceleration. It occurs near the ground when there are no forces other than gravity, which produces the constant acceleration. What makes the motion 2D is that the projectile is set in motion with an initial velocity that has a non-zero <span class="TeX">x</span>-component while gravity acts in the <span class="TeX">-y</span>-direction.</p>
+        <p>The shape of the trajectory is a parabola. The cause of the motion is the constant acceleration produced by gravity.</p>
+        <p>To analyze the motion, treat the <span class="TeX">x</span> and <span class="TeX">y</span> motion independently. The <span class="TeX">x</span> motion is uniform <span class="NoWrap">(<span class="TeX">\vec{\bf a}_x</span> = 0,</span> <span class="TeX">\vec{\bf v}_{fx}</span> = <span class="TeX">\vec{\bf v}_{ix}</span>) and the <span class="TeX">y</span> motion is uniform accelerated with an acceleration of <span class="TeX">\vec{\bf g}</span>. Time is not a vector, so <span class="TeX">\Delta t</span> is the same for both components of the motion.</p>
+    </div>
+
+    <li>What do we mean by the <em class="Defn">hang time</em> and the <em class="Defn">range</em> in a projectile motion context?</li>
+    <div class="Answer">The hang time is the total time that the projectile remains airborne before it contacts the ground. The range is the horizontal component of the total displacement.</div>
+
+    <li>Why might the motion of actual projectiles near Earth differ from the answers we get when we solve a projectile motion problem?</li>
+    <div class="Answer">Air resistance will affect the motion because it changes the acceleration. Also, gravity will not remain constant if the motion occurs over very large distance scales (e.g. hundreds of km or more).</div>
+</ol>
+</div></section>
+
+<section class="Post" data-icon="gdrv">
+    <h2 class="Collapse">Cannonball Simulation</h2><div class="Collapse">
+    <p>Here are the handout and simulation link for the Cannonball Experiment...</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1zwfLRreK2f2XvPE6X7fpwLymeXPyH28B">Cannonball Lab</button>
+        <button data-icon="simulation.svg" data-feed="p20/vec2d/cannon">Simulation</button>
+        <button data-icon="desmos" data-open="https://www.desmos.com/calculator/ts8kwszdut">Desmos.com</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}2.5 — Projectile Motion`,
+    answerDate: "2024.3.11.12",
+    num: "2.5",
+    up: "p20/home",
+    prev: "p20/vec2d/arith",
+    next: "p20/vec2d/rev",
+}
+
+</script>

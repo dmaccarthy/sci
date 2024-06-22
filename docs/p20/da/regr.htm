@@ -1,0 +1,207 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+<style>
+
+img.TI {
+    height: 10em;
+    border:1px solid black;
+    padding: 2px;
+}
+
+</style>
+
+<section class="Slide Center">
+    <h1 id="Title">Regression Analysis</h1>
+</section>
+
+<!-- <section class="Slide Present">
+    <div class="Assign"><p>Individually, complete the <i>Review</i> section of the <i>?</i> handout.</p></div>
+    <div class="Assign" data-cue="+"><p>In a small group, complete the <i>Activity</i> section of the <i>?</i> handout.</p></div>
+</section> -->
+
+<section id="reg" class="Slide"><h3>Regression Analysis</h3>
+<p>Mathematicians have developed a technique called <em class="Defn">regression analysis</em> that can calculate a model equation without relying on a graph.</p>
+<ul data-cue="+">
+    <li>Many graphing calculators and data analysis software programs (Excel, Google Sheets, <a target="desmos" href="https://www.desmos.com/calculator/wtvsivimax">desmos.com</a>) have regression abilities.</li>
+    <li data-cue="+"><em class="Defn">Linear regression</em> calculates the slope and <span class="TeX">y</span>-intercept values that minimize how close the data points are to the best-fit line.</li>
+    <!-- <li data-cue="+">Use the link at the top of the page for instructions on how do perform regressions on the TI-83+ calculator.</li> -->
+</ul>
+</section>
+
+<section id="ti" class="Slide"><h3>TI-83/84 Data Analysis</h3>
+<p><b>Entering Data</b>: To enter data into the calculator, use the <code>STAT|EDIT</code> menu.
+    You will usually enter the manipulated variable into the list <code>L1</code> and the responding variable into <code>L2</code>.</p>
+<p class="Center"><img src="p20/da/img/ti-0.png" alt="TI-0" class="TI"/></p>
+<ul data-cue="+">
+    <li>If you need to erase previously entered data, use the arrow keys to position the cursor on the list title.
+        Then press <code>CLEAR</code>, followed by <code>ENTER</code>.</li>
+    <li data-cue="+">If any of the numbered lists (<code>L1...L6</code>) is missing from the list editor, use <code>STAT|SETUPEDITOR</code> to restore all deleted lists.</li>
+</ul>
+
+<div data-cue="+">
+    <p><b>Drawing Scatter Plots</b>: To draw a scatter plot, use the <code>STATPLOT</code> menu to choose plot 1, 2, or 3...</p>
+    <p class="Center"><img src="p20/da/img/ti-1.png" alt="TI-1" class="TI"/></p>
+</div>
+<ul data-cue="+">
+    <li>Be sure the plot is turned <code>ON</code> and the scatter plot icon (the first one) is selected.</li>
+    <li data-cue="+">Enter the list names <code>L1</code> and <code>L2</code> (or whichever lists you have entered your data to) for <code>XLIST</code> and <code>YLIST</code>.</li>
+    <li data-cue="+">Then press <code>ZOOM|ZOOMSTAT</code> to view the graph.</li>
+    <li data-cue="+">You may then need to adjust the <code>WINDOW</code> for your graph manually.
+        <p class="Center"><img src="p20/da/img/ti-2.png" alt="TI-2" class="TI"/></p>
+    </li>
+</ul>
+<ul data-cue="+">
+    <li>For example, if you cannot see the axes on your graph, press <code>WINDOW</code>, then set <code>XMIN</code> and <code>YMIN</code> both to 0.</li>
+</ul>
+
+<div data-cue="+">
+    <p><b>Model Equations</b>: Next, use the <code>STAT|CALC</code> menu for the regression features...</p>
+    <p class="Center"><img src="p20/da/img/ti-3.png" alt="TI-3" class="TI"/></p>
+</div>
+<ul data-cue="+">
+    <li>For linear data, choose the <code>LINREG</code> command.
+    <p class="Center">
+        <img src="p20/da/img/ti-4.png" alt="TI-4" class="TI"/> &nbsp;
+        <img src="p20/da/img/ti-4b.png" alt="TI-4" class="TI"/>
+    </p>
+    </li>
+</ul>
+
+<ul data-cue="+">
+    <li>When the calculator returns to the main screen (TI-83, left) or presents the regression form (TI-84, right), enter the list names where the <span class="TeX">x</span> and <span class="TeX">y</span> data are stored. On the TI-83, separate the list names by commas (e.g. <code>L1</code>, <code>L2</code>, etc.).</li>
+    <li data-cue="+">To add the best-fit line to the scatter plot, you must save the regression equation.</li>
+    <!--li data-cue="+">Enter another comma and then the equation variable where you want the equation to be saved: (e.g. <code>Y1</code>).</li-->
+    <li data-cue="+">To access the equation names (e.g. <code>Y1</code>, <code>Y2</code>), go to the <code>VARS|YVARS|FUNCTION</code> menu.
+        <p class="Center"><img src="p20/da/img/ti-5.png" alt="TI-5" class="TI"/></p>
+    </li>
+</ul>
+<ul data-cue="+">
+    <li>Pressing <code>ENTER</code> will use the data in <code>L1</code> as the <span class="TeX">x</span> values, <code>L2</code> as the <span class="TeX">y</span> values, and will save the model equation in <code>Y1</code>.</li>
+    <li data-cue="+">Press the <code>GRAPH</code> button for the best-fit line to be added to your scatter plot.</li>
+    <li data-cue="+">If your data is not linear, there are a number of non-linear regressions (quadratic, power, exponential, etc.) available under the <code>STAT|CALC</code> menu.</li>
+</ul>
+</section>
+
+<section class="Slide Present">
+<div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Regression Analysis</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
+    <p data-qr="p20/da/regr"></p>
+</div>
+</section>
+
+</div></div></section>
+
+<!-- <section class="Post" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="">Assignment D.x</button>
+    </p>
+</div></section> -->
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <li>Refer to the Weight Loss data from the <a data-feed="p20/da/eqn">previous assignment</a> and the graph you drew for this data. Using your graphing calculator, perform a linear regression on the data, and compare the result to your model equation.</li>
+    <div class="Answer">
+        <!-- <p><a target="Q1" href="https://www.desmos.com/calculator/u0n2ascaaj">Graph</a></p> -->
+        <p>The regression analysis gives a model equation:</p>
+        <p class="TeX">m = {\rm (-0.0867\ kg/day)}\ t + {\rm 81.1\ kg}</p>
+    </div>
+
+    <li><p class="Bottom">Earth’s gravity gets weaker as we get further from Earth. The data below shows the strength of Earth’s gravity as experienced by satellites orbiting Earth at different altitudes.</p>
+    <table class="Two Center">
+        <tr>
+            <td>Orbital Radius<br/><span class="TeX">r</span> / 10<sup>6</sup> m</td>
+            <td>Gravitational Field<br/><span class="TeX">g</span> / (m/s<sup>2</sup>)</td>
+        </tr>
+        <tr><td>6.50</td><td>9.44</td></tr>
+        <tr><td>7.00</td><td>8.14</td></tr>
+        <tr><td>7.50</td><td>7.09</td></tr>
+        <tr><td>8.00</td><td>6.23</td></tr>
+        <tr><td>8.50</td><td>5.52</td></tr>
+        <tr><td>9.00</td><td>4.92</td></tr>
+        <tr><td>9.50</td><td>4.42</td></tr>
+        <tr><td>10.00</td><td>3.99</td></tr>
+    </table>
+    <ol type="a">
+        <li>Enter the data into your calculator (be sure to account for the 10<sup>6</sup> m as the unit for <span class="TeX">r</span>!) and make a scatter plot. Does the graph appear linear or non-linear?</li>
+        <p class="Answer Bottom"><a target="Q2" href="https://www.desmos.com/calculator/26zgubdjop">Graph</a> appears slightly curved.</p>
+
+        <li>Use regression analysis to determine a model equation. Use “trial and error” with linear, quadratic, power, and exponential regression. Decide which model is best based on which curve seems to fit the data best.</li>
+        <div class="Answer">
+            <p>The power regression gives the best fit to the data:</p>
+            <p>Power:</p><p class="TeX">g = {\rm (3.98\times 10^{14}\ m^3/s^2)}\ r^{-2}</p>
+            <p>Linear:</p><p class="TeX">g = {\rm (-1.52\times 10^{-6}\ (m/s^2)/m)}\ r + {\rm 18.8\ m/s^2}</p>
+            <p>Exponential:</p><p class="TeX">g = {\rm 45.2\ m/s^2}\ (0.783)^{r/({\rm 10^6\ m})}</p>
+        </div>
+
+        <li>Use your model equation to predict the strength of Earth’s gravitational field acting on a spacecraft orbiting at a radius of 5.0 × 10<sup>7</sup> m.</li>
+        <p class="Answer TeX">g = {\rm (3.98\times 10^{14}\ m^3/s^2) (5.0\times 10^7\ m)^{-2} = 0.16\ m/s^2}</p>
+    </ol></li>
+
+    <li><p class="Bottom">A group of students measured the wavelength (responding variable) of sound waves as they manipulated the frequency. The students recorded the data below.</p>
+    <table class="Two Center">
+        <tr>
+            <td>Frequency<br/><span class="TeX">f</span> / Hz</td>
+            <td>Wavelength<br/><span class="TeX">\lambda</span> / m</td>
+        </tr>
+        <tr><td>110</td><td>3.07</td></tr>
+        <tr><td>220</td><td>1.54</td></tr>
+        <tr><td>440</td><td>0.77</td></tr>
+        <tr><td>660</td><td>0.51</td></tr>
+        <tr><td>880</td><td>0.38</td></tr>
+        <tr><td>1100</td><td>0.31</td></tr>
+        <tr><td>1320</td><td>0.26</td></tr>
+        <tr><td>1540</td><td>0.22</td></tr>
+    </table>
+    <ol type="a">
+        <li>Determine a model power equation for the data using regression analysis on your calculator.</li>
+        <div class="Answer"><a target="Q3" href="https://www.desmos.com/calculator/wxskssntbt">Graph</a>
+<p class="TeX">\lambda = {\rm 334\ m/s} \cdot f^{-1}</p>
+        </div>
+        
+        <li>Use your model equation to predict the wavelength of sound waves with a frequency of 500 hertz.</li>
+        <div class="Answer"><p class="TeX">\lambda = \rm{334\ m/s \cdot (500\ Hz)^{-1} = 0.668\ m}</p></div>
+
+        <li>Use your model equation to predict the frequency at which the sound’s wavelength would be 1.00 metre.</li>
+        <div class="Answer">
+<p class="TeX">\lambda f = \rm{334\ m/s}</p>
+<p class="TeX">f = \frac{\rm 334\ m/s}{\lambda}
+= \rm{\frac{334\ m/s}{1.00\ m}} = \rm{334\ Hz}</p>
+        </div>
+    </ol></li>
+</ol>
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li><ol type="a">
+        <li>Define <em class="Defn">regression analysis</em>.</li>
+        <div class="Answer">A mathematical procedure for determine the equation of a best-fit line or curve.</div>
+
+        <li>What do we mean by <em class="Defn">linear regression</em>, <em class="Defn">power regression</em>, and <em class="Defn">quadratic regression</em>?</li>
+        <div class="Answer">We can choose different regression “models” depending on the shape of the graph: linear for a straight line, quadratic for a parabola, power for many other curves.</div>
+    </ol></li>
+    <li>Explain how to perform a regression analysis using your TI-83+ or TI-84+ calculator.</li>
+    <div class="Answer">See notes</div>
+
+    <!--li>Explain how to perform a regression analysis using an online graphing calculator such as <a href="https://desmos.com/calculator" target="Desmos">desmos.com</a>.</li-->
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}D.2 — Regression Analysis`,
+    answerDate: "2024.4.18.16",
+    num: "D.2",
+    up: "p20/home",
+    prev: "p20/da/eqn",
+    next: "p20/da/pwr",
+}
+
+</script>

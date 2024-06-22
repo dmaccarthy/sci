@@ -1,0 +1,60 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
+<div id="LessonNotes">
+
+<section class="Slide">
+<p><em class="Defn">Simple harmonic motion</em> (SHM) is a type of <em class="Defn">oscillation</em>; a back-and-forth motion centred at the object’s <em class="Defn">equilibrium</em>.
+<ul>
+    <li>SHM is <em>caused</em> by a <em class="Defn">restoring force</em> that is <em>proportional</em> to how far the object is from its equilibium (<span class="TeX">\vec{\bf x}</span>); the farther from equilibrium the stronger the net force:
+        <p class="TeX">\vec{\bf F}_{net} = -k\vec{\bf x}</p></li>
+    <li>The potential energy associated with the restoring force is<p class="TeX">E_p = \frac{1}{2}kx^2</p></li>
+</ul>
+
+<p>SHM produces a graph of position versus time that can be described mathematically by a <span class="TeX">\sin</span> or <span class="TeX">\cos</span> function.</p>
+<ul>
+    <li>The <em class="Defn">amplitude</em>, <span class="TeX">A</span>, is the maximum distance from equilibrium.</li>
+    <li>The <em class="Defn">period</em> of SHM is the time for one complete oscillation or cycle of the motion. Period is determined by the strength of the restoring force and the mass:
+        <p class="TeX">T = 2\pi \sqrt{\frac{m}{k}}</p></li>
+    <li>Period does <em>not</em> depend on the amplitude. For larger amplitudes, the mass covers a greater distance in the <em>same</em> amount of time because its speed is faster.</li>
+    <li>The reciprocal of the period is called the <em class="Defn">frequency</em> and is measured in hertz (1 Hz = 60 rpm).
+        <p class="TeX">f = \frac{1}{T}</p></li>
+    <li>The maximum velocity (the steepest part of the graph) occurs when the object passes through equilibrium.
+        <p class="TeX">v_{max} = \frac{2\pi A}{T}</p></li>
+    <li>A graph of the object’s velocity has the same shape and period as its position, but the graph is shifted one-quarter of a period.
+        (Click the graph to toggle between <span class="TeX">\vec{\bf x}</span>, <span class="TeX">\vec{\bf v}</span>, and <span class="TeX">\vec{\bf a}</span> graphs.)</li>
+</ul> 
+<p class="Center"><svg class="Graph s24" data-js="p20/shm/img/shm#v_t"></svg></p>
+<ul>
+    <li>The velocity and position are “out of sync” because it has the greatest speed (most <span class="TeX">E_k</span>) when it is closest to equilibirum (least <span class="TeX">E_p</span>).</li>
+    <li>A graph of the object’s acceleration is shifted another quarter of a period.
+        <p class="TeX">a_{max} = \frac{v_{max}^2}{A} = \frac{4\pi^2 A}{T^2}</p></li>
+    </ul>
+<ul>
+    <li>The relationships for <span class="TeX">v_{max}</span> and <span class="TeX">a_{max}</span> are similar to uniform circular motion because the <span class="TeX">x</span>- and <span class="TeX">y</span>-components of UCM are cosine and sine functions!</li>
+</ul>
+
+<p>The motion of a <em class="Defn">simple pendulum</em> is <em>approximately</em> SHM when the angle of the swing is less than about 30°.</p>
+<p class="TeX">T = 2\pi \sqrt{\frac{L}{g}}</p>
+<ul><li>For larger angles the restoring force is not in direct proportion to the distance from equilibrium, due to the curved trajectory of the object.</li></ul>
+
+<p><em class="Defn">Mechanical resonance</em> is the tendancy of the amplitude to grow very large when an oscillator is “driven” at its harmonic or resonant frequency.</p>
+<ul>
+    <li>This happens because when the driving force is properly “synced” with the oscillations, it will always do a positive amount of work.</li>
+    <li>Mechanical resonance has important implications for designing buildings and other structures that can withstand earthquakes.</li>
+</ul>
+
+</section>
+</div></div>
+</section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}Simple Harmonic Motion Review`,
+    num: "7.7",
+    up: "p20/home",
+    prev: ["p20/shm/res", "p20/grav/rev"][clickLink.course],
+    next: ["p20/wave/harm", "p20/wave/rev"][clickLink.course],
+}
+
+</script>
