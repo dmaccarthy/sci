@@ -33,7 +33,7 @@ function loadFeed(feed, noHist) {
     loadFeed.opener = loadFeed.current;
     // console.log(feed);
     if (loadFeed.cache[feed]) onFeedLoaded(feed, true, noHist);
-    else $.ajax({url: feed + ".htm", error: (e) => {
+    else $.ajax({url: feed + ".htm", cache: false, error: (e) => {
         console.log(e);
         msg();
         if ($("#Main").html() == "")
@@ -155,7 +155,7 @@ function onFeedLoaded(feed, e, noHist) {
     // apply("section.Post [data-ajax]", (ei) => {
     //     let url = ei.attr("data-ajax");
     //     // if (url == "1") url = location.hash.substr(1) + "_s.htm";
-    //     $.ajax({url: url, success: (e) => {
+    //     $.ajax({url: url, cache: false, success: (e) => {
     //         ei.html(e);
     //         // ei.find("#Title").remove();
     //     }});
