@@ -208,43 +208,6 @@ diagram: function(sel, vectors, options, scale, x1, y1) {
     return svg.update(0);
 },
 
-// minmax: function(vectors, shift) {
-//     if (shift == null) shift = [0, 0];
-//     let tail = new RArray(...shift);
-//     let [x1, y1] = shift;
-//     let [x2, y2] = shift;
-//     for (let v of vectors) {
-//         tail = tail.plus(v);
-//         let [x, y] = tail;
-//         if (x < x1) x1 = x;
-//         if (x > x2) x2 = x;
-//         if (y < y1) y1 = y;
-//         if (y > y2) y2 = y;
-//     }
-//     return [x1, y1, x2, y2];
-// },
-
-// auto: function(v, grid, options) {
-//     let [x1, y1, x2, y2] = applet.vecDiagram.minmax(v, options.shift);
-//     if (!options.allowNoOrigin) {
-//         x1 = Math.min(x1, -Math.abs(x2) / 10);
-//         y1 = Math.min(y1, -Math.abs(y2) / 10);
-//         x2 = Math.max(x2, Math.abs(x1) / 20);
-//         y2 = Math.max(y2, Math.abs(y1) / 20);
-//     }
-//     let s = Math.max(x2 - x1, y2 - y1) / grid * (options.padFactor ? options.padFactor : 1.1);
-//     if (!s) s = 1;
-//     let n = Math.floor(log(s, 10));
-//     let p = Math.pow(10, n);
-//     let interval = applet.vecDiagram.interval;
-//     let i = 0;
-//     while (s > interval[i] * p) i++;
-//     s = interval[i] * p;
-//     let cx = Math.round((x1 + x2) / (2 * s) - grid / 2);
-//     let cy = Math.round((y1 + y2) / (2 * s) - grid / 2);
-//     return [s, cx * s, cy * s];
-// },
-
 interval: [1, 1.25, 1.5, 2, 2.5, 3, 5, 7.5, 10]
 
 };
@@ -264,7 +227,6 @@ function loadAllSVG(callback) {
             maps[js] = [{}, 1, e.attr("data-keep") != null];
             n++;
         }
-        // e.removeAttr("data-js data-keep");
         maps[js][0]["#" + elementId(e, "SVG_")] = id;
     }
     // console.log(maps);
@@ -282,7 +244,7 @@ function loadSVG(key, map, callback, keep) {
     if (key.indexOf("//") == -1) {
         if (save.cache[key]) loadSVG.success(key, map, callback, keep);
         else {
-            $.getScript({url: "/" + key + ".js", success:() => loadSVG.success(key, map, callback, keep)});
+            $.getScript({url: "./" + key + ".js", success:() => loadSVG.success(key, map, callback, keep)});
         }
     }
 }
@@ -316,28 +278,3 @@ loadSVG.success = (key, map, callback, keep) => {
     aspect();
     if (callback) callback(map, js);
 }
-
-/*
-function loadScriptSVG(url, map, callback, keep) {
-    if (url.indexOf("//") == -1) {
-        $.ajax(url, {success:(js) => {
-            let map1 = map;
-            if (typeof(map) == "string") {
-                map1 = {};
-                map1[map] = true;
-            }
-            js = eval(js);
-            for (let key in map1) {
-                let e = loadSVG.init(key, keep);
-                if (e.length != 1) console.warn(`Selector '${key}' matches ${e.length} nodes!`);
-                let tmp = map1[key];
-                let item = tmp === true ? js : js[tmp];
-                let plot = (o) => {return applet.graph(key, o)};
-                if (item) (item instanceof Array ? item[0] : item)(key);
-            }
-            aspect();
-            if (callback) callback(map, js);
-        }});
-    }
-}
-*/
