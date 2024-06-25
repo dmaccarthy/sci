@@ -29,6 +29,7 @@ section.Post h3:not(.Collapse) {font-weight: bold}
 
 section.Post > img.Icon {
     height: 2em;
+    max-width: 2em;
     padding: 0.25em 0.5em 0.25em 0;
     float: left;
 }

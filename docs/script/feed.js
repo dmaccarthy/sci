@@ -34,6 +34,7 @@ function loadFeed(feed, noHist) {
     // console.log(feed);
     if (loadFeed.cache[feed]) onFeedLoaded(feed, true, noHist);
     else $.ajax({url: feed + ".htm", cache: false, error: (e) => {
+        console.log(feed);
         console.log(e);
         msg();
         if ($("#Main").html() == "")
@@ -86,6 +87,7 @@ mediaURL.urls = {
     phet: "https://phet.colorado.edu/favicon.ico",
     print: data_images.print,
     html5: data_images.sim,
+    xml: data_images.xml,
     simulation: data_images.sim,
     "simulation.svg": data_images.sim,
     "html5.svg": data_images.html,

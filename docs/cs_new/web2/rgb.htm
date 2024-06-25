@@ -108,11 +108,9 @@ loadFeed.sim.drawCanvas = (r, g, b) => {
     cx.putImageData(img, 0, 0);
 }
 
-tmp = localStorage.getItem("cs_course") == "20" ? "cs20" : "cs10";
-
 loadFeed.data = {
     title: "RGB Color",
-    up: `cs_new/${tmp}`,
+    up: "cs_new/web2/home",
     // prev: "cs_new/web2/",
     // next: "cs_new/web2/",
 }

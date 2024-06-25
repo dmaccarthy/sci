@@ -32,7 +32,7 @@ exitonclick()</pre>
 	to bigger numbers. Any time we wanted to change the drawing size, we would need to edit
 	the program in several places to change the numbers.</p>
 
-<p>A better approach, is to use <b class="Red">variables</b>, as shown in the program below.</p>
+<p>A better approach, is to use <em class="Defn">variables</em>, as shown in the program below.</p>
 
 <pre data-echo="s05_ex2.py" data-title="1" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, exitonclick
 
@@ -63,7 +63,7 @@ forward(<span class="Blue">side_length</span>)
 exitonclick()</pre>
 
 <p>Focus on the code displayed in blue. The first blue line assigns the value <code>300</code>
-	to the <b class="Red">variable name</b> <code>canvas_size</code>, which represents the width and height of the canvas.
+	to the <em class="Defn">variable name</em> <code>canvas_size</code>, which represents the width and height of the canvas.
     The next line then <em>calculates</em> the triangle side length by multiplying the canvas
 	size by two-thirds, assigning the result to a second variable <code>side_length</code>.</p>
 
@@ -79,8 +79,8 @@ side_length = 2 / 3 * canvas_size</span></pre>
 	arguments passed to the <code>setup</code> and <code>forward</code> functions will change
 	accordingly. (Run the program again after changing <code>canvas_size</code> from 300 to 600!)</p>
 
-<p>Python’s <b class="Red">assigment statement</b> uses the <code>=</code> symbol, which
- is called the <b class="Red">assigment operator</b>. The <em>name</em> being assigned is
+<p>Python’s <em class="Defn">assigment statement</em> uses the <code>=</code> symbol, which
+ is called the <em class="Defn">assigment operator</em>. The <em>name</em> being assigned is
  always typed to the <em>left</em> of the operator, and the value (or an expression that Python can
  calculate) is typed on the <em>right</em> side.</p>
 
@@ -94,7 +94,7 @@ side_length = 2 / 3 * canvas_size</span></pre>
 <li>Names cannot contain spaces or (most) punctuation marks. To make a two-word name, you can use an underscore character in place of the space (<code>canvas_size</code>) or use “camel case” (<code>canvasSize</code>)</li>
 <li>Names can contain letters and numerals, but cannot <em>begin</em> with a numeral.</li>
 <li>Certain words have a special meaning in Python and cannot be used as names. These
-    <b class="Red">reserved words</b> include <code>import</code> and <code>from</code>.
+    <em class="Defn">reserved words</em> include <code>import</code> and <code>from</code>.
     For a complete list of reserved words, run the following program. Note that the list of reserved words may change
     between different versions of Python.</li>
 </ul>
@@ -158,7 +158,7 @@ The reason the program doesn’t do what we want it to is the second to last lin
 
 loadFeed.data = {
     title: "Variables",
-    up: "cs_new/cs10",
+    up: "cs_new/sp1/home",
     next: "cs_new/sp1/io",
     prev: "cs_new/sp1/comment",
 }
