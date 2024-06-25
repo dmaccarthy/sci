@@ -1,20 +1,25 @@
 <section class="Post" data-icon="simulation">
+<style type="text/css">
+
+#SimControls td {
+    min-width: 5em;
+    padding: 3px;
+}
+    
+</style>
 <h2 class="Collapse">Simulation</h2><div class="Collapse Expand">
     <p class="Center"><svg id="CRTSim"></svg></p>
     <table id="SimControls" class="Center Bottom"><tbody>
     <tr>
-        <td>V<sub>acc</sub> / volts</td>
-        <td>1200</td>
+        <td>V<sub>acc</sub></td><td>1200 V</td>
         <td><input type="range" min="800" max="2000" value="1200" step="10"></td>
     </tr>
     <tr>
-        <td>V<sub>def</sub> / volts</td>
-        <td>0</td>
+        <td>V<sub>def</sub></td><td>0 V</td>
         <td><input type="range" min="0" max="2000" value="0" step="10"></td>
     </tr>
     <tr>
-        <td>B / mT</td>
-        <td>0.00</td>
+        <td>B</td><td>0.00 mT</td>
         <td><input type="range" min="0" max="6" value="0" step="0.01"></td>
     </tr>
     </tbody></table>
@@ -37,7 +42,8 @@ loadFeed.sim = () => {
 
     let css = {stroke: "red", "stroke-width": "1px", fill: "none"}
     svg.parab = svg.locus((x, t, a) => a * x * x, [-2, 12], -1, 0, svg.conics).css(css);
-    svg.parab.$.hide();
+    svg.measure = svg.text("0.0", [0, 0], svg.conics).css({fill: "red"});
+    svg.conics.$.children("*").hide();
 
     $("#SimControls input").css({width: "16em"}).on("change", (ev) => {   
         let ray = $("#CRTSim")[0].graphic.ray;
@@ -50,7 +56,13 @@ loadFeed.sim = () => {
             if (y < 0) {
                 if (svg.circ) svg.circ.$.fadeOut();
                 let p = svg.parab;
-                p.args = y / (x * x);
+                let a = p.args = y / (x * x);
+                if (a > -0.03) {
+                    let y0 = 100 * a;
+                    let c = svg.measure.config({position: [11, y0 < -1 ? -0.5 : y0 - 0.6]}).update(0);
+                    c.$.html(`θ = ${atan(-20 * a).toFixed(1)}°`).fadeIn();
+                }
+                else svg.measure.$.fadeOut();
                 p.update(0);
                 p.$.fadeIn();
             }
@@ -60,9 +72,12 @@ loadFeed.sim = () => {
                 let r = (x * x + y * y) / (2 * y);
                 let c = svg.circ = svg.circle(r, [0, r], svg.conics).css(css);
                 c.$.hide().fadeIn();                
+                c = svg.measure.config({position: [-0.75, 2]}).update(0);
+                c.$.html(`r = ${r.toPrecision(3)} cm`).fadeIn();
             }
         }
         else {
+            svg.measure.$.fadeOut();
             svg.parab.$.fadeOut();
             if (svg.circ) svg.circ.$.fadeOut();
         }
@@ -79,9 +94,9 @@ loadFeed.sim.ray = function*() {
     let Vd = parseFloat($(e[1]).val());
     let B = parseFloat($(e[2]).val()) / 1000;
     e = $("#SimControls tr td:nth-child(2)");
-    $(e[0]).html(Va.toFixed(0));
-    $(e[1]).html(Vd.toFixed(0));
-    $(e[2]).html((1000 * B).toFixed(2));
+    $(e[0]).html(Va.toFixed(0) + " V");
+    $(e[1]).html(Vd.toFixed(0) + " V");
+    $(e[2]).html((1000 * B).toFixed(2) + " mT");
     let qm = 1.602e-19 / 9.11e-31, d = 0.06;
 
     let x = 0, y = 0, vy = 0, n = 25;
