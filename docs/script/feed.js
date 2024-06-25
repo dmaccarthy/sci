@@ -447,7 +447,11 @@ function loadHash(init) {
 /** Load feed identified by URL fragment/"hash" **/
     clearFeed();
     let feed = location.hash;
-    if (feed == "#~") feed = "";
+    if (feed == "#~") {
+        if (init && location.origin.indexOf("replit.") > -1)
+            location.href = "https://dmaccarthy.github.io/sci";
+        else feed = "";
+    }
     loadFeed(feed ? feed.slice(1) : "home", !init);    
 }
 
