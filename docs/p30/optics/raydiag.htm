@@ -107,7 +107,15 @@ loadFeed.sim.draw = () => {
         loadFeed.sim.drawLens(e, ...data);
 }
 
+loadFeed.sim.drawRay = (svg, p1, p2, g) => {
+    let r = svg.line(p1, p2, g);
+    // Chevron...
+
+    return r;
+}
+
 loadFeed.sim.drawMirror = (e, f, d, di, m) => {
+    // Calculate drawing sclae
     let x1 = Math.min(0, 2 * f, di);
     let x2 = Math.max(2 * f, d, di);
     let dx = (x2 - x1) / 10;
@@ -116,19 +124,28 @@ loadFeed.sim.drawMirror = (e, f, d, di, m) => {
     let y2 = Math.max(1, m);
     let dy = (y2 - y1) / 10;
     y1 -= dy; y2 += dy;
-    let color = di < 0 ? "lightgrey" : "red";
+
+    // Create drawing
     let svg = new SVG_Animation(e, x1, x2, y1, y2);
     svg.grid([-20, 20, 1], [-20, 20, 1]);
+    let ray = loadFeed.sim.drawRay;
+
+    // Calculate arrow widths and draw arrow
     let width = Math.sqrt(Math.abs(m));
     let w1 = Math.min(20, Math.max(4, 8 / width));
     let w2 = Math.min(20, Math.max(4, 8 * width));
+    let color = di < 0 ? "lightgrey" : "red";
     svg.arrow([d, 0], [d, 1], {tail: `${w1}`}).css({fill: "#0065FE"});
     svg.arrow([di, 0], [di, m], {tail: `${w2}`}).css({fill: color});
+
+    // Indicent rays
     let g = svg.group().css({stroke: "#0065FE"});
-    svg.line([d, 1], [0, 1], g);
+    ray(svg, [d, 1], [0, 1], g);
     svg.line([d, 1], [0, m], g);
     dx = 2 * f - d;
     if (dx) svg.line([d, 1], [0, 2 * f / dx], g);
+
+    // Reflected rays
     g = svg.group().css({stroke: "red"});
     let virtual = svg.group().css({stroke: "grey"});
     svg.line([0, 1], [x2, 1 - x2 / f], g);
@@ -140,6 +157,13 @@ loadFeed.sim.drawMirror = (e, f, d, di, m) => {
         svg.line([0, y], [x2, y + k * x2], g);
         if (di < 0) svg.line([0, y], [x1, y + k * x1], virtual);
     }
+
+    // Virtual rays
+    if (di < 0) {
+        
+    }
+
+    // Focus and centre
     let css = {fill: "white", stroke: "black"};
     svg.circle("4", [f, 0]).css(css);
     svg.circle("4", [2 * f, 0]).css(css);
