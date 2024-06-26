@@ -1,0 +1,196 @@
+<section class="Post" data-icon="simulation">
+<style type="text/css">
+
+#SimControls td {
+    min-width: 5em;
+}
+
+#SimControls tr:first-child td {
+    border: none;
+    padding-bottom: 0.5em;     
+}
+
+#SimControls input[type='text'] {
+    font-size: 100%;
+    text-align: center;
+    width: 6em;
+    margin: 2px;
+    border: none;
+}
+
+</style>
+<h2 class="Collapse">Simulation</h2><div class="Collapse Expand">
+    <p class="Center"><svg id="RayApplet"></svg></p>
+    <table id="SimControls" class="Center Bottom">
+    <tr><td colspan="2">
+        <input type="radio" name="device" checked="1"/> Mirror &nbsp;
+        <input type="radio" name="device"/> Lens
+    </td></tr>
+    <tr>
+        <td><span class="TeX">f</span></td>
+        <td><input type="text" value="1"/></td>
+    </tr>
+    <tr class="Blue">
+        <td><span class="TeX">d_o</span></td>
+        <td><input class="Blue" type="text" value="3"/></td>
+    </tr>
+    <tr class="Red">
+        <td><span class="TeX">d_i</span></td>
+        <td><input class="Red" type="text"/></td>
+    </tr>
+    <tr>
+        <td><span class="TeX">m</span></td>
+        <td><input type="text"/></td>
+    </tr>
+    </table>
+    
+</div>
+
+<script type="text/javascript" data-init="sim">
+
+loadFeed.sim = () => {
+    loadFeed.sim.given = [0, 1];
+    $("#RayApplet").attr({width: 702, height: 352, "data-aspect": "702/352"});
+    $("#SimControls input").on("change", (ev) => {
+        let e = $("#SimControls input");
+        let given = loadFeed.sim.given;
+        for (let i=0;i<4;i++) if (i != given[1] && e[i+2] == ev.currentTarget)
+            loadFeed.sim.given = [given[1], i];
+        loadFeed.sim.draw();
+    });
+    loadFeed.sim.draw();
+}
+
+loadFeed.sim.solve = () => {
+    let given = loadFeed.sim.given;
+    let n = Math.pow(2, given[0]) + Math.pow(2, given[1]);
+    let e = $("#SimControls input[type='text']");
+    let data = [];
+    for (let ei of e) data.push(parseFloat($(ei).val()));
+    let [f, d, di, m] = data;
+    if (n == 3) { // f, do
+        di = 1 / (1/f - 1/d);
+        m = -di / d;
+    }
+    else if (n == 5) { // f, di
+        d = 1 / (1/f - 1/di);
+        m = -di / d;
+    }
+    else if (n == 9) { // f, m
+        d = f * (1 - 1/m);
+        di = -m * d;
+    }
+    else if (n == 6) { // do, di
+        m = -di / d;
+        f = 1 / (1/d + 1/di);
+    }
+    else if (n == 10) { // do, m
+        di = -m * d;
+        f = 1 / (1/d + 1/di);
+    }
+    else { // di, m
+        d = -di / m;
+        f = 1 / (1/d + 1/di);
+    }
+    if (d < 0) {d = -d; di = -di; f = -f}
+    data = [f, d, di, m];
+    for (let i=0;i<4;i++) $(e[i]).val(data[i].toPrecision(4));
+    return data;
+}
+
+loadFeed.sim.draw = () => {
+    let e = $("#RayApplet").html("");
+    let data = loadFeed.sim.solve();
+    if ($("#SimControls input[type='radio']")[0].checked)
+        loadFeed.sim.drawMirror(e, ...data);
+    else
+        loadFeed.sim.drawLens(e, ...data);
+}
+
+loadFeed.sim.drawMirror = (e, f, d, di, m) => {
+    let x1 = Math.min(0, 2 * f, di);
+    let x2 = Math.max(2 * f, d, di);
+    let dx = (x2 - x1) / 10;
+    x1 -= dx; x2 += dx;
+    let y1 = Math.min(0, m);
+    let y2 = Math.max(1, m);
+    let dy = (y2 - y1) / 10;
+    y1 -= dy; y2 += dy;
+    let color = di < 0 ? "lightgrey" : "red";
+    let svg = new SVG_Animation(e, x1, x2, y1, y2);
+    svg.grid([-20, 20, 1], [-20, 20, 1]);
+    let width = Math.sqrt(Math.abs(m));
+    let w1 = Math.min(20, Math.max(4, 8 / width));
+    let w2 = Math.min(20, Math.max(4, 8 * width));
+    svg.arrow([d, 0], [d, 1], {tail: `${w1}`}).css({fill: "#0065FE"});
+    svg.arrow([di, 0], [di, m], {tail: `${w2}`}).css({fill: color});
+    let g = svg.group().css({stroke: "#0065FE"});
+    svg.line([d, 1], [0, 1], g);
+    svg.line([d, 1], [0, m], g);
+    dx = 2 * f - d;
+    if (dx) svg.line([d, 1], [0, 2 * f / dx], g);
+    g = svg.group().css({stroke: "red"});
+    let virtual = svg.group().css({stroke: "grey"});
+    svg.line([0, 1], [x2, 1 - x2 / f], g);
+    svg.line([0, m], [x2, m], g);
+    if (di < 0) svg.line([0, m], [x1, m], virtual);
+    if (dx) {
+        let k = -1 / dx;
+        let y = 2 * f / dx;
+        svg.line([0, y], [x2, y + k * x2], g);
+        if (di < 0) svg.line([0, y], [x1, y + k * x1], virtual);
+    }
+    let css = {fill: "white", stroke: "black"};
+    svg.circle("4", [f, 0]).css(css);
+    svg.circle("4", [2 * f, 0]).css(css);
+    svg.final();
+}
+
+loadFeed.sim.drawLens = (e, f, d, di, m) => {
+    console.log("Lens");
+}
+
+</script>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">?</h1>
+<!-- <p class="Present"><img src="" class="s24" alt="Picture"/></p> -->
+</section>
+
+<section class="Slide"><h3>?</h3>
+</section>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+
+<ol></ol>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review<span data-print="Practice"></h2><div class="Collapse">
+<div id="Review">
+<ol>
+</ol>
+</div></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}?.? — Ray Diagrams`,
+    answerDate: "2025.2.?.16",
+    num: "?.?",
+    up: "p30/units/C",
+    // prev: "p30/",
+    // next: "p30/mom",
+}
+
+</script>
