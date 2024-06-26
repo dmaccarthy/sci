@@ -550,9 +550,10 @@ class SVG_Animation {
     // }
 
     line(p1, p2, parent) { // Create a line element
+        let s = new Segment(...p1, ...p2);
         p1 = this.a2p(...p1);
         p2 = this.a2p(...p2);
-        return this.create("line", {x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1]}, parent);
+        return this.create("line", {x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1]}, parent).config({segment: s});
     }
 
     grid(x, y, omitAxes, parent) { // Draw horizontal and/or vertical grid lines

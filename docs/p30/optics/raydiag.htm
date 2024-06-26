@@ -19,7 +19,7 @@
 }
 
 </style>
-<h2 class="Collapse">Simulation</h2><div class="Collapse Expand">
+<h2 class="Collapse">Principal Rays</h2><div class="Collapse Expand">
     <p class="Center"><svg id="RayApplet"></svg></p>
     <table id="SimControls" class="Center Bottom">
     <tr><td colspan="2">
@@ -99,74 +99,97 @@ loadFeed.sim.solve = () => {
 }
 
 loadFeed.sim.draw = () => {
-    let e = $("#RayApplet").html("");
     let data = loadFeed.sim.solve();
-    if ($("#SimControls input[type='radio']")[0].checked)
-        loadFeed.sim.drawMirror(e, ...data);
-    else
-        loadFeed.sim.drawLens(e, ...data);
+    let ok = true;
+    for (let x of data) if (!isFinite(x)) ok = false;
+    let e = $("#RayApplet").html(ok ? "" : `<text x="351" y="100" style="text-anchor: middle">No finite solution!</text>`);
+    if (ok) {
+        if ($("#SimControls input[type='radio']")[0].checked)
+            loadFeed.sim.drawMirror(e, ...data);
+        else
+            loadFeed.sim.drawLens(e, ...data);
+    }
 }
 
 loadFeed.sim.drawRay = (svg, p1, p2, g) => {
+    if (!(p2 instanceof Array)) {
+        let dx = p2.dx;
+        p2 = new RArray(dx, p2.k * dx).plus(p1);
+    }
     let r = svg.line(p1, p2, g);
-    // Chevron...
-
-    return r;
+    let seg = r.segment;
+    let pt = seg.point(seg.length / 2.7);
+    let s = svg.scale;
+    let u = seg.unitVector.times([s[0], -s[1]]);
+    let theta = 225 + atan2(u[1], u[0]);
+    let [size, sharp] = [11, 4];
+    let [x, y] = [size / s[0], size / s[1]];
+    let arr = svg.poly([pt.plus([x/sharp, y]), pt, pt.plus([x, y/sharp])], 0, g);
+    arr.anchor(...pt).config({theta: theta});
+    return [r, arr];
 }
 
 loadFeed.sim.drawMirror = (e, f, d, di, m) => {
-    // Calculate drawing sclae
+    // Calculate drawing scale
     let x1 = Math.min(0, 2 * f, di);
     let x2 = Math.max(2 * f, d, di);
+    let y2 = 1.2 * Math.max(1, m, -m);
     let dx = (x2 - x1) / 10;
     x1 -= dx; x2 += dx;
-    let y1 = Math.min(0, m);
-    let y2 = Math.max(1, m);
-    let dy = (y2 - y1) / 10;
-    y1 -= dy; y2 += dy;
+    let w = x2 - x1;
 
     // Create drawing
-    let svg = new SVG_Animation(e, x1, x2, y1, y2);
-    svg.grid([-20, 20, 1], [-20, 20, 1]);
+    let svg = new SVG_Animation(e, x1, x2, -y2, y2);
     let ray = loadFeed.sim.drawRay;
 
-    // Calculate arrow widths and draw arrow
+    // Calculate arrow widths
     let width = Math.sqrt(Math.abs(m));
     let w1 = Math.min(20, Math.max(4, 8 / width));
     let w2 = Math.min(20, Math.max(4, 8 * width));
     let color = di < 0 ? "lightgrey" : "red";
-    svg.arrow([d, 0], [d, 1], {tail: `${w1}`}).css({fill: "#0065FE"});
-    svg.arrow([di, 0], [di, m], {tail: `${w2}`}).css({fill: color});
 
     // Indicent rays
-    let g = svg.group().css({stroke: "#0065FE"});
-    ray(svg, [d, 1], [0, 1], g);
-    svg.line([d, 1], [0, m], g);
-    dx = 2 * f - d;
-    if (dx) svg.line([d, 1], [0, 2 * f / dx], g);
+    let g = svg.group().css({stroke: "#0065FE", fill: "none"});
+    let po = [d, 1];
+    let k = 1 / (d - 2 * f);
+    ray(svg, po, [0, 1], g);         // Paraxial
+    ray(svg, po, [0, m], g);         // Focal
+    if (isFinite(k))
+        ray(svg, po, {dx: -d, k: k}, g); // Central
 
     // Reflected rays
-    g = svg.group().css({stroke: "red"});
-    let virtual = svg.group().css({stroke: "grey"});
-    svg.line([0, 1], [x2, 1 - x2 / f], g);
-    svg.line([0, m], [x2, m], g);
-    if (di < 0) svg.line([0, m], [x1, m], virtual);
-    if (dx) {
-        let k = -1 / dx;
-        let y = 2 * f / dx;
-        svg.line([0, y], [x2, y + k * x2], g);
-        if (di < 0) svg.line([0, y], [x1, y + k * x1], virtual);
-    }
+    g = svg.group().css({stroke: "red", fill: "none"});
+    let pc = [0, -2 * f * k];
+    ray(svg, [0, m], [x2, m], g);             // Paraxial
+    ray(svg, [0, 1], {dx: x2, k: -1 / f}, g); // Focal
+    if (isFinite(k))
+        ray(svg, pc, {dx: x2, k: k}, g);      // Central
 
     // Virtual rays
     if (di < 0) {
-        
+        g = svg.group().css({stroke: "grey", fill: "none"});
+        ray(svg, [0, m], [x1, m], g);             // Paraxial
+        ray(svg, [0, 1], {dx: x1, k: -1 / f}, g); // Focal
+        if (isFinite(k))
+            ray(svg, pc, {dx: x1, k: k}, g);      // Central
     }
+
+    // Object and image
+    svg.arrow([d, 0], po, {tail: `${w1}`}).css({fill: "#0065FE"});
+    svg.arrow([di, 0], [di, m], {tail: `${w2}`}).css({fill: color});
+
+    // Mirror/lens and principal axis
+    g = svg.group().css({stroke: "black", "stroke-width": "2px"});
+    svg.line([x1, 0], [x2, 0], g);
+    svg.line([0, -y2], [0, y2], g).css({"stroke-width": "4px"});
 
     // Focus and centre
     let css = {fill: "white", stroke: "black"};
     svg.circle("4", [f, 0]).css(css);
     svg.circle("4", [2 * f, 0]).css(css);
+    css = {"font-size": "20px", "font-weight": "bold"};
+    svg.text("F", [f, y2/10]).css(css);
+    svg.text("C", [2 * f, y2/10]).css(css);
     svg.final();
 }
 
@@ -194,7 +217,7 @@ loadFeed.sim.drawLens = (e, f, d, di, m) => {
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
-
+    <!-- <svg data-js="p30/emr/img/young#laser"></svg> -->
 <ol></ol>
 
 </div></div></section>
