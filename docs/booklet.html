@@ -49,11 +49,14 @@ table, ol[type='a'], .NoPageBreak {
 let loadFeed = {}, siteData = {};
 
 function isPractice(s) {
-    let h = $(s).children("h2");
+    s = $(s);
+    if (!isAfter(s.attr("data-show"))) return;
+    let h = s.children("h2");
+    let booklet = h.attr("data-booklet");
     let include = ["Pre-Test", "Practice", "Review"];
     let i = include.indexOf(h.text());
-    if (i != -1) {
-        h.replaceWith($("<h3>").html(include[i]));
+    if (booklet == "yes" || i != -1 && booklet != "no") {
+        h.replaceWith($("<h3>").html(h.text()));
         return true;
     }
 }
@@ -63,7 +66,7 @@ function collect(folder, i) {
     let urls = collect.urls[folder];
     if (i >= urls.length) return;
     let url = urls[i];
-    $.ajax({url: `/${folder}/${url[0]}.htm`, success: (e) => {
+    $.ajax({url: `./${folder}/${url[0]}.htm`, success: (e) => {
         e = $(`<div>${e}</div>`);
         let s = e.children("section");
         e = [];
@@ -110,7 +113,7 @@ Shift + Click = Hide`);
 $(() => {
     let chap = location.hash.substr(1);
     let crs = chap.split('/')[0];
-    $.getScript(`/${crs}/booklet.js`, (e) => {
+    $.getScript(`./${crs}/booklet.js`, (e) => {
         let title = collect.titles[chap];
         if (title.charAt(0) == "*") title = title.substr(1);
         else title = "Chapter " + title;

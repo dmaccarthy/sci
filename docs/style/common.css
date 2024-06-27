@@ -16,6 +16,7 @@ a[href], .Blue {color: var(--blue);}
 .Comment {color: #999999}
 .DocString {color: green}
 .Black {color: black}
+.Ital {font-style: italic}
 .NoBold {font-weight: normal}
 .NoWrap {white-space: nowrap}
 
