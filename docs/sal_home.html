@@ -17,8 +17,12 @@ let urls = [
     "https://www.supersaas.com/schedule/Laptop_Carts/Laptop_Carts?view=week",
 ];
 
-for (let i=1;i<urls.length;i++) window.open(urls[i]);
-location.href = urls[0];
+console.log(urls);
+confirm("Open?");
+for (let i=1;i<urls.length;i++) {
+    window.open(urls[i]);
+}
+// location.href = urls[0];
 
 </script>
 </head>
