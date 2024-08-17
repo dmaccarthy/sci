@@ -1,7 +1,8 @@
-<div class="Note">
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 <p>When there is a lot of data, a linear search can be very slow because it involves inspecting <em>every</em> record.
-    If we know with certainty that the data is sorted, we can search for a particular record more efficiently using a
-    <b class="Red">binary search</b> algorithm.</p>
+    If we know with certainty that the data is <em>sorted</em>, we can search for a particular record more efficiently using a
+    <em class="Defn">binary search</em> algorithm.</p>
 <p>Rather than start at the beginning of the <code>list</code> containing the data, we would first examine a record in the
     <em>middle</em>. If we find that the middle record is larger than what we are searching for, we can exclude all of the
     data from the middle to the end of the data and continue searching in the first half of the data only. If the middle
@@ -9,20 +10,34 @@
     second half. Either way, we can exclude half of the records from the search after examining only one single record!</p>
 <p>Next, we examine the record in the middle of the remaining half, thereby excluding half of the remaining records. We continue
     examining the middle records until we have found the record we are looking for, or until we have excluded all of the records.</p>
-<p>To perform a binary search, you will need to create two variables to keep track of the portion of the data where we are searching...</p>
-<pre class="Code" contenteditable="true" data-echo="copy">
+<p>To perform a binary search, you will need to create two variables to keep track of the portion of the data where you are searching...</p>
+<pre class="Code" data-echo="py">
 left = 0
 right = len(data) - 1</pre>
 
 <p>The <code>left</code> variable tracks the smallest index in which the record we are searching for may be found while <code>right</code>
     records the largest index. As the search proceeds, the two values should get closer together as more records are excluded.</p>
 <p>You can find more information about binary searches on <a target="Wik" href="https://en.wikipedia.org/wiki/Binary_search_algorithm">Wikipedia</a>.</p>
-</div>
+</div></section>
 
-<h3>Assignment</h3><ol class="Assign">
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse">
+<ol class="Assign">
 <p class="Red">Do not use any of Python’s list searching methods for any of these tasks; you must impelement the algorithm’s logic yourself.</p>
 <li>The program <code>iter2_binary.py</code> uses the same student data as in the last question from the previous assignment.
     Complete the function <code>bsearch</code> to locate a student number using a binary search. Note that the binary search
     only works when looking up a student number and not when searching by name or birthday, since the data is only sorted by
     student number!</li>
 </ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Binary Search",
+    up: `cs_new/iter/home`,
+    prev: "cs_new/iter/search",
+    next: "cs_new/iter/bubble",
+}
+  
+</script>

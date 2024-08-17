@@ -1,0 +1,26 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+    <p>The sorting algorithms we have discussed so far (bubble sort, selection sort, insertion sort) can be performed “in-place”. This means that the algorithms involve moving data around within the original list. In-place algorithms such as these do not require much additional memory beyond the original data.<p>
+    <p>“Not-in-place” (or “out-of-place”) algorithms involving sorting the data into a new list. Not-in-place algorithms require more memory since the data has to be copied to a new list (sometimes several times); however, these algorithms preserve the original list and allow for potentially faster and/or simpler sorting algorithms.<p>
+    <p>One common out-of-place sort is a <em class="Defn">merge sort</em>. In this algorithm, the original data is copied into two separate lists each containing half of the data. These smaller lists are sorted separately (using either an in-place or out-of-place algorithm) and then the two sorted lists are “merged” together into the final sorted list.<p>
+    <p>Merging two sorted lists requires comparing the first items of the two lists, choosing which item comes first, and then copying the item into the new list. Then repeating this process until all items from both lists have been copied.</p>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse">
+<p class="Red">Do not use any of Python’s list sorting or merging methods for any of these tasks; you must impelement the algorithm’s logic yourself.</p>
+<ol class="Assign">
+    <li>Complete the program <code>iter5_merge.py</code> by writing a <code>merge</code> function to join two sorted lists of student data with the same dictionary keys as in <code>iter4_sort.py</code>.
+        Write a <code>mergeSort</code> function to split an unsorted list into two half-sized lists, sort the two lists using your <code>favSort</code> function from the previous assignment, and then merge the sorted lists using your <code>merge</code> function.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Merging Sorted Data",
+    up: `cs_new/iter/home`,
+    prev: "cs_new/iter/select",
+}
+  
+</script>
