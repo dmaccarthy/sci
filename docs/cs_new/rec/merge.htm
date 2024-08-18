@@ -1,0 +1,37 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Notes</h2><div class="Collapse Expand">
+<p>In the <a href="#cs_new/iter">Iterative Algorithms</a> course, you learned about several sorting algorithms such as the bubble sort, selection sort, and insertion sort.  Recursion allows for several additional algorithms, such as the merge sort and quick sort.</p>
+
+<p>Suppose we have a sequence of unsorted data, let’s say 15 numbers...</p>
+<pre data-echo="copy" class="IO">[9, 86, 35, 23, 32, 11, 54, 82, 172, 43, 19, 147, 49, 84, 27]</pre>
+
+<p>A <em class="Defn">merge sort</em> algorithm splits the list into two smaller lists.
+    Since there are an odd number of items in this example, one sublist will have seven items and the other will have eight...</p>
+<pre data-echo="copy" class="IO">[9, 86, 35, 23, 32, 11, 54] [82, 172, 43, 19, 147, 49, 84, 27]</pre>
+<p>Next we sort the two lists...</p>
+<pre data-echo="copy" class="IO">[9, 11, 23, 32, 35, 54, 86] [19, 27, 43, 49, 82, 84, 147, 172]</pre>
+<p>Finally we merge the two sorted sublists back into a single list.  We do this by comparing the first items in each list and selecting the smaller value.  We then repeat this (iteratively) until all items from both lists have been selected and copied into the final sorted list.</p>
+<p>The recursive step occurs when we need to sort the sublists.  We do this by calling the merge sort function on each of the two sublists.  This will split each of those lists into two even smaller lists to be sorted (recursively) and then merged.  Recursion will continue to split the sublists into even smaller lists until eventually there is only one item in the list.  This is the base case: a list of one item does not need to be sorted and is ready to merge with another list.</p>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>Complete the program <code>rec2_msort.py</code> to sort a list of numbers using a recursive merge sort algorithm. Write and test the two missing functions:
+<ul>
+    <li>a non-recursive function <code>merge</code> that merges two sorted lists.</li>
+    <li>a recursive function <code>mergeSort</code> that takes a single unsorted list or tuple and returns a sorted list in ascending or descending order, as specified bythe <code>ascend</code> argument.</li>
+</ul>
+</li></ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Merge Sort",
+    up: `cs_new/rec/home`,
+    prev: "cs_new/rec/rec",
+    next: "cs_new/rec/quick",
+}
+  
+</script>

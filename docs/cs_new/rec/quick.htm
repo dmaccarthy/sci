@@ -1,0 +1,59 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Notes</h2><div class="Collapse Expand">
+<p>The quicksort is an in-place sorting algorithm.  With the merge sort, the data is copied and recopied whenever a list is split into sublists and again when the sublists are merged into a sorted list.  With the quicksort, items within the list are switched but no lists or sub-lists are copied.  This means that the quicksort usually requires less memory than the merge sort.</p>
+<p>The quicksort operates by repeatedly <em class="Defn">partitioning</em> a portion of the list. Suppose that variables <code>left</code>
+    and <code>right</code> are indices identifying the portion of the list to be partitioned. The algorithm starts
+    by choosing a random value from within this part of the list which is called the <em class="Defn">pivot</em>.  In the list below, the indices are 0 and 6 (shown in red and including the entire list) and the pivot is 32 (blue).</p>
+<pre data-echo="copy" class="IO"><span class="Red">23</span>, 86, 35, 9, <span class="Blue">32</span>, 54, <span class="Red">11</span></pre>
+<p>The algorithm increments the <code>left</code> index (if necessary) until it points to a value that is greater
+    than or equal to the pivot, while decrementing right (if necessary) until it points to a value less than or
+    equal to the pivot...</p>
+<pre data-echo="copy" class="IO">23, <span class="Red">86</span>, 35, 9, <span class="Blue">32</span>, 54, <span class="Red">11</span></pre>
+<p>Now it switches the values that the indices point to...</p>
+<pre data-echo="copy" class="IO">23, <span class="Red">11</span>, 35, 9, <span class="Blue">32</span>, 54, <span class="Red">86</span>  <span class="Comment"># Switched 11 and 86</span></pre>
+<p>Now we continue incrementing and decrementing the indices until we find more values to switch.</p>
+<pre data-echo="copy" class="IO">23, 11, <span class="Red">35</span>, 9, <span class="Blue">32</span>, <span class="Red">54</span>, 86
+23, 11, <span class="Red">35</span>, 9, <span class="Red">32</span>, 54, 86
+23, 11, <span class="Blue">32</span>, 9, <span class="Red">35</span>, 54, 86  <span class="Comment"># Switched 32 and 35</span>
+23, 11, <span class="Red">32</span>, <span class="Red">9</span>, 35, 54, 86
+23, 11, <span class="Red">9</span>, <span class="Blue">32</span>, 35, 54, 86  <span class="Comment"># Switched 9 and 32</span>
+23, 11, 9, <span class="Red">32</span>, 35, 54, 86  <span class="Comment"># Indices are now equal!</span></pre>
+<p>In some cases, the pivot may appear in the data set more than once. If the <code>left</code> and <code>right</code>
+    indices are unequal but both point to the pivot value, increment <code>left</code> without switching the values.</p>
+<p>Once <code>left == right</code>, the list is partitioned! In the example above, the indices both end with values
+    of <code>3</code>. All of the values with indices less than this are less than or equal to the pivot <code>(23, 11, 9)</code>,
+    and all of the values with indices greater than <code>3</code> are greater than or equal to the pivot <code>(35, 54, 86)</code>.
+    The data that corresponds to the final index values will be the pivot value.</p>
+<p>Now comes the recursive part of the algorithm: we call our quicksort function again to partition the left half
+    of the data, using <code>0</code> (the original <code>left</code>) and <code>2</code> (the final <code>left - 1</code>) as the indices.
+    We also call the quicksort to partition the right half of the data, with indices of <code>4</code> (the final <code>right + 1</code>)
+    and <code>6</code> (the original <code>right</code>). The base case occurs when quicksort is called with the same value
+    for <code>left</code> and <code>right</code>, in which case nothing needs to be done.</p>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>Complete the program <code>rec3_qsort.py</code> to sort a list of numbers using a recursive quick sort algorithm. Write and test the two missing functions:
+<ul>
+<li>a non-recursive function <code>partition</code> that partitions (in place!) the data between
+    indices <code>left</code> and <code>right</code> (the third and fourth arguments) using a random pivot.
+    The function should return an index where the pivot ends up once the list has been partitioned.</li>
+<li>a recursive function <code>quickSort</code> that uses partition to sort the portion of the data between the
+    specified indices in ascending or descending order as specified by the argument <code>ascend</code>.
+    If called without specifying indices, <code>left</code> should default to <code>0</code> and
+    <code>right</code> should default to <code>len(data) - 1</code>, to sort the entire list.</li>
+</ul>
+</li></ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Quick Sort",
+    up: `cs_new/rec/home`,
+    prev: "cs_new/rec/merge",
+    next: "cs_new/rec/issue",
+}
+  
+</script>
