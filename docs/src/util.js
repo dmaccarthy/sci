@@ -163,6 +163,20 @@ function unzip(data, rarray) {
     return udata;
 }
 
+function RGBtoHSV(r, g, b) {
+    let max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let v = max / 2.55, h;
+    let d = max - min;
+    let s = (max === 0 ? 0 : 100 * d / max);
+    switch (max) {
+        case min: h = 0; break;
+        case r: h = (g - b) + d * (g < b ? 6: 0); h /= 6 * d; break;
+        case g: h = (b - r) + d * 2; h /= 6 * d; break;
+        case b: h = (r - g) + d * 4; h /= 6 * d; break;
+    }
+    return {h: 360 * h, s: s, v: v};
+}
+
 function HSVtoRGB(h, s, v) {return uHSVtoRGB(h/360, s/100, v/100)}
 
 function uHSVtoRGB(h, s, v) {

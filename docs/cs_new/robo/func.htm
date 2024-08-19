@@ -1,5 +1,6 @@
-<h3>Functions</h3><div class="Note">
-<p><b class="Red">Functions</b> are named instructions that perform a specific task. There are three ways to include functions in your Python program:</p>
+<section class="Post" data-icon="robot">
+<h2 class="Collapse">Functions</h2><div class="Collapse Expand">
+<p><em class="Defn">Functions</em> are named instructions that perform a specific task. There are three ways to include functions in your Python program:</p>
 <ul>
 <li>Built-in functions (e.g. <code>print</code>, <code>input</code>) are loaded automatically by the Python interpreter.</li>
 <li>More functions can be loaded from Python standard library modules (e.g. <code>math</code>, <code>random</code>) or site packages (e.g. <code>sc8pr</code>, <code>pygame</code>) using the <code>import</code> statement.</li>
@@ -14,15 +15,14 @@
 <li>Variables created within a function definition belong to that function and cannot be accessed outside of the function.
     This can prevent bugs and minimize unnecessary memory usage.</li>
 </ul>
-</div>
+</div></section>
 
-<h3>A <code>move</code> Function</h3><div class="Note">
+<section class="Post" data-icon="robot">
+<h2 class="Collapse">A <code>move</code> Function</h2><div class="Collapse Expand">
 <p>To move the robot requires three instructions: (1) turn the motors on, (2) sleep (i.e. do nothing) until the robot has been moving for the desired amount of time, and (3) turn the motors off.
     Rather than repeating these instruction every time we want the robot to move, we can define a <em>function</em> that performs these three instructions.</p>
 
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r03_ex1.py'</span>
-
-from sc8pr.robot.arena import Arena
+<pre data-echo="r03_ex1.py" data-title="1" class="Code">from sc8pr.robot.arena import Arena
 
 def move(robot, time, motors=1):
     <span class="Comment">"Move the robot for the specified amount of time"</span>
@@ -43,27 +43,27 @@ def brain(robot):
 Arena.run(brain)</pre>
 
 <p>Let’s look at how the function works line by line. The function starts with a <code>def</code> statement:</p>
-<pre data-echo="copy" class="Code">def move(robot, time, motors=1):</pre>
+<pre data-echo="py" class="Code">def move(robot, time, motors=1):</pre>
 <p>This statement names the function <code>move</code>. The function name should describe what the function will do.
     Functions follow the same naming rules as variables.</p>
 <p>The function name is followed by parentheses which contain the function parameters.
-    <b class="Red">Parameters</b> are variable names that refer to the function’s <b class="Red">arguments</b> (data that will be “passed” to the function every time it is called).
+    <em class="Defn">Parameters</em> are variable names that refer to the function’s <em class="Defn">arguments</em> (data that will be “passed” to the function every time it is called).
     Our function needs a parameter that refers to the robot itself, so that it has access to the robot’s sensors and actuators.
     It also needs to know how long to run the motors for (<code>time</code>) and what motor setting to use (<code>motors</code>).
-    In this example, we’ve specified a <b class="Red">default value</b> of <code>1</code> for <code>motors</code>; if our program calls the <code>move</code> function without a motors setting, the function will set the motors to <code>1</code> (full speed forward).</p>
+    In this example, we’ve specified a <em class="Defn">default value</em> of <code>1</code> for <code>motors</code>; if our program calls the <code>move</code> function without a motors setting, the function will set the motors to <code>1</code> (full speed forward).</p>
 
 <p>The instructions that make up the function are indented by four spaces, just like <code>if</code> and <code>while</code> blocks are indented. The first line of the function is its docstring.</p>
 <p>Next come the instructions that make up the function: turn the motors on, sleep for the specified time, and then turn the motors off.</p>
-<pre data-echo="copy" class="Code">robot.motors = motors       <span class="Comment"># Turn motors on</span>
+<pre data-echo="py" class="Code">robot.motors = motors       <span class="Comment"># Turn motors on</span>
 robot.sleep(time)           <span class="Comment"># Wait for the specified time</span>
 robot.motors = 0            <span class="Comment"># Turn motors off</span></pre>
 
 <p>The robot’s momentum might keep it moving for a short time after the motors are turned off. Just to be safe, we can make the robot come to a complete stop before continuing.</p>
-<pre data-echo="copy" class="Code">while not robot.stopped:    <span class="Comment"># Wait for robot to stop moving</span>
+<pre data-echo="py" class="Code">while not robot.stopped:    <span class="Comment"># Wait for robot to stop moving</span>
     robot.sleep()</pre>
 <p>Once the function definition is complete, we stop indenting so that Python knows we’re done. Now we can write our <code>brain</code> function, using <code>move</code> as if it were a built-in or imported function.</p>
 
-<pre data-echo="copy" class="Code">def brain(robot):
+<pre data-echo="py" class="Code">def brain(robot):
     <span class="Comment">"Robot control function"</span>
     move(robot, 1, -1)          <span class="Comment"># Move backward for 1 second</span>
     robot.pen = "blue", 3       <span class="Comment"># Start tracing in blue</span>
@@ -73,19 +73,18 @@ robot.motors = 0            <span class="Comment"># Turn motors off</span></pre>
 
 <p>Note that in the second last line where there are different values for the left and right motors, we need to enclose the motor settings in parentheses.
     If we omit the parentheses an error will occur, because we will be sending <em>four</em> arguments to a function that only has <em>three</em> parameters.</p>
-<pre data-echo="copy" class="Code">move(robot, 5, 0.7, 0.3)    <span class="Comment"># Error!</span></pre>
-</div>
+<pre data-echo="py" class="Code">move(robot, 5, 0.7, 0.3)    <span class="Comment"># Error!</span></pre>
+</div></section>
 
-<h3>Assignment</h3>
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
 <ol class="Assign">
 <li>In the previous assignment, you made the robot turn to a specific angle. Complete the program below by writing a <code>turnTo</code>
     function that turns the robot to the specified direction. The last argument of the function
     (<code>accuracy</code>) tells the function how accurate the direction needs to be. For example,
     the default accuracy of 0.5 means the robot must turn to within 0.5 degrees of the requested direction.
 
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r03_turn.py'</span>
-
-from sc8pr.robot.arena import Arena
+<pre data-echo="r03_turn.py" data-title="1" class="Code">from sc8pr.robot.arena import Arena
 
 def turnTo(robot, angle, motors=(0.1, -0.1), accuracy=0.5):
     <span class="Comment">"Turn the robot until it faces the specified angle"</span>
@@ -100,9 +99,7 @@ Arena.run(brain)</pre></li>
 <li>You can use the functions you have written to build up more complex behaviour. For example, if the <code>turnTo</code> function you wrote for the previous question works correctly,
     you can make the robot follow a complete circle by turning 180° and then continuing to turn back to its starting angle. You can then make the robot do a ‘Figure 8’ by having it draw one clockwise and one counterclockwise circle.
     Complete the program below by copying your <code>turnTo</code> function.
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r03_figure8.py'</span>
-
-from sc8pr.robot.arena import Arena
+<pre data-echo="r03_figure8.py" data-title="1" class="Code">from sc8pr.robot.arena import Arena
 
 def circle(robot, motors):
     <span class="Comment">"Draw a circle"</span>
@@ -121,9 +118,7 @@ Arena.run(brain)</pre></li>
 
 <li>Finish the program below, to make the robot draw a red square by completing the <code>square</code> function.
     This will be easiest if you use your <code>turnTo</code> function and the <code>move</code> function from the example.
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r03_square.py'</span>
-
-from sc8pr.robot.arena import Arena
+<pre data-echo="r03_square.py" data-title="1" class="Code">from sc8pr.robot.arena import Arena
 
 def square(robot, time_per_side, motors=1):
     <span class="Comment">"Move around a square"</span>
@@ -135,3 +130,15 @@ def brain(robot):
 
 Arena.run(brain)</pre></li>
 </ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Functions & Arguments",
+    up: `cs_new/robo/home`,
+    prev: "cs_new/robo/turn",
+    next: "cs_new/robo/hsv",
+}
+  
+</script>

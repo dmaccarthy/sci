@@ -1,0 +1,339 @@
+<section class="Post" data-icon="robot">
+<h2 class="Collapse">Color Sensors</h2><div class="Collapse Expand">
+<p>The gyroscope is only one of the sensors that the <code>sc8pr</code> robot is equipped with.
+    The robot also has two color sensors, one pointed to the front and one pointed down. The
+    robot’s “eyes” illustrate the colors detected by the most recent sensor update.</p>
+<p>You can access the color data using <code>robot.sensorFront</code> and <code>robot.sensorDown</code>.
+    The color sensor data is only updated when your <code>brain</code> function requests it,
+    so you must call the <code>robot.updateSensors</code> function before checking the sensor colors.</p>
+<pre data-echo="r04_ex1.py" data-title="1" class="Code">from sc8pr.robot.arena import Arena, quilt
+
+def brain(robot):
+    robot.motors = 0.5, 0.3
+    while robot.active:
+        robot.updateSensors()
+        print(robot.sensorDown, robot.sensorFront)
+
+Arena.run(brain, pattern=quilt)</pre>
+</div></section>
+
+<section class="Post" data-icon="robot">
+<h2 class="Collapse">RGBA Color</h2><div class="Collapse Expand">
+<p>You may notice that the output of the program above is a pair of numerical sequences of four numbers, such as
+    <code><span class="Black">(31, 143, 255, 255)</span></code>. Computer hardware often uses “RGBA” codes to represent colors.
+    “RGBA” stands for red, green, blue, and alpha.</p>
+<p>Essentially, the computer hardware creates colors by combining red, green, and blue lights. In the image below we can see that the red and blue spotlights
+    produce a “magenta” shade of purple when they overlap. Overlapping red and green produce yellow; and
+    overlapping blue and green produce “cyan”. Where all three lights overlap, the result is white.</p>
+<p class="Center"><a href="https://en.wikipedia.org/wiki/RGB_color_model#/media/File:RGB_illumination.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/2/28/RGB_illumination.jpg" alt="Image"/></a></p>
+<p>Other colors and shades can be produced by changing the brightness of one or more of the lights.
+    You can use the controls below to adjust the RGB values to see what color is produced.</p>
+
+<style type="text/css">
+
+#RGB_Controls {
+    margin: auto;
+    margin-bottom: 1em;
+    text-align: right;
+}
+
+#RGB_Controls tr {height: 2.5em}
+#RGB_Controls tr * {vertical-align: middle}
+#RGB_Controls td {border: none}
+
+#RGB_Controls td:last-child {
+    text-align: left;
+    padding-left: 1em;
+}
+
+#RGB_Hex {padding: 0.25em}
+#RGB_Hex.White {color: white}
+ 
+</style>
+<table id="RGB_Controls" class="Center">
+    <tr>
+        <td><input id="RGB_R" type="range" min="0" max="255"/></td>
+        <td><span>Red = </span><span id="RGB_Rval"></span></td>
+    </tr>
+    <tr>
+        <td><input id="RGB_G" type="range" min="0" max="255"/></td>
+        <td><span>Green = </span><span id="RGB_Gval"></span></td>
+    </tr>
+    <tr>
+        <td><input id="RGB_B" type="range" min="0" max="255"/></td>
+        <td><span>Blue = </span><span id="RGB_Bval"></span></td>
+    </tr>
+</table>
+<p class="Center"><span id="RGB_Hex"></span></p>
+<p class="Center"><canvas data-aspect="1" id="RGB" width="361" height="361"></canvas></p>
+    
+<p>RGB colors are usually represented either as percentages, or on a scale of 0 to 255. Our programs will use the latter.</p>
+<p>The “A” in RGBA is for alpha. This fourth value represents the <em class="Defn">opacity</em>
+    of the color. A value of 0 means that the color is totally transparent; 255 is completely opaque;
+    and 128 is about 50% transparent. Although you may be using transparency later in Computing Science,
+    the robot color sensors cannot detect transparency, so the final value in the RGBA code will always be 255.</p>
+</div></section>
+
+<section class="Post" data-icon="robot">
+<h2 class="Collapse">HSVA Color</h2><div class="Collapse Expand">
+<style type="text/css">
+
+#HSV {display: none}
+
+#HSV_Controls {
+    margin: auto;
+    margin-bottom: 1em;
+    text-align: right;
+}
+
+#HSV_Controls tr {height: 2.5em}
+#HSV_Controls tr * {vertical-align: middle}
+#HSV_Controls td {border: none}
+
+#HSV_Controls td:last-child {
+    text-align: left;
+    padding-left: 1em;
+}
+
+</style>
+<p>The RGB color model is useful because it is how computer hardware actually represents and produces
+    color, but it is not especially suited to how humans perceive color.</p>
+<p> This <em class="Defn">color wheel</em> illustrates a continuum of colors:</p>
+<p class="Center"><svg id="HSV" data-aspect="1" xmlns="http://www.w3.org/2000/svg" width="361" height="361" viewBox="-180 -180 361 361">
+<style>
+
+#HSV circle, #HSV line {
+    fill: none;
+    stroke: black;
+    stroke-width: 2;
+}
+
+#HSV.White circle, #HSV.White line {stroke: white}
+#HSV.White g line, #HSV g line {stroke: #808080}
+
+</style>
+<g>
+    <line x1="-181" y1="0" x2="181" y2="0"></line>
+    <line x1="-181" y1="0" x2="181" y2="0" transform="rotate(60)"></line>
+    <line x1="-181" y1="0" x2="181" y2="0" transform="rotate(-60)"></line>
+    <image id="HSV_Wheel" x="-172.8" y="-172.8"></image>    
+</g>
+<circle id="HSV_Sat" cx="0" cy="0"></circle>
+<line id="HSV_Hue" x1="0" y1="0" x2="181" y2="0"></line>
+</svg></p>
+<table id="HSV_Controls" class="Center">
+    <tr>
+        <td><input id="HSV_H" type="range" min="0" max="360" value="210"/></td>
+        <td><span>Hue = </span><span id="HSV_Hval"></span></td>
+    </tr>
+    <tr>
+        <td><input id="HSV_S" type="range" min="0" max="100" value="88"/></td>
+        <td><span>Saturation = </span><span id="HSV_Sval"></span></td>
+    </tr>
+    <tr>
+        <td><input id="HSV_V" type="range" min="0" max="100" value="100"/></td>
+        <td><span>Value = </span><span id="HSV_Vval"></span></td>
+    </tr>
+</table>
+
+<p>At the far right, you will find the color red. As you move counter-clockwise around the outside of the circle,
+    the color gradually changes to yellow (at 60°), then green (at 120°), cyan (at 180°), etc. As you
+    move toward the centre of the circle, the color passes through various different shades before
+    eventually fading to white at the centre.</p>
+<p>Each color on the color wheel can be described by a <em class="Defn">hue</em> (a number between 0 and
+    360 that represents the angle) and a <em class="Defn">saturation</em> (a number between 0 and 100
+    representing how far from the centre the color is).</p>
+<p>When you first loaded (or reloaded) this page, the black line drawn from the centre of the color wheel to
+    the lower left shows a hue of 210 (i.e. 30° past 180°.) The black circle corresponds to a saturation of 88
+    (i.e. the circle is 88% as big as the whole color wheel.) These values define the particular shade of blue where
+    the circle crosses the line.</p>
+<p>The color wheel above is shown at maximum brightness. You can imagine “dimming” the color wheel to
+    produce darker shades of color. The overall brightness of the color wheel is represented by a third
+    number, called the <em class="Defn">value</em> (or sometimes <em class="Defn">brightness</em>) that
+    is between 0 and 100. The color wheel above has a value of 100. Taken together, the hue, saturation,
+    and value numbers (HSV) make an alternative way of representing colors.</p>
+<p>You can click on the color wheel to select a particular color or use the controls to change the HSV values.</p>
+<p>Imagine a situation where a robot wants to locate a “blue” object in one of its color sensors.
+    One problem is that the object may not have uniform color. Another is that the RGB value detected
+    by the sensor will depend on lighting and shadows. A third problem is that “noise” in the color
+    sensor may cause the sensor reading to be a bit off. If our robot’s brain waits until its sensor
+    detects the exact color “blue” – <code><span class="Black">(0, 0, 255)</span></code> in the RGB
+    model – it will not be able to “see” the object reliably. What we can do instead, is to convert
+    the color sensor data to an HSV representation, and then define a <em>range</em> which is acceptably blue.</p>
+<p class="Center"><img src="cs_new/robo/img/blue.png" style="transform:scale(1,-1)" alt="Wheel (Blue)"/></p>
+<p>The “box” drawn on the color wheel above identifies colors with a hue between 205 and 260, and a
+    saturation between 60 and 100. We can take these criteria as our definition of what our robot will
+    consider to be “blue”. We might also want to specify a minimum brightness value, since the blue
+    color fades to black if the “V” part of HSV becomes too small. Note that colors close to the
+    boundary of the box may not be detected reliably if the sensor is noisy.</p>
+<p>The fourth number in HSVA, like in RGBA, is the alpha value that describes opacity. As we saw above,
+    the RGBA alpha values use a scale from 0 to 255. In HSVA, the alpha scale goes from 0 (transparent)
+    to 100 (opaque). Here is the program from above, modified to display colors as HSVA. Note that
+    RGBA is the default color model. If you want to print a color in HSVA format, you must add <code>.hsva</code>
+    to the end of the expression.</p>
+<p><code>sc8pr</code> has a function called <code>hsvBox</code> that will check is a color falls within
+    a range of HSV values. We could write a function to check if a color is blue, as defined by the box in
+    the illustration.</p>
+<p>In the example below, the keyword <code>return</code> is a Python instruction that sends a result
+    from a function back to the function or program that called it. In this example the result will be
+    either <code>True</code> (the color is blue) or <code>False</code> (the color is not blue.)</p>
+<pre data-echo="r04_ex2.py" data-title="1" class="Code">from sc8pr.robot.arena import Arena, quilt
+from sc8pr.misc.hsv import hsvBox
+
+def isBlue(color):
+    <span class="Comment"># Check if a color is blue</span>
+    <span class="Red">return</span> <span class="Blue">hsvBox</span>(color, (205, 260), (60, 100), (60, 100))
+
+def brain(robot):
+    robot.motors = 0.5, 0.3
+    while robot.active:
+        robot.updateSensors()
+        color = robot.sensorDown
+        print("\nRGBA =", color)
+        print("HSVA =", color<span class="Blue">.hsva</span>)
+        print("Blue =", isBlue(color))
+
+Arena.run(brain, pattern=quilt)</pre>
+</div></section>
+
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
+<li>Copy your <code>turnTo</code> function from <code>r03_turn.py</code> into the program below. Add a function
+    called <code>isGrey</code> that will detect when the robot reaches the grey warning track. Modify the
+    <code>brain</code> so that the robot turns by a random angle (between 10° and 120°) when it gets to the
+    warning track instead of running into the wall. The robot should continue moving forward after turning.
+<pre data-echo="r04_arena1.py" data-title="1" class="Code">from sc8pr.robot.arena import Arena, quilt
+
+def brain(robot):
+    turnTo(robot, 290)
+    robot.motors = 0.3
+    while robot.active:
+        robot.updateSensors()
+        color = robot.sensorDown
+        print(color.hsva)
+
+Arena.run(brain, pattern=quilt)</pre></li>
+<li>Copy your program <code>r04_arena1.py</code> as <code>r04_arena2.py</code>. Add a function <code>isRed</code>
+    and copy the <code>isBlue</code> function from above. Modify the <code>brain</code> so that it prints the
+    words <code><span class="Black">Red</span></code> or <code><span class="Black">Blue</span></code> when the
+    robot crosses red or blue patches, and only prints the HSVA values when crossing patches that are not red or blue.</li>
+</ol>
+</div></section>
+
+<script type="text/javascript" data-init="sim">
+
+loadFeed.data = {
+    title: "Colors & Sensors",
+    up: `cs_new/robo/home`,
+    prev: "cs_new/robo/func",
+    next: "cs_new/robo/soccer",
+}
+    
+loadFeed.sim = () => {
+    $("#RGB_Controls input").on("change", () => loadFeed.sim.redraw());
+
+    $.getScript("src/hsv.js").then(() => {
+        loadFeed.sim.redraw(1);
+        $("#HSV").show();
+    });
+    $("#HSV_Controls input").on("change", () => loadFeed.sim.redraw(1));
+    $("#HSV").on("click", (e) => {
+        let s = e.currentTarget;
+        let r = s.getBoundingClientRect();
+        let [x, y] = [(e.clientX - r.x) / r.width - 0.5, (e.clientY - r.y) / r.height - 0.5];
+        r = Math.sqrt(x*x + y*y) / 0.96;
+        if (r > 0.5) r = 0.5;
+        let h = Math.atan2(-y, x) / Math.PI * 180;
+        if (h < 0) h += 360;
+        $("#HSV_S").val(200 * r);
+        $("#HSV_H").val(h).trigger("change");
+    });
+}
+
+loadFeed.sim.redraw = (hsv) => {
+    if (hsv) {
+        let h = parseFloat($("#HSV_H").val());
+        let s = parseFloat($("#HSV_S").val());
+        let v = parseFloat($("#HSV_V").val());
+        let rgb = HSVtoRGB(h, s, v);
+        $("#RGB_R").val(rgb.r);
+        $("#RGB_G").val(rgb.g);
+        $("#RGB_B").val(rgb.b);
+    }
+    else {
+        let r = parseFloat($("#RGB_R").val());
+        let g = parseFloat($("#RGB_G").val());
+        let b = parseFloat($("#RGB_B").val());
+        hsv = RGBtoHSV(r, g, b);
+        $("#HSV_H").val(hsv.h);
+        $("#HSV_S").val(hsv.s);
+        $("#HSV_V").val(hsv.v);
+    }
+    loadFeed.sim.hsv();
+    loadFeed.sim.rgb();
+}
+
+loadFeed.sim.hsv = () => {
+    let h = parseFloat($("#HSV_H").val());
+    let s = parseFloat($("#HSV_S").val());
+    let v = parseFloat($("#HSV_V").val());
+    $("#HSV_Hval").html(h.toFixed(0));
+    $("#HSV_Sval").html(s.toFixed(0));
+    $("#HSV_Vval").html(v.toFixed(0));
+    $("#HSV_Hue").attr("transform", `rotate(-${h})`);
+    let w = 0.96 / 2 * ($("#HSV").width() - 1);
+    $("#HSV_Sat").attr("r", `${w * s / 100}`);
+    if (v < 75) $("#HSV").addClass("White");
+    else $("#HSV").removeClass("White");
+    $("#HSV_Wheel").attr({href: colorWheelURL(Math.round(w), v / 100)});
+}
+
+loadFeed.sim.rgb = () => {
+    let hex = (n) => {
+        let x = n.toString(16).toUpperCase();
+        while (x.length < 2) x = "0" + x;
+        return x;
+    }
+
+    let r = parseInt($("#RGB_R").val());
+    let g = parseInt($("#RGB_G").val());
+    let b = parseInt($("#RGB_B").val());
+    $("#RGB_Rval").html(r);
+    $("#RGB_Gval").html(g);
+    $("#RGB_Bval").html(b);
+    loadFeed.sim.drawRGB(r, g, b);
+    $("#RGB_Hex").html(`Hex Code: #${hex(r)}${hex(g)}${hex(b)}`).css("background-color", `rgb(${r}, ${g}, ${b})`);
+    if (r + g + b < 420) $("#RGB_Hex").addClass("White");
+    else $("#RGB_Hex").removeClass("White");
+}
+
+loadFeed.sim.drawRGB = (r, g, b) => {
+    let cv = $("#RGB");  
+    let w = cv[0].width;
+    let center = (w - 1) / 2;
+    let radius = (w - 1) / 3;
+    let rSq = 0.9 * radius * radius;
+    let [xr, yr] = [w - radius, w - radius];
+    let [xg, yg] = [center, radius];
+    let [xb, yb] = [radius, w - radius];
+    let fill = (x, y, a, b) => Math.pow(x - a, 2) + Math.pow(y - b, 2) < rSq;
+    let img = new ImageData(w, w);
+    let data = img.data;
+    for (let x=0; x<w; x++)
+        for (let y=0; y<w; y++) {
+            let i = 4 * (x + w * y);
+            let rFill = fill(x, y, xr, yr);
+            let gFill = fill(x, y, xg, yg);
+            let bFill = fill(x, y, xb, yb);
+            data[i + 3] = 255;
+            if (rFill) data[i] = r;
+            if (gFill) data[i + 1] = g;
+            if (bFill) data[i + 2] = b;
+        }
+    let cx = cv[0].getContext("2d");
+    cx.clearRect(0, 0, w, w);
+    cx.putImageData(img, 0, 0);
+}
+
+</script>
