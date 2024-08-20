@@ -1,4 +1,4 @@
-const colorWheel = (r, v) => {
+function colorWheel(r, v) {
     if (v == null) v = 1;
     let w = 2 * r + 1;
     let img = new ImageData(w, w);
@@ -20,7 +20,7 @@ const colorWheel = (r, v) => {
     return img;
 }
 
-const colorWheelURL = (r, v) => {
+function colorWheelURL(r, v) {
     if (v == null) v = 1;
     let w = 2 * r + 1;
     let cv = $("<canvas>").attr({width:w, height:w})[0];

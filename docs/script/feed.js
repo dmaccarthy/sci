@@ -478,7 +478,8 @@ function teacher(t, init) {
         if (btoa(localStorage.getItem("teacher_code")) == teacher.access)
             teacher.mode = true;
     console.log("Teacher", teacher.mode);
-    if (teacher.mode) $.ajax({url: "https://dmaccarthy.vercel.app/ping.json"});
+    if (teacher.mode && location.hostname == "dmaccarthy.github.io")
+        $.ajax({url: "https://dmaccarthy.vercel.app/ping.json"});
     if (!init) loadFeed();
 }
 

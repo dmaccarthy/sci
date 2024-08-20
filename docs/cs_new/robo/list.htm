@@ -1,5 +1,6 @@
-<div class="Note">
-<p>You learned in <a href="#sp1">Structured Programming</a> that Python supports several different simple (or “primitive”)
+<section class="Post" data-icon="robot">
+<h2 class="Collapse">Python Lists</h2><div class="Collapse Expand">
+<p>You learned in <a href="#cs_new/sp1/home">Structured Programming</a> that Python supports several different simple (or “primitive”)
     data types each represented by a class: <code>int</code>, <code>float</code>, <code>bool</code>,
     <code>str</code>. Python also provides more advanced data types for more complicated data.
     One of the more useful data types is a <code>list</code>.  A list is an ordered sequence of data.
@@ -7,9 +8,7 @@
 <p>A Python list allows you to mix items of different data types. There is another data type (called
     an array) that can be used if you want all items in the sequence to have the same class.</p>
 <p>You can use indices and slices with lists just like you can with strings.</p>
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r06_ex1.py'</span>
-
-data = [5, True, "robot", 3.14]
+<pre data-echo="r06_ex1.py" data-title="1" class="Code">data = [5, True, "robot", 3.14]
 
 print(data[0])    <span class="Comment"># 5</span>
 print(data[-1])   <span class="Comment"># 3.14</span>
@@ -17,38 +16,32 @@ print(data[1:3])  <span class="Comment"># [True, "robot"]</span></pre>
 
 <p>As with strings, you can use the <code>in</code> and <code>not in</code> operators to see if a
     list contains a specific value.</p>
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r06_ex2.py'</span>
-
-data = [5, True, "robot", 3.14]
+<pre data-echo="r06_ex2.py" data-title="1" class="Code">data = [5, True, "robot", 3.14]
 
 print(5 in data)       <span class="Comment"># True</span>
 print("r" in data)     <span class="Comment"># False</span>
 print("r" not in data) <span class="Comment"># True</span></pre>
-</div>
+</div></section>
 
-<h3>Modifying Lists</h3><div class="Note">
+<section class="Post" data-icon="robot">
+<h2 class="Collapse">Modifying Lists</h2><div class="Collapse Expand">
 <p>You can use the <code>append</code> method to add a single item to the end of the list, or the
     <code>extend</code> method to add a sequence of items to the end of list.</p>
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r06_ex3.py'</span>
-
-data = [1, 2]
+<pre data-echo="r06_ex3.py" data-title="1" class="Code">data = [1, 2]
 data.append(3)
 data.extend([4, 5])
-print(data)</pre>
+print(data)         <span class="Comment"># [1, 2, 3, 4, 5]</span></pre></pre>
 
 <p>Lists have a <code>+=</code> operator that works mostly the same as <code>extend</code>, except that
     it creates a whole new copy of the list rather than just adding more data to the existing list.</p>
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r06_ex3.py (continued)'</span>
-
-data += [6, 7]
+<pre data-echo="py" class="Code">data += [6, 7]
 </pre>
-</div>
+</div></section>
 
-<h3>Iteration</h3><div class="Note">
+<section class="Post" data-icon="robot">
+<h2 class="Collapse">Iteration</h2><div class="Collapse Expand">
 <p>You can “iterate” (loop) through a list using a <code>while</code> loop with a counter, or by using a <code>for</code> loop.</p>
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r06_ex4.py'</span>
-
-data = [5, True, "robot", 3.14]
+<pre data-echo="r06_ex4.py" data-title="1" class="Code">data = [5, True, "robot", 3.14]
 
 count = 0
 while count < len(data):
@@ -57,15 +50,15 @@ while count < len(data):
 
 for item in data:
     print(item)</pre>
-</div>
+</div></section>
 
-<h3>Assignment</h3><ol class="Assign">
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
 <li>One way to use lists with robotics is to use a list to represent movement patterns. In the example
     below, the list <code>data</code> means we want the robot to move forward for 3 seconds, turn by 135°,
     move forward again for 2 seconds, turn by 90°, and then move forward for 2 seconds.
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r06_directions.py'</span>
-
-from sc8pr.robot.arena import Arena
+<pre data-echo="r06_directions.py" data-title="1" class="Code">from sc8pr.robot.arena import Arena
 
 data = [3, 135, 2, 90, 2]
 
@@ -77,7 +70,7 @@ Complete the <code>brain</code> function so that the robot follows the instructi
 <li>Copy your <code>r06_directions.py</code> program as <code>r06_letter.py</code>. Without changing
     the <code>brain</code> function, make the robot draw a letter “F” by changing the data in the list.</li>
 <li>The next simulation is of a robot party...
-<p class="Center"><img src="robo/img/party.png"/></p>
+<p class="Center"><img src="cs_new/robo/img/party.png"/></p>
 <p>Your robot (the red one at the centre) is to mingle with the other robots. Each time your robot
     bumps into another robot, the other robot will introduce itself. You can use the variable
     <code>robot.greet</code> to find the name of the most recent robot that introduced itself to yours.
@@ -87,9 +80,7 @@ Complete the <code>brain</code> function so that the robot follows the instructi
     greeted all twelve, print the list of robot names, one name per line. (It may take a long time to meet
     all twelve. For testing purposes, you might want to limit the number of meetings to two or three, and
     then change it to twelve once you know the program works properly.)</p>
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r06_party.py'</span>
-
-from sc8pr.robot.party import Party
+<pre data-echo="r06_party.py" data-title="1" class="Code">from sc8pr.robot.party import Party
 
 def brain(robot):
     <span class="Comment">"Learn the names of the other robots"</span>
@@ -101,3 +92,15 @@ def brain(robot):
 
 Party.run(brain)</pre></li>
 </ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Lists",
+    up: `cs_new/robo/home`,
+    prev: "cs_new/robo/soccer",
+    next: "cs_new/robo/park",
+}
+  
+</script>

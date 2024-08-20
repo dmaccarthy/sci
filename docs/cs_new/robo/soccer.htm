@@ -1,9 +1,9 @@
+<section class="Post" data-icon="robot">
+<h2 class="Collapse">Notes</h2><div class="Collapse Expand">
 <p>The <code>sc8pr</code> robotics package includes a simulation of two robots playing soccer.</p>
-<p class="Center"><img src="robo/img/soccer.png" alt="Soccer"/></p>
+<p class="Center"><img src="cs_new/robo/img/soccer.png" data-aspect="4/3" alt="Soccer"/></p>
 <p>The yellow robot is programmed to follow the soccer ball. The red robot will be controlled by a <code>brain</code> function that you write.</p>
-<pre data-echo="copy" class="Code"><span class="Comment"># Program 'r05_soccer.py'</span>
-
-<span class="Comment">"Robot soccer simulation"</span>
+<pre data-echo="r05_soccer.py" data-title="1" class="Code"><span class="Comment">"Robot soccer simulation"</span>
 
 from sc8pr.robot.soccer import play
 
@@ -14,10 +14,25 @@ play(brain)</pre>
 
 <p>The robot’s front sensor will detect blue when pointed at the boards, yellow (different shades) when pointed at the opposing player or net, and red when pointed at its own net. Since the ball is half black and half white, it will register as grey on the colour sensor.</p>
 <p>The downward sensor will detect yellow or red in the goal creases and green on the turf.</p>
+</div></section>
 
-<h3>Assignment</h3><ol class="Assign">
+<section class="Post" data-icon="replit">
+<h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
+<ol class="Assign">
 <li>The yellow robot’s follow-the-ball program is not very effective; it’s just as likely to score
     on its own net as on its opponent. Can you create a better algorithm? Complete the red robot’s
     <code>brain</code> function to make it play against the yellow robot, using only its sensors and actuators.
     Do not access or modify the simulation code or reconfigure the robot’s sensors.</li>
 </ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: "Soccer Challenge",
+    up: `cs_new/robo/home`,
+    prev: "cs_new/robo/hsv",
+    next: "cs_new/robo/list",
+}
+  
+</script>

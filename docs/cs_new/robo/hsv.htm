@@ -25,7 +25,7 @@ Arena.run(brain, pattern=quilt)</pre>
 <p>Essentially, the computer hardware creates colors by combining red, green, and blue lights. In the image below we can see that the red and blue spotlights
     produce a “magenta” shade of purple when they overlap. Overlapping red and green produce yellow; and
     overlapping blue and green produce “cyan”. Where all three lights overlap, the result is white.</p>
-<p class="Center"><a href="https://en.wikipedia.org/wiki/RGB_color_model#/media/File:RGB_illumination.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/2/28/RGB_illumination.jpg" alt="Image"/></a></p>
+<p class="Center"><a href="https://en.wikipedia.org/wiki/RGB_color_model#/media/File:RGB_illumination.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/2/28/RGB_illumination.jpg" data-aspect="4/3" alt="Image"/></a></p>
 <p>Other colors and shades can be produced by changing the brightness of one or more of the lights.
     You can use the controls below to adjust the RGB values to see what color is produced.</p>
 
@@ -78,7 +78,7 @@ Arena.run(brain, pattern=quilt)</pre>
 <h2 class="Collapse">HSVA Color</h2><div class="Collapse Expand">
 <style type="text/css">
 
-#HSV {display: none}
+/* #HSV {display: none} */
 
 #HSV_Controls {
     margin: auto;
@@ -160,7 +160,7 @@ Arena.run(brain, pattern=quilt)</pre>
     detects the exact color “blue” – <code><span class="Black">(0, 0, 255)</span></code> in the RGB
     model – it will not be able to “see” the object reliably. What we can do instead, is to convert
     the color sensor data to an HSV representation, and then define a <em>range</em> which is acceptably blue.</p>
-<p class="Center"><img src="cs_new/robo/img/blue.png" style="transform:scale(1,-1)" alt="Wheel (Blue)"/></p>
+<p class="Center"><img src="cs_new/robo/img/blue.png" style="transform:scale(1,-1)" data-aspect="432/428" alt="Wheel (Blue)"/></p>
 <p>The “box” drawn on the color wheel above identifies colors with a hue between 205 and 260, and a
     saturation between 60 and 100. We can take these criteria as our definition of what our robot will
     consider to be “blue”. We might also want to specify a minimum brightness value, since the blue
@@ -233,10 +233,8 @@ loadFeed.data = {
 loadFeed.sim = () => {
     $("#RGB_Controls input").on("change", () => loadFeed.sim.redraw());
 
-    $.getScript("src/hsv.js").then(() => {
-        loadFeed.sim.redraw(1);
-        $("#HSV").show();
-    });
+    if (window.colorWheel) loadFeed.sim.redraw(1);
+    else $.getScript("src/wheel.js").then(() => {loadFeed.sim.redraw(1)});
     $("#HSV_Controls input").on("change", () => loadFeed.sim.redraw(1));
     $("#HSV").on("click", (e) => {
         let s = e.currentTarget;
