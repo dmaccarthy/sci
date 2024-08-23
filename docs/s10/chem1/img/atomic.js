@@ -14,6 +14,7 @@ bun: (sel) => {
     svg.line(pts[0], [1, 0.7]).css({stroke: "green"});
     for (let i=0;i<pts.length;i++) svg.circle(0.04, pts[i], g).css(attr);
     svg.text("Electron", [1, 0.8], g);
+    svg.$.css({"font-size": "18px"});
     svg.final();
 },
 
@@ -43,7 +44,7 @@ nuclear: (sel) => {
     svg.$.find(".Electron").css({fill: "green"});
     svg.$.find(".Proton").css({fill: "red"});
     svg.$.find(".Neutron").css({fill: "#0065FE"});
-    svg.$.find("text").css({"font-size": "18px"});
+    svg.$.css({"font-size": "18px"});
     svg.final();
 
     let t = svg.$.find("text, line");

@@ -231,6 +231,7 @@ function loadAllSVG(callback) {
     }
     // console.log(maps);
     for (let u in maps) {
+        // console.log(u);
         loadSVG(u, maps[u][0], (map, js) => {
             maps[u][1] = 0;
             let n = 0;
@@ -242,9 +243,11 @@ function loadAllSVG(callback) {
 
 function loadSVG(key, map, callback, keep) {
     if (key.indexOf("//") == -1) {
+        let url = key;
+        while (key.substr(0, 3) == "../") key = key.substr(3);
         if (save.cache[key]) loadSVG.success(key, map, callback, keep);
         else {
-            $.getScript({url: "./" + key + ".js", success:() => loadSVG.success(key, map, callback, keep)});
+            $.getScript({url: "./" + url + ".js", success:() => loadSVG.success(key, map, callback, keep)});
         }
     }
 }

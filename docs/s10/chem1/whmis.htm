@@ -1,3 +1,27 @@
+<section class="Post" data-show="9999" data-icon="teacher.svg">
+<h2 class="Collapse">Teacher Notes</h2><div class="Collapse">
+<p><b>Class 1</b></p>
+<ul>
+    <li>Obtain laptop cart before class.</li>
+    <li>Library may call to issue student textbooks.</li>
+    <li>Go over behaviour expectations, expectations for group work, research assignments, assessment, missed exams, phone policy, etc.</li>
+    <li>Distribute assignment book for Chapter 1. Go over instructions with students.</li>
+    <li>Have students bookmark the Science 10 webpage via <a href="https://bit.ly/sal24-25">bit.ly/sal24-25</a>.
+        Students may use phones or laptops.</li>
+    <li>Students are to complete Practice section using phones or laptops.</li>
+    <li>Go over Lesson Notes.</li>
+    <li>Go over answer key for Practice.</li>
+</ul>
+<p><b>Class 2</b></p>
+<ul>
+    <li>Library may call to issue student textbooks.</li>
+    <li>Complete any items from Class 1 that were not completed.</li>
+    <li>Students are to complete Activity section in a group of two or three.</li>
+    <li>Complete and correct the Review section.</li>
+</ul>
+</div>
+</section>
+    
 <section class="Post" data-icon="gdrv">
     <h2 class="Collapse">WHMIS Links</h2><div class="Collapse">
     <p class="BtnGrid">
@@ -5,6 +29,105 @@
         <button data-icon="link.svg" data-open="https://www.ccohs.ca/oshanswers/legisl/msds_lab.html#section-11-hdr">WHMIS 1988</button>
     </p>
 </div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<style type="text/css">
+
+body.Print ol.WHMIS {column-count: 4}
+body:not(.Print) ol.WHMIS {column-count: 2}
+
+table.MSDS {
+    width: 36em;
+    max-width: 100%;
+    font-size: 90%;
+}
+    
+</style>
+<ol>
+<li>Familiarize yourself with the pictograms for both WHMIS 2015 and WHMIS 1988 by following the links on the webpage for this lesson.
+    Label each of the pictograms below with its meaning and state whether each is from WHMIS 2015 or 1988.
+<ol type="a" class="WHMIS"></ol>
+<ol class="Answer" type="a">
+    <li>Health Hazard: may cause or suspected of causing serious health effects (2015)</li>
+    <li>Toxic Effects (1988)</li>
+    <li>Gas Cylinder: gases under pressure (2015)</li>
+    <li>Corrosion: corrosive to metals as well as skin, eyes (2015)</li>
+    <li>Environment: may cause damage to aquatic environment (2015)</li>
+    <li>Biohazard: organisms or toxins that can cause diseases in people or animals (1988)</li>
+    <li>Exclamation Mark: may cause less serious health effects or damage to the ozone layer (2015)</li>
+    <li>Dangerously Reactive (1988)</li>
+    <li>Exploding bomb: explosion or reactivity hazard (2015)</li>
+    <li>Flame over Circle: oxidizing hazard (2015)</li>
+    <li>Flame: fire hazard (2015)</li>
+    <li>Skull &amp; Crossbones: can cause death or toxicity with short exposure to small amounts (2015)</li>
+</ol>
+</li>
+<li class="NoPageBreak">The label from a container of a chemical that is commonly used in high-school laboratories is shown below. Refer to this label to answer these questions.
+    <table class="Top Bottom MSDS">
+        <tr><td>Name</td><td>copper(II) sulfate pentahydrate</td><td rowspan="7" class="Center" style="width: 30%; border-bottom: none">
+            <img data-whmis="0"/><br/><img data-whmis="1"/>
+        </td></tr>
+        <tr><td>Formula</td><td>CuSO<sub>4</sub> · 5H<sub>2</sub>O</td></tr>
+        <tr><td>Risks</td><td>Toxic</td></tr>
+        <tr><td>Lungs</td><td>Toxic dust (avoid inhalation)</td></tr>
+        <tr><td>Skin</td><td>Slight absorption</td></tr>
+        <tr><td>Fire</td><td>N/A</td></tr>
+        <tr><td>Reactivity</td><td>Reacts with powdered metals</td></tr>
+        <tr><td>Precautions</td><td>Goggles, gloves, aprons</td><td style="font-weight: bold; border-top: none" rowspan="2">
+            <p>Caution</p>
+            <p>Harmful if swallowed!</p>
+            <p>Wash throuoghly after handling</p>
+        </td></tr>
+        <tr><td>First Aid</td><td>Flush exposed area with water. In case of ingestion induce vomitting immediately as directed by medical personnel. Get immediate medical attention.</td></tr>
+        <tr><td>Disposal</td><td>Use waste container</td><td>UN #3077</td></tr>
+    </table>
+    <ol type="a">
+        <li>According to the chemical’s label, what is the name and chemical formula of the substance?</li>
+        <div class="Answer">copper(II) sulfate pentahydrate, <span class="TeX">\rm{CuSO_4 \cdot 5 H_2O}</span></div>
+        
+        <li>Is the substance dangerous to your health? If so, in what way is it dangerous?</li>
+        <div class="Answer">It is toxic.</div>
+        
+        <li>What safety precaution should you take when handling the substance during an investigation?</li>
+        <div class="Answer">Wear goggles, gloves, aprons.</div>
+        
+        <li>How should you dispose of excess amounts of the chemical?</li>
+        <div class="Answer">Use a proper waste disposal container.</div>
+        
+        <li>A fellow student has accidentally swallowed some of the chemical. What should you do?</li>
+        <div class="Answer">Induce vomiting immediately as directly by medical personnel. Get immediate medical attention.</div>
+    </ol>
+</li>    
+</ol>
+<script type="text/javascript" data-init="whmis">
+
+loadFeed.whmis = () => {
+    let sz = "6em";
+    sz = {width: sz, height: sz};
+    let source = ["health_hazard", "toxic", "gas_cylinder", "corrosion",
+        "environment", "biohazardous", "exclamation_mark", "reactive",
+        "exploding_bomb", "flame_circle", "flame", "skull_crossbones"];
+    let ol = $("ol.WHMIS");
+    let media = "https://media-davidmaccarthy.replit.app/s10/whmis";
+    for (let src of source) {
+        let svg = ["reactive", "toxic"].indexOf(src) == -1 ? "svg" : "png";
+        let img = $("<img>").attr({alt: "WHMIS Pictogram", src: `${media}/${src}.${svg}`});
+        img.css(sz);
+        ol.append($("<li>").html("<br/>").append(img));
+    }
+    let imgs = $("img[data-whmis]");
+    for (let i=0;i<imgs.length;i++) {
+        let src = ["exclamation_mark", "environment"][i];
+        $(imgs[i]).attr({alt: "WHMIS Pictogram", src: `${media}/${src}.svg`}).css(sz);        
+    }
+    // shuffle(source);
+    // console.log(source);
+}
+
+</script>
+</div></div></section>
 
 <section class="Post" data-icon="slides">
 <h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
@@ -55,110 +178,15 @@
 </div></div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
-<style type="text/css">
-
-body.Print ol.WHMIS {column-count: 4}
-body:not(.Print) ol.WHMIS {column-count: 2}
-
-table.MSDS {
-    width: 36em;
-    max-width: 100%;
-    font-size: 90%;
-}
-    
-</style>
+<h2 class="Collapse">Activity</h2><div class="Collapse">
+<div id="Activity">
 <ol>
-<li>Familiarize yourself with the pictograms for both WHMIS 2015 and WHMIS 1988 by following the links on the webpage for this lesson.
-    Label each of the pictograms below with its meaning and state whether each is from WHMIS 2015 or 1988.
-<ol type="a" class="WHMIS"></ol>
-<ol class="Answer" type="a">
-    <li>Health Hazard: may cause or suspected of causing serious health effects (2015)</li>
-    <li>Toxic Effects (1988)</li>
-    <li>Gas Cylinder: gases under pressure (2015)</li>
-    <li>Corrosion: corrosive to metals as well as skin, eyes (2015)</li>
-    <li>Environment: may cause damage to aquatic environment (2015)</li>
-    <li>Biohazard: organisms or toxins that can cause diseases in people or animals (1988)</li>
-    <li>Exclamation Mark: may cause less serious health effects or damage to the ozone layer (2015)</li>
-    <li>Dangerously Reactive (1988)</li>
-    <li>Exploding bomb: explosion or reactivity hazard (2015)</li>
-    <li>Flame over Circle: oxidizing hazard (2015)</li>
-    <li>Flame: fire hazard (2015)</li>
-    <li>Skull &amp; Crossbones: can cause death or toxicity with short exposure to small amounts (2015)</li>
-</ol>
-</li>
+    <li>Write down as many laboratory safety rules as you can think of. Rules should address working with chemicals, glassware, heat, electrical equipment, and other tools.</li>
+    <li>After discussing the rules as a class, make a lab safety poster for <b><u>one</u></b> of the rules you created. Posters may be posted in the classroom and must therefore be appropriate!</li>
+</ol></div></div></section>
 
-<li>Write down as many laboratory safety rules as you can think of. Rules should address working with chemicals, glassware, heat, electrical equipment, and other tools.</li>
-<li>After discussing the rules as a class, make a lab safety poster for <b><u>one</u></b> of the rules you created. Posters may be posted in the classroom and must therefore be appropriate!</li>
-
-<li class="NoPageBreak">The label from a container of a chemical that is commonly used in high-school laboratories is shown below. Refer to this label to answer these questions.
-    <table class="Top Bottom MSDS">
-        <tr><td>Name</td><td>copper(II) sulfate pentahydrate</td><td rowspan="7" class="Center" style="width: 30%; border-bottom: none">
-            <img data-whmis="0"/><br/><img data-whmis="1"/>
-        </td></tr>
-        <tr><td>Formula</td><td>CuSO<sub>4</sub> · 5H<sub>2</sub>O</td></tr>
-        <tr><td>Risks</td><td>Toxic</td></tr>
-        <tr><td>Lungs</td><td>Toxic dust (avoid inhalation)</td></tr>
-        <tr><td>Skin</td><td>Slight absorption</td></tr>
-        <tr><td>Fire</td><td>N/A</td></tr>
-        <tr><td>Reactivity</td><td>Reacts with powdered metals</td></tr>
-        <tr><td>Precautions</td><td>Goggles, gloves, aprons</td><td style="font-weight: bold; border-top: none" rowspan="2">
-            <p>Caution</p>
-            <p>Harmful if swallowed!</p>
-            <p>Wash throuoghly after handling</p>
-        </td></tr>
-        <tr><td>First Aid</td><td>Flush exposed area with water. In case of ingestion induce vomitting immediately as directed by medical personnel. Get immediate medical attention.</td></tr>
-        <tr><td>Disposal</td><td>Use waste container</td><td>UN #3077</td></tr>
-    </table>
-    <ol type="a">
-        <li>According to the chemical’s label, what is the name and chemical formula of the substance?</li>
-        <div class="Answer">copper(II) sulfate pentahydrate, \(\mathrm{CuSO_4 \cdot 5 H_2O}\)</div>
-        
-        <li>Is the substance dangerous to your health? If so, in what way is it dangerous?</li>
-        <div class="Answer">It is toxic.</div>
-        
-        <li>What safety precaution should you take when handling the substance during an investigation?</li>
-        <div class="Answer">Wear goggles, gloves, aprons.</div>
-        
-        <li>How should you dispose of excess amounts of the chemical?</li>
-        <div class="Answer">Use a proper waste disposal container.</div>
-        
-        <li>A fellow student has accidentally swallowed some of the chemical. What should you do?</li>
-        <div class="Answer">Induce vomiting immediately as directly by medical personnel. Get immediate medical attention.</div>
-    </ol>
-</li>    
-</ol>
-<script type="text/javascript" data-init="whmis">
-
-loadFeed.whmis = () => {
-    let sz = "6em";
-    sz = {width: sz, height: sz};
-    let source = ["health_hazard", "toxic", "gas_cylinder", "corrosion",
-        "environment", "biohazardous", "exclamation_mark", "reactive",
-        "exploding_bomb", "flame_circle", "flame", "skull_crossbones"];
-    let ol = $("ol.WHMIS");
-    let media = "https://media-davidmaccarthy.replit.app/s10/whmis";
-    for (let src of source) {
-        let svg = ["reactive", "toxic"].indexOf(src) == -1 ? "svg" : "png";
-        let img = $("<img>").attr({alt: "WHMIS Pictogram", src: `${media}/${src}.${svg}`});
-        img.css(sz);
-        ol.append($("<li>").html("<br/>").append(img));
-    }
-    let imgs = $("img[data-whmis]");
-    for (let i=0;i<imgs.length;i++) {
-        let src = ["exclamation_mark", "environment"][i];
-        $(imgs[i]).attr({alt: "WHMIS Pictogram", src: `${media}/${src}.svg`}).css(sz);        
-    }
-    // shuffle(source);
-    // console.log(source);
-}
-
-</script>
-</div></div></section>
-
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review<span data-print="Review"></span></h2><div class="Collapse">
+<section class="Post" data-show="2024.8.30.10" data-answers="1" data-icon="correct">
+<h2 class="Collapse" data-booklet="no">Review<span data-print="Review"></span></h2><div class="Collapse">
 <div id="Review">
 <ol>
     <li>What do WHMIS and GHS stand for? What is WHMIS?</li>
@@ -180,7 +208,7 @@ loadFeed.whmis = () => {
 
 loadFeed.data = {
     title: `${siteData.lesson}A.01 — WHMIS / Lab Safety`,
-    answerDate: "2025.2.?.16",
+    answerDate: "2024.8.31.16",
     num: "A.01",
     up: "s10/unitA",
     // prev: "s10/chem/",

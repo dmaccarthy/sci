@@ -54,14 +54,14 @@ function isPractice(s) {
     if (!isAfter(s.attr("data-show"))) return;
     let h = s.children("h2");
     let booklet = h.attr("data-booklet");
-    let include = ["Pre-Test", "Practice", "Review"];
+    let include = ["Pre-Test", "Practice", "Review", "Activity"];
     let i = include.indexOf(h.text());
     if (booklet == "yes" || i != -1 && booklet != "no") {
         h.replaceWith($("<h3>").html(h.text()));
         return true;
     }
 }
-    
+
 function collect(folder, i) {
     if (i == null) i = 0;
     let urls = collect.urls[folder];
@@ -81,7 +81,7 @@ function collect(folder, i) {
                 s.append(ek);
             }
             let h2 = $("<h2>").html(url[1]);
-            if (i) h2.addClass("PageBreak");
+            // if (i) h2.addClass("PageBreak");
             $("body").append(h2).append(s);
             loadAllSVG(() => {
                 for (let s of $("script[data-init]")) {
@@ -112,6 +112,12 @@ console.log(`Ctrl  + Click = Toggle 'No Page Break Inside'
 Shift + Click = Hide`);
 
 $(() => {
+    let instr = location.search.substr(1);
+    if (instr) {
+        instr = math.evaluate(`[${instr}]`)._data;
+        let e = $("#Instructions").children("li");
+        for (let i=0;i<instr.length;i++) $(e[instr[i]]).hide();
+    }
     let chap = location.hash.substr(1);
     let crs = chap.split('/')[0];
     $.getScript(`./${crs}/booklet.js`, (e) => {
@@ -129,15 +135,15 @@ $(() => {
 </head>
 <body class="Print">
 <h1 id="Title" class="Center"></h1>
-<ul style="font-style: italic">
-    <li>Answer all questions on a separate sheet of paper.</li>
-    <li>Use graph paper for all graphs and vector diagrams. (If the question says to “sketch” the graph or diagram, a rough drawing without graph paper is acceptable.)</li>
-    <li>Show all work!</li>
-    <li>Use SI units, significant digits, and scientific notation appropriately.</li>
-    <li>If you use more than a single page, staple the pages together in the correct order.</li>
+<ul id="Instructions" style="font-style: italic">
+    <li>Answer all questions on a separate sheet of paper unless the question states otherwise.</li>
     <li>Write each lesson title at the top of the first page and keep all of your work — in order! — in your <span id="Course"></span> binder.</li>
+    <li>If you use more than a single page, staple the pages together in the correct order.</li>
     <li>Be prepared to hand in your notebook when the teacher asks you to.</li>
     <li>The “Pre-Test” sections are intended to see what you already know based on previous courses and lessons; they are not summative assessments.</li>
+    <li>Show all work!</li>
+    <li>Use SI units, significant digits, and scientific notation appropriately.</li>
+    <li>Use graph paper for all graphs and vector diagrams. (If the question says to “sketch” the graph or diagram, a rough drawing without graph paper is acceptable.)</li>
 </ul>
 </body>
 </html>

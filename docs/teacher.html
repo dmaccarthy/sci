@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Teacher Code</title>
+<link rel="shortcut icon" type="image/svg+xml" href="./media/rocket.svg" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    $("#Code").val("");    
+});
+    
+function go() {
+    let code = $("#Code").val();
+    if (code) {
+        $("#Code").val("");
+        localStorage.setItem("teacher_code", code);
+        localStorage.setItem("teacher_mode", "2");
+        location.href = "./";
+    }
+}
+
+</script>
+</head>
+<body style="text-align:center">
+<p><input id="Code" type="text" placeholder="Enter Code"/> <input type="button" value="Go!" onclick="go()"/></p>
+</body>
+</html>
