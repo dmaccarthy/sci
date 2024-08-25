@@ -1,7 +1,7 @@
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Remember?<span data-print="PreTest"></span></h2><div class="Collapse">
 <div id="PreTest">
-<p class="Center Ital Var">remember</p>
+<p class="Center Ital Var NoPrint">remember</p>
 <ol>
 <li>A 70.0 kg student rides a 20.0 kg bike with a speed of 12.0 m/s.
     <ol type="a">
@@ -194,7 +194,7 @@ loadFeed.notes = () => {
     <div class="Answer">Yes! Air resistance transforms some of the mechanical energy into waste (sound and/or thermal energy). This means that the final kinetic energy would be less than calculated above and the ball would have a slower speed.</div>
 </ol></li>
 
-<li><ol type="a">
+    <li><ol type="a">
     <li>A 12.5 kg mass is slid up a frictionless 10.0° incline. The mass is given an initial speed of 2.50 m/s at the bottom of the incline and then released. What height does the mass reach before gravity brings it to a stop?</li>
     <div class="Answer">
         <p>At the bottom of the incline, there is only kinetic energy...</p>
@@ -254,23 +254,40 @@ loadFeed.notes = () => {
 </ol>
 </div></div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="2024.8.30" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review<span data-print="Practice"></h2><div class="Collapse">
 <div id="Review">
 <ol>
     <li>Define: <em class="Defn">energy</em>, <em class="Defn">mechanical energy</em>, <em class="Defn">work</em>.</li>
+    <div class="Answer">Energy is the ability to “do work” or “create motion”. Mechanical energy refers to forms of energy that are related
+        to an objects motion (kinetic, rotational, gravitational potential, elastic potential). Work is the amount of kinetic energy transformed
+        due to a force acting on an object.</div>
+
     <li>State the formulas for kinetic energy, gravitational potential energy, and elastic potential energy.</li>
+    <div class="Answer">
+        <p class="TeX">E_k = {1\over 2}mv^2</p>
+        <p class="TeX">E_g = mgh</p>
+        <p class="TeX">E_{elas} = {1\over 2}k(\Delta L)^2</p>
+    </div>
+
     <li>Explain the <em class="Defn">Law of Energy Conservation</em>.</li>
-</ol>
+    <div class="Answer"><ul>
+        <li>Energy cannot be created or destroyed, but it can be transformed from one form to another and transferred from one place/object to another.</li>
+        <li>A gain in one type of energy will always be balanced by a loss of an equal amount of another type of energy.</li>
+        <li>The total amount of all forms of energy for a system and its surroundings will always remain constant.</li>
+    </ul></div>
+
+<!--</ol>
 </div></div></section>
 
 <section class="Post" data-show="9999" data-icon="correct">
 <h2 class="Collapse">Assignment<span data-print="Assign"></span></h2><div class="Collapse">
 <div id="Assign">
-<ol><li>In the pulley system illustrated below, <span class="TeX">m_1</span> = 12.0 kg, <span class="TeX">m_2</span> = 8.00 kg, and <span class="TeX">h</span> = 1.50 m.
-    Assuming the system is released from rest and there is no friction or air resistance, determine the speed of the system just before <span class="TeX">m_1</span> contacts the ground.
-    <p class="Center"><img alt="Pulley" src="p20/energy/img/pulley.png"></p>
-</li>
+<ol>-->
+    <li>In the pulley system illustrated below, <span class="TeX">m_1</span> = 12.0 kg, <span class="TeX">m_2</span> = 8.00 kg, and <span class="TeX">h</span> = 1.50 m.
+        Assuming the system is released from rest and there is no friction or air resistance, determine the speed of the system just before <span class="TeX">m_1</span> contacts the ground.
+        <p class="Center"><img alt="Pulley" src="p20/energy/img/pulley.png"></p>
+    </li>
 <div class="Answer">
     <p>The initial energy of the system is the gravitational potential energy of <span class="TeX">m_1</span>...</p>
     <p class="TeX">E_i = m_1gh = \rm{12.0\ kg\cdot 9.81\ m/s^2\cdot 1.50\ m = 177\ J}</p>
@@ -296,7 +313,7 @@ loadFeed.notes = () => {
 
 loadFeed.data = {
     title: `${siteData.lesson}9.1 — Work & Energy Review`,
-    answerDate: "2024.8.29.16",
+    answerDate: "2024.8.30.10",
     num: "9.1",
     up: "p30/units/A",
     // prev: "p30/",

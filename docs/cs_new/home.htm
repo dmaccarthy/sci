@@ -1,15 +1,75 @@
-<section class="Post" data-icon="warn.svg">
+<!-- <section class="Post" data-icon="warn.svg">
     <h2>Important!</h2>
     <p class="Var">cs</p>
-</section>
+</section> -->
 
-<section class="Post" data-icon="replit">
-    <h2 class="Collapse">replit Repositories</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="replit" data-open="https://replit.com/@DavidMacCarthy/sal-py">CS 10 &amp; 20<br/>(Python)</button>
+<section class="Post" data-icon="python">
+    <h2 class="Collapse">Getting Started...</h2><div class="Collapse Expand">
+    <ol>
+        <li>Sign in to <i>Google Chrome</i> using your EIPS.ca account. Be sure to turn <i>Sync</i> on.</li>
+        <li>Create a <i>Chrome</i> bookmark to this page so that you won’t need to type the full web address in the future.
+            To do this, click the star at the end of the <i>Chrome</i> address bar.</li>
+        <li>Open <i>File Explorer</i> from the <i>Windows Start</i> menu. Navigate to your EIPS OneDrive folder.</li>
+        <li>Use the <i>New</i> button to create a new folder. Rename the new folder as <code>CompSci</code>.</li>
+        <li>Right-click on your <code>CompSci</code> folder and choose <i>Share</i>. Enter your teacher’s email address:
+            <p class="Var Center Code">email</p></li>
+        <li>Open one of the following links depending on which course you are enrolled in...</li>
+    </ol>
+    <p class="BtnGrid" style="margin-bottom:0">
+        <!--button data-icon="replit" data-open="https://replit.com/@DavidMacCarthy/sal-py">CS 10 &amp; 20<br/>(Python)</button>
         <button data-icon="replit" data-open="https://replit.com/@DavidMacCarthy/sal-py30">CS 30<br/>(Python)</button>
-        <button data-icon="html5.svg" data-open="https://replit.com/@DavidMacCarthy/sal-web">Client-Side<br/>Scripting</button>
+        <button data-icon="html5.svg" data-open="https://replit.com/@DavidMacCarthy/sal-web">Client-Side<br/>Scripting</button-->
+        <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/sal-py">CS 10 &amp; 20<br/>(Python)</button>
+        <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/sal-py30">CS 30<br/>(Python)</button>
+        <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/sal-web">Client-Side<br/>Scripting</button>
     </p>
+    <ol start="7" class="NoTop">
+        <li>Click the green <i>Code</i> button and choose <i>Download ZIP</i>. This will download an archive containing all of the files you need to start coding in this course.</li>
+        <li>Use <i>File Explorer</i> to open your <code>Downloads</code> folder and locate the file you just downloaded. Right-click and choose <i>Extract All</i>.</li>
+        <li>Click the <i>Browse</i> button and then locate the <code>CompSci</code> folder in your OneDrive. Click <i>Select Folder</i> and then <i>Extract</i>.</li>
+        <li>Double-click on the file <code>thonny.bat</code> to start coding in Python. (<i>File Explorer</i> may show the file as <code>thonny</code> without the <code>.bat</code> at the end.) You may get a security warning about opening downloaded files. Since the source of this file is your teacher, it is safe to run.</li>
+        <li>Here is a program you can run to check that everything is working. Click the blue <i>Copy</i> icon at the top right and then paste the program into a new file in <i>Thonny</i>. Press the F5 button to run the program.
+            Don’t worry if you cannot follow the code; you will learn what it means as you proceed through the course!
+    <pre data-echo="py" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+
+<span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
+setup(600, 480)
+speed(1)
+pencolor("red")
+
+<span class="Comment"># Move turtle into position</span>
+penup()
+backward(120)
+left(60)
+
+<span class="Comment"># Draw a hexagon</span>
+pendown()
+for side in range(6):
+    forward(120)
+    left(-60)
+
+<span class="Comment"># Finished!</span>
+exitonclick()
+</pre></li>
+    </ol>
+
+    <h3>Working from Home</h3>
+    <ol>
+        <li>You can access files in your OneDrive folder if you have Microsoft OneDrive installed on your computer at home. Most Windows computers will have OneDrive pre-installed.
+            If you need to install it, go to this <a target="MSCloud" href="https://www.microsoft.com/en-ca/microsoft-365/onedrive/online-cloud-storage">OneDrive</a> page and click the <i>Download</i> button. Follow the instructions; you might need to login as an administrator to install software.</li>
+        <li>Open <i>OneDrive</i>, go to <i>Settings</i>, and under <i>Account</i> choose <i>Add an Account</i>. Enter your information for your EIPS.ca account.</li>
+        <li>To edit and run Python programs at home, you will need to install <a target="Thonny" href="https://thonny.org">Thonny</a>. Again, installing software may require you to be logged in as an administrator.</li>
+        <li>After installing, you should be able to open <i>Thonny</i> from the <i>Start</i> menu. The <code>thonny.bat</code> file may not work on all systems.</li>
+    </ol>
+    <h3>Additional Packages</h3>
+    <p>If you will be completing the <i>CSE Project B: Game</i> or <i>Robotics Programming</i> credits for Computing Science 20, you will need to install some additional software to use <i>Thonny</i> at home:</p>
+    <ol>
+        <li>Open <i>Thonny</i>.</li>
+        <li>Under the <i>Tools</i> menu, choose <i>Manage packages</i>.</li>
+        <li>Enter <code>sc8pr</code> as your search term and click <i>Search on PyPI</i>.</li>
+        <li>Once <i>Thonny</i> completes the search, click the <code>sc8pr</code> link.</li>
+        <li>Click the three dots beside the <i>Install</i> button. Be sure that the selected version is 3.0.4, and select the <i>Upgrade dependencies</i> option. Click <i>Install</i>.</li>
+    </ol>
     </div>
 </section>
 
@@ -86,14 +146,16 @@
 <section class="Post" data-icon="link.svg">
     <h2 class="Collapse">Course Links</h2><div class="Collapse">
     <p class="BtnGrid">
-        <button data-icon="replit" data-open="https://replit.com">replit IDE</button>
+        <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/139134">Brightspace<br/>(CS 10)</button>
+        <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/139136">Brightspace<br/>(CS 20)</button>
+        <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/139141">Brightspace<br/>(CS 30)</button>
         <button data-icon="python" data-open="https://docs.python.org/3/">Python 3 Documentation</button>
         <!-- <button data-icon="sc8pr" data-open="https://dmaccarthy.github.io/sc8pr/">sc8pr 3 Documentation</button> -->
         <button data-icon="thonny" data-open="https://thonny.org">Thonny IDE</button>
-        <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/118153">Brightspace</button>
         <button data-icon="ps" data-open="https://powerschool.eips.ca/public/">PowerSchool</button>
-        <button data-icon="gdrv" data-gdrv="1TDh_NJbMUvriH_ZDOKALExd2CwabhNXt">Course Outline</button>
+        <button data-icon="gdrv" data-gdrv="1w3Hts2ireXP1D_ICz7IuTTALb_90nkRY">Course Outline</button>
         <button data-icon="link.svg" data-open="https://education.alberta.ca/career-and-technology-studies/bit-cluster-businessadminfinanceit/">Program of Studies</button>
+        <button data-icon="replit" data-open="https://replit.com">replit IDE</button>
     </p>
 </div></section>
 
