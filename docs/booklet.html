@@ -54,7 +54,7 @@ function isPractice(s) {
     if (!isAfter(s.attr("data-show"))) return;
     let h = s.children("h2");
     let booklet = h.attr("data-booklet");
-    let include = ["Pre-Test", "Practice", "Review", "Activity"];
+    let include = ["Pre-Test", "Remember?", "Practice", "Review", "Activity"];
     let i = include.indexOf(h.text());
     if (booklet == "yes" || i != -1 && booklet != "no") {
         h.replaceWith($("<h3>").html(h.text()));
@@ -71,8 +71,10 @@ function collect(folder, i) {
         e = $(`<div>${e}</div>`);
         let s = e.children("section");
         e = [];
-        for (let j=0;j<s.length;j++)
+        for (let j=0;j<s.length;j++) {
+            console.log(s[j]);            
             if (isPractice(s[j])) e.push($(s[j]));
+        }
         if (e.length) {
             let s = $("<section>");
             for (let k=0;k<e.length;k++) {
@@ -140,7 +142,7 @@ $(() => {
     <li>Write each lesson title at the top of the first page and keep all of your work — in order! — in your <span id="Course"></span> binder.</li>
     <li>If you use more than a single page, staple the pages together in the correct order.</li>
     <li>Be prepared to hand in your notebook when the teacher asks you to.</li>
-    <li>The “Pre-Test” sections are intended to see what you already know based on previous courses and lessons; they are not summative assessments.</li>
+    <li>The “Pre-Test” or “Remember?” sections are intended to see what you already know based on previous courses and lessons; they are not summative assessments.</li>
     <li>Show all work!</li>
     <li>Use SI units, significant digits, and scientific notation appropriately.</li>
     <li>Use graph paper for all graphs and vector diagrams. (If the question says to “sketch” the graph or diagram, a rough drawing without graph paper is acceptable.)</li>

@@ -59,7 +59,7 @@ table {
     border-collapse: collapse;
 }
 
-table.Two td {width: 50%}
+table.Two td, table.Two th {width: 50%}
 table.Three td {width: 33.33%}
 table.Four td {width: 25%}
 table.Five td {width: 20%}
