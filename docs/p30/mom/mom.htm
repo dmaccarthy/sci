@@ -57,17 +57,47 @@
 <div id="Practice">
 <ol>
     <li>Calculate the velocity and the kinetic energy of a 25.0 kg mass that has a momentum of 370 kg·m/s [north].</li>
-    <div class="Answer"></div>
+    <div class="Answer">
+        <p>Use the momentum to calculate the velocity:</p>
+        <p class="TeX">\vec{\bf p} = m\vec{\bf v}</p>
+        <p class="TeX">\vec{\bf v} = \frac{\vec{\bf p}}{m} = \rm \frac{+370\ kg\cdot m/s}{25.0\ kg} = +14.8\ m/s</p>
+        <p>Use the velocity to calculate the kinetic energy:</p>
+        <p class="TeX">E_k = \frac{1}{2}mv^2 = \rm \frac{1}{2}\ (25.0\ kg) (14.8\ m/s)^2 = 2.74\times 10^3\ J</p>
+    </div>
 
     <li>A lacrosse ball has 75.0 J of kinetic energy and is moving with a speed of 15.0 m/s. Determine (i) the ball’s mass and (ii) the magnitude of its momentum.</li>
-    <div class="Answer"></div>
+    <div class="Answer">
+        <p>Use the kinetic energy to calculate the mass:</p>
+        <p class="TeX">E_k = \frac{1}{2}mv^2</p>
+        <p class="TeX">2 E_k =mv^2</p>
+        <p class="TeX">m = \frac{2 E_k}{v^2} = \rm \frac{2\cdot 75.0\ J}{(15.0\ m/s)^2} = 0.667\ kg</p>
+        <p>Calculate the momentum:</p>
+        <p class="TeX">p = mv = \rm (0.667\ kg)(15.0\ m/s) = 10.0\ kg\cdot m/s</p>
+    </div>
 
+        <!-- <p class="TeX">\frac{2E_k}{m} = v^2</p>
+        <p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \sqrt{\frac{2\cdot 75.0\ J}{m}} = \rm m/s</p>
+ -->
+    
     <li>Evelyn has a mass of 36.0 kg. While playing soccer, she runs down the field with a velocity of 4.20 m/s [south]. Calculate Evelyn’s kinetic energy and her momentum.</li>
-    <div class="Answer"></div>
+    <div class="Answer">
+        <p>Calculate kinetic energy; the direction of the velocity does not matter:</p>
+        <p class="TeX">E_k = \frac{1}{2}mv^2 = \rm \frac{1}{2} (36.0\ kg) (4.20\ m/s)^2 = 318\ J</p>
+        <p>Calculate momentum, taking north as positive and south as negative:</p>
+        <p class="TeX">\vec{\bf p} = m\vec{\bf v} = \rm 36.0\ kg\cdot (-4.20\ m/s) = -151 kg\cdot m/s</p>
+    </div>
 
     <li><ol type="a">
         <li>Two objects have the same amount of momentum, but object “A” has a mass <span class="TeX">m</span> while object “B” has a mass <span class="TeX">2m</span>. Which object has more kinetic energy? By what factor?</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>Let’s call the momentum of each object <span class="TeX">\vec{\bf p}</span>, and the masses <span class="TeX">m_A = m</span> and <span class="TeX">m_B = 2m</span>. The speeds of the two masses are:</p>
+            <p class="TeX">v_A = \frac{p_A}{m_A} = \frac{p}{m}</p>
+            <p class="TeX">v_B = \frac{p_B}{m_B} = \frac{p}{2m}</p>
+            <p>The kinetic energies are:</p>
+            <p class="TeX">E_{kA} = \frac{1}{2}m_A{v_A}^2 = \frac{1}{2}m{\left(\frac{p}{m}\right)}^2 = \frac{mp^2}{2m^2} = \frac{p^2}{2m}</p>
+            <p class="TeX">E_{kB} = \frac{1}{2}m_B{v_B}^2 = \frac{1}{\bcancel 2} ({\bcancel 2}m) {\left(\frac{p}{2m}\right)}^2 = \frac{mp^2}{4m^2} = \frac{p^2}{4m}</p>
+            <p>Mass B, the larger one, has only half as much kinetic energy.</p>
+        </div>
 
         <li>Two objects have the same amount of kinetic energy, but object “A” has a mass <span class="TeX">m</span> while object “B” has a mass <span class="TeX">2m</span>. Which object has more momentum? By what factor?</li>
         <div class="Answer"></div>
@@ -75,60 +105,6 @@
 
 <!--
 
-1.	
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-p = mv	[Momentum]
-Variables:
-m = 25.0 kg
-p = 370 kg·m/s [north]
-Solution:
-Isolate v in the momentum equation…
-p = mv
-v = p/m
-= 370 kg·m/s [N] / 25.0 kg
-= 14.8 m/s [N]
-Evaluate Ek …
-Ek = ½ mv2
-= ½ (25.0 kg) (14.8 m/s)2
-= 2.74 × 103 J
-
-2.	
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-p = mv	[Momentum]
-Variables:
-Ek = 75.0 J
-v = 15.0 m/s
-Solution:
-Isolate m in the kinetic energy equation…
-Ek = ½ mv2
-2Ek = mv2
-m = 2Ek / v2
-= 2 (75.0 J) / (15.0 m/s)2
-= 0.667 kg
-Evaluate the magnitude of the momentum…
-p = mv
-= 0.667 kg · 15.0 m/s
-= 10.0 kg·m/s
-
-3.	
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-p = mv	[Momentum]
-Variables:
-m = 36.0 kg
-v = 4.20 m/s [south]
-Solution:
-Ek = ½ mv2
-= ½ (36.0 kg) (4.20 m/s)2
-= 318 J
-p = mv
-= 36.0 kg · 4.20 m/s [south]
-= 151 kg·m/s [south]
-
-5. 	a) 
-Equations:
 Ek = ½ mv2	[Kinetic Energy]
 p = mv	[Momentum]
 Variables:

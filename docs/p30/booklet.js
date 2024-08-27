@@ -1,8 +1,9 @@
 collect.urls = {
     "p30/mom": [
         // ["energy", "Work & Energy Review"],
-        ["mom", "Momentum"],
+        // ["mom", "Momentum"],
         ["impulse", "Impulse"],
+        ["cons", "Momentum Conservation"],
     ],
 };
 
