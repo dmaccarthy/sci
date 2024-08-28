@@ -74,10 +74,6 @@
         <p>Calculate the momentum:</p>
         <p class="TeX">p = mv = \rm (0.667\ kg)(15.0\ m/s) = 10.0\ kg\cdot m/s</p>
     </div>
-
-        <!-- <p class="TeX">\frac{2E_k}{m} = v^2</p>
-        <p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \sqrt{\frac{2\cdot 75.0\ J}{m}} = \rm m/s</p>
- -->
     
     <li>Evelyn has a mass of 36.0 kg. While playing soccer, she runs down the field with a velocity of 4.20 m/s [south]. Calculate Evelyn’s kinetic energy and her momentum.</li>
     <div class="Answer">
@@ -100,56 +96,20 @@
         </div>
 
         <li>Two objects have the same amount of kinetic energy, but object “A” has a mass <span class="TeX">m</span> while object “B” has a mass <span class="TeX">2m</span>. Which object has more momentum? By what factor?</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>Let’s call the kinetic energy of each object <span class="TeX">E_k</span>, and the masses <span class="TeX">m_A = m</span> and <span class="TeX">m_B = 2m</span>.
+                Calculate the speed of mass “A” by rearranging the kinetic energy equation:</p>
+            <p class="TeX">E_k = \frac{1}{2} m_A{v_A}^2</p>
+            <p class="TeX">\frac{2E_k}{m_A} = {v_A}^2</p>
+            <p class="TeX">v_A = \sqrt{\frac{2E_k}{m_A}} = \sqrt{\frac{2E_k}{m}}</p>
+            <p>The momentum is:</p>
+            <p class="TeX">p_A = m_Av_A = m\sqrt{\frac{2E_k}{m}} = \sqrt{2mE_k}</p>
+            <p>The algebra is the same for mass “B”, the only difference being that the mass is <span class="TeX">m_B = 2m</span>:</p>
+            <p class="TeX">v_B = \sqrt{\frac{2E_k}{m_B}} = \sqrt{\frac{{\bcancel 2}E_k}{{\bcancel 2}m}} = \sqrt{\frac{E_k}{m}}</p>
+            <p class="TeX">p_B = m_Bv_B = (2m) \sqrt{\frac{E_k}{m}} = 2\sqrt{mE_k}</p>
+            <p>Mass “B” has more momentum than “A” because <span class="TeX">2 > \sqrt{2}</span>.</p>
+        </div>
     </ol></li>
-
-<!--
-
-Ek = ½ mv2	[Kinetic Energy]
-p = mv	[Momentum]
-Variables:
-mB = 2mA
-pB = pA
-Solution:
-Rearrange the momentum equation to isolate v:
-p = mv 
-v = p / m
-Calculate the velocity of “B” compared to “A”:
-vB = pB / mB 
-= pA / (2mA)
- = vA / 2
-Calculate the kinetic of “B” compared to “A”:
-EkB = ½ mBvB2
-= ½ (2mA) (vA / 2)2
-= ¼ mAvA2
-EkB / EkB = (¼ mAvA2) / (½ mAvA2) = ½
-Mass “B” has half as much kinetic energy as mass “A”!
-
-b) 
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-p = mv	[Momentum]
-Variables:
-mB = 2mA
-EkB = EkA
-Solution:
-Rearrange the kinetic energy equation to isolate v:
-Ek = ½ mv2
-2Ek / m = v2
-v = √(2Ek / m)
-Calculate the speed of “B” compared to “A”:
-vB = √(2EkB / mB)
-= √(2EkA / (2mA)
- = vA / √(2)
-Calculate the momentum of “B” compared to “A”:
-pB = mBvB
-= (2mA) vA / √(2)
-= √(2) mAvA
-= √(2) pA
-Mass “B” has more momentum than “A” by a factor of √(2).
-
--->
-
 </ol>
 </div></div></section>
 
@@ -158,53 +118,37 @@ Mass “B” has more momentum than “A” by a factor of √(2).
 <div id="Review">
 <ol>
     <li>Define <em ckass="Defn">momentum</em>.</li>
+    <div class="Answer">
+        <p>Momentum is a vector measure of the “quantity of motion” a mass has defined by the equation:</p>
+        <p class="TeX">\vec{\bf p} = m\vec{\bf v}</p>
+    </div>
+
     <li>Compare and contrast the concept of momentum to kinetic energy.</li>
+    <div class="Answer">See the “Kinetic Energy vs. Momentum” section of the Lesson Notes above.</div>
+
     <li>Explain why calculating the <em>total</em> momentum of a system containing more than object is more difficult when the objects are moving in 2D or 3D compared to 1D motion.</li>
+    <div class="Answer">Because momentum is a <em>vector</em>, the <span class="TeX">x</span>-, <span class="TeX">y</span>-, and <span class="TeX">z</span>-<em>components</em> of the momentum vector must be added separately.
+        Two masses that each have 1.0 kg·m/s of momentum will <b>not</b> have a combined momentum of 2.0 kg·m/s when the directions of the vectors are not the same!
+    </div>
 
     <li><ol type="a">
         <li>James drives a bumper car at 3.00 m/s [east]. The combined mass of James and his bumper car is 185 kg. Shannon, who is driving a second bumper car with a total mass of 160 kg, chases after James with a velocity of 4.25 m/s [east]. Calculate the total momentum and the total mechanical energy of the system.</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p class="TeX">\vec{\bf p}_J = m_J\vec{\bf v}_J = \rm (185\ kg) (+3.00\ m/s) = +555\ kg\cdot m/s</p>
+            <p class="TeX">\vec{\bf p}_S = m_S\vec{\bf v}_S = \rm (160\ kg) (+4.25\ m/s) = +680\ kg\cdot m/s</p>
+            <p class="TeX">\Sigma\vec{\bf p} = \vec{\bf p}_J + \vec{\bf p}_S = \rm +555\ kg\cdot m/s + 680\ kg\cdot m/s = 1235\ kg\cdot m/s</p>
+            <p class="TeX">E_{kJ} = \frac{1}{2} m_J{v_J}^2 = \rm \frac{1}{2} (185\ kg) (3.00\ m/s)^2 = 833\ J</p>
+            <p class="TeX">E_{kS} = \frac{1}{2} m_S{v_S}^2 = \rm \frac{1}{2} (160\ kg) (4.25\ m/s)^2 = 1445\ J</p>
+            <p class="TeX">\Sigma E_k = E_{kJ} + E_{kS} = \rm 833\ J + 1445\ J = 2278\ J</p>
+        </div>
 
         <li>Repeat your calculations for a head-on collision in which Shannon’s bumper car is traveling west, but all other information remains unchanged.</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>All of the calculations are the same as above, except that Shannon’s momentum is <span class="TeX">\rm -680\ kg\cdot m/s</span>. This makes the total momentum:</p>
+            <p class="TeX">\Sigma\vec{\bf p} = \vec{\bf p}_J + \vec{\bf p}_S = \rm +555\ kg\cdot m/s + (-680\ kg\cdot m/s) = -125\ kg\cdot m/s</p>
+            <p>Because kinetic energy is a scalar, the direction does not matter and the answers are identical to (a).</p>
+        </div>
     </ol></li>
-<!--
-4.	a) 
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-p = mv	[Momentum]
-Variables:
-mJ = 185 kg
-vJ = 3.00 m/s [east] = +3.00 m/s
-mS = 160 kg
-vS = 4.25 m/s [east] = +4.25 m/s
-Solution:
-Evaluate the total (combined) momentum…
-p = mJvJ + mSvS
-= 185 kg · (+3.00 m/s) + 160 kg · (+4.25 m/s)
-= +1.24 × 103 N·s
-Evaluate the total (combined) kinetic energy…
-Ek = ½  mJvJ2 + ½ mSvS2
-= ½ (185 kg) · (3.00 m/s)2 + ½ (160 kg) · (4.25 m/s)2
-= 2.28 × 103 J
-
-b) 
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-p = mv	[Momentum]
-Variables:
-mJ = 185 kg
-vJ = 3.00 m/s [east] = +3.00 m/s
-mS = 160 kg
-vS = 4.25 m/s [west] = –4.25 m/s
-Solution:
-Evaluate the total (combined) momentum…
-p = mJvJ + mSvS
-= 185 kg · (+3.00 m/s) + 160 kg · (–4.25 m/s)
-= –125 N·s
-The direction has no effect on the kinetic energy, so the total is still 2.28 × 103 J.
-
--->
 
 </ol>
 </div></div></section>

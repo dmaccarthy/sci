@@ -72,6 +72,7 @@ table td, table th {
 }
 
 table.TD6 td {min-width: 6em}
+table.TD8 td {min-width: 8em}
 li p {margin-bottom: 0}
 div.Answer {margin-bottom: 0.75em}
 .Bottom {margin-bottom: 1em}
