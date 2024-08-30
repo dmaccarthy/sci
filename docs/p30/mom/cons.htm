@@ -102,7 +102,6 @@
     <tr>
         <td><span class="TeX">\Sigma\vec{\mathbf p}</span></td>
         <td colspan="2" class="Reveal"><span>+80.0</span></td>
-        <!-- <td colspan="2"><span data-cue="+"><span class="TeX">\mathrm{+80.0\ kN\cdot s}</span></span></td> -->
     </tr>
 </table>
 
@@ -148,81 +147,69 @@ loadFeed.notes = () => {
     <div class="Answer">The friction force causes the changes in energy and momentum. The book’s kinetic energy is transformed into sound and thermal energy, while the momentum is transferred to the Earth.</div>
 
     <li>A 1160 kg car moving at 60.0 km/h collides with a 1480 kg car at rest. If the collision brings the first car to a stop, with what velocity will the second car be pushed forward? What assumptions are you making in solving this problem?</li>
-    <div class="Answer"></div>
-    <!--
-To use Conservation of Momentum, we are assuming there are no unbalanced external forces: there is no air resistance or friction (neither driver is trying to brake or accelerate), no applied force, and the gravity and normal forces are perfectly balanced (i.e. the ground is level).
-Evaluate the total initial momentum…
-Σpi = pAi + pBi
-= mAvAi + mBvBi
-= 1160 kg (+16.7 m/s) + 1480 kg (0.00 m/s)
-= +1.93 × 104 N·s
-The total final momentum is…
-Σpf = pAf + pBf
-= mAvAf + mBvBf
-Since vAf = 0.00 m/s…
-Σpf = mBvBf
-vBf = Σpf / mB
-= +1.93 × 104 N·s / (1480 kg)
-= +13.1 m/s = +47.0 km/h
-    -->
+    <div class="Answer">
+        <p>We are assuming that the system’s momentum remains constant, which will only be true if friction and air resistance are absent, and the collision occurs on flat ground so the gravity and normal forces balance.</p>
+        <p>Calculate the momentum of the system before the collision. This is just the momentum of car “A” since car “B” is at rest. Remember to change km/h to m/s:</p>
+        <p class="TeX">\Sigma\vec{\bf p} = m_A\vec{\bf v}_{iA} = \rm 1160\ kg\cdot (+16.7\ m/s) = +19333\ kg\cdot m/s</p>
+        <p>After the collision, car “A” is at rest, so all of the momentum is transferred to car “B”.</p>
+        <p class="TeX">\Sigma\vec{\bf p} = m_B\vec{\bf v}_{fB}</p>
+        <p class="TeX">\vec{\bf v}_{fB} = \frac{\Sigma\vec{\bf p}}{m_B} = \rm \frac{+19333\ kg\cdot m/s}{1480\ kg} = +13.1\ m/s = +47.0\ km/h</p>
+    </div>
 
-    <li>An asteroid with a mass of 8.92 × 108 kg moving at 8.50 km/s collides head-on with a second asteroid of mass 3.15 × 108 kg with a speed of 9.26 km/s in the opposite direction.
+    <li>An asteroid with a mass of 8.92 × 10<sup>8</sup> kg moving at 8.50 km/s collides head-on with a second asteroid of mass 3.15 × 10<sup>8</sup> kg with a speed of 9.26 km/s in the opposite direction.
     <ol type="a">
         <li>If the two asteroids become stuck together in the collision, what will their final velocity be? Remember that velocity is a vector so you must include a direction!</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>Calculate the total momentum of the system:</p>
+            <p class="TeX">\begin{align}\Sigma\vec{\bf p} &= m_A\vec{\bf v}_{iA} + m_B\vec{\bf v}_{iB}
+                \\[6pt] &= \rm {8.92\times 10^8\ kg\cdot (+8500\ m/s) + 3.15\times 10^8\ kg\cdot (-9260\ m/s)}
+                \\[6pt] &= \rm +4.67\times 10^{12}\ kg\cdot m/s
+            \end{align}</p>
+            <p>After the collision, the asteroids stick together and behave as a single mass:</p>
+            <p class="TeX">\begin{align}m &= m_A + m_B
+                \\[6pt] &= \rm {(8.92\times 10^8 + 3.15\times 10^8)\ kg}
+                \\[6pt] &= \rm {1.207\times 10^9\ kg}
+            \end{align}</p>
+            <p>Since momentum is conserved, the velocity is:</p>
+            <p class="TeX">\begin{align}\vec{\bf v}_f &= \frac{\Sigma\vec{\bf p}}{m}
+                \\[8pt] &= \rm {\frac{+4.67\times 10^{12}\ kg\cdot m/s}{1.207\times 10^9\ kg}}
+                \\[8pt] &= \rm {+3865\ m/s = +3.87\ km/s}
+            \end{align}</p>
+        </div>
 
         <li>What impulse did the first asteroid experience? What impulse did the second asteroid experience?</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>Calculate the impulse (change in momentum) of the <em>first</em> asteroid:</p>
+            <p class="TeX">\begin{align}\Delta\vec{\bf p}_A &= m_A\Delta\vec{\bf v}_A
+                \\[6pt] &= \rm {8.92\times 10^8\ kg\cdot (+3865 - (+8500))\ m/s}
+                \\[6pt] &= \rm {-4.13\times 10^{12}\ kg\cdot m/s}
+            \end{align}</p>
+            <p>According to Newtons 3<sup>rd</sup> Law, the impulse experienced by the <em>second</em> asteroid must be <span class="TeX">\rm +4.13\times 10^{12}\ kg\cdot m/s</span>.</p>
+        </div>
 
         <li>If the collision lasted 0.250 s, what was the average force of the impact?</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>For the first asteroid:</p>
+            <p class="TeX">\vec{\bf F}_A = \frac{\Delta\vec{\bf p}_A}{\Delta t} = \rm \frac{-4.13\times 10^{12}\ kg\cdot m/s}{0.250\ s} = -1.65\times 10^{13}\ N</p>
+            <p>The average force experienced by the second asteroid is <span class="TeX">\rm +1.65\times 10^{13}\ N</span>.</p>
+        </div>
 
         <li>Calculate the percentage change in the mechanical energy of the two-asteroid system.</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>The system’s energy before the collision is:</p>
+            <p class="TeX">\begin{align}\Sigma E_i &= \frac{1}{2} m_A{v_{iA}}^2 + \frac{1}{2} m_B{v_{iB}}^2
+                \\[8pt] &= \rm {\frac{1}{2} (8.92\times 10^8\ kg) (8500\ m/s)^2 + (3.15\times 10^8\ kg) (9260\ m/s)^2}
+                \\[8pt] &= \rm {4.57\times 10^{16}\ J}
+            \end{align}</p>
+            <p>The system’s energy after the collision is:</p>
+            <p class="TeX">\begin{align}\Sigma E_f &= \frac{1}{2} (m_A + m_B){v_f}^2
+                \\[8pt] &= \rm {\frac{1}{2} (8.92\times 10^8 + 3.15\times 10^8)\ kg\cdot (3865\ m/s)^2}
+                \\[8pt] &= \rm {9.02\times 10^{15}\ J}
+            \end{align}</p>
+            <p>The percent change is:</p>
+            <p class="TeX">\frac{\Sigma E_f - \Sigma E_i}{\Sigma E_i} = \rm \frac{9.02\times 10^{15}\ J - 4.57\times 10^{16}\ J}{4.57\times 10^{16}\ J} = -0.803 = -80.3\%</p>
+        </div>
     </ol></li>
-    <!--
-a) 
-The total momentum is…
-Σp = pAi + pBi
-= mAvAi + mBvBi
-= 8.92 × 108 kg (+8.50 × 103 m/s) + 3.15 × 108 kg (–9.26 × 103 m/s)
-= +4.67 × 1012 N·s
-Since momentum is conserved, we can equate the initial and final momenta. Note that the final velocities are the same since the asteroids stick together…
-Σp = mAvf + mBvf
-Σp = (mA + mB) vf
-vf = Σp / (mA + mB) 
-= +4.67 × 1012 N·s / (8.92 × 108 kg + 3.15 × 108 kg)
-= +3.87 × 103 m/s
-
-b) 
-ΔpA = mAΔvA
-= 8.92 × 108 kg (+3.87 × 103 m/s – 8.50 × 103 m/s)
-= –4.13 × 1012 N·s
-By Newton’s 3rd Law, the impulse experienced by mass “B” is +4.13 × 1012 N·s
-
-c) 
-ΔpA = FA Δt
-FA = ΔpA / Δt = –4.13 × 1012 N·s / (0.250 s) = –1.65  × 1013 N
-FB = –FA = +1.65  × 1013 N
-
-d) 
-Evaluate the initial mechanical energy…
-ΣEi = ½ mAvAi2 + ½ mBvABi2
-= ½ (8.92 × 108 kg) (8.50 × 103 m/s)2 + ½ (3.15 × 108 kg) (9.26 × 103 m/s)2
-= 4.57 × 1016 J
-Evaluate the final mechanical energy…
-ΣEf = ½ mAvAf2 + ½ mBvABf2
-= ½ (8.92 × 108 kg) (3.87 × 103 m/s)2 + ½ (3.15 × 108 kg) (3.87 × 103 m/s)2
-= 9.02 × 1015 J
-Calculate the change in mechanical energy…
-ΔE = ΣEf – ΣEi
-= 9.02 × 1015 J – 4.57 × 1016 J
-= –3.67 × 1016 J
-Express the change as a percentage…
-ΔE / Ei × 100%
-= –3.67 × 1016 J / (4.57 × 1016 J) × 100%
-= –80.3%
-    -->
 
     <li>A 560 kg roller coaster starts at rest from a height of 10.0 m above the ground and then accelerates down a hill to a final height of 2.50 m above the ground. Assume there is no friction or air resistance.
     <ol type="a">
@@ -230,23 +217,34 @@ Express the change as a percentage…
         <div class="Answer">The unbalanced force causing the acceleration is the sum of the gravity and normal forces. Since these are external forces that act between the system (roller coaster) and its environment (Earth), there is a transfer of momentum between the system and the Earth; thus the momentum of the system is not conserved. Mechanical energy is conserved because gravity transforms energy between kinetic and potential forms (without affecting the total mechanical energy) while the normal force does not transform any energy since it acts in a direction perpendicular to the motion.</div>
     
         <li>Determine the final speed of the roller coaster. Use your answer to (a) to decide whether to use energy conservation or momentum conservation.</li>
-        <div class="Answer"><!--
-Equate the initial and final energies...
-ΣE = mghi = ½ mvf2 + mghf
-The mass cancels…
-ghi = ½ vf2 + ghf
-Isolate the final speed…
-ghi – ghf = ½ vf2
-2g(hi – hf) = vf2
-vf = √[2g(hi – hf)]
-= √[2 (9.81 m/s2) (10.0 m – 2.50 m)]
-= 12.1 m/s
-Energy Bar Chart (Animated)
-        --></div>
+        <div class="Answer">
+            <p>Calculate the initial energy of the system:</p>
+            <p class="TeX">\Sigma E_i = E_{gi} = mgh_i = \rm 560\ kg\cdot 9.81\ m/s^2\cdot 10.0\ m = 54936\ J</p>
+            <p>Calculate the final gravitational potential energy of the system:</p>
+            <p class="TeX">E_{gf} = mgh_f = \rm 560\ kg\cdot 9.81\ m/s^2\cdot 2.50\ m = 13734\ J</p>
+            <p>Use energy conservation to find the final kinetic energy:</p>
+            <p class="TeX">\Sigma E_f = E_{gf} + E_{kf}</p>
+            <p class="TeX">E_{kf} = \Sigma E_f - E_{gf} = \rm (54936 - 13734)\ J = 41202\ J</p>
+            <p>No use the kinetic energy to calculate the speed. The algebra is the same as for previous questions:</p>
+            <p class="TeX">v_f = \sqrt{\frac{2E_{kf}}{m}} = \rm \sqrt{\frac{2\cdot 41202\ J}{560\ kg}} = 12.1\ m/s</p>
+        </div>
     </ol></li>
 
     <li>During a roller derby event two teammates, Randy and Sandy, are initially moving together with a velocity of +7.50 m/s. Randy, who has a mass of 60.0 kg, gives 48.0-kilogram Sandy a push in the positive direction causing Sandy to speed up.
         According to Newton’s 3<sup>rd</sup> Law, Randy will experience a negative force and will slow down. If Randy’s final velocity is +3.80 m/s, what will Sandy’s final velocity be?</li>
+    <div class="Answer">
+        <p>Calculate the initial momentum of the system:</p>
+        <p class="TeX">\Sigma\vec{\bf p} = (m_R+m_S)\vec{\bf v}_i = \rm (60.0 + 48.0)\ kg\cdot (+7.50\ m/s) = +810\ kg\cdot m/s</p>
+        <p>Randy’s final momentum is:</p>
+        <p class="TeX">\vec{\bf p}_{fR} = m_R\vec{\bf v}_{fR} = \rm 60.0\ kg\cdot (+3.80\ m/s) = +228\ kg\cdot m/s</p>
+        <p>Because total momentum is conserved, Sandy’s final momentum is:</p>
+        <p class="TeX">\vec{\bf p}_{fS} = \Sigma\vec{\bf p} - \vec{\bf p}_{fR} = \rm (+810 - (+228))\ kg\cdot m/s = +582\ kg\cdot m/s</p>
+        <p>We can use this momentum to calculate Sandy’s velocity:</p>
+        <p class="TeX">\begin{align}\vec{\bf v}_{fS} &= \frac{\vec{\bf p}_{fS}}{m_S}
+            \\[8pt] &= \rm {\frac{+582\ kg\cdot m/s}{48.0\ kg}}
+            \\[8pt] &= \rm {+12.1\ m/s}
+        \end{align}</p>
+    </div>
 </ol>
 </div></div></section>
 
@@ -269,57 +267,51 @@ Energy Bar Chart (Animated)
     <li>A 2500 kg rail car moving at +20.0 km/h collides with a stationary 3000 kg rail car. The collision causes the cars to couple together.
     <ol type="a">
         <li>What is the final velocity of the two attached rail cars?</li>
-        <div class="Answer"></div>
-
+        <div class="Answer">
+            <p>Calculate the total momentum of the system, remembering to convert km/h to m/s:</p>
+            <p class="TeX">\begin{align}\Sigma\vec{\bf p} &= m_A\vec{\bf v}_{iA}
+                \\[6pt] &= \rm {2500 kg\cdot (+5.56\ m/s) }
+                \\[6pt] &= \rm +13889\ kg\cdot m/s
+            \end{align}</p>
+            <p>After the collision, the rail cars stick together and behave as a single mass:</p>
+            <p class="TeX">m = m_A + m_B = \rm (2500 + 3000)\ kg = 5500\ kg</p>
+            <p>Since momentum is conserved, the velocity is:</p>
+            <p class="TeX">\begin{align}\vec{\bf v}_f &= \frac{\Sigma\vec{\bf p}}{m}
+                \\[8pt] &= \rm {\frac{+13889\ kg\cdot m/s}{5500\ kg}}
+                \\[8pt] &= \rm {+2.53\ m/s = +9.09\ km/h}
+            \end{align}</p>
+        </div>
         <li>How much mechanical energy was lost as a result of the collision? To which form(s) was this energy transformed?</li>
-        <div class="Answer"></div>
-
+        <div class="Answer">
+            <p>The system’s energy before the collision is:</p>
+            <p class="TeX">\begin{align}\Sigma E_i &= \frac{1}{2} m_A{v_{iA}}^2
+                \\[8pt] &= \rm {\frac{1}{2} (2500\ kg) (5.56\ m/s)^2}
+                \\[8pt] &= \rm {38580\ J}
+            \end{align}</p>
+            <p>The system’s energy after the collision is:</p>
+            <p class="TeX">\begin{align}\Sigma E_f &= \frac{1}{2} m{v_f}^2
+                \\[8pt] &= \rm {\frac{1}{2} (5500\ kg)\cdot (2.53\ m/s)^2}
+                \\[8pt] &= \rm {17536\ J}
+            \end{align}</p>
+            <p>The change is:</p>
+            <p class="TeX">\Delta E = E_f - E_i = \rm 17536\ J - 38580\ J = -21044\ J = -2.10\times 10^3\ J</p>
+        </div>
         <li>What impulse did each rail car experience?</li>
-        <div class="Answer"></div>
-
+        <div class="Answer">
+            <p>Calculate the impulse (change in momentum) of the <em>first</em> car:</p>
+            <p class="TeX">\begin{align}\Delta\vec{\bf p}_A &= m_A\Delta\vec{\bf v}_A
+                \\[6pt] &= \rm {2500\ kg\cdot (+2.53 - (+5.56))\ m/s}
+                \\[6pt] &= \rm {-7576\ kg\cdot m/s}
+            \end{align}</p>
+            <p>According to Newtons 3<sup>rd</sup> Law, the impulse experienced by the <em>second</em> car must be <span class="TeX">\rm +7576\ kg\cdot m/s</span>.</p>
+        </div>
         <li>If the collision lasted 0.600 s, what average force did each car experience?</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>For the first car:</p>
+            <p class="TeX">\vec{\bf F}_A = \frac{\Delta\vec{\bf p}_A}{\Delta t} = \rm \frac{-7576\ kg\cdot m/s}{0.600\ s} = -1.26\times 10^4\ N</p>
+            <p>The average force experienced by the second car is <span class="TeX">\rm +1.26\times 10^4\ N</span>.</p>
+        </div>
     </ol></li>
-    <!--
-a) 
-The total momentum is…
-Σp = pAi + pBi
-= mAvAi + mBvBi
-= 2500 kg (+5.56 m/s) + 3000 kg (0.00 m/s)
-= +1.39 × 104 N·s
-Since momentum is conserved, we can equate the initial and final momenta. Note that the final velocities are the same since the rail cars stick together…
-Σp = mAvf + mBvf
-Σp = (mA + mB) vf
-vf = Σp / (mA + mB) 
-= +1.39 × 104 N·s / (2500 kg + 3000 kg)
-= +2.53 m/s = +9.09 km/h
-
-b) 
-Evaluate the initial mechanical energy…
-ΣEi = ½ mAvAi2 + ½ mBvABi2
-= ½ (2500 kg) (5.56 m/s)2 + ½ (3000 kg) (0.00 m/s)2
-= 3.86 × 104 J
-Evaluate the final mechanical energy…
-ΣEf = ½ mAvAf2 + ½ mBvABf2
-= ½ (2500 kg) (2.53 m/s)2 + ½ (3000 kg) (2.53 m/s)2
-= 1.75 × 104 J
-Calculate the change in mechanical energy…
-ΔE = ΣEf – ΣEi
-= 1.75 × 104 J – 3.86 × 104 J
-= –2.10 × 104 J
-
-c) 
-ΔpB = mBΔvB
-= 3000 kg (+2.53 m/s – 0.00 m/s)
-= +7.58 × 103 N·s
-ΔpA = –ΔpB = –7.58 × 103 N·s
-You would get the same answer by calculating…
-ΔpA = mAΔvA = 2500 kg (+2.53 m/s – 5.56 m/s)
-
-d) 
-FA = ΔpA / Δt = –7.58 × 103 N·s / (0.600 s) = –1.26  × 104 N
-FB = –FA = +1.26  × 104 N
-    -->
 
 </ol>
 </div></div></section>
@@ -332,7 +324,7 @@ loadFeed.data = {
     num: "9.4",
     up: "p30/units/A",
     prev: "p30/mom/impulse",
-    next: "p30/mom/collide",
+    next: "p30/mom/coll1d",
 }
 
 </script>
