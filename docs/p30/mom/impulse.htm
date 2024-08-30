@@ -42,7 +42,19 @@
         <li>If the collision time doubled to 1.00 seconds but all other information remained the same, would your answers change? Explain.</li>
         <div class="Answer">The acceleration and force values would all be 2 times smaller since those calculations depend on <span class="TeX">\Delta t</span>. The momentum and final velocity calculations would not change!</div>
     </ol></li>
-</ol></div></div></section>
+</ol>
+
+<script type="text/javascript" data-init="remem">
+
+loadFeed.remem = () => {
+    let rev = $("#PreTest td.Reveal").on("click", (ev) => {
+        $(ev.currentTarget).children("span").fadeToggle();
+    });
+}
+    
+</script>
+
+</div></div></section>
 
 <section class="Post" data-icon="slides">
 <h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
@@ -97,189 +109,79 @@
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
 <ol>
-    <!--
-a) 
-Equations:
-F = ma	[Newton’s 2nd Law]
-a = (vf – vi) / Δt	[Acceleration]
-p = mv	[Momentum]
-Δp = pf – pi	[Change in Momentum]
-Variables: See table.
-Solution:
-Calculate Abigail’s acceleration and the force exerted on her…
-a = Δv / Δt = (2.00 m/s – 5.00 m/s) / 0.500 s = –6.00 m/s2
-F = ma = (40.0 kg) (–6.00 m/s2) = –240 N
-Now calculate Braden’s acceleration using the fact (Newton’s 3rd Law!) that the force is +240 N…
-a = F / m = +240 N / 50.0 kg = +4.80 m/s2
-Finally, calculate Braden’s final velocity...
-a = (vf – vi)/ Δt
-aΔt = vf – vi
-vf = aΔt + vi
-= (+4.80 m/s2) (0.500 s) + 0.00 m/s
-= +2.40 m/s
- 
-Abigail
-Braden
-m / kg
-40.0
-50.0
-vi / (m/s)
-+5.00
-0.00
-vf / (m/s)
-+2.00
-+2.40 
-Δt / s
-0.500
-0.500
-a / (m/s2)
-–6.00 
- +4.80
-F / N
-–240 N
-+240 N
-
-Next calculate Abigail’s initial and final momenta and the change…
-pi = mvi = 40.0 kg · (+5.00 m/s) = +200 N·s
-pf = mvf = 40.0 kg · (+2.00 m/s) = +80.0 N·s
-Δp = pf – pi = +80.0 N·s – (+200 N·s) = –120 N·s
-Next calculate the same for Brandon…
-pi = mvi = 50.0 kg · (0.00 m/s) = +0.00 N·s
-pf = mvf = 50.0 kg · (+2.40 m/s) = +120 N·s
-Δp = pf – pi = +80.0 N·s – (+200 N·s) = –120 N·s
- 
-Abigail
-Braden
-pi / (N·s)
-+200 
-0.00 
-pf / (N·s)
-+80.0 
-+120 
-Δp / (N·s)
-–120
-+120 
-
-b) 
-
-c) 
-Σpi = pAi + pBi = +200 N·s + 0.00 N·s = +200 N·s
-d) 
-Σpf = pAf + pBf = +80.0 N·s + 120 N·s = +200 N·s
-    -->
-
     <li>A grocery cart has a mass of 72.5 kg, including groceries. Seeing that there is only one can of coffee left on the shelf, the shopper suddenly speeds up from 0.750 m/s [north] to 1.95 m/s [north]. How much impulse did the shopper impart to the cart?</li>
-    <div class="Answer"></div>
-<!--
-	
-Equations:
-p = mv	[Momentum]
-Δp = pf – pi	[Change in Momentum]
-Variables:
-m = 72.5 kg
-vi = +0.750 m/s
-vf = +1.95 m/s
-Solution:
-Δp = pf – pi = mvf – mvi 
-= 72.5 kg · (+1.95 m/s – 0.750 m/s)
-= +87.0 N·s
--->
+    <div class="Answer">
+        <p>Calculate the initial and the final momentum:</p>
+        <p class="TeX">\vec{\bf p}_i = m\vec{\bf v}_i = \rm 72.5\ kg\cdot (+0.750\ m/s) = +54.4\ kg\cdot m/s</p>
+        <p class="TeX">\vec{\bf p}_f = m\vec{\bf v}_f = \rm 72.5\ kg\cdot (+1.95\ m/s) = +141.4\ kg\cdot m/s</p>
+        <p>Impulse is the <em>change</em> in momentum:</p>
+        <p class="TeX">\Delta\vec{\bf p} = \vec{\bf p}_f - \vec{\bf p}_i = \rm +141.4\ kg\cdot m/s - (+54.4\ kg\cdot m/s) = +87.0\ kg\cdot m/s</p>
+    </div>
 
     <li><ol type="a">
         <li>A basketball with a mass of 1.75 kg is held 2.25 m above the ground. How much mechanical energy and how much momentum does the ball have?</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>The basketball has zero momentum and zero kinetic energy because it is not in motion. It does have gravitational potential energy:</p>
+            <p class="TeX">E_g = mgh = \rm 1.75\ kg\cdot 9.81\ m/s^2\cdot 2.25\ m = 38.6\ J</p>
+            <p>The <em>mechanical</em> energy is the total of all kinetic and potential energies, which is still 38.6 joules.</p>
+        </div>
 
         <li>Once the basketball is released, it begins to fall to the ground. When it is at a height of 1.00 m, its velocity is 4.80 m/s [down]. How much mechanical energy and how much momentum does the ball now have?</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>Calculate the momentum:</p>
+            <p class="TeX">\vec{\bf p}_f = m\vec{\bf v}_f = \rm 1.75\ kg (-4.80\ m/s) = -8.40\ kg\cdot m/s</p>
+            <p>Calculate both the kinetic and the gravitational potential energy:</p>
+            <p class="TeX">E_k = \frac{1}{2} mv^2 = \rm \frac{1}{2} (1.75\ kg)(4.80\ m/s)^2 = 20.160\ J</p>
+            <p class="TeX">E_g = mgh = \rm 1.75\ kg\cdot 9.81\ m/s^2 \cdot 1.00\ m = 17.168\ J</p>
+            <p>The mechanical energy is the total of the two:</p>
+            <p class="TeX">E = E_k + E_g = \rm 20.160\ J + 17.168\ J = 37.3\ J</p>
+        </div>
 
         <li>Identify the force that is responsible for the change in the ball’s kinetic energy and its momentum. How much impulse did the force impart to the ball?</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>Gravity is primarily responsible for the impulse experienced by the ball and for converting the gravitational potential into kinetic energy. Because there is a small loss of mechanical energy, air resistance is also present. The impulse is:</p>
+            <p class="TeX">\Delta\vec{\bf p} = \vec{\bf p}_f - \vec{\bf p}_i = \rm = -8.40\ kg\cdot m/s - (0.00\ kg\cdot m/s) = -8.40\ kg\cdot m/s</p>
+        </div>
     </ol></li>
-<!--
-a) 
-Equations:
-p = mv	[Momentum]
-Δp = pf – pi	[Impulse]
-Ek = ½ mv2	[Kinetic Energy]
-Ep = mgh	[Gravitational Potential Energy]
-Variables:
-m = 1.75 kg
-h = 2.25 m
-v = 0.00 m/s
-Solution:
-p = mv
-= 1.75 kg (0.00 m/s)
-= 0.00 N·s
-E = Ek + Ep = ½ mv2 + mgh
-= ½ (1.75 kg) (0.00 m/s)2 + (1.75 kg) (9.81 m/s2) (2.25 m)
-= 38.6 J
-
-b) 
-Variables:
-m = 1.75 kg
-h = 1.00 m
-v = –4.80 m/s
-Solution:
-p = mv
-= 1.75 kg (–4.80 m/s)
-= –8.40 N·s
-E = Ek + Ep = ½ mv2 + mgh
-= ½ (1.75 kg) (4.80 m/s)2 + (1.75 kg) (9.81 m/s2) (1.00 m)
-= 37.3 J
-
-c) 
-Gravity (and to a slight extent the air resistance) caused the momentum to change; the impulse is
-Δp = pf – pi
-= –8.40 N·s – 0.00 N·s
-= –8.40 N·s
-Gravity converted some of the mechanical energy from gravitational potential to kinetic energy. There was a slight decrease in the total mechanical energy due to the air resistance.
--->
 
     <li>An apple weighing 4.25 newtons falls from a tree, striking the ground in 0.900 seconds. How much impulse did the force of gravity impart to the apple? What was the apple’s velocity when it hit the ground if air resistance can be neglected?</li>
-    <div class="Answer"></div>
-<!--
-Equations:
-Fg = mg	[Mass & Weight]
-p = mv	[Momentum]
-Δp = F Δt = pf – pi	[Impulse]
-Variables:
-Fg = –4.25 N
-Δt = 0.900 s
-g = –9.81 m/s2
-Solution:
-Calculate the impulse…
-Δp = Fg Δt
-= –4.25 N · 0.900 s
-= –3.83 N·s
-Calculate the mass…
-Fg = mg
-m = Fg / g
-= –4.25 N / (–9.81 m/s2)
-= 0.433 kg
-Assuming the apple’s initial velocity and momentum were zero, the final momentum is the same as the impulse.
-pf = mvf
-vf = pf / m
-= –3.83 N·s / (0.433 kg)
-= –8.83 m/s
--->
+    <div class="Answer">
+        <p class="TeX">\Delta\vec{\bf p} = \vec{\bf F}\Delta t = \rm -4.25\ N\cdot 0.900\ s = -3.83\ N\cdot s</p>
+        <p>If the apple was initially at rest, its initial momentum was zero so its final momentum is:</p>
+        <p class="TeX">\vec{\bf p}_f = \vec{\bf p}_i + \Delta\vec{\bf p} = \rm (0 + (-3.83)) \ N\cdot s = -3.83\ N\cdot s</p>
+        <p>Use the weight of the apple to find its mass:</p>
+        <p class="TeX">m = \frac{F_g}{g} = \rm \frac{4.25\ N}{9.81\ m/s^2} = 0.433\ kg</p>
+        <p>Its velocity is:</p>
+        <p class="TeX">\vec{\bf v}_f = \frac{\vec{\bf p}_f}{m} = \rm \frac{-3.83\ N\cdot s}{0.433\ kg} = -8.83\ m/s</p>
+    </div>
 
     <li><ol type="a">
         <li>The graph below shows the force that a bat exerts on a baseball. The positive direction is “east”. Use the graph to calculate the impulse that the ball experiences due to the force of the bat.
         <p class="Center"><svg class="Graph s20" data-js="p30/mom/img/impulse#bat"></svg></p>
         </li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>Because the force is not constant, the impulse is calculated as the area under the <span class="NoWrap"><span class="TeX">\vec{\bf F}</span>-<span class="TeX">t</span></span> graph:</p>
+            <p>From 0.000 to 0.080 seconds:</p>
+            <p class="TeX">A = \frac{1}{2} bh = \rm \frac{1}{2} 0.080\ s\cdot 100\ N = 4.0\ N\cdot s</p>
+            <p>From 0.080 to 0.180 seconds:</p>
+            <p class="TeX">A = bh = \rm 0.100\ s\cdot 100\ N = 10.0\ \cdot s</p>
+            <p>From 0.180 to 0.300 seconds:</p>
+            <p class="TeX">A = \frac{1}{2} bh = \rm \frac{1}{2} 0.120\ s\cdot 100\ N = 6.0\ N\cdot s</p>
+            <p>The total impulse is:</p>
+            <p class="TeX">\Delta\vec{\bf p} = \rm (4.0 + 10.0 + 6.0)\ N\cdot s = 20.0\ N\cdot s</p>
+        </div>
 
         <li>The 425-gram baseball’s initial velocity was 10.0 m/s [west] before the bat hit it. What is the ball’s velocity after being hit?</li>
-        <div class="Answer"></div>
+        <div class="Answer">
+            <p>The initial momentum is:</p>
+            <p class="TeX">\vec{\bf p}_i= m\vec{\bf v}_i = \rm 0.425\ kg\cdot (-10.0\ m/s) = -4.25\ N\cdot s</p>
+            <p>The final momentum is:</p>
+            <p class="TeX">\vec{\bf p}_f = \vec{\bf p}_i + \Delta\vec{\bf p} = \rm (-4.25 + 20.0) \ N\cdot s = +15.8\ N\cdot s</p>
+            <p>Its final velocity is:</p>
+            <p class="TeX">\vec{\bf v}_f = \frac{\vec{\bf p}_f}{m} = \rm \frac{+15.8\ N\cdot s}{0.425\ kg} = +37.1\ m/s</p>
+        </div>
     </ol></li>
 <!--
-5. 	a) Calculate the area of the triangle for the first 0.08 seconds…
-Δp = Base × Height / 2 = 0.08 s × 100 N / 2 = 4.00 N·s
-Calculate the area of the rectangle for the next 0.10 seconds…
-Δp = Base × Height = 0.10 s × 100 N = 10.0 N·s
-Calculate the area of the triangle for the last 0.12 seconds…
-Δp = Base × Height / 2 = 0.12 s × 100 N / 2 = 6.00 N·s
-The total impulse (area) is (4.00 + 10.0 + 6.00) N·s = 20.0 N·s
 
 b) Equations:
 p = mv	[Momentum]
@@ -313,19 +215,6 @@ vf = pf / m
     </div>
 
 </ol>
-
-<script type="text/javascript" data-init="notes">
-
-loadFeed.notes = () => {
-    let rev = $("td.Reveal").on("click", (ev) => {
-        $(ev.currentTarget).children("span").fadeToggle();
-    });
-    // if (!isSlideshow()) 
-    // $("td.Reveal > span").show();
-}
-
-</script>
-
 </div></div></section>
 
 <section class="Post" data-show="2023.9.4" data-answers="1" data-icon="correct">
