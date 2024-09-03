@@ -153,6 +153,33 @@ This is an inelastic collision since there is a 61.4% loss of mechanical energy.
 <h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
 <div id="Review">
 <ol>
+    <li>A toy train set includes a locomotive of mass of 750 grams and a passenger car of mass 400 grams. The locomotive has an initial velocity of –20.0 cm/s as it backs into the passenger car which is initially at rest. The locomotive and the passenger car do not join together successfully, and the passenger car moves off with a final velocity of –15.0 cm/s. Calculate:<ol type="a">
+        <li>the final velocity of the locomotive.</li>
+        <div class="Answer">
+            <p>Because the passenger car is at rest, the locomotive’s initial momentum is the total system momentum:</p>
+            <p class="TeX">\Sigma\vec{\bf p} = \vec{\bf p}_{iL} = m_L\vec{\bf p}_{iL} = \rm 0.750\ kg\cdot (-0.200\ m/s) = -0.150\ kg\cdot m/s</p>
+            <p>Now calculate the momentum of the passenger car after the collision:</p>
+            <p class="TeX">\vec{\bf p}_{fP} = m_P\vec{\bf p}_{fP} = \rm 0.400\ kg\cdot (-0.150\ m/s) = -0.0600\ kg\cdot m/s</p>
+            <p>The total momentum remains constant, so the final momentum of the locomotive is:</p>
+            <p class="TeX">\vec{\bf p}_{fL} = \Sigma\vec{\bf p} - \vec{\bf p}_{fP} = \rm (-0.150 - (-0.060))\ kg\cdot m/s = -0.090\ kg\cdot m/s</p>
+            <p>Finally, calculate the locomotive’s final velocity:</p>
+            <p class="TeX">\vec{\bf v}_{fL} = \frac{\vec{\bf p}_{fL}}{m_L} = \rm \frac{-0.090\ kg\cdot m/s}{0.750\ kg} = -0.120\ m/s</p>
+        </div>
+        <li>the change in mechanical energy of the system.</li>
+        <div class="Answer">
+            <p>Since the passenger car is initially at rest, the initial mechanical energy of the system is:</p>
+            <p class="TeX">\Sigma E_i = \frac{1}{2}m_L v_{iL}^2 = \rm \frac{1}{2} (0.750\ kg) (0.200\ m/s)^2 = 0.0150\ J</p>
+            <p>The final mechanical energy is:</p>
+            <p class="TeX">\begin{align}\Sigma E_f &= \frac{1}{2}m_L v_{fL}^2 + \frac{1}{2}m_P v_{fP}^2
+                \\[12pt] &= \rm {\frac{1}{2} (0.750\ kg) (0.120\ m/s)^2 + \frac{1}{2} (0.400\ kg) (0.150\ m/s)^2}
+                \\[12pt] &= \rm {0.00990\ J}
+            \end{align}</p>
+            <p>The change in energy is:</p>
+            <p class="TeX">\Delta E = \Sigma E_f - \Sigma E_i = \rm (0.00990 - 0.0150)\ J = -0.0051\ J</p>
+        </div>
+        <li>Classify the collisions as elastic, partly or completely inelastic, or superelastic.</li>
+        <div class="Answer"><p>Since there is a loss of mechanical energy but the masses do not join together, the collision was partly inelastic.</p></div>
+    </ol></li>
 </ol>
 </div></div></section>
 
@@ -164,7 +191,7 @@ loadFeed.data = {
     num: "9.5",
     up: "p30/units/A",
     prev: "p30/mom/cons",
-    next: "p30/mom/vec",
+    next: "p30/mom/vec2d",
 }
 
 </script>

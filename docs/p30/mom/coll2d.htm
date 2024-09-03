@@ -1,9 +1,12 @@
-<section id="Title" class="Center">
-<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
-<p class="Title"></p>
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Collisions in 2D</h1>
 </section>
 
-<section id="vec" class="Slide"><h3>Momentum &amp; Impulse Vectors</h3>
+<section class="Slide"><h3>Momentum &amp; Impulse Vectors</h3>
     <p>Momentum and impulse are <em class="Defn">vector</em> quantities.</p>
     <ul data-cue="+">
         <li>Momentum will always have the same direction as the velocity:<p class="TeX">{\vec{\mathbf p}} = m{\vec{\mathbf v}}</p></li>
@@ -14,11 +17,11 @@
     <p data-cue="+">...we need to remember that in 2D or 3D situations, vector addition and subtraction is different than adding and subtracting scalar quantities.</p>
 </section>
 
-<section id="ex1" class="Slide"><h3>Example 1</h3>
+<section class="Slide"><h3>Example 1</h3>
     <p  class="Blue">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [west] collide in an intersection. What is the total momentum of the system? Calculate the final velocity of the cars if they stick together after the collision.</p>
     <p data-cue="+">First calculate the initial momenta:</p>
-    <p data-cue="+"><p class="TeX">{\vec{\mathbf p}}_{Ai} = m_A {\vec{\mathbf v}}_{Ai}\\= {\mathrm{1500\ kg\cdot 18.0\ m/s\ [north]\\= 27000\ N\cdot s\ [north]}}</p></p>
-    <p data-cue="+"><p class="TeX">{\vec{\mathbf p}}_{Bi} = m_B {\vec{\mathbf v}}_{Bi}\\= {\mathrm{1200\ kg\cdot 20.0\ m/s\ [west]\\= 24000\ N\cdot s\ [west]}}</p></p>
+    <p data-cue="+"><p class="TeX">{\vec{\mathbf p}}_{Ai} = m_A {\vec{\mathbf v}}_{Ai} = {\mathrm{1500\ kg\cdot 18.0\ m/s\ [north] = 27000\ N\cdot s\ [north]}}</p></p>
+    <p data-cue="+"><p class="TeX">{\vec{\mathbf p}}_{Bi} = m_B {\vec{\mathbf v}}_{Bi} = {\mathrm{1200\ kg\cdot 20.0\ m/s\ [west] = 24000\ N\cdot s\ [west]}}</p></p>
     <p data-cue="+">To add the 2D vectors, draw them <em class="Defn">tip-to-tail</em> starting at the origin.</p>
     <p data-cue="=" class="Center">
         <canvas id="cv1" class="Wide" width="509" height="509"></canvas>
@@ -29,13 +32,13 @@
     </ul>
     <p data-cue="+"><p class="TeX">|\Sigma{\vec{\mathbf p}}| = \sqrt{27000^2 + 24000^2}\ {\mathrm{N\cdot s}} = {\mathrm{36125\ N\cdot s}}</p></p>
     <p data-cue="+"><p class="TeX">v_f = {\mathrm{36125\ N\cdot s\over 2700\ kg}} = {\mathrm{13.4\ m/s}}</p></p>
-    <p data-cue="+"><p class="TeX">\theta = \tan^{-1}\left({\mathrm{24000\ N\cdot s\over 27000\ N\cdot s}}\right) = 41.6°</p></p>
+    <p data-cue="+"><p class="TeX">\theta = \tan^{-1}\left({\mathrm{24000\ N\cdot s\over 27000\ N\cdot s}}\right) = 41.6^\circ</p></p>
     <ul data-cue="+">
         <li>Note that this is 41.6° west of north, or 131.6° from the <span class="TeX">+x</span>-axis.</li>
     </ul>
 </section>
 
-<section id="ex2" class="Slide"><h3>Example 2</h3>
+<section class="Slide"><h3>Example 2</h3>
     <p class="Blue">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [30.0° south of west] collide in an intersection. Calculate the final velocity of the cars if they stick together after the collision.</p>
     <p data-cue="+" class="Center">
         <canvas id="cv2" class="Wide" width="509" height="509"></canvas>
@@ -44,20 +47,20 @@
     <table class="Normal" data-cue="+">
         <thead><tr><th></th><th>x</th><th>y</th></tr></thead>
         <tbody>
-            <tr class="Blue"><td><p class="TeX">\frac{{\vec{\mathbf p}}_{Ai}}{\mathrm {N\cdot s}}</p></td><td><p class="TeX">{\mathrm{27000\ \cos(90.0°)\\ = 0}}</p></td><td><p class="TeX">{\mathrm{27000\ \sin(90.0°)\\ = 27000}}</p></td></tr>
-            <tr data-cue="+" class="Blue"><td><p class="TeX">\frac{{\vec{\mathbf p}}_{Bi}}{\mathrm {N\cdot s}}</p></td><td><p class="TeX">{\mathrm{24000\ \cos(210.0°)\\ = -20785}}</p></td><td><p class="TeX">{\mathrm{24000\ \sin(210.0°)\\ = -12000}}</p></td></tr>
+            <tr class="Blue"><td><p class="TeX">\frac{{\vec{\mathbf p}}_{Ai}}{\mathrm {N\cdot s}}</p></td><td><p class="TeX">{\mathrm{27000\ \cos(90.0^\circ) = 0}}</p></td><td><p class="TeX">{\mathrm{27000\ \sin(90.0^\circ) = 27000}}</p></td></tr>
+            <tr data-cue="+" class="Blue"><td><p class="TeX">\frac{{\vec{\mathbf p}}_{Bi}}{\mathrm {N\cdot s}}</p></td><td><p class="TeX">{\mathrm{24000\ \cos(210.0^\circ) = -20785}}</p></td><td><p class="TeX">{\mathrm{24000\ \sin(210.0^\circ) = -12000}}</p></td></tr>
             <tr data-cue="+" class="Red"><td><p class="TeX">\frac{\Sigma{\vec{\mathbf p}}}{\mathrm {N\cdot s}}</p></td><td><p class="TeX">{\mathrm{-20785}}</p></td><td><p class="TeX">{\mathrm{15000}}</p></td></tr>
         </tbody>
     </table>
     <p data-cue="+"><p class="TeX">|\Sigma{\vec{\mathbf p}}| = \sqrt{20785^2 + 15000^2}\ {\mathrm{N\cdot s}} = {\mathrm{25632\ N\cdot s}}</p></p>
     <p data-cue="+"><p class="TeX">v_f = {\mathrm{25632\ N\cdot s\over 2700\ kg}} = {\mathrm{9.49\ m/s}}</p></p>
-    <p data-cue="+"><p class="TeX">\theta = \tan^{-1}\left({\mathrm{15000\ N\cdot s\over -20785\ N\cdot s}}\right) + 180° = 144.2°</p></p>
+    <p data-cue="+"><p class="TeX">\theta = \tan^{-1}\left({\mathrm{15000\ N\cdot s\over -20785\ N\cdot s}}\right) + 180^\circ = 144.2^\circ</p></p>
 </section>
 
-<section id="ex3" class="Slide"><h3>Example 3</h3>
-    <p class="Blue">During a billiards game, the 170-gram cue ball moving at 2.50 m/s collides with a stationary ball of mass 150 grams. After the collision, the cue ball moves at an angle of +35.0° to its original direction, while the second ball moves at &minus;55.0°. Find the final speeds of the two billiard balls.</p>
+<section class="Slide"><h3>Example 3</h3>
+    <p class="Blue">During a billiards game, the 170-gram cue ball moving at 2.50 m/s collides with a stationary ball of mass 150 grams. After the collision, the cue ball moves at an angle of +35.0° to its original direction, while the second ball moves at –55.0°. Find the final speeds of the two billiard balls.</p>
     <p data-cue="+">Since only one ball is initially in motion, its momentum is the total momentum of the system:
-        <p class="TeX">\Sigma{\vec{\mathbf p}} = m_A {\vec{\mathbf v}}_{Ai}\\= {\mathrm{0.170\ kg\cdot 2.50\ m/s\ [0°]\\= 0.425\ N\cdot s\ [0°]}}</p></p>
+        <p class="TeX">\Sigma{\vec{\mathbf p}} = m_A {\vec{\mathbf v}}_{Ai} = {\mathrm{0.170\ kg\cdot 2.50\ m/s\ [0^\circ] = 0.425\ N\cdot s\ [0^\circ]}}</p></p>
     <p data-cue="+" class="Center">
         <canvas id="cv3" class="Wide" width="512" height="317"></canvas>
     </p>
@@ -67,8 +70,8 @@
         <li data-cue="+">You can solve for the missing sides or angles using trigonometry when the vector diagram is a triangle.</li>
         <li data-cue="+">Since the two known angles add up to 90°, the third angle must be 90°.</li>
         <li data-cue="+">Since it is a right-angle triangle, you can use <span class="TeX">\sin</span> or <span class="TeX">\cos</span> to find the missing sides:
-            <p class="TeX">p_A = \mathrm{0.425\ N\cdot s}\times \cos(35.0°) = \mathrm{0.348\ N\cdot s}</p>
-            <p class="TeX">p_B = \mathrm{0.425\ N\cdot s}\times \sin(35.0°) = \mathrm{0.244\ N\cdot s}</p>
+            <p class="TeX">p_A = \mathrm{0.425\ N\cdot s}\times \cos(35.0^\circ) = \mathrm{0.348\ N\cdot s}</p>
+            <p class="TeX">p_B = \mathrm{0.425\ N\cdot s}\times \sin(35.0^\circ) = \mathrm{0.244\ N\cdot s}</p>
         </li>
         <li data-cue="+">Remember to divide the momenta by the masses to get the speeds:
             <p class="TeX">v_A = \frac{p_A}{m_A} = \mathrm{\frac{0.348\ N\cdot s}{0.170\ kg}} = \mathrm{2.05\ m/s}</p>
@@ -77,9 +80,38 @@
         <li data-cue="+">When the triangle does not have a right angle, you must use the Law of Sines or Law of Cosines.</li>
         <li data-cue="+">Alternatively, you can write the momentum conservation equation separately for the <span class="TeX">x</span>- and <span class="TeX">y</span>-components:</li>
     </ul>
-    <p data-cue="+"><p class="TeX">\Sigma{\vec{\mathbf p}}_x = p_A\cos(35.0°) + p_B\cos(-55.0°)= \mathrm{0.425\ N\cdot s}</p></p>
-    <p data-cue="+"><p class="TeX">\Sigma{\vec{\mathbf p}}_y = p_A\sin(35.0°) + p_B\sin(-55.0°)= \mathrm{0.00\ N\cdot s}</p></p>
+    <p data-cue="+"><p class="TeX">\Sigma{\vec{\mathbf p}}_x = p_A\cos(35.0^\circ) + p_B\cos(-55.0^\circ)= \mathrm{0.425\ N\cdot s}</p></p>
+    <p data-cue="+"><p class="TeX">\Sigma{\vec{\mathbf p}}_y = p_A\sin(35.0^\circ) + p_B\sin(-55.0^\circ)= \mathrm{0.00\ N\cdot s}</p></p>
     <ul data-cue="+">
         <li>This is more difficult to solve because it is a system of two equations with two unknowns.</li>
     </ul>
 </section>
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+</ol>
+</div></div></section>
+
+<section class="Post" data-show="2024.9.?" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
+<div id="Review">
+<ol>
+</ol>
+</div></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}9.7 — Collisions in 2D`,
+    answerDate: "2024.9.?.10",
+    num: "9.7",
+    up: "p30/units/A",
+    prev: "p30/mom/vec2d",
+    // next: "p30/",
+}
+
+</script>
