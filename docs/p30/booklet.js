@@ -2,8 +2,10 @@ collect.urls = {
     "p30/mom": [
         // ["energy", "Work & Energy Review"],
         // ["mom", "Momentum"],
-        ["impulse", "Impulse"],
-        ["cons", "Momentum Conservation"],
+        // ["impulse", "Impulse"],
+        // ["cons", "Momentum Conservation"],
+        ["coll1d", "Elastic & Inelastic Collisions"],
+        ["vec2d", "2D Vectors Review"],
     ],
 };
 

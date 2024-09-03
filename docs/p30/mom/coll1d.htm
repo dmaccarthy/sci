@@ -41,110 +41,75 @@
     <li>Physicists use a particle accelerator to produce a 1D collision between a proton <span class="NoWrap">(<span class="TeX">m_p</span></span> = 1.67 × 10<sup>–27</sup> <span class="NoWrap">kg)</span> initially at rest and a particle of unknown mass moving at +6.00 × 10<sup>7</sup> m/s. As a result of the collision, the unknown particle is slowed to a velocity of +3.59 × 10<sup>7</sup> m/s while the proton is accelerated to a velocity of +9.59 × 10<sup>7</sup> m/s.
     <ol type="a">
         <li>What is the mass of the unknown particle?</li>
+        <div class="Answer">
+            <p>Since the proton is initially at rest, the total momentum is equal to the momentum of the unknown particle before the collision:</p>
+            <p class="TeX">\Sigma\vec{\bf p} = \vec{\bf p}_{iU} = m_U\vec{\bf v}_{iU}</p>
+            <p>After collision, both particles are in motion:</p>
+            <p class="TeX">\Sigma\vec{\bf p} = \vec{\bf p}_{fP} + \vec{\bf p}_{fU} = m_P\vec{\bf v}_{fP} + m_U\vec{\bf v}_{fU}</p>
+            <p>Without knowing the mass of the unkonwn particle we cannot calculate the momentum, but we can equate the initial and final momentum becuase momentum is conserved:</p>
+            <p class="TeX">m_U\vec{\bf v}_{iU} = m_P\vec{\bf v}_{fP} + m_U\vec{\bf v}_{fU}</p>
+            <p>We can now re-arrange to find the mass of the unknown particle:</p>
+            <p class="TeX">\begin{align}
+                m_U\vec{\bf v}_{iU} - m_U\vec{\bf v}_{fU} &= m_P\vec{\bf v}_{fP}
+                \\[10pt] m_U \left(\vec{\bf v}_{iU} - \vec{\bf v}_{fU} \right) &= m_P\vec{\bf v}_{fP}
+                \\[10pt] m_U &= \frac{m_P\vec{\bf v}_{fP}}{\vec{\bf v}_{iU} - \vec{\bf v}_{fU}}
+                \\[10pt] &= \rm {\frac{1.67\times 10^{-27}\ kg\cdot (+9.59\times 10^7\ m/s)}{+6.00\times 10^7\ m/s - (+3.59\times 10^7\ m/s)}}
+                \\[10pt] &= \rm {6.65\times 10^{-27}\ kg}
+            \end{align}</p>
+        </div>
+    
         <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
+        <div class="Answer">
+            <p>Calculate the initial mechanical energy:</p>
+            <p class="TeX">\begin{align}E_i &= \frac{1}{2}m_U{v_{iU}}^2
+                \\[10pt] &= \rm {\frac{1}{2} (6.65\times 10^{-27}\ kg) (6.00\times 10^7\ m/s)^2}
+                \\[10pt] &= \rm {1.20\times 10^{-11}\ J}
+        \end{align}</p>
+        <p>Calculate the final mechanical energy:</p>
+        <p class="TeX">\begin{align}E_f &= \frac{1}{2}m_P{v_{fP}}^2 + \frac{1}{2}m_U{v_{fU}}^2
+            \\[10pt] &= \rm {\frac{1}{2} (1.67\times 10^{-27}\ kg) (9.59\times 10^7\ m/s)^2 + \frac{1}{2} (6.65\times 10^{-27}\ kg) (3.59\times 10^7\ m/s)^2}
+            \\[10pt] &= \rm {1.20\times 10^{-11}\ J}
+    \end{align}</p>
+    <p>The collision appears to be elastic because the mechanical energy does not change.</p>
+    </div>
     </ol></li>
-    <div class="Answer"></div>
 
-<!--	
-a) 
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-mp = 1.67 × 10–27 kg
-vpi = 0.00 m/s
-vpf = +9.59 × 107 m/s
-vui = +6.00 × 107 m/s
-vuf = +3.59 × 107 m/s
-Solution:
-Without knowing the mass of one of the particles, we cannot calculate the total momentum. Instead, we can equate the equation for the total momentum before the collision to the equation for the total momentum after the collision…
-Σpi = Σpf
-mpvpi + muvui = mpvpf + muvuf
-The first term is zero since the proton is initially at rest...
-muvui = mpvpf + muvuf
-Solve for mu by first “collecting like terms” so both appearances of mu are on the same side of the equation…
-muvui – muvuf = mpvpf
-mu (vui – vuf) = mpvpf
-mu = mpvpf / (vui – vuf)
-= 1.67 × 10–27 kg (+9.59 × 107 m/s) / (+6.00 × 107 m/s – 3.59 × 107 m/s)
-= 6.65 × 10–27 kg
-
-b) 
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-Variables:
-mp = 1.67 × 10–27 kg
-vpi = 0.00 m/s
-vpf = +9.59 × 107 m/s
-mu = 6.65 × 10–27 kg
-vui = +6.00 × 107 m/s
-vuf = +3.59 × 107 m/s
-Solution:
-Evaluate the initial mechanical energy (combined kinetic energy of the two particles)…
-Ei = ½ mPvPi2 + ½ mUvUi2
-= 0 J + ½ (6.65 × 10–27 kg) (6.00 × 107 m/s)2
-= 1.20 × 10–11 J
-Evaluate the final mechanical energy…
-Ef = ½ mPvPf2 + ½ mUvUf2
-= ½ (1.67 × 10–27 kg) (9.59 × 107 m/s)2 + ½ (6.65 × 10–27 kg) (3.59 × 107 m/s)2
-= 1.20 × 10–11 J
-The collision appears to be elastic because the mechanical energy does not change.
--->
 
     <li>In a game of billiards, a 350-gram ball moving with a velocity of +2.25 m/s collides with a 300-gram ball moving in the exact opposite direction with a velocity of –0.400 m/s. After the collision, the heavier ball’s velocity is +0.900 m/s.
     <ol type="a">
         <li>What is the final velocity of the lighter ball?</li>
+        <div class="Answer">
+            <p>Calculate the total momentum before the collision:</p>
+            <p class="TeX">\begin{align}
+                \Sigma\vec{\bf p} &= \vec{\bf p}_{iA} + \vec{\bf p}_{iB}
+                \\[10pt] &= m_A\vec{\bf v}_{iA} + m_B\vec{\bf v}_{iB}
+                \\[10pt] &= \rm {0.350\ kg\cdot (+2.25\ m/s) + 0.300\ kg\cdot (-0.400\ m/s)}
+                \\[10pt] &= \rm {+0.668\ kg\cdot m/s}
+            \end{align}</p>
+            <p>After the collision, the momentum of “A” is:</p>
+            <p class="TeX">\vec{\bf p}_{fA} = m_A\vec{\bf v}_{fA} = \rm 0.350\ kg\cdot (+0.900\ m/s) = +0.315\ kg\cdot m/s</p>
+            <p>Because total momentum is conserved, the final momentum of “B” is:</p>
+            <p class="TeX">\vec{\bf p}_{fB} = \Sigma\vec{\bf p} - \vec{\bf p}_{fA} = \rm (+0.668 - (+0.315))\ kg\cdot m/s = +0.473\ kg\cdot m/s</p>
+            <p>The velocity is:</p>
+            <p class="TeX">\vec{\bf v}_{fB} = \frac{\vec{\bf p}_{fB}}{m_B} = \rm \frac{+0.473\ kg\cdot m/s}{0.300\ kg} = +1.18\ m/s</p>
+        </div>
+    
         <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
+        <div class="Answer">
+            <p>Calculate the initial mechanical energy:</p>
+            <p class="TeX">\begin{align}E_i &= \frac{1}{2}m_A{v_{iA}}^2 + \frac{1}{2}m_B{v_{iB}}^2
+                \\[10pt] &= \rm {\frac{1}{2} (0.350\ kg) (2.25\ m/s)^2 + \frac{1}{2} (0.300\ kg) (0.400\ m/s)^2}
+                \\[10pt] &= \rm {0.910\ J}
+        \end{align}</p>
+        <p>Calculate the final mechanical energy:</p>
+        <p class="TeX">\begin{align}E_f &= \frac{1}{2}m_A{v_{fA}}^2 + \frac{1}{2}m_B{v_{fB}}^2
+            \\[10pt] &= \rm {\frac{1}{2} (0.350\ kg) (0.900\ m/s)^2 + \frac{1}{2} (0.300\ kg) (1.18\ m/s)^2}
+            \\[10pt] &= \rm {0.351\ J}
+\end{align}</p>
+    <p>The collision is inelastic because the system lost 61.4% of its initial mechanical energy.</p>
+    </div>
     </ol>
     </li>
-    <div class="Answer"></div>
-
-
-<!--
-
-4. 	
-a) 
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-mA = 0.350 kg
-vAi = +2.25 m/s
-vAf = +0.900 m/s
-mB = 0.300 kg
-vBi = –0.400 m/s
-Solution:
-Calculate the total momentum of the system before the collision…
-Σp = mAvAi + mBvBi = 0.350 kg · (+2.25 m/s) + 0.300 kg · (–0.400 m/s) = +0.668 N·s
-After the collision, the total momentum remains the same…
-Σp = mAvAf + mBvBf
-Σp – mAvAf = mBvBf
-vBf = (Σp – mAvAf) / mB
-= (+0.668 N·s – 0.350 kg · (+0.900 m/s)) / (0.300 kg)
-= +1.18 m/s
-
-b) 
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-Variables:
-mA = 0.350 kg
-vAi = +2.25 m/s
-vAf = +0.900 m/s
-mB = 0.300 kg
-vBi = –0.400 m/s
-vBf = +1.18 /s
-Solution:
-Evaluate the initial mechanical energy…
-Ei = ½ mAvAi2 + ½ mBvBi2
-= ½ (0.350 kg) (2.25 m/s)2 + ½ (0.300 kg) (0.400 m/s)2
-= 0.910 J
-Evaluate the final mechanical energy…
-Ef = ½ mAvAf2 + ½ mBvBf2
-= ½ (0.350 kg) (0.900 m/s)2 + ½ (0.300 kg) (1.18 m/s)2
-= 0.351 J
-This is an inelastic collision since there is a 61.4% loss of mechanical energy.
-
--->
 
 </ol>
 </div></div></section>

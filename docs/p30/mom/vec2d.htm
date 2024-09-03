@@ -83,13 +83,63 @@ loadFeed.notes = () => {
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
 <ol>
+    <li>A cyclist rides 14.2 km due north, then turns due northeast (i.e. N 45.0° E) and rides another 10.8 km. Find the resultant displacement using the graphical method (i.e. by drawing an accurate, labelled “tip-to-tail” vector diagram) and using the component method. Express the answer in both Cartesian and polar form.</li>
+    <div class="Answer"><p>
+        <a target="Q1" href="/?{%22symbol%22:%22%CE%94d%22,%22square%22:[1.5,0],%22corner%22:[-10.5,-4.5],%22vectors%22:[[0,14.2],{%22mag%22:10.8,%22dir%22:45}],%22unit%22:%22km%22}#p20/vec2d/vec2d">Solution</a>
+    </p></div>
+
+    <li>A spacecraft moving near the Moon experiences three forces: the thrust of the rocket engines is <span class="TeX">\vec{\bf F}_a</span> = <span class="NoWrap">120.0 N [+85.2º]</span>, the force of the Moon’s gravity is <span class="TeX">\vec{\bf F}_{gM}</span> = <span class="NoWrap">85.0 N [–90.0º]</span>, and the force of Earth’s gravity is <span class="TeX">\vec{\bf F}_{gE}</span> = <span class="NoWrap">25.0 N [+235.0º]</span>. Determine the net force (i.e. the resultant vector obtained by adding these three force vectors) both graphically and by the component method.</li>
+    <div class="Answer"><p>
+        <a target="Q2" href="/?{%22symbol%22:%22F%22,%22square%22:[7.5,0],%22corner%22:[-75,-15],%22vectors%22:[{%22mag%22:120,%22dir%22:85.2},{%22mag%22:85,%22dir%22:-90},{%22mag%22:25,%22dir%22:235}],%22unit%22:%22N%22}#p20/vec2d/vec2d">Solution</a>
+    </p></div>
+
+    <li>As an object slides down a ramp, it experiences a force of gravity equal to <span class="TeX">\vec{\bf F}_g</span> = <span class="NoWrap">52.0 N [–90.0º]</span>. Measurements determine that the “contact force” of the ramp pushing on the object (i.e. the normal and friction forces combined) has a magnitude of <span class="TeX">|\vec{\bf F}_{contact}|</span> = 45.0 N and the magnitude of the net (resultant) force is 18.5 N. Determine the direction of the contact force and of the net force. [Hint: You may find the compass from your geometry set useful!]</li>
+    <div class="Answer">
+        <p>Draw a sketch of the vector diagram first. We know that the two forces and the resultant vector form a triangle. We know all three sides of the triangle (52.0, 45.0, and 18.5 N), so we can use the Law of Cosines to find the direction of the contact force:</p>
+        <p class="TeX">c^2 = a^2 + b^2 - 2ab\cos\theta</p>
+        <p class="TeX">2ab\cos\theta = a^2 + b^2 - c^2</p>
+        <p class="TeX">\cos\theta = \frac{a^2 + b^2 - c^2}{2ab}</p>
+        <p class="TeX">\theta = \cos^{-1}\left(\frac{a^2 + b^2 - c^2}{2ab}\right)</p>
+        <p>If <span class="TeX">\theta</span> is the angle between gravity and the contact force, then we must take <span class="TeX">c = \rm 18.5\ N</span> since the resultant force is the side opposite to <span class="TeX">\theta</span>:</p>
+        <p class="TeX">\theta = \cos^{-1}\left(\frac{52.0^2 + 45.0^2 - 18.5^2}{2\cdot 52.0\cdot 45.0}\right) = 20.4^\circ</p>
+        <p>Since gravity points along the negative <span class="TeX">y</span>-axis, the direction of the contact force from the positive <span class="TeX">x</span>-axis is:</p>
+        <p class="TeX">90^\circ - \theta = (90 - 20.4)^\circ = 69.6^\circ</p>
+        <p>Now that we know the magnitude and direction of both forces, we can add them using components and then draw the vector diagram accurately!</p>
+        <p><a target="Q3" href="/?{%22symbol%22:%22F%22,%22square%22:[4,0],%22corner%22:[-32,-64],%22vectors%22:[[0,-52],{%22mag%22:45,%22dir%22:69.6095}],%22unit%22:%22N%22}#p20/vec2d/vec2d">Vector Diagram</a>
+    </p></div>
+
 </ol>
 </div></div></section>
 
-<section class="Post" data-show="2024.9.?" data-answers="1" data-icon="correct">
+<section class="Post" data-show="2024.9.11" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
 <div id="Review">
 <ol>
+    <li>Define the <em class="Defn">magnitude</em> of a vector.</li>
+    <div class="Answer">The magnitude is the <em>size</em> of the vector without including the direction.</div>
+
+    <li>Explain how to describe the <em class="Defn">direction</em> of a 2D vector.</li>
+    <div class="Answer">Directions in 2D are described as angles measured from the positive <span class="TeX">x</span>-axis. Angles measured counter-clockwise are positive and negative angles are measured clockwise.</div>
+
+    <li>Define <em class="Defn">polar</em> and <em class="Defn">Cartesian</em> form for 2D vectors and explain how to convert between the two forms.</li>
+    <div class="Answer">
+        <p>The <em>polar</em> form describes a 2D vector as a magnitude and direction. For example, <span class="TeX">\vec{\bf F}</span> = <span class="NoWrap">25.0 N [+60.0°]</span> means a force that is 25.0-newtons strong directed 60.0° counter-clockwise from the direction parallel to the positive <span class="TeX">x</span>-axis.</p>
+        <p>The <em>Cartesian</em> form decribes the vector as separate <span class="TeX">x</span>- and <span class="TeX">y</span> -components. For example, <span class="TeX">\vec{\bf F}</span> = <span class="NoWrap">(+12.5, +21.7) N</span> means a force that pulls with 12.5 newtons parallel to the <span class="TeX">x</span>-axis and simultaneously with 21.7 newtons parallel to the <span class="TeX">y</span>-axis.</p>
+        <p>Because any 2D vector and its components form a right-angle triangle, you can use the trigonometry relations</p>
+    </div>
+
+    <li>Calculate the total momentum of a system containing three masses as shown in the table below. Calculate the momentum of each mass individually first, and then add the three momentum vectors together. Show all calculations and include a “tip-to-tail” vector diagram.</li>
+    <table class="Center TD6">
+        <tr><th>Mass</th><th>Velocity</th><th style="width:10em">Momentum<br/>(Polar)</th><th class="TeX">\vec{\bf p}_x</th><th class="TeX">\vec{\bf p}_y</th></tr>
+        <tr><td>250 g</td><td>3.00 m/s [30.0°]</td><td></td><td></td><td></td></tr>
+        <tr><td>350 g</td><td>1.00 m/s [60.0°]</td><td></td><td></td><td></td></tr>
+        <tr><td>300 g</td><td>2.00 m/s [45.0°]</td><td></td><td></td><td></td></tr>
+        <tr><td colspan="2" class="Right">Total</td><td></td><td></td><td></td></tr>
+    </table>
+    <div class="Answer"><p>
+        <a target="R1" href="/?{%22symbol%22:%22p%22,%22square%22:[1,-1],%22corner%22:[-0.4,-0.4],%22vectors%22:[{%22mag%22:0.75,%22dir%22:30},{%22mag%22:0.35,%22dir%22:60},{%22mag%22:0.6,%22dir%22:45}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Solution</a>
+    </p></div>
+
 </ol>
 </div></div></section>
 
@@ -97,7 +147,7 @@ loadFeed.notes = () => {
 
 loadFeed.data = {
     title: `${siteData.lesson}9.6 — 2D Vectors Review`,
-    answerDate: "2024.9.?.10",
+    answerDate: "2024.9.11.10",
     num: "9.6",
     up: "p30/units/A",
     prev: "p30/mom/coll1d",
