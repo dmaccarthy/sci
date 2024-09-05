@@ -70,10 +70,7 @@
 <script type="text/javascript" data-init="notes">
 
 loadFeed.notes = () => {
-    if (isSlideshow()) {
-        $("#Ex1 .Component").hide();
-        $("#Ex2").trigger("click");
-    }
+    if (isSlideshow()) $("#Ex1, #Ex2").trigger("click");
 }
 
 </script>

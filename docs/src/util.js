@@ -19,6 +19,15 @@ function clickCycle(e, n, ...f) {
     });
 }
 
+clickCycle.toggle = (items, show, ...n) => {
+    for (let i of n) {
+        let e = $(items[i]);
+        if (show) e.fadeIn();
+        else if (show == null) e.fadeToggle();
+        else e.fadeOut();
+    }
+}
+
 function setStyle(parent, style, applet$) {
     if (applet$) console.warn("Using applet.style!"); //style = applet.style(style, applet$ === true ? parent : applet$);
     parent = $(parent);

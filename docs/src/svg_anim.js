@@ -516,9 +516,9 @@ class SVG_Animation {
         else t.css({"font-style": "italic"});
         let x = rect.width / 1.8 * this.pixelX;
         let y = size / 2.4 * this.pixelY;
-        if (opt.delta) {
-            this.text("Δ", [-x, 0]).css({"text-anchor": "end"}).before(t.$);
-        }
+        if (opt.delta) opt.prefix = "Δ";
+        if (opt.prefix)
+            this.text(opt.prefix, [-x, 0]).css({"text-anchor": "end"}).before(t.$);
         for (let i=1;i<=4;i++) {
             let s = opt[`q${i}`];
             if (s != null) {
