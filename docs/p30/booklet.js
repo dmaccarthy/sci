@@ -4,8 +4,9 @@ collect.urls = {
         // ["mom", "Momentum"],
         // ["impulse", "Impulse"],
         // ["cons", "Momentum Conservation"],
-        ["coll1d", "Elastic & Inelastic Collisions"],
+        // ["coll1d", "Elastic & Inelastic Collisions"],
         ["vec2d", "2D Vectors Review"],
+        ["coll2d", "2D Collisions"],
     ],
 };
 
