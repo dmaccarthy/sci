@@ -109,12 +109,43 @@
     <ol type="a">
         <li>Determine the total momentum of the system (i.e. the combined momentum of the two cars).</li>
         <div class="Answer">
-
+            <p class="TeX">\begin{align}
+                \vec{\bf p}_{iA} &= m_A\vec{\bf p}_{iA} = \rm 100\ kg\cdot 2.00\ m/s\ [0.00^\circ]
+                \\[8pt] &= \rm {200\ N\cdot s\ [0.00^\circ]}
+                \\[8pt] &= \rm {(+200, 0.00) \ N\cdot s}
+            \end{align}</p>
+            <p class="TeX">\begin{align}
+                \vec{\bf p}_{iB} &= m_B\vec{\bf p}_{iB} = \rm 125\ kg\cdot 1.40\ m/s\ [0.00^\circ]
+                \\[8pt] &= \rm {175\ N\cdot s\ [0.00^\circ]}
+                \\[8pt] &= \rm {(0.00, +175) \ N\cdot s}
+            \end{align}</p>
+            <p class="TeX">\begin{align}
+                \Sigma\vec{\bf p} &= \vec{\bf p}_{iA} + \vec{\bf p}_{iB}
+                \\[8pt] &= \rm {(+200, 0.00) \ N\cdot s + (0.00, +175) \ N\cdot s}
+                \\[8pt] &= \rm {(+200, +175) \ N\cdot s}
+            \end{align}</p>
+            <p><a target="Q1" href="./?{%22symbol%22:%22p%22,%22square%22:[1.5,1],%22corner%22:[-45,-60],%22vectors%22:[{%22mag%22:200,%22dir%22:0},{%22mag%22:175,%22dir%22:90}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+            <p>If we want to express the total momentum in polar form:</p>
+            <p class="TeX">\begin{align}
+                \left|\Sigma\vec{\bf p}\right| &= \sqrt{(\Sigma\vec{\bf p}_x)^2 + (\Sigma\vec{\bf p}_y)^2}
+                \\[8pt] &= \rm \sqrt{200^2 + 175^2}\ N\cdot s
+                \\[8pt] & = \rm {266\ N\cdot s}
+            \end{align}</p>
+            <p class="TeX">\begin{align}
+                \theta &= \tan^{-1}\frac{\Sigma\vec{\bf p}_y}{\Sigma\vec{\bf p}_x}
+                \\[10pt] &= \rm {\tan^{-1}\frac{+175 \ N\cdot s}{+200 \ N\cdot s}}
+                \\[10pt] &= \rm {+41.2^\circ}
+            \end{align}</p>
         </div>
-    
+
         <li>If the two bumper cars were to stick together after colliding so that they had the same final velocity, what would that velocity be if the total momentum is conserved?</li>
         <div class="Answer">
-
+            <p>Because the two cars stick together, we can treat them as a single mass:</p>
+            <p class="TeX">m = m_A + m_B = \rm (100 + 125)\ kg = 225\ kg</p>
+            <p class="TeX">\vec{\bf v}_f = \frac{\Sigma\vec{\bf p}}{m}
+                = \rm {\frac{266\ N\cdot s\ [+41.2^\circ]}{225\ kg}}
+                = \rm {1.18\ m/s\ [+41.2^\circ]}
+            </p>
         </div>
     </ol></li>
 
@@ -122,200 +153,96 @@
     <ol type="a">
         <li>Determine the final velocity of the cars.</li>
         <div class="Answer">
-
+            <p>First calculate the initial momentum of each car, remembering to convert km/h to m/s:</p>
+            <p class="TeX">\begin{align}
+                \vec{\bf p}_{iA} &= m_A\vec{\bf p}_{iA} = \rm 1250\ kg\cdot 20.8\ m/s\ [-90.0^\circ]
+                \\[8pt] &= \rm {26042\ N\cdot s\ [-90.0^\circ]}
+                \\[8pt] &= \rm {(0.00, -26042) \ N\cdot s}
+            \end{align}</p>
+            <p class="TeX">\begin{align}
+                \vec{\bf p}_{iB} &= m_B\vec{\bf p}_{iB} = \rm 1000\ kg\cdot 15.3\ m/s\ [180.0^\circ]
+                \\[8pt] &= \rm {15278\ N\cdot s\ [180.0^\circ]}
+                \\[8pt] &= \rm {(-15278, 0.00) \ N\cdot s}
+            \end{align}</p>
+            <p><a target="Q2" href="./?{%22symbol%22:%22p%22,%22square%22:[2,0],%22corner%22:[-28,-34],%22vectors%22:[{%22mag%22:26.042,%22dir%22:-90},{%22mag%22:15.278,%22dir%22:180}],%22unit%22:%22kN%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+            <p>Now calculate the total momentum and convert to Cartesian form:</p>
+            <p class="TeX">\begin{align}
+                \Sigma\vec{\bf p} &= \vec{\bf p}_{iA} + \vec{\bf p}_{iB}
+                \\[8pt] &= \rm {(0.00, -26042) \ N\cdot s + (-15278, 0.00) \ N\cdot s}
+                \\[8pt] &= \rm {(-15278, -26042) \ N\cdot s}
+            \end{align}</p>
+            <p class="TeX">\begin{align}
+                \left|\Sigma\vec{\bf p}\right| &= \sqrt{(\Sigma\vec{\bf p}_x)^2 + (\Sigma\vec{\bf p}_y)^2}
+                \\[8pt] &= \rm \sqrt{15278^2 + 26042^2}\ N\cdot s
+                \\[8pt] & = \rm {30192\ N\cdot s}
+            \end{align}</p>
+            <p class="TeX">\begin{align}
+                \theta &= \tan^{-1}\frac{\Sigma\vec{\bf p}_y}{\Sigma\vec{\bf p}_x}
+                \\[10pt] &= \rm {\tan^{-1}\frac{-26042 \ N\cdot s}{-15278 \ N\cdot s} + 180^\circ}
+                \\[10pt] &= \rm {+239.6^\circ}
+            \end{align}</p>
+            <p>We can treat the cars as a single mass after they become entangled:</p>
+            <p class="TeX">m = m_A + m_B = \rm (1250 + 1000)\ kg = 2250\ kg</p>
+            <p class="TeX">\vec{\bf v}_f = \frac{\Sigma\vec{\bf p}}{m}
+                = \rm {\frac{30192\ N\cdot s\ [+239.6^\circ]}{2250\ kg}}
+                = \rm {13.4\ m/s\ [+239.6^\circ]}
+            </p>
         </div>
 
         <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
         <div class="Answer">
-
+            <p>Calculate the initial mechanical energy:</p>
+            <p class="TeX">\begin{align}
+                E_i &= \frac{1}{2}m_{iA}{v_{iA}}^2 + \frac{1}{2}m_{iB}{v_{iB}}^2
+                \\[10pt] &= \rm {\frac{1}{2} (1250\ kg) (20.8\ m/s)^2 + \frac{1}{2} (1000\ kg) (15.3\ m/s)^2}
+                \\[10pt] &= \rm {3.88\times 10^5\ J}
+            \end{align}</p>
+            <p>Calculate the final mechanical energy:</p>
+            <p class="TeX">\begin{align}
+                E_i &= \frac{1}{2}m{v_f}^2
+                \\[10pt] &= \rm {\frac{1}{2} (2250\ kg) (13.4\ m/s)^2}
+                \\[10pt] &= \rm {2.03\times 10^5\ J}
+            \end{align}</p>
+            <p>The collision is inelastic because there is a loss of mechanical energy.</p>
         </div>
         </ol></li>
 
-    <li>At a construction site, workers have decided to use explosives to remove a 2.00 × 10<sup>3</sup> kg boulder. After the explosion, the boulder has been blown into three pieces: fragment A has a mass of 860 kg and moves west at 26.0 m/s and fragment B has a mass of 534 kg and moves south at 32.0 m/s. Determine the final velocity of the third fragment. Include a labelled vector diagram. [Hint: The boulder was not moving before the explosion! What does this tell you about the total momentum of the system?]</li>
+    <li>At a construction site, workers have decided to use explosives to remove a 2.00 × 10<sup>3</sup> kg boulder. After the explosion, the boulder has been blown into three pieces: fragment “A” has a mass of 860 kg and moves west at 26.0 m/s and fragment “B” has a mass of 534 kg and moves south at 32.0 m/s. Determine the final velocity of the third fragment, “C”. Include a labelled vector diagram. [Hint: The boulder was not moving before the explosion! What does this tell you about the total momentum of the system?]</li>
     <div class="Answer">
+        <p>Since the boulder is initially at rest, the total momentum of the system is zero.</p>
+        <p>Calculate the final momentum of the two pieces for which the velocity is given and convert to Cartesian form:</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf p}_{fA} &= m_A\vec{\bf v}_{fA}
+            \\[8pt] &= \rm {860\ kg\cdot 26.0\ m/s\ [180^\circ]}
+            \\[8pt] &= \rm {22360\ N\cdot s\ [180^\circ]}
+            \\[8pt] &= \rm {(-22360, 0.00)\ N\cdot s}
+        \end{align}</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf p}_{fB} &= m_B\vec{\bf v}_{fB}
+            \\[8pt] &= \rm {534\ kg\cdot 32.0\ m/s\ [-90.0^\circ]}
+            \\[8pt] &= \rm {17088\ N\cdot s\ [-90.0^\circ]}
+            \\[8pt] &= \rm {(0.00, -17088)\ N\cdot s}
+        \end{align}</p>
+        <p>The third piece must have the opposite momentum to the first two so that the total is zero:</p>
+        <p class="TeX">\vec{\bf p}_{fC} = \rm (+22360, +17088)\ N\cdot s
+        <p class="TeX">|\vec{\bf p}_{fC}| = \rm \sqrt{22360^2 + 17088^2}\ N\cdot s = 28142\ N\cdot s</p>
+        <p class="TeX">\theta = \rm \tan^{-1}\left(\frac{+17088\ N\cdot s}{+22360\ N\cdot s}\right) = 37.4^\circ</p>
+        <p class="TeX">v_{fC} = \frac{p_{fC}}{m_C} = \rm \frac{28142\ N\cdot s}{606\ kg} = 46.4\ m/s</p>
 
+        <p><a target="Q3" href="./?{%22symbol%22:%22p%22,%22square%22:[1.5,0],%22corner%22:[-25.5,-24],%22vectors%22:[{%22mag%22:22.36,%22dir%22:180},{%22mag%22:17.088,%22dir%22:-90},{%22mag%22:28.14195,%22dir%22:37.3879}],%22unit%22:%22kN%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
     </div>
 
-    <p class="Center"><i>The vector diagrams in the remaining problems will not contain a right angle. Proceed with caution!</i></p>
+    <p class="Center"><i>The vector diagrams in the remaining problems will not contain a right angle.<br/>Proceed with caution!</i></p>
 
-    <li>Two spacecraft are planning to “dock”. The first spacecraft (m = 5.00 × 10<sup>3</sup> kg) has an initial velocity of 5.60 km/s in the +x-direction. The second spacecraft (m = 6.80 × 10<sup>3</sup> kg) has an initial velocity of 4.85 km/s. The second spacecraft is approaching from the bottom right (i.e. the velocity is directed up and left) at a bearing of 114°.
+    <li>Two spacecraft are planning to “dock”. The first spacecraft (<span class="TeX">m_A</span> = 5.00 × 10<sup>3</sup> kg) has an initial velocity of 5.60 km/s in the +<span class="TeX">x</span>-direction. The second spacecraft (<span class="TeX">m_B</span> = 6.80 × 10<sup>3</sup> kg) has an initial velocity of 4.85 km/s. The second spacecraft is approaching from the bottom right (i.e. the velocity is directed up and left) at a bearing of 114°.
     <ol type="a">
         <li>Draw and label a vector diagram showing the conservation of momentum.</li>
-        <div class="Answer">
-
-        </div>
-
         <li>Calculate the total momentum of the system.</li>
         <div class="Answer">
-
+            <p><a target="Q4" href="./?{%22symbol%22:%22p%22,%22square%22:[2,0],%22corner%22:[-6,-4],%22vectors%22:[{%22mag%22:28,%22dir%22:0},{%22mag%22:32.98,%22dir%22:114}],%22unit%22:%22MN%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
         </div>
 
-        <li>Determine the velocity of the attached spacecraft after the docking maneuver is complete.</li>
-        <div class="Answer">
-
-        </div>
-
-    </ol></li>
-
-    <li>Physicists use a particle accelerator to produce a 2D collision between a proton initially at rest and a particle with three times the mass of a proton moving at 6.00 × 10<sup>7</sup> m/s [0.00°]. As a result of the collision, the heavier particle’s velocity changes to 1.32 × 10<sup>7</sup> m/s [+32.0°]. Calculate the velocity of the proton after the collision. [Hint: Before attempting to calculate the proton’s velocity, determine its momentum.]</li>
-    <div class="Answer">
-
-    </div>
-
-    <li>Two billiard balls have masses <span class="TeX">m_A</span> = 172 g and <span class="TeX">m_B</span> = 143 g and initial velocities of <span class="TeX">\vec{\bf v}_{iA}</span> = 3.40 m/s [east] and <span class="TeX">\vec{\bf v}_{iB}</span> = 2.40 m/s [southwest]. After the collision, billiard ball “A” continues to move with <span class="TeX">\vec{\bf v}_{fA}</span> = 2.90 m/s [30.0° south of east]. Determine the final velocity of the other ball. Include an appropriate vector diagram(s).</li>
-    <div class="Answer"></div>
-
-    <li>In a game of billiards, a 350 g ball moving with a velocity of 2.25 m/s [0.00°] collides with a 300 g ball at rest. After the collision, the heavier ball moves with a direction of +24.0° while the lighter ball’s direction is –42.0°.
-    <ol type="a">
-        <li>Find the final speeds (i.e. the magnitudes of the velocity vectors) of the two billiard balls. [Hint: Before attempting to calculate the speeds, determine the momenta of the billiard balls.]</li>
-        <div class="Answer">
-
-        </div>
-
-        <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
-        <div class="Answer">
-
-        </div>
-    
-    </ol></li>
-    
-    <li>Two small asteroids collide in space. Before the collision, asteroid “A” (<span class="TeX">m_A</span> = 2.50 × 10<sup>11</sup> kg) has a velocity of 687 m/s and asteroid “B” (<span class="TeX">m_B</span> = 8.50 × 10<sup>10</sup> kg) is at rest. After the collision, asteroid A moves at an angle of –14.0° from its original direction and asteroid B moves at an angle of +23.2°.
-    <ol type="a">
-        <li>Calculate the initial momentum of the moving asteroid and draw a labelled vector diagram to illustrate the conservation of momentum.</li>
-        <div class="Answer">
-
-        </div>
-
-        <li>Determine the final speeds of the two asteroids.</li>
-        <div class="Answer">
-
-        </div>
-
-        <li>Calculate the percent change in kinetic energy as a result of the collision. Classify the collision as elastic, inelastic or superelastic.</li>
-        <div class="Answer">
-
-        </div>
-
-    </ol></li>
-
-<!-- 
-1. 	
-a) 
-Equations:
-p = mv	[Momentum]
-Variables:
-mA = 100 kg
-vAi = 2.00 m/s [0.00º]
-mB = 125 kg
-vBi = 1.40 m/s [+90.0º]
-Solution:
-Calculate the initial momenta and convert to Cartesian form…
-pAi = mAvAi = 100 kg · 2.00 m/s [0.00º] = (+200, 0.00) N·s
-pBi = mAvAi = 125 kg · 1.40 m/s [+90.0º] = (0.00, +175) N·s
-Calculate the total initial momentum…
-Σpi = pAi + pBi = (+200, +175) N·s
-Vector Diagram
-Convert to polar form if needed…
-|Σpi| = √(2002 + 1752) N·s = 266 N·s
-θ = tan–1 (175 / 200) = +41.2º
-
-b) 
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-Σp = 266 N·s [+41.2º]
-mA = 100 kg
-mB = 125 kg
-Solution:
-Because the cars are stuck together, they are effectively a single mass…
-m = mA + mB = (100 + 125) kg = 225 kg
-Use the total momentum (which is the same as the total initial momentum) to find the velocity…
-Σp = mv
-v = Σp / m
-= 266 N·s [+41.2º] / (225 kg)
-= 1.18 m/s [+41.2º]
-
-
-2. 
-a) 
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-mA = 1250 kg
-vAi = 75.0 km/h [south] = 20.8 m/s [–90.0º]
-mB = 1000 kg
-vBi = 55.0 km/h [west] = 15.3 m/s [180.0º]
-Solution:
-Calculate the initial momenta and convert to Cartesian form…
-pAi = mAvAi = 1250 kg · 20.8 m/s [–90.0º] = (0.00, –26.0) kN·s
-pBi = mAvAi = 1000 kg · 15.3 m/s [180.0º] = (–15.3, 0.00) kN·s
-Calculate the total initial momentum…
-Σp = pAi + pBi = (–15.3, –26.0) kN·s
-Vector Diagram
-Convert to polar form if needed…
-|Σp| = √(15.32 + 26.02) kN·s = 30.2 kN·s
-θ = tan–1 (–26.0 / –15.3) + 180º = +239.6º
-Because the cars are stuck together, they are effectively a single mass…
-m = mA + mB = (1250 + 1000) kg = 2250 kg
-Use the total momentum (which is the same as the total initial momentum) to find the velocity…
-Σp = mv
-v = Σp / m
-= 30.2 kN·s [+239.6º] / (2250 kg)
-= 13.4 m/s [+239.6º]
-
-b) 
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-Variables:
-mA = 1250 kg
-vAi = 20.8 m/s
-mB = 1000 kg
-vBi = 15.3 m/s
-Σm = 2250 kg
-vf = 13.4 m/s
-Solution:
-Calculate the initial mechanical energy…
-Ek = ½ mAvAi2 + ½ mBvBi2
-= ½ (1250 kg) (20.8 m/s)2 + ½ (100 kg) (15.3 m/s)2
-= 3.88 × 105 J = 388 kJ
-Calculate the final mechanical energy…
-Ek = ½ (Σm)vf2
-= ½ (2250 kg) (13.4 m/s)2
-= 2.03 × 105 J = 203 kJ
-
-
-3. 	
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-mA = 860 kg
-mB = 534 kg
-mC = 2.00 × 10–3 kg – (860 kg + 534 kg) = 606 kg
-vi = 0.00 m/s
-vAf = 26.0 m/s [180.0º]
-vBf = 32.0 m/s [270.0º]
-Solution:
-Calculate the momentum of the first two pieces…
-pA = mAvA
-= 860 kg · (–26.0, 0.00) m/s
-= (–22.4, 0.00) kN·s
-pB = mBvB
-= 534 kg · (0.00, –32.0) m/s
-= (0.00, –17.1) kN·s
-Since the total momentum is zero…
-pA + pB + pC = 0
-pC = –pA – pB
-= –(–22.4, 0.00) kN·s – (0.00, –17.1) kN·s
-= (+22.4, +17.1) kN·s
-= 28.2 kN·s [+37.4°] (from Pythagoras and tan–1)
-Vector Diagram
-Calculate the velocity of the third piece…
-pC = mCvC
-vC = pC / mC = 2.82 × 104 N·s [37.4°] / 606 kg = 46.4 m/s [37.4°]
-
+<!--
 
 4. 	
 a) 
@@ -338,7 +265,6 @@ pBf = mBvBf
 = 3.30 × 107 N·s [114°]
 = (3.30 cos 114°, 3.30 sin 114°) × 107 N·s
 = (–1.34, +3.01) × 107 N·s
-Vector Diagram
 
 b) 
 Component Method…
@@ -367,6 +293,22 @@ vf = Σp / (mA +mB)
 = 3.35 × 107 N·s [64.2°] / (5.00 × 103 kg + 6.80 × 103 kg)
 = 2.84 km/s [64.2°]
 
+-->
+
+        <li>Determine the velocity of the attached spacecraft after the docking maneuver is complete.</li>
+        <div class="Answer">
+
+        </div>
+
+    </ol></li>
+
+    <li>Physicists use a particle accelerator to produce a 2D collision between a proton initially at rest and a particle with three times the mass of a proton moving at 6.00 × 10<sup>7</sup> m/s [0.00°]. As a result of the collision, the heavier particle’s velocity changes to 1.32 × 10<sup>7</sup> m/s [+32.0°]. Calculate the velocity of the proton after the collision. [Hint: Before attempting to calculate the proton’s velocity, determine its momentum.]</li>
+    <div class="Answer">
+        <p><a target="Q5" href="./?{%22scaleExp%22:-20,%22symbol%22:%22p%22,%22square%22:[2,0],%22corner%22:[-4,-22],%22vectors%22:[{%22mag%22:2.47015e-19,%22dir%22:-8.1562},{%22mag%22:6.6132e-20,%22dir%22:32}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+    </div>
+
+<!--
+
 5. 	
 Equations:
 p = mv	[Momentum]
@@ -394,84 +336,15 @@ vpf = 3(vBi – vBf)
 = 1.48 × 108 N·s
 θ = tan–1(–0.210 / 1.46)
 = –8.2°
-Vector Diagram (use mp from Data Sheet)
 
-6. 	
-a) 
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-mA = 1490 kg
-mB = 1260 kg
-vAi = 80.0 km/h [south] = 22.2 m/s [270°]
-vBi = 0.00
-vBf = 25.0 km/h [southeast] = 6.94 m/s [315°]
-Solution:
-Calculate the total initial momentum…
-Σp = mAvAi
-= 1490 kg · 22.2 m/s [270°]
-= 33.1 kN·s [270°]
-= (0.00, –33.1) kN·s
-Calculate the momentum of B after the collision…
-pBf = mBvBf
-= 1260 kg · 6.94 m/s [315°]
-= 8.75 kN·s [315°]
-= (8.75 cos 315°, 8.75 sin 315°) kN·s
-= (6.19, –6.19) kN·s
-Use momentum conservation to find the momentum of A after the collision…
-Σp = pAf + pBf
-pAf = Σp – pBf
-= (0.00, –33.1) kN·s – (6.19, –6.19) kN·s
-= (–6.19, –26.9) kN·s
-|pAf| = √(6.192 + 26.92) kN·s
-= 27.6 kN·s
-θ = tan–1(–26.9 / –6.19) + 180–
-= 257°
-The final velocity of A is…
-vAf = pAf / mA
-= 2.76 × 104 N·s [257°] / (1490 kg)
-= 18.5 m/s [257°]
-Vector Diagram
+-->
 
+    <li>Two billiard balls have masses <span class="TeX">m_A</span> = 172 g and <span class="TeX">m_B</span> = 143 g and initial velocities of <span class="TeX">\vec{\bf v}_{iA}</span> = 3.40 m/s [east] and <span class="TeX">\vec{\bf v}_{iB}</span> = 2.40 m/s [southwest]. After the collision, billiard ball “A” continues to move with <span class="TeX">\vec{\bf v}_{fA}</span> = 2.90 m/s [30.0° south of east]. Determine the final velocity of the other ball. Include an appropriate vector diagram(s).</li>
+    <div class="Answer">
+        <p><a target="Q6i" href="./?{%22symbol%22:%22p%22,%22square%22:[4,-2],%22corner%22:[-0.12,-0.52],%22vectors%22:[{%22mag%22:0.5848,%22dir%22:0},{%22mag%22:0.3432,%22dir%22:225}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Before Collision</a> &
+        <a target="Q6f" href="./?{%22scaleExp%22:-2,%22symbol%22:%22p%22,%22square%22:[3,0],%22corner%22:[-9,-42],%22vectors%22:[{%22mag%22:0.4988,%22dir%22:-30},{%22mag%22:0.090104,%22dir%22:175.72}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">After Collision</a></p>
 
-Alternate Method:
-The unknown side in the vector diagram, pAf, can be calculated using the cosine law…
-pAf = √(p2 + pBf2 – 2 p · pBf cos(45.0°))
-= √((3.31 × 104 N·s)2 + (8.75 × 103 N·s)2 – 2 (3.31 × 104 N·s) · (8.75 × 103 N·s) cos(45.0°))
-= 27.6 kN·s
-Use the sine law to find direction…
-sin θ / pBf  = sin 45.0° / pAf
-sin θ = pBf sin 45.0° / pAf
-= (8.75 × 103 N·s) sin 45.0° / (2.76 × 104 N·s)
-= 0.226
-θ = sin–1 (0.226) = 12.9°
-Note that this is the direction of pA relative to the –y-axis so the conventional direction is 270° – 12.9° = 257°. 
-
-b) 
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-Variables:
-mA = 1490 kg
-mB = 1260 kg
-vAi = 22.2 m/s
-vBi = 0.00 m/s
-vAf = 18.5 m/s
-vBf = 6.94 m/s
-Solution:
-Evaluate the initial mechanical energy…
-Ei = ½ mAvAi2 + ½ mBvABi2
-= ½ (1490 kg) (22.2 m/s)2 + ½ (1260 kg) (0.00 m/s)2
-= 3.68 × 105 J
-Evaluate the final mechanical energy…
-Ef = ½ mAvAf2 + ½ mBvABf2
-= ½ (1490 kg) (18.5 m/s) + ½ (1260 kg) (6.94 m/s)2
-= 2.85 × 105 J
-Calculate the change in mechanical energy…
-ΔE = Ef – Ei
-= 2.85 × 105 J – 3.68 × 105 J
-= –8.1 × 104 J
-This is an inelastic collision.
+<!--
 
 7. 	
 Equations:
@@ -498,7 +371,6 @@ The total momentum is...
 p = pA + pB
 = (+0.342, –0.243) N·s
 = 0.420 N·s [–35.3°] (from Pythagoras and tan–1)
-Vector Diagram
 
 After Collision...
 pAf = mAvAf
@@ -511,12 +383,49 @@ pBf = p – pAf
 = (+0.342, –0.243) N·s – (+0.432, –0.249) N·s
 = (–0.0899, 0.00672) N·s
 = 0.0901 N·s [176°] (from Pythagoras and tan–1)
-Vector Diagram
 
 vBf = pBf / mB
 = 0.0901 N·s [176°] / 0.143 kg
 = 0.630 m/s [176°]
 
+-->
+
+    </div>
+
+    <li>In a game of billiards, a 350 g ball moving with a velocity of 2.25 m/s [0.00°] collides with a 300 g ball at rest. After the collision, the heavier ball moves with a direction of +24.0° while the lighter ball’s direction is –42.0°.
+    <ol type="a">
+        <li>Find the final speeds (i.e. the magnitudes of the velocity vectors) of the two billiard balls. [Hint: Before attempting to calculate the speeds, determine the momenta of the billiard balls.]</li>
+        <div class="Answer">
+            <p><a target="Q7" href="./?{%22symbol%22:%22p%22,%22square%22:[5,-2],%22corner%22:[-0.1,-0.4],%22vectors%22:[{%22mag%22:0.57681,%22dir%22:24},{%22mag%22:0.35062,%22dir%22:-42}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+        </div>
+    
+        <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
+        <div class="Answer">
+
+        </div>
+    
+    </ol></li>
+    
+    <li>Two small asteroids collide in space. Before the collision, asteroid “A” (<span class="TeX">m_A</span> = 2.50 × 10<sup>11</sup> kg) has a velocity of 687 m/s and asteroid “B” (<span class="TeX">m_B</span> = 8.50 × 10<sup>10</sup> kg) is at rest. After the collision, asteroid A moves at an angle of –14.0° from its original direction and asteroid B moves at an angle of +23.2°.
+    <ol type="a">
+        <li>Calculate the initial momentum of the moving asteroid and draw a labelled vector diagram to illustrate the conservation of momentum.</li>
+        <div class="Answer">
+            <p><a target="Q8" href="./?{%22scaleExp%22:13,%22symbol%22:%22p%22,%22square%22:[1.5,0],%22corner%22:[-6,-16.5],%22vectors%22:[{%22mag%22:1.1191e14,%22dir%22:-14},{%22mag%22:6.8723e13,%22dir%22:23.2}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+        </div>
+
+        <li>Determine the final speeds of the two asteroids.</li>
+        <div class="Answer">
+
+        </div>
+
+        <li>Calculate the percent change in kinetic energy as a result of the collision. Classify the collision as elastic, inelastic or superelastic.</li>
+        <div class="Answer">
+
+        </div>
+
+    </ol></li>
+
+<!--
 
 8. 	
 a) 
@@ -574,6 +483,8 @@ Calculate the change in mechanical energy…
 = –0.204 J
 This is an inelastic collision.
 
+--><!--
+
 9. 	
 a) 
 Equations:
@@ -592,7 +503,6 @@ Solution:
 = 2.50 × 1011 kg · 687 m/s [0.00º] + 0.00 N·s
 = 1.72 × 1014 N·s [0.00º]
 Sketch the vector diagram. The total momentum is blue and the momenta of A and B after the collision are red. The bottom angle is 180º – (14.0º + 23.2º) = 142.8º…
-
 
 b) 
 The missing sides are most easily found using the sine law...
@@ -654,8 +564,56 @@ This is an inelastic collision.
         <ol type="a">
             <li>Determine the final velocity of car “A”. Include a labelled vector diagram.</li>
             <div class="Answer">
-    
+                <p><a target="Rev" href="./?{%22symbol%22:%22p%22,%22square%22:[3,0],%22corner%22:[-27,-48],%22vectors%22:[{%22mag%22:8.75,%22dir%22:-45},{%22mag%22:27.6257,%22dir%22:-102.94}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
             </div>
+
+            
+<!--
+
+The final velocity of A is…
+vAf = pAf / mA
+= 2.76 × 104 N·s [257°] / (1490 kg)
+= 18.5 m/s [257°]
+
+Alternate Method:
+The unknown side in the vector diagram, pAf, can be calculated using the cosine law…
+pAf = √(p2 + pBf2 – 2 p · pBf cos(45.0°))
+= √((3.31 × 104 N·s)2 + (8.75 × 103 N·s)2 – 2 (3.31 × 104 N·s) · (8.75 × 103 N·s) cos(45.0°))
+= 27.6 kN·s
+Use the sine law to find direction…
+sin θ / pBf  = sin 45.0° / pAf
+sin θ = pBf sin 45.0° / pAf
+= (8.75 × 103 N·s) sin 45.0° / (2.76 × 104 N·s)
+= 0.226
+θ = sin–1 (0.226) = 12.9°
+Note that this is the direction of pA relative to the –y-axis so the conventional direction is 270° – 12.9° = 257°. 
+
+b) 
+Equations:
+Ek = ½ mv2	[Kinetic Energy]
+Variables:
+mA = 1490 kg
+mB = 1260 kg
+vAi = 22.2 m/s
+vBi = 0.00 m/s
+vAf = 18.5 m/s
+vBf = 6.94 m/s
+Solution:
+Evaluate the initial mechanical energy…
+Ei = ½ mAvAi2 + ½ mBvABi2
+= ½ (1490 kg) (22.2 m/s)2 + ½ (1260 kg) (0.00 m/s)2
+= 3.68 × 105 J
+Evaluate the final mechanical energy…
+Ef = ½ mAvAf2 + ½ mBvABf2
+= ½ (1490 kg) (18.5 m/s) + ½ (1260 kg) (6.94 m/s)2
+= 2.85 × 105 J
+Calculate the change in mechanical energy…
+ΔE = Ef – Ei
+= 2.85 × 105 J – 3.68 × 105 J
+= –8.1 × 104 J
+This is an inelastic collision.
+
+-->
     
             <li>Calculate the initial, final, and change in mechanical energy. Classify the collision.</li>
             <div class="Answer">
