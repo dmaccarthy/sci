@@ -110,7 +110,7 @@ loadFeed.whmis = () => {
         "environment", "biohazardous", "exclamation_mark", "reactive",
         "exploding_bomb", "flame_circle", "flame", "skull_crossbones"];
     let ol = $("ol.WHMIS");
-    let media = "https://media-davidmaccarthy.replit.app/s10/whmis";
+    let media = "./media/whmis";
     for (let src of source) {
         let svg = ["reactive", "toxic"].indexOf(src) == -1 ? "svg" : "png";
         let img = $("<img>").attr({alt: "WHMIS Pictogram", src: `${media}/${src}.${svg}`});
@@ -143,7 +143,7 @@ loadFeed.whmis = () => {
 <ul data-cue="+">
     <li>WHMIS is the Canadian government system for identifying hazards in the workplace.</li>
     <li data-cue="+">WHMIS requires hazardous material to be properly labelled and for the label to include a warning and pictogram.
-        <p class="Center"><img class="w10" src="https://media-davidmaccarthy.replit.app/s10/whmis/reactive.png" alt="Pictogram"/></p>
+        <p class="Center"><img class="w10" src="./media/whmis/reactive.png" alt="Pictogram"/></p>
     </li>
 </ul>
 <ul data-cue="+">
@@ -156,7 +156,7 @@ loadFeed.whmis = () => {
 <ul data-cue="+">
     <li>WHMIS was revised in 2015 to be compatible with the GHS.</li>
     <li data-cue="+">WHMIS 2015 pictograms are easily recognized by the red diamond outline.
-        <p class="Center"><img class="w10" src="https://media-davidmaccarthy.replit.app/s10/whmis/skull_crossbones.svg" alt="Pictogram"/></p>
+        <p class="Center"><img class="w10" src="./media/whmis/skull_crossbones.svg" alt="Pictogram"/></p>
     </li>
 </ul>
 <ul data-cue="+"><li>WHMIS 2015 pictograms are shown on the WHMIS website.</li></ul>

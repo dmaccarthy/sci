@@ -266,7 +266,7 @@ function onFeedLoaded(feed, e, noHist) {
                 if (url) url = "https://docs.google.com/document/d/" + url;
                 else {
                     url = ei.attr("data-doc");
-                    if (url) url = "https://media-davidmaccarthy.replit.app/" + url;
+                    if (url) url = "./media/" + url; // https://media-davidmaccarthy.replit.app/
                     else url = ei.attr("data-open");
                 }
             }
@@ -410,6 +410,7 @@ function video(s) {
     s = $(s);
     let opt = s.attr("data-opt");
     opt = opt ? JSON.parse(opt.replaceAll("'", '"')) : {};
+    let border = opt.border? opt.border : 0;
 
     let w = opt.width;
     let r = opt.aspect;
@@ -420,7 +421,7 @@ function video(s) {
     if (id) {
         let c = id.charAt(0);
         if (c == "#") id = "videoseries?list=" + id.slice(1);
-        v = $("<iframe>").attr({frameborder:0, allowfullscreen:1,
+        v = $("<iframe>").attr({frameborder: border, allowfullscreen:1,
             src:"https://www.youtube.com/embed/" + id});
     }
     else {
