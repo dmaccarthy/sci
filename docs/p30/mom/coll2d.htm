@@ -71,10 +71,7 @@
         <p>Since only one ball is initially in motion, its momentum is the total momentum of the system:</p>
         <p class="TeX">\Sigma{\vec{\bf p}} = m_A {\vec{\bf v}}_{iA} = {\rm{0.170\ kg\cdot 2.50\ m/s\ [0^\circ] = 0.425\ N\cdot s\ [0^\circ]}}</p>
     </div>
-    <p data-cue="+" class="Center">
-        <svg data-js="p30/mom/img/coll2d#Ex3" id="Ex3" class="VDiag s20"></svg>
-        <!-- <canvas id="cv3" class="Wide" width="512" height="317"></canvas> -->
-    </p>
+    <p data-cue="+" class="Center"><svg data-js="p30/mom/img/coll2d#Ex3" id="Ex3" class="VDiag s20"></svg></p>
     <ul data-cue="+">
         <li>Draw the two final momentum vectors tip-to-tail.</li>
         <li data-cue="+">The resultant vector must equal the initial momentum, since momentum must be conserved.</li>
@@ -244,17 +241,6 @@
 
 <!--
 
-4. 	
-a) 
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-mA = 5.00 × 103 kg
-mB = 6.80 × 103 kg
-vAi = 5600 m/s [0.00°]
-vBi = 4850 m/s [114°]
-Solution:
 Calculate the initial momenta…
 pAi = mAvAi
 = 5.00 × 103 kg · 5600 m/s [0.00°]
@@ -287,57 +273,51 @@ sin θ  = pB sin 66.0° / Σp
 = 0.900
 θ = sin–1 (0.900) = 64.2°
 
-c) 
-Σp = (mA +mB) vf
-vf = Σp / (mA +mB)
-= 3.35 × 107 N·s [64.2°] / (5.00 × 103 kg + 6.80 × 103 kg)
-= 2.84 km/s [64.2°]
-
 -->
 
         <li>Determine the velocity of the attached spacecraft after the docking maneuver is complete.</li>
         <div class="Answer">
-
+            <p>Treat the spacecraft as a single mass now that they are attached:</p>
+            <p class="TeX">\begin{align}
+                \vec{\bf v}_f &= \frac{\Sigma\vec{\bf p}}{m_A+m_B}
+                \\[10pt] &= \rm{\frac{3.35\times 10^7\ N\cdot s\ [64.2^\circ]}{(5.00+6.80)\times 10^3\ kg}}
+                \\[10pt] &= \rm{2.84\times 10^3\ m/s\ [64.2^\circ]}
+            \end{align}</p>
         </div>
 
     </ol></li>
 
     <li>Physicists use a particle accelerator to produce a 2D collision between a proton initially at rest and a particle with three times the mass of a proton moving at 6.00 × 10<sup>7</sup> m/s [0.00°]. As a result of the collision, the heavier particle’s velocity changes to 1.32 × 10<sup>7</sup> m/s [+32.0°]. Calculate the velocity of the proton after the collision. [Hint: Before attempting to calculate the proton’s velocity, determine its momentum.]</li>
     <div class="Answer">
+        <p>The initial momentum is just the heavy particle since the proton is at rest:</p>
+        <p class="TeX">\begin{align}
+            \Sigma\vec{\bf p} &= m_H\vec{\bf v}_{iH}
+            \\[6pt] &= \rm {5.01\times 10^{-27}\ kg\cdot 6.00\times 10^7\ m/s\ [0.00^\circ]}
+            \\[6pt] &= \rm {3.006\times 10^{-19}\ N\cdot s\ [0.00^\circ]}
+            \\[6pt] &= \rm {(+3.0060, 0.00) \times 10^{-19}\ N\cdot s}
+        \end{align}</p>
+        <p>After the collision, the heavier particle momentum is:</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf p}_{fH} &= m_H\vec{\bf v}_{fH}
+            \\[6pt] &= \rm {5.01\times 10^{-27}\ kg\cdot 1.32\times 10^7\ m/s\ [+32.0^\circ]}
+            \\[6pt] &= \rm {6.6132\times 10^{-20}\ N\cdot s\ [+32.0^\circ]}
+            \\[6pt] &= \rm {(+5.6083, +3.5045) \times 10^{-20}\ N\cdot s}
+        \end{align}</p>
+        <p>To find the proton’s momentum, subtract the heavier particle’s from the total:</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf p}_{fP} &= \Sigma\vec{\bf p} - \vec{\bf p}_{fH}
+            \\[6pt] &= \rm {(+30.060 - 5.6083, 0.00 - 3.5045)\times 10^{-20}\ }N\cdot s
+            \\[6pt] &= \rm {(+24.4517, -3.5045) \times 10^{-20}\ N\cdot s}
+            \\[6pt] &= \rm {2.47\times 10^{-19}\ N\cdot s\ [-8.20^\circ]}
+        \end{align}</p>
         <p><a target="Q5" href="./?{%22scaleExp%22:-20,%22symbol%22:%22p%22,%22square%22:[2,0],%22corner%22:[-4,-22],%22vectors%22:[{%22mag%22:2.47015e-19,%22dir%22:-8.1562},{%22mag%22:6.6132e-20,%22dir%22:32}],%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+        <p>To get the velocity, divide the proton’s momentum by its mass:</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf v}_{fP} &= \frac{\vec{\bf p}_{fP}}{m_P}
+            \\[10pt] &= \rm{\frac{2.47\times 10^{-19}\ N\cdot s\ [-8.20^\circ]}{1.67\times 10^{-27}\ kg}}
+            \\[10pt] &= \rm{1.48\times 10^8\ m/s\ [-8.20^\circ]}
+        \end{align}</p>
     </div>
-
-<!--
-
-5. 	
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-mB = 3mp
-vpi = 0.00 m/s
-vBi = 6.00 × 107 m/s [0.00°]
-vBf = 1.32 × 107 m/s [+32.0°]
-Solution:
-The total momentum (initial and final) is...
-Σp = (3mp)vBi = (3mp)vBf + mpvpf
-Cancelling the common factor (mp)...
-3vBi = 3vBf + vpf
-vpf = 3vBi – 3vBf
-vpf = 3(vBi – vBf)
-Evaluate by writing the given velocities in Cartesian form…
-vBi = (6.00, 0.00)  × 107 m/s
-vBf = 1.32 × 107 m/s (cos 32.0°, sin 32.0°) = (1.12, 0.699)  × 107 m/s
-vpf = 3(vBi – vBf)
-= 3 [(6.00, 0.00) – (1.12, 0.699)]  × 107 m/s
-= 3 (4.88, –0.699)  × 107 m/s
-= (1.46, –0.210)  × 108 m/s
-|vpf| = √(1.462 + 0.2102) × 108 N·s
-= 1.48 × 108 N·s
-θ = tan–1(–0.210 / 1.46)
-= –8.2°
-
--->
 
     <li>Two billiard balls have masses <span class="TeX">m_A</span> = 172 g and <span class="TeX">m_B</span> = 143 g and initial velocities of <span class="TeX">\vec{\bf v}_{iA}</span> = 3.40 m/s [east] and <span class="TeX">\vec{\bf v}_{iB}</span> = 2.40 m/s [southwest]. After the collision, billiard ball “A” continues to move with <span class="TeX">\vec{\bf v}_{fA}</span> = 2.90 m/s [30.0° south of east]. Determine the final velocity of the other ball. Include an appropriate vector diagram(s).</li>
     <div class="Answer">
