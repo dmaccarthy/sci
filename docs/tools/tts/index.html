@@ -51,6 +51,19 @@ tts.map = {
     "Marie": "français",
 }
 
+tts.find = (male, female) => {
+    let m = [], f = [];
+    for (let v of male) {
+        let i = cast.indexOf(v);
+        if (i > -1) m.push(i);
+    }
+    for (let v of female) {
+        let i = cast.indexOf(v);
+        if (i > -1) f.push(i);
+    }
+    return [m, f];
+}
+
 function say(text, v) {
     let u = new SpeechSynthesisUtterance(text);
     let opt;
@@ -70,8 +83,9 @@ say.queue = [];
 
 function queue(text, v, delay) {say.queue.push([text, v, delay])}
 
-function play() {
-    if (play.stop) {
+function play(restart) {
+    if (restart) play.stop = false;
+    else if (play.stop) {
         say.queue = [];
         play.stop = false;
         console.log("Stopped!");
@@ -97,7 +111,7 @@ console.log(`Usage...
 
 $.getScript("example.js");
 queue("Hello", castNumber, delayBefore);
-play();
+play(true);
 stop();`);
 
 </script>

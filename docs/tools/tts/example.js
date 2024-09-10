@@ -1,9 +1,8 @@
-// Select voices
-F = [5, {rate: 0.95, pitch: 1.1}];
-M = [1, {rate: 1.0, pitch: 0.9}];
-F2 = [7, {rate: 1.05, pitch: 0.9}];
-
-// Confirm voice selection
+// Select and confirm preferred voices
+[F, M] = tts.find(["Amy", "Linda", "Liz", "Zira", "Marie"], ["Richard", "Mark", "Phil", "David", "Ned"])
+F2 = [F[1], {rate: 1.05, pitch: 0.9}];
+F = [F[0], {rate: 0.95, pitch: 1.1}];
+M = [M[0], {rate: 1.0, pitch: 0.9}];
 console.log("Cast", [cast[F[0]], cast[M[0]], cast[F2[0]]]);
 
 scene1 = () => {
