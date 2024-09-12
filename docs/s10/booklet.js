@@ -9,10 +9,18 @@ collect.urls = {
         ["dot", "Periodic Table & Dot Diagrams"],
     ],
 
+    "s10/chem2": [
+        ["ionic", "Binary Ionic Compounds"],
+        ["molec", "Molecular Compounds"],
+        ["poly", "Polyatomic Ions & Solubility"],
+        // ["acid", "Acids & Bases"],
+        // ["water", "Properties of Water"],
+    ],
 };
 
 collect.titles = {
     "s10/chem1": "1: Matter",
+    "s10/chem2": "2: Compounds",
 }
 
 let course = "Science 10";
