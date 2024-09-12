@@ -1,5 +1,29 @@
 save("p30/mag/img/em", {
 
+    slnd1: (sel) => {
+        $(sel).attr({width: 200, height: 400, "data-aspect": "1/2"});
+        svg = new SVG_Animation(sel, -1.02, 1.02);
+        // svg.$.css({stroke: "red", "stroke-width": "1px", fill: "none"});
+        svg.rect([2, 4], [0, 0]).css({fill: "none", stroke: "black"});
+
+
+        svg.final();
+    },
+
+    atom: (sel) => {
+        $(sel).attr({width: 256, height: 128, "data-aspect": "2"});
+        svg = new SVG_Animation(sel, -1, 1);
+        svg.$.css({stroke: "red", "stroke-width": "1px", fill: "none"});
+        svg.ellipse(0.9, 0.08, [0, 0]);
+        let g = svg.group().config({theta: -95, position: [-0.45, -0.07]});
+        svg.poly([[-0.05, -0.05], [0, 0], [0.05, -0.05]], 0, g);
+        g = svg.group().config({theta: 90, position: [0.36, 0.07]});
+        svg.poly([[-0.04, -0.04], [0, 0], [0.04, -0.04]], 0, g);
+        svg.circle(0.07, [0, 0.03]).css({stroke: "none", fill: "#0065FE"});
+        svg.circle(0.04, [0.5, -0.06]).css({stroke: "none", fill: "#0065FE"});
+        svg.final();
+    },
+
     q_neg: (sel) => {
         $(sel).attr({width: 200, height: 200, "data-aspect": "1"});
         svg = new SVG_Animation(sel, -1, 1, -1);
