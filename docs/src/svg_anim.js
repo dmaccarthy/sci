@@ -762,7 +762,7 @@ class SVG_Path {
         return this;
     }
 
-    lineTo(xy, c) {return this.moveTo(xy, "L")}
+    lineTo(xy) {return this.moveTo(xy, "L")}
 
     hor(x) { // Move horizontally
         let svg = this.svg;
