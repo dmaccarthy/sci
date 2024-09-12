@@ -20,9 +20,9 @@ collect.urls = {
 };
 
 collect.titles = {
-    "p30/mom": "9: Momentum &amp; Impulse",
-    "p30/elec": "10 &amp; 11: Electric Forces &amp; Fields",
-    "p30/mag": "12: Magnetic Forces &amp; Fields",
+    "p30/mom": "9: Momentum & Impulse",
+    "p30/elec": "10 &amp; 11: Electric Forces & Fields",
+    "p30/mag": "12: Magnetic Forces & Fields",
 }
 
 let course = "Physics 30";

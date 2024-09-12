@@ -102,11 +102,44 @@ loadFeed.sim.drawE = () => {
 <div id="LessonNotes">
 
 <section class="Slide Center">
-<h1 id="Title">?</h1>
-<!-- <p class="Present"><img src="" class="s24" alt="Picture"/></p> -->
+<h1 id="Title">Millikan’s Oil Drop Experiment</h1>
 </section>
 
-<section class="Slide"><h3>?</h3>
+<section class="Slide">
+<h3>Millikan’s Experiment</h3>
+<p>Robert Millikan devised an experiment to measure the charge on a tiny droplet of oil.</p>
+<p data-cue="=" class="Center"><img class="Wide" alt="Apparatus" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg/640px-Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg.png"/></p>
+<p data-cue="=" class="Center" style="font-size:60%">Image from <a href="https://commons.wikimedia.org/wiki/File:Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg" title="Image Credits" target="Credit">WikiMedia Commons</a></p>
+<ul data-cue="+">
+    <li>A fine mist of tiny droplets is produced using an “atomizer” (spray bottle).</li>
+    <li data-cue="+">Oil is used rather than water or alcohol because the oil will not evaporate as easily.</li>
+    <li data-cue="+">The oil droplets may be charged by friction as they leave the atomizer.</li>
+    <li data-cue="+">Alternatively, an x-ray machine can be used to ionize air molecules; electrons lost from the air will attach themselves to an oil droplet.</li>
+    <li data-cue="+">Charged oil droplets enter the electric field between two parallel plates.</li>
+    <li data-cue="+">Observing through a microscope, Millikan adjusted the potential difference between the plates so that the upward electric force exactly balanced the downward gravity:</li>
+</ul>
+<p data-cue="="><p class="TeX">F_e = F_g</p></p>
+<!-- <p data-cue="6" class="NoPrint"><a href="https://applets.davidmaccarthy.repl.co/oildrop/" target="Sim">Simulation</a></p> -->
+<p data-cue="+"><p class="TeX">q|{\vec{\mathbf E}}| = mg</p></p>
+<p data-cue="+"><p class="TeX">q = {mg\over |{\vec{\mathbf E}}|}</p></p>
+<ul data-cue="+">
+    <li>The electric field is easily calculated from the potential difference and the separation between the plates.</li>
+    <li data-cue="+">Measuring the mass is more difficult because the droplets are too small for an electronic balance...</li>
+</ul>
+</section>
+
+<section class="Slide">
+<h3>Mass &amp; Terminal Speed</h3>
+<ul>
+    <li>Because they are so small, the oil droplets experience a significant air resistance as they move.</li>
+    <li data-cue="+">Without the electric field, droplets tend to fall at a steady rate called the <em class="Defn">terminal speed</em>.</li>
+    <li data-cue="+">The terminal speed is faster for larger droplets; a droplet’s mass can be calculated from its terminal speed.</li>
+    <li data-cue="+">After recording the voltage necessary to suspend an oil droplet, Millikan turned off the electric field and measured how much time it took for the droplet to fall a known distance.</li>
+    <li data-cue="+">This measurement allows calculation of terminal speed, mass, and charge.</li>
+    <li data-cue="+">After calculating the charge of hundereds of different oil drops...</li>
+    <li data-cue="+">Millikan observed that the oil droplets always had a charge that was a multiple of <em class="Defn"><span class="TeX">\mathrm{1.60\times 10^{-19}\ C}</span></em>.</li>
+    <li data-cue="+">Millikan concluded that this must be the <em>elementary charge</em> (the charge of a single electron or proton).</li>
+</ul>
 </section>
 
 </div></div></section>
@@ -129,12 +162,11 @@ loadFeed.sim.drawE = () => {
 <script type="text/javascript">
 
 loadFeed.data = {
-    title: `${siteData.lesson}?.? — Millikan’s Oil Drop Experiment`,
-    answerDate: "2025.2.?.16",
-    num: "?.?",
+    title: `${siteData.lesson}11.4 — Millikan’s Oil Drop Experiment`,
+    answerDate: "2024.10.1.10",
+    num: "11.4",
     up: "p30/units/B",
-    // prev: "p30/",
-    // next: "p30/mom",
+    prev: "p30/elec/volt",
 }
 
 </script>
