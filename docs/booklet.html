@@ -53,6 +53,7 @@ function isPractice(s) {
     // if (!isAfter(s.attr("data-show"))) return;
     let h = s.children("h2");
     let booklet = h.attr("data-booklet");
+    // console.log(h, booklet);
     let include = ["Pre-Test", "Remember?", "Practice", "Review", "Activity"];
     let i = include.indexOf(h.text());
     if (booklet == "yes" || i != -1 && booklet != "no") {
@@ -96,6 +97,7 @@ function collect(folder, i) {
                 if (s.length) renderTeX(s);
                 collect(folder, i+1);
             });
+            $("[data-booklet='no']").remove();
         }
     }});
 }
