@@ -150,7 +150,7 @@ loadFeed.sim.bookmark = (ev) => {
     if (param.symbol == "v") delete param.symbol;
     if (param.quadrant == 1) delete param.quadrant;
     if (!param.scaleExp) delete param.scaleExp;
-    location.href = `/?${JSON.stringify(param)}#p20/vec2d/vec2d`;
+    location.href = `./?${JSON.stringify(param)}#p20/vec2d/vec2d`;
 }
 
 loadFeed.sim.vecInput = (ev) => {
