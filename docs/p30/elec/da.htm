@@ -1,0 +1,130 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Data Analysis Review</h1>
+</section>
+
+
+
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<div id="Practice">
+<ol>
+    <li>A newly discovered planet has six known moons. Astronomers determined the strength of the planet’s gravity by observing the motion of the moons. They summarized their calculations in the table below, where <span class="TeX">r</span> is the radius of each moon’s orbit and <span class="TeX">g</span> is each moon’s acceleration as caused by the planet’s gravity.
+        <table class="Center Two TD6 Top Bottom">
+            <tr><td><span class="TeX">r</span> /<br>10<sup>8</sup> m</td><td><span class="TeX">g</span> /<br>10<sup>–3</sup> m/s<sup>2</sup></td></tr>
+            <tr><td>3.09</td><td>5.73</td></tr>
+            <tr><td>4.25</td><td>3.03</td></tr>
+            <tr><td>7.02</td><td>1.11</td></tr>
+            <tr><td>7.38</td><td>1.00</td></tr>
+            <tr><td>11.82</td><td>0.391</td></tr>
+            <tr><td>14.65</td><td>0.255</td></tr>
+        </table>
+        <ol type="a">
+            <li>Using the Physics 20 formula below, transform the data to make it linear. Be sure to include the 10<sup>8</sup> m and 10<sup>–3</sup> m/s<sup>2</sup> as part of the data for <span class="TeX">r</span> and <span class="TeX">g</span>.
+                <p class="TeX">g=\frac{GM}{r^2}</p>
+            </li>
+            <table class="Answer Center Two TD6 Top Bottom">
+                <tr><td><span class="TeX">r^{-2}</span> /<br>10<sup>–19</sup> m<sup>–2</sup></td><td><span class="TeX">g</span> /<br>10<sup>–3</sup> m/s<sup>2</sup></td></tr>
+                <tr><td>105</td><td>5.73</td></tr>
+                <tr><td>55.4</td><td>3.03</td></tr>
+                <tr><td>20.3</td><td>1.11</td></tr>
+                <tr><td>18.4</td><td>1.00</td></tr>
+                <tr><td>7.16</td><td>0.391</td></tr>
+                <tr><td>4.66</td><td>0.255</td></tr>
+            </table>
+            
+            <li>Graph the linearized data on graph paper and add a best-fit line.</li>
+            <div class="Answer">
+                <a href="https://www.desmos.com/calculator/cbbnl59xwc">Graph</a>
+            </div>
+
+            <li>Calculate the slope and <i>y</i>-intercept of the best-fit line. Write the equation of the best-fit line in the form:<p class="TeX">y=kx+b</p></li>
+            <div class="Answer">
+                The best-fit line passes through <span class="TeX">(0,\ 0)</span> and <span class="TeX">\rm (105\times 10^{-19}\ m^{-2},\ 5.73\times 10^{-3}\ m/s^2)</span>.
+                This gives an intercept of zero and a slope of <span class="TeX">\rm 5.46\times 10^{14}\ m^3/s^2</span>. The model equation is:
+                <p class="TeX">g = ({\rm 5.46\times 10^{14}\ m^3/s^2})\ r^{-2}</p>
+            </div>
+
+            <li>Use your equation and the gravity formula above to determine the mass, <span class="NoWrap"><span class="TeX">M</span>,</span> of the planet.</li>
+            <div class="Answer">
+                Substitute the predicted formula for <span class="TeX">g</span> into the model equation:
+                <p class="TeX">\frac{GM}{r^2} = ({\rm 5.46\times 10^{14}\ m^3/s^2})\ r^{-2}</p>
+                <p>Cancel the <span class="TeX">r^{-2}</span> as it appears on both sides:</p>
+                <p class="TeX">GM = {\rm 5.46\times 10^{14}\ m^3/s^2}</p>
+                <p class="TeX">M = \frac{\rm 5.46\times 10^{14}\ m^3/s^2}{G} = \rm 8.19\times 10^{24}\ kg</p>
+            </div>
+        </ol>
+    </li>
+
+</ol>
+</div></div></section>
+
+<section class="Post" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
+<div id="Review">
+<ol>
+    <li><ol type="a">
+        <li>Explain how to draw a good <em class="Defn">best-fit line</em>.</li>
+        <div class="Answer">
+            The best-fit line should pass through the <em>mean</em> of the data points; i.e. the average of all of the <i>x</i> and all of the <i>y</i> coordinates.
+            The slope of the line should be chosen so that the average distance of the data points to the line is minimized; there should be equal numbers of points
+            above and below the best-fit line and those points should be distibuted as evenly as possible along the width of the graph.
+        </div>
+
+        <li>Explain how to calculate the <em class="Defn">slope</em> and <em class="Defn"><i>y</i>-intercept</em> of a best-fit line.</li>
+        <div class="Answer">
+            <ol>
+                <li>Choose two points that are <em>far apart</em> and that <em>lie on the best-fit line</em>. These points do <b>not</b> have to be data points! Record the coordinates of the two points:
+                <span class="TeX">(x_1, y_1)</span> and <span class="TeX">(x_2, y_2)</span>.</li>
+                <li>Calculate the slope, <span class="TeX">k</span>, as “rise ÷ run” using the two points you chose:
+                    <p class="TeX">k = \frac{y_2-y_1}{x_2-x_1}</p>
+                </li>
+                <li>Calculate the <i>y</i>-intercept using the slope and <em>one</em> of your two points by solving for <span class="TeX">b</span>:
+                    <p class="TeX">y_1 = kx_1 + b</p>
+                    Note that if the <i>y</i>-intercept is visible on the graph, you can skip this calculation and simply measure <span class="TeX">b</span> from the graph.
+                </li>
+            </ol>
+
+        </div>
+
+        <li>Explain what a <em class="Defn">model equation</em> is.</li>
+        <div class="Answer">
+            The model equation is simply the equation of the best-fit line in the form:
+            <p class="TeX">y = kx + b</p>
+            <p>When writing the equation, you should replace <span class="TeX">x</span> and <span class="TeX">y</span> by the appropriate symbols for your manipulated and responding variables,
+            and you should replace <span class="TeX">k</span> and <span class="TeX">b</span> by your calculated slope and intercept values in standard SI units.</p>
+            <p>You can use your model equation to make predictions (interpolation or extrapolation) from the data.</p>
+        </div>
+    </ol></li>
+
+    <li>Explain how to <em class="Defn">transform</em> (<em class="Defn">linearize</em>) experimental data when the <em class="Defn">raw data</em> is non-linear.</li>
+    <div class="Answer">
+        When the raw data produces a curved graph, and you suspect the non-linearity occurs because of a <em>power</em> in the theoretical equation, you can transform the data by applying the predicted exponent to the raw data. For example, if the expected relationship is:
+        <p class="TeX">g = \frac{GM}{r^2}</p>
+        <p>The graph would be non-linear because the variable <span class="TeX">r</span> appears with an exponent of –2. (Expressions that appear in the denominator are taken to be negative powers.)</p>
+        <p>Transform the data by calculating <span class="TeX">r^{-2}</span> for each data point and then graphing <span class="TeX">g</span> versus <span class="TeX">r^{-2}</span>. If the predicted
+        equation is correct, the transformed data should be linear and you can add a best-fit line and determine its equation in the usual way.</p>
+        <p>When writing the model equation as <span class="TeX">y = kx + b</span>, remember that <span class="TeX">x</span> now means <span class="TeX">r^{-2}</span>, not just <span class="TeX">r</span>!</p>
+        <p>If you do not know what the expected exponent is, you can perform a <em class="Defn">power regression</em> using a graphing calculator or graphing / statistics software.</p>
+    </div>
+
+</ol>
+</div></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}10.2 — Data Analysis Review`,
+    answerDate: "2024.9.18.10",
+    num: "10.2",
+    up: "p30/units/B",
+    prev: "p30/elec/static",
+    next: "p30/elec/coulomb",
+}
+
+</script>
