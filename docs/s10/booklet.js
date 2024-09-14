@@ -13,8 +13,8 @@ collect.urls = {
         ["ionic", "Binary Ionic Compounds"],
         ["molec", "Molecular Compounds"],
         ["poly", "Polyatomic Ions & Solubility"],
-        // ["acid", "Acids & Bases"],
-        // ["water", "Properties of Water"],
+        ["acid", "Acids & Bases"],
+        ["water", "Properties of Water"],
     ],
 };
 

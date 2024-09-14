@@ -55,9 +55,8 @@
         <tr><th></th><th class="Col">Cation</th><th class="Col">Anion</th></tr>
         <tr><td>Name</td><td>Calcium</td><td>Chloride</td></tr>
         <tr><td>Symbol</td><td><span class="TeX">\mathrm{Ca^{2+}}</span></td><td><span class="TeX">\mathrm{Cl^{-}}</span></td></tr>
-        <tr><td>Ion Charge</td><td>2+</span></td><td>1–</td></tr>
-        <tr><td>Proportions</td><td><span class="Red" data-cue="11">1</span></td><td><span class="Red" data-cue="12">2</span></td></tr>
-        <tr><td>Total Charge</td><td><span class="Red" data-cue="10">2+</span></td><td><span class="Red" data-cue="10">2–</span></td></tr>
+        <tr><td>Proportions</td><td class="Reveal"><span>1</span></td><td class="Reveal"><span>2</span></td></tr>
+        <tr><td>Total Charge</td><td class="Reveal"><span>2+</span></td><td class="Reveal"><span>2–</span></td></tr>
     </table>
     <ul data-cue="+">
         <li>The <em>total</em> charge of all the cations or anions will be the <em>lowest common multiple</em> of the individual cation and anion charges.</li>
@@ -70,9 +69,8 @@
         <tr><th></th><th class="Col">Cation</th><th class="Col">Anion</th></tr>
         <tr><td>Name</td><td>Aluminum</td><td>Sulfide</td></tr>
         <tr><td>Symbol</td><td><span class="TeX">\mathrm{Al^{3+}}</span></td><td><span class="TeX">\mathrm{S^{2-}}</span></td></tr>
-        <tr><td>Ion Charge</td><td>3+</span></td><td>2–</td></tr>
-        <tr><td>Proportions</td><td><span class="Red" data-cue="3">2</span></td><td><span class="Red" data-cue="4">3</span></td></tr>
-        <tr><td>Total Charge</td><td><span class="Red" data-cue="2">6+</span></td><td><span class="Red" data-cue="2">6–</span></td></tr>
+        <tr><td>Proportions</td><td class="Reveal"><span>2</span></td><td class="Reveal"><span>3</span></td></tr>
+        <tr><td>Total Charge</td><td class="Reveal"><span>6+</span></td><td class="Reveal"><span>6–</span></td></tr>
     </table>
     <ul data-cue="+">
         <li>The chemical formula for aluminum sulfide is <span class="TeX">\mathrm{Al_2S_3}</span>.</li>
@@ -90,13 +88,22 @@
     </ul>
     <table class="Center TD6 Bottom" data-cue="+">
         <tr><th></th><th class="Col">Cation</th><th class="Col">Anion</th></tr>
-        <tr><td>Name</td><td><span class="Red" data-cue="6">Iron(III)</span></td><td>Oxide</td></tr>
-        <tr><td>Symbol</td><td><span class="Red" data-cue="6"><span class="TeX">\mathrm{Fe^{3+}}</span></span></td><td><span class="TeX">\mathrm{O^{2-}}</span></td></tr>
-        <tr><td>Ion Charge</td><td><span class="Red" data-cue="6">3+</span></td><td>2–</td></tr>
+        <tr><td>Name</td><td class="Reveal"><span>iron(III)</span></td><td>oxide</td></tr>
+        <tr><td>Ions</td><td class="Reveal"><span>Fe<sup>3+</sup></span></td><td><span>O<sup>2–</sup></span></td></tr>
         <tr><td>Proportions</td><td>2</td><td>3</td></tr>
-        <tr><td>Total Charge</td><td><span class="Red" data-cue="5">6+</span></td><td><span class="Red" data-cue="5">6–</span></td></tr>
+        <tr><td>Total Charge</td><td class="Reveal"><span>6+</span></td><td class="Reveal"><span>6–</span></td></tr>
     </table>
 </section>
+
+<script type="text/javascript" data-init="notes">
+
+    loadFeed.notes = () => {
+        let rev = $("#LessonNotes td.Reveal").on("click", (ev) => {
+            $(ev.currentTarget).find("span").fadeToggle();
+        });
+    }
+    
+</script>
 
 </div></div></section>
 
@@ -106,13 +113,145 @@
 </section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 data-booklet="no" class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
-    <p class="BtnGrid">
+    <!-- <p class="BtnGrid">
         <button data-icon="gdrv" data-gdrv="151G_JaOdvLB0nFeqXqk5q3BNzowMLCYY">Worksheet</button>
         <button class="Answer" data-icon="gdrv" data-gdrv="1IZeX3hRL2yrC1QTGdkuiYzAI58vD4Ytb">Solutions</button>
-    </p>
-</div></div></section>
+    </p> -->
+
+<ol>
+    <li>Complete each table. The first one has been completed as an example. Remember that the total positive and the total negative charge must always balance for binary ionic compounds.
+    <table class="Center TD6 Top Bottom">
+        <tr><td>Name</td><td colspan="2">calcium chloride</td></tr>
+        <tr><td>Chemical Formula</td><td colspan="2" class="TeX">\rm CaCl_2</td></tr>
+        <tr><td>Ions</td><td class="TeX">\rm Ca^{2+}</td><td class="TeX">\rm Cl^-</td></tr>
+        <tr><td>Proportion</td><td>1</td><td>2</td></tr>
+        <tr><td>Total Charge</td><td>2+</td><td>2–</td></tr>
+    </table>
+
+    <table class="Center TD6 Top Bottom">
+        <tr><td>Name</td><td colspan="2"><span class="Answer">magnesium oxide</span></td></tr>
+        <tr><td>Chemical Formula</td><td colspan="2" class="TeX">\rm MgO</td></tr>
+        <tr><td>Ions</td><td><span class="TeX Answer">\rm Mg^{2+}</span></td><td><span class="TeX Answer">\rm O^{2-}</span></td></tr>
+        <tr><td>Proportion</td><td><span class="Answer">1</span></td><td><span class="Answer">1</span></td></tr>
+        <tr><td>Total Charge</td><td><span class="Answer">2+</span></td><td><span class="Answer">2–</span></td></tr>
+    </table>
+
+    <table class="Center TD6 Top Bottom">
+        <tr><td>Name</td><td colspan="2"><span class="Answer">sodium oxide</span></td></tr>
+        <tr><td>Chemical Formula</td><td colspan="2" class="TeX">\rm Na_2O</td></tr>
+        <tr><td>Ions</td><td><span class="TeX Answer">\rm Na^+</span></td><td><span class="TeX Answer">\rm O^{2-}</span></td></tr>
+        <tr><td>Proportion</td><td><span class="Answer">2</span></td><td><span class="Answer">1</span></td></tr>
+        <tr><td>Total Charge</td><td><span class="Answer">2+</span></td><td><span class="Answer">2–</span></td></tr>
+    </table>
+
+    <table class="Center TD6 Top Bottom">
+        <tr><td>Name</td><td colspan="2"><span class="Answer">iron(III) oxide</span></td></tr>
+        <tr><td>Chemical Formula</td><td colspan="2"><span class="TeX Answer">\rm Fe_2O_3</span></td></tr>
+        <tr><td>Ions</td><td><span class="TeX">\rm Fe^{3+}</span></td><td><span class="TeX">\rm O^{2-}</span></td></tr>
+        <tr><td>Proportion</td><td><span class="Answer">2</span></td><td><span class="Answer">3</span></td></tr>
+        <tr><td>Total Charge</td><td><span class="Answer">6+</span></td><td><span class="Answer">6–</span></td></tr>
+    </table>
+    
+    <table class="Center TD6 Top Bottom">
+        <tr><td>Name</td><td colspan="2">aluminum chloride</td></tr>
+        <tr><td>Chemical Formula</td><td colspan="2"><span class="TeX Answer">\rm AlCl_3</span></td></tr>
+        <tr><td>Ions</td><td><span class="TeX Answer">\rm Al^{3+}</span></td><td><span class="TeX Answer">\rm Cl^-</span></td></tr>
+        <tr><td>Proportion</td><td><span class="Answer">1</span></td><td><span class="Answer">3</span></td></tr>
+        <tr><td>Total Charge</td><td><span class="Answer">3+</span></td><td><span class="Answer">3–</span></td></tr>
+    </table>
+
+    <table class="Center TD6 Top Bottom">
+        <tr><td>Name</td><td colspan="2">copper(II) fluoride</td></tr>
+        <tr><td>Chemical Formula</td><td colspan="2"><span class="TeX Answer">\rm CuF_2</span></td></tr>
+        <tr><td>Ions</td><td><span class="TeX Answer">\rm Cu^{2+}</span></td><td><span class="TeX Answer">\rm F^-</span></td></tr>
+        <tr><td>Proportion</td><td><span class="Answer">1</span></td><td><span class="Answer">2</span></td></tr>
+        <tr><td>Total Charge</td><td><span class="Answer">2+</span></td><td><span class="Answer">2–</span></td></tr>
+    </table>
+
+    <table class="Center TD6 Top Bottom">
+        <tr><td>Name</td><td colspan="2"><span class="Answer">potassium sulfide</span></td></tr>
+        <tr><td>Chemical Formula</td><td colspan="2"><span class="TeX Answer">\rm K_2O</span></td></tr>
+        <tr><td>Ions</td><td><span class="TeX">\rm K^+</span></td><td><span class="TeX">\rm S^{2-}</span></td></tr>
+        <tr><td>Proportion</td><td><span class="Answer">2</span></td><td><span class="Answer">1</span></td></tr>
+        <tr><td>Total Charge</td><td><span class="Answer">2+</span></td><td><span class="Answer">2–</span></td></tr>
+    </table>
+
+    <table class="Center TD6 Top Bottom">
+        <tr><td>Name</td><td colspan="2">aluminum oxide</td></tr>
+        <tr><td>Chemical Formula</td><td colspan="2"><span class="TeX Answer">\rm Al_2O_3</span></td></tr>
+        <tr><td>Ions</td><td><span class="TeX Answer">\rm Al^{3+}</span></td><td><span class="TeX Answer">\rm O^{2-}</span></td></tr>
+        <tr><td>Proportion</td><td><span class="Answer">2</span></td><td><span class="Answer">3</span></td></tr>
+        <tr><td>Total Charge</td><td><span class="Answer">6+</span></td><td><span class="Answer">6–</span></td></tr>
+    </table>
+    </li>
+
+    <li>Complete the table.
+    <table class="Center TD6 Top Bottom">
+        <tr><th>Elements<br/>to Combine</th><th style="width: 16em">Compound Name</th><th>Chemical Formula</th></tr>
+        <tr><td>Na &amp; Cl</td><td>sodium chloride</td><td class="TeX">\rm NaCl</td></tr>
+        <tr><td>K &amp; Br</td><td><span class="Answer">potassium bromide</span></td><td><span class="TeX Answer">\rm KBr</span></td></tr>
+        <tr><td>Ca &amp; O</td><td><span class="Answer">calcium oxide</span></td><td><span class="TeX Answer">\rm CaO</span></td></tr>
+        <tr><td>Li &amp; N</td><td><span class="Answer">lithium nitride</span></td><td><span class="TeX Answer">\rm Li_3N</span></td></tr>
+        <tr><td>Rb &amp; S</td><td><span class="Answer">rubidium sulfide</span></td><td><span class="TeX Answer">\rm Rb_2S</span></td></tr>
+        <tr><td>Ca &amp; S</td><td><span class="Answer">calcium sulfide</span></td><td><span class="TeX Answer">\rm CaS</span></td></tr>
+        <tr><td>Ba &amp; I</td><td><span class="Answer">barium iodide</span></td><td><span class="TeX Answer">\rm BaI_2</span></td></tr>
+        <tr><td>K &amp; Se</td><td><span class="Answer">potassium selenide</span></td><td><span class="TeX Answer">\rm K_2Se</span></td></tr>
+        <tr><td>Mg &amp; Br</td><td><span class="Answer">magnesium bromide</span></td><td><span class="TeX Answer">\rm MgBr_2</span></td></tr>
+        <tr><td>Sr &amp; F</td><td><span class="Answer">strontium fluoride</span></td><td><span class="TeX Answer">\rm SrF_2</span></td></tr>
+        <tr><td>Sr &amp; O</td><td><span class="Answer">strontium oxide</span></td><td><span class="TeX Answer">\rm SrO</span></td></tr>
+        <tr><td>Ba &amp; S</td><td><span class="Answer">barium sulfide</span></td><td><span class="TeX Answer">\rm BaS</span></td></tr>
+        <tr><td>Al &amp; S</td><td><span class="Answer">aluminum sulfide</span></td><td><span class="TeX Answer">\rm Al_2S_3</span></td></tr>
+        <tr><td>Cs &amp; Se</td><td><span class="Answer">cesium selenide</span></td><td><span class="TeX Answer">\rm Cs_2Se</span></td></tr>
+        <tr><td>Cs &amp; Cl</td><td><span class="Answer">cesium chloride</span></td><td><span class="TeX Answer">\rm CsCl</span></td></tr>
+        <tr><td>Ga &amp; S</td><td><span class="Answer">gallium sulfide</span></td><td><span class="TeX Answer">\rm Ga_2S_3</span></td></tr>
+        <tr><td>Zn &amp; S</td><td><span class="Answer">zinc sulfide</span></td><td><span class="TeX Answer">\rm ZnS</span></td></tr>
+        <tr><td>Ag &amp; Br</td><td><span class="Answer">silver bromide</span></td><td><span class="TeX Answer">\rm AgBr</span></td></tr>
+        <tr><td>Ag &amp; S</td><td><span class="Answer">silver sulfide</span></td><td><span class="TeX Answer">\rm Ag_2S</span></td></tr>
+        <tr><td>Zr &amp; O</td><td><span class="Answer">zirconium oxide</span></td><td><span class="TeX Answer">\rm ZrO_2</span></td></tr>
+        <tr><td>Sc &amp; O</td><td><span class="Answer">scandium oxide</span></td><td><span class="TeX Answer">\rm Sc_2O_3</span></td></tr>
+        <tr><td>Ag &amp; P</td><td><span class="Answer">silver phosphide</span></td><td><span class="TeX Answer">\rm Ag_3P</span></td></tr>
+        <tr><td>Ca &amp; P</td><td><span class="Answer">calcium phosphide</span></td><td><span class="TeX Answer">\rm Ca_3P_2</span></td></tr>
+        <tr><td>Al &amp; As</td><td><span class="Answer">aluminum arsenide</span></td><td><span class="TeX Answer">\rm AlAs</span></td></tr>
+        <tr><td>Zn &amp; As</td><td><span class="Answer">zinc arsenide</span></td><td><span class="TeX Answer">\rm Zn_3As_2</span></td></tr>
+    </table>
+    </li>
+
+    <li>Complete the table. For cations with more than one oxidation state, give the two most likely compounds...
+    <table class="Center TD6 Top Bottom">
+        <tr><th>Elements<br/>to Combine</th><th style="width: 16em">Compound Name</th><th>Chemical Formula</th></tr>
+        <tr><td rowspan="2">Fe &amp; Cl</td><td>&nbsp;<span class="Answer">iron(III) chloride</span></td><td><span class="TeX Answer">\rm FeCl_3</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">iron(II) chloride</td><td><span class="TeX Answer">\rm FeCl_2</span></td></tr>
+        <tr><td rowspan="2">Cu &amp; Cl</td><td>&nbsp;<span class="Answer">copper(II) chloride</span></td><td><span class="TeX Answer">\rm CuCl_2</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">copper(I) chloride</span></td><td><span class="TeX Answer">\rm CuCl</span></td></tr>
+        <tr><td rowspan="2">Hg &amp; O</td><td>&nbsp;<span class="Answer">mercury (II) oxide</span></td><td><span class="TeX Answer">\rm HgO</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">mercury (I) oxide</span></td><td><span class="TeX Answer">\rm Hg_2O</span></td></tr>
+        <tr><td rowspan="2">Ni &amp; Br</td><td>&nbsp;<span class="Answer">nickel(II) bromide</span></td><td><span class="TeX Answer">\rm NiBr_2</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">nickel(III) bromide</span></td><td><span class="TeX Answer">\rm NiBr_3</span></td></tr>
+        <tr><td rowspan="2">Fe &amp; S</td><td>&nbsp;<span class="Answer">iron(III) sulfide</span></td><td><span class="TeX Answer">\rm Fe_2S_3</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">iron(II) sulfide</span></td><td><span class="TeX Answer">\rm FeS</span></td></tr>
+        <tr><td rowspan="2">Co &amp; F</td><td>&nbsp;<span class="Answer">cobalt(II) fluoride</span></td><td><span class="TeX Answer">\rm CoF_2</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">cobalt(III) fluoride</span></td><td><span class="TeX Answer">\rm CoF_3</span></td></tr>
+        <tr><td rowspan="2">Au &amp; S</td><td>&nbsp;<span class="Answer">gold(III) sulfide</span></td><td><span class="TeX Answer">\rm Au_2S_3</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">gold(I) sulfide</span></td><td><span class="TeX Answer">\rm Au_2S</span></td></tr>
+        <tr><td rowspan="2">Cu &amp; O</td><td>&nbsp;<span class="Answer">copper(II) oxide</span></td><td><span class="TeX Answer">\rm CuO</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">copper(I) oxide</span></td><td><span class="TeX Answer">\rm Cu_2O</span></td></tr>
+        <tr><td rowspan="2">Ni &amp; S</td><td>&nbsp;<span class="Answer">nickel(II) sulfide</span></td><td><span class="TeX Answer">\rm NiS</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">nickel(III) sulfide</span></td><td><span class="TeX Answer">\rm Ni_2S_3</span></td></tr>
+        <tr><td rowspan="2">Hg &amp; I</td><td>&nbsp;<span class="Answer">mercury(II) iodide</span></td><td><span class="TeX Answer">\rm HgI_2</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">mercury(I) iodide</span></td><td><span class="TeX Answer">\rm HgI</span></td></tr>
+        <tr><td rowspan="2">Co &amp; I</td><td>&nbsp;<span class="Answer">cobalt(II) iodide</span></td><td><span class="TeX Answer">\rm CoI_2</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">cobalt(III) iodide</span></td><td><span class="TeX Answer">\rm CoI_3</span></td></tr>
+        <tr><td rowspan="2">Pd &amp; As</td><td>&nbsp;<span class="Answer">palladium(II) arsenide</span></td><td><span class="TeX Answer">\rm Pd_3As_2</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">palladium(III) arsenide</span></td><td><span class="TeX Answer">\rm PdAs</span></td></tr>
+        <tr><td rowspan="2">Ti &amp; O</td><td>&nbsp;<span class="Answer">titanium(IV) oxide</span></td><td><span class="TeX Answer">\rm TiO_2</span></td></tr>
+        <tr><td>&nbsp;<span class="Answer">titanium(III) oxide</span></td><td><span class="TeX Answer">\rm Ti_2O_3</span></td></tr>
+    </table>
+    </li> 
+
+</ol></div>
+</div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
