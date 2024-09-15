@@ -52,7 +52,7 @@ function qsArgs(key, str) {
     let args = {};
     try {
         for (let [k, val] of new URLSearchParams(str))
-            args[k] = val;       
+            args[k.trim()] = val;       
     } catch(err) {
         console.error(err);
         let qs = str.split("?")[1];
@@ -60,7 +60,7 @@ function qsArgs(key, str) {
         qs = qs.split("&");
         for (let i=0;i<qs.length;i++) {
             let a = qs[i].split("=");
-            args[a[0]] = decodeURIComponent(a[1]);
+            args[a[0].trim()] = decodeURIComponent(a[1]);
         }
     }
     return key ? args[key] : args;
