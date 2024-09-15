@@ -13,33 +13,33 @@
         <li data-cue="+">Oxygen has 6 valence electrons and needs 2 more to fill it.</li>
         <li data-cue="+">Hydrogen has 1 valence electron and needs 1 more to fill it.</li>
         <li data-cue="+">A water molecule is formed when two hydrogen atoms form covalent bonds with an oxygen atom.
-            <p class="Center"><img class="w8" src="s10/chem2/img/dot_H2O-0.png"/></p>
+            <p class="Center">
+                <svg class="s12" data-js="s10/chem2/img/poly#H2O"></svg>
+            </p>
         </li>
     </ul>
 </section>
 
 <section class="Slide"><h3>Polyatomic Ions</h3>
     <p>What if an oxygen atom formed a bond with a single hydrogen atom...</p>
-    <p class="Center"><img class="w8" src="s10/chem2/img/dot_OH-0.png"/></p>
+    <p class="Center">
+        <svg class="s12" data-js="s10/chem2/img/poly#OH"></svg>
+    </p>
     <p data-cue="+">The oxygen is still one electron short of a full valence...</p>
     <ul data-cue="+">
         <li>It will try to acquire an extra electron.</li>
-    </ul>
-    <p class="Center" data-cue="+"><img class="w8" src="s10/chem2/img/dot_OH-2.png"/></p>
-    <ul data-cue="+">
-        <li>This is called a <em class="Defn">polyatomic ion</em>.</li>
+        <li data-cue="+">This is called a <em class="Defn">polyatomic ion</em>.</li>
+        <li data-cue="+">This ion is called the <em class="Defn">hydroxide</em> ion and has the chemical formula <span class="TeX">\rm OH^-</span>.</li>
         <li data-cue="+">Two or more atoms are bonded covalently.</li>
         <li data-cue="+">The bonded atoms share a net charge.</li>
-        <li data-cue="+">A polyatomic ion will attract to ions of the opposite charge.
-            <p class="Center"><img class="w12" src="s10/chem2/img/NaOH.png"/></p>
-        </li>
+        <li data-cue="+">A negative polyatomic ion will attract a positive ion, such as the ion that provided the hydroxide with the extra electron: <span class="NoWrap"><span class="TeX">\rm NaOH</span>.</span></li>
     </ul>
 </section>
 
 <section class="Slide"><h3>Naming Polyatomic Ionic Compounds</h3>
     <p>Your periodic table includes a list of common polyatomic ions, giving their names, symbols, and charges.</p>
     <ul data-cue="+">
-        <li>As with binary ionic compounds, the name is just the cation name follwed by the anion name.</li>
+        <li>As with binary ionic compounds, the name is just the cation name followed by the anion name.</li>
         <li data-cue="+">Polyatomic anions often have -ite or -ate as suffixes.</li>
         <li data-cue="+">The total cation charge and the total anion charge must balance.</li>
     </ul>
@@ -47,9 +47,8 @@
         <tr><th></th><th class="Col">Cation</th><th class="Col">Anion</th></tr>
         <tr><td>Name</td><td>ammonium</td><td>sulphate</td></tr>
         <tr><td>Symbol</td><td><span class="TeX">\mathrm{NH_4^{+}}</span></td><td><span class="TeX">\mathrm{SO_4^{2-}}</span></td></tr>
-        <tr><td>Ion Charge</td><td>1+</span></td><td>2–</td></tr>
-        <tr><td>Proportions</td><td><span class="Red" data-cue="6">2</span></td><td><span class="Red" data-cue="6">1</span></td></tr>
-        <tr><td>Total Charge</td><td><span class="Red" data-cue="5">2+</span></td><td><span class="Red" data-cue="5">2–</span></td></tr>
+        <tr><td>Proportions</td><td class="Reveal"><span>2</span></td><td class="Reveal"><span>1</span></td></tr>
+        <tr><td>Total Charge</td><td class="Reveal"><span>2+</span></td><td class="Reveal"><span>2–</span></td></tr>
     </table>
     <ul data-cue="+">
         <li>The formula for ammonium sulphate is (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>.</li>
@@ -66,6 +65,16 @@
     </ul>
     <p class="Blue" data-cue="+">Is ammonium sulphate soluble in water?</p>
 </section>
+
+<script type="text/javascript" data-init="notes">
+
+    loadFeed.notes = () => {
+        let rev = $("#LessonNotes td.Reveal").on("click", (ev) => {
+            $(ev.currentTarget).find("span").fadeToggle();
+        });
+    }
+    
+</script>
 
 </div></div></section>
 
