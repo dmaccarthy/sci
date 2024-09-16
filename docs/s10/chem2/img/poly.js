@@ -13,13 +13,13 @@ H2O: (sel) => {
     let pt = [x, y + 2 * bond];
 
     let tog = [];
-    tog.push(svg.line([bond, 0], [-bond, 0]).css({stroke: "black", "stroke-width": "2px"}).$.hide());
-    tog.push(svg.circle(r, [bond, 0]).$);
-    tog.push(svg.circle(r, [-bond, 0]).css({fill: "red"}).$);
+    tog.push(svg.line([bond, 0], [-bond, 0]).css({stroke: "black", "stroke-width": "2px"}).$);
+    tog.push(svg.circle(r, [bond, 0]).$.hide());
+    tog.push(svg.circle(r, [-bond, 0]).css({fill: "red"}).$.hide());
 
-    tog.push(svg.line([x, y], pt).css({stroke: "black", "stroke-width": "2px"}).$.hide());
-    tog.push(svg.circle(r, [x, y]).$);
-    tog.push(svg.circle(r, pt).css({fill: "red"}).$);
+    tog.push(svg.line([x, y], pt).css({stroke: "black", "stroke-width": "2px"}).$);
+    tog.push(svg.circle(r, [x, y]).$.hide());
+    tog.push(svg.circle(r, pt).css({fill: "red"}).$.hide());
 
     svg.circle(r, [x - dx, -y]);
     svg.circle(r, [x + dx, -y]);
@@ -29,7 +29,7 @@ H2O: (sel) => {
 
     let toggle = clickCycle.toggle;
 
-    clickCycle(svg.element, 2,
+    clickCycle(svg.element, 1,
         () => {toggle(tog, true, 0); toggle(tog, false, 1, 2)},
         () => {toggle(tog, true, 3); toggle(tog, false, 4, 5)},
         () => {toggle(tog, true, 1, 2, 4, 5); toggle(tog, false, 0, 3)},

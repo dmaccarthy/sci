@@ -13,18 +13,14 @@
         <li data-cue="+">Oxygen has 6 valence electrons and needs 2 more to fill it.</li>
         <li data-cue="+">Hydrogen has 1 valence electron and needs 1 more to fill it.</li>
         <li data-cue="+">A water molecule is formed when two hydrogen atoms form covalent bonds with an oxygen atom.
-            <p class="Center">
-                <svg class="s12" data-js="s10/chem2/img/poly#H2O"></svg>
-            </p>
+            <p class="Center"><svg id="H2O" class="s12" data-js="s10/chem2/img/poly#H2O"></svg></p>
         </li>
     </ul>
 </section>
 
 <section class="Slide"><h3>Polyatomic Ions</h3>
     <p>What if an oxygen atom formed a bond with a single hydrogen atom...</p>
-    <p class="Center">
-        <svg class="s12" data-js="s10/chem2/img/poly#OH"></svg>
-    </p>
+    <p class="Center"><svg class="s12" data-js="s10/chem2/img/poly#OH"></svg></p>
     <p data-cue="+">The oxygen is still one electron short of a full valence...</p>
     <ul data-cue="+">
         <li>It will try to acquire an extra electron.</li>
@@ -68,12 +64,13 @@
 
 <script type="text/javascript" data-init="notes">
 
-    loadFeed.notes = () => {
-        let rev = $("#LessonNotes td.Reveal").on("click", (ev) => {
-            $(ev.currentTarget).find("span").fadeToggle();
-        });
-    }
-    
+loadFeed.notes = () => {
+    $("#H2O").trigger("click");
+    let rev = $("#LessonNotes td.Reveal").on("click", (ev) => {
+        $(ev.currentTarget).find("span").fadeToggle();
+    });
+}
+
 </script>
 
 </div></div></section>
