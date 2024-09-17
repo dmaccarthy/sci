@@ -7,7 +7,7 @@ ex1: (sel) => {
     let g = svg.group();
     let tog = [
         svg.circle(0.2, [6, 0], g).$,
-        svg.poly([[0, 0], [12, 0], [0, 6]], 1).css({fill: "none", stroke: "black"}).before(g.$).$,
+        svg.poly([[0, 6], [0, 0], [12, 0], [0, 6], [3, 6]], 1).css({fill: "none", stroke: "black"}).before(g.$).$,
         svg.circle(0.2, [0, 6], g).$,
     ];
     g.$.children().css({fill: "green"});
@@ -26,8 +26,13 @@ ex1: (sel) => {
     svg.circle(0.6, [0, 0]);
     svg.circle(0.6, [12, 0]);
     g = svg.group().css({"font-size": "24px", fill: "white", "font-weight": "bold"});
-    svg.text("+", [0, 0], g);
+    svg.text("+", [0, -0.05], g);
     svg.text("–", [12, 0], g);
+
+    g = svg.group().css({"font-size": "18px"});
+    tog.push(g.$);
+    svg.text("θ", [9.8, 0.5], g);
+    svg.text("θ", [1.7, 5.55], g);
     svg.final().$.addClass("VDiag");
 
     let t = clickCycle.toggle;
@@ -35,11 +40,11 @@ ex1: (sel) => {
     console.log(tog);
 
     clickCycle(svg.element, -1,
-        () => {t(tog, false, 0, 1, 2, 3, 4, 5, 6)},
+        () => {t(tog, false, 0, 1, 2, 3, 4, 5, 6, 7)},
         () => {t(tog, true, 0)},
         () => {t(tog, true, 3)},
         () => {t(tog, true, 4)},
-        () => {t(tog, false, 0, 3, 4); t(tog, true, 1, 2)},
+        () => {t(tog, false, 0, 3, 4); t(tog, true, 1, 2, 7)},
         () => {t(tog, true, 5)},
         () => {t(tog, true, 6)},
     );

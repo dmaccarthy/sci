@@ -46,17 +46,22 @@ loadFeed.sim = () => {
     svg.circle(2.4, p1, g).css({fill: "red", stroke: "black"});
     svg.circle(3.4, p2, g).css({fill: "#B0B0B0", stroke: "black"});
     svg.blue = svg.circle(2.4, vec2d(40, -60)).css({fill: "#0065FE", stroke: "black"});
-    svg.blue.dragging = false;
+    // svg.blue.dragging = false;
 
     // Event handlers for mouse actions
-    svg.$.on("mouseup", () => {svg.blue.dragging = false});
-    svg.$.on("mousemove", (ev) => {svg.mouseTheta = svg.eventCoords(ev).coords.dir()});
-    svg.blue.$.on("mousedown", () => {svg.blue.dragging = true; return false});
+    // svg.$.on("mouseup", () => {svg.blue.dragging = false});
+    // svg.$.on("mousemove", (ev) => {svg.mouseTheta = svg.eventCoords(ev).coords.dir()});
+    // svg.blue.$.on("mousedown", () => {svg.blue.dragging = true; return false});
 
-    svg.blue.beforeupdate = function() {
-        // Drag the blue sphere
-        if (this.dragging) this.position = vec2d(40, this.svg.mouseTheta);
-    }
+    svg.$.on("click", (ev) => {
+        let theta = svg.eventCoords(ev).coords.dir();
+        svg.blue.position = vec2d(40, theta);
+    });
+
+    // svg.blue.beforeupdate = function() {
+    //     // Drag the blue sphere
+    //     if (this.dragging) this.position = vec2d(40, this.svg.mouseTheta);
+    // }
 
     g.beforeupdate = function() {
         // Calculate angular speed of torsion balance

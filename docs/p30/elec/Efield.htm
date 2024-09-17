@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
 <div id="LessonNotes">
 
 <section class="Slide Center">
@@ -63,16 +63,37 @@
 
 <section id="ex1" class="Slide"><h3>Example</h3>
 <p class="Blue">Sources of +5.00 nC and –3.00 nC are separated by 12.0 cm. Calculate the electric field at: (a) the midpoint, and (b) a point 6.00 cm from the positive charge in a <em>perpendicular</em> direction.</p>
-<p class="Center"><svg data-js="p30/elec/img/Efield#ex1"></svg></p>
-<p data-cue="+"><a target="Ex1" href="./?{%22scaleExp%22:3,%22symbol%22:%22E%22,%22square%22:[1,0],%22corner%22:[-9,-4],%22vectors%22:[[0,12486],{%22mag%22:1498.3,%22dir%22:-26.565}],%22unit%22:%22N/C%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+<p class="Center"><svg class="s18" data-js="p30/elec/img/Efield#ex1"></svg></p>
+<p data-cue="+">Calculate the electric field due to the positive charge at a separation of 6.00 cm:</p>
+<p data-cue="+" class="TeX">|\vec{\bf E}_1| = \left|\frac{kq_1}{r_1^2}\right| = \rm \frac{8.99\times 10^9 \frac{N\cdot m^2}{C^2}\cdot 5.00\times 10^{-9}\ C}{(0.0600\ m)^2} = 12486\ N/C</p>
+<p data-cue="+">Calculate the electric field due to the negative charge at a separation of 6.00 cm:</p>
+<p data-cue="+" class="TeX">|\vec{\bf E}_2| = \left|\frac{kq_2}{r_2^2}\right| = \rm \frac{8.99\times 10^9 \frac{N\cdot m^2}{C^2}\cdot 3.00\times 10^{-9}\ C}{(0.0600\ m)^2} = 7492\ N/C</p>
+<div data-cue="+">
+    <p>Since both fields are in the <i>x</i>-direction, the net electric field is:</p>
+    <p class="TeX">\vec{\bf E} = \vec{\bf E}_1 + \vec{\bf E}_2 = \rm 2.00\times 10^4\ N/C\ [0.00^\circ]</p>
+</div>
+<p data-cue="+">For the second point, <span class="TeX">\vec{\bf E}_1</span> still has a magnitude of 12486 N/C because the point is still 6.00 cm from the positive charge.</p>
+<p data-cue="+">Before we can calculate <span class="TeX">\vec{\bf E}_2</span>, we need to solve the right-triangle to find the separation and direction from the negative charge:</p>
+<p data-cue="+" class="TeX">r_2 = \rm \sqrt{(12.0\ cm)^2 + (6.00\ cm)^2} = 13.416\ cm</p>
+<p data-cue="+" class="TeX">\theta = \rm \tan^{-1} \frac{6.00\ cm}{12.0\ cm} = 26.565^\circ</p>
+<p data-cue="+" class="TeX">|\vec{\bf E}_2| = \left|\frac{kq_2}{r_2^2}\right| = \rm \frac{8.99\times 10^9 \frac{N\cdot m^2}{C^2}\cdot 3.00\times 10^{-9}\ C}{(0.13416\ m)^2} = 1498.3\ N/C</p>
+<p data-cue="+">When converting to Cartesian form, take <span class="TeX">\theta</span> as negative since the direction of <span class="TeX">\vec{\bf E}_2</span> is clockwise from the <i>x</i>-axis:</p>
+<p data-cue="+" class="TeX">\vec{\bf E}_{2x} = \rm 1498.3\ N/C \cdot \cos(-26.565^\circ) = +1340\ N/C</p>
+<p data-cue="+" class="TeX">\vec{\bf E}_{2y} = \rm 1498.3\ N/C \cdot \sin(-26.565^\circ) = -670.1\ N/C</p>
+<div data-cue="+">
+    <p>Now calculate the net field:</p>
+    <p class="TeX">\begin{align}\vec{\bf E} &= \vec{\bf E}_1 + \vec{\bf E}_2
+        \\[8pt] &= \rm {(0,\ +12486)\ N/C + (+1340,\ -670.1)\ N/C}
+        \\[8pt] &= \rm {(+1340,\ +11816)\ N/C}
+    \end{align}</p>
+    <p><a target="Ex1" href="./?{%22scaleExp%22:3,%22symbol%22:%22E%22,%22square%22:[1,0],%22corner%22:[-9,-4],%22vectors%22:[[0,12486],{%22mag%22:1498.3,%22dir%22:-26.565}],%22unit%22:%22N/C%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+</div>
 </section>
 
 <section id="app" class="Slide"><h3>Applications of Electric Fields</h3>
 <p>A <em class="Defn">parallel plate capacitor</em> is used to generate a (nearly) uniform electric field.</p>
 <p class="Center"><a href="https://commons.wikimedia.org/wiki/File:VFPt_capacitor-square-plate.svg"><img class="w24" data-aspect="4/3" alt="Parallel Plates" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/VFPt_capacitor-square-plate.svg/800px-VFPt_capacitor-square-plate.svg.png"/></a></p>
-<ul data-cue="+">
-    <li>The field is non-uniform near the edeges (“edge effects”).</li>
-</ul>
+<ul data-cue="+"><li>The field is non-uniform near the edeges (“edge effects”).</li></ul>
 <p data-cue="+">An <em class="Defn">electrical discharge</em> (e.g. lightning) occurs when the field becomes strong enough to ionize air molecules.</p>
 <p data-cue="+">A conductor placed in an electric field will become polarized in such a way that the net electric field inside the conductor will be zero.</p>
 <ul data-cue="+">
@@ -82,19 +103,21 @@
 
 </div></div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
-<ol>
-</ol>
-</div></div></section>
+<section class="Post" data-icon="link.svg">
+    <h2 class="Collapse">Visualization Links</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="phet" data-open="https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html">PhET Applet</button>
+        <button data-icon="link.svg" data-open="https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&fc=Floor%3A%20field%20magnitude&fl=Overlay%3A%20field%20lines&d=partsvel&m=Mouse%20%3D%20Adjust%20Angle&st=1&pc=500&ft=true&rx=63&ry=0&rz=0&zm=1.2">Field Visualization (Falstad)</button>
+        <button data-icon="desmos" data-open="https://www.desmos.com/calculator/br0ig8pci1">Desmos Applet</button>
+    </p>
+</div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
-<div id="Review">
-<ol>
-</ol>
-</div></div></section>
+<section class="Post" data-show=""2024.9.24.10"" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1GoddXPXgkrUBvCXcD7qmUorE5MREf0HbZYsPrROQbaY">Answer Key</button>
+    </p>
+</div></section>
 
 <script type="text/javascript">
 
@@ -104,7 +127,7 @@ loadFeed.data = {
     num: "11.1",
     up: "p30/units/B",
     prev: "p30/elec/coulomb",
-    next: "p30/elec/helix",
+    next: "p30/elec/motion",
 }
 
 </script>
