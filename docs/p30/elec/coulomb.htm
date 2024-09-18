@@ -1,5 +1,10 @@
+<section class="Post" data-icon="video">
+    <h2 class="Collapse">Video</h2>
+    <div class="Collapse" data-yt="#PLpVmtCaB-lymqo9502rf1ax_xrq2M_QeT"></div>
+</section>
+
 <section class="Post" data-icon="simulation">
-<h2 class="Collapse">Simulation</h2><div class="Collapse">
+<h2 class="Collapse">Simulation</h2><div class="Collapse Expand">
     <p class="Center"><svg id="CoulombSim"></svg></p>
     <p class="Center">Calibration: <span id="mN_per_deg"></span> mN/°</p>
     <p class="Center"><a href="javascript:loadFeed.verify()">Experiment Code</a>: <span id="ExpCode"></span></p>
@@ -100,7 +105,7 @@ loadFeed.verify = (a) => {
 <h1 id="Title">Coulomb’s Law</h1>
 </section>
 
-<section id="hyp" class="Slide"><h3>Coulomb’s Hypothesis</h3>
+<section class="Slide"><h3>Coulomb’s Hypothesis</h3>
 <p>The force of gravity between two masses, according to Newton, is:</p>
 <p class="TeX">F_g = {Gm_1 m_2\over r^2}</p>
 <div data-cue="+">
@@ -113,7 +118,7 @@ loadFeed.verify = (a) => {
 </ul>
 </section>
 
-<section id="exp" class="Slide"><h3>Coulomb’s Experiment</h3>
+<section class="Slide"><h3>Coulomb’s Experiment</h3>
 <p>To test whether his hypothesis was correct, Coulomb measured the electric force using a <em class="Defn">torsion balance</em>.</p>
 <p class="Center"><img data-aspect="355/419" class="s16" src="p30/elec/img/tb.png" alt="Torsion Balance"/></p>
 <ul data-cue="+">
@@ -127,7 +132,7 @@ loadFeed.verify = (a) => {
 </ul>
 </section>
 
-<section id="law" class="Slide"><h3>Coulomb’s Law</h3>
+<section class="Slide"><h3>Coulomb’s Law</h3>
 <p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
 <div data-cue="+">
     <p>The accepted value of Coulomb’s constant is:</p>
@@ -144,13 +149,13 @@ loadFeed.verify = (a) => {
 </ul>
 </section>
 
-<section id="ex1" class="Slide"><h3>Example 1</h3>
+<section class="Slide"><h3>Example 1</h3>
 <p class="Blue">Calculate the electric force between a +5.00 μC charge and a −2.00 μC charge that are 20.0 cm apart.</p>
 <p data-cue="+" class="TeX">F_e = \rm \frac{(8.99\times 10^9\ \frac{N\cdot m^2}{C^2}) (5.00\times 10^{-6}\ C) (2.00\times 10^{-6}\ C)}{(0.200\ m)^2} = 2.25\ N</p>
 <p data-cue="+">This force is <em>attractive</em>.</p>
 </section>
 
-<section id="ex2" class="Slide"><h3>Example 2</h3>
+<section class="Slide"><h3>Example 2</h3>
 <p class="Blue">Calculate the separation between two 75.0 nC charges that repel each other with a force of 1.50 newtons.</p>
 <p data-cue="+" class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
 <p data-cue="+" class="TeX">F_e r^2 = |kq_1q_2|</p>
@@ -158,14 +163,14 @@ loadFeed.verify = (a) => {
 <p data-cue="+" class="TeX">r = \sqrt{|kq_1q_2|\over F_e} = \rm{{8.99\times 10^9 (7.50\times 10^{-8})^2\over 1.50}\ m = 5.81\ mm}</p>
 </section>
 
-<section id="inv" class="Slide"><h3>Inverse Square Law</h3>
+<section class="Slide"><h3>Inverse Square Law</h3>
 <p>Coulomb’s Law is an <em class="Defn">inverse square</em> law.</p>
 <ul data-cue="+">
     <li>This means that when the separation is <em>doubled</em>, the force will be <em><u>four</u> times weaker!</em></li>
 </ul>
 </section>
 
-<section id="ex3" class="Slide"><h3>Example 3</h3>
+<section class="Slide"><h3>Example 3</h3>
 <p class="Blue">Two charges, <span class="TeX">q_1</span> and <span class="TeX">q_2</span>, exert an electric force <span class="TeX">F_1</span> on each other when separated by a distance <span class="TeX">r</span>. If one of the charges is doubled and the separation is tripled, the electric force becomes <span class="TeX">F_2</span>. Calculate the ratio <span class="TeX">F_2:F_1</span>.</p>
 <p data-cue="+" class="TeX">F_1 = \left|{kq_1 q_2\over r^2}\right|</p>
 <p data-cue="+" class="TeX">F_2 = \left|{k(2q_1)q_2\over(3r)^2}\right| = {2\over 9}\left|{kq_1 q_2\over r^2}\right|</p>
