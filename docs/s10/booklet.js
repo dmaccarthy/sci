@@ -19,8 +19,9 @@ collect.urls = {
 
     "s10/chem3": [
         ["rxn", "Chemical Reactions"],
-        // ["", ""],
-        // ["", ""],
+        ["rxn_fd", "Formation & Decomposition"],
+        ["rxn_c", "Combustion"],
+        // ["rxn_sd", ""],
         // ["", ""],
     ],
 
