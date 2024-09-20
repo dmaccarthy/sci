@@ -109,20 +109,19 @@ loadFeed.sim.drawE = () => {
 <section class="Slide">
 <h3>Millikan’s Experiment</h3>
 <p>Robert Millikan devised an experiment to measure the charge on a tiny droplet of oil.</p>
-<p data-cue="=" class="Center"><img class="Wide" alt="Apparatus" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg/640px-Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg.png"/></p>
-<p data-cue="=" class="Center" style="font-size:60%">Image from <a href="https://commons.wikimedia.org/wiki/File:Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg" title="Image Credits" target="Credit">WikiMedia Commons</a></p>
+<p class="Center"><a target="Credit" href="https://commons.wikimedia.org/wiki/File:Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg"><img class="Wide" alt="Apparatus" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg/640px-Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg.png"/></a></p>
 <ul data-cue="+">
     <li>A fine mist of tiny droplets is produced using an “atomizer” (spray bottle).</li>
     <li data-cue="+">Oil is used rather than water or alcohol because the oil will not evaporate as easily.</li>
     <li data-cue="+">The oil droplets may be charged by friction as they leave the atomizer.</li>
     <li data-cue="+">Alternatively, an x-ray machine can be used to ionize air molecules; electrons lost from the air will attach themselves to an oil droplet.</li>
     <li data-cue="+">Charged oil droplets enter the electric field between two parallel plates.</li>
-    <li data-cue="+">Observing through a microscope, Millikan adjusted the potential difference between the plates so that the upward electric force exactly balanced the downward gravity:</li>
+    <li data-cue="+">Observing through a microscope, Millikan adjusted the potential difference between the plates so that the upward electric force exactly balanced the downward gravity:
+        <p class="TeX">F_e = F_g</p>
+        <p data-cue="+" class="TeX">q|\vec{\bf E}| = mg</p>
+        <p data-cue="+" class="TeX">q = \frac{mg}{|\vec{\bf E}|}</p>
+    </li>
 </ul>
-<p data-cue="="><p class="TeX">F_e = F_g</p></p>
-<!-- <p data-cue="6" class="NoPrint"><a href="https://applets.davidmaccarthy.repl.co/oildrop/" target="Sim">Simulation</a></p> -->
-<p data-cue="+"><p class="TeX">q|{\vec{\mathbf E}}| = mg</p></p>
-<p data-cue="+"><p class="TeX">q = {mg\over |{\vec{\mathbf E}}|}</p></p>
 <ul data-cue="+">
     <li>The electric field is easily calculated from the potential difference and the separation between the plates.</li>
     <li data-cue="+">Measuring the mass is more difficult because the droplets are too small for an electronic balance...</li>
@@ -138,7 +137,7 @@ loadFeed.sim.drawE = () => {
     <li data-cue="+">After recording the voltage necessary to suspend an oil droplet, Millikan turned off the electric field and measured how much time it took for the droplet to fall a known distance.</li>
     <li data-cue="+">This measurement allows calculation of terminal speed, mass, and charge.</li>
     <li data-cue="+">After calculating the charge of hundereds of different oil drops...</li>
-    <li data-cue="+">Millikan observed that the oil droplets always had a charge that was a multiple of <em class="Defn"><span class="TeX">\mathrm{1.60\times 10^{-19}\ C}</span></em>.</li>
+    <li data-cue="+">Millikan observed that the oil droplets always had a charge that was a multiple of <em class="Defn"><span class="TeX">\rm 1.60\times 10^{-19}\ C</span></em>.</li>
     <li data-cue="+">Millikan concluded that this must be the <em>elementary charge</em> (the charge of a single electron or proton).</li>
 </ul>
 </section>
@@ -148,7 +147,7 @@ loadFeed.sim.drawE = () => {
 <section class="Post" data-show="2024.9.26.10" data-icon="gdrv">
     <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
     <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="">Answer Key</button>
+        <button data-icon="gdrv" data-gdrv="1uiVgxx_ngPf_slS0y93JhK4ggYRYaKYY2htwYEAtXrU">Answer Key</button>
     </p>
 </div></section>
 
@@ -160,6 +159,7 @@ loadFeed.data = {
     num: "11.4",
     up: "p30/units/B",
     prev: "p30/elec/volt",
+    next: "p30/elec/rev",
 }
 
 </script>
