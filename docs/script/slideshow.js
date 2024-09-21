@@ -90,7 +90,7 @@ function qrMake() {
     let e = $("[data-qr]");
     for (let i=0;i<e.length;i++) {
         let ei = $(e[i]);
-        let url = `https://sci-davidmaccarthy.replit.app/#${ei.attr("data-qr")}`;
+        let url = `https://dmaccarthy.github.io/sci/#${ei.attr("data-qr")}`;
         let qr = new QRCode(ei[0], {text: url, colorDark: "#0000ff"});
         let cv = ei.find("canvas").show();
         ei.find("img").remove();
