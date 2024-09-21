@@ -21,8 +21,10 @@ collect.urls = {
         ["rxn", "Chemical Reactions"],
         ["rxn_fd", "Formation & Decomposition"],
         ["rxn_c", "Combustion"],
-        // ["rxn_sd", ""],
-        // ["", ""],
+        ["rxn_sr", "Single Replacement"],
+        ["rxn_dr", "Double Replacement"],
+        ["scinot", "Scientific Notation"],
+        ["mole", "Molar Mass"],
     ],
 
 };
