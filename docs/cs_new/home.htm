@@ -1,53 +1,41 @@
-<!-- <section class="Post" data-icon="warn.svg">
-    <h2>Important!</h2>
-    <p class="Var">cs</p>
-</section> -->
-
 <section class="Post" data-icon="python">
     <h2 class="Collapse">Getting Started...</h2><div class="Collapse">
     <ol>
-        <li>Sign in to <i>Google Chrome</i> using your EIPS.ca account. Be sure to turn <i>Sync</i> on.</li>
-        <li>Create a <i>Chrome</i> bookmark to this page so that you won’t need to type the full web address in the future.
-            To do this, click the star at the end of the <i>Chrome</i> address bar.</li>
-        <li>Open <i>File Explorer</i> from the <i>Windows Start</i> menu. Navigate to your EIPS OneDrive folder.</li>
-        <li>Use the <i>New</i> button to create a new folder. Rename the new folder as <code>CompSci</code>.</li>
-        <li>Right-click on your <code>CompSci</code> folder and choose <i>Share</i>. Enter your teacher’s email address:
-            <p class="Var Center Code">email</p></li>
-        <li>Open one of the following links depending on which course you are enrolled in...</li>
-    </ol>
-    <p class="BtnGrid" style="margin-bottom:0">
-        <!--button data-icon="replit" data-open="https://replit.com/@DavidMacCarthy/sal-py">CS 10 &amp; 20<br/>(Python)</button>
-        <button data-icon="replit" data-open="https://replit.com/@DavidMacCarthy/sal-py30">CS 30<br/>(Python)</button>
-        <button data-icon="html5.svg" data-open="https://replit.com/@DavidMacCarthy/sal-web">Client-Side<br/>Scripting</button-->
-            <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/cs10">CS 10<br/></button>
-            <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/cs20">CS 20<br/></button>
-        <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/cs30">CS 30<br/></button>
-        <!-- <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/sal-web">Client-Side<br/>Scripting</button> -->
-    </p>
-    <ol start="7" class="NoTop">
-        <li>Click the green <i>Code</i> button and choose <i>Download ZIP</i>. This will download an archive containing all of the files you need to start coding in this course.</li>
-        <li>Use <i>File Explorer</i> to open your <code>Downloads</code> folder and locate the file you just downloaded. Right-click and choose <i>Extract All</i>.</li>
-        <li>Click the <i>Browse</i> button and then locate the <code>CompSci</code> folder in your OneDrive. Click <i>Select Folder</i> and then <i>Extract</i>.</li>
-        <li>Double-click on the file <code>thonny_setup.bat</code> to download additional files you will need for this course.
-            <ul>
-                <li><i>File Explorer</i> may show the file as <code>thonny_setup</code> without the <code>.bat</code> at the end.</li>
-                <li>You may get a security warning about opening downloaded files. Since the source of this file is your teacher, it is safe to run.</li>
-            </ul>
-        </li>
+        <li><b>Google Chrome</b><ol type="a">
+            <li>Sign in to <i>Google Chrome</i> using your EIPS.ca account. Be sure to turn <i>Sync</i> on.</li>
+            <li>Create a <i>Chrome</i> bookmark to this page so that you won’t need to type the full web address in the future.
+                To do this, click the star at the end of the <i>Chrome</i> address bar.</li>    
+        </ol></li>
+        <li class="Top"><b>OneDrive</b><ol type="a">
+            <li>Open <i>File Explorer</i> from the <i>Windows Start</i> menu. Navigate to your EIPS OneDrive folder.</li>
+            <li>Use the <i>New</i> button to create a new folder. Rename the new folder as <code>CompSci</code>.</li>
+            <li>Right-click on your <code>CompSci</code> folder and choose <i>Share</i>. Enter your teacher’s email address:
+                <p class="Var Center Code Bottom">email</p></li>
+            <li>Change the permissions so that the teacher has <i>Editor</i> access to the folder, so that they can make comments in your files.</li>    
+        </ol></li>
+        <li class="Top"><b>Download Course Files</b><ol type="a">
+            <li>Open one of the following links depending on which course you are enrolled in...
+                <p class="BtnGrid" style="margin-bottom:0">
+                    <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/cs10">CS 10</button>
+                    <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/cs20">CS 20</button>
+                    <button data-icon="github.svg" data-open="https://github.com/dmaccarthy/cs30">CS 30</button>
+                </p>            
+            </li>
+            <li>Click the green <i>Code</i> button and choose <i>Download ZIP</i>. This will download an archive containing most of the files you need to start coding in this course.</li>
+            <li>Use <i>File Explorer</i> to open your <code>Downloads</code> folder and locate the file you just downloaded. Right-click and choose <i>Extract All</i>.</li>
+            <li>Click the <i>Browse</i> button and then locate the <code>CompSci</code> folder in your OneDrive. Click <i>Select Folder</i> and then <i>Extract</i>.</li>
+            <li>Double-click on the file <code>thonny_setup.bat</code> to download additional files you will need for this course.
+                <ul>
+                    <li><i>File Explorer</i> may show the file as <code>thonny_setup</code> without the <code>.bat</code> at the end.</li>
+                    <li>You may get a security warning about opening downloaded files. Since the source of this file is your teacher, it is safe to run.</li>
+                </ul>
+            </li>    
+        </ol></li>
+        <li class="Top"><b>Thonny</b><ol type="a">
         <li>Double-click on the file <code>thonny.bat</code> to start coding in Python.</li>
-    <!-- </ol>
-    <div class="Red"><hr/>
-        <p>There is a possibility that Thonny may not yet be installed in the Computer Lab by the time classes begin!
-            If this is the case, you can open <a href="https://vscode.dev/" target="VSC">VS Code</a> in Google Chrome to create, save, and modify your programs.
-            Unfortunately, you won’t be able to run the programs directly from Chrome. You will need to go back to <em>File Explorer</em> and double-click the file containing the program to run it.
-            If the program exits too quickly for you to see the output, add the following line to the bottom of your program:
-        </p>
-        <pre class="Code" data-echo="py">input("Press ENTER to exit...")</pre>
-    <hr/></div>
-    <ol start="11"> -->
-        <li>Here is a program you can run to check that everything is working. Click the blue <i>Copy</i> icon at the top right and then paste the program into a new file in <i>Thonny</i>. Press the F5 button to run the program.
-            Don’t worry if you cannot follow the code; you will learn what it means as you proceed through the course!
-    <pre data-echo="py" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+        <li>Here is a program you can run to check that everything is working. Click the blue <i>Copy</i> icon at the top right of the code and then paste the program into a new file in <i>Thonny</i>. Press the F5 button or click the green <i>Play</i> button to run the program. Don’t worry if you cannot follow the code; you will learn what it means as you proceed through the course!
+
+<pre data-echo="py" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
 
 <span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
 setup(600, 480)
@@ -67,8 +55,10 @@ for side in range(6):
 
 <span class="Comment"># Finished!</span>
 exitonclick()
-</pre></li>
-    </ol>
+</pre>
+
+        </li></ol>
+    </ol></li>       
 
     <h3>Working from Home</h3>
     <ol>

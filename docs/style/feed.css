@@ -98,6 +98,10 @@ button[data-icon] {
     color: var(--blue);
 }
 
+button[data-icon] > p {
+    margin-bottom: 0;
+}
+
 .Link, .FeedLink {
     cursor: pointer;
     color: var(--blue);
