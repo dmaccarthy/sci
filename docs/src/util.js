@@ -3,6 +3,11 @@
 //         $.ajax(url, {success:(js) => callback(eval(js))});
 // }
 
+function serverUTC(cb) {
+    if (!cb) cb = console.log;
+    $.ajax({url: "https://dmaccarthy.vercel.app/utc.json", success: cb});
+}
+
 const save = function(key, obj) {save.cache[key] = obj}
 save.cache = {};
 
@@ -29,7 +34,7 @@ clickCycle.toggle = (items, show, ...n) => {
 }
 
 function setStyle(parent, style, applet$) {
-    if (applet$) console.warn("Using applet.style!"); //style = applet.style(style, applet$ === true ? parent : applet$);
+    if (applet$) console.warn("Using applet.style!");
     parent = $(parent);
     let e = document.createElementNS(parent[0].namespaceURI, "style");
     e = $(e).html(style).appendTo(parent);
@@ -70,7 +75,6 @@ function itemAspect(ei, w) {
     // Adjust height(width) of element to maintain aspect ratio
     ei = $(ei);
     let a = math.evaluate(ei.attr("data-aspect"));
-    // let a = eval(ei.attr("data-aspect"));
     if (w) {
         ei.css({width: ''});
         let w1 = Math.round(ei.height() * a);
