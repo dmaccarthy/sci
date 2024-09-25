@@ -1,14 +1,5 @@
-save("p30/mag/img/em", {
+save("p30/mag/img/_test", {
 
-    slnd1: (sel) => {
-        $(sel).attr({width: 200, height: 400, "data-aspect": "1/2"});
-        svg = new SVG_Animation(sel, -1.02, 1.02);
-        // svg.$.css({stroke: "red", "stroke-width": "1px", fill: "none"});
-        svg.rect([2, 4], [0, 0]).css({fill: "none", stroke: "black"});
-
-
-        svg.final();
-    },
 
     atom: (sel) => {
         $(sel).attr({width: 256, height: 128, "data-aspect": "2"});
