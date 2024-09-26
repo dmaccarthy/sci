@@ -45,16 +45,27 @@
 <section class="Slide"><h3>Example</h3>
 <p class="Blue">Predict whether an EMF will be induced, and if so the location of the North pole and the direction of current flow when the coil is rotated clockwise through a magnetic field directed to the right.</p>
 <p class="Center">
-    <svg class="s18" data-js="p30/mag/img/faraday#slnd1"></svg>
+    <svg id="LenzAnim" class="s20" data-js="p30/mag/img/faraday#lenz_law"></svg>
 </p>
 <ul data-cue="+">
     <li>An EMF will be produced because the angle between the coil and <span class="TeX">\vec{\bf B}</span> is changing.</li>
     <li data-cue="+">The magnetic force must produce a counterclockwise torque to oppose the clockwise motion.</li>
-    <li data-cue="+">The top of the solenoid is South because it is attracted to the North pole of the external magnet.</li>
+    <li data-cue="+">The “top” of the solenoid is South because it is attracted to the North pole of the external magnet.</li>
     <li data-cue="+">The Second Hand Rule gives the direction of the induced current.</li>
     <li data-cue="+">Electrical energy is gained and the solenoid loses rotational energy as electrons move through the solenoid.</li>
 </ul>
 </section>
+
+<script type="text/javascript" data-init="notes">
+
+loadFeed.notes = () => {
+    if (isSlideshow()) {
+        let svg = $("#LenzAnim").trigger("click");
+        svg[0].graphic.play();
+    }
+}
+
+</script>
 
 </div></div></section>
 

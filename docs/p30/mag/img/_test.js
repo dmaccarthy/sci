@@ -1,6 +1,5 @@
 save("p30/mag/img/_test", {
 
-
     atom: (sel) => {
         $(sel).attr({width: 256, height: 128, "data-aspect": "2"});
         svg = new SVG_Animation(sel, -1, 1);
