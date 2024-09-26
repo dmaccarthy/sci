@@ -387,8 +387,9 @@ class SVG_Animation {
         return gr;
     }
 
-    final() { // Mark ALL items as non-animated
-        for (let item of [...this.items]) item.final();
+    final(items) { // Mark ALL items as non-animated
+        if (items == null) items = [...this.items];
+        for (let item of items) item.final();
         return this;
     }
 
@@ -764,6 +765,12 @@ class SVG_Path {
 
     lineTo(xy) {return this.moveTo(xy, "L")}
 
+    linesTo(...points) {
+        for (let xy of points)
+            this.lineTo(xy);
+        return this;
+    }
+
     hor(x) { // Move horizontally
         let svg = this.svg;
         let f = svg._f;
@@ -837,6 +844,8 @@ class SVG_Path {
         return this;
     }
 
-    item(parent) {return this.svg.create("path", {d: this.d.trim()}, parent)}
+    item(parent) {
+        return this.svg.create("path", {d: this.d.trim()}, parent);
+    }
 
 }
