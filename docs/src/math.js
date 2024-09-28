@@ -135,6 +135,22 @@ function arrow_points(L, opt) {
     }
     L /= 2;
     for (let i=0;i<pts.length;i++) pts[i][0] += L;
+    if (opt.double) {
+        let n = Math.floor(pts.length / 2);
+        let dpts = pts.slice(0, n);
+        let flip = (i) => {
+            let [x, y] = pts[i];
+            return new RArray(-x, y);
+        }
+        for (let i=0;i<n;i++) dpts.push(flip(n - 1 - i));
+        n = dpts.length - 2;
+        flip = (i) => {
+            let [x, y] = dpts[i];
+            return new RArray(x, -y);
+        }
+        for (let i=n;i>0;i--) dpts.push(flip(i));
+        pts = dpts;
+    }
     return pts;
 }
 
