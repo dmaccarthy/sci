@@ -6,7 +6,6 @@ save("p30/mag/img/faraday", {
         svg = new SVG_Animation(sel, -4, 3);
         svg.arrows = true;
         svg.$.css({"font-size": "24px"}).addClass("FBD");
-        // svg.grid([-4, 5, 1], [-4, 5, 1]);
     
         // Draw the external magnet
         let magnet = svg.path([-2.5, 2.5]).linesTo([-2.5, -2.5], [-3.8, -2.5]);
