@@ -2,27 +2,27 @@
 <h2 class="Collapse">Graphics in Python 3</h2><div class="Collapse Expand">
 <p>Writing computer games or other graphics-based programs in Python 3 usually requires a third-party graphics package.
     We will be using the <a href="https://dmaccarthy.github.io/sc8pr" target="sc2" class="Code">sc8pr</a> package
-    which is based on <a href="https://www.pygame.org" target="pyg" class="Code">pygame</a>.</p>
-<p>You will need both <code>pygame</code> and <code>sc8pr</code> installed for programs to work.
-    If you are using <a class="Code" target="repl" href="https://replit.com">replit</a>, the built-in package manager should recognize programs that require these packages
-    and install them automatically. You may need to click the Packages Tool to specify the appropriate versions of the software; this tutorial assumes <code>sc8pr 3.0</code> and <code>pygame 2.x</code>.</p>
-<!--p> If you are using <a target="Th" href="https://thonny.org/">Thonny</a> as an IDE, go to the “Tools” menu and open the “Manage Packages…” dialog.</p>
-<p class="Center"><img src="game/img/thonny.png" alt="Thonny"/></p>
+    which is based on <a href="https://www.pygame.org" target="pyg" class="Code">pygame</a>. You will need both <code>pygame</code> and <code>sc8pr</code> installed for programs to work.</p>
+<p>If you are using <a target="Th" href="https://thonny.org/">Thonny</a> as an IDE, go to the “Tools” menu and open the “Manage Packages…” dialog. Scroll through the alphabetical list of installed packages to see if <code>pygame</code> and <code>sc8pr</code> are installed. If these packages have <em>not</em> been installed, follow these instructions:</p>
+<p class="Center"><img src="cs_new/sp1/img/thonny.png" alt="Thonny"/></p>
 <ol>
     <li>Type the name of the software package, <code>sc8pr</code>.</li>
     <li>Click the button to search the Python Package Index (PyPI).</li>
     <li>Click the three dots.</li>
-    <li>Select the desired version: <code>3.0</code>.</li>
+    <li>Select the desired version: <code>3.0.4</code>.</li>
     <li>Check “Upgrade Dependencies” and then click the Install button.</li>
 </ol>
-<p>If you are not using Thonny, you can run the following command in a terminal. You may need to run it as an administrator.</p>
+
+<!-- <p>If you are using <a class="Code" target="repl" href="https://replit.com">replit</a>, the built-in package manager should recognize programs that require these packages
+    and install them automatically. You may need to click the Packages Tool to specify the appropriate versions of the software; this tutorial assumes <code>sc8pr 3.0</code> and <code>pygame 2.x</code>.</p> -->
+<!-- <p>If you are not using Thonny, you can run the following command in a terminal. You may need to run it as an administrator.</p>
 <pre class="IO">pip3 install -U sc8pr==3.0</pre>
 <p>There may be different ways to invoke the <code>pip3</code> command depending on what operating system you are using and how the Python environment is configured. For example, if Windows does not recognize the <code>pip3</code> command, try:</p>
 <pre class="IO">py -3 -m pip install -U sc8pr==3.0</pre>
-<p>Installing <code>sc8pr</code> should install <code>pygame</code> automatically on most platforms.</p-->
+<p>Installing <code>sc8pr</code> should install <code>pygame</code> automatically on most platforms.</p>
 
 <p>Before you continue, login to <a target="repl" href="https://replit.com/">replit</a> and open your <code>CS20-2024</code> repl. Complete the coding assignments in this repl.
-    Be sure to invite your teacher (<span class="Var">email</span>) as a collabortor for your repl if you have not already done so.</p>
+    Be sure to invite your teacher (<span class="Var">email</span>) as a collabortor for your repl if you have not already done so.</p> -->
 </div></section>
 
 <section class="Post" data-icon="sc8pr">
@@ -132,7 +132,7 @@ def setup(sk):
 Sketch().play()</pre>
 </div></section>
 
-<section class="Post" data-icon="replit">
+<section class="Post" data-icon="thonny">
 <h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
 <ol class="Assign">
 <li>Create a <code>sc8pr</code> animation as <code>v01_animation.py</code>. Your animation should display a background and draw a minimum of two of your sprites.
