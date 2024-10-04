@@ -147,7 +147,7 @@ loadFeed.sim.ray = (svg, p1, p2, g) => {
 
 loadFeed.sim.diagram = (e, f, d, di, m) => {
     // Calculate drawing scale
-    lens = $("#SimControls input[type='radio']")[0].checked;
+    lens = $("#SimControls input[type='radio']")[1].checked;
     let x1 = Math.min(0, 2 * f, di);
     let x2 = Math.max(2 * f, d, di);
     if (lens) {

@@ -25,6 +25,4 @@ save("p30/elec/img/eq", {
         svg.final();
     },
 
-
-
 });
