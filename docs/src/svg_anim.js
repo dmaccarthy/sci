@@ -112,7 +112,7 @@ class SVG_Item {
     set theta(t) {
         if (this.thetaMode) {
             while (t <= -180) t += 360;
-            if (this.theaMode == -1)
+            if (this.thetaMode == -1)
                 while (t > 180) t -= 360;            
         }
         this._theta = t;
