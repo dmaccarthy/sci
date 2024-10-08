@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SVG</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+<link rel="stylesheet" type="text/css" href="../style/svg2.css"/>
+<script type="text/javascript" src="../src/math.js"></script>
+<script type="text/javascript" src="../src/util.js"></script>
+<script type="text/javascript" src="../src/svg2.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+let svg;
+
+$(() => {
+    svg = new SVG2("#S1", {size: [608, 608], lrbt: [-6, 6], margin: 4});
+    svg.$.addClass("SVG2");
+    svg.grid([-6, 6, 1], [-6, 6, 1]);
+
+    let data = [
+        ["8", 2, "grey", 30],
+        ["10", 3, "green", 20],
+        ["6", 6, "red", 10],
+    ];
+    let planets = [];
+    for (let [R, r, c, w] of data) {
+        let g = svg.group().config({omega: w});
+        g.circle(R, [r, 0]).css({fill: c});
+        planets.push(g);
+    }
+
+    svg.animate(...planets);
+});
+
+</script>
+</head>
+<body>
+<p><svg id="S1"></svg></p>
+</body>
+</html>

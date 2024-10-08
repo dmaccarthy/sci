@@ -1,12 +1,27 @@
 svg.SVG2 {
 
-* {
+*:not(text, tspan) {
     fill: none;
     stroke: black;
     stroke-width: 1px;
 }
 
-text {font-size: 18px}
+text {
+    font-size: 18px;
+    stroke: none;
+    fill: black;
+    dominant-baseline: middle;
+    text-anchor: middle;
+}
+
+.Symbol {
+    font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif;
+}
+
+.Bold {font-weight: bold}
+.Ital {font-style: italic}
+.F80 {font-size: 80%}
+
 g.Grid > line:not(.Axis) {stroke: lightgrey}
     
 }
