@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SVG</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+<link rel="stylesheet" type="text/css" href="./style/svg2.css"/>
+<script type="text/javascript" src="./src/math.js"></script>
+<script type="text/javascript" src="./src/util.js"></script>
+<script type="text/javascript" src="./src/svg2.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+let svg;
+
+$(() => {
+    svg = new SVG2("#S1", {size: [640, 360], lrbt: [0, 10, 0], margin: 6});
+    svg.$.addClass("SVG2");
+    svg.grid([0, 10, 1], [0, 6, 1]);
+
+    let g = svg.group().config({velx: [1, 0], theta: -30, omega: -5, pivot: [4, 3]});
+    g.circle("10", [8, 3]).css({fill: "red"});
+    g.circle(1, [2, 3]).css({fill: "blue"});
+
+    g.beforeupdate = (g) => {
+        // console.log(g.theta);
+        if (g.svg.frameCount % 60 == 0) {
+            let c = g.$.find("circle");
+            for (let i=0;i<2;i++)
+                $(c[i]).css({fill: randomColor()});
+        }
+    }
+
+    svg.animate(g);
+
+    svg.$.on("click", () => svg.toggle());
+});
+
+</script>
+</head>
+<body>
+<p><svg id="S1"></svg></p>
+</body>
+</html>

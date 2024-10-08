@@ -1,0 +1,12 @@
+svg.SVG2 {
+
+* {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+g.Grid > line:not(.Axis) {stroke: lightgrey}
+    
+}
+    

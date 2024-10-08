@@ -276,7 +276,7 @@ const transform = (opt, ...pts) => { // 2D transformation
     if (opt.deg) a *= DEG;
     let c = Math.cos(a);
     let s = Math.sin(a);
-    let xc = yc = 0;
+    let xc = 0, yc = 0;
     if (opt.center) {
         xc = opt.center[0];
         yc = opt.center[1];
