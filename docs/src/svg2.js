@@ -1,9 +1,51 @@
 /***
 
-Simple JavaScript animations rendered in an SVG element
+Simple JavaScript animations rendered in an <svg> element
 (c) 2023-2024 by D.G. MacCarthy <sc8pr.py@gmail.com>
 
+Create a new animation:
+    svg = new SVG2(jSelect, {size, lrbt, margin});
+
+Create and configure an animated group:
+    g = svg.group();
+    g.config({theta, omega, alpha, pivot, shift, vel, acc});
+
+Get the <svg>/<g> element or the jQuery object:
+    svg.element;
+    g.$;
+
+Add content to a <svg>/<g> tag:
+    svg.grid([x1, x2, dx], [y1, y2, dy]);
+    g.line([x1, y1], [x2, y2]);
+    g.circle(r, [cx, cy]);
+    g.ellipse([rx, ry], [cx, cy]);
+    g.rect([w, h], [cx, cy]);
+    g.poly([pts], closed);
+    g.arrow(length, {shape, tail, head, angle, double});
+
+Create an SVG_Group instance containing an arrow:
+    g.arrow_group(length, xy, pivot, {shape, tail, head, angle, double});
+    // pivot is "tail", "tip", "center" (default) or a point as [x, y]
+    // xy is the position of the pivot
+
+Register groups to animate:
+    svg.animate(g1, g2);
+
+Update-handlers for SVG2 or SVG_Group instances:
+    svg.beforeupdate = (svg) => {...};
+    g.afterupdate = (g) => {...};
+
+Run the animation:
+    svg.play();
+    svg.pause();
+    svg.toggle();
+
+Convert coordinates between <g> and <svg> coordinate systems:
+    g.coord_s([gx, gy]);
+    g.coord_g([sx, sy]);
+
 ***/
+
 
 class SVG_Group {
 
@@ -12,7 +54,7 @@ class SVG_Group {
             this.element = g ? $(g)[0] : document.createElementNS(SVG2.nsURI, "g");
             this.element.graphic = this;
             this.$ = $(this.element);
-            this.$.appendTo(svg.$);
+            this.$.appendTo(g ? g.$ : svg.$);
             this.svg = svg;
             this._pivot = new RArray(0, 0);
             this._shift = new RArray(0, 0);
@@ -74,10 +116,11 @@ class SVG_Group {
         let svg = this.svg;
         let a = this.theta * svg.angleDir;
         let [x, y] = svg.scale.times(this.shift);
-        let t = x || y ? `translate(${x} ${y})` : "";
+        let f = (x) => x.toFixed(svg.decimals);
+        let t = x || y ? `translate(${f(x)} ${f(y)})` : "";
         if (a) {
             let [px, py] = svg.a2p(...this.pivot);
-            t += ` rotate(${a} ${px} ${py})`;
+            t += ` rotate(${f(a)} ${f(px)} ${f(py)})`;
         }
         t = t.trim();
         if (t.length) this.$.attr("transform", t);
@@ -110,26 +153,85 @@ class SVG_Group {
 
     create_child(tag, attr) {
     /* Create a child element of the <g> element */
+        // console.log(tag, this);
         let c = $(document.createElementNS(SVG2.nsURI, tag));
         return c.attr(attr ? attr : {}).appendTo(this.element);
     }
 
     group() {return new SVG_Group(this.svg, this.create_child("g"))}
 
-    circle(r, xy) {
-    /* Append a circle to the <g> element */
+    _px(x, i) {return Math.abs(typeof(x) == "string" ? parseFloat(x) : x * this.svg.scale[i])}
+
+    circle(r, center) {
+    /* Append a <circle> to the <g> element */
         let svg = this.svg;
-        let [x, y] = svg.a2p(...xy);
+        let f = (x) => x.toFixed(svg.decimals);
+        let [x, y] = svg.a2p(...center);
         r = typeof(r) == "string" ? parseFloat(r) : r * svg.unit;
-        return this.create_child("circle", {r: r, cx: x, cy: y});
+        return this.create_child("circle", {r: f(r), cx: f(x), cy: f(y)});
+    }
+
+    ellipse(r, center) {
+    /* Append a <ellipse> to the <g> element */
+        let svg = this.svg;
+        let f = (x) => x.toFixed(svg.decimals);
+        let rx = this._px(r[0], 0);
+        let ry = this._px(r[1], 1);
+        let [x, y] = svg.a2p(...center);
+        return this.create_child("ellipse", {rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
+    }
+
+    rect(size, center) {
+    /* Append a <rect> to the <g> element */
+        let svg = this.svg;
+        let f = (x) => x.toFixed(svg.decimals);
+        let w = this._px(size[0], 0);
+        let h = this._px(size[1], 1);
+        let [x, y] = svg.a2p(...center);
+        return this.create_child("rect", {width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
+    }
+
+    poly(pts, closed) {
+    /* Append a <polygon> or <polyline> to the <g> element */
+        let svg = this.svg;
+        let pts_str = "";
+        let f = (x) => x.toFixed(svg.decimals);
+        for (let i=0;i<pts.length;i++) {
+            let [x, y] = svg.a2p(...pts[i]);
+            pts_str += (pts_str.length ? " " : "") + `${f(x)},${f(y)}`;
+        }
+        return this.create_child(closed ? "polygon" : "polyline", {points: pts_str});
+    }
+
+    arrow(length, options) {
+    /* Draw an arrow (centred at the origin, pointing right) as a <polygon> */
+        options = options == null ? {} : Object.assign({}, options);
+        let svg = this.svg;
+        let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) / svg.scale[0] : x);
+        if (options.tail) options.tail = f(options.tail);
+        if (options.head) options.head = f(options.head);
+        return this.poly(arrow_points(length, options), 1);
+    }
+
+    arrow_group(length, xy, pivot, options) {
+    /* Create an arrow wrapped in a <g> tag */
+        let i = pivot == null ? 2 : ["tail", "tip", "center"].indexOf(pivot);
+        if (i == 0) pivot = [-length / 2, 0];
+        else if (i == 1) pivot = [length / 2, 0];
+        else if (i == 2) pivot = [0, 0];
+        if (i >= 0) xy = new RArray(...xy).minus(pivot);
+        let g = this.group().config({shift: xy, pivot: pivot});
+        g.arrow(length, options); 
+        return g;
     }
 
     line(p1, p2) {
-    /* Append a line to the <g> element */
+    /* Append a <line> to the <g> element */
         let svg = this.svg;
+        let f = (x) => x.toFixed(svg.decimals);
         let [x1, y1] = svg.a2p(...p1);
         let [x2, y2] = svg.a2p(...p2);
-        return this.create_child("line", {x1: x1, y1: y1, x2: x2, y2: y2});
+        return this.create_child("line", {x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2)});
     }
 
     grid(x, y) {
@@ -162,18 +264,19 @@ class SVG_Group {
 
 class SVG2 extends SVG_Group {
 
-    constructor(sel, options) {
+    constructor(jSelect, options) {
     /* options = {size, lrbt, margin} */
 
         super();
         this.svg = this;
-        this.element = $(sel)[0];
-        sel = this.$ = $(this.element);
+        this.element = $(jSelect)[0];
+        jSelect = this.$ = $(this.element);
         this.element.graphic = this;
+        this.decimals = 2;
     
         /* <svg> element size */
-        let [w, h] = options.size ? options.size : [sel.width(), sel.height()];
-        sel.attr({width: w, height: h, "data-aspect": w/h, viewBox: `0 0 ${w} ${h}`});
+        let [w, h] = options.size ? options.size : [jSelect.width(), jSelect.height()];
+        jSelect.attr({width: w, height: h, "data-aspect": w/h, viewBox: `0 0 ${w} ${h}`});
 
         /* Coordinate system */
         let lrbt = options.lrbt;

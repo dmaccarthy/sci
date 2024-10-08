@@ -6,6 +6,7 @@ svg.SVG2 {
     stroke-width: 1px;
 }
 
+text {font-size: 18px}
 g.Grid > line:not(.Axis) {stroke: lightgrey}
     
 }

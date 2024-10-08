@@ -24,20 +24,26 @@ $(() => {
     svg.$.addClass("SVG2");
     svg.grid([0, 10, 1], [0, 6, 1]);
 
-    let g = svg.group().config({velx: [1, 0], theta: -30, omega: -5, pivot: [4, 3]});
+    let g = svg.group().config({vel: [0, -0.1], omega: 0, pivot: [4, 3]});
     g.circle("10", [8, 3]).css({fill: "red"});
-    g.circle(1, [2, 3]).css({fill: "blue"});
+
+    // let ge = g.group().config({omega: 20, shift: [4, 3], pivot: [-1, 0]});
+    // ge.arrow(2, {double: 1, tail: "8", head: "28"}).css({fill: "red"});
+
+    let ge = g.arrow_group(2, [3, 1], null, {double: 1, tail: "8", head: "28"});
+    ge.config({omega: 15}).$.children().css({fill: "#0065fe80"});
+
 
     g.beforeupdate = (g) => {
         // console.log(g.theta);
         if (g.svg.frameCount % 60 == 0) {
-            let c = g.$.find("circle");
+            let c = g.$.children("*");
             for (let i=0;i<2;i++)
                 $(c[i]).css({fill: randomColor()});
         }
     }
 
-    svg.animate(g);
+    svg.animate(g, ge);
 
     svg.$.on("click", () => svg.toggle());
 });
