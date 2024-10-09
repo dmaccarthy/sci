@@ -23,6 +23,19 @@ text {
 .F80 {font-size: 80%}
 
 g.Grid > line:not(.Axis) {stroke: lightgrey}
-    
+
+g.Plot {circle, rect {fill: #0065fe}}
+g.Plot.Red {circle, rect {fill: red}}
+g.Plot.Orange {circle, rect {fill: orange}}
+g.Plot.Grey {circle, rect {fill: grey}}
+g.Plot.Green {circle, rect {fill: green}}
+g.Plot.Purple {circle, rect {fill: purple}}
+g.Plot.Violet {circle, rect {fill: violet}}
+
+g.VectorDiagram {fill-opacity: 0.6}
+polygon.Arrow {fill: red}
+polygon.Arrow.Resultant {fill: #0065fe}
+polygon.Arrow.Component {fill: yellow}
+
 }
     

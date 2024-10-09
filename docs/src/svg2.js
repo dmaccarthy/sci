@@ -24,9 +24,9 @@ Add content to an <svg>/<g> tag:
     g.poly([pts], closed) -> jQuery
     g.arrow(length, {shape, tail, head, angle, double}) -> jQuery
 
-    g.plot(pts, size, href, theta) -> SVG2g
-    g.label(int or (x, y, i) => string, x, y) -> SVG2g
-    g.locus((t, p, args) => {y(p) or [x(p), y(p)]}, [p0, p1, n], args) -> SVG2locus
+    g.plot(pts or {x, y}, size, href, theta) -> SVG2g
+    g.label([tm, tp] or int or (x, y, i) => string, x, y) -> SVG2g
+    g.locus((p, t, args) => {y(p) or [x(p), y(p)]}, [p0, p1, n], args) -> SVG2locus
 
 Create a group containing an arrow:
     g.arrow_group(length, xy, pivot, {shape, tail, head, angle, double}) -> SVG2g
@@ -93,10 +93,10 @@ get vel() {return this._vel}
 get acc() {return this._acc}
 get theta() {return this._theta}
 
-set pivot(xy) {this._pivot = new RArray(...xy)}
-set shift(xy) {this._shift = new RArray(...xy)}
-set vel(xy) {this._vel = new RArray(...xy)}
-set acc(xy) {this._acc = new RArray(...xy)}
+set pivot(xy) {this._pivot = new RArray(...this._cs(xy))}
+set shift(xy) {this._shift = new RArray(...this._cs(xy))}
+set vel(xy) {this._vel = new RArray(...this._cs(xy))}
+set acc(xy) {this._acc = new RArray(...this._cs(xy))}
 
 set theta(a) {
     while (a >= 360) a -= 360;
@@ -173,11 +173,20 @@ group() {return new SVG2g(this.svg, this.create_child("g"))}
 
 _px(x, i) {return Math.abs(typeof(x) == "string" ? parseFloat(x) : x * this.svg.scale[i])}
 
+_cs(xy) {
+    let [x, y] = xy == null ? [0, 0] : xy;
+    let svg = this.svg;
+    let [sx, sy] = svg.scale;
+    if (typeof(x) == "string") x = parseFloat(x) / sx;
+    if (typeof(y) == "string") y = parseFloat(y) / sy * svg.angleDir;
+    return new RArray(x, y);
+}
+
 circle(r, center) {
 /* Append a <circle> to the <g> element */
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
-    let [x, y] = svg.a2p(...center);
+    let [x, y] = svg.a2p(...this._cs(center));
     r = typeof(r) == "string" ? parseFloat(r) : r * svg.unit;
     return this.create_child("circle", {r: f(r), cx: f(x), cy: f(y)});
 }
@@ -188,7 +197,7 @@ ellipse(r, center) {
     let f = (x) => x.toFixed(svg.decimals);
     let rx = this._px(r[0], 0);
     let ry = this._px(r[1], 1);
-    let [x, y] = svg.a2p(...center);
+    let [x, y] = svg.a2p(...this._cs(center));
     return this.create_child("ellipse", {rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
 }
 
@@ -198,7 +207,7 @@ rect(size, center) {
     let f = (x) => x.toFixed(svg.decimals);
     let w = this._px(size[0], 0);
     let h = this._px(size[1], 1);
-    let [x, y] = svg.a2p(...center);
+    let [x, y] = svg.a2p(...this._cs(center));
     return this.create_child("rect", {width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
 
@@ -208,7 +217,7 @@ image(href, size, center) {
     let f = (x) => x.toFixed(svg.decimals);
     let w = this._px(size[0], 0);
     let h = this._px(size[1], 1);
-    let [x, y] = svg.a2p(...center);
+    let [x, y] = svg.a2p(...this._cs(center));
     return this.create_child("image", {href: href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
 
@@ -219,6 +228,7 @@ plot(pts, size, href, theta) {
     let f = (x) => x.toFixed(svg.decimals);
     if (theta) theta *= svg.angleDir;
     g.$.addClass("Plot");
+    if (!(pts instanceof Array)) pts = zip(pts.x, pts.y);
     for (let pt of pts) {
         let e;
         if (href) e = g.image(href, size, pt);
@@ -233,24 +243,44 @@ plot(pts, size, href, theta) {
 }
 
 label(fn, x, y) {
-/* Add a <g> containing <text> labels */
+/* Add a <g> containing <text> labels or tick marks as <line> */
     let g = this.group();
+    let svg = this.svg;
+    let s = svg.scale;
     let xa = x instanceof Array;
     let ya = y instanceof Array;
-    let n = xa ? x.length : y.length;
-    let s = this.svg.scale;
-    let f = (x, i) => typeof(x) == "string" ? parseFloat(x) / Math.abs(s[i]) : x;
-    if (typeof(fn) == "number") {
-        let dec = fn;
-        fn = (x) => x.toFixed(dec);
+    let tm, tp;
+    if (fn instanceof Array) {
+        [tm, tp] = fn;
+        [tm, tp] = xa ? [this._cs([0, tm])[1], this._cs([0, tp])[1]] : [this._cs([tm, 0])[0], this._cs([tp, 0])[0]];
     }
+    else if (typeof(fn) == "number") {
+        let dec = fn;
+        fn = xa ? (x) => x.toFixed(dec) : (x, y) => y.toFixed(dec);
+    }
+    let tick = tm || tp;
+    let n = xa ? x.length : y.length;
     for (let i=0;i<n;i++) {
         let x0 = xa ? x[i] : x;
         let y0 = ya ? y[i] : y;
-        g.text(fn(x0, y0, i), [f(x0, 0), f(y0, 1)]);
+        let [xc, yc] = this._cs([x0, y0]);
+        if (tick) {
+            if (!ya) g.line([xc, yc + tm], [xc, yc + tp]);
+            else if (!xa) g.line([xc + tm, yc], [xc + tp, yc]);
+        }
+        else g.text(fn(x0, y0, i), [xc, yc]);
     }
-    g.$.addClass("Labels");
+    g.$.addClass(tm || tp ? "Ticks" : "Labels");
     return g;
+}
+
+tick_label(fn, x, y, tick, offset) {
+/* Draw and label tick marks along axis */
+    let t = ["number", "string"].indexOf(typeof(tick)) >= 0;
+    let xa = x instanceof Array;
+    if (tick) this.label(t ? [0, tick] : tick, x, y);
+    if (xa) this.label(fn, x, offset);
+    else this.label(fn, offset, y); 
 }
 
 poly(pts, closed) {
@@ -274,9 +304,10 @@ arrow_group(length, xy, pivot, options) {
     if (i == 0) pivot = [-length / 2, 0];
     else if (i == 1) pivot = [length / 2, 0];
     else if (i == 2) pivot = [0, 0];
-    if (i >= 0) xy = new RArray(...xy).minus(pivot);
+    if (i >= 0) xy = new RArray(...this._cs(xy)).minus(pivot);
     let g = this.group().config({shift: xy, pivot: pivot});
-    g.arrow(length, options); 
+    g.$.addClass("Arrow");
+    g.arrow(length, options);
     return g;
 }
 
@@ -287,8 +318,8 @@ line(p1, p2) {
 /* Append a <line> to the <g> element */
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
-    let [x1, y1] = svg.a2p(...p1);
-    let [x2, y2] = svg.a2p(...p2);
+    let [x1, y1] = svg.a2p(...this._cs(p1));
+    let [x2, y2] = svg.a2p(...this._cs(p2));
     return this.create_child("line", {x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2)});
 }
 
@@ -320,7 +351,7 @@ text(data, xy) {
 /* Add a <text> element to the group */
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
-    let [x, y] = svg.a2p(...xy);
+    let [x, y] = svg.a2p(...this._cs(xy));
     return this.create_child("text", {x: f(x), y: f(y)}).html(data);
 }
 
@@ -332,7 +363,7 @@ class SVG2locus {
 constructor(g, eq, param, args) {
     this.svg = g.svg;
     this.eq = eq;
-    this.param = param.length > 2 ? param : param.concat([svg.$.width() / 3]);
+    this.param = param.length > 2 ? param : param.concat([this.svg.$.width() / 3]);
     this.args = args;
     this.$ = g.create_child("polyline", {}).addClass("Locus");
     this.element = this.$[0];
@@ -348,7 +379,7 @@ update() {
     x1 += dx / 2;
     let pts = [];
     while (x0 <= x1) {
-        let y = eq(t, x0, args);
+        let y = eq(x0, t, args);
         if (y === false) return;
         pts.push(typeof(y) == "number" ? [x0, y] : y);
         x0 += dx;
@@ -518,10 +549,7 @@ static auto_lrbt(w, h, l, r, b, t) {
     return [l, r, b, t];
 }
 
-update_transform() {
-/* Override SVG2g.prototype.update_transform */
-    return this;
-}
+update_transform() {return this}
 
 coords_by_map(p1, a1, p2, a2) {
 /* Assign an abstract coordinate system to the drawing */
@@ -539,6 +567,7 @@ coords_by_map(p1, a1, p2, a2) {
 }
 
 eventCoords(ev) {
+/* Calculate the coordinates of a mouse event in pixels and using the SVG2 coordinate system */
     let e = this.$;
     let dx = parseFloat(e.css("padding-left")) + parseFloat(e.css("border-left-width"));
     let dy = parseFloat(e.css("padding-top")) + parseFloat(e.css("border-top-width"));
@@ -552,6 +581,7 @@ eventCoords(ev) {
 group() {return new SVG2g(this)}
 
 pts_str(pts) {
+/* Create a string from an array of ordered pairs*/
     let s = "";
     let f = (x) => x.toFixed(this.decimals);
     for (let i=0;i<pts.length;i++) {
@@ -560,7 +590,6 @@ pts_str(pts) {
     }
     return s;
 }
-
 
 /** Animation methods **/
 
@@ -575,7 +604,7 @@ animate(...args) {
 }
 
 update(dt) {
-/* Update the drawing each frame (or when needed) */
+/* Update the drawing each frame */
     clearTimeout(this._animate);
     let anim = dt == null;
     if (anim) dt = this.timeFactor / this.frameRate;
