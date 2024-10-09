@@ -1,8 +1,3 @@
-// function jsObject(url, callback) {
-//     if (url.indexOf("//") == -1)
-//         $.ajax(url, {success:(js) => callback(eval(js))});
-// }
-
 function serverUTC(cb) {
     if (!cb) cb = console.log;
     $.ajax({url: "https://dmaccarthy.vercel.app/utc.json", success: cb});
@@ -33,13 +28,13 @@ clickCycle.toggle = (items, show, ...n) => {
     }
 }
 
-function setStyle(parent, style, applet$) {
-    if (applet$) console.warn("Using applet.style!");
-    parent = $(parent);
-    let e = document.createElementNS(parent[0].namespaceURI, "style");
-    e = $(e).html(style).appendTo(parent);
-    return e;
-}
+// function setStyle(parent, style, applet$) {
+//     if (applet$) console.warn("Using applet.style!");
+//     parent = $(parent);
+//     let e = document.createElementNS(parent[0].namespaceURI, "style");
+//     e = $(e).html(style).appendTo(parent);
+//     return e;
+// }
 
 function* range(x0, x1, dx) {
     // Generate a sequence like Python's range function
@@ -161,8 +156,14 @@ function randomColor(digits) {
 }
 
 function* _zip(x, y, rarray) {
-    for (let i=0;i<x.length;i++)
-        yield rarray ? new RArray(x[i], y[i]) : [x[i], y[i]];
+    let xa = x instanceof Array;
+    let ya = y instanceof Array;
+    let n = xa ? x.length : y.length;
+    for (let i=0;i<n;i++) {
+        let xi = xa ? x[i] : x;
+        let yi = ya ? y[i] : y;
+        yield rarray ? new RArray(xi, yi) : [xi, yi];
+    }
 }
 
 function zip(x, y, rarray) {return [..._zip(x, y, rarray)]}
@@ -188,6 +189,73 @@ function RGBtoHSV(r, g, b) {
         case b: h = (r - g) + d * 4; h /= 6 * d; break;
     }
     return {h: 360 * h, s: s, v: v};
+}
+
+function loadAllSVG(callback) {
+    let svg = $("svg[data-js]");
+    if (svg.length == 0) {
+        if (callback) callback();
+        return;
+    }
+    let maps = {}, n = 0;
+    for (let i=0;i<svg.length;i++) {
+        let e = $(svg[i]);
+        let [js, id] = e.attr("data-js").split("#");
+        if (maps[js] == null) {
+            maps[js] = [{}, 1, e.attr("data-keep") != null];
+            n++;
+        }
+        maps[js][0]["#" + elementId(e, "SVG_")] = id;
+    }
+    for (let u in maps) {
+        loadSVG(u, maps[u][0], (map, js) => {
+            maps[u][1] = 0;
+            let n = 0;
+            for (let m in maps) n += maps[m][1];
+            if (callback && n == 0) callback(map, js);
+        }, maps[u][2]);
+    }
+}
+
+function loadSVG(key, map, callback, keep) {
+    if (key.indexOf("//") == -1) {
+        let url = key;
+        while (key.substr(0, 3) == "../") key = key.substr(3);
+        if (save.cache[key]) loadSVG.success(key, map, callback, keep);
+        else {
+            $.getScript({url: "./" + url + ".js", success:() => loadSVG.success(key, map, callback, keep)});
+        }
+    }
+}
+
+loadSVG.init = (key, keep) => {
+    let e = $(key);
+    if (!keep) e.html(e.children("style, defs"));
+    let [w, h, r] = [e.attr("width"), e.attr("height"), e.attr("data-aspect")];
+    w = w == null ? 480 : parseFloat(w);
+    h = h == null ? 360 : parseFloat(h);
+    if (r == null) r = `${w}/${h}`;
+    e.attr({width: w, height: h, "data-aspect": r});
+    return e;
+}
+
+loadSVG.success = (key, map, callback, keep) => {
+    let js = save.cache[key];
+    let map1 = map;
+    if (typeof(map) == "string") {
+        map1 = {};
+        map1[map] = true;
+    }
+    for (let key in map1) {
+        let e = loadSVG.init(key, keep);
+        if (e.length != 1) console.warn(`Selector '${key}' matches ${e.length} nodes!`);
+        let tmp = map1[key];
+        let item = tmp === true ? js : js[tmp];
+        let plot = (o) => {return applet.graph(key, o)};
+        if (item) (item instanceof Array ? item[0] : item)(key);
+    }
+    aspect();
+    if (callback) callback(map, js);
 }
 
 function HSVtoRGB(h, s, v) {return uHSVtoRGB(h/360, s/100, v/100)}
