@@ -10,7 +10,7 @@ Create and configure an animated group:
     g = svg.group() -> SVG2g
     g.config({theta, omega, alpha, pivot, shift, vel, acc}) -> g
 
-Get the <svg>/<g> element or the jQuery object:
+Get the <svg>/<g> element or its jQuery object:
     svg.element -> <svg> or <g> element
     g.$ -> jQuery
 
@@ -22,22 +22,17 @@ Add content to an <svg>/<g> tag:
     g.rect([w, h], [cx, cy]) -> jQuery
     g.image(href, [w, h], [cx, cy]) -> jQuery
     g.poly([pts], closed) -> jQuery
-    g.arrow(length, {shape, tail, head, angle, double}) -> jQuery
 
     g.plot(pts or {x, y}, size, href, theta) -> SVG2g
     g.label([tm, tp] or int or (x, y, i) => string, x, y) -> SVG2g
     g.locus((p, t, args) => {y(p) or [x(p), y(p)]}, [p0, p1, n], args) -> SVG2locus
-
-Create a group containing an arrow:
-    g.arrow_group(length, xy, pivot, {shape, tail, head, angle, double}) -> SVG2g
-    // pivot is "tail", "tip", "center" (default) or a point as [x, y]
-    // xy is the position of the pivot
+    g.arrow({tail, tip} or length, {tail, head, angle, shape, double}, anchor) -> SVG2arrow
 
 Create a <path>
     path = g.path(start).[path directives] -> SVG2path
     path.update() -> <path> element
 
-Register SVG2g and SVG2locus instances to animate:
+Register SVG2g (and subclass SVG2arrow) and SVG2locus instances to animate:
     svg.animate(g1, g2, ...) -> svg
 
 Update-handlers for SVG2 or SVG2g instances:
@@ -211,14 +206,14 @@ rect(size, center) {
     return this.create_child("rect", {width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
 
-image(href, size, center) {
+image(href, size, center, use) {
 /* Append an <image> to the <g> element */
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let w = this._px(size[0], 0);
     let h = this._px(size[1], 1);
     let [x, y] = svg.a2p(...this._cs(center));
-    return this.create_child("image", {href: href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
+    return this.create_child(use ? "use" : "image", {href: href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
 
 plot(pts, size, href, theta) {
@@ -288,28 +283,7 @@ poly(pts, closed) {
     return this.create_child(closed ? "polygon" : "polyline", {points: this.svg.pts_str(pts)});
 }
 
-arrow(length, options) {
-/* Draw an arrow (centred at the origin, pointing right) as a <polygon> */
-    options = options == null ? {} : Object.assign({}, options);
-    let svg = this.svg;
-    let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) / svg.scale[0] : x);
-    if (options.tail) options.tail = f(options.tail);
-    if (options.head) options.head = f(options.head);
-    return this.poly(arrow_points(length, options), 1).addClass("Arrow");
-}
-
-arrow_group(length, xy, pivot, options) {
-/* Create an arrow wrapped in a <g> tag */
-    let i = pivot == null ? 2 : ["tail", "tip", "center"].indexOf(pivot);
-    if (i == 0) pivot = [-length / 2, 0];
-    else if (i == 1) pivot = [length / 2, 0];
-    else if (i == 2) pivot = [0, 0];
-    if (i >= 0) xy = new RArray(...this._cs(xy)).minus(pivot);
-    let g = this.group().config({shift: xy, pivot: pivot});
-    g.$.addClass("Arrow");
-    g.arrow(length, options);
-    return g;
-}
+arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
 
 locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
 path(start) {return new SVG2path(this, start)}
@@ -354,6 +328,41 @@ text(data, xy) {
     let [x, y] = svg.a2p(...this._cs(xy));
     return this.create_child("text", {x: f(x), y: f(y)}).html(data);
 }
+
+stickman(h) {
+/* Add a stick man as an SVG2g instance */
+    let g = this.group();
+    g.$.addClass("StickMan");
+    let r = h / 8;
+    g.circle(r, [0, 7 * r]);
+    g.line([0, 6 * r], [0, 3 * r]);
+    g.poly([[-r, 0], [0, 3 * r], [r, 0]]);
+    g.poly([[-1.5 * r, 5.5 * r], [0, 5 * r], [1.5 * r, 5.1 * r]]);
+    return g;
+}
+
+}
+
+
+class SVG2arrow extends SVG2g {
+
+    constructor(g, length, options, anchor) {
+        super(g);
+        let [tail, tip] = typeof(length) == "number" ? [[-length / 2, 0], [length / 2, 0]] : [length.tail, length.tip];
+        tail = g._cs(tail);
+        tip = g._cs(tip);
+        let seg = this.seg = new Segment(...tail, ...tip);
+        if (!anchor) anchor = 0;
+        else if (typeof(anchor) == "string") anchor = ["tail", "center", "tip"].indexOf(anchor) - 1;
+        this.pivot = seg[anchor == -1 ? "point1" : (anchor == 1 ? "point2" : "midpoint")];
+        let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) / g.svg.scale[1] : x);
+        if (options.tail) options.tail = f(options.tail);
+        if (options.head) options.head = f(options.head);
+        let pts = arrow_points(seg.length, options);
+        pts = transform({angle: seg.deg, deg: true, shift: seg.midpoint}, ...pts);
+        this.poly(pts, 1);
+        this.$.addClass("Arrow");
+    }
 
 }
 
@@ -500,8 +509,6 @@ update() {return this.$.attr({d: this.d.trim()})}
 class SVG2 extends SVG2g {
 
 constructor(jSelect, options) {
-/* options = {size, lrbt, margin} */
-
     super();
     this.svg = this;
     this.element = $(jSelect)[0];

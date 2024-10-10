@@ -14,6 +14,8 @@ text {
     text-anchor: middle;
 }
 
+text.Mono {font-family: Inconolata, monospace}
+
 .Symbol {
     font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif;
 }
@@ -33,9 +35,8 @@ g.Plot.Purple {circle, rect {fill: purple}}
 g.Plot.Violet {circle, rect {fill: violet}}
 
 g.VectorDiagram {fill-opacity: 0.6}
-polygon.Arrow {fill: red}
-polygon.Arrow.Resultant {fill: #0065fe}
-polygon.Arrow.Component {fill: yellow}
+g.Arrow > polygon {fill: red}
+g.Arrow.Resultant > polygon {fill: #0065fe}
+g.Arrow.Component > polygon {fill: yellow}
 
 }
-    

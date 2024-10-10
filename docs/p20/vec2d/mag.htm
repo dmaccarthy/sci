@@ -8,38 +8,8 @@
 
 <section class="Slide"><h3>Direction</h3>
 <p>Motion in a straight line is called <em>one-dimensional</em> (1D) because we only need one coordinate axis to describe an object’s position.</p>
-<p class="Center">
-<svg id="BikeImg" xmlns="http://www.w3.org/2000/svg" data-aspect="8/3" class="w32" viewBox="-675 -375 1600 600">
-<defs>
-	<image id="Bike" href="./p20/kin/img/bike.svg" x="0" y="0" width="200" transform="scale(-1 1) translate(-100 0)"></image>
-</defs>
-<filter id="gray"><feColorMatrix type="saturate" values="0.2"/></filter>
-<style>
 
-#BikeImg :is(line, rect, polygon) {stroke: black; stroke-width:2}
-#BikeImg rect {fill: #C4B6A6}
-#BikeImg polygon {fill: #0065FE}
-
-#BikeImg text {
-	font-family: Inconsolata, monospace;
-	font-size: 48px;
-	text-anchor: middle;
-	dominant-baseline: middle;
-}
-
-</style>
-<rect width="1610" height="50" x="-680" y="0"></rect>
-<g transform="translate(0 -155)">
-    <image href="./p20/kin/img/tree.svg" x="-100" y="-100" width="200" transform="scale(1 1.8)"></image>
-    <use href="#Bike" filter="url(#gray)" x="-500" y="0"></use>
-    <use href="#Bike" filter="url(#gray)" x="-200" y="0"></use>
-    <use href="#Bike" filter="url(#gray)" x="100" y="0"></use>
-    <use href="#Bike" filter="url(#gray)" x="400" y="0"></use>
-    <use href="#Bike" x="700" y="0"></use>
-</g>
-<g class="Axis"><text x="835" y="145">m</text></g>
-<polygon points="600,0 534,46 523,30 551,10 -600,10 -600,-10 551,-10 523,-30 534,-46" transform="translate(100, 82.5)"></polygon>
-</svg></p>
+<p class="Center"><svg data-js="p20/kin/img/displ#bike" class="w36"></svg></p>
 <ul data-cue="+"><li>There are only two possible directions that a vector can have: positive or negative.</li></ul>
 
 <p data-cue="+">Motion in a plane (like a sports field) is <em>two-dimensional</em> (2D) because we need two axes to describe the motion (<span class="TeX">x</span> and <span class="TeX">y</span>).</p>
@@ -78,24 +48,7 @@
     <p data-qr="p20/vec2d/mag"></p>
 </div>
 </section>
-
-<script type="text/javascript" data-init="notes">
-
-loadFeed.notes = () => {
-    let g = $("#BikeImg > g.Axis");
-    let elem = (tag) => document.createElementNS(SVG_Item.nsURI, tag);
-    for (let x=-600;x<801;x+=100) {
-        let e = elem("line");
-        g.append($(e).attr({x1:x, x2:x, y1:60, y2:105}));
-        if (x % 200 == 0) {
-            e = elem("text");
-            g.append($(e).html(Math.round(x/100)).attr({x:x, y:145}));            
-        }
-    }
-}
-
-</script>
-    
+ 
 </div></div></section>
 
 <section class="Post" data-icon="video">

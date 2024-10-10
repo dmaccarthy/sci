@@ -50,11 +50,8 @@ $(() => {
     sym.text(Fg, [7.5, 3]);
     sym.$.addClass("Symbol"); //.children().css("font-size", "150%");
 
-    // let ge = g.group().config({omega: 20, shift: [4, 3], pivot: [-1, 0]});
-    // ge.arrow(2, {double: 1, tail: "8", head: "28"}).css({fill: "red"});
-
-    let ge = g.arrow_group(2, [3, 1], "tail", {double: 1, tail: "8", head: "28"});
-    ge.config({theta: 15}).$.addClass("VectorDiagram").children().addClass("Resultant");
+    let arrow = svg.arrow({tail: [4,2], tip: [6,0]}, {double: 1, tail: "8", head: "28"}, 1);
+    arrow.config({omega: 20}).$.addClass("Resultant");
 
     g.beforeupdate = (g) => {
         // console.log(g.theta);
@@ -67,7 +64,9 @@ $(() => {
 
     let loc = g.locus((t, x, a) => a.A*sin(180*x-100*t)+a.y0, [0, 10], {A:2, y0:2});
     console.log(loc);
-    svg.animate(g, ge);
+    svg.animate(g, arrow);
+
+    svg.stickman(2).config({shift: [7, 1]});
 
     svg.$.on("click", (ev) => {
         svg.toggle();
