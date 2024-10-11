@@ -120,14 +120,11 @@ function setTitle() {
 }
 
 function _init(e) {
-    loadFeed.init = () => {}
-    // loadFeed = {init: () => {}, initNotes: () => {}};
     e = $(e);
     if (e.attr("id") != "LessonNotes") e = e.find("#LessonNotes");
     $("#LessonNotes").html(e.html());
+    SVG2.load();
     loadAllSVG(() => {
-        try {loadFeed.init()} catch(err) {console.error(err)};
-        // try {loadFeed.initNotes()} catch(err) {console.error(err)};
         for (let s of $("script[data-init]")) {
             s = $(s);
             try {loadFeed[s.attr("data-init")]()} catch(err) {};

@@ -5,8 +5,8 @@ wtLoss: (sel) => {
 
     let x = [...range(3, 28, 3)];
     let y = [80.8, 80.8, 80, 79.8, 80, 79.7, 79.1, 79.3, 78.5];
-    let svg = new SVG_Animation(sel, -4, 31, 76, 82.25); // loadFeed.init.svg = 
-    let grid = svg.grid([0, 30, 1], [77, 82, 0.25]);
+    let svg = new SVG_Animation(sel, -4, 31, 76, 82.25);
+    svg.grid([0, 30, 1], [77, 82, 0.25]);
     svg.find("line.Axis").$.removeClass("Axis");
     let axes = svg.group().attr({id: "Axes"});
     svg.axis({y: [77, 82],

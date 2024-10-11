@@ -1,4 +1,4 @@
-save("p30/elec/img/eq", {
+SVG2.cache("p30/elec/img/eq.js", {
 
     eq: (sel) => {
         $(sel).attr({width: 400, height: 240, "data-aspect": "5/3"});

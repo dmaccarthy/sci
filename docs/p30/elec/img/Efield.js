@@ -1,4 +1,4 @@
-save("p30/elec/img/Efield", {
+SVG2.cache("p30/elec/img/Efield.js", {
 
 ex1: (sel) => {
     $(sel).attr({width: 364, height: 338, "data-aspect": "14/13"});

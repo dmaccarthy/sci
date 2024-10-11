@@ -4,8 +4,6 @@ function isPrintPage() {return $("body").hasClass("Print")}
 function clearFeed() {
 /** Reset to empty feed **/
     loadFeed.data = {};
-    loadFeed.init = () => {};
-    // loadFeed.initNotes = loadFeed.initSoln = () => {};
     for (let name of loadFeed._inits) delete loadFeed[name];
     loadFeed._inits = [];
     $("div.Message").remove();
@@ -31,7 +29,6 @@ function loadFeed(feed, noHist) {
     }
     if (loadFeed.data.folder) feed = feed.replace("$", loadFeed.data.folder);
     loadFeed.opener = loadFeed.current;
-    // console.log(feed);
     if (loadFeed.cache[feed]) onFeedLoaded(feed, true, noHist);
     else $.ajax({url: feed + ".htm", cache: false, error: (e) => {
         console.log(feed);
@@ -301,21 +298,20 @@ function onFeedLoaded(feed, e, noHist) {
     // Finish up
     $("#Main, #Copy").show();
     layoutWidth();
-    loadAllSVG(() => {
-        try {loadFeed.init()} catch(err) {console.error(err)};
-        $(window).scrollTop(0);
-        for (let s of $("script[data-init]")) {
-            let name = $(s).attr("data-init");
-            try {loadFeed[name]()} catch(err) {console.error(err)};
-            loadFeed._inits.push(name);
-            // delete loadFeed[name];
-        }
-        // try {loadFeed.initNotes()} catch(err) {console.error(err)};
-        // try {loadFeed.initSoln()} catch(err) {console.error(err)};
-        aspect();
-        renderTeX();
-        drawChevrons();
-    });
+    renderTeX();    // Moved from loadAllSVG callback
+    drawChevrons(); // "
+    SVG2.load();
+    loadAllSVG(initFeed);
+}
+
+function initFeed() {
+    $(window).scrollTop(0);
+    for (let s of $("script[data-init]")) {
+        let name = $(s).attr("data-init");
+        try {loadFeed[name]()} catch(err) {console.error(err)};
+        loadFeed._inits.push(name);
+    }
+    aspect();
 }
 
 function printable(id) {return loadFeed.printable[id]}

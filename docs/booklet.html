@@ -93,7 +93,6 @@ function collect(folder, i) {
                     try {loadFeed[s.attr("data-init")]()} catch(err) {};
                     s.removeAttr("data-init");
                 }
-                // try {loadFeed.initSoln()} catch(err) {};
                 aspect();
                 s = s.find(".TeX");
                 if (s.length) renderTeX(s);

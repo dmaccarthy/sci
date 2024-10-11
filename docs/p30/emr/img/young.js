@@ -1,4 +1,4 @@
-save("p30/emr/img/young", {
+SVG2.cache("p30/emr/img/young.js", {
 
 laser: (sel) => {
     let svg = $(sel).attr({width: 400, height: 400, "data-aspect": "1"});

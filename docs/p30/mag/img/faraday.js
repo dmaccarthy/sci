@@ -1,4 +1,4 @@
-save("p30/mag/img/faraday", {
+SVG2.cache("p30/mag/img/faraday.js", {
 
     lenz_law: (sel) => {
 

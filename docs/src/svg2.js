@@ -341,6 +341,7 @@ stickman(h) {
     return g;
 }
 
+
 }
 
 
@@ -660,6 +661,43 @@ pause() {
 
 toggle() {return this.playing ? this.pause() : this.play()}
 
+
+/** Load and run SVG2 JavaScripts **/
+
+static load(cb) {
+    /* Send AJAX requests for SVG2 scripts */
+    if (!cb) cb = aspect;
+    let svgs = $("svg[data-svg2]");
+    for (let svg of svgs) {
+        svg = $(svg);
+        let [url, id] = svg.attr("data-svg2").split("#");
+        url = new URL(url, location.origin).href;
+        if (SVG2._cache[url]) {
+            SVG2.remove_pending(url);
+            svg.removeAttr("data-svg2").attr("data-svg2x", url);
+            SVG2._cache[url][id](svg);
+        }
+        else if (SVG2.load.pending.indexOf(url) == -1) {
+            SVG2.load.pending.push(url);
+            $.getScript({url: url, success: () => SVG2.load(cb), error: () => SVG2.remove_pending(url)});
+        }
+    }
+    if (SVG2.load.pending.length == 0) cb();
+}
+
+static remove_pending(url) {
+    /* Remove completed request from pending list */
+    let i = SVG2.load.pending.indexOf(url);
+    SVG2.load.pending.splice(i, 1);
+}
+
+static cache(url, obj) {
+    /* Load SVG2 JavaScript into cache */
+    SVG2._cache[new URL(url, location.origin).href] = obj;
+}
+
 }
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";
+SVG2._cache = {};
+SVG2.load.pending = [];

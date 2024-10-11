@@ -3,9 +3,6 @@ function serverUTC(cb) {
     $.ajax({url: "https://dmaccarthy.vercel.app/utc.json", success: cb});
 }
 
-const save = function(key, obj) {save.cache[key] = obj}
-save.cache = {};
-
 function clickCycle(e, n, ...f) {
     e.cycleStatus = n;
     $(e).click((ev) => {
@@ -191,6 +188,11 @@ function RGBtoHSV(r, g, b) {
     return {h: 360 * h, s: s, v: v};
 }
 
+
+// const save = function(key, obj) {save.cache[new URL(key, location.origin).href] = obj}
+const save = function(key, obj) {save.cache[key] = obj}
+save.cache = {};
+
 function loadAllSVG(callback) {
     let svg = $("svg[data-js]");
     if (svg.length == 0) {
@@ -201,6 +203,8 @@ function loadAllSVG(callback) {
     for (let i=0;i<svg.length;i++) {
         let e = $(svg[i]);
         let [js, id] = e.attr("data-js").split("#");
+        // js = new URL(js, location.origin).href; //
+        // console.log(js, id);
         if (maps[js] == null) {
             maps[js] = [{}, 1, e.attr("data-keep") != null];
             n++;

@@ -1,4 +1,4 @@
-save("test/plot", {
+SVG2.cache("test/plot.js", {
 
 plot: (sel) => {
     let svg = new SVG2(sel, {size: [640, 360], lrbt: [0, 10, 0, 7], margin: [56, 12, 56, 12]});

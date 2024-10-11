@@ -1,4 +1,4 @@
-save("p30/elec/img/oildrop", {
+SVG2.cache("p30/elec/img/oildrop.js", {
 
 distr: (sel) => {
     $(sel).addClass("Graph").attr({width: 512, height: 160, "data-aspect": "512/160"});

@@ -1,0 +1,153 @@
+<section class="Post" data-icon="video">
+    <h2 class="Collapse">Video</h2>
+    <div class="Collapse" data-yt="VUUGCtFzFX8"></div>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
+<div id="LessonNotes">
+
+<section class="Slide Center">
+<h1 id="Title">Young’s Experiment</h1>
+</section>
+
+<section class="Slide"><h3>Huygens’ Principle</h3>
+<p>What is the nature of light?</p>
+<ul data-cue="+">
+    <li>Sir Isaac Newton believed that light was composed of <em class="Defn">corpuscles</em> (particles).</li>
+    <li data-cue="+">Newton’s view was opposed by Christiaan Huygens who believed that light was a <em class="Defn">wave</em>.</li>
+    <li data-cue="+">Huygens was one of the first scientists to study waves systematically. He developed what is now known as <em class="Defn">Huygens’ Principle</em>...</li>
+    <li data-cue="+">Each point on a wave can be considered as a point source producing circular (for 2D) or spherical (for 3D) <em class="Defn">wavelets</em>.</li>
+    <li data-cue="+">The future shape of the wave may be determined by adding up all of these wavelets.</li>
+    <li data-cue="+">When waves overlap to produce a larger wave (crest+crest or trough+trough) we call this <em class="Defn">constructive interference</em>.</li>
+    <li data-cue="+">When waves overlap to produce a smaller wave (crest+trough) we call this <em class="Defn">destructive interference</em>.</li>
+    <li data-cue="+">The simplest example of Huygens’ Principle is a wave (e.g. water waves) passing through a very narrow opening in a barrier.</li>
+    <li data-cue="+">The opening can be treated as a single point source: the waves should spread out in a semi-circular pattern on the other side of the barrier.
+        <p class="Center"><img class="w24" alt="Wavelets" src="p30/emr/img/wavelets.png"/></p>
+    </li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Two-Source Interference</h3>
+<p>When there are <em>two</em> narrow openings in the barrier, the wavelets from one opening will overlap and interfere with the wavelets from the other opening.</p>
+<p class="Center"><iframe class="SD" src="https://www.desmos.com/calculator/owrap8ifzh?embed" width="640" height="480" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+<ul data-cue="+">
+    <li>Constructive interference will occur wherever two crests (blue) or two troughs (red) overlap.</li>
+    <li data-cue="+">Locations of maximum constructive interference are called <em class="Defn">interference maxima</em> or <em class="Defn">anti-nodes</em>.</li>
+    <li data-cue="+">Destructive interference will occur where a crest overlaps a trough.</li>
+    <li data-cue="+">Locations of complete destructive interference are called <em class="Defn">interference minima</em> or <em class="Defn">nodes</em>.</li>
+    <li data-cue="+">The result of two-source interference will be an alternating pattern of maxima and minima.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Geometry of 2-Source Interference</h3>
+<p>All points along the <em class="Defn">central maximum</em> are the same distance from both sources.</p>
+<ul data-cue="+">
+    <li>These points will always experience constructive inteference.</li>
+    <li data-cue="+">Destructive interference will occur at points that are one-half of a wavelength closer to one source than the other, because one wave will be exactly <span class="TeX">\frac{1}{2}\lambda</span> ahead of the other.</li>
+    <li data-cue="+">When the <em class="Defn">path difference</em> is exactly <span class="TeX">\lambda</span> or an exact <em>multiple</em> (<span class="TeX">n\lambda</span>, if <span class="TeX">n</span> is a whole number) another maximum will occur.</li>
+    <li data-cue="+">We can derive an equation for the locations of the maxima and minima from the diagram below.
+        <p class="Center"><img class="w12" alt="Derivation" src="p30/emr/img/young_deriv.png"/></p>
+    </li>
+</ul>
+<ul data-cue="+">
+    <li>Points <span class="TeX">S_1</span> and <span class="TeX">S_2</span> are the sources and <span class="TeX">d</span> is the distance between them.</li>
+    <li data-cue="+">Point <span class="TeX">P</span> is an arbitrary point.</li>
+    <li data-cue="+">Point <span class="TeX">Q</span> is the same distance from <span class="TeX">P</span> as <span class="TeX">S_2</span>, so that <span class="TeX">S_1Q</span> is the path difference, <span class="TeX">n\lambda</span>.</li>
+    <li data-cue="+">When <span class="TeX">P</span> is very far away (many times larger than <span class="TeX">d</span>), the angle at <span class="TeX">P</span> will be very close to zero.</li>
+    <li data-cue="+">When this is true, the angles <span class="TeX">\alpha_1</span> and <span class="TeX">\alpha_2</span> will both be very close to 90º, and the angles <span class="TeX">\theta_1</span> and <span class="TeX">\theta_2</span> will nearly equal each other.</li>
+    <li data-cue="+">We can approximate the triangle <span class="TeX">QS_1S_2</span> as a right triangle since <span class="TeX">\alpha_2</span> is about 90º:
+        <p class="TeX">\sin\theta = \frac{n\lambda}{d}</p></li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Example 1</h3>
+<p class="Blue">Water waves with a wavelength of 2.00 metres pass through two openings separated by 5.00 metres. Find the locations of all the maxima.</p>
+<p data-cue="+" class="TeX">\theta = \sin^{-1}\left(\frac{n\lambda}{d}\right)</p>
+<p data-cue="+">The <em>central maximum</em> (<span class="TeX">n=0</span>) is always located at <span class="TeX">\theta = 0^\circ</span>.</p>
+<div data-cue="+">
+    <p>The <em>first-order maximum</em> (<span class="TeX">n=1</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{1\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{23.6^\circ}</p>
+</div>
+<div data-cue="+">
+    <p>The <em>second-order maximum</em> (<span class="TeX">n=2</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{2\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{53.1^\circ}</p>
+</div>
+<div data-cue="+">
+    <p>There are no higher-order maxima; if we attempt to set <span class="TeX">n=3</span>, the expression in brackets will be greater than 1:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{3\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{No\ Solution!}</p>
+</div>
+<div data-cue="+">
+    <p>Because the <span class="TeX">\sin</span> function has a maximum value of 1, there will only be solutions for:</p>
+    <p class="TeX">n \le \frac{d}{\lambda}</p>
+</div>
+<p data-cue="+" class="Blue">Find the locations of all the minima.</p>
+<div data-cue="+">
+    <p>The <em>first-order minimum</em> (<span class="TeX">n=0.5</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{0.5\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{11.5^\circ}</p>
+</div>
+<div data-cue="+">
+    <p>The <em>second-order minimum</em> (<span class="TeX">n=1.5</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{1.5\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{36.9^\circ}</p>
+</div>
+<div data-cue="+">
+    <p>The <em>third-order minimum</em> (<span class="TeX">n=2.5</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{2.5\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{90.0^\circ}</p>
+</div>
+</section>
+
+<section class="Slide"><h3>Young’s Experiment</h3>
+<p>To settle the dispute between Newton and Huygens, Thomas Young conducted his <em class="Defn">double-slit experiment</em> in 1801.</p>
+<ul data-cue="+">
+    <li>Light will be passed through a double-slit (two narrow openings set close together).</li>
+    <li data-cue="+">If light is a wave, like Huygens believed, an interference pattern of alternating bright (maxima) and dark (minima) spots should be produced.</li>
+    <li data-cue="+">If light is made of particles, like Newton believed, there should be two bright spots produced corresponding to the two slits.</li>
+    <li data-cue="+">The results show an interfernce pattern, supporting Huygens’ belief that light is a wave.
+        <p class="Center Top"><a href="https://commons.wikimedia.org/wiki/File:Single_slit_and_double_slit2.jpg" title="Click for source" target="Src">
+            <img src="p30/emr/img/dbl_maxima.jpg" alt="Interference" class="w24"/>
+        </a></p>        
+    </li>
+</ul>
+<ul data-cue="+">
+    <li>The variation in brightness is due to the fact that the slits are not points (as we assumed) but rather have a finite width.</li>
+    <li data-cue="+">An additional benefit of Young’s experiment was that it provided a method of separating light into different colours (wavelengths).</li>
+    <li data-cue="+">Furthermore, the equation can be rearranged to calculate the wavelength of light:
+        <p class="TeX">\lambda = \frac{d\sin\theta}{n}</p></li>
+    <li data-cue="+">It is through measurements based on Young’s experiment that we know visible light has wavelengths ranging from just under 400 nm (violet) to around 750 nm (red).</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Spectroscopy</h3>
+<p>A device that uses this phenomenon to separate and measure wavelengths is called a <em class="Defn">spectroscope</em>.</p>
+<ul data-cue="+">
+    <li>Spectroscopes typically use a <em class="Defn">diffraction grating</em> with several hundred evenly spaced slits rather than just two.</li>
+    <li data-cue="+">A diffraction grating produces an interference pattern that obeys the same equation as the double-slit, but the maxima are better-defined.</li>
+    <li data-cue="+">A diffraction grating is often described by the number of lines per mm; for example, 300 lines per mm means:
+        <p class="TeX">d = \frac{1}{300}\ \mathrm{mm} = 3.33\times 10^{-6}\ \mathrm{m}</p></li>
+    <li data-cue="+">Spectroscopy is the branch of science that deals with the analysis of light sources.</li>
+    <li data-cue="+">It is used in chemistry as a method of identifying substances (since the pattern of light that each substance emits or absorbs is unique).</li>
+    <li data-cue="+">It is also used in astronomy where the objects of study are often too far away to collect any data other than the EMR that they emit, absorb, or reflect.</li>
+</ul>
+</section>
+
+</div></div></section>
+
+<section class="Post" data-show="2024.10.29.10" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1hVUQY3gGIuwno6Pgy_Hv_WuJ29EpPJx4Ctx7Udlud6U">Answer Key</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}13.3 — Young’s Experiment`,
+    answerDate: "2024.10.29.10",
+    num: "13.3",
+    up: "p30/units/C",
+    prev: "p30/emr/c",
+    next: "p30/emr/diff",
+}
+
+</script>

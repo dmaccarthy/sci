@@ -1,4 +1,4 @@
-save("p30/mom/img/impulse", {
+SVG2.cache("p30/mom/img/impulse.js", {
 
 bat: (sel) => {
     $(sel).attr({width: 480, height: 400, "data-aspect": "6/5"});

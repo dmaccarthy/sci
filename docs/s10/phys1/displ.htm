@@ -24,7 +24,7 @@
 </section>
 
 <section class="Slide"><h3>Position</h3>
-    <p class="Center"><svg data-js="p20/kin/img/displ#bike" class="w36"></svg></p>
+    <p class="Center"><svg data-svg2="p20/kin/img/bike.js#bike" class="w36"></svg></p>
     <p>The first step in describing an object’s motion is to describe its <em class="Defn">position</em>; where is it?</p>
     <p data-cue="+">Typically, we start by choosing a convenient location as the <em class="Defn">origin</em>.</p>
     <ul>
@@ -38,7 +38,7 @@
 </section>
 
 <section class="Slide"><h3>Displacement</h3>
-    <p class="Center Present"><svg data-js="p20/kin/img/displ#bike" class="w36"></svg></p>
+    <p class="Center Present"><svg data-svg2="p20/kin/img/bike.js#bike" class="w36"></svg></p>
     <p>A moving object will have a position that is <em>changing</em> over time.</p>
     <div data-cue="+">
         <p>The change in an object’s position between two times is called its <em class="Defn">displacement</em>:</p>
@@ -85,6 +85,127 @@
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
 <ol>
+<li>The illustration below shows the position of a student (in metres) at five different times.
+    <p class="Center"><img src="s10/phys1/img/student.png"/></p>
+    <ol type="a">
+        <li>Record the positions of the student using the origin marked on the diagram.</li>
+        <table class="Answer Center Two TD6 Top Bottom">
+            <tr><td>Point</td><td><span class="TeX">\vec{\bf d}</span> / m</td></tr>
+            <tr><td>1</td><td>–10</td></tr>
+            <tr><td>2</td><td>+2</td></tr>
+            <tr><td>3</td><td>–3</td></tr>
+            <tr><td>4</td><td>+15</td></tr>
+            <tr><td>5</td><td>+30</td></tr>
+        </table>
+
+        <li>Illustrate the motion of the student by drawing a sequence of four displacement vectors (arrows) on the diagram.</li>
+        <p class="Answer Center"><img src="s10/phys1/img/student_ans.png"/></p>
+    
+        <li>Calculate the displacement of the student as indicated between each pair of positions. Show your work!</li>
+        <table class="Answer Center Two TD6 Top Bottom">
+            <tr><td>Interval</td><td><span class="TeX">\Delta\vec{\bf d}</span> / m</td></tr>
+            <tr><td>1 → 2</td><td>+2 – (–10) = +12</td></tr>
+            <tr><td>2 → 3</td><td>–3 – (+2) = –5</td></tr>
+            <tr><td>3 → 4</td><td>+15 – (–3) = +18</td></tr>
+            <tr><td>4 → 5</td><td>+30 – (+15) = +15</td></tr>
+        </table>
+    
+        <li>Calculate the total displacement of the student.</li>
+        <div class="Answer">
+            <p class="TeX">\Delta\vec{\bf d}_{1\rightarrow 5} = \vec{\bf d}_5 - \vec{\bf d}_1 = \rm +30\ m - (-10)\ m = +40\ m</p>
+            <p>Alternatively, you can total the displacements for the four intervals:
+                <span class="TeX">\rm (+12 + (-5) + (+18) + (+15))\ m = +40\ m</span></p>
+        </div>
+    
+        <li>Calculate the total distance that the student travelled?</li>
+        <p class="Answer">Add the <em>magnitudes</em> (absolute values) of the four displacements:
+            <span class="TeX">\rm (12 + 5 + 18 + 15)\ m = 50\ m</span></p>
+    </ol>
+</li>
+
+<li>Students made a digital video of a basketball falling. By watching the video in slow motion, they were able to record the following data (using the ground as the origin).
+    <table class="Three TD6 Center Top Bottom">
+        <tr><td>Point</td><td>Time<br/><span class="TeX">t</span> / s</td><td>Position<br/><span class="TeX">\vec{\bf d}</span> / m</td></tr>
+        <tr><td>1</td><td>0.00</td><td>3.23</td></tr>
+        <tr><td>2</td><td>0.10</td><td>3.18</td></tr>
+        <tr><td>3</td><td>0.20</td><td>3.03</td></tr>
+        <tr><td>4</td><td>0.30</td><td>2.79</td></tr>
+        <tr><td>5</td><td>0.40</td><td>2.45</td></tr>
+        <tr><td>6</td><td>0.50</td><td>2.00</td></tr>
+        <tr><td>7</td><td>0.60</td><td>1.46</td></tr>
+        <tr><td>8</td><td>0.70</td><td>0.83</td></tr>
+        <tr><td>9</td><td>0.80</td><td>0.09</td></tr>
+    </table>
+    <ol type="a">
+        <li>Draw an accurate graph of the students’ data.</li>
+        <div class="Answer"><a target="Des1" href="https://www.desmos.com/calculator/ncyokld3xu">desmos.com</a></div>
+    
+        <li>Calculate the displacement of the basketball between data point 1 and point 5.</li>
+        <p class="TeX Answer">\Delta\vec{\bf d}_{1\rightarrow 5} = \vec{\bf d}_5 - \vec{\bf d}_1 = \rm +2.45\ m - (+3.23\ m) = -0.78\ m</p>
+    
+        <li>Calculate the displacement of the basketball between data point 5 and point 9.</li>
+        <p class="TeX Answer">\Delta\vec{\bf d}_{5\rightarrow 9} = \vec{\bf d}_9 - \vec{\bf d}_5 = \rm +0.09\ m - (+2.45\ m) = -2.36\ m</p>
+    
+        <li>Calculate the displacement of the basketball between data point 1 and point 9.</li>
+        <p class="TeX Answer">\Delta\vec{\bf d}_{5\rightarrow 9} = \vec{\bf d}_9 - \vec{\bf d}_1 = \rm +0.09\ m - (+3.23\ m) = -3.14\ m</p>
+    </ol>
+</li>
+
+<li>A car drove 6.0 km east, then 10.0 km west, and finally 8.0 km east.
+    <ol type="a">
+        <li>Draw a labelled vector diagram of the car’s motion.</li>
+        <p class="Answer Center"><img src="s10/phys1/img/car_ans.png"/></p>
+        <li>What was the total distance driven?</li>
+        <div class="Answer">6.0 km + 10.0 km + 8.0 km = 24.0 km</div>
+        <li>What was the total displacement of the car?</li>
+        <div class="Answer">6.0 km + (-10.0 km) + 8.0 km = +4.0 km</div>
+    </ol>
+</li>
+
+<li>The Trans-Canada highway crosses the prairies between Calgary and Winnipeg. The illustrations below show the positions of several cities along the route. The diagram on the left uses Calgary as the origin while the one on the right uses the Alberta-Saskatchewan boundary as the origin. Both scales are in kilometres.
+    <p class="Caption">Coordinate System “A”</p>
+    <p class="Center"><img src="s10/phys1/img/coordA.png"/></p>
+    <p class="Caption">Coordinate System “B”</p>
+    <p class="Center"><img src="s10/phys1/img/coordB.png"/></p>
+
+    A police highway patrol drives from Medicine Hat (point 1) to Regina (point 2), then back to Swift Current (point 3).
+    <ol type="a">
+        <li>Write the position of the patrol car at these three times based on Coordinate System “A”, and then repeat using “B”.</li>
+        <table class="Answer Center Three TD6 Top Bottom">
+            <tr><td rowspan="2">Point</td><td colspan="2"><span class="TeX">\Delta\vec{\bf d}</span> / km</td></tr>
+            <tr><td>“A”</td><td>“B”</td></tr>
+            <tr><td>Medicine Hat</td><td>+275</td><td>–75</td></tr>
+            <tr><td>Regina</td><td>+750</td><td>+400</td></tr>
+            <tr><td>Swift Current</td><td>+500</td><td>+150</td></tr>
+        </table>
+    
+        <li>Calculate the total displacement and the total distance driven by the patrol car using the “A” positions.</li>
+        <div class="Answer">
+            <p class="TeX">\Delta\vec{\bf d} = \vec{\bf d}_f - \vec{\bf d}_i = \rm +500\ km - (+275\ km) = +225\ km</p>
+            <p class="TeX">\begin{align}
+                \Delta d &= |\vec{\bf d}_3 - \vec{\bf d}_2| + |\vec{\bf d}_2 - \vec{\bf d}_1|
+                \\[8pt] &= \rm {\left|+750 - (+275)\right|\ km + \left|+500 - (+750)\right|\ km}
+                \\[8pt] &= \rm{(475 + 250)\ km = 725\ km}
+            \end{align}</p>
+        </div>
+
+        <li>Calculate the total displacement and the total distance driven by the patrol car using the “B” positions.</li>
+        <div class="Answer">
+            <p class="TeX">\Delta\vec{\bf d} = \vec{\bf d}_f - \vec{\bf d}_i = \rm +150\ km - (-75\ km) = +225\ km</p>
+            <p class="TeX">\begin{align}
+                \Delta d &= |\vec{\bf d}_3 - \vec{\bf d}_2| + |\vec{\bf d}_2 - \vec{\bf d}_1|
+                \\[8pt] &= \rm {\left|+400 - (-75)\right|\ km + \left|+150 - (+400)\right|\ km}
+                \\[8pt] &= \rm{(475 + 250)\ km = 725\ km}
+            \end{align}</p>
+        </div>
+    
+        <li>Does changing our choice of origin affect our calculation of an object’s displacement or distance?</li>
+        <div class="Answer">No... the calculated displacements and distances are the same for part (c) compared to (a).</div>
+
+        <li>Comment on the statement: “The choice of origin is completely arbitrary: it has no effect on our description of an object’s motion.”</li>
+        <div class="Answer">The results we calculate (displacement and distance) are unaffected by our choice of origin.</div>
+    </ol>
+</li>
 </ol>
 </div></div></section>
 
