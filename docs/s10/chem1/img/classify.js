@@ -1,4 +1,4 @@
-save("s10/chem1/img/classify", {
+SVG2.cache("s10/chem1/img/classify.js", {
 
 chart: (sel) => {
     $(sel).attr({width: 640, height: 240, "data-aspect": "8/3"});

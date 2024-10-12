@@ -1,4 +1,4 @@
-save("p20/skill/img/scatter", {
+SVG2.cache("p20/skill/img/scatter.js", {
 
 wtLoss: (sel) => {
     $(sel).attr({width: 640, height: 400, "data-aspect": "1.6"});

@@ -671,7 +671,7 @@ static load(cb) {
     for (let svg of svgs) {
         svg = $(svg);
         let [url, id] = svg.attr("data-svg2").split("#");
-        url = new URL(url, location.href).href;
+        url = new URL(url, SVG2.url).href;
         if (SVG2._cache[url]) {
             SVG2.remove_pending(url);
             svg.removeAttr("data-svg2").attr("data-svg2x", url);
@@ -693,7 +693,7 @@ static remove_pending(url) {
 
 static cache(url, obj) {
     /* Load SVG2 JavaScript into cache */
-    SVG2._cache[new URL(url, location.href).href] = obj;
+    SVG2._cache[new URL(url, SVG2.url).href] = obj;
 }
 
 }
@@ -701,3 +701,6 @@ static cache(url, obj) {
 SVG2.nsURI = "http://www.w3.org/2000/svg";
 SVG2._cache = {};
 SVG2.load.pending = [];
+
+SVG2.url = location.origin;
+if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci";

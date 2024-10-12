@@ -1,4 +1,4 @@
-save("p20/skill/img/sciNot", {
+SVG2.cache("p20/skill/img/sciNot.js", {
 
 au: (sel) => {
     $(sel).attr({width: 180, height: 40, "data-aspect": "4.5"});

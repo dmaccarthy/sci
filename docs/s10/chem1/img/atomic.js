@@ -1,4 +1,4 @@
-save("s10/chem1/img/atomic", {
+SVG2.cache("s10/chem1/img/atomic.js", {
 
 bun: (sel) => {
     $(sel).attr({width: 280, height: 244, "data-aspect": "280/244"});

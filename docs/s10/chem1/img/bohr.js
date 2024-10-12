@@ -1,4 +1,4 @@
-save("s10/chem1/img/bohr", {
+SVG2.cache("s10/chem1/img/bohr.js", {
 
 bohr: (sel) => {
     let e = $(sel);

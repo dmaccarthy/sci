@@ -13,6 +13,7 @@
 <script type="text/javascript" src="../../src/util.js"></script>
 <script type="text/javascript" src="../../src/math.js"></script>
 <script type="text/javascript" src="../../src/svg_anim.js"></script>
+<script type="text/javascript" src="../../src/svg2.js"></script>
 <script type="text/javascript" src="../../src/applet.js"></script>
 <style type="text/css">
 
@@ -26,7 +27,7 @@ body {
 
 function draw(opt) {
     $("#Bohr").html("").attr({
-        "data-js": "../../s10/chem1/img/bohr#bohr",
+        "data-svg2": "../../s10/chem1/img/bohr.js#bohr",
         "data-args": opt,
     });
     opt = JSON.parse(opt);
@@ -34,10 +35,11 @@ function draw(opt) {
     if (opt[6] == 1) $("#DotDiag").hide();
     else if (opt[6] == 2) $("#BohrDiag").hide();
     $("#Lewis").html("").attr({
-        "data-js": "../../s10/chem1/img/bohr#dot",
+        "data-svg2": "../../s10/chem1/img/bohr.js#dot",
         "data-args": `["${opt[0]}", ${opt[3]}, ${opt[4]}]`,
     }).css({width: `${10 * (opt[3] ? 27/22 : 1)}em`});
-    loadAllSVG();
+    // loadAllSVG();
+    SVG2.load();
 }
   
 $(() => {

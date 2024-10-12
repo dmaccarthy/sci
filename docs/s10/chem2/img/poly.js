@@ -1,4 +1,4 @@
-save("s10/chem2/img/poly", {
+SVG2.cache("s10/chem2/img/poly.js", {
 
 H2O: (sel) => {
     $(sel).attr({width: 200, height: 200, "data-aspect": "1"});

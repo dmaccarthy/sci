@@ -1,4 +1,4 @@
-save("s10/chem2/img/molec", {
+SVG2.cache("s10/chem2/img/molec.js", {
 
 HCl: (sel) => {
     $(sel).attr({width: 200, height: 100, "data-aspect": "2"});
