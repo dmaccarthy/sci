@@ -1,6 +1,7 @@
-save("p30/elec/img/da", {
+SVG2.cache("p30/elec/img/da.js", {
 
 pend: (sel) => {
+    $(sel).attr({width: 480, height: 360});
     let svg = applet.graph(sel, {
         grid: [[0, 2.5, 0.25], [0, 3.5, 0.5], 1],
         margin: [0.2, 0.03, 0.24, 0.05],
@@ -25,6 +26,7 @@ pend: (sel) => {
 },
 
 pend_lin: (sel) => {
+    $(sel).attr({width: 480, height: 360});
     let svg = applet.graph(sel, {
         grid: [[0, 1.75, 0.25], [0, 3.5, 0.5], 1],
         margin: [0.2, 0.03, 0.27, 0.05],

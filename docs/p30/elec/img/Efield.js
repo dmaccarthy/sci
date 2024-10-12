@@ -36,8 +36,6 @@ ex1: (sel) => {
     svg.final().$.addClass("VDiag");
 
     let t = clickCycle.toggle;
-    // t(tog, false, 0, 1, 2, 3, 4, 5, 6);
-    console.log(tog);
 
     clickCycle(svg.element, -1,
         () => {t(tog, false, 0, 1, 2, 3, 4, 5, 6, 7)},

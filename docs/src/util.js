@@ -204,7 +204,6 @@ function loadAllSVG(callback) {
         let e = $(svg[i]);
         let [js, id] = e.attr("data-js").split("#");
         // js = new URL(js, location.origin).href; //
-        // console.log(js, id);
         if (maps[js] == null) {
             maps[js] = [{}, 1, e.attr("data-keep") != null];
             n++;
