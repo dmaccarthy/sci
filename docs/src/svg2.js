@@ -671,7 +671,7 @@ static load(cb) {
     for (let svg of svgs) {
         svg = $(svg);
         let [url, id] = svg.attr("data-svg2").split("#");
-        url = new URL(url, location.origin).href;
+        url = new URL(url, location.href).href;
         if (SVG2._cache[url]) {
             SVG2.remove_pending(url);
             svg.removeAttr("data-svg2").attr("data-svg2x", url);
