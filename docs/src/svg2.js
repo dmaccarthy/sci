@@ -56,13 +56,13 @@ Convert coordinates between <g> and <svg> coordinate systems:
 
 class SVG2g {
 
-constructor(svg, g) {
-    if (svg) {
+constructor(parent, g) {
+    if (parent) {
         this.element = g ? $(g)[0] : document.createElementNS(SVG2.nsURI, "g");
         this.element.graphic = this;
         this.$ = $(this.element);
-        this.$.appendTo(g ? g.$ : svg.$);
-        this.svg = svg;
+        this.$.appendTo(g ? g.$ : parent.$);
+        this.svg = parent.svg;
         this._pivot = new RArray(0, 0);
         this._shift = new RArray(0, 0);
         this._vel = new RArray(0, 0);
@@ -697,10 +697,7 @@ static cache(url, obj) {
 }
 
 static makeURL(url) {return new URL(url, SVG2.url).href}
-static cached(url) {
-    console.log(url);
-    return SVG2._cache[new URL(url, SVG2.url).href];
-}
+static cached(url) {return SVG2._cache[new URL(url, SVG2.url).href]}
 
 }
 
