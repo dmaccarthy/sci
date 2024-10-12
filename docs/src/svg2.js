@@ -693,7 +693,7 @@ static remove_pending(url) {
 
 static cache(url, obj) {
     /* Load SVG2 JavaScript into cache */
-    SVG2._cache[new URL(url, location.origin).href] = obj;
+    SVG2._cache[new URL(url, location.href).href] = obj;
 }
 
 }
