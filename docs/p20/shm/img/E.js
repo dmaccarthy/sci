@@ -1,4 +1,4 @@
-save("p20/shm/img/E", {
+SVG2.cache("p20/shm/img/E.js", {
 
 pend: (sel) => {
     $(sel).attr({width: 300, height: 400, "data-aspect": "3/4"});

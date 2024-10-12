@@ -298,10 +298,10 @@ function onFeedLoaded(feed, e, noHist) {
     // Finish up
     $("#Main, #Copy").show();
     layoutWidth();
-    renderTeX();    // Moved from loadAllSVG callback
-    drawChevrons(); // "
-    SVG2.load();
-    loadAllSVG(initFeed);
+    renderTeX();
+    drawChevrons();
+    SVG2.load(initFeed);
+    // load AllSVG(initFeed);
 }
 
 function initFeed() {

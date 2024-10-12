@@ -1,4 +1,4 @@
-save("p20/energy/img/power", {
+SVG2.cache("p20/energy/img/power.js", {
 
 Q4: (sel) => {
     let s = $(sel).attr({width: 300, height: 228, "data-aspect": "25/19"});

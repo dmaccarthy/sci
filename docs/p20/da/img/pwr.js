@@ -1,6 +1,7 @@
-save("p20/da/img/pwr", {
+SVG2.cache("p20/da/img/pwr.js", {
 
 lightbulb: (sel) => {
+    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 3, 0.25], [0, 2, 0.25], 1],
         margin: [0.2, 0.03, 0.24, 0.05],
@@ -22,6 +23,7 @@ lightbulb: (sel) => {
 },
 
 linear: (sel) => {
+    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 2, 0.25], [0, 2, 0.25], 1],
         margin: [0.2, 0.03, 0.24, 0.05],

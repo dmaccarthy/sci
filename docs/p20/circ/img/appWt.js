@@ -1,4 +1,4 @@
-save("p20/circ/img/appWt", {
+SVG2.cache("p20/circ/img/appWt.js", {
 
 stick: (sel) => {
     $(sel).attr({width: 390, height: 400, "data-aspect": "39/40"});

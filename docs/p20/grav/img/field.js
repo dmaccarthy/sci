@@ -1,4 +1,4 @@
-save("p20/grav/img/field", {
+SVG2.cache("p20/grav/img/field.js", {
  
 binstar: (sel) => {
     $(sel).attr({width: 402, height: 202, "data-aspect": "201/101"});

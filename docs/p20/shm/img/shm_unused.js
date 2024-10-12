@@ -1,4 +1,4 @@
-save("p20/shm/img/shm_unused", {
+SVG2.cache("p20/shm/img/shm_unused.js", {
 
 Q1x: (sel) => {
     $(sel).attr({width: 480, height: 300, "data-aspect": "8/5"});

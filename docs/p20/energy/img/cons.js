@@ -1,4 +1,4 @@
-save("p20/energy/img/cons", {
+SVG2.cache("p20/energy/img/cons.js", {
  
 bar: (sel) => {
     $(sel).attr({width: 400, height: 400, "data-aspect": "1"});

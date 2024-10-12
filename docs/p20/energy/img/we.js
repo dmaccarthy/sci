@@ -1,6 +1,7 @@
-save("p20/energy/img/we", {
+SVG2.cache("p20/energy/img/we.js", {
 
 work: (sel) => {
+    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 20, 1], [-400, 400, 50], 1],
         margin: [0.2, 0.06, 0.04, 0.05],
@@ -48,6 +49,7 @@ work: (sel) => {
 },
 
 tennis: (sel) => {
+    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 80, 5], [0, 90, 5], 1],
         margin: [0.18, 0.06, 0.1, 0.05],

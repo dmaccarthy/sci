@@ -87,7 +87,7 @@ function collect(folder, i) {
             let h2 = $("<h2>").html(url[1]);
             // if (i) h2.addClass("PageBreak");
             $("body").append(h2).append(s);
-            loadAllSVG(() => {
+            SVG2.load(() => { // load AllSVG
                 for (let s of $("script[data-init]")) {
                     s = $(s);
                     try {loadFeed[s.attr("data-init")]()} catch(err) {};

@@ -1,4 +1,4 @@
-save("p20/vec2d/img/arith", {
+SVG2.cache("p20/vec2d/img/arith.js", {
 
 Ex1: (sel) => {
     $(sel).attr({width: 400, height: 400, "data-aspect": "1"});

@@ -123,8 +123,7 @@ function _init(e) {
     e = $(e);
     if (e.attr("id") != "LessonNotes") e = e.find("#LessonNotes");
     $("#LessonNotes").html(e.html());
-    SVG2.load();
-    loadAllSVG(() => {
+    SVG2.load(() => { // load AllSVG
         for (let s of $("script[data-init]")) {
             s = $(s);
             try {loadFeed[s.attr("data-init")]()} catch(err) {};

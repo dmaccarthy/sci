@@ -1,4 +1,4 @@
-save("p20/wave/img/stand", {
+SVG2.cache("p20/wave/img/stand.js", {
 
 stand: (sel) => {
     let e = $(sel).attr({width: 480, height: 240, "data-aspect": "2"});

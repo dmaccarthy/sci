@@ -1,4 +1,4 @@
-save("p20/energy/img/work", {
+SVG2.cache("p20/energy/img/work.js", {
 
 ex2: (sel) => {
     $(sel).attr({width: 400, height: 400, "data-aspect": "1"});

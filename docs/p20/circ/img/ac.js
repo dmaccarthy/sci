@@ -1,4 +1,4 @@
-save("p20/circ/img/ac", {
+SVG2.cache("p20/circ/img/ac.js", {
 
 merry: (sel) => {
     $(sel).attr({width: 400, height: 180, "data-aspect": "20/9"});

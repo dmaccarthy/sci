@@ -1,4 +1,4 @@
-save("p20/dyn/img/n3", {
+SVG2.cache("p20/dyn/img/n3.js", {
 
 n3: (sel) => {
     $(sel).attr({width: 400, height: 160, "data-aspect": "5/2"});

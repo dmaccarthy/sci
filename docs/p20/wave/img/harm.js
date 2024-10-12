@@ -1,4 +1,4 @@
-save("p20/wave/img/harm", {
+SVG2.cache("p20/wave/img/harm.js", {
 
 long: (sel) => {
     $(sel).attr({width: 480, height: 160, "data-aspect": "3"});
@@ -90,6 +90,7 @@ tr: (sel) => {
 },
 
 Q6: (sel) => {
+    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
     let t = 20 / 9.81;
     let svg = applet.graph(sel, {
         grid: [[0, 6, 0.2], [-5, 5, 0.5], 1],

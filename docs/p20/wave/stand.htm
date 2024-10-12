@@ -42,7 +42,7 @@
 <section class="Slide"><h3>Standing Waves</h3>
 <p>Because both ends are nodes, the longest possible wavelength harmonic wave that can be produced on a string with fixed ends will look like this:</p>
 <p class="Caption">Fundamental Standing Wave (<span class="TeX">n = 1</span>)</p>
-<p class="Center"><svg class="s24" data-js="p20/wave/img/stand#stand"></svg></p>
+<p class="Center"><svg class="s24" data-svg2="p20/wave/img/stand.js#stand"></svg></p>
 <p class="Center NoPrint NoPresent"><em>Click the diagram to toggle animation.</em></p>
 <ul data-cue="+">
     <li>Waves like this are called <em class="Defn">standing waves</em> because the incident and reflected waves are carrying energy in opposite directions, so that there is no net movement of energy.</li>
@@ -55,7 +55,7 @@
     <ul><li>The second harmonic has a node at the middle as well as the ends. Nodes are shown below as blue dots, and anti-node locations are shown in red.</li></ul>
     <p class="Center"><b>Standing Waves</b></p>
     <p class="Center"><span class="TeX">n</span> = <input id="Harmonic" type="number" step="1" min="1" value="2"/></p>
-    <p class="Center"><svg class="s24" id="StandingWave" data-js="p20/wave/img/stand#stand" data-harmonic="2"></svg></p>
+    <p class="Center"><svg class="s24" id="StandingWave" data-svg2="p20/wave/img/stand.js#stand" data-harmonic="2"></svg></p>
     <p class="Center NoPrint NoPresent"><em>Click the diagram to toggle animation.</em></p>
 </div>
 <ul data-cue="+">
@@ -79,7 +79,7 @@
 <div data-cue="+">
     <p class="Center"><b>Standing Waves for Closed Air Columns</b></p>
     <p class="Center"><span class="TeX">n</span> = <input id="OddHarmonic" style="width:4em" type="number" step="2" min="1" value="1"/></p>
-    <p class="Center"><svg class="s24" id="ClosedAirColumn" data-js="p20/wave/img/stand#closed"></svg></p>
+    <p class="Center"><svg class="s24" id="ClosedAirColumn" data-svg2="p20/wave/img/stand.js#closed"></svg></p>
     <p class="Center NoPrint NoPresent"><em>Click the diagram to toggle animation.</em></p>
 </div>
 <ul data-cue="+">
@@ -145,7 +145,7 @@ $("#Harmonic").on("change", (ev) => {
     if (!n || isNaN(n)) n = 1;
     e.val(n);
     svg.$.html("").attr("data-harmonic", n);
-    save.cache["p20/wave/img/stand"].stand("#StandingWave");
+    SVG2.cached("p20/wave/img/stand.js").stand("#StandingWave");
 });
 
 $("#OddHarmonic").on("change", (ev) => {
@@ -155,7 +155,7 @@ $("#OddHarmonic").on("change", (ev) => {
     if (!n || isNaN(n)) n = 1;
     e.val(n);
     svg.$.html("").attr("data-harmonic", n);
-    save.cache["p20/wave/img/stand"].closed("#ClosedAirColumn");
+    SVG2.cached("p20/wave/img/stand.js").closed("#ClosedAirColumn");
 });
     
 </script> 

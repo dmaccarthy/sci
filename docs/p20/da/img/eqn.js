@@ -1,6 +1,7 @@
-save("p20/da/img/eqn", {
+SVG2.cache("p20/da/img/eqn.js", {
 
 scatter: (sel) => {
+    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 5, 0.5], [0, 12, 1], 1],
         margin: [0.16, 0.03, 0.12, 0.05],

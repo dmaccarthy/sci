@@ -1,4 +1,4 @@
-save("p20/circ/img/kep", {
+SVG2.cache("p20/circ/img/kep.js", {
 
 orbit: (sel) => {
     $(sel).attr({width: 400, height: 300, "data-aspect": "4/3"});

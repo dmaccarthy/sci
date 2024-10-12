@@ -1,4 +1,4 @@
-save("p20/dyn/img/adv", {
+SVG2.cache("p20/dyn/img/adv.js", {
 
 fbd1: (sel) => {
     $(sel).attr({width: 400, height: 240, "data-aspect": "5/3"});

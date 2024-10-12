@@ -1,4 +1,4 @@
-save("p20/wave/img/dopp", {
+SVG2.cache("p20/wave/img/dopp.js", {
 
 Q1: (sel) => {
     let e = $(sel).attr({width: 480, height: 120, "data-aspect": "4"});

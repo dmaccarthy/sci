@@ -1,4 +1,4 @@
-save("p20/shm/img/shm", {
+SVG2.cache("p20/shm/img/shm.js", {
 
 v_t: (sel) => {
     $(sel).attr({width: 480, height: 300, "data-aspect": "8/5"});

@@ -674,7 +674,7 @@ static load(cb) {
         url = new URL(url, SVG2.url).href;
         if (SVG2._cache[url]) {
             SVG2.remove_pending(url);
-            svg.removeAttr("data-svg2").attr("data-svg2x", url);
+            svg.removeAttr("data-svg2").attr("data-svg2x", `${url}#${id}`);
             SVG2._cache[url][id](svg);
         }
         else if (SVG2.load.pending.indexOf(url) == -1) {
@@ -694,6 +694,12 @@ static remove_pending(url) {
 static cache(url, obj) {
     /* Load SVG2 JavaScript into cache */
     SVG2._cache[new URL(url, SVG2.url).href] = obj;
+}
+
+static makeURL(url) {return new URL(url, SVG2.url).href}
+static cached(url) {
+    console.log(url);
+    return SVG2._cache[new URL(url, SVG2.url).href];
 }
 
 }

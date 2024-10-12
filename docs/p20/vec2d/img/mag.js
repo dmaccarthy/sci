@@ -1,4 +1,4 @@
-save("p20/vec2d/img/mag", { // Solutions for Magnitude & Direction assignment
+SVG2.cache("p20/vec2d/img/mag.js", { // Solutions for Magnitude & Direction assignment
 
 hiker: (sel) => {
     $(sel).attr({width: 400, height: 400, "data-aspect": 1});

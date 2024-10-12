@@ -1,4 +1,4 @@
-save("p20/grav/img/ugrav", {
+SVG2.cache("p20/grav/img/ugrav.js", {
  
 tri: (sel) => {
     $(sel).attr({width: 400, height: 360, "data-aspect": "10/9"});
