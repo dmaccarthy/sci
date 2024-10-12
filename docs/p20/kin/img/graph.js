@@ -1,6 +1,7 @@
-save("p20/kin/img/graph", {
+SVG2.cache("p20/kin/img/graph.js", {
 
 bike: (sel) => { // Draw a d-t graph for the bike example
+    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 4, 1], [-6, 8, 1], 1],
         margin: [0.15, 0.03, 0.03, 0.04],
@@ -14,6 +15,7 @@ bike: (sel) => { // Draw a d-t graph for the bike example
 },
 
 dt: (sel) => { // Linear & parabolic motion graphs
+    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         margin: [0.09, 0.02, 0.02, 0.02],
         grid: [[0, 10, 1], [0, 50, 5], 1],
@@ -50,6 +52,7 @@ dt: (sel) => { // Linear & parabolic motion graphs
 },
 
 vt: (sel) => { // Area under a v-t graph
+    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
     svg = applet.graph(sel, {
         grid: [[0, 8, 0.5], [0, 28, 2], 1],
         margin: [0.19, 0.02, 0.15, 0.05],
@@ -85,6 +88,7 @@ vt: (sel) => { // Area under a v-t graph
 },
 
 elevator: (sel) => { // Motion of an elevator d-t graph
+    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 10, 1], [0, 50, 5], 1],
         margin: [0.18, 0.04, 0.15, 0.05],
@@ -97,6 +101,7 @@ elevator: (sel) => { // Motion of an elevator d-t graph
 },
 
 skydive: (sel) => { // Motion of an elevator d-t graph
+    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 15, 3], [-50, 0, 5], 1],
         margin: [0.2, 0.05, 0.05, 0.12],

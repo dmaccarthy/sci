@@ -1,6 +1,7 @@
-save("p20/kin/img/acc", {
+SVG2.cache("p20/kin/img/acc.js", {
 
 vt: (sel) => {
+    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 4, 0.5], [-45, 0, 5], 1],
         margin: [0.18, 0.02, 0.03, 0.12],
@@ -24,6 +25,7 @@ vt: (sel) => {
 },
 
 dt: (sel) => {
+    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
     let svg = applet.graph(sel, {
         grid: [[0, 4, 0.5], [-80, 0, 5], 1],
         margin: [0.18, 0.02, 0.03, 0.12],

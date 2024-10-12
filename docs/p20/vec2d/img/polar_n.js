@@ -1,4 +1,4 @@
-save("p20/vec2d/img/polar_n", { // Polar & Cartesian notes
+SVG2.cache("p20/vec2d/img/polar_n.js", { // Polar & Cartesian notes
 
 Ex1: (sel) => {
     $(sel).attr({width: 400, height: 400, "data-aspect": "1"});

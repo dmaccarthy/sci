@@ -27,7 +27,7 @@ body {
 
 function draw(opt) {
     $("#Bohr").html("").attr({
-        "data-svg2": "../../s10/chem1/img/bohr.js#bohr",
+        "data-svg2": "s10/chem1/img/bohr.js#bohr",
         "data-args": opt,
     });
     opt = JSON.parse(opt);
@@ -35,10 +35,9 @@ function draw(opt) {
     if (opt[6] == 1) $("#DotDiag").hide();
     else if (opt[6] == 2) $("#BohrDiag").hide();
     $("#Lewis").html("").attr({
-        "data-svg2": "../../s10/chem1/img/bohr.js#dot",
+        "data-svg2": "s10/chem1/img/bohr.js#dot",
         "data-args": `["${opt[0]}", ${opt[3]}, ${opt[4]}]`,
     }).css({width: `${10 * (opt[3] ? 27/22 : 1)}em`});
-    // loadAllSVG();
     SVG2.load();
 }
   

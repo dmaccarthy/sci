@@ -1,4 +1,4 @@
-save("p30/mag/img/_test", {
+SVG2.cache("p30/mag/img/_test.js", {
 
     atom: (sel) => {
         $(sel).attr({width: 256, height: 128, "data-aspect": "2"});

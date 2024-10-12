@@ -1,4 +1,4 @@
-save("p20/vec2d/img/diag_p", { // Solutions for Vector Diagrams assignment
+SVG2.cache("p20/vec2d/img/diag_p.js", { // Solutions for Vector Diagrams assignment
 
 Q1: (sel) => {
     $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
@@ -11,7 +11,7 @@ Q1: (sel) => {
     svg.axis({x: [-3, 7], ticks: attr}, e);
     attr.offset = ["-14", 0];
     svg.axis({y: [-5, 5], ticks: attr}, e);
-    let prev = `${sel} g.Grid`;
+    let prev = svg.$.find("g.Grid");
     svg.line([3, -2], [5, -2], "5").$.css({stroke: "black", "stroke-width": 2}).insertAfter(prev);
     svg.plot([[3, -2], [1, 2]], "5").$.insertAfter(prev);
     svg.symbol("d", {vec:1, delta:1}, [2.7, 0.5]).css({fill: "red"});

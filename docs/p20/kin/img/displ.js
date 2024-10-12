@@ -1,4 +1,4 @@
-save("p20/kin/img/displ", {
+SVG2.cache("p20/kin/img/displ.js", {
 
 Q1a: (sel) => {
     $(sel).attr({width: 400, height: 120, "data-aspect": "40/12"});

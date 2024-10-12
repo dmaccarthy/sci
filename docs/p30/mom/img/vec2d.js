@@ -1,4 +1,4 @@
-save("p30/mom/img/vec2d", {
+SVG2.cache("p30/mom/img/vec2d.js", {
 
     Ex1: (sel) => {
         $(sel).attr({width: 400, height: 400, "data-aspect": "1"});

@@ -1,4 +1,4 @@
-save("p20/skill/img/trig", {
+SVG2.cache("p20/skill/img/trig.js", {
 
 pretest: (sel) => {
     $(sel).attr({width: 602, height: 227, "data-aspect": "602/227"});
