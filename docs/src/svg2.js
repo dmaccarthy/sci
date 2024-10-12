@@ -703,4 +703,4 @@ SVG2._cache = {};
 SVG2.load.pending = [];
 
 SVG2.url = location.origin;
-if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci";
+if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
