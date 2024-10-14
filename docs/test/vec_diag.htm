@@ -6,10 +6,11 @@
 <script type="text/javascript" data-init="draw">
 
 loadFeed.draw = () => {
-    let svg = SVG2.vec_diag("#V1", [[3, 4], vec2d(6, -25)],
-        {size:[529, 273], lrbt: [-8, 8], grid: 1, margin: 8, cycle: 1, shift: [-3, -2], label: [2, 0, -0.4, -0.4]}
+    let svg = SVG2.vec_diag("#V1", [[3, 4], vec2d(6, -25), [-4, 0.5]],
+        {lrbt: [-4, 6, -3, 3], scale: 40, margin: 8, grid: 1, cycle: 1, shift: [-3, -2], label: [1, 0, -0.4, -0.4]}
     );
     SVG2.vec_diag.table("Δd", svg.tbody).insertAfter(svg.$).addClass("Top");
+    console.log(svg);
 }
 
 loadFeed.data = {

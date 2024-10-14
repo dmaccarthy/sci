@@ -4,7 +4,7 @@ Simple JavaScript animations rendered in an <svg> element
 (c) 2023-2024 by D.G. MacCarthy <sc8pr.py@gmail.com>
 
 Create a new animation:
-    svg = new SVG2(jSelect, {size, lrbt, margin, grid}) -> SVG2
+    svg = new SVG2(jSelect, {size or scale, lrbt, margin, grid}) -> SVG2
 
 Create and configure an animated group:
     g = svg.group() -> SVG2g
@@ -56,7 +56,7 @@ Convert coordinates between <g> and <svg> coordinate systems:
     g.coord_s([gx, gy]) -> RArray
 
 Vector diagram helpers:
-    SVG2.vec_diag = (jSelect, [vectors], {size, lrbt, margin, grid, cycle, shift, label}) -> SVG2
+    SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, label, cycle, shift}) -> SVG2
     SVG2.vec_diag.table(sym, tbody) -> jQuery
 
 ***/
@@ -568,14 +568,17 @@ constructor(jSelect, options) {
     this.decimals = 2;
 
     /* <svg> element size */
-    let [w, h] = options.size ? options.size : [jSelect.width(), jSelect.height()];
+    let margin = options.margin ? options.margin : 0;
+    if (typeof(margin) == "number") margin = [margin, margin, margin, margin];
+    let lrbt = options.lrbt;
+    let s = options.scale;
+    let [w, h] = options.size ? options.size :
+        (s ? [s * (lrbt[1] - lrbt[0]) + margin[0] + margin[1] + 1, s * (lrbt[3] - lrbt[2]) + margin[2] + margin[3] + 1] :
+            [jSelect.width(), jSelect.height()]);
     jSelect.attr({width: w, height: h, "data-aspect": w/h, viewBox: `0 0 ${w} ${h}`});
 
     /* Coordinate system */
-    let lrbt = options.lrbt;
     if (lrbt) {
-        let margin = options.margin ? options.margin : 0;
-        if (typeof(margin) == "number") margin = [margin, margin, margin, margin];
         let [l, r, b, t] = margin;
         if (lrbt.length < 4)
             lrbt = SVG2.auto_lrbt(w - margin[0] - margin[1], h - margin[2] - margin[3], ...lrbt);
