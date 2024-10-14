@@ -49,9 +49,8 @@ SVG2.cache("p30/mag/img/helix.js", {
     },
 
     linac: (sel) => {
-        let svg = new SVG2(sel, {size: [400, 200], lrbt: [-1, 10]});
+        let svg = new SVG2(sel, {size: [400, 200], lrbt: [-2, 10], grid: 1});
         svg.$.addClass("SVG2");
-        svg.grid([-1, 10, 1], [-5, 5, 1]);
 
         let L = [...fn_eval((E) => Math.sqrt(E), range(1, 5))];
         console.log(L);
