@@ -51,7 +51,7 @@ $(() => {
     // arrow.config({omega: 20}).$.addClass("Resultant");
 
     let vecs = [[3, 2], [2, -4], [3, 5]];
-    let arrow = svg.tip_to_tail({}, ...vecs).config({shift: [-1, -2]});
+    let arrow = svg.tip_to_tail(vecs).config({shift: [-1, -2]});
     arrow.$.find(".Component:not(.Resultant)").fadeOut();
 
     g.beforeupdate = (g) => {

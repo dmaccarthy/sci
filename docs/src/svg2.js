@@ -14,7 +14,7 @@ Get the <svg>/<g> element or its jQuery object:
     svg.element -> <svg> or <g> element
     g.$ -> jQuery
 
-Add content to an <svg>/<g> tag using an SVG2g instance (or subclasses SVG2, SV2arrow):
+Add primitive content to an <svg>/<g> tag using an SVG2g instance (or subclasses SVG2, SV2arrow):
     g.line([x1, y1], [x2, y2]) -> jQuery
     g.circle(r, [cx, cy]) -> jQuery
     g.ellipse([rx, ry], [cx, cy]) -> jQuery
@@ -22,12 +22,14 @@ Add content to an <svg>/<g> tag using an SVG2g instance (or subclasses SVG2, SV2
     g.image(href, [w, h], [cx, cy]) -> jQuery
     g.poly([pts], closed) -> jQuery
 
+Add composite content:
     g.grid([x1, x2, dx], [y1, y2, dy]) -> SVG2g
     g.cylinder([rx, ry], L) -> SVG2g
     g.plot(pts or {x, y}, size, href, theta) -> SVG2g
     g.label([tm, tp] or int or (x, y, i) => string, x, y) -> SVG2g
     g.locus((p, t, args) => {y or [x, y]}, [p0, p1, n], args) -> SVG2locus
     g.arrow({tail, tip} or length, {tail, head, angle, shape, double}, anchor) -> SVG2arrow
+    g.tip_to_tail(vecs, options) -> SVG2g
     g.stickman(h) -> SVG2g
 
 Create a <path>
@@ -355,12 +357,12 @@ stickman(h) {
     return g;
 }
 
-tip_to_tail(options, ...vecs) {
+tip_to_tail(vecs, options) {
 /* Draw a 2D "tip-to-tail" vector diagram */
     let g = this.group();
     g.$.addClass("TipToTail2D");
     let pt = new RArray(0, 0);
-    let opt = Object.assign({tail: "6"}, options);
+    let opt = Object.assign({tail: "6"}, options == null ? {} : options);
     for (let v of vecs) {
         let pt0 = pt;
         let tmp = pt0.plus([v[0], 0]);
