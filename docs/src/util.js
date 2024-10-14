@@ -35,11 +35,6 @@ function* range(x0, x1, dx) {
     }
 }
 
-function *comp(f, data) {
-    // Comprehension for array, generator, or other iterable object
-    for (let d of data) yield f(d);
-}
-
 function qsArgs(key, str) {
     // Parse query string
     if (str == null) str = location.search;

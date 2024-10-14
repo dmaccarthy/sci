@@ -47,8 +47,12 @@ $(() => {
     sym.text(Fg, [7.5, 3]);
     sym.$.addClass("Symbol"); //.children().css("font-size", "150%");
 
-    let arrow = svg.arrow({tail: [4,2], tip: [6,0]}, {double: 1, tail: "8", head: "28"}, 1);
-    arrow.config({omega: 20}).$.addClass("Resultant");
+    // let arrow = svg.arrow({tail: [4,2], tip: [6,0]}, {double: 1, tail: "8", head: "28"}, 1);
+    // arrow.config({omega: 20}).$.addClass("Resultant");
+
+    let vecs = [[3, 2], [2, -4], [3, 5]];
+    let arrow = svg.tip_to_tail({}, ...vecs).config({shift: [-1, -2]});
+    arrow.$.find(".Component:not(.Resultant)").fadeOut();
 
     g.beforeupdate = (g) => {
         // console.log(g.theta);
@@ -60,7 +64,7 @@ $(() => {
     }
 
     let loc = g.locus((t, x, a) => a.A*sin(180*x-100*t)+a.y0, [0, 10], {A:2, y0:2});
-    console.log(loc);
+    // console.log(loc);
     svg.animate(puck, arrow); // g
 
     svg.stickman(2).config({shift: [7, 1]});

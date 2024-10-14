@@ -92,6 +92,19 @@ class RArray extends Array {
 }
 
 
+function xy_limits(...vecs) {
+/* Find maxima and minima coordinates for vector addition */
+    let pt = new RArray(0, 0);
+    let sums = [pt];
+    for (let v of vecs) {
+        pt = pt.plus(v);
+        sums.push(pt);
+    }
+    let [x, y] = unzip(sums, true);
+    return {x: x.minmax(), y: y.minmax()};
+}
+    
+
 function* fn_eval(f, x) {for (let xi of x) yield f(xi)}
 function randint(n) {return Math.floor(n * Math.random())}
 function uniform(a, b) {return a + (b - a) * Math.random()}

@@ -355,6 +355,31 @@ stickman(h) {
     return g;
 }
 
+tip_to_tail(options, ...vecs) {
+/* Draw a 2D "tip-to-tail" vector diagram */
+    let g = this.group();
+    g.$.addClass("TipToTail2D");
+    let pt = new RArray(0, 0);
+    let opt = Object.assign({tail: "6"}, options);
+    for (let v of vecs) {
+        let pt0 = pt;
+        let tmp = pt0.plus([v[0], 0]);
+        pt = pt.plus(v);
+        if (v[0] || v[1]) {
+            if (v[0]) g.arrow({tail: pt0, tip: tmp}, opt).$.addClass("Component");
+            if (v[1]) g.arrow({tail: tmp, tip: pt}, opt).$.addClass("Component");
+            g.arrow({tail: pt0, tip: pt}, opt);
+        }
+    }
+    if (pt[0] && pt[1]) {
+        let tmp = [pt[0], 0];
+        g.arrow({tail: [0, 0], tip: tmp}, opt).$.addClass("Component Resultant");
+        g.arrow({tail: tmp, tip: pt}, opt).$.addClass("Component Resultant");
+    }
+    g.arrow({tail: [0, 0], tip: pt}, opt).$.addClass("Resultant");
+    return g;
+}
+
 
 }
 

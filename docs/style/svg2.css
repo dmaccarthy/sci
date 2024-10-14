@@ -39,7 +39,7 @@ g.Plot.Violet {circle, rect {fill: violet}}
 g.VectorDiagram {fill-opacity: 0.6}
 g.Arrow > polygon {fill: red}
 g.Arrow.Resultant > polygon {fill: #0065fe}
-g.Arrow.Component > polygon {fill: yellow}
+g.Arrow.Component > polygon {fill-opacity: 0.3}
 
 polyline.Locus {
     stroke-width: 3px;
