@@ -23,22 +23,19 @@
 let svg;
 
 $(() => {
-    svg = new SVG2("#S1", {size: [640, 360], lrbt: [0, 10, 0], margin: 6});
+    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-2, 10], margin: 6});
     svg.$.addClass("SVG2");
-    svg.grid([0, 10, 1], [0, 6, 1]);
+    svg.grid([-10, 10, 1], [-10, 10, 1]);
 
     let g = svg.group().config({vel: [0, 0], omega: 10, pivot: [4, 3]});
     g.ellipse(["10", "20"], [3, 4]).css({fill: "red"});
     g.image("../media/mail.png", [1, 1]);
     let plt = g.plot([[4,2], [2,4], [3,5]], ["24", "24"], "../media/train.svg", 45);
 
-    let r = 1, h = r/2;
-    let p1 = [-r, h];
-    let p2 = [r, h];
-    let rp = [r, 0.4 * h];
-    let puck = g.group().config({shift: [3, 3], theta: 30});
-    let path = puck.path(p1).lineTo([-r, 0]).arcTo([r, 0], rp).lineTo(p2).arcTo(p1, rp).arcTo(p2, rp).update();
-    path.css({fill: "silver"});
+    let puck = svg.cylinder([1, 0.2], 3).config({pivot: [0, -1.6], shift: [2, 1], omega: 40});
+    puck.$.find("ellipse").css({fill: "silver"});
+    puck.$.find("path").css({fill: "tan"});
+    puck.circle(0.1, [0, -1.6]);
 
     let Fg = '<tspan class="Bold">F</tspan><tspan class="F80" dy="8">g</tspan><tspan class="F80" dx="-20" dy="-22">→</tspan>';
     let dAi = 'Δ<tspan class="Bold">d</tspan><tspan class="F80" dy="8">Ai</tspan><tspan class="F80" dx="-28" dy="-22">→</tspan>';
@@ -64,7 +61,7 @@ $(() => {
 
     let loc = g.locus((t, x, a) => a.A*sin(180*x-100*t)+a.y0, [0, 10], {A:2, y0:2});
     console.log(loc);
-    svg.animate(g, arrow);
+    svg.animate(puck, arrow); // g
 
     svg.stickman(2).config({shift: [7, 1]});
 

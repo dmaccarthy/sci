@@ -25,14 +25,6 @@ clickCycle.toggle = (items, show, ...n) => {
     }
 }
 
-// function setStyle(parent, style, applet$) {
-//     if (applet$) console.warn("Using applet.style!");
-//     parent = $(parent);
-//     let e = document.createElementNS(parent[0].namespaceURI, "style");
-//     e = $(e).html(style).appendTo(parent);
-//     return e;
-// }
-
 function* range(x0, x1, dx) {
     // Generate a sequence like Python's range function
     if (x1 == null) {x1 = x0; x0 = 0}
@@ -41,6 +33,11 @@ function* range(x0, x1, dx) {
         yield x0;
         x0 += dx;
     }
+}
+
+function *comp(f, data) {
+    // Comprehension for array, generator, or other iterable object
+    for (let d of data) yield f(d);
 }
 
 function qsArgs(key, str) {
@@ -127,19 +124,19 @@ function randomString(n, allowNum) {
     return s;
 }
 
-function elementId(e, prefix) {
-    // Return the id attribute, assigning a random id if absent
-    e = $($(e)[0]);
-    if (e.length == 0) return;
-    let id = e.attr("id");
-    if (!prefix) prefix = "";
-    while (!id) {
-        id = prefix + randomString(12, 2);
-        if ($('#' + id).length) id = null;
-        else e.attr({id: id});
-    }
-    return id;
-}
+// function elementId(e, prefix) {
+//     // Return the id attribute, assigning a random id if absent
+//     e = $($(e)[0]);
+//     if (e.length == 0) return;
+//     let id = e.attr("id");
+//     if (!prefix) prefix = "";
+//     while (!id) {
+//         id = prefix + randomString(12, 2);
+//         if ($('#' + id).length) id = null;
+//         else e.attr({id: id});
+//     }
+//     return id;
+// }
 
 function randomColor(digits) {
     // Create a random RGB hex code

@@ -14,8 +14,7 @@ Get the <svg>/<g> element or its jQuery object:
     svg.element -> <svg> or <g> element
     g.$ -> jQuery
 
-Add content to an <svg>/<g> tag:
-    svg.grid([x1, x2, dx], [y1, y2, dy]) -> jQuery
+Add content to an <svg>/<g> tag using an SVG2g instance (or subclasses SVG2, SV2arrow):
     g.line([x1, y1], [x2, y2]) -> jQuery
     g.circle(r, [cx, cy]) -> jQuery
     g.ellipse([rx, ry], [cx, cy]) -> jQuery
@@ -23,10 +22,13 @@ Add content to an <svg>/<g> tag:
     g.image(href, [w, h], [cx, cy]) -> jQuery
     g.poly([pts], closed) -> jQuery
 
+    g.grid([x1, x2, dx], [y1, y2, dy]) -> SVG2g
+    g.cylinder([rx, ry], L) -> SVG2g
     g.plot(pts or {x, y}, size, href, theta) -> SVG2g
     g.label([tm, tp] or int or (x, y, i) => string, x, y) -> SVG2g
-    g.locus((p, t, args) => {y(p) or [x(p), y(p)]}, [p0, p1, n], args) -> SVG2locus
+    g.locus((p, t, args) => {y or [x, y]}, [p0, p1, n], args) -> SVG2locus
     g.arrow({tail, tip} or length, {tail, head, angle, shape, double}, anchor) -> SVG2arrow
+    g.stickman(h) -> SVG2g
 
 Create a <path>
     path = g.path(start).[path directives] -> SVG2path
@@ -329,6 +331,17 @@ text(data, xy) {
     return this.create_child("text", {x: f(x), y: f(y)}).html(data);
 }
 
+cylinder(r, L) {
+/* Draw a cylinder; pivot is center of the elliptical "top" */
+    let g = this.group();
+    g.$.addClass("Cylinder");
+    let p1 = new RArray(r[0], 0);
+    let p2 = p1.neg().minus([0, L]);
+    g.path(p1).ver(-L).arcTo(p2, r, 2).ver(0).arcTo(p1, r).close().update();
+    g.ellipse(r);
+    return g;
+}
+
 stickman(h) {
 /* Add a stick man as an SVG2g instance */
     let g = this.group();
@@ -336,8 +349,9 @@ stickman(h) {
     let r = h / 8;
     g.circle(r, [0, 7 * r]);
     g.line([0, 6 * r], [0, 3 * r]);
-    g.poly([[-r, 0], [0, 3 * r], [r, 0]]);
-    g.poly([[-1.5 * r, 5.5 * r], [0, 5 * r], [1.5 * r, 5.1 * r]]);
+    let w = 1.2 * r;
+    g.poly([[-w, 0], [0, 3 * r], [w, 0]]);
+    g.poly([[-1.5 * r, 5.5 * r], [0, 5 * r], [1.5 * r, 5.2 * r]]);
     return g;
 }
 

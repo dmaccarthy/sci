@@ -24,6 +24,8 @@ text.Mono {font-family: Inconolata, monospace}
 .Ital {font-style: italic}
 .F80 {font-size: 80%}
 
+g.StickMan > * {stroke-width: 3px}
+
 g.Grid > line:not(.Axis) {stroke: lightgrey}
 
 g.Plot {circle, rect {fill: #0065fe}}
