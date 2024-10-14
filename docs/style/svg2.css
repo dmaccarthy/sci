@@ -22,10 +22,9 @@ text.Mono {font-family: Inconolata, monospace}
 
 .Bold {font-weight: bold}
 .Ital {font-style: italic}
-.F80 {font-size: 80%}
+g.F80 > text, .F80 {font-size: 80%}
 
 g.StickMan > * {stroke-width: 3px}
-
 g.Grid > line:not(.Axis) {stroke: lightgrey}
 
 g.Plot {circle, rect {fill: var(--blue)}}
@@ -39,11 +38,47 @@ g.Plot.Violet {circle, rect {fill: violet}}
 g.VectorDiagram {fill-opacity: 0.6}
 g.Arrow > polygon {fill: red}
 g.Arrow.Resultant > polygon {fill: #0065fe}
-g.Arrow.Component > polygon {fill-opacity: 0.3}
+g.Arrow.Component > polygon {fill-opacity: 0.2}
 
 polyline.Locus {
     stroke-width: 3px;
     stroke: var(--blue);
 }
+
+}
+
+
+svg.SVG2.VectorDiagram {
+
+text {
+    font-family: Inconolata, monospace;
+    font-size: 90%;
+    fill: grey;
+}
+
+text.Zero {display: none}
+g.TipToTail2D {fill-opacity: 0.7}
+
+}
+
+
+table.VectorTable {
+
+td, th {
+    text-align: center;
+    min-width: 6em;
+    width: 25%;
+}
+
+tr:not(.Resultant):nth-child(even) td:nth-child(even), tr:not(.Resultant):nth-child(odd) td:nth-child(odd)
+    {background-color: #ffe8e8}
+
+tr:not(.Resultant):nth-child(even) td:nth-child(odd), tr:not(.Resultant):nth-child(odd) td:nth-child(even)
+    {background-color: #ffd8d8}
+
+tr.Resultant td:nth-child(even) {background-color: #d8d8ff}
+tr.Resultant td:nth-child(odd) {background-color: #e8e8ff}
+th:nth-child(even) {background-color: #e8e8e8}
+th:nth-child(odd) {background-color: #d8d8d8}
 
 }

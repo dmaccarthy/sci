@@ -56,7 +56,7 @@ Convert coordinates between <g> and <svg> coordinate systems:
     g.coord_s([gx, gy]) -> RArray
 
 Vector diagram helpers:
-    SVG2.vec_diag = (jSelect, [vectors], {size, lrbt, margin, grid, cycle, shift}) -> SVG2
+    SVG2.vec_diag = (jSelect, [vectors], {size, lrbt, margin, grid, cycle, shift, label}) -> SVG2
     SVG2.vec_diag.table(sym, tbody) -> jQuery
 
 ***/
@@ -248,8 +248,6 @@ plot(pts, size, href, theta) {
 label(fn, x, y) {
 /* Add a <g> containing <text> labels or tick marks as <line> */
     let g = this.group();
-    let svg = this.svg;
-    let s = svg.scale;
     let xa = x instanceof Array;
     let ya = y instanceof Array;
     let tm, tp;
@@ -271,7 +269,10 @@ label(fn, x, y) {
             if (!ya) g.line([xc, yc + tm], [xc, yc + tp]);
             else if (!xa) g.line([xc + tm, yc], [xc + tp, yc]);
         }
-        else g.text(fn(x0, y0, i), [xc, yc]);
+        else {
+            let txt = g.text(fn(x0, y0, i), [xc, yc]);
+            if (parseFloat(txt.html()) == 0) txt.addClass("Zero");
+        }
     }
     g.$.addClass(tm || tp ? "Ticks" : "Labels");
     return g;
@@ -386,6 +387,7 @@ tip_to_tail(vecs, options) {
         g.arrow({tail: tmp, tip: pt}, opt).$.addClass("Component Resultant");
     }
     g.arrow({tail: [0, 0], tip: pt}, opt).$.addClass("Resultant");
+    this.tbody.append(new RArray(...pt).tr(options.precision).addClass("Resultant"));
     return g;
 }
 
@@ -584,6 +586,7 @@ constructor(jSelect, options) {
         this.coords_by_map([0, 0], [0, 0], [1, 1], [1, 1]);
         this.p2a = this.a2p = (x, y) => new RArray(x, y);
     }
+    this.lrbt = lrbt;
 
     /* Draw coordinate grid */
     let grid = options.grid;
@@ -768,9 +771,16 @@ if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
 SVG2.vec_diag = (sel, vecs, opt) => {
 /* Draw a vector diagram in an <svg> tag */
     let svg = new SVG2(sel, opt);
-    svg.$.addClass("SVG2");
+    svg.$.addClass("SVG2 VectorDiagram");
     let g = svg.tip_to_tail(vecs);
     if (opt.shift) g.config({shift: opt.shift});
+    if (opt.label) {
+        let [space, n, x, y] = opt.label;
+        let [l, r, b, t] = svg.lrbt;
+        svg.label(n, x, [...range(b, t + space / 10, space)]);
+        svg.label(n, [...range(l, r + space / 10, space)], y);
+    }
+    g.$.appendTo(svg.$);
     if (opt.cycle == -1) g.$.find(".Component").hide();
     else if (opt.cycle) SVG2.vec_diag._cycle(svg.element, g.$);
     return svg;
@@ -789,7 +799,7 @@ SVG2.vec_diag._cycle = (e, g) => {
 
 SVG2.vec_diag.table = (sym, tbody) => {
 /* Compose a table showing vector addition */
-    let tbl = $("<table>");
+    let tbl = $("<table>").addClass("VectorTable");
     let thead = $("<thead>").appendTo(tbl);
     let v = sym.charAt(0) == "Δ" ? `\\Delta\\vec{\\bf ${sym.substring(1)}}` : `\\vec{\\bf ${sym}}`;
     for (x of [`|${v}|`, `\\theta`, `${v}_x`, `${v}_y`])
