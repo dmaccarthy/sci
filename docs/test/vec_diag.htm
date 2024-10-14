@@ -1,0 +1,21 @@
+<section class="Post">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<p class="Center"><svg id="V1"/></p>
+</div></section>
+
+<script type="text/javascript" data-init="draw">
+
+loadFeed.draw = () => {
+    let vd = SVG2.vec_diag;
+    let svg = vd("#V1", [[3, 4], vec2d(6, -25)],
+        {size:[515, 259], lrbt: [-8, 8], grid: 1, margin: 1, cycle: 1, shift: [-3, -2]}
+    );
+    vd.table("Δd", svg.tbody).insertAfter(svg.$).addClass("Four Center TD6 Top");
+}
+
+loadFeed.data = {
+    title: `Vector Diagrams`,
+}
+    
+</script>
+

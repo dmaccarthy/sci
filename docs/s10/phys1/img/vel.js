@@ -1,9 +1,8 @@
 SVG2.cache("s10/phys1/img/vel.js", {
 
 uam: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 12], margin: [56, 12, 56, 12]});
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 12], grid: 1, margin: [56, 12, 56, 12]});
     svg.$.addClass("SVG2");
-    svg.grid([0, 8, 1], [0, 12, 1]);
 
     /* Label x-axis */
     let g = svg.group();

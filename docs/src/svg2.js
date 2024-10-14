@@ -4,7 +4,7 @@ Simple JavaScript animations rendered in an <svg> element
 (c) 2023-2024 by D.G. MacCarthy <sc8pr.py@gmail.com>
 
 Create a new animation:
-    svg = new SVG2(jSelect, {size, lrbt, margin}) -> SVG2
+    svg = new SVG2(jSelect, {size, lrbt, margin, grid}) -> SVG2
 
 Create and configure an animated group:
     g = svg.group() -> SVG2g
@@ -54,6 +54,10 @@ Get event coordinates:
 Convert coordinates between <g> and <svg> coordinate systems:
     g.coord_g([sx, sy]) -> RArray
     g.coord_s([gx, gy]) -> RArray
+
+Vector diagram helpers:
+    SVG2.vec_diag = (jSelect, [vectors], {size, lrbt, margin, grid, cycle, shift}) -> SVG2
+    SVG2.vec_diag.table(sym, tbody) -> jQuery
 
 ***/
 
@@ -358,12 +362,15 @@ stickman(h) {
 }
 
 tip_to_tail(vecs, options) {
-/* Draw a 2D "tip-to-tail" vector diagram */
+/* Draw a 2D "tip-to-tail" vector diagram; store vector addition <tbody> as this.tbody */
+    if (options == null) options = {};
     let g = this.group();
     g.$.addClass("TipToTail2D");
+    this.tbody = $("<tbody>");
     let pt = new RArray(0, 0);
-    let opt = Object.assign({tail: "6"}, options == null ? {} : options);
+    let opt = Object.assign({tail: "6"}, options);
     for (let v of vecs) {
+        this.tbody.append(new RArray(...v).tr(options.precision));
         let pt0 = pt;
         let tmp = pt0.plus([v[0], 0]);
         pt = pt.plus(v);
@@ -569,12 +576,20 @@ constructor(jSelect, options) {
         if (typeof(margin) == "number") margin = [margin, margin, margin, margin];
         let [l, r, b, t] = margin;
         if (lrbt.length < 4)
-        lrbt = SVG2.auto_lrbt(w - margin[0] - margin[1], h - margin[2] - margin[3], ...lrbt);
+            lrbt = SVG2.auto_lrbt(w - margin[0] - margin[1], h - margin[2] - margin[3], ...lrbt);
         this.coords_by_map([l, h - 1 - b], [lrbt[0], lrbt[2]], [w - 1 - r, t], [lrbt[1], lrbt[3]]);
     }
     else {
+        lrbt = [0, w - 1, 0, h - 1];
         this.coords_by_map([0, 0], [0, 0], [1, 1], [1, 1]);
         this.p2a = this.a2p = (x, y) => new RArray(x, y);
+    }
+
+    /* Draw coordinate grid */
+    let grid = options.grid;
+    if (grid) {
+        let [gx, gy] = typeof(grid) == "number" ? [grid, grid] : grid;
+        this.grid([lrbt[0], lrbt[1], gx], [lrbt[2], lrbt[3], gy]);
     }
 
     /* Animation data */
@@ -748,3 +763,37 @@ SVG2.load.pending = [];
 
 SVG2.url = location.origin;
 if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
+
+
+SVG2.vec_diag = (sel, vecs, opt) => {
+/* Draw a vector diagram in an <svg> tag */
+    let svg = new SVG2(sel, opt);
+    svg.$.addClass("SVG2");
+    let g = svg.tip_to_tail(vecs);
+    if (opt.shift) g.config({shift: opt.shift});
+    if (opt.cycle == -1) g.$.find(".Component").hide();
+    else if (opt.cycle) SVG2.vec_diag._cycle(svg.element, g.$);
+    return svg;
+}
+
+SVG2.vec_diag._cycle = (e, g) => {
+/* Default 'clickCycle' for vector diagrams */
+    g.find(".Component").hide();
+    clickCycle(e, 0,
+        () => {g.find(".Component").fadeOut()},
+        () => {g.find(".Resultant").fadeOut(); g.find(".Component:not(.Resultant)").fadeIn()},
+        () => {g.find(".Component:not(.Resultant)").fadeOut(); g.find(".Component.Resultant").fadeIn()},
+        () => {g.find(".Resultant").fadeIn()},
+    );
+}
+
+SVG2.vec_diag.table = (sym, tbody) => {
+/* Compose a table showing vector addition */
+    let tbl = $("<table>");
+    let thead = $("<thead>").appendTo(tbl);
+    let v = sym.charAt(0) == "Δ" ? `\\Delta\\vec{\\bf ${sym.substring(1)}}` : `\\vec{\\bf ${sym}}`;
+    for (x of [`|${v}|`, `\\theta`, `${v}_x`, `${v}_y`])
+        thead.append($("<th>").addClass("TeX").html(x));
+    renderTeX(thead.find(".TeX"));
+    return tbl.append(tbody);
+}

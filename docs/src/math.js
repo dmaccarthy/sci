@@ -89,6 +89,14 @@ class RArray extends Array {
 
     get matrix() {return new Matrix([this])}
 
+    tr(p) {
+        if (!p) p = 4;
+        let tr = $("<tr>");
+        let nums = [this.mag(), this.dir(), this[0], this[1]];
+        for (let n of nums) tr.append($("<td>").html(n.toPrecision(p)))
+        return tr;
+    }
+    
 }
 
 

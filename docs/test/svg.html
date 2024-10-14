@@ -23,9 +23,8 @@
 let svg;
 
 $(() => {
-    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-2, 10], margin: 6});
+    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-3, 10, -6], margin: 6, grid: 1});
     svg.$.addClass("SVG2");
-    svg.grid([-10, 10, 1], [-10, 10, 1]);
 
     let g = svg.group().config({vel: [0, 0], omega: 10, pivot: [4, 3]});
     g.ellipse(["10", "20"], [3, 4]).css({fill: "red"});
