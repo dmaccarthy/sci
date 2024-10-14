@@ -28,7 +28,7 @@ g.StickMan > * {stroke-width: 3px}
 
 g.Grid > line:not(.Axis) {stroke: lightgrey}
 
-g.Plot {circle, rect {fill: #0065fe}}
+g.Plot {circle, rect {fill: var(--blue)}}
 g.Plot.Red {circle, rect {fill: red}}
 g.Plot.Orange {circle, rect {fill: orange}}
 g.Plot.Grey {circle, rect {fill: grey}}
@@ -40,5 +40,10 @@ g.VectorDiagram {fill-opacity: 0.6}
 g.Arrow > polygon {fill: red}
 g.Arrow.Resultant > polygon {fill: #0065fe}
 g.Arrow.Component > polygon {fill: yellow}
+
+polyline.Locus {
+    stroke-width: 3px;
+    stroke: var(--blue);
+}
 
 }
