@@ -1,7 +1,6 @@
 SVG2.cache("p30/mag/img/faraday.js", {
 
     lenz_law: (sel) => {
-
         $(sel).attr({width: 259, height: 222, "data-aspect": "7/6"});
         let svg = new SVG_Animation(sel, -4, 3);
         svg.arrows = true;
@@ -106,7 +105,6 @@ SVG2.cache("p30/mag/img/faraday.js", {
         for (let item of svg.items) if (item !== coil) final.push(item);
         svg.final(final);
         svg.update(0);
-
     },
 
 });
