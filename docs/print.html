@@ -67,6 +67,7 @@ $(() => {
         for (let s of $("script[data-init]")) {
             try {loadFeed[$(s).attr("data-init")]()} catch(err) {console.error(err)};
         }
+        renderTeX();
         aspect();
         if (!qsArgs("show")) setTimeout(print, 1000);
     });
