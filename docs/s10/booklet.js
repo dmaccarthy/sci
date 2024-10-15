@@ -29,6 +29,9 @@ collect.urls = {
 
     "s10/phys1": [
         ["si", "SI Units"],
+        ["graph", "Graphing Data"],
+        ["displ", "Position & Displacement"],
+        ["vel", "Velocity & Speed"],
     ],
 
 };
