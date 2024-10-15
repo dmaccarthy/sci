@@ -1,16 +1,50 @@
-<section class="Post">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
-<p class="Center"><svg id="V1"/></p>
+<section class="Post" id="Tip2Tail" data-icon="vec.svg">
+<h2 class="Collapse">Tip-to-Tail Diagram</h2><div class="Center Collapse Expand">
+<style type="text/css">
+
+#Tip2Tail {
+
+
+
+}
+
+</style>
+<p><input type="checkbox" id="Shift" onclick="loadFeed.init.draw()"/> <label for="Shift">Shift</label></p>
+<p><textarea rows="4" cols="72" onblur="loadFeed.init.draw()">[3, 5], @(6, -60)</textarea></p>
+<p><svg></svg></p>
 </div></section>
 
-<script type="text/javascript" data-init="draw">
+<script type="text/javascript" data-init="init">
 
-loadFeed.draw = () => {
-    let svg = SVG2.vec_diag("#V1", [[3, 4], vec2d(6, -25), [-4, 0.5]],
-        {lrbt: [-4, 6, -3, 3], scale: 40, margin: 8, grid: 1, cycle: 1, shift: [-3, -2], label: [1, 0, -0.4, -0.4]}
+loadFeed.init = () => {
+    loadFeed.init.symbol = "Δd";
+    loadFeed.init.units = "m";
+    loadFeed.init.draw();
+}
+
+loadFeed.init.draw = () => {
+    // Delete previous drawing
+    let svg = $("#Tip2Tail svg").html("");
+    $("#Tip2Tail .VectorTable").remove();
+
+    // Get user input
+    let txt = $("#Tip2Tail textarea");
+    let vecs = eval(`[${txt.val().replaceAll("@", "vec2d")}]`);
+    let shift = $("#Shift")[0].checked ? vecs[0] : null;
+    if (shift) vecs = vecs.slice(1);
+
+    // Calculate viewport
+    let vp = xy_limits(...vecs);
+    let size = Math.max(...vp.size);
+    console.log(size);
+
+    // Draw the vector diagram
+    svg = SVG2.vec_diag(svg, vecs,
+        {lrbt: [-4, 6, -3, 3], scale: 40, margin: 8, grid: 1, cycle: 1, shift: shift, label: [1, 0, -0.4, -0.4]}
     );
-    SVG2.vec_diag.table("Δd", svg.tbody).insertAfter(svg.$).addClass("Top");
-    console.log(svg);
+
+    // Draw the calculations table
+    SVG2.vec_diag_table(loadFeed.init.symbol, svg.tbody).insertAfter(svg.$).addClass("Top");
 }
 
 loadFeed.data = {

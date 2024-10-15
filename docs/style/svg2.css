@@ -16,16 +16,21 @@ text {
 
 text.Mono {font-family: Inconolata, monospace}
 
-.Symbol {
+.Symbol, .Symbol text {
     font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif;
 }
 
 .Bold {font-weight: bold}
 .Ital {font-style: italic}
 g.F80 > text, .F80 {font-size: 80%}
+g.F125 > text, .F125 {font-size: 125%}
 
 g.StickMan > * {stroke-width: 3px}
-g.Grid > line:not(.Axis) {stroke: lightgrey}
+
+g.Grid > line:not(.Axis) {
+    stroke: lightgrey;
+    stroke-width: 0.5px;
+}
 
 g.Plot {circle, rect {fill: var(--blue)}}
 g.Plot.Red {circle, rect {fill: red}}
@@ -36,7 +41,12 @@ g.Plot.Purple {circle, rect {fill: purple}}
 g.Plot.Violet {circle, rect {fill: violet}}
 
 g.VectorDiagram {fill-opacity: 0.6}
-g.Arrow > polygon {fill: red}
+
+g.Arrow > polygon {
+    fill: red;
+    stroke-width: 0.5px;
+}
+
 g.Arrow.Resultant > polygon {fill: #0065fe}
 g.Arrow.Component > polygon {fill-opacity: 0.2}
 
@@ -50,8 +60,8 @@ polyline.Locus {
 
 svg.SVG2.VectorDiagram {
 
-text {
-    font-family: Inconolata, monospace;
+g.Labels text {
+    font-family: Inconsolata, monospace;
     font-size: 90%;
     fill: grey;
 }

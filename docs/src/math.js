@@ -109,7 +109,9 @@ function xy_limits(...vecs) {
         sums.push(pt);
     }
     let [x, y] = unzip(sums, true);
-    return {x: x.minmax(), y: y.minmax()};
+    x = x.minmax();
+    y = y.minmax();
+    return {x: x, y: y, center: [(x.min + x.max) / 2, (y.min + y.max) / 2], size: [x.max - x.min, y.max - y.min]};
 }
     
 

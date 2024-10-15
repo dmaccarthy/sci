@@ -57,7 +57,8 @@ Convert coordinates between <g> and <svg> coordinate systems:
 
 Vector diagram helpers:
     SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, label, cycle, shift}) -> SVG2
-    SVG2.vec_diag.table(sym, tbody) -> jQuery
+    SVG2.vec_diag_table(sym, tbody) -> jQuery
+    svg.vec_cycle(jQuery) -> svg
 
 ***/
 
@@ -358,7 +359,9 @@ stickman(h) {
     g.line([0, 6 * r], [0, 3 * r]);
     let w = 1.2 * r;
     g.poly([[-w, 0], [0, 3 * r], [w, 0]]);
-    g.poly([[-1.5 * r, 5.5 * r], [0, 5 * r], [1.5 * r, 5.2 * r]]);
+    let pt = new RArray(0, 5 * r);
+    r *= 1.5;
+    g.poly([pt.plus(vec2d(r, uniform(150, 210))), pt, pt.plus(vec2d(r, uniform(-30, 30)))]);
     return g;
 }
 
@@ -381,12 +384,14 @@ tip_to_tail(vecs, options) {
             g.arrow({tail: pt0, tip: pt}, opt);
         }
     }
-    if (pt[0] && pt[1]) {
-        let tmp = [pt[0], 0];
-        g.arrow({tail: [0, 0], tip: tmp}, opt).$.addClass("Component Resultant");
-        g.arrow({tail: tmp, tip: pt}, opt).$.addClass("Component Resultant");
+    if (vecs.length > 1) {
+        if (pt[0] && pt[1]) {
+            let tmp = [pt[0], 0];
+            g.arrow({tail: [0, 0], tip: tmp}, opt).$.addClass("Component Resultant");
+            g.arrow({tail: tmp, tip: pt}, opt).$.addClass("Component Resultant");
+        }
+        g.arrow({tail: [0, 0], tip: pt}, opt).$.addClass("Resultant");    
     }
-    g.arrow({tail: [0, 0], tip: pt}, opt).$.addClass("Resultant");
     this.tbody.append(new RArray(...pt).tr(options.precision).addClass("Resultant"));
     return g;
 }
@@ -573,8 +578,10 @@ constructor(jSelect, options) {
     let lrbt = options.lrbt;
     let s = options.scale;
     let [w, h] = options.size ? options.size :
-        (s ? [s * (lrbt[1] - lrbt[0]) + margin[0] + margin[1] + 1, s * (lrbt[3] - lrbt[2]) + margin[2] + margin[3] + 1] :
+        (s && lrbt.length > 3 ? [s * (lrbt[1] - lrbt[0]) + margin[0] + margin[1] + 1, s * (lrbt[3] - lrbt[2]) + margin[2] + margin[3] + 1] :
             [jSelect.width(), jSelect.height()]);
+    w = Math.abs(w);
+    h = Math.abs(h);
     jSelect.attr({width: w, height: h, "data-aspect": w/h, viewBox: `0 0 ${w} ${h}`});
 
     /* Coordinate system */
@@ -761,17 +768,10 @@ static cache(url, obj) {
 static makeURL(url) {return new URL(url, SVG2.url).href}
 static cached(url) {return SVG2._cache[new URL(url, SVG2.url).href]}
 
-}
 
-SVG2.nsURI = "http://www.w3.org/2000/svg";
-SVG2._cache = {};
-SVG2.load.pending = [];
+/*** Vector diagram helpers ***/
 
-SVG2.url = location.origin;
-if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
-
-
-SVG2.vec_diag = (sel, vecs, opt) => {
+static vec_diag(sel, vecs, opt) {
 /* Draw a vector diagram in an <svg> tag */
     let svg = new SVG2(sel, opt);
     svg.$.addClass("SVG2 VectorDiagram");
@@ -785,28 +785,38 @@ SVG2.vec_diag = (sel, vecs, opt) => {
     }
     g.$.appendTo(svg.$);
     if (opt.cycle == -1) g.$.find(".Component").hide();
-    else if (opt.cycle) SVG2.vec_diag._cycle(svg.element, g.$);
+    else if (opt.cycle) svg.vec_cycle(g.$);
     return svg;
 }
 
-SVG2.vec_diag._cycle = (e, g) => {
+vec_cycle(g) {
 /* Default 'clickCycle' for vector diagrams */
     g.find(".Component").hide();
-    clickCycle(e, 0,
+    clickCycle(this.element, 0,
         () => {g.find(".Component").fadeOut()},
         () => {g.find(".Resultant").fadeOut(); g.find(".Component:not(.Resultant)").fadeIn()},
         () => {g.find(".Component:not(.Resultant)").fadeOut(); g.find(".Component.Resultant").fadeIn()},
         () => {g.find(".Resultant").fadeIn()},
     );
+    return this;
 }
 
-SVG2.vec_diag.table = (sym, tbody) => {
+static vec_diag_table(sym, tbody) {
 /* Compose a table showing vector addition */
     let tbl = $("<table>").addClass("VectorTable");
     let thead = $("<thead>").appendTo(tbl);
     let v = sym.charAt(0) == "Δ" ? `\\Delta\\vec{\\bf ${sym.substring(1)}}` : `\\vec{\\bf ${sym}}`;
-    for (x of [`|${v}|`, `\\theta`, `${v}_x`, `${v}_y`])
+    for (let x of [`|${v}|`, `\\theta`, `${v}_x`, `${v}_y`])
         thead.append($("<th>").addClass("TeX").html(x));
     renderTeX(thead.find(".TeX"));
     return tbl.append(tbody);
 }
+    
+}
+
+SVG2.nsURI = "http://www.w3.org/2000/svg";
+SVG2._cache = {};
+SVG2.load.pending = [];
+
+SVG2.url = location.origin;
+if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
