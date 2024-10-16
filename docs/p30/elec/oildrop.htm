@@ -61,7 +61,7 @@ loadFeed.sim.drop = (g) => {
     let term = uniform(0.1, 0.8) / 1000;
     let m = loadFeed.sim.coeff / 1e9 * Math.pow(term, 1.5);
     let r = Math.pow(m * 1e14, 0.33) / 35;
-    let q_m = (1 + randint(12)) * 1.602e-19 / m;
+    let q_m = randint(1, 12) * 1.602e-19 / m;
     // console.log(m, m*q_m/qe, term);
     let circ = g.svg.circle(r, [uniform(-0.25, 1.5 - r), 6], g);
 

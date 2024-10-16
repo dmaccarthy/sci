@@ -89,11 +89,14 @@ class RArray extends Array {
 
     get matrix() {return new Matrix([this])}
 
-    tr(p) {
+    tr(p, scale) {
         if (!p) p = 4;
         let tr = $("<tr>");
         let nums = [this.mag(), this.dir(), this[0], this[1]];
-        for (let n of nums) tr.append($("<td>").html(n.toPrecision(p)))
+        for (let n of nums) {
+            if (scale) n *= scale;
+            tr.append($("<td>").html(n.toPrecision(p)));
+        }
         return tr;
     }
     
@@ -116,8 +119,11 @@ function xy_limits(...vecs) {
     
 
 function* fn_eval(f, x) {for (let xi of x) yield f(xi)}
-function randint(n) {return Math.floor(n * Math.random())}
 function uniform(a, b) {return a + (b - a) * Math.random()}
+
+function randint(a, b) {
+    if (b == null) {b = a; a = 0}
+    return a + Math.floor((b + 1 - a) * Math.random())}
 
 function shuffle(a) { // Re-order array randomly, in-place
     for (let i=a.length-1; i>0;i--) {
