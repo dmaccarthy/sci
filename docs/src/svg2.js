@@ -57,7 +57,7 @@ Convert coordinates between <g> and <svg> coordinate systems:
 
 Vector diagram helpers:
     SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, label, cycle, shift}) -> SVG2
-    SVG2.vec_diag_table(sym, tbody) -> jQuery
+    SVG2.vec_diag_table(sym, vecs, prec, scale) -> jQuery
     svg.vec_cycle(jQuery) -> svg
 
 ***/
@@ -366,15 +366,13 @@ stickman(h) {
 }
 
 tip_to_tail(vecs, options) {
-/* Draw a 2D "tip-to-tail" vector diagram; store vector addition <tbody> as this.tbody */
+/* Draw a 2D "tip-to-tail" vector diagram */
     if (options == null) options = {};
     let g = this.group();
     g.$.addClass("TipToTail2D");
-    this.tbody = $("<tbody>");
     let pt = new RArray(0, 0);
     let opt = Object.assign({tail: "6"}, options);
     for (let v of vecs) {
-        this.tbody.append(new RArray(...v).tr(options.precision));
         let pt0 = pt;
         let tmp = pt0.plus([v[0], 0]);
         pt = pt.plus(v);
@@ -392,7 +390,6 @@ tip_to_tail(vecs, options) {
         }
         g.arrow({tail: [0, 0], tip: pt}, opt).$.addClass("Resultant");    
     }
-    this.tbody.append(new RArray(...pt).tr(options.precision).addClass("Resultant"));
     return g;
 }
 
@@ -602,7 +599,8 @@ constructor(jSelect, options) {
     let grid = options.grid;
     if (grid) {
         let [gx, gy] = typeof(grid) == "number" ? [grid, grid] : grid;
-        this.grid([lrbt[0], lrbt[1], gx], [lrbt[2], lrbt[3], gy]);
+        // console.log([lrbt[0], lrbt[1] + gx/1000, gx], [lrbt[2], lrbt[3] + gy/1000, gy]);
+        this.grid([lrbt[0], lrbt[1] + gx/1000, gx], [lrbt[2], lrbt[3] + gy/1000, gy]);
     }
 
     /* Animation data */
@@ -780,6 +778,8 @@ static vec_diag(sel, vecs, opt) {
     if (opt.label) {
         let [space, n, x, y] = opt.label;
         let [l, r, b, t] = svg.lrbt;
+        l = space * Math.ceil(l / space);
+        b = space * Math.ceil(b / space);
         svg.label(n, x, [...range(b, t + space / 10, space)]);
         svg.label(n, [...range(l, r + space / 10, space)], y);
     }
@@ -801,15 +801,27 @@ vec_cycle(g) {
     return this;
 }
 
-static vec_diag_table(sym, tbody) {
+static vec_diag_table(sym, vecs, prec, scale) {
 /* Compose a table showing vector addition */
     let tbl = $("<table>").addClass("VectorTable");
     let thead = $("<thead>").appendTo(tbl);
+    let tr = $("<tr>").appendTo(thead);
     let v = sym.charAt(0) == "Δ" ? `\\Delta\\vec{\\bf ${sym.substring(1)}}` : `\\vec{\\bf ${sym}}`;
     for (let x of [`|${v}|`, `\\theta`, `${v}_x`, `${v}_y`])
-        thead.append($("<th>").addClass("TeX").html(x));
+        tr.append($("<th>").addClass("TeX").html(x));
+    tr = $("<tr>").appendTo(thead);
+    for (let x of [`\\sqrt{(${v}_x)^2 + (${v}_y)^2}`, `\\tan^{-1}\\frac{${v}_y}{${v}_x}`, `|${v}| \\cos\\theta`, `|${v}| \\sin\\theta`])
+        tr.append($("<th>").html($("<p>").html(x).addClass("TeX")));
+    let tbody = $("<tbody>").appendTo(tbl);
+    let pt = new RArray(0, 0);
+    for (let v of vecs) {
+        if (scale) v = new RArray(...v).times(scale);
+        pt = pt.plus(v);
+        tbody.append(new RArray(...v).tr(prec ? prec : 4));
+    }
+    tbody.append(new RArray(...pt).tr(prec ? prec : 4).addClass("Resultant"));
     renderTeX(thead.find(".TeX"));
-    return tbl.append(tbody);
+    return tbl;
 }
     
 }

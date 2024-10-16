@@ -88,7 +88,8 @@ tr:not(.Resultant):nth-child(even) td:nth-child(odd), tr:not(.Resultant):nth-chi
 
 tr.Resultant td:nth-child(even) {background-color: #d8d8ff}
 tr.Resultant td:nth-child(odd) {background-color: #e8e8ff}
-th:nth-child(even) {background-color: #e8e8e8}
-th:nth-child(odd) {background-color: #d8d8d8}
+
+tr:nth-child(even) th:nth-child(even), tr:nth-child(odd) th:nth-child(odd) {background-color: #e8e8e8}
+tr:nth-child(even) th:nth-child(odd), tr:nth-child(odd) th:nth-child(even) {background-color: #d8d8d8}
 
 }

@@ -1,55 +1,123 @@
 <section class="Post" id="Tip2Tail" data-icon="vec.svg">
-<h2 class="Collapse">Tip-to-Tail Diagram</h2><div class="Center Collapse Expand">
-<style type="text/css">
-
-#Tip2Tail {
-
-
-
-}
-
-</style>
+<h2 class="Collapse">Tip-to-Tail Diagram
+    <span class="Action"><img alt="Bookmark" title="Reload page with custom URL" data-src="bookmark.svg" onclick="location.href=loadFeed.init.url()"/></span>
+</h2><div class="Center Collapse Expand">
 <p><input type="checkbox" id="Shift" onclick="loadFeed.init.draw()"/> <label for="Shift">Shift</label></p>
-<p><textarea rows="4" cols="72" onblur="loadFeed.init.draw()">[3, 5], @(6, -60)</textarea></p>
-<p><svg></svg></p>
+<p><textarea rows="4" style="width: 603px" onblur="loadFeed.init.draw()">[3, 5], @(6, -60)</textarea></p>
+<p>The diagram units are <span id="Units"></span>.</p>
+<div id="Output"></div>
 </div></section>
+
+<section class="Post" id="Calc" data-icon="calc.svg">
+<h2 class="Collapse">Calculations</h2><div class="Center Collapse Expand">
+<div id="CalcTable"></div>
+<p class="Left">When calculating <span class="TeX">\theta</span> using the <span class="TeX">\tan^{-1}</span> formula,
+    you must add or subtract 180° to the result when the <span class="NoWrap"><span class="TeX">x</span>-component</span> is negative.
+    (Ask your Math teacher about the “CAST Rule”!)</p>
+</div>
+</section>
 
 <script type="text/javascript" data-init="init">
 
 loadFeed.init = () => {
-    loadFeed.init.symbol = "Δd";
-    loadFeed.init.units = "m";
+    let data;
+    try {data = JSON.parse(decodeURIComponent(location.search.substring(1)))}
+    catch(err) {data = {}}
+    loadFeed.init.symbol = data.symbol ? data.symbol : "v";
+    loadFeed.init.units = data.unit ? data.unit : "m/s";
+    $("#Shift")[0].checked = data.shift == null ? false : true;
+    if (data.v) $("textarea").val(data.v);
     loadFeed.init.draw();
 }
 
-loadFeed.init.draw = () => {
-    // Delete previous drawing
-    let svg = $("#Tip2Tail svg").html("");
-    $("#Tip2Tail .VectorTable").remove();
+loadFeed.init.url = () => {
+    // Make a custom URL for the current drawing
+    let data = {v: $("textarea").val(), symbol: loadFeed.init.symbol, unit: loadFeed.init.units};
+    if ($("#Shift")[0].checked) data.shift = 1;
+    return `./?${JSON.stringify(data)}#test/vec_diag`;
+}
 
-    // Get user input
-    let txt = $("#Tip2Tail textarea");
-    let vecs = eval(`[${txt.val().replaceAll("@", "vec2d")}]`);
-    let shift = $("#Shift")[0].checked ? vecs[0] : null;
-    if (shift) vecs = vecs.slice(1);
-
-    // Calculate viewport
+loadFeed.init.viewport = (vecs) => {
     let vp = xy_limits(...vecs);
     let size = Math.max(...vp.size);
-    console.log(size);
+    let scale = size / 16;
+    let n = 0;
+    while (scale < 0.5) {scale *= 10; n--}
+    while (scale >= 5) {scale /= 10; n++}
 
-    // Draw the vector diagram
-    svg = SVG2.vec_diag(svg, vecs,
-        {lrbt: [-4, 6, -3, 3], scale: 40, margin: 8, grid: 1, cycle: 1, shift: shift, label: [1, 0, -0.4, -0.4]}
+    let scales = [0.5, 1, 1.5, 2, 2.5, 3, 5];
+    let s = 0.5;
+    for (let i=0;i<scales.length-1;i++)
+        if (scale > scales[i]) s = scales[i+1];
+    if (s == 5) {s = 0.5; n++}
+    scale = s;
+    if (n == 1) {scale *= 10; n = 0}
+    else if (n == -1) {scale /= 10; n = 0}
+    if (n) {
+        loadFeed.init.viewport.n = n;
+        let f = Math.pow(10, n);
+        for (let i=0;i<vecs.length;i++) {
+            vecs[i][0] /= f;
+            vecs[i][1] /= f;
+        }
+    }
+    let dig = `${2 * scale}`.split(".");
+    dig = dig.length > 1 ? dig[1].length : 0;
+    let c = new RArray(...vp.center).times(1/scale);
+    let [cx, cy] = [Math.round(c[0]), Math.round(c[1])];
+    let lrbt = [scale * (cx - 10), scale * (cx + 10), scale * (cy - 10), scale * (cy + 10)];
+    return {grid: scale, lrbt: lrbt, n: n, dig: dig}
+}
+
+loadFeed.init.redraw = (vecs) => {
+    // Replace previous drawing  with empty <svg> element
+    let svg = document.createElementNS(SVG2.nsURI, "svg");
+    $("#Output").html(svg);
+
+    // Determine shift and viewport
+    let shift = $("#Shift")[0].checked ? vecs[0] : null;
+    let vp = loadFeed.init.viewport(vecs);
+    let n = loadFeed.init.viewport.n;
+
+    // Draw the vector diagram and print the units
+    svg = SVG2.vec_diag(svg, shift ? vecs.slice(1) : vecs, {lrbt: vp.lrbt, scale: 30 / vp.grid, margin: 16,
+        grid: vp.grid, cycle: 1, shift: shift, label: [2 * vp.grid, vp.dig, "-6", "-14"]}
     );
+    $(svg.$.find("g.Labels")[0]).find("text").css({"text-anchor": "end"});
+    svg.vecs = vecs;
+    $("#Units").html(`${n ? `10<sup>${n}</sup> ` : ""}${loadFeed.init.units}`);
 
     // Draw the calculations table
-    SVG2.vec_diag_table(loadFeed.init.symbol, svg.tbody).insertAfter(svg.$).addClass("Top");
+    let tbl = SVG2.vec_diag_table(loadFeed.init.symbol, vecs, 4, Math.pow(10, n));
+    $("#CalcTable").html(tbl.addClass("Bottom"));
+    let tr = tbl.css({width: 603}).find("tbody tr");
+    if (shift) {
+        $(tr[0]).remove();
+        tr = tbl.find("tbody tr");
+    }
+    if (tr.length == 2) $(tr[1]).remove();
+    tbl.find("thead tr").on("click", (e) => {
+        let sym = prompt("Vector symbol?", "Δd");
+        if (sym) {
+            let unit = prompt("Units?", "N·s");
+            if (unit) {
+                loadFeed.init.symbol = sym;
+                loadFeed.init.units = unit;
+                loadFeed.init.redraw(svg.vecs);
+            }
+        }
+    });
+}
+
+loadFeed.init.draw = () => {
+    let vecs = eval(`[${$("textarea").val().replaceAll("@", "vec2d")}]`);
+    loadFeed.init.viewport.n = 0;
+    loadFeed.init.viewport(vecs);
+    loadFeed.init.redraw(vecs);
 }
 
 loadFeed.data = {
-    title: `Vector Diagrams`,
+    title: `2D Vector Diagrams`,
 }
     
 </script>
-
