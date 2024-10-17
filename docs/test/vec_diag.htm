@@ -1,9 +1,18 @@
+<style type="text/css">
+
+textarea, #CalcTable table {
+    width: 603px;
+    max-width: calc(100% - 8px);
+}
+
+</style>
+
 <section class="Post" id="Tip2Tail" data-icon="vec.svg">
 <h2 class="Collapse">Tip-to-Tail Diagram
     <span class="Action"><img alt="Bookmark" title="Reload page with custom URL" data-src="bookmark.svg" onclick="location.href=loadFeed.init.url()"/></span>
 </h2><div class="Center Collapse Expand">
 <p><input type="checkbox" id="Shift" onclick="loadFeed.init.draw()"/> <label for="Shift">Shift</label></p>
-<p><textarea rows="4" style="width: 603px" onblur="loadFeed.init.draw()">[3, 5], @(6, -60)</textarea></p>
+<p><textarea rows="4" onblur="loadFeed.init.draw()">[3, 5], @(6, -60)</textarea></p>
 <p>The diagram units are <span id="Units"></span>.</p>
 <div id="Output"></div>
 </div></section>
@@ -90,7 +99,7 @@ loadFeed.init.redraw = (vecs) => {
     // Draw the calculations table
     let tbl = SVG2.vec_diag_table(loadFeed.init.symbol, vecs, 4, Math.pow(10, n));
     $("#CalcTable").html(tbl.addClass("Bottom"));
-    let tr = tbl.css({width: 603}).find("tbody tr");
+    let tr = tbl.find("tbody tr");
     if (shift) {
         $(tr[0]).remove();
         tr = tbl.find("tbody tr");

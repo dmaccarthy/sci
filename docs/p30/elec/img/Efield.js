@@ -1,6 +1,6 @@
 SVG2.cache("p30/elec/img/Efield.js", {
 
-ex1: (sel) => {
+ex1fbd: (sel) => {
     $(sel).attr({width: 364, height: 338, "data-aspect": "14/13"});
     let svg = new SVG_Animation(sel, -1, 13, -1);
     svg.grid([-1, 13, 1], [-1, 12, 1]).$.find(".Axis").removeClass("Axis");
@@ -46,6 +46,18 @@ ex1: (sel) => {
         () => {t(tog, true, 5)},
         () => {t(tog, true, 6)},
     );
+},
+
+ex1: (sel) => {
+    let svg = SVG2.vec_diag(sel, [[0, 12.486], vec2d(1.4983, -26.565)], {lrbt: [-4, 4, -2, 14],
+        scale: 30, margin: 8, grid: 1, cycle: 1, label: [2, 0, "-12", "-12"]});
+    svg.text("kN/C", [-3, 13]);
+    let g = svg.group();
+    let E = '<tspan class="Bold">E</tspan><tspan class="F15" dy="12">#</tspan><tspan class="F15" dx="-22" dy="-28">→</tspan>';
+    g.text(E.replace("#", "1"), [-1, 6]);
+    g.text(E.replace("#", "2"), [1, 13]);
+    g.$.addClass("Symbol F28").find("text").css({fill: "red"});
+    g.text('<tspan class="Bold">E</tspan><tspan class="F15" dx="-16" dy="-16">→</tspan>', [1.75, 7]).css({fill: "#0065fe"});
 },
 
 });

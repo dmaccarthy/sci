@@ -6,12 +6,12 @@ hiker: (sel) => {
     svg.$.find(".Component").remove();
     svg.text("km", [5.5, 5.5]);
     let g = svg.group();
-    g.$.addClass("Symbol F125").insertBefore(svg.$.find(".TipToTail2D"));
+    g.$.addClass("Symbol F28").insertBefore(svg.$.find(".TipToTail2D"));
     g.line([1, 5], [-2, 5]).css({stroke: "black", "stroke-width": 2});
     g.text("θ", [-0.6, 4.56]);
     g.plot([[5, 1], [-2, 5]], "5").$.css({"fill-opacity": 0.7});
-    g.text('Δ<tspan class="Bold">d</tspan><tspan class="F80" dx="-18" dy="-18">→</tspan>', [2, 3.5]).css({fill: "red"});
-    let d = '<tspan class="Bold">d</tspan><tspan class="F80 Ital" dy="8">#</tspan><tspan class="F80" dx="-24" dy="-26">→</tspan>';
+    g.text('Δ<tspan class="Bold">d</tspan><tspan class="F15" dx="-14" dy="-18">→</tspan>', [2, 3.5]).css({fill: "red"});
+    let d = '<tspan class="Bold">d</tspan><tspan class="F15 Ital" dy="8">#</tspan><tspan class="F15" dx="-20" dy="-26">→</tspan>';
     g.text(d.replace("#", "i"), [-2.6, 5.2]).css({fill: "#0065fe"});
     g.text(d.replace("#", "f"), [5.6, 1.1]).css({fill: "#0065fe"});
 },

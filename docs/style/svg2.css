@@ -22,8 +22,10 @@ text.Mono {font-family: Inconolata, monospace}
 
 .Bold {font-weight: bold}
 .Ital {font-style: italic}
-g.F80 > text, .F80 {font-size: 80%}
-g.F125 > text, .F125 {font-size: 125%}
+
+g.F15 > text, .F15 {font-size: 15px}
+g.F18 > text, .F18 {font-size: 18px}
+g.F28 > text, .F28 {font-size: 28px}
 
 g.StickMan > * {stroke-width: 3px}
 
@@ -62,7 +64,7 @@ svg.SVG2.VectorDiagram {
 
 g.Labels text {
     font-family: Inconsolata, monospace;
-    font-size: 90%;
+    font-size: 16px;
     fill: grey;
 }
 
