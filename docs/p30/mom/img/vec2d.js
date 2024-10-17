@@ -1,54 +1,38 @@
 SVG2.cache("p30/mom/img/vec2d.js", {
 
-    Ex1: (sel) => {
-        $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-        let svg = applet.vecDiagram.diagram(sel,
-            [vec2d(8, 30)],
-            {omitAxes: 1, component: 1, grid: 18}, 0.5, -1, -2,
-        );
-        let arrows = svg.items[1].$.find("polygon");
-        let e = svg.items[0].element;
-        let attr = {interval: 1, fixed: 0, length: "8", omitZero: 1, offset: [0, "-18"]};
-        svg.axis({x: [-1, 8], ticks: attr}, e);
-        attr.offset = ["-14", 0];
-        svg.axis({y: [-2, 8], ticks: attr}, e);
-        svg.symbol("F", {vec:1}, [3.2, 2.5]).css({fill: "red"});
-        arrows.push(svg.symbol("F", {vec:1, q4: "x"}, [3.5, -1.2]).css({fill: "#FF6060"}).$);
-        arrows.push(svg.symbol("F", {vec:1, q4: "y"}, [7.5, 2]).css({fill: "#FF6060"}).$);
-        svg.text("θ", [1.2, 0.27]).css({"font-size": "18px"});
-        svg.text("N", [0.3, 6]).css({"font-size": "18px"});
-        svg.final();
+F: (sel) => {
+    let svg = SVG2.vec_diag(sel, [vec2d(8, 30)], {lrbt: [-1, 8, -2, 5], scale: 40,
+        margin: 8, grid: 0.5, label: [1, 0, "-6", "-12"]});
+    svg.text("N", [0.4, 5]);
 
-        clickCycle(svg.element, 1,
-            () => {clickCycle.toggle(arrows, true, 0, 3)},
-            () => {clickCycle.toggle(arrows, true, 1, 4)},
-            () => {clickCycle.toggle(arrows, false, 0, 1, 3, 4)},
-        );
-    },
+    let [BD, SM_IT] = [1, 6];
+    let arr = ["→", 5, [0, "20"]];
+    let sub = ["14", "-8"];
+    g = svg.group();
+    g.symbol(["F", BD], arr).config({shift: [3.5, 2.7]}).$.addClass("Resultant");
+    g.symbol(["F", BD], arr, ["x", SM_IT, sub]).config({shift: [3.5, -1]});
+    g.symbol(["F", BD], arr, ["y", SM_IT, sub]).config({shift: [7.5, 2]});
+    g.$.find("g.Symbol").addClass("Large").find("text").css({fill: "red"});
 
-    Ex2: (sel) => {
-        $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-        let svg = applet.vecDiagram.diagram(sel,
-            [vec2d(20, 120), vec2d(5, 200)],
-            {omitAxes: 1, resultant: 1, grid: 11}, 2, -18, -2,
-        );
-        let arrows = svg.items[1].$.find("polygon");
-        let e = svg.items[0].element;
-        let attr = {interval: 2, fixed: 0, length: "8", omitZero: 1, offset: [0, "-18"]};
-        svg.axis({x: [-18, 4], ticks: attr}, e);
-        attr.offset = ["-14", 0];
-        svg.axis({y: [-2, 20], ticks: attr}, e);
-        svg.symbol("v", {vec:1, q4: 1}, [-4, 10]).css({fill: "red"});
-        arrows.push(svg.symbol("v", {vec:1, q4: 2}, [-13, 18]).css({fill: "red"}).$);
-        arrows.push(svg.symbol("v", {vec:1}, [-9, 7]).css({fill: "#0065FE"}).$);
-        svg.text("m/s", [1.5, 18]).css({"font-size": "18px"});
-        svg.final();
+    svg.$.on("click", () => {
+        svg.$.find("g.TipToTail2D > g.Component").fadeToggle();
+        g.$.find("g.Symbol:not(.Resultant)").fadeToggle();
+    });
+},
 
-        clickCycle(svg.element, 1,
-            () => {clickCycle.toggle(arrows, true, 1, 3)},
-            () => {clickCycle.toggle(arrows, true, 2, 4)},
-            () => {clickCycle.toggle(arrows, false, 1, 2, 3, 4)},
-        );
-    },
+boat: (sel) => {
+    let svg = SVG2.vec_diag(sel, [vec2d(20, 120), vec2d(5, 200)], {lrbt: [-16, 4, -2, 20], scale: 20, margin: 8, grid: 2, cycle: 1, label: [2, 0, "-6", "-12"]});
+    svg.text("m/s", [1.5, 18]);
+
+    let [BD, SM] = [1, 4];
+    let arr = ["→", 5, [0, "20"]];
+    let sub = ["14", "-8"];
+    g = svg.group();
+    g.symbol(["v", BD], arr, ["1", SM, sub]).config({shift: [-4, 10]});
+    g.symbol(["v", BD], arr, ["2", SM, sub]).config({shift: [-13, 18]});
+    let v = g.symbol(["v", BD], arr).config({shift: [-9, 7]});
+    g.$.find("g.Symbol").addClass("Large").find("text").css({fill: "red"});
+    v.$.find("text").css({fill: "#0065fe"});
+},
 
 });
