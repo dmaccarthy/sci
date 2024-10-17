@@ -52,12 +52,16 @@ ex1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, 12.486], vec2d(1.4983, -26.565)], {lrbt: [-4, 4, -2, 14],
         scale: 30, margin: 8, grid: 1, cycle: 1, label: [2, 0, "-12", "-12"]});
     svg.text("kN/C", [-3, 13]);
+
+    let [BD, SM] = [1, 4];
     let g = svg.group();
-    let E = '<tspan class="Bold">E</tspan><tspan class="F15" dy="12">#</tspan><tspan class="F15" dx="-22" dy="-28">→</tspan>';
-    g.text(E.replace("#", "1"), [-1, 6]);
-    g.text(E.replace("#", "2"), [1, 13]);
-    g.$.addClass("Symbol F28").find("text").css({fill: "red"});
-    g.text('<tspan class="Bold">E</tspan><tspan class="F15" dx="-16" dy="-16">→</tspan>', [1.75, 7]).css({fill: "#0065fe"});
+    let arr = ["→", SM + BD, [0, "20"]];
+    let sub = ["14", "-8"];
+    g.symbol(["E", BD], arr, ["1", SM, sub]).config({shift: [-1.5, 6]});
+    g.symbol(["E", BD], arr, ["2", SM, sub]).config({shift: [1, 13]});
+    E = g.symbol(["E", BD], arr).config({shift: [1.75, 7]});
+    g.$.find("g.Symbol").addClass("Large").find("text").css({fill: "red"});
+    E.$.find("text").css({fill: "#0065fe"});
 },
 
 });

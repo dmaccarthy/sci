@@ -31,6 +31,7 @@ Add composite content:
     g.arrow({tail, tip} or length, {tail, head, angle, shape, double}, anchor) -> SVG2arrow
     g.tip_to_tail(vecs, options) -> SVG2g
     g.stickman(h) -> SVG2g
+    g.symbol(...args) -> SVG2g
 
 Create a <path>
     path = g.path(start).[path directives] -> SVG2path
@@ -276,6 +277,7 @@ label(fn, x, y) {
         }
     }
     g.$.addClass(tm || tp ? "Ticks" : "Labels");
+    if (!tick) g.$.addClass(ya ? "LabelY" : "LabelX");
     return g;
 }
 
@@ -337,6 +339,23 @@ text(data, xy) {
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = svg.a2p(...this._cs(xy));
     return this.create_child("text", {x: f(x), y: f(y)}).html(data);
+}
+
+symbol(...args) {
+/* Render a symbol from a list of text elements */
+//  BOLD = 1, ITAL = 2, SMALL = 4
+    let g = this.group();
+    g.$.addClass("Symbol");
+    for (let [s, f, xy, opt] of args) {
+        let txt = g.text(s, xy);
+        if (f & 4) txt.addClass("Small");
+        if (f & 2) txt.addClass("Ital");
+        if (f & 1) txt.addClass("Bold");
+        if (opt) {
+            if (opt.size) txt.css({"font-size": `${opt.size}px`});
+        }
+    }
+    return g;
 }
 
 cylinder(r, L) {
@@ -599,7 +618,6 @@ constructor(jSelect, options) {
     let grid = options.grid;
     if (grid) {
         let [gx, gy] = typeof(grid) == "number" ? [grid, grid] : grid;
-        // console.log([lrbt[0], lrbt[1] + gx/1000, gx], [lrbt[2], lrbt[3] + gy/1000, gy]);
         this.grid([lrbt[0], lrbt[1] + gx/1000, gx], [lrbt[2], lrbt[3] + gy/1000, gy]);
     }
 

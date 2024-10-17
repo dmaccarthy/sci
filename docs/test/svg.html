@@ -36,15 +36,10 @@ $(() => {
     puck.$.find("path").css({fill: "tan"});
     puck.circle(0.1, [0, -1.6]);
 
-    let Fg = '<tspan class="Bold">F</tspan><tspan class="F80" dy="8">g</tspan><tspan class="F80" dx="-20" dy="-22">→</tspan>';
-    let dAi = 'Δ<tspan class="Bold">d</tspan><tspan class="F80" dy="8">Ai</tspan><tspan class="F80" dx="-28" dy="-22">→</tspan>';
-    let Ei = 'Σ<tspan class="Ital">E</tspan><tspan class="F80" dy="8">i</tspan>';
+    let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
 
-    let sym = g.group();
-    sym.text(dAi, [3.5, 3]);
-    sym.text(Ei, [5, 3]);
-    sym.text(Fg, [7.5, 3]);
-    sym.$.addClass("Symbol"); //.children().css("font-size", "150%");
+    svg.symbol(["p", BD], ["→", SM, [0, "14"]], ["i", SM_IT, ["12", "-8"]],
+        ["Σ", 0, ["-20", 0]]).config({shift: [4, 5]}).$.addClass("Large");
 
     // let arrow = svg.arrow({tail: [4,2], tip: [6,0]}, {double: 1, tail: "8", head: "28"}, 1);
     // arrow.config({omega: 20}).$.addClass("Resultant");
