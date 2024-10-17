@@ -32,6 +32,7 @@ collect.urls = {
         ["graph", "Graphing Data"],
         ["displ", "Position & Displacement"],
         ["vel", "Velocity & Speed"],
+        ["acc", "Acceleration"],
     ],
 
 };

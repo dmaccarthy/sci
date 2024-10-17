@@ -6,63 +6,71 @@
 <h1 id="Title">Acceleration</h1>
 </section>
 
-<section id="acc" class="Slide"><h3>Acceleration</h3>
+<section class="Slide"><h3>Acceleration</h3>
     <p>We learned in earlier lessons that <em>velocity</em> is the rate at which an object’s position changes.</p>
-    <p><p class="TeX">\vec{\mathbf v} = {\Delta\vec{\mathbf d}\over \Delta t}</p></p>
+    <p class="TeX">\vec{\bf v} = {\Delta\vec{\bf d}\over \Delta t}</p>
     <ul>
-        <li data-cue="+">Velocity equals the slope of a graph of <span class="TeX">\vec{\mathbf d}</span> versus <span class="TeX">t</span>.</li>
+        <li data-cue="+">Velocity equals the slope of a graph of <span class="TeX">\vec{\bf d}</span> versus <span class="TeX">t</span>.</li>
     </ul>
-    <p data-cue="+"><em class="Defn">Acceleration</em> measures how quickly the <em>velocity</em> changes:</p>
-    <p data-cue="="><p class="TeX">\vec{\mathbf a} = {\Delta\vec{\mathbf v}\over \Delta t}</p></p>
+    <div data-cue="+">
+        <p><em class="Defn">Acceleration</em> measures how quickly the <em>velocity</em> changes:</p>
+        <p class="TeX">\vec{\bf a} = \frac{\Delta\vec{\bf v}}{\Delta t}</p>
+    </div>
     <ul data-cue="+">
         <li>Acceleration is a vector.</li>
         <li data-cue="+">The SI unit of acceleration is (m/s)/s, or m/s<sup>2</sup>.</li>
         <li data-cue="+">An acceleration of +1.0 m/s<sup>2</sup> means that each second, the velocity changes by 1 m/s in the positive direction.</li>
         <li data-cue="+">On Earth, when there are no forces except gravity, the acceleration will be –9.81 m/s<sup>2</sup>.</li>
     </ul>
-    <p class="Center" data-cue="+"><img src="img/vt.png" alt="Graph" class="w800"/></p>
-    <ul data-cue="=">
-        <li>If we graph the <em>velocity</em> against time, the slope will equal the acceleration.</li>
-        <li data-cue="+">We cannot directly calculate the acceleration from a <em>position</em> versus time graph, because the graph will be curved for accelerated motion.</li>
-    </ul>
+    <div data-cue="+">
+        <p class="Center"><svg class="s20" data-svg2="s10/phys1/img/acc.js#vt"></svg></p>
+        <ul>
+            <li>If we graph the <em>velocity</em> against time, the slope will equal the acceleration.</li>
+            <li data-cue="+">We cannot directly calculate the acceleration from a <em>position</em> versus time graph, because the graph will be curved for accelerated motion.</li>
+        </ul>
+    </div>
 </section>
 
-<section id="ex1" class="Slide"><h3>Example 1</h3>
+<section class="Slide"><h3>Example 1</h3>
     <p class="Blue">Calculate the acceleration of the ball based on the graph.</p>
     <p data-cue="+">Identify the variables from the graph:</p>
     <ul data-cue="+">
-        <li><span class="TeX">t_i = \mathrm{0.0\ s}</span></li>
-        <li><span class="TeX">t_f = \mathrm{2.0\ s}</span></li>
-        <li><span class="TeX">\vec{\mathbf v}_i = \mathrm{0.0\ m/s}</span></li>
-        <li><span class="TeX">\vec{\mathbf v}_f = \mathrm{-19.2\ m/s}</span></li>
-        <li data-cue="+" class="Red"><span class="TeX">\vec{\mathbf a} =\ ?</span></li>
+        <li><span class="TeX">t_i = \rm{0.00\ s}</span></li>
+        <li><span class="TeX">t_f = \rm{2.00\ s}</span></li>
+        <li><span class="TeX">\vec{\bf v}_i = \rm{0.00\ m/s}</span></li>
+        <li><span class="TeX">\vec{\bf v}_f = \rm{-19.5\ m/s}</span></li>
+        <li data-cue="+" class="Red"><span class="TeX">\vec{\bf a} =\ ?</span></li>
     </ul>
-    <p data-cue="+">Select the relevant relationship (equation) and evaluate:</p>
-    <p data-cue="="><p class="TeX">\vec{\mathbf a} = {\Delta \vec{\mathbf v}\over \Delta t} = \mathrm{-19.2\ m/s - 0.0\ m/s \over 2.0\ s - 0.0\ s} = \mathrm{-9.6\ m/s^2}</p></p>
-    <ul>
-        <li data-cue="+">Is the answer reasonable?</li>
-    </ul>
+    <div data-cue="+">
+        <p>Select the relevant relationship (equation) and evaluate:</p>
+        <p class="TeX">\vec{\bf a} = {\Delta \vec{\bf v}\over \Delta t} = \rm{-19.5\ m/s - 0.00\ m/s \over 2.00\ s - 0.00\ s} = \rm{-9.75\ m/s^2}</p>
+    </div>
+    <ul><li data-cue="+">Is the answer reasonable?</li></ul>
 </section>
 
-<section id="ex2" class="Slide"><h3>Example 2</h3>
+<section class="Slide"><h3>Example 2</h3>
     <p class="Blue">A car is travelling at 60.0 km/h. How long will it take to accelerate to 80.0 km/h is the car can accelerate at a rate of 3.00 m/s<sup>2</sup>?</p>
     <p data-cue="+">Identify the variables and convert to standard SI units:</p>
     <ul data-cue="+">
-        <li><span class="TeX">\vec{\mathbf v}_i = \mathrm{+60.0\ km/h = +16.7\ m/s}</span></li>
-        <li data-cue="+"><span class="TeX">\vec{\mathbf v}_f = \mathrm{+80.0\ km/h = +22.2\ m/s}</span></li>
-        <li data-cue="+"><span class="TeX">\vec{\mathbf a} = \mathrm{+3.00\ m/s^2}</span></li>
+        <li><span class="TeX">\vec{\bf v}_i = \rm{+60.0\ km/h = +16.66667\ m/s}</span></li>
+        <li data-cue="+"><span class="TeX">\vec{\bf v}_f = \rm{+80.0\ km/h = +22.22222\ m/s}</span></li>
+        <li data-cue="+"><span class="TeX">\vec{\bf a} = \rm{+3.00\ m/s^2}</span></li>
         <li data-cue="+" class="Red"><span class="TeX">\Delta t =\ ?</span></li>
     </ul>
-    <p data-cue="+">Select the relevant relationship (equation):</p>
-    <p data-cue="="><p class="TeX">\vec{\mathbf a} = {\Delta \vec{\mathbf v}\over \Delta t}</p></p>
+    <div data-cue="+">
+        <p>Select the relevant relationship (equation):</p>
+        <p class="TeX">\vec{\bf a} = {\Delta \vec{\bf v}\over \Delta t}</p>
+    </div>
     <p data-cue="+">Rearrange the equation to isolate the unknown:</p>
-    <p data-cue="+"><p class="TeX">\vec{\mathbf a}\color{red}{\Delta t} = {\Delta \vec{\mathbf v}\over \Delta t} \color{red}{\Delta t}</p></p>
-    <p data-cue="+"><p class="TeX">\vec{\mathbf a}\Delta t = \Delta \vec{\mathbf v}</p></p>
-    <p data-cue="+"><p class="TeX">{\vec{\mathbf a}\Delta t \over \color{red}{\vec{\mathbf a}}} = {\Delta \vec{\mathbf v} \over \color{red}{\vec{\mathbf a}}}</p></p>
-    <p data-cue="+"><p class="TeX">\Delta t = {\Delta \vec{\mathbf v} \over \vec{\mathbf a}}</p></p>
-    <p data-cue="+">Evaluate, including units:</p>
-    <p data-cue="="><p class="TeX">\Delta t = \mathrm{+22.2\ m/s - (+16.7\ m/s) \over +3.00\ m/s^2}</p></p>
-    <p data-cue="+"><p class="TeX">\Delta t = \mathrm{1.85\ s}</p></p>
+    <p data-cue="+" class="TeX">\vec{\bf a}{\color{red}{\Delta t}} = \frac{\Delta \vec{\bf v}}{\Delta t} {\color{red}{\Delta t}}</p>
+    <p data-cue="+" class="TeX">\vec{\bf a}\Delta t = \Delta \vec{\bf v}</p>
+    <p data-cue="+" class="TeX">{\vec{\bf a}\Delta t \over \color{red}{\vec{\bf a}}} = {\Delta \vec{\bf v} \over \color{red}{\vec{\bf a}}}</p>
+    <p data-cue="+" class="TeX">\Delta t = {\Delta \vec{\bf v} \over \vec{\bf a}}</p>
+    <div data-cue="+">
+        <p>Evaluate, including units:</p>
+        <p class="TeX">\Delta t = \rm{+22.22222\ m/s - (+16.66667\ m/s) \over +3.00\ m/s^2}</p>
+    </div>
+    <p data-cue="+" class="TeX">\Delta t = \rm{1.85\ s}</p>
     <ul>
         <li data-cue="+">Is the answer reasonable?</li>
     </ul>
@@ -74,6 +82,107 @@
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
 <ol>
+    <li>If an object is accelerating does its velocity have to be changing? Does its speed have to be changing? Explain.</li>
+    <div class="Answer">Since acceleration is the rate of change of velocity, the velocity has to be changing for an object to be accelerating.
+        In other words, if <span class="TeX">\Delta\vec{\bf v}</span> = 0 then <span class="TeX">\vec{\bf a}</span> will always be 0. The speed does not have to change.
+        For example, if the velocity changes from +5 m/s to –5 m/s, <span class="TeX">\Delta\vec{\bf v}</span> = –10 m/s so the acceleration is not zero even though the speed is unchanged.</div>
+
+    <li>A cyclist is coasting at 5.00 m/s. The cyclist begins to accelerate as they go down a hill, reaching a velocity of 8.50 m/s in 2.50 seconds. Calculate the cyclist’s acceleration.</li>
+        <div class="Answer"><p class="TeX">\begin{align}
+\vec{\bf a} &= \frac{\Delta\vec{\bf v}}{\Delta t}
+\\[10pt] &= \rm{\frac{(8.50 - 5.00)\ m/s}{2.50\ s}}
+\\[10pt] &= \rm{+1.40\ m/s^2}
+\end{align}</p></div>
+
+    <li>A skateboarder is moving at +2.00 m/s when she starts to accelerate at +1.20 m/s<sup>2</sup> as she descends a hill. What will her velocity be after 4.00 seconds of acceleration?</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\bf a} = \frac{\Delta\vec{\bf v}}{\Delta t}</p>
+        <p class="TeX">\Delta\vec{\bf v} = \vec{\bf a} \Delta t = \rm{+1.20\ m/s^2\cdot 4.00\ s = +4.80\ m/s}</p>
+        <p>Remember that this is the <em>change in</em> velocity. You still have to calculate the final velocity...</p>
+        <p class="TeX">\Delta\vec{\bf v} = \vec{\bf v}_f - \vec{\bf v}_i</p>
+        <p class="TeX">\vec{\bf v}_f = \Delta\vec{\bf v} + \vec{\bf v}_i = \rm{+4.80\ m/s + 2.00\ m/s = +6.80\ m/s}</p>
+    </div>
+
+    <li>A student throws a rock up from the base of a cliff with an initial velocity of +5.00 m/s. The rock lands on the top of the cliff with a final velocity of –2.50 m/s. The acceleration of the rock (caused by gravity) is –9.81 m/s<sup>2</sup>. Calculate the time for which the rock was in motion.</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\bf a} = \frac{\Delta\vec{\bf v}}{\Delta t}</p>
+        <p class="TeX">\vec{\bf a} \Delta t = \Delta\vec{\bf v} </p>
+        <p class="TeX">\Delta t = \frac{\Delta\vec{\bf v}}{\vec{\bf a}} = \rm{\frac{(-2.50 - (+5.00))\ m/s}{-9.81\ m/s^2} = 0.765\ s}</p>
+    </div>
+
+    <li><p>Students used a sonar device to collect the following data for the motion of a basketball dropped from a height of 6.00 m.</p>
+    <table class="Two Center TD6">
+        <tr><td>Time<br><span class="TeX">t</span> /s</td><td>Height<br/><span class="TeX">h</span> / m</td></tr>
+        <tr><td>0.00</td><td>6.00</td></tr>
+        <tr><td>0.10</td><td>5.95</td></tr>
+        <tr><td>0.20</td><td>5.81</td></tr>
+        <tr><td>0.30</td><td>5.56</td></tr>
+        <tr><td>0.40</td><td>5.22</td></tr>
+        <tr><td>0.50</td><td>4.78</td></tr>
+        <tr><td>0.60</td><td>4.25</td></tr>
+        <tr><td>0.70</td><td>3.61</td></tr>
+        <tr><td>0.80</td><td>2.88</td></tr>
+        <tr><td>0.90</td><td>2.05</td></tr>
+        <tr><td>1.00</td><td>1.13</td></tr>
+    </table>
+    <ol type="a">
+        <li>Graph the data.</li>
+        <div class="Answer"><a href="https://www.desmos.com/calculator/ekvagmdxta" target="D1">Graph</a></div>
+
+        <li>Does the motion appear to be uniform motion or accelerated motion? Explain.</li>
+        <div class="Answer">Accelerated, the graph is curved.</div>
+    </ol>
+    </li>
+
+    <li><p>The following data was collected from a car’s speedometer as the car approached a red light.</p>
+    <table class="Two Center TD6">
+        <tr><td>Time<br><span class="TeX">t</span> /s</td><td>Velocity<br/><span class="TeX">\vec{\bf v}</span> / (km/h)</td></tr>
+        <tr><td>0.0</td><td>60</td></tr>
+        <tr><td>1.0</td><td>60</td></tr>
+        <tr><td>2.0</td><td>60</td></tr>
+        <tr><td>3.0</td><td>45</td></tr>
+        <tr><td>4.0</td><td>30</td></tr>
+        <tr><td>5.0</td><td>15</td></tr>
+        <tr><td>6.0</td><td>0.0</td></tr>
+    </table>
+    <ol type="a">
+        <li>Graph the data.</li>
+        <div class="Answer"><a href="https://www.desmos.com/calculator/dky7unqb4v" target="D1">Graph</a></div>
+
+        <li>Which part of the graph (between which two times) is the car undergoing uniform motion? Which part of the graph illustrates accelerated motion? Explain.</li>
+        <div class="Answer">It is uniform for the first 2.0 seconds (velocity is constant 60 km/h) and then accelerated for the next 4 seconds.</div>
+
+        <li>Calculate the acceleration for the portion of the motion over which the car is slowing. (In other words, calculate the slope of the line segment representing accelerated motion.)</li>
+        <div class="Answer"><p class="TeX">\begin{align}
+\vec{\bf a} &= \frac{\Delta\vec{\bf v}}{\Delta t}
+\\[10pt] &= \rm{\frac{(0.00 - 16.7)\ m/s}{(6.0 - 2.0)\ s}}
+\\[10pt] &= \rm{-4.2\ m/s^2}
+\end{align}</p></div>
+
+        <li>Calculate the average acceleration for the entire 6.0 seconds of the data. (In other words, what would be the slope of an imaginary line segment connecting the first and last data points?)</li>
+        <div class="Answer"><p class="TeX">\begin{align}
+\vec{\bf a} &= \frac{\Delta\vec{\bf v}}{\Delta t}
+\\[10pt] &= \rm{\frac{(0.00 - 16.7)\ m/s}{(6.0 - 0.0)\ s}}
+\\ &= \rm{-2.8\ m/s^2}
+\end{align}</p></div>
+    </ol>
+    </li>
+
+    <li>Crime scene investigators determine that a bullet takes 0.275 seconds to come to a stop when fired into water. The water causes the bullet to accelerate at –2000 m/s<sup>2</sup>. What was the initial velocity of the bullet before entering the water?</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\bf a} = \frac{\Delta\vec{\bf v}}{\Delta t}</p>
+        <p class="TeX">\Delta\vec{\bf v} = \vec{\bf a} \Delta t = \rm{-2000\ m/s^2\cdot 0.275\ s = -550\ m/s}</p>
+        <p>Remember that this is the <em>change in</em> velocity. You still have to calculate the final velocity...</p>
+        <p class="TeX">\Delta\vec{\bf v} = \vec{\bf v}_f - \vec{\bf v}_i</p>
+        <p class="TeX">\vec{\bf v}_i = \vec{\bf v}_f - \Delta\vec{\bf v} = \rm{0.00\ m/s - (-550\ m/s) = +550\ m/s}</p>
+    </div>
+
+    <li>The spaceship Millenium Falcon is cruising at a velocity of +4.20 km/s. To avoid hostile Imperial fighters, the Falcon must reach a velocity of +8.75 km/s. The maximum acceleration that the Millenium Falcon can achieve is +200 m/s<sup>2</sup>. How long will it take the Falcon to reach a safe velocity?</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\bf a} = \frac{\Delta\vec{\bf v}}{\Delta t}</p>
+        <p class="TeX">\vec{\bf a} \Delta t = \Delta\vec{\bf v} </p>
+        <p class="TeX">\Delta t = \frac{\Delta\vec{\bf v}}{\vec{\bf a}} = \rm{\frac{(+8750 - (+4200))\ m/s}{+200\ m/s^2} = 22.8\ s}</p>
+    </div>
 </ol>
 </div></div></section>
 
@@ -81,6 +190,28 @@
 <h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
 <div id="Review">
 <ol>
+    <li><ol type="a">
+        <li>Define and give the formula for <em class="Defn">acceleration</em>.</li>
+        <div class="Answer">Acceleration is the rate at which the velocity changes:
+            <p class="TeX">\vec{\bf{a}}=\frac{\Delta\vec{\bf{v}}}{\Delta t}</p></div>
+
+        <li>What does acceleration mean? For example, if a car has an acceleration of +2.0 m/s<sup>2</sup>, what does this tell you about its motion?</li>
+        <div class="Answer">It means that the car’s velocity changes by +2.0 m/s each second. If a car is moving at +20.0 m/s, its velocity would be +22.0 m/s one second later, and then +24.0 m/s after another second, and so on.</div>
+    </ol></li>
+
+    <li>Explain the connection between the acceleration equation and the slope equation. Why is this important?</li>
+    <div class="Answer">If we have a graph of velocity versus time, <span class="TeX">\Delta\vec{\bf v}</span> will be the “rise” and <span class="TeX">\Delta t</span> will be the “run”, so <span class="TeX">\vec{\bf a}</span> will be the slope. This means we can tell whether the motion is accelerated, whether the acceleration is constant or not, and whether it is positive or negative just be looking at the graph.</div>
+
+    <li><ol type="a">
+        <li>What will an object’s acceleration be on Earth, when it is rising or falling and there are no forces acting on it except for gravity?</li>
+        <div class="Answer">–9.81 m/s<sup>2</sup>. This situation almost never occurs, due to air resistance. We would need to conduct an experiment in a chamber where all the air had been pumped out to measure this value.</div>
+
+        <li>Will the acceleration be the same on Mars? In a spacecraft orbiting high above Earth? Explain.</li>
+        <div class="Answer">Gravity is weaker on Mars than Earth because Mars is smaller. Gravity also gets weaker as we get farther away from a planet, so in both of these case the acceleration would be less than 9.81 m/s<sup>2</sup>.</div>
+
+        <li>What effect does the atmosphere have on moving objects?</li>
+        <div class="Answer">The presence of air, water, or any other fluid means that the moving object needs to push the fluid out of its way as it moves. This creates a force that acts to slow the object’s motion. Because of this effect, the actual acceleration of an object moving under the influence of Earth’s gravity will not be <em>exactly</em> 9.81 m/s<sup>2</sup>.</div>
+    </ol></li>
 </ol>
 </div></div></section>
 
