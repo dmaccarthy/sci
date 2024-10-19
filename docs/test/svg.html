@@ -22,7 +22,7 @@
 
 let svg;
 
-$(() => {
+let test = () => {
     svg = new SVG2("#S1", {size: [640, 640], lrbt: [-3, 10, -6], margin: 6, grid: 1});
     svg.$.addClass("SVG2");
 
@@ -68,7 +68,27 @@ $(() => {
         svg.toggle();
         console.log(svg.eventCoords(ev));
     });
-});
+}
+
+
+let g1, g2, g3, g4;
+
+let p = () => {
+    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-5, 5], margin: 6, grid: 1});
+    svg.$.addClass("SVG2");
+
+    g1 = svg.group();
+    g1.circle("5").css({fill: "red"});
+    g2 = g1.group().config({shift: [0, 1]});
+    g2.circle("5").css({fill: "blue"});
+    g3 = g2.group().config({shift: [1, 0], theta: 0*uniform(0, 360)});
+    g3.circle("5").css({fill: "gold"});
+    g4 = g3.group().config({shift: [0, 1]});
+    g4.circle("5").css({fill: "violet"});
+    console.log(g4.coord_to_svg([0, 0]));
+}
+
+$(p);
 
 </script>
 </head>

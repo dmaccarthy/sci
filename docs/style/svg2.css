@@ -59,6 +59,8 @@ polyline.Locus {
 
 /* Moved from svg.SVG2.VectorDiagram */
 
+g.TipToTail2D {fill-opacity: 0.7}
+
 g.Labels text {
     font-family: Inconsolata, monospace;
     font-size: 16px;
@@ -70,12 +72,11 @@ text.Zero {display: none}
 }
 
 
-svg.SVG2.VectorDiagram {
+/* svg.SVG2.VectorDiagram {
 
-g.TipToTail2D {fill-opacity: 0.7}
 g.Labels text {fill: grey}
 
-}
+} */
 
 
 table.VectorTable {

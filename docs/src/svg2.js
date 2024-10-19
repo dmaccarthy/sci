@@ -27,6 +27,7 @@ Add composite content:
     g.cylinder([rx, ry], L) -> SVG2g
     g.plot(pts or {x, y}, size, href, theta) -> SVG2g
     g.label([tm, tp] or int or (x, y, i) => string, x, y) -> SVG2g
+    g.tick_label(fn, x, y, tick, offset) -> g
     g.locus((p, t, args) => {y or [x, y]}, [p0, p1, n], args) -> SVG2locus
     g.arrow({tail, tip} or length, {tail, head, angle, shape, double}, anchor) -> SVG2arrow
     g.tip_to_tail(vecs, options) -> SVG2g
@@ -52,12 +53,14 @@ Run the animation:
 Get event coordinates:
     svg.eventCoords(ev) -> {coords: RArray, pixels: RArray}
 
-Convert coordinates between <g> and <svg> coordinate systems:
-    g.coord_g([sx, sy]) -> RArray
-    g.coord_s([gx, gy]) -> RArray
+Convert coordinates between child and parent coordinate systems:
+    g.coord_c([px, py]) -> RArray
+    g.coord_p([cx, cy]) -> RArray
+    g.coord_to_svg([gx, gy]) -> RArray
+    g.coord_from_svg([sx, sy]) -> RArray
 
 Vector diagram helpers:
-    SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, label, cycle, shift}) -> SVG2
+    SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, tick, label, cycle, shift}) -> SVG2
     SVG2.vec_diag_table(sym, vecs, prec, scale) -> jQuery
     svg.vec_cycle(jQuery) -> svg
 
@@ -112,17 +115,48 @@ set theta(a) {
 
 /** Coordinate transformations **/
 
-coord_s(xy) {
-/* Apply <g> rotation and shift to convert coordinates xy relative to <svg> */
+get parent() {
+    let p = this.$.parent().closest("g, svg");
+    return p.length ? p[0].graphic : null;
+}
+
+gpath() {
+/* Return a path array from the <svg> element to the current <g> */
+    let p = this.parent;
+    let a = [this];
+    return p ? p.gpath().concat(a) : a;
+}
+
+coord_c(xy) {
+    /* Apply rotation and shift to convert parent <g> coordinates xy relative to child */
+    let a = this.theta * this.svg.angleDir;
+        xy = this._shift.neg().plus(xy);
+        return transform({angle: a, deg: true, center: this._pivot}, xy)[0];
+    }
+    
+coord_p(xy) {
+/* Apply rotation and shift to convert child <g> coordinates xy relative to parent */
     let a = this.theta * this.svg.angleDir;
     return transform({angle: -a, deg: true, center: this._pivot, shift: this._shift}, xy)[0];
 }
 
-coord_g(xy) {
-/* Apply <g> rotation and shift to convert <svg> coordinates xy relative to <g> */
-    let a = this.theta * this.svg.angleDir;
-    xy = this._shift.neg().plus(xy);
-    return transform({angle: a, deg: true, center: this._pivot}, xy)[0];
+coord_to_svg(xy) {
+/* Apply rotation and shift to convert <g> coordinates xy relative to <svg> */
+    let g = this;
+    while (g.parent) {
+        xy = g.coord_p(xy);
+        g = g.parent;
+    }
+    return xy;
+}
+
+coord_from_svg(xy) {
+/* Apply rotation and shift to convert <svg> coordinates xy relative to <g> */
+    let p = this.gpath();
+    for (let i=1;i<p.length;i++) {
+        xy = p[i].coord_c(xy);
+    }
+    return xy;
 }
 
 
@@ -276,8 +310,10 @@ label(fn, x, y) {
             if (parseFloat(txt.html()) == 0) txt.addClass("Zero");
         }
     }
-    g.$.addClass(tm || tp ? "Ticks" : "Labels");
-    if (!tick) g.$.addClass(ya ? "LabelY" : "LabelX");
+    if (tick) g.$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`);
+    else g.$.addClass(`Labels Label${ya ? 'Y' : 'X'}`);
+    // g.$.addClass(tick ? "Ticks" : "Labels");
+    // if (!tick) g.$.addClass(ya ? "LabelY" : "LabelX");
     return g;
 }
 
@@ -287,7 +323,8 @@ tick_label(fn, x, y, tick, offset) {
     let xa = x instanceof Array;
     if (tick) this.label(t ? [0, tick] : tick, x, y);
     if (xa) this.label(fn, x, offset);
-    else this.label(fn, offset, y); 
+    else this.label(fn, offset, y);
+    return this;
 }
 
 poly(pts, closed) {
@@ -596,8 +633,8 @@ constructor(jSelect, options) {
     let [w, h] = options.size ? options.size :
         (s && lrbt.length > 3 ? [s * (lrbt[1] - lrbt[0]) + margin[0] + margin[1] + 1, s * (lrbt[3] - lrbt[2]) + margin[2] + margin[3] + 1] :
             [jSelect.width(), jSelect.height()]);
-    w = Math.abs(w);
-    h = Math.abs(h);
+    w = Math.abs(Math.round(w));
+    h = Math.abs(Math.round(h));
     jSelect.attr({width: w, height: h, "data-aspect": w/h, viewBox: `0 0 ${w} ${h}`});
 
     /* Coordinate system */
@@ -798,24 +835,32 @@ static vec_diag(sel, vecs, opt) {
         let [l, r, b, t] = svg.lrbt;
         l = space * Math.ceil(l / space);
         b = space * Math.ceil(b / space);
+        let tick = opt.tick;
+        if (tick) {
+            svg.tick_label(n, 0, [...range(b, t + space / 10, space)], tick, x);
+            svg.tick_label(n, [...range(l, r + space / 10, space)], 0, tick, y);
+        }
+        else {
         svg.label(n, x, [...range(b, t + space / 10, space)]);
         svg.label(n, [...range(l, r + space / 10, space)], y);
+        }
     }
     g.$.appendTo(svg.$);
     if (opt.cycle == -1) g.$.find(".Component").hide();
-    else if (opt.cycle) svg.vec_cycle(g.$);
+    else if (opt.cycle) svg.vec_cycle(g.$, vecs.length > 1);
     return svg;
 }
 
-vec_cycle(g) {
+vec_cycle(g, res) {
 /* Default 'clickCycle' for vector diagrams */
     g.find(".Component").hide();
-    clickCycle(this.element, 0,
+    if (res) clickCycle(this.element, 0,
         () => {g.find(".Component").fadeOut()},
         () => {g.find(".Resultant").fadeOut(); g.find(".Component:not(.Resultant)").fadeIn()},
         () => {g.find(".Component:not(.Resultant)").fadeOut(); g.find(".Component.Resultant").fadeIn()},
         () => {g.find(".Resultant").fadeIn()},
     );
+    else this.$.on("click", () => g.find(".Component").fadeToggle());
     return this;
 }
 

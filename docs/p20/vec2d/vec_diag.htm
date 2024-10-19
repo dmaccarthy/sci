@@ -29,6 +29,7 @@ textarea, #CalcTable table {
 <script type="text/javascript" data-init="init">
 
 loadFeed.init = () => {
+/* Initialize drawing using data from location.search */
     let data;
     try {data = JSON.parse(decodeURIComponent(location.search.substring(1)))}
     catch(err) {data = {}}
@@ -40,13 +41,16 @@ loadFeed.init = () => {
 }
 
 loadFeed.init.url = () => {
-    // Make a custom URL for the current drawing
+/* Make a custom URL for the current drawing */
     let data = {v: $("textarea").val(), symbol: loadFeed.init.symbol, unit: loadFeed.init.units};
+    if (data.symbol == "v") delete data.symbol;
+    if (data.unit == "m/s") delete data.unit;
     if ($("#Shift")[0].checked) data.shift = 1;
-    return `./?${JSON.stringify(data)}#test/vec_diag`;
+    return `./?${JSON.stringify(data)}#p20/vec2d/vec_diag`;
 }
 
 loadFeed.init.viewport = (vecs) => {
+/* Calculate optimal scale and center */
     let vp = xy_limits(...vecs);
     let size = Math.max(...vp.size);
     let scale = size / 16;
@@ -62,6 +66,7 @@ loadFeed.init.viewport = (vecs) => {
     scale = s;
     if (n == 1) {scale *= 10; n = 0}
     else if (n == -1) {scale /= 10; n = 0}
+    else if (n == -2) {scale /= 100; n = 0}
     if (n) {
         loadFeed.init.viewport.n = n;
         let f = Math.pow(10, n);
@@ -79,6 +84,7 @@ loadFeed.init.viewport = (vecs) => {
 }
 
 loadFeed.init.redraw = (vecs) => {
+/* Redraw the vector diagram and remake the calculations table */
     // Replace previous drawing  with empty <svg> element
     let svg = document.createElementNS(SVG2.nsURI, "svg");
     $("#Output").html(svg);
@@ -90,7 +96,7 @@ loadFeed.init.redraw = (vecs) => {
 
     // Draw the vector diagram and print the units
     svg = SVG2.vec_diag(svg, shift ? vecs.slice(1) : vecs, {lrbt: vp.lrbt, scale: 30 / vp.grid, margin: 16,
-        grid: vp.grid, cycle: 1, shift: shift, label: [2 * vp.grid, vp.dig, "-6", "-14"]}
+        grid: vp.grid, cycle: 1, shift: shift, tick: "-8", label: [2 * vp.grid, vp.dig, "-12", "-20"]}
     );
     $(svg.$.find("g.Labels")[0]).find("text").css({"text-anchor": "end"});
     svg.vecs = vecs;
@@ -119,10 +125,23 @@ loadFeed.init.redraw = (vecs) => {
 }
 
 loadFeed.init.draw = () => {
+/* Draw the diagram from <textarea> data */
     let vecs = eval(`[${$("textarea").val().replaceAll("@", "vec2d")}]`);
     loadFeed.init.viewport.n = 0;
     loadFeed.init.viewport(vecs);
     loadFeed.init.redraw(vecs);
+}
+
+loadFeed.init.randomize = (n) => {
+/* Generate random vectors for testing */
+    if (!n) n = 2;
+    let s = "";
+    let x = randint(-3, 4);
+    while (n--) {
+        let a = randint(0, 359);
+        s += `,@(${Math.random().toFixed(4)}e${x},${a})`;
+    }
+    $("textarea").val(s.slice(1)).trigger("blur");
 }
 
 loadFeed.data = {
