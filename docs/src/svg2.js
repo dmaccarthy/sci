@@ -740,7 +740,7 @@ update(dt) {
     if (anim) dt = this.timeFactor / this.frameRate;
     let ft = 1000 / this.frameRate;
     if (this.beforeupdate) this.beforeupdate.call(this);
-    for (let item of this.items) {
+    if (this.items) for (let item of this.items) {
         try {
             if (item.beforeupdate) item.beforeupdate(item);
             item.update(dt);
