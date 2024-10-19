@@ -42,23 +42,22 @@ fbd1: (sel) => {
 },
 
 vec1: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
     let a = 25, Fg = 60, Fn = Fg * cos(a), Ff = Fg * sin(a) / 2;
-    let svg = applet.vecDiagram.diagram(sel,
-        [[0, -Fg], vec2d(Fn, 90-a), vec2d(Ff, 180-a)],
-        {omitAxes: 1, resultant: 1}, 4, -36, -68,
-    );
-    let grid = svg.items[0];
-    let attr = {interval: 8, fixed: 0, length: "8", omitZero: 1, offset: [0, "-18"]};
-    svg.axis({x: [-36, 44], ticks: attr}, grid);
-    attr.offset = ["-14", 0];
-    svg.axis({y: [-68, 16], ticks: attr}, grid);
-    svg.symbol("F", {vec:1, q4: "net"}, [5, 5]).css({fill: "#0065FE"});
-    svg.symbol("F", {vec:1, q4: "g"}, [-10, -34]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "n"}, [18, -38]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "f"}, [25, -4]).css({fill: "red"});
-    let t = svg.text("N", [40, -64], grid).css({"font-size": "24px"});
-    svg.final();
+    let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 90-a), vec2d(Ff, 180-a)], {lrbt: [-16, 32, -64, 8],
+        scale: 6, margin: 8, grid: 4, label: [8, 0, "-4", "-12"]});
+    svg.text("N", [28, -60]);
+    svg.$.find(".Component").remove();
+
+    let [BD, SM, SM_IT] = [1, 4, 6];
+    let arr = ["→", SM + BD, [0, "20"]];
+    let sub = ["14", "-8"];
+    let g = svg.group();
+    g.symbol(["F", BD], arr, ["g", SM_IT, sub]).config({shift: [-8, -34]});
+    g.symbol(["F", BD], arr, ["n", SM_IT, sub]).config({shift: [18, -38]});
+    g.symbol(["F", BD], arr, ["f", SM_IT, sub]).config({shift: [22, -6]});
+    let F = g.symbol(["F", BD], arr, ["net", SM_IT, ["16", "-8"]]).config({shift: [5, 3]});
+    g.$.find("g.Symbol").addClass("Large").find("text").css({fill: "red"});
+    F.$.find("text").css({fill: "#0065fe"});
 },
 
 Q1: (sel) => {
