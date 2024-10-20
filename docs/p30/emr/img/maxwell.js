@@ -1,7 +1,7 @@
 SVG2.cache("p30/emr/img/maxwell.js", {
 
 wave: (sel) => {
-    let svg = new SVG2(sel, {lrbt: [-2, 10, -2, 2], margin: 2, scale: 60});
+    let svg = new SVG2(sel, {lrbt: [-2, 10, -2, 2], margin: 4, scale: 60});
     svg.$.addClass("SVG2");
     svg.line([-3, 0], [11, 0]);
     for (let x=0;x<9;x++) svg.rect(["10", "10"], [x, 0]).css({fill: "#40c040"});
