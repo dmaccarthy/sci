@@ -54,8 +54,8 @@ Get event coordinates:
     svg.eventCoords(ev) -> {coords: RArray, pixels: RArray}
 
 Convert coordinates between child and parent coordinate systems:
-    g.coord_c([px, py]) -> RArray
-    g.coord_p([cx, cy]) -> RArray
+    g.coord_to_parent([cx, cy]) -> RArray
+    g.coord_from_parent([px, py]) -> RArray
     g.coord_to_svg([gx, gy]) -> RArray
     g.coord_from_svg([sx, sy]) -> RArray
 
@@ -127,14 +127,14 @@ gpath() {
     return p ? p.gpath().concat(a) : a;
 }
 
-coord_c(xy) {
+coord_from_parent(xy) {
     /* Apply rotation and shift to convert parent <g> coordinates xy relative to child */
     let a = this.theta * this.svg.angleDir;
         xy = this._shift.neg().plus(xy);
         return transform({angle: a, deg: true, center: this._pivot}, xy)[0];
     }
     
-coord_p(xy) {
+coord_to_parent(xy) {
 /* Apply rotation and shift to convert child <g> coordinates xy relative to parent */
     let a = this.theta * this.svg.angleDir;
     return transform({angle: -a, deg: true, center: this._pivot, shift: this._shift}, xy)[0];
@@ -144,7 +144,7 @@ coord_to_svg(xy) {
 /* Apply rotation and shift to convert <g> coordinates xy relative to <svg> */
     let g = this;
     while (g.parent) {
-        xy = g.coord_p(xy);
+        xy = g.coord_to_parent(xy);
         g = g.parent;
     }
     return xy;
@@ -154,7 +154,7 @@ coord_from_svg(xy) {
 /* Apply rotation and shift to convert <svg> coordinates xy relative to <g> */
     let p = this.gpath();
     for (let i=1;i<p.length;i++) {
-        xy = p[i].coord_c(xy);
+        xy = p[i].coord_from_parent(xy);
     }
     return xy;
 }

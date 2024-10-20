@@ -107,6 +107,7 @@ button[data-icon] > p {
     color: var(--blue);
 }
 
+.Link.Red {color: red}
 #TopTitle.FeedLink:before {content: "‹ "}
 #LessonNotes #Title {display: none}
 

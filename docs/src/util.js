@@ -81,11 +81,11 @@ function renderTeX(e, opt) {
     e = $(e ? e : ".TeX").removeClass("TeX").addClass("KaTeX");
     for (let ei of e) {
         let e$ = $(ei);
-        let options = {displayMode: e$.is("p, .Display"), throwOnError: false};
+        let options = {displayMode: e$.is("p, div, .Display"), throwOnError: false};
         if (opt) Object.assign(options, opt);
         katex.render(e$.text(), ei, options);
     }
-    if (renderTeX.hideEqNum) $("p.KaTeX .eqn-num").hide();
+    if (renderTeX.hideEqNum) $(".KaTeX:is(p, div) .eqn-num").hide();
 }
 
 renderTeX.hideEqNum = true;
