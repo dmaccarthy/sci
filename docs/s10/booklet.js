@@ -35,6 +35,12 @@ collect.urls = {
         ["acc", "Acceleration"],
     ],
 
+    "s10/phys2": [
+        ["mech", "Mechanical Energy"],
+        ["work", "Energy Transformations"],
+        // ["we", "Work-Energy Theorem"],
+    ],
+
 };
 
 collect.titles = {
@@ -42,6 +48,7 @@ collect.titles = {
     "s10/chem2": "2: Compounds",
     "s10/chem3": "3: Reactions",
     "s10/phys1": "*Part 1: Motion",
+    "s10/phys2": "*Part 2: Energy",
 }
 
 let course = "Science 10";
