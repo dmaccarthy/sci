@@ -22,14 +22,50 @@
 
 let svg;
 
+let stest = () => {
+    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-3, 3], margin: 6, grid: 1});
+    svg.$.addClass("SVG2");
+
+    let g1 = svg.group().config({theta: 45, shift: [1, -1]})
+    let scaled = g1.scaled([2, 1]);
+    let g2 = scaled.group().config({theta: 0});
+    let grid = g2.grid([-3, 3, 0.25], [-3, 3, 0.25]).$;
+    grid.find("line").css({stroke: "blue"});
+    g2.circle("5", [-1.5, 0]);
+    g2.rect([1, 1]);
+
+    g1 = svg.group().config({omega: 25, shift: [1, 0], pivot: [-1, 0.25]});
+    g2 = g1.scaled([3, 1]);
+    g2.image("../media/mail.png", [1, 1]);
+
+    svg.animate(g1);
+
+    svg.$.on("click", (ev) => {
+        let xy = svg.eventCoords(ev).coords;
+        console.log(xy, g2.coord_from_svg(xy));
+        svg.toggle();
+    })
+
+}
+
+let coil = () => {
+    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-3, 3], margin: 6, grid: 1});
+    svg.$.addClass("SVG2");
+    let g = svg.coil([2, 5], 15, 1).config({omega: 25, vel: [0.1, 0.05]});
+    g.$.find("g")[0].graphic; //.config({theta: 45});
+    svg.animate(g).play();
+}
+
 let test = () => {
-    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-3, 10, -6], margin: 6, grid: 1});
+    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-3, 10, -5], margin: 6, grid: 1});
     svg.$.addClass("SVG2");
 
     let g = svg.group().config({vel: [0, 0], omega: 10, pivot: [4, 3]});
     g.ellipse(["10", "20"], [3, 4]).css({fill: "red"});
-    g.image("../media/mail.png", [1, 1]);
     let plt = g.plot([[4,2], [2,4], [3,5]], ["24", "24"], "../media/train.svg", 45);
+
+    let s = g.scaled([3, 1]);
+    s.image("../media/mail.png", [1, 1]);
 
     let puck = svg.cylinder([1, 0.2], 3).config({pivot: [0, -1.6], shift: [2, 1], omega: 40});
     puck.$.find("ellipse").css({fill: "silver"});
@@ -60,9 +96,12 @@ let test = () => {
 
     let loc = g.locus((t, x, a) => a.A*sin(180*x-100*t)+a.y0, [0, 10], {A:2, y0:2});
     // console.log(loc);
-    svg.animate(puck, arrow); // g
 
-    svg.stickman(2).config({shift: [7, 1]});
+    let sticky = g.group().config({omega:25, vel: [1, -1], shift: [7, 1]});
+    s = sticky.scaled([3, 0.5]);
+    s.stickman(2);
+
+    svg.animate(puck, arrow, sticky);
 
     svg.$.on("click", (ev) => {
         svg.toggle();
@@ -70,25 +109,7 @@ let test = () => {
     });
 }
 
-
-let g1, g2, g3, g4;
-
-let p = () => {
-    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-5, 5], margin: 6, grid: 1});
-    svg.$.addClass("SVG2");
-
-    g1 = svg.group();
-    g1.circle("5").css({fill: "red"});
-    g2 = g1.group().config({shift: [0, 1]});
-    g2.circle("5").css({fill: "blue"});
-    g3 = g2.group().config({shift: [1, 0], theta: 0*uniform(0, 360)});
-    g3.circle("5").css({fill: "gold"});
-    g4 = g3.group().config({shift: [0, 1]});
-    g4.circle("5").css({fill: "violet"});
-    console.log(g4.coord_to_svg([0, 0]));
-}
-
-$(p);
+$(stest);
 
 </script>
 </head>

@@ -57,6 +57,15 @@ polyline.Locus {
     stroke: var(--blue);
 }
 
+g.Coil {
+
+rect {stroke: black; fill: #F8F8F8}
+circle {stroke: black; fill:silver; stroke-width: 0.5px}
+line.Wire, g.Wire > path {fill: none; stroke: #B87333}
+
+}
+
+
 /* Moved from svg.SVG2.VectorDiagram */
 
 g.TipToTail2D {fill-opacity: 0.7}

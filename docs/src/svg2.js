@@ -10,11 +10,14 @@ Create and configure an animated group:
     g = svg.group() -> SVG2g
     g.config({theta, omega, alpha, pivot, shift, vel, acc}) -> g
 
+Create a <g> for scaling (cannot be animated, but can be nested in an animated <g>):
+    s = g.scaled(s) -> SVGscaled
+
 Get the <svg>/<g> element or its jQuery object:
     svg.element -> <svg> or <g> element
     g.$ -> jQuery
 
-Add primitive content to an <svg>/<g> tag using an SVG2g instance (or subclasses SVG2, SV2arrow):
+Add primitive content to an <svg>/<g> tag using an SVG2g instance (or subclasses SVG2, SVG2scaled, SV2arrow):
     g.line([x1, y1], [x2, y2]) -> jQuery
     g.circle(r, [cx, cy]) -> jQuery
     g.ellipse([rx, ry], [cx, cy]) -> jQuery
@@ -33,8 +36,9 @@ Add composite content:
     g.tip_to_tail(vecs, options) -> SVG2g
     g.stickman(h) -> SVG2g
     g.symbol(...args) -> SVG2g
+    g.coil(size, n, reverse, r, axle) -> SVG2g
 
-Create a <path>
+Create a <path>; must call 'update' to write 'd' attribute to <path>:
     path = g.path(start).[path directives] -> SVG2path
     path.update() -> <path> element
 
@@ -128,11 +132,11 @@ gpath() {
 }
 
 coord_from_parent(xy) {
-    /* Apply rotation and shift to convert parent <g> coordinates xy relative to child */
+/* Apply rotation and shift to convert parent <g> coordinates xy relative to child */
     let a = this.theta * this.svg.angleDir;
-        xy = this._shift.neg().plus(xy);
-        return transform({angle: a, deg: true, center: this._pivot}, xy)[0];
-    }
+    xy = this._shift.neg().plus(xy);
+    return transform({angle: a, deg: true, center: this._pivot}, xy)[0];
+}
     
 coord_to_parent(xy) {
 /* Apply rotation and shift to convert child <g> coordinates xy relative to parent */
@@ -209,6 +213,7 @@ create_child(tag, attr) {
 }
 
 group() {return new SVG2g(this.svg, this.create_child("g"))}
+scaled(s) {return new SVG2scaled(this.svg, this.create_child("g"), s)}
 
 _px(x, i) {return Math.abs(typeof(x) == "string" ? parseFloat(x) : x * this.svg.scale[i])}
 
@@ -449,29 +454,97 @@ tip_to_tail(vecs, options) {
     return g;
 }
 
+coil(size, n, reverse, r, axle) {
+/* Draw a coil frame with turns of wire and axle */
+    let g0 = this.group();
+    g0.$.addClass("Coil");
+    let g = reverse ? g0.scaled([-1, 1]) : g0;
+    let [w, h] = size;
+    if (!n) n = 15;
+    if (!r) r = h / n / 4;
+    g.rect(size);
+    for (let i=0;i<n+0.5;i++) {
+        let y = (h - 6 * r) * (i - n / 2) / n;
+        let path = g._turn(size[0], r, i == n ? 2 : 3).config({shift: [0, y]});
+        path.$.addClass("Wire");
+        if (i == 0 || i == n) {
+            y += r * (i ? 2 : -2);
+            g.line([w / 2, y], [w / 2 + 2 * r, y]).addClass("Wire");
+        }
+    }
+    if (axle == null) axle = 0.7 * r;
+    if (axle) g.circle(axle);
+    return g0;
+}
+
+_turn(w, r, circ) {
+/* Render a turn of wire as a path */
+    let g = this.group();
+    if (circ == null) circ = 0;
+    w /= 2;
+    let p = g.path([w, circ & 1 ? 4 * r : 2 * r]);
+    if (circ & 1) p.arc([w, 3 * r], -90);
+    p.lineTo([-w, -2 * r]);
+    if (circ & 2) p. arc([-w, -r], 90, 2);
+    p.update();
+    return g;
+}
+
+
+}
+
+
+class SVG2scaled extends SVG2g {
+
+constructor(parent, g, scale) {
+    super(parent, g);
+    let svg = this.svg;
+    let f = (x) => x.toFixed(svg.decimals);
+    let [x, y] = svg.a2p(0, 0);
+    x = f(x); y = f(y);
+    let [sx, sy] = this.scale = typeof(scale) == "number" ? [scale, scale] : scale;
+    this.$.attr({transform: `translate(${x} ${y}) scale(${sx} ${sy}) translate(${-x} ${-y}) `});
+}
+
+get pivot() {return new RArray(0, 0)};
+get shift() {return new RArray(0, 0)};
+get theta() {return 0}
+
+update_transform() {return this}
+
+coord_to_parent(xy) {
+    let [sx, sy] = this.scale;
+    return new RArray(xy[0] * sx, xy[1] * sy);
+}
+
+coord_from_parent(xy) {
+    let [sx, sy] = this.scale;
+    return new RArray(xy[0] / sx, xy[1] / sy);
+}
+
 
 }
 
 
 class SVG2arrow extends SVG2g {
 
-    constructor(g, length, options, anchor) {
-        super(g);
-        let [tail, tip] = typeof(length) == "number" ? [[-length / 2, 0], [length / 2, 0]] : [length.tail, length.tip];
-        tail = g._cs(tail);
-        tip = g._cs(tip);
-        let seg = this.seg = new Segment(...tail, ...tip);
-        if (!anchor) anchor = 0;
-        else if (typeof(anchor) == "string") anchor = ["tail", "center", "tip"].indexOf(anchor) - 1;
-        this.pivot = seg[anchor == -1 ? "point1" : (anchor == 1 ? "point2" : "midpoint")];
-        let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) / g.svg.scale[1] : x);
-        if (options.tail) options.tail = f(options.tail);
-        if (options.head) options.head = f(options.head);
-        let pts = arrow_points(seg.length, options);
-        pts = transform({angle: seg.deg, deg: true, shift: seg.midpoint}, ...pts);
-        this.poly(pts, 1);
-        this.$.addClass("Arrow");
-    }
+constructor(g, length, options, anchor) {
+    super(g);
+    let [tail, tip] = typeof(length) == "number" ? [[-length / 2, 0], [length / 2, 0]] : [length.tail, length.tip];
+    tail = g._cs(tail);
+    tip = g._cs(tip);
+    let seg = this.seg = new Segment(...tail, ...tip);
+    if (!anchor) anchor = 0;
+    else if (typeof(anchor) == "string") anchor = ["tail", "center", "tip"].indexOf(anchor) - 1;
+    this.pivot = seg[anchor == -1 ? "point1" : (anchor == 1 ? "point2" : "midpoint")];
+    let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) / g.svg.scale[1] : x);
+    if (options.tail) options.tail = f(options.tail);
+    if (options.head) options.head = f(options.head);
+    let pts = arrow_points(seg.length, options);
+    pts = transform({angle: seg.deg, deg: true, shift: seg.midpoint}, ...pts);
+    this.poly(pts, 1);
+    this.$.addClass("Arrow");
+}
 
 }
 
