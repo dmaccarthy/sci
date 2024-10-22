@@ -36,6 +36,7 @@ collect.urls = {
     ],
 
     "s10/phys2": [
+        // ["acc", "Acceleration"],
         ["mech", "Mechanical Energy"],
         ["work", "Energy Transformations"],
         // ["we", "Work-Energy Theorem"],
