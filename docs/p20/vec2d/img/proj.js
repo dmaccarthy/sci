@@ -1,4 +1,4 @@
-SVG2.cache("p20/vec2d/img/proj_p.js", {
+SVG2.cache("p20/vec2d/img/proj.js", {
 
 Q1: (sel) => {
     $(sel).attr({width: 400, height: 400, "data-aspect": "1"});

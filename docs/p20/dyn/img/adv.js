@@ -95,55 +95,38 @@ sign: (sel) => {
 },
 
 sign_vec: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
     let Fg = 491, F = Fg / root(2);
-    let svg = applet.vecDiagram.diagram(sel,
-        [[0, -Fg], vec2d(F, 45), vec2d(F, 135)],
-        {omitAxes: 1, resultant: 0}, 30, -210, -540,
-    );
-    let grid = svg.items[0];
-    let attr = {interval: 60, fixed: 0, length: "8", omitZero: 1, offset: [0, "-18"]};
-    svg.axis({x: [-210, 390], ticks: attr}, grid);
-    attr.offset = ["-14", 0];
-    svg.axis({y: [-540, 60], ticks: attr}, grid);
-    svg.symbol("F", {vec:1, q4: "g"}, [-80, -250]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: 1}, [160, -400]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: 2}, [160, -91]).css({fill: "red"});
-    let g = svg.group(grid);
-    svg.text("N", [350, -510], g);
-    svg.text("45°", [34, -86], g);
-    svg.text("45°", [34, -405], g);
-    svg.text("90°", [180, -240], g);
-    g.$.find("text").css({"font-size": "24px"});
-    svg.final();
+    let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(F, 45), vec2d(F, 135)], {lrbt: [-120, 300, -540, 30],
+        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]});
+    svg.$.find(".Component, .Resultant").remove();
+    svg.text("N", [270, -510]);
+
+    let [BD, SM, SM_IT] = [1, 4, 6];
+    let arr = ["→", SM + BD, [0, "20"]];
+    let sub = ["14", "-8"];
+    let g = svg.group();
+    g.symbol(["F", BD], arr, ["g", SM_IT, sub]).config({shift: [30, -240]});
+    g.symbol(["F", BD], arr, ["1", SM, sub]).config({shift: [150, -400]});
+    g.symbol(["F", BD], arr, ["2", SM, sub]).config({shift: [150, -100]});
+    g.$.addClass("Large").find("text").css({fill: "red"});
 },
 
 sign_uneven: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
     let Fg = 491;
     let F1 = Fg / sin(105) * sin(45);
     let F2 = Fg / sin(105) * sin(30);
-    let svg = applet.vecDiagram.diagram(sel,
-        [[0, -Fg], vec2d(F1, 60), vec2d(F2, 135)],
-        {omitAxes: 1, resultant: 0}, 30, -210, -540,
-    );
-    let grid = svg.items[0];
-    let attr = {interval: 60, fixed: 0, length: "8", omitZero: 1, offset: [0, "-18"]};
-    svg.axis({x: [-210, 390], ticks: attr}, grid);
-    attr.offset = ["-14", 0];
-    svg.axis({y: [-540, 60], ticks: attr}, grid);
-    svg.symbol("F", {vec:1, q4: "g"}, [-80, -250]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: 1}, [130, -360]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: 2}, [130, -91]).css({fill: "red"});
-    svg.line([15, -491], [120, -491]).css({stroke: "black", "stroke-width": 2});
-    let g = svg.group(grid);
-    svg.text("N", [350, -510], g);
-    svg.text("45°", [34, -86], g);
-    svg.text("30°", [34, -390], g).config({theta: 60});
-    svg.text("60°", [70, -470], g);
-    svg.text("105°", [115, -180], g);
-    g.$.find("text").css({"font-size": "24px"});
-    svg.final();
+    let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(F1, 60), vec2d(F2, 135)], {lrbt: [-120, 300, -540, 30],
+        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]});
+    svg.$.find(".Component, .Resultant").remove();
+    svg.text("N", [270, -510]);
+    let [BD, SM, SM_IT] = [1, 4, 6];
+    let arr = ["→", SM + BD, [0, "20"]];
+    let sub = ["14", "-8"];
+    let g = svg.group();
+    g.symbol(["F", BD], arr, ["g", SM_IT, sub]).config({shift: [30, -240]});
+    g.symbol(["F", BD], arr, ["1", SM, sub]).config({shift: [135, -330]});
+    g.symbol(["F", BD], arr, ["2", SM, sub]).config({shift: [150, -100]});
+    g.$.addClass("Large").find("text").css({fill: "red"});
 },
 
 pulley: (sel) => {

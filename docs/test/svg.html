@@ -23,7 +23,8 @@
 let svg;
 
 let stest = () => {
-    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-3, 3], margin: 6, grid: 1});
+    let opt = {size: [640, 640], lrbt: [-3, 3], margin: 6, grid: 1};
+    svg = new SVG2("#S1", opt);
     svg.$.addClass("SVG2");
 
     let g1 = svg.group().config({theta: 45, shift: [1, -1]})
@@ -34,9 +35,9 @@ let stest = () => {
     g2.circle("5", [-1.5, 0]);
     g2.rect([1, 1]);
 
-    g1 = svg.group().config({omega: 25, shift: [1, 0], pivot: [-1, 0.25]});
-    g2 = g1.scaled([3, 1]);
-    g2.image("../media/mail.png", [1, 1]);
+    // g1 = svg.group().config({omega: 25, shift: [1, 0], pivot: [-1, 0.25]});
+    // g2 = g1.scaled([2, -1]);
+    // g2.image("../media/mail.png", [1, 1]);
 
     svg.animate(g1);
 
@@ -114,6 +115,8 @@ $(stest);
 </script>
 </head>
 <body>
-<p><svg id="S1"></svg></p>
+<p>
+    <svg id="S1"></svg>
+</p>
 </body>
 </html>

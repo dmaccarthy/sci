@@ -5,6 +5,11 @@ Simple JavaScript animations rendered in an <svg> element
 
 Create a new animation:
     svg = new SVG2(jSelect, {size or scale, lrbt, margin, grid}) -> SVG2
+    svg = SVG2.create(options) -> SVG2
+
+Get the <svg>/<g> element or its jQuery object:
+    svg.element -> <svg> or <g> element
+    g.$ -> jQuery
 
 Create and configure an animated group:
     g = svg.group() -> SVG2g
@@ -12,10 +17,6 @@ Create and configure an animated group:
 
 Create a <g> for scaling (cannot be animated, but can be nested in an animated <g>):
     s = g.scaled(s) -> SVGscaled
-
-Get the <svg>/<g> element or its jQuery object:
-    svg.element -> <svg> or <g> element
-    g.$ -> jQuery
 
 Add primitive content to an <svg>/<g> tag using an SVG2g instance (or subclasses SVG2, SVG2scaled, SV2arrow):
     g.line([x1, y1], [x2, y2]) -> jQuery
@@ -46,15 +47,15 @@ Register SVG2g (and subclass SVG2arrow) and SVG2locus instances to animate:
     svg.animate(g1, g2, ...) -> svg
 
 Update-handlers for SVG2 or SVG2g instances:
-    svg.beforeupdate = (svg) => {...};
-    g.afterupdate = (g) => {...};
+    svg.beforeupdate = (svg) => {...}
+    g.afterupdate = (g) => {...}
 
 Run the animation:
     svg.play() -> svg
     svg.pause() -> svg
     svg.toggle() -> svg
 
-Get event coordinates:
+Get mouse event coordinates:
     svg.eventCoords(ev) -> {coords: RArray, pixels: RArray}
 
 Convert coordinates between child and parent coordinate systems:
@@ -502,8 +503,9 @@ constructor(parent, g, scale) {
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = svg.a2p(0, 0);
     x = f(x); y = f(y);
+    let xn = f(-x), yn = f(-y);
     let [sx, sy] = this.scale = typeof(scale) == "number" ? [scale, scale] : scale;
-    this.$.attr({transform: `translate(${x} ${y}) scale(${sx} ${sy}) translate(${-x} ${-y}) `});
+    this.$.attr({transform: `translate(${x} ${y}) scale(${sx} ${sy}) translate(${xn} ${yn}) `});
 }
 
 get pivot() {return new RArray(0, 0)};
@@ -739,6 +741,8 @@ constructor(jSelect, options) {
     this.time = 0;
 }
 
+static create(options) {return new SVG2(document.createElementNS(SVG2.nsURI, "svg"), options)}
+
 static auto_lrbt(w, h, l, r, b, t) {
 /* Calculate coordinate limits so axes have the same scale */
     if (t == null) {
@@ -878,6 +882,11 @@ static load(cb) {
         }
     }
     if (SVG2.load.pending.length == 0) cb();
+}
+
+static cache_run(url, id, arg) {
+    url = new URL(url, SVG2.url).href;
+    return SVG2._cache[url][id](arg);
 }
 
 static remove_pending(url) {

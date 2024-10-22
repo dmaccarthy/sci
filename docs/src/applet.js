@@ -158,56 +158,56 @@ click: (sel) => {
 ebgCalc = (id) => ebgCalc.fn[id];
 
 
-applet.vecDiagram = {
+// applet.vecDiagram = {
 
-vectors: function (svg, vectors, opt, parent) { // Draw a sequence of vector addends
-    // opt = {arrow: {tail, head, angle, shape}, shift, vector, resultant, component, res_component}
-    if (!opt) opt = {};
-    let arrow = Object.assign({tail: 8 * svg.pixelX}, opt.arrow);
-    let shift = opt.shift ? opt.shift : [0, 0];
-    let tail = new RArray(...shift);
-    for (let v of vectors) {
-        if (v[0] || v[1]) {
-            v = tail.plus(v);
-            if (v[0] || v[1]) {
-                if (opt.component) {
-                    let pt = [v[0], tail[1]];
-                    if (v[0]) svg.arrow(tail, pt, arrow, parent).addClass("Component");
-                    if (v[1]) svg.arrow(pt, v, arrow, parent).addClass("Component");
-                }
-            }
-            if (opt.vector != false) svg.arrow(tail, v, arrow, parent).addClass("Vector");                
-        }
-        tail = v;
-    }
-    if (vectors.length > 1 && (tail[0] || tail[1])) {
-        if (opt.res_component) {
-            let pt = [tail[0], shift[1]];
-            svg.arrow(shift, pt, arrow, parent).addClass("Res_Component");
-            svg.arrow(pt, tail, arrow, parent).addClass("Res_Component");
-        }
-        if (opt.resultant) svg.arrow(shift, tail, arrow, parent).addClass("Resultant");
-    }
-},
+// vectors: function (svg, vectors, opt, parent) { // Draw a sequence of vector addends
+//     // opt = {arrow: {tail, head, angle, shape}, shift, vector, resultant, component, res_component}
+//     if (!opt) opt = {};
+//     let arrow = Object.assign({tail: 8 * svg.pixelX}, opt.arrow);
+//     let shift = opt.shift ? opt.shift : [0, 0];
+//     let tail = new RArray(...shift);
+//     for (let v of vectors) {
+//         if (v[0] || v[1]) {
+//             v = tail.plus(v);
+//             if (v[0] || v[1]) {
+//                 if (opt.component) {
+//                     let pt = [v[0], tail[1]];
+//                     if (v[0]) svg.arrow(tail, pt, arrow, parent).addClass("Component");
+//                     if (v[1]) svg.arrow(pt, v, arrow, parent).addClass("Component");
+//                 }
+//             }
+//             if (opt.vector != false) svg.arrow(tail, v, arrow, parent).addClass("Vector");                
+//         }
+//         tail = v;
+//     }
+//     if (vectors.length > 1 && (tail[0] || tail[1])) {
+//         if (opt.res_component) {
+//             let pt = [tail[0], shift[1]];
+//             svg.arrow(shift, pt, arrow, parent).addClass("Res_Component");
+//             svg.arrow(pt, tail, arrow, parent).addClass("Res_Component");
+//         }
+//         if (opt.resultant) svg.arrow(shift, tail, arrow, parent).addClass("Resultant");
+//     }
+// },
 
-diagram: function(sel, vectors, options, scale, x1, y1) {
-    let ar = $(sel);
-    ar = ar.attr("width") / ar.attr("height");
-    let grid = options.grid ? options.grid : 20;
-    // if (scale == null) [scale, x1, y1] = applet.vecDiagram.auto(vectors, grid, options);
-    let x2 = x1 + grid * scale;
-    let y2 = y1 + grid / ar * scale;
-    let svg = new SVG_Animation(sel, x1, x2, y1, y2, 1);
-    svg.grid([x1, x2, scale], [y1, y2, scale], options.omitAxes);
-    applet.vecDiagram.vectors(svg, vectors, options, svg.group());
-    let n = Math.floor(log(scale, 10));
-    if (scale >= Math.pow(10, n + 1)) n++;
-    let p = Math.pow(10, n);
-    svg.scaleInfo = {interval: scale, x: [x1, x2], y: [y1, y2],
-        intervalSci: [scale / p, n, p]};
-    return svg.update(0);
-},
+// diagram: function(sel, vectors, options, scale, x1, y1) {
+//     let ar = $(sel);
+//     ar = ar.attr("width") / ar.attr("height");
+//     let grid = options.grid ? options.grid : 20;
+//     // if (scale == null) [scale, x1, y1] = applet.vecDiagram.auto(vectors, grid, options);
+//     let x2 = x1 + grid * scale;
+//     let y2 = y1 + grid / ar * scale;
+//     let svg = new SVG_Animation(sel, x1, x2, y1, y2, 1);
+//     svg.grid([x1, x2, scale], [y1, y2, scale], options.omitAxes);
+//     applet.vecDiagram.vectors(svg, vectors, options, svg.group());
+//     let n = Math.floor(log(scale, 10));
+//     if (scale >= Math.pow(10, n + 1)) n++;
+//     let p = Math.pow(10, n);
+//     svg.scaleInfo = {interval: scale, x: [x1, x2], y: [y1, y2],
+//         intervalSci: [scale / p, n, p]};
+//     return svg.update(0);
+// },
 
-interval: [1, 1.25, 1.5, 2, 2.5, 3, 5, 7.5, 10]
+// interval: [1, 1.25, 1.5, 2, 2.5, 3, 5, 7.5, 10]
 
-};
+// };
