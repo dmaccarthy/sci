@@ -1,8 +1,9 @@
-function isSlideshow() {return $("body").hasClass("Slides")}
-function isPrintPage() {return $("body").hasClass("Print")}
+// function isSlideshow() {return $("body").hasClass("Slides")}
+// function isPrintPage() {return $("body").hasClass("Print")}
 
 function clearFeed() {
 /** Reset to empty feed **/
+    if ($("body").hasClass("Present")) return location.reload();
     loadFeed.data = {};
     for (let name of loadFeed._inits) delete loadFeed[name];
     loadFeed._inits = [];
@@ -144,23 +145,6 @@ function onFeedLoaded(feed, e, noHist) {
         });
     }
 
-    // Store printable sections
-    loadFeed.printable = {};
-    apply("[data-print]", (ei) => {
-        let id = ei.attr("data-print");
-        loadFeed.printable[id] = $(`#${id}`)[0].outerHTML;
-    });
-
-    // // Send AJAX requests
-    // apply("section.Post [data-ajax]", (ei) => {
-    //     let url = ei.attr("data-ajax");
-    //     // if (url == "1") url = location.hash.substr(1) + "_s.htm";
-    //     $.ajax({url: url, cache: false, success: (e) => {
-    //         ei.html(e);
-    //         // ei.find("#Title").remove();
-    //     }});
-    // });
-
     // Add titles and icons to posts
     apply("section.Post[data-title]", (ei) => {
         ei.prepend($("<h2>").html(ei.attr("data-title")));       
@@ -173,17 +157,6 @@ function onFeedLoaded(feed, e, noHist) {
         ei.prepend($("<img>").attr(a).addClass("Icon"));
     });
 
-    // Add print icons
-    $("<img>").appendTo("span[data-print]").click((ev) => {
-        ev = ev.originalEvent;
-        let id = $(ev.currentTarget.closest("[data-print]")).attr("data-print");
-        if (ev.ctrlKey && ev.altKey) {
-            if (id == "LessonNotes") window.open("slideshow.html");
-        }
-        else window.open(`print.html?id=${id}`);
-        return false;
-    }).attr({title: "Print Preview", alt: "Print", "data-src": "$print"});
-
     // Get image source URLs
     apply("img[data-src]", (ei) => {
          ei.attr({src: mediaURL(ei.attr("data-src"))});       
@@ -194,7 +167,7 @@ function onFeedLoaded(feed, e, noHist) {
 
     // Enable collapsible posts
     let h2 = $("section.Post").find(".Collapse:not(div)");
-    h2.addClass("Link").on("click", collapse).attr({title: "Click to expand or collapse"});  
+    h2.addClass("Link").on("click", collapse).attr({title: "Click to expand or collapse"});
     $("section.Post div.Collapse:not(.Expand)").hide();
     $("section.Post > img.Icon:first-child").click((e) => {
         $(e.currentTarget).next().trigger("click");
@@ -245,12 +218,6 @@ function onFeedLoaded(feed, e, noHist) {
         }
     });
 
-    // apply("[data-action]", (ei) => {
-    //     ei.on("click", (ev) => {
-    //         console.log(ei.attr("data-action"));
-    //     });
-    // });
-
     // Create other hyperlinks
     apply("[data-gdrv], [data-gdoc], [data-doc], [data-link], [data-open]", (ei) => {
         let url = ei.attr("data-link"), tab = false;
@@ -263,7 +230,7 @@ function onFeedLoaded(feed, e, noHist) {
                 if (url) url = "https://docs.google.com/document/d/" + url;
                 else {
                     url = ei.attr("data-doc");
-                    if (url) url = "./media/" + url; // https://media-davidmaccarthy.replit.app/
+                    if (url) url = "./media/" + url;
                     else url = ei.attr("data-open");
                 }
             }
@@ -301,7 +268,6 @@ function onFeedLoaded(feed, e, noHist) {
     renderTeX();
     drawChevrons();
     SVG2.load(initFeed);
-    // load AllSVG(initFeed);
 }
 
 function initFeed() {
@@ -314,7 +280,7 @@ function initFeed() {
     aspect();
 }
 
-function printable(id) {return loadFeed.printable[id]}
+// function printable(id) {return loadFeed.printable[id]}
 
 function copy_or_open(ei) {
 /** Enable copy/open operation on [data-echo] elements **/
@@ -344,7 +310,6 @@ function copy_or_open(ei) {
     for (i=0;i<3;i++) {
         btn = $("<img>").addClass("Icon").attr({
             src: data_images[img[i]], alt: img[i],
-            // src: mediaURL(img[i] + ".svg"), alt: img[i],
             title: ["Copy to clipboard", "Open in new browser tab", "Download"][i]
         }).appendTo(s);
         btn[0].action = i;
@@ -435,7 +400,8 @@ function layoutWidth() {
     let w = body.width();
     let x = ($(window).width() - w) / 2;
     let top = $("#Top");
-    body.css("margin-top", `calc(0.7em + ${top.outerHeight()}px)`);
+    let marg = body.hasClass("Present") ? "0px" : `calc(0.7em + ${top.outerHeight()}px)` ;
+    body.css("margin-top", marg);
     top.width(w - (w < 780 ? 21.6 : 0 * 25.2)).css({left: `${x}px`});
     aspect();
     // layoutWidth.timeout = setTimeout(layoutWidth, 10);
@@ -445,25 +411,27 @@ function loadHash(init) {
 /** Load feed identified by URL fragment/"hash" **/
     clearFeed();
     let feed = location.hash;
-    if (feed == "#~") {
-        if (init && location.origin.indexOf("replit.") > -1)
-            location.href = "https://dmaccarthy.github.io/sci";
-        else feed = "";
-    }
+    if (feed == "#~") feed = "";
     loadFeed(feed ? feed.slice(1) : "home", !init);    
 }
 
 function collapse(e) {
 /** Toggle collapsible sections **/
-    e = $(e.currentTarget).next("div.Collapse").toggle();
-    layoutWidth();
-    drawChevrons();
-    let t = collapse.toggled;
-    let k = loadFeed.current;
-    let i = $("div.Collapse").index(e[0]);
-    let j = t[k].indexOf(i);
-    if (j == -1) t[k].push(i);
-    else t[k].splice(j, 1);
+    let alt = e.altKey && e.ctrlKey;
+    // if (alt && teacher.mode) return teacher(0);
+    let div = $(e.currentTarget).next("div.Collapse");
+    if (!alt || div.is(":hidden")) {
+        div.toggle();
+        layoutWidth();
+        drawChevrons();
+        let t = collapse.toggled;
+        let k = loadFeed.current;
+        let i = $("div.Collapse").index(div[0]);
+        let j = t[k].indexOf(i);
+        if (j == -1) t[k].push(i);
+        else t[k].splice(j, 1);    
+    }
+    if (alt) slideShow(div);
 }
 
 collapse.toggled = {};
@@ -499,7 +467,104 @@ function msg(html, time) {
     }, time ? time : 2500);
 }
 
-// let tmp;
+// Printing 
+
+function beforePrint() {
+    beforePrint.hide = $("#Top, .NoPrint:visible").hide();
+    $("body").prepend($("<h1>").attr({id: "PrintTitle"}).html(document.title));
+}
+
+window.addEventListener("beforeprint", beforePrint);
+
+window.addEventListener("afterprint", () => {
+    try {
+        $("#PrintTitle").remove();
+        beforePrint.hide.show();
+    }
+    catch(err) {}
+});
+
+
+// Slideshow functions
+
+function showOnly(sel) {
+    sel = $($(sel)[0]);
+    for (let e of $("body *")) {
+        e = $(e);
+        let d = e.closest(sel).length > 0;
+        let a = sel.closest(e).length > 0;
+        if (!d && !a) e.hide();
+    }
+}
+
+function slideShow(sel) {
+    $("body").addClass("Present");
+    let e = sel = $($(sel)[0]).addClass("TopLevel");
+    showOnly(sel);
+    slideShow.sections = e.children("section");
+    while (e[0].tagName.toUpperCase() != "BODY") e = e.parent().show();
+    goSlide();
+    layoutWidth();
+    $(window).on("keydown", (ev) => {
+        let a = ["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp"].indexOf(ev.key);
+        if (a >= 0) {
+            let t = ["INPUT", "TEXTAREA"].indexOf(ev.target.tagName.toUpperCase());
+            if (t == -1) {
+                if (a == 0) nextCue();
+                else if (a == 1) prevCue();
+                else if (a == 2) goSlide();
+                else if (a == 3) goPrev();
+                layoutWidth();
+                scrollToBottom(t);
+            }
+        }
+    })
+}
+
+function goSlide(n) {
+    if (n == null) n = goSlide.n == null ? 0 : goSlide.n + 1;
+    if (n > slideShow.sections.length) n = slideShow.sections.length;
+    goSlide.n = n;
+    slideShow.sections.hide();
+    let s = $(slideShow.sections[n]).fadeIn();
+    let c = s.find("div, p, ol, ul, li, h1, h2, h3, table");
+    goSlide.cues = [];
+    for (let e of c) {
+        e = $(e);
+        if (!e.is(":first-child")) goSlide.cues.push(e.hide());
+        else e.show();
+    }
+    goSlide.cueNum = -1;
+}
+
+function goPrev() {goSlide(goSlide.n ? goSlide.n - 1 : 0)}
+
+function nextCue() {
+    let cues = goSlide.cues;
+    let n = ++goSlide.cueNum;
+    if (n >= cues.length) goSlide();
+    else cues[n].fadeIn();
+}
+
+function prevCue() {
+    let cues = goSlide.cues;
+    let n = goSlide.cueNum--;
+    if (n >= 0) cues[n].fadeOut();
+    else {
+        goPrev();
+        let cues = goSlide.cues;
+        let n = cues.length;
+        for (let i=0;i<n;i++) cues[i].show();
+        goSlide.cueNum = n - 1;    
+    }
+}
+
+function scrollToBottom(t) {
+    let h = $("html");
+    let y = h[0].scrollHeight - $(window).height();
+    h.animate({scrollTop: y < 0 ? 0 : y}, t ? t : 500);
+}
+
 
 // Other event handlers
 

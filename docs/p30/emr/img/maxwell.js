@@ -20,7 +20,7 @@ wave: (sel) => {
             let A = wave(x, t); //2 * cos(k * (x - v * t));
             let tail = Math.min(8 * Math.abs(A), 4).toFixed(2);
             g.arrow({tail: [x, 0], tip: [x, A]}, {tail: tail}).$.addClass("Electric").find("polygon").css({fill: "#0065fe"});
-            if (svg.status > 2) g.arrow({tail: [x, 0], tip: [x, 0.85 * A]}, {tail: tail}, "tail").config({theta: 105}).$.addClass("Magnetic");
+            if (svg.status > 2) g.arrow({tail: [x, 0], tip: [x, 0.85 * A]}, {tail: tail}, "tail").config({theta: 115}).$.addClass("Magnetic");
         }
     }
 

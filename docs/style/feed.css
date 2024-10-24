@@ -1,9 +1,11 @@
 body {
     font-family: "Noto Sans", "Open Sans", Oxygen, sans-serif;
-    margin: 2em auto;
     max-width: 100%;
-    font-size: 90%;
  }
+
+body:not(.Present) {
+    margin: 2em auto;
+    font-size: 90%;
 
 section.Post {
     background-color: white;
@@ -36,6 +38,9 @@ section.Post > img.Icon {
 
 section.Post ol, section.Post ul {padding-left: 1.5em}
 section.Post li {padding: 0.15em 0.5em}
+    
+}
+
 
 div.Collapse.Indent {
     padding-left: 0.5em;
@@ -169,20 +174,54 @@ p.EchoControl > span.CodeTitle {
 }
 
 @media (min-width: 780px) {
-    body {
-        max-width: 840px;
-        font-size: 105%;
-    }
 
-    section.Post > img.Icon {
-        margin-left: -3.5em;
-        padding: 0.25em 0.25em 0.25em 0.5em;
-    }
+body:not(.Present) {
+    max-width: 840px;
+    font-size: 105%;
 
-    section.Post {padding-left: 3.5em}
-    section.Post h2, section.Post h3 {margin-bottom: 1em}
-    section.Post ol, section.Post ul {padding-left: 2.4em}
-    div.Message {min-width: 468px}
-    #Top {padding: 12px 0}
+section.Post > img.Icon {
+    margin-left: -3.5em;
+    padding: 0.25em 0.25em 0.25em 0.5em;
+}
+
+section.Post {padding-left: 3.5em}
+section.Post h2, section.Post h3 {margin-bottom: 1em}
+section.Post ol, section.Post ul {padding-left: 2.4em}
+div.Message {min-width: 468px}
+#Top {padding: 12px 0}
+
+}
+
+
+body.Present {
+    margin: 0;
+    font-size: 225%;
+
+h1 {font-size: 200%}
+.NoPresent {display: none}
+#Title {color: var(--blue)}
+
+.TopLevel {
+    max-width: 100%;
+    padding: 0.5em 1em;
+    background-color: white;
+}
+
+.TopLevel section.Slide p {margin: 0.5em 0}
+
+.TopLevel section.Slide > .Assign {
+    color: blue;
+    margin: 2em;
+    border-top: 1px solid blue;
+    border-bottom: 1px solid blue;
+}
+
+.TopLevel p[data-qr] {text-align:center}
+.TopLevel p[data-qr] canvas {padding: 1em}
+
+.TopLevel section.Slide h3:first-child {margin-top: 0}
+.TopLevel .Print {display: none}
+
+}
 
 }

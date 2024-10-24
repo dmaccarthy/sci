@@ -24,67 +24,60 @@
 </section>
 
 <section class="Slide"><h3>2D Vectors</h3>
-    <p><em class="Defn">Vectors</em> are quantities that involve a direction, such as displacement, velocity, acceleration, and force.</p>
-    <ul data-cue="+">
-        <li>We can illustrate vectors using a <em class="Defn">vector diagram</em>, in which each vector is drawn as an arrow illustrating the direction and the magnitude (size) of the vector.</li>
-        <li data-cue="+">A vector described by its magnitude and direction is said to be in <em class="Defn">polar form</em>:<p class="TeX">\vec{\mathbf F} = \mathrm{8.0\ N\ [30°]}</p></li>
-    </ul>
-    <p class="Center" data-cue="+"><svg data-svg2="p30/mom/img/vec2d.js#F" class="s20"></svg></p>
-    <ul data-cue="+">
-        <li>Directions are measured as angles measured counterclockwise from the <span class="TeX">+x</span>-axis.</li>
-        <li data-cue="+">Negative angles indicate clockwise from the <span class="TeX">+x</span>-axis.</li>
-        <li data-cue="+">The <em class="Defn">components</em> of a vector describe “how much” of the vector is in each of the <span class="TeX">x</span> and <span class="TeX">y</span> directions.</li>
-        <li data-cue="+">We can use trigonometry to calculate the components of a vector from its magnitude and direction:
-            <p class="TeX">{\vec{\mathbf{F}}}_x=\left|\vec{\mathbf{F}}\right|\cos{\theta}</p>
-            <p class="TeX">{\vec{\mathbf{F}}}_y=\left|\vec{\mathbf{F}}\right|\sin{\theta}</p></li>
-        <li data-cue="+">Describing a vector by its components is called the <em class="Defn">Cartesian</em> form of the vector:<p class="TeX">\vec{\mathbf F} = \mathrm{(6.9, 4.0)\ N}</p></li>
-        <li data-cue="+">We can also use trigonometry to convert a vector from Cartesian to polar form:
-            <p class="TeX">\left|\vec{\mathbf{F}}\right|=\sqrt{F_x^2+F_y^2}</p>
-            <p class="TeX">\tan{\theta}=\frac{{\vec{\mathbf{F}}}_y}{{\vec{\mathbf{F}}}_x}</p></li>
-        <li data-cue="+">When solving for <span class="TeX">\theta</span> using <span class="TeX">\tan^{-1}</span>, you will get only one of two possible solutions; when the <span class="TeX">x</span>-component is negative, you will have to add 180° to get the correct answer.</li>
-        <li data-cue="+">Compass directions should be converted to conventional angles...</li>
-    </ul>
-    <table data-cue="+" class="Center">
-        <tr><td>East</td><td>0°</td></tr>
-        <tr><td>North</td><td>90°</td></tr>
-        <tr><td>West</td><td>180°</td></tr>
-        <tr><td>South</td><td>270°</td></tr>
-    </table>
-    </section>
-    
-    <section class="Slide"><h3>Vector Diagrams</h3>
-    <p>We can illustrate <em class="Defn">addition</em> of two or more 2D vectors by drawing a <em>tip-to-tail</em> <em class="Defn">vector diagram</em>.</p>
-    <ul class="Blue" data-cue="+">
-        <li>Example: A speedboat has a velocity of 20.0 m/s [120°] relative to the water. There is a current of 5.00 m/s [200°]. Determine the resultant velocity.</li>
-    </ul>
-    <p class="Center" data-cue="+"><svg data-svg2="p30/mom/img/vec2d.js#boat" class="s20"></svg></p>
-    <ul data-cue="+">
-        <li>To <em class="Defn">subtract</em> a vector, just add its negative!</li>
-    <ul>
-    </section>
-    
-    <section class="Slide"><h3>Vector Arithmetic</h3>
-    <p class="Center Present" data-cue="+"><svg data-svg2="p30/mom/img/vec2d.js#boat" class="s20"></svg></p>
-    <p>To add or subtract vectors more precisely than is possible with a diagram, convert all vectors to Cartesian form...</p>
-    <p data-cue="+" class="TeX">\vec{\mathbf v}_{1x} = |\vec{\mathbf v}_1| \cos\theta_1 = \mathrm{20.0\ m/s\cdot\cos 120° = -10.0\ m/s}</p>
-    <p data-cue="+" class="TeX">\vec{\mathbf v}_{1y} = |\vec{\mathbf v}_1| \sin\theta_1 = \mathrm{20.0\ m/s\cdot\sin 120° = +17.3\ m/s}</p>
-    <p data-cue="+" class="TeX">\vec{\mathbf v}_{2x} = |\vec{\mathbf v}_2| \cos\theta_2 = \mathrm{5.00\ m/s\cdot\cos 200° = -4.70\ m/s}</p>
-    <p data-cue="+" class="TeX">\vec{\mathbf v}_{2y} = |\vec{\mathbf v}_2| \sin\theta_2 = \mathrm{5.00\ m/s\cdot\sin 200° = -1.71\ m/s}</p>
-    <p data-cue="+">Then perform the calculations separately on the <span class="TeX">x</span>- and <span class="TeX">y</span>-components...</p>
-    <p data-cue="+" class="TeX">\vec{\mathbf v}_x = \vec{\mathbf v}_{1x} + \vec{\mathbf v}_{2x}= \mathrm{(-10.0 + (-4.70))\ m/s = -14.7\ m/s}</p>
-    <p data-cue="+" class="TeX">\vec{\mathbf v}_y = \vec{\mathbf v}_{1y} + \vec{\mathbf v}_{2y}= \mathrm{(+17.3 + (-1.71))\ m/s = +15.6\ m/s}</p>
-    <ul data-cue="+">
-        <li>If the resultant vector needs to be in polar form, just convert it using the Pythagoras and <span class="TeX">\tan^{-1}</span> formulas.</li>
-    <ul>
-    </section>
+<p><em class="Defn">Vectors</em> are quantities that involve a direction, such as displacement, velocity, acceleration, and force.</p>
+<ul data-cue="+">
+    <li>We can illustrate vectors using a <em class="Defn">vector diagram</em>, in which each vector is drawn as an arrow illustrating the direction and the magnitude (size) of the vector.</li>
+    <li data-cue="+">A vector described by its magnitude and direction is said to be in <em class="Defn">polar form</em>:<p class="TeX">\vec{\mathbf F} = \mathrm{8.0\ N\ [30°]}</p></li>
+</ul>
+<p class="Center" data-cue="+"><svg data-svg2="p30/mom/img/vec2d.js#F" class="s20"></svg></p>
+<ul data-cue="+">
+    <li>Directions are measured as angles measured counterclockwise from the <span class="TeX">+x</span>-axis.</li>
+    <li data-cue="+">Negative angles indicate clockwise from the <span class="TeX">+x</span>-axis.</li>
+    <li data-cue="+">The <em class="Defn">components</em> of a vector describe “how much” of the vector is in each of the <span class="TeX">x</span> and <span class="TeX">y</span> directions.</li>
+    <li data-cue="+">We can use trigonometry to calculate the components of a vector from its magnitude and direction:
+        <p class="TeX">{\vec{\mathbf{F}}}_x=\left|\vec{\mathbf{F}}\right|\cos{\theta}</p>
+        <p class="TeX">{\vec{\mathbf{F}}}_y=\left|\vec{\mathbf{F}}\right|\sin{\theta}</p></li>
+    <li data-cue="+">Describing a vector by its components is called the <em class="Defn">Cartesian</em> form of the vector:<p class="TeX">\vec{\mathbf F} = \mathrm{(6.9, 4.0)\ N}</p></li>
+    <li data-cue="+">We can also use trigonometry to convert a vector from Cartesian to polar form:
+        <p class="TeX">\left|\vec{\mathbf{F}}\right|=\sqrt{F_x^2+F_y^2}</p>
+        <p class="TeX">\tan{\theta}=\frac{{\vec{\mathbf{F}}}_y}{{\vec{\mathbf{F}}}_x}</p></li>
+    <li data-cue="+">When solving for <span class="TeX">\theta</span> using <span class="TeX">\tan^{-1}</span>, you will get only one of two possible solutions; when the <span class="TeX">x</span>-component is negative, you will have to add 180° to get the correct answer.</li>
+    <li data-cue="+">Compass directions should be converted to conventional angles...</li>
+</ul>
+<table data-cue="+" class="Center">
+    <tr><td>East</td><td>0°</td></tr>
+    <tr><td>North</td><td>90°</td></tr>
+    <tr><td>West</td><td>180°</td></tr>
+    <tr><td>South</td><td>270°</td></tr>
+</table>
+</section>
 
-<script type="text/javascript" data-init="notes">
+<section class="Slide"><h3>Vector Diagrams</h3>
+<p>We can illustrate <em class="Defn">addition</em> of two or more 2D vectors by drawing a <em>tip-to-tail</em> <em class="Defn">vector diagram</em>.</p>
+<ul class="Blue" data-cue="+">
+    <li>Example: A speedboat has a velocity of 20.0 m/s [120°] relative to the water. There is a current of 5.00 m/s [200°]. Determine the resultant velocity.</li>
+</ul>
+<p class="Center" data-cue="+"><svg data-svg2="p30/mom/img/vec2d.js#boat" class="s20"></svg></p>
+<ul data-cue="+">
+    <li>To <em class="Defn">subtract</em> a vector, just add its negative!</li>
+<ul>
+</section>
 
-loadFeed.notes = () => {
-    if (isSlideshow()) $("#Ex1, #Ex2").trigger("click");
-}
+<section class="Slide"><h3>Vector Arithmetic</h3>
+<p class="Center Present" data-cue="+"><svg data-svg2="p30/mom/img/vec2d.js#boat" class="s20"></svg></p>
+<p>To add or subtract vectors more precisely than is possible with a diagram, convert all vectors to Cartesian form...</p>
+<p data-cue="+" class="TeX">\vec{\mathbf v}_{1x} = |\vec{\mathbf v}_1| \cos\theta_1 = \mathrm{20.0\ m/s\cdot\cos 120° = -10.0\ m/s}</p>
+<p data-cue="+" class="TeX">\vec{\mathbf v}_{1y} = |\vec{\mathbf v}_1| \sin\theta_1 = \mathrm{20.0\ m/s\cdot\sin 120° = +17.3\ m/s}</p>
+<p data-cue="+" class="TeX">\vec{\mathbf v}_{2x} = |\vec{\mathbf v}_2| \cos\theta_2 = \mathrm{5.00\ m/s\cdot\cos 200° = -4.70\ m/s}</p>
+<p data-cue="+" class="TeX">\vec{\mathbf v}_{2y} = |\vec{\mathbf v}_2| \sin\theta_2 = \mathrm{5.00\ m/s\cdot\sin 200° = -1.71\ m/s}</p>
+<p data-cue="+">Then perform the calculations separately on the <span class="TeX">x</span>- and <span class="TeX">y</span>-components...</p>
+<p data-cue="+" class="TeX">\vec{\mathbf v}_x = \vec{\mathbf v}_{1x} + \vec{\mathbf v}_{2x}= \mathrm{(-10.0 + (-4.70))\ m/s = -14.7\ m/s}</p>
+<p data-cue="+" class="TeX">\vec{\mathbf v}_y = \vec{\mathbf v}_{1y} + \vec{\mathbf v}_{2y}= \mathrm{(+17.3 + (-1.71))\ m/s = +15.6\ m/s}</p>
+<ul data-cue="+">
+    <li>If the resultant vector needs to be in polar form, just convert it using the Pythagoras and <span class="TeX">\tan^{-1}</span> formulas.</li>
+<ul>
+</section>
 
-</script>
 </div></div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">

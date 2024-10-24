@@ -92,20 +92,8 @@ p.Caption {
     margin-bottom: 0.5em;
 }
 
-td.Reveal span {
-    color: red;
-    display: none;
-}
-
-/* body.Slides .w10 {width: 8em}
-body.Slides .w12 {width: 10em}
-body.Slides .w16 {width: 14em}
-body.Slides .w20 {width: 17em}
-body.Slides .w24 {width: 20em}
-body.Slides .w28 {width: 24em}
-body.Slides .w32 {width: 28em} */
-
-/* :not(.Slides) */
+td.Reveal span {color: red}
+body:is(.Present, .Slides) td.Reveal span {display: none}
 
 .w4, body.Slides .s4 {width: 4em}
 .w6, body.Slides .s6 {width: 6em}
