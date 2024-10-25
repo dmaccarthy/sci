@@ -158,7 +158,7 @@ function onFeedLoaded(feed, e, noHist) {
     });
 
     // Add print icons and get image source URLs
-    // printIcons();
+    printIcons();
     apply("img[data-src]", (ei) => {
          ei.attr({src: mediaURL(ei.attr("data-src"))});       
     });
@@ -589,6 +589,11 @@ function scrollToBottom(t) {
 // Other event handlers
 
 $(window).on("resize", layoutWidth).on("popstate", loadHash);
+
+$(window).on("keydown", (ev) => {
+    if (ev.ctrlKey && ev.altKey && ev.key == "n")
+        window.open(location.href);
+});
 
 $(() => {
 /** Initialize page **/
