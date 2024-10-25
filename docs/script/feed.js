@@ -157,7 +157,8 @@ function onFeedLoaded(feed, e, noHist) {
         ei.prepend($("<img>").attr(a).addClass("Icon"));
     });
 
-    // Get image source URLs
+    // Add print icons and get image source URLs
+    // printIcons();
     apply("img[data-src]", (ei) => {
          ei.attr({src: mediaURL(ei.attr("data-src"))});       
     });
@@ -268,6 +269,25 @@ function onFeedLoaded(feed, e, noHist) {
     renderTeX();
     drawChevrons();
     SVG2.load(initFeed);
+}
+
+function printIcons() {
+    for (let e of $("section.Post")) {
+        e = $(e).children("h2:not(.NoPrint)");
+        if (e.length) {
+            e = $(e[0]);
+            e.children("span[data-print]").remove();
+            let span = $("<span>").addClass("Action");
+            e.append(span);
+            $("<img>").attr({"data-src": "$print"}).appendTo(span).on("click", (ev) => {
+                $("section.Post").hide();
+                e.closest("section.Post").show();
+                $(ev.currentTarget).closest("h2").next("div.Collapse").show();
+                print();
+                return false;
+            });
+        }
+    }
 }
 
 function initFeed() {
@@ -418,7 +438,6 @@ function loadHash(init) {
 function collapse(e) {
 /** Toggle collapsible sections **/
     let alt = e.altKey && e.ctrlKey;
-    // if (alt && teacher.mode) return teacher(0);
     let div = $(e.currentTarget).next("div.Collapse");
     if (!alt || div.is(":hidden")) {
         div.toggle();
@@ -480,6 +499,7 @@ window.addEventListener("afterprint", () => {
     try {
         $("#PrintTitle").remove();
         beforePrint.hide.show();
+        loadFeed();
     }
     catch(err) {}
 });
