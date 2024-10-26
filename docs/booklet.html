@@ -27,17 +27,18 @@ table, ol[type='a'], .NoPageBreak {break-inside: avoid}
 </style>
 <script type="text/javascript">
 
-let bmap = {
-
-    "s10/phys2" : {
-        title: "Science 10: Physics (Part 2)",
-        feeds: ["mech", "work", "we", "eff", "heat"], //omit: [2, 4],
-    },
-
-}
-
+let zoom = 80;
 let deleteAnswer = true;
 let pages;
+
+let bmap = {
+
+"s10/phys2" : {
+    title: "Science 10: Physics (Part 2)",
+    feeds: ["mech", "work", "we", "eff", "heat"], //omit: [2, 4],
+},
+
+}
 
 function deletePost(text) {
     return ["Lesson Notes", "Lab Handout", "Handouts", "Video"].indexOf(text) != -1;
@@ -85,8 +86,13 @@ function fetchPages() {
     }
     post.css("border-bottom", "none");
     $("#Instructions").show();
-    $("body").css({zoom: "80%", "max-width": "125vh", margin: "0.5em"});
+    $("body").css({zoom: `${zoom}%`, "max-width": "none", margin: "0.5em"});
 }
+
+$(() => {
+    let z = qsArgs("zoom");
+    if (z) zoom = parseFloat(z);
+});
 
 $(window).on("click", (ev) => {
     let e = $(ev.target);
