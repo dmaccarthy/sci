@@ -37,7 +37,7 @@ function loadFeed(feed, noHist) {
         msg();
         if ($("#Main").html() == "")
             setTimeout(() => {loadFeed("home")}, 1500);
-    }, success:(e, s, r) => {
+    }, success:(e) => {
         onFeedLoaded(feed, e, noHist);
     }});
     loadFeed.refresh = setTimeout(() => {
@@ -92,6 +92,7 @@ mediaURL.urls = {
     "html5.svg": data_images.html,
     help: "./media/help.svg",
     gdrv: data_images.gdrv,
+    gdoc: "https://www.gstatic.com/images/branding/product/1x/docs_2020q4_48dp.png",
     gsheet: "https://ssl.gstatic.com/docs/spreadsheets/spreadsheets_2023q4.ico",
     slides: data_images.slides,
     video: "./media/video.svg",
@@ -272,8 +273,8 @@ function onFeedLoaded(feed, e, noHist) {
 }
 
 function printIcons() {
-    for (let e of $("section.Post")) {
-        e = $(e).children("h2:not(.NoPrint)");
+    for (let e of $("section.Post:not(.NoPrintIcon)")) {
+        e = $(e).children("h2:not(.NoPrintIcon)");
         if (e.length) {
             e = $(e[0]);
             e.children("span[data-print]").remove();
@@ -282,7 +283,8 @@ function printIcons() {
             $("<img>").attr({"data-src": "$print"}).appendTo(span).on("click", (ev) => {
                 $("section.Post").hide();
                 e.closest("section.Post").show();
-                $(ev.currentTarget).closest("h2").next("div.Collapse").show();
+                let div = $(ev.currentTarget).closest("h2").next("div.Collapse");
+                div.show().find(".Collapse").show();
                 print();
                 return false;
             });
@@ -378,12 +380,12 @@ clickLink.course = localStorage.getItem("clickLink.course") == "1" ? 1 : 0;
 
 function goUp(ev) {
 /** Event handler for "up" command **/
-    if (ev.ctrlKey && ev.altKey) teacher(teacher.mode ? 0 : 2);
-    else if (ev.ctrlKey && ev.shiftKey) window.open(location.href);
-    else {
+    // if (ev.ctrlKey && ev.altKey) teacher(teacher.mode ? 0 : 2);
+    // else if (ev.ctrlKey && ev.shiftKey) window.open(location.href);
+    // else {
         let feed = loadFeed.data.up;
         if (feed) loadFeed(feed);        
-    }
+    // }
 }
 
 function video(s) {
@@ -521,7 +523,8 @@ function slideShow(sel) {
     $("body").addClass("Present");
     let e = sel = $($(sel)[0]).addClass("TopLevel");
     showOnly(sel);
-    slideShow.sections = e.children("section");
+    slideShow.sections = e.children(".Slide");
+    if (slideShow.sections.length == 0) slideShow.sections = sel;
     while (e[0].tagName.toUpperCase() != "BODY") e = e.parent().show();
     goSlide();
     layoutWidth();
@@ -591,8 +594,10 @@ function scrollToBottom(t) {
 $(window).on("resize", layoutWidth).on("popstate", loadHash);
 
 $(window).on("keydown", (ev) => {
-    if (ev.ctrlKey && ev.altKey && ev.key == "n")
-        window.open(location.href);
+    if (ev.ctrlKey && ev.altKey) {
+        if (ev.key == "n") window.open(location.href);
+        else if (ev.key == "t") teacher(teacher.mode ? 0 : 2);
+    }
 });
 
 $(() => {

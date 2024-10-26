@@ -114,7 +114,8 @@ button[data-icon] > p {
 
 .Link.Red {color: red}
 #TopTitle.FeedLink:before {content: "‹ "}
-#LessonNotes #Title {display: none}
+/* #LessonNotes  */
+#Title {display: none}
 
 .Chevron {
     height: 0.9em;

@@ -1,106 +1,91 @@
 <!DOCTYPE html>
-<html lang="en-CA">
+<html lang="en-ca">
 <head>
 <meta charset="UTF-8"/>
-<title>Practice Questions</title>
-<link rel="shortcut icon" type="image/x-icon" href="./media/rocket.svg"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Booklet</title>
+<link rel="shortcut icon" type="image/svg+xml" href="./media/rocket.svg" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+<link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-roman.css" type="text/css" charset="utf-8" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
 <link rel="stylesheet" href="./style/common.css"/>
 <link rel="stylesheet" href="./style/feed.css"/>
 <link rel="stylesheet" href="./style/svg.css"/>
 <link rel="stylesheet" href="./style/svg2.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="./src/util.js"></script>
 <style type="text/css">
 
-body {font-size: 90%}
-
-section.Post {
-    padding-left: 1em;
-    border-bottom: none;
-}
-
-h1, h2, h3 {
-    break-after: avoid;    
-}
-    
-table, ol[type='a'], .NoPageBreak {
-    break-inside: avoid;
-}
-
-.PageBreak {
-    break-before: page;
-}
+h1, h2, h3 {break-after: avoid}
+.PageBreak {break-before: page}
+#Instructions, #Fetch {display: none}
+table, ol[type='a'], .NoPageBreak {break-inside: avoid}
+#Instructions > ul {font-style: italic}
 
 </style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.1/lib/browser/math.min.js"></script>
-<script type="text/javascript" src="./media/dataimg.js"></script>
-<script type="text/javascript" src="./src/util.js"></script>
-<script type="text/javascript" src="./src/bdata.js"></script>
-<script type="text/javascript" src="./src/math.js"></script>
-<script type="text/javascript" src="./src/matrix.js"></script>
-<script type="text/javascript" src="./script/phys.js"></script>
-<script type="text/javascript" src="./src/svg_anim.js"></script>
-<script type="text/javascript" src="./src/svg2.js"></script>
-<script type="text/javascript" src="./src/applet.js"></script>
-<script>
+<script type="text/javascript">
 
-let loadFeed = {}, siteData = {};
+let bmap = {
 
-function isPractice(s) {
-    s = $(s);
-    // if (!isAfter(s.attr("data-show"))) return;
-    let h = s.children("h2");
-    let booklet = h.attr("data-booklet");
-    // console.log(h, booklet);
-    let include = ["Pre-Test", "Remember?", "Practice", "Review", "Activity"];
-    let i = include.indexOf(h.text());
-    if (booklet == "yes" || i != -1 && booklet != "no") {
-        h.replaceWith($("<h3>").html(h.text()));
-        return true;
+    "s10/phys2" : {
+        title: "Science 10: Physics (Part 2)",
+        feeds: ["mech", "work", "we", "eff", "heat"], //omit: [2, 4],
+    },
+
+}
+
+let deleteAnswer = true;
+let pages;
+
+function deletePost(text) {
+    return ["Lesson Notes", "Lab Handout", "Handouts", "Video"].indexOf(text) != -1;
+}
+
+function loadWindows() {
+    pages = [];
+    let key = $("#Key").val();
+    let info = bmap[key];
+    $("#Instructions > h1").html(info.title);
+    for (let f of info.feeds) {
+        let url = `../#${key}/${f}`;
+        pages.push(window.open(url));
+    }
+    let inputs = $("#Main > input").hide();
+    $(inputs[2]).show();
+    if (info.omit) {
+        let li = $("#Instructions > ul > li");
+        for (let i of info.omit) $(li[i]).hide();
     }
 }
 
-function collect(folder, i) {
-    if (i == null) i = 0;
-    let urls = collect.urls[folder];
-    if (i >= urls.length) return;
-    let url = urls[i];
-    $.ajax({url: `./${folder}/${url[0]}.htm`, success: (e) => {
-        e = $(`<div>${e}</div>`);
-        let s = e.children("section");
-        e = [];
-        for (let j=0;j<s.length;j++) {
-            console.log(s[j]);            
-            if (isPractice(s[j])) e.push($(s[j]));
-        }
-        if (e.length) {
-            let s = $("<section>");
-            for (let k=0;k<e.length;k++) {
-                let ek = $(e[k]);
-                ek.find(".Answer").remove();
-                s.append(ek);
-            }
-            let h2 = $("<h2>").html(url[1]);
-            // if (i) h2.addClass("PageBreak");
-            $("body").append(h2).append(s);
-            SVG2.load(() => { // load AllSVG
-                for (let s of $("script[data-init]")) {
-                    s = $(s);
-                    try {loadFeed[s.attr("data-init")]()} catch(err) {};
-                    s.removeAttr("data-init");
-                }
-                aspect();
-                s = s.find(".TeX");
-                if (s.length) renderTeX(s);
-                collect(folder, i+1);
-            });
-            $("[data-booklet='no']").remove();
-        }
-    }});
+function fetchPages() {
+    let main = $("#Main").html("");
+    for (let p of pages) {
+        let doc = $(p.document);
+        let article = doc.find("#Main");
+        article.find("script").remove();
+        main.append($("<h1>").html(doc[0].title));
+        main.append(article.html());
+        p.close();
+    }
+    main.find(".NoPrint, [data-booklet='no']").remove();
+    if (deleteAnswer) main.find(".Answer").remove();
+    main.find("*").show();
+    if (renderTeX.hideEqNum) $(".KaTeX:is(p, div) .eqn-num").hide();
+    let post = main.find("section.Post");
+    post.children("img:first-child").remove();
+    let h2 = post.children("h2:first-child");
+    for (let e of h2) {
+        e = $(e);
+        let text = e.text();
+        if (deletePost(text)) e.closest("section.Post").remove();
+        else e.replaceWith($("<h2>").html(text));
+    }
+    post.css("border-bottom", "none");
+    $("#Instructions").show();
+    $("body").css({zoom: "80%", "max-width": "125vh", margin: "0.5em"});
 }
 
 $(window).on("click", (ev) => {
@@ -109,37 +94,18 @@ $(window).on("click", (ev) => {
     else if (ev.altKey) e.toggleClass("PageBreak");
     else if (ev.shiftKey) e.hide();
     console.log(ev.target);
-})
+});
 
 console.log(`Ctrl  + Click = Toggle 'No Page Break Inside'
  Alt  + Click = Toggle 'Page Break Before'
 Shift + Click = Hide`);
 
-$(() => {
-    let instr = location.search.substr(1);
-    if (instr) {
-        instr = math.evaluate(`[${instr}]`)._data;
-        let e = $("#Instructions").children("li");
-        for (let i=0;i<instr.length;i++) $(e[instr[i]]).hide();
-    }
-    let chap = location.hash.substr(1);
-    let crs = chap.split('/')[0];
-    $.getScript(`./${crs}/booklet.js`, (e) => {
-        let title = collect.titles[chap];
-        if (title.charAt(0) == "*") title = title.substr(1);
-        else title = "Chapter " + title;
-        document.title = title;
-        $("#Title").html(`${course}<br/>${title.replace('&', '&amp;')}`);
-        $("#Course").html(course);
-        collect(chap);
-    });
-});
-
 </script>
 </head>
-<body class="Print">
-<h1 id="Title" class="Center"></h1>
-<ul id="Instructions" style="font-style: italic">
+<body>
+<div id="Instructions">
+<h1 class="Center">Title</h1>
+<ul>
     <li>Answer all questions on a separate sheet of paper unless the question states otherwise.</li>
     <li>Write each lesson title at the top of the first page and keep all of your work — in order! — in your <span id="Course"></span> binder.</li>
     <li>If you use more than a single page, staple the pages together in the correct order.</li>
@@ -149,5 +115,11 @@ $(() => {
     <li>Use SI units, significant digits, and scientific notation appropriately.</li>
     <li>Use graph paper for all graphs and vector diagrams. (If the question says to “sketch” the graph or diagram, a rough drawing without graph paper is acceptable.)</li>
 </ul>
+</div>
+<article id="Main">
+    <input id="Key" value="s10/phys2" type="text"/> &nbsp;
+    <input value="Load" type="button" onclick="loadWindows()"/> &nbsp;
+    <input id="Fetch" value="Fetch" type="button" onclick="fetchPages()"/>
+</article>
 </body>
 </html>

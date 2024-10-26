@@ -1,0 +1,61 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Notes</h2>
+<div class="Collapse Expand">
+
+<p><em class="Defn">Faraday’s Law</em> states that a <em>changing</em> magnetic field produces an electric field. <em class="Defn">Maxwell’s Law</em> proposes that the reverse is also true: a changing electric field generates a magnetic field.</p>
+<ul>
+    <li>The consequence of Maxwell’s Law is <em class="Defn">electromagnetic radiation (EMR)</em>.</li>
+    <li>Once the initial field starts to change (because of non-steady currents / accelerating charges), <span class="TeX">\vec{\mathbf E}</span> and <span class="TeX">\vec{\mathbf B}</span> will <em>generate each other</em> and propagate as EMR.</li>
+    <li>Using some advanced math, Maxwell showed that EMR behaves as waves that travel at a speed of <span class="TeX">c = 3.00\times 10^8\ \mathrm{m/s}</span>.</li>
+    <li>The wave comprises electric and magnetic fields that oscillate perpendicular to each other and to the direction of propagation.</li>
+    <li>The <em class="Defn">electromagnetic spectrum</em> includes:</li>
+</ul>
+<table class="Center Two TD6">
+    <tr><th>Type</th><th>Approx.<br/>Minimum <span class="TeX">\lambda</span></th></tr>
+    <tr><td>Radio</td><td>1 m</td></tr>
+    <tr><td>Microwave</td><td>1 mm</td></tr>
+    <tr><td>Infrared</td><td>750 nm</td></tr>
+    <tr><td>Visible</td><td>400 nm</td></tr>
+    <tr><td>Ultraviolet</td><td>1 nm</td></tr>
+    <tr><td>x/<span class="TeX">\gamma</span></td><td>0</td></tr>
+</table>
+
+<p>Visible light is an EM wave because:</p>
+<ul>
+    <li>Light travels at the same speed predicted by Maxwell, as measured by Rømer &amp; Huygens, Fizeau, and especially <em class="Defn">Michelson’s experiment</em> with an <span class="TeX">N</span>-sided rotating mirror:
+        <p class="TeX">c = \frac{\Delta d}{\Delta t} = \frac{2L}{\frac{1}{N} T}</p></li>
+    <li>Light travels slower through a medium than it does in vacuum depending on the medium’s <em class="Defn">index of refraction</em>, <span class="TeX">n</span>:
+        <p class="TeX">v=\frac{c}{n}</p></li>
+    <li>Light exhibits an interference pattern in <em class="Defn">Young’s double-slit experiment</em>.</li>
+    <li>The interference pattern can be explained by Huygen’s principle, and leads to the result that the maxima (anti-nodes) and minima (nodes) are located at angles <span class="TeX">\theta</span> from the central maximum, where:
+        <p class="TeX">\sin\theta=\frac{n\lambda}{d}</p></li>
+    <li><span class="TeX">d</span> is the distance between the two slits.</li>
+    <li>Whole number values of <span class="TeX">n</span> identify the maxima and half numbers (0.5, 1.5, etc.) identify the minima.</li>
+    <li>We can use this result to measure the wavelength of the light observed through a diffraction grating, and to separate light into its individual wavelengths in a <em class="Defn">spectroscope</em>:
+        <p class="TeX">\lambda = \frac{d\sin\theta}{n}</p></li>
+</ul>   
+
+<p><em class="Defn">Diffraction</em> is the phenomenon of waves bending or spreading out once they pass through an opening in a barrier.</p>
+<ul>
+    <li>Each point on the opening must be treated as a source, according to Huygen’s principle.</li>
+    <li>The interfrence pattern has maxima and minima described by the same equation as the double-slit experiment, except that the minima occur at the natural numbers (1, 2, 3, etc.) and the maxima occur at 0, 1.5, 2.5, etc.</li>
+    <li>Nearly all of the diffracted wave’s energy falls within the central maxima, as the other maxima have much smaller amplitudes.</li>
+    <li>Wavelengths larger than the size of the opening diffract completely.</li>
+    <li>Wavelengths much smaller than the opening hardly diffract at all.</li>
+    <li>Because of its small wavelength, visible light can be treated as moving in straight lines (the <em class="Defn">ray model</em>) except when passing through openings that are extremely small.</li>
+    <li>Diffraction limits the ability of optical devices (microscopes, telescopes, your eye) to <em class="Defn">resolve</em> two sources that are close together, as their diffraction patterns will overlap.</li>
+</ul>
+
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}EM Waves Review`,
+    num: "13.x",
+    up: "p30/units/C",
+    prev: ["p30/emr/refr", "p30/mag/rev"][clickLink.course],
+    next: ["p30/optics/rays", "p30/optics/rev"][clickLink.course],
+}
+
+</script>
