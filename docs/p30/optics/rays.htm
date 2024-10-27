@@ -1,17 +1,71 @@
 <section class="Post" data-icon="slides">
 <h2 class="Collapse">Lesson Notes</h2>
-<div id="LessonNotes" class="Collapse">
+<div id="LessonNotes" class="Collapse Expand">
 
 <section class="Slide Center">
-<h1 id="Title">?</h1>
+<h1 id="Title">Ray Diagrams</h1>
+</section>
+
+<section id="ray" class="Slide"><h3>Ray Model</h3>
+<p>Because light has a very small wavelength, in most situations it does not diffract significantly.</p>
+<ul>
+    <li>The <em class="Defn">ray model</em> of light assumes that light can be treated as travelling in straight lines, except where it reflects or refracts from a boundary.</li>
+    <li>When light rays change direction due to reflection (mirror) or refraction (lens), light may appear to originate from a place other than its actual origin.</li>
+</ul>
+</section>
+
+<section id="img" class="Slide"><h3>Image Formation</h3>
+<script type="text/javascript" data-init="redraw">
+
+loadFeed.click = (x) => {
+    let svg = $("#Depth")[0].graphic;
+    svg.$.html("");
+    let [x1, x2] = svg.ray_data;
+    if (x) {
+        if (x < 0) x1 = x;
+        else x2 = x;
+    }
+    let n = parseFloat($("#RefractIndex").val());
+    SVG2.cache_run("p30/optics/img/rays.js", "depth", svg.element, n, x1, x2);
+}
+
+loadFeed.redraw = () => {
+    $("#RefractIndex").val(1.4).on("change", () => loadFeed.click());
+    $("#Depth")[0].graphic.$.on("click", (ev) => {
+        let svg = $("#Depth")[0].graphic;
+        let v = svg.eventCoords(ev).coords;
+        if (Math.abs(v[1]) < 0.1) loadFeed.click(v[0]);
+    })
+}
+
+</script>
+<p>The point where the reflected/refracted light <em>appears</em> to originate is the <em class="Defn">image</em> of the object where the light actually originates.</p>
+<p class="Center">
+    <svg id="Depth" class="w20" data-svg2="p30/optics/img/rays.js#depth"></svg>
+    <br/><input id="RefractIndex" class="s20" title="Index of Refraction" type="range" min="1" max="1.75" step="0.01"/>
+</p>
+<ul>
+    <li>This ray diagram shows refraction of light from a submerged object at the surface of the pond.</li>
+    <li>The rays shown in blue are the <em class="Defn Blue">incident rays</em>; the rays that travel from the object to the reflective or refractive surface.</li>
+    <li>The rays shown in red are the <em class="Defn Red">refracted rays</em> that change direction at the surface according to Snell’s Law.</li>
+    <li>To an observer outside the water, the refracted rays <em>appear</em> to be coming from a point that is shallower than the object actually is!</li>
+    <li>The <em>apparent</em> source of the refracted rays is the location of the <em class="Defn">image</em>.</li>
+    <li>The dashed grey lines that extend the refracted rays back to the image are called <em class="Defn Grey">virtual rays</em>. The image is called a <em class="Defn Grey">virtual image</em>.</li>
+    <li>Sometimes the reflected/refracted rays actually cross without having to be extended backwards. An image formed by <em>real</em> reflected/refracted rays is called a <em class="Defn">real image</em>.</li>
+    <li>Real images can be projected onto a screen (e.g. as in a movie projector or a camera.) Virtual images cannot, because there are no actual light rays there.</li>
+    <li>When all the reflected/refracted rays from a point object converge to form an image at a single point, the image will be sharp.</li>
+    <li>A fuzzy image is produced when the rays from a single point converge over a region larger than a single point.</li>
+    <li>A <em class="Defn">ray diagram</em> is an illustration of the incident and reflected/refracted rays that we use to locate the image.</li>
+    <li>To draw a ray diagram, you will need a protractor to ensure that the angle of reflection equals the angle of incidence for reflection, while the angle of refraction must be calculated from the Snell’s Law formula.</li>
+</ul>
 </section>
 
 </div></section>
 
-<section class="Post NoPrint" data-show="2024.11.?.10" data-icon="gdrv">
+<section class="Post NoPrintIcon" data-show="2024.11.4.10" data-icon="gdrv">
     <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
     <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="">Answer Key</button>
+        <button data-icon="gdrv" data-gdrv="1uvQrC8tyaAA1Aatu2WDXq5-OCbo__o369Tz45FCw4D8">Answer Key</button>
     </p>
 </div></section>
 
@@ -19,11 +73,11 @@
 
 loadFeed.data = {
     title: `${siteData.lesson}13.6 — Ray Diagrams`,
-    answerDate: "2024.11.?.10",
+    answerDate: "2024.11.4.10",
     num: "13.6",
     up: "p30/units/C",
     prev: "p30/emr/rev",
-    next: "p30/optics/pr",
+    next: "p30/optics/pr*",
 }
 
 </script>

@@ -1,0 +1,55 @@
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="deriv" class="Slide"><h3>Derivation</h3>
+<p>A principal ray diagram for a curved mirror results in several pairs of <em>similar triangles</em>.</p>
+<p class="Center"><img class="w24" alt="Ray Diagram" src="img/mirror_eq.png"/></p>
+<ul>
+    <li>The ratio of the heights of the similar pairs is equal to the ratio of the bases.
+        <p class="TeX">\frac{-h_i}{h_o} = \color{green}{\frac{d_i}{d_o}} = \color{blue}{\frac{f}{d_o-f}} = \color{red}{\frac{d_i-f}{f}}</p></li>
+    <li>By combining (“cross multiplying”) the blue and green parts of the equation:
+        <p class="TeX">d_o f = d_i d_o - d_i f</p> </li>
+    <li>If we now divide this equation by the product of all three variables, <span class="TeX">fd_od_i</span>:
+        <p class="TeX">\frac{d_o f}{fd_o d_i} = \frac{d_i d_o}{fd_o d_i} - \frac{d_i f}{fd_o d_i}</p>
+        <p class="TeX">\frac{1}{d_i} = \frac{1}{f} - \frac{1}{d_o}</p>
+    </li>
+    <li>The remaining parts of the original equation (black and green) tell us the magnification:
+        <p class="TeX">m = \frac{h_i}{h_o} = -\frac{d_i}{d_o}</p>
+    </li>
+</ul>
+</section>
+
+<section id="ex1" class="Slide"><h3>Example 1</h3>
+<p class="Blue">An object is placed 5.0 cm from a concave mirror with a focal length of 3.0 cm. Find the location and properties of the image.</p>
+<p>Given:</p>
+<ul>
+    <li><span class="TeX">f = 3.0\ \mathrm{cm}</span></li>
+    <li><span class="TeX">d_o = 5.0\ \mathrm{cm}</span></li>
+</ul>
+<p>Solve for <span class="TeX">d_i</span>:</p>
+<p><p class="TeX">\frac{1}{d_i} = \frac{1}{f} - \frac{1}{d_o} = \frac{1}{3.0\ \mathrm{cm}} - \frac{1}{5.0\ \mathrm{cm}} = \frac{2}{15}\ \mathrm{cm}^{-1}</p></p>
+<p>Remember that this is the <em>reciprocal</em> of <span class="TeX">d_i</span>:</p>
+<p><p class="TeX">d_i = \frac{15}{2}\ \mathrm{cm}= 7.5\ \mathrm{cm}</p></p>
+<p>Calculate <span class="TeX">m</span>:</p>
+<p><p class="TeX">m = -\frac{d_i}{d_o} = -\frac{7.5\ \mathrm{cm}}{5.0\ \mathrm{cm}} = -1.5</p></p>
+<p>The image is real, inverted, and enlarged.</p>
+<p>Draw a <a target="Ray" href="https://sci.davidmaccarthy.repl.co/applet/ray.html?f=3&do=5">ray diagram</a> to confirm the solution.</p>
+</section>
+
+<section id="ex2" class="Slide"><h3>Example 2</h3>
+<p class="Blue">An object is placed 5.0 cm from a <b>convex</b> mirror with a focal length of 3.0 cm. Find the location and properties of the image.</p>
+<p>Given:</p>
+<ul>
+    <li><span class="TeX">f = -3.0\ \mathrm{cm}</span></li>
+    <li><span class="TeX">d_o = 5.0\ \mathrm{cm}</span></li>
+</ul>
+<p>Solve for <span class="TeX">d_i</span>:</p>
+<p><p class="TeX">\frac{1}{d_i} = \frac{1}{f} - \frac{1}{d_o} = \frac{1}{-3.0\ \mathrm{cm}} - \frac{1}{5.0\ \mathrm{cm}} = \frac{-8}{15}\ \mathrm{cm}^{-1}</p></p>
+<p><p class="TeX">d_i = \frac{15}{-8}\ \mathrm{cm}= -1.9\ \mathrm{cm}</p></p>
+<p>Calculate <span class="TeX">m</span>:</p>
+<p><p class="TeX">m = -\frac{d_i}{d_o} = -\frac{-1.9\ \mathrm{cm}}{5.0\ \mathrm{cm}} = 0.38</p></p>
+<p>The image is virtual, upright, and reduced.</p>
+<p>Draw a <a target="Ray" href="https://sci.davidmaccarthy.repl.co/applet/ray.html?f=-3&do=5">ray diagram</a> to confirm the solution.</p>
+</section>
