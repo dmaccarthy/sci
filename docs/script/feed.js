@@ -595,8 +595,9 @@ $(window).on("resize", layoutWidth).on("popstate", loadHash);
 
 $(window).on("keydown", (ev) => {
     if (ev.ctrlKey && ev.altKey) {
-        if (ev.key == "n") window.open(location.href);
-        else if (ev.key == "t") teacher(teacher.mode ? 0 : 2);
+        let k = ev.key.toLowerCase();
+        if (k == "n") window.open(location.href);
+        else if (k == "t") teacher(teacher.mode ? 0 : 2);
     }
 });
 

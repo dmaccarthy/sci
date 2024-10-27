@@ -1,14 +1,10 @@
 "Convert 2023-format lesson notes to feed-format (KaTeX)"
 
 FILES = (
-#     ["expDes.html", "Experiment Design"],
-    ["algebra.html", "Algebra"],
-    ["eqn.html", "Model Equations (Linear)"],
-    ["pwr.html", "Transforming Power Data"],
-    ["regr.html", "Regression Analysis"],
-    ["si.html", "SI Units"],
-    ["sciNot.html", "Scientific Notation"],
-#     ["trig.html", "Trigonometry"],
+    ["ray.html", "Ray Diagram"],
+    ["prRay.html", "Principal Rays"],
+    ["lens.html", "Lenses"],
+    ["mirror.html", "Mirror Equation"],
 )
 
 tsect = [
@@ -26,6 +22,8 @@ def conv(fn, title):
         data = f.read().split("<article>")[1].split("</article>")[0].split("</body>")[0]
         data = data.replace('data-last="?"', 'class="Slide"')
         data = data.replace('data-mark', 'data-cue')
+        for s in "+=0123456789":
+            data = data.replace(f' data-cue="{s}"', '')
         data = data.replace(tsect[0], tsect[1].format(title))
         data = tex(data)
     fn = fn.split(".")
@@ -42,7 +40,7 @@ def tex(data):
         if i: data += '<p class="TeX">' if i % 2 else '</p>'
         data += items[i]
         i += 1
-    items = data.replace("\)", "</span>").split("\(")
+    items = data.replace("\\)", "</span>").split("\\(")
     data = ""
     n = len(items)
     for i in range(n):
