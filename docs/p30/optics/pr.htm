@@ -1,4 +1,4 @@
-<section class="Post" data-icon="simulation">
+<section class="Post" data-show="2024.11.5.16" data-icon="simulation">
 <style type="text/css">
 
 #SimControls td {
@@ -19,7 +19,8 @@
 }
 
 </style>
-<h2 class="Collapse">Principal Rays</h2><div class="Collapse Expand">
+<h2 class="Collapse">Principal Ray Diagram</h2>
+<div class="Collapse Expand">
     <p class="Center"><svg id="RayApplet"></svg></p>
     <table id="SimControls" class="Center Bottom">
     <tr><td colspan="2">
@@ -50,7 +51,6 @@
 
 loadFeed.sim = () => {
     loadFeed.sim.given = [0, 1];
-    $("#RayApplet").attr({width: 702, height: 352, "data-aspect": "702/352"});
     $("#SimControls input").on("change", (ev) => {
         let e = $("#SimControls input");
         let given = loadFeed.sim.given;
@@ -60,24 +60,16 @@ loadFeed.sim = () => {
     });
     loadFeed.sim.draw();
 
-    let action = (n) => {
-        let v = $("#RayApplet .Virtual");
-        if (v.length) {
-            let i = $("#RayApplet .Incident");
-            if (n == 0) v.fadeOut();
-            else if (n == 1) i.fadeOut();
-            else if (n == 2) v.fadeIn();
-            else if (n == 3) i.fadeIn();
-        }
-    }
-    
+    let t = clickCycle.toggle;
+    let svg = () => $("#RayApplet")[0].graphic;
     clickCycle($("#RayApplet")[0], -1,
-        () => action(0),
-        () => action(1),
-        () => action(2),
-        () => action(3)
+        () => {t(svg(), false, 0, 1, 2, 3, 4)},
+        () => {t(svg(), true, 0)},
+        () => {t(svg(), true, 1)},
+        () => {t(svg(), true, 2)},
+        () => {t(svg(), true, 3)},
+        () => {t(svg(), true, 4)},
     );
-
 }
     
 loadFeed.sim.solve = () => {
@@ -125,26 +117,6 @@ loadFeed.sim.draw = () => {
     if (ok) loadFeed.sim.diagram(e, ...data);
 }
 
-loadFeed.sim.ray = (svg, p1, p2, g) => {
-    if (!(p2 instanceof Array)) {
-        let dx = p2.dx;
-        p2 = new RArray(dx, p2.k * dx).plus(p1);
-    }
-    let r = svg.line(p1, p2, g), arr;
-    if (!g.$.hasClass("Virtual")) {
-        let seg = r.segment;
-        let pt = seg.point(seg.length / 2.7);
-        let s = svg.scale;
-        let u = seg.unitVector.times([s[0], -s[1]]);
-        let theta = 225 + atan2(u[1], u[0]);
-        let [size, sharp] = [11, 4];
-        let [x, y] = [size / s[0], size / s[1]];
-        arr = svg.poly([pt.plus([x/sharp, y]), pt, pt.plus([x, y/sharp])], 0, g);
-        arr.anchor(...pt).config({theta: theta});        
-    }
-    return [r, arr];
-}
-
 loadFeed.sim.diagram = (e, f, d, di, m) => {
     // Calculate drawing scale
     lens = $("#SimControls input[type='radio']")[1].checked;
@@ -152,7 +124,7 @@ loadFeed.sim.diagram = (e, f, d, di, m) => {
     let x2 = Math.max(2 * f, d, di);
     if (lens) {
         x1 = Math.min(f, -f, -di);
-        x2 = Math.max(f, -f, d);
+        x2 = Math.max(f, -f, d, -di);
     }
     let y2 = 1.2 * Math.max(1, m, -m);
     let dx = (x2 - x1) / 10;
@@ -160,8 +132,8 @@ loadFeed.sim.diagram = (e, f, d, di, m) => {
     let w = x2 - x1;
 
     // Create drawing
-    let svg = new SVG_Animation(e, x1, x2, -y2, y2);
-    let ray = loadFeed.sim.ray;
+    let svg = new SVG2(e, {size: [702, 352], lrbt: [x1, x2, -y2, y2]});
+    svg.element.cycleStatus = -1;
 
     // Calculate arrow widths
     let width = Math.sqrt(Math.abs(m));
@@ -170,50 +142,56 @@ loadFeed.sim.diagram = (e, f, d, di, m) => {
 
     // Object and image
     let po = [d, 1];
-    svg.arrow([d, 0], po, {tail: `${w1}`}).css({fill: "#0065FE"});
+    svg.arrow({tail: [d, 0], tip: po}, {tail: `${w1}`}).$.css({fill: "#0065FE"});
     let x = lens ? -di : di;
-    let image = svg.arrow([x, 0], [x, m], {tail: `${w2}`});
-    if (di < 0) image.addClass("Virtual").css({fill: "lightgrey"});
-    else image.css({fill: "red"});
+    let image = svg.arrow({tail: [x, 0], tip: [x, m]}, {tail: `${w2}`});
+    if (di < 0) image.$.css({fill: "lightgrey"});
+    else image.$.css({fill: "red"});
+    image.$.addClass("Toggle4");
 
     // Ray groups
-    let gv = svg.group().css({stroke: "grey", fill: "none"}).addClass("Virtual");
-    let gi = svg.group().css({stroke: "#0065FE", fill: "none"}).addClass("Incident");
-    let gr = svg.group().css({stroke: "red", fill: "none"});
+    let gv = svg.group();
+    let gi = svg.group();
+    let gr = svg.group();
+    gi.$.css({stroke: "#0065FE", fill: "none"}).addClass("Toggle0");
+    gr.$.css({stroke: "red", fill: "none"}).addClass("Toggle1");
+    gv.$.css({stroke: "grey", fill: "none", "stroke-dasharray": "8,8"});
+
+    let rayPt = (p1, dx, k) => [p1, new RArray(dx, k * dx).plus(p1)];
+    let ray = (g, p1, p2) => g.ray(p1, p2, {size: "10", ratio: 0.5}, uniform(0.1, 0.4), uniform(0.6, 0.9));
 
     // Paraxial rays
-    ray(svg, po, [0, 1], gi);
-    ray(svg, [0, m], [lens ? x1 : x2, m], gr);
-    ray(svg, [0, m], [lens ? x2 : x1, m], gv);
+    ray(gi, po, [0, 1]);
+    ray(gr, [0, m], [lens ? x1 : x2, m]).$.addClass("Toggle2");
+    gv.line([0, m], [lens ? x2 : x1, m]).addClass("Toggle2");
 
     if (lens) {
-        ray(svg, po, [0, 0], gi);
-        ray(svg, po, {dx: -d, k: 1 / (d - f)}, gi);
-        ray(svg, [0, 0], {dx: x1, k: -m / di}, gr);
-        ray(svg, [0, 1], {dx: x1, k: 1 / f}, gr);
-        ray(svg, [0, 0], {dx: x2, k: -m / di}, gv);
-        ray(svg, [0, 1], {dx: x2, k: 1 / f}, gv);
+        ray(gi, po, [0, 0]);
+        ray(gi, ...rayPt(po, -d, 1 / (d - f)));
+        ray(gr, ...rayPt([0, 0], x1, -m / di)).$.addClass("Toggle3");
+        ray(gr, ...rayPt([0, 1], x1, 1 / f));
+        gv.line(...rayPt([0, 0], x2, -m / di)).addClass("Toggle3");
+        gv.line(...rayPt([0, 1], x2, 1 / f)).addClass("Toggle1");
     }
     else {
+        ray(gi, po, [0, m]);
+        ray(gr, ...rayPt([0, 1], x2, -1 / f));
         let k = 1 / (d - 2 * f);
-        let pc = [0, -2 * f * k];
-        ray(svg, po, [0, m], gi);
-        ray(svg, [0, 1], {dx: x2, k: -1 / f}, gr);
         if (isFinite(k)) {
-            ray(svg, po, {dx: -d, k: k}, gi);
-            ray(svg, pc, {dx: x2, k: k}, gr);
-            ray(svg, pc, {dx: x1, k: k}, gv);
+            let pc = [0, -2 * f * k];
+            ray(gi, ...rayPt(po, -d, k));
+            ray(gr, ...rayPt(pc, x2, k)).$.addClass("Toggle3");
+            gv.line(...rayPt(pc, x1, k)).addClass("Toggle3");
         }
-        ray(svg, [0, 1], {dx: x1, k: -1 / f}, gv);
+        gv.line(...rayPt([0, 1], x1, -1 / f)).addClass("Toggle1");
     }
-
-    if (di > 0) gv.final(2);
-    // else gv.$.hide();
+    if (di > 0) gv.$.remove();
 
     // Mirror/lens and principal axis
-    let g = svg.group().css({stroke: "black", "stroke-width": "2px"});
-    svg.line([x1, 0], [x2, 0], g);
-    svg.line([0, -y2], [0, y2], g).css({"stroke-width": "4px"});
+    let g = svg.group();
+    g.$.css({stroke: "black", "stroke-width": "2px"});
+    g.line([x1, 0], [x2, 0]);
+    g.line([0, -y2], [0, y2]).css({"stroke-width": "4px"});
 
     // Focus and centre
     let css = {fill: "white", stroke: "black"};
@@ -222,50 +200,47 @@ loadFeed.sim.diagram = (e, f, d, di, m) => {
     css = {"font-size": "20px", "font-weight": "bold"};
     svg.text(lens ? "F’": "F", [f, y2/10]).css(css);
     svg.text(lens ? "F" : "C", [lens ? -f : 2 * f, y2/10]).css(css);
-    svg.final();
 }
 
 </script>
 </section>
 
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
-
+<h2 class="Collapse">Lesson Notes</h2>
+<div class="Collapse">
 <section class="Slide Center">
 <h1 id="Title">?</h1>
-<!-- <p class="Present"><img src="" class="s24" alt="Picture"/></p> -->
 </section>
 
 <section class="Slide"><h3>?</h3>
 </section>
 
-</div></div></section>
+</div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
-    <!-- <svg data-svg2="p30/emr/img/young.js#laser"></svg> -->
-<ol></ol>
+<h2 class="Collapse">Practice</h2>
+<div class="Collapse">
+<ol>
 
-</div></div></section>
+</ol>
+</div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review<span data-print="Practice"></h2><div class="Collapse">
-<div id="Review">
+<h2 class="Collapse">Review</h2>
+<div class="Collapse">
 <ol>
 </ol>
-</div></div></section>
+</div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
-    title: `${siteData.lesson}?.? — Ray Diagrams`,
-    answerDate: "2025.2.?.16",
-    num: "?.?",
+    title: `${siteData.lesson}13.7 — Principal Rays`,
+    answerDate: "2024.11.5.16",
+    num: "13.7",
     up: "p30/units/C",
-    // prev: "p30/",
-    // next: "p30/mom",
+    prev: "p30/optics/rays",
+    next: "p30/optics/mirror",
 }
 
 </script>

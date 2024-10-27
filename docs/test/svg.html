@@ -110,7 +110,14 @@ let test = () => {
     });
 }
 
-$(stest);
+let atest = () => {
+    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-10, 10, -2, 2], margin: 1, grid: 1});
+    svg.$.addClass("SVG2");
+    let g = svg.arrow({tail: [0, 0], tip: [5, 0]}, {}, "tail").config({omega: 20, theta: svg.adjustAngle(45)});
+    svg.animate(g);
+}
+
+$(atest);
 
 </script>
 </head>

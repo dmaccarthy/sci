@@ -35,6 +35,8 @@ Add composite content:
     g.locus((p, t, args) => {y or [x, y]}, [p0, p1, n], args) -> SVG2locus
     g.arrow({tail, tip} or length, {tail, head, angle, shape, double}, anchor) -> SVG2arrow
     g.tip_to_tail(vecs, options) -> SVG2g
+    g.ray(p1, p2, size or {size, ratio}, ...pos) -> SVG2g
+    g.chevron(xy, dir, size or {size, ratio}) -> SVG2g
     g.stickman(h) -> SVG2g
     g.symbol(...args) -> SVG2g
     g.coil(size, n, reverse, r, axle) -> SVG2g
@@ -68,6 +70,9 @@ Vector diagram helpers:
     SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, tick, label, cycle, shift}) -> SVG2
     SVG2.vec_diag_table(sym, vecs, prec, scale) -> jQuery
     svg.vec_cycle(jQuery) -> svg
+
+Other methods:
+    svg.adjustAngle(a, invert) -> number
 
 ***/
 
@@ -352,6 +357,33 @@ line(p1, p2) {
     return this.create_child("line", {x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2)});
 }
 
+chevron(xy, dir, size) {
+    if (size == null) size = "7";
+    let ratio = size.ratio;
+    if (!ratio) ratio = 1;
+    else size = size.size;
+    let svg = this.svg;
+    let s = svg.scale;
+    size = typeof(size) == "string" ? parseFloat(size) : size / svg.unit;
+    let dx = -size / s[0], dy = ratio * size / s[1];
+    let g = this.group();
+    g.poly([[dx, dy], [0, 0], [dx, -dy]]);
+    return g.config({shift: xy, theta: dir ? dir : 0});
+}
+
+ray(p1, p2, size, ...pos) {
+/* Draw a directed segment */
+    let g = this.group();
+    g.$.addClass("Ray");
+    g.line(p1, p2);
+    let seg = g.seg = new Segment(...p1, ...p2);
+    let svg = this.svg;
+    let L = seg.length;
+    if (pos.length == 0) pos = [0.5];
+    for (let pt of pos) g.chevron(seg.point(pt * L), svg.adjustAngle(seg.deg), size);
+    return g;
+}
+
 grid(x, y) {
 /* Draw a coordinate grid */
     let g = this.group();
@@ -532,6 +564,7 @@ class SVG2arrow extends SVG2g {
 
 constructor(g, length, options, anchor) {
     super(g);
+    let svg = g.svg;
     let [tail, tip] = typeof(length) == "number" ? [[-length / 2, 0], [length / 2, 0]] : [length.tail, length.tip];
     tail = g._cs(tail);
     tip = g._cs(tip);
@@ -539,14 +572,37 @@ constructor(g, length, options, anchor) {
     if (!anchor) anchor = 0;
     else if (typeof(anchor) == "string") anchor = ["tail", "center", "tip"].indexOf(anchor) - 1;
     this.pivot = seg[anchor == -1 ? "point1" : (anchor == 1 ? "point2" : "midpoint")];
-    let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) / g.svg.scale[1] : x);
-    if (options.tail) options.tail = f(options.tail);
-    if (options.head) options.head = f(options.head);
-    let pts = arrow_points(seg.length, options);
+    let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) : x * svg.scale[1]);
+    let opt = {};
+    if (options) {
+        if (options.tail) opt.tail = f(options.tail);
+        if (options.head) opt.head = f(options.head);    
+    }
+    seg = new Segment(...svg.a2p(...tail), ...svg.a2p(...tip));
+    let pts = arrow_points(seg.length, opt);
     pts = transform({angle: seg.deg, deg: true, shift: seg.midpoint}, ...pts);
+    for (let i=0;i<pts.length;i++) pts[i] = svg.p2a(...pts[i]);
     this.poly(pts, 1);
     this.$.addClass("Arrow");
 }
+
+// constructor(g, length, options, anchor) {
+//     super(g);
+//     let [tail, tip] = typeof(length) == "number" ? [[-length / 2, 0], [length / 2, 0]] : [length.tail, length.tip];
+//     tail = g._cs(tail);
+//     tip = g._cs(tip);
+//     let seg = this.seg = new Segment(...tail, ...tip);
+//     if (!anchor) anchor = 0;
+//     else if (typeof(anchor) == "string") anchor = ["tail", "center", "tip"].indexOf(anchor) - 1;
+//     this.pivot = seg[anchor == -1 ? "point1" : (anchor == 1 ? "point2" : "midpoint")];
+//     let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) / g.svg.scale[1] : x);
+//     if (options.tail) options.tail = f(options.tail);
+//     if (options.head) options.head = f(options.head);
+//     let pts = arrow_points(seg.length, options);
+//     pts = transform({angle: seg.deg, deg: true, shift: seg.midpoint}, ...pts);
+//     this.poly(pts, 1);
+//     this.$.addClass("Arrow");
+// }
 
 }
 
@@ -785,6 +841,13 @@ eventCoords(ev) {
     return {pixels: px, coords: this.p2a(...px)};
 }
 
+adjustAngle(a, invert) {
+/* Adjust rotation angle when x and y scales differ */
+    let [sx, sy] = this.scale;
+    if (invert) {sx = 1 / sx; sy = 1 / sy}
+    return atan2(sy * this.angleDir * sin(a), sx * cos(a));
+}
+
 group() {return new SVG2g(this)}
 
 pts_str(pts) {
@@ -884,9 +947,9 @@ static load(cb) {
     if (SVG2.load.pending.length == 0) cb();
 }
 
-static cache_run(url, id, arg) {
+static cache_run(url, id, ...arg) {
     url = new URL(url, SVG2.url).href;
-    return SVG2._cache[url][id](arg);
+    return SVG2._cache[url][id](...arg);
 }
 
 static remove_pending(url) {
