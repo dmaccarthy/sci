@@ -17,7 +17,7 @@ loadFeed.init = () => {
         let e = $("#Variables").html("");
         let vars = ["<i>f</i>", "<i>d</i><sub>o</sub>", "<i>d</i><sub>i</sub>", "<i>m</i>"];
         for (let i=0;i<4;i++) {
-            $("<p>").html(`${vars[i]} = ${data[i].toFixed(3)}${unit}`).appendTo(e);
+            $("<p>").html(`${vars[i]} = ${data[i].toFixed(3)}${i == 3 ? "" : unit}`).appendTo(e);
         }
     });
 }
