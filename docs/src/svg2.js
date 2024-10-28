@@ -932,12 +932,23 @@ static load(cb) {
     let svgs = $("svg[data-svg2]");
     for (let svg of svgs) {
         svg = $(svg);
-        let [url, id] = svg.attr("data-svg2").split("#");
+        let [url, id, args] = svg.attr("data-svg2").split("#");
+        if (args) {
+            args = args.split(";");
+            for (let i=0;i<args.length;i++) {
+                try {
+                    let x = math.evaluate(args[i]);
+                    args[i] = typeof(x) == "number" ? x : x._data;
+                }
+                catch(err) {}
+            }
+        }
+        else args = [];
         url = new URL(url, SVG2.url).href;
         if (SVG2._cache[url]) {
             SVG2.remove_pending(url);
             svg.removeAttr("data-svg2").attr("data-svg2x", `${url}#${id}`);
-            SVG2._cache[url][id](svg);
+            SVG2._cache[url][id](svg, ...args);
         }
         else if (SVG2.load.pending.indexOf(url) == -1) {
             SVG2.load.pending.push(url);
