@@ -1,4 +1,4 @@
-<section class="Post" data-show="2024.11.5.16" data-icon="simulation">
+<section class="Post" data-show="2024.11.5.10" data-icon="simulation">
 <style type="text/css">
 
 #SimControls td {
@@ -21,7 +21,7 @@
 </style>
 <h2 class="Collapse">Principal Ray Diagram</h2>
 <div class="Collapse Expand">
-    <p class="Center"><svg id="RayApplet"></svg></p>
+    <p class="Center"><svg id="RayApplet" data-svg2="p30/optics/img/pr.js#diag"></svg></p>
     <table id="SimControls" class="Center Bottom">
     <tr><td colspan="2">
         <input type="radio" name="device" checked="1"/> Mirror &nbsp;
@@ -58,7 +58,17 @@ loadFeed.sim = () => {
             loadFeed.sim.given = [given[1], i];
         loadFeed.sim.draw();
     });
-    loadFeed.sim.draw();
+    loadFeed.sim.draw(true);
+
+    let copy = () => {
+        let e = $("#RayApplet");
+        if (e.html()) {
+            let html = e[0].outerHTML;
+            $("#PrRayDiagCopy").html(html).find("svg").addClass("w28");
+        }
+        else setTimout(copy, 500);
+    }
+    copy();
 
     let t = clickCycle.toggle;
     let svg = () => $("#RayApplet")[0].graphic;
@@ -109,97 +119,16 @@ loadFeed.sim.solve = () => {
     return data;
 }
 
-loadFeed.sim.draw = () => {
+loadFeed.sim.draw = (first) => {
     let data = loadFeed.sim.solve();
+    if (first) return;
     let ok = true;
     for (let x of data) if (!isFinite(x)) ok = false;
     let e = $("#RayApplet").html(ok ? "" : `<text x="351" y="100" style="text-anchor: middle">No finite solution!</text>`);
-    if (ok) loadFeed.sim.diagram(e, ...data);
-}
-
-loadFeed.sim.diagram = (e, f, d, di, m) => {
-    // Calculate drawing scale
-    lens = $("#SimControls input[type='radio']")[1].checked;
-    let x1 = Math.min(0, 2 * f, di);
-    let x2 = Math.max(2 * f, d, di);
-    if (lens) {
-        x1 = Math.min(f, -f, -di);
-        x2 = Math.max(f, -f, d, -di);
+    if (ok) {
+        let lens = $("#SimControls input[type='radio']")[1].checked;
+        SVG2.cache_run("p30/optics/img/pr.js", "diag", "#RayApplet", lens, ...data)
     }
-    let y2 = 1.2 * Math.max(1, m, -m);
-    let dx = (x2 - x1) / 10;
-    x1 -= dx; x2 += dx;
-    let w = x2 - x1;
-
-    // Create drawing
-    let svg = new SVG2(e, {size: [702, 352], lrbt: [x1, x2, -y2, y2]});
-    svg.element.cycleStatus = -1;
-
-    // Calculate arrow widths
-    let width = Math.sqrt(Math.abs(m));
-    let w1 = Math.min(20, Math.max(4, 8 / width));
-    let w2 = Math.min(20, Math.max(4, 8 * width));
-
-    // Object and image
-    let po = [d, 1];
-    svg.arrow({tail: [d, 0], tip: po}, {tail: `${w1}`}).$.css({fill: "#0065FE"});
-    let x = lens ? -di : di;
-    let image = svg.arrow({tail: [x, 0], tip: [x, m]}, {tail: `${w2}`});
-    if (di < 0) image.$.css({fill: "lightgrey"});
-    else image.$.css({fill: "red"});
-    image.$.addClass("Toggle4");
-
-    // Ray groups
-    let gv = svg.group();
-    let gi = svg.group();
-    let gr = svg.group();
-    gi.$.css({stroke: "#0065FE", fill: "none"}).addClass("Toggle0");
-    gr.$.css({stroke: "red", fill: "none"}).addClass("Toggle1");
-    gv.$.css({stroke: "grey", fill: "none", "stroke-dasharray": "8,8"});
-
-    let rayPt = (p1, dx, k) => [p1, new RArray(dx, k * dx).plus(p1)];
-    let ray = (g, p1, p2) => g.ray(p1, p2, {size: "10", ratio: 0.5}, uniform(0.1, 0.4), uniform(0.6, 0.9));
-
-    // Paraxial rays
-    ray(gi, po, [0, 1]);
-    ray(gr, [0, m], [lens ? x1 : x2, m]).$.addClass("Toggle2");
-    gv.line([0, m], [lens ? x2 : x1, m]).addClass("Toggle2");
-
-    if (lens) {
-        ray(gi, po, [0, 0]);
-        ray(gi, ...rayPt(po, -d, 1 / (d - f)));
-        ray(gr, ...rayPt([0, 0], x1, -m / di)).$.addClass("Toggle3");
-        ray(gr, ...rayPt([0, 1], x1, 1 / f));
-        gv.line(...rayPt([0, 0], x2, -m / di)).addClass("Toggle3");
-        gv.line(...rayPt([0, 1], x2, 1 / f)).addClass("Toggle1");
-    }
-    else {
-        ray(gi, po, [0, m]);
-        ray(gr, ...rayPt([0, 1], x2, -1 / f));
-        let k = 1 / (d - 2 * f);
-        if (isFinite(k)) {
-            let pc = [0, -2 * f * k];
-            ray(gi, ...rayPt(po, -d, k));
-            ray(gr, ...rayPt(pc, x2, k)).$.addClass("Toggle3");
-            gv.line(...rayPt(pc, x1, k)).addClass("Toggle3");
-        }
-        gv.line(...rayPt([0, 1], x1, -1 / f)).addClass("Toggle1");
-    }
-    if (di > 0) gv.$.remove();
-
-    // Mirror/lens and principal axis
-    let g = svg.group();
-    g.$.css({stroke: "black", "stroke-width": "2px"});
-    g.line([x1, 0], [x2, 0]);
-    g.line([0, -y2], [0, y2]).css({"stroke-width": "4px"});
-
-    // Focus and centre
-    let css = {fill: "white", stroke: "black"};
-    svg.circle("4", [f, 0]).css(css);
-    svg.circle("4", [lens ? -f : 2 * f, 0]).css(css);
-    css = {"font-size": "20px", "font-weight": "bold"};
-    svg.text(lens ? "F’": "F", [f, y2/10]).css(css);
-    svg.text(lens ? "F" : "C", [lens ? -f : 2 * f, y2/10]).css(css);
 }
 
 </script>
@@ -209,34 +138,83 @@ loadFeed.sim.diagram = (e, f, d, di, m) => {
 <h2 class="Collapse">Lesson Notes</h2>
 <div class="Collapse">
 <section class="Slide Center">
-<h1 id="Title">?</h1>
+<h1 id="Title">Principal Rays</h1>
 </section>
 
-<section class="Slide"><h3>?</h3>
+<section class="Slide"><h3>Concave Mirror</h3>
+<p>Curved mirrors are generally classified as concave or convex.</p>
+<ul>
+    <li>A <em class="Defn">concave mirror</em> has its reflective side on the inside of the curve.</li>
+</ul>
+<p class="Center"><img class="w24" alt="Concave" src="p30/optics/img/concave.png"/></p>
+<ul>
+    <li >The line joining the centre of the mirror’s surface (called the <em class="Defn">vertex</em>) to the centre of curvature (C) is called the <em class="Defn">principal axis</em>.</li>
+    <li>Incident rays that are parallel to the principal axis are called <em class="Defn">paraxial</em>.</li>
+    <li>Paraxial rays that strike the mirror <em>close to</em> the vertex will reflect through a point halfway between the vertex and centre. This point is called the <em class="Defn">focus</em> of the mirror.</li>
+</ul>
+<p>One application of this phenomenon is a satellite dish.</p>
+<p class="Center">
+    <a target="WC" href="https://commons.wikimedia.org/wiki/File:SatelliteDishBrickWall2.jpg"><img class="w20" alt="Dish" src="p30/optics/img/dish.jpg"/></a>
+</p>
+<ul>
+    <li>The signals from the satellite are the parallel incident rays.</li>
+    <li>The dish concentrates these rays to the focal point where the receiver is located.</li>
+    <li>Incident rays that are <em>not</em> extremely close to the principal axis will not reflect through the focus.</li>
+    <li>This fact — that spherical mirrors do not have a precise focus for all paraxial rays — is called <em class="Defn">spherical aberration.</em></li>
+    <li>This means that sphere-shaped mirrors produce fuzzy images.</li>
+    <li>Most curved mirrors are shaped as <em class="Defn">paraboloids</em> instead of spheres, because paraboloids have a sharp focus.</li>
+</ul>
 </section>
 
+<section class="Slide"><h3>Convex Mirror</h3>
+<p>A <em class="Defn">convex mirror</em> has its reflective side on the outside of the curve.</p>
+<p class="Center"><img class="w24" alt="Concave" src="p30/optics/img/convex.png"/></p>
+<ul>
+    <li>There is still a focus midway between the vertex and centre of curvature, but the reflected rays travel directly <em>away</em> from the focal point.</li>
+    <li>This focus is called a <em class="Defn">virtual focus</em>.</li>
+    <li>Concave mirrors have a <em class="Defn">real</em> focus.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Principal Rays</h3>
+<p>For curved mirrors, we can use the focal point to draw two of the reflected rays without having to measure any angles.</p>
+<p class="Center" id="PrRayDiagCopy">&nbsp;</p>
+<ol>  
+    <li>An incident ray parallel to the principal axis will reflect through (or away from, if the mirror is convex) the focus.</li>
+    <li>An incident ray in line with the focus will reflect parallel to the principal axis.</li>
+</ol>
+<p>There is also a third ray that can be drawn using the centre of curvature.</p>
+<ol start="3">  
+    <li>An incident ray in line with the centre of curvature will reflect directly back through the centre of curvature (since the angles of incidence and reflection will be 0º).</li>
+</ol>
+<p>We typically define the following variables for curved mirror situations:</p>
+<div class="Center">
+    <p><span class="TeX">f</span> = Distance from vertex to focus</p>     
+    <p><span class="TeX">d_o</span> = Distance from vertex to object</p>     
+    <p><span class="TeX">d_i</span> = Distance from vertex to image</p>     
+    <p><span class="TeX">m</span> = Magnification of the image</p>     
+</div>
+<ul>
+    <li>Positive values are used for <span class="TeX">f</span> and <span class="TeX">d_i</span> to indicate the focus or image is real.</li>
+    <li>Negative values are used for a virtual focus or image.</li>
+    <li>An image is <em class="Defn">upright</em> (<span class="TeX">m>0</span>) when it is on the same side of the principal axis as the object, and <em class="Defn">inverted</em> (<span class="TeX">m<0</span>) when on the opposite side.</li>
+    <li>An image is <em class="Defn">enlarged</em> or <em class="Defn">magnified</em> (<span class="TeX">|m|>1</span>) when it is further from the principal axis than the object, and <em class="Defn">reduced</em> (<span class="TeX">|m|<1</span>) when it is closer.</li>
+</ul>
+</section>
 </div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2>
-<div class="Collapse">
-<ol>
-
-</ol>
-</div></section>
-
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2>
-<div class="Collapse">
-<ol>
-</ol>
+<section class="Post NoPrintIcon" data-show="2024.11.5.10" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="11tYqkSZ8bQQLH9c3FR5VjBFoyg_oDU-vOM18pZLlm6k">Answer Key</button>
+    </p>
 </div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}13.7 — Principal Rays`,
-    answerDate: "2024.11.5.16",
+    answerDate: "2024.11.5.10",
     num: "13.7",
     up: "p30/units/C",
     prev: "p30/optics/rays",

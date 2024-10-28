@@ -1,10 +1,13 @@
-<section id="Title" class="Center">
-<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
-<p class="Title"></p>
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2>
+<div id="LessonNotes" class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Lenses</h1>
 </section>
 
-<section id="lens" class="Slide"><h3>Converging &amp; Diverging Lenses</h3>
-<p>Lenses form images by refraction as the light passes from the air into the lens, and back into the air.</p></p>
+<section class="Slide"><h3>Converging &amp; Diverging Lenses</h3>
+<p>Lenses form images by refraction as the light passes from the air into the lens, and back into the air.</p>
 <ul>
     <li>In the <em class="Defn">thin lens approximation</em>, the two consecutive refractions are considered as a single change in the direction of the light ray.</li>
     <li>Lenses can be shaped to focus paraxial incident rays to a focal point just as mirrors do.</li>
@@ -15,23 +18,45 @@
 </ul>
 </section>
 
-<section id="ray" class="Slide"><h3>Principal Ray Diagrams</h3>
+<section class="Slide"><h3>Principal Ray Diagrams</h3>
 <p>Light rays that pass through the <em class="Defn">optical centre</em> of a lens will not change direction because the two sides of the lens are parallel at this point.</p>
-<p class="Center"><img class="w28" alt="Converging Lens" src="img/clens.png"/></p>
+<p class="Center"><svg class="w28" data-svg2="p30/optics/img/pr.js#diag_toggle#1;2;5"></svg></p>
 <p>The three principal rays for a thin lens are as follows...</p>
 <ol>
     <li>An incident ray through the optical centre (C) will not be refracted at all.</li>
     <li>A paraxial ray will be refracted along a line through the primary focus (F).</li>
     <li>An incident ray that is aligned with the secondary focus (F’) will refract parallel to the principal axis.</li>
 </ol>
-<p class="Center"><img class="w28" alt="Diverging Lens" src="img/dlens.png"/></p>
+<p>For a <em class="Defn">diverging</em> lens, the lens is shaped so as to refract the light <em>away</em> from a <em>virtual</em> focus.</p>
+<p class="Center"><svg class="w28" data-svg2="p30/optics/img/pr.js#diag_toggle#1;-2;5"></svg></p>
+<ul><li>A positive value of <span class="TeX">f</span> indicates a real focus (converging lens) and a negative <span class="TeX">f</span> indicates a virtual focus (diverging lens)</li></ul>
 </section>
 
-<section id="eq" class="Slide"><h3>Equations</h3>
+<section class="Slide"><h3>Equations</h3>
 <p>We can identify pairs of <em>similar triangles</em> on the principal ray diagram to derive equations for the converging and diverging lens, just as we did for curved mirrors.</p>
-<p class="Center"><img class="w28" alt="Lens Equation" src="img/lens_eq.png"/></p>
-<p>Converging and diverging lenses obey the <em>same equations</em> as concave and convex mirrors:
-    <p class="TeX">\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}</p>
-    <p class="TeX">m = \frac{h_i}{h_o} = -\frac{d_i}{d_o}</p>
-</p>
+<p>Converging and diverging lenses obey the <em>same equations</em> as concave and convex mirrors:</p>
+<p class="TeX">\frac{1}{f} = \frac{1}{d_o} + \frac{1}{d_i}</p>
+<p class="TeX">m = \frac{h_i}{h_o} = -\frac{d_i}{d_o}</p>
 </section>
+
+</div></section>
+
+<section class="Post NoPrint" data-show="2024.11.8.10" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1rzRv-lssMLKpHlEbIuasmzqffAZ_JFQjwo3Cm8EmsJw">Answer Key</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}13.9 — Lenses`,
+    answerDate: "2024.11.8.10",
+    num: "13.9",
+    up: "p30/units/C",
+    prev: "p30/optics/mirror",
+    next: "p30/optics/rev",
+}
+
+</script>

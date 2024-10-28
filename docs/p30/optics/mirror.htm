@@ -1,11 +1,14 @@
-<section id="Title" class="Center">
-<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
-<p class="Title"></p>
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2>
+<div id="LessonNotes" class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Mirror Equation</h1>
 </section>
 
-<section id="deriv" class="Slide"><h3>Derivation</h3>
+<section class="Slide"><h3>Derivation</h3>
 <p>A principal ray diagram for a curved mirror results in several pairs of <em>similar triangles</em>.</p>
-<p class="Center"><img class="w24" alt="Ray Diagram" src="img/mirror_eq.png"/></p>
+<p class="Center"><svg class="w28" data-svg2="p30/optics/img/mirror.js#deriv"></svg></p>
 <ul>
     <li>The ratio of the heights of the similar pairs is equal to the ratio of the bases.
         <p class="TeX">\frac{-h_i}{h_o} = \color{green}{\frac{d_i}{d_o}} = \color{blue}{\frac{f}{d_o-f}} = \color{red}{\frac{d_i-f}{f}}</p></li>
@@ -21,7 +24,7 @@
 </ul>
 </section>
 
-<section id="ex1" class="Slide"><h3>Example 1</h3>
+<section class="Slide"><h3>Example 1</h3>
 <p class="Blue">An object is placed 5.0 cm from a concave mirror with a focal length of 3.0 cm. Find the location and properties of the image.</p>
 <p>Given:</p>
 <ul>
@@ -29,16 +32,16 @@
     <li><span class="TeX">d_o = 5.0\ \mathrm{cm}</span></li>
 </ul>
 <p>Solve for <span class="TeX">d_i</span>:</p>
-<p><p class="TeX">\frac{1}{d_i} = \frac{1}{f} - \frac{1}{d_o} = \frac{1}{3.0\ \mathrm{cm}} - \frac{1}{5.0\ \mathrm{cm}} = \frac{2}{15}\ \mathrm{cm}^{-1}</p></p>
+<p class="TeX">\frac{1}{d_i} = \frac{1}{f} - \frac{1}{d_o} = \frac{1}{3.0\ \mathrm{cm}} - \frac{1}{5.0\ \mathrm{cm}} = \frac{2}{15}\ \mathrm{cm}^{-1}</p>
 <p>Remember that this is the <em>reciprocal</em> of <span class="TeX">d_i</span>:</p>
-<p><p class="TeX">d_i = \frac{15}{2}\ \mathrm{cm}= 7.5\ \mathrm{cm}</p></p>
+<p class="TeX">d_i = \frac{15}{2}\ \mathrm{cm}= 7.5\ \mathrm{cm}</p>
 <p>Calculate <span class="TeX">m</span>:</p>
-<p><p class="TeX">m = -\frac{d_i}{d_o} = -\frac{7.5\ \mathrm{cm}}{5.0\ \mathrm{cm}} = -1.5</p></p>
+<p class="TeX">m = -\frac{d_i}{d_o} = -\frac{7.5\ \mathrm{cm}}{5.0\ \mathrm{cm}} = -1.5</p>
 <p>The image is real, inverted, and enlarged.</p>
-<p>Draw a <a target="Ray" href="https://sci.davidmaccarthy.repl.co/applet/ray.html?f=3&do=5">ray diagram</a> to confirm the solution.</p>
+<p class="Center"><svg class="w28" data-svg2="p30/optics/img/pr.js#diag_toggle#0;3;5"></svg></p>
 </section>
 
-<section id="ex2" class="Slide"><h3>Example 2</h3>
+<section class="Slide"><h3>Example 2</h3>
 <p class="Blue">An object is placed 5.0 cm from a <b>convex</b> mirror with a focal length of 3.0 cm. Find the location and properties of the image.</p>
 <p>Given:</p>
 <ul>
@@ -46,10 +49,32 @@
     <li><span class="TeX">d_o = 5.0\ \mathrm{cm}</span></li>
 </ul>
 <p>Solve for <span class="TeX">d_i</span>:</p>
-<p><p class="TeX">\frac{1}{d_i} = \frac{1}{f} - \frac{1}{d_o} = \frac{1}{-3.0\ \mathrm{cm}} - \frac{1}{5.0\ \mathrm{cm}} = \frac{-8}{15}\ \mathrm{cm}^{-1}</p></p>
-<p><p class="TeX">d_i = \frac{15}{-8}\ \mathrm{cm}= -1.9\ \mathrm{cm}</p></p>
+<p class="TeX">\frac{1}{d_i} = \frac{1}{f} - \frac{1}{d_o} = \frac{1}{-3.0\ \mathrm{cm}} - \frac{1}{5.0\ \mathrm{cm}} = \frac{-8}{15}\ \mathrm{cm}^{-1}</p>
+<p class="TeX">d_i = \frac{15}{-8}\ \mathrm{cm}= -1.9\ \mathrm{cm}</p>
 <p>Calculate <span class="TeX">m</span>:</p>
-<p><p class="TeX">m = -\frac{d_i}{d_o} = -\frac{-1.9\ \mathrm{cm}}{5.0\ \mathrm{cm}} = 0.38</p></p>
+<p class="TeX">m = -\frac{d_i}{d_o} = -\frac{-1.9\ \mathrm{cm}}{5.0\ \mathrm{cm}} = 0.38</p>
 <p>The image is virtual, upright, and reduced.</p>
-<p>Draw a <a target="Ray" href="https://sci.davidmaccarthy.repl.co/applet/ray.html?f=-3&do=5">ray diagram</a> to confirm the solution.</p>
+<p class="Center"><svg class="w28" data-svg2="p30/optics/img/pr.js#diag_toggle#0;-3;5"></svg></p>
 </section>
+
+</div></section>
+
+<section class="Post NoPrint" data-show="2024.11.6.10" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1cBgTS4UX51SFHe6jbebOZ5TxE0QQAbhyPCJ33gMmd4A">Answer Key</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}13.8 — Mirror Equation`,
+    answerDate: "2024.11.6.10",
+    num: "13.8",
+    up: "p30/units/C",
+    prev: "p30/optics/pr",
+    next: "p30/optics/lens",
+}
+
+</script>

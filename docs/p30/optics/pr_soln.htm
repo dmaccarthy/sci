@@ -1,0 +1,30 @@
+
+<section class="Post" data-icon="simulation">
+<h2 class="Collapse">Diagram</h2><div class="Collapse Expand">
+    <p class="Center"><svg id="RayDiag"></svg></p>
+    <div id="Variables" class="Center"></div>
+</div></section>
+
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
+    let args = location.search.slice(1);
+    let unit = args.split(";")[3];
+    unit = unit ? ` ${unit}`: "";
+    $("#RayDiag").attr("data-svg2", `p30/optics/img/pr.js#diag_toggle#${args}`);
+    SVG2.load(() => {
+        let data = $("#RayDiag")[0].data;
+        let e = $("#Variables").html("");
+        let vars = ["<i>f</i>", "<i>d</i><sub>o</sub>", "<i>d</i><sub>i</sub>", "<i>m</i>"];
+        for (let i=0;i<4;i++) {
+            $("<p>").html(`${vars[i]} = ${data[i].toFixed(3)}${unit}`).appendTo(e);
+        }
+    });
+}
+
+loadFeed.data = {
+    title: `Ray Diagram Solutions`,
+    up: "p30/units/C",
+}
+
+</script>
