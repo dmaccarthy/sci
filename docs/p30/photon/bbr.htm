@@ -29,7 +29,7 @@
     <li>Earth’s atmosphere absorbs some wavelengths more than others, so the solar spectrum is no longer a blackbody when it reaches the ground.</li>
 </ul>
 <p class="Center"><a title="Click for source" target="Src" href="https://www.e-education.psu.edu/meteo300/node/683">
-    <img class="w32" alt="Solar Spectrum" src="https://www.e-education.psu.edu/meteo300/sites/www.e-education.psu.edu.meteo300/files/images/lesson6/Solar_spectrum_en.svg.png"/>
+    <img class="w32" data-aspect="4/3" alt="Solar Spectrum" src="https://www.e-education.psu.edu/meteo300/sites/www.e-education.psu.edu.meteo300/files/images/lesson6/Solar_spectrum_en.svg.png"/>
 </a></p>
 </section>
 
@@ -62,8 +62,15 @@
 <script type="text/javascript" data-init="init">
 
 loadFeed.init = () => {
-    let data = $("#BBR_Temp input").addClass("Center").css({padding: 0, width: "5em", "font-size": "0.9em"});
+    let div = $("#BBR_Temp");
+    let data = div.find("input").addClass("Center").css({padding: 0, width: "5em", "font-size": "0.9em"});
     data.on("change", () => loadFeed.redraw(data, $("#BBR_Graph")[0].graphic.T0));
+    div.on("click", (ev) => {
+        if (ev.ctrlKey && ev.altKey) {
+            let T = $(ev.target).closest("p").find("input").val();
+            loadFeed.redraw(data, T);
+        }
+    });
 }
 
 loadFeed.redraw = (data, T0) => {
