@@ -491,19 +491,24 @@ function msg(html, time) {
 // Printing 
 
 function beforePrint() {
-    beforePrint.hide = $("#Top, .NoPrint:visible").hide();
-    $("body").prepend($("<h1>").attr({id: "PrintTitle"}).html(document.title));
+    let b = $("body");
+    if (!b.hasClass("Present")) {
+        beforePrint.hide = $("#Top, .NoPrint:visible").hide();
+        b.prepend($("<h1>").attr({id: "PrintTitle"}).html(document.title));    
+    }
 }
 
 window.addEventListener("beforeprint", beforePrint);
 
 window.addEventListener("afterprint", () => {
-    try {
-        $("#PrintTitle").remove();
-        beforePrint.hide.show();
-        loadFeed();
+    if (!$("body").hasClass("Present")) {
+        try {
+            $("#PrintTitle").remove();
+            beforePrint.hide.show();
+            loadFeed();
+        }
+        catch(err) {}    
     }
-    catch(err) {}
 });
 
 
