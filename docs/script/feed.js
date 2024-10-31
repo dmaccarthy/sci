@@ -527,6 +527,7 @@ function showOnly(sel) {
 function slideShow(sel) {
     $("body").addClass("Present");
     let e = sel = $($(sel)[0]).addClass("TopLevel");
+    e.find(".NoPresent").remove();
     showOnly(sel);
     slideShow.sections = e.children(".Slide");
     if (slideShow.sections.length == 0) slideShow.sections = sel;
@@ -559,7 +560,8 @@ function goSlide(n) {
     goSlide.cues = [];
     for (let e of c) {
         e = $(e);
-        if (!e.is(":first-child")) goSlide.cues.push(e.hide());
+        if (!e.is(":first-child") && e.attr("data-cue") != "prev")
+            goSlide.cues.push(e.hide());
         else e.show();
     }
     goSlide.cueNum = -1;
