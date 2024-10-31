@@ -7,6 +7,7 @@ let h = 6.63e-34, E1 = -13.6;
 // 2hc^2 = 1.19101e-16, hc/kB = 0.0143838
 const planck = (w, T) => 1.19101e-16 / Math.pow(w, 5) / (Math.exp(0.0143838 / (w * T)) - 1);
 const wien = (T) => 0.00289777 / T;
+
 function orbit(data) {
 // Solve circular orbital problems given 2 of 5 variables: r, v, T, a, M
     let w = 0;

@@ -1,0 +1,72 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Notes</h2>
+<div class="Collapse Expand">
+
+<p><em class="Defn">Thermal emission</em> of EMR occurs in solids and liquids when molecules accelerate as a result of collisions with neighbouring molecules.
+    An ideal emitter and absorber of EMR is called a <em class="Defn">blackbody</em>.</p>
+<ul>
+    <li><em class="Defn">Wien’s Law</em>: As temperature increases, the frequency of blackbody EMR increases and the wavelength decreases. For example, room temperature (293 K) objects emit infrared, but the Sun (5778 K) emits mostly visible light.</li>
+    <li><em class="Defn">Stefan-Boltzmann Law</em>: The total intensity of the EMR increases drastically with temperature.</li>
+    <li>The spectrum for a blackbody (graph of intensity versus wavelength) has a characteristic shape, shown below for 5778 kelvin.
+        <p class="Center"><svg class="s24" id="BBR_Graph" data-svg2="p30/photon/img/bbr.js#planck#5778"></svg></p>
+    </li>
+    <li>Rayleigh and Jeans were unsuccessful in calculating the blackbody spectrum. Their results showed that the intensity should increase to infinity at short wavelengths.</li>
+    <li>Max Planck was able to fix the calculation by assuming that the energy of EMR is <em class="Defn">quantized</em>:
+            <p class="TeX">E = hf = \frac{hc}{\lambda}</p></li>
+    <li>According to this hypothesis, when the energy needed to produce even a single quantum of short wavelength EMR is much higher than the energy of the molecules, the probability of emitting such an EM wave is much lower than Rayleigh and Jeans assumed.</li>
+    <li>Planck’s results agreed with observations when<p class="TeX">h = \mathrm{6.63\times 10^{-34}\ J\cdot s = 4.14\times 10^{-15}\ eV\cdot s}</p></li>
+</ul>
+
+<p>Einstein realized that Planck’s hypothesis could be explained by treating EMR as being poth particle and waves. This is called <em class="Defn">wave-particle duality</em>. Particles of light are called <em class="Defn">photons</em>.</p>
+<ul>
+    <li>Photons have no mass.</li>
+    <li>Photons always travel at <span class="TeX">c</span>; they cannot be accelerated or decelerated.</li>
+    <li>Photons can be absorbed or emitted; they are not conserved.</li>
+    <li>Photons have momentum as well as energy:<p class="TeX">E = cp</p></li>
+    <li>The Newtonian equations (<span class="TeX">E_k = \frac{1}{2}mv^2</span> and <span class="TeX">\vec{\mathbf p} = m\vec{\mathbf v}</span>) do not apply at extreme speeds.</li>
+</ul>
+
+<p>The <em class="Defn">photoelectric effect</em> refers to the emission of electrons by a material when a photon is absorbed.</p>
+<ul>
+    <li>The minimum energy needed to remove an electron is called the <em class="Defn">work function</em>. It depends on the energy level structure if the material.</li>
+    <li>Photons with energies less than the work function cannot produce the photoelectric effect.</li>
+    <li>The <em class="Defn">threshold frequency</em> describes photons with energies exactly equal to the work function:
+        <p class="TeX">W=hf_0</p></li>
+    <li>When the photon energy exceeds the threshold, the excess energy can appear as the electron’s kinetic energy:
+        <p class="TeX">E_k^{max} = hf - W = h(f-f_0)</p></li>
+    <li>Robert Millikan determined the maximum electron kinetic energy by measuring the <em class="Defn">stopping voltage</em>, the potential difference needed to prevent the photoelectrons from reaching the anode:
+        <p class="TeX">E_k^{max} = qV_{stop}</p></li>
+    <li>He was able to show that the relationship between <span class="TeX">E_k^{max}</span> and <span class="TeX">f</span> was as expected: a linear relation with slope equal to <span class="TeX">h</span>, <span class="TeX">x</span>-intercept of <span class="TeX">f_0</span> and <span class="TeX">y</span>-intercept of <span class="TeX">-W</span>.</li>
+</ul>
+    
+<p>Wilhelm Röntgen discovered <em class="Defn">x-rays</em>, high energy and highly penetrating photons.</p>
+<ul>
+    <li>X-rays were emitted through <em class="Defn">bremsstrahlung</em> or <em>braking radiation</em>. The sudden deceleration of electrons in a beam when they collide with a target causes them to emit photons.</li>
+    <li>The <em>bremsstrahlung</em> x-rays cannot have energies that exceed the kinetic energy of the electrons emitting them:
+        <p class="TeX">\frac{hc}{\lambda_{min}} = hf_{min} = \frac{1}{2}mv^2 = q\Delta V_{acc}</p></li>
+    <li>X-ray spectra may also include <em class="Defn">characteristic x-rays</em>, which represent energy absorbed by the target atoms and then later released as a photon.</li>
+    <li>Characteristic x-rays depend on the energy level structure of the target.</li>
+</ul>
+
+<p><em class="Defn">Compton Scattering</em> (or the <em class="Defn">Compton Effect</em>) refers to collisions between high-energy photons and stationary (or low-energy) electrons.</p>
+<ul>
+    <li>The collision causes a transfer of energy and momentum from the photon to the electron.</li>
+    <li>The scattered photon must have a longer wavelength than the incident photon because it has less energy.</li>
+    <li>Using the Planck and Einstein equations for the energy and momentum of a photon, we can derive an equation for the change in wavelength based on conservation of both energy and momentum:
+        <p class="TeX">\Delta\lambda = \frac{h}{mc}(1-\cos\theta)</p></li>
+    <li>Compton verified this relation experimentally, showing that Einstein was correct about photons having momentum.</li>
+</ul>
+
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}Photons Review`,
+    num: "14.x",
+    up: "p30/units/C",
+    prev: ["p30/photon/compton", "p30/optics/rev"][clickLink.course],
+    next: ["p30/atom/crt", "p30/atom/rev"][clickLink.course],
+}
+
+</script>

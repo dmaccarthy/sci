@@ -1,0 +1,101 @@
+<section class="Post NoPrintIcon" data-open="https://phet.colorado.edu/en/simulations/photoelectric" data-title="PhET Simulation" data-icon="phet"></section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2>
+<div id="LessonNotes" class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Photoelectric Effect</h1>
+</section>
+
+<section class="Slide"><h3>Photoelectric Effect</h3>
+<p>The <em class="Defn">photoelectric effect</em> (discovered by Heinrich Hertz) is the emission of electrons from a metal that has been exposed to EMR.</p>
+<ul>
+    <li>Electrons emitted this way are called <em class="Defn">photoelectrons</em>.</li>
+    <li>There is no difference whatsoever between a photoelectron and any other electron!</li>
+    <li>Interestingly, there is a sharp <em class="Defn">threshold frequency</em> (that depends on the metal), below which the photoelectric effect does not occur.</li>
+    <li>For zinc, EMR below <span class="TeX">1.05 \times 10^{15}\ \rm{Hz}</span> will not result in the release of photoelectrons, no matter how intense the radiation is.</li>
+    <li>EMR above <span class="TeX">1.05 \times 10^{15}\ \rm{Hz}</span> will release photoelectrons, even at low intensities (although the number of photoelectrons will be low when the EMR intensity is low.)</li>
+    <li>Maxwell’s wave theory of EMR cannot explain the photoelectric effect.</li>
+    <li>However, the explanation using Einstein’s photon theory is simple: photons below the threshold frequency do not have enough energy to knock an electron out of its orbit.</li>
+    <li>The energy required to free electrons from the least tightly bound orbit is called the <em class="Defn">work function</em>. The work function, <span class="TeX">W</span>, equals the energy of photons at the threshold frequency, <span class="TeX">f_0</span>:<p class="TeX">W = hf_0</p></li>
+    <li>If we expose a metal to photons of a frequency <em>higher</em> than the threshold frequency <span class="TeX">(f > f_0</span>), some of the extra energy may appear as the photoelectron’s kinetic energy.</li>
+    <li>We can use conservation of energy to write a relation:
+        <p class="TeX">hf = E_k^{max} + W</p></li>
+    <li>The kinetic energy may be less that <span class="TeX">E_k^{max}</span> if the electron loses some energy through collisions or radiation as it leaves the metal, or if it comes from a lower energy level.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Millikan’s Experiment</h3>
+<p>This relationship can be tested experimentally, to confirm that the photon energy is <span class="TeX">E=hf</span> as predicted by Einstein, and to directly measure Planck’s constant.</p>
+<ul>
+    <li>Robert A. Millikan (who also performed the oil drop experiment) designed an experiment for the photoelectric effect.</li>
+    <li>The <em>frequency</em> of the light source is the manipulated variable.</li>
+    <li>The intensity of the light and the electrode metal (work function, threshhold frequency) are controlled variables.</li>
+    <li>The maximum kinetic energy of the photoelectrons is the responding variable.</li>
+</ul>
+<p class="Center"><img class="w24" src="p30/photon/img/pe.png" alt="Experiment"/></p>
+<ul>
+    <li>The photoelectrode is connected to a second electrode through an ammeter. When the ammeter indicates a current, we know that photoelectrons are being emitted.</li>
+    <li>A potential difference is applied to <em>repel</em> the photoelectrons. This reduces the current by preventing the slower electrons from reaching the anode.</li>
+    <li>As the voltage is increased, fewer electrons reach the anode.</li>
+    <li>When the current reaches zero, the voltage is strongh enough to repel even the fastest photoelectrons.</li>
+    <li>We can calculate <span class="TeX">E_k^{max}</span> from the <em class="Defn">stopping voltage</em>:
+        <p class="TeX" data-cue="prev">E_k^{max} = qV_{stop}</p></li>
+    <li>Rearranging the energy conservation equation predicts that a graph of <span class="TeX">E_k^{max}</span> vs. <span class="TeX">f</span> will be linear, with a slope of <span class="TeX">h</span>, a <span class="TeX">y</span>-intercept of <span class="TeX">-W</span>, and an <span class="TeX">x</span>-intercept of <span class="TeX">f_0</span>:
+        <p class="TeX" data-cue="prev">E_k^{max} = hf - W = h(f-f_0)</p></li>
+    <li>Millikan’s data showed that this was true, and that the value of Planck’s constant was the same as Planck calculated from the blackbody radiation spectrum!</li>
+    <li>The photoelectric effect confirms that photons exist and have the expected energy:<p class="TeX">E=hf</p></li>
+    <li>If we repeat the experiment with a different electrode, the slope of the graph will remain the same (<span class="TeX">h</span>) but the intercepts will change since the work function depends on the metal.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Applications</h3>
+    <p>The photoelectric effect gives us a method for detecting the presence of photons above the threshhold frequency.</p>
+    <p>This has many applications:</p>
+<ul>
+    <li>photovoltaic cells</li>
+    <li>infrared remote controls / detectors</li>
+    <li>remote sensing (elevator doors, robots)</li>
+    <li>smoke detectors</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Example</h3>
+<p class="Blue" data-cue="prev">The stopping voltage is measured to be 1.02 volts when a photoelectrode is exposed to light at 520 nm. Find the work function and threshhold frequency.</p>
+<p class="TeX">E_k^{max} = qV_{stop} = 1.02\ \rm{eV}</p>
+<p class="TeX">hf = E_k^{max} + W</p>
+<p class="TeX">W = hf - E_k^{max} = \frac{hc}{\lambda} - E_k^{max}</p>
+<p class="TeX">W = \rm{\frac{(4.14\times 10^{-15}\ eV\cdot s) (3.00\times 10^8\ m/s)}{5.20\times 10^{-7}\ m} - 1.02\ eV}</p>
+<p class="TeX">W = \rm{2.39\ eV - 1.02\ eV = 1.37\ eV}</p>
+<p>This means that the photon has 2.39 eV of energy to transfer to the electron. The electron needs to use at least 1.37 eV to escape from the metal, leaving a maximum of 1.02 eV of kinetic energy.</p>
+<p class="TeX">f_0 = \frac{W}{h} = \rm{\frac{1.37\ eV}{4.14\times 10^{-15}\ eV\cdot s} = 3.31\times 10^{14}\ Hz}</p>
+<p class="Blue">If the source was replaced by light with wavelength 410 nm, what would the new stopping voltage become?</p>
+<p class="TeX">E_k^{max} = \frac{hc}{\lambda} - W</p>
+<p class="TeX">E_k^{max} = \rm{\frac{(4.14\times 10^{-15}\ eV\cdot s) (3.00\times 10^8\ m/s)}{4.10\times 10^{-7}\ m} - 1.37\ eV}</p>
+<p class="TeX">E_k^{max} = \rm{3.03\ eV - 1.37\ eV = 1.66\ eV}</p>
+<p class="TeX">V_{stop} = \frac{E_k^{max}}{q} = \rm{1.66\ V}</p>
+<p>Because the shorter wavelength photons have more energy, the photoelectrons escape with more kinetic energy, so the stopping voltage is higher.</p>
+</section>
+
+</div></section>
+
+<section class="Post NoPrintIcon" data-show="2024.11.22.10" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1Mpe6KLtiwrwvo_Ir_y2LdkgkfOw4RtF5ZI7DssYNbnY">Answer Key</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}14.3 — Photoelectric Effect`,
+    answerDate: "2024.11.22.10",
+    num: "14.3",
+    up: "p30/units/C",
+    prev: "p30/photon/photon",
+    next: "p30/photon/xray",
+}
+
+</script>

@@ -1,0 +1,99 @@
+<section class="Post NoPrintIcon" data-icon="video">
+    <h2 class="Collapse">Video</h2>
+    <div class="Collapse" data-yt="fI2C4VlR1OM"></div>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2>
+<div id="LessonNotes" class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Compton Scattering</h1>
+</section>
+
+<section class="Slide"><h3>Photons</h3>
+<div>
+    <p>Einstein’s theory predicted that photons have both energy and momentum:</p>
+    <p class="TeX" data-cue="prev">E = hf = \frac{hc}{\lambda} = cp</p>
+</div>
+<ul>
+    <li>The photoelectric effect and Planck’s explanation of blackbody radiation demonstrate the photons do have the predicted energy.</li>
+    <li>To show that photons have the predicted momentum, we would need to examine their behaviour duing <em>collisions</em> with other particles such as electrons.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Elastic Collisions</h3>
+<p>Consider a collision between a photon and an electron (initially at rest), where the photon <em>scatters</em> to an angle <span class="TeX">\theta</span> and for which both energy and momentum must be conserved.</p>
+<p class="Center"><svg class="s20" data-svg2="p30/photon/img/compton.js#pCons"></svg></p>
+<ul>
+    <li><span class="TeX">\vec{\mathbf p}_i</span> is the momentum of the incident (before collision) photon.</li>
+    <li><span class="TeX">\vec{\mathbf p}_s</span> is the momentum of the scattered (after collision) photon.</li>
+    <li><span class="TeX">\vec{\mathbf p}_e</span> is the momentum acquired by the electron due to the collision.</li>
+    <li>We can represent momentum conservation by writing the law of cosines:
+        <p class="TeX">p_e^2 = p_i^2 + p_s^2 - 2p_i p_s\cos\theta</p></li>
+    <li>Energy is also conserved, so the electron energy is equal to the energy lost by the photon:
+        <p class="TeX">\frac{1}{2}mv_e^2 = \frac{1}{2}m\left(\frac{p_e}{m}\right)^2 = cp_i - cp_s</p>
+    </li>
+    <li>An important consequence of this equation is that the scattered photon has less energy and less momentum than the incident photon, because some of that energy has been transferred to the electron.</li>
+    <li>If Einstein’s equations are correct, the scattered photon will have a longer wavelength than the incident photon.</li>
+    <li>This phenomenon — that the photon wavelength increases after scattering from an electron — is called <em class="Defn">Compton Scattering</em>, or the <em class="Defn">Compton Effect</em>.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Relativistic Effects</h3>
+<div>
+    <p>We could combine the energy and momentum equations by substituting for <span class="TeX">p_e^2</span>:</p>
+    <p class="TeX" data-cue="prev">p_e^2 = p_i^2 + p_s^2 - 2p_i p_s\cos\theta = 2mc(p_i - p_s)</p>
+</div>
+<ul>
+    <li>This would allow us to solve for <span class="TeX">p_s</span> for any given <span class="TeX">p_i</span> and <span class="TeX">\theta</span>.</li>
+    <li>This prediction can be confirmed experimentally!</li>
+    <li>The derivation above uses the <em>Newtonian</em> equations for the kinetic energy and momentum of the electron, which is only valid if the electron speed remains much slower than the speed of light.</li>
+    <li>We can obtain a more general equation if we replace the Newtonian equations by their relativistic equivalents.</li>
+    <li>The <a target="CDeriv" href="https://drive.google.com/file/d/1y-ATNGk7c6O2GhdSMYKkavCi7WyfeDxK/view?usp=drive_link">relativistic derivation</a> produces a simple result:
+        <p class="TeX" data-cue="prev">\Delta\lambda = \frac{h}{mc}(1 - \cos\theta)</p></li>
+    <li>The maximum shift in the wavelength occurs when a photon scatters to 180°:
+        <p class="TeX">\Delta\lambda = \frac{h}{mc}(1-(-1)) = 4.85\times 10^{-12}\ \rm m</p></li>
+    <li>Because this shift is so small, the Compton Effect is most noticable using x-ray photons.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Compton’s Experiment</h3>
+<div>
+    <p>Arthur H. Compton conducted the experiment to test whether the scattered photon wavelength changed as predicted:</p>
+    <p class="TeX" data-cue="prev">\Delta\lambda = \frac{h}{mc}(1 - \cos\theta)</p>
+</div>
+<ul><li>Compton set up an x-ray source to fire photons at a target.</li></ul>
+<p class="Center"><img class="w24" alt="Experiment" src="p30/photon/img/compton.png"/></p>
+<ul>
+    <li>A detector was set up at an angle <span class="TeX">\theta</span> to measure the wavelength of the scattered x-rays.</li>
+    <li>The scattering angle <span class="TeX">\theta</span> was manipulated and the change in wavelength, <span class="TeX">\Delta\lambda</span>, was the responding variable.</li>
+    <li>The wavelength of the incident x-rays was controlled.</li>
+    <li>Compton observed that some of the scattered photons had the predicted wavelength.</li>
+    <li>Other scattered x-rays had the <em>same</em> wavelength as the incident ones.</li>
+    <li>These photons collided with a nucleus in the target rather than an electron...</li>
+    <li>Since the nuclear mass is several thousand times larger than the electrons’, the shift in wavelength is much smaller.</li>
+</ul>
+</section>
+
+</div></section>
+
+<section class="Post NoPrintIcon" data-show="2024.11.26.10" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="19X-WhiOUKLSeMVpgySX9tHcMBQbsSSKR2xaDS-3sxzs">Answer Key</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}14.5 — Compton Scattering`,
+    answerDate: "2024.11.26.10",
+    num: "14.5",
+    up: "p30/units/C",
+    prev: "p30/photon/xray",
+    next: "p30/photon/rev",
+}
+
+</script>
