@@ -7,7 +7,7 @@ tank: (sel) => {
     svg.line([0, 1], [0, -1]);
     for (let a=1;a<90;a+=1) {
         let r = a % 10 ? (a % 5 ? 0.96 : 0.93) : 0.9;
-        if (a% 5 == 0) svg.line(vec2d(1, a), vec2d(r, a));
+        if (a % 5 == 0) svg.line(vec2d(1, a), vec2d(r, a));
         svg.line(vec2d(-1, a), vec2d(-r, a));
         if (a % 10 == 0) {
             svg.text(90 - a, vec2d(0.85, a));

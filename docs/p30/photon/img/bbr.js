@@ -1,49 +1,67 @@
 SVG2.cache("p30/photon/img/bbr.js", {
 
-planck: (sel, ...args) => {
-    svg = new SVG2(sel, {size: [512, 384], lrbt: [0, 3, 0, 1.5], grid: [0.2, 0.1], margin: [28, 2, 28, 1]});
+planck: (sel, T0, ...args) => {
+    // Set missing arguments to defaults
+    if (!T0) T0 = 5778;
+    let opt = {wMax: 3, iMax: 1.5, grid: true};
+    if (typeof(T0) != "number") {
+        opt = Object.assign(opt, T0);
+        T0 = opt.T0;
+    }
+    if (opt.grid === true) opt.grid = [opt.wMax / 15, opt.iMax / 15];
+
+    // Create diagram and store scale temperature
+    svg = new SVG2(sel, {size: [512, 384], lrbt: [0, opt.wMax, 0, opt.iMax], grid: opt.grid, margin: [28, 16, 28, 1]}).config({T0: T0});
     svg.$.addClass("SVG2");
 
-    // Planck-Wien Laws (using μm as wavelength unit)
-    let a = 6.626e-34 * 2.998e8 / 1.381e-23 * 1e6;
-    let planck = (w, T) => Math.pow(w, -5) / (Math.exp(a / (w * T)) - 1);
-    let wien = (T) => {
-        let w = 2897.772 / T;
-        return [w, planck(w, T)];
-    }
-
-    let T0 = args[0] ? args[0] : 5778;
-    svg.T0 = T0;
-    let [w0, I0] = wien(T0);
+    // Locate peak and create scaled Planck Law function
+    let w0 = wien(T0);
+    let I0 = planck(w0, T0);
     let f = (x, t, T) => x <= 0 ? 0 : planck(x * w0, T) / I0;
 
-    let g = svg.group();
-    g.circle("4", [0.7 / w0, 0]).css({fill: "red"});
-    g.circle("4", [0.61 / w0, 0]).css({fill: "orange"});
-    g.circle("4", [0.58 / w0, 0]).css({fill: "yellow"});
-    g.circle("4", [0.53 / w0, 0]).css({fill: "lightgreen"});
-    g.circle("4", [0.475 / w0, 0]).css({fill: "blue"});
-    g.circle("4", [0.4 / w0, 0]).css({fill: "purple"});
-
-    if (args.length < 2) args = [0, 5778];
-    let colors = ["#0065fe", "red", "green", "gold", "violet"];
-    for (let i=1;i<args.length;i++) {
+    // Draw loci and peaks for specified temperatures
+    if (args == null || args.length < 1) args = [T0];
+    let colors = ["#0065fe", "red", "green", "gold", "violet", "cyan"];
+    for (let i=0;i<args.length;i++) {
         let T = args[i];
         if (T > 0) {
-            let [w, I] = wien(T);
+            let w = wien(T);
+            let I = planck(w, T) / I0;
             let w1 = w / w0;
-            I /= I0;
-            let c = colors[(i - 1) % colors.length];
-            svg.locus(f, [0, 3], T).$.css({"stroke-width": "2px", stroke: c});
-            svg.text(`${(1000 * w).toFixed(0)} nm`, [w1, I + 0.07]).css({fill: c});
-            svg.circle("4", [w1, I]).css({stroke: c, fill: "white"});    
+            let c = colors[i % colors.length];
+            svg.locus(f, [0, opt.wMax], T).$.css({"stroke-width": "2px", stroke: c});
+            svg.text(`${(1e9 * w).toFixed(0)} nm`, [w1, I + 0.07]).css({fill: c}).addClass("Peak");
+            svg.circle("4", [w1, I]).css({stroke: c, fill: "white"}).addClass("Peak");
         }
     }
 
-    g.$.appendTo(svg.$);
-    svg.text("Wavelength", [2.5, "-16"]);
-    g = svg.group().config({theta: 90, shift: ["-16", 0.75]});
-    g.text("Intensity");
+    // Draw points to show visible wavelengths
+    let g = svg.group();
+    g.$.addClass("Visible");
+    for (let [w, c] of [[740, "#900000"], [680, "red"], [610, "orange"], [580, "yellow"],
+        [530, "lightgreen"], [490, "cyan"], [460, "blue"], [400, "#9400d3"]]) 
+            g.circle("4", [w * 1e-9 / w0, 0]).css({fill: c});
+
+    // Label axes
+    svg.text("Wavelength", [opt.wMax / 2, "-16"]);
+    svg.group().config({theta: 90, shift: ["-16", opt.iMax / 2]}).text("Intensity");
+
+    return svg;
+},
+
+r_j: (sel) => {
+    let T = 300, wMax = 6;
+    let opt = {T0: T, wMax: wMax, iMax: 1.1, grid: [7, 2]};
+    let svg = SVG2.cache_run("p30/photon/img/bbr.js", "planck", sel, opt, T);
+    let w0 = wien(T);
+    let I0 = planck(w0, T);
+    let w = 100 * w0;
+    let rj_law = (w, T) => T / Math.pow(w, 4);
+    let b = planck(w, T) / rj_law(w, T);
+    let rj = svg.locus((x) => b * rj_law(x * w0, T) / I0, [2, wMax]);
+    rj.$.css({stroke: "red", "stroke-width": "1px"});
+    svg.text("Rayleigh-Jeans Law", [3.5, 1]).css({fill: "red"});
+    svg.$.find("text.Peak, g.Visible").remove();
 },
 
 });
