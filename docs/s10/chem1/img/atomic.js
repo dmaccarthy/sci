@@ -1,53 +1,80 @@
 SVG2.cache("s10/chem1/img/atomic.js", {
-
+ 
 bun: (sel) => {
-    $(sel).attr({width: 280, height: 244, "data-aspect": "280/244"});
-    let svg = new SVG_Animation(sel, -1, 1.3, -1, 1, 2);
+    let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], margin: 2});
+    svg.$.addClass("SVG2");
     svg.circle(1, [0, 0]).css({fill: "#F1B9A1", stroke: "black"});
     let a = 0.15, b = 0.75;
     svg.poly([[a, b], [a, a], [b, a], [b, -a], [a, -a], [a, -b], [-a, -b], [-a, -a],
         [-b, -a], [-b, a], [-a, a], [-a, b]], 1).css({fill: "red", "fill-opacity": 0.2});
-    let g = svg.group().css({fill: "green"});
     let attr = {stroke: "black", "stroke-width": "0.5px"};
     let pts = [[0.4243, 0.4243], [-0.28, 0.65], [-0.51, -0.07],
         [-0.15, -0.55], [0.1707, -0.1062], [0.5, -0.3]];
-    svg.line(pts[0], [1, 0.7]).css({stroke: "green"});
-    for (let i=0;i<pts.length;i++) svg.circle(0.04, pts[i], g).css(attr);
-    svg.text("Electron", [1, 0.8], g);
-    svg.$.css({"font-size": "18px"});
-    svg.final();
+    svg.line(pts[0], [0.85, 0.78]).css({stroke: "green"});
+    let g = svg.group();
+    for (let i=0;i<pts.length;i++) g.circle(0.04, pts[i]).css(attr);
+    g.text("Electron", [0.86, 0.9]);
+    g.$.find("text, circle").css({fill: "green"});
+    return svg;
 },
 
-nuclear: (sel) => {
-    $(sel).attr({width: 256, height: 256, "data-aspect": "1"});
-    let svg = new SVG_Animation(sel, -1, 1, -1, 1, 2);
+rutherford: (sel) => {
+    let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], margin: 2});
+    svg.$.addClass("SVG2");
     let a = 0.35, b = 0.04;
     let elec = [a * sin(140), cos(140)];
     let n = [[0.0374, 0.019], [-0.0383, -0.0237], [-0.0558, 0.0394], [0.0516, -0.0361]];
     let p = [[-0.0138, 0.0375], [-0.0025, -0.0422], [0.0521, 0.0135]];
-    svg.circle(b, n[3]).addClass("Neutron");
+    let gn = svg.group();
+    let gp = svg.group();
     for (let i=0;i<3;i++) {
         let g = svg.group();
         if (i) g.config({theta: 120 * i});
-        svg.ellipse(a, 1, [0, 0], g);
-        svg.circle(0.75 * b, elec, g).addClass("Electron");
-        svg.circle(b, n[i]).addClass("Neutron");
-        svg.circle(b, p[i]).addClass("Proton");
+        g.ellipse([a, 1]).css({stroke: "green"});
+        g.circle(0.75 * b, elec, g).css({fill: "green"});
+        gn.circle(b, n[i]);
+        gp.circle(b, p[i]);
     }
-    svg.line(vec2d(b, -60).plus(p[1]), [0.6, -0.7]).css({stroke: "red"});
-    svg.line(n[2], [-0.6, 0.7]).css({stroke: "#0065FE"});
-    svg.text("Electron", [0.55, 0.75]).addClass("Electron");
-    svg.text("Proton", [0.7, -0.8]).addClass("Proton");
-    svg.text("Neutron", [-0.7, 0.8]).addClass("Neutron");
-    svg.$.find("ellipse").css({fill: "none", stroke: "green"});
-    svg.$.find("circle").css({stroke: "black", "stroke-width": "0.5px"});
-    svg.$.find(".Electron").css({fill: "green"});
-    svg.$.find(".Proton").css({fill: "red"});
-    svg.$.find(".Neutron").css({fill: "#0065FE"});
-    svg.$.css({"font-size": "18px"});
-    svg.final();
+    gn.circle(b, n[3]);
+    svg.text("Electron", [0.55, 0.75]).css({fill: "green"});
+    gp.line(vec2d(b, -60).plus(p[1]), [0.6, -0.7]).css({stroke: "red"});
+    gn.line(n[2], [-0.6, 0.7]).css({stroke: "#0065FE"});
+    gn.text("Neutron", [-0.7, 0.8]);
+    gp.text("Proton", [0.7, -0.8]);
+    gn.$.find("circle, text").css({fill: "#0065fe"});
+    gp.$.find("circle, text").css({fill: "red"});
+    return svg;
+},
 
+nuclear: (sel) => {
+    let svg = SVG2.cache_run("s10/chem1/img/atomic.js", "rutherford", sel);
     let t = svg.$.find("text, line");
+    svg.$.on("click", () => t.fadeToggle());
+},
+
+nuclear_alpha: (sel) => {
+    let svg = SVG2.cache_run("s10/chem1/img/atomic.js", "rutherford", sel);
+    svg.$.find("text, line").remove();
+    let g = svg.group();
+    for (let y of [-0.5, -0.83, 0.3, 0.65, 0.8]) {
+        g.ray([-1.2, y], [1.2, y], null, 1);
+    }
+    g.line([-1.2, -0.05], [-0.1, -0.05]);
+    g.ray([-0.1, -0.05], [-1.2, -0.7], null, 1);
+    g.$.find("*").css({stroke: "#0065fe", "stroke-width": "2px"});
+    let t = g.$.find("polyline, line");
+    svg.$.on("click", () => t.fadeToggle());
+},
+
+bun_alpha: (sel) => {
+    let svg = SVG2.cache_run("s10/chem1/img/atomic.js", "bun", sel);
+    svg.$.find("line, text").remove();
+    let g = svg.group();
+    for (let y of [-0.1, -0.5, -0.83, 0.1, 0.3, 0.65, 0.8]) {
+        g.ray([-1.2, y], [1.2, y], null, 1);
+    }
+    g.$.find("*").css({stroke: "#0065fe", "stroke-width": "2px"});
+    let t = g.$.find("polyline, line");
     svg.$.on("click", () => t.fadeToggle());
 },
 
