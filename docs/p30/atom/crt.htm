@@ -128,13 +128,83 @@ loadFeed.sim.ray = function*() {
 <h1 id="Title">Thomson’s CRT Experiment</h1>
 </section>
 
+<section class="Slide"><h3>Cathode Ray Tube</h3>
+<p>A cathode ray tube is a device that uses a strong electric field to produce a beam of electrons.</p>
+<p class="Center"><img class="w28" alt="CRT" src="p30/atom/img/crt.png"/></p>
+<ul>
+    <li>Although the electrons themselves are not visible, coating the tube with a fluorescent material or filling the tube with certain low pressure gases will cause a glow to appear that lets us “see” the electron beam.</li>
+    <li>The nature of the beam was unknown when scientists started using CRTs in the late 19th century.</li>
+    <li>Experimentation showed that the beam originated at the cathode (negative electrode), resulting in the name cathode ray.</li>
+    <li>By applying electric and magnetic fields, scientists determined that the cathode ray particles were negatively charged.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Speed of CRT Particles</h3>
+<p>J.J. Thomson conducted an experiment in 1897 that enabled him to determine the speed of the cathode ray particles, and the <em>ratio</em> of the particles’ charge to mass.</p>
+<ul>
+    <li>Thomson placed a second pair of electrodes in the CRT to produce an electric field perpendicular to the beam’s direction.</li>
+    <li>The effect of this field was to deflect the beam toward the positive electrode.</li>
+    <li>Thomson then applied a uniform magnetic field to the same region of the CRT to produce a magnetic force in the <em>opposite direction</em> to the electric force.</li>
+    <li>Thomson next adjusted the relative strengths of the two fields until the forces balanced, causing the beam to remain undeflected:
+        <p class="TeX">F_e = F_m</p>
+        <p class="TeX">q|\vec{\mathbf E}_{def}| = qvB</p>
+        <p class="TeX">v = \frac{|\vec{\mathbf E}_{def}|}{B}</p>
+    </li>
+    <li>Thomson determined the speed of the particles by dividing the field strengths.</li>
+    <li>The subscript “def” distinguishes the <em>deflecting</em> electric field from the <em>accelerating</em> electric field. Both fields can be calculated using the respective voltages and distances between electrodes:
+        <p class="TeX">|\vec{\mathbf E}| = \frac{\Delta V}{\Delta d}</p></li>
+    <li>Millikan had not yet performed his oil drop experiment, so the charge of the particles was unknown.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Charge-to-Mass Ratio</h3>
+<p>Once the particle speed was known, Thomson turned off one of the fields and left the other on.</p>
+<ul>
+    <li>Since the forces are no longer balanced, the CRT particles have an acceleration.</li>
+</ul>
+<p class="Center"><img class="w20" alt="CRT" src="p30/atom/img/crt2.jpg"/></p>
+<ul>
+    <li>A uniform magnetic field causes uniform circular motion:
+        <p class="TeX">F_m = ma_c</p>
+        <p class="TeX">qvB = \frac{mv^2}{r}</p>
+        <p class="TeX">\frac{q}{m} = \frac{v}{Br}</p>
+    </li>
+    <li>By measuring the radius of the particles’ trajectory in a uniform magnetic field, Thomson could determine the ratio of the charge to mass.</li>
+    <li>Thomson found that the <span class="TeX">q/m</span> ratio was the same no matter which material was used for the cathode; all electrons are the same!</li>
+    <li>Millikan had not yet performed his oil drop experiment, so the charge of the particles was unknown.</li>
+    <li>Once Millikan’s experiment was complete, the results of the two experiments could be combined to find the mass of the electron.</li>
+    <li>Thomson then reversed the direction of the accelerating field and introduced positive ions, to create a beam of positive particles.</li>
+    <li>The results showed that positive ions have a much smaller <span class="TeX">q/m</span> ratio (i.e. a much larger mass) than the negative particles.</li>
+    <li>The <span class="TeX">q/m</span> ratio is different for different ions.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Projectile Motion</h3>
+<p>Alternatively, the second part of the experiment can be done with a uniform electric field instead of a magnetic field.</p>
+<ul>
+    <li>A uniform electric field causes projectile (parabolic) motion instead of uniform circular motion.</li>
+    <li>The electric field acts in the <span class="TeX">y</span>-direction and causes the acceleration:
+        <p class="TeX">\vec{\mathbf a}_y = \frac{\vec{\mathbf F}_e}{m} = \frac{q\vec{\mathbf E}_{def}}{m}</p></li>
+    <li>The <span class="TeX">y</span>-velocity is then:
+        <p class="TeX">\vec{\mathbf v}_y = \vec{\mathbf v}_{iy} + \vec{\mathbf a}_y \Delta t = \frac{q\vec{\mathbf E}_{def}}{m} \Delta t</p></li>
+    <li>Because there is no force in the <span class="TeX">x</span>-direction, the <span class="TeX">x</span>-motion is uniform:
+        <p class="TeX">\vec{\mathbf v}_x = \frac{\Delta\vec{\mathbf d}_x}{\Delta t}</p></li>
+    <li>If we multiply the magnitudes of the two equations the time will cancel:
+        <p class="TeX">v_y v_x = \frac{q}{m} |\vec{\mathbf E}_{def}| \Delta d_x</p>
+        <p class="TeX">\frac{q}{m} = \frac{v_y v_x}{|\vec{\mathbf E}_{def}| \Delta d_x}</p>
+    </li>
+    <li>We can calculate the <span class="TeX">q/m</span> ratio using the initial speed of the particles as <span class="TeX">v_x</span> and using trigonometry to calculate <span class="TeX">v_y = v_x\tan\theta</span>.</li>
+    <li>Thus Thomson needed to measure the direction of the beam’s motion (<span class="TeX">\theta</span>) after travelling a known horizontal distance <span class="TeX">\Delta d_x</span>.</li>
+    <li>The results of the experiment when performed in a uniform electric field are the same as when performed in a uniform magnetic field.</li>
+</ul>
+</section>
 
 </div></section>
 
-<section class="Post NoPrintIcon" data-show="2024.11.27.10" data-icon="gdrv">
+<section class="Post NoPrintIcon" data-show="2024.12.4.10" data-icon="gdrv">
     <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
     <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="">Answer Key</button>
+        <button data-icon="gdrv" data-gdrv="1deDoYrjvqIfXPwTsKGd2VbqNDEVY_1qcR6a27PmbA4A">Answer Key</button>
     </p>
 </div></section>
 
@@ -142,7 +212,7 @@ loadFeed.sim.ray = function*() {
 
 loadFeed.data = {
     title: `${siteData.lesson}15.1 — Thomson’s CRT Experiment`,
-    answerDate: "2024.11.27.10",
+    answerDate: "2024.12.4.10",
     num: "15.1",
     up: "p30/units/D",
     prev: "p30/photon/rev",

@@ -1,0 +1,108 @@
+<section id="Title" class="Center">
+<p class="Course"><a href="javascript:goCourse()">Physics 30</a></p>
+<p class="Title"></p>
+</section>
+
+<section id="spec" class="Slide"><h3>Continuous & Discrete Spectra</h3>
+<p>The <em class="Defn">emission spectra</em> for <em>low-density</em> gases are different than for denser materials.</p>
+<ul>
+    <li>Recall that hot, dense objects produce an EMR emission spectrum resembling a “blackbody.”</li>
+    <li>The source of the EMR is <em>collisions</em> between the molecules.</li>
+    <li>Blackbody radiation results in a <em>continuous</em> spectrum of EMR; i.e., all wavelengths are emitted within the blackbody’s range of energies.</li>
+    <li>When a <em>low-density</em> gas is energized (by heating or running electric current through it), it emits a <em class="Defn">discrete spectrum</em>...</li>
+</ul>
+<p class="Center"><img alt="Hydrogen Spectrum" class="w28" src="img/h.png"/></p>
+<ul>
+    <li>Only certain wavelengths of EMR are emitted. The specific wavelengths depend on the gases used.</li>
+    <li>Low-density gases do not emit thermal radiation because there are few collisions between molecules.</li>
+    <li>Whatever EMR they do emit must originate from within individual atoms or molecules.</li>
+</ul>
+</section>
+
+<section id="ruth" class="Slide"><h3>Rutherford’s Planetary Model</h3>
+<p>Rutherford’s Planetary Model of the atom has a major problem!</p>
+<ul>
+    <li>The orbiting electrons are always undergoing centripetal acceleration.</li>
+    <li>According to Maxwell’s Theory of EMR, such electrons should always be radiating EM waves and should therefore always be losing energy!</li>
+    <li>The electron orbits are unstable...the electrons should spiral into the nucleus as they radiate!</li>
+</ul>
+<p class="Center"><img alt="Decaying Orbit" class="w14" src="img/spiral.png"/></p>
+</section>
+
+<section id="deB" class="Slide"><h3>Wave-Particle Duality in the Atom</h3>
+<p>Just as Planck was able to “fix” the blackbody spectrum problem by assuming that the energy of EMR is quantized, Bohr was able to fix the Rutherford model by assuming that the orbiting electron’s <em class="Defn">angular momentum</em> is quantized.</p>
+<ul>
+    <li>Angular momentum is just the product of the electron’s orbital radius with its regular momentum.</li>
+    <li>De Broglie’s hypothesis that electrons exhibit wave-particle duality explains why this happens.</li>
+    <li>Think of the electron not just as an orbiting particle but as a <em>wave</em> surrounding the nucleus.</li>
+</ul>
+<p class="Center"><img alt="Wavefunction" class="w28" src="img/waveFn.png"/></p>
+<ul>
+    <li>If the circumference of the orbit is an <em>exact multiple</em> of the de Broglie wavelength (left diagram), the electron will not radiate because its wave is <em>not changing</em>:
+        <p class="TeX">2\pi r = n\lambda = n\frac{h}{p}</p>
+        <p class="TeX">rp = n \frac{h}{2\pi}</p>
+    </li>
+    <li>If this is not the case, the wave will be changing (right diagram) and EMR would be emitted.</li>
+</ul>
+</section>
+
+<section id="bohr" class="Slide"><h3>Bohr’s Atomic Model</h3>
+<p>Mathematically, Bohr’s model <em>for hydrogen atoms</em> consists of two equations that we can think of as representing the wave-like behaviour and the particle-like behaviour of the electrons:
+    <p class="TeX">r(mv) = n \frac{h}{2\pi}</p>
+    <p class="TeX">\frac{ke^2}{r^2} = m\frac{v^2}{r}</p>
+</p>
+<ul>
+    <li>The second equation is just Newton’s 2nd Law, assuming the electron is exhibiting uniform circular motion due to electric field of the nucleus.</li>
+    <li>This equation applies only to hydrogen; other atoms have more than one electron and the repulsion between those electrons makes things more complicated.</li>
+    <li>We can combine the equations by eliminating <span class="TeX">v</span> and then solving for <span class="TeX">r</span>:
+        <p class="TeX">\frac{ke^2}{r} = m\left(\frac{nh}{2\pi mr}\right)^2</p>
+        <p class="TeX">r = n^2 \left(\frac{h^2}{4\pi^2 m\cdot ke^2}\right)</p></li>
+    <li>The constants in parentheses evaluate to <span class="TeX">r_1 = 5.29\times 10^{-11}\ \mathrm{m}</span>, which is the smallest radius that the orbiting electron is allowed to have in Bohr’s model.</li>
+    <li>Electrons orbiting with this radius are in the <em class="Defn">ground state</em>, the orbit with the least total energy.</li>
+    <li>The energy of the ground state for hydrogen is <span class="TeX">E_1=-13.6\ \mathrm{eV}</span>, or 13.6 eV less than an electron needs to escape the atom.</li>
+    <li>The second energy level (<span class="TeX">n=2</span>) has an orbital radius that is 4 times larger than <span class="TeX">r_1</span>, and energy of <span class="TeX">-13.6\ \mathrm{eV}/ 4</span></li>
+    <li>In general:
+        <p class="TeX">r_n = n^2 r_1</p>
+        <p class="TeX">E_n = \frac{E_1}{n^2}</p>
+    </li>
+    <li>These <em class="Defn">energy levels</em> are the only places the electrons can orbit without emiting EMR.</li>
+</ul>
+</section>
+
+<section id="emit" class="Slide"><h3>Absorption &amp; Emission Spectra</h3>
+<p>An energy level diagram is a graphical representation of the energies of the “stationary states” of an atom or molecule.</p>
+<p class="Center"><img alt="Energy Levels" class="w10" src="img/eld.png"/></p>
+<ul>
+    <li>The energy level diagram above shows the results of Bohr’s calculations for atomic hydrogen up to <span class="TeX">n = 6</span>.</li>
+    <li>The energy levels from <span class="TeX">n = 7</span> and higher are very close together and have been omitted from the diagram for clarity.</li>
+    <li>Energies can be measured relative to the ionized state (<span class="TeX">n = \infty</span>) as in the diagram above, or relative to the ground state (<span class="TeX">n = 1</span>).</li>
+    <li>Electrons can release energy by emiting a photon when they jump from a higher to a lower energy level.</li>
+    <li>Atoms produce a discrete emission spectrum because the photon energy must equal the difference between the electron’s initial and final energy level.</li>
+    <li>An arrow on an energy level diagram indicates an electron transition.</li>
+    <li>In the case of hydrogen, only four transitions (<span class="TeX">3\rightarrow 2</span>, <span class="TeX">4\rightarrow 2</span>, <span class="TeX">5\rightarrow 2</span>, and <span class="TeX">6\rightarrow 2</span>) emit visible photons, corresponding to the four colours in the visible spectrum.</li>
+    <li>Transitions into <span class="TeX">n=1</span> will emit ultraviolet photons because the photon energy will be 10.2 eV or more.</li>
+    <li>Transitions ending above <span class="TeX">n=2</span> will emit infrared photons because the photon energy will be 1.51 eV or less.</li>
+    <li>Electrons can absorb a photon to acquire the energy needed to jump to a higher energy level.</li>
+    <li>The energies of the photons that can be absorbed will be the same as the energies of the photons that can be emitted.</li>
+</section>
+
+<section id="sy" class="Slide"><h3>Spectroscopy</h3>
+<ul>
+    <li>Because the energy levels are unique to each element and compound, the set of wavelengths that each element or compound can emit and absorb is also unique. Substances can be identified based on the wavelengths of EMR that they emit or absorb.</li>
+    <li><em class="Defn">Spectroscopy</em> is the branch of science that analyses spectra by separating light sources into separate wavelengths.</li>
+    <li>Spectroscopes can use either a prism or a diffraction grating to separate the wavelengths.</li>
+    <li>Spectroscopy is an important branch of astronomy and chemistry.</li>
+</ul>
+</section>
+
+		
+<!--
+In the diagram above, an electron jumping from n = 4 to n = 2 is illustrated. This transition can be described as 4 → 2. Downward arrows indicate the emission of a photon resulting in lower electron energy. Upward arrows indicate the absorption of a photon (or some other form of energy) resulting in higher electron energy. Conservation of energy is used to relate the electron energies (initial and final) to the energy of the photon. For emission of a photon:
+Ei = Ef + hf.
+For absorption of a photon:
+Ei + hf = Ef.
+The difference between emission and absorption is whether the photon is present in the initial side (absorption) or whether it is produced as a final result of the transition (emission). For both cases, we can write:
+hf = | Ef – Ei |.
+-->
+
+</section>
