@@ -1060,7 +1060,7 @@ static ebg(sel, Emax, step, data, options) {
             t = svg.symbol([t[0], 2], [t[1], 6, [`${8+5*t[1].length}`, "-8"]]).config({shift: xy});
             t = t.$.addClass("Large").find("text").css({fill: c});
         }
-        else t = svg.text(t[0], xy).addClass("Large Ital").css({fill: c});
+        else t = svg.text(t[0], xy).addClass("Symbol Large Ital").css({fill: c});
     }
     svg.config({data: data, options: options});
     svg.$.addClass("SVG2").find("g.Grid line.Axis").appendTo(svg.$);

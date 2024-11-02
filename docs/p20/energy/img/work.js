@@ -1,17 +1,12 @@
 SVG2.cache("p20/energy/img/work.js", {
 
 ex2: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-    let svg = applet.energygraph.graph(sel, {
-        sym: ["+W", "E_k", "E_g", "–W"],
-        colors: ["red", 0, 0, "red"],
-        calc: (t) => {
-            return [9 * (1 - t), 3 * t, 5 * t, t];
-        },
-        xMargin: [-1.5, 0.1],
-        yMargin: [-1, 0.5],
-        Emax: 10, dE: 1, interval: 1,
-    });
+    svg = SVG2.ebg(sel, 10, 1, [
+        ["+W", true, "red"],
+        ["E_k", (t) => 3 * t],
+        ["E_g", (t) => 5 * t],
+        ["–W", (t) => t, "red"],
+    ], {E: 9, duration: 4, label: [0, "-6"]});
 },
 
 flow2: (sel) => {

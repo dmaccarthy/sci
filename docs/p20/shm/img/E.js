@@ -95,18 +95,10 @@ spring: (sel) => {
 },
 
 bar: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-    let svg = applet.energygraph.graph(sel, {
-        sym: ["E_k", "E_p"],
-        calc: (t) => {
-            let Ek = 6.75 * t * t;
-            return [Ek, 9 - Ek];
-        },
-        xMargin: [-0.8, 0.1],
-        yMargin: [-1.8, 0.6],
-        Emax: 10, dE: 1, interval: 2,
-        yTitle: "Energy / mJ",
-    });
+    svg = SVG2.ebg(sel, 10, 1, [
+        ["E_k", (t) => 6.75 * t * t],
+        ["E_elas", true],
+    ], {E: 9, duration: 4, unit: "mJ", label: [0, "-6", 2]});
 },
 
 });

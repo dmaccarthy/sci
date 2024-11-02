@@ -217,8 +217,8 @@ h1 {font-size: 200%}
     border-bottom: 1px solid blue;
 }
 
-.TopLevel p[data-qr] {text-align:center}
-.TopLevel p[data-qr] canvas {padding: 1em}
+/* .TopLevel p[data-qr] {text-align:center}
+.TopLevel p[data-qr] canvas {padding: 1em} */
 
 .TopLevel section.Slide h3:first-child {margin-top: 0}
 .TopLevel .Print {display: none}
