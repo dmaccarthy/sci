@@ -71,6 +71,9 @@ Vector diagram helpers:
     SVG2.vec_diag_table(sym, vecs, prec, scale) -> jQuery
     svg.vec_cycle(jQuery) -> svg
 
+Energy Bar Graph:
+    SVG2.ebg(sel, [Emax, step], data, options) -> SVG2
+
 Other methods:
     svg.adjustAngle(a, invert) -> number
 
@@ -780,7 +783,9 @@ constructor(jSelect, options) {
     let grid = options.grid;
     if (grid) {
         let [gx, gy] = typeof(grid) == "number" ? [grid, grid] : grid;
-        this.grid([lrbt[0], lrbt[1] + gx/1000, gx], [lrbt[2], lrbt[3] + gy/1000, gy]);
+        let x0 = gx * Math.round(lrbt[0] / gx);
+        let y0 = gy * Math.round(lrbt[2] / gy);
+        this.grid([x0, lrbt[1] + gx/100, gx], [y0, lrbt[3] + gy/100, gy]);
     }
 
     /* Animation data */
@@ -1036,7 +1041,79 @@ static vec_diag_table(sym, vecs, prec, scale) {
     renderTeX(thead.find(".TeX"));
     return tbl;
 }
-    
+
+static ebg(sel, Emax, step, data, options) {
+/* Create an animated energy bar graph */
+    options= Object.assign({size: [512, 384], width: 0.5, duration: 0, unit: "J", margin: [32, 4, 40, 16]}, options);
+    let n = data.length;
+    let svg = new SVG2(sel, {size: options.size, lrbt: [0, n, 0, Emax], margin: options.margin});
+    svg.grid([0, n], [0, Emax, step]).grid([0, 1, 2], [0, Emax]);
+
+    let bars = [];
+    for (let i=0;i<n;i++) {
+        let d = data[i];
+        let c = d[2] ? d[2] : "#0065fe"
+        bars.push(svg.rect([options.width, 1], [i + 0.5, 1]).css({fill: c}));
+        let t = d[0].split("_");
+        let xy = [i + 0.5, "-20"];
+        if (t.length > 1) {
+            t = svg.symbol([t[0], 2], [t[1], 6, [`${8+5*t[1].length}`, "-8"]]).config({shift: xy});
+            t = t.$.addClass("Large").find("text").css({fill: c});
+        }
+        else t = svg.text(t[0], xy).addClass("Large Ital").css({fill: c});
+    }
+    svg.config({data: data, options: options});
+    svg.$.addClass("SVG2").find("g.Grid line.Axis").appendTo(svg.$);
+
+    if (options.E) svg.line([0, options.E], [n, options.E]).addClass("TotalEnergy").css({"stroke-width": "2px"});
+    if (options.label) {
+        let [dec, x, skip] = options.label;
+        let g = svg.label(dec, x, [...range(0, Emax + step, skip ? skip * step : step)]);
+        if (options.unit) g.text(options.unit, ["6", Emax]).css({"text-anchor" : "start"});
+        g.$.find(".Zero").removeClass("Zero");
+        g.$.find("text").css({"font-size": "18px"});
+    }
+
+    svg.beforeupdate = function() {
+        let t = this.time;
+        let opt = this.options;
+        if (opt.duration && t > opt.duration) {
+            this.pause();
+            this.time = opt.duration;
+        }
+        else {
+            let E = 0, calc = 0;
+            let w = opt.width;
+            let n = bars.length;
+            if (opt.duration) t /= opt.duration;
+            for (let i=0;i<n;i++) {
+                let f = this.data[i][1];
+                if (f === true) calc += 1;
+                else {
+                    let Ei = typeof(f) == "number" ? f : f(t);
+                    E += Ei;
+                    svg.rect([w, Ei], [i + 0.5, Ei / 2], bars[i]);
+                }
+            }
+            let Ei = (opt.E - E) / calc;
+            for (let i=0;i<n;i++) {
+                let f = this.data[i][1];
+                if (f === true) svg.rect([w, Ei], [i + 0.5, Ei / 2], bars[i]);
+            }
+        }
+    }
+
+    svg.$.on("click", () => {
+        if (svg.time >= svg.options.duration && !svg.playing) {
+            svg.time = 0;
+            svg.update(0);
+        }
+        else svg.toggle();
+    });
+
+    return svg.update(0);
+}
+
 }
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";

@@ -1,60 +1,37 @@
 SVG2.cache("p20/energy/img/cons.js", {
- 
+
 bar: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-    let svg = applet.energygraph.graph(sel, {
-        sym: ["E_k", "E_g", "E_rotn"],
-        calc: (t) => {
-            let E = 16.5 * t * t;
-            return [5/7*E, 16.5-E, 2/7*E];
-        },
-        xMargin: [-1.1, 0.1],
-        yMargin: [-1.8, 0.6],
-        Emax: 18, dE: 1, interval: 3,
-    });
+    svg = SVG2.ebg(sel, 18, 3, [
+        ["E_k", (t) => 5/7 * 16.5 * t * t],
+        ["E_g", true],
+        ["E_rotn", (t) => 2/7 * 16.5 * t * t],
+    ], {E: 16.5, duration: 4, label: [0, "-6"]});
 },
 
 Ex1: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-    let svg = applet.energygraph.graph(sel, {
-        sym: ["E_k", "E_g"],
-        calc: (t) => {
-            let E0 = 0.24 * 9.81;
-            let E = E0 * t * t;
-            return [E, E0 - E];
-        },
-        xMargin: [-0.8, 0.1],
-        yMargin: [-0.25, 0.1],
-        Emax: 2.5, dE: 0.1, interval: 0.5, fixed: 1,
-    });
+    let E = 0.24 * 9.81;
+    svg = SVG2.ebg(sel, 2.5, 0.25, [
+        ["E_k", (t) => E * t * t],
+        ["E_g", true],
+    ], {E: E, margin: [44, 4, 40, 16], duration: 4, label: [1, "-6", 2]});
 },
 
 Ex2: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-    let svg = applet.energygraph.graph(sel, {
-        sym: ["E_k", "E_g"],
-        data: [0.14 * 9.81, 0.981],
-        xMargin: [-0.8, 0.1],
-        yMargin: [-0.25, 0.1],
-        Emax: 2.5, dE: 0.1, interval: 0.5, fixed: 1,
-    });
+    let E = 0.24 * 9.81;
+    svg = SVG2.ebg(sel, 2.5, 0.25, [
+        ["E_k", 7/12 * E],
+        ["E_g", true],
+    ], {E: E, margin: [44, 4, 40, 16], label: [1, "-6", 2]});
 },
 
 Ex3: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-    let svg = applet.energygraph.graph(sel, {
-        sym: ["E_k", "E_elas", "E_rotn", "E_g"],
-        calc: (t) => {
-            if (t < 0.05) return [1000*t/7, 10-200*t, 400*t/7, 0];
-            t = (t - 0.05) / 0.95;
-            let Eg = 10 * t * t;
-            let E = (10 - Eg) / 7;
-            return [5*E, 0, 2*E, Eg]
-        },
-        xMargin: [-1.5, 0.1],
-        yMargin: [-1.5, 0.5],
-        Emax: 11, dE: 1, interval: 2,
-    });
+    svg = SVG2.ebg(sel, 11, 1, [
+        ["E_k", (t) => t < 0.05 ? 1000 * t / 7 : 5/7 * (10 - svg.Eg(t))],
+        ["E_elas", (t) => t < 0.05 ? 10 - 200 * t : 0],
+        ["E_rotn", true],
+        ["E_g", (t) =>  t < 0.05 ? 0 : svg.Eg(t)],
+    ], {E: 10, margin: [4, 4, 40, 4], duration: 6});
+    svg.Eg = (t) => 10 * Math.pow((t - 0.05) / 0.95, 2);
 },
 
 });
