@@ -5,26 +5,33 @@ wave: (sel) => {
     svg.$.addClass("SVG2");
     svg.line([-3, 0], [11, 0]);
     svg.status = 3;
-    let v = 1.5, k = 47;
-    let wave = (x, t) =>  {return 2 * cos(k * (x - v * t))};
-    let w = svg.locus(wave, [-2, 10]);
-    let sensors = svg.group();
-    for (let x=0;x<9;x++) sensors.circle("6", [x, 0]).css({fill: "#40c040"});
 
-    svg.beforeupdate = function() {
-        this.$.find("g.FieldArrows").remove();
+    // Wave locus
+    let wave = (x, t) =>  {return 2 * cos(47 * (x - 2 * t))};
+    svg.animate(svg.locus(wave, [-2, 10])).play();
+
+    // E and B field arrows and sensors
+    let gE = svg.group();
+    let gB = svg.group();
+    let E = [], B = [];
+    for (let x=0;x<9;x++) {
+        E.push(gE.arrow(1, {tail: "4"}));
+        B.push(gB.arrow(1, {tail: "4"}));
+    }
+    gE.$.find("polygon").css({fill: "#0065fe"});
+    gB.$.addClass("Magnetic").find("polygon").css({fill: "red"});
+    for (let x=0;x<9;x++) svg.circle("6", [x, 0]).css({fill: "#40c040"});
+
+    svg.beforeupdate = function() { // Reshape arrows
         let t = this.time;
-        let g = this.group();
-        g.$.addClass("FieldArrows").insertBefore(sensors.$);
         for (let x=0;x<9;x++) {
-            let A = wave(x, t); //2 * cos(k * (x - v * t));
+            let A = wave(x, t);
             let tail = Math.min(8 * Math.abs(A), 4).toFixed(2);
-            g.arrow({tail: [x, 0], tip: [x, A]}, {tail: tail}).$.addClass("Electric").find("polygon").css({fill: "#0065fe"});
-            if (svg.status > 2) g.arrow({tail: [x, 0], tip: [x, 0.85 * A]}, {tail: tail}, "tail").config({theta: 115}).$.addClass("Magnetic");
+            E[x].reshape({tail: [x, 0], tip: [x, A]}, {tail: tail});
+            B[x].reshape({tail: [x, 0], tip: [x, 0.85 * A]}, {tail: tail}, "tail").config({theta: 115});
         }
     }
 
-    svg.animate(w).play();
     svg.$.on("click", () => {
         let s = ++svg.status;
         if (s == 1) svg.$.find("polyline").fadeIn();
@@ -32,9 +39,8 @@ wave: (sel) => {
         else if (s == 3) svg.$.find(".Magnetic").fadeIn();
         else if (s == 4) svg.pause();
         else {
-            svg.$.find("polyline").hide();
+            svg.$.find("polyline, .Magnetic").fadeOut();
             svg.status = 0;
-            svg.update(0);
         }
     });
 },

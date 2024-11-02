@@ -232,43 +232,47 @@ _cs(xy) {
     return new RArray(x, y);
 }
 
-circle(r, center) {
-/* Append a <circle> to the <g> element */
+circle(r, center, sel) {
+/* Modify or append a <circle> to the <g> element */
+    let e = sel ? $(sel) : this.create_child("circle");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = svg.a2p(...this._cs(center));
     r = typeof(r) == "string" ? parseFloat(r) : r * svg.unit;
-    return this.create_child("circle", {r: f(r), cx: f(x), cy: f(y)});
+    return e.attr({r: f(r), cx: f(x), cy: f(y)});
 }
 
-ellipse(r, center) {
-/* Append a <ellipse> to the <g> element */
+ellipse(r, center, sel) {
+/* Modify or append an <ellipse> to the <g> element */
+    let e = sel ? $(sel) : this.create_child("ellipse");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let rx = this._px(r[0], 0);
     let ry = this._px(r[1], 1);
     let [x, y] = svg.a2p(...this._cs(center));
-    return this.create_child("ellipse", {rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
+    return e.attr({rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
 }
 
-rect(size, center) {
-/* Append a <rect> to the <g> element */
+rect(size, center, sel) {
+/* Modify or append a <rect> to the <g> element */
+    let e = sel ? $(sel) : this.create_child("rect");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let w = this._px(size[0], 0);
     let h = this._px(size[1], 1);
     let [x, y] = svg.a2p(...this._cs(center));
-    return this.create_child("rect", {width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
+    return e.attr({width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
 
-image(href, size, center, use) {
-/* Append an <image> to the <g> element */
+image(href, size, center, sel) {
+/* Modify or append an <image> to the <g> element */
+    let e = sel ? $(sel) : this.create_child("image");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let w = this._px(size[0], 0);
     let h = this._px(size[1], 1);
     let [x, y] = svg.a2p(...this._cs(center));
-    return this.create_child(use ? "use" : "image", {href: href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
+    return e.attr({href: href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
 
 plot(pts, size, href, theta) {
@@ -339,8 +343,10 @@ tick_label(fn, x, y, tick, offset) {
 }
 
 poly(pts, closed) {
-/* Append a <polygon> or <polyline> to the <g> element */
-    return this.create_child(closed ? "polygon" : "polyline", {points: this.svg.pts_str(pts)});
+/* Modify or append a <polygon> or <polyline> to the <g> element */
+    let attr = {points: this.svg.pts_str(pts)};
+    return $(closed)[0] instanceof SVGElement ? $(closed).attr(attr) :
+        this.create_child(closed ? "polygon" : "polyline", attr);
 }
 
 arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
@@ -348,13 +354,14 @@ arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
 locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
 path(start) {return new SVG2path(this, start)}
 
-line(p1, p2) {
-/* Append a <line> to the <g> element */
+line(p1, p2, sel) {
+/* Modify or append a <line> to the <g> element */
+    let e = sel ? $(sel) : this.create_child("line");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x1, y1] = svg.a2p(...this._cs(p1));
     let [x2, y2] = svg.a2p(...this._cs(p2));
-    return this.create_child("line", {x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2)});
+    return e.attr({x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2)});
 }
 
 chevron(xy, dir, size) {
@@ -523,7 +530,6 @@ _turn(w, r, circ) {
     return g;
 }
 
-
 }
 
 
@@ -564,10 +570,16 @@ class SVG2arrow extends SVG2g {
 
 constructor(g, length, options, anchor) {
     super(g);
-    let svg = g.svg;
+    this.$.addClass("Arrow");
+    this._poly = this.poly([], 1);
+    this.reshape(length, options, anchor);
+}
+
+reshape(length, options, anchor) {
+    let svg = this.svg;
     let [tail, tip] = typeof(length) == "number" ? [[-length / 2, 0], [length / 2, 0]] : [length.tail, length.tip];
-    tail = g._cs(tail);
-    tip = g._cs(tip);
+    tail = svg._cs(tail);
+    tip = svg._cs(tip);
     let seg = this.seg = new Segment(...tail, ...tip);
     if (!anchor) anchor = 0;
     else if (typeof(anchor) == "string") anchor = ["tail", "center", "tip"].indexOf(anchor) - 1;
@@ -582,27 +594,9 @@ constructor(g, length, options, anchor) {
     let pts = arrow_points(seg.length, opt);
     pts = transform({angle: seg.deg, deg: true, shift: seg.midpoint}, ...pts);
     for (let i=0;i<pts.length;i++) pts[i] = svg.p2a(...pts[i]);
-    this.poly(pts, 1);
-    this.$.addClass("Arrow");
+    this.poly(pts, this._poly);
+    return this;
 }
-
-// constructor(g, length, options, anchor) {
-//     super(g);
-//     let [tail, tip] = typeof(length) == "number" ? [[-length / 2, 0], [length / 2, 0]] : [length.tail, length.tip];
-//     tail = g._cs(tail);
-//     tip = g._cs(tip);
-//     let seg = this.seg = new Segment(...tail, ...tip);
-//     if (!anchor) anchor = 0;
-//     else if (typeof(anchor) == "string") anchor = ["tail", "center", "tip"].indexOf(anchor) - 1;
-//     this.pivot = seg[anchor == -1 ? "point1" : (anchor == 1 ? "point2" : "midpoint")];
-//     let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) / g.svg.scale[1] : x);
-//     if (options.tail) options.tail = f(options.tail);
-//     if (options.head) options.head = f(options.head);
-//     let pts = arrow_points(seg.length, options);
-//     pts = transform({angle: seg.deg, deg: true, shift: seg.midpoint}, ...pts);
-//     this.poly(pts, 1);
-//     this.$.addClass("Arrow");
-// }
 
 }
 
