@@ -61,8 +61,8 @@ tennis: (sel) => {
     svg.final();
 },
 
-Q1: (sel) => {
-    let s = $(sel).attr({width: 512, height: 256, "data-aspect": "2"});
+F1: (sel) => {
+    $(sel).attr({width: 512, height: 256, "data-aspect": "2"});
     let svg = new SVG_Animation(sel, -0.5, 2.75);
     svg.circle(0.8, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
     svg.symbol("E", {q4: "k", scale: 1}, [1, 0]).css({fill: "#0065FE"});
@@ -76,8 +76,16 @@ Q1: (sel) => {
     svg.final();
 },
 
-Q2: (sel) => {
-    let s = $(sel).attr({width: 360, height: 256, "data-aspect": "360/256"});
+Q1: (sel) => {
+    SVG2.ebg(sel, 80, 10, [
+        ["+W", (t) => 75 * (1 - t * t), "red"],
+        ["E_k", true],
+        ["–W", (t) => 30 * t * t, "red"],
+    ], {E: 75, duration: 3, margin: [32, 4, 40, 16], label: [0, "-6"]});
+},
+
+F2: (sel) => {
+    $(sel).attr({width: 360, height: 256, "data-aspect": "360/256"});
     let svg = new SVG_Animation(sel, -0.5, 1.9);
     svg.circle(0.8, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
     svg.symbol("E", {q4: "k", scale: 1}, [1, 0]).css({fill: "#0065FE"});
@@ -88,8 +96,17 @@ Q2: (sel) => {
     svg.final();
 },
 
-Q4: (sel) => {
-    let s = $(sel).attr({width: 512, height: 256, "data-aspect": "2"});
+Q2: (sel) => {
+    let Ei = 0.075 * 12.5;
+    let W = 5.4 - Ei;
+    SVG2.ebg(sel, 6, 1, [
+        ["+W", (t) => W * (1 - t * t), "red"],
+        ["E_k", true],
+    ], {E: 5.4, unit: "kJ", duration: 3, margin: [32, 4, 40, 16], label: [0, "-6"]});
+},
+
+F4: (sel) => {
+    $(sel).attr({width: 512, height: 256, "data-aspect": "2"});
     let svg = new SVG_Animation(sel, -0.5, 2.75, -0.3);
     svg.circle(0.75, [1.05, 0.55]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
     svg.symbol("E", {q4: "k", scale: 1}, [1, 0]).css({fill: "#0065FE"});
@@ -107,6 +124,31 @@ Q4: (sel) => {
     svg.text("20.0 J", [0.4, -0.1], g);
     svg.text("6.35 J", [1.7, -0.1], g);
     svg.final();
+},
+
+Q4: (sel) => {
+    let Eg = 98.1 * sin(8);
+    SVG2.ebg(sel, 24, 2, [
+        ["+W", (t) => 20 * (1 - t), "red"],
+        ["E_k", (t) => 1 - 2 * Math.abs(t - 0.5)],
+        ["E_g", (t) => Eg * t],
+        ["–W", true, "red"],
+    ], {E: 20, duration: 3, margin: [32, 4, 40, 16], label: [0, "-6", 2]});
+},
+
+ramp : (sel) => {
+    svg = new SVG2(sel, {size: [480, 80], lrbt: [0, 2.15, -0.02], margin: 2});
+    svg.$.addClass("SVG2");
+    let pt = vec2d(2, 8);
+    svg.poly([pt, [pt[0], 0], [0, 0]], 1).css({"stroke-width": "2px"});
+    svg.text("8.00°", [0.22, 0.1]);
+
+    let [BD, IT, SM] = [1, 2, 4];
+    let arr = ["→", SM + BD, [0, "20"]];
+    let g = svg.group().config({shift: [0.75, 0.18], theta: 8});
+    g.symbol(["d", BD], arr, ["Δ", 0, ["-20", 0]]).$.addClass("Large");
+    g.text("= 2.00 m", [0.35, 0]).addClass("Large Symbol");
+    svg.symbol(["h", IT], ["f", SM + IT, ["12", "-12"]]).config({shift: [2.05, 0.12]}).$.addClass("Large");
 },
 
 });

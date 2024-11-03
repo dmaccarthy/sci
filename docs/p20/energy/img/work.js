@@ -41,7 +41,18 @@ flow2: (sel) => {
 },
 
 Q2: (sel) => {
-    let s = $(sel).attr({width: 400, height: 260, "data-aspect": "20/13"});
+    let E = 0.15 * 9.81 + 0.135;
+    let Ek = 0.96;
+    let W = 0.96 - 0.135;
+    svg = SVG2.ebg(sel, 1.8, 0.1, [
+        ["E_k", (t) => 0.135 + W * t * t],
+        ["E_g", true],
+        ["–W", (t) => (E - Ek) * t * t, "red"],
+    ], {E: E, unit: "kJ", duration: 3, margin: [40, 4, 40, 16], label: [1, "-6", 3]});
+},
+
+F2: (sel) => {
+    $(sel).attr({width: 400, height: 260, "data-aspect": "20/13"});
     let svg = new SVG_Animation(sel, -0.25, 2.5);
     let css = {fill: "#0065FE"};
     svg.circle(0.8, [0.6, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
@@ -58,7 +69,17 @@ Q2: (sel) => {
 },
 
 Q3: (sel) => {
-    let s = $(sel).attr({width: 400, height: 260, "data-aspect": "20/13"});
+    let Ei = 0.2 * 9.81 * 27.6;
+    let Ef = 0.1 * 18.4 * 18.4;
+    svg = SVG2.ebg(sel, 60, 5, [
+        ["E_k", (t) => Ef * t * t],
+        ["E_g", true],
+        ["–W", (t) => (Ei - Ef) * t * t, "red"],
+    ], {E: Ei, unit: "J", duration: 3, margin: [32, 4, 40, 16], label: [0, "-6", 2]});
+},
+
+F3: (sel) => {
+    $(sel).attr({width: 400, height: 260, "data-aspect": "20/13"});
     let svg = new SVG_Animation(sel, -0.25, 2.5);
     let css = {fill: "#0065FE"};
     svg.circle(0.8, [0.6, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
@@ -75,7 +96,15 @@ Q3: (sel) => {
 },
 
 Q4: (sel) => {
-    let s = $(sel).attr({width: 512, height: 256, "data-aspect": "2"});
+    svg = SVG2.ebg(sel, 150, 5, [
+        ["+W", (t) => 50 * (1 - t * t), "red"],
+        ["E_k", true],
+        ["–W", (t) => 15 * t * t, "red"],
+    ], {E: 0.6 * sq(40 / 3.6) + 50, unit: "kJ", duration: 3, margin: [36, 4, 40, 16], label: [0, "-6", 5]});
+},
+
+F4: (sel) => {
+    $(sel).attr({width: 512, height: 256, "data-aspect": "2"});
     let svg = new SVG_Animation(sel, -0.5, 2.75);
     svg.circle(0.8, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
     svg.symbol("E", {q4: "k", scale: 1}, [1, 0]).css({fill: "#0065FE"});
