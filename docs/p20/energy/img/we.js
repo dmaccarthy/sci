@@ -147,7 +147,7 @@ ramp : (sel) => {
     let arr = ["→", SM + BD, [0, "20"]];
     let g = svg.group().config({shift: [0.75, 0.18], theta: 8});
     g.symbol(["d", BD], arr, ["Δ", 0, ["-20", 0]]).$.addClass("Large");
-    g.text("= 2.00 m", [0.35, 0]).addClass("Large Symbol");
+    g.text("= +2.00 m", [0.37, 0]).addClass("Large Symbol");
     svg.symbol(["h", IT], ["f", SM + IT, ["12", "-12"]]).config({shift: [2.05, 0.12]}).$.addClass("Large");
 },
 
