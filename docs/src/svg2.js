@@ -409,6 +409,7 @@ _grid(g, x, y, swap) {
         let [x0, x1, dx] = x;
         let ddx = dx / 1000;
         let y0 = y[0], y1 = y[1];
+        x1 += ddx;
         while (x0 <= x1) {
             let pts = swap ? [[y0, x0], [y1, x0]] : [[x0, y0], [x0, y1]];
             let line = g.line(...pts);
