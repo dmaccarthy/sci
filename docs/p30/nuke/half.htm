@@ -1,8 +1,6 @@
-<!-- © 2023-2024 by D.G. MacCarthy <sc8pr.py@gmail.com> -->
-
 <section class="Post" data-icon="simulation.svg">
 <h2 class="Collapse">Simulation</h2>
-<div class="Collapse Expand Center">
+<div class="Collapse Center">
 
 <p>Time: <span id="Time"><a href="javascript:loadFeed.sim.startSim()">Click to start</a></span>
     <span style="padding-left:2em">Decays: <span id="Count">0</span></span></p>
@@ -16,7 +14,6 @@ circle {fill: #b0b0ff; stroke: none}
 
 </style>
 </svg></p>
-
 <p id="Code"></p>
 
 <script type="text/javascript" data-init="sim">
@@ -101,7 +98,7 @@ loadFeed.data = {
 </div></section>
 
 <section class="Post" data-icon="help">
-<h2 class="Collapse">Help</h2>
+<h2 class="Collapse">Simulation Help</h2>
 <div class="Collapse">
 <p>This page simulates the decay of a sample of radioactive nuclei with a random half-life. Use the link labelled “Click to start” above the drawing to begin the simulation.
     As it runs, the elapsed time and the total number of decays will be displayed</p>
@@ -114,3 +111,95 @@ loadFeed.data = {
 </p>
 </div>
 </section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2>
+<div id="LessonNotes" class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Half-life</h1>
+</section>
+
+<section class="Slide"><h3>Half-life</h3>
+<p>Radioactivity is a quantum mechanical process that follows <em>probability</em> laws.</p>
+<ul>
+    <li>We can never predict exactly when a particular nucleus will decay; however, we can predict the probability that a particular nucleus will decay within a particular range of time.</li>
+    <li><em class="Defn">Half-life</em> is defined as the time necessary for half of a large sample of identical nuclei to undergo radioactive decay (the time for which the probability of decay is 0.5.)</li>
+    <li>Half-life varies from practically zero for extremely unstable isotopes, to billions of years for isotopes that are nearly stable (e.g. U-238).</li>
+    <li>Stable isotopes (e.g. C-12) do not undergo spontaneous radioactive decay.</li>
+</ul>
+<table class="Center Three TD4">
+    <tr><td>Half-lives<br/><span class="TeX">n</span></td><td colspan="2">Expected Nuclei<br/><span class="TeX">N</span></td></tr>
+    <tr><td>0.0</td><td>8000</td><td><span class="TeX">N_0</span></td></tr>
+    <tr><td>1.0</td><td>4000</td><td><span class="TeX">N_0 (\frac{1}{2})</span></td></tr>
+    <tr><td>2.0</td><td>2000</td><td><span class="TeX">N_0(\frac{1}{2})^2</span></td></tr>
+    <tr><td>3.0</td><td>1000</td><td><span class="TeX">N_0(\frac{1}{2})^3</span></td></tr>
+    <tr><td>4.0</td><td>500</td><td><span class="TeX">N_0(\frac{1}{2})^4</span></td></tr>
+</table>
+<ul>
+    <li>The relationship between time and the number of nuclei remaining in a sample is illustrated in the table above. The data for radioactive decay can be described by an exponential equation:
+        <p class="TeX">N = N_0 \left(\frac{1}{2}\right)^n</p></li>
+    <li>In this equation, <span class="TeX">n</span> is the time in half-lives:
+        <p class="TeX" data-cue="prev">n=\frac{t}{T_{1/2}}</p>
+    </li>
+    <li><span class="TeX">N</span> is the number of nuclei of the radioactive isotope remaining, and <span class="TeX">N_0</span> is the initial number of nuclei.</li>
+    <li>Note that the “missing” nuclei have not disappeared, but have transmuted into other isotopes.</li>
+    <li>The <span class="TeX">N</span>’s in the equation can also represent any quantity that is directly proportional to the number of nuclei, such as the <em>mass</em> remaining, the <em>percentage</em> remaining, or the <em>rate</em> of decay.</li>
+    <li>The decay rate is also called the <em class="Defn">activity</em> of the sample.</li>
+    <li>The SI unit of activity is the becquerel (Bq) which represents 1 nuclear decay per second.</li>
+    <li>An alternative (non-SI) unit of activity is the curie (Ci):
+        <p class="TeX">\rm{1\ Ci = 3.70 \times 10^{10}\ Bq}</p></li>
+    <li>You can read the half-life from a graph of the radioactive decay...</li>
+</ul>
+<p class="Center"><iframe src="https://www.desmos.com/calculator/pjadjlzlmj?embed" class="s24" data-aspect="4/3" width="600" height="450" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+<ul>
+    <li>The half-life is the point at which the activity or the amount remaining is one-half of its initial value.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Radioisotope Dating</h3>
+<p>Radioactive decay can be used in archaeology and geology (and other fields) to determine the age of a specimen.</p>
+<ul>
+    <li>Carbon-14 decays back into nitrogen-14 by <span class="TeX">\beta-</span> decay with a half-life of 5730 years:
+        <p class="TeX">{_6^{14}}{\rm C} \rightarrow {_7^{14}}{\rm N} + {_{-1}^0}e + {_0^0}\overline\nu</p></li>
+    <li>Nitrogen-14 is the most common isotope in the atmosphere.</li>
+    <li>Energy from cosmic rays converts N-14 back to C-14, maintaining an equilibrium.</li>
+    <li>Living organisms get their carbon from the atmosphere and have the same ratio of C-14 to C-12 as the atmosphere does.</li>
+    <li>When the organism dies, the carbon-14 will no longer be replenished as it decays.</li>
+    <li>The proportion of C-14 in a sample of dead material (e.g. bone, wood, leather) compared to the abundance of C-14 in the atmosphere tells us the age of the sample.</li>
+    <li>The half-life of carbon-14 is ideal for archaeology where the specimen age can range from a few hundred to 20000 years.</li>
+    <li>Dating of geological formations is often done using isotopes with much longer half-lives.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Example</h3>
+<p class="Blue">A bone from an archaeology dig has a carbon-14 activity of 28.0 Bq. Based on the amount of carbon-12 in the sample, the bone would have had an activity of 112 Bq when it was part of a living organism. Calculate the age of the bone.</p>
+<p class="TeX">N = N_0\left(\frac{1}{2}\right)^n</p>
+<p class="TeX">\frac{N}{N_0} = \left(\frac{1}{2}\right)^n</p>
+<p class="TeX">\frac{N_0}{N} = 2^n</p>
+<p class="TeX">2^n = \rm{\frac{112\ Bq}{28.0\ Bq}} = 4.00</p>
+<p class="TeX">n = 2.00</p>
+<p class="TeX">t = \rm{2.00 (5730\ years) = 11460\ years}</p>
+</section>
+
+</div></section>
+
+<section class="Post NoPrintIcon" data-show="2024.12.17.10" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="18UYJgyheUIIkO5WSYLT6BRvSCIYf3mNY-NZ65xNFJZ4">Answer Key</button>
+    </p>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    title: `${siteData.lesson}16.4 — Half-life`,
+    answerDate: "2024.12.17.10",
+    num: "16.4",
+    up: "p30/units/D",
+    prev: "p30/nuke/rn",
+    next: "p30/nuke/energy",
+}
+
+</script>
