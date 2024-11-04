@@ -77,7 +77,7 @@ F1: (sel) => {
 },
 
 Q1: (sel) => {
-    SVG2.ebg(sel, 80, 10, [
+    let svg = SVG2.ebg(sel, 80, 10, [
         ["+W", (t) => 75 * (1 - t * t), "red"],
         ["E_k", true],
         ["–W", (t) => 30 * t * t, "red"],

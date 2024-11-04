@@ -134,6 +134,7 @@ function onFeedLoaded(feed, e, noHist) {
 
     // Add content to page
     let a, title, i;
+    $("#Main").css("visibility", "hidden");
     clearFeed().prepend(e);
     if (!teacher.mode) {
         apply("[data-answers]", (ei) => {
@@ -170,7 +171,6 @@ function onFeedLoaded(feed, e, noHist) {
     // Enable collapsible posts
     let h2 = $("section.Post").find(".Collapse:not(div)");
     h2.addClass("Link").on("click", collapse).attr({title: "Click to expand or collapse"});
-    $("section.Post div.Collapse:not(.Expand)").hide();
     $("section.Post > img.Icon:first-child").click((e) => {
         $(e.currentTarget).next().trigger("click");
     }).addClass("Link");
@@ -259,11 +259,6 @@ function onFeedLoaded(feed, e, noHist) {
         loadFeed(e.currentTarget);
     });
 
-    // Retore collapse/expand state
-    let div = $("div.Collapse");
-    let toggle = collapse.toggled[feed];
-    for (let i of toggle) $(div[i]).toggle();
-
     // Finish up
     $("#Main, #Copy").show();
     layoutWidth();
@@ -293,13 +288,23 @@ function printIcons() {
 }
 
 function initFeed() {
-    $(window).scrollTop(0);
+    // Run scripts
     for (let s of $("script[data-init]")) {
         let name = $(s).attr("data-init");
         try {loadFeed[name]()} catch(err) {console.error(err)};
         loadFeed._inits.push(name);
     }
+
+    // Restore collapsed/expanded state
+    $("section.Post div.Collapse:not(.Expand)").hide();
+    let div = $("div.Collapse");
+    let toggle = collapse.toggled[loadFeed.current];
+    for (let i of toggle) $(div[i]).toggle();
+
+    // Finalize layout
     aspect();
+    $(window).scrollTop(0);
+    $("#Main").css("visibility", "visible");
 }
 
 // function printable(id) {return loadFeed.printable[id]}

@@ -105,6 +105,20 @@ config(attr) {
     return this.update_transform();
 }
 
+recenter(xy, dim) {
+/* Adjust shift to recenter based on current bbox; element must not be hidden */
+    if (!this.$.is(":visible")) throw("Cannot recenter hidden elements");
+    let box = this.element.getBBox();
+    let dxy = this.svg.p2a(box.x + box.width / 2, box.y + box.height / 2).plus(this._shift);
+    dxy = this._cs(xy).minus(dxy);
+    if (dim) {
+        if ((dim & 1) == 0) dxy[0] = 0;
+        if ((dim & 2) == 0) dxy[1] = 0;
+    }
+    this._shift = this._shift.plus(dxy);
+    return this.update_transform();
+}
+
 
 /** Kinematics getters and setter **/
 
@@ -1059,9 +1073,10 @@ static ebg(sel, Emax, step, data, options) {
         let xy = [i + 0.5, "-20"];
         if (t.length > 1) {
             t = svg.symbol([t[0], 2], [t[1], 6, [`${8+5*t[1].length}`, "-8"]]).config({shift: xy});
-            t = t.$.addClass("Large").find("text").css({fill: c});
+            t.$.addClass("Large").find("text").css({fill: c});
+            t.recenter(xy, 1);
         }
-        else t = svg.text(t[0], xy).addClass("Symbol Large Ital").css({fill: c});
+        else svg.text(t[0], xy).addClass("Symbol Large Ital").css({fill: c});
     }
     svg.config({data: data, options: options});
     svg.$.addClass("SVG2").find("g.Grid line.Axis").appendTo(svg.$);
