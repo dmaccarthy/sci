@@ -1087,7 +1087,7 @@ static ebg(sel, Emax, step, data, options) {
         let g = svg.label(dec, x, [...range(0, Emax + step, skip ? skip * step : step)]);
         if (options.unit) g.text(options.unit, ["6", Emax]).css({"text-anchor" : "start"});
         g.$.find(".Zero").removeClass("Zero");
-        g.$.find("text").css({"font-size": "18px"});
+        g.$.find("text").css({"font-size": "16px"});
     }
 
     svg.beforeupdate = function() {

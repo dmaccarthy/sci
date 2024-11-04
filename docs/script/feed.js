@@ -261,7 +261,6 @@ function onFeedLoaded(feed, e, noHist) {
 
     // Finish up
     $("#Main, #Copy").show();
-    layoutWidth();
     renderTeX();
     drawChevrons();
     SVG2.load(initFeed);
@@ -302,7 +301,7 @@ function initFeed() {
     for (let i of toggle) $(div[i]).toggle();
 
     // Finalize layout
-    aspect();
+    layoutWidth();
     $(window).scrollTop(0);
     $("#Main").css("visibility", "visible");
 }
@@ -422,7 +421,6 @@ function video(s) {
 
 function layoutWidth() {
 /** Adjust page metrics when body width changes **/
-    // clearTimeout(layoutWidth.timeout);
     let body = $("body");
     let w = body.width();
     let x = ($(window).width() - w) / 2;
@@ -431,7 +429,6 @@ function layoutWidth() {
     body.css("margin-top", marg);
     top.width(w - (w < 780 ? 21.6 : 0 * 25.2)).css({left: `${x}px`});
     aspect();
-    // layoutWidth.timeout = setTimeout(layoutWidth, 10);
 }
 
 function loadHash(init) {
