@@ -106,7 +106,7 @@ config(attr) {
 }
 
 recenter(xy, dim) {
-/* Adjust shift to recenter based on current bbox; element must not be hidden */
+/* Adjust shift attribute to recenter based on current bbox */
     if (!this.$.is(":visible")) throw("Cannot recenter hidden elements");
     let box = this.element.getBBox();
     let dxy = this.svg.p2a(box.x + box.width / 2, box.y + box.height / 2).plus(this._shift);
