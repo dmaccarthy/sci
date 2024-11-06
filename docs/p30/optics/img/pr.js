@@ -124,7 +124,6 @@ diag_toggle: (sel, lens, f, d) => {
         () => {t(svg, true, 3)},
         () => {t(svg, true, 4)},
     );
-
-}
+},
 
 });
