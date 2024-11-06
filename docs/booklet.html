@@ -27,7 +27,7 @@ table, ol[type='a'], .NoPageBreak {break-inside: avoid}
 </style>
 <script type="text/javascript">
 
-let zoom = 80;
+let zoom = 100;
 let deleteAnswer = true;
 let pages;
 
@@ -38,16 +38,21 @@ let bmap = {
     feeds: ["mech", "work", "we", "eff", "heat"], //omit: [2, 4],
 },
 
+"p30/optics" : {
+    title: "Physics 30: Optics",
+    feeds: ["rays"],
+},
+
 }
 
 function deletePost(text) {
     return ["Lesson Notes", "Lab Handout", "Handouts", "Video"].indexOf(text) != -1;
 }
 
-function loadWindows() {
+function loadWindows(info) {
     pages = [];
     let key = $("#Key").val();
-    let info = bmap[key];
+    if (info == null) info = bmap[key];
     $("#Instructions > h1").html(info.title);
     for (let f of info.feeds) {
         let url = `../#${key}/${f}`;
@@ -61,6 +66,11 @@ function loadWindows() {
     }
 }
 
+function go(title, key, ...feeds) {
+    $("#Key").val(key);
+    loadWindows({title: title, feeds: feeds});
+}
+
 function fetchPages() {
     let main = $("#Main").html("");
     for (let p of pages) {
@@ -71,9 +81,12 @@ function fetchPages() {
         main.append(article.html());
         p.close();
     }
-    main.find(".NoPrint, [data-booklet='no']").remove();
+    let rm = [];
+    for (let e of main.find(".NoPrint, .NoPrintIcon, [data-booklet='no']"))
+        if (!$(e).is("[data-booklet='yes']")) rm.push(e);
+    $(rm).remove();
     if (deleteAnswer) main.find(".Answer").remove();
-    main.find("*").show();
+    main.find(".Collapse").show(); // .find("*");
     if (renderTeX.hideEqNum) $(".KaTeX:is(p, div) .eqn-num").hide();
     let post = main.find("section.Post");
     post.children("img:first-child").remove();
@@ -105,6 +118,7 @@ $(window).on("click", (ev) => {
 console.log(`Ctrl  + Click = Toggle 'No Page Break Inside'
  Alt  + Click = Toggle 'Page Break Before'
 Shift + Click = Hide`);
+console.log("\ngo(title, key, ...feeds)");
 
 </script>
 </head>
