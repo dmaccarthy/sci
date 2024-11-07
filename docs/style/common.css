@@ -18,6 +18,7 @@ a[href], .Blue {color: var(--blue);}
 .Grey {color: grey}
 .Black {color: black}
 .Ital {font-style: italic}
+.Bold {font-weight: bold}
 .NoBold {font-weight: normal}
 .NoWrap {white-space: nowrap}
 

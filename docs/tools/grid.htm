@@ -1,0 +1,41 @@
+<section class="Post" data-icon="slides">   
+<h2 class="Collapse">Grid</h2>
+<p class="Center"><svg id="Grid"></svg></p>
+</section>
+
+<script type="text/javascript" data-init="grid">
+
+loadFeed.data = {
+    title: `Grid`,
+    up: "home",
+}
+
+loadFeed.grid = () => {
+    let [w, h, x0, y0] = [10, 6, 0, 0];
+    let minors = 5;
+    let bold = {stroke: "grey", "stroke-width": "1px"};
+    let square = 1;
+
+    let [x1, y1] = [x0 + w * square, y0 + h * square];
+    svg = new SVG2("#Grid", {scale: 100, margin: 2, grid: 1 / minors,
+        lrbt: [x0, x1, y0, y1],
+    });
+    let g = svg.$.addClass("SVG2").removeAttr("data-aspect").find("g.Grid");
+
+    // svg.tick_label(0, [...range(x0, x1+square/10, square)], 0, "-6", "-16");
+    // svg.tick_label(0, 0, [...range(y0, y1+square/10, square)], "-6", "-10");
+    // svg.$.find(".Zero").removeClass("Zero");
+
+    g.find("line.Axis").removeClass("Axis");
+
+    let n = w * minors + 1;
+    let vlines = fn_eval((i) => g.find("line")[i * minors], range(0, w+1));
+    let hlines = fn_eval((i) => g.find("line")[n + i * minors], range(0, h+1));
+    let lines = [...vlines].concat([...hlines]);
+    for (let l of lines) {
+        l = $(l).appendTo(g);
+        if (!l.hasClass("Axis")) l.css(bold);
+    }
+}
+
+</script>
