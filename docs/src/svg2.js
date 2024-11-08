@@ -11,9 +11,10 @@ Get the <svg>/<g> element or its jQuery object:
     svg.element -> <svg> or <g> element
     g.$ -> jQuery
 
-Create and configure an animated group:
+Create, configure, and style an animated group:
     g = svg.group() -> SVG2g
     g.config({theta, omega, alpha, pivot, shift, vel, acc}) -> g
+    g.css_map(map) -> g
 
 Create a <g> for scaling (cannot be animated, but can be nested in an animated <g>):
     s = g.scaled(s) -> SVGscaled
@@ -66,6 +67,9 @@ Convert coordinates between child and parent coordinate systems:
     g.coord_to_svg([gx, gy]) -> RArray
     g.coord_from_svg([sx, sy]) -> RArray
 
+Save as SVG file:
+    svg.save(callback or string or null, [CSS files]) -> svg
+
 Vector diagram helpers:
     SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, tick, label, cycle, shift}) -> SVG2
     SVG2.vec_diag_table(sym, vecs, prec, scale) -> jQuery
@@ -103,6 +107,16 @@ config(attr) {
 /* Encapsulate multiple attributes */
     for (let k in attr) this[k] = attr[k];
     return this.update_transform();
+}
+
+css_map(map) {
+/* Apply CSS styles to <g> and its descendants */
+    let e = this.$;
+    for (let s in map) {
+        if (s) e.find(s).css(map[s]);
+        else e.css(map[s]);
+    }
+    return this;
 }
 
 recenter(xy, dim) {
@@ -811,6 +825,23 @@ constructor(jSelect, options) {
     this.time = 0;
 }
 
+save(callback, ...args) {
+/* Clone <svg> and prepend <style> nodes; then save SVG file or pass to callback */
+    if (callback == null) callback = `${randomString(12, 1)}.svg`;
+    if (typeof(callback) == "string") {
+        let fn = callback;
+        callback = (html) => BData.init(html, fn).save();
+    }
+    if (args.length == 1 && args[0] == true) args = SVG2.stylesheets;
+    let html = $(this.element.outerHTML).attr({xmlns: SVG2.nsURI});
+    if (args.length) getCSS((r) => {
+        $(r).prependTo(html);
+        callback(html[0].outerHTML);
+    }, ...args);
+    else callback(html[0].outerHTML);
+    return this;
+}
+
 static create(options) {return new SVG2(document.createElementNS(SVG2.nsURI, "svg"), options)}
 
 static auto_lrbt(w, h, l, r, b, t) {
@@ -1132,6 +1163,7 @@ static ebg(sel, Emax, step, data, options) {
 
 }
 
+SVG2.stylesheets = [];
 SVG2.nsURI = "http://www.w3.org/2000/svg";
 SVG2._cache = {};
 SVG2.load.pending = [];

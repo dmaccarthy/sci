@@ -612,6 +612,7 @@ $(window).on("keydown", (ev) => {
 
 $(() => {
 /** Initialize page **/
+    SVG2.stylesheets = [...fn_eval((e) => SVG2.makeURL($(e).attr("href")), $("link[data-svg2css]"))];
     $("#DateToday").html(new Date().getDate());
     teacher(null, true);
     loadHash(true);

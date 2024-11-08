@@ -208,6 +208,22 @@ function uHSVtoRGB(h, s, v) {
     };
 }
 
+const getCSS = (callback, ...args) => {
+    // Pass an array of <style> element nodes to callback
+    let pending = [...args];
+    let n = args.length;
+    let response = new Array(n);
+    for (let a of args) {
+        $.ajax(a, {complete: (e, s) => {
+            let i = args.indexOf(a);
+            if (s == "success") response[i] = $("<style>").attr({type: "text/css"}).html(e.responseText)[0];
+            pending[i] = null;
+            for (let j=0;j<n;j++) if (pending[j]) return;
+            callback(response);
+        }});
+    }
+}
+
 /* Fetch images or other data as blobs or data URLs... 
 
 loadBlobs("video.png", "print.svg").then(console.log);  

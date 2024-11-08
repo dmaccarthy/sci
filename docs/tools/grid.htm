@@ -1,32 +1,50 @@
-<section class="Post" data-icon="slides">   
-<h2 class="Collapse">Grid</h2>
+<section class="Post NoPrintIcon" data-icon="slides">   
+<h2 class="Collapse">SVG Drawing
+    <span class="Action"><img alt="Download" title="Download SVG file" data-src="$download" onclick="$('#Grid')[0].graphic.save('grid.svg', true)"/></span>
+</h2>
 <p class="Center"><svg id="Grid"></svg></p>
+<p class="Center">Use the Developer Console to customize.</p>
 </section>
 
-<script type="text/javascript" data-init="grid">
+<script type="text/javascript" data-init="init">
 
 loadFeed.data = {
     title: `Grid`,
     up: "home",
 }
 
-loadFeed.grid = () => {
-    let [w, h, x0, y0] = [10, 6, 0, 0];
-    let minors = 5;
-    let bold = {stroke: "grey", "stroke-width": "1px"};
-    let square = 1;
 
-    let [x1, y1] = [x0 + w * square, y0 + h * square];
-    svg = new SVG2("#Grid", {scale: 100, margin: 2, grid: 1 / minors,
+loadFeed.init = () => {
+    console.log(`_(x=10, y=6, minor=5, {scale:15, x0:0, y0:0, interval:null, label:0, margin:2})`);
+    loadFeed.grid(10, 6, 5);
+}
+
+_ = loadFeed.grid = (w, h, minors, opt) => {
+    if (opt == null) opt = {};
+    let [x0, y0] = [opt.x0 ? opt.x0 : 0, opt.y0 ? opt.y0 : 0];
+    let bold = {stroke: "grey", "stroke-width": "1px"};
+    let scale = opt.scale ? opt.scale : 15;
+    let margin = opt.margin ? opt.margin : 2;
+
+    let [x1, y1] = [x0 + w, y0 + h];
+    let svg = new SVG2($("#Grid").html(""), {scale: scale * minors, margin: margin, grid: 1 / minors,
         lrbt: [x0, x1, y0, y1],
     });
     let g = svg.$.addClass("SVG2").removeAttr("data-aspect").find("g.Grid");
 
-    // svg.tick_label(0, [...range(x0, x1+square/10, square)], 0, "-6", "-16");
-    // svg.tick_label(0, 0, [...range(y0, y1+square/10, square)], "-6", "-10");
-    // svg.$.find(".Zero").removeClass("Zero");
-
-    g.find("line.Axis").removeClass("Axis");
+    if (opt.interval) {
+        let dx = opt.interval;
+        let lbl = opt.label ? opt.label : 0;
+        if (!(dx instanceof Array)) dx = [dx, dx];
+        if (!(lbl instanceof Array)) lbl = [lbl, lbl];
+        svg.tick_label(lbl[0], [...range(x0, x1 + 0.1, dx[0])], 0, "-6", "-16");
+        svg.tick_label(lbl[1], 0, [...range(y0, y1 + 0.1, dx[1])], "-6", "-10");
+        svg.$.find(".Zero").removeClass("Zero");
+    }
+    else g.find("line.Axis").removeClass("Axis");
+    // svg.$.find("line:not(.Axis)").css({stroke: "lightgrey", "stroke-width": "0.5px"});
+    // svg.$.find("g.LabelX text").css({"text-anchor": "middle"});
+    // svg.$.find("g.LabelY text").css({"text-anchor": "end"});
 
     let n = w * minors + 1;
     let vlines = fn_eval((i) => g.find("line")[i * minors], range(0, w+1));
@@ -36,6 +54,7 @@ loadFeed.grid = () => {
         l = $(l).appendTo(g);
         if (!l.hasClass("Axis")) l.css(bold);
     }
+
 }
 
 </script>
