@@ -101,4 +101,28 @@ bar: (sel) => {
     ], {E: 9, duration: 4, unit: "mJ", label: [0, "-6", 2]});
 },
 
+Q3: (sel, Ep) => {
+    let dt = 120;
+    if (Ep != null) {
+        let a = acos(Math.sqrt((Ep) / 8.1));
+        dt = a / 90;
+    }
+    svg = SVG2.ebg(sel, 10, 1, [
+        ["E_k", true],
+        ["E_p", (t) => 8.1 * sq(cos(360*(dt*t/4)))],
+    ], {E: 8.1, unit: "mJ", duration: dt, margin: [40, 4, 40, 16], label: [0, "-6", 2]});
+},
+
+Q5: (sel) => {
+    let Ek = sq(0.35) * 79 / 2;
+    let Ep = sq(0.036) * 19000 / 2;
+    let E = Ek + Ep;
+    let a = atan(Math.sqrt(Ek/Ep));
+    svg = SVG2.ebg(sel, 18, 1, [
+        ["E_k", true],
+        ["E_p", (t) => E * sq(cos(a+360*(30*t)))],
+    ], {E: E, unit: "mJ", duration: 120, margin: [40, 4, 40, 16], label: [0, "-6", 3]});
+},
+
+
 });

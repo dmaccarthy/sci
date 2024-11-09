@@ -1,11 +1,11 @@
 SVG2.cache("p20/energy/img/cons.js", {
 
 bar: (sel) => {
-    svg = SVG2.ebg(sel, 18, 3, [
+    svg = SVG2.ebg(sel, 18, 1, [
         ["E_k", (t) => 5/7 * 16.5 * t * t],
         ["E_g", true],
         ["E_rotn", (t) => 2/7 * 16.5 * t * t],
-    ], {E: 16.5, duration: 4, label: [0, "-6"]});
+    ], {E: 16.5, duration: 4, label: [0, "-6", 3]});
 },
 
 Ex1: (sel) => {

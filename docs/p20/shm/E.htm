@@ -151,6 +151,7 @@ At equilibrium, all of the energy is kinetic...
 <p class="TeX">E = \frac{1}{2} mv_{max}^2</p>
 <p class="TeX">\frac{2E}{m} = v_{max}^2</p>
 <p class="TeX">v_{max} = \sqrt{\frac{2E}{m}} = \rm{\sqrt{\frac{2\cdot 0.00810\ J}{0.0680\ kg}} = 0.488\ m/s}</p>
+<p class="Center"><svg data-svg2="p20/shm/img/E.js#Q3" class="s24"></svg></p>
         </div>
 
         <li>Use the SHM equations to calculate first <span class="TeX">T</span>, and then <span class="TeX">v_{max}</span>. Does the maximum speed agree with your answer from (b)?</li>
@@ -163,7 +164,7 @@ At equilibrium, all of the energy is kinetic...
         <div class="Answer">
 <p class="TeX">E_p = \frac{1}{2} kx^2 = \rm{\frac{1}{2} (18.0\ N/m) (0.0100\ m)^2 = 0.000900\ J}</p>
 <p class="TeX">E_k = E - E_p = \rm{0.00810\ J - 0.000900\ J = 0.0720\ J}</p>
-<p><a target="Q3" href="./?{%22sym%22:[%22E_k%22,%22E_p%22],%22calc_fn%22:%22Q3%22,%22xMargin%22:[-0.6,0.05],%22yMargin%22:[-1.2,0.5],%22Emax%22:10,%22dE%22:1,%22interval%22:2,%22yTitle%22:%22Energy%20/%20mJ%22,%22fixed%22:0,%22duration%22:120}#p20/energy/bar">Energy Bar Chart</a></p>
+<p class="Center"><svg data-svg2="p20/shm/img/E.js#Q3#0.9" class="s24"></svg></p>
         </div>
 
         <li>Calculate the speed of the mass when it is 1.00 cm from equilibrium.</li>
@@ -176,6 +177,7 @@ At equilibrium, all of the energy is kinetic...
 <p class="TeX">E_p = \frac{1}{2} kx^2 = \rm{\frac{1}{2} (18.0\ N/m) (0.0200\ m)^2 = 0.00360\ J}</p>
 <p class="TeX">E_k = E - E_p = \rm{0.00810\ J - 0.00360\ J = 0.0450\ J}</p>
 <p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm{\sqrt{\frac{2\cdot 0.0450\ J}{0.0680\ kg}} = 0.364\ m/s}</p>
+<p class="Center"><svg data-svg2="p20/shm/img/E.js#Q3#3.6" class="s24"></svg></p>
         </div>
     </ol></li>
 
@@ -228,7 +230,7 @@ At equilibrium, all of the energy is kinetic...
 <p class="TeX">E_k = \frac{1}{2} mv^2 = \rm{\frac{1}{2} (0.0790 kg) (0.350 m/s)^2 = 0.00484\ J}</p>
 <p class="TeX">E_p = \frac{1}{2} kx^2 = \rm{\frac{1}{2} (19.0\ N/m) (0.0360\ m)^2 = 0.0123\ J}</p>
 <p class="TeX">E = E_k + E_p = \rm{0.00484\ J + 0.0123\ J = 0.0172\ J}</p>
-<a target="Q5i" href="./?{%22sym%22:[%22E_k%22,%22E_p%22],%22calc_fn%22:%22Q5%22,%22xMargin%22:[-0.6,0.05],%22yMargin%22:[-1.8,0.5],%22Emax%22:18,%22dE%22:1,%22interval%22:3,%22yTitle%22:%22Energy%20/%20mJ%22,%22fixed%22:0,%22duration%22:120}#p20/energy/bar">Energy Bar Chart</a>
+<p class="Center"><svg data-svg2="p20/shm/img/E.js#Q5" class="s24"></svg></p>
         </div>
 
         <li>Determine the amplitude of the motion.</li>
@@ -290,7 +292,6 @@ At equilibrium, all of the energy is kinetic...
 
 ebgCalc.fn = {
 
-Q3: (t) => {let E = 8.1, k = sq(sin(3600 * t)); return [E*k, E*(1-k)]},
 Q5: (t) => {let E = 17.15075, k = sq(sin(32.0838 + 3600 * t)); return [E*k, E*(1-k)]},
 
 }

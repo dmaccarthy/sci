@@ -21,11 +21,12 @@ loadFeed.init = () => {
     g.text("Hi there!", [0, "-8"]);
     // g.text("14!", [0, "-14"]);
 
-    g = svg.group();
+    g = svg.group().config({pivot: [0.5, 0.5], theta: 30, shift: [-1, 0]});
     g.$.css({stroke: "red", fill: "yellow"});
     let s = 0.6;
     svg.rect([s, s], [-0.5, -0.5]);
     g.rect([s, s], [0.5, 0.5]);
+    g.shiftBy([0, 0]);
 
     svg.css_map().$.addClass("NoStyle");
 }

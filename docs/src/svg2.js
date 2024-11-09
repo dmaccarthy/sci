@@ -106,6 +106,8 @@ constructor(parent, g) {
     }
 }
 
+find(sel, n) {return this.$.find(sel)[n ? n : 0].graphic}
+
 config(attr) {
 /* Encapsulate multiple attributes */
     for (let k in attr) this[k] = attr[k];
@@ -176,6 +178,11 @@ set theta(a) {
     while (a >= 360) a -= 360;
     while (a < 0) a += 360;
     this._theta = a;
+}
+
+shiftBy(xy) {
+    this._shift = this._shift.plus(xy);
+    return this.update_transform();
 }
 
 
@@ -393,6 +400,7 @@ tick_label(fn, x, y, tick, offset) {
     let t = ["number", "string"].indexOf(typeof(tick)) >= 0;
     let xa = x instanceof Array;
     if (tick) this.label(t ? [0, tick] : tick, x, y);
+    if (offset == null) offset = 0;
     if (xa) this.label(fn, x, offset);
     else this.label(fn, offset, y);
     return this;
@@ -868,7 +876,7 @@ save(callback, ...args) {
     return this;
 }
 
-static svg(sel, i) {return $(sel ? sel : "svg")[i ? i : 0].graphic.save()}
+static svg(sel, i) {return $(sel ? sel : "svg.NoStyle")[i ? i : 0].graphic.save()}
 
 static create(options) {return new SVG2(document.createElementNS(SVG2.nsURI, "svg"), options)}
 
@@ -1013,7 +1021,7 @@ static load(cb) {
                     let x = math.evaluate(args[i]);
                     args[i] = typeof(x) == "number" ? x : x._data;
                 }
-                catch(err) {}
+                catch(err) {console.warn(err)}
             }
         }
         else args = [];
@@ -1021,7 +1029,8 @@ static load(cb) {
         if (SVG2._cache[url]) {
             SVG2.remove_pending(url);
             svg.removeAttr("data-svg2").attr("data-svg2x", `${url}#${id}`);
-            SVG2._cache[url][id](svg, ...args);
+            try {SVG2._cache[url][id](svg, ...args)}
+            catch(err) {console.warn(err)}
         }
         else if (SVG2.load.pending.indexOf(url) == -1) {
             SVG2.load.pending.push(url);
@@ -1199,27 +1208,32 @@ SVG2.load.pending = [];
 SVG2.url = location.origin;
 if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
 
-SVG2.css = {
+SVG2._sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
+SVG2._mono = "Inconsolata, 'Droid Sans Mono', monospace";
+SVG2._serif = "'Noto Serif', 'Open Serif', 'Droid Serif', Oxygen, sans-serif";
 
-    grid: {
-        "g.Grid": {stroke: "lightgrey", "stroke-width": "0.5px"},
-        "g.Grid line.Axis, g.Ticks line": {stroke: "black", "stroke-width": "1px"},
-        "g.Labels": {"font-size": "15px", stroke: "none", fill: "black", "text-anchor": "middle"},
-        "g.LabelY": {"text-anchor": "end"},
-    },
+SVG2.css = { /* Default styles */
 
-    text: {
-        ".Text": {"font-size": "18px", stroke: "none", fill: "black", "text-anchor": "middle"},
-        ".Large": {"font-size": "28px"},
-        ".Mono": {"font-family": "Inconsolata, 'Droid Sans Mono', monospace"},
-        ".Sans": {"font-family": "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif"},
-        ".Serif": {"font-family": "'Noto Serif', 'Open Serif', 'Droid Serif', Oxygen, sans-serif"},
-        ".Small": {"font-size": "14px"},
-        "g.Large text.Small": {"font-size": "18px"},
-    },
+grid: {
+    "g.Grid": {stroke: "lightgrey", "stroke-width": "0.5px"},
+    "g.Grid line.Axis, g.Ticks line": {stroke: "black", "stroke-width": "1px"},
+    "g.Labels": {"font-family": SVG2._sans, "font-size": "15px", stroke: "none", fill: "black", "text-anchor": "middle"},
+    "g.LabelY": {"text-anchor": "end"},
+},
 
-    plot: {
-        ".Plot": {fill: "none", stroke: "#0065fe", "stroke-width": "2px"}
-    },
+text: {
+    ".Text": {"font-family": SVG2._sans, "font-size": "18px", stroke: "none", fill: "black", "text-anchor": "middle"},
+    ".Large": {"font-size": "28px"},
+    ".Mono": {"font-family": SVG2._mono},
+    ".Sans": {"font-family": SVG2._sans},
+    ".Serif": {"font-family": SVG2._serif},
+    ".Small": {"font-size": "14px"},
+    "g.Large text.Small": {"font-size": "18px"},
+},
+
+plot: {
+    ".Plot": {fill: "#0065fe", stroke: "black", "stroke-width": "1px"},
+    ".Plot *:is(polyline, path)": {fill: "none", stroke: "#0065fe", "stroke-width": "2px"},
+},
 
 };
