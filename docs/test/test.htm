@@ -1,0 +1,33 @@
+<section class="Post NoPrintIcon" data-icon="slides">   
+<h2 class="Collapse">SVG Drawing
+    <span class="Action"><img alt="Download" title="Download SVG file" data-src="$download" onclick="$('#S1')[0].graphic.save('grid.svg', true)"/></span>
+</h2>
+<p class="Center"><svg id="S1"></svg></p>
+</section>
+
+<script type="text/javascript" data-init="init">
+
+loadFeed.data = {
+    title: `Grid`,
+    up: "home",
+}
+
+loadFeed.init = () => {
+    let svg = new SVG2($("#S1").html(""), {size: [300, 300], lrbt: [-1, 1], grid: 0.25});
+
+    let g = svg.group();
+    g.$.addClass("Text Large Sans");
+    // g.text("0!", [0, 0]);
+    g.text("Hi there!", [0, "-8"]);
+    // g.text("14!", [0, "-14"]);
+
+    g = svg.group();
+    g.$.css({stroke: "red", fill: "yellow"});
+    let s = 0.6;
+    svg.rect([s, s], [-0.5, -0.5]);
+    g.rect([s, s], [0.5, 0.5]);
+
+    svg.css_map().$.addClass("NoStyle");
+}
+
+</script>

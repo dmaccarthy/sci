@@ -1,113 +1,95 @@
-/* svg:not(.SVG2) */
+svg:not(.SVG2, .NoStyle) {
 
-svg:not(.SVG2) g:is(.Symbol, .Serif) text, svg:not(.SVG2) span.SymbolMetrics, svg:not(.SVG2) text.Serif {font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif}
-svg:not(.SVG2) text {font-family: "Noto Sans", "Open Sans", sans-serif}
-svg:not(.SVG2) text.Mono {font-family: Inconsolata, monospace}
-svg:not(.SVG2) text.Start {text-anchor: start}
-svg:not(.SVG2) text:is(.Mid, .TickLabelX) {text-anchor: middle}
-svg:not(.SVG2) line:is(.Axis, .AxisX, .AxisY, .TickX, .TickY) {stroke: black; stroke-width: 1.5}
-svg:not(.SVG2) *:is(text, tspan):is(.Small, .Sup, .Sub) {font-size: 14px}
-svg:not(.SVG2) line.Medium {stroke: #808080; stroke-width: 1.5}
-svg:not(.SVG2) text {text-anchor: middle; dominant-baseline: middle}
-svg:not(.SVG2) g.StickMan {stroke-width: 4px; stroke: black; fill: none}
+g:is(.Symbol, .Serif) text, span.SymbolMetrics, text.Serif {font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif}
+text {font-family: "Noto Sans", "Open Sans", sans-serif}
+text.Mono {font-family: Inconsolata, monospace}
+text.Start {text-anchor: start}
+text:is(.Mid, .TickLabelX) {text-anchor: middle}
+line:is(.Axis, .AxisX, .AxisY, .TickX, .TickY) {stroke: black; stroke-width: 1.5}
+*:is(text, tspan):is(.Small, .Sup, .Sub) {font-size: 14px}
+line.Medium {stroke: #808080; stroke-width: 1.5}
+text {text-anchor: middle; dominant-baseline: middle}
+g.StickMan {stroke-width: 4px; stroke: black; fill: none}
 
-/* Graph */
+g.Protractor *:is(line, path) {stroke: black; fill: none}
+g.Protractor path.Plastic {fill: grey; fill-opacity: 0.1; stroke: none}
+g.Protractor text {fill: black}
 
-svg:not(.SVG2).Graph line:not(.AxisX, .AxisY, .TickX, .TickY) {stroke: #0065fe; stroke-width: 3}
-svg:not(.SVG2).Graph .Shade {fill: #0065fe; stroke: none; fill-opacity: 0.2}
-svg:not(.SVG2).Graph polyline {fill: none; stroke: #0065fe; stroke-width: 3}
-svg:not(.SVG2).Graph *:is(circle, rect, polygon) {fill: #0065fe; stroke: black}
+g.Grid line:not(.AxisX, .AxisY, .TickX, .TickY, .Axis) {stroke: lightgrey; stroke-width: 0.5}
+
+}
+
+
+svg:not(.SVG2).Graph {
+
+line:not(.AxisX, .AxisY, .TickX, .TickY) {stroke: #0065fe; stroke-width: 3}
+.Shade {fill: #0065fe; stroke: none; fill-opacity: 0.2}
+polyline {fill: none; stroke: #0065fe; stroke-width: 3}
+*:is(circle, rect, polygon) {fill: #0065fe; stroke: black}
     
-svg:not(.SVG2).Graph text:not(.Small, .Sup, .Sub) {
-    /* text-anchor: middle;
-    dominant-baseline: middle; */
+text:not(.Small, .Sup, .Sub) {
     stroke-width: 0;
     font-size: 18px;
 }
 
-svg:not(.SVG2).Graph g.Grid text, text:is(.TickLabelX, .TickLabelY) {
+g.Grid text, text:is(.TickLabelX, .TickLabelY) {
     font-size: 16px;
     fill: black;
 }
 
-svg:not(.SVG2).Graph text:is(.TickLabelY, .End) {text-anchor: end}
+text:is(.TickLabelY, .End) {text-anchor: end}
+}
 
-/* VDiag */
 
-svg:not(.SVG2).VDiag *:is(.Resultant, circle, polygon) {
+svg:not(.SVG2).VDiag {
+    
+*:is(.Resultant, circle, polygon) {
     fill: #0065fe;
     stroke: black;
     stroke-width: 0.5;
 }
 
-svg:not(.SVG2).VDiag line:is(.Axis, .AxisX, .AxisY, .TickX, .TickY) {stroke: #808080; stroke-width: 1.5}
-svg:not(.SVG2).VDiag polygon:is(.Vector, .Resultant, .Component, .Res_Component) {fill-opacity: 0.6}
-svg:not(.SVG2).VDiag polygon.Vector {fill: red}
-svg:not(.SVG2).VDiag polygon.Component {fill: #ffc0c0}
-svg:not(.SVG2).VDiag polygon.Res_Component {fill: #c0c0ff}
+line:is(.Axis, .AxisX, .AxisY, .TickX, .TickY) {stroke: #808080; stroke-width: 1.5}
+polygon:is(.Vector, .Resultant, .Component, .Res_Component) {fill-opacity: 0.6}
+polygon.Vector {fill: red}
+polygon.Component {fill: #ffc0c0}
+polygon.Res_Component {fill: #c0c0ff}
 
-svg:not(.SVG2).VDiag text.Annotate {
-    /* text-anchor: middle;
-    dominant-baseline: middle; */
+text.Annotate {
     font-family: Inconsolata, monospace;
     font-size: 22px;
     fill: black;
 }
 
-svg:not(.SVG2).VDiag g.Grid text, svg:not(.SVG2).VDiag text:is(.TickLabelX, .TickLabelY) {
+g.Grid text, text:is(.TickLabelX, .TickLabelY) {
     font-family: Inconsolata, monospace;
-    /* dominant-baseline: middle; */
     font-size: 14px;
     fill: #808080;
 }
 
-svg:not(.SVG2).VDiag text:is(.TickLabelY) {text-anchor: end}
+text:is(.TickLabelY) {text-anchor: end}
 
-/* FBD */
-
-svg:not(.SVG2).FBD polygon {
-    stroke: black;
-    stroke-width: 0.5;    
 }
 
-svg:not(.SVG2).FBD polygon.Vector {fill: red}
-svg:not(.SVG2).FBD polygon.Blue {fill: #0065FE}
-svg:not(.SVG2).FBD polygon.Green {fill: limegreen}
 
-/* EnergyBar */
+svg:not(.SVG2).FBD {
+polygon {stroke: black; stroke-width: 0.5}
+polygon.Vector {fill: red}
+polygon.Blue {fill: #0065FE}
+polygon.Green {fill: limegreen}
+}
 
-svg:not(.SVG2).EnergyBar g.Labels g.Symbol text.Symbol {
+
+svg:not(.SVG2).EnergyBar {
+
+g.Labels g.Symbol text.Symbol {
     font-size: 24px;
     font-style: italic;
     fill: #0065fe;
 }
 
-svg:not(.SVG2).EnergyBar text:not(.Symbol) {
-    font-size: 18px;
-    text-anchor: end;
+text:not(.Symbol) {font-size: 18px; text-anchor: end}
+.Bars rect {fill: #0065fe; stroke: black}
+line.TotalEnergy {stroke: black; stroke-width: 3}
+
 }
-
-svg:not(.SVG2).EnergyBar .Bars rect {
-    fill: #0065fe;
-    stroke: black;
-}
-
-svg:not(.SVG2).EnergyBar line.TotalEnergy {
-    stroke: black;
-    stroke-width: 3;
-}
-
-/* Protractor */
-
-svg:not(.SVG2) g.Protractor *:is(line, path) {stroke: black; fill: none}
-svg:not(.SVG2) g.Protractor path.Plastic {fill: grey; fill-opacity: 0.1; stroke: none}
-
-svg:not(.SVG2) g.Protractor text {
-    fill: black;
-    /* dominant-baseline: middle;
-    text-anchor: middle; */
-}
-
-/* svg:not(.SVG2) */
-
-svg:not(.SVG2) g.Grid line:not(.AxisX, .AxisY, .TickX, .TickY, .Axis) {stroke: lightgrey; stroke-width: 0.5}

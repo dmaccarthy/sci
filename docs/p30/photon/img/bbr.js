@@ -12,7 +12,6 @@ planck: (sel, T0, ...args) => {
 
     // Create diagram and store scale temperature
     svg = new SVG2(sel, {size: [512, 384], lrbt: [0, opt.wMax, 0, opt.iMax], grid: opt.grid, margin: [28, 16, 28, 1]}).config({T0: T0});
-    svg.$.addClass("SVG2");
 
     // Locate peak and create scaled Planck Law function
     let w0 = wien(T0);
@@ -22,6 +21,8 @@ planck: (sel, T0, ...args) => {
     // Draw loci and peaks for specified temperatures
     if (args == null || args.length < 1) args = [T0];
     let colors = ["#0065fe", "red", "green", "gold", "violet", "cyan"];
+    let txt = svg.group().addClass("Text Sans");
+    let plot = svg.group().addClass("Plot");
     for (let i=0;i<args.length;i++) {
         let T = args[i];
         if (T > 0) {
@@ -29,24 +30,23 @@ planck: (sel, T0, ...args) => {
             let I = planck(w, T) / I0;
             let w1 = w / w0;
             let c = colors[i % colors.length];
-            svg.locus(f, [0, opt.wMax], T).$.css({"stroke-width": "2px", stroke: c});
-            svg.text(`${(1e9 * w).toFixed(0)} nm`, [w1, I + 0.07]).css({fill: c}).addClass("Peak");
-            svg.circle("4", [w1, I]).css({stroke: c, fill: "white"}).addClass("Peak");
+            plot.locus(f, [0, opt.wMax], T).$.css({stroke: c});
+            plot.circle("4", [w1, I]).css({stroke: c, fill: "white"}).addClass("Peak");
+            txt.text(`${(1e9 * w).toFixed(0)} nm`, [w1, I + 0.04]).css({fill: c}).addClass("Peak");
         }
     }
 
     // Draw points to show visible wavelengths
-    let g = svg.group();
-    g.$.addClass("Visible");
+    let g = svg.group().addClass("Visible").css({stroke: "black"});
     for (let [w, c] of [[740, "#900000"], [680, "red"], [610, "orange"], [580, "yellow"],
         [530, "lightgreen"], [490, "cyan"], [460, "blue"], [400, "#9400d3"]]) 
             g.circle("4", [w * 1e-9 / w0, 0]).css({fill: c});
 
     // Label axes
-    svg.text("Wavelength", [opt.wMax / 2, "-16"]);
-    svg.group().config({theta: 90, shift: ["-16", opt.iMax / 2]}).text("Intensity");
+    txt.text("Wavelength", [opt.wMax / 2, "-24"]);
+    txt.group().config({theta: 90, shift: ["-12", opt.iMax / 2]}).text("Intensity");
 
-    return svg;
+    return svg.addClass("NoStyle").css_map();
 },
 
 r_j: (sel) => {
@@ -59,9 +59,9 @@ r_j: (sel) => {
     let rj_law = (w, T) => T / Math.pow(w, 4);
     let b = planck(w, T) / rj_law(w, T);
     let rj = svg.locus((x) => b * rj_law(x * w0, T) / I0, [2, wMax]);
-    rj.$.css({stroke: "red", "stroke-width": "1px"});
-    svg.text("Rayleigh-Jeans Law", [3.5, 1]).css({fill: "red"});
+    rj.$.css({stroke: "red", "stroke-width": "1px", fill: "none"});
     svg.$.find("text.Peak, g.Visible").remove();
+    svg.$.find("g.Text")[0].graphic.text("Rayleigh-Jeans Law", [3.5, 1]).css({fill: "red"});
 },
 
 });

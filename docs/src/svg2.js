@@ -14,6 +14,8 @@ Get the <svg>/<g> element or its jQuery object:
 Create, configure, and style an animated group:
     g = svg.group() -> SVG2g
     g.config({theta, omega, alpha, pivot, shift, vel, acc}) -> g
+    g.addClass(string) -> g
+    g.css(object or string) -> g
     g.css_map(map) -> g
 
 Create a <g> for scaling (cannot be animated, but can be nested in an animated <g>):
@@ -69,6 +71,7 @@ Convert coordinates between child and parent coordinate systems:
 
 Save as SVG file:
     svg.save(callback or string or null, [CSS files]) -> svg
+    SVG2.svg(sel, index) -> svg
 
 Vector diagram helpers:
     SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, tick, label, cycle, shift}) -> SVG2
@@ -109,12 +112,34 @@ config(attr) {
     return this.update_transform();
 }
 
-css_map(map) {
+addClass(...args) {
+/* Call jQuery.addClass */
+    this.$.addClass(...args);
+    return this;
+}
+
+css(rules) {
+/* Apply CSS rules to <g> */
+    if (typeof(rules) == "string") this.css_map(rules);
+    else this.$.css(rules);
+    return this;
+}
+
+css_map(...map) {
 /* Apply CSS styles to <g> and its descendants */
     let e = this.$;
-    for (let s in map) {
-        if (s) e.find(s).css(map[s]);
-        else e.css(map[s]);
+    if (map.length == 0) {
+        map = [];
+        for (let s in SVG2.css) map.push(s);
+    }
+    for (let m of map) {
+        if (typeof(m) == "string") m = SVG2.css[m];
+        for (let s in m) {
+            e.find(s).css(m[s]);
+            if (e.is(s)) e.css(m[s]);
+            // if (s) 
+            // else e.css(m[s]);
+        }    
     }
     return this;
 }
@@ -778,7 +803,7 @@ constructor(jSelect, options) {
     super();
     this.svg = this;
     this.element = $(jSelect)[0];
-    jSelect = this.$ = $(this.element);
+    jSelect = this.$ = $(this.element).attr("xmlns", SVG2.nsURI);
     this.element.graphic = this;
     this.decimals = 2;
 
@@ -828,7 +853,8 @@ constructor(jSelect, options) {
 save(callback, ...args) {
 /* Clone <svg> and prepend <style> nodes; then save SVG file or pass to callback */
     if (callback == null) callback = `${randomString(12, 1)}.svg`;
-    if (typeof(callback) == "string") {
+    if (callback === true) callback = (html) => BData.init(html, "svg").open();
+    else if (typeof(callback) == "string") {
         let fn = callback;
         callback = (html) => BData.init(html, fn).save();
     }
@@ -841,6 +867,8 @@ save(callback, ...args) {
     else callback(html[0].outerHTML);
     return this;
 }
+
+static svg(sel, i) {return $(sel ? sel : "svg")[i ? i : 0].graphic.save()}
 
 static create(options) {return new SVG2(document.createElementNS(SVG2.nsURI, "svg"), options)}
 
@@ -1170,3 +1198,28 @@ SVG2.load.pending = [];
 
 SVG2.url = location.origin;
 if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
+
+SVG2.css = {
+
+    grid: {
+        "g.Grid": {stroke: "lightgrey", "stroke-width": "0.5px"},
+        "g.Grid line.Axis, g.Ticks line": {stroke: "black", "stroke-width": "1px"},
+        "g.Labels": {"font-size": "15px", stroke: "none", fill: "black", "text-anchor": "middle"},
+        "g.LabelY": {"text-anchor": "end"},
+    },
+
+    text: {
+        ".Text": {"font-size": "18px", stroke: "none", fill: "black", "text-anchor": "middle"},
+        ".Large": {"font-size": "28px"},
+        ".Mono": {"font-family": "Inconsolata, 'Droid Sans Mono', monospace"},
+        ".Sans": {"font-family": "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif"},
+        ".Serif": {"font-family": "'Noto Serif', 'Open Serif', 'Droid Serif', Oxygen, sans-serif"},
+        ".Small": {"font-size": "14px"},
+        "g.Large text.Small": {"font-size": "18px"},
+    },
+
+    plot: {
+        ".Plot": {fill: "none", stroke: "#0065fe", "stroke-width": "2px"}
+    },
+
+};
