@@ -28,6 +28,7 @@ Add primitive content to an <svg>/<g> tag using an SVG2g instance (or subclasses
     g.rect([w, h], [cx, cy]) -> jQuery
     g.image(href, [w, h], [cx, cy]) -> jQuery
     g.poly([pts], closed) -> jQuery
+    g.star(sides, big, small) -> jQuery
 
 Add composite content:
     g.grid([x1, x2, dx], [y1, y2, dy]) -> SVG2g
@@ -413,8 +414,8 @@ poly(pts, closed) {
         this.create_child(closed ? "polygon" : "polyline", attr);
 }
 
+star(sides, big, small) {return this.poly(star_points(sides, big, small), 1)}
 arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
-
 locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
 path(start) {return new SVG2path(this, start)}
 

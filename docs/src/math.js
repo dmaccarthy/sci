@@ -183,6 +183,12 @@ function arrow_points(L, opt) {
     return pts;
 }
 
+function star_points(sides, big, small) {
+/* Calculate the vertices of a star */
+    if (!small) small = 3 * big / 7;
+    return [...fn_eval((i) => vec2d(i % 2 ? small : big, 90 * (1 + 2 * i / sides)), range(0, 2 * sides))];
+}
+
 function sq(x) {return x*x}
 function root(x, n) {return Math.pow(x, 1 / (n == null ? 2 : n))}
 function sin(d) {return Math.sin(d*DEG)}
