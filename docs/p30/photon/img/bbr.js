@@ -11,7 +11,7 @@ planck: (sel, T0, ...args) => {
     if (opt.grid === true) opt.grid = [opt.wMax / 15, opt.iMax / 15];
 
     // Create diagram and store scale temperature
-    svg = new SVG2(sel, {size: [512, 384], lrbt: [0, opt.wMax, 0, opt.iMax], grid: opt.grid, margin: [28, 16, 28, 1]}).config({T0: T0});
+    let svg = new SVG2(sel, {size: [512, 384], lrbt: [0, opt.wMax, 0, opt.iMax], grid: opt.grid, margin: [28, 16, 28, 1]}).config({T0: T0});
 
     // Locate peak and create scaled Planck Law function
     let w0 = wien(T0);
