@@ -1,14 +1,13 @@
-
-let hr = 3600, day = 24 * hr, yr = 365.24 * day;
-let G = 6.67e-11, Ms = 1.99e30, Me = 5.97e24, Re = 6.37e6, g = 9.81;
-let c = 3.00e8, k = 8.99e9, qe = 1.6e-19, me = 9.11e-31, mp = 1.67e-27;
-let h = 6.63e-34, E1 = -13.6;
+const hr = 3600, day = 24 * hr, yr = 365.24 * day;
+const G = 6.67e-11, Ms = 1.99e30, Me = 5.97e24, Re = 6.37e6, g = 9.81;
+const c = 3.00e8, k = 8.99e9, qe = 1.6e-19, me = 9.11e-31, mp = 1.67e-27;
+const h = 6.63e-34, E1 = -13.6;
 
 // 2hc^2 = 1.19101e-16, hc/kB = 0.0143838
 const planck = (w, T) => 1.19101e-16 / Math.pow(w, 5) / (Math.exp(0.0143838 / (w * T)) - 1);
 const wien = (T) => 0.00289777 / T;
 
-function orbit(data) {
+const orbit = function(data) {
 // Solve circular orbital problems given 2 of 5 variables: r, v, T, a, M
     let w = 0;
     if (data.r) {
@@ -71,7 +70,7 @@ function orbit(data) {
     return data;
 }
 
-function uam(info) {
+const uam = function(info) {
     let [a, vi, vf, d, t] = [info.a, info.vi, info.vf, info.d, info.t];
     if (a == null) {
         [vi, vf, d, t] = uam.solve2(vi, vf, d, t);
@@ -134,37 +133,3 @@ uam.solve3 = (vf, vi, a, d) => {
     else if (d == null) d = (vf * vf - vi * vi) / (2 * a);
     return [vf, vi, a, d];
 }
-
-
-// function _uam_old(data) {
-// // Solve uniform accelerated motion given 3 of 5 variables: a, vi, vf, d, t
-//     let t = data.t;
-//     if (t != null) {
-//         if (data.a != null) {
-//             if (data.vf != null) data.vi = data.vf - data.a * t;
-//             else if (data.d != null) data.vi = (data.d / t - data.a * t / 2);
-//         }
-//         else if (data.vi != null) {
-//             if (data.d != null) data.vf = 2 * data.d / t - data.vi;
-//         }
-//         else data.vi = 2 * data.d / t - data.vf;
-//     }
-//     else if (data.a == null)
-//         data.a = (sq(data.vf) - sq(data.vi)) / (2 * data.d);
-//     else if (data.d == null)
-//         data.d = (sq(data.vf) - sq(data.vi)) / (2 * data.a);
-//     else if (data.vf == null) {
-//         data.vf = root(sq(data.vi) + 2 * data.a * data.d);
-//         if ((data.vf - data.vi) * data.a < 0) data.vf = -data.vf;
-//     }
-//     else if (data.vi == null) {
-//         data.vi = root(sq(data.vf) - 2 * data.a * data.d);
-//         if ((data.vf - data.vi) * data.a < 0) data.vi = -data.vi;
-//     }
-
-//     if (data.a == null) data.a = (data.vf - data.vi) / t;
-//     if (data.vf == null) data.vf = data.vi + data.a * t;
-//     if (data.d == null) data.d = (data.vi + data.vf) * t / 2;
-//     if (data.t == null) data.t = (data.vf - data.vi) / data.a;
-//     return data;
-// }

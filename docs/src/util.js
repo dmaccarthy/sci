@@ -1,7 +1,4 @@
-function serverUTC(cb) {
-    if (!cb) cb = console.log;
-    $.ajax({url: "https://dmaccarthy.vercel.app/utc.json", success: cb});
-}
+
 
 function clickCycle(e, n, ...f) {
     e.cycleStatus = n;
@@ -122,20 +119,6 @@ function randomString(n, allowNum) {
     return s;
 }
 
-// function elementId(e, prefix) {
-//     // Return the id attribute, assigning a random id if absent
-//     e = $($(e)[0]);
-//     if (e.length == 0) return;
-//     let id = e.attr("id");
-//     if (!prefix) prefix = "";
-//     while (!id) {
-//         id = prefix + randomString(12, 2);
-//         if ($('#' + id).length) id = null;
-//         else e.attr({id: id});
-//     }
-//     return id;
-// }
-
 function randomColor(digits) {
     // Create a random RGB hex code
     let s = "#";
@@ -206,22 +189,6 @@ function uHSVtoRGB(h, s, v) {
         g: Math.round(g * 255),
         b: Math.round(b * 255)
     };
-}
-
-const getCSS = (callback, ...args) => {
-    // Pass an array of <style> element nodes to callback
-    let pending = [...args];
-    let n = args.length;
-    let response = new Array(n);
-    for (let a of args) {
-        $.ajax(a, {complete: (e, s) => {
-            let i = args.indexOf(a);
-            if (s == "success") response[i] = $("<style>").attr({type: "text/css"}).html(e.responseText)[0];
-            pending[i] = null;
-            for (let j=0;j<n;j++) if (pending[j]) return;
-            callback(response);
-        }});
-    }
 }
 
 /* Fetch images or other data as blobs or data URLs... 

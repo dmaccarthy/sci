@@ -1,6 +1,3 @@
-// function isSlideshow() {return $("body").hasClass("Slides")}
-// function isPrintPage() {return $("body").hasClass("Print")}
-
 function clearFeed() {
 /** Reset to empty feed **/
     if ($("body").hasClass("Present")) return location.reload();
@@ -306,8 +303,6 @@ function initFeed() {
     $("#Main").css("visibility", "visible");
 }
 
-// function printable(id) {return loadFeed.printable[id]}
-
 function copy_or_open(ei) {
 /** Enable copy/open operation on [data-echo] elements **/
     let echo = ei.attr("data-echo");
@@ -384,12 +379,8 @@ clickLink.course = localStorage.getItem("clickLink.course") == "1" ? 1 : 0;
 
 function goUp(ev) {
 /** Event handler for "up" command **/
-    // if (ev.ctrlKey && ev.altKey) teacher(teacher.mode ? 0 : 2);
-    // else if (ev.ctrlKey && ev.shiftKey) window.open(location.href);
-    // else {
-        let feed = loadFeed.data.up;
-        if (feed) loadFeed(feed);        
-    // }
+    let feed = loadFeed.data.up;
+    if (feed) loadFeed(feed);        
 }
 
 function video(s) {
@@ -467,8 +458,7 @@ function teacher(t, init) {
         if (btoa(localStorage.getItem("teacher_code")) == teacher.access)
             teacher.mode = true;
     console.log("Teacher", teacher.mode);
-    if (teacher.mode && location.hostname == "dmaccarthy.github.io")
-        $.ajax({url: "https://dmaccarthy.vercel.app/ping.json"});
+    if (teacher.mode && location.hostname == "dmaccarthy.github.io") serverUTC();
     if (!init) loadFeed();
 }
 
@@ -489,6 +479,10 @@ function msg(html, time) {
         setTimeout(() => {e.remove()}, 1600);
     }, time ? time : 2500);
 }
+
+function serverUTC(cb) {$.ajax({url: serverUTC.url, success: cb ? cb : console.log})}
+serverUTC.url = "https://dmaccarthy.vercel.app/utc.json";
+
 
 // Printing 
 
@@ -612,7 +606,6 @@ $(window).on("keydown", (ev) => {
 
 $(() => {
 /** Initialize page **/
-    SVG2.stylesheets = [...fn_eval((e) => SVG2.makeURL($(e).attr("href")), $("link[data-svg2css]"))];
     $("#DateToday").html(new Date().getDate());
     teacher(null, true);
     loadHash(true);
