@@ -1,5 +1,3 @@
-
-
 function clickCycle(e, n, ...f) {
     e.cycleStatus = n;
     $(e).click((ev) => {
