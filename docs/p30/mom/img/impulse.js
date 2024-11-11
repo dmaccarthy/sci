@@ -9,7 +9,7 @@ bat: (sel) => {
     txt.text("Time / s", [0.15, "-44"]);
     txt.group().config({theta: 90, shift: ["-40", 55]}).text("Force / N");
 
-    svg.group().addClass("Plot").poly([[0, 0], [0.08, 100], [0.18, 100], [0.3, 0]]);
+    svg.group().addClass("Locus").poly([[0, 0], [0.08, 100], [0.18, 100], [0.3, 0]]);
     svg.css_map("grid", "text", "plot").addClass("NoStyle");;
 },
 

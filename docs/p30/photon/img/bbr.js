@@ -23,6 +23,7 @@ planck: (sel, T0, ...args) => {
     let colors = ["#0065fe", "red", "green", "gold", "violet", "cyan"];
     let txt = svg.group().addClass("Text Sans");
     let plot = svg.group().addClass("Plot");
+    let loci = plot.group().addClass("Locus");
     for (let i=0;i<args.length;i++) {
         let T = args[i];
         if (T > 0) {
@@ -30,7 +31,7 @@ planck: (sel, T0, ...args) => {
             let I = planck(w, T) / I0;
             let w1 = w / w0;
             let c = colors[i % colors.length];
-            plot.locus(f, [0, opt.wMax], T).$.css({stroke: c});
+            loci.locus(f, [0, opt.wMax], T).$.css({stroke: c});
             plot.circle("4", [w1, I]).css({stroke: c, fill: "white"}).addClass("Peak");
             txt.text(`${(1e9 * w).toFixed(0)} nm`, [w1, I + 0.04]).css({fill: c}).addClass("Peak");
         }

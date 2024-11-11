@@ -30,9 +30,12 @@ loadFeed.init = () => {
     g.rect([s, s], [0.5, 0.5]);
     g.shiftBy([0, 0]);
 
-    svg.star(5, 0.6).css({fill: "#0065fe", stroke: "black", "fill-opacity": 0.4});
+    g = svg.cylinder([0.3, 0.1], 0.5).config({omega: 20}).css({fill: "#0065fe"});
+    g.$.find("ellipse").css({fill: "grey"});
 
+    svg.star(5, 0.6).css({fill: "#0065fe", stroke: "black", "fill-opacity": 0.4});
     svg.css_map().$.addClass("NoStyle");
+    svg.animate(g).$.on("click", () => svg.toggle());
 }
 
 </script>

@@ -109,6 +109,13 @@ constructor(parent, g) {
 
 find(sel, n) {return this.$.find(sel)[n ? n : 0].graphic}
 
+findAll(sel) {
+    let g = [];
+    for (let e of this.$.find(sel))
+        if (e.graphic instanceof SVG2g) g.push(e.graphic);
+    return g;
+}
+
 config(attr) {
 /* Encapsulate multiple attributes */
     for (let k in attr) this[k] = attr[k];
@@ -140,8 +147,6 @@ css_map(...map) {
         for (let s in m) {
             e.find(s).css(m[s]);
             if (e.is(s)) e.css(m[s]);
-            // if (s) 
-            // else e.css(m[s]);
         }    
     }
     return this;
@@ -291,8 +296,10 @@ _cs(xy) {
     let [x, y] = xy == null ? [0, 0] : xy;
     let svg = this.svg;
     let [sx, sy] = svg.scale;
-    if (typeof(x) == "string") x = parseFloat(x) / sx;
-    if (typeof(y) == "string") y = parseFloat(y) / sy * svg.angleDir;
+    if (typeof(x) == "string")
+        x = parseFloat(x) / Math.abs(sx); // parseFloat(x) / sx;
+    if (typeof(y) == "string")
+        y = parseFloat(y) / Math.abs(sy); // parseFloat(y) / sy * svg.angleDir;
     return new RArray(x, y);
 }
 
@@ -391,8 +398,6 @@ label(fn, x, y) {
     }
     if (tick) g.$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`);
     else g.$.addClass(`Labels Label${ya ? 'Y' : 'X'}`);
-    // g.$.addClass(tick ? "Ticks" : "Labels");
-    // if (!tick) g.$.addClass(ya ? "LabelY" : "LabelX");
     return g;
 }
 
@@ -469,8 +474,10 @@ _grid(g, x, y, swap) {
 /* Draw the x (swap=false) OR y (swap=true) portion of the coordinate grid */
     if (x.length == 3) {
         let [x0, x1, dx] = x;
+        let [y0, y1] = [Math.min(...y), Math.max(...y)];
+        [x0, x1] = [Math.min(x0, x1), Math.max(x0, x1)];
+        if (dx < 0) dx = -dx;
         let ddx = dx / 1000;
-        let y0 = y[0], y1 = y[1];
         x1 += ddx;
         while (x0 <= x1) {
             let pts = swap ? [[y0, x0], [y1, x0]] : [[x0, y0], [x0, y1]];
@@ -512,7 +519,8 @@ cylinder(r, L) {
     g.$.addClass("Cylinder");
     let p1 = new RArray(r[0], 0);
     let p2 = p1.neg().minus([0, L]);
-    g.path(p1).ver(-L).arcTo(p2, r, 2).ver(0).arcTo(p1, r).close().update();
+    let c = g.svg.angleDir == -1 ? 2 : 0;
+    g.path(p1).ver(-L).arcTo(p2, r, c).ver(0).arcTo(p1, r).close().update();
     g.ellipse(r);
     return g;
 }
@@ -752,8 +760,8 @@ arcTo(xy, r, choice, rotn) { // Draw a circular or elliptical arc to the specifi
     let rx, ry;
     if (r instanceof Array) [rx, ry] = r;
     else rx = ry = r;
-    rx *= svg.scale[0];
-    ry *= svg.scale[1] * svg.angleDir;
+    rx *= Math.abs(svg.scale[0]);
+    ry *= Math.abs(svg.scale[1]);
     rotn = rotn ? f(rotn * svg.angleDir) : "0";
     let [x, y] = xy;        
     this.x = x;
@@ -848,7 +856,7 @@ constructor(jSelect, options) {
         let [gx, gy] = typeof(grid) == "number" ? [grid, grid] : grid;
         let x0 = gx * Math.round(lrbt[0] / gx);
         let y0 = gy * Math.round(lrbt[2] / gy);
-        this.grid([x0, lrbt[1] + gx/100, gx], [y0, lrbt[3] + gy/100, gy]);
+        this.grid([x0, lrbt[1], gx], [y0, lrbt[3], gy]);
     }
 
     /* Animation data */
@@ -859,7 +867,7 @@ constructor(jSelect, options) {
     this.time = 0;
 }
 
-save(callback, ...args) {
+save(callback) {
 /* Clone <svg> and prepend <style> nodes; then save SVG file or pass to callback */
     if (callback == null) callback = `${randomString(12, 1)}.svg`;
     if (callback === true) callback = (html) => BData.init(html, "svg").open();
@@ -867,13 +875,8 @@ save(callback, ...args) {
         let fn = callback;
         callback = (html) => BData.init(html, fn).save();
     }
-    if (args.length == 1 && args[0] == true) args = SVG2.stylesheets;
     let html = $(this.element.outerHTML).attr({xmlns: SVG2.nsURI});
-    if (args.length) getCSS((r) => {
-        $(r).prependTo(html);
-        callback(html[0].outerHTML);
-    }, ...args);
-    else callback(html[0].outerHTML);
+    callback(html[0].outerHTML);
     return this;
 }
 
@@ -1201,7 +1204,6 @@ static ebg(sel, Emax, step, data, options) {
 
 }
 
-SVG2.stylesheets = [];
 SVG2.nsURI = "http://www.w3.org/2000/svg";
 SVG2._cache = {};
 SVG2.load.pending = [];
@@ -1233,8 +1235,8 @@ text: {
 },
 
 plot: {
-    ".Plot": {fill: "#0065fe", stroke: "black", "stroke-width": "1px"},
-    ".Plot *:is(polyline, path)": {fill: "none", stroke: "#0065fe", "stroke-width": "2px"},
+    "g.Plot": {fill: "#0065fe", stroke: "black", "stroke-width": "1px"},
+    "g.Locus": {fill: "none", stroke: "#0065fe", "stroke-width": "2px"},
 },
 
 };
