@@ -474,8 +474,9 @@ _grid(g, x, y, swap) {
 /* Draw the x (swap=false) OR y (swap=true) portion of the coordinate grid */
     if (x.length == 3) {
         let [x0, x1, dx] = x;
-        let [y0, y1] = [Math.min(...y), Math.max(...y)];
+        let [y0, y1] = y;
         [x0, x1] = [Math.min(x0, x1), Math.max(x0, x1)];
+        [y0, y1] = [Math.min(y0, y1), Math.max(y0, y1)];
         if (dx < 0) dx = -dx;
         let ddx = dx / 1000;
         x1 += ddx;
@@ -538,6 +539,48 @@ stickman(h) {
     r *= 1.5;
     g.poly([pt.plus(vec2d(r, uniform(150, 210))), pt, pt.plus(vec2d(r, uniform(-30, 30)))]);
     return g;
+}
+
+graph(options) {
+/* Add common scatter plot / line graph elements */
+    let svg = this.svg;
+    let x = options.x, y = options.y;
+    if (options.grid) {
+        let [dx, dy] = options.grid;
+        let [l, r, b, t] = svg.lrbt;
+        this.grid([l, r, dx], [b, t, dy]);
+    }
+    this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6").find("g.LabelX").config({shift: x.shift});
+    this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6").find("g.LabelY").config({shift: y.shift});
+
+    let xy = (i) => {
+        let pos = (i ? y : x).title[1];
+        if (!(pos instanceof Array)) pos = i ? [pos, svg.center[1]] : [svg.center[0], pos];
+        return pos;
+    }
+    let txt = this.group().addClass("Text");
+    txt.text(x.title[0], xy(0));
+    txt.group().config({theta: 90, shift: xy(1)}).text(y.title[0]);
+
+    let data = options.data;
+    if (data) {
+        let g = this.group().addClass("Series"), s = [];
+        for (let series of data) {
+            if (series.plot) s.push(g.plot(...series.plot));
+            else {
+                let gs = g.group().addClass("Locus");
+                s.push(gs);
+                if (series.connect) gs.poly(series.connect);
+                else if (series.locus) gs.locus(...series.locus);
+            }
+        }
+        this.series = s;
+    }
+    if (options.css) {
+        let map = options.css === true ? ["grid", "text", "plot"] : options.css;
+        svg.addClass("NoStyle").css_map(...map);
+    }
+    return this;
 }
 
 tip_to_tail(vecs, options) {
@@ -684,6 +727,7 @@ constructor(g, eq, param, args) {
     this.args = args;
     this.$ = g.create_child("polyline", {}).addClass("Locus");
     this.element = this.$[0];
+    this.element.graphic = this;
     this.update();
 }
 
@@ -880,8 +924,12 @@ save(callback) {
     return this;
 }
 
-static svg(sel, i) {return $(sel ? sel : "svg.NoStyle")[i ? i : 0].graphic.save()}
+get center() {
+    let [l, r, b, t] = this.lrbt;
+    return new RArray((l + r) / 2, (b + t) / 2);
+}
 
+static svg(sel, i) {return $(sel ? sel : "svg.NoStyle")[i ? i : 0].graphic.save()}
 static create(options) {return new SVG2(document.createElementNS(SVG2.nsURI, "svg"), options)}
 
 static auto_lrbt(w, h, l, r, b, t) {

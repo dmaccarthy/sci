@@ -1,6 +1,6 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2>
+<div class="Collapse" id="LessonNotes">
 
 <section class="Slide Center">
 <h1 id="Title">Acceleration</h1>
@@ -8,30 +8,29 @@
 
 <section class="Slide"><h3>Accelerated Motion</h3>
 <p><em class="Defn">Uniform motion</em> means that an object’s instantaneous velocity is constant.</p>
-<ul data-cue="+">
+<ul>
     <li>A <span class="TeX">{\vec{\bf d}}</span>-<span class="TeX">t</span> graph for uniform motion will be a straight line (constant slope).</li>
-    <li data-cue="+">A <span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> graph for uniform motion will be a <em>horizontal</em> line.</li>
+    <li>A <span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> graph for uniform motion will be a <em>horizontal</em> line.</li>
 </ul>
-<div data-cue="+">
+<div>
     <p><em class="Defn">Accelerated motion</em> means that the object’s instantaneous velocity is <u>not</u> constant.</p>
-    <p class="Caption">Motion of a Falling Ball: <span class="TeX">\vec{\bf v}</span><span class="NoBold"> vs. </span><span class="TeX">t</span></p>
-    <p class="Center"><svg data-svg2="p20/kin/img/acc.js#vt" class="Graph w24" id="vt_Ball"></svg></p>
+    <div>
+        <p class="Caption">Motion of a Falling Ball: <span class="TeX">\vec{\bf v}</span><span class="NoBold"> vs. </span><span class="TeX">t</span></p>
+        <p class="Center NoTop" data-cue="prev"><svg class="s24" data-svg2="p20/kin/img/acc.js#vt"></svg></p>
+    </div>
 </div>
-<div data-cue="+">
+<div>
 <ul><li>A <span class="TeX">{\vec{\bf d}}</span>-<span class="TeX">t</span> graph for 1D accelerated motion will be a curve (changing slope).</li></ul>
-<p class="Caption">Motion of a Falling Ball: <span class="TeX">\vec{\bf d}</span><span class="NoBold"> vs. </span><span class="TeX">t</span></p>
-<p class="Center"><svg data-svg2="p20/kin/img/acc.js#dt" class="Graph w24" id="dt_Ball">
-<style>
-    #dt_Ball line.Tangent {stroke: red}
-    #dt_Ball circle.Tangent {fill: red}
-</style>
-</svg></p>
+<div>
+    <p class="Caption">Motion of a Falling Ball: <span class="TeX">\vec{\bf d}</span><span class="NoBold"> vs. </span><span class="TeX">t</span></p>
+    <p class="Center NoTop" data-cue="prev"><svg class="s24" data-svg2="p20/kin/img/acc.js#dt"></svg></p>
 </div>
-<ul data-cue="+">
+</div>
+<ul>
     <li>If the force causing the acceleration is constant, the <span class="TeX">{\vec{\bf d}}</span>-<span class="TeX">t</span> graph will be a <em>parabola</em> and the <span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> graph will be a sloped line.</li>
-    <li data-cue="+">Otherwise both graphs will be curves. The exact shape of the curves will depend on the force.</li>
+    <li>Otherwise both graphs will be curves. The exact shape of the curves will depend on the force.</li>
 </ul>
-<table data-cue="+" class="Normal">
+<table class="Normal">
 	<tr><th rowspan="2">Type of Motion</th><th colspan="2">Shape of Graph</th></tr>
 	<tr><th><span class="TeX">\vec{\bf d}</span>-<span class="TeX">t</span></th><th><span class="TeX">\vec{\bf v}</span>-<span class="TeX">t</span></th></tr>
 	<tr><td style="width:50%">Uniform<br/>(Constant <span class="TeX">{\vec{\bf v}}</span>)</td><td class="Center" style="width:25%">Linear</td><td class="Center" style="width:25%">Horizontal</td></tr>
@@ -43,66 +42,66 @@
 <section class="Slide"><h3>Acceleration</h3>
 <p><em class="Defn">Acceleration</em> is defined as the rate at which the instantaneous velocity is changing:</p>
 <p class="TeX">{\vec{\bf a}} = {\Delta{\vec{\bf v}}\over\Delta t} = {{\vec{\bf v}}_f - {\vec{\bf v}}_i \over\Delta t}</p>
-<ul data-cue="+">
+<ul>
     <li>Acceleration is the <em>slope</em> of the <span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> graph.</li>
-    <li data-cue="+">The SI unit of acceleration is (m/s)/s, or m/s<sup>2</sup>.</li>
-    <li data-cue="+">An acceleration of +3.0 m/s<sup>2</sup> means the velocity is changing by +3.0 m/s every second.</li>
-    <li data-cue="+">Near Earth’s surface, gravity produces an acceleration of 9.81 m/s<sup>2</sup> [down] when there is no air resistance and no other forces acting on the object.</li>
+    <li>The SI unit of acceleration is (m/s)/s, or m/s<sup>2</sup>.</li>
+    <li>An acceleration of +3.0 m/s<sup>2</sup> means the velocity is changing by +3.0 m/s every second.</li>
+    <li>Near Earth’s surface, gravity produces an acceleration of 9.81 m/s<sup>2</sup> [down] when there is no air resistance and no other forces acting on the object.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Displacement</h3>
 <p>The displacement of an object can be calculated as:</p><p class="TeX">\Delta{\vec{\bf d}} = {\vec{\bf v}}_{avg}\Delta t</p>
-<ul data-cue="+">
+<ul>
     <li>This is really just the <em>area</em> under the <span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> graph.</li>
-    <li data-cue="+">If the acceleration is constant (<span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> graph is a straight line), we can use a simple average between the initial and final velocities.</li>
-    <li data-cue="+">If the acceleration is <em>not</em> constant (the <span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> graph is a curved), we need calculus to determine the displacement (area) accurately.</li>
+    <li>If the acceleration is constant (<span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> graph is a straight line), we can use a simple average between the initial and final velocities.</li>
+    <li>If the acceleration is <em>not</em> constant (the <span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> graph is a curved), we need calculus to determine the displacement (area) accurately.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Example 1</h3>
     <p class="Blue">Calculate the acceleration of the ball based on the graph.</p>
-    <p data-cue="+">Identify the variables from the graph:</p>
-    <ul data-cue="+">
+    <p>Identify the variables from the graph:</p>
+    <ul>
         <li><span class="TeX">t_i = \rm{0.0\ s}</span></li>
         <li><span class="TeX">t_f = \rm{4.0\ s}</span></li>
         <li><span class="TeX">\vec{\bf v}_i = \rm{0.0\ m/s}</span></li>
         <li><span class="TeX">\vec{\bf v}_f = \rm{-39\ m/s}</span></li>
-        <li data-cue="+" class="Red"><span class="TeX">\vec{\bf a} =\ ?</span></li>
+        <li class="Red"><span class="TeX">\vec{\bf a} =\ ?</span></li>
     </ul>
-    <div data-cue="+">
+    <div>
         <p>Select the relevant relationship (equation) and evaluate:</p>
         <p class="TeX">\vec{\bf a} = {\Delta \vec{\bf v}\over \Delta t} = \rm{-39\ m/s - 0.0\ m/s \over 4.0\ s - 0.0\ s} = \rm{-9.8\ m/s^2}</p>
     </div>
-    <ul data-cue="+"><li>Is the answer reasonable?</li></ul>
+    <ul><li>Is the answer reasonable?</li></ul>
 </section>
 
 <section class="Slide"><h3>Example 2</h3>
     <p class="Blue">A car is travelling at 60.0 km/h. How long will it take to accelerate to 80.0 km/h is the car can accelerate at a rate of 3.00 m/s<sup>2</sup>?</p>
-    <p data-cue="+">Identify the variables and convert to standard SI units:</p>
-    <ul data-cue="+">
-        <li><span class="TeX">\vec{\bf v}_i = \rm{+60.0\ km/h = +16.7\ m/s}</span></li>
-        <li data-cue="+"><span class="TeX">\vec{\bf v}_f = \rm{+80.0\ km/h = +22.2\ m/s}</span></li>
-        <li data-cue="+"><span class="TeX">\vec{\bf a} = \rm{+3.00\ m/s^2}</span></li>
-        <li data-cue="+" class="Red"><span class="TeX">\Delta t =\ ?</span></li>
+    <p>Identify the variables and convert to standard SI units:</p>
+    <ul>
+        <li><span class="TeX">\vec{\bf v}_i = \rm{+60.0\ km/h = +16.667\ m/s}</span></li>
+        <li><span class="TeX">\vec{\bf v}_f = \rm{+80.0\ km/h = +22.222\ m/s}</span></li>
+        <li><span class="TeX">\vec{\bf a} = \rm{+3.00\ m/s^2}</span></li>
+        <li class="Red"><span class="TeX">\Delta t =\ ?</span></li>
     </ul>
-    <div data-cue="+">
+    <div>
         <p>Select the relevant relationship (equation):</p>
         <p class="TeX">\vec{\bf a} = {\Delta \vec{\bf v}\over \Delta t}</p>
     </div>
-    <div data-cue="+">
+    <div>
         <p>Rearrange the equation to isolate the unknown:</p>
         <p class="TeX">\vec{\bf a}{\color{red}{\Delta t}} = {\Delta \vec{\bf v}\over \Delta t} \color{red}{\Delta t}</p>
     </div>
-    <p data-cue="+" class="TeX">\vec{\bf a}\Delta t = \Delta \vec{\bf v}</p>
-    <p data-cue="+" class="TeX">{\vec{\bf a}\Delta t \over \color{red}{\vec{\bf a}}} = {\Delta \vec{\bf v} \over \color{red}{\vec{\bf a}}}</p>
-    <p data-cue="+" class="TeX">\Delta t = {\Delta \vec{\bf v} \over \vec{\bf a}}</p>
-    <div data-cue="+">
+    <p class="TeX">\vec{\bf a}\Delta t = \Delta \vec{\bf v}</p>
+    <p class="TeX">{\vec{\bf a}\Delta t \over \color{red}{\vec{\bf a}}} = {\Delta \vec{\bf v} \over \color{red}{\vec{\bf a}}}</p>
+    <p class="TeX">\Delta t = {\Delta \vec{\bf v} \over \vec{\bf a}}</p>
+    <div>
         <p>Evaluate, including units:</p>
-        <p class="TeX">\Delta t = \rm{+22.2\ m/s - (+16.7\ m/s) \over +3.00\ m/s^2}</p>
+        <p class="TeX">\Delta t = \rm{+22.222\ m/s - (+16.667\ m/s) \over +3.00\ m/s^2}</p>
     </div>
-    <p data-cue="+" class="TeX">\Delta t = \rm{1.85\ s}</p>
-    <ul data-cue="+"><li>Is the answer reasonable?</li></ul>
+    <p class="TeX">\Delta t = \rm{1.85\ s}</p>
+    <ul><li>Is the answer reasonable?</li></ul>
 </section>
 
 <section class="Slide Present">
@@ -112,11 +111,11 @@
 </div>
 </section>
 
-</div></div></section>
+</div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<h2 class="Collapse">Practice</h2>
+<div class="Collapse" id="Practice">
 <ol>
 <li>A car accelerates from 50.0 km/h to 80.0 km/h in 4.00 seconds. Calculate the car’s acceleration. [Important: km/h is not the standard SI unit of velocity!]</li>
 <div class="Answer">
@@ -145,15 +144,17 @@ Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delt
     </div>
     
     <li>When the effects of air resistance are considered, would the acceleration be larger or smaller? Would the final velocity be faster or slower? Would the time increase or decrease? Justify your answers.</li>
-    <div class="Answer">Air resistance causes the apple to lose some of its energy so it will fall more slowly. This means the time will be larger and the final velocity and acceleration will be smaller.</div>
+    <p class="Answer">Air resistance causes the apple to lose some of its energy so it will fall more slowly. This means the time will be larger and the final velocity and acceleration will be smaller.</p>
 </ol></li>
 
 <li>Traffic radar recorded data for a speeding car. A graph of the data is shown below.
-<p class="Caption">Motion of a Speeding Car: <span class="TeX">\vec{\bf{v}}</span><spa class="NoBold"> vs. </span><span class="TeX">t</span></p>
-<p class="Center"><svg class="Graph w24" id="vt_Radar" data-aspect="4/3" width="480" height="360"></svg></p>
+<div>
+    <p class="Caption">Motion of a Speeding Car: <span class="TeX">\vec{\bf{v}}</span><spa class="NoBold"> vs. </span><span class="TeX">t</span></p>
+    <p class="Center NoTop" data-cue="prev"><svg data-svg2="p20/kin/img/acc.js#vt_radar"></svg></p>
+</div>
 <ol type="a">
     <li>At what time did the speeding car begin to slow down?</li>
-    <div class="Answer">According to the graph, the velocity remained constant for the first 3.0 seconds and then the car began to decelerate (i.e. accelerate in the negative direction).</div>
+    <p class="Answer">According to the graph, the velocity remained constant for the first 3.0 seconds and then the car began to decelerate (i.e. accelerate in the negative direction).</p>
 
     <li>What was the car’s acceleration for the time interval over which it was slowing?</li>
     <div class="Answer">
@@ -199,7 +200,7 @@ The total displacement for both parts of the motion combined is 191 m.
 <li>A cyclist riding at 9.20 m/s applies her brakes, causing an acceleration of –1.20 m/s<sup>2</sup>.
 <ol type="a">
     <li>Explain the significance of the acceleration being negative.</li>
-    <div class="Answer">This means that the velocity is decreasing.</div>
+    <p class="Answer">This means that the velocity is decreasing.</p>
 
     <li>By rearranging the acceleration formula, calculate the time it takes for the cyclist to come to rest.</li>
     <div class="Answer">
@@ -246,27 +247,10 @@ The displacement (as in #3d) is:
     </div>
 
     <li>Calculate the area of the triangle formed by the line on your graph and the axes. Compare this area with the displacement you calculated in (e).</li>
-    <div class="Answer">
-<p class="TeX">\rm{Area = \frac{Base\times Height}{2} = \frac{7.67\ s\times 9.20\ m/s}{2} = 35.3\ m}</p>
-    </div>
+    <p class="Answer TeX">\rm{Area = \frac{Base\times Height}{2} = \frac{7.67\ s\times 9.20\ m/s}{2} = 35.3\ m}</p>
 </ol></li>
 </ol>
-
-<script type="text/javascript" data-init="soln">
-
-loadFeed.soln = () => {
-    let svg = applet.graph("#vt_Radar", {
-        grid: [[0, 8, 0.5], [0, 140, 10], 1],
-        margin: [0.19, 0.03, 0.12, 0.05],
-        x: ["Time / s", [6.5, 7], {interval: 1, length: "8", fixed: 0, offset: [0, -10]}],
-        y: ["Velocity / (km/h)", ["-60", "^"], {interval: 20, length: "8", fixed: 0, offset: [-0.3, 0]}],
-    });
-    svg.poly([[0, 125], [3, 125], [8, 0]]);
-    svg.final();
-}
-
-</script>
-</div></div></section>
+</div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
@@ -285,7 +269,7 @@ loadFeed.soln = () => {
 </ol>
 </div></section>
 
-<section class="Post" data-icon="gdrv">
+<section class="Post NoPrintIcon" data-icon="gdrv">
 <h2 class="Collapse">Bouncing Ball Lab</h2><div class="Collapse">
     <p>Here are the handout and data link for the Bouncing Ball Experiment...</p>
     <p class="BtnGrid">

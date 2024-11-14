@@ -14,7 +14,7 @@ bike: (sel) => {
     svg.text("m", [8.7, -1.25]);
     svg.label(["-2", "-18"], [...range(-6, 9, 1)], 0);
     svg.arrow({tail: [-5, "-10"], tip: [7, "-10"]}, {tail: "8"});
-    svg.$.find("text").addClass("Mono");
+    svg.$.find("text").removeClass("Zero").addClass("Mono");
 },
 
 soccer: (sel) => {

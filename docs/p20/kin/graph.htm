@@ -8,8 +8,8 @@
 </div></section>
 
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2>
+<div class="Collapse" id="LessonNotes">
 
 <section class="Slide Center">
 <h1 id="Title">Motion Graphs</h1>
@@ -18,7 +18,7 @@
 <section class="Slide"><h3>Position-Time Graphs</h3>
 <p>Here is the diagram for the motion of a bike that we used as an example in an earlier lesson:</p>
 <p class="Center"><svg data-svg2="p20/kin/img/bike.js#bike" class="w36"></svg></p>
-<div data-cue="+">
+<div>
     <p class="Caption">Motion of a Bicycle</p>
     <table class="Center Two TD6">
         <thead><tr><td><b>Time</b><br/><span class="TeX">t</span> / s</td><td><b>Position</b><br/><span class="TeX">\Delta{\vec{\bf d}}</span> / m</td></tr></thead>
@@ -31,10 +31,10 @@
         </tbody>
     </table>
 </div>
-<p data-cue="+">This is an example of <em class="Defn">uniform motion</em>, because the bike is always moving through the same displacement in the same amount of time (+3.0 metres every 1.0 seconds.)</p>
-<div data-cue="+">
+<p>This is an example of <em class="Defn">uniform motion</em>, because the bike is always moving through the same displacement in the same amount of time (+3.0 metres every 1.0 seconds.)</p>
+<div>
     <ul><li>When we graph the <span class="TeX">{\vec{\bf d}}{\text -}t</span> data for uniform motion, it will be a straight line:</li></ul>
-<p class="Center"><svg class="Graph w24" data-svg2="p20/kin/img/graph.js#bike" id="dt_Bike"></svg></p>
+    <p class="Center"><svg class="s24" data-svg2="p20/kin/img/graph.js#bike"></svg></p>
 </div>
 </section>
 
@@ -43,24 +43,24 @@
 	<li>When we calculate the velocity of the bike, we are actually calculating the <em>slope</em> of the line:
         <p class="TeX">{\vec{\bf v}} = {\Delta{\vec{\bf d}} \over \Delta t} = {\rm{{+12.0\ m \over 4.0\ s} = 3.0\ m/s}}</p>
     </li>
-	<li data-cue="+">The displacement <span class="TeX">\Delta{\vec{\bf d}}</span> is the “rise” of the graph (from –5.0 to +7.0 m), and the time <span class="TeX">\Delta t</span> is the “run” (from 0.0 to 4.0 seconds).</li>
-	<li data-cue="+">Because the line is straight, the slope (velocity) is the same no matter which points on the line we use to calculate it: the bike’s velocity is constant.</li>
+	<li>The displacement <span class="TeX">\Delta{\vec{\bf d}}</span> is the “rise” of the graph (from –5.0 to +7.0 m), and the time <span class="TeX">\Delta t</span> is the “run” (from 0.0 to 4.0 seconds).</li>
+	<li>Because the line is straight, the slope (velocity) is the same no matter which points on the line we use to calculate it: the bike’s velocity is constant.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Interpreting Position-Time Graphs</h3>
 <p>Knowing that slope of a <span class="TeX">\vec{\bf d}</span> versus <span class="TeX">t</span> graph represents the velocity, we can interpret these graphs as follows...</p>
 <p class="Center"><svg class="Graph w24" data-svg2="p20/kin/img/graph.js#dt" id="Interpret"></svg></p>
-<ul data-cue="+">
+<ul>
 	<li>Upward slope means forward motion (positive velocity); downward slope means reverse motion (negative velocity).</li>
-	<li data-cue="+">Steep sections of a graph indicate a fast speed; shallow segments indicate a slower speed</li>
-	<li data-cue="+">Straight segments of the graph have constant velocity.</li>
-	<li data-cue="+">Horizontal (flat) segments indicate an object at rest (<span class="TeX">\vec{\bf v}</span> = 0).</li>
-    <li data-cue="+">Curved parts of the graph indicate that the velocity is changing; this is called <em class="Defn">accelerated motion</em>.</li>
-	<li data-cue="+">If the graph curves in such a way as to get steeper with time, the object is speeding up; the graph will get flatter over time when the object is slowing down.</li>
-	<li data-cue="+">The <em class="Defn">instantaneous</em> velocity means the slope at a single point in time.</li>
-	<li data-cue="+">You can <em>estimate</em> the instantaneous velocity by calculating the slope between two consecutive data points. If individual data points are not plotted, use two points on the curve that are close enough together for the curve to be hardly noticeable.</li>
-	<li data-cue="+">The <em class="Defn">average</em> velocity means the slope calculate between two points that are relatively far apart in time.</li>
+	<li>Steep sections of a graph indicate a fast speed; shallow segments indicate a slower speed</li>
+	<li>Straight segments of the graph have constant velocity.</li>
+	<li>Horizontal (flat) segments indicate an object at rest (<span class="TeX">\vec{\bf v}</span> = 0).</li>
+    <li>Curved parts of the graph indicate that the velocity is changing; this is called <em class="Defn">accelerated motion</em>.</li>
+	<li>If the graph curves in such a way as to get steeper with time, the object is speeding up; the graph will get flatter over time when the object is slowing down.</li>
+	<li>The <em class="Defn">instantaneous</em> velocity means the slope at a single point in time.</li>
+	<li>You can <em>estimate</em> the instantaneous velocity by calculating the slope between two consecutive data points. If individual data points are not plotted, use two points on the curve that are close enough together for the curve to be hardly noticeable.</li>
+	<li>The <em class="Defn">average</em> velocity means the slope calculate between two points that are relatively far apart in time.</li>
 </ul>
 </section>
 
@@ -68,14 +68,14 @@
 <p>Sometimes we will have data collected for an object’s <em>velocity</em> rather than its position.</p>
 <p class="Center"><svg class="Graph w24" data-svg2="p20/kin/img/graph.js#vt" id="vt_Area"></svg></p>
 
-<ul data-cue="+">
+<ul>
 	<li>For uniform motion, the <span class="TeX">\vec{\bf v}{\text -}t</span> graph must be <em>horizontal</em>. (From 4.0 to 8.0 seconds, the graph above shows a constant velocity of +24 m/s.)</li>
-	<li data-cue="+">A sloped graph (linear or curved) indicates accelerated motion. (From 0.0 to 4.0 seconds, the graph shows a velocity increasing from +8.0 to +24 m/s.</li>
-	<li data-cue="+">The <em>area</em> under any section of the graph indicates the object’s displacment during that time interval.</li>
+	<li>A sloped graph (linear or curved) indicates accelerated motion. (From 0.0 to 4.0 seconds, the graph shows a velocity increasing from +8.0 to +24 m/s.</li>
+	<li>The <em>area</em> under any section of the graph indicates the object’s displacment during that time interval.</li>
     <li>For uniform motion, we know the <span class="TeX">\vec{\bf d}{\text -}t</span> graph will be linear, so we only need two data points to draw the graph accurately.</li>
     <li>For accelerated motion, the <span class="TeX">\vec{\bf d}{\text -}t</span> graph will be curved; an accurate graph requires many data points.</li>
     <li>We can “slice” each of the trapezoid sections of the <span class="TeX">\vec{\bf v}{\text -}t</span> graph into many narrower trapezoids to produce more data points.</li>
-	<li data-cue="+">The narrower the time “slices”, the more data points we will have to construct an accurate <span class="TeX">\vec{\bf d}{\text -}t</span> graph.
+	<li>The narrower the time “slices”, the more data points we will have to construct an accurate <span class="TeX">\vec{\bf d}{\text -}t</span> graph.
         (See <a href="https://www.desmos.com/calculator/odcl68ab2r" target="Desmos2">desmos.com</a>.)</li>
 </ul>
 </section>
@@ -87,7 +87,7 @@
 </div>
 </section>
 
-</div></div></section>
+</div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">

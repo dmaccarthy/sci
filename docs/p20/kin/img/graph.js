@@ -1,17 +1,17 @@
 SVG2.cache("p20/kin/img/graph.js", {
 
-bike: (sel) => { // Draw a d-t graph for the bike example
-    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 4, 1], [-6, 8, 1], 1],
-        margin: [0.15, 0.03, 0.03, 0.04],
-        x: ["Time / s&nbsp;", [">", "12"], {interval: 1, length: 0, fixed: 0, offset: [0, -0.7], omitZero: 1}],
-        y: ["Position / m", ["-40", ">"], {interval: 2, length: 0, fixed: 0, offset: [-0.1, 0]}],        
+bike: (sel) => {
+    let pts = [[0, -5], [1, -2], [2, 1], [3, 4], [4, 7]];
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -6, 8], margin: [54, 10, 10, 10]});
+    svg.graph({grid: [0.5, 1], css: true,
+        x: {tick: [0, 4.1, 1], title: ["Time / s", [3.5, "8"]], shift: [0, "-24"]},
+        y: {tick: [-6, 8.1, 2], title: ["Position / m", "-36"], shift: ["-10", "-5"]},
+        data: [
+            {connect: [pts[0], pts[4]]},
+            {plot: [pts, "5"]},
+        ]
     });
-    svg.$.find(".TitleX, .TitleY").css({"text-anchor": "end"});
-    svg.line([0, -5], [4, 7]);
-    svg.plot([[0, -5], [1, -2], [2, 1], [3, 4], [4, 7]], "7")
-    svg.final();
+    svg.$.find("g.LabelX text.Zero").remove();
 },
 
 dt: (sel) => { // Linear & parabolic motion graphs
@@ -53,7 +53,7 @@ dt: (sel) => { // Linear & parabolic motion graphs
 
 vt: (sel) => { // Area under a v-t graph
     $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
-    svg = applet.graph(sel, {
+    let svg = applet.graph(sel, {
         grid: [[0, 8, 0.5], [0, 28, 2], 1],
         margin: [0.19, 0.02, 0.15, 0.05],
         x: ["Time / s&nbsp;", [">", 1.5], {interval: 1, length: "8", fixed: 0, offset: [0, -2.8]}],

@@ -1,51 +1,41 @@
 SVG2.cache("p20/kin/img/acc.js", {
 
 vt: (sel) => {
-    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 4, 0.5], [-45, 0, 5], 1],
-        margin: [0.18, 0.02, 0.03, 0.12],
-        x: ["Time / s&nbsp;", [">", -3], {interval: 1, length: "-8", fixed: 0, offset: [0, 3]}],
-        y: ["Velocity / (m/s)", ["-54", "^"], {interval: 5, length: "8", fixed: 0, offset: [-0.15, 0]}],
+    let pt = [2.5, -9.81 * 2.5];
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -45, 0], margin: [62, 12, 12, 28]});
+    let p = svg.group().addClass("Plot Toggle");
+    svg.graph({grid: [0.5, 5], css: true,
+        x: {tick: [0, 4.1, 1], tickSize: "6", title: ["Time / s", [3.5, "-20"]], shift: [0, "12"]},
+        y: {tick: [-45, 0, 5], title: ["Velocity / (m/s)", "-44"], shift: ["-10", "-5"]},
+        data: [{connect: [[0, 0], [4, -9.81 * 4]]}]
     });
-    svg.$.find(".TitleX").addClass("End");
-    let g = -9.81;
-    let t = 2.5;
-    let v = g * t;
-    let d = v * t / 2;
-    let shade = svg.poly([[0, 0], [t, v], [t, 0]]).$.addClass("Shade").hide();
-    svg.line([0, 0], [4, g * 4]);
-    let blue = svg.circle(0.08, [t, v]).$.hide();
-    svg.final();
-    clickCycle(svg.element, 0,
-        () => {shade.hide(); blue.fadeOut()},
-        () => {shade.fadeIn(); blue.fadeIn()},
-        () => {shade.fadeOut()},
-    );
+    p.poly([[0, 0], pt, [2.5, 0]]).css({stroke: "none", "fill-opacity": 0.2});
+    p.circle("5", pt);
+    svg.$.on("click", () => p.$.fadeToggle()).append(p.$.hide());
 },
 
 dt: (sel) => {
-    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 4, 0.5], [-80, 0, 5], 1],
-        margin: [0.18, 0.02, 0.03, 0.12],
-        x: ["Time / s", [4, -5], {interval: 1, length: "-8", fixed: 0, offset: [0, 5]}],
-        y: ["Position / m", ["-54", "^"], {interval: 10, length: "8", fixed: 0, offset: [-0.15, 0]}],
+    let t = 2.5, v = -9.81 * t, d = v * t / 2;
+    let pt = new RArray(t, v * t / 2);
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -80, 0], margin: [62, 12, 12, 28]});
+    let p = svg.group().addClass("Plot Toggle");
+    svg.graph({grid: [0.5, 10], css: true,
+        x: {tick: [0, 4.1, 1], tickSize: "6", title: ["Time / s", [3.5, "-20"]], shift: [0, "12"]},
+        y: {tick: [-80, 0, 10], title: ["Position / m", "-44"], shift: ["-10", "-5"]},
+        data: [{locus: [(x) => -9.81 / 2 * x * x, [0, 4]]}]
     });
-    svg.$.find(".TitleX").addClass("End");
-    let g = -9.81;
-    let t = 2.5;
-    let v = g * t;
-    let d = v * t / 2;
-    svg.locus((t) => -9.81 / 2 * t * t, [0, 4]);
-    let tang = svg.line([d/v, 0], [4, d+v*(4-t)]).$.addClass("Tangent").hide();
-    let red = svg.circle(0.08, [t, d]).$.addClass("Tangent").hide();
-    svg.final();
-    clickCycle(svg.element, 0,
-        () => {tang.hide(); red.hide()},
-        () => {red.fadeIn()},
-        () => {tang.fadeIn()},
-    );
+    p.line([d/v, 0], pt.plus([1.5, 1.5*v])).css({stroke: "#0065fe", "stroke-width": "1px"});
+    p.circle("5", pt);
+    svg.$.on("click", () => p.$.fadeToggle()).append(p.$.hide());
+},
+
+vt_radar: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 140], margin: [62, 12, 52, 12]});
+    svg.graph({grid: [0.5, 10], css: true,
+        x: {tick: [0, 8.1, 1], title: ["Time / s", "-44"], shift: [0, "-20"]},
+        y: {tick: [0, 141, 20], title: ["Velocity / (km/h)", "-44"], shift: ["-10", "-5"]},
+        data: [{connect: [[0, 125], [3, 125], [8, 0]]}]
+    });
 },
 
 });
