@@ -1,106 +1,49 @@
-<!-- © 2023-2024 by D.G. MacCarthy <sc8pr.py@gmail.com> -->
-
-<section class="Post" data-icon="simulation.svg">
+<section class="Post" data-icon="earth.svg">
 <h2 class="Collapse">Animation</h2>
 <div class="Collapse Expand Center">
-
-<p><svg id="Helio" data-aspect="1" width="640" height="640" viewBox="-1.75 -1.75 3.5 3.5" style="background:black">
-<style>
-
-circle {fill: purple}
-    
-#Helio * {stroke: none}  
-#Helio #Sun {fill: yellow}
-#Helio #Mercury {fill: #b0b0b0}
-#Helio #Venus {fill: #ffffe0}
-#Helio #Earth {fill: #4090ff}
-#Helio #Mars {fill: #ff6060}
-#Helio polygon {fill: red}
-
-#Helio #Time {
-    text-anchor: end;
-    dominant-baseline: hanging;
-    font-family: Inconsolata, monospace;
-    font-size: 1.3%;
-    font-weight: bold;
-    fill: white;
-}
-
-#Helio polygon.Zodiac {fill: #232323}
-
-#Helio text.Zodiac {
-    text-anchor: middle;
-    font-family: "Noto Sans", "Open Sans", Oxygen, sans-serif;
-    font-size: 0.55%;
-    fill: grey;
-}
-
-</style>
-<rect style="fill:black" x="-1.8" y="-1.8" width="3.6" height="3.6"></rect>
-<circle id="Sun" r="0.08" cx="0" cy="0"></circle>
-<circle id="Mercury" r="0.02" cx="0.387" cy="0"></circle>
-<circle id="Venus" r="0.04" cx="0.723" cy="0"></circle>
-<circle id="Earth" r="0.05" cx="1" cy="0"></circle>
-<circle id="Mars" r="0.03" cx="1.524" cy="0"></circle>
-<text id="Time" x="1.65" y="-1.7"></text>
-</svg></p>
-
+<p><svg id="Helio" data-svg2="p20/circ/img/helio.js#helio"></svg></p>
 <p><input type="range" id="AnimSpeed" value="0.1" min="0.005" max="0.8" step="0.005" /></p>
-<p><input type="checkbox" id="Retrograde" />
-    <label for="Retrograde">Retrograde Motion of Mars</label></p>
+<p>
+    <input type="checkbox" id="Retrograde" /> <label for="Retrograde">Earth → Mars</label> &nbsp;
+    <input type="checkbox" id="Zodiac" disabled="disabled" /> <label for="Zodiac">Constellations</label>
+</p>
+</div></section>    
 
-<script type="text/javascript" data-init="run">
+<script type="text/javascript" data-init="helio">
 
-loadFeed.run = () => {
-    // Create the animation
-    svg = new SVG_Animation("#Helio").config({fix:3});
-
-    // Label constellations
-    let zodiac = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
-        "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
-    for (let i=0;i<12;i++) {
-        let a = -30 * i;
-        let z = svg.text(zodiac[i], [0, -1.65]).anchor(0, 0).after("rect");
-        z.config({theta: a}).addClass("Zodiac");
-        if (i % 2 == 0) {
-            let sect = svg.poly([[0, 0], [2.6, 0], vec2d(2.6, 30)], 1);
-            sect.config({theta: a - 105}).addClass("Zodiac").after("rect");
-        }
-    }
-    svg.final();
-
-    // Set orbital speed of planets (Kepler's 3rd Law)
-    for (let name of ["Mercury", "Venus", "Earth", "Mars"]) {
-        let planet = svg.item('#' + name).anchor(0, 0);
-        planet.au = parseFloat(planet.attr("cx"));
-        planet.omega = -360 / Math.pow(planet.au, 1.5);
-        if (name != "Earth") planet.theta = uniform(0, 360);
-    }
-
-    // Draw a 0.4-au arrow pointing from Earth to Mars, centred 0.28 au from Earth
-    svg.arrow(0.4).beforeupdate = function() {
-        let svg = this.svg;
-        let e = svg.find("#Earth");
-        let m = svg.find("#Mars");
-        let seg = new Segment(...vec2d(e.au, e.theta), ...vec2d(m.au, m.theta));
-        this.config({theta: seg.deg, position: seg.point(0.28)});
-    };
-
-    // Update the time and animation speed
-    svg.beforeupdate = function() {
-        this.timeFactor = parseFloat($("#AnimSpeed").val());
-        this.$.find("#Time").html(`${this.time.toFixed(2)} yr`);
-    }
-
-    // Use checkbox to toggle visibility of arrow and constellations
-    svg.retro = $("polygon, .Zodiac").hide();
-    $("#Retrograde").on("change", (ev) => {
-        if (ev.currentTarget.checked) svg.retro.fadeIn();
-        else svg.retro.fadeOut();
+loadFeed.helio = () => {
+    let svg = $("#Helio")[0].graphic;
+    svg.$.find(".Zodiac, .Arrow").hide();
+    $("#AnimSpeed").on("change", (ev) => {
+        let e = $(ev.currentTarget);
+        let t = svg.timeFactor = parseFloat(e.val());
+        e.attr({title: `1 second : ${t.toFixed(4)} years`});
     }).trigger("change");
+    $("#Zodiac").on("change", loadFeed.zodiac);
+    $("#Retrograde").on("change", () => {
+        let e = $("#Helio g.Arrow");
+        let z = $("#Zodiac");
+        let vis = e.is(":visible");
+        let check = $("#Retrograde")[0].checked;
+        if (vis && !check) {
+            e.fadeOut();
+            z[0].disabled = true;
+        }
+        else if (check && !vis) {
+            e.fadeIn();
+            z[0].disabled = false;
+        }
+        loadFeed.zodiac();
+    }).trigger("change");
+}
 
-    svg.$.on("click", () => {svg.toggle()})
-    svg.play();
+loadFeed.zodiac = () => {
+    let checkr = $("#Retrograde")[0].checked;
+    let checkz = $("#Zodiac")[0].checked;
+    let z = $("#Helio g.Zodiac");
+    let vis = z.is(":visible");
+    if (!vis && checkr && checkz) z.fadeIn();
+    else if (vis && !(checkr && checkz)) z.fadeOut();
 }
 
 loadFeed.data = {
@@ -110,4 +53,3 @@ loadFeed.data = {
 }
 
 </script>
-</div></section>

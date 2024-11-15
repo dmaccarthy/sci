@@ -1287,4 +1287,10 @@ plot: {
     "g.Locus": {fill: "none", stroke: "#0065fe", "stroke-width": "2px"},
 },
 
+arrow: {
+    "g.Arrow": {fill: "red", "stroke-width": "0.5px"},
+    "g.Arrow.Resultant": {fill: "#0065fe"},
+    "g.Arrow.Component": {"fill-opacity": 0.2},
+},
+
 };
