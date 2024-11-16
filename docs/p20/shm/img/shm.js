@@ -1,32 +1,44 @@
 SVG2.cache("p20/shm/img/shm.js", {
 
-v_t: (sel) => {
-    $(sel).attr({width: 480, height: 300, "data-aspect": "8/5"});
-    let svg = applet.graph(sel, {
-        grid: [[-0.25, 2, 0.25], [-1.25, 1.25, 0.25], 1],
-        margin: [0.01, 0.01, 0.01, 0.01],
-        x: ["t", [1.92, "-18"], {format: () => null, offset: [0, "-24"]}],
-        y: ["v", [0, 0], {}],
+v_t: (sel, n, click) => {
+    let xva = {n: (n ? n : 0) - 1};
+    let svg = new SVG2(sel, {size: [480, 300], lrbt: [-0.25, 2, -1.25, 1.25], margin: 2});
+    svg.graph({grid: [0.25, 0.25],
+        data: [{locus: [(x) => Math.sin(2 * Math.PI * (x + xva.n / 4))]}]
     });
-    let ital = {"font-style": "italic"};
-    svg.$.find(".TitleX").addClass("End").css(ital);
-    svg.$.find(".TitleY").remove();
-    let gx = svg.group()
-    let gv = svg.group();
-    let ga = svg.group();
-    gx.$.hide(); ga.$.hide();
-    svg.symbol("x", {vec: 1}, [-0.1, 1.1], gx).css({fill: "red"});
-    svg.locus((t) => sin(360 * t), [-0.25, 2], 0, 0, gx).css({stroke: "red"});
-    svg.symbol("v", {vec: 1}, [-0.1, 1.1], gv).css({fill: "#0065FE"});
-    svg.locus((t) => cos(360 * t), [-0.25, 2], 0, 0, gv);
-    svg.symbol("a", {vec: 1}, [-0.1, 1.1], ga).css({fill: "purple"});
-    svg.locus((t) => -sin(360 * t), [-0.25, 2], 0, 0, ga).css({stroke: "purple"});
-    svg.final();
+    svg.animate(svg.series[0].find("polyline"));
+    let arr = ["→", 5, [0, "12"]];
+    svg.symbol(["t", 2]).config({shift: [1.875, "-24"]});
+    let sym = svg.symbol(["x", 1], arr).config({shift: ["-18", 1.05]});
+    svg.css_map("grid", "plot", "text");
+    sym.css({fill: "#0065fe"});
 
-    clickCycle(svg.element, 2,
-        () => {gv.$.fadeOut(); ga.$.fadeIn()},
-        () => {ga.$.fadeOut(); gx.$.fadeIn()},
-        () => {gx.$.fadeOut(); gv.$.fadeIn()},
+    let next_graph = (n) => {
+        let a = xva.n = n == null ? (xva.n + 1) % 3 : n;
+        let c = ["#0065fe", "red", "purple"][a];
+        $(sym.$.css({fill: c}).find("text")[0]).html(["x", "v", "a"][a]);
+        svg.$.find("polyline").css({stroke: c});
+        svg.update(0);
+    }
+    next_graph();
+    if (click) svg.$.on("click", () => next_graph());
+    return svg;
+},
+
+x_t: (sel) => {
+    let svg = SVG2.cache_run("p20/shm/img/shm.js", "v_t", sel);
+    svg.arrow({tail: [0.25, 1.05], tip: [1.25, 1.05]}, {tail: "3", double: 1}).addClass("Toggle1");
+    svg.arrow({tail: [1.25, 0], tip: [1.25, 1]}, {tail: "3", double: 1}).addClass("Toggle0");
+    svg.symbol(["T", 2]).addClass("Toggle1").config({shift: [0.75, 0.875]});
+    svg.symbol(["A", 2]).addClass("Toggle0").config({shift: [1.31, 0.5]});
+    svg.css_map("arrow", "text");
+    svg.$.find(".Toggle0, .Toggle1").css({fill: "grey"});
+
+    let t = clickCycle.toggle;
+    clickCycle(svg.element, -1,
+        () => {t(svg, false, 0, 1)},
+        () => {t(svg, true, 0)},
+        () => {t(svg, true, 1)},
     );
 
 },
@@ -34,14 +46,13 @@ v_t: (sel) => {
 ucm: (sel) => {
     $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
     let svg = new SVG_Animation(sel, -1.15, 1.15);
-    // svg.grid([-1, 1, 1], [-1, 1, 1]);
     svg.axis({x: [-1, 1]});
     svg.axis({y: [-1, 1]});
     svg.$.find("line").css({stroke: "grey"});
     let g = svg.group().css({stroke: "black"});
     svg.circle(1, [0, 0]).css({fill: "none", stroke: "black", "stroke-width": "3px"});
     svg.final();
-    let c = svg.circle(0.05, [1, 0]).anchor(0, 0).config({omega: 60}).css({fill: "#0065FE"});
+    svg.circle(0.05, [1, 0]).anchor(0, 0).config({omega: 60}).css({fill: "#0065FE"});
     let arrow = {fill: "#0065FE", "fill-opacity": 0.4};
     svg.arrow([0, -0.15], [0, 0], {anchor: "tip", tail: "4"}).css(arrow);
     svg.arrow([-0.15, 0], [0, 0], {anchor: "tip", tail: "4"}).css(arrow);

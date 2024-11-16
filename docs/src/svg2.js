@@ -548,19 +548,29 @@ graph(options) {
     if (options.grid) {
         let [dx, dy] = options.grid;
         let [l, r, b, t] = svg.lrbt;
+        l = dx * Math.round(l / dx);
+        r = dx * Math.round(r / dx);
+        b = dy * Math.round(b / dy);
+        t = dy * Math.round(t / dy);
         this.grid([l, r, dx], [b, t, dy]);
     }
-    this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6").find("g.LabelX").config({shift: x.shift});
-    this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6").find("g.LabelY").config({shift: y.shift});
 
-    let xy = (i) => {
-        let pos = (i ? y : x).title[1];
-        if (!(pos instanceof Array)) pos = i ? [pos, svg.center[1]] : [svg.center[0], pos];
-        return pos;
+    if (x || y) {
+        let txt = this.group().addClass("Text");
+        let xy = (i) => {
+            let pos = (i ? y : x).title[1];
+            if (!(pos instanceof Array)) pos = i ? [pos, svg.center[1]] : [svg.center[0], pos];
+            return pos;
+        }
+        if (x) {
+            this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6").find("g.LabelX").config({shift: x.shift});
+            txt.text(x.title[0], xy(0));
+        }
+        if (y) {
+            this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6").find("g.LabelY").config({shift: y.shift});
+            txt.group().config({theta: 90, shift: xy(1)}).text(y.title[0]);  
+        }  
     }
-    let txt = this.group().addClass("Text");
-    txt.text(x.title[0], xy(0));
-    txt.group().config({theta: 90, shift: xy(1)}).text(y.title[0]);
 
     let data = options.data;
     if (data) {
@@ -704,8 +714,9 @@ reshape(length, options, anchor) {
     let f = (x) => Math.abs(typeof(x) == "string" ? parseFloat(x) : x * svg.scale[1]);
     let opt = {};
     if (options) {
-        if (options.tail) opt.tail = f(options.tail);
-        if (options.head) opt.head = f(options.head);    
+        opt = Object.assign(opt, options);
+        if (opt.tail) opt.tail = f(opt.tail);
+        if (opt.head) opt.head = f(opt.head);    
     }
     seg = new Segment(...svg.a2p(...tail), ...svg.a2p(...tip));
     let pts = arrow_points(seg.length, opt);
@@ -721,9 +732,10 @@ reshape(length, options, anchor) {
 class SVG2locus {
 
 constructor(g, eq, param, args) {
-    this.svg = g.svg;
+    let svg = this.svg = g.svg;
     this.eq = eq;
-    this.param = param.length > 2 ? param : param.concat([this.svg.$.width() / 3]);
+    if (!param) param = [svg.lrbt[0], svg.lrbt[1]];
+    this.param = param.length > 2 ? param : param.concat([svg.$.width() / 3]);
     this.args = args;
     this.$ = g.create_child("polyline", {}).addClass("Locus");
     this.element = this.$[0];
@@ -1262,6 +1274,7 @@ if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
 SVG2._sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
 SVG2._mono = "Inconsolata, 'Droid Sans Mono', monospace";
 SVG2._serif = "'Noto Serif', 'Open Serif', 'Droid Serif', Oxygen, sans-serif";
+SVG2._symbol = "KaTeX_Main, 'Latin Modern Roman', 'Droid Serif', 'Noto Serif', serif";
 
 SVG2.css = { /* Default styles */
 
@@ -1273,8 +1286,9 @@ grid: {
 },
 
 text: {
-    ".Text": {"font-family": SVG2._sans, "font-size": "18px", stroke: "none", fill: "black", "text-anchor": "middle"},
+    ".Text, .Symbol": {"font-family": SVG2._sans, "font-size": "18px", stroke: "none", fill: "black", "text-anchor": "middle"},
     ".Large": {"font-size": "28px"},
+    ".Symbol": {"font-family": SVG2._symbol},
     ".Mono": {"font-family": SVG2._mono},
     ".Sans": {"font-family": SVG2._sans},
     ".Serif": {"font-family": SVG2._serif},

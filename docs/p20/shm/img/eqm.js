@@ -1,39 +1,5 @@
 SVG2.cache("p20/shm/img/eqm.js", {
 
-x_t: (sel) => {
-    $(sel).attr({width: 480, height: 300, "data-aspect": "8/5"});
-    let svg = applet.graph(sel, {
-        grid: [[-0.25, 2, 0.25], [-1.25, 1.25, 0.25], 1],
-        margin: [0.01, 0.01, 0.01, 0.01],
-        x: ["t", [1.92, "-18"], {format: () => null, offset: [0, "-24"]}],
-        y: ["x", [0, 0], {}],
-    });
-    svg.symbol("x", {vec: 1}, [-0.1, 1.1]);
-    let ital = {"font-style": "italic"};
-    svg.$.find(".TitleX").addClass("End").css(ital);
-    svg.$.find(".TitleY").remove();
-    svg.locus((t) => sin(360 * t), [-0.25, 2]);
-    svg.$.find("polyline").css({stroke: "red"});
-    let y = 1.1, dx = 0.1, x = 0.75;
-    let opt = {shape: 0, tail: "1", head: "12"};
-    let gT = svg.group();
-    svg.arrow([x + dx, y], [x + 0.5, y], opt, gT);
-    svg.arrow([x - dx, y], [x - 0.5, y], opt, gT);
-    svg.text("T", [x, y], gT).css(ital);
-    x = 1.25; y = 0.5; dx = 0.12;
-    let gA = svg.group();
-    svg.arrow([x, y + dx], [x, 1], opt, gA);
-    svg.arrow([x, y - dx], [x, 0], opt, gA);
-    svg.text("A", [1.25, 0.5], gA).css(ital);
-    svg.final();
-
-    clickCycle(svg.element, 1,
-        () => gA.$.fadeIn(),
-        () => gT.$.fadeIn(),
-        () => {gT.$.fadeOut(); gA.$.fadeOut()},
-    );
-},
-
 mass: (sel) => {
     $(sel).attr({width: 480, height: 300, "data-aspect": "8/5"});
     let svg = applet.graph(sel, {
