@@ -41,12 +41,12 @@
 <div id="BBR_Temp" class="Center">
     <p class="Blue"><span class="TeX">T_1 =</span> <input class="Blue" type="number" min="0" step="100" value="5778"/> kelvin</p>
     <p class="Red"><span class="TeX">T_2 =</span> <input class="Red" type="number" min="0" step="100" value="5400"/> kelvin</p>
+    <p class="NoPrint"><button onclick="loadFeed.rescale()">Rescale</button></p>
 </div>
 <!-- <p class="Center">
     [<a target="PhET" href="https://phet.colorado.edu/sims/html/blackbody-spectrum/latest/blackbody-spectrum_en.html">Interactive Graph</a>]
 </p> -->
 <ul>
-    <li class="NoPresent">(Ctrl + Click to rescale the graph.)</li>
     <li>The temperature of the blackbody affects both the horizontal and the vertical position of the graph’s “peak”.</li>
     <li><em class="Defn">Wien’s Law</em>: As the temperature of a blackbody increases, the wavelength of the peak gets shorter.
         <p class="TeX">\lambda_{peak} = \frac{b}{T}</p></li>
@@ -64,15 +64,14 @@
 
 loadFeed.init = () => {
     let data = $("#BBR_Temp").find("input").addClass("Center").css({padding: 0, width: "5em", "font-size": "0.9em"});
-    let svg = $("#BBR_Graph").on("click", (ev) => {
-        if (ev.ctrlKey) {
-            let T1 = parseFloat($(data[0]).val());
-            let T2 = parseFloat($(data[1]).val());
-            loadFeed.redraw(data, Math.max(T1, T2));
-        }
+    data.on("change", () => loadFeed.redraw(data, $("#BBR_Graph")[0].graphic.T0));
+}
 
-    });
-    data.on("change", () => loadFeed.redraw(data, svg[0].graphic.T0));
+loadFeed.rescale = () => {
+    let data = $("#BBR_Temp").find("input");
+    let T1 = parseFloat($(data[0]).val());
+    let T2 = parseFloat($(data[1]).val());
+    loadFeed.redraw(data, Math.max(T1, T2));
 }
 
 loadFeed.redraw = (data, T0) => {
