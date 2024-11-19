@@ -19,6 +19,7 @@ diag: (sel, lens, f, d) => {
 
     // Create drawing
     let svg = new SVG2(sel, {size: [702, 352], lrbt: [x1, x2, -y2, y2]});
+    console.log(svg);
     svg.element.cycleStatus = -1;
     svg.element.data = [f, d, di, m];
 
@@ -78,31 +79,29 @@ diag: (sel, lens, f, d) => {
     let g = svg.group();
     g.$.css({stroke: "black", "stroke-width": "2px"});
     g.line([x1, 0], [x2, 0]);
-    // g.line([0, -y2], [0, y2]).css({"stroke-width": "1px"});
 
     // Focus and centre
     let css = {fill: "white", stroke: "black"};
     svg.circle("4", [f, 0]).css(css);
     svg.circle("4", [lens ? -f : 2 * f, 0]).css(css);
     css = {"font-size": "20px", "font-weight": "bold"};
-    svg.text(lens ? "F’": "F", [f, y2/10]).css(css);
-    svg.text(lens ? "F" : "C", [lens ? -f : 2 * f, y2/10]).css(css);
+    svg.text(lens ? "F’": "F", [f, -y2/10]).css(css);
+    svg.text(lens ? "F" : "C", [lens ? -f : 2 * f, -y2/10]).css(css);
 
     // Lens or mirror
     let h = 1.2 * Math.max(1, Math.abs(m));
-    x = -Math.abs(f) / 12;
-    let r = (h * h / x + x) / 2;
     let p;
     if (lens) {
+        x = (x1 - x2) / 50;
+        let r = ["20", "200"];
         if (f > 0) p = svg.path([0, h]).arcTo([0, -h], r).arcTo([0, h], r);
-        else {
-            x *= 1.4;
-            p = svg.path([x, h]).hor(-x).arcTo([-x, -h] , r).hor(x).arcTo([x, h], r);
-        }
+        else p = svg.path([x, h]).hor(-x).arcTo([-x, -h] , r).hor(x).arcTo([x, h], r);
         p.close().update();
         p.$.css({stroke: "grey", fill: "lightgrey", "fill-opacity": 0.4});
     }
     else {
+        x = -Math.abs(f) / 12;
+        let r = (h * h / x + x) / 2;
         x *= f > 0 ? -0.5 : 0.5;
         let c = f > 0 ? 0 : 2;
         p = svg.path([x, h]).arcTo([x, -h], r, c);

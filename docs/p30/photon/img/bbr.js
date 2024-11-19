@@ -2,7 +2,7 @@ SVG2.cache("p30/photon/img/bbr.js", {
 
 planck: (sel, T0, ...args) => {
     // Set missing arguments to defaults
-    if (!T0) T0 = 5778;
+    if (!T0) T0 = 5772;
     let opt = {wMax: 3, iMax: 1.5, grid: true};
     if (typeof(T0) != "number") {
         opt = Object.assign(opt, T0);
