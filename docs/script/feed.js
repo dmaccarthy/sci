@@ -74,6 +74,8 @@ mediaURL.urls = {
     python: "https://www.python.org/static/favicon.ico",
     thonny: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Thonny_logo.png/120px-Thonny_logo.png",
     replit: "https://replit.com/public/images/about/logo.png",
+    amoeba: "./media/amoeba.webp",
+    crash: "./media/crash.jpg",
     sc8pr: "./media/sc8pr.svg",
     ide : "./media/vscode.svg",
     sal : "./media/sal.jpg",
