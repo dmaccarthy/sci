@@ -296,10 +296,8 @@ _cs(xy) {
     let [x, y] = xy == null ? [0, 0] : xy;
     let svg = this.svg;
     let [sx, sy] = svg.scale;
-    if (typeof(x) == "string")
-        x = parseFloat(x) / Math.abs(sx); // parseFloat(x) / sx;
-    if (typeof(y) == "string")
-        y = parseFloat(y) / Math.abs(sy); // parseFloat(y) / sy * svg.angleDir;
+    if (typeof(x) == "string") x = parseFloat(x) / Math.abs(sx);
+    if (typeof(y) == "string") y = parseFloat(y) / Math.abs(sy);
     return new RArray(x, y);
 }
 
@@ -512,6 +510,41 @@ symbol(...args) {
         }
     }
     return g;
+}
+
+textm(text, space) {
+/* Render multiple lines of text */
+    if (!space) space = "20";
+	let g = this.group();
+	let y = 0;
+	if (typeof(space) == "string") space = parseFloat(space) / Math.abs(this.svg.scale[1]);
+	for (let t of text.split("\n")) {
+		g.text(t, [0, y]);
+		y -= space;
+	}
+	return g;
+}
+
+flow(text, shape, options) {
+/* Render a flow chart element */
+	let g = this.group();
+	if (shape == "d") {
+		let [sx, sy] = this.svg.scale;
+		let w = this._cs([options.width, 0])[0] / Math.sqrt(2);
+		g.group().config({theta: 45}).rect([w, w * Math.abs(sx/sy)]);
+	}
+	else {
+		let wh = new RArray(...this._cs(options.size));
+		if (shape == "r") g.rect(wh);
+		else if (shape == "e") g.ellipse(wh.times(0.5));
+		else if (shape == "p") {
+			let [x, y] = wh.times(0.5);
+			let d = (options.slant ? options.slant : 0.15) * x;
+			g.poly([[d-x, y], [x+d, y], [x-d, -y], [-x-d, -y]], 1);
+		}
+	}
+	g.textm(text, options.space).recenter([0, 0]);
+	return g;
 }
 
 cylinder(r, L) {
@@ -816,8 +849,10 @@ arcTo(xy, r, choice, rotn) { // Draw a circular or elliptical arc to the specifi
     let rx, ry;
     if (r instanceof Array) [rx, ry] = r;
     else rx = ry = r;
-    rx *= Math.abs(svg.scale[0]);
-    ry *= Math.abs(svg.scale[1]);
+    rx = svg._px(rx, 0);
+    ry = svg._px(ry, 1);
+    // rx *= Math.abs(svg.scale[0]);
+    // ry *= Math.abs(svg.scale[1]);
     rotn = rotn ? f(rotn * svg.angleDir) : "0";
     let [x, y] = xy;        
     this.x = x;
