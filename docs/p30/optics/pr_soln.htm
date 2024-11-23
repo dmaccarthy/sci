@@ -8,9 +8,10 @@
 <script type="text/javascript" data-init="init">
 
 loadFeed.init = () => {
-    let args = location.search.slice(1);
-    let unit = args.split(";")[3];
+    let args = decodeURIComponent(location.search.slice(1));
+    let unit = jeval(args)[3];
     unit = unit ? ` ${unit}`: "";
+    delete args[3];
     $("#RayDiag").attr("data-svg2", `p30/optics/img/pr.js#diag_toggle#${args}`);
     SVG2.load(() => {
         let data = $("#RayDiag")[0].data;

@@ -19,7 +19,6 @@ diag: (sel, lens, f, d) => {
 
     // Create drawing
     let svg = new SVG2(sel, {size: [702, 352], lrbt: [x1, x2, -y2, y2]});
-    console.log(svg);
     svg.element.cycleStatus = -1;
     svg.element.data = [f, d, di, m];
 
