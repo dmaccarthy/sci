@@ -213,6 +213,7 @@ h1 {font-size: 200%}
 .TopLevel section.Slide > .Assign {
     color: blue;
     margin: 2em;
+    padding: 0.5em;
     border-top: 1px solid blue;
     border-bottom: 1px solid blue;
 }

@@ -263,6 +263,7 @@ function onFeedLoaded(feed, e, noHist) {
     renderTeX();
     drawChevrons();
     SVG2.load(initFeed);
+
 }
 
 function printIcons() {
@@ -394,8 +395,8 @@ function video(s) {
 
     let w = opt.width;
     let r = opt.aspect;
-    if (!r) r = "16/9";
-    let ar = typeof(r) == "number" ? r : math.evaluate(r);
+    if (!r) r = 16 / 9;
+    let ar = typeof(r) == "number" ? r : jeval_frac(r);
     if (!w) w = 405 * ar;
     let id = s.attr("data-yt"), v;
     if (id) {

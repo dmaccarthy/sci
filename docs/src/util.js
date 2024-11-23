@@ -1,3 +1,10 @@
+function jeval(a) {return JSON.parse(`{"a": ${a}}`).a}
+
+function jeval_frac(s) {
+    s = s.split("/");
+    return jeval(s[0]) / (s.length > 1 ? jeval(s[1]) : 1);
+}
+
 function clickCycle(e, n, ...f) {
     e.cycleStatus = n;
     $(e).click((ev) => {
@@ -56,7 +63,7 @@ function qsArgs(key, str) {
 function itemAspect(ei, w) {
     // Adjust height(width) of element to maintain aspect ratio
     ei = $(ei);
-    let a = math.evaluate(ei.attr("data-aspect"));
+    let a = jeval_frac(ei.attr("data-aspect"));
     if (w) {
         ei.css({width: ''});
         let w1 = Math.round(ei.height() * a);

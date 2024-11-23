@@ -1058,7 +1058,6 @@ update(dt) {
     clearTimeout(this._animate);
     let anim = dt == null;
     if (anim) dt = this.timeFactor / this.frameRate;
-    let ft = 1000 / this.frameRate;
     if (this.beforeupdate) this.beforeupdate.call(this);
     if (this.items) for (let item of this.items) {
         try {
@@ -1067,20 +1066,15 @@ update(dt) {
             if (item.afterupdate) item.afterupdate(item);
         } catch(err) {console.warn(err)}
     }
-    if (anim) { // Advance frame counter and adjust frame timing to maintain desired frame rate
-        this.frameCount++;
-        let t = new Date().getTime();
-        let d = this._fDelay;
-        if (d && this._fTime) {
-            d.push(t - this._fTime - ft);
-            if (d.length > 5) {
-                ft = Math.max(0.6 * ft, ft - Math.max(0, 1.4 * d.sum() / d.length))
-                if (d.length > 80) d.splice(0, 30);
-            }
-        }
-        this._fTime = t;            
-    }
     this.time += dt;
+    dt = 1000 / this.frameRate;
+    let ft = this._nextFrame - Date.now();
+    if (ft <= 0) {
+        ft = 1;
+        this._nextFrame = Date.now() + dt - 1;
+    }
+    else this._nextFrame += dt;
+    if (anim) this.frameCount++;
     if (this.afterupdate) this.afterupdate.call(this);
     if (this.playing) this._animate = setTimeout(() => {this.update()}, ft);
     return this;
@@ -1088,9 +1082,9 @@ update(dt) {
 
 play() {
 /* Start or resume the animation */
-    this._fDelay = new RArray();
-    delete this._fTime;
     this.playing = true;
+    this._nextFrame = Date.now() + 1000 / this.frameRate;
+    if (this._fpsDebug) this._fpsDebug = [this.frameCount, Date.now()];
     return this.update();
 }
 
@@ -1098,6 +1092,12 @@ pause() {
 /* Pause the animation */
     clearTimeout(this._animate);
     this.playing = false;
+    if (this._fpsDebug) {
+        let [n, t] = this._fpsDebug;
+        n = this.frameCount - n;
+        t = (Date.now() - t) / 1000;
+        console.log(`${n} frames / ${t} sec = ${n/t} fps`);
+    }
     return this;
 }
 
@@ -1107,27 +1107,22 @@ toggle() {return this.playing ? this.pause() : this.play()}
 /** Load and run SVG2 JavaScripts **/
 
 static load(cb) {
-    /* Send AJAX requests for SVG2 scripts */
+/* Send AJAX requests for SVG2 scripts */
     if (!cb) cb = aspect;
     let svgs = $("svg[data-svg2]");
     for (let svg of svgs) {
         svg = $(svg);
         let [url, id, args] = svg.attr("data-svg2").split("#");
-        if (args) {
-            args = args.split(";");
-            for (let i=0;i<args.length;i++) {
-                try {
-                    let x = math.evaluate(args[i]);
-                    args[i] = typeof(x) == "number" ? x : x._data;
-                }
-                catch(err) {console.warn(err)}
-            }
-        }
-        else args = [];
         url = new URL(url, SVG2.url).href;
         if (SVG2._cache[url]) {
             SVG2.remove_pending(url);
             svg.removeAttr("data-svg2").attr("data-svg2x", `${url}#${id}`);
+            if (args) {
+                try {args = jeval(args)}
+                catch(err) {console.warn(err)}
+                if (!(args instanceof Array)) args = [args];
+            }
+            else args = [];
             try {SVG2._cache[url][id](svg, ...args)}
             catch(err) {console.warn(err)}
         }
@@ -1145,13 +1140,13 @@ static cache_run(url, id, ...arg) {
 }
 
 static remove_pending(url) {
-    /* Remove completed request from pending list */
+/* Remove completed request from pending list */
     let i = SVG2.load.pending.indexOf(url);
     SVG2.load.pending.splice(i, 1);
 }
 
 static cache(url, obj) {
-    /* Load SVG2 JavaScript into cache */
+/* Load SVG2 JavaScript into cache */
     SVG2._cache[new URL(url, SVG2.url).href] = obj;
 }
 
