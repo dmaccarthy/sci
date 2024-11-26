@@ -14,7 +14,7 @@ pretest: (sel) => {
     svg.poly([[0, 0], q, r], 1, thick);
     svg.text("7.00", [2.5, 2.5]);
     svg.text("35.0°", [1.5, 0.3]);
-    g = svg.group().css({fill: "#0065FE"});
+    let g = svg.group().css({fill: "#0065FE"});
     svg.text("P", [-0.5, 0], g);
     svg.text("Q", [6.1, 0], g);
     svg.text("R", [6.1, 4], g);

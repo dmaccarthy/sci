@@ -67,17 +67,15 @@
 <p>There are additional <a id="daLink" data-feed="p20/da/rev">review notes</a> for Experiment Design and Data Analysis (including non-linear data and regression analysis, which we will learn about later in the course).</p>
 </section>
 
-<script type="text/javascript" data-init="link">
+<script type="text/javascript">
+
+tmp = chapRev() ? 1 : 0;
 
 loadFeed.data = {
     title: `${siteData.lesson}Science & Math Skills Review`,
     up: "p20/home",
-    prev: ["p20/skill/trig", null][clickLink.course],
-    next: ["p20/kin/displ", "p20/da/rev"][clickLink.course],
-}
-
-loadFeed.link = () => {
-    if (clickLink.course) $("#daLink").attr("data-course", "1");
+    prev: ["p20/skill/trig", null][tmp],
+    next: ["p20/kin/displ", "p20/da/rev"][tmp],
 }
 
 </script>
