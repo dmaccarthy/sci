@@ -1,0 +1,83 @@
+Create a new animation:
+    svg = new SVG2(jSelect, {size or scale, lrbt, margin, grid}) -> SVG2
+    svg = SVG2.create(options) -> SVG2
+
+Get the <svg>/<g> element or its jQuery object:
+    svg.element -> <svg> or <g> element
+    g.$ -> jQuery
+
+Create, configure, and style an animated group:
+    g = svg.group() -> SVG2g
+    g.config({theta, omega, alpha, pivot, shift, vel, acc}) -> g
+    g.addClass(string) -> g
+    g.css(object or string) -> g
+    g.css_map(map) -> g
+
+Create a <g> for scaling (cannot be animated, but can be nested in an animated <g>):
+    s = g.scaled(s) -> SVGscaled
+
+Add primitive content to an <svg>/<g> tag using an SVG2g instance (or subclasses SVG2, SVG2scaled, SV2arrow):
+    g.line([x1, y1], [x2, y2]) -> jQuery
+    g.circle(r, [cx, cy]) -> jQuery
+    g.ellipse([rx, ry], [cx, cy]) -> jQuery
+    g.rect([w, h], [cx, cy]) -> jQuery
+    g.image(href, [w, h], [cx, cy]) -> jQuery
+    g.poly([pts], closed) -> jQuery
+    g.star(sides, big, small) -> jQuery
+
+Add composite content:
+    g.grid([x1, x2, dx], [y1, y2, dy]) -> SVG2g
+    g.cylinder([rx, ry], L) -> SVG2g
+    g.plot(pts or {x, y}, size, href, theta) -> SVG2g
+    g.label([tm, tp] or int or (x, y, i) => string, x, y) -> SVG2g
+    g.tick_label(fn, x, y, tick, offset) -> g
+    g.locus((p, t, args) => {y or [x, y]}, [p0, p1, n], args) -> SVG2locus
+    g.arrow({tail, tip} or length, {tail, head, angle, shape, double}, anchor) -> SVG2arrow
+    g.tip_to_tail(vecs, options) -> SVG2g
+    g.ray(p1, p2, size or {size, ratio}, ...pos) -> SVG2g
+    g.chevron(xy, dir, size or {size, ratio}) -> SVG2g
+    g.stickman(h) -> SVG2g
+    g.symbol(...args) -> SVG2g
+    g.coil(size, n, reverse, r, axle) -> SVG2g
+    g.textm(text, space) -> SVG2g
+    g.flow(text, shape, options) -> SVG2
+
+Create a <path>; must call 'update' to write 'd' attribute to <path>:
+    path = g.path(start).[path directives] -> SVG2path
+    path.update() -> <path> element
+
+Register SVG2g (and subclass SVG2arrow) and SVG2locus instances to animate:
+    svg.animate(g1, g2, ...) -> svg
+
+Update-handlers for SVG2 or SVG2g instances:
+    svg.beforeupdate = (svg) => {...}
+    g.afterupdate = (g) => {...}
+
+Run the animation:
+    svg.play() -> svg
+    svg.pause() -> svg
+    svg.toggle() -> svg
+
+Get mouse event coordinates:
+    svg.eventCoords(ev) -> {coords: RArray, pixels: RArray}
+
+Convert coordinates between child and parent coordinate systems:
+    g.coord_to_parent([cx, cy]) -> RArray
+    g.coord_from_parent([px, py]) -> RArray
+    g.coord_to_svg([gx, gy]) -> RArray
+    g.coord_from_svg([sx, sy]) -> RArray
+
+Save as SVG file:
+    svg.save(callback or string or null, [CSS files]) -> svg
+    SVG2.svg(sel, index) -> svg
+
+Vector diagram helpers:
+    SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, tick, label, cycle, shift}) -> SVG2
+    SVG2.vec_diag_table(sym, vecs, prec, scale) -> jQuery
+    svg.vec_cycle(jQuery) -> svg
+
+Energy Bar Graph:
+    SVG2.ebg(sel, [Emax, step], data, options) -> SVG2
+
+Other methods:
+    svg.adjustAngle(a, invert) -> number

@@ -8,9 +8,19 @@ function clearFeed() {
     return $("#Main").html("");
 }
 
+function chapRev() {
+    let f = loadFeed.referer;
+    if (f) {
+        f = f.split("/");
+        return ["rev", "home"].indexOf(f[f.length-1]) > -1;
+    }
+    return false;
+}
+
 function loadFeed(feed, noHist) {
 /** Load feed via AJAX request or from cache **/
     clearTimeout(loadFeed.refresh);
+    loadFeed.referer = loadFeed.current;
     if (feed == null) feed = loadFeed.current;
     else if (typeof(feed) != "string") {
         let action = $(feed).attr("data-id").toLowerCase();
@@ -367,18 +377,19 @@ function clickLink(ev) {
     let n = url.length;
     if (href.slice(0, n) == url) {
         let feed = href.slice(n + 1);
-        if (a.attr("data-course")) clickLink.course = 1;
-        else {
-            let f = feed.split("/");
-            if (f[f.length - 1] == "rev") clickLink.course = 0;
-        }
-        localStorage.setItem("clickLink.course", clickLink.course);
+        // if (a.attr("data-course")) clickLink.course = 1;
+        // else {
+        //     let f = feed.split("/");
+        //     if (f[f.length - 1] == "rev") clickLink.course = 0;
+        // }
+        // localStorage.setItem("clickLink.course", clickLink.course);
         loadFeed(feed);
         return false;
     }    
 }
 
-clickLink.course = localStorage.getItem("clickLink.course") == "1" ? 1 : 0;
+// clickLink.course = localStorage.getItem("clickLink.course") == "1" ? 1 : 0;
+localStorage.removeItem("clickLink.course");
 
 function goUp(ev) {
 /** Event handler for "up" command **/
