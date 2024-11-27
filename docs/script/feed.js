@@ -570,8 +570,10 @@ function goSlide(n) {
     goSlide.cues = [];
     for (let e of c) {
         e = $(e);
-        if (!e.is(":first-child") && e.attr("data-cue") != "prev")
-            goSlide.cues.push(e.hide());
+        if (e.attr("data-cue") == "prev")
+            goSlide.cues[goSlide.cues.length-1].push(e.hide()[0]);
+        else if (!e.is(":first-child") && e.attr("data-cue") != "none")
+            goSlide.cues.push([e.hide()[0]]);
         else e.show();
     }
     goSlide.cueNum = -1;
@@ -583,18 +585,18 @@ function nextCue() {
     let cues = goSlide.cues;
     let n = ++goSlide.cueNum;
     if (n >= cues.length) goSlide();
-    else cues[n].fadeIn();
+    else $(cues[n]).fadeIn();
 }
 
 function prevCue() {
     let cues = goSlide.cues;
     let n = goSlide.cueNum--;
-    if (n >= 0) cues[n].fadeOut();
+    if (n >= 0) $(cues[n]).fadeOut();
     else {
         goPrev();
         let cues = goSlide.cues;
         let n = cues.length;
-        for (let i=0;i<n;i++) cues[i].show();
+        for (let i=0;i<n;i++) $(cues[i]).show();
         goSlide.cueNum = n - 1;    
     }
 }
