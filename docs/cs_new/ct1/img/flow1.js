@@ -38,7 +38,7 @@ factor: (sel) => {
 	svg.text("no", [1.1, 1]);
 
 	svg.css_map("text", "grid").addClass("NoStyle");
-	let t = svg.$.find("text").css({"font-family": SVG2._sans, "font-size": "14px", "dominant-baseline": "middle", "text-anchor": "middle"});
+	let t = svg.$.find("text").css({"font-family": SVG2.sans, "font-size": "14px", "dominant-baseline": "middle", "text-anchor": "middle"});
 	t.find("tspan").css({fill: "red", "font-weight": "bold"});
 	svg.$.find("rect, ellipse, polygon, circle").css({fill: "white", stroke: "black"});
 	svg.$.find("line, g.Ray polyline").css({stroke: "black"});
