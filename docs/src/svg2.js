@@ -513,11 +513,11 @@ graph(options) {
         }
         if (x) {
             this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6").find("g.LabelX").config({shift: x.shift});
-            txt.text(x.title[0], xy(0));
+            if (x.title) txt.text(x.title[0], xy(0));
         }
         if (y) {
             this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6").find("g.LabelY").config({shift: y.shift});
-            txt.group().config({theta: 90, shift: xy(1)}).text(y.title[0]);  
+            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).text(y.title[0]);  
         }  
     }
 
@@ -1216,27 +1216,27 @@ SVG2.load.pending = [];
 SVG2.url = location.origin;
 if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
 
-SVG2._sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
-SVG2._mono = "Inconsolata, 'Droid Sans Mono', monospace";
-SVG2._serif = "'Noto Serif', 'Open Serif', 'Droid Serif', Oxygen, sans-serif";
-SVG2._symbol = "KaTeX_Main, 'Latin Modern Roman', 'Droid Serif', 'Noto Serif', serif";
+SVG2.sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
+SVG2.mono = "Inconsolata, 'Droid Sans Mono', monospace";
+SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', Oxygen, sans-serif";
+SVG2.symbol = "KaTeX_Main, 'Latin Modern Roman', 'Droid Serif', 'Noto Serif', serif";
 
 SVG2.css = { /* Default styles */
 
 grid: {
     "g.Grid": {stroke: "lightgrey", "stroke-width": "0.5px"},
     "g.Grid line.Axis, g.Ticks line": {stroke: "black", "stroke-width": "1px"},
-    "g.Labels": {"font-family": SVG2._sans, "font-size": "15px", stroke: "none", fill: "black", "text-anchor": "middle"},
+    "g.Labels": {"font-family": SVG2.sans, "font-size": "15px", stroke: "none", fill: "black", "text-anchor": "middle"},
     "g.LabelY": {"text-anchor": "end"},
 },
 
 text: {
-    ".Text, .Symbol": {"font-family": SVG2._sans, "font-size": "18px", stroke: "none", fill: "black", "text-anchor": "middle"},
+    ".Text, .Symbol": {"font-family": SVG2.sans, "font-size": "18px", stroke: "none", fill: "black", "text-anchor": "middle"},
     ".Large": {"font-size": "28px"},
-    ".Symbol": {"font-family": SVG2._symbol},
-    ".Mono": {"font-family": SVG2._mono},
-    ".Sans": {"font-family": SVG2._sans},
-    ".Serif": {"font-family": SVG2._serif},
+    ".Symbol": {"font-family": SVG2.symbol},
+    ".Mono": {"font-family": SVG2.mono},
+    ".Sans": {"font-family": SVG2.sans},
+    ".Serif": {"font-family": SVG2.serif},
     ".Small": {"font-size": "14px"},
     "g.Large text.Small": {"font-size": "18px"},
 },
