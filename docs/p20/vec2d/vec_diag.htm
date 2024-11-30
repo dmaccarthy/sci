@@ -10,6 +10,7 @@ textarea, #CalcTable table {
 <section class="Post" id="Tip2Tail" data-icon="vec.svg">
 <h2 class="Collapse">Tip-to-Tail Diagram
     <span class="Action"><img alt="Bookmark" title="Reload page with custom URL" data-src="bookmark.svg" onclick="location.href=loadFeed.init.url()"/></span>
+    <span class="Action"><img alt="Download" title="Download diagram as SVG" data-src="$download" onclick="SVG2.svg('#Output svg', 0, event)"/></span>
 </h2><div class="Center Collapse Expand">
 <p><input type="checkbox" id="Shift" onclick="loadFeed.init.draw()"/> <label for="Shift">Shift</label></p>
 <p><textarea rows="4" onblur="loadFeed.init.draw()">[3, 5], @(6, -60)</textarea></p>
