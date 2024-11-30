@@ -103,7 +103,7 @@ set theta(a) {
 }
 
 shiftBy(xy) {
-    this._shift = this._shift.plus(xy);
+    this._shift = this._shift.plus(this._cs(xy));
     return this.update_transform();
 }
 
@@ -529,7 +529,11 @@ graph(options) {
             else {
                 let gs = g.group().addClass("Locus");
                 s.push(gs);
-                if (series.connect) gs.poly(series.connect);
+                if (series.connect) {
+                    let pts = series.connect;
+                    if (!(pts instanceof Array)) pts = zip(pts.x, pts.y);
+                    gs.poly(pts);
+                }
                 else if (series.locus) gs.locus(...series.locus);
             }
         }
@@ -548,7 +552,7 @@ tip_to_tail(vecs, options) {
     let g = this.group();
     g.$.addClass("TipToTail2D");
     let pt = new RArray(0, 0);
-    let opt = Object.assign({tail: "6"}, options);
+    let opt = Object.assign({tail: "7"}, options);
     for (let v of vecs) {
         let pt0 = pt;
         let tmp = pt0.plus([v[0], 0]);
@@ -891,7 +895,18 @@ get center() {
     return new RArray((l + r) / 2, (b + t) / 2);
 }
 
-static svg(sel, i) {return $(sel ? sel : "svg.NoStyle")[i ? i : 0].graphic.save()}
+static svg(sel, i, ev) {
+/* Save an SVG2 drawing as an SVG file */
+    if (ev) ev.stopPropagation();
+    let e = $(sel ? sel : "svg.NoStyle");
+    let n = 0;
+    for (let ei of e) if (ei.graphic) n++;
+    if (n) {
+        if (i == null) i = n > 1 ? parseInt(prompt(`Choose index: 0..${n-1}`)): 0;
+        e[i].graphic.save();    
+    }
+}
+
 static create(options) {return new SVG2(document.createElementNS(SVG2.nsURI, "svg"), options)}
 
 static auto_lrbt(w, h, l, r, b, t) {
@@ -1074,7 +1089,7 @@ static cached(url) {return SVG2._cache[new URL(url, SVG2.url).href]}
 static vec_diag(sel, vecs, opt) {
 /* Draw a vector diagram in an <svg> tag */
     let svg = new SVG2(sel, opt);
-    svg.$.addClass("SVG2 VectorDiagram");
+    svg.$.addClass("NoStyle");
     let g = svg.tip_to_tail(vecs);
     if (opt.shift) g.config({shift: opt.shift});
     if (opt.label) {
@@ -1088,14 +1103,16 @@ static vec_diag(sel, vecs, opt) {
             svg.tick_label(n, [...range(l, r + space / 10, space)], 0, tick, y);
         }
         else {
-        svg.label(n, x, [...range(b, t + space / 10, space)]);
-        svg.label(n, [...range(l, r + space / 10, space)], y);
+            svg.label(n, x, [...range(b, t + space / 10, space)]);
+            svg.label(n, [...range(l, r + space / 10, space)], y);
         }
     }
     g.$.appendTo(svg.$);
+    for (let s of "XY") svg.find(`g.Label${s}`).shiftBy([0, "-5"]);
+    svg.$.find(".Zero").hide();
     if (opt.cycle == -1) g.$.find(".Component").hide();
     else if (opt.cycle) svg.vec_cycle(g.$, vecs.length > 1);
-    return svg;
+    return svg.css_map("grid", "text", "arrow");
 }
 
 vec_cycle(g, res) {
@@ -1247,9 +1264,9 @@ plot: {
 },
 
 arrow: {
-    "g.Arrow": {fill: "red", "stroke-width": "0.5px"},
+    "g.Arrow": {fill: "red", "stroke-width": "0.5px", stroke: "black"},
     "g.Arrow.Resultant": {fill: "#0065fe"},
-    "g.Arrow.Component": {"fill-opacity": 0.2},
+    "g.Arrow.Component": {"fill-opacity": 0.3},
 },
 
 };

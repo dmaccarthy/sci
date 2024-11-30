@@ -110,5 +110,6 @@ body:is(.Present, .Slides) td.Reveal span {display: none}
 .w22, body.Present .s22 {width: 22em}
 .w24, body.Present .s24 {width: 24em}
 .w28, body.Present .s28 {width: 28em}
+.w30, body.Present .s30 {width: 30em}
 .w32, body.Present .s32 {width: 32em}
 .w36, body.Present .s36 {width: 36em}

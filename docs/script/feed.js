@@ -284,7 +284,7 @@ function printIcons() {
             e.children("span[data-print]").remove();
             let span = $("<span>").addClass("Action");
             e.append(span);
-            $("<img>").attr({"data-src": "$print"}).appendTo(span).on("click", (ev) => {
+            $("<img>").attr({"data-src": "$print", title: "Print this section"}).appendTo(span).on("click", (ev) => {
                 $("section.Post").hide();
                 e.closest("section.Post").show();
                 let div = $(ev.currentTarget).closest("h2").next("div.Collapse");
