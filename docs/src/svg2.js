@@ -971,6 +971,28 @@ pts_str(pts) {
     return s;
 }
 
+delay(e, options) {
+/* Schedule delayed  action */
+    if (this._delay == null) this._delay = [];
+    this._delay.push([e, options]);
+    return e;
+}
+
+finalize() {
+/* Run delayed actions */
+    for (let [e, options] of this._delay) {
+        for (let k in options) {
+            let a = options[k];
+            if (k == "recenter") e.recenter(a);
+            else if (k == "css") e.css(a);
+            // else console.log(k);
+        }
+    }
+    delete this._delay;
+    return this;
+}
+
+
 /** Animation methods **/
 
 animate(...args) {

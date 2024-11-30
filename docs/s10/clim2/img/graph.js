@@ -1,49 +1,50 @@
 SVG2.cache("s10/clim2/img/graph.js", {
 
 london: (sel) => {
+    // Precipitation and temperature data
     let prec = [59, 50, 47, 54, 57, 60, 59, 65, 51, 60, 67, 61];
     let temp = [4.8, 4.9, 6.7, 9.4, 12.7, 15.7, 17.8, 17.3, 15, 11.8, 7.8, 5.3];
-    for (let i=0;i<temp.length;i++) temp[i] *= 5;
+    for (let i=0;i<temp.length;i++) // Convert to precipitation coordinates
+        temp[i] *= 5;
     temp = zip([...range(0.5, 12)], temp);
 
-    let yAx = "Toggle4";
+    // Draw graph; add 'Toggle' classes
     let svg = new SVG2(sel, {size: [521, 360], lrbt: [0, 12, 0, 90], margin: [62, 62, 28, 12]});
     svg.graph({grid: [1, 5], css: true,
         y: {tick: [0, 91, 10], title: ["Precipitation / mm", "-44"], shift: ["-10", "-5"]},
-        data: [
-            {connect: temp},
-            {plot: [temp, "5"]},
-        ],
+        data: [{connect: temp}, {plot: [temp, "4"]}],
     });
     svg.$.find("g.Text, g.LabelY").addClass("Toggle0");
-    temp = svg.$.find("g.Series").addClass("Toggle5");
-    temp.find("g.Locus").addClass("Toggle8");
-    temp = temp.find("circle");
-    for (let i=1;i<12;i++) $(temp[i]).addClass(i == 1 ? "Toggle6" : "Toggle7");
+    let g = svg.$.find("g.Series").addClass("Toggle5");
+    g.find("g.Locus").addClass("Toggle8");
+    g = g.find("circle");
+    for (let i=1;i<12;i++) $(g[i]).addClass(i == 1 ? "Toggle6" : "Toggle7");
 
+    // Right-side axis
     $(svg.$.find("g.Grid line")[12]).addClass("Axis");
-    let T = svg.group().addClass(yAx + " Text");
-    T.group().config({theta: 90}).text("Temperature / °C");
-    let g = svg.tick_label((x, y) => (y/5).toFixed(0), 12, [...range(0, 91, 10)], "6", 12.3).$.find("g.LabelY")[1].graphic;
+    let T = svg.group().addClass("Text Toggle4").config({theta: 90});
+    svg.delay(T, {recenter: [13.7, 45]}).text("Temperature / °C");
+    g = svg.tick_label((x, y) => (y/5).toFixed(0), 12, [...range(0, 91, 10)], "6", 12.3).$.find("g.LabelY")[1].graphic;
+    svg.delay(g.addClass("Toggle4").config({shift: [0, "-5"]}), {css: {"text-anchor": "start"}});
 
+    // Draw precipitation bars and month labels
     let months = "JFMAMJJASOND";
     let gm = svg.group().addClass("Text");
-    let gp = svg.group().addClass("Toggle1");
+    let gp = svg.group().addClass("Toggle1").css({fill: "#0065fe", stroke: "black", "fill-opacity": 0.4});
     for (let i=0;i<12;i++) {
         gm.text(months.charAt(i), [i + 0.5, "-20"]);
         let p = prec[i];
-        p = gp.rect([0.8, p], [i + 0.5, p/2]);
+        p = gp.rect([1, p], [i + 0.5, p/2]);
         if (i) p.addClass(i == 1 ? "Toggle2" : "Toggle3");
     }
 
-    svg.css_map("grid", "text");
-    g.addClass(yAx).config({shift: [0, "-5"]}).css({"text-anchor": "start"});
-    gp.css({fill: "#0065fe", stroke: "black", "fill-opacity": 0.4});
-    T.recenter([13.5, 45]);
+    // Finish styling; layer temperature data over precipitation bars
+    svg.css_map("grid", "text").finalize();
     g = svg.$.find("g.Series").appendTo(svg.$);
-    g.find("polyline").css({stroke: "red"});
-    g.find("circle").css({fill: "red"});
+    g.find("g.Locus").css({stroke: "red"});
+    g.find("g.Plot").css({fill: "red"});
 
+    // Toggle through graph
     let t = clickCycle.toggle;
     clickCycle(svg.element, -1,
         () => {t(svg, false, 0, 1, 2, 3, 4, 5, 6, 7, 8)},
