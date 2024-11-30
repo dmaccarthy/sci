@@ -12,15 +12,15 @@
     <p class="Center"><svg id="CRTSim"></svg></p>
     <table id="SimControls" class="Center Bottom"><tbody>
     <tr>
-        <td>V<sub>acc</sub></td><td>1200 V</td>
+        <td class="TeX">V_{acc}</td><td>1200 V</td>
         <td><input type="range" min="800" max="2000" value="1200" step="10"></td>
     </tr>
     <tr>
-        <td>V<sub>def</sub></td><td>0 V</td>
+        <td class="TeX">V_{def}</td><td>0 V</td>
         <td><input type="range" min="0" max="2000" value="0" step="10"></td>
     </tr>
     <tr>
-        <td>B</td><td>0.00 mT</td>
+        <td class="TeX">B</td><td>0.00 mT</td>
         <td><input type="range" min="0" max="6" value="0" step="0.01"></td>
     </tr>
     </tbody></table>
@@ -153,7 +153,6 @@ loadFeed.sim.ray = function*() {
     <li>Thomson determined the speed of the particles by dividing the field strengths.</li>
     <li>The subscript “def” distinguishes the <em>deflecting</em> electric field from the <em>accelerating</em> electric field. Both fields can be calculated using the respective voltages and distances between electrodes:
         <p class="TeX">|\vec{\mathbf E}| = \frac{\Delta V}{\Delta d}</p></li>
-    <li>Millikan had not yet performed his oil drop experiment, so the charge of the particles was unknown.</li>
 </ul>
 </section>
 
@@ -195,7 +194,7 @@ loadFeed.sim.ray = function*() {
     </li>
     <li>We can calculate the <span class="TeX">q/m</span> ratio using the initial speed of the particles as <span class="TeX">v_x</span> and using trigonometry to calculate <span class="TeX">v_y = v_x\tan\theta</span>.</li>
     <li>Thus Thomson needed to measure the direction of the beam’s motion (<span class="TeX">\theta</span>) after travelling a known horizontal distance <span class="TeX">\Delta d_x</span>.</li>
-    <li>The results of the experiment when performed in a uniform electric field are the same as when performed in a uniform magnetic field.</li>
+    <li>The results of the experiment — the calculated <span class="TeX">q/m</span> — when performed with a uniform electric field are the same as when performed wiTH a uniform magnetic field.</li>
 </ul>
 </section>
 

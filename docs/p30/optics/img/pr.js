@@ -84,8 +84,10 @@ diag: (sel, lens, f, d) => {
     svg.circle("4", [f, 0]).css(css);
     svg.circle("4", [lens ? -f : 2 * f, 0]).css(css);
     css = {"font-size": "20px", "font-weight": "bold"};
-    svg.text(lens ? "F’": "F", [f, -y2/10]).css(css);
-    svg.text(lens ? "F" : "C", [lens ? -f : 2 * f, -y2/10]).css(css);
+    let gf = svg.group().addClass("Text");
+    gf.text(lens ? "F’": "F").css(css);
+    let gc = svg.group().addClass("Text");;
+    gc.text(lens ? "F" : "C").css(css);
 
     // Lens or mirror
     let h = 1.2 * Math.max(1, Math.abs(m));
@@ -108,6 +110,10 @@ diag: (sel, lens, f, d) => {
         p.$.css({stroke: "silver", "stroke-width": "5px", fill: "none"});
     }
     p.$.prependTo(svg.$);
+    svg.addClass("NoStyle").css_map("text");
+    y2 /= -10;
+    gf.recenter([f, y2]);
+    gc.recenter([lens ? -f : 2 * f, y2]);
     return svg;
 },
 
