@@ -81,3 +81,5 @@ Energy Bar Graph:
 
 Other methods:
     svg.adjustAngle(a, invert) -> number
+    svg.delay(e, options) -> e
+    svg.finalize() -> svg
