@@ -86,7 +86,7 @@ diag: (sel, lens, f, d) => {
     css = {"font-size": "20px", "font-weight": "bold"};
     let gf = svg.group().addClass("Text");
     gf.text(lens ? "F’": "F").css(css);
-    let gc = svg.group().addClass("Text");;
+    let gc = svg.group().addClass("Text");
     gc.text(lens ? "F" : "C").css(css);
 
     // Lens or mirror
