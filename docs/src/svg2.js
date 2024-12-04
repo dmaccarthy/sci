@@ -972,7 +972,7 @@ pts_str(pts) {
 }
 
 delay(e, options) {
-/* Schedule delayed  action */
+/* Schedule delayed action */
     if (this._delay == null) this._delay = [];
     this._delay.push([e, options]);
     return e;
