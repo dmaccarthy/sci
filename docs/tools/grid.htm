@@ -1,5 +1,7 @@
 <section class="Post NoPrintIcon">   
-<h2>SVG</h2>
+<h2>SVG
+    <span class="Action"><img alt="Download" title="Download diagram as SVG" data-src="$download" onclick="SVG2.svg()"/></span>
+</h2>
 <p class="Center"><svg id="Grid"></svg></p>
 <p class="Center">Use the Developer Console to customize and save.</p>
 </section>
@@ -13,8 +15,7 @@ loadFeed.data = {
 
 
 loadFeed.init = () => {
-    console.log("Save grid SVG file:\nSVG2.svg();");
-    console.log("\nCustomize:\n_(x=10, y=6, minor=5, {scale:15, x0:0, y0:0, interval:null, label:0, margin:2});");
+    console.log("\nCustomize:\n_(x=10, y=6, minor=5, {scale:15, interval:null, label:0, x0:0, y0:0, margin:2});");
     loadFeed.grid(10, 6, 5);
 }
 
