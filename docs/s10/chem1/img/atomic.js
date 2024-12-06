@@ -2,7 +2,7 @@ SVG2.cache("s10/chem1/img/atomic.js", {
  
 bun: (sel) => {
     let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], margin: 2});
-    svg.$.addClass("SVG2");
+    svg.$.addClass("NoStyle");
     svg.circle(1, [0, 0]).css({fill: "#F1B9A1", stroke: "black"});
     let a = 0.15, b = 0.75;
     svg.poly([[a, b], [a, a], [b, a], [b, -a], [a, -a], [a, -b], [-a, -b], [-a, -a],
@@ -13,14 +13,14 @@ bun: (sel) => {
     svg.line(pts[0], [0.85, 0.78]).css({stroke: "green"});
     let g = svg.group();
     for (let i=0;i<pts.length;i++) g.circle(0.04, pts[i]).css(attr);
-    g.text("Electron", [0.86, 0.9]);
+    g.text("Electron", [0.7, 0.85]);
     g.$.find("text, circle").css({fill: "green"});
-    return svg;
+    return svg.css_map("text");
 },
 
 rutherford: (sel) => {
     let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], margin: 2});
-    svg.config({electron: 140}).$.addClass("SVG2");
+    svg.config({electron: 140}).$.addClass("NoStyle");
     let a = 0.35, b = 0.04;
     let elec = (x) => [a * sin(x), cos(x)];
     let n = [[0.0374, 0.019], [-0.0383, -0.0237], [-0.0558, 0.0394], [0.0516, -0.0361]];
@@ -32,7 +32,7 @@ rutherford: (sel) => {
     for (let i=0;i<3;i++) {
         let g = svg.group();
         if (i) g.config({theta: 120 * i});
-        g.ellipse([a, 1]).css({stroke: "green"});
+        g.ellipse([a, 1]).css({fill: "none", stroke: "green"});
         let ge = g.group().config({shift: elec(140)});
         elecs.push(ge);
         ge.circle(0.75 * b, [0, 0]).css({fill: "green"});
@@ -40,11 +40,11 @@ rutherford: (sel) => {
         gp.circle(b, p[i]);
     }
     gn.circle(b, n[3]);
-    hide.text("Electron", [0.55, 0.75]).css({fill: "green"});
+    hide.text("Electron", [0.35, 0.7]).css({fill: "green"});
     gp.line(vec2d(b, -60).plus(p[1]), [0.6, -0.7]).css({stroke: "red"});
     gn.line(n[2], [-0.6, 0.7]).css({stroke: "#0065FE"});
-    gn.text("Neutron", [-0.7, 0.8]);
-    gp.text("Proton", [0.7, -0.8]);
+    gn.text("Neutron", [-0.9, 0.75]);
+    gp.text("Proton", [0.5, -0.85]);
     gn.$.find("circle, text").css({fill: "#0065fe"});
     gp.$.find("circle, text").css({fill: "red"});
 
@@ -74,7 +74,7 @@ nuclear_alpha: (sel) => {
     }
     g.line([-1.2, -0.05], [-0.1, -0.05]);
     g.ray([-0.1, -0.05], [-1.2, -0.7], null, 1);
-    g.$.find("*").css({stroke: "#0065fe", "stroke-width": "2px"});
+    g.$.find("*").css({fill: "none", stroke: "#0065fe", "stroke-width": "2px"});
     let t = g.$.find("polyline, line");
     svg.$.on("click", () => {
         svg.toggle();
@@ -89,7 +89,7 @@ bun_alpha: (sel) => {
     for (let y of [-0.1, -0.5, -0.83, 0.1, 0.3, 0.65, 0.8]) {
         g.ray([-1.2, y], [1.2, y], null, 1);
     }
-    g.$.find("*").css({stroke: "#0065fe", "stroke-width": "2px"});
+    g.$.find("*").css({fill: "none", stroke: "#0065fe", "stroke-width": "2px"});
     let t = g.$.find("polyline, line");
     svg.$.on("click", () => t.fadeToggle());
 },
