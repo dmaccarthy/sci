@@ -5,13 +5,22 @@
 <p class="Center"><svg id="S1" data-svg2z="p20/shm/img/shm_unused.js#Q1v"></svg></p>
 </section>
 
-<script type="text/javascript" data-init="init">
-
-
+<script type="text/javascript" data-init="test">
 
 loadFeed.data = {
     title: `Grid`,
     up: "home",
+}
+
+loadFeed.test = () => {
+    let svg = new SVG2("#S1", {scale: 20, lrbt: [-10, 10, -10, 15], grid: 1, appendAxes: 1});
+    svg.addClass("NoStyle").css_map("grid");
+    let r = 12;
+    let y = root(r * r - 25)
+    let p = svg.path([-5, 0]).arcTo([5, 0], [6, 15], 0, 45);
+    p.update().css({fill: "none", stroke: "red", "stroke-width": "3px"});
+    svg.circle("6", [0, y]);
+    console.log(svg);
 }
 
 loadFeed.init = () => {

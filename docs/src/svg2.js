@@ -376,12 +376,13 @@ ray(p1, p2, size, ...pos) {
     return g;
 }
 
-grid(x, y) {
+grid(x, y, appendAxes) {
 /* Draw a coordinate grid */
     let g = this.group();
-    g.$.addClass("Grid");
     this._grid(g, x, y);
     this._grid(g, y, x, 1);
+    let e = g.$.addClass("Grid");
+    if (appendAxes) e.find(".Axis").appendTo(e);
     return g;
 }
 
@@ -771,8 +772,6 @@ arcTo(xy, r, choice, rotn) { // Draw a circular or elliptical arc to the specifi
     else rx = ry = r;
     rx = svg._px(rx, 0);
     ry = svg._px(ry, 1);
-    // rx *= Math.abs(svg.scale[0]);
-    // ry *= Math.abs(svg.scale[1]);
     rotn = rotn ? f(rotn * svg.angleDir) : "0";
     let [x, y] = xy;        
     this.x = x;
@@ -841,7 +840,6 @@ constructor(jSelect, options) {
     let lrbt = options.lrbt;
     let s = options.scale;
     if (s && !(s instanceof Array)) s = [s, s];
-    console.log(s);
     let [w, h] = options.size ? options.size :
         (s && lrbt.length > 3 ? [s[0] * (lrbt[1] - lrbt[0]) + margin[0] + margin[1] + 1, s[1] * (lrbt[3] - lrbt[2]) + margin[2] + margin[3] + 1] :
             [jSelect.width(), jSelect.height()]);
@@ -869,7 +867,7 @@ constructor(jSelect, options) {
         let [gx, gy] = typeof(grid) == "number" ? [grid, grid] : grid;
         let x0 = gx * Math.round(lrbt[0] / gx);
         let y0 = gy * Math.round(lrbt[2] / gy);
-        this.grid([x0, lrbt[1], gx], [y0, lrbt[3], gy]);
+        this.grid([x0, lrbt[1], gx], [y0, lrbt[3], gy], options.appendAxes);
     }
 
     /* Animation data */
