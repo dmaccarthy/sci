@@ -57,6 +57,25 @@ for side in range(6):
 exitonclick()
 </pre>
 
+        <li>Here is another program that will tell you which version of Python you are running, and which versions of the <code>pygame</code>, <code>sc8pr</code>, and <code>Thonny</code> software packages are available.</li>
+
+<pre data-echo="py" class="Code">try:
+    import pygame
+    try: import sc8pr
+    except: print("sc8pr not installed!")
+except:
+    from sys import version_info as v
+    print(f"Python {v.major}.{v.minor}")
+    print("pygame not installed!")
+    print("sc8pr requires pygame!")
+
+try:
+    import thonny
+    print(f"Thonny {thonny.get_version()}")
+except: print("Thonny not installed!")
+</pre>
+
+
         </li></ol>
     </ol></li>       
 
