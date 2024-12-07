@@ -69,6 +69,7 @@ css_map(...map) {
 }
 
 recenter(xy, dim) {
+    console.log(xy, dim);
 /* Adjust shift attribute to recenter based on current bbox */
     if (!this.$.is(":visible")) throw("Cannot recenter hidden elements");
     let box = this.element.getBBox();
@@ -839,8 +840,10 @@ constructor(jSelect, options) {
     if (typeof(margin) == "number") margin = [margin, margin, margin, margin];
     let lrbt = options.lrbt;
     let s = options.scale;
+    if (s && !(s instanceof Array)) s = [s, s];
+    console.log(s);
     let [w, h] = options.size ? options.size :
-        (s && lrbt.length > 3 ? [s * (lrbt[1] - lrbt[0]) + margin[0] + margin[1] + 1, s * (lrbt[3] - lrbt[2]) + margin[2] + margin[3] + 1] :
+        (s && lrbt.length > 3 ? [s[0] * (lrbt[1] - lrbt[0]) + margin[0] + margin[1] + 1, s[1] * (lrbt[3] - lrbt[2]) + margin[2] + margin[3] + 1] :
             [jSelect.width(), jSelect.height()]);
     w = Math.abs(Math.round(w));
     h = Math.abs(Math.round(h));
@@ -984,6 +987,7 @@ finalize() {
         for (let k in options) {
             let a = options[k];
             if (k == "recenter") e.recenter(a);
+            else if (k == "recenter_dim") e.recenter(...a);
             else if (k == "css") e.css(a);
             // else console.log(k);
         }
@@ -1080,7 +1084,10 @@ static load(cb) {
         }
         else if (SVG2.load.pending.indexOf(url) == -1) {
             SVG2.load.pending.push(url);
-            $.getScript({url: url, success: () => SVG2.load(cb), error: () => SVG2.remove_pending(url)});
+            $.getScript({url: url, success: () => SVG2.load(cb), error: (e) => {
+                console.warn(`Error fetching '${url}'`);
+                SVG2.remove_pending(url, cb);
+            }});
         }
     }
     if (SVG2.load.pending.length == 0) cb();
@@ -1091,10 +1098,11 @@ static cache_run(url, id, ...arg) {
     return SVG2._cache[url][id](...arg);
 }
 
-static remove_pending(url) {
+static remove_pending(url, cb) {
 /* Remove completed request from pending list */
     let i = SVG2.load.pending.indexOf(url);
     SVG2.load.pending.splice(i, 1);
+    if (cb && SVG2.load.pending.length == 0) cb();
 }
 
 static cache(url, obj) {
