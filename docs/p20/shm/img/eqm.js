@@ -1,23 +1,20 @@
 SVG2.cache("p20/shm/img/eqm.js", {
 
 mass: (sel) => {
-    $(sel).attr({width: 480, height: 300, "data-aspect": "8/5"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 3, 0.25], [-0.25, 0.5, 0.05], 1],
-        margin: [0.18, 0.05, 0.01, 0.04],
-        x: ["Time / s", [">", "18"], {fixed: 1, omitZero: 1, interval: 0.5, length: "8", offset: [0, "-24"]}],
-        y: ["Position / cm", ["-54", ">"], {fixed: 1, interval: 0.1, length: "8", offset: ["-12", 0]}],
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 3, -0.2, 0.5], margin: [62, 16, 12, 12]});
+    svg.graph({grid: [0.25, 0.05], css: true,
+        x: {tick: [0, 3.1, 0.5], dec: 1, title: ["Time / s", [2.25, "-44"]], shift: [0, "-20"]},
+        y: {tick: [-0.2, 0.51, 0.1], dec: 1, title: ["Position / cm", "-44"], shift: ["-10", "-5"]},
+        data: [{locus: [(x) => 0.3 * sin(240 * x - 60) + 0.15, [0, 3]]}]
     });
-    svg.$.find(".TitleX, .TitleY").addClass("End");
+    svg.$.find("g.LabelX text.Zero").remove();
+    svg.addClass("NoStyle").css_map("grid", "text", "plot").$.find("g.Locus").css({stroke: "red"});
     let v = pi / 2.5;
-    svg.locus((t) => 0.3 * sin(240 * t - 60) + 0.15, [0, 3]);
-    let g = svg.group().addClass("MassHide");
-    svg.line([0, 0.15], [3, 0.15], g).css({stroke: "black", "stroke-width": "2px"});
-    svg.line([1.75 + 0.35 / v, 0.5], [1.75 - 0.4 / v, -0.25], g).css({"stroke-width": "2px"});
-    svg.circle(0.015, [1.75, 0.15], g);
-    svg.$.find("polyline").css({stroke: "red"});
-    g.$.hide();
-    svg.final();
+    let g = svg.group().css({stroke: "black", "stroke-width": "2px"});
+    g.line([0, 0.15], [3, 0.15]);
+    g.line([1.75 + 0.35 / v, 0.5], [1.75 - 0.4 / v, -0.25]).css({stroke: "#0065fe"});
+    g.circle("5", [1.75, 0.15]).css({fill: "#0065fe", "stroke-width": "1px"});
+    g.$.hide().addClass("Toggle");
 },
 
 pend_eq: (sel) => {

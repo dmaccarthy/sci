@@ -84,7 +84,7 @@
     </ol></li>
 
     <li>A mass hanging from a spring oscillates up and down as shown in the graph below. The graph uses an arbitrary origin.
-        <p class="Center"><svg class="Graph s24" data-svg2="p20/shm/img/eqm.js#mass"></svg></p>
+        <p class="Center"><svg id="GraphQ2" class="s24" data-svg2="p20/shm/img/eqm.js#mass"></svg></p>
     <ol type="a">
         <li>Use the graph to determine the (i) equilibrium position, (ii) period, and (iii) amplitude of the motion. Show your calculations.</li>
         <div class="Answer">
@@ -98,7 +98,7 @@
     
         <li>Mark a point on the graph where the object is passing through its equilibrium. Draw a tangent line to the graph through this point. Would you agree that this line is steeper than any other place on the graph? Use the concept of energy conservation to explain why the object should have the greatest speed while it is passing through equilibrium.</li>
         <div class="Answer">
-            <p><a href="javascript:$('svg > g.MassHide').fadeToggle()">Click to draw the tangent line on the graph.</a></p>
+            <p><span class="Link" onclick="loadFeed.toggle()">Click to draw the equilibrium and tangent line on the graph.</span></p>
             <p>Since equilibrium is the point where the potential energy is least, the kinetic energy should be at its greatest.</p>
         </div>
 
@@ -154,6 +154,11 @@ Confirm that this relationship correctly predicts the slope you calculated in (d
 </div></section>
 
 <script type="text/javascript">
+
+loadFeed.toggle = () => {
+    $("#GraphQ2 g.Toggle").fadeToggle();
+    return "";
+}
 
 loadFeed.data = {
     title: `${siteData.lesson}7.1 — Equilibrium & Oscillations`,
