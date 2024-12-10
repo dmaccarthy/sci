@@ -69,7 +69,6 @@ css_map(...map) {
 }
 
 recenter(xy, dim) {
-    console.log(xy, dim);
 /* Adjust shift attribute to recenter based on current bbox */
     if (!this.$.is(":visible")) throw("Cannot recenter hidden elements");
     let box = this.element.getBBox();

@@ -13,6 +13,23 @@ loadFeed.data = {
 }
 
 loadFeed.test = () => {
+    let svg = new SVG2("#S1", {scale: 20, lrbt: [-10, 10, -10, 10], grid: 1, appendAxes: 1});
+    let outer = svg.group().config({omega: 50});
+    let star = outer.group().config({omega: 20, shift: [4, 3]});
+    star.star(5, 3).css({fill: "#0065fe"});
+    svg.addClass("NoStyle").css_map("grid");
+
+    // svg.afterupdate = () => {
+    //     let f = svg.frameCount;
+    //     if (f % 30 == 0) console.log(f, svg.time);
+    // }
+    // svg._fpsDebug = true;
+
+    svg.$.on("click", () => svg.toggle());
+    console.log(svg.animate(outer, star).play());
+}
+
+loadFeed.testArc = () => {
     let svg = new SVG2("#S1", {scale: 20, lrbt: [-10, 10, -10, 15], grid: 1, appendAxes: 1});
     svg.addClass("NoStyle").css_map("grid");
     let r = 12;
