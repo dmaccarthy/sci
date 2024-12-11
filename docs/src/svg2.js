@@ -223,7 +223,8 @@ circle(r, center, sel) {
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = svg.a2p(...this._cs(center));
-    r = typeof(r) == "string" ? parseFloat(r) : r * svg.unit;
+    // r = typeof(r) == "string" ? parseFloat(r) : r * svg.unit;
+    r = this._px_size(r);
     return e.attr({r: f(r), cx: f(x), cy: f(y)});
 }
 
@@ -333,7 +334,14 @@ poly(pts, closed) {
         this.create_child(closed ? "polygon" : "polyline", attr);
 }
 
-star(sides, big, small) {return this.poly(star_points(sides, big, small), 1)}
+_cs_size(r) {return typeof(r) == "string" ? parseFloat(r) / this.svg.unit : r}
+_px_size(r) {return typeof(r) == "string" ? parseFloat(r) : r * this.svg.unit}
+
+star(sides, big, small) {
+    let pts = star_points(sides, this._cs_size(big), small == null ? null : this._cs_size(small));
+    return this.poly(pts, 1);
+}
+
 arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
 locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
 path(start) {return new SVG2path(this, start)}
@@ -355,7 +363,8 @@ chevron(xy, dir, size) {
     else size = size.size;
     let svg = this.svg;
     let s = svg.scale;
-    size = typeof(size) == "string" ? parseFloat(size) : size / svg.unit;
+    // size = typeof(size) == "string" ? parseFloat(size) : size / svg.unit;
+    size = this._px_size(size);
     let dx = -size / s[0], dy = ratio * size / s[1];
     let g = this.group();
     g.poly([[dx, dy], [0, 0], [dx, -dy]]);
