@@ -1,0 +1,141 @@
+<section class="Post" data-icon="atom.svg">
+<h2 class="Collapse">Calculations</h2><div>
+
+<p class="Center" style="font-style:italic;font-size:90%"><a target="NIST" href="https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses">NIST</a> data retrieved 2024 December 18.</p>
+
+<p id="AddRow" class="Center"><button onclick="loadFeed.addRow()">Add Row</button></p>
+<table id="CalcTable" class="Center" style="margin:2em auto">
+    <thead>
+        <tr><th>Element</th><th>Mass Number</th><th>Coefficient</th><th>Mass</th><th>Total</th></tr>
+    </thead>
+    <tbody>
+        <tr><td contenteditable="true">H</td><td contenteditable="true">1</td><td contenteditable="true">1</td><td class="IsoMass"></td><td class="TotalMass"></td></tr>
+    </tbody>
+</table>
+
+<table id="Results" class="Center Bottom">
+    <tr><td style="width:12em">Reactants Mass / amu</td><td style="width:10em"></td></tr>
+    <tr class="Red"><td>Products Mass / amu</td><td></td></tr>
+    <tr><td>Mass Difference / amu</td><td></td></tr>
+    <tr><td>Mass Difference / kg</td><td></td></tr>
+    <tr><td>Energy / J</td><td></td></tr>
+    <tr><td>Energy / MeV</td><td></td></tr>
+</table>
+</div></section>
+
+<script type="text/javascript" data-init="ajax">
+
+loadFeed.ajax = () => {
+    $.ajax({url: "p30/nuke/nist/nist.json", success: (e) => {
+        loadFeed.isotopeMass = (sym, m) => {
+            let iso;
+            for (let x in e) {
+                if (e[x].sym == sym) {
+                    iso = e[x].iso;
+                    break;
+                }
+            }
+            if (iso) for (let [a, b] of iso) {
+                if (a == m) return b;
+            }
+        }
+        loadFeed.init();
+    }});
+}
+
+loadFeed.init = () => {
+    $("#Results").hide();
+    let td = $("#CalcTable tr:first-child td");
+    for (let i=0;i<td.length;i++)
+        $(td[i]).css({width: `${i > 2 ? 10 : 6}em`});
+    let args = location.search.substr(1);
+    if (args.length) {
+        $("#AddRow").remove();
+        $("#CalcTable tbody td").removeAttr("contenteditable");
+        args = args.split("=");
+        let r = args[0].split("+");
+        let p = args[1].split("+");
+        let i = r.length;
+        let n = i + p.length;
+        while (n-- > 1) loadFeed.addRow();
+        n = 0;
+        let tr = $("#CalcTable tbody tr");
+        for (r of r.concat(p)) {
+            r = r.split("*");
+            let [a, b] = r[0].split("-");
+            let td = $(tr[n]).find("td");
+            $(td[0]).html(a);
+            $(td[1]).html(b ? b : 1);
+            $(td[2]).html(r[1] ? r[1] : 1);
+            n++;
+        }
+        loadFeed.calc(tr, i);
+    }
+    else $("#CalcTable tbody").on("click", (ev) => {
+        $(".IsoMass, .TotalMass").html("");
+        $("#Results").hide();
+        $("#CalcTable tbody tr").removeClass("Red");
+        let tr = $(ev.target).closest("tr");
+        if (ev.ctrlKey) {
+            if ($("#CalcTable tbody tr").length > 1) tr.remove();
+        }
+        else if (!$(ev.target).attr("contenteditable")) {
+            let i = tr.index();
+            tr = tr.closest("tbody").find("tr");
+            loadFeed.calc(tr, i);
+        }
+    });
+}
+
+loadFeed.calc = (tr, n) => {
+    let m0 = m1 = 0;
+    for (let i=0;i<tr.length;i++) {
+        let tri = $(tr[i]);
+        if (i < n) {
+            tri.removeClass("Red");
+            m0 += loadFeed.getMass(tri);
+        }
+        else {
+            tri.addClass("Red");
+            m1 += loadFeed.getMass(tri);
+        }
+    }
+    let dm = m1 - m0;
+    let td = $("#Results").show().find("td:last-child");
+    $(td[0]).html(m0);
+    $(td[1]).html(m1);
+    $(td[2]).html(dm.toPrecision(4));
+    dm *= 1.660539e-27;
+    $(td[3]).html(dm.toPrecision(4));
+    let E = dm * Math.pow(2.99792458e8, 2);
+    $(td[4]).html(E.toPrecision(4));
+    $(td[5]).html((E / 1.60217733e-13).toPrecision(4));
+}
+
+loadFeed.getMass = (tr) => {
+    let getInt = (td) => {
+        td = $(td);
+        let n = parseInt(td.text());
+        td.html(n);
+        return n;
+    }
+    let td = tr.children("td");
+    let sym = $(td[0]).text();
+    let iso = loadFeed.isotopeMass(sym, getInt(td[1]));
+    let mass = iso * getInt(td[2]);
+    $(td[3]).html(iso);
+    $(td[4]).html(mass);
+    return mass;
+}
+
+loadFeed.addRow = () => {
+    let tb = $("#CalcTable tbody");
+    let tr = tb.find("tr");
+    $(tr[0]).clone().appendTo(tb);
+}
+
+loadFeed.data = {
+    title: `Isotope Masses`,
+}
+
+</script>
