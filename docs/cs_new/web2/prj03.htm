@@ -16,7 +16,8 @@ scoreboard as an HTML 5 document that can be projected onto a screen in the gym.
 </ul>
 <p>For now, you just have to design the appearance of the scoreboard; you don’t have to make it functional yet.</p>
 <p>All data that might change as the game progresses must be in its own tag with a unique id attribute:</p>
-<pre class="Code" contenteditable="true" data-echo="html">&lt;span id="HomeScore"&gt;0&lt;/span&gt;</pre>
+<pre class="Code" data-echo="html">&lt;span id = "HomeScore" onclick = "changeHomeScore()"&gt;0&lt;/span&gt;</pre>
+<p>Timekeeper controls for starting and stopping the clock and recording goals and penalties should have an event handler attribute (e.g. <code>onclick</code>), although you do <b>not</b> need to write the event handler Javascript function.</p>
 
 <p>Ensure that the page displays correctly in both small and large browser windows and that it passes without errors in an <a href="https://www.freeformatter.com/html-validator.html" target="Val">HTML5 validator</a>.</p>
 
