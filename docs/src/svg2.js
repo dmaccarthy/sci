@@ -511,7 +511,7 @@ graph(options) {
         r = dx * Math.round(r / dx);
         b = dy * Math.round(b / dy);
         t = dy * Math.round(t / dy);
-        this.grid([l, r, dx], [b, t, dy]);
+        this.grid([l, r, dx], [b, t, dy], options.appendAxes);
     }
 
     if (x || y) {

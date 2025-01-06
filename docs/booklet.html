@@ -48,6 +48,11 @@ let bmap = {
     feeds: ["heatcap", "latent", "transfer", "budget"], //omit: [2, 4],
 },
 
+"s10/unc" : {
+    title: "Science 10: Climate &amp; Measurement",
+    feeds: ["../#s10/clim2/ncc", "unc", "prop"],
+},
+
 "p30/optics" : {
     title: "Physics 30: Optics",
     feeds: ["rays"],
@@ -65,7 +70,8 @@ function loadWindows(info) {
     if (info == null) info = bmap[key];
     $("#Instructions > h1").html(info.title);
     for (let f of info.feeds) {
-        let url = `../#${key}/${f}`;
+        let url = f.indexOf("#") == -1 ? `../#${key}/${f}`: f;
+        console.log(url);
         pages.push(window.open(url));
     }
     let inputs = $("#Main > input").hide();

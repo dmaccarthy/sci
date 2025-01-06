@@ -22,6 +22,7 @@ london: (sel) => {
 
     // Right-side axis
     $(svg.$.find("g.Grid line")[12]).addClass("Axis");
+    svg.$.find("g.Grid line.Axis").appendTo(svg.$.find("g.Grid"));
     let T = svg.group().addClass("Text Toggle4").config({theta: 90});
     svg.delay(T, {recenter: [13.7, 45]}).text("Temperature / °C");
     g = svg.tick_label((x, y) => (y/5).toFixed(0), 12, [...range(0, 91, 10)], "6", 12.3).$.find("g.LabelY")[1].graphic;

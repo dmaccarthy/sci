@@ -6,6 +6,110 @@
 <h1 id="Title">Measurement Uncertainty</h1>
 </section>
 
+<section class="Slide"><h3>Measurement Uncertainty</h3>
+<p>Most scientific measurements are made using the digital display or analog scale that is part of the <em class="Defn">measuring device</em>.</p>
+<ul>
+    <li>The spacing between increments displayed on the scale is called the <em class="Defn">precision</em> of the device.
+    <li>For example, a typical metric ruler has a precision of 1 mm, while many stopwatches have a precision of 0.01 s.</li>
+    <li>Because measuring devices have limited precision, measurements in the sciences are almost never exact.</li>
+    <li>Scientists need to quantify the “uncertainty” of their measurements, to know how confident they should be in the conclusions they draw based on those measurements.</li>
+    <li>Measurement uncertainty describes how close scientists believe their measurements agree with the “true” value of what is being measured.</li>
+    <li>A scientist who records a temperature measurement of (20.0 ± 0.5) °C, for example, is confident that the “true” temperature is within 0.5 °C of the measured value of 20.0 °C; i.e. the true temperature is between 19.5 and 20.5 °C.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Single Measurement</h3>
+<p>If your measuring device’s scale is large enough, you might be able to estimate a measurement a bit more precisely than the precision of the device itself.</p>
+<ul>
+    <li>For example if you are measuring the length of your pencil and you observe the tip of the pencil is between the 145 and 146 mm mark on your ruler, you might record the length as (145.3 ± 0.5) mm.</li>
+    <li>The uncertainty you report should never be less than <em>half</em> the precision of the measuring device.</li>
+    <li>If the scale is too small or if you are using a digital display, you will not be able to make measurements that are more precise than the device itself: use the precision of the device as your uncertainty.</li>
+    <li>Uncertainty should be rounded to <em>one significant digit</em> and the measurement itself should have the <em>same precision</em> as the uncertainty; i.e. the last digit of the reported measurement should have the same place value as the uncertainty.</li>
+    <li>There may be situations where the uncertainty in a measurement is larger than the measuring device’s precision!</li>
+    <li>For example, if you are trying to measure the distance to the centre of an object but you have no accurate way to pinpoint the precise centre, you may need to increase your uncertainty estimate accordingly.</li>
+    <li>In such circumstances, you must explain how you estimated your uncertainty.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Validity, Reliability, and Accuracy</h3>
+<p>The precision of your measuring device is not the only consideration for the uncertainty of your measurements.</p>
+<ul>
+    <li>When you are timing the swing of a pendulum, you need to synchronize the starting and stopping of the stopwatch with the events you are timing.</li>
+    <li>Your “reaction time” can increase the uncertainty of your measurements.</li>
+    <li>Scientists define <em class="Defn">validity</em> as the extent to which your measuring procedure actually measures what is intended.</li>
+    <li>A slow reaction time or a warped meter stick make your measurements less valid.</li>
+    <li>Scientists say that measurements are <em class="Defn">reliable</em> when repeating the measurement gives the same result.</li>
+    <li>Measurements are said to be <em class="Defn">accurate</em> when they are valid, reliable, and precise.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Repeated Measurements</h3>
+<p>When measurement errors are <em>random</em> (equally likely to be too big or too small), we can <em>repeat</em> the measurement in the hope that the errors will “average out”.</p>
+<ul>
+    <li>Your best” estimate of the “true” value of what you are measuring is the <em class="Defn">mean</em> (average) of your individual measurements.</li>
+    <li>Your uncertainty can be estimated as <em>half</em> the difference between the biggest and smallest individual measurements.</li>
+</ul>
+</section>
+
+
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+<p class="Blue" data-cue="none">Using a stopwatch with a precision of 0.01 seconds, the following five trials are made in seconds: 1.65, 1.74, 1.68, 1.59, 1.70. Estimate the “true” time with uncertainty.</p>
+<ul>
+    <li>Calculate the mean by adding the five trials and dividing the sum by 5:
+        <p class="TeX">t = \rm 1.672\ s</p></li>
+    <li>Estimate the uncertainty as half the difference between the biggest and smallest measurements:
+        <p class="TeX">\delta t = \rm \frac{(1.75 - 1.58)\ s}{2} = 0.085\ s</p>
+    </li>
+    <li>Now round the uncetainty to one significant digit, and round the mean to the same place value:
+        <p class="TeX">t = \rm (1.67 \pm 0.09)\ s</p>
+    </li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Fluctuating Measurements</h3>
+<p>Occasionally, you will find that the display on your measuring device fluctuates as you are reading it.</p>
+<ul>
+    <li>For example, the pointer or digital display on a voltmeter may be changing while you try to read it, or the temperature display on a digital thermometer may not remain steady.</li>
+    <li>You should first attempt to eliminate or reduce the fluctuations.</li>
+    <li>When fluctuations cannot be completely eliminated, you should record the <em>range</em> of values observed.</li>
+    <li>You can then use your largest and smallest measurements in the same calculation we did for repeated measurements.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+<p class="Blue" data-cue="none">A digital voltmenter with a precision of 0.1 volts fluctuates between 19.8 V and 20.4 V as you are reading it. How should we record the measurement?</p>
+<ul>
+    <li>Calculate the mean by adding the minimum and maximum and then dividing the sum by 2:
+        <p class="TeX">V = \rm 20.1\ V</p></li>
+    <li>Estimate the uncertainty as half the difference between the biggest and smallest measurements:
+        <p class="TeX">\delta V = \rm \frac{(20.5 - 19.7)\ V}{2} = 0.4\ V</p>
+    </li>
+    <li>Now round the uncetainty to one significant digit, and round the mean to the same place value:
+        <p class="TeX">V = \rm (20.1 \pm 0.4)\ s</p>
+    </li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Relative (Percent) Uncertainty</h3>
+<p>You can express an uncertainty as a percentage of the best value rather than as an <em class="Defn">absolute</em> uncertainty.</p>
+<ul>
+    <li><em class="Defn">Relative</em> uncertainties are usually rounded to the nearest whole number percentage (if &gt; 1%) or to one significant digit (if &lt; 1%).</li>
+</ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+<div class="Blue" data-cue="none">
+    <p>Express the following measurement with a <em>relative</em> uncertainty.</p>
+    <p data-cue="none" class="TeX">V = \rm (20.1 \pm 0.4)\ V</p>
+</div>
+<p class="TeX">\frac{\delta V}{V} = \rm \frac{0.4\ V}{20.1\ V} = 0.0199 \approx 2\%</p>
+<p class="TeX">V = \rm 20.1\ V \pm 2\%</p>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 4</h3>
+<p class="Blue" data-cue="none">A measurement is recorded as <span class="TeX">A</span> = 23.5 cm<sup>2</sup> ± 0.7%. Express this as an absolute uncertainty.</p>
+<p class="TeX">\delta A = \rm 0.007\times 23.5\ cm^2 = 0.1645\ cm^2 \approx 0.2\ cm^2</p>
+</section>
 
 </div></section>
 
@@ -93,8 +197,7 @@ loadFeed.data = {
     answerDate: "2025.1.13.16",
     num: "E.1",
     up: "s10/home",
-    // prev: "s10/unc/",
-    next: "s10/unc/prop",
+    // next: "s10/unc/prop",
 }
 
 </script>
