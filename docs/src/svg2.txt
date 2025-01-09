@@ -41,6 +41,8 @@ Add composite content:
     g.coil(size, n, reverse, r, axle) -> SVG2g
     g.textm(text, space) -> SVG2g
     g.flow(text, shape, options) -> SVG2
+    g.graph({x, y, grid, data, css, appendAxes}) -> g
+    g.errorBar(x, y0, y1, dx, swap) -> SVG2g
 
 Create a <path>; must call 'update' to write 'd' attribute to <path>:
     path = g.path(start).[path directives] -> SVG2path

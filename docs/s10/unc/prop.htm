@@ -1,39 +1,79 @@
+<section class="Post NoPrintIcon" data-icon="gdrv">
+<h2 class="Collapse">Lab Handout</h2><div class="Collapse">
+<p class="Var">handouts</p>
+<p class="BtnGrid">
+    <button data-icon="gdrv" data-gdrv="1EDUClg9SfKO_i3n85-DQicLC6C0UmFQV">Density Lab</button>
+</p>
+</div></section>
+
 <section class="Post" data-icon="slides">
 <h2 class="Collapse">Lesson Notes</h2>
-<div class="Collapse">
+<div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Propagation of Errors</h1>
 </section>
 
-<section class="Slide"><h3></h3>
-<p><em class="Defn"></em>.</p>
+<section class="Slide"><h3>Addition &amp; Subtraction</h3>
+<p><em class="Defn"></em>When you add or subtract measurements that have an uncertainty, you must <em>add</em> the uncertainties.</p>
 <ul>
-    <li></li>
+    <li>When the calculation is complete, round the uncertainty to one significant digit and then round the calculation result so its last digit has the same place value as the uncertainty.</li>
 </ul>
 </section>
 
-<section class="Slide"><h3></h3>
-<p><em class="Defn"></em>.</p>
-<ul>
-    <li></li>
-</ul>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+<p class="Blue" data-cue="none">The mass of an empty beaker is (42.50 ± 0.01) g. When some liquid is added, the total mass is now measured to be (68.05 ± 0.01) g. Calculate the mass of the liquid.</p>
+<p class="TeX">m_{liquid} = m_{total} - m_{beaker} = \rm 68.05\ g - 42.50\ g = 25.55\ g</p>
+<p class="TeX">\delta m_{liquid} = \delta m_{total} + \delta m_{beaker} = \rm (0.01 + 0.01)\ g = 0.02\ g</p>
+<p class="TeX">m_{liquid} = \rm (25.55 \pm 0.02)\ g</p>
 </section>
 
-<section class="Slide"><h3></h3>
-<p><em class="Defn"></em>.</p>
+<section class="Slide"><h3>Multiplication, Division, &amp; Powers</h3>
+<p><em class="Defn"></em>When you multiply or divide measurements that have an uncertainty, you must <em>add</em> the <em>relative</em> (percent) uncertainties.</p>
 <ul>
-    <li></li>
-</ul>
+    <li>When the calculation is complete, round the relative uncertainty to the nearest percent (or one significant digit if less than 1%) and then round the calculation result so its last digit has the same place value as the uncertainty.</li>
+</ul></section>
+
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+<p class="Blue" data-cue="none">Students measured the length of an index card to be 15.0 cm ± 3% and the width to be 11.0 cm ± 4%. Calculate the area of the index card.</p>
+<p class="TeX">A = L\times W = \rm 15.0\ cm\times 11.0\ cm = 165\ cm^2</p>
+<p class="TeX">\frac{\delta A}{A} = \rm 3\% + 4\% = 7\%</p>
+<p class="TeX">\delta A = \rm 0.07\times 165\ cm^2 = 11.55\ cm^2</p>
+<p class="TeX">A = \rm (1.7 \pm 0.1)\times 10^2\ cm^2</p>
 </section>
 
-<section class="Slide"><h3></h3>
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+<p class="Blue" data-cue="none">Students measured the diameter of a ball to be 12.0 cm ± 6%. Calculate the volume of the ball.</p>
+<p class="TeX">V = \frac{4\pi}{3} r^3 = \rm \frac{4\pi}{3} \left(\frac{12.0\ cm}{2}\right)^3 = 904.779\ cm^3</p>
+<ul>
+    <li>The factors <span class="TeX">4\pi/3</span> and <span class="TeX">2</span> are <em>exact</em> values — not the result of measurements — so they have 0% error!</li>
+    <li>Technically, because <span class="TeX">\pi</span> is an irrational number with an inifinite number of digits, we introduce a bit of uncertainty when we use its value rounded to a finite number of digits; always use as many digits as possible!</li>
+    <li>Cubing a number means multiplying it by itself three times, so the error is tripled!</li>
+</ul>
+<p class="TeX">\frac{\delta V}{V} = \rm 3\times 6\% = 18\%</p>
+<p class="TeX">\delta V = \rm 0.18\times 904.779\ cm^3 = 162.86\ cm^2</p>
+<p class="TeX">V = \rm (9 \pm 2)\times 10^2\ cm^2</p>
+</section>
+
+<section class="Slide"><h3>Other Operations</h3>
+<p>For other calculations, you can estimate the uncertainty as <em>half</em> the difference between the maximum and minimum results....</p>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 4</h3>
+<p class="Blue" data-cue="none">Physics students studying the refraction (bending) of light by a glass prism measured the “angle of refraction” to be <span class="TeX">\theta</span> = 34° ± 2°. The lab instructions required the students to calculate the <em>sine</em> of the angle. Perform this calculation including uncertainty.</p>
+<p class="TeX">\sin \theta = \sin 34^\circ = 0.55919</p>
+<p class="TeX">\delta(\sin \theta) = \frac{\sin 36^\circ - \sin 32^\circ}{2} = 0.028933</p>
+<p class="TeX">\sin \theta = 0.56 \pm 0.03</p>
+</section>
+
+<section class="Slide"><h3>Error Bars &amp; Slope</h3>
 <p><em class="Defn"></em>.</p>
+<p class="Center"><svg data-svg2="s10/unc/img/prop.js#ebar"></svg></p>
 <ul>
     <li></li>
 </ul>
 </section>
-    
+ 
 </div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">

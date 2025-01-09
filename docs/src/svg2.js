@@ -556,6 +556,25 @@ graph(options) {
     return this;
 }
 
+errorBar(x, y0, y1, dx, swap) {
+    /* Draw x or y error bars */
+    dx = this._cs_size(dx);
+    let g = this.group().addClass("ErrorBar");
+    if (swap) {
+        g.line([y0, x], [y1, x]);
+        x -= dx / 2;
+        g.line([y0, x], [y0, x + dx]);
+        g.line([y1, x], [y1, x + dx]);    
+    }
+    else {
+        g.line([x, y0], [x, y1]);
+        x -= dx / 2;
+        g.line([x, y0], [x + dx, y0]);
+        g.line([x, y1], [x + dx, y1]);    
+    }
+    return g;
+}
+
 tip_to_tail(vecs, options) {
 /* Draw a 2D "tip-to-tail" vector diagram */
     if (options == null) options = {};
