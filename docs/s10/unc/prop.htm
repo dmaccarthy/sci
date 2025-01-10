@@ -8,7 +8,7 @@
 
 <section class="Post" data-icon="slides">
 <h2 class="Collapse">Lesson Notes</h2>
-<div class="Collapse Expand">
+<div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Propagation of Errors</h1>
@@ -18,6 +18,7 @@
 <p><em class="Defn"></em>When you add or subtract measurements that have an uncertainty, you must <em>add</em> the uncertainties.</p>
 <ul>
     <li>When the calculation is complete, round the uncertainty to one significant digit and then round the calculation result so its last digit has the same place value as the uncertainty.</li>
+    <li>Sometimes scientists may keep two significant digits in the uncertainty if the fist digit is 1.</li>
 </ul>
 </section>
 
@@ -38,8 +39,9 @@
 <p class="Blue" data-cue="none">Students measured the length of an index card to be 15.0 cm ± 3% and the width to be 11.0 cm ± 4%. Calculate the area of the index card.</p>
 <p class="TeX">A = L\times W = \rm 15.0\ cm\times 11.0\ cm = 165\ cm^2</p>
 <p class="TeX">\frac{\delta A}{A} = \rm 3\% + 4\% = 7\%</p>
-<p class="TeX">\delta A = \rm 0.07\times 165\ cm^2 = 11.55\ cm^2</p>
-<p class="TeX">A = \rm (1.7 \pm 0.1)\times 10^2\ cm^2</p>
+<p class="TeX">\delta A = \rm 0.07\times 165\ cm^2 = 11.55\ cm^2 \approx 12\ cm^2</p>
+<!-- <p class="TeX">A = \rm (1.7 \pm 0.1)\times 10^2\ cm^2</p> -->
+<p class="TeX">A = \rm (165 \pm 12)\ cm^2 \bf\ or\ \rm (1.7 \pm 0.1) \times 10^2\ cm^2</p>
 </section>
 
 <section class="Slide"><h3 class="Blue">Example 3</h3>
@@ -48,11 +50,11 @@
 <ul>
     <li>The factors <span class="TeX">4\pi/3</span> and <span class="TeX">2</span> are <em>exact</em> values — not the result of measurements — so they have 0% error!</li>
     <li>Technically, because <span class="TeX">\pi</span> is an irrational number with an inifinite number of digits, we introduce a bit of uncertainty when we use its value rounded to a finite number of digits; always use as many digits as possible!</li>
-    <li>Cubing a number means multiplying it by itself three times, so the error is tripled!</li>
+    <li>Cubing a number means multiplying it by itself three times, so the relative error is tripled!</li>
 </ul>
 <p class="TeX">\frac{\delta V}{V} = \rm 3\times 6\% = 18\%</p>
-<p class="TeX">\delta V = \rm 0.18\times 904.779\ cm^3 = 162.86\ cm^2</p>
-<p class="TeX">V = \rm (9 \pm 2)\times 10^2\ cm^2</p>
+<p class="TeX">\delta V = \rm 0.18\times 904.779\ cm^3 = 162.86\ cm^3 \approx 200\ cm^3</p>
+<p class="TeX">V = \rm (9 \pm 2)\times 10^2\ cm^3</p>
 </section>
 
 <section class="Slide"><h3>Other Operations</h3>
@@ -62,16 +64,30 @@
 <section class="Slide"><h3 class="Blue">Example 4</h3>
 <p class="Blue" data-cue="none">Physics students studying the refraction (bending) of light by a glass prism measured the “angle of refraction” to be <span class="TeX">\theta</span> = 34° ± 2°. The lab instructions required the students to calculate the <em>sine</em> of the angle. Perform this calculation including uncertainty.</p>
 <p class="TeX">\sin \theta = \sin 34^\circ = 0.55919</p>
-<p class="TeX">\delta(\sin \theta) = \frac{\sin 36^\circ - \sin 32^\circ}{2} = 0.028933</p>
+<p class="TeX">\delta(\sin \theta) = \frac{\sin 36^\circ - \sin 32^\circ}{2} = 0.028933 \approx 0.03</p>
 <p class="TeX">\sin \theta = 0.56 \pm 0.03</p>
 </section>
 
 <section class="Slide"><h3>Error Bars &amp; Slope</h3>
-<p><em class="Defn"></em>.</p>
-<p class="Center"><svg data-svg2="s10/unc/img/prop.js#ebar"></svg></p>
-<ul>
-    <li></li>
+<p class="Center"><svg class="s24" data-svg2="s10/unc/img/prop.js#ebar"></svg></p>
+<p>When graphing data that has uncertainty...</p>
+<ul data-cue="prev">
+    <li>First graph the “best” data and add the best-fit line and calculate its slope if appropriate.</li>
 </ul>
+<p class="TeX">k = \rm \frac{(1.5-68.0)\ ^\circ C}{(90.0-0.0)\ g} = -0.749\ ^\circ C/g</p>
+<ul>
+    <li>Next, add <em class="Defn">error bars</em> to show the uncertainty.</li>
+    <li>Each error bar shows the estimated range of the “true” value of the measurement.</li>
+    <li>If the uncertainty is too small (in either the <span class="TeX">x</span> or <span class="TeX">y</span> direction, you can omit the error bars.</li>
+    <li>Depending on how the data was collected the error bars might be the same size for all data points, or the size of the error bars may vary.</li>
+    <li>Ideally, if the relationship is linear, the best-fit line should pass through the error bars for all data points!</li>
+    <li>Next, draw the <em>steepest</em> line you can that is consistent with the error bars. Then repeat for the least steep line.</li>
+    <li>The uncertainty in the slope can be estimated as half the difference between the min/max slopes.</li>
+</ul>
+<p class="TeX">k_{min} = \rm \frac{(70.0-0.0)\ ^\circ C}{(86.5-2.5)\ g} = -0.833\ ^\circ C/g</p>
+<p class="TeX">k_{max} = \rm \frac{(66.0-4.0)\ ^\circ C}{(90.0-0.0)\ g} = -0.689\ ^\circ C/g</p>
+<p class="TeX">\delta k = \rm \frac{-0.689 - (-0.833)}{2}\ ^\circ C/g = 0.072\ ^\circ C/g \approx 0.07\ ^\circ C/g</p>
+<p class="TeX">k = \rm (-0.75 \pm 0.07)\ ^\circ C/g</p>
 </section>
  
 </div></section>
@@ -83,7 +99,7 @@
         <li>Area of a rectangle: <span class="TeX">A = bh</span>, where <span class="TeX">b</span> = 12.5 cm ± 0.5 cm and <span class="TeX">h</span> = 8.7 cm ± 0.5 cm.</li>
         <li>Perimeter of a rectangle: <span class="TeX">P = 2 (b + h)</span>, using the same measurements as (a).</li>
         <li>Surface area of a sphere: <span class="TeX">A = 4\pi r^2</span>, where <span class="TeX">r</span> = 16.3 cm ± 3%</li>
-        <li>Volume of a sphere: <span class="TeX">A = \frac{4}{3}\pi r^3</span>, using the same <span class="TeX">r</span> as above.</li>
+        <li>Volume of a sphere: <span class="TeX">V = \frac{4\pi}{3} r^3</span>, using the same <span class="TeX">r</span> as above.</li>
     </ol></li>
 
     <li>Evaluate the following expressions. Include uncertainty and round to the correct number of digits.<ol type="a">
@@ -91,7 +107,6 @@
         <li><span class="TeX">\vec{\bf a} = (\vec{\bf v}_f - \vec{\bf v}_i) / \Delta t</span>, where <span class="TeX">\Delta t</span> = 5.2 s ± 0.1 s, <span class="TeX">\vec{\bf v}_i</span> = 8.2 m/s ± 0.3 m/s, <span class="TeX">\vec{\bf v}_f</span> = 16.4 m/s ± 0.5 m/s.</li>
         <li><span class="TeX">Q = mc\Delta T</span>, where <span class="TeX">m</span> = 35.20 g ± 0.05 g, <span class="TeX">c</span> = (4.19 ± 0.02) J/g·K, <span class="TeX">T_i</span> = 20.5 ºC ± 0.5 ºC, <span class="TeX">T_f</span> = 68.1 ºC ± 0.5 ºC.</li>
     </ol></li>
-
     <li>
         <p>Physics students measured the following variables as part of an experiment:</p>
         <ul>
@@ -131,14 +146,6 @@
         <li>Explain how to calculate the uncertainty in the slope of a best-fit line.</li>
     </ol></li>
 </ol>
-</div></section>
-
-<section class="Post NoPrintIcon" data-icon="gdrv">
-<h2 class="Collapse">Lab Handout</h2><div class="Collapse">
-<p class="Var">handouts</p>
-<p class="BtnGrid">
-    <button data-icon="gdrv" data-gdrv="1EDUClg9SfKO_i3n85-DQicLC6C0UmFQV">Density Lab</button>
-</p>
 </div></section>
 
 <script type="text/javascript">
