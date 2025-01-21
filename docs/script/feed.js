@@ -147,12 +147,14 @@ function onFeedLoaded(feed, e, noHist) {
     clearFeed().prepend(e);
     if (!teacher.mode) {
         apply("[data-answers]", (ei) => {
-            let da = ei.attr("data-answers");
-            if (da == "1") da = loadFeed.data.answerDate;
-            if (!isAfter(da)) ei.find(".Answer").remove();
+            let d = ei.attr("data-answers");
+            if (d == "1") d = loadFeed.data.answerDate;
+            if (!isAfter(d)) ei.find(".Answer").remove();
         });
         apply("[data-show]", (ei) => {
-            if (!isAfter(ei.attr("data-show"))) ei.remove();
+            let d = ei.attr("data-show");
+            if (d == "1") d = loadFeed.data.showDate;
+            if (!isAfter(d)) ei.remove();
         });
     }
 

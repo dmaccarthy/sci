@@ -21,7 +21,7 @@ clock: (sel) => {
 	hr.line([0, -0.1], [0, 0.6]).css({"stroke-width": "5px", stroke: "black"});
 	min.line([0, -0.1], [0, 0.9]).css({"stroke-width": "3px", stroke: "black"});
 	sec.line([0, -0.1], [0, 0.92]).css({"stroke-width": "1px", stroke: "red"});
-	svg.circle(0.02).css({fill: "white", "stroke-width": "1px", stroke: "black"});
+	svg.circle(0.02).css({fill: "white", "stroke-width": "1px", stroke: "red"});
 
 	svg.beforeupdate = function() {
 		let t = new Date();

@@ -117,7 +117,36 @@ let atest = () => {
     svg.animate(g);
 }
 
-$(atest);
+let matter = () => {
+    svg = new SVG2("#S1", {size: [740, 340], lrbt: [-1, 7, 0.6, 5.4], margin: 0, grid: 0});
+    let css = {fill: "none", stroke: "black", "stroke-width": "2px"};
+
+    let lines = (w) => {
+        let g = svg.group();
+        g.line([0, 0], [0, -1]).css(css);
+        g.poly([[-w, -2], [-w, -1], [w, -1], [w, -2]]).css(css);
+        return g;
+    }
+
+    lines(2).config({shift: [3, 5]});
+    lines(1).config({shift: [1, 3]});
+    lines(1).config({shift: [5, 3]});
+
+    let p = [[3, 5], [1, 3], [5, 3], [0, 1], [2, 1], [4, 1], [6, 1]];
+    let t = ["Matter", "Pure Substances", "Mixtures", "Elements", "Compounds", "Solutions", "Mechanical Mixtures"];
+    let r;
+    for (let i=0;i<p.length;i++) {
+        svg.rect([1.8, 0.6], p[i]);
+        r = svg.delay(svg.group().addClass("Text"), {recenter: p[i]}).text(t[i]);
+    }
+
+    svg.addClass("NoStyle").css_map().finalize();
+    css.fill = "white";
+    svg.$.find("rect").css(css);
+    r.css({"font-size": "16px"});
+}
+
+$(matter);
 
 </script>
 </head>
