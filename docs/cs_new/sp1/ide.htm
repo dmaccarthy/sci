@@ -7,73 +7,18 @@
     <li>A <em class="Defn">console</em> or <em class="Defn">desktop</em> to run the program in.</li>
     <li>A <em class="Defn">debugger</em> to track down errors.</li>
 </ul></p>
-<p>An <em class="Defn">Integrated Development Environment</em> (IDE) is a program that collects all of these tools in a single place, to make your work as a programmer more productive.
-    There are many different IDE’s <a href="https://wiki.python.org/moin/IntegratedDevelopmentEnvironments" target="PyIDE">available for Python</a>, including...</p>
+<p>An <em class="Defn">Integrated Development Environment</em> (IDE) is a program that collects all of these tools in a single place, to make your work as a programmer more productive. There are many different IDE’s <a href="https://wiki.python.org/moin/IntegratedDevelopmentEnvironments" target="PyIDE">available for Python</a>, including...</p>
+<p>The workstations in our computer lab have <em>Visual Studio Code</em> installed as the IDE. If you want to work at home, it is recommended that use the <em>Thonny</em> IDE since it is easy to install and is designed for novice programmers. If you want to use a different IDE, you may need to install both Python and the IDE separately, as well as additional software packages.</p>
+<p>See the <a data-feed="cs_new/start">Getting Started</a> page for more details.</p>
 </div></section>
 
-<section class="Post" data-icon="thonny">
-<h2 class="Collapse">Thonny</h2><div class="Collapse Expand">
-<p>Thonny is a Python IDE designed for students who are new to programming. Thonny should already be installed on the clasroom computers.
-    If you want to use Thonny at home, follow the <i>Working from Home</i> instructions under <a href="#cs_new/home">Getting Started</a>.
-
-<!--    You may want to use Thonny instead of replit when
-    writing programs that use graphics, since graphics-based programs tend to run slowly over the cloud. Any changes that you make
-    to your project using Thonny will need to be uploaded to replit since Thonny does not sync files to the cloud automatically.</p>
-<p>To use Thonny at home or on your own laptop, download and run the installer from the <a href="https://thonny.org" target="thonny">Thonny website</a>. A Python interpreter is included with Thonny so you do not need to install it separately.</p>
-<p>After Thonny is installed, you will need to install the graphics and robotics software for this course. Go to Thonny’s “Tools” menu and select “Manage packages...” </p>
-<p class="Center"><img class="Wide" src="./cs_new/sp1/img/thonny.png" data-aspect="644/464" alt="Thonny" class="Wide"/></p>
-<ol>
-    <li>Type the name of the software package, <code>sc8pr</code>.</li>
-    <li>Click the button to search the Python Package Index (PyPI).</li>
-    <li>Click the three dots.</li>
-    <li>Select the desired version. This course assumes you are using the most recent update of <code>sc8pr 3.0</code>.</li>
-    <li>Check “Upgrade Dependencies” and then click the Install button.</li>
-</ol>
-<p>If an error occurs while trying to install the packages, exit Thonny and re-open it <i>as an administrator</i>.</p>-->
-</div></section>
-
-<section class="Post" data-icon="thonny">
-<h2 class="Collapse">replit</h2><div class="Collapse">
-<p><a href="https://replit.com" target="repl">replit</a> is a cloud-based IDE. Your files are saved in the cloud and
-    you can access them from any computer using a web browser (<a href="https://www.google.com/chrome/" target="Browser">Google Chrome</a> or <a href="https://www.mozilla.org/en-CA/firefox/" target="Browser">Mozilla Firefox</a> recommended).
-    You do not need to install any software on your computer to write programs using replit.</p>
-<p>You can create a free <i>Starter</i> account on <code>replit</code>, but these accounts have significant usage limits.</p>
-
-<!--<p>You will need to create an account the first time you use replit. I recommend that you use your EIPS Google
-    account to login to replit. Be sure to protect your privacy by not providing any information about yourself
-    that you do not want to become public.</p>
-<p>Once you have created an account, you can create your own coding projects (called “repls”) or create your own
-    “fork” (copy) of any public projects. This IDE supports many different programming and markup languages.</p>-->
-</div></section>
-
-<section class="Post" data-icon="python">
-<h2 class="Collapse">Other IDEs</h2><div class="Collapse">
-<p>If you choose to use another IDE, you may need to install <a href="https://python.org/downloads">Python</a> first.</p>
-<p>For Computing Science 20 students, after installing Python run the following command in your terminal program (may require admininstrator privileges) to install the graphics and robotics software you will need for the Robotics and Game programming credits:</p>
-<pre data-echo="pip1.txt" data-title="Terminal Command" class="Code">pip3 install -U pip setuptools sc8pr</pre>
-<p>On Windows, if the system does not recognize <code>pip3</code>, try typing the command as:</p>
-<pre data-echo="pip2.txt" data-title="Terminal Command" class="Code">py -m pip install -U pip setuptools sc8pr</pre>
-</div></section>
-
-<section class="Post" data-icon="thonny">
+<section class="Post" data-icon="ide">
 <h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
-<p>All files for <i>Structured Programming 1</i> should be saved in the <code>CompSci/a1_sp1</code> folder in your EIPS OneDrive.</p>
+<p>All files for <i>Structured Programming 1</i> should be saved in the <code>CompSci/sp1</code> folder in your EIPS OneDrive.</p>
 <ol class="Assign">
-<!--li><ol type="a">
-    <li>Create an account and login to <a href="https://replit.com" target="replit">replit</a> using your <code>g.eips.ca</code> Google account.</li>
-    <li>Open <a href="https://replit.com/@DavidMacCarthy/CS10-2024" target="replit">this link</a> and create a copy of the workspace for yourself using the “Fork” command.
-        <p class="Center"><img class="Wide" src="./cs_new/sp1/img/fork.png" alt="replit Screen"/></p>
-    </li>
-    <li>Click the “Invite” button at the top right and enter your teacher’s email: <code class="Var">email</code>.</li>
-    <!-- <li>In the “Tools” area, select “User Settings” and set the “Indentation character” to spaces and the “Indentation size” to 4.</li> ->
-</ol></li-->
-<li>Open the file <code>s02_print.py</code> in <i>Thonny</i>.
-    Type or paste the following program into the file.
+<li>Open the file <code>s02_print.py</code> in <i>VS Code</i>. Type or paste the following program into the file.
 <pre data-echo="s02_print.py" data-title="1" class="Code">print(5 * 2)</pre>
-<p>Press F5 or click the <i>Run</i> button to run the program and ensure that it works as it is supposed to. <i>Thonny</i> will ask you to save your changes before the program can run.</p>
-<!--p>If replit runs a different file, click the menu button (the three dots) in the file browser and select “Show hidden files”. There will be a file called <code>.replit</code>. Open this file, and ensure that the <code>entrypoint</code> line looks like this:</p>
-<pre data-echo="replit.txt" data-title="Plain Text" class="Code">entrypoint = "s02_print.py"</pre>
-<p>When you want to run a different program, change the last part of this line to the file name that you want to run. Ensure that the quotes are not removed!</p-->
+<p>Click the <i>Run</i> button to run the program and ensure that it works as it is supposed to.</p>
 </li>
 <li>
 <p>Here is a second example; this one accepts input from the keyboard...</p>

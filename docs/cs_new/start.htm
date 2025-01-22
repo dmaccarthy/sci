@@ -16,55 +16,6 @@
                 <p class="Var Center Code Bottom">email</p></li>
             <li>Change the permissions so that the teacher has <i>Editor</i> access to the folder, so that they can make comments in your files.</li>    
         </ol></li>
-
-<!--
-        <li class="Top"><b>Thonny</b><ol type="a">
-        <li>Double-click on the file <code>thonny.bat</code> to start coding in Python.</li>
-        <li>Here is a program you can run to check that everything is working. Click the blue <i>Copy</i> icon at the top right of the code and then paste the program into a new file in <i>Thonny</i>. Press the F5 button or click the green <i>Play</i> button to run the program. Don’t worry if you cannot follow the code; you will learn what it means as you proceed through the course!
-
-<pre data-echo="py" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
-
-<span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
-setup(600, 480)
-speed(1)
-pencolor("red")
-
-<span class="Comment"># Move turtle into position</span>
-penup()
-backward(120)
-left(60)
-
-<span class="Comment"># Draw a hexagon</span>
-pendown()
-for side in range(6):
-    forward(120)
-    left(-60)
-
-<span class="Comment"># Finished!</span>
-exitonclick()
-</pre>
-
-        <li>Here is another program that will tell you which version of Python you are running, and which versions of the <code>pygame</code>, <code>sc8pr</code>, and <code>Thonny</code> software packages are available.</li>
-
-<pre data-echo="py" class="Code">try:
-    import pygame
-    try: import sc8pr
-    except: print("sc8pr not installed!")
-except:
-    from sys import version_info as v
-    print(f"Python {v.major}.{v.minor}")
-    print("pygame not installed!")
-    print("sc8pr requires pygame!")
-
-try:
-    import thonny
-    print(f"Thonny {thonny.get_version()}")
-except: print("Thonny not installed!")
-</pre>
-
-        </li></ol></li>
--->
-
     </ol></li>
     </div>
 </section>
@@ -83,14 +34,7 @@ except: print("Thonny not installed!")
     <li>Select the file folder <code>cs10-main</code> (or 20 or 30) and right-click. Choose <em>Copy</em>.</li>
     <li>Click the <i>Browse</i> button and then locate the <code>CompSci</code> folder in your OneDrive. Click <i>Select Folder</i> and then <i>Extract</i>.</li>
     <li>Navigate back to the <code>CompSci</code> folder that you created in OneDrive. With your <code>CompSci</code> folder open, right-click on a blank area and click the <em>Paste</em> icon. This should copy the files you need into this folder.</li>
-    <!-- <li>Double-click on the file <code>thonny_setup.bat</code> to download additional files you will need for this course.
-        <ul>
-            <li><i>File Explorer</i> may show the file as <code>thonny_setup</code> without the <code>.bat</code> at the end.</li>
-            <li>You may get a security warning about opening downloaded files. Since the source of this file is your teacher, it is safe to run.</li>
-        </ul>
-    </li>     -->
-    </ol>
-</div>
+</ol></div>
 </section>
 
 <section class="Post" data-icon="vscode.svg">
@@ -104,6 +48,7 @@ except: print("Thonny not installed!")
         <li>Locate the <em>Python</em> extension and click the <em>Install</em> button.</li>
         <li>Go to the <em>File</em> menu and choose <em>Open Folder…</em></li>
         <li>Navigate to your OneDrive folder, highlight your <code>CompSci</code> folder, and click the <em>Select Folder</em> button.</li>
+        <li>Open the <code>_test</code> folder in <em>VS Code</em> and then select one of the test programs there. Click the <em>Run</em> button (a triangle at the upper right) to run each program to ensure everything works as it should.</li>
     </ol>
 </div>
 </section>
