@@ -545,11 +545,6 @@ class SVG_Animation {
         return g.config({position: xy});
     }
 
-    // mpl(latex, size, xy, parent) {
-    //     let url = `https://webapp2023-davidmaccarthy.replit.app/mpl.png?math=${latex}`;
-    //     return this.image(url, size, xy, parent);
-    // }
-
     line(p1, p2, parent) { // Create a line element
         let s = new Segment(...p1, ...p2);
         p1 = this.a2p(...p1);

@@ -1,4 +1,4 @@
-<section class="Post" data-icon="thonny">
+<section class="Post" data-icon="ide">
 <h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
 <ol class="Assign">
 <li>
@@ -6,7 +6,7 @@
 <p>Your <code>LinkedList</code> class already has an <code>index</code> method that searches
     for a node containing a specific data object. More generally, we may need to search a
     linked list by some arbitrary criteria. For example, if the list contains enrollment data
-    for a school, we might want to search for all students born in 1999 who are enrolled in
+    for a school, we might want to search for all students born in 2007 who are enrolled in
     Computing Science 30. Add a <code>find</code> method as a <em>generator</em> to locate
     nodes that match criteria specified by a supplied <code>match</code> function...</p>
 <pre class="Code" data-echo="dds3_search.py" data-title="1">from resource.school import Student
@@ -16,7 +16,7 @@ students = LinkedList()
 students.insert(Student() for i in range(1200))
 
 <span class="Comment"># Search criteria</span>
-crit = {"birthyear":1999, "courses":["Computing Science 30"]}
+crit = {"birthyear": 2007, "courses":["Computing Science 30"]}
 
 <span class="Comment"># Perform search</span>
 for student in students.find(match, 20, **crit):
@@ -31,12 +31,11 @@ for student in students.find(match, 20, **crit):
 
 <li>
 <p>Duplicate your <code>LinkedList</code> class from the question 1 into <code>dds3_sort.py</code>.</p>
-<p>Add an <code>iSort</code> method that sorts the items in the linked list using an
-    <a href="#cs_new/iter/insert">insertion sort</a> iterative algorithm and an <code>mSort</code>
-    method that sorts the linked list using a <a href="#cs_new/rec/merge">merge sort</a> recursive algorithm.
-    Do not use any built-in or standard library sorting functions. Test the algorithm by
-    sorting the students by birthday. In the program below, the <code>compareBirthday</code> function
-    (which you will need to write) should take two nodes as arguments; it should return 0 if both students have the same birthday, 1 if the second node is greater than the first, and -1 if the second node is less than the first.</p>
+<p>Add an <code>iSort</code> method that sorts the items in the linked list using an <a href="#cs_new/iter/insert">insertion sort</a> iterative algorithm. This should be an <em>in-place</em> sort that does not create a new <code>LinkedList</code> instance but simply reorders the links between nodes in the original instance.</p>
+
+<p>Also add an <code>mSort</code> method that sorts the linked list using a <a href="#cs_new/rec/merge">merge sort</a> recursive algorithm. This should be an <em>out-of-place</em> algorithm that returns a new <code>LinkedList</code> instance, leaving the original list unchanged.</p>
+
+<p>Do not use any built-in or standard library sorting functions. Test the algorithm by sorting the students by birthday. In the program below, the <code>compareBirthday</code> function (which you will need to write) should take two nodes as arguments; it should return 0 if both students have the same birthday, 1 if the second node is greater than the first, and -1 if the second node is less than the first.</p>
 <pre class="Code" data-echo="dds3_sort.py" data-title="1">from resource.school import Student
 
 <span class="Comment"># Randomly generate data for 1200 students</span>
