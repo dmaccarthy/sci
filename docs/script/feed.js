@@ -17,6 +17,14 @@ function chapRev() {
     return false;
 }
 
+function assign() {
+    $(".Answer, hr, nav, #Copy").remove();
+    $("section:not([data-answers])").remove();
+    $("span.Action, img.Icon, img.Chevron").remove();
+    $("div.Collapse").addClass("Expand").show();
+    // navigator.clipboard.writeText($("body").text());
+}
+
 function loadFeed(feed, noHist) {
 /** Load feed via AJAX request or from cache **/
     clearTimeout(loadFeed.refresh);
@@ -572,9 +580,10 @@ function goSlide(n) {
     goSlide.cues = [];
     for (let e of c) {
         e = $(e);
-        if (e.attr("data-cue") == "prev")
+        let cue = e.attr("data-cue");
+        if (cue == "prev")
             goSlide.cues[goSlide.cues.length-1].push(e.hide()[0]);
-        else if (!e.is(":first-child") && e.attr("data-cue") != "none")
+        else if (cue == "wait" || !e.is(":first-child") && cue != "none")
             goSlide.cues.push([e.hide()[0]]);
         else e.show();
     }
@@ -619,6 +628,7 @@ $(window).on("keydown", (ev) => {
         let k = ev.key.toLowerCase();
         if (k == "n") window.open(location.href);
         else if (k == "t") teacher(teacher.mode ? 0 : 2);
+        else if (k == "p") assign();
     }
 });
 
