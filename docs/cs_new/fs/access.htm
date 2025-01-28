@@ -1,12 +1,57 @@
 <section class="Post" data-icon="python">
-<h2 class="Collapse">Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Sequential Access</h2><div class="Collapse Expand">
+    <p>The text file operations that we have learned about so far use <em class="Defn">sequential access</em>. This means that when we read data from a file, we start at the beginning and read through every byte of data in sequence until we locate the data we want. When we write data, it is always at the end of the file.</p>
+    <p>For small files, it is usually most convenient to read the entire file into RAM sequentially and then locate the data we need. Changes can be made in RAM and then the revised file can be saved when all changes are complete.</p>
+    <p>For files containing very large amounts of data, sequential access can be very inefficient. Imagine trying to locate and revise a particular transaction in a file containing millions of banking transactions!</p>    
+</div></section>
 
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Direct Read Access</h2><div class="Collapse Expand">
+    <p>Python file objects have methods that can be used to read from anywhere within a text file without having to read from the beginning of the file. This is known as <em class="Defn">direct</em> or <em class="Defn">random access</em>.</p>
+    <p>Each file object keeps track of its “current position” within the file. You can use the <code>seek</code> method to change the current position, and the <code>read</code> method to read data from the current position...</p>
+    <pre class="Code" data-echo="f04_ex1.py" data-title="1">with open("accents.txt", "r", encoding="UTF-8") as text:
+    text.seek(8)
+    data = text.read(4)
+print(data)</pre>
+    
+    <p>In the example above, the <code>seek</code> method causes Python to skip over the first eight bytes of the file and the <code>read</code> method then reads the next four characters, starting with the 9<sup>th</sup> byte in the file.</p>
+    <p>One issue for programmers using direct access is that the current position is tracked in bytes rather than characters. With UTF-8 encoding, many common characters (in the Latin alphabet) are encoded with a single byte, while less common characters are encoded with multiple bytes. This means that skipping 8 bytes of data does not necessarily correspond to skipping 8 characters. In the <code>myData1.txt</code> file provided with the example, the file contains this sequence of characters:</p>
+    <pre class="IO" data-echo="accents.txt" data-title="1">àbçdéfghïjklmnõpqrstûvwxyz</pre>
+    
+    <p>The accented characters require two bytes in UTF-8, while the unaccented characters require only one byte. Skipping over 8 bytes has the effect of skipping only 5 characters, since <code>à</code>, <code>ç</code>, and <code>é</code> each use two bytes.</p>
+    <p>When using direct access, you may prefer to use a fixed byte length character encoding such as ASCII, latin-1, or UTF-32. Unfortunately, UTF-32 files are likely to be much larger since each character requires 4 bytes, while ASCII and Latin-1 support only a limited number of characters.</p>
+    <p>Another issue with using direct access is that there is no easy way to seek the end-of-line characters that separate lines in a text file.</p>
+    <p>One possible solution to these issues is to format your data with a fixed number of bytes per record (line). For example, if the data were saved with 64 bytes per line, we could assume that line two begins at byte 64 and line three begins at byte 128. The price of this format is that short lines would need to be padded with spaces and long lines would need to be truncated to the appropriate record size or split into multiple records.</p>
+    <p>Note that when using fixed record lengths, it is not necessary to use end-of-line characters to separate the records.</p>    
+</div></section>
+    
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Direct Write Access</h2><div class="Collapse Expand">
+    <p>When you write data to a file that has been opened in “append” mode, the current position automatically moves to the end of the file and the data is written there.  When you write to a file that has been opened in “write” mode, the file will be created.  If the file already exists, it will be truncated to zero bytes.</p>
+    <p>There is an “update” mode (<code>"r+"</code>) you can use to open the file if you want to both read and write without truncating the file.</p>
+    <p>The code below replaces 23 bytes, starting a the 12<sup>th</sup> byte of the file, with the characters <code>"Star Wars 4: A New Hope"</code> and then prints the entire contents of the file. Note that if the program did not call the seek method the second time, it would read starting at byte 35...</p>
+    <pre class="Code" data-echo="f04_ex2.py" data-title="1">with open("clues.txt", "r+", encoding="UTF-8") as text:
+    print("Original File:")
+    print(text.read())
+    text.seek(11)
+    text.write("Star Wars 4: A New Hope")
+    text.seek(0)
+    print("\nModified File:")
+    print(text.read())</pre>
 </div></section>
 
 <section class="Post" data-icon="ide">
 <h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
 <ol class="Assign">
-
+    <li>
+        <p>In the program <code>f04_calendar.py</code>, a student’s personal calendar is represented by a list of events. Each event is a dictionary with required <code>"date"</code> and <code>"description"</code> keys and optional <code>"time"</code> and <code>"endTime"</code> keys. The JSON format would be most suitable for saving the data, as long as the number of events is not too large. For a very large calendar, a fixed-byte format that allows direct access could be more useful. Assign eight bytes for each date (<code>20230131</code>), four bytes each for time and end time (<code>1130</code>) and 48 bytes for the description. Use four dots (or spaces or underscores) to indicate when the time or end time has been omitted.</p>
+        <p>Complete the function <code>saveEvent</code> to write a single event to the file using direct access. The last argument is the event index; for example, if <code>n = 0</code>, the event should overwrite the first event in the file. If <code>n = None</code> (the default), the event should be written at the end of the file. You will need to convert the event from a dictionary to the appropriate byte format before writing. The test program opens the file using <code>latin-1</code> encoding to avoid issues with multi-byte characters; an exception will occur if any data includes characters that cannot be encoded using <code>latin-1</code>.</p>
+        <p>After running the test program, the calendar file should look like this, with no end-of-line characters separating the records...</p>
+        <pre class="IO" data-echo="calendar.txt" data-title="1">20230131........Semester 2 Begins...............................
+2023020211301300Workout in Fitness Centre.......................
+20230209........No School - Teachers Convention.................</pre>
+        <p>Also complete the function <code>loadEvent</code> to read an event based on the requested index, and convert the characters back into a dictionary.</p>
+    </li>
 </ol>
 </div></section>
 

@@ -5,7 +5,7 @@
 </section>
 
 <section class="Post NoPrintIcon" data-feed="cs_new/start" data-title="Getting Started..." data-icon="python">
-    <p id="Local" class="Center" style="display:none;font-family:Inconsolata;font-size:450%;margin:28px auto;">bit.ly/sal24-25</p>
+    <p data-show="9999" class="Center" style="font-family:Inconsolata;font-size:450%;margin:28px auto;">bit.ly/sal24-25</p>
 </section>
 
 <section class="Post" data-icon="laptop.svg">
@@ -32,15 +32,14 @@
 
 <section class="Post" data-icon="laptop.svg">
     <h2 class="Collapse">Computing Science 20</h2><div class="Collapse">
-    <!-- <h3 class="Collapse">Essential Courses</h3><div class="Indent Collapse Expand"> -->
-    <p>If you have not yet earned credit for any of the <em>Computing Science 10</em> credits above, complete them first. Then work on the courses below in the order listed. You are expected to earn a minimum of five credits in this course.</p>
+    <p>If there are any of the <em>Computing Science 10</em> credits listed above that you have not yet earned credit for, complete them first. Then work on the courses below in the order listed. Do not redo any courses that you have already completed successfully. You are expected to earn a minimum of five credits in this course.</p>
     <ul>
         <li><a data-feed="$pp/home">CSE 2110: Procedural Programming 1</a></li>
         <li><a data-feed="$ds/home">CSE 2120: Data Structures 1</a></li>
         <li><a data-feed="$game/home">CSE 2910: CSE Project B (Game)</a></li>
         <!-- <li><a data-feed="$js/home">CSE 2210: Client-Side Scripting 3</a></li> -->
-        <li data-show="9999"><a data-feed="$fs/home">CSE 2130: Files &amp; File Structures</a></li>
-        <!-- <li data-show="9999"><a data-feed="$robo/home">CSE 1240 & 2240: Robotics Programming 1 &amp; 2</a></li> -->
+        <li><a data-feed="$fs/home">CSE 2130: Files &amp; File Structures</a></li>
+        <li data-show="9999"><a data-feed="$robo/home">CSE 1240 & 2240: Robotics Programming 1 &amp; 2</a></li>
         <!-- <li><a data-feed="$/home">CSE 2140: Second Language Programming 1</a></li> -->
     </ul>
     <p>You can continue to the <em>Computing Science 30</em> courses after completing all of the 20-level credits.</p>
@@ -91,12 +90,7 @@
     </p>
 </div></section>
 
-<script type="text/javascript" data-init="init">
-
-loadFeed.init = () => {
-    if (location.origin.substring(0, 17) == "http://localhost:")
-        $("#Local").show();
-}
+<script type="text/javascript">
 
 loadFeed.data = {
     title: "Computing Science",
