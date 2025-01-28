@@ -1,4 +1,4 @@
-SVG2.cache("p20/da/img/eqn.js", {
+SVG2.cache("p20/skill/img/eqn.js", {
 
 scatter: (sel) => {
     $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});

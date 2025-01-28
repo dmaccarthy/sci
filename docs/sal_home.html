@@ -7,16 +7,15 @@
 <script type="text/javascript">
 
 let urls = [
-    "https://dmaccarthy.github.io/sci",
+    "https://dmaccarthy.github.io/sci/#p20/home",
     "https://docs.google.com/spreadsheets/d/19dVpn9wEMfCw7H-m2Pj1WjgHIDtyz1GS9dLx8epx0sI/edit#gid=2144072199",
     "https://powerschool.eips.ca/teachers/home.html",
-    "https://drive.google.com/drive/folders/0B_gX0kaqRFXTMGo5Wnp1cW1IenM?resourcekey=0-swVZF0-62b8VBXsT1mZ2DA",
+    "https://drive.google.com/drive/folders/1F-hhJ794JD6sVxOpIPYMm5ZupZSDF1_u",
     "https://www.supersaas.com/schedule/Laptop_Carts/Laptop_Carts?view=week",
 ];
 
-console.log(urls);
-confirm("Open?");
-for (let i=1;i<urls.length;i++) {
+// console.log(urls);
+if (confirm("Open?")) for (let i=1;i<urls.length;i++) {
     window.open(urls[i]);
 }
 location.href = urls[0];

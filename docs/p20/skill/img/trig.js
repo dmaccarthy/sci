@@ -1,36 +1,38 @@
 SVG2.cache("p20/skill/img/trig.js", {
 
 pretest: (sel) => {
-    $(sel).attr({width: 602, height: 227, "data-aspect": "602/227"});
-    let svg = new SVG_Animation(sel, -1, 15, -1, 5, 1);
-    svg.grid([-1, 15, 1], [-1, 5, 1]);
-    svg.$.find(".Axis").removeClass("Axis");
+    let svg = new SVG2(sel, {scale: 37, lrbt: [-1, 15, -1, 5], grid: 1});
+    svg.$.find("g.Grid line.Axis").removeClass("Axis");
+
+    // PQR
     let r = vec2d(7, 35);
     let q = new RArray(r[0], 0);
     let l = 0.38;
-    let thin = svg.group().css({fill: "none", stroke: "#0065FE"});
-    let thick = svg.group().css({fill: "none", stroke: "#0065FE", "stroke-width": "2px"});
-    svg.poly([q.plus([0, l]), q.plus([-l, l]), q.plus([-l, 0])], 0, thin);
-    svg.poly([[0, 0], q, r], 1, thick);
-    svg.text("7.00", [2.5, 2.5]);
-    svg.text("35.0°", [1.5, 0.3]);
-    let g = svg.group().css({fill: "#0065FE"});
-    svg.text("P", [-0.5, 0], g);
-    svg.text("Q", [6.1, 0], g);
-    svg.text("R", [6.1, 4], g);
-    svg.final();
+    let text = svg.group().addClass("Text");
+    let blue = svg.group().css({fill: "none", stroke: "#0065fe", "stroke-width": "2px"});
+    let g = blue.group();
+    g.poly([[0, 0], q, r], 1);
+    g.poly([q.plus([0, l]), q.plus([-l, l]), q.plus([-l, 0])]).css({"stroke-width": "1px"});
+    svg.delay(text.group(), {recenter: [2.5, 2.5]}).text("7.00");
+    svg.delay(text.group(), {recenter: [1.5, 0.3]}).text("35.0°");
+    g = text.group().css({fill: "#0065fe"});
+    svg.delay(g.group(), {recenter: [-0.5, 0]}).text("P");
+    svg.delay(g.group(), {recenter: [6.1, 0]}).text("Q");
+    svg.delay(g.group(), {recenter: [6.1, 4]}).text("R");
 
-    svg = new SVG_Animation(sel, -10, 6, -5, 1, 1);
-    svg.$.find(".Axis").removeClass("Axis");
-    svg.poly([[0, -l], [l, -l], [l, 0]], 0, thin);
-    svg.poly([[0, 0], [5, 0], [0, -4]], 1, thick);
-    svg.text("5.00", [2.5, 0.3]);
-    svg.text("4.00", [-0.7, -2]);
-    g = svg.group().css({fill: "#0065FE"});
-    svg.text("A", [-0.5, -4], g);
-    svg.text("B", [5.6, 0], g);
-    svg.text("C", [-0.5, 0], g);
-    svg.final();
+    // ABC
+    text = svg.group().addClass("Text").config({shift: [9, 4]});
+    g = blue.group().config({shift: [9, 4]});
+    g.poly([[0, 0], [5, 0], [0, -4]], 1);
+    g.poly([[0, -l], [l, -l], [l, 0]]).css({"stroke-width": "1px"});
+    svg.delay(text.group(), {recenter: [2.5, 0.3]}).text("5.00");
+    svg.delay(text.group(), {recenter: [-0.7, -2]}).text("4.00");
+    g = text.group().css({fill: "#0065fe"});
+    svg.delay(g.group(), {recenter: [-0.5, -4]}).text("A");
+    svg.delay(g.group(), {recenter: [5.6, 0]}).text("B");
+    svg.delay(g.group(), {recenter: [-0.5, 0]}).text("C");
+
+    svg.addClass("NoClass").css_map("grid", "text").finalize();
 },
 
 similar: (sel) => {

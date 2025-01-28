@@ -69,13 +69,13 @@ loadFeed.sim = () => {
     svg.axis({y: [0, 105], ticks: attr});
     $($("#Sim .TickLabelX")[2]).append(" m");
     $($("#Sim .TickLabelY")[1]).append(" m");
-    svg.image("/p20/vec2d/img/castle.svg", [3.75*5.3416, 3.75*4.0855], [170.5, 3]).addClass("Castle");
+    svg.image("./p20/vec2d/img/castle.svg", [3.75*5.3416, 3.75*4.0855], [170.5, 3]).addClass("Castle");
     svg.final();
     svg.hi = uniform(19, 21);
     svg.vi = uniform(37, 42);
     let size = new RArray(336.6, 66.4).times(0.03);
     svg.ball = svg.circle(0.65, [0, 0]);
-    svg.cannon = svg.image("/p20/vec2d/img/cannon.svg", size, [0, 0]);
+    svg.cannon = svg.image("p20/vec2d/img/cannon.svg", size, [0, 0]);
     svg.circle(2.5, [0, 0]).addClass("Wheel");
     svg.platform = svg.poly([], 1).before(3);
     svg.clock = svg.text("", [190, 95]);

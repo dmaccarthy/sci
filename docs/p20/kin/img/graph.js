@@ -4,7 +4,7 @@ bike: (sel) => {
     let pts = [[0, -5], [1, -2], [2, 1], [3, 4], [4, 7]];
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -6, 8], margin: [54, 10, 10, 10]});
     svg.graph({grid: [0.5, 1], css: true,
-        x: {tick: [0, 4.1, 1], title: ["Time / s", [3.5, "8"]], shift: [0, "-24"]},
+        x: {tick: [0, 4.1, 1], title: ["Time / s", [3.5, "12"]], shift: [0, "-24"]},
         y: {tick: [-6, 8.1, 2], title: ["Position / m", "-36"], shift: ["-10", "-5"]},
         data: [
             {connect: [pts[0], pts[4]]},
@@ -14,103 +14,91 @@ bike: (sel) => {
     svg.$.find("g.LabelX text.Zero").remove();
 },
 
-dt: (sel) => { // Linear & parabolic motion graphs
-    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        margin: [0.09, 0.02, 0.02, 0.02],
-        grid: [[0, 10, 1], [0, 50, 5], 1],
-        x: ["Time / s&nbsp;", [">", 2], {}],
-        y: ["Position / m", [-0.5, ">"], {}],   
+dt: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 50], margin: [32, 2, 2, 2]});
+    svg.graph({grid: [1, 5],
+        x: {tick: [0, -1, 2], title: ["Time / s", [9, "12"]]},
+        y: {tick: [0, -1, 2], title: ["Position / m", "-16"]},
+        data: [
+            {connect: [[0, 5], [10, 20]]},
+            {connect: [[0, 10], [10, 50]]},
+            {connect: [[0, 40], [10, 5]]},
+            {connect: [[0, 28], [10, 28]]},
+            {locus: [(x) => x * (2 + x / 2), [0, Math.sqrt(104) - 2]]},
+            {locus: [(x) => 10 + x * (8 - x / 2), [0, 10]]},
+        ]
     });
-    svg.$.find(".TitleX, .TitleY").addClass("End");
-    let g = svg.group().addClass("Data");
-    svg.line([0, 5], [10, 20], g);
-    svg.line([0, 10], [10, 50], g).$.css({stroke: "red"});
-    svg.line([0, 40], [10, 5], g).$.css({stroke: "green"});
-    svg.line([0, 28], [10, 28], g).$.css({stroke: "cyan"});
-    svg.locus((t) => t * (2 + t / 2), [0, Math.sqrt(104) - 2], 0, 0, g).$.css({stroke: "gold"});
-    svg.locus((t) => 10 + t * (8 - t / 2), [0, 10], 0, 0, g).$.css({stroke: "violet"});
-    svg.final();
-
-    let vt = (n) => {
-        let e = svg.$.find("g.Data *");
-        if (n) {
-            e.hide();
-            $(e[n - 1]).fadeIn();
-        }
-        else e.fadeIn();
+    svg.$.find("g.LabelX text.Zero, g.Ticks").remove();
+    let g = svg.$.find("g.Series").css({fill: "none", "stroke-width": "3px"});
+    let lines = g.find("g.Locus");
+    let color = ["#0065fe", "red", "green", "cyan", "gold", "violet"];
+    for (let i=0;i<lines.length;i++) {
+        $(lines[i]).addClass(`Toggle${i}`).css({stroke: color[i]});
     }
+    svg.addClass("NoStyle").css_map("grid", "text");
+
+    let t = clickCycle.toggle;
     clickCycle(svg.element, 0,
-        () => {vt(0)},
-        () => {vt(1)},
-        () => {vt(2)},
-        () => {vt(3)},
-        () => {vt(4)},
-        () => {vt(5)},
-        () => {vt(6)}
+        () => {t(svg, true, 0, 1, 2, 3, 4, 5)},
+        () => {t(svg, false, 1, 2, 3, 4, 5)},
+        () => {t(svg, false, 0); t(svg, true, 1)},
+        () => {t(svg, false, 1); t(svg, true, 2)},
+        () => {t(svg, false, 2); t(svg, true, 3)},
+        () => {t(svg, false, 3); t(svg, true, 4)},
+        () => {t(svg, false, 4); t(svg, true, 5)},
     );
+
 },
 
-vt: (sel) => { // Area under a v-t graph
-    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 8, 0.5], [0, 28, 2], 1],
-        margin: [0.19, 0.02, 0.15, 0.05],
-        x: ["Time / s&nbsp;", [">", 1.5], {interval: 1, length: "8", fixed: 0, offset: [0, -2.8]}],
-        y: ["Velocity / (m/s)", [-1.2, "^"], {interval: 4, length: "8", fixed: 0, offset: [-0.3, 0]}],
+vt: (sel) => { // Motion of an skydiver v-t graph
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 28], margin: [56, 10, 26, 12]});
+    svg.graph({grid: [0.5, 2], css: true, appendAxes: 1,
+        x: {tick: [0, 8.1, 1], title: ["Time / s", [7, "10"]], shift: [0, "-22"]},
+        y: {tick: [0, 29, 4], title: ["Velocity / (m/s)", "-40"], shift: ["-10", "-4"]},
+        data: [{connect: [[0, 8], [4, 24], [8, 24]]}],
     });
-    svg.$.find(".TitleX").addClass("End");
-    svg.poly([[0, 8], [1, 12], [1, 0], [0, 0]], 1).addClass("Shade");
-    svg.poly([[2, 16], [1, 12], [1, 0], [2, 0]], 1).addClass("Shade");
-    svg.poly([[2, 16], [3, 20], [3, 0], [2, 0]], 1).addClass("Shade");
-    svg.poly([[4, 24], [3, 20], [3, 0], [4, 0]], 1).addClass("Shade");
-    svg.rect([1, 24], [4.5, 12]).addClass("Shade");
-    svg.rect([3, 24], [6.5, 12]).addClass("Shade");
-    svg.$.find(".Shade").hide();
-    svg.poly([[0, 8], [4, 24], [8, 24]]);
-    svg.final();
+    svg.$.find("g.LabelX text.Zero").remove();
+    let g = svg.group().css({stroke: "none", fill: "#0065fe", "fill-opacity": 0.3});
+    g.$.insertBefore(svg.$.find("g.Grid line.Axis")[0]);
+    g.poly([[0, 8], [1, 12], [1, 0], [0, 0]], 1).addClass("Toggle0");
+    g.poly([[2, 16], [1, 12], [1, 0], [2, 0]], 1).addClass("Toggle1");
+    g.poly([[2, 16], [3, 20], [3, 0], [2, 0]], 1).addClass("Toggle2");
+    g.poly([[4, 24], [3, 20], [3, 0], [4, 0]], 1).addClass("Toggle3");
+    g.rect([1, 24], [4.5, 12]).addClass("Toggle4");
+    g.rect([3, 24], [6.5, 12]).addClass("Toggle5");
+    g.$.find("*").hide();
 
-    let shade = (n, m) => {
-        if (m == null) m = n;
-        let s = svg.$.find(".Shade").hide();
-        while (n <= m) $(s[n++]).fadeIn();
-    }
+    let t = clickCycle.toggle;
     clickCycle(svg.element, 0,
-        () => {shade(0, -1)},
-        () => {shade(0, 3)},
-        () => {shade(0)},
-        () => {shade(1)},
-        () => {shade(2)},
-        () => {shade(3)},
-        () => {shade(4, 5)},
-        () => {shade(4)},
+        () => {t(svg, false, 0, 1, 2, 3, 4, 5)},
+        () => {t(svg, true, 0, 1, 2, 3)},
+        () => {t(svg, false, 1, 2, 3)},
+        () => {t(svg, false, 0); t(svg, true, 1)},
+        () => {t(svg, false, 1); t(svg, true, 2)},
+        () => {t(svg, false, 2); t(svg, true, 3)},
+        () => {t(svg, false, 3); t(svg, true, 4, 5)},
+        () => {t(svg, false, 5)},
     );
+
 },
 
 elevator: (sel) => { // Motion of an elevator d-t graph
-    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 10, 1], [0, 50, 5], 1],
-        margin: [0.18, 0.04, 0.15, 0.05],
-        x: ["Time / s&nbsp;", [">", 2], {interval: 2, length: "8", fixed: 0, offset: [0, -4.5]}],
-        y: ["Position / m", ["-48", ">"], {interval: 10, length: "8", fixed: 0, offset: [-0.3, 0]}],        
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 50], margin: [56, 10, 28, 12]});
+    svg.graph({grid: [1, 5], css: true,
+        x: {tick: [0, 11, 2], title: ["Time / s", [9, "12"]], shift: [0, "-22"]},
+        y: {tick: [0, 51, 10], title: ["Position / m", "-40"], shift: ["-10", "-4"]},
+        data: [{locus: [(x) => x <= 5 ? x * x : 50 - (10 - x) * (10 - x), [0, 10]]}],
     });
-    svg.$.find(".TitleX, .TitleY").addClass("End");
-    svg.locus((t) => t <= 5 ? t * t : 50 - (10 - t) * (10 - t), [0, 10]);
-    svg.final();
 },
 
-skydive: (sel) => { // Motion of an elevator d-t graph
-    $(sel).attr({width:480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 15, 3], [-50, 0, 5], 1],
-        margin: [0.2, 0.05, 0.05, 0.12],
-        x: ["Time / s&nbsp;", [">", 3], {interval: 3, length: "8", fixed: 0, offset: [0, -4.5], omitZero: 1}],
-        y: ["Velocity / (m/s)", [-2.2, "^"], {interval: 10, length: "8", fixed: 0, offset: [-0.6, 0]}], 
+skydive: (sel) => { // Motion of an skydiver v-t graph
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 15, -50, 0], margin: [60, 12, 10, 32]});
+    svg.graph({grid: [1, 5], css: true,
+        x: {tick: [0, 16, 3], title: ["Time / s", [13.5, "12"]], shift: [0, "-22"]},
+        y: {tick: [-50, 1, 10], title: ["Velocity / (m/s)", "-44"], shift: ["-10", "-4"]},
+        data: [{locus: [(x) => 50 * (Math.exp(-9.81 * x / 50) - 1), [0, 15]]}],
     });
-    svg.$.find(".TitleX").addClass("End");
-    svg.locus((t) => 50 * (Math.exp(-9.81 * t / 50) - 1), [0, 15]);
-    svg.final();
-}
+    svg.$.find("g.LabelX text.Zero").remove();
+},
 
 });

@@ -34,4 +34,32 @@ pe: (sel) => { // Photoelectric Effect graph
     // svg.save();
 },
 
+vt: (sel) => {
+    let eq = quadRegXY([0, 2, 4], [8, 12, 0]).fn;
+    let pts = [...range(1, 3.01, 0.1)];
+    pts = zip(pts, [...fn_eval(eq, pts)]);
+    pts = pts.concat([[3, 0], [1, 0]]);
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, 0, 14], margin: [52, 12, 50, 12]});
+    svg.graph({grid: [0.5, 1], css: true,
+        x: {tick: [0, 4.1, 1], title: ["Time / s", [2, "-44"]], shift: [0, "-22"]},
+        y: {tick: [0, 15, 2], title: ["Velocity / (m/s)", "-36"], shift: ["-10", "-4"]},
+        data: [{locus: [eq, [0, 4]]}],
+    });
+    svg.poly(pts, 0).css({fill: "#0065fe", "fill-opacity": 0.3}).insertBefore(svg.$.find("g.Series"));
+    // svg.$.find("g.LabelX text.Zero").remove();
+},
+
+vt1: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 20], margin: [60, 12, 50, 12]});
+    svg.graph({grid: [1, 2], css: true,
+        x: {tick: [0, 10.1, 1], title: ["Time / s", [5, "-44"]], shift: [0, "-22"]},
+        y: {tick: [0, 21, 2], title: ["Velocity / (m/s)", "-44"], shift: ["-10", "-4"]},
+        data: [
+            {connect: [[0, 4], [10, 19]]},
+            {plot: [[[4, 10]], "5"]}
+        ],
+    });
+},
+
+
 });

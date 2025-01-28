@@ -1,105 +1,89 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Model Equations</h1>
 </section>
 
-<!-- <section class="Slide Present">
-    <div class="Assign"><p>Individually, complete the <i>Review</i> section of the <i>?</i> handout.</p></div>
-    <div class="Assign" data-cue="+"><p>In a small group, complete the <i>Activity</i> section of the <i>?</i> handout.</p></div>
-</section> -->
-
 <section class="Slide"><h3>Linear Relations</h3>
 <p>As you learned in Math 10, all <em>linear</em> functions can be written in the form:</p>
-<p class="TeX">y=kx+b</p>
-<ul data-cue="+">
+<p data-cue="prev" class="TeX">y=kx+b</p>
+<ul>
     <li><span class="TeX">x</span> refers to the <em>manipulated</em> variable.</li>
-    <li data-cue="+"><span class="TeX">y</span> refers to the <em>responding</em> variable.</li>
-    <li data-cue="+"><span class="TeX">k</span> refers to the <em>slope</em> of the relationship.</li>
-    <li data-cue="+"><span class="TeX">b</span> refers to the <em><span class="TeX">y</span>-intercept</em>.</li>
+    <li><span class="TeX">y</span> refers to the <em>responding</em> variable.</li>
+    <li><span class="TeX">k</span> refers to the <em>slope</em> of the relationship.</li>
+    <li><span class="TeX">b</span> refers to the <em><span class="TeX">y</span>-intercept</em>.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Slope</h3>
-<p class="Caption">Output of a 12-Volt Battery</p>
-<p class="Center"><svg class="Graph s20" data-svg2="p20/da/img/eqn.js#scatter"></svg></p>
-<div data-cue="+">
+<p data-cue="none" class="Caption">Output of a 12-Volt Battery</p>
+<p data-cue="none" class="Center"><svg class="Graph s20" data-svg2="p20/skill/img/eqn.js#scatter"></svg></p>
+<div>
     <p>Slope can be calculated as “rise” divided by “run”:</p>
-    <p class="TeX">k = \frac{y_2 - y_1}{x_2 - x_1}</p>
+    <p data-cue="prev" class="TeX">k = \frac{y_2 - y_1}{x_2 - x_1}</p>
 </div>
-<ul data-cue="+">
+<ul>
     <li>In principle, <span class="TeX">(x_1, y_1)</span> and <span class="TeX">(x_2, y_2)</span> can be any two points on the best-fit line.</li>
-    <li data-cue="+">Do <b>not</b> use data points that are above or below the line!</li>
-    <li data-cue="+">In practice, your calculation will be most accurate if you choose points that are as far apart as possible.</li>
+    <li>Do <b>not</b> use data points that are above or below the line!</li>
+    <li>In practice, your calculation will be most accurate if you choose points that are as far apart as possible.</li>
 </ul>
-<table data-cue="+" class="Two Center">
+<table class="Two Center">
     <tr><td>Current<br/><span class="TeX">I</span> / Amperes</td><td>Voltage<br/><span class="TeX">\mathcal{E}</span> / Volts</td></tr>
     <tr><td>0.0</td><td>11.4</td></tr>
     <tr><td>5.0</td><td>2.0</td></tr>
 </table>
-<p data-cue="+" class="TeX">k = \rm{\frac{(2.0 - 11.4)\ V}{(5.0 - 0.0)\ A} = \frac{-9.4\ V}{5.0\ A} = -1.9\ V/A}</p>
+<p class="TeX">k = \rm{\frac{(2.0 - 11.4)\ V}{(5.0 - 0.0)\ A} = \frac{-9.4\ V}{5.0\ A} = -1.9\ V/A}</p>
 </section>
 
 <section class="Slide"><h3><i>y</i>-Intercept</h3>
-<p>The <em class="Defn"><span class="TeX">y</span>-intercept</em> is the value where the line crosses the <span class="TeX">y</span>-axis.</p>
-<ul data-cue="+">
+<p data-cue="none">The <em class="Defn"><span class="TeX">y</span>-intercept</em> is the value where the line crosses the <span class="TeX">y</span>-axis.</p>
+<ul>
     <li>In this example, we can see from the graph that the intercept is 11.4 volts.</li>
-    <li data-cue="+">Sometimes, the intercept may not be visible on the graph.</li>
-    <li data-cue="+">
+    <li>Sometimes, the intercept may not be visible on the graph.</li>
+    <li>
         You can <em>calculate</em> the intercept (<span class="TeX">b</span>) by rearranging the equation:
         <p class="TeX">y = kx + b</p>
-        <p data-cue="+" class="TeX">y - kx = b</p>
-        <p data-cue="+" class="TeX">b = \rm{2.0\ V - (-1.88\ V/A)\ 5.0\ A = 11.4\ V}</p>
+        <p class="TeX">y - kx = b</p>
+        <p class="TeX">b = \rm{2.0\ V - (-1.880\ V/A)\ 5.0\ A = 11.4\ V}</p>
     </li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Model Equation</h3>
-<p>Once you know the slope and the <span class="TeX">y</span>-intercept, you can write the equation in the form: <span class="TeX NoWrap">y = kx+b</span>.</p>
-<ul data-cue="+">
+<p data-cue="none">Once you know the slope and the <span class="TeX">y</span>-intercept, you can write the equation in the form: <span class="TeX NoWrap">y = kx+b</span>.</p>
+<ul>
     <li>Replace <span class="TeX">x</span> and <span class="TeX">y</span> by the actual variable names or symbols.</li>
-    <li data-cue="+">Replace <span class="TeX">k</span> and <span class="TeX">b</span> by the calculated values, including units.</li>
+    <li>Replace <span class="TeX">k</span> and <span class="TeX">b</span> by the calculated values, including units.</li>
 </ul>
-<p data-cue="+" class="TeX">\mathcal{E} = {\rm (-1.9\ V/A)} I + {\rm 11.4\ V}</p>
-<p data-cue="+">We can use the equation to make <em>predictions</em> about the data.</p>
+<p class="TeX">\mathcal{E} = {\rm (-1.9\ V/A)} I + {\rm 11.4\ V}</p>
+<p>We can use the equation to make <em>predictions</em> about the data.</p>
 </section>
 
 <section class="Slide"><h3>Example 1</h3>
-<p class="Blue">Predict the voltage when the current is 3.5 A.</p>
-<p data-cue="+" class="TeX">\mathcal{E} = {\rm (-1.9\ V/A)} I + {\rm 11.4\ V}</p>
-<p data-cue="+" class="TeX">\mathcal{E} = \rm{(-1.9\ V/A)\ {\color{red} 3.5\ A} + 11.4\ V = 4.8\ V}</p>
-<ul data-cue="+"><li>A prediction <em>within</em> the range of data is called <em class="Defn">interpolation</em>.</li></ul>
+<p data-cue="none" class="Blue">Predict the voltage when the current is 3.5 A.</p>
+<p class="TeX">\mathcal{E} = {\rm (-1.9\ V/A)} I + {\rm 11.4\ V}</p>
+<p class="TeX">\mathcal{E} = \rm{(-1.9\ V/A)\ {\color{red} 3.5\ A} + 11.4\ V = 4.8\ V}</p>
+<ul><li>A prediction <em>within</em> the range of data is called <em class="Defn">interpolation</em>.</li></ul>
 </section>
 
 <section class="Slide"><h3>Example 2</h3>
-<p class="Blue">What current would be needed for the voltage to reach zero?</p>
-<p data-cue="+" class="TeX">\mathcal{E} = {\rm (-1.9\ V/A)} I + \rm{11.4\ V}</p>
-<p data-cue="+" class="TeX">\mathcal{E} - {\rm 11.4\ V} = {\rm (-1.9\ V/A)} I</p>
-<p data-cue="+" class="TeX">\frac{\mathcal{E} - {\rm 11.4\ V}}{\rm -1.9\ V/A} = I</p>
-<p data-cue="+" class="TeX">I = \rm{\frac{{\color{red} 0.0\ V} - 11.4\ V}{-1.9\ V/A} = 6.0\ A}</p>
-<ul data-cue="+"><li>A prediction <em>outside</em> the range of data is called <em class="Defn">extrapolation</em>.</li></ul>
+<p data-cue="none" class="Blue">What current would be needed for the voltage to reach zero?</p>
+<p class="TeX">\mathcal{E} = {\rm (-1.9\ V/A)} I + \rm{11.4\ V}</p>
+<p class="TeX">\mathcal{E} - {\rm 11.4\ V} = {\rm (-1.9\ V/A)} I</p>
+<p class="TeX">\frac{\mathcal{E} - {\rm 11.4\ V}}{\rm -1.9\ V/A} = I</p>
+<p class="TeX">I = \rm{\frac{{\color{red} 0.0\ V} - 11.4\ V}{-1.9\ V/A} = 6.0\ A}</p>
+<ul><li>A prediction <em>outside</em> the range of data is called <em class="Defn">extrapolation</em>.</li></ul>
 </section>
 
-<section class="Slide Present">
-<div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Model Equations</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
-    <p data-qr="p20/da/eqn"></p>
-</div>
-</section>
+<section class="Slide Present"><div class="Assign">
+<p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Model Equations</i> handout.</p>
+<ul data-cue="none" class="Var">assign</ul>
+</div></section>
 
-</div></div></section>
+</div></section>
 
-<!-- <section class="Post" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="">Assignment D.x</button>
-    </p>
-</div></section> -->
-
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
 <ol>
@@ -207,7 +191,7 @@ We are assuming that the weight loss continues at the same rate until at least d
     Physics students found that when red light (<span class="TeX">f</span> = 4.69 × 10<sup>14</sup> Hz) is used, a particular photocell produces a voltage of 0.741 volts, and when blue light (<span class="TeX">f</span> = 6.38 × 10<sup>14</sup> Hz) is used the photocell voltage is 1.44 volts.
     Hz stands for hertz, which is the SI unit of frequency.
     <ol type="a">
-        <li>Find the values of <span class="TeX">h</span> and <span class="TeX">W</span> for this photocell.</li>
+        <li>Calculate the slope and <span class="NoWrap"><span class="TeX">y</span>-intercept</span> between these two points to determine the values of the constants <span class="TeX">h</span> and <span class="TeX">W</span> for this photocell.</li>
         <div class="Answer">
             <p>The slope is <span class="TeX">h</span>:</p>
             <p class="TeX">h = \frac{\Delta\mathcal{E}}{\Delta f} = {\rm \frac{(1.44-0.741)\ V}{(6.38-4.69)\times 10^{14}\ Hz} = 4.13\times 10^{-15}\ V/Hz}</p>
@@ -224,7 +208,7 @@ We are assuming that the weight loss continues at the same rate until at least d
 \\ &= {\rm 4.13\times 10^{-15}\ V/Hz\cdot 7.50\times 10^{14}\ Hz - 1.20\ V}
 \\ &= {\rm 1.90\ V}\end{align}</p>
 
-        <li>Predict the frequency needed to obtain a voltage of 3.00 volts.</li>
+        <li>Predict the frequency needed for a voltage of 3.00 volts.</li>
         <p class="TeX Answer">\begin{align}\mathcal{E} + W &= hf
 \\[10pt] f &= \frac{\mathcal{E} + W}{h}
 \\[10pt] &= {\rm \frac{(3.00 + 1.20)\ V}{4.13\times 10^{-15}\ V/Hz}}
@@ -234,7 +218,7 @@ We are assuming that the weight loss continues at the same rate until at least d
     <li>Students collected data for a mug of hot chocolate cooling over time. They determined that the relationship between temperature (<span class="TeX">T</span>) and time (<span class="TeX">t</span>) was best modelled by the <em>non-linear</em> relationship:
     <p class="TeX">T = 21^\circ{\rm C} + 47^\circ{\rm C} \left(\frac{1}{2}\right)^{t/({\rm 23\ min})}</p>
     <ol type="a">
-        <li>Predict the temperature of the hot chocolate after 5.0 minutes.</li>
+        <li>Predict the temperature after 5.0 minutes.</li>
         <div class="Answer TeX Display">T = 21^\circ{\rm C} + 47^\circ{\rm C} \left(\frac{1}{2}\right)^{5.0/23} = {\rm 61^\circ C}</div>
     
         <li>Predict the time it will take for the hot chocolate to reach a temperature of 50° C. Unless you’ve studied logarithms (Math 30-1) you will not be able to solve this algebraically, but you should be able to solve it graphically using a graphing calculator or software.</li>
@@ -245,7 +229,7 @@ We are assuming that the weight loss continues at the same rate until at least d
 </ol>
 </div></div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>What do we mean by a <em class="Defn">model equation</em> for the data collected during an experiment?</li>
@@ -263,11 +247,18 @@ We are assuming that the weight loss continues at the same rate until at least d
 </ol>
 </div></section>
 
+<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid"><button data-icon="gdrv" data-gdrv="1onLKpmNrp18wnFmupl3oqmrl1eSbJMkK">Assignment</button></p>
+</div></section>
+
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}0.6 — Model Equations`,
-    answerDate: "2024.4.17.16",
+    showDate: "2025.2.11",
+    answerDate: "2025.2.12",
     num: "0.6",
     up: "p20/home",
     prev: "p20/skill/scatter",

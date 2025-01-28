@@ -628,7 +628,9 @@ $(window).on("keydown", (ev) => {
         let k = ev.key.toLowerCase();
         if (k == "n") window.open(location.href);
         else if (k == "t") teacher(teacher.mode ? 0 : 2);
-        else if (k == "p") assign();
+        else if (k == "p") {
+            if (teacher.mode) assign();
+        }
     }
 });
 
