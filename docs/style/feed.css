@@ -114,7 +114,6 @@ button[data-icon] > p {
 
 .Link.Red {color: red}
 #TopTitle.FeedLink:before {content: "‹ "}
-/* #LessonNotes  */
 #Title {display: none}
 
 .Chevron {
@@ -172,6 +171,15 @@ p.EchoControl > span.CodeTitle {
     font-style: italic;
     padding: 0.25em;
     vertical-align: middle;
+}
+
+table.Calendar {
+
+min-width: 75%;
+
+th:first-child {width: 7em}
+td:first-child {text-align: center}
+
 }
 
 @media (min-width: 780px) {

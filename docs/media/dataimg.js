@@ -1,7 +1,26 @@
+function calendar_icon() {
+    let svg = SVG2.create({scale: 64, grid: 0, lrbt: [-1, 1, -1, 1]});
+    svg.rect([2, 0.4], [0, 0.8]).css({fill: "#0065fe", stroke: "none"});
+    svg.poly([[-1 , 1], [-1, -1], [1, -1], [1, 1]]).css({fill: "none", stroke: "#0065fe", "stroke-width": "8px"});
+    for (x of [1, -1]) svg.circle("7", [0.48 * x, 0.8]).css({stroke: "none", fill: "white"});
+    svg.group().addClass("Text").text(new Date().getDate(), [0, -0.25]);
+    svg.$.addClass("NoClass").find("text").css({
+        "dominant-baseline": "middle",
+        "text-anchor": "middle",
+        "font-size": "80px",
+        "font-family": SVG2.sans,
+        "font-weight": "bold",
+        fill: "red",
+    });
+    return svg.element.outerHTML;
+}
+
+
 let data_images = {
 
 // Convert common SVG images to data URLs to reduce network usage!
 
+today: calendar_icon(),
 chevron_d: `<svg width="100" height="100" viewBox="-5 5 144 144" xmlns="http://www.w3.org/2000/svg"><style>polygon {fill: #0065fe; stroke: #0065fe; stroke-width: 3; stroke-linejoin: round}</style><polygon points="98.1 50.0 50.0 1.9 35.6 16.3 69.2 50.0 35.6 83.7 50.0 98.1" transform="rotate(90 50 50)"></polygon></svg>`,
 chevron_r: `<svg width="100" height="100" viewBox="25 -15 144 144" xmlns="http://www.w3.org/2000/svg"><style>polygon {fill: #0065fe; stroke: #0065fe; stroke-width: 3; stroke-linejoin: round}</style><polygon points="98.1 50.0 50.0 1.9 35.6 16.3 69.2 50.0 35.6 83.7 50.0 98.1"></polygon></svg>`,
 copy: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><style>* {stroke: #0065fe; stroke-width: 3; stroke-linejoin: round} polyline {fill: white} .Corner, rect {fill: #0065fe; fill-opacity: 0.2}</style><rect x="2" y="2" width="60" height="80"></rect><polyline points="77,98 37,98 37,18 97,18 97,78 77,98 77,78"></polyline><line x1="42" y1="50" x2="90" y2="50"></line><line x1="42" y1="35" x2="90" y2="35"></line><line x1="42" y1="65" x2="90" y2="65"></line><line x1="42" y1="80" x2="77" y2="80"></line><polyline class="Corner" points="77,98 77,78 97,78 77,98"></polyline></svg>`,

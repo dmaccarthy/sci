@@ -1,0 +1,26 @@
+<section class="Post" data-icon="$today">
+<h2>Class Calendar</h2>
+<table class="Calendar">
+    <thead><tr><th>Date</th><th>Activity</th></tr></thead>
+    <tbody id="Cal"></tbody>
+</table>
+<p class="Center"><input id="ShowOld" type="checkbox"/> <label for="ShowOld">Show Past Events</label></p>
+</section>
+
+<script type="text/javascript" data-ini="init">
+
+loadFeed.data = {
+    title: "Physics 20",
+    folder: "p20/",
+    up: "p20/home",
+    cal: [
+        ["2025.1.30", "@Experiment Design", {"data-feed": "p20/skill/expDes"}],
+        ["2025.1.31", "Lab: Self-Designed Experiment", {"data-feed": "p20/skill/expDes"}],
+        ["2025.2.3", "@Algebra", {"data-feed": "p20/skill/algebra"}],
+        ["2025.2.4", "@Scientific Notation", {"data-feed": "p20/skill/sciNot"}],
+        ["2025.2.5", "@SI Units", {"data-feed": "p20/skill/si"}],
+        ["2025.2.27", "Quiz: One-Dimensional Motion", 0, {"font-weight": "bold"}],
+    ]
+}
+
+</script>

@@ -179,71 +179,13 @@
     </p>
 </div></section>
 
-<script type="text/javascript" data-init="today">
-
-loadFeed.today = () => {
-    if (qsArgs("today")) {
-        history.replaceState({}, "", feedURL(loadFeed.current));
-        loadFeed("_today_");
-    }
-}
+<script type="text/javascript">
 
 loadFeed.data = {
     title: "Physics 20",
     folder: "p20/",
     up: "home",
-    today: [
-       ["2025", "$skill/expDes"],
-       ["2025.2.3", "$skill/algebra"],
-       ["2025.2.4", "$skill/sciNot"],
-       ["2025.2.5", "$skill/si"],
-       ["2025.2.10", "$skill/scatter"],
-       ["2025.2.11", "$skill/eqn"],
-       ["2025.2.12", "$skill/trig"],
-       ["2025.2.13", "$kin/displ"],
-       ["2025.2.18", "$kin/vel"],
-       ["2025.2.20", "$kin/graph"],
-       ["2025.2.21", "$kin/acc"],
-       ["2025.2.25", "$kin/uam"],
-    //    ["2026.2.5", "$energy/mech"],
-    //    ["2026.2.9", "$energy/cons"],
-    //    ["2026.2.10", "$energy/sys"],
-    //    ["2026.2.12", "$energy/work"],
-    //    ["2026.2.15", "$energy/we"],
-    //    ["2026.2.16", "$energy/power"],
-    //    ["2026.2.28", "$vec2d/mag"],
-    //    ["2026.2.4", "$vec2d/diag"],
-    //    ["2026.2.5", "$vec2d/polar"],
-    //    ["2026.2.7", "$vec2d/arith"],
-    //    ["2026.2.8", "$vec2d/proj"],
-    //    ["2026.2.18", "$dyn/n2"],
-    //    ["2026.2.19", "$dyn/fbd"],
-    //    ["2026.2.20", "$dyn/n3"],
-    //    ["2026.2.21", "$dyn/weight"],
-    //    ["2026.2.1", "$dyn/fric"],
-    //    ["2026.2.4", "$dyn/adv"],
-    //    ["2026.2.17", "$da/eqn"],
-    //    ["2026.2.18", "$da/regr"],
-    //    ["2026.2.22", "$da/pwr"],
-    //    ["2026.2.24", "$circ/ucm"],
-    //    ["2026.2.25", "$circ/ac"],
-    //    ["2026.2.29", "$circ/appWt"],
-    //    ["2026.2.30", "$circ/kep"],
-    //    ["2026.2.2", "$grav/ugrav"],
-    //    ["2026.2.7", "$grav/cav"],
-    //    ["2026.2.10", "$grav/field"],
-    //    ["2026.2.13", "$grav/orbit"],
-    //    ["2026.2.14", "$shm/eqm"],
-    //    ["2026.2.24", "$shm/shm"],
-    //    ["2026.2.27", "$shm/T"],
-    //    ["2026.2.29", "$shm/pend"],
-    //    ["2026.2.30", "$shm/E"],
-    //    ["2026.2.3", "$shm/res"],
-    //    ["2026.2.5", "$wave/harm"],
-    //    ["2026.2.6", "$wave/dopp"],
-    //    ["2026.2.7", "$wave/beat"],
-    //    ["2026.2.10", "$wave/stand"],
-    ],
+    today: true,
 }
 
 </script>

@@ -16,11 +16,6 @@
 <link rel="stylesheet" href="./style/svg2.css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.1/lib/browser/math.min.js"></script> -->
-<script type="text/javascript" src="./media/dataimg.js?v=1"></script>
-<script type="text/javascript" src="./script/feed.js?_v=5"></script>
-<!-- <script type="text/javascript" src="./src/min/2024-11-22.js"></script>
-https://jscompress.com -->
 <script type="text/javascript" src="./src/util.js?v=5"></script>
 <script type="text/javascript" src="./src/bdata.js"></script>
 <script type="text/javascript" src="./src/math.js?_v=3"></script>
@@ -29,6 +24,8 @@ https://jscompress.com -->
 <script type="text/javascript" src="./script/phys.js?_v=1"></script>
 <script type="text/javascript" src="./src/svg_anim.js?_v=2"></script>
 <script type="text/javascript" src="./src/applet.js?_v=2"></script>
+<script type="text/javascript" src="./media/dataimg.js?v=1"></script>
+<script type="text/javascript" src="./script/feed.js?_v=5"></script>
 <style type="text/css">
 
 #Top, #Main, #Copy {display:none}
@@ -69,20 +66,7 @@ let svgTrack = () => {
 <nav id="Top">
 <span id="TopTitle">Mr. Mac’s Website</span>
 <span id="Buttons">
-    <a data-id="today" title="Click to open the current lesson">
-    <svg id="TodayIcon" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-    <style>
-    #TodayIcon * {fill: none; stroke: #0065fe; stroke-width: 5}
-    #TodayIcon rect {fill: #0065fe}
-    #TodayIcon circle {fill: white; stroke: none}
-    #TodayIcon text {stroke-width: 1; fill: red; stroke: red; text-anchor: middle;
-        dominant-baseline: middle; font-size: 400%}
-    </style>
-    <polyline points="2 2 2 126 126 126 126 2"></polyline>
-    <rect x="2" y="2" width="124" height="22"></rect>
-    <circle cx="36" cy="13" r="7"></circle><circle cx="92" cy="13" r="7"></circle>
-    <text id="DateToday" x="64" y="84"></text>
-    </svg></a>
+    <a data-id="today" title="Click to open the class calendar"><img data-src="$today"/></a>
     <a data-id="prev" title="Click to go to the previous lesson"><img src="./media/prev.svg"/></a>
     <a data-id="next" title="Click to go to the next lesson"><img src="./media/next.svg"/></a>
 </span>

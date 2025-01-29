@@ -32,17 +32,17 @@ function loadFeed(feed, noHist) {
     if (feed == null) feed = loadFeed.current;
     else if (typeof(feed) != "string") {
         let action = $(feed).attr("data-id").toLowerCase();
-        action = action == "today" ? "_today_" : loadFeed.data[action];
+        action = action == "today" ? loadFeed.current.split("/")[0] + "/cal" : loadFeed.data[action];
         if (action) feed = action;
         else return;
     }
-    if (feed == "_today_") {
-        let s = loadFeed.data.today;
-        for (let i=0;i<s.length;i++) {
-            if (isAfter(s[i][0])) feed = s[i][1];
-            else i = s.length;
-        }
-    }
+    // if (feed == "_today_") {
+    //     let s = loadFeed.data.today;
+    //     for (let i=0;i<s.length;i++) {
+    //         if (isAfter(s[i][0])) feed = s[i][1];
+    //         else i = s.length;
+    //     }
+    // }
     if (loadFeed.data.folder) feed = feed.replace("$", loadFeed.data.folder);
     loadFeed.opener = loadFeed.current;
     if (loadFeed.cache[feed]) onFeedLoaded(feed, true, noHist);
@@ -82,7 +82,7 @@ function mediaURL(key) {
 /** Construct a URL for requested media **/
     if (key.indexOf("/") != -1) return key;
     if (key.slice(0, 4) == "http") return key;
-    if (key.charAt(0) == "$") return data_images[key.substr(1)];
+    if (key.charAt(0) == "$") return data_images[key.substring(1)];
     let url = mediaURL.urls[key];
     let dot = key.indexOf(".") > -1;
     return url ? url : `./media/${key}` + (dot ? "" : ".png");
@@ -114,6 +114,40 @@ mediaURL.urls = {
     slides: data_images.slides,
     video: "./media/video.svg",
     correct: data_images.correct,
+}
+
+function calendar(cal) {
+/** Draw the course calendar **/
+    if (!cal) return;
+    let today = new Date();
+    let isToday = (d) => {
+        d = new Date(d).toString();
+        let t = new Date(today).toString();
+        return d.substring(0, 15) == t.substring(0, 15);
+    }
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let tb = $("table.Calendar");
+    for (let ev of cal) {
+        let [date, text, attr, css] = ev;
+        if (text.charAt(0) == "@") text = "Lesson: " + text.substring(1);
+        let tr = $("<tr>").appendTo(tb);
+        if (isAfter(date) && !isToday(date)) tr.hide().addClass("PastDue");
+        let [w, m, d] = date.split(".");
+        m = months[parseInt(m) - 1];
+        w = days[new Date(date).getDay()];
+        $("<td>").html(`${w}, ${m} ${d}`).appendTo(tr);
+        if (attr) {
+            text = $("<a>").html(text).attr(attr);
+            // if (attr.href) {}
+        }
+        $("<td>").html(text).css(css ? css : {}).appendTo(tr);
+    }
+    $("#ShowOld").on("change", (ev) => {
+        let tr = $("table.Calendar tr.PastDue");
+        if (ev.currentTarget.checked) tr.show();
+        else tr.hide();
+    })[0].checked = false;
 }
 
 function apply(e, f) {
@@ -153,6 +187,7 @@ function onFeedLoaded(feed, e, noHist) {
     let a, title, i;
     $("#Main").css("visibility", "hidden");
     clearFeed().prepend(e);
+    calendar(loadFeed.data.cal);
     if (!teacher.mode) {
         apply("[data-answers]", (ei) => {
             let d = ei.attr("data-answers");
@@ -636,7 +671,6 @@ $(window).on("keydown", (ev) => {
 
 $(() => {
 /** Initialize page **/
-    $("#DateToday").html(new Date().getDate());
     teacher(null, true);
     loadHash(true);
     document.getElementById("TopTitle").addEventListener("click", goUp);
