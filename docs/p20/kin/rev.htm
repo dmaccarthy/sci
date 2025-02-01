@@ -69,12 +69,14 @@
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
-    title: `${siteData.lesson}One-Dimensional Motion Review`,
+    title: `One-Dimensional Motion Review`,
     num: "1.12",
     up: "p20/home",
-    prev: ["p20/kin/uam", "p20/da/rev"][clickLink.course],
-    next: ["p20/vec2d/mag", "p20/vec2d/rev"][clickLink.course],
+    prev: ["p20/kin/uam", "p20/skill/rev"][tmp],
+    next: ["p20/energy/mech", "p20/energy/rev"][tmp],
 }
 
 </script>
