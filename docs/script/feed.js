@@ -22,7 +22,6 @@ function assign() {
     $("section:not([data-answers])").remove();
     $("span.Action, img.Icon, img.Chevron").remove();
     $("div.Collapse").addClass("Expand").show();
-    // navigator.clipboard.writeText($("body").text());
 }
 
 function loadFeed(feed, noHist) {
@@ -36,13 +35,6 @@ function loadFeed(feed, noHist) {
         if (action) feed = action;
         else return;
     }
-    // if (feed == "_today_") {
-    //     let s = loadFeed.data.today;
-    //     for (let i=0;i<s.length;i++) {
-    //         if (isAfter(s[i][0])) feed = s[i][1];
-    //         else i = s.length;
-    //     }
-    // }
     if (loadFeed.data.folder) feed = feed.replace("$", loadFeed.data.folder);
     loadFeed.opener = loadFeed.current;
     if (loadFeed.cache[feed]) onFeedLoaded(feed, true, noHist);
@@ -422,19 +414,10 @@ function clickLink(ev) {
     let n = url.length;
     if (href.slice(0, n) == url) {
         let feed = href.slice(n + 1);
-        // if (a.attr("data-course")) clickLink.course = 1;
-        // else {
-        //     let f = feed.split("/");
-        //     if (f[f.length - 1] == "rev") clickLink.course = 0;
-        // }
-        // localStorage.setItem("clickLink.course", clickLink.course);
         loadFeed(feed);
         return false;
     }    
 }
-
-// clickLink.course = localStorage.getItem("clickLink.course") == "1" ? 1 : 0;
-localStorage.removeItem("clickLink.course");
 
 function goUp(ev) {
 /** Event handler for "up" command **/
