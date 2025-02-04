@@ -7,13 +7,14 @@
         Show all steps and check your answer!</li>
     <div class="Answer">
         <p>Write the original equation:</p>
-        <p class="TeX">y=mx+b</p>
+        <p data-cue="prev" class="TeX">y=mx+b</p>
         <p>Subtract <span class="TeX">mx</span> from both sides:</p>
-        <p class="TeX">y \color{blue} - mx \color{red} = \bcancel{mx} + b \color{blue} - \bcancel{mx}</p>
+        <p data-cue="prev" class="TeX">y \color{blue} - mx \color{red} = mx + b \color{blue} - mx</p>
+        <p class="TeX">y - mx = \bcancel{mx} + b - \bcancel{mx}</p>
         <p>Simplify:</p>
-        <p class="TeX">y-mx = b</p>
+        <p data-cue="prev" class="TeX">y-mx = b</p>
         <p>Evaluate:</p>
-        <p class="TeX">b= \rm 2.5-(-2.0)(5.0) = 12.5</p>
+        <p data-cue="prev" class="TeX">b= \rm 2.5-(-2.0)(5.0) = 12.5</p>
         <p>Check your answer by substituting back into the original equation.</p>
     </div>
 
@@ -22,13 +23,15 @@
         Find the final velocity <span class="NoWrap">(<span class="TeX">\vec{\bf v}_f</span>)</span> of an object that has an initial velocity of <span class="TeX">\vec{\bf v}_i</span> = +15.0 m/s and then accelerates at <span class="TeX">\vec{\bf a}</span> = <span class="NoWrap">–9.81 m/s<sup>2</sup></span> for <span class="TeX">\Delta t</span> = 2.50 s. Show all steps and check your answer!</li>
     <div class="Answer">
         <p>Write the original equation and then multiply both sides by <span class="TeX">\Delta t</span>:</p>
-        <p class="TeX">\vec{\bf a}{\color{blue}\Delta t} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\bcancel{\Delta t}}{\color{blue}\bcancel{\Delta t}}</p>
+        <p data-cue="prev" class="TeX">\vec{\bf a}{\color{blue}\Delta t} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}{\color{blue}\Delta t}</p>
+        <p class="TeX">\vec{\bf a}\Delta t = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\bcancel{\Delta t}}\bcancel{\Delta t}</p>
         <p>Simplify:</p>
-        <p class="TeX">\vec{\bf a}\Delta t= \vec{\bf v}_f - \vec{\bf v}_i</p>
+        <p data-cue="prev" class="TeX">\vec{\bf a}\Delta t= \vec{\bf v}_f - \vec{\bf v}_i</p>
         <p>Add <span class="TeX">\vec{\bf v}_i</span> to both sides:</p>
-        <p class="TeX">\vec{\bf a}\Delta t \color{blue} + \vec{\bf v}_i \color{red} = \vec{\bf v}_f - \bcancel{\vec{\bf v}_i} \color{blue}+ \bcancel{\vec{\bf v}_i}</p>
+        <p data-cue="prev" class="TeX">\vec{\bf a}\Delta t \color{blue} + \vec{\bf v}_i \color{red} = \vec{\bf v}_f - \vec{\bf v}_i \color{blue}+ \vec{\bf v}_i</p>
+        <p class="TeX">\vec{\bf a}\Delta t + \vec{\bf v}_i = \vec{\bf v}_f - \bcancel{\vec{\bf v}_i} + \bcancel{\vec{\bf v}_i}</p>
         <p>Simplify and evaluate:</p>
-        <p class="TeX">\vec{\bf v}_f = \vec{\bf a}\Delta t + \vec{\bf v}_i = \rm -9.81\ m/s^2\cdot 2.50\ s + 15.0\ m/s = -9.525\ m/s</p>
+        <p data-cue="prev"class="TeX">\vec{\bf v}_f = \vec{\bf a}\Delta t + \vec{\bf v}_i = \rm -9.81\ m/s^2\cdot 2.50\ s + 15.0\ m/s = -9.525\ m/s</p>
         <p>Check your answer by substituting back into the original equation. If this is the “final answer”, round to the correct number of significant digits:</p>
         <p class="TeX">\vec{\bf v}_f = \rm -9.53\ m/s</p>
     </div>
