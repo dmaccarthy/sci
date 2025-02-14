@@ -3,15 +3,28 @@
 <ol>
     <li>A car accelerates from 50.0 km/h to 80.0 km/h in 4.00 seconds. Calculate the car’s acceleration. [Important: km/h is not the standard SI unit of velocity!]</li>
     <div class="Answer">
-    Given:
-    <p class="TeX">{\vec{\bf v}}_i = \rm{50.0\ km/h = 50.0 \frac{1000\ m}{3600\ s} = 13.9\ m/s}</p>
+    <p>Given:</p>
+    <p data-cue="none" class="TeX">{\vec{\bf v}}_i = \rm{50.0\ km/h = 50.0 \frac{1000\ m}{3600\ s} = 13.9\ m/s}</p>
     <p class="TeX">{\vec{\bf v}}_f = \rm{80.0\ km/h = 80.0 \frac{1000\ m}{3600\ s} = 22.2\ m/s}</p>
     <p class="TeX">\Delta t = \rm{4.00\ s}</p>
-    Solution:
-    <p class="TeX">\vec{\bf a} = \frac{\Delta{\vec{\bf v}}}{\Delta t} = \rm{\frac{22.2\ m/s - 13.9\ m/s}{4.00 s} = +2.08\ m/s^2}</p>
+    <p>Solution:</p>
+    <p data-cue="prev" class="TeX">\vec{\bf a} = \frac{\Delta{\vec{\bf v}}}{\Delta t} = \rm{\frac{22.2\ m/s - 13.9\ m/s}{4.00\ s} = +2.08\ m/s^2}</p>
     </div>
 
     <li>A soccer ball kicked straight up reaches its highest point in 2.50 seconds. Calculate the velocity with which the ball was kicked. Neglect the effects of air resistance.</li>
+    <div class="Answer">
+    <p>Given / Assumed:</p>
+    <p data-cue="none" class="TeX">\Delta t = \rm 2.50\ s</p>
+    <p class="TeX">\vec{\bf v}_f = \rm 0.00\ m/s</p>
+    <p class="TeX">\vec{\bf a} = \rm -9.81\ m/s^2</p>
+    <p>Isolate the initial velocity:</p>
+    <p data-cue="prev" class="TeX">\vec{\bf a} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
+    <p class="TeX">\vec{\bf a} \Delta t = \vec{\bf v}_f - \vec{\bf v}_i</p>
+    <p class="TeX">\vec{\bf a} \Delta t + \vec{\bf v}_i = \vec{\bf v}_f</p>
+    <p class="TeX">\vec{\bf v}_i = \vec{\bf v}_f - \vec{\bf a} \Delta t</p>
+    <p>Evaluate:</p>
+    <p data-cue="prev" class="TeX">\vec{\bf v}_i = \rm 0.00\ m/s - (-9.81\ m/s^2)\ 2.50\ s = +24.5\ m/s</p>
+    </div>    
 </ol>
 </div></section>
 
@@ -120,12 +133,10 @@
     <ul><li>Is the answer reasonable?</li></ul>
 </section>
 
-<section class="Slide Present">
-<div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Acceleration</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
-    <p data-qr="p20/kin/acc"></p>
-</div>
-</section>
+<section class="Slide Present"><div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Acceleration</i> handout.</p>
+    <ul data-cue="none" class="Var">assign</ul>
+</div></section>
 
 </div></section>
 
@@ -137,12 +148,12 @@
 <ol type="a">
     <li>Assuming that gravity is solely responsible for the apple’s acceleration, how long did it take the apple to fall?</li>
     <div class="Answer">
-Given:
+<p>Given:</p>
 <p class="TeX">{\vec{\bf v}}_i = \rm{0.00\ m/s}</p>
 <p class="TeX">{\vec{\bf v}}_f = \rm{-5.00\ m/s}</p>
 <p class="TeX">\vec{\bf a} = \rm{-9.81\ m/s^2}</p>
 
-Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delta t</span>...
+<p>Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delta t</span>...</p>
 <p class="TeX">\vec{\bf a} = \frac{\Delta{\vec{\bf v}}}{\Delta t}</p>
 <p class="TeX">\vec{\bf a}\Delta t = {\vec{\bf v}}_f - {\vec{\bf v}}_i</p>
 <p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
@@ -156,7 +167,7 @@ Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delt
 <li>Traffic radar recorded data for a speeding car. A graph of the data is shown below.
 <div>
     <p class="Caption">Motion of a Speeding Car: <span class="TeX">\vec{\bf{v}}</span><spa class="NoBold"> vs. </span><span class="TeX">t</span></p>
-    <p class="Center NoTop" data-cue="prev"><svg data-svg2="p20/kin/img/acc.js#vt_radar"></svg></p>
+    <p class="Center NoTop" data-cue="prev"><svg class="s20" data-svg2="p20/kin/img/acc.js#vt_radar"></svg></p>
 </div>
 <ol type="a">
     <li>At what time did the speeding car begin to slow down?</li>
@@ -165,40 +176,40 @@ Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delt
     <li>What was the car’s acceleration for the time interval over which it was slowing?</li>
     <div class="Answer">
 
-Given:
-<p class="TeX">{\vec{\bf v}}_i = \rm{125\ km/h = 125 \frac{1000\ m}{3600\ s} = 34.7\ m/s}</p>
+<p>Given:</p>
+<p class="TeX">{\vec{\bf v}}_i = \rm{125\ km/h = 125 \frac{1000\ m}{3600\ s} = 34.7222\ m/s}</p>
 <p class="TeX">{\vec{\bf v}}_f = \rm{0.00\ m/s}</p>
 <p class="TeX">\Delta t = \rm{8.00\ s - 3.00\ s = 5.00\ s}</p>
 
-Solution:
-<p class="TeX">\vec{\bf a} = \frac{\Delta{\vec{\bf v}}}{\Delta t} = \rm{\frac{0.00\ m/s - 34.7\ m/s}{5.00 s} = -6.94\ m/s^2}</p>
+<p>Solution:</p>
+<p class="TeX">\vec{\bf a} = \frac{\Delta{\vec{\bf v}}}{\Delta t} = \rm{\frac{0.00\ m/s - 34.7222\ m/s}{5.00\ s} = -6.94\ m/s^2}</p>
     </div>
 
-    <li>What was the car’s average acceleration for the entire 8.0-second time?</li>
+    <li>What was the car’s average acceleration for the entire 8.00-second time?</li>
     <div class="Answer">
-Given:
-<p class="TeX">{\vec{\bf v}}_i = \rm{34.7\ m/s}</p>
+<p>Given:</p>
+<p class="TeX">{\vec{\bf v}}_i = \rm{34.7222\ m/s}</p>
 <p class="TeX">{\vec{\bf v}}_f = \rm{0.00\ m/s}</p>
 <p class="TeX">\Delta t = \rm{8.00\ s}</p>
 
-Solution:
-<p class="TeX">\vec{\bf a} = \frac{\Delta{\vec{\bf v}}}{\Delta t} = \rm{\frac{0.00\ m/s - 34.7\ m/s}{8.00 s} = -4.34\ m/s^2}</p>
+<p>Solution:</p>
+<p class="TeX">\vec{\bf a} = \frac{\Delta{\vec{\bf v}}}{\Delta t} = \rm{\frac{0.00\ m/s - 34.7222\ m/s}{8.00\ s} = -4.34\ m/s^2}</p>
     </div>
 
-    <li>Calculate the displacement of the car over the 8.0 seconds of the motion.</li>
+    <li>Calculate the displacement of the car over the 8.00 seconds of the motion.</li>
     <div class="Answer">
 
-Rearrange the velocity equation to isolate <span class="TeX">\Delta \vec{\bf d}</span>...
+<p>Rearrange the velocity equation to isolate <span class="TeX">\Delta \vec{\bf d}</span>...</p>
 <p class="TeX">\vec{\bf v} = \frac{\Delta\vec{\bf d}}{\Delta t}</p>
 <p class="TeX">\Delta\vec{\bf d} = \vec{\bf v}\Delta t</p>
 
-For the first 3.00 seconds (uniform motion):
-<p class="TeX">\Delta\vec{\bf d} = \rm{34.7\ m/s\cdot 3.00\ s = 104\ m}</p>
+<p>For the first 3.00 seconds (uniform motion):</p>
+<p class="TeX">\Delta\vec{\bf d} = \rm{34.7222\ m/s\cdot 3.00\ s = 104\ m}</p>
 
-For the next 5.00 seconds (accelerated motion), use the <em>average</em> velocity:
-<p class="TeX">\Delta\vec{\bf d} = \rm{\frac{34.7\ m/s + 0.00\ m/s}{2}\cdot 5.00\ s = 86.8\ m}</p>
+<p>For the next 5.00 seconds (accelerated motion), use the <em>average</em> velocity:</p>
+<p class="TeX">\Delta\vec{\bf d} = \rm{\frac{34.7222\ m/s + 0.00\ m/s}{2}\cdot 5.00\ s = 86.8\ m}</p>
 
-The total displacement for both parts of the motion combined is 191 m.
+<p>The total displacement for both parts of the motion combined is 191 m.</p>
     </div>
 
 </ol></li>
@@ -210,19 +221,19 @@ The total displacement for both parts of the motion combined is 191 m.
 
     <li>By rearranging the acceleration formula, calculate the time it takes for the cyclist to come to rest.</li>
     <div class="Answer">
-Given:
+<p>Given:</p>
 <p class="TeX">{\vec{\bf v}}_i = \rm{9.20\ m/s}</p>
 <p class="TeX">{\vec{\bf v}}_f = \rm{0.00\ m/s}</p>
 <p class="TeX">\vec{\bf a} = \rm{-1.20\ m/s^2}</p>
 
-Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delta t</span>...
+<p>Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delta t</span>...</p>
 <p class="TeX">\vec{\bf a} = \frac{\Delta{\vec{\bf v}}}{\Delta t}</p>
 <p class="TeX">\vec{\bf a}\Delta t = {\vec{\bf v}}_f - {\vec{\bf v}}_i</p>
 <p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
         = \rm{\frac{0.00\ m/s - 9.20\ m/s}{-1.20\ m/s^2} = 7.67\ s}</p>
     </div>
 
-    <li>Graph the cyclist’s velocity versus time. Use the graph paper on the back page.</li>
+    <li>Graph the cyclist’s velocity versus time.</li>
     <div class="Answer">
 <p>The velocity is a straight line from (0.00 s, 9.20 m/s) to (7.67 s, 0.00 m/s).
     Alternatively, you can make a table of values by starting at 9.20 m/s at <span class="TeX">t</span> = 0 and decreasing by 1.20 m/s every second.</p>
@@ -231,12 +242,12 @@ Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delt
 
     <li>Calculate the cyclist’s instantaneous velocity 2.00 seconds after she began braking. (Find what <span class="TeX">{\vec{\bf{v}}}_f</span> becomes when you change <span class="TeX">\Delta t</span> to 2.00 s.) Is your answer in agreement with your graph?</li>
     <div class="Answer">
-Given:
+<p>Given:</p>
 <p class="TeX">{\vec{\bf v}}_i = \rm{9.20\ m/s}</p>
 <p class="TeX">\vec{\bf a} = \rm{-1.20\ m/s^2}</p>
 <p class="TeX">\Delta t = \rm{2.00\ s}</p>
 
-Solution: Rearrange the acceleration equation to isolate <span class="TeX">{\vec{\bf v}}_f</span>...
+<p>Solution: Rearrange the acceleration equation to isolate <span class="TeX">{\vec{\bf v}}_f</span>...</p>
 <p class="TeX">\vec{\bf a} = \frac{\Delta{\vec{\bf v}}}{\Delta t}</p>
 <p class="TeX">\vec{\bf a}\Delta t = {\vec{\bf v}}_f - {\vec{\bf v}}_i</p>
 <p class="TeX">{\vec{\bf v}}_f = \vec{\bf a}\Delta t + {\vec{\bf v}}_i
@@ -245,10 +256,10 @@ Solution: Rearrange the acceleration equation to isolate <span class="TeX">{\vec
 
     <li>Given that the cyclist accelerated uniformly from 9.20 m/s to 0.00 m/s, estimate the average velocity of the cyclist over the entire motion. Use the result to calculate her displacement while braking.</li>
     <div class="Answer">
-The average velocity is likely the arithmetic average of the initial and final velocities:
+    <p>The average velocity is likely the arithmetic average of the initial and final velocities:</p>
     <p class="TeX">{\vec{\bf v}}_{avg} = \frac{{\vec{\bf v}}_i + {\vec{\bf v}}_f}{2}
         = \rm{\frac{9.20\ m/s + 0.00\ m/s}{2} = 4.60\ m/s}</p>
-The displacement (as in #3d) is:
+    <p>The displacement (as in #3d) is:</p>
     <p class="TeX">\Delta\vec{\bf d} = \vec{\bf v}\Delta t = \rm{4.60\ m/s\cdot 7.67\ s = 35.3\ m}</p>
     </div>
 
@@ -262,16 +273,22 @@ The displacement (as in #3d) is:
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
 <li>Define acceleration. What does this quantity mean? For example, what does it tell us about an object’s motion if its acceleration is +2.0 m/s<sup>2</sup>?</li>
+<p class="Answer">Acceleration is the <em>rate</em> at which the velocity <em>changes</em>. An acceleration of +2.0 m/s<sup>2</sup> means that every second, the velocity changes by +2.0 m/s.</p>
 
 <li><ol type="a">
     <li>Discuss the effect of Earth’s surface gravity on moving objects.</li>
+    <p class="Answer">In the absence of air resistance and other forces, gravity near the Earth’s surface causes an acceleration of 9.81 m/s<sup>2</sup> in the downward direction.</p>
     <li>How does the acceleration due to gravity change for a spacecraft as it moves further from Earth?</li>
+    <p class="Answer">Gravity grows weaker as we move farther from Earth.</p>
     <li>How would the accelerations due to gravity on Mars or Jupiter compare to Earth?</li>
+    <p class="Answer">Mars has weaker surface gravity than Earth; Jupiter has stronger surface gravity.</p>
 </ol>
 
 <li>Relate the <span class="TeX">\vec{\bf{v}}{\text -}t</span> graph to the five kinematic quantities: <span class="TeX">\Delta t</span>, <span class="TeX">\Delta\vec{\bf{d}}</span>, <span class="TeX">{\vec{\bf{v}}}_i</span>, <span class="TeX">{\vec{\bf{v}}}_f</span>, and <span class="TeX">\vec{\bf{a}}</span>.</li>
+<p class="Answer"><span class="TeX">\Delta t</span> is the <em>base</em> of the graph. <span class="TeX">\Delta\vec{\bf d}</span> is the <em>area</em>. <span class="TeX">\vec{\bf a}</span> is the <em>slope</em>. <span class="TeX">\vec{\bf v}_i</span> and <span class="TeX">\vec{\bf v}_f</span> are the <em>heights</em> at the left and right ends of the graph.</p>
 
 <li>In Physics, we try to avoid the term “deceleration”. Instead, we can say that the acceleration is positive or negative. Explain what positive and negative mean when referring to acceleration. Does a negative acceleration always mean slowing down? Does positive acceleration mean speeding up?</li>
+<p class="Answer">For acceleration, positive or negative indicates the <em>direction</em> of the acceleration, not necessarily whether it is speeding up or slowing down. When an object is speeding up, the acceleration will have the same sign as the velocity (either both positive or both negative). When an object is slowing, the acceleration and velocity will have opposite signs.</p>
 </ol>
 </div></section>
 
@@ -279,7 +296,7 @@ The displacement (as in #3d) is:
     <h2 class="Collapse">Handouts &amp; Links</h2><div class="Collapse">
     <p class="Var">handouts</p>
     <p class="BtnGrid">
-        <button data-icon="gdrv" data-show="1" data-gdrv="">Assignment</button>
+        <button data-icon="gdrv" data-show="1" data-gdrv="1OjN4n7uynRax5B5-PzdsQoQ6d1t_J-al">Assignment</button>
         <button data-icon="gdrv" data-gdrv="13KsPhj8jvFsikb439Hhdk9rs5UsWffDb">Bouncing Ball Lab</button>
         <button data-icon="gsheet" data-open="https://docs.google.com/spreadsheets/d/1KbEzY0Z7FDNMXpifbqSbBnfPB46uFO-y-B8MjizYHPk">Data</button>
     </p>

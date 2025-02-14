@@ -76,10 +76,12 @@ ramp: (sel) => {
     svg.poly([[p, x], [p-x, x], [p-x, 0]], 0, g);
     svg.text("0.250 m", [1.72, 0.125]);
     svg.text("1.50 m", [0.75, 0.2]);
+    svg.$.find("text").css({"font-size": "18px"});
     svg.text("θ", [0.46, 0.03]).css({"font-size": "14px"});
     svg.final();
 },
 
+/*
 abc: (sel) => {
     $(sel).attr({width: 320, height: 320, "data-aspect": "1"});
     let svg = new SVG_Animation(sel, -7, 2, -8, 1, 1);
@@ -126,6 +128,7 @@ pqr: (sel) => {
     svg.$.find("text").css({"font-size": "18px"});
     svg.final();
 },
+*/
 
 ball8: (sel) => {
     $(sel).attr({width: 402, height: 302, "data-aspect": "402/302"});

@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div id="LessonNotes" class="Collapse Expand">
  
 <section class="Slide Center">
 <h1 id="Title">Uniform Accelerated Motion</h1>
@@ -17,36 +16,34 @@
 </section>
 
 <section class="Slide"><h3>Uniform Accelerated Motion</h3>
-<p>The definition of acceleration is:</p>
-<p class="TeX">{\vec{\bf a}} = {{{\vec{\bf v}}_f - {\vec{\bf v}}_i}\over\Delta t}</p>
-<ul data-cue="+">
-    <li>For <em class="Defn">uniform accelerated motion</em>, the acceleration is <em>constant</em>.</li>
-</ul>
-<div data-cue="+">
+<p data-cue="none">The definition of acceleration is:</p>
+<p data-cue="none" class="TeX">{\vec{\bf a}} = {{{\vec{\bf v}}_f - {\vec{\bf v}}_i}\over\Delta t}</p>
+<ul><li>For <em class="Defn">uniform accelerated motion</em>, the acceleration is <em>constant</em>.</li></ul>
+<div>
     <p>A graph of <span class="TeX">{\vec{\bf v}}</span>-<span class="TeX">t</span> is <em>linear</em> for UAM.</p>
-    <p class="Center"><svg class="Graph w24" data-svg2="p20/kin/img/uam.js#vt" id="UAM1"></svg></p>
+    <p class="Center"><svg class="Graph s20" data-svg2="p20/kin/img/uam.js#vt" id="UAM1"></svg></p>
 </div>
-<ul data-cue="+">
+<ul>
     <li>The slope of the graph equals the acceleration.</li>
-    <li data-cue="+">The area under the graph equals the displacement.</li>
-    <li data-cue="+">Areas above the axis represent displacement in the positive direction. Areas below the axis are negative displacements.</li>
+    <li>The area under the graph equals the displacement.</li>
+    <li>Areas above the axis represent displacement in the positive direction. Areas below the axis are negative displacements.</li>
 </ul>
-<div data-cue="+">
+<div>
     <p>The displacement is just the <em>average</em> speed multiplied by the time:</p>
-    <p class="TeX">\Delta{\vec{\bf d}} = {{{\vec{\bf v}}_i + {\vec{\bf v}}_f}\over 2}\Delta t</p>
+    <p data-cue="prev" class="TeX">\Delta{\vec{\bf d}} = {{{\vec{\bf v}}_i + {\vec{\bf v}}_f}\over 2}\Delta t</p>
 </div>
-<ul data-cue="+">
+<ul>
     <li>Because the graph is linear, the average velocity is the midpoint (arithmetic average) of <span class="TeX">{\vec{\bf v}}_i</span> and <span class="TeX">{\vec{\bf v}}_f</span>.</li>
-    <li data-cue="+">You cannot use this equation if the acceleration is not constant, since the average velocity would be incorrect.</li>
+    <li>You cannot use this equation if the acceleration is not constant, since the average velocity would be incorrect.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Kinematic Variables</h3>
-<table class="Two Center"><tr>
+<table data-cue="none" class="Two Center"><tr>
     <td><p class="TeX">{\vec{\bf a}} = {{{\vec{\bf v}}_f - {\vec{\bf v}}_i}\over\Delta t}</p></td>
     <td><p class="TeX">\Delta{\vec{\bf d}} = {{{\vec{\bf v}}_i + {\vec{\bf v}}_f}\over 2}\Delta t</p></td>
 </tr></table>
-<div data-cue="+">
+<div>
     <p>These equations contain <em>five</em> variables...</p>
     <table class="Three Center">
         <tr><td><span class="TeX">\vec{\bf a}</span></td><td class="Reveal"><span>+1.60</span></td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
@@ -56,122 +53,122 @@
         <tr><td><span class="TeX">\Delta t</span></td><td>5.00</td><td><span class="TeX">{\rm{s}}</span></td></tr>
     </table>
 </div>
-<ul data-cue="+">
+<ul>
     <li>We can solve for <em>two</em> unknowns using the two equations, but we must start with <em>three</em> “givens”.</li>
-    <li data-cue="+">Choose an equation to find the first unknown.</li>
-    <li data-cue="+">Then repeat for the other unknown.</li>
+    <li>Choose an equation to find the first unknown.</li>
+    <li>Then repeat for the other unknown.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>UAM Equations</h3>
-<p>Sometimes, <em>both</em> unknowns will appear in <em>both</em> equations...</p>
-<table class="Three Center">
+<p data-cue="none">Sometimes, <em>both</em> unknowns will appear in <em>both</em> equations...</p>
+<table data-cue="none" class="Three Center">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td>−9.81</td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>+10.0</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_f</span></td><td class="Reveal"><span>−10.0</span></td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>0.00</td><td><span class="TeX">{\rm{m}}</span></td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td class="Reveal"><span>2.04</span></td><td><span class="TeX">{\rm{s}}</span></td></tr>
 </table>
-<div data-cue="+">
-    <p class="Center"><svg class="Graph w24" data-svg2="p20/kin/img/uam.js#upDown" id="UAM2"></svg></p>
+<div>
+    <p class="Center"><svg class="Graph s20" data-svg2="p20/kin/img/uam.js#upDown" id="UAM2"></svg></p>
 </div>
     
-<p data-cue="+">These equations can be combined algebraically in three different ways, to eliminate either <span class="TeX">\Delta t</span>, <span class="TeX">{\vec{\bf v}}_f</span>, or <span class="TeX">{\vec{\bf v}}_i</span>...</p>
-<p data-cue="+" class="TeX">{v_f}^2 = {v_i}^2 + 2{\vec{\bf a}}\cdot{\Delta\vec{\bf d}}</p>
-<p data-cue="+" class="TeX">{\Delta\vec{\bf d}} = {\vec{\bf v}}_i\Delta t + {1\over 2}{\vec{\bf a}}\left(\Delta t\right)^2</p>
-<p data-cue="+" class="TeX">{\Delta\vec{\bf d}} = {\vec{\bf v}}_f\Delta t - {1\over 2}{\vec{\bf a}}\left(\Delta t\right)^2</p>
+<p>These equations can be combined algebraically in three different ways, to eliminate either <span class="TeX">\Delta t</span>, <span class="TeX">{\vec{\bf v}}_f</span>, or <span class="TeX">{\vec{\bf v}}_i</span>...</p>
+<p class="TeX">{v_f}^2 = {v_i}^2 + 2{\vec{\bf a}}\cdot{\Delta\vec{\bf d}}</p>
+<p class="TeX">{\Delta\vec{\bf d}} = {\vec{\bf v}}_i\Delta t + {1\over 2}{\vec{\bf a}}\left(\Delta t\right)^2</p>
+<p class="TeX">{\Delta\vec{\bf d}} = {\vec{\bf v}}_f\Delta t - {1\over 2}{\vec{\bf a}}\left(\Delta t\right)^2</p>
 
-<div data-cue="+"><p>Go through the list of equations <em>in order</em> until you find an equation that has only <em>one unknown</em>:</p>
+<div><p>Go through the list of equations <em>in order</em> until you find an equation that has only <em>one unknown</em>:</p>
     <p class="TeX">{v_f}^2 = {v_i}^2 + 2{\vec{\bf a}}\cdot{\Delta\vec{\bf d}}</p></div>
-<p data-cue="+" class="TeX">v_f  = \sqrt{{v_i}^2 + 2{\vec{\bf a}}\cdot{\Delta\vec{\bf d}}}</p>
-<p data-cue="+" class="TeX">v_f = \sqrt{\rm{(10.0\ m/s)^2 + 2\ (-9.81\ m/s^2)\cdot(0.00\ m)}} = \rm{10.0\ m/s}</p>
-<p data-cue="+" class="TeX">{\vec{\bf v}}_f = \pm 10.0\ {\rm{m/s}}</p>
-<ul data-cue="+">
+<p class="TeX">v_f  = \sqrt{{v_i}^2 + 2{\vec{\bf a}}\cdot{\Delta\vec{\bf d}}}</p>
+<p class="TeX">v_f = \sqrt{\rm{(10.0\ m/s)^2 + 2\ (-9.81\ m/s^2)\cdot(0.00\ m)}} = \rm{10.0\ m/s}</p>
+<p class="TeX">{\vec{\bf v}}_f = \pm 10.0\ {\rm{m/s}}</p>
+<ul>
     <li>Note that when square rooting, the answer can be either positive or negative.</li>
-    <li data-cue="+">In this example, a negative acceleration means the final velocity must be <em>less</em> than the initial velocity, so the answer must be negative:<p class="TeX">{\vec{\bf v}}_f = -10.0\ {\rm{m/s}}</p></li>
+    <li>In this example, a negative acceleration means the final velocity must be <em>less</em> than the initial velocity, so the answer must be negative:
+        <p data-cue="prev" class="TeX">{\vec{\bf v}}_f = -10.0\ {\rm{m/s}}</p></li>
 </ul>
-<div data-cue="+"><p>Now go back to the list of equations and choose the first one that hasn’t already been used:</p>
+<div><p>Now go back to the list of equations and choose the first one that hasn’t already been used:</p>
 <p class="TeX">{\vec{\bf a}} = {{{\vec{\bf v}}_f - {\vec{\bf v}}_i}\over\Delta t}</p></div>
-<div data-cue="+">
+<div>
     <p class="TeX">{\vec{\bf a}}\Delta t = {{{\vec{\bf v}}_f - {\vec{\bf v}}_i}}</p>
     <p class="TeX">\Delta t = {{{\vec{\bf v}}_f - {\vec{\bf v}}_i}\over{\vec{\bf a}}} = {\rm{{-10.0\ m/s - (+10.0\ m/s)\over -9.81\ m/s^2} = 2.04\ s}}</p>
 </div>
 </section>
 
 <section class="Slide"><h3>Problem Solving Hints</h3>
+<p>Always draw a sketch of the <span class="TeX">\vec{\bf v}</span>-<span class="TeX">t</span> graph.</p>
+<p data-cue="prev" class="Center"><svg class="Graph s20" data-svg2="p20/kin/img/uam.js#zag" id="UAM3"></svg></p>
 <p>For scenarios where the object’s acceleration changes, we must solve each section of the motion as a separate problem!</p>
-<p data-cue="+" class="Center"><svg class="Graph w24" data-svg2="p20/kin/img/uam.js#zag" id="UAM3"></svg></p>
-<p data-cue="+">Remember that we always need at least three “givens” before we can solve a UAM problem.</p>
-<p data-cue="+">Sometimes, it may appear that the problem does not provide enough information...</p>
-<ul data-cue="+">
+<p>Remember that we always need at least three “givens” before we can solve a UAM problem.</p>
+<p>Sometimes, it may appear that the problem does not provide enough information...</p>
+<ul>
     <li>If the object begins or ends at rest, this means one of the velocities is zero.</li>
-    <li data-cue="+">If the object returns to its starting position, this means the displacement is zero.</li>
-    <li data-cue="+">For <em class="Defn">projectiles</em> (gravity is the only force), we can assume the acceleration is &minus;9.81 m/s<sup>2</sup> if the problem takes place near Earth’s surface.</li>
-    <li data-cue="+">Also for projectiles, the <em>highest</em> point is where the velocity changes from positive to negative; the instantaneous velocity will be zero.</li>
+    <li>If the object returns to its starting position, this means the displacement is zero.</li>
+    <li>For <em class="Defn">projectiles</em> (gravity is the only force), we can assume the acceleration is &minus;9.81 m/s<sup>2</sup> if the problem takes place near Earth’s surface.</li>
+    <li>Also for projectiles, the <em>highest</em> point is where the velocity changes from positive to negative; the instantaneous velocity will be zero.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Example 1</h3>
-<p class="Blue">During takeoff, a jet aircraft can accelerate at 3.25 m/s<sup>2</sup>. The jet must reach a velocity of 360 km/h before it reaches the end of the runway. Calculate:</p>
-<ol type="a" class="Blue Bottom">
+<p data-cue="none" class="Blue">During takeoff, a jet aircraft can accelerate at 3.25 m/s<sup>2</sup>. The jet must reach a velocity of 360 km/h before it reaches the end of the runway. Calculate:</p>
+<ol data-cue="none" type="a" class="Blue Bottom">
     <li>the minimum time that it would take the jet to reach takeoff speed from rest.</li>
-    <li>the minimum length of runway needed.</li>
+    <li data-cue="none">the minimum length of runway needed.</li>
 </ol>
-<table data-cue="+" class="Three Center">
+<table class="Three Center">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td>+3.25</td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>0.00</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_f</span></td><td>+100</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td class="Reveal"><span>+1.54 × 10<sup>3</sup></span></td><td><span class="TeX">{\rm{m}}</span></td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td class="Reveal"><span>30.8</span></td><td><span class="TeX">{\rm{s}}</span></td></tr>
 </table>
-<div data-cue="+"><p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
+<div><p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
 <p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
         = \rm{\frac{+100\ m/s - 0.00\ m/s}{+3.25\ m/s^2} = 30.8\ s}</p></div>
-<div data-cue="+"><p>Evaluate <span class="TeX">\Delta \vec{\bf d}</span> with Eqn 21:</p>
+<div><p>Evaluate <span class="TeX">\Delta \vec{\bf d}</span> with Eqn 21:</p>
 <p class="TeX">\Delta\vec{\bf d} = \rm{\frac{0.00\ m/s + 100.0\ m/s}{2} 30.8\ s = +1.54\times 10^3\ m}</p></div>
 </section>
 
 <section class="Slide"><h3>Example 2</h3>
-<p class="Blue Bottom">A ball is dropped (i.e. <span class="TeX">{\vec{\bf{v}}}_i = 0</span>) from the top of a 35.0-metre tall building. The ball accelerates downward at 9.53 m/s<sup>2</sup> due to the combined forces of gravity and air resistance.</p>
-<table data-cue="+" class="Three Center">
+<p data-cue="none" class="Blue Bottom">A ball is dropped (i.e. <span class="TeX">{\vec{\bf{v}}}_i = 0</span>) from the top of a 35.0-metre tall building. The ball accelerates downward at 9.53 m/s<sup>2</sup> due to the combined forces of gravity and air resistance.</p>
+<table class="Three Center">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td>–9.53</td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>0.00</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_f</span></td><td class="Reveal"><span>–25.8</span></td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>–35.0</td><td><span class="TeX">{\rm{m}}</span></td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td class="Reveal"><span>2.71</span></td><td><span class="TeX">{\rm{s}}</span></td></tr>
 </table>
-<div data-cue="+"><p>Solve for <span class="TeX">{\vec{\bf v}}_f</span> in Eqn 22:</p>
+<div><p>Solve for <span class="TeX">{\vec{\bf v}}_f</span> in Eqn 22:</p>
 <p class="TeX">\begin{align} v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
     \\[10pt]&= \rm{\sqrt{0 + 2(-9.53\ m/s^2)\cdot(-35.0\ m)}}
     \\[10pt]&= \rm{\pm 25.8\ m/s} \end{align}</p></div>
-<p data-cue="+">Use the negative answer because the ball is falling!</p>
-<div data-cue="+"><p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
+<p>Use the negative answer because the ball is falling!</p>
+<div><p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
 <p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
      = \rm{\frac{-25.8\ m/s - 0.00\ m/s}{-9.53\ m/s^2} = 2.71\ s}</p></div>
 </section>
 
 <section class="Slide"><h3>Example 3</h3>
-<p class="Blue Bottom">On an alien planet, Captain Kirk falls from a 52.0-metre high cliff. He hits the ground with a downward velocity of 1.50 m/s.</p>
-<table data-cue="+" class="Three Center">
+<p data-cue="none" class="Blue Bottom">On an alien planet, Captain Kirk falls from a 52.0-metre high cliff. He hits the ground with a downward velocity of 1.50 m/s.</p>
+<table class="Three Center">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td class="Reveal"><span>–0.0216</span></td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>0.00</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_f</span></td><td>–1.50</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>–52.0</td><td><span class="TeX">{\rm{m}}</span></td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td class="Reveal"><span>69.3</span></td><td><span class="TeX">{\rm{s}}</span></td></tr>
 </table>
-<div data-cue="+"><p>Solve for <span class="TeX">\Delta t</span> in Eqn 21:</p>
+<div><p>Solve for <span class="TeX">\Delta t</span> in Eqn 21:</p>
 <p class="TeX">\Delta t = \frac{2\Delta\vec{\bf d}}{{\vec{\bf v}}_i + {\vec{\bf v}}_f}
     = \rm{\frac{2\cdot(-52.0\ m)}{0.00\ m/s + (-1.50\ m/s)} = 69.3\ s}</p></div>
-<div data-cue="+"><p>Evaluate <span class="TeX">\vec{\bf a}</span> with Eqn 20:</p>
+<div><p>Evaluate <span class="TeX">\vec{\bf a}</span> with Eqn 20:</p>
     <p class="TeX">\vec{\bf a} = \rm{\frac{-1.50\ m/s - 0.00\ m/s}{69.3\ s} = -0.0216\ m/s^2}</p></div>
 </section>
 
-<section class="Slide Present">
-<div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>?</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
-    <p data-qr="p20/kin/uam"></p>
-</div>
-</section>
+<section class="Slide Present"><div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Uniform Accelered Motion</i> handout.</p>
+    <ul data-cue="none" class="Var">assign</ul>
+</div></section>
 
 <script type="text/javascript" data-init="notes">
 
@@ -183,17 +180,9 @@ loadFeed.notes = () => {
 
 </script>
     
-</div></div></section>
-
-<section class="Post" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1XF6i3PrDQZ04pcVbCVxsQxka9jhpi2Jf">Problem-Solving Template</button>
-    </p>
 </div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
 <ol>
@@ -251,11 +240,8 @@ loadFeed.notes = () => {
     <p class="TeX">\vec{\bf a} = \rm{\frac{+16.7\ m/s - 26.0\ m/s}{3.75\ s} = -2.49\ m/s^2}</p>
 </div>
 
-<li>A car travels 185 metres while accelerating from 60.0 km/h to 80.0 km/h. Calculate the car’s acceleration and the amount of time it takes to accelerate.
+<li>A car travels 185 metres while accelerating from 60.0 km/h to 80.0 km/h. Calculate the car’s acceleration and the amount of time it takes to accelerate.</li>
 <div class="Answer">
-
-<!-- <td class="Reveal"><span></span> -->
-    
 <table class="Three Center Top">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td></td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>+16.7</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
@@ -269,7 +255,6 @@ loadFeed.notes = () => {
 <p>Evaluate <span class="TeX">\vec{\bf a}</span> with Eqn 20:</p>
 <p class="TeX">\vec{\bf a} = \rm{\frac{+22.2\ m/s - 16.7\ m/s}{9.51\ s} = +0.584\ m/s^2}</p>
 </div>
-</li>
 
 <li>A skydiver falls 50.0 metres in 2.05 seconds, while accelerating at 6.00 m/s<sup>2</sup>. [Remember that the directions of acceleration and displacement are negative.]
 <div class="Answer">
@@ -345,9 +330,9 @@ loadFeed.notes = () => {
 <p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
 <p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
     = \rm{\frac{0.00\ m/s - 2.40\ m/s}{-9.81\ m/s^2} = 0.245\ s}</p>
-<p>Evaluate <span class="TeX">\Delta \vec{\bf d}</span> with Eqn 21:
-    <p class="TeX">\Delta\vec{\bf d} = \rm{\frac{2.40\ m/s + 0.00\ m/s}{2} 0.245\ s = +0.294\ m}</p>
-This means the diver rises 0.294 metres above their initial position which is 10.0 metres above the water, for a total height of 10.3 m.</p>
+<p>Evaluate <span class="TeX">\Delta \vec{\bf d}</span> with Eqn 21:</p>
+<p class="TeX">\Delta\vec{\bf d} = \rm{\frac{2.40\ m/s + 0.00\ m/s}{2} 0.245\ s = +0.294\ m}</p>
+<p>This means the diver rises 0.294 metres above their initial position which is 10.0 metres above the water, for a total height of 10.3 m.</p>
 </div>
     
 <li>How long does it take from the start of the dive, for the diver to reach the water?  What is his velocity at this point?</li>
@@ -359,11 +344,11 @@ This means the diver rises 0.294 metres above their initial position which is 10
     <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>–10.0</td><td><span class="TeX">{\rm{m}}</span></td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td></td><td><span class="TeX">{\rm{s}}</span></td></tr>
 </table>
-<p>Solve for <span class="TeX">{\vec{\bf v}}_f</span> in Eqn 22:
-    <p class="TeX">\begin{align} v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
-        \\[10pt]&= \rm{\sqrt{(+2.40\ m/s)^2 + 2(-9.81 m/s^2)\cdot(-10.0\ m)}}
-        \\[10pt]&= \rm{\pm 14.2\ m/s} \end{align}</p>
-Use the negative answer because the diver is falling!</p>
+<p>Solve for <span class="TeX">{\vec{\bf v}}_f</span> in Eqn 22:</p>
+<p class="TeX">\begin{align} v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
+    \\[10pt]&= \rm{\sqrt{(+2.40\ m/s)^2 + 2(-9.81 m/s^2)\cdot(-10.0\ m)}}
+    \\[10pt]&= \rm{\pm 14.2\ m/s} \end{align}</p>
+<p>Use the negative answer because the diver is falling!</p>
 <p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
 <p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
  = \rm{\frac{-14.2\ m/s - 2.40\ m/s}{-9.81\ m/s^2} = 1.69\ s}</p>
@@ -371,7 +356,7 @@ Use the negative answer because the diver is falling!</p>
 </ol>
 </li>
  
-<li>A research rocket is launched straight up, starting from rest. The researchers want the rocket to reach an altitude of 12.0 km within 30.0 seconds of launch. Find the acceleration and final velocity. You may not assume that the acceleration is <span class="TeX">\vec{\bf{a}} = \rm{-9.81\ m/s^2}</span> while the rocket engine is firing!
+<li>A research rocket is launched straight up, starting from rest. The researchers want the rocket to reach an altitude of 12.0 km within 30.0 seconds of launch. Find the acceleration and final velocity. You may not assume that the acceleration is <span class="TeX">\vec{\bf{a}} = \rm{-9.81\ m/s^2}</span> while the rocket engine is firing!</li>
 <div class="Answer">
 <table class="Three Center Top">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td></td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
@@ -386,7 +371,6 @@ Use the negative answer because the diver is falling!</p>
 <p>Evaluate <span class="TeX">\vec{\bf a}</span> with Eqn 20:</p>
 <p class="TeX">\vec{\bf a} = \rm{\frac{+800\ m/s - 0.00\ m/s}{30.0\ s} = +26.7\ m/s^2}</p>
 </div>
-</li>
 
 <li><ol type="a">
 <li>A ball is kicked straight up from ground level with a velocity of +21.0 m/s. How long does the ball take to reach its highest point? How high does the ball rise before it starts to fall back to the ground?</li>
@@ -405,7 +389,7 @@ Use the negative answer because the diver is falling!</p>
 <p class="TeX">\Delta\vec{\bf d} = \rm{\frac{21.0\ m/s + 0.00\ m/s}{2} 2.14\ s = +22.5\ m}</p>
 </div>
 
-<li>Calculate the hang time for the ball.</li>
+<li>Calculate the <em>total</em> hang time for the ball, i.e. the time it takes from when it is kicked until it returns to the ground.</li>
 <div class="Answer">
 <table class="Three Center Top">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td>–9.81</td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
@@ -414,15 +398,15 @@ Use the negative answer because the diver is falling!</p>
     <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>0.00</td><td><span class="TeX">{\rm{m}}</span></td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td></td><td><span class="TeX">{\rm{s}}</span></td></tr>
 </table>
-<p>Solve for <span class="TeX">{\vec{\bf v}}_f</span> in Eqn 22:
-    <p class="TeX">\begin{align} v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
-        \\[10pt]&= \rm{\sqrt{(+21.0\ m/s)^2 + 2(-9.81 m/s^2)\cdot(0.00\ m)}}
-        \\[10pt]&= \rm{\pm 21.0\ m/s} \end{align}</p>
-Use the negative answer because the ball is falling!</p>
-<p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:
-    <p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
-     = \rm{\frac{-21.0\ m/s - (+21.0)\ m/s}{-9.81\ m/s^2} = 4.28\ s}</p>
-This is exactly double the answer from (a) since it takes exactly the same time to fall back to the ground as it did to rise from the ground!</p>
+<p>Solve for <span class="TeX">{\vec{\bf v}}_f</span> in Eqn 22:</p>
+<p class="TeX">\begin{align} v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
+    \\[10pt]&= \rm{\sqrt{(+21.0\ m/s)^2 + 2(-9.81 m/s^2)\cdot(0.00\ m)}}
+    \\[10pt]&= \rm{\pm 21.0\ m/s} \end{align}</p>
+<p>Use the negative answer because the ball is falling!</p>
+<p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
+<p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
+    = \rm{\frac{-21.0\ m/s - (+21.0)\ m/s}{-9.81\ m/s^2} = 4.28\ s}</p>
+<p>This is exactly double the answer from (a) since it takes exactly the same time to fall back to the ground as it did to rise from the ground!</p>
 </div>
 </ol></li>
 
@@ -436,11 +420,11 @@ This is exactly double the answer from (a) since it takes exactly the same time 
     <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>+285</td><td><span class="TeX">{\rm{m}}</span></td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td></td><td><span class="TeX">{\rm{s}}</span></td></tr>
 </table>
-<p>Solve for <span class="TeX">{\vec{\bf v}}_i</span> in Eqn 22:
-    <p class="TeX">\begin{align} v_i &= \sqrt{v_f^2 - 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
-        \\[10pt]&= \rm{\sqrt{(0.00\ m/s)^2 - 2(-2.50\ m/s^2)\cdot(+285\ m)}}
-        \\[10pt]&= \rm{\pm 37.7\ m/s} \end{align}</p>
-Use the positive answer because the car is moving forward!</p>
+<p>Solve for <span class="TeX">{\vec{\bf v}}_i</span> in Eqn 22:</p>
+<p class="TeX">\begin{align} v_i &= \sqrt{v_f^2 - 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
+    \\[10pt]&= \rm{\sqrt{(0.00\ m/s)^2 - 2(-2.50\ m/s^2)\cdot(+285\ m)}}
+    \\[10pt]&= \rm{\pm 37.7\ m/s} \end{align}</p>
+<p>Use the positive answer because the car is moving forward!</p>
 <p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
 <p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
      = \rm{\frac{0.00\ m/s - 37.7\ m/s}{-2.50\ m/s^2} = 15.1\ s}</p>
@@ -448,9 +432,9 @@ Use the positive answer because the car is moving forward!</p>
 
 <li>Suppose the driver has a “reaction time” of 0.650 seconds. This means that the car will continue to move at its initial velocity for 0.650 seconds before the brakes are applied and the car begins to slow. Using this new information, calculate the acceleration and stopping time required for the driver to avoid an accident.</li>
 <div class="Answer">
-<p>For the first 0.650 seconds, the motion is uniform:
-    <p class="TeX">\Delta\vec{\bf d} = \vec{\bf v}\Delta t = \rm{+37.7\ m/s\cdot 0.650\ s = +24.5\ m}</p>
-Once the driver begins to break (uniform accelerated motion) their ensuing displacement will be 24.5 metres <em>less</em>:</p>
+<p>For the first 0.650 seconds, the motion is uniform:</p>
+<p class="TeX">\Delta\vec{\bf d} = \vec{\bf v}\Delta t = \rm{+37.7\ m/s\cdot 0.650\ s = +24.5\ m}</p>
+<p>Once the driver begins to break (uniform accelerated motion) their ensuing displacement will be 24.5 metres <em>less</em>:</p>
 <p class="TeX">\Delta\vec{\bf d} = \rm{+285\ m - 24.5\ m = +260\ m}</p>
 <table class="Three Center Top">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td></td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
@@ -462,10 +446,9 @@ Once the driver begins to break (uniform accelerated motion) their ensuing displ
 <p>Solve for <span class="TeX">\Delta t</span> in Eqn 21:</p>
 <p class="TeX">\Delta t = \frac{2\Delta\vec{\bf d}}{{\vec{\bf v}}_i + {\vec{\bf v}}_f}
     = \rm{\frac{2\cdot(+260\ m)}{37.7\ m/s + 0.00\ m/s} = 13.8\ s}</p>
-<p>Evaluate <span class="TeX">\vec{\bf a}</span> with Eqn 20:
-    <p class="TeX">\vec{\bf a} = \rm{\frac{0.00\ m/s - 37.7\ m/s}{13.8\ s} = -2.73\ m/s^2}</p>
-The driver has to accelerate more severely and stop more quickly to compensate for their reaction time!
-Note that the 13.8 seconds stopping time is <em>in addition to</em> the 0.650 s reaction time.</p>
+<p>Evaluate <span class="TeX">\vec{\bf a}</span> with Eqn 20:</p>
+<p class="TeX">\vec{\bf a} = \rm{\frac{0.00\ m/s - 37.7\ m/s}{13.8\ s} = -2.73\ m/s^2}</p>
+<p>The driver has to accelerate more severely and stop more quickly to compensate for their reaction time! Note that the 13.8 seconds stopping time is <em>in addition to</em> the 0.650 s reaction time.</p>
 </div>
 </ol></li>
 
@@ -483,7 +466,7 @@ loadFeed.soln = () => {
 
 </div></div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
 <li>Define uniform accelerated motion and explain how we can recognize this type of motion from the shapes of the <span class="TeX">\vec{\bf{d}}{\text -}t</span> and <span class="TeX">\vec{\bf{v}}{\text -}t</span> graphs.</li>
@@ -503,12 +486,18 @@ loadFeed.soln = () => {
 </ol>
 </div></section>
 
+<section data-show="1" class="Post" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid"><button data-icon="gdrv" data-show="1" data-gdrv="123lGyLU4grXi1XgvKq43_r_e-xwGXvXq">Assignment</button></p>
+</div></section>
+
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}1.5 — Uniform Accelerated Motion`,
     showDate: "2025.2.24",
-    answerDate: "2025.2.25.12",
+    answerDate: "2025.2.25",
     num: "1.5",
     up: "p20/home",
     prev: "p20/kin/acc",

@@ -1,7 +1,7 @@
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Remember?</h2><div class="Collapse">
 <ol><li>Solve for all missing sides and angles in each of these right-angle triangles. Show all calculations.
-    <p class="Center"><svg data-svg2="p20/skill/img/trig.js#pretest"></svg></p>
+    <p class="Center"><svg class="s24" data-svg2="p20/skill/img/trig.js#pretest"></svg></p>
 </li></ol>
 </div></section>
 
@@ -34,12 +34,30 @@
     </li>
     <li>We can use these equations to solve for the acute angles when we know at least two of the sides, or to solve for the missing sides if we know one side and one of the acute angles.</li>
     <li><span class="TeX">\rm{Opp}</span> refers to the side <em>across from</em> the angle <span class="TeX">\theta</span> and <span class="TeX">\rm{Adj}</span> refers to the side <em>adjacent to</em> <span class="TeX">\theta</span>.</li>
-    <li><em class="Defn">Pythagoras’ Theorem</em> describes the relationship between the <em>legs</em> (the two shorter sides) and the hypotenuse:
-        <p class="TeX">\rm{Hyp^2 = Opp^2 + Adj^2}</p></li>
+    <li>
+        <p><em class="Defn">Pythagoras’ Theorem</em> describes the relationship between the <em>legs</em> (the two shorter sides) and the hypotenuse:</p>
+        <p class="TeX">\rm{Hyp^2 = Opp^2 + Adj^2}</p>
+        <p class="TeX">\rm{c^2 = a^2 + b^2}</p>
+    </li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Example 1</h3>
+<p data-cue="none" class="Blue">Solve for the missing angle and sides in <span class="TeX">\triangle PQR</span> above in the <em>Remember?</em> section.</p>
+<p>Solve for angle <span class="TeX">\angle R</span> using the fact that the sum of the angles is 180°...</p>
+<p class="TeX">\angle R = 180^\circ - 90^\circ - 35.0^\circ = 55.0^\circ</p>
+<p>Since we know the hypotenuse (<span class="TeX">q</span>), we can find the side <span class="TeX">p</span> (opposite to <span class="TeX">\angle P</span>) using <span class="TeX">\sin</span>...</p>
+<p class="TeX">\sin \angle P=\frac{p}{q}</p>
+<p class="TeX">q\cdot\sin \angle P = p</p>
+<p class="TeX">p = 7.00\cdot\sin 35.0^\circ=4.01504</p>
+<p>Solve for side <span class="TeX">r</span> using Pythagoras...</p>
+<p class="TeX">q^2 = p^2 + r^2</p>
+<p class="TeX">q^2 - p^2 = r^2</p>
+<p class="TeX">r = \sqrt{q^2 - p^2} = \rm \sqrt{7.00^2 - 4.01504^2} = 5.73</p>
+<p>You would get the same answer using <span class="TeX">\cos</span> or <span class="TeX">\tan</span>.</p>
+</section>
+
+<!-- <section class="Slide"><h3>Example 1</h3>
 <p data-cue="none" class="Blue">Solve for the missing angle and sides.</p>
 <p data-cue="none" class="Center"><svg class="s14" data-svg2="p20/skill/img/trig.js#abc"></svg></p>
 <p>Solve for angle <span class="TeX">\alpha</span> using the fact that the sum of the angles is 180°...</p>
@@ -68,6 +86,19 @@
 <p class="TeX">\angle Q = \cos^{-1}\left(\frac{4.00}{10.0}\right)= 66.4^\circ</p>
 <p>Solve for angle <span class="TeX">\angle P</span>...</p>
 <p class="TeX">\angle P=180^\circ - 90^\circ - 66.4^\circ = 23.6^\circ</p>
+</section> -->
+    
+<section class="Slide"><h3>Example 2</h3>
+<p data-cue="none" class="Blue">Solve for the missing angle and sides in <span class="TeX">\triangle ABC</span> above.</p>
+<p>Solve for side <span class="TeX">c</span> using Pythagoras...</p>
+<p class="TeX">c^2 = a^2+b^2</p>
+<p class="TeX">c = \sqrt{a^2+b^2} = \rm \sqrt{5.00^2 + 4.00^2} = 6.40</p>
+<p>Since we know the opposite and adjacent sides to <span class="TeX">\angle B</span>, solve for this angle using <span class="TeX">\tan^{-1}</span>...</p>
+<p class="TeX">\tan\angle B=\frac{b}{a}</p>
+<p class="TeX">\angle B = \tan^{-1}\left(\frac{b}{a}\right)</p>
+<p class="TeX">\angle B = \tan^{-1}\left(\frac{4.00}{5.00}\right)= 38.7^\circ</p>
+<p>Solve for angle <span class="TeX">\angle B</span>...</p>
+<p class="TeX">\angle B=180^\circ - 90^\circ - 38.7^\circ = 51.3^\circ</p>
 </section>
 
 <section class="Slide Present"><div class="Assign">
@@ -84,7 +115,7 @@
 <ol type="a">
     <li>Calculate the incline of the ramp (angle between the ramp and the floor). Include an illustration.</li>
     <div class="Answer">
-        <p class="Center"><svg data-svg2="p20/skill/img/trig.js#ramp"></svg></p>
+        <p class="Center"><svg class="s20" data-svg2="p20/skill/img/trig.js#ramp"></svg></p>
         <p class="TeX">\sin\theta = \rm{\frac{Opp}{Hyp} = \frac{0.250\ m}{1.50\ m} = 0.167}</p>
         <p class="TeX">\theta=\sin^{-1} 0.167 = 9.59^\circ</p>
     </div>
@@ -102,7 +133,7 @@
 <ol type="a">
     <li>Plot and label the 8-ball’s initial and final positions on graph paper. Connect the two points with an arrow.</li>
     <li>Construct a right-angle triangle by drawing a horizontal line from the 8-ball’s initial position and a vertical line from the 8-ball’s final position until the two lines meet at a right angle. Label the lengths of these two “legs” of the triangle.</li>
-    <p class="Center Answer"><svg data-svg2="p20/skill/img/trig.js#ball8"></svg></p>
+    <p class="Center Answer"><svg class="s20" data-svg2="p20/skill/img/trig.js#ball8"></svg></p>
 
     <li>Using trigonometry, calculate the hypotenuse of the triangle (the distance between the 8-ball’s initial and final positions).
     <div class="Answer">Using Pythagoras, the hypotensue is:
@@ -111,10 +142,9 @@
 
     <li>Using trigonometry, calculate and label all the angles of the triangle.
     <div class="Answer">
-        <p>For the angle at the vertex <span class="TeX">F</span>:
-            <p class="TeX">\tan\angle F = \rm{\frac{15.0\ cm}{40.0\ cm} = 0.375}</p>
-            <p class="TeX">\angle F = \tan^{-1}0.375 = 20.6^\circ</p>
-        </p>
+        <p>For the angle at the vertex <span class="TeX">F</span>:</p>
+        <p data-cue="prev" class="TeX">\tan\angle F = \rm{\frac{15.0\ cm}{40.0\ cm} = 0.375}</p>
+        <p class="TeX">\angle F = \tan^{-1}0.375 = 20.6^\circ</p>
         <p>The third angle at the vertex <span class="TeX">I</span> must be 68.4° because the three angles must add up to 180°.</p>
     </div>
     </li>
