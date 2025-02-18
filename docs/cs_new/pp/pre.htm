@@ -1,7 +1,7 @@
 <section class="Post" data-icon="python">
 <h2 class="Collapse">Preconditions</h2><div class="Collapse Expand">
-<p>The <code>resource.wholeNum</code> module (provided in the repl for this course) contains a function <code>isPrime</code> that tests whether a number is prime or not. A prime number is a number that has no factors other than 1 and itself.</p>
-<pre class="Code" contenteditable="true" data-echo="p04_ex1.py" data-title="1">from resource.wholeNum import isPrime
+<p>The <code>p04_wholenum.py</code> file contains a function <code>isPrime</code> that tests whether a number is prime or not. A prime number is a number that has no factors other than 1 and itself.</p>
+<pre class="Code" contenteditable="true" data-echo="p04_ex1.py" data-title="1">from p04_wholenum import isPrime
 
 print(isPrime(6))     <span class="Comment"># False</span>
 print(isPrime(7))     <span class="Comment"># True</span>
@@ -81,7 +81,7 @@ print(sortThree(3, 1, False))</pre>
 <ol class="Assign">
 <li>The program <code>p04_salesTax.py</code> asks the user to enter the price of an item and the sales tax rate, and then calculates the amount of sales tax and the total cost including the tax.
     Complete the program by writing the <code>salesTax</code> function. Use the <code>assert</code> statement to include pre- and post-conditions for your function. Test that calling a function with bad data raises an <code>AssertionError</code>.</li>
-<li>The module <code>resource/wholeNum.py</code> defines several functions for working with whole numbers:
+<li>The module <code>p04_wholenum.py</code> defines several functions for working with whole numbers:
     <ul>
         <li><code>smallestFactor(n)</code> calculates the smallest whole number that is a factor of <code>n</code>.</li>
         <li><code>isPrime(n)</code> tests whether n is a prime number.</li>
