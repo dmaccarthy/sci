@@ -191,7 +191,7 @@ loadFeed.notes = () => {
 <div class="Answer">
 <table class="Three Center Top">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td>–1.25</td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
-    <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>12.0</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
+    <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>+12.0</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_f</span></td><td class="Reveal"><span>+7.63</span></td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
     <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td class="Reveal"><span>+34.3</span></td><td><span class="TeX">{\rm{m}}</span></td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td>3.50</td><td><span class="TeX">{\rm{s}}</span></td></tr>
@@ -199,9 +199,9 @@ loadFeed.notes = () => {
 <p>Solve for <span class="TeX">{\vec{\bf v}}_f</span> in Eqn 20:</p>
 <p class="TeX">\begin{align}{\vec{\bf v}}_f &= \vec{\bf a}\Delta t + {\vec{\bf v}}_i
     \\[10pt]&= \rm{-1.25\ m/s^2\cdot 3.50\ s + 12.0\ m/s}
-    \\[10pt]&= \rm{7.63\ m/s}\end{align}</p>
+    \\[10pt]&= \rm{+7.63\ m/s}\end{align}</p>
 <div><p>Evaluate <span class="TeX">\Delta \vec{\bf d}</span> with Eqn 21:</p>
-<p class="TeX">\Delta\vec{\bf d} = \rm{\frac{12.0\ m/s + 7.63\ m/s}{2}\ 3.50\ s = +34.3\ m}</p></div>
+<p class="TeX">\Delta\vec{\bf d} = \rm{\frac{+12.0\ m/s + 7.63\ m/s}{2}\ 3.50\ s = +34.3\ m}</p></div>
 </div>
 
 <li>A student throws a ball into the air. The ball lands on the ground 3.50 seconds later, having a final velocity of –17.7 m/s.</li>
@@ -331,7 +331,7 @@ loadFeed.notes = () => {
 <p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
     = \rm{\frac{0.00\ m/s - 2.40\ m/s}{-9.81\ m/s^2} = 0.245\ s}</p>
 <p>Evaluate <span class="TeX">\Delta \vec{\bf d}</span> with Eqn 21:</p>
-<p class="TeX">\Delta\vec{\bf d} = \rm{\frac{2.40\ m/s + 0.00\ m/s}{2} 0.245\ s = +0.294\ m}</p>
+<p class="TeX">\Delta\vec{\bf d} = \rm{\frac{+2.40\ m/s + 0.00\ m/s}{2} 0.245\ s = +0.294\ m}</p>
 <p>This means the diver rises 0.294 metres above their initial position which is 10.0 metres above the water, for a total height of 10.3 m.</p>
 </div>
     
@@ -346,7 +346,7 @@ loadFeed.notes = () => {
 </table>
 <p>Solve for <span class="TeX">{\vec{\bf v}}_f</span> in Eqn 22:</p>
 <p class="TeX">\begin{align} v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
-    \\[10pt]&= \rm{\sqrt{(+2.40\ m/s)^2 + 2(-9.81 m/s^2)\cdot(-10.0\ m)}}
+    \\[10pt]&= \rm{\sqrt{(2.40\ m/s)^2 + 2(-9.81 m/s^2)\cdot(-10.0\ m)}}
     \\[10pt]&= \rm{\pm 14.2\ m/s} \end{align}</p>
 <p>Use the negative answer because the diver is falling!</p>
 <p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
@@ -400,7 +400,7 @@ loadFeed.notes = () => {
 </table>
 <p>Solve for <span class="TeX">{\vec{\bf v}}_f</span> in Eqn 22:</p>
 <p class="TeX">\begin{align} v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
-    \\[10pt]&= \rm{\sqrt{(+21.0\ m/s)^2 + 2(-9.81 m/s^2)\cdot(0.00\ m)}}
+    \\[10pt]&= \rm{\sqrt{(21.0\ m/s)^2 + 2(-9.81 m/s^2)\cdot(0.00\ m)}}
     \\[10pt]&= \rm{\pm 21.0\ m/s} \end{align}</p>
 <p>Use the negative answer because the ball is falling!</p>
 <p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
@@ -470,18 +470,36 @@ loadFeed.soln = () => {
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
 <li>Define uniform accelerated motion and explain how we can recognize this type of motion from the shapes of the <span class="TeX">\vec{\bf{d}}{\text -}t</span> and <span class="TeX">\vec{\bf{v}}{\text -}t</span> graphs.</li>
+<p class="Answer">Uniform accelerated motion occurs when the acceleration is constant. A <span class="TeX">\vec{\bf{d}}{\text -}t</span> is a parabola and a <span class="TeX">\vec{\bf{v}}{\text -}t</span> is linear with a non-zero slope (i.e. not horizontal) for UAM.</p>
 
 <li><ol type="a">
     <li>State the two basic relationships (equations) for uniform accelerated motion.</li>  
-    <li>Explain why these equations are not valid when the acceleration is not constant.</li>  
-    <li>Explain how you would solve a kinematics problem when the acceleration changes.</li>  
+    <div class="Answer">
+        <p class="TeX">{\vec{\bf a}} = {{{\vec{\bf v}}_f - {\vec{\bf v}}_i}\over\Delta t}</p>
+        <p class="TeX">\Delta{\vec{\bf d}} = {{{\vec{\bf v}}_i + {\vec{\bf v}}_f}\over 2}\Delta t</p>
+        </div>
+
+    <li>Explain why these equations are not valid when the acceleration is not constant.</li>
+    <p class="Answer">The second equation assumes that the <em>average</em> velocity is just the simple arithmetic average of the initial and final velocity, which is only true when the velocity changes at a constant rate.</p>
+
+    <li>Explain how you would solve a kinematics problem when the acceleration changes.</li> 
+    <p class="Answer">For this situation, you would need to treat each section of the motion (i.e. whenever the acceleration changes) as a separate problem.</p> 
 </ol></li>
 
 <li>State the three additional equations that can be obtained by algebraically combining the two equations you identified in question 2a.</li>
+<div class="Answer">
+    <p class="TeX">{v_f}^2 = {v_i}^2 + 2{\vec{\bf a}}\cdot{\Delta\vec{\bf d}}</p>
+    <p class="TeX">{\Delta\vec{\bf d}} = {\vec{\bf v}}_i\Delta t + {1\over 2}{\vec{\bf a}}\left(\Delta t\right)^2</p>
+    <p class="TeX">{\Delta\vec{\bf d}} = {\vec{\bf v}}_f\Delta t - {1\over 2}{\vec{\bf a}}\left(\Delta t\right)^2</p>    
+</div>
 
 <li><ol type="a">
     <li>Of the five kinematics variables (<span class="TeX">\Delta t</span>, <span class="TeX">\Delta\vec{\bf{d}}</span>, <span class="TeX">{\vec{\bf{v}}}_i</span>, <span class="TeX">{\vec{\bf{v}}}_f</span>, and <span class="TeX">\vec{\bf{a}}</span>) how many “knowns” and “unknowns” must there be in order to solve the problem with the UAM equations? Explain.</li>
+    <p class="Answer">Since we started with <em>two</em> equations, there can be no more than two unknowns, meaning we must have at least three of the five variables as “givens”.</p>
+
     <li>Explain how you would decide which of the five equations to use, and in what order, to solve any particular problem.</li>
+    <p class="Answer">Go through the five equations <em>in order</em> until you find an equation containing only one unkonwn. Solve for that unkonwn, and then go back to the begining of the list of equations and use the first one not already used(!) to solve for the second unknown.</p>
+
 </ol></li>
 </ol>
 </div></section>
