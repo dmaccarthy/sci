@@ -594,7 +594,7 @@ function goSlide(n) {
     goSlide.n = n;
     slideShow.sections.hide();
     let s = $(slideShow.sections[n]).fadeIn();
-    let c = s.find("div, p, ol, ul, li, h1, h2, h3, table");
+    let c = s.find("div, p, ol, ul, li, h1, h2, h3, table, *[data-cue]");
     goSlide.cues = [];
     for (let e of c) {
         e = $(e);
