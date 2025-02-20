@@ -36,7 +36,7 @@
 <div>
     <p class="Caption">Motion of a Bicycle</p>
     <table data-cue="prev" class="Center Two TD6">
-        <thead><tr><td><b>Time</b><br/><span class="TeX">t</span> / s</td><td><b>Position</b><br/><span class="TeX">\Delta{\vec{\bf d}}</span> / m</td></tr></thead>
+        <thead><tr><td><b>Time</b><br/><span class="TeX">t</span> / s</td><td><b>Position</b><br/><span class="TeX">\vec{\bf d}</span> / m</td></tr></thead>
         <tbody>
         <tr><td>0.0</td><td>–5.0</td></tr>
         <tr><td>1.0</td><td>–2.0</td></tr>
@@ -87,9 +87,21 @@
 	<li>The <em>area</em> under any section of the graph indicates the object’s displacment during that time interval.</li>
     <li>For uniform motion, we know the <span class="TeX">\vec{\bf d}{\text -}t</span> graph will be linear, so we only need two data points to draw the graph accurately.</li>
     <li>For accelerated motion, the <span class="TeX">\vec{\bf d}{\text -}t</span> graph will be curved; an accurate graph requires many data points.</li>
-    <li>We can “slice” each of the trapezoid sections of the <span class="TeX">\vec{\bf v}{\text -}t</span> graph into many narrower trapezoids to produce more data points.</li>
-	<li>The narrower the time “slices”, the more data points we will have to construct an accurate <span class="TeX">\vec{\bf d}{\text -}t</span> graph.
-        (See <a href="https://www.desmos.com/calculator/odcl68ab2r" target="Desmos2">desmos.com</a>.)</li>
+    <li>We can “slice” each of the sections of the <span class="TeX">\vec{\bf v}{\text -}t</span> graph into many trapezoids; the narrower the slices, the more data points we will have and the more accurate our graph will be.</li>
+</ul>
+<table class="TD6 Two Center Bottom">
+    <tr data-cue="wait"><td>Interval / s</td><td>Displacement / m</td></tr>
+    <tr data-cue="wait"><td>0.0 ... 1.0</td><td>+10</td></tr>
+    <tr data-cue="wait"><td>1.0 ... 2.0</td><td>+14</td></tr>
+    <tr data-cue="wait"><td>2.0 ... 3.0</td><td>+18</td></tr>
+    <tr data-cue="wait"><td>3.0 ... 4.0</td><td>+22</td></tr>
+    <tr data-cue="wait"><td>4.0 ... 8.0</td><td>+96</td></tr>
+</table>
+<ul>
+    <li>The <em>base</em> of the trapezoid must be the axis; if the graph includes negative velocities, the areas of any sections below the axis are counted as negative.</li>
+    <li>If the graph includes negative velocities, do not use the <em>bottom</em> of the graph to construct your trapezoids!</li>
+	<li>To calculate and/or graph the <em>position</em> versus time, we need to keep a running total of the areas. The position after 2.0 seconds is equal to the total of the displacements during the first and second seconds.</li> 
+    <li>See the <span class="TeX">\vec{\bf d}{\text -}t</span> graph at <a href="https://www.desmos.com/calculator/gfplshebsc" target="Desmos2">desmos.com</a>.</li>
 </ul>
 </section>
 
