@@ -1,6 +1,6 @@
 SVG2.cache("p20/energy/img/mech.js", {
 
-Q1: (sel) => {
+Baseball: (sel) => {
     let Eg = 0.25 * 9.81 * 9.25;
     let Ek = 72;
     svg = SVG2.ebg(sel, 100, 10, [
@@ -19,21 +19,21 @@ Q2: (sel) => {
     ], {E: Eg+Ee, label: [0, "-6", 2]});
 },
 
-Q3: (sel) => {
+ToyCar: (sel) => {
     svg = SVG2.ebg(sel, 20, 2, [
         ["E_k", 0],
         ["E_elas", 16],
     ], {E: 16, unit: "mJ", label: [0, "-6", 2]});
 },
 
-Q4: (sel) => {
+CarHill: (sel) => {
     svg = SVG2.ebg(sel, 150, 25, [
         ["E_k", true],
         ["E_g", (t) => 125 * t * t],
     ], {E: 125, unit: "kJ", duration: 4, margin: [40, 4, 40, 16], label: [0, "-6"]});
 },
 
-Q5: (sel) => {
+Pinball: (sel) => {
     svg = SVG2.ebg(sel, 1.5, 0.1, [
         ["E_k", (t) => 1.35 * t * t],
         ["E_elas", true],

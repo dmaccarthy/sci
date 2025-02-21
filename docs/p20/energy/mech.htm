@@ -1,6 +1,41 @@
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Remember?</h2><div class="Collapse">
+<ol>
+    <li><ol type="a">
+        <li>A 1200 kg car has 125 kJ of kinetic energy. Calculate the speed of the car.</li>
+        <div class="Answer">
+            <p class="TeX">E_k = \frac{1}{2}mv^2</p>
+            <p class="TeX">{\color{blue} \frac{2}{m}}E_k = {\color{blue} \frac{\bcancel{2}}{\bcancel{m}}}\cdot\frac{1}{\bcancel{2}}\bcancel{m}v^2</p>
+            <p class="TeX">\frac{2E_k}{m} = v^2</p>
+            <p>Don’t forget to square root!</p>
+            <p data-cue="prev" class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm \sqrt{\frac{2\cdot 125000\ J}{1200\ kg}} = 14.4\ m/s</p>
+        </div>
+    
+        <li>If the car were to coast up a hill (no mechanical energy gained or lost), how high would the car reach before it begins to roll back down the hill?</li>
+        <div class="Answer">
+            <p>The mechanical energy gets transformed into gravitational potential energy:</p>
+            <p data-cue="prev" class="TeX">E_g = mgh</p>
+            <p class="TeX">\frac{E_g}{\color{blue}mg} = \frac{\bcancel{mg}h}{\color{blue}\bcancel{mg}}</p>
+            <p class="TeX">h = \frac{E_g}{mg} = \rm \frac{125000\ J}{1200\ kg\cdot 9.81\ m/s^2} = 10.6\ m</p>
+        </div>
+
+        <li>What would the speed of the car be when it is part way up the hill, at a height of 5.00 metres?</li>
+        <div class="Answer">
+            <p>Calculate the gravitational potential energy at the given height:</p>
+            <p data-cue="prev" class="TeX">E_g = mgh = \rm 1200\ kg\cdot 9.81\ m/s^2\cdot 5.00\ m = 58860\ J</p>
+            <p>Since the <em>total</em> energy remains constant, the kinetic energy is:</p>
+            <p data-cue="prev" class="TeX">E_k = \Sigma E - E_g = \rm (125000 - 58860) \ J = 66140\ J</p>
+            <p>Now we can find the speed. We already did the algebra back in (a)...</p>
+            <p data-cue="prev" class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm \sqrt{\frac{2\cdot 66140\ J}{1200\ kg}} = 10.5\ m/s</p>
+            <p class="Center Answer"><svg class="s20" data-svg2="p20/energy/img/mech.js#CarHill"></svg></p>
+        </div>
+    </ol></li>
+</ol>
+</div></section>
+
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2>
-<div class="Collapse" id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2>
+<div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Mechanical Energy</h1>
@@ -17,13 +52,14 @@
     <li>Energy comes in many different forms.</li> 
     <li>Energy is a <em>scalar</em> quantity; it has no direction.</li>
     <li>Energy is a <em>conserved</em> quantity.</li>
-    <li>The SI unit of energy is called the <em>joule</em>. A joule can be expressed in terms of simpler units:<p class="TeX">\rm {J = N\cdot m = kg \cdot {m^2\over s^2}}</p></li>
+    <li>The SI unit of energy is called the <em>joule</em>. A joule can be expressed in terms of simpler units:
+        <p class="TeX" data-cue="prev">\rm {J = N\cdot m = kg \cdot {m^2\over s^2}}</p></li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Kinetic Energy</h3>
 <p>Motion is itself a form of energy, which we call the <em class="Defn">kinetic energy</em>:</p>
-<p class="TeX">E_k = {1 \over 2} mv^2</p>
+<p class="TeX" data-cue="prev">E_k = {1 \over 2} mv^2</p>
 <ul>
     <li>In this equation, <span class="TeX">m</span> is the <em>mass</em> of the object in kilograms.</li>
     <li>The symbol <span class="TeX">v</span> is the <em>speed</em> of the object in metres per second (m/s).</li>
@@ -41,8 +77,10 @@
 
 <section class="Slide"><h3>Gravitational Potential Energy</h3><!-- https://freesvg.org/img/mountainclimbing.png -->
     <p>When an object is elevated above the ground, it has energy because gravity will cause the object to move when it is released.</p>
-    <div><p>This type of energy is called <em class="Defn">gravitational potential energy</em>:</p>
-    <p class="TeX">E_g = mgh</p></div>
+    <div>
+        <p>This type of energy is called <em class="Defn">gravitational potential energy</em>:</p>
+        <p data-cue="prev" class="TeX">E_g = mgh</p>
+</div>
     <ul>
         <li>In this equation, <span class="TeX">g</span> is the <em>gravitational field strength</em>. Close to Earth’s surface, <span class="TeX">g = 9.81\ \rm m/s^2</span>.</li>
         <li>The symbol <span class="TeX">h</span> is the <em>height</em> of the object relative to the origin (usually the ground).</li>
@@ -53,11 +91,11 @@
 
 <section class="Slide"><h3>Elastic Potential Energy</h3>
     <p><em class="Defn">Elasticity</em> is a property of objects that return to their original shape when they are stretched or compressed.</p>
-    <ul>
-        <li>Elastic objects include springs, rubber bands, bungees, and archery bows.</li>
-    </ul>
-    <div><p>The energy stored in a stretched or compressed elastic is called <em class="Defn">elastic potential energy</em>:</p>
-    <p class="TeX">E_{elas} = {1\over 2}k \left({\Delta L}\right)^2</p></div>
+    <ul><li>Elastic objects include springs, rubber bands, bungees, and archery bows.</li></ul>
+    <div>
+        <p>The energy stored in a stretched or compressed elastic is called <em class="Defn">elastic potential energy</em>:</p>
+        <p data-cue="prev" class="TeX">E_{elas} = {1\over 2}k \left({\Delta L}\right)^2</p>
+    </div>
     <ul>
         <li>The variable <span class="TeX">k</span> is called the <em class="Defn">elastic constant</em>. It measures the strength of the elastic object in newtons per metre (N/m).</li>
         <li>The variable <span class="TeX">\Delta L</span> is the distance the elastic is stretched or compressed from its equilibrium shape.</li>
@@ -120,10 +158,10 @@
     <p class="TeX Answer">E_g = mgh = \rm 0.250\ kg\cdot 9.81\ m/s^2\cdot 9.25\ m = 22.7\ J</p>
 
     <li>Calculate the baseball’s mechanical energy.</li>
-    <p class="TeX Answer">E = \rm 72.0\ J + 22.7 J = 94.7\ J</p>
+    <p class="TeX Answer">\Sigma E = \rm 72.0\ J + 22.7 J = 94.7\ J</p>
 
-    <li>Draw an energy bar chart for the baseball (on graph paper).</li>
-    <p class="Center Answer"><svg data-svg2="p20/energy/img/mech.js#Q1"></svg></p>
+    <li>Draw an energy bar chart for the baseball.</li>
+    <p class="Center Answer"><svg class="s20" data-svg2="p20/energy/img/mech.js#Baseball"></svg></p>
 </ol></li>
 
 <li>An archer has a bow with an elastic constant <span class="TeX">k</span> = 200 N/m. She draws the bowstring back 65.0 cm.
@@ -138,45 +176,46 @@
     <p class="TeX Answer">E = \rm 42.25\ J + 0.863\ J = 43.1\ J</p>
 
     <li>Draw an energy bar chart for the bow-arrow system.</li>
-    <p class="Center Answer"><svg data-svg2="p20/energy/img/mech.js#Q2"></svg></p>
+    <p class="Center Answer"><svg class="s20" data-svg2="p20/energy/img/mech.js#Q2"></svg></p>
 </ol></li>
 
-<li>A toy car has a mass of 35.0 grams. The car is launched using a spring with <span class="TeX">k</span> = 20.0 N/m that is compressed by 4.00 cm. Calculate the mechanical energy stored in the spring. Draw an appropriate energy bar chart.</li>
-<div class="Answer">
-    <p class="TeX">E_{elas} = \frac{1}{2}k(\Delta L)^2 = \rm \frac{1}{2} (20.0\ N/m) (0.0400\ m)^2 = 0.0160\ J</p>
-    <p class="Center"><svg data-svg2="p20/energy/img/mech.js#Q3"></svg></p>
-</div>
+<li>A toy car has a mass of 35.0 grams. The car is launched using a spring with <span class="TeX">k</span> = 20.0 N/m that is compressed by 4.00 cm.
+    <ol type="a">
+        <li>Calculate the mechanical energy stored in the spring.</li>
+        <p class="Answer TeX">E_{elas} = \frac{1}{2}k(\Delta L)^2 = \rm \frac{1}{2} (20.0\ N/m) (0.0400\ m)^2 = 0.0160\ J</p>
 
-<li><ol type="a">
-    <li>A 1200 kg car has 125 kJ of kinetic energy. Calculate the speed of the car.</li>
-    <div class="Answer">
-        <p class="TeX">E_k = \frac{1}{2}mv^2</p>
-        <p class="TeX">\frac{2E_k}{m} = v^2</p>
-        <p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm \sqrt{\frac{2\cdot 125000\ J}{1200\ kg}} = 14.4\ m/s</p>
-    </div>
+        <li>Calculate the speed of the car after it is launched, assuming the system retains 60.0% of its initial mechanical energy. (The other 40.0% of the energy is transformed into sound and thermal energy.)</li>
+        <div class="Answer">
+            <p class="TeX">E_k = \rm 0.600\times 0.0160\ J = 0.00960\ J</p>
+            <p>To find the speed, rearrange the kinetic energy equation as we did in the first <em>Remember</em> question above:</p>
+            <p data-cue="prev" class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm \sqrt{\frac{2\cdot 0.00960\ J}{0.0350\ kg}} = 0.741\ m/s</p>
+            <!-- <p class="Center"><svg data-svg2="p20/energy/img/mech.js#ToyCar"></svg></p> -->
+        </div>
+        </ol>
+</li>
 
-    <li>If the car were to coast up a hill (no mechanical energy gained or lost), how high would the car reach before it begins to roll back down the hill?</li>
-    <div class="Answer">
-        <p>The mechanical energy gets transformed into gravitational potential energy:</p>
-        <p class="TeX">E_g = mgh = \rm 125000\ J</p>
-        <p class="TeX">h = \frac{E_g}{mg} = \rm \frac{125000\ J}{1200\ kg\cdot 9.81\ m/s^2} = 10.6\ m</p>
-    </div>
+<li>A pinball game uses a spring that is stretched by 12.0 cm to launch a ball (<span class="TeX">m</span> = 75.0 g) to start the game. After the spring is released, the speed of the ball is 6.00 m/s.
+    <ol type="a">
+        <li>Calculate the mechanical energy of the system.</li>
+        <div class="Answer">
+            <p>After the ball is set in motion, it only has kinetic energy, so the mechanical energy is:</p>
+            <p class="TeX">E_k = \frac{1}{2} mv^2 = \rm \frac{1}{2} (0.0750\ kg) (6.00\ m/s)^2 = 1.35\ J</p>
+        </div>
 
-    <li>Draw energy bar charts for the car at the bottom and at the top of the hill.</li>
-    <p class="Center Answer"><svg data-svg2="p20/energy/img/mech.js#Q4"></svg></p>
-</ol></li>
+        <li>Calculate elastic constant of the spring.</li>
+        <div class="Answer">
+            <p>Before the ball is set in motion, the mechanical energy is in the form of elastic potential energy:
+            <p class="TeX">E_{elas} = \frac{1}{2} k(\Delta L)^2</p>
+            <p class="TeX">2E_{elas} = k(\Delta L)^2</p>
+            <p class="TeX">k = \frac{2E_{elas}}{(\Delta L)^2} = \rm \frac{2\cdot 1.35\ J}{(0.120\ m)^2} = 188\ N/m</p>
+        </div>
+    
+        <li>Draw energy bar charts for the system before and after launch.</li>
+        <p class="Center Answer"><svg class="s20" data-svg2="p20/energy/img/mech.js#Pinball"></svg></p>
+    </ol>
+</li>
 
-<li>A pinball game uses a spring that is stretched by 12.0 cm to launch a ball (<span class="TeX">m</span> = 75.0 g) to start the game. After the spring is released, the speed of the ball is 6.00 m/s. Calculate the (a) mechanical energy of the system, and (b) elastic constant of the spring. Draw energy bar charts for the system before and after launch.</li>
-<div class="Answer">
-    <p>After the ball is set in motion, it only has kinetic energy, so the mechanical energy is:
-    <p class="TeX">E_k = \frac{1}{2} mv^2 = \rm \frac{1}{2} (0.0750\ kg) (6.00\ m/s)^2 = 1.35\ J</p>
 
-    <p>Before the ball is set in motion, the mechanical energy is in the form of elastic potential energy:
-    <p class="TeX">E_{elas} = \frac{1}{2} k(\Delta L)^2</p>
-    <p class="TeX">2E_{elas} = k(\Delta L)^2</p>
-    <p class="TeX">k = \frac{2E_{elas}}{(\Delta L)^2} = \rm \frac{2\cdot 1.35\ J}{(0.120\ m)^2} = 188\ N/m</p>
-    <p class="Center"><svg data-svg2="p20/energy/img/mech.js#Q5"></svg></p>
-</div>
 
 <li>A solid metal ball with a mass of 200 grams rolls down a ramp starting from rest. When the ball is halfway down the ramp, its speed is measured to be 2.00 m/s. For a solid sphere that rolls without slipping, the rotational energy equation is: <p class="TeX">E_{rotn}=\frac{1}{5}mv^2</p>
 <ol type="a">
@@ -197,7 +236,7 @@
     <div class="Answer">
         <p class="TeX">E_g = mgh</p>
         <p class="TeX">h = \frac{E_g}{mg} = \rm \frac{1.12\ J}{0.200\ kg\cdot 9.81\ m/s^2} = 0.571\ m</p>
-        <p class="Center"><svg data-svg2="p20/energy/img/mech.js#Q6"></svg></p>
+        <p class="Center"><svg class="s20" data-svg2="p20/energy/img/mech.js#Q6"></svg></p>
     </div>
 </ol></li>
 </ol>
@@ -207,36 +246,38 @@
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>Define energy and state the standard SI unit for energy.</li>
-    <div class="Answer">Energy is the ability to do work or create motion. It is measured in joules (J).</div>
+    <p class="Answer">Energy is the ability to do work or create motion. It is measured in joules (J).</p>
 
     <li><ol type="a">
         <li>Define mechanical forms of energy.</li>
-        <div class="Answer">Forms of energy related to an objects motion but not to its temperature, chemical composition, or other properties.</div>
+        <p class="Answer">Forms of energy related to an objects motion but not to its temperature, chemical composition, or other properties.</p>
 
         <li>List four different mechanical forms of energy and include the mathematical definition (formula) for three of them. Why can we not write a single equation for the fourth type?</li>
         <div class="Answer">
             <p>Kinetic:</p>
-            <p class="TeX">E_k = \frac{1}{2}mv^2</p>
+            <p data-cue="prev" class="TeX">E_k = \frac{1}{2}mv^2</p>
             <p>Graviational Potential:</p>
-            <p class="TeX">E_g = mgh</p>
+            <p data-cue="prev" class="TeX">E_g = mgh</p>
             <p>Elastic Potential:</p>
-            <p class="TeX">E_{elas} = \frac{1}{2}k(\Delta L)^2</p>
+            <p data-cue="prev" class="TeX">E_{elas} = \frac{1}{2}k(\Delta L)^2</p>
             <p>Rotational: Depends on the shape and axis of rotation.</p>
         </div>
 
         <li>When calculating gravitational potential energy, do we use <span class="TeX">\rm 9.81\ m/s^2</span> or <span class="TeX">\rm -9.81\ m/s^2</span> for <span class="TeX">g</span>? Explain.</li>
-        <div class="Answer">Energy is a scalar, so <span class="TeX">g</span> does not require a direction as it does when using it as an acceleration (<span class="TeX">\vec{\bf g}</span>).</div>
+        <p class="Answer">Energy is a scalar, so <span class="TeX">g</span> does not require a direction as it does when using it as an acceleration (<span class="TeX">\vec{\bf g}</span>).</p>
 
         <li>Define the elastic constant (sometimes called a spring constant) and explain how to interpret its value. For example, what does it mean to say that a spring has an elastic constant of 20 N/m?</li>
-        <div class="Answer">The elastic constant measures the amount of force required per one metre of stretch or compression of an elastic object. 20 N/m means a force of 20 newtons would result in 1 metre of stretch, provided this did not exceed the elastic limit of the object.</div>
+        <p class="Answer">The elastic constant measures the amount of force required per one metre of stretch or compression of an elastic object. 20 N/m means a force of 20 newtons would result in 1 metre of stretch, provided this did not exceed the elastic limit of the object.</p>
     </ol></li>
 
     <li>Explain what it means when you are asked to calculate the mechanical energy of a system.</li>
-    <div class="Answer">Calculate each of the kinetic, rotational, gravitational and elastic energies (at the same time!) and then add them together.</div>
+    <p class="Answer">Calculate each of the kinetic, rotational, gravitational and elastic energies (at the same time!) and then add them together.</p>
+
     <li>List as many non-mechanical forms of energy as you can.</li>
-    <div class="Answer">Thermal energy, Sound, Electrical, Chemical, Nuclear, Light and other Electromagnetic energy</div>
+    <p class="Answer">Thermal energy, Sound, Electrical, Chemical, Nuclear, Light and other Electromagnetic energy</p>
+
     <li>Draw an example of an energy bar chart and explain what it shows.</li>
-    <div class="Answer">See any of the practice questions above</div>
+    <p class="Answer">See any of the practice questions above</p>
 </ol>
 </div></section>
 
@@ -250,7 +291,7 @@
 
 loadFeed.data = {
     title: `${siteData.lesson}6.1 — Mechanical Energy`,
-    showDate: "2025.2.26",
+    showDate: "2024.2.26",
     answerDate: "2025.2.28",
     num: "6.1",
     up: "p20/home",
