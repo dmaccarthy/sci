@@ -49,6 +49,15 @@ vt: (sel) => {
     // svg.$.find("g.LabelX text.Zero").remove();
 },
 
+lrt: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 32], margin: [60, 12, 50, 12]});
+    svg.graph({grid: [0.5, 2], css: true,
+        x: {tick: [0, 10.1, 1], title: ["Time / s", [5, "-44"]], shift: [0, "-22"]},
+        y: {tick: [0, 33, 4], title: ["Velocity / (m/s)", "-44"], shift: ["-10", "-4"]},
+        data: [{connect: [[0, 30], [10, 16]]}],
+    });
+},
+
 vt1: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 20], margin: [60, 12, 50, 12]});
     svg.graph({grid: [1, 2], css: true,
