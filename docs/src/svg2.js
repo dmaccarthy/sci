@@ -203,7 +203,15 @@ create_child(tag, attr) {
     return c.attr(attr ? attr : {}).appendTo(this.element);
 }
 
-group() {return new SVG2g(this.svg, this.create_child("g"))}
+group(classes, delay) {
+    let g = new SVG2g(this.svg, this.create_child("g"));
+    if (classes) g.addClass(classes);
+    if (delay) this.svg.delay(g, delay);
+    return g;
+}
+
+
+
 scaled(s) {return new SVG2scaled(this.svg, this.create_child("g"), s)}
 
 _px(x, i) {return Math.abs(typeof(x) == "string" ? parseFloat(x) : x * this.svg.scale[i])}
@@ -989,7 +997,12 @@ adjustAngle(a, invert) {
     return atan2(sy * this.angleDir * sin(a), sx * cos(a));
 }
 
-group() {return new SVG2g(this)}
+group(classes, delay) {
+    let g = new SVG2g(this);
+    if (classes) g.addClass(classes);
+    if (delay) this.delay(g, delay);
+    return g;
+}
 
 pts_str(pts) {
 /* Create a string from an array of ordered pairs*/
@@ -1017,7 +1030,6 @@ finalize() {
             if (k == "recenter") e.recenter(a);
             else if (k == "recenter_dim") e.recenter(...a);
             else if (k == "css") e.css(a);
-            // else console.log(k);
         }
     }
     delete this._delay;
