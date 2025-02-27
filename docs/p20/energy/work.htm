@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2>
-<div class="Collapse" id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Energy Transformations (Work)</h1>
@@ -55,8 +54,8 @@
     </ul>
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
-    <p class="Blue">Identify the forces and describe the energy transformations / work done for a student pushing a crate up a ramp.</p>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+    <p data-cue="none" class="Blue">Identify the forces and describe the energy transformations / work done for a student pushing a crate up a ramp.</p>
     <table>
         <tr class="Blue"><th style="width:20%">Force</th><th style="width:40%">Transforms...</th><th style="width:40%">Into...</th><th style="width:20%">Work</th></tr>
         <tr><td>Applied</td><td class="Reveal"><span>Chemical (Food) Energy</td><td class="Reveal"><span>Kinetic Energy</span></td><td class="Center Reveal"><span>+</span></td></tr>
@@ -67,13 +66,13 @@
     
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
-    <p class="Blue">Suppose the student does 9.0 joules of work. The crate reaches the top of the ramp with 5.0 J of gravitational potential energy and 3.0 J of kinetic energy.
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+    <p data-cue="none" class="Blue">Suppose the student does 9.0 joules of work. The crate reaches the top of the ramp with 5.0 J of gravitational potential energy and 3.0 J of kinetic energy.
         Draw energy bar charts for the bottom and top of the ramp, and an energy flow diagram.
     </p>
-    <p class="Center"><svg data-svg2="p20/energy/img/work.js#ex2" class="s24"></svg></p>
+    <p class="Center"><svg data-svg2="p20/energy/img/work.js#ex2" class="s20"></svg></p>
     <p>An <em class="Defn">energy flow diagram</em> illustrates the energy transformations that have occured...</p>
-    <p class="Center"><svg data-svg2="p20/energy/img/work.js#flow2" class="s18"></svg></p>
+    <p class="Center"><svg data-svg2="p20/energy/img/work.js#flow2" class="s20"></svg></p>
     <ul>
         <li>The circle represents the boundary between the system and its environment.</li>
         <li>The arrows represent the energy transformed (work done) by each of the three forces.</li>
@@ -86,12 +85,10 @@
     </ul>
 </section>
 
-<section class="Slide Present">
-<div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Energy Transformations (Work)</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
-    <p data-qr="p20/energy/work"></p>
-</div>
-</section>
+<section class="Slide Present"><div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Energy Transformation (Work)</i> handout.</p>
+    <ul data-cue="none" class="Var">assign</ul>
+</div></section>
 
 <script type="text/javascript" data-init="notes">
 
@@ -106,16 +103,15 @@ loadFeed.notes = () => {
 
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
-<div id="Practice">
 <ol>
     <li>A student slowly lifts a weight at constant speed. How is it possible that the student is doing work, but the object is not gaining kinetic energy?</li>
-    <div class="Answer">The force the student applies is not the only force. The force of gravity is acting in the opposite direction. The student is doing a positive amount of work, while gravity does a negative amount of work. The total work done is zero if the speed is constant.</div>
+    <p class="Answer">The force the student applies is not the only force. The force of gravity is acting in the opposite direction. The student is doing a positive amount of work, while gravity does a negative amount of work. The total work done is zero if the speed is constant.</p>
 
     <li>A 30.0-kilogram student slides down an icy hill on a sled. The student’s speed is 3.00 m/s at the top of the 5.00-metre high hill. When the student reaches the bottom of the hill, her speed has increased to 8.00 m/s.
     <ol type="a">
         <li>Draw energy bar graphs for the student’s initial (top of hill) and final (bottom of hill) state. Show all calculations.</li>
         <div class="Answer">
-            <p class="Center Answer"><svg data-svg2="p20/energy/img/work.js#Q2"></svg></p>
+            <p class="Center Answer"><svg class="s20" data-svg2="p20/energy/img/work.js#Q2"></svg></p>
             <p class="TeX">E_k = \frac{1}{2} mv_f^2 = \rm \frac{1}{2} (30.0\ kg) (3.00\ m/s)^2 = 135\ J</p>
             <p class="TeX">E_g = mgh = \rm 30.0\ kg\cdot 9.81\ m/s^2\cdot 5.00\ m = 1472\ J</p>
             <p class="TeX">\Sigma E = \rm 135\ J + 1471.5\ J = 1607\ J</p>
@@ -124,61 +120,71 @@ loadFeed.notes = () => {
         </div>
 
 <li>Draw an energy flow diagram for this scenario. Label the amount of work done by each force (gravity, friction/air resistance).</li>
-<p class="Answer Center"><svg data-svg2="p20/energy/img/work.js#F2"></svg></p>
+<p class="Answer Center">
+    <svg class="s20" data-svg2="p20/energy/img/work.js#F2"></svg>
+    <!-- <svg class="s20" data-svg2="p20/energy/img/work.js#F2x"></svg> -->
+</p>
 </ol></li>
 
     <li>A 200-gram package is dropped from the top of a 27.6-metre tall building. The package strikes the ground with a speed of 18.4 m/s. Use a “LOL Diagram” (i.e. energy bar charts for the initial and final state, plus an energy flow diagram) to determine how much “waste” (sound and thermal energy) was produced due to the air resistance force. Label the work done by each force.</li>
     <div class="Answer">
-        <p class="Center Answer"><svg data-svg2="p20/energy/img/work.js#Q3"></svg></p>
+        <p class="Center Answer"><svg class="s20" data-svg2="p20/energy/img/work.js#Q3"></svg></p>
         <p class="TeX">E_g = mgh = \rm 0.200\ kg\cdot 9.81\ m/s^2\cdot 27.6\ m = 54.2\ J</p>
         <p class="TeX">E_k = \frac{1}{2} mv_f^2 = \rm \frac{1}{2} (0.200\ kg) (18.4\ m/s)^2 = 33.9\ J</p>
         <p class="TeX">\Delta E = \rm 33.856\ J - 54.1512\ J= -20.3\ J</p>
-        <p class="Center"><svg data-svg2="p20/energy/img/work.js#F3"></svg></p>
+        <p class="Center"><svg class="s20" data-svg2="p20/energy/img/work.js#F3"></svg></p>
     </div>
 
     <li>A 1200 kg car is moving at 40.0 km/h initially. When the driver steps on the accelerator, the car experiences an applied force due to the engine that does 50.0 kJ of work while moving 100 metres. While the car is accelerating, –15.0 kilojoules of work results from friction and air resistance. Use a LOL Diagram to determine the final speed of the car.</li>
     <div class="Answer">
-        <p class="Center Answer"><svg data-svg2="p20/energy/img/work.js#Q4"></svg></p>
+        <p class="Center Answer"><svg class="s20" data-svg2="p20/energy/img/work.js#Q4"></svg></p>
         <p class="TeX">E_k = \frac{1}{2} mv_i^2 = \rm \frac{1}{2} (1200\ kg) (11.1\ m/s)^2 = 74074\ J</p>
         <p class="TeX">W_a = \rm +50000\ J</p>
         <p class="TeX">\Sigma E = E_k + W_a = \rm 74074\ J + 50000\ J = 124074\ J</p>
         <p class="TeX">W_f = \rm -15000\ J</p>
         <p class="TeX">E_k = \Sigma E + W_f = \rm 124074\ J - 15000\ J = 109074\ J</p>
         <p class="TeX">v_f = \sqrt{\frac{2E_k}{m}} = \rm \sqrt{\frac{2\cdot 109074\ J}{1200\ kg}} = 13.5\ m/s = 48.5\ km/h</p>
-        <p class="Center"><svg data-svg2="p20/energy/img/work.js#F4"></svg></p>
+        <p class="Center"><svg class="s20" data-svg2="p20/energy/img/work.js#F4"></svg></p>
     </div>
 </ol>
 
-</div></div></section>
+</div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>Define force and work (as these terms are used in physics) and explain the relationship between the two concepts.</li>
-    <div class="Answer"><em class="Defn">Force</em> is a push or pull interaction between two objects. <em class="Defn">Work</em> is the amount of kinetic energy gained or lossed by a moving object due to a force acting on the object.</div>
+    <p class="Answer"><em class="Defn">Force</em> is a push or pull interaction between two objects. <em class="Defn">Work</em> is the amount of kinetic energy gained or lossed by a moving object due to a force acting on the object.</p>
 
     <li>Identify the common types of forces and the describe circumstances under which those forces arise.</li>
-    <div class="Answer">See notes.</div>
+    <p class="Answer">See notes.</p>
 
     <li>What do we mean by conservative and non-conservative forces? Give examples of each type of force.</li>
-    <div class="Answer"><em class="Defn">Conservative forces</em> transform potential to kinetic energy (or vice versa) without affecting the total mechanical energy. These include gravitational and elastic forces.
-        <em class="Defn">Non-conservative</em> forces (e.g. friction) transform kinetic to non-mechanical forms of energy, or vice versa (e.g. an applied force acting in the direction of the motion.)</div>
+    <p class="Answer"><em class="Defn">Conservative forces</em> transform potential to kinetic energy (or vice versa) without affecting the total mechanical energy. These include gravitational and elastic forces. <em class="Defn">Non-conservative</em> forces (e.g. friction) transform kinetic to non-mechanical forms of energy, or vice versa (e.g. an applied force acting in the direction of the motion.)</p>
 
     <li>How should we interpret positive or negative amounts of work?</li>
-    <div class="Answer">Positive work means kinetic energy is gained and negative work means kinetic energy is lost.</div>
+    <p class="Answer">Positive work means kinetic energy is gained and negative work means kinetic energy is lost.</p>
 </ol>
+</div></section>
+
+<section class="Post" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="">Assignment</button>
+    </p>
 </div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}6.4 — Energy Transformations (Work)`,
-    showDate: "2025.3.5",
-    answerDate: "2025.3.6",
+    showDate: "2025.3.6",
+    answerDate: "2025.3.10",
     num: "6.4",
     up: "p20/home",
     prev: "p20/energy/sys",
-    next: "p20/energy/we",
+    // next: "p20/energy/we",
 }
 
 </script>

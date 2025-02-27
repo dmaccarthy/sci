@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Non-Isolated Systems</h1>
@@ -52,7 +52,7 @@
 </div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse Expand">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
 <li>A 500-gram ball is dropped from a height of 2.00 metres.
 <ol type="a">
@@ -101,10 +101,10 @@
 
 <li>
     <p>A 60.0-gram arrow is loaded into an archery bow and held 1.25 metres above the ground. The bow has an elastic constant of 100 N/m. The arrow is shot by pulling the bowstring back 40.0 cm, aiming, and releasing. As the arrow flies toward the target, air resistance transforms 3.00 joules of energy into sound and thermal energy.</p>
-    <p>Calculate the speed of the arrow just before it strikes the target 80.0 cm above the ground. Include appropriate energy bar charts and an energy flow diagram.</p>
+    <p data-cue="prev">Calculate the speed of the arrow just before it strikes the target 80.0 cm above the ground. Include appropriate energy bar charts and an energy flow diagram.</p>
 </li>
 <div class="Answer">
-    <p class="Center"><img alt="Archer" data-aspect="628/184" src="p20/energy/img/archer.png"/></p>
+    <p class="Center"><img alt="Archer" class="s24" data-aspect="628/184" src="p20/energy/img/archer.png"/></p>
     <p class="Center"><svg class="s20" data-svg2="p20/energy/img/sys.js#Q3"></svg></p>
     <p class="TeX">E_g = mgh = \rm 0.0600\ kg\cdot 9.81\ m/s^2\cdot\ 1.25 m = 0.736\ J</p>
     <p class="TeX">E_{elas} = \frac{1}{2} k(\Delta L)^2 = \rm \frac{1}{2} (100\ N/m) (0.400\ m)^2 = 8.00\ J</p>
@@ -121,9 +121,9 @@
     <li>Imagine that there is no friction. Use energy conservation to determine the height that the mass reaches before coming to stop and then starting to slide back down the ramp. Include energy bar charts as part of your solution.</li>
     <div class="Answer">
         <p>Initial:</p>
-        <p class="TeX">E_k = \frac{1}{2} mv_i^2 = \rm \frac{1}{2} (2.50\ kg) (2.50\ m/s)^2 = 7.81\ J</p>
+        <p data-cue="prev" class="TeX">E_k = \frac{1}{2} mv_i^2 = \rm \frac{1}{2} (2.50\ kg) (2.50\ m/s)^2 = 7.81\ J</p>
         <p>Final:</p>
-        <p class="TeX">E_g = mgh_f</p>
+        <p data-cue="prev" class="TeX">E_g = mgh_f</p>
         <p class="TeX">h_f = \frac{E_g}{mg} = \rm \frac{7.8125\ J}{2.50\ kg\cdot 9.81\ m/s^2} = 0.319\ m</p>
     </div>
 
@@ -141,11 +141,11 @@
 
 <li>
 <p>A 625 kg roller coaster car starts from rest at a height of 15.0 metres as illustrated.</p>
-<p class="Center"><img width="480" alt="Roller Coaster" src="p20/energy/img/loop.png"/></p>
-<ol type="a">
+<p data-cue="prev" class="Center"><img class="s20" data-aspect="360/158" alt="Roller Coaster" src="p20/energy/img/loop.png"/></p>
+<ol data-cue="prev" type="a">
     <li>Determine the speed of the car at point C, neglecting friction and air resistance. Use energy bar charts for the starting position and point C.</li>
     <div class="Answer">
-        <p class="Center"> class="s20" data-svg2="p20/energy/img/sys.js#Q5"></svg></p>
+        <p class="Center"><svg class="s20" data-svg2="p20/energy/img/sys.js#Q5"></svg></p>
         <p class="TeX">E_g = mgh = \rm 625\ kg\cdot 9.81\ m/s^2\cdot 15.0\ m = 91969\ J = 92.0\ kJ</p>
         <p class="TeX">E_g = mgh = \rm 625\ kg\cdot 9.81\ m/s^2\cdot 3.00\ m = 18394\ J = 18.4\ kJ</p>
         <p>Since there is no friction or air resistance to transform energy into “waste”:</p>
@@ -184,11 +184,17 @@
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>Define <em class="Defn">open</em>, <em class="Defn">closed</em>, and <em class="Defn">isolated systems</em>.</li>
+    <p class="Answer">An open system allows both matter and energy into/out of the system. A closed system allows energy but not matter into/out of the system. An isolated system allows neither nergy nor matter in or out of the system.</p>
 
     <li><ol type="a">
         <li>Explain how the Law of Energy Conservation applies to systems that are not isolated.</li>
+        <p class="Answer">Any energy leaving the system must be accounted for along with the “final” energy. Any energy added to the system must be accounted for along with the “initial” energy.</p>
+    
         <li>Give examples of common reasons why a system might gain or lose energy.</li>
+        <p class="Answer">Friction and air resistance often convert mechanical energy into sound and thermal energy. Energy can be added to the sytem by an engine or a person/animal exerting forces on the system.</p>
+    
         <li>Describe how to draw energy bar charts and energy flow diagrams for non-isolated systems. Sketch examples below.</li>
+        <p class="Answer">See lesson notes.</p>
     </ol></li>
 </ol>
 </div></section>
@@ -197,8 +203,8 @@
     <h2 class="Collapse">Handouts</h2><div class="Collapse">
     <p class="Var">handouts</p>
     <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="">Ramp Lab</button>
-        <button data-icon="gdrv" data-gdrv="">Assignment</button>
+        <button data-icon="gdrv" data-gdrv="1l0e_zZVHxbW2uMF-xdUK33YLul-3skjY">Ramp Lab</button>
+        <button data-icon="gdrv" data-gdrv="1FvTl_R76li7vkDNSZL85WrKPrlO9xcZ3">Assignment</button>
     </p>
 </div></section>
 
@@ -211,7 +217,7 @@ loadFeed.data = {
     num: "6.3",
     up: "p20/home",
     prev: "p20/energy/cons",
-    // next: "p20/energy/work",
+    next: "p20/energy/work",
 }
 
 </script>
