@@ -578,13 +578,9 @@ function slideShow(sel) {
             let t = ["INPUT", "TEXTAREA"].indexOf(ev.target.tagName.toUpperCase());
             let n = ev.ctrlKey ? 10 : 1;
             if (t == -1) {
-                if (a < 2) while(n--) {
-                    (a ? prevCue : nextCue)();
+                if (a < 2) {
+                    while (n--) (a ? prevCue : nextCue)();
                 }
-                // if (a == 0) {
-                //     while (n--) nextCue();
-                // }
-                // else if (a == 1) prevCue();
                 else if (a == 2) goSlide();
                 else if (a == 3) goPrev();
                 layoutWidth();
