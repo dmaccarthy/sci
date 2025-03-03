@@ -5,11 +5,19 @@
 <p class="Center"><svg id="S1" data-svg2z="p20/shm/img/shm_unused.js#Q1v"></svg></p>
 </section>
 
-<script type="text/javascript" data-init="test">
+<script type="text/javascript" data-init="arr">
 
 loadFeed.data = {
     title: `Grid`,
     up: "home",
+}
+
+loadFeed.arr = () => {
+    let svg = new SVG2("#S1", {scale: 50, lrbt: [-3, 3, -3, 3], grid: 1, appendAxes: 1});
+    let a = svg.arrow(4, {tail: "6"}, "tail");
+    a.label("Hello, world!", [0, "-16"]);
+    svg.css_map();
+    console.log(a);
 }
 
 loadFeed.test = () => {

@@ -718,6 +718,11 @@ reshape(length, options, anchor) {
     return this;
 }
 
+label(text, shift) {
+/* Add text relative to arrow midpoint */
+    return this.text(text, this.seg.midpoint.plus(this._cs(shift)));
+}
+
 }
 
 
@@ -1335,6 +1340,7 @@ plot: {
 
 arrow: {
     "g.Arrow": {fill: "red", "stroke-width": "0.5px", stroke: "black"},
+    "g.Arrow text": {"font-family": SVG2.sans, "font-size": "18px", stroke: "none", "text-anchor": "middle"},
     "g.Arrow.Resultant": {fill: "#0065fe"},
     "g.Arrow.Component": {"fill-opacity": 0.3},
 },

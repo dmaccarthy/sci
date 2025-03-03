@@ -24,12 +24,14 @@ Add primitive content to an <svg>/<g> tag using an SVG2g instance (or subclasses
     g.image(href, [w, h], [cx, cy]) -> jQuery
     g.poly([pts], closed) -> jQuery
     g.star(sides, big, small) -> jQuery
+    g.text(data, xy) -> jQuery
+    arrow.label(text, shift) -> jQuery
 
 Add composite content:
     g.grid([x1, x2, dx], [y1, y2, dy]) -> SVG2g
     g.cylinder([rx, ry], L) -> SVG2g
     g.plot(pts or {x, y}, size, href, theta) -> SVG2g
-    g.label([tm, tp] or int or (x, y, i) => string, x, y) -> SVG2g
+    g.label([tm, tp] or int or (x, y, i) => string, x, y) -> SVG2g [Overridden for SVG2arrow!]
     g.tick_label(fn, x, y, tick, offset) -> g
     g.locus((p, t, args) => {y or [x, y]}, [p0, p1, n], args) -> SVG2locus
     g.arrow({tail, tip} or length, {tail, head, angle, shape, double}, anchor) -> SVG2arrow
