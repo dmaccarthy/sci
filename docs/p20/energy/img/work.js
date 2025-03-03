@@ -9,8 +9,36 @@ ex2: (sel) => {
     ], {E: 9, duration: 4, label: [0, "-6"]});
 },
 
+ramp: (sel) => {
+	let svg = new SVG2(sel, {size: [360, 360], lrbt: [-1.5, 2.5]});
+    let g = svg.group().config({theta: 30});
+    let tail = {tail: "6"};
+    g.line([-4, "-4"], [4, "-4"]).css({stroke: "black", "stroke-width": "3px"});
+    g.rect([1, 1], [0, 0.5]).css({"fill-opacity": "0.4", fill: "#0065fe", stroke: "black"});
+    let f = g.group();
+    f.arrow({tail: [0, 0], tip: [0, 2]}, tail);
+    f.arrow({tail: [0.5, 0.5], tip: [1.5, 0.5]}, tail);
+    f.arrow({tail: [-0.5, 0.2], tip: [-1.2, 0.2]}, tail);
+    f.arrow({tail: [0, 0.5], tip: [0, -1.81]}, tail, "tail").config({theta: -30});
+    let blue = [g.arrow(2, tail).config({shift: [1, "-20"]}).element];
+
+    let [BD, SM, SM_IT] = [1, 4, 6];
+    let arr = ["→", SM + BD, [0, "24"]];
+    let sub = ["14", "-8"];
+    svg.symbol(["F", BD], arr, ["a", SM_IT, sub]).config({shift: [0.5, 1.4]});
+    svg.symbol(["F", BD], arr, ["f", SM_IT, sub]).config({shift: [-1.2, 0.15]});
+    svg.symbol(["F", BD], arr, ["n", SM_IT, sub]).config({shift: [-0.5, 1.5]});
+    svg.symbol(["F", BD], arr, ["g", SM_IT, sub]).config({shift: [0.05, -1]});
+    blue.push(svg.symbol(["d", BD], arr, ["Δ", 0, ["-20", 0]]).config({shift: [1.25, -0.2]}).element);
+
+    let sym = svg.$.find("g.Symbol").addClass("Large");
+    svg.css_map().addClass("NoStyle");
+    sym.css({fill: "red"});
+    $(blue).css({fill: "#0065fe"});
+},
+
 flow2: (sel) => {
-    let s = $(sel).attr({width: 400, height: 240, "data-aspect": "40/24"});
+    $(sel).attr({width: 400, height: 240, "data-aspect": "40/24"});
     let svg = new SVG_Animation(sel, -3.8, 4);
     let css = {fill: "#0065FE"};
     svg.circle(2.3, [1.5, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
@@ -51,21 +79,21 @@ Q2: (sel) => {
     ], {E: E, unit: "kJ", duration: 3, margin: [40, 4, 40, 16], label: [1, "-6", 3]});
 },
 
-F2: (sel) => {
-    $(sel).attr({width: 400, height: 260, "data-aspect": "20/13"});
-    let svg = new SVG_Animation(sel, -0.25, 2.5);
-    let css = {fill: "#0065FE"};
-    svg.circle(0.8, [0.6, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    svg.symbol("E", {q4: "g", scale: 1}, [0, 0]).css(css);
-    let g = svg.group().css(css);
-    svg.symbol("E", {q4: "k", scale: 1}, [1, 0], g);
-    svg.arrow([0.25, 0], 0.6, {tail: "6"}, g);
-    svg.text("1472 J", [0.5, -0.15], g);
-    g = svg.group().css({fill: "red"});
-    svg.text("Waste", [2.2, 0], g).css({"font-size": "24px"});
-    svg.arrow([1.25, 0], 0.6, {tail: "6"}, g);
-    svg.text("647 J", [1.55, -0.15], g);
-    svg.final();
+F2: (sel, Wg, dW, unit) => {
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-1, 5]});
+    svg.circle(1.7, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
+    let css = {fill: "#0065fe", "font-size": "28px"};
+    svg.delay(svg.symbol(["E", 2], ["g", 6, ["16", "-6"]]), {recenter: [0, -0.07], css: css});
+    svg.delay(svg.symbol(["E", 2], ["k", 6, ["16", "-6"]]), {recenter: [2, -0.07], css: css});
+    svg.group("Text", {recenter: [4.3, 0], css: {fill: "red", "font-size": "24px"}}).text("Waste");
+    let dx = 0.4;
+    let a1 = svg.delay(svg.arrow({tail: [dx, 0], tip: [2-dx, 0]}, {tail: "6"}), {css: {fill: "#0065fe"}});
+    let a2 = svg.arrow({tail: [2+dx, 0], tip: [4-dx, 0]}, {tail: "6"});
+    if (unit == null) unit = "J";
+    a1.label(`${Wg} ${unit}`, ["-12", "-24"]);
+    a2.label(`${dW} ${unit}`, ["4", "-32"]);
+    svg.addClass("NoStyle").css_map().finalize();
+    svg.$.find("text.Small").css({"font-size": "18px"});
 },
 
 Q3: (sel) => {
@@ -78,23 +106,6 @@ Q3: (sel) => {
     ], {E: Ei, unit: "J", duration: 3, margin: [32, 4, 40, 16], label: [0, "-6", 2]});
 },
 
-F3: (sel) => {
-    $(sel).attr({width: 400, height: 260, "data-aspect": "20/13"});
-    let svg = new SVG_Animation(sel, -0.25, 2.5);
-    let css = {fill: "#0065FE"};
-    svg.circle(0.8, [0.6, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    svg.symbol("E", {q4: "g", scale: 1}, [0, 0]).css(css);
-    let g = svg.group().css(css);
-    svg.symbol("E", {q4: "k", scale: 1}, [1, 0], g);
-    svg.arrow([0.25, 0], 0.6, {tail: "6"}, g);
-    svg.text("54.2 J", [0.5, -0.15], g);
-    g = svg.group().css({fill: "red"});
-    svg.text("Waste", [2.2, 0], g).css({"font-size": "24px"});
-    svg.arrow([1.25, 0], 0.6, {tail: "6"}, g);
-    svg.text("20.3 J", [1.55, -0.15], g);
-    svg.final();
-},
-
 Q4: (sel) => {
     svg = SVG2.ebg(sel, 150, 5, [
         ["+W", (t) => 50 * (1 - t * t), "red"],
@@ -104,18 +115,15 @@ Q4: (sel) => {
 },
 
 F4: (sel) => {
-    $(sel).attr({width: 512, height: 256, "data-aspect": "2"});
-    let svg = new SVG_Animation(sel, -0.5, 2.75);
-    svg.circle(0.8, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    svg.symbol("E", {q4: "k", scale: 1}, [1, 0]).css({fill: "#0065FE"});
-    let g = svg.group().css({fill: "red"});
-    svg.text("Fuel", [-0.25, 0], g).css({"font-size": "24px"});
-    svg.text("Waste", [2.4, 0], g).css({"font-size": "24px"});
-    svg.arrow([0.05, 0], 0.8, {tail: "6"}, g);
-    svg.arrow([1.25, 0], 0.8, {tail: "6"}, g);
-    svg.text("50.0 kJ", [0.5, -0.15], g);
-    svg.text("15.0 kJ", [1.55, -0.15], g);
-    svg.final();
+    let svg = new SVG2(sel, {size: [480, 256], lrbt: [-3.6, 3.8]});
+    svg.circle(1.9).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
+    svg.delay(svg.symbol(["E", 2], ["k", 6, ["16", "-6"]]), {recenter: [0, "-6"], css: {fill: "#0065fe", "font-size": "28px"}});
+    let css = {fill: "red", "font-size": "24px"};
+    svg.group("Text", {recenter: [3.1, 0], css: css}).text("Waste");
+    svg.group("Text", {recenter: [-3, 0], css: css}).text("Fuel");
+    svg.delay(svg.arrow({tip: [-0.5, 0], tail: [-2.3, 0]}, {tail: "6"})).label("50.0 kJ", ["8", "-32"]);
+    svg.arrow({tail: [0.5, 0], tip: [2.3, 0]}, {tail: "6"}).label("15.0 kJ", ["-8", "-32"]);
+    svg.addClass("NoStyle").css_map().finalize().$.find("text.Small").css({"font-size": "18px"});
 },
 
 });

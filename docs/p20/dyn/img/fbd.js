@@ -2,7 +2,7 @@ SVG2.cache("p20/dyn/img/fbd.js", {
 
 fbd: (sel) => {
     $(sel).attr({width: 288, height: 360, "data-aspect": "288/360"});
-    let Fg = 0.9, Ff = 0.3;
+    // let Fg = 0.9, Ff = 0.3;
     svg = new SVG_Animation(sel, -5/8, 1.04, -1.07);
     let g = svg.group();
     svg.gradient("gradFBD", "#D0D0FF", "royalblue", 80, 0, 0, 100);
