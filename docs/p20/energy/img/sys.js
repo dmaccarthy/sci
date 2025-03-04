@@ -81,7 +81,7 @@ flow4: (sel) => {
 
     css = {fill: "#0065fe"};
     g = svg.group().config({shift: [-1, 0]});
-    svg.delay(g.arrow(-1.4, {tail: "6"}), {css: css}).label("6.13 J", ["12", "-20"]);
+    svg.delay(g.arrow(-1.4, {tail: "6"}), {css: css}).label("6.13 J", ["12", "-24"]);
 
     svg.addClass("NoStyle").css_map().finalize();
     svg.$.find("text.Small").css({"font-size": "18px"});
