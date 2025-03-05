@@ -71,4 +71,16 @@ vt1: (sel) => {
 },
 
 
+lever: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 180], lrbt: [-10, 10, -3.2], grid: 0, margin: 0});
+    let css = {fill: "black", stroke: "none"};
+    svg.rect([20, 0.2], [0, 0.1]).css(css);
+    css = {fill: "red", "fill-opacity": 0.2, stroke: "red", "stroke-width": "3px"};
+    svg.rect([2, 2], [8, 1.3]).css(css);
+    Object.assign(css, {fill: "#0065fe", stroke: "#0065fe"});
+    svg.poly([[-8, -0.1], [-9.5, -3], [-6.5, -3]], 1).css(css);
+    Object.assign(css, {fill: "green", stroke: "green"});
+    svg.arrow({tip: [0, 4], tail: [0, 0.4]}, {tail: "8"}).css(css);
+},
+
 });
