@@ -49,16 +49,12 @@ work: (sel) => {
 },
 
 tennis: (sel) => {
-    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 80, 5], [0, 90, 5], 1],
-        margin: [0.18, 0.06, 0.1, 0.05],
-        x: ["Position / cm", [69, "12"], {interval: 10, minor: 2, length: "8", offset: [0, "-22"]}],
-        y: ["Force / N", ["-48", ">"], {interval: 10, minor: 2, length: "8", offset: ["-12", 0]}],
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 80, 0, 90], margin: [58, 12, 54, 12]});
+    svg.graph({grid: [5, 5], css: true,
+        x: {tick: [0, 81, 10], title: ["Position / cm", [40, "-44"]], shift: [0, "-22"]},
+        y: {tick: [0, 91, 10], title: ["Force / N", "-40"], shift: ["-10", "-4"]},
+        data: [{connect: [[0, 0], [40, 80], [50, 80], [75, 0]]}],
     });
-    svg.$.find(".TitleX, .TitleY").addClass("End");
-    svg.poly([[0, 0], [40, 80], [50, 80], [75, 0]], 0);
-    svg.final();
 },
 
 F1: (sel) => {

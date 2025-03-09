@@ -942,7 +942,8 @@ get center() {
 static svg(sel, i, ev) {
 /* Save an SVG2 drawing as an SVG file */
     if (ev) ev.stopPropagation();
-    let e = $(sel ? sel : "svg.NoStyle");
+    let e = $(sel ? sel : "svg[data-svg2x]");
+    console.log(e);
     let n = 0;
     for (let ei of e) if (ei.graphic) n++;
     if (n) {
