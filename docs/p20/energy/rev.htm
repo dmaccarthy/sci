@@ -42,12 +42,14 @@
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Energy & Work Review`,
     num: "6.7",
     up: "p20/home",
-    prev: ["p20/energy/power", "p20/dyn/rev"][clickLink.course],
-    // next: ["p20/da/eqn", "p20/circ/rev"][clickLink.course],
+    prev: ["p20/energy/power", "p20/kin/rev"][tmp],
+    next: ["p20/dyn/n2", "p20/dyn/rev"][tmp],
 }
 
 </script>

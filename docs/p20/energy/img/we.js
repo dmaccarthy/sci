@@ -67,8 +67,9 @@ F1: (sel) => {
     svg.text("Waste", [2.4, 0], g).css({"font-size": "24px"});
     svg.arrow([0.05, 0], 0.8, {tail: "6"}, g);
     svg.arrow([1.25, 0], 0.8, {tail: "6"}, g);
-    svg.text("75.0 J", [0.45, -0.15], g);
-    svg.text("30.0 J", [1.55, -0.15], g);
+    let css = {"font-size": "18px"};
+    svg.text("75.0 J", [0.45, -0.15], g).css(css);
+    svg.text("30.0 J", [1.55, -0.15], g).css(css);
     svg.final();
 },
 
@@ -88,7 +89,7 @@ F2: (sel) => {
     let g = svg.group().css({fill: "red"});
     svg.text("Food", [-0.25, 0], g).css({"font-size": "24px"});
     svg.arrow([0.05, 0], 0.8, {tail: "6"}, g);
-    svg.text("4.46 kJ", [0.45, -0.15], g);
+    svg.text("4.46 kJ", [0.45, -0.15], g).css({"font-size": "18px"});
     svg.final();
 },
 
@@ -110,15 +111,16 @@ F4: (sel) => {
 
     let g = svg.group().css({fill: "#0065FE"}).config({position: [1.05, 0.55], theta: 90});
     svg.arrow([-0.4, 0], 0.8, {tail: "6"}, g);
-    svg.text("13.7 J", [-0.1, 0.1], g);
+    let css = {"font-size": "18px"};
+    svg.text("13.7 J", [-0.1, 0.1], g).css(css);
     
     g = svg.group().css({fill: "red"});
     svg.text("Food", [-0.25, 0], g).css({"font-size": "24px"});
     svg.text("Waste", [2.4, 0], g).css({"font-size": "24px"});
     svg.arrow([0.05, 0], 0.8, {tail: "6"}, g);
     svg.arrow([1.25, 0], 0.8, {tail: "6"}, g);
-    svg.text("20.0 J", [0.4, -0.1], g);
-    svg.text("6.35 J", [1.7, -0.1], g);
+    svg.text("20.0 J", [0.4, -0.1], g).css(css);
+    svg.text("6.35 J", [1.7, -0.1], g).css(css);
     svg.final();
 },
 
