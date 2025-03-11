@@ -1,0 +1,125 @@
+<section class="Post" data-icon="warn.svg">
+    <h2>Important!</h2>
+    <p>Use only programming techniques that have been covered in these lessons. Examples that you find on the web often use
+    techniques that are considered bad programmming practice that should be avoided. In particular, do not use the <code>break</code>
+    or <code>continue</code> statements or the <code>exit</code> function, and do not use “infinte loops” that start with
+    <code>while True</code>.</p>
+</section>
+
+<section class="Post" data-code="0" data-icon="python">
+<h2 class="Collapse">Rock-Paper-Scissors-Vulcan-Lizard</h2><div class="Collapse">
+
+<p class="Center">
+    <img class="w16" data-aspect="1" src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Pierre_ciseaux_feuille_l%C3%A9zard_spock_aligned.svg" alt="WikiMedia Image"/><br/>
+    <a target="Wiki" href="https://commons.wikimedia.org/wiki/File:Pierre_ciseaux_feuille_l%C3%A9zard_spock_aligned.svg#mw-jump-to-license">Image Credit</a>
+</p>
+
+</div></section>
+
+<section class="Post" data-code="0" data-icon="python">
+<h2 class="Collapse">ABC Square</h2><div class="Collapse">
+
+</div></section>
+
+<section class="Post" data-code="1" data-icon="python">
+<h2 class="Collapse">Let’s Make a Deal</h2><div class="Collapse">
+<p>The game show <em>Let’s Make a Deal</em> debuted on TV in 1963. One part of the game required contestants to choose one of three doors numbered 1, 2, and 3. Behind one of the doors was a prize. The other two doors contained nothing (or a “zonk” prize).</p>
+<p>After the contestant selected a door, the show host revealed one of the two other doors, showing that it contained no prize. The door containing the real prize would <em>never</em> be the one revealed.</p>
+<p>The contestant could then choose to keep their original selection, or switch to the remaining door that had not been revealed.</p>
+<p>Download this file into your <code>sp2</code> OneDrive folder.</p>
+
+<pre data-echo="lets_deal.py" data-title="1" class="Code">from random import randint
+
+prize_door = randint(1, 3)
+</pre>
+
+<p>Complete the program to simulate many rounds of the game as described above.</p>
+<ul>
+    <li>Let the user choose the number of rounds to play at run-time.</li>
+    <li>Randomly select the door where the prize is located.</li>
+    <li>Randomly select the contestant’s choice.</li>
+    <li>Randomly decide whether the contestant will hold (keep their original door) or switch to the other non-revealed door.</li>
+    <li>Print the results to the console as in the examples below, if playing less than 100 rounds.</li>
+</ul>
+<pre data-echo="io" class="Code">Prize is behind door 2.
+Contestant chooses door 1.
+Door 3 is revealed.
+Contestant switches and WINS!
+
+Prize is behind door 1.
+Contestant chooses door 3.
+Door 2 is revealed.
+Contestant holds and LOSES!</pre>
+<ul>
+    <li>Keep track of the wins and losses when the contestant <em>switches</em> their choice.</li>
+    <li>Keep track of the wins and losses when the contestant <em>holds</em> their original choice.</li>
+    <li>Print out the win probability when the contestant keeps their original choice, and the win probability when they switch.</li>
+</ul>
+<pre data-echo="io" class="Code">Contestant wins 868 out of 2536 (34.2%) when holding.
+Contestant wins 1650 out of 2464 (67.0%) when switching.
+</pre>
+</div></section>
+
+<section class="Post" data-code="0" data-icon="python">
+<h2 class="Collapse">The Price is Right</h2><div class="Collapse">
+
+</div></section>
+
+<section class="Post" data-code="0" data-icon="python">
+<h2 class="Collapse">Word Evolution</h2><div class="Collapse">
+
+</div></section>
+
+<section class="Post" data-code="1" data-icon="python">
+<h2 class="Collapse">Molar Mass</h2><div class="Collapse">
+<p>In chemistry, each substance can be described by a chemical formula like <span class="TeX">\rm H_2O</span> or <span class="TeX">\rm CaCl_2</span>. Each formula has one or more element symbols that are either a single upper case letter (e.g. <span class="TeX">\rm H</span>), or an upper case letter followed by a lower case letter (e.g. <span class="TeX">\rm Ca</span>). Each element can be followed by a subscript that indicates how many of each atom are present in each unit of the substance. If no subscript is included, we can assume <em>one</em> atom; for example <span class="TeX">\rm H_2O</span> means two atoms of hydrogen (<span class="TeX">\rm H</span>) and one atom of oxygen (<span class="TeX">\rm O</span>).</p>
+
+<p>To calculate the <em class="Defn">molar mass</em> of <span class="TeX">\rm H_2O</span>, we can look up the masses of <span class="TeX">\rm H</span> and <span class="TeX">\rm O</span> in a database, and then calculate the total mass of two hydrogens and one oxygen.</p>
+
+<p>Download this program into your <code>sp2</code> OneDrive folder.</p>
+<pre data-echo="molar.py" data-title="1" class="Code">from elements import mass
+
+print(mass("H") * 2 + mass("O"))</pre>
+
+<p>To make the program work, you will need to download this database of masses into the same folder. Do <b>not</b> make any changes to the <code>elements.py</code> file!</p>
+
+<pre data-echo="elements.py" data-title="1" class="Code"><span class="DocString">"Molar mass data for elements 1 through 103"</span>
+
+MASSES = {"H": 1.00794, "He": 4.002602, "Li": 6.941, "Be": 9.01218, "B": 10.811, "C": 12.011, "N": 14.00674, "O": 15.9994, "F": 18.998403, "Ne": 20.1797, "Na": 22.989768, "Mg": 24.305, "Al": 26.981539, "Si": 28.0855, "P": 30.973762, "S": 32.066, "Cl": 35.4527, "Ar": 39.948, "K": 39.0983, "Ca": 40.078, "Sc": 44.95591, "Ti": 47.88, "V": 50.9415, "Cr": 51.9961, "Mn": 54.93805, "Fe": 55.847, "Co": 58.9332, "Ni": 58.6934, "Cu": 63.546, "Zn": 65.39, "Ga": 69.723, "Ge": 72.61, "As": 74.92159, "Se": 78.96, "Br": 79.904, "Kr": 83.8, "Rb": 85.4678, "Sr": 87.62, "Y": 88.90585, "Zr": 91.224, "Nb": 92.90638, "Mo": 95.94, "Tc": 97.9072, "Ru": 101.07, "Rh": 102.9055, "Pd": 106.42, "Ag": 107.8682, "Cd": 112.411, "In": 114.818, "Sn": 118.71, "Sb": 121.76, "Te": 127.6, "I": 126.90447, "Xe": 131.29, "Cs": 132.90543, "Ba": 137.327, "La": 138.9055, "Ce": 140.115, "Pr": 140.90765, "Nd": 144.24, "Pm": 144.9127, "Sm": 150.36, "Eu": 151.965, "Gd": 157.25, "Tb": 158.92534, "Dy": 162.5, "Ho": 164.93032, "Er": 167.26, "Tm": 168.93421, "Yb": 173.04, "Lu": 174.967, "Hf": 178.49, "Ta": 180.9479, "W": 183.84, "Re": 186.207, "Os": 190.23, "Ir": 192.22, "Pt": 195.08, "Au": 196.96654, "Hg": 200.59, "Tl": 204.3833, "Pb": 207.2, "Bi": 208.98037, "Po": 208.9824, "At": 209.9871, "Rn": 222.0176, "Fr": 223.0197, "Ra": 226.0254, "Ac": 227.0278, "Th": 232.0381, "Pa": 231.03588, "U": 238.0289, "Np": 237.048, "Pu": 244.0642, "Am": 243.0614, "Cm": 247.0703, "Bk": 247.0703, "Cf": 251.0796, "Es": 252.083, "Fm": 257.0951, "Md": 258.1, "No": 259.1009, "Lr": 262.11}
+
+def mass(sym):
+    return MASSES[sym]</pre>
+
+<p>Modify the <code>molar.py</code> program so that it prompts the user for a chemical formula and then calculates and outputs its molar mass. The program should work for <em>any</em> chemical formula that does <em>not</em> have parenthesis. For example, you may have learned in your Science class that some substances have formulas like <span class="TeX">\rm (NH_4)_2CO_3</span>. Your program does not need to work with chemical formulas like this.</p>
+
+<pre data-echo="io" class="Code">Enter a chemical formuala: <span class="Blue">H2O</span>
+The molar mass of H2O is 18.01528 grams.
+</pre>
+
+</div></section>
+    
+
+<script type="text/javascript" data-init="auth">
+
+loadFeed.data = {
+    showDate: "2026",
+    title: "Structured Programming Project",
+    up: "cs_new/sp2/home",
+    code: 'OHqKmcEkwnMMyOPfk0ObRff0VuFA7ybEqkZqCkGYi2FQKoeZOAYW2ILF',
+}
+
+loadFeed.auth = () => {
+    let prj = qsArgs("prj");
+    if (!prj) prj = "";
+    prj = atob(prj.replaceAll('$', "="));
+    let e = $("section[data-code]");
+    for (let ei of e) {
+        ei = $(ei);
+        let i = parseInt(ei.attr("data-code"));
+        let auth = loadFeed.data.code.substring(i, i+8);
+        if (auth != prj) ei.remove();
+    }
+    delete loadFeed.data.code;
+}
+
+</script>
