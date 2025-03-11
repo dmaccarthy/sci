@@ -1,0 +1,32 @@
+<section class="Post" data-icon="python">
+<h2 class="Collapse">Choose Project...</h2><div class="Collapse Expand">
+
+<p class="Center"><select id="Course">
+    <option value="">Choose Course...</option>
+    <option value="sp2">Structured Programing 1 &amp; 2</option>
+    <option value="ds">Procedural Programming / Data Structures</option>
+</select><!--/p>
+
+<p class="Center"--> &nbsp;
+    <input id="Code" type="text" placeholder="Code"/> &nbsp;
+    <button onclick="loadFeed.goProject()">Go!</button>
+</p>
+
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    showDate: "2026",
+    title: "Project Launcher",
+    up: "cs_new/home",
+}
+
+loadFeed.goProject = () => {
+    let crs = $("#Course").val();
+    let code = $("#Code").val();
+    if (crs.length && code.length)
+        location.href = `./?prj=${code}#cs_new/${crs}/proj`;
+}
+
+</script>

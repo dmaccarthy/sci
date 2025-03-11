@@ -1,0 +1,117 @@
+<section class="Post" data-icon="warn.svg">
+    <h2>Important!</h2>
+    <p>Use only programming techniques that have been covered in these lessons. Examples that you find on the web often use
+    techniques that are considered bad programmming practice that should be avoided. In particular, do not use the <code>break</code>
+    or <code>continue</code> statements or the <code>exit</code> function, and do not use “infinte loops” that start with
+    <code>while True</code>. Avoid using global variables wherever possible.</p>
+</section>
+
+<section class="Post" data-code="1" data-icon="python">
+<h2 class="Collapse">Morse Code</h2><div class="Collapse">
+<p>Morse Code was developed to send messages by telegraph. Each letter and numeral is assigned a sequence of “dots” and “dashes” as shown in the table below. Morse code is case insensitive.</p>
+<p class="Center"><img alt="Morse Code Table" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/International_Morse_Code.svg" data-aspect="414/530" class="w20"/></p>
+<p>Write a Python program that uses procedural programing techniques (functions, local variables, error handling) and data structures (lists, tuples, dictionaries, etc.) that can encode and decode messages to and from Morse Code. Save your program in your OneDrive folder as <code>ds/morse.py</code>.</p>
+<p>Use a space character to mark the space between letters in the same word, and the slash character to mark the space between words. When encoding text, ignore punctuation marks and any other characters not shown in the illustration above.</p>
+<p>Below is an example of the expected program behaviour, with user input shown in blue and program output in black.</p>
+<pre class="IO" data-echo="io">Encode or Decode? [e/d] <span class="Blue">d</span>
+Enter Code: <span class="Blue">.... . .-.. .-.. ---</span>
+Message: HELLO
+
+Encode or Decode? [e/d] <span class="Blue">e</span>
+Enter Messsage: <span class="Blue">I'm here</span>
+Code: .. --/.... . .-. .
+
+</pre>
+</div></section>
+
+<section class="Post" data-code="1" data-icon="python">
+<h2 class="Collapse">Histograms &amp; <span class="TeX">\pi</span></h2><div class="Collapse">
+<p>A histogram is a graph that illustrates the frequency of a particular survey response or measurement result. Download the Python file shown here into your <code>ds</code> OneDrive folder and complete the function <code>histogram</code>.</p>
+
+<pre data-echo="histo1.py" data-title="1" class="Code">def histogram(title, data):
+    <span class="Comment">"Complete this function"</span>
+
+data = [["Blue", 180], ["Brown", 497], ["Green", 72], ["Other", 53], ["No Response", 120]]
+histogram("Eye Color", data)</pre>
+
+<p>When the program is run, it should produce the following output.</p>
+
+<pre class="IO" data-echo="io">Eye Colour...
+
+       Blue | *******
+      Brown | ********************
+      Green | ***
+      Other | **
+No Response | *****
+
+Each * represents 25 occurences.</pre>
+
+<p>The number of occurences represented by each <code>'*'</code> must be calculated to make the largest “bar” have 20 stars. (Due to rounding, 19 or 21 stars will be acceptable.)</p>
+
+<p>Once your histogram function is working correctly, copy the program to <code>histo2.py</code>. Instead of the <em>Eye Colour</em> data, modify your program to generate its own data as follows:</p>
+<ul>
+    <li>Generate two random floats (<code>x</code> and <code>y</code>) between 0 and 10.</li>
+    <li>Use the Pythagoras formula to calculate how far the point <span class="TeX">(x, y)</span> is from the origin.</li>
+    <li>Repeat the above calculation with different random values 1000000 times.</li>
+    <li>Use a data structure to keep track of how many times the calculated distance is less than 1, how many times it is between 1 and 2, betweeen 2 and 3, etc. The distance will never be more than 15.</li>
+    <li>Use your <code>histogram</code> function to graph the data.</li>
+    <li>Have your program count how many times the distance was less than 10. Divide this value by one-quarter of the total number of trials. Print the result. If your random values are truly random, this calculation should equal <span class="TeX">\pi</span>!</li>
+</ul>
+</div></section>
+    
+<section class="Post" data-code="0" data-icon="python">
+<h2 class="Collapse">BINGO</h2><div class="Collapse">
+
+</div></section>
+
+<section class="Post" data-code="0" data-icon="python">
+<h2 class="Collapse">Tic-Tac-Toe</h2><div class="Collapse">
+
+</div></section>
+
+<section class="Post" data-code="0" data-icon="python">
+<h2 class="Collapse">Fruit Salad</h2><div class="Collapse">
+
+</div></section>
+
+<section class="Post" data-code="0" data-icon="python">
+<h2 class="Collapse">Spreading Spores</h2><div class="Collapse">
+
+</div></section>
+                                                             
+<section class="Post" data-code="0" data-icon="python">
+<h2 class="Collapse">Word Search Maker</h2><div class="Collapse">
+
+</div></section>
+
+
+<script type="text/javascript" data-init="auth">
+
+loadFeed.data = {
+    showDate: "2026",
+    title: "Procedural Programming / Data Structures Project",
+    up: "cs_new/ds/home",
+    code: 'TfNm5NTXQnXTynRcyoQvsBTw1Bq7ub0t1PVnb5vblJxiBavNmPzeYqpX',
+}
+
+loadFeed.auth = () => {
+    let prj = qsArgs("prj");
+    if (!prj) prj = "";
+    prj = atob(prj.replaceAll('$', "="));
+    let e = $("section[data-code]");
+    for (let ei of e) {
+        ei = $(ei);
+        let i = parseInt(ei.attr("data-code"));
+        let auth = loadFeed.data.code.substring(i, i+8);
+        if (auth != prj) ei.remove();
+    }
+    delete loadFeed.data.code;
+}
+
+// loadFeed.prj = (i) => {
+//     if (i < 0 || i > 48) throw("invalid argument");
+//     let auth = loadFeed.data.code.substring(i, i+8);
+//     return btoa(auth).replaceAll("=", "$");
+// }
+
+</script>
