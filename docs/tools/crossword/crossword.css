@@ -1,0 +1,52 @@
+:root{
+    --size: 42px;
+}
+
+body {
+    text-align: center;
+}
+
+#Across, #Down {
+    text-align: left;
+}
+
+table {
+    margin: auto;
+    font-family: Inconsolata, monospace;
+    font-weight: bold;
+    font-size: 28px;
+    border-collapse: collapse;
+}
+
+td {
+    min-width: var(--size);
+    max-width: var(--size);
+    width: var(--size);
+    height: var(--size);
+    border: 1px solid blue;
+    margin: 0;
+    padding: 2px;
+}
+
+td.Letter {
+    border: 1px solid black;
+    text-align: left;
+    font-size: 50%;
+    vertical-align: top;
+}
+
+table.Final td:not(.Letter) {
+    background-color: #f0f0f0;
+}
+
+.Red {color: red}
+
+#WordList p {
+    margin: 0.3em 0em;
+}
+
+#WordList p > span, span.Link {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}

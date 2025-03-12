@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Crossword</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="../../media/rocket.svg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+    <link rel="stylesheet" href="crossword.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../../src/util.js"></script>
+    <script type="text/javascript" src="../../src/bdata.js"></script>
+    <script type="text/javascript" src="crossword.js"></script>
+</head>
+<body>
+    <div id="WordList"></div>
+    <p>
+        <span class="Link" onclick="cw.newword()">New Word</span> &middot;
+        <span class="Link" onclick="cw.finish()">Print &amp; Save</span>
+    </p>
+    <p>See Developer Console for more actions.</p>
+    <table></table>
+    <div id="Across"></div>
+    <div id="Down"></div>
+</body>
+</html>
