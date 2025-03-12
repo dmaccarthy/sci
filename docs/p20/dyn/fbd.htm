@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Free Body Diagrams</h1>
@@ -33,7 +33,7 @@
 <section id="vec" class="Slide"><h3>Vector Diagrams</h3>
 <p>A free body diagram should not be confused with a <em class="Defn">vector diagram</em>.</p>
 <p class="Center">
-    <svg data-svg2="p20/dyn/img/fbd.js#vec1" class="s14"></svg>
+    <svg data-svg2="p20/dyn/img/fbd.js#vec1" class="s12"></svg>
 </p>
 <ul>
 	<li>The vector diagram illustrates the same three forces as the free body diagram.</li>
@@ -63,7 +63,7 @@
         <p>The vectors have been shifted slightly off of the <span class="NoWrap"><span class="TeX">y</span>-axis</span> for better visibility.</p>
     </div>
 
-    <li>The mass of the object is 6.50 kg. Calculate the net force, and then use your result to calculate acceleration of the mass.</li>
+    <li>The mass of the object is 6.50 kg. Calculate the net force and then use your result to calculate acceleration of the mass.</li>
     <div class="Answer">
 <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_g + \vec{\mathbf F}_f = \mathrm{-63.8\ N + 12.5\ N = -51.3\ N}</p>
 <p class="TeX">\vec{\mathbf a} = \frac{\vec{\mathbf F}_{net}}{m} = \mathrm{\frac{-51.3\ N}{6.50\ kg} = -7.89\ m/s^2}</p>
@@ -79,7 +79,7 @@
     <li>When a skydiver first deploys her parachute, the upward air resistance is stronger than the downward gravity force due to the large surface area of the parachute. A 58.0 kg skydiver experiences gravity of <span class="TeX">{\vec{\mathbf{F}}}_g</span> = –567 N and air resistance of <span class="TeX">{\vec{\mathbf{F}}}_f</span> = +725 N.<ol type="a">
     <li>Draw a free body diagram and a vector diagram to scale.</li>
     <div class="Answer">
-    <p class="Center"><svg data-svg2="p20/dyn/img/fbd.js#Q3" class="VDiag s16"></svg></p>
+    <p class="Center"><svg data-svg2="p20/dyn/img/fbd.js#Q3" class="VDiag s6"></svg></p>
     <p>The vectors have been shifted slightly off of the <span class="NoWrap"><span class="TeX">y</span>-axis</span> for better visibility.
         The free body diagram is the same as #1 except that the acceleration is directed up.</p>
     </div>
@@ -91,12 +91,12 @@
         </div>
 
         <li>Explain what it means to have a positive acceleration while falling in the negative direction.</li>
-        <div class="Answer">It means that she is slowing down. For example, if her velocity was –30 m/s before she opened her parachute and –10 m/s after the parachute opened, her change in velocity would be positive: <span class="TeX">\Delta\vec{\mathbf v}</span> = (–10 m/s) – (–30 m/s) = +20 m/s.</div>
+        <p class="Answer">It means that she is slowing down. For example, if her velocity was –30 m/s before she opened her parachute and –10 m/s after the parachute opened, her change in velocity would be positive: <span class="TeX">\Delta\vec{\mathbf v}</span> = (–10 m/s) – (–30 m/s) = +20 m/s.</p>
     </ol></li>
 
     <li>
         <p>An object being pushed along a horizontal surface has the free body diagram shown below.</p>
-        <p class="Answer Center"><svg data-svg2="p20/dyn/img/fbd.js#fbd" class="VDiag s16"></svg></p>
+        <p class="Answer Center"><svg data-svg2="p20/dyn/img/fbd.js#fbd" class="VDiag s12"></svg></p>
         <p>The force applied (<span class="TeX">{\vec{\mathbf{F}}}_a</span>) by the person pushes the object to the right (+) while the friction force (<span class="TeX">{\vec{\mathbf{F}}}_f</span>) acts in the opposite (–) direction. According to Newton’s 2nd Law, the acceleration will be in the positive direction when the applied force is stronger than the friction force, and in the negative direction when the friction is stronger.</p>
         <p>The force of gravity pulling down and the upward normal force of the ground pushing on the object will also be present; however, if the object only moves in the horizontal direction, these vertical forces will be perfectly balanced so that we can ignore them when calculating <span class="TeX">{\vec{\mathbf{F}}}_{net}</span>.</p>
 
@@ -108,7 +108,7 @@
 <p class="TeX">\vec{\mathbf F}_f = \vec{\mathbf F}_{net} - \vec{\mathbf F}_a = \mathrm{+24.0\ N - 58.9\ N = -34.9\ N}</p>
         </div>
 
-        <li>A 2.00 kg mass experiences a friction force of –26.1 N and accelerates at <span class="TeX">-3.25</span> m/s<sup>2</sup>. Calculate the applied force acting on the mass and include a vector diagram.</li>
+        <li>A 2.00 kg mass experiences a friction force of –26.1 N and accelerates at –3.25 m/s<sup>2</sup>. Calculate the applied force acting on the mass and include a vector diagram.</li>
         <div class="Answer">
 <p class="TeX">\vec{\mathbf F}_{net} = m\vec{\mathbf a} = \mathrm{2.00\ kg\cdot (-3.25\ m/s^2) = -6.50\ N}</p>
 <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_a + \vec{\mathbf F}_f</p>
@@ -161,11 +161,19 @@
 </ol> 
 </div></section>
 
+<section class="Post" data-show="1" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1HLX7XwOqSISSkUoZI8bI3m5-7VCPZ8Qo">Assignment</button>
+    </p>
+</div></section>
+
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}3.2 — Free Body Diagrams`,
-    showDate: "2025.3.12",
+    showDate: "2025.3.14",
     answerDate: "2025.3.17",
     num: "3.2",
     up: "p20/home",

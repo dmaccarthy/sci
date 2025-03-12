@@ -58,6 +58,7 @@ vec1: (sel) => {
     let F = g.symbol(["F", BD], arr, ["net", SM_IT, ["16", "-8"]]).config({shift: [5, 3]});
     g.$.find("g.Symbol").addClass("Large").find("text").css({fill: "red"});
     F.$.find("text").css({fill: "#0065fe"});
+    svg.css_map();
 },
 
 Q1: (sel) => {
