@@ -1,20 +1,38 @@
 :root{
-    --size: 42px;
+    --size: 36px;
+    --blue: #0065fe;
 }
 
 body {
+    font-family: "Noto Sans", sans-serif;
     text-align: center;
 }
 
-#Across, #Down {
-    text-align: left;
+#Across, #Down, #Help {text-align: left}
+#File {display: none}
+.Break {break-before: page}
+.Red {color: red}
+
+#Help {
+    width: 28em;
+    margin-left: calc(50% - 14em);
+}
+
+button {
+    width: 5em;
+    height: 5em;
+    padding: 3px;
+    margin: 6px;
+    border: 1px solid var(--blue);
+    border-radius: 7px;
+    color: var(--blue);
 }
 
 table {
-    margin: auto;
+    margin: 1.25em auto;
     font-family: Inconsolata, monospace;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 24px;
     border-collapse: collapse;
 }
 
@@ -23,7 +41,7 @@ td {
     max-width: var(--size);
     width: var(--size);
     height: var(--size);
-    border: 1px solid blue;
+    border: 1px solid var(--blue);
     margin: 0;
     padding: 2px;
 }
@@ -35,18 +53,13 @@ td.Letter {
     vertical-align: top;
 }
 
-table.Final td:not(.Letter) {
-    background-color: #f0f0f0;
-}
+table.Final td:not(.Letter) {background-color: #f0f0f0}
 
-.Red {color: red}
-
-#WordList p {
-    margin: 0.3em 0em;
-}
+#WordList p {margin: 0.3em 0em}
+#WordList p.Unused > span {color: red}
 
 #WordList p > span, span.Link {
     cursor: pointer;
-    color: blue;
+    color: var(--blue);
     text-decoration: underline;
 }

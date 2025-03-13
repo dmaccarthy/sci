@@ -12,22 +12,13 @@ class Crossword {
 
     constructor(words, size) {
         this.size = size;
+        this.modified = false;
         let w = this._words = [...words];
         for (let i=0;i<w.length;i++)
             w[i] = new WordClue(...w[i]);
     }
 
-    static _load(url) {
-        $.ajax({url: url, success: (a) => {
-            Crossword.onload(a);
-        }, error: console.log})
-    }
-
-    load(url) {
-        Crossword._load(url);
-    }
-
-    static onload(a) {
+    static load(a) {
         cw = new Crossword(a.words, a.size);
         cw.wordlist().grid();
     }
@@ -49,12 +40,18 @@ class Crossword {
             let wi = w[i];
             let p = $("<p>").html($("<span>").html(wi.word)).appendTo(div);
             p[0].word = wi;
+            if (!wi.grid) p.addClass("Unused");
         }
         div.find("p > span").on("click", (ev) => {
             cw.deselect();
-            let w = $(ev.currentTarget).closest("p")[0].word;
+            let p = $(ev.currentTarget).closest("p");
+            let w = p[0].word;
             w.selected = true;
             if (ev.ctrlKey) cw.editword(w);
+            else if (ev.altKey) {
+                let i = p.parent().index(p[0]);
+                cw.del(i);
+            }
         });
         return this;
     }
@@ -64,11 +61,12 @@ class Crossword {
         if (word) {
             let clue = prompt("Enter clue...", w.clue);
             if (clue) {
-                w.word = word.toUpperCase();
+                w.word = word.replaceAll(" ", "").toUpperCase();
                 w.clue = clue;
             }
+            this.modified = true;
+            this.wordlist().grid();
         }
-        this.wordlist().grid();
     }
 
     deselect() {
@@ -80,13 +78,14 @@ class Crossword {
 
     grid(resize) {
         let tbl = $("body > table").html("");
-        if (resize) this.size = resize;
+        if (resize) {
+            this.modified = true;
+            this.size = resize;
+        }
         let [cols, rows] = this.size;
         for (let r=0;r<rows;r++) {
             let tr = $("<tr>").appendTo(tbl);
-            for (let c=0;c<cols;c++) {
-                let td = $("<td>").appendTo(tr);
-            }
+            for (let c=0;c<cols;c++) $("<td>").appendTo(tr);
         }
         tbl.find("td").removeClass("Red").html("");
         let w = this._words;
@@ -124,39 +123,44 @@ class Crossword {
                 g[1] += y;
             }
         }
+        this.modified = true;
         this.grid();
     }
 
     del(n) {
         let w = this._words;
         w.splice(n ? n : w.length - 1, 1);
+        this.modified = true;
         this.wordlist().grid();
     }
 
     setword(ev, x, y) {
         let s, w = this._words;
-        for (let i=0;i<w.length;i++) if (w[i].selected) s = w[i];
-        s.grid = [x, y, ev.ctrlKey];
+        for (let i=0;i<w.length;i++) if (w[i].selected) s = i;
+        w[s].grid = [x, y, ev.ctrlKey];
+        $($("#WordList > p")[s]).removeClass("Unused");
+        this.modified = true;
         this.grid();
     }
 
     newword() {
         let w = this._words;
         w.push({word: "WORD", clue: "Clue", selected: true});
-        this.editword(w[w.length-1]);
+        this.wordlist().editword(w[w.length-1]);
     }
 
     finish() {
         let w = this._words;
-        let j = [], [rows, cols] = this.size;
+        let j = [], [cols, rows] = this.size;
         for (let i=0;i<w.length;i++) {
             let wi = w[i];
             j.push([wi.word, wi.clue, wi.grid]);
         }
-        BData.init({"words": j, size: this.size}, "crossword.json").save();
+        if (this.modified)
+            BData.init({"words": j, size: this.size}, "crossword.json").save();
         $("table").addClass("Final");
         this.grid();
-        $("#WordList, body > p").remove();
+        $("#Icons, #WordList, #Help").remove();
         let f = (x) => $('#'+x).html($("<h3>").html(x));
         f("Across"); f("Down");
         let tr = $("table tr");
@@ -178,24 +182,47 @@ class Crossword {
         }
         tr.find("td:not(.Letter)").css({border: "none"});
         print();
+        $("#Across").addClass("Break");
     }
 
 }
 
 let cw;
 
-$(() => {
-    let url = qsArgs("puzzle");
-    Crossword._load(url ? url : "test.json");
-    console.log(`Load JSON file:
-   cw.load(url)
+/*** Event handlers ***/
 
-Resize grid:
-   cw.resize(12, 12)
+function loadFile() {
+    let e = $("#File");
+    let f = e[0].files[0];
+    let reader = new FileReader();
+    reader.addEventListener("loadend", () => {
+        Crossword.load(JSON.parse(reader.result));
+    });
+    reader.readAsText(f); 
+    e.val("");
+}
 
-Shift grid:
-   cw.shift(-1, 1)
+function askXY(s, d) {
+    let x, y;
+    try {
+        s = prompt(s, d).replaceAll(",", " ").trim().split(" ");
+        while (s.length > 2 && s[1] == "") s.splice(1, 1);
+        x = parseInt(s[0]);
+        y = parseInt(s[1]);
+    }
+    catch(err) {x = null}
+    return x != null && y != null && !isNaN(x) && !isNaN(y) ? [x, y] : null;
+}
 
-Delete word:
-  cw.del(0)`);
-})
+function shift() {
+    let xy = askXY("Enter shift x and y shift", "1 1");
+    if (xy) cw.shift(...xy);
+}
+
+function resize() {
+    let [c, r] = cw.size;
+    let xy = askXY("Enter new size", `${r} ${c}`);
+    if (xy) cw.resize(...xy);
+}
+
+$(() => Crossword.load({size: [12, 12], words: [["ottawa", "Canada’s capital city", [0, 0]]]}))
