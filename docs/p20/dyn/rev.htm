@@ -18,7 +18,7 @@
 <ul>
     <li>An illustration of an object and the forces it experiences (showing the direction and strength of each force) is called a <em class="Defn">free body diagram</em>.</li>
 </ul>
-<p class="Center"><svg data-svg2="p20/dyn/img/adv.js#fbd3" id="FBD" class="FBD"></svg></p>
+<p class="Center"><svg data-svg2="p20/dyn/img/adv.js#fbd3" id="FBD" class="FBD s16"></svg></p>
 <ul>
     <li>Draw a <em class="Defn">vector diagram</em> by redrawing the forces <em>tip-to-tail</em>.</li>
     <li>The net force is the resultant vector from the vector diagram.</li>
@@ -35,8 +35,8 @@
     <li><b>Air Resistance</b>: A force exerted by the air that has to be moved out of the way for an object to move.</li>
 </ul>
 
-<p>The <em class="Defn">force of gravity</em> is an attraction that objects  experience due to planets, stars, and other large masses:
-    <p class="TeX">{\vec{\bf{F}}}_g=m\vec{\bf{g}}</p></p>
+<p>The <em class="Defn">force of gravity</em> is an attraction that objects  experience due to planets, stars, and other large masses:</p>
+<p class="TeX">{\vec{\bf{F}}}_g=m\vec{\bf{g}}</p>
 <ul>
     <li>The force of gravity is also called the <em class="Defn">weight</em> of the object.</li>
     <li>The symbol <span class="TeX">\vec{\bf g}</span> is the <em class="Defn">gravitational field strength</em> of the planet/star causing the force.</li>
@@ -56,12 +56,14 @@
     <li>Static friction is usually a bit stronger than kinetic friction.</li>
 </ul>
 
+<div class="NoPresent">
 <p>For <em class="Defn">2D motion</em>, we can express all vectors (forces, acceleration) in Cartesian form and then apply Newton’s 2<sup>nd</sup> Law to the <span class="TeX">x</span>- and <span class="TeX">y</span>-components separately, just as we do with the uniform accelerated motion equations for projectile motion.</p>
 <ul>
     <li>For <em class="Defn">inclined plane</em> (ramp) problems, we can usually simplify the solution by using the direction <em>parallel</em> to the incline as the <span class="TeX">x</span>-axis and the direction <em>perpendicular</em> to the incline as <span class="TeX">y</span>.</li>
     <li>By doing this, the friction force and acceleration vector will only have an <span class="TeX">x</span>-component, and the normal force will only have a <span class="TeX">y</span>-component.</li>
     <li>When the axes are rotated this way, the direction of <span class="TeX">\vec{\bf F}_g</span> will be 270° plus or minus the angle of incline, depending on whether the axes are rotated clockwise or counterclockwise.</li>
 </ul>
+</div>
 
 </section>
 
@@ -77,12 +79,14 @@ loadFeed.notes = () => {
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Newton’s Laws Review`,
     num: "3.7",
     up: "p20/home",
-    prev: ["p20/dyn/adv", "p20/vec2d/rev"][clickLink.course],
-    next: ["p20/energy/mech", "p20/energy/rev"][clickLink.course],
+    prev: ["p20/dyn/adv", "p20/energy/rev"][tmp],
+    next: ["p20/da/regr", "p20/shm/rev"][tmp],
 }
 
 </script>
