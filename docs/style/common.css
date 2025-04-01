@@ -98,6 +98,7 @@ td.Reveal span {color: red}
 body:is(.Present, .Slides) td.Reveal span {display: none}
 
 .w4, body.Present .s4 {width: 4em}
+.w5, body.Present .s5 {width: 5em}
 .w6, body.Present .s6 {width: 6em}
 .w8, body.Present .s8 {width: 8em}
 .w10, body.Present .s10 {width: 10em}

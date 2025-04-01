@@ -1,3 +1,11 @@
+async function mjWait(t) {
+/* Wait until MathJax is available */
+    return new Promise((res) => {
+        if (window.MathJax) res(0);
+        else setTimeout(() => {res(1)}, t ? t : 250)
+    });
+}
+
 function jeval(a) {return JSON.parse(`{"a": ${a}}`).a}
 
 function jeval_frac(s) {

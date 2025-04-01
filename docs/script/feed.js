@@ -305,6 +305,9 @@ function onFeedLoaded(feed, e, noHist) {
         loadFeed(e.currentTarget);
     });
 
+    // Remove unnecessary MathJax elements
+    setTimeout(() => $("div:is(.MJX_ToolTip, .MJX_LiveRegion, .MJX_HoverRegion)").remove(), 2000);
+
     // Finish up
     $("#Main, #Copy").show();
     renderTeX();

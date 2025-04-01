@@ -1300,6 +1300,27 @@ static ebg(sel, Emax, step, data, options) {
     return svg.update(0);
 }
 
+static async latex(code, e) {
+/* Render LaTeX equation to SVG using MathJax */
+    let remove = e == null;
+    e = remove ? $("<p>").css({display: "none"}).appendTo("body") : $(e);
+    e.html(`$$${code}$$`);
+    return MathJax.typesetPromise().then(a => {
+        let svg;
+        try {svg = e.find("svg")[0].outerHTML}
+        catch(err) {}
+        if (remove) e.remove();
+        return svg;
+    });
+}
+
+static async latex_img(code) {
+/* Render LaTeX equation to <img> */
+    return SVG2.latex(code).then(svg => {
+        return $("<img>").attr({src: "data:image/svg+xml," + encodeURIComponent($(svg)[0].outerHTML)})[0];
+    })
+}
+
 }
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";
