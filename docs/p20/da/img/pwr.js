@@ -1,50 +1,38 @@
 SVG2.cache("p20/da/img/pwr.js", {
 
-lightbulb: (sel) => {
-    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 3, 0.25], [0, 2, 0.25], 1],
-        margin: [0.2, 0.03, 0.24, 0.05],
-        x: ["Separation / m", [">", "-48"], {interval: 0.5, length: "8", fixed: 1, offset: [0, "-24"]}],
-        y: ["Intensity / (W/m &nbsp; )", ["-54", ">"], {interval: 0.5, length: "8", fixed: 1, offset: ["-12", 0]}],
-    });
-    svg.text("2", [-0.44, 1.91]).config({theta: 90}).addClass("Sup");
-    svg.$.find(".TitleX, .TitleY").addClass("End");
+lightbulb: (sel, linear) => {
     let x = [...range(0.75, 3.01, 0.25)];
     let y = [1.6, 0.846, 0.585, 0.395, 0.28, 0.217, 0.17, 0.134, 0.111, 0.098];
-    let reg = pwrRegXY(x, y);
-    svg.locus(reg.fn, [Math.exp(log(2/reg.a)/reg.n), 3]).$.hide();
-    svg.plot({x:x, y:y}, "6");
-    svg.final();
+    let data, lrbt;
+    if (linear) {
+        for (let i=0;i<x.length;i++) x[i] = Math.pow(x[i], -2);
+        let lin = linRegXY(x, y).fn;
+        data = [{connect: [[0, lin(0)], [2, lin(2)]]}, {plot: [zip(x, y), "5"]}];
+        lrbt = [0, 2, 0, 2];
+    }
+    else {
+        let pwr = pwrRegXY(x, y);
+        let x0 = Math.pow(2 / pwr.a, 1 / pwr.n);
+        data = [{locus: [pwr.fn, [x0, 3]]}, {plot: [zip(x, y), "5"]}];
+        lrbt = [0, 3, 0, 2];
+    }
 
-    svg.$.on("click", (ev) => {
-        $(ev.currentTarget).children("polyline").fadeToggle();
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: lrbt, margin: [56, 10, 56, 12]});
+    svg.graph({grid: [0.25, 2], css: true, appendAxes: 1,
+        x: {tick: [0, lrbt[1] + 0.1, 0.5], dec: 1, title: ["Separation / m", "-44"], shift: [0, "-22"]},
+        y: {tick: [0, 2.1, 0.5], dec: 1, title: ["Intensity / (W/m &nbsp; )", "-40"], shift: ["-10", "-4"]},
+        data: data,
     });
-},
+    svg.delay(svg.group().config({theta: 90}), {recenter: [-0.3, 1.45]}).text("2").css({"font-size": "14px"});
 
-linear: (sel) => {
-    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 2, 0.25], [0, 2, 0.25], 1],
-        margin: [0.2, 0.03, 0.24, 0.05],
-        x: ["Separation &nbsp; &nbsp; /&nbsp;m", [1.9, "-48"], {interval: 0.5, length: "8", fixed: 1, offset: [0, "-24"]}],
-        y: ["Intensity / (W/m &nbsp; )", ["-54", ">"], {interval: 0.5, length: "8", fixed: 1, offset: ["-12", 0]}],
-    });
-    svg.text("2", [-0.3, 1.91]).config({theta: 90}).addClass("Sup");
-    svg.text("–2", [1.68, -0.3]).addClass("Sup");
-    svg.text("–2", [1.95, -0.3]).addClass("Sup");
-    svg.$.find(".TitleX, .TitleY").addClass("End");
-    let x = [...range(0.75, 3.01, 0.25)];
-    for (let i=0;i<x.length;i++) x[i] = Math.pow(x[i], -2);
-    let y = [1.6, 0.846, 0.585, 0.395, 0.28, 0.217, 0.17, 0.134, 0.111, 0.098];
-    let reg = linRegXY(x, y);
-    svg.line([0, reg.b], [2, reg.b + 2 * reg.m]).$.hide();
-    svg.plot({x:x, y:y}, "6");
-    svg.final();
+    svg.css_map().finalize();
+    svg.$.find("g.Locus").addClass("Toggle0").hide();
 
-    svg.$.on("click", (ev) => {
-        $(ev.currentTarget).children("line").fadeToggle();
-    });
+    let t = clickCycle.toggle;
+    clickCycle(svg.element, 1,
+        () => {t(svg, true, 0)},
+        () => {t(svg, false, 0)},
+    );
 },
     
 });
