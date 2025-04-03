@@ -310,8 +310,8 @@ function onFeedLoaded(feed, e, noHist) {
 
     // Finish up
     $("#Main, #Copy").show();
-    renderTeX();
     drawChevrons();
+    renderTeX();
     SVG2.load(initFeed);
 
 }
@@ -657,8 +657,22 @@ $(window).on("keydown", (ev) => {
     }
 });
 
+
 $(() => {
 /** Initialize page **/
+    let latex = localStorage.getItem("latex-renderer");
+    if (latex) {
+        let r = {
+            svg: mjax_render,
+            katex: katex_render,
+            mjax: (e) => mjax_render(e, 1),
+            none: (e) => $(e ? e : ".TeX").css({visibility: "visible"}),
+        }[latex];
+        if (r) {
+            renderTeX = r;
+            console.log(`latex-renderer = ${latex}`);
+        }
+    }
     teacher(null, true);
     loadHash(true);
     document.getElementById("TopTitle").addEventListener("click", goUp);
