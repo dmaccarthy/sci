@@ -5,11 +5,20 @@
 }
 
 body:not(.Present) .Present {display: none}
-/* .katex .vlist > span > span.eqn-num {display: none} */
 .Center {text-align: center}
 .Left {text-align: left}
 .Right {text-align: right}
 .Hide {display: none}
+.Defn {text-decoration: underline}
+[data-aspect], .Wide {max-width: 96%}
+
+.MathSerif {font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif}
+.TeX {visibility: hidden}
+
+*[data-latex]:not(span) {
+    text-align: center;
+    margin: 1em auto;
+}
 
 a[href], .Blue {color: var(--blue);}
 .Answer, .Red {color: red}
@@ -21,16 +30,6 @@ a[href], .Blue {color: var(--blue);}
 .Bold {font-weight: bold}
 .NoBold {font-weight: normal}
 .NoWrap {white-space: nowrap}
-
-.Defn {
-    text-decoration: underline;
-    /* color: green; */
-}
-
-[data-aspect], .Wide {
-    max-width: 96%;
-    /* max-height: 70vh; */
-}
 
 .Code, .CodeScroll, code {
     font-family: Inconsolata, monospace;
@@ -53,8 +52,6 @@ div.WideScroll {
     max-width: calc(100% - 2px);
     overflow: auto;
 }
-
-.MathSerif {font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif}
 
 table {
     margin: auto;

@@ -24,9 +24,13 @@
         <button title="Print the crossword and download the word list" onclick="cw.finish()"><span class="material-symbols-outlined">print</span><br/>Print</button>
     </p>
     <div id="WordList"></div>
-    <table></table>
-    <div id="Across"></div>
-    <div id="Down"></div>
+    <h2 contenteditable="true">Title</h2>
+    <table id="Crossword"></table>
+
+    <table><tr>
+        <td id="Across"></td>
+        <td id="Down"></td>    
+    </tr></table>
     <ul id="Help">
         <li>Click the word list to select a word.</li>
         <li>Click on the grid to position the selected word as <em>Across</em>.</li>

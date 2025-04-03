@@ -10,8 +10,9 @@ class WordClue {
 
 class Crossword {
 
-    constructor(words, size) {
+    constructor(words, size, title) {
         this.size = size;
+        this.title = title;
         this.modified = false;
         let w = this._words = [...words];
         for (let i=0;i<w.length;i++)
@@ -19,7 +20,7 @@ class Crossword {
     }
 
     static load(a) {
-        cw = new Crossword(a.words, a.size);
+        cw = new Crossword(a.words, a.size, a.title);
         cw.wordlist().grid();
     }
 
@@ -77,7 +78,7 @@ class Crossword {
     resize(c, r) {return this.grid([c, r])}
 
     grid(resize) {
-        let tbl = $("body > table").html("");
+        let tbl = $("#Crossword").html("");
         if (resize) {
             this.modified = true;
             this.size = resize;
@@ -156,15 +157,17 @@ class Crossword {
             let wi = w[i];
             j.push([wi.word, wi.clue, wi.grid]);
         }
+        this.title = $("h2").text();
         if (this.modified)
-            BData.init({"words": j, size: this.size}, "crossword.json").save();
-        $("table").addClass("Final");
+            BData.init({"title": this.title, "words": j, size: this.size}, "crossword.json").save();
+        $("#Crossword").addClass("Final");
         this.grid();
         $("#Icons, #WordList, #Help").remove();
         let f = (x) => $('#'+x).html($("<h3>").html(x));
         f("Across"); f("Down");
-        let tr = $("table tr");
+        let tr = $("#Crossword tr");
         let n = 0;
+        let key = "";
         for (let r=0;r<rows;r++) {
             for (let c=0;c<cols;c++) {
                 let td = $($(tr[r]).find("td")[c]);
@@ -175,14 +178,17 @@ class Crossword {
                     for (let i=0;i<clue.length;i++) {
                         let cur = clue[i];
                         let p = $("<p>").html(`${n}. ${cur.clue}`);
-                        p.appendTo(cur.grid[2] ? "#Down" : "#Across");
+                        let direct = cur.grid[2] ? "#Down" : "#Across";
+                        p.appendTo(direct);
+                        key += direct.charAt(1) + `,${n},${cur.word}\n`;
                     }
                 }
             }
         }
+        if (this.modified) BData.init(key, "crossword_key.csv").save();
         tr.find("td:not(.Letter)").css({border: "none"});
         print();
-        $("#Across").addClass("Break");
+        $("#Down").closest("table").addClass("Break");
     }
 
 }
@@ -197,6 +203,7 @@ function loadFile() {
     let reader = new FileReader();
     reader.addEventListener("loadend", () => {
         Crossword.load(JSON.parse(reader.result));
+        $("h2").html(cw.title);
     });
     reader.readAsText(f); 
     e.val("");

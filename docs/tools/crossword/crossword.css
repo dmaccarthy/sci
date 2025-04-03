@@ -28,7 +28,7 @@ button {
     color: var(--blue);
 }
 
-table {
+#Crossword {
     margin: 1.25em auto;
     font-family: Inconsolata, monospace;
     font-weight: bold;
@@ -36,7 +36,7 @@ table {
     border-collapse: collapse;
 }
 
-td {
+#Crossword td {
     min-width: var(--size);
     max-width: var(--size);
     width: var(--size);
@@ -46,14 +46,14 @@ td {
     padding: 2px;
 }
 
-td.Letter {
+#Crossword td.Letter {
     border: 1px solid black;
     text-align: left;
     font-size: 50%;
     vertical-align: top;
 }
 
-table.Final td:not(.Letter) {background-color: #f0f0f0}
+#Crossword.Final td:not(.Letter) {background-color: #f0f0f0}
 
 #WordList p {margin: 0.3em 0em}
 #WordList p.Unused > span {color: red}
@@ -63,3 +63,12 @@ table.Final td:not(.Letter) {background-color: #f0f0f0}
     color: var(--blue);
     text-decoration: underline;
 }
+
+#Across, #Down {
+    vertical-align: top;
+    width: 50%;
+}
+
+table {margin: auto}
+#Across {padding-right: 1em}
+#Down {padding-left: 1em}

@@ -1,10 +1,4 @@
-async function mjWait(t) {
-/* Wait until MathJax is available */
-    return new Promise((res) => {
-        if (window.MathJax) res(0);
-        else setTimeout(() => {res(1)}, t ? t : 250)
-    });
-}
+const sleep = async(t) => await new Promise(r => setTimeout(r, t));
 
 function jeval(a) {return JSON.parse(`{"a": ${a}}`).a}
 
@@ -89,20 +83,6 @@ function aspect(w) {
     for (let i=0;i<e.length;i++) itemAspect(e[i], w)
 }
 
-function renderTeX(e, opt) {
-    // Render TeX math with KaTeX
-    e = $(e ? e : ".TeX").removeClass("TeX").addClass("KaTeX");
-    for (let ei of e) {
-        let e$ = $(ei);
-        let options = {displayMode: e$.is("p, div, .Display"), throwOnError: false};
-        if (opt) Object.assign(options, opt);
-        katex.render(e$.text(), ei, options);
-    }
-    if (renderTeX.hideEqNum) $(".KaTeX:is(p, div) .eqn-num").hide();
-}
-
-renderTeX.hideEqNum = true;
-
 function isAfter(due, date) {
     // Check whether a date (today) is after the specified due date
     if (due == null) return true;
@@ -164,6 +144,78 @@ function unzip(data, rarray) {
         for (let i=0;i<dim;i++) udata[i].push(data[j][i]);
     return udata;
 }
+
+
+/*** Math rendering with MathJax or KaTeX ***/
+
+function katex_render(e, opt) {
+    // Render TeX math with KaTeX
+    e = $(e ? e : ".TeX").removeClass("TeX");
+    for (let ei of e) {
+        let e$ = $(ei);
+        let tex = e$.text();
+        e$.attr("data-latex", tex);
+        let options = {displayMode: e$.is("p, div, .Display"), throwOnError: false};
+        if (opt) Object.assign(options, opt);
+        katex.render(tex, ei, options);
+    }
+    if (katex_render.hideEqNum) $("[data-latex]:is(p, div) .eqn-num").hide();
+}
+
+katex_render.hideEqNum = true;
+renderTeX = katex_render;
+
+async function mjWait(t) {
+    // Wait until MathJax.typesetPromise is available
+    if ($("#MathJax-TeX-SVG").length == 0)
+        $("head").append($("<script>").attr({
+            type: "text/javascript",
+            id: "MathJax-TeX-SVG",
+            async: true,
+            src: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js",
+    }));
+    while (!MathJax.typesetPromise) await sleep(t ? t : 50);
+    return new Promise((res) => res(0));
+}
+
+async function mjax_svg(tex) {
+    return mjWait().then(() => {
+        let p = $("<p>").appendTo("body").html(`$$${tex}$$`);
+        return MathJax.typesetPromise(p).then(() => {
+            let svg = p.find("svg")[0].outerHTML;
+            p.remove();
+            return svg;    
+        });
+    });
+}
+
+function mjax_render(e, interactive) {
+    e = $(e ? e : ".TeX");
+    for (let item of e) {    
+        if ($(item).children().length) console.log(item);
+        let ei = $(item);
+        let [a, b] = ei.is("p, div, .Display") ? ["$$", "$$"] : ["\\(", "\\)"];
+        let tex = ei.html();
+        ei.attr("data-latex", tex);
+        ei.html(`${a}${tex}${b}`);
+    }
+    mjWait().then(() => {
+        try {
+            MathJax.typesetPromise().then(() => {
+                for (let item of $("[data-latex]")) {
+                    let ei = $(item).removeClass("TeX");
+                    if (!interactive) ei.html(ei.find("svg"));    
+                }
+            });
+        }
+        catch(err) {
+            console.error(err);
+        }  
+    })
+}
+
+
+/*** HSV Color ***/
 
 function RGBtoHSV(r, g, b) {
     let max = Math.max(r, g, b), min = Math.min(r, g, b);
