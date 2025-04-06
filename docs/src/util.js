@@ -165,7 +165,7 @@ function katex_render(e, opt) {
 katex_render.hideEqNum = true;
 renderTeX = katex_render;
 
-async function mjWait(t) {
+async function mjax_wait(t) {
     // Wait until MathJax.typesetPromise is available
     if ($("#MathJax-TeX-SVG").length == 0)
         $("head").append($("<script>").attr({
@@ -179,7 +179,7 @@ async function mjWait(t) {
 }
 
 async function mjax_svg(tex) {
-    return mjWait().then(() => {
+    return mjax_wait().then(() => {
         let p = $("<p>").appendTo("body").html(`$$${tex}$$`);
         return MathJax.typesetPromise(p).then(() => {
             let svg = p.find("svg")[0].outerHTML;
@@ -199,7 +199,7 @@ function mjax_render(e, interactive) {
         ei.attr("data-latex", tex);
         ei.html(`${a}${tex}${b}`);
     }
-    mjWait().then(() => {
+    mjax_wait().then(() => {
         try {
             MathJax.typesetPromise().then(() => {
                 for (let item of $("[data-latex]")) {

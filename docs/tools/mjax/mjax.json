@@ -25,5 +25,7 @@
     ["*/Force (Point Mass)", "F_g = \\frac{Gm_1m_2}{r^2}"],
     ["*/Field Strength", "g = \\frac{GM}{r^2}"],
     ["*/Potential Energy (Uniform)", "E_g = mgh"],
-    ["*/Potential Energy (Point Mass)", "E_g = \\frac{-Gm_1m_2}{r}"]
+    ["*/Potential Energy (Point Mass)", "E_g = \\frac{-Gm_1m_2}{r}"],
+["Physics/SHM"],
+    ["*/v_max", "v_{max} = \\frac{2\\pi A}{T}"]
 ]
