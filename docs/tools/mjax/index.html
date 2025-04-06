@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MathJax / SVG Renderer</title>
+<link rel="shortcut icon" type="image/svg+xml" href="pi.svg"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
+<link rel="stylesheet" href="mjax.css"/>
+<script type="text/javascript">
+
+// MathJax configuration
+
+window.MathJax = {
+    startup: {typeset: false},
+    loader: {load: ['[tex]/color', '[tex]/cancel']},
+    tex: {packages: {'[+]': ['color', 'cancel']}}
+};
+
+</script>
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="mjax.js"></script>
+<script type="text/javascript">
+
+
+</script>
+</head>
+<body>
+<h2><a href="https://www.mathjax.org/" target="MJax">MathJax</a> / SVG Renderer</h2>
+<p class="Small">© 2025 by <a href="https://github.com/dmaccarthy" target="GitHub">D.G. MacCarthy</a></p>
+<p><textarea id="Input" spellcheck="false">\large \color{red} V = \frac{4\pi}{3} {\color{#0065fe} r}^3</textarea></p>
+<p class="Hidden">
+    <button id="Render">Render</button> &nbsp;
+    <button onclick="$('#File')[0].click()">Load...</button> &nbsp;
+    <button onclick="save()">Save...</button> &nbsp;
+</p>
+<p>
+    <input id="File" type="file" accept=".json" oninput="load(this)"/>
+    <input id="Del" type="checkbox"/> <label for="Del">Delete</label>
+</p>
+
+<table>
+    <tr>
+        <td><ul id="Bank"></ul></td>
+        <td id="Output"></td>
+    </tr>
+</table>
+
+<!-- <h3>Instructions</h3>
+<ul>
+    <li>Enter MathJax-supported LaTeX in the text area above.</li>
+    <li>Click the <em>Render</em> button to render the LaTeX as an SVG image.</li>
+    <li>Right-click the image to save or open the SVG.</li>
+    <li>Ctrl+Alt+Click on the <em>Render</em> button to render the LaTeX as interactive MathJax.</li>
+    <li>Alt+Click an image to copy the LaTeX back into the text area.</li>
+    <li>Ctrl+Alt+Click to remove an image from the page.</li>
+    <li>You can <span class="Link" onclick="saveAll()">save rendered equations</span> as a JSON file.</li>
+</ul> -->
+</body>
+</html>

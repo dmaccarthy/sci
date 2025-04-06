@@ -1,0 +1,85 @@
+body {
+    font-family: "Noto Sans", sans-serif;
+    text-align: center;
+}
+
+#Bank {
+    padding: 0.25em 0.5em;
+    background-color: #f0f0ff;
+    color: blue;
+    display: none;
+}
+
+#Bank, #Bank ul {
+    margin: 0;
+    text-align: left;
+    list-style-type: none;
+}
+
+#Bank p {
+    font-weight: bold;
+    margin: 0;
+}
+
+#Bank ul {padding-left: 1.5em}
+
+#Bank *:is(p, li[data-latex]) {
+    cursor: pointer;
+}
+
+#Bank *:is(p, li[data-latex]):hover {
+    text-decoration: underline;
+}
+
+#Input {
+    width: 64em;
+    max-width: 96%;
+    min-width: 16em;
+    height: 16em;
+}
+
+button {
+    width: 6em;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid grey;
+}
+
+table {
+    width: 96%;
+    margin: auto;
+    margin-top: 2em;
+    border-collapse: collapse;
+}
+
+table td {
+    width: 65%;
+    vertical-align: top;
+}
+
+table td:first-child {
+    width: 35%;
+    margin-left: 0;
+}
+
+#Output > p {
+    border-top: 1px solid grey;
+    padding: 1em 0;
+    margin: 0 1em;
+}
+
+#Output > p:last-child {
+    border-bottom: 1px solid grey;
+}
+
+#Output > p > img {zoom: 150%}
+#Math, .Hidden {visibility: hidden}
+#File {display: none}
+h3, li {text-align: left}
+.Small {font-size: 80%}
+
+.Link {
+    color: #0065fe;
+    text-decoration: underline;
+    cursor: pointer;
+}

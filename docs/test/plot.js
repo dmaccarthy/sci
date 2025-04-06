@@ -1,5 +1,11 @@
 SVG2.cache("test/plot.js", {
 
+pi: (sel) => {
+    let svg = new SVG2(sel, {size: [64, 64], lrbt: [-2, 2], grid: 1});
+    svg.delay(svg.group().addClass("Text"), {recenter: [0, 0]}).text("π").css({fill: "#0065fe", "font-family": "serif", "font-size": "64px"});
+    svg.addClass("NoStyle").css_map().finalize();
+},
+    
 plot: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 140], margin: [62, 12, 52, 12]});
     let pts = [[0, 125], [3, 125], [8, 0]];
