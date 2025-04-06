@@ -1,22 +1,23 @@
 function render(ev) {
     // Render LaTeX with MathJax
     let latex = $("#Input").val();
-    let bank = render.custom.indexOf(latex) > -1;
+    let b = render.custom.indexOf(latex) > -1;
     for (let eq of $("[data-latex]"))
-        if ($(eq).attr("data-latex") == latex) bank = true;
+        if ($(eq).attr("data-latex") == latex) b = true;
     let p = $("<p>").attr({"data-latex": latex}).html(`$$${latex}$$`).prependTo("#Output");
     MathJax.typesetPromise(p).then(() => {
-        if (ev != null && !bank) render.custom.push(latex);    
+        if (ev != null && !b) render.custom.push(latex);    
         if (ev == null || !(ev.ctrlKey && ev.altKey)) convert_to_img(p);
         p.on("click", click);
     });
 }
 
 render.custom = [];
+render.currentColor = "black";
 
 function convert_to_img(p) {
     // Convert MathJax to <img> with SVG dataURL
-    let svg = p.find("svg")[0].outerHTML;
+    let svg = p.find("svg")[0].outerHTML.replaceAll("currentColor", render.currentColor);
     let src = "data:image/svg+xml," + encodeURIComponent(svg);
     p.html($("<img>").attr({src: src}));
 }
