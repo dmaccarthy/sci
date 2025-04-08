@@ -15,7 +15,7 @@
 print(data)</pre>
     
     <p>In the example above, the <code>seek</code> method causes Python to skip over the first eight bytes of the file and the <code>read</code> method then reads the next four characters, starting with the 9<sup>th</sup> byte in the file.</p>
-    <p>One issue for programmers using direct access is that the current position is tracked in bytes rather than characters. With UTF-8 encoding, many common characters (in the Latin alphabet) are encoded with a single byte, while less common characters are encoded with multiple bytes. This means that skipping 8 bytes of data does not necessarily correspond to skipping 8 characters. In the <code>myData1.txt</code> file provided with the example, the file contains this sequence of characters:</p>
+    <p>One issue for programmers using direct access is that the current position is tracked in bytes rather than characters. With UTF-8 encoding, many common characters (in the Latin alphabet) are encoded with a single byte, while less common characters are encoded with multiple bytes. This means that skipping 8 bytes of data does not necessarily correspond to skipping 8 characters. In the <code>accents.txt</code> file provided with the example, the file contains this sequence of characters:</p>
     <pre class="IO" data-echo="accents.txt" data-title="1">àbçdéfghïjklmnõpqrstûvwxyz</pre>
     
     <p>The accented characters require two bytes in UTF-8, while the unaccented characters require only one byte. Skipping over 8 bytes has the effect of skipping only 5 characters, since <code>à</code>, <code>ç</code>, and <code>é</code> each use two bytes.</p>
