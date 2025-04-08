@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Period of SHM</h1>
@@ -7,7 +7,7 @@
 
 <section class="Slide"><h3>Period of SHM</h3>
 <p>For SHM, graphs of <span class="TeX">\vec{\bf{x}}</span> and <span class="TeX">\vec{\bf{a}}</span> have identical shapes but are negatives of each other.</p>
-<p class="Center"><svg class="Graph s20" id="SHM_Graph" data-svg2="p20/shm/img/shm.js#v_t#[1,1]"></svg></p>
+<p class="Center"><svg class="Graph s20" data-svg2="p20/shm/img/shm.js#v_t#[2,1]"></svg></p>
 <ul>
     <li>This means that these quantities are <em>directly proportional</em> to each other but in <em>opposite directions</em>.</li>
     <li>Mathematically, sinusoidal functions are the only functions that have this property.</li>
@@ -70,14 +70,6 @@
     <ul data-cue="none" class="Var">assign</ul>
 </div></section>
 
-<script type="text/javascript" data-init="notes">
-
-loadFeed.notes = () => {
-    $("#SHM_Graph").trigger("click");
-}
-
-</script>
-
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
@@ -133,6 +125,14 @@ Since the elastic force is 23.8 N up, the force of gravity (weight) is 23.8 N do
         </div>    
     </ol></li>
 
+    <li>A spring has <span class="TeX">k</span> = 32.0 N/m. What mass would need to be attached to the spring to produce SHM with a period of 1.00 s?</li>
+    <div class="Answer">
+<p class="TeX">T = 2\pi\sqrt{\frac{m}{k}}</p>
+<p class="TeX">T^2 = \frac{4\pi^2 m}{k}</p>
+<p class="TeX">kT^2 = 4\pi^2 m</p>
+<p class="TeX">m = \frac{kT^2}{4\pi^2} = \rm{\frac{32.0\ N/m\cdot (1.00\ s)^2}{4\pi^2} = 0.811\ kg}</p>
+    </div>
+
     <li><ol type="a">
         <li>A 275 g mass attached to the end of spring executes SHM with a period of 0.950 s. Calculate the <span class="TeX">k</span> value of the spring.</li>
         <div class="Answer">
@@ -159,14 +159,6 @@ Since the elastic force is 23.8 N up, the force of gravity (weight) is 23.8 N do
 </p>
         </div>    
     </ol></li>
-
-    <li>A spring has <span class="TeX">k</span> = 32.0 N/m. What mass would need to be attached to the spring to produce SHM with a period of 1.00 s?</li>
-    <div class="Answer">
-<p class="TeX">T = 2\pi\sqrt{\frac{m}{k}}</p>
-<p class="TeX">T^2 = \frac{4\pi^2 m}{k}</p>
-<p class="TeX">kT^2 = 4\pi^2 m</p>
-<p class="TeX">m = \frac{kT^2}{4\pi^2} = \rm{\frac{32.0\ N/m\cdot (1.00\ s)^2}{4\pi^2} = 0.811\ kg}</p>
-    </div>
     
     <li><p>While stretching a spring, students measured the force applied and the length of the spring. They collected the following data. (a) Graph the data, and (b) use the graph to determine the elastic constant and the natural length (neither stretched nor compressed) of the spring.</p>
 <table class="Two Center Top TD6">
@@ -209,8 +201,8 @@ Since the elastic force is 23.8 N up, the force of gravity (weight) is 23.8 N do
     <h2 class="Collapse">Handouts</h2><div class="Collapse">
     <p class="Var">handouts</p>
     <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="">Assignment</button>
-        <button data-icon="gdrv" data-gdrv="">SHM Lab</button>
+        <button data-icon="gdrv" data-gdrv="1mUb65oNI-hcgp-mhYYOdSxZeQgXrhkTN">Assignment</button>
+        <button data-icon="gdrv" data-gdrv="11m4aNAjpFQ0G5anyUsnVvumUY8_wkoLx">SHM Lab</button>
     </p>
 </div></section>
 
@@ -223,7 +215,7 @@ loadFeed.data = {
     num: "7.5",
     up: "p20/home",
     prev: "p20/shm/shm",
-    // next: "p20/shm/pend",
+    next: "p20/shm/pend",
 }
 
 </script>

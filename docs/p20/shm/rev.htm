@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
-<div id="LessonNotes">
+<h2 class="Collapse">Notes</h2><div class="Collapse Expand">
 
 <section class="Slide">
 <p><em class="Defn">Simple harmonic motion</em> (SHM) is a type of <em class="Defn">oscillation</em>; a back-and-forth motion centred at the object’s <em class="Defn">equilibrium</em>.
@@ -44,17 +43,19 @@
 </ul>
 
 </section>
-</div></div>
+</div>
 </section>
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Simple Harmonic Motion Review`,
-    num: "7.7",
+    num: "7.9",
     up: "p20/home",
-    prev: ["p20/shm/res", "p20/grav/rev"][clickLink.course],
-    next: ["p20/wave/harm", "p20/wave/rev"][clickLink.course],
+    prev: ["p20/shm/res", "p20/dyn/rev"][tmp],
+    next: ["p20/wave/harm", "p20/wave/rev"][tmp],
 }
 
 </script>

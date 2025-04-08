@@ -124,5 +124,4 @@ Q5: (sel) => {
     ], {E: E, unit: "mJ", duration: 120, margin: [40, 4, 40, 16], label: [0, "-6", 3]});
 },
 
-
 });
