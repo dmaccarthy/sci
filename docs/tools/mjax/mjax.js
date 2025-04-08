@@ -71,10 +71,10 @@ function save() {
     let url = URL.createObjectURL(blob);
     $("<a>").attr({href: url, download: `${t}.json`}).html("Save")[0].click();
     render.custom = [];
+    update_bank(data);
 }
 
 function bank(ev) {
-    // let tag = ev.target.tagName;
     let e = $(ev.target);
     if (e.is("p")) e.next("ul").slideToggle();
     else if (e.is("li[data-latex]")) {
