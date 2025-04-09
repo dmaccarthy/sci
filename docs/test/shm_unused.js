@@ -1,4 +1,4 @@
-SVG2.cache("p20/shm/img/shm_unused.js", {
+SVG2.cache("test/shm_unused.js", {
 
 Q1x: (sel) => {
     $(sel).attr({width: 480, height: 300, "data-aspect": "8/5"});
@@ -14,6 +14,7 @@ Q1x: (sel) => {
 },
 
 Q1v: (sel) => {
+    console.log(67);
     $(sel).attr({width: 480, height: 300, "data-aspect": "8/5"});
     let svg = applet.graph(sel, {
         grid: [[0, 0.8, 0.1], [-0.8, 0.8, 0.2], 1],

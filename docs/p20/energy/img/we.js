@@ -1,51 +1,48 @@
 SVG2.cache("p20/energy/img/we.js", {
 
 work: (sel) => {
-    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 20, 1], [-400, 400, 50], 1],
-        margin: [0.2, 0.06, 0.04, 0.05],
-        x: ["Position / m", [">", "12"], {interval: 5, length: "8", omitZero: 1, offset: [0, "-22"]}],
-        y: ["Force / N", ["-60", ">"], {interval: 100, length: "8", offset: ["-12", 0]}],
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 20, -400, 400], margin: [68, 12, 12, 12]});
+    svg.graph({grid: [1, 50], css: true,
+        x: {tick: [0, 21, 5], title: ["Position / m", [17, 25]], shift: [0, "-22"]},
+        y: {tick: [-400, 401, 100], title: ["Force / N", "-50"], shift: ["-10", "-4"]},
+        data: [
+            {connect: [[0, 0], [5, 400], [10, 400], [20, -400]]},
+        ]
     });
-    svg.$.find(".TitleX, .TitleY").addClass("End");
-    let g = svg.group().before("g.Axes");
-    svg.poly([[0, 0], [5, 400], [5, 0]], 1, g).addClass("Shade");
-    svg.rect([5, 400], [7.5, 200], g).addClass("Shade");
-    svg.poly([[10, 0], [10, 400], [15, 0]], 1, g).addClass("Shade");
-    svg.poly([[20, 0], [20, -400], [15, 0]], 1, g).addClass("Shade");
-    svg.poly([[0, 0], [5, 400], [10, 400], [20, -400]], 0, g);
-    g = svg.group().css({fill: "#0065FE"}).before("g.Axes");
-    svg.text("1000 J", [3, 75], g).addClass("Label");
-    svg.text("2000 J", [7.5, 200], g).addClass("Label");
-    svg.text("1000 J", [12, 75], g).addClass("Label");
-    svg.text("-1000 J", [18, -75], g).addClass("Label");
-    svg.$.find(".Shade").css({stroke: "#0065FE", "stroke-width": 1});
-    svg.final();
+    svg.$.find("g.LabelX text.Zero").remove();
+    let shade = svg.group();
+    let g = shade.group().addClass("Toggle0");
+    g.poly([[0, 0], [5, 400], [5, 0]], 1);
+    g.line([5, 400], [5, 0]);
+    svg.delay(g.group(), {recenter: [3, 75]}).text("1000 J");
 
-    let shade = (n) => {
-        let s = svg.$.find(".Shade, .Label");
-        for (let i=0;i<4;i++) {
-            let [p, t] = [$(s[i]), $(s[i+4])];
-            if (i > n) {p.hide(); t.hide()}
-            else if (i == n || n == 4) {
-                p.css({fill: "#0065FE", stroke: "#0065FE"}).fadeIn();
-                t.css({fill: "#0065FE"}).fadeIn();
-            }
-            else {
-                p.css({fill: "lightgrey", stroke: "grey"});
-                t.css({fill: "grey"});
-            }
-        }
-    }
+    g = shade.group().addClass("Toggle1");
+    g.rect([5, 400], [7.5, 200]);
+    g.line([10, 400], [10, 0]);
+    svg.delay(g.group(), {recenter: [7.5, 200]}).text("2000 J");
+
+    g = shade.group().addClass("Toggle2");
+    g.poly([[10, 400], [10, 0], [15, 0]], 1);
+    svg.delay(g.group(), {recenter: [12, 75]}).text("1000 J");
+
+    g = shade.group().addClass("Toggle3");
+    g.poly([[20, -400], [20, 0], [15, 0]], 1);
+    svg.delay(g.group(), {recenter: [18, -75]}).text("–1000 J");
+
+    svg.addClass("NoStyle").css_map().finalize();
+    g = shade.$.insertBefore("g.Series").css({fill: "#0065fe", "fill-opacity": 0.2, stroke: "none"});
+    g.find("line").css({stroke: "#0065fe"});
+    g.find("text").css({"fill-opacity": 1});
+
+    let t = clickCycle.toggle;
     clickCycle(svg.element, -1,
-        () => {shade(-1)},
-        () => {shade(0)},
-        () => {shade(1)},
-        () => {shade(2)},
-        () => {shade(3)},
-        () => {shade(4)},
+        () => {t(svg, false, 0, 1, 2, 3)},
+        () => {t(svg, true, 0)},
+        () => {t(svg, true, 1)},
+        () => {t(svg, true, 2)},
+        () => {t(svg, true, 3)},
     );
+
 },
 
 tennis: (sel) => {
@@ -74,7 +71,7 @@ F1: (sel) => {
 },
 
 Q1: (sel) => {
-    let svg = SVG2.ebg(sel, 80, 10, [
+    SVG2.ebg(sel, 80, 10, [
         ["+W", (t) => 75 * (1 - t * t), "red"],
         ["E_k", true],
         ["–W", (t) => 30 * t * t, "red"],

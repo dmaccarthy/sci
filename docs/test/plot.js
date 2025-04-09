@@ -19,6 +19,7 @@ plot: (sel) => {
             {plot: [{x: [1, 4, 7], y: [100, 80, 60]}, "7"]},
         ]
     });
+    console.log(svg.series[0]);
     svg.animate(svg.series[0].find(".Locus")).play().$.on("click", () => svg.toggle());
 },
 

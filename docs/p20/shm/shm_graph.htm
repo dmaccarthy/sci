@@ -2,6 +2,7 @@
 <h2 class="Collapse" id="Caption">Graph</h2>
 <div class="Collapse Expand">
 <p class="Center"><svg class="Graph"></svg></p>
+<!-- <p class="Center"><svg id="Test"></svg></p> -->
 </div>
 </section>
 
@@ -15,11 +16,19 @@ data --> {
 }
 
 ***/
-    
+
+
+loadFeed.test = (data) => {
+    console.log(data);
+    $("#Test").attr("data-svg2", 'p20/shm/img/shm.js#shm#[2,[0.5,0.1,1],[2,0.5,"cm",1]]');
+    SVG2.load();
+}
+
 loadFeed.shm = () => {
-    $("svg.Graph").attr({width: 640, height: 480, "data-aspect": "4/3"});
     let data = decodeURIComponent(location.search.substr(1));
     data = JSON.parse(data);
+    // loadFeed.test(data);
+    $("svg.Graph").attr({width: 640, height: 480, "data-aspect": "4/3"});
     let pi2 = 2 * pi;
     let [T, A, v, a] = [data.T, data.A, data.vmax, data.amax];
     if (T == null)
@@ -55,10 +64,7 @@ loadFeed.shm.draw = (data, mode) => {
     $("#Caption").html(`${title} vs. Time`);
     let unit = data.unit;
     if (!unit) unit = "m";
-    if (mode) {
-        unit = `(${unit}/s)`;
-        if (mode == 2) unit += "^2";
-    }
+    if (mode) unit = `(${unit}/s${mode == 2 ? "^2" : ""})`
     svg.axis({
         y: [-5 * dy, 5 * dy, dy],
         title: {text: `${title} / ${unit}`, position: [0.3 * dt, 4.8 * dy]},

@@ -121,38 +121,42 @@ tr: (sel) => {
 },
 
 Q6: (sel) => {
-    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
-    let t = 20 / 9.81;
-    let svg = applet.graph(sel, {
-        grid: [[0, 6, 0.2], [-5, 5, 0.5], 1],
-        margin: [0.15, 0.02, 0.05, 0.05],
-        x: ["Position / m", [">", "12"], {interval: 1, minor: 5, offset: [0, "-22"], omitZero: 1, fixed: 0, length: "8"}],
-        y: ["Displacement / cm", ["-48", "^"], {interval: 1, minor: 2, offset: ["-12", 0], fixed: 0, length: "8"}],        
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 6, -5, 5], margin: [60, 12, 10, 12]});
+    svg.graph({grid: [0.2, 0.5], css: true,
+        x: {tick: [0, 6.1, 1], title: ["Position / m", [5.2, "8"]], shift: [0, "-22"]},
+        y: {tick: [-5, 5.1, 1], title: ["Displacement / cm", "-40"], shift: ["-10", "-4"]},
+        data: [
+            {locus: [(x) => 3 * sin(360 * x / 2.8), [0, 6]]},
+            {locus: [(x, t) => 3 * sin(360 * (x - t / 4) / 2.8), [0, 6]]},
+        ]
     });
-    svg.$.find(".TitleX").addClass("End");
-    svg.locus((x) => 3 * sin(360 * x / 2.8), [0, 6]).css({stroke: "black", "stroke-width": "1px"});
-    let g = svg.group().css({fill: "#0065FE", "font-weight": "bold"});
-    svg.text("A", [0.5, 3.3], g);
-    svg.text("B", [2.8, 1.5], g);
-    svg.text("C", [4.4, -0.5], g);
-    svg.final();
-    let wave = (x, t) => {
-        t /= 4;
-        if (t > 0.4) {
-            t = 0.4;
+    svg.$.find("g.LabelX text.Zero").remove();
+
+    let g = svg.group().css({"font-family": SVG2.sans, "font-size": "18px", fill: "#0065FE", "font-weight": "bold"});
+    svg.delay(g.group(), {recenter: [0.4, 3.2]}).text("A");
+    svg.delay(g.group(), {recenter: [2.8, 1.5]}).text("B");
+    svg.delay(g.group(), {recenter: [4.4, -0.5]}).text("C");
+
+    let loci = svg.series;
+
+    svg.afterupdate = function() {
+        if (svg.time >= 1.6) {
             svg.pause();
+            svg.time = 1.6;
         }
-        return 3 * sin(360 * (x - t) / 2.8);
     }
-    svg.locus(wave, [0, 6]);
-    svg.$.on("click", () => {
-        if (svg.time >= 1.6 && !svg.playing) {
+
+    svg.animate(loci[1].find(".Locus")).$.on("click", () => {
+        if (svg.time >= 1.6) {
             svg.time = 0;
             svg.update(0);
         }
         else svg.toggle();
     });
-    svg.update(0);
+
+    svg.css_map().finalize();
+    loci[0].$.find("polyline").css({stroke: "black", "stroke-width": "1px"});
+    loci[1].$.find("polyline").css({"stroke-width": "3px"});
 },
 
 });
