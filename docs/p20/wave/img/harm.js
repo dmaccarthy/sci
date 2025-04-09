@@ -1,5 +1,37 @@
 SVG2.cache("p20/wave/img/harm.js", {
 
+ray: (sel) => {
+    let svg = new SVG2(sel, {scale: 20, lrbt: [-10, 10, -10, 10], margin: 1});
+    svg.time = 16;
+    let w = svg.group().addClass("Wavefronts").css({fill: "none", stroke: "#0065fe", "stroke-width": "3px"});
+    let r = svg.group().addClass("Rays");
+    let css = {fill: "none", stroke: "red", "stroke-width": "2px"};
+    for (let i=0;i<8;i++) {
+        r.ray([0, 0], vec2d(15, 45*i), {size: "12", ratio: 0.75}, 0.6).css(css);
+        w.circle(2*i);
+    }
+
+    svg.beforeupdate = function(a) {
+        let t = w.svg.time;
+        let waves = w.$.find("circle");
+        for (let c of waves) {
+            let r = t % 16;
+            if (r > 0) w.circle(r, null, c).show();
+            t -= 2;
+        }
+    }
+
+    svg.$.on("click", (ev) => {
+        if (ev.ctrlKey) {
+            svg.time = 0;
+            w.$.find("circle").hide();
+        }
+        else svg.toggle();
+    });
+
+    svg.$.addClass("NoStyle").css({"background-color": "#f8f8ff"});
+},
+
 long: (sel) => {
     $(sel).attr({width: 480, height: 160, "data-aspect": "3"});
     let svg = new SVG_Animation(sel, -1.5, 21);
@@ -27,8 +59,7 @@ long: (sel) => {
     }
     svg.text("Compression", [x, 3.25], g1);
     svg.text("Rarefaction", [x + 1.5 * w, 3.25], g2);
-    svg.$.css({"font-size": "18px"});
-    // svg.$.find("text").css({"font-size": "18px"});
+    svg.$.find("text").css({"font-size": "18px"});
 
     svg.beforeupdate = function() {
         let r = this.$.find("g.Particles > rect");
@@ -84,7 +115,7 @@ tr: (sel) => {
         this.config({position: [t % 2, 0]})
     }
 
-    svg.$.css({"font-size": "18px"});
+    svg.$.find("text").css({"font-size": "18px"});
     svg.update(0);
     svg.$.on("click", () => svg.toggle());
 },

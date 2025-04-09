@@ -69,12 +69,14 @@
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Mechanical Waves Review`,
     num: "8.5",
     up: "p20/home",
-    next: "p20/home",
-    prev: ["p20/wave/stand", "p20/shm/rev"][clickLink.course],
+    prev: ["p20/wave/stand", "p20/shm/rev"][tmp],
+    next: ["p20/circ/ucm", "p20/circ/rev"][tmp],
 }
 
 </script>
