@@ -1,5 +1,21 @@
 SVG2.cache("p20/wave/img/harm.js", {
 
+wave: (sel, t, y, wave) => {
+    let [T, dt, dec_t] = t ? t : [1, 0.2, 1];
+    let [ymax, dy, dec_y] = y ? y : [4, 1, 0];
+    let [ux, uy, v] = wave;
+    let svg = new SVG2(sel, {size: [512, 360], lrbt: [-dt, 9*dt, -5*dy, 5*dy], margin: [36, 16, 12, 12]});
+    svg.graph({grid: [dt, dy], css: true,
+        x: {tick: [dt, 9.1*dt, dt], dec: dec_t, title: [`Position / ${ux}`, [7.5*dt, "8"]], shift: [0, "-22"]},
+        y: {tick: [-5*dy, 5.1*dy, dy], dec: dec_y, title: [`Displacement / ${uy}`, "-60"], shift: ["-10", "-4"]},
+        data: [{locus: [(x, t, v) => ymax * sin(360 / T * (x - v * t)), null, v]}]
+    });
+    svg.$.find("text.Zero").remove();
+    svg.animate(svg.series[0].find(".Locus"));
+    svg.$.on("click", () => svg.toggle());
+    return svg;
+},
+
 ray: (sel) => {
     let svg = new SVG2(sel, {scale: 20, lrbt: [-10, 10, -10, 10], margin: 1});
     svg.time = 16;
@@ -157,6 +173,12 @@ Q6: (sel) => {
     svg.css_map().finalize();
     loci[0].$.find("polyline").css({stroke: "black", "stroke-width": "1px"});
     loci[1].$.find("polyline").css({"stroke-width": "3px"});
+},
+
+Q7: (sel) => {
+    let svg = SVG2.cache_run("p20/wave/img/harm.js", "wave", sel, [0.75, 0.2, 1], [6, 1.5, 1], ["m", "cm", 0.15]);
+    let g = svg.locus((x) => 6 * sin(360 / 0.75 * x));
+    g.$.prependTo(svg.$.find("g.Series")).css({fill: "none", stroke: "black", "stroke-width": "1px"});
 },
 
 });
