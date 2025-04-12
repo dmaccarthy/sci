@@ -175,10 +175,16 @@ Q6: (sel) => {
     loci[1].$.find("polyline").css({"stroke-width": "3px"});
 },
 
+Q1: (sel) => {
+    let svg = SVG2.cache_run("p20/wave/img/harm.js", "wave", sel, [5, 1, 1], [2, 0.5, 1], ["cm", "cm", 1]);
+    let g = svg.locus((x) => 2 * sin(360 / 5 * x));
+    g.$.prependTo(svg.$.find("g.Series")).css({fill: "none", stroke: "black", "stroke-width": "1px"});    
+},
+
 Q7: (sel) => {
     let svg = SVG2.cache_run("p20/wave/img/harm.js", "wave", sel, [0.75, 0.2, 1], [6, 1.5, 1], ["m", "cm", 0.15]);
     let g = svg.locus((x) => 6 * sin(360 / 0.75 * x));
-    g.$.prependTo(svg.$.find("g.Series")).css({fill: "none", stroke: "black", "stroke-width": "1px"});
+    g.$.prependTo(svg.$.find("g.Series")).css({fill: "none", stroke: "black", "stroke-width": "1px"});    
 },
 
 });

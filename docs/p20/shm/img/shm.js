@@ -18,6 +18,7 @@ shm: (sel, n, t, y) => {
 },
 
 v_t: (sel, n, click) => {
+    console.log(82, sel);
     let xva = {n: (n ? n : 0) - 1};
     let svg = new SVG2(sel, {size: [480, 300], lrbt: [-0.25, 2, -1.25, 1.25], margin: 2});
     svg.graph({grid: [0.25, 0.25],

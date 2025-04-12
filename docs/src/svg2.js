@@ -1140,8 +1140,21 @@ static load(cb) {
 }
 
 static cache_run(url, id, ...arg) {
-    url = new URL(url, SVG2.url).href;
-    return SVG2._cache[url][id](...arg);
+    let js = SVG2._cache[new URL(url, SVG2.url).href];
+    return js[id](...arg);
+}
+
+static async cache_and_run(url, id, ...args) {
+    let c = SVG2._cache[new URL(url, SVG2.url).href];
+    if (c) return new Promise(res => {
+        res(c[id](...args));
+    });
+    else return fetch(url).then((a) => {
+        a.text().then((a) => {
+            eval(a);
+            return SVG2.cache_run(url, id, ...args);
+        });
+    });
 }
 
 static remove_pending(url, cb) {
