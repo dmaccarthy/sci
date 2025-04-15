@@ -1,9 +1,8 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 <style type="text/css">
 
-#LessonNotes input {
+#Harmonic, #OddHarmonic {
     width: 4em;
     font-size: 1em;
     text-align: center;
@@ -17,124 +16,120 @@
 
 <section class="Slide"><h3>Reflection of Waves</h3>
 <p>When a wave reaches the end of the medium, its energy is <em class="Defn">reflected</em> back the way it came.</p>
-<div data-cue="+">
+<div>
     <ul><li>The reflected waves and the <em class="Defn">incident</em> (incoming) waves will <em>interfere</em> with each other.</li></ul>
-    <p class="Center"><iframe src="https://www.desmos.com/calculator/w2hhglsyul?embed" class="s32" data-aspect="12/7" width="720" height="420" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+    <p class="Center"><iframe src="https://www.desmos.com/calculator/w2hhglsyul?embed" class="s28" data-aspect="12/7" width="720" height="420" style="border: 1px solid #ccc" frameborder=0></iframe></p>
 </div>
-<ul data-cue="+">
+<ul>
     <li>When the reflection occurs from a <em>fixed</em> end (e.g. a guitar string), the reflection will be <em>inverted</em>; crests will be reflected as troughs and vice versa. Interference will be destructive.</li>
-    <li data-cue="+">Reflections from a <em>free</em> end will not be inverted. Interference will be constructive.</li>
+    <li>Reflections from a <em>free</em> end will not be inverted. Interference will be constructive.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Nodes &amp; Anti-nodes</h3>
 <p>At a fixed end (<em>destructive</em> interference)...</p>
-<ul data-cue="+">
+<ul>
     <li>The incident crest and the reflected trough will cancel each other out.</li>
-    <li data-cue="+">A point where the interfering waves cancel is called a <em class="Defn">node</em>.</li>
-    <li data-cue="+">The amplitude will be exactly zero at a node due to the destructive interference.</li>
-    <li data-cue="+">For a string fixed at both ends, like a guitar string, both ends must be nodes.</li>
-    <li data-cue="+">A place where the incident and reflected waves interfering constructively is called an <em class="Defn">anti-node</em>.</li>
-    <li data-cue="+">Anti-nodes will have a large amplitude.</li>
+    <li>A point where the interfering waves cancel is called a <em class="Defn">node</em>.</li>
+    <li>The amplitude will be exactly zero at a node due to the destructive interference.</li>
+    <li>For a string fixed at both ends, like a guitar string, both ends must be nodes.</li>
+    <li>A place where the incident and reflected waves interfering constructively is called an <em class="Defn">anti-node</em>.</li>
+    <li>Anti-nodes will have a large amplitude.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Standing Waves</h3>
 <p>Because both ends are nodes, the longest possible wavelength harmonic wave that can be produced on a string with fixed ends will look like this:</p>
 <p class="Caption">Fundamental Standing Wave (<span class="TeX">n = 1</span>)</p>
-<p class="Center"><svg class="s24" data-svg2="p20/wave/img/stand.js#stand"></svg></p>
+<p data-cue="prev" class="Center"><svg class="s24" data-svg2="p20/wave/img/stand.js#stand"></svg></p>
 <p class="Center NoPrint NoPresent"><em>Click the diagram to toggle animation.</em></p>
-<ul data-cue="+">
+<ul>
     <li>Waves like this are called <em class="Defn">standing waves</em> because the incident and reflected waves are carrying energy in opposite directions, so that there is no net movement of energy.</li>
-    <li data-cue="+">We can see from the illustration above that the length of the string is equal to one-half of a wavelength:<p class="TeX">L = {\lambda\over 2}</p></li>
-    <li data-cue="+">This standing wave, with nodes at the ends and nowhere else, is called the <em class="Defn">fundamental</em>, or <em class="Defn">first harmonic</em>.</li>
-    <li data-cue="+">Standing waves with higher frequencies than the fundamental are called overtones.</li>
-    <li data-cue="+">We can produce these higher harmonics by adding more nodes along the string.</li>
+    <li>We can see from the illustration above that the length of the string is equal to one-half of a wavelength:<p class="TeX">L = {\lambda\over 2}</p></li>
+    <li>This standing wave, with nodes at the ends and nowhere else, is called the <em class="Defn">fundamental</em>, or <em class="Defn">first harmonic</em>.</li>
+    <li>Standing waves with higher frequencies than the fundamental are called overtones.</li>
+    <li>We can produce these higher harmonics by adding more nodes along the string.</li>
+    <li>The second harmonic has a node at the middle as well as the ends. Nodes are shown below as blue dots, and anti-node locations are shown in red.</li>
 </ul>
-<div data-cue="+">
-    <ul><li>The second harmonic has a node at the middle as well as the ends. Nodes are shown below as blue dots, and anti-node locations are shown in red.</li></ul>
-    <p class="Center"><b>Standing Waves</b></p>
-    <p class="Center"><span class="TeX">n</span> = <input id="Harmonic" type="number" step="1" min="1" value="2"/></p>
-    <p class="Center"><svg class="s24" id="StandingWave" data-svg2="p20/wave/img/stand.js#stand" data-harmonic="2"></svg></p>
-    <p class="Center NoPrint NoPresent"><em>Click the diagram to toggle animation.</em></p>
-</div>
-<ul data-cue="+">
+<p class="Center"><b>Standing Waves</b></p>
+<p data-cue="prev" class="Center"><span class="TeX">n</span> = <input id="Harmonic" type="number" step="1" min="1" value="2"/></p>
+<p data-cue="prev" class="Center"><svg class="s24" id="StandingWave" data-svg2="p20/wave/img/stand.js#stand" data-harmonic="2"></svg></p>
+<p class="Center NoPrint NoPresent"><em>Click the diagram to toggle animation.</em></p>
+<ul>
     <li>We can continue adding more nodes by increasing the frequency to produce higher harmonics.</li>
-    <li data-cue="+">The harmonic number (<span class="TeX">n</span>) indicates the number of crests and troughs present in the standing wave.</li>
-    <li data-cue="+">Since each crest or trough is one-half of a wavelength, we can write an equation relating the wavelength to the harmonic number and the length of the string: <p class="TeX">L=n\left(\frac{\lambda}{2}\right)</p></li>
-    <li data-cue="+">Solving for <span class="TeX">\lambda</span> and substituting into <span class="TeX">v=\lambda f</span> gives: <p class="TeX">\lambda=\frac{2L}{n}</p>
-        <p class="TeX">f_n=\frac{nv}{2L}</p></li>
-    <li data-cue="+">This equation tells us that the frequency of the <span class="TeX">n</span>’th harmonic is <span class="TeX">n</span> times the fundamental frequency.</li>
+    <li>The harmonic number (<span class="TeX">n</span>) indicates the number of crests and troughs present in the standing wave.</li>
+    <li>Since each crest or trough is one-half of a wavelength, we can write an equation relating the wavelength to the harmonic number and the length of the string:</li>
 </ul>
+<p data-cue="prev" class="TeX">L=n\left(\frac{\lambda}{2}\right)</p>
+<p class="TeX">\lambda=\frac{2L}{n}</p>
+<ul><li>Substituting into <span class="TeX">v=\lambda f</span> gives:</li></ul>
+<p data-cue="prev" class="TeX">v=f_n\frac{2L}{n}</p>
+<p class="TeX">f_n=\frac{nv}{2L}</p>
+<ul><li>This equation tells us that the frequency of the <span class="TeX">n</span>’th harmonic is <span class="TeX">n</span> times the fundamental frequency.</li></ul>
 </section>
 
 <section class="Slide"><h3>Air Columns</h3>
 <p>Sound waves inside a simple <em class="Defn">air column</em> (open at both ends) form standing waves in the same way that waves on a string do.</p>
-<ul data-cue="+">
+<ul>
     <li>The open ends are “fixed” at atmospheric pressure by virtue of being open.</li>
-    <li data-cue="+">The harmonic frequencies for an open air column can be calculated using the equation above, where <span class="TeX">v</span> is the speed of sound waves in air.</li>
-    <li data-cue="+">For an air column that is <em>closed at one end</em>, only the open end is a node...</li>
-    <li data-cue="+">The closed end becomes an anti-node since reflections of the compressions and rarefactions are not inverted.</li>
+    <li>The harmonic frequencies for an open air column can be calculated using the equation above, where <span class="TeX">v</span> is the speed of sound waves in air.</li>
+    <li>For an air column that is <em>closed at one end</em>, only the open end is a node...</li>
+    <li>The closed end becomes an anti-node since reflections of the compressions and rarefactions are not inverted.</li>
 </ul>
-<div data-cue="+">
+<div>
     <p class="Center"><b>Standing Waves for Closed Air Columns</b></p>
-    <p class="Center"><span class="TeX">n</span> = <input id="OddHarmonic" style="width:4em" type="number" step="2" min="1" value="1"/></p>
-    <p class="Center"><svg class="s24" id="ClosedAirColumn" data-svg2="p20/wave/img/stand.js#closed"></svg></p>
+    <p data-cue="prev" class="Center"><span class="TeX">n</span> = <input id="OddHarmonic" style="width:4em" type="number" step="2" min="1" value="1"/></p>
+    <p data-cue="prev" class="Center"><svg class="s24" id="ClosedAirColumn" data-svg2="p20/wave/img/stand.js#closed"></svg></p>
     <p class="Center NoPrint NoPresent"><em>Click the diagram to toggle animation.</em></p>
 </div>
-<ul data-cue="+">
+<ul>
     <li>The animation above shows how the air pressure varies within the air column.</li>
-    <li data-cue="+">As a result, the length of the air column must be a multiple of <em>one-half the length</em> of the compressions or rarefactions (i.e. one-quarter of a wavelength), and the relationships between <span class="TeX">L</span>, <span class="TeX">\lambda</span>, and <span class="TeX">f</span> become: <p class="TeX">\lambda=\frac{4L}{n}</p>
+    <li>As a result, the length of the air column must be a multiple of <em>one-half the length</em> of the compressions or rarefactions (i.e. one-quarter of a wavelength), and the relationships between <span class="TeX">L</span>, <span class="TeX">\lambda</span>, and <span class="TeX">f</span> become: <p class="TeX">\lambda=\frac{4L}{n}</p>
         <p class="TeX">f_n=\frac{nv}{4L}</p></li>
-    <li data-cue="+">The value of <span class="TeX">n</span> in these equations can only be an <em>odd</em> number. If we divided the wavelength by an even number, this would produce nodes at both ends, which is correct for an open air column but not for one that is closed.</li>
+    <li>The value of <span class="TeX">n</span> in these equations can only be an <em>odd</em> number. If we divided the wavelength by an even number, this would produce nodes at both ends, which is correct for an open air column but not for one that is closed.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Resonance</h3>
 <p>Resonance is the phenomenon whereby disturbances of initially small amplitude grow to very large amplitudes as a result of constructive interference.</p>
-<ul data-cue="+">
+<ul>
     <li>We saw that pendulums, buildings, and other objects that oscillate a specific frequency will resonate when driven at the resonance frequency. This phenomenon was called <em>mechanical resonance</em>.</li>
-    <li data-cue="+">A string will begin to oscillate if there is a tuning fork or other source of sound waves at one of the string’s harmonic frequencies.</li>
-    <li data-cue="+">Similarly an air column will resonate when there are sound waves at one of the air column’s harmonic frequencies.</li>
-    <li data-cue="+">These behaviours are called <em class="Defn">acoustic resonance</em>.</li>
-    <li data-cue="+">Harmonic frequencies are also called resonant frequencies.</li>
+    <li>A string will begin to oscillate if there is a tuning fork or other source of sound waves at one of the string’s harmonic frequencies.</li>
+    <li>Similarly an air column will resonate when there are sound waves at one of the air column’s harmonic frequencies.</li>
+    <li>These behaviours are called <em class="Defn">acoustic resonance</em>.</li>
+    <li>Harmonic frequencies are also called resonant frequencies.</li>
 </ul>
-
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
-<p class="Blue">A guitar has string lengths of 0.800 m. Calculate the speed of the waves on the string that produces a fundamental frequency of 500 Hz.</p>
-<p class="TeX" data-cue="+">f_n = \frac{nv}{2L}</p>
-<p class="TeX" data-cue="+">2Lf_n = nv</p>
-<p class="TeX" data-cue="+">v = \frac{2Lf_n}{n} = {\rm \frac{2\cdot 0.800\ m \cdot 500\ Hz}{1} = 800\ m/s}</p>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+<p data-cue="none" class="Blue">A guitar has string lengths of 0.800 m. Calculate the speed of the waves on the string that produces a fundamental frequency of 500 Hz.</p>
+<p class="TeX">f_n = \frac{nv}{2L}</p>
+<p class="TeX">2Lf_n = nv</p>
+<p class="TeX">v = \frac{2Lf_n}{n} = \rm \frac{2\cdot 0.800\ m \cdot 500\ Hz}{1} = 800\ m/s</p>
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
-<p class="Blue">A second (thicker) string on the same guitar produces waves with a speed of 600 m/s. Calculate the first three harmonics that this string would produce.</p>
-<p class="TeX" data-cue="+">f_n = \frac{nv}{2L}</p>
-<p class="TeX" data-cue="+">f_1 = {\rm \frac{1\cdot 600\ m/s}{2\cdot 0.800\ m} = 375\ Hz}</p>
-<p class="TeX" data-cue="+">f_2 = {\rm \frac{2\cdot 600\ m/s}{2\cdot 0.800\ m} = 750\ Hz}</p>
-<p class="TeX" data-cue="+">f_3 = {\rm \frac{3\cdot 600\ m/s}{2\cdot 0.800\ m} = 1125\ Hz}</p>
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+<p data-cue="none" class="Blue">A second (thicker) string on the same guitar produces waves with a speed of 600 m/s. Calculate the first three harmonics that this string would produce.</p>
+<p class="TeX">f_n = \frac{nv}{2L}</p>
+<p class="TeX">f_1 = {\rm \frac{1\cdot 600\ m/s}{2\cdot 0.800\ m} = 375\ Hz}</p>
+<p class="TeX">f_2 = {\rm \frac{2\cdot 600\ m/s}{2\cdot 0.800\ m} = 750\ Hz}</p>
+<p class="TeX">f_3 = {\rm \frac{3\cdot 600\ m/s}{2\cdot 0.800\ m} = 1125\ Hz}</p>
 </section>
 
-<section class="Slide"><h3>Example 3</h3>
-<p class="Blue">How long would a closed (at one end) air column need to be to produce standing waves at 500 Hz as its third harmonic? What would the lower harmonic(s?) be?</p>
-<p class="TeX" data-cue="+">f_n = \frac{nv}{4L}</p>
-<p class="TeX" data-cue="+">Lf_n = \frac{nv}{4}</p>
-<p class="TeX" data-cue="+">L = \frac{nv}{4f_n} = {\rm \frac{3\cdot 343\ m/s}{4\cdot 500\ Hz} = 0.515\ m}</p>
-<div data-cue="+">
-    <p>The fundamental (first harmonic) frequency would be one-third of the third harmonic:</p>
-    <p class="TeX">f_1 = \frac{f_3}{3} = \rm \frac{500\ Hz}{3} = 167\ Hz</p>
-    <p data-cue="+">There is no second harmonic for a closed air column! Only odd harmonics can be produced.</p>
-</div>
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+<p data-cue="none" class="Blue">How long would a closed (at one end) air column need to be to produce standing waves at 500 Hz as its third harmonic? What would the lower harmonic(s?) be?</p>
+<p class="TeX">f_n = \frac{nv}{4L}</p>
+<p class="TeX">Lf_n = \frac{nv}{4}</p>
+<p class="TeX">L = \frac{nv}{4f_n} = {\rm \frac{3\cdot 343\ m/s}{4\cdot 500\ Hz} = 0.515\ m}</p>
+<p>The fundamental (first harmonic) frequency would be one-third of the third harmonic:</p>
+<p data-cue="prev" class="TeX">f_1 = \frac{f_3}{3} = \rm \frac{500\ Hz}{3} = 167\ Hz</p>
+<p>There is no second harmonic for a closed air column! Only odd harmonics can be produced.</p>
 </section>
 
-<section class="Slide Present">
-<div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Standing Waves</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
-    <p data-qr="p20/wave/stand"></p>
-</div>
-</section>
+<section class="Slide Present"><div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Standing Waves</i> handout.</p>
+    <ul data-cue="none" class="Var">assign</ul>
+</div></section>
 
 <script type="text/javascript">
 
@@ -159,9 +154,9 @@ $("#OddHarmonic").on("change", (ev) => {
 });
     
 </script> 
-</div></div></section>
+</div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
 <ol>
@@ -246,7 +241,7 @@ The air column must be closed (<span class="TeX">n</span> = 1, 3, 5...) so that 
 </ol>
 </div></div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>Describe what happens to a wave when it reaches the end of the medium through which it is moving.</li>
@@ -265,21 +260,27 @@ The air column must be closed (<span class="TeX">n</span> = 1, 3, 5...) so that 
 </div></section>
 
 <section class="Post" data-icon="video">
-    <h2 class="Collapse">Lab Activity</h2><div class="Collapse">
-        <p>Use this video to perform the experiment...</p>
+    <h2 class="Collapse">Lab Video</h2><div class="Collapse">
         <p class="Collapse" data-yt="VRPE_GQq2vE" data-opt="{'width': 640, 'aspect': '640/368', 'border': '1'}"></p>
-        <p class="Var">Here are the instructions for the experiment...</p>
-        <p class="BtnGrid">
-            <button data-icon="gdrv" data-gdrv="1eqdpH3ykoYH4DkBDs9pg_nipeR7NxJkv">Speed of Sound Lab</button>
-            <button data-icon="gsheet" data-open="https://docs.google.com/spreadsheets/d/1bV80m6ndeMj_t2hH1E-6Dcc6RAegW-uyDC4rISfLHPQ/edit?usp=drive_link">Data</button>
-        </p>
+</div></section>
+
+
+<section class="Post" data-show="1" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="">Assignment</button>
+        <button data-icon="gdrv" data-gdrv="">Speed of Sound Lab</button>
+        <button data-show="9999" data-icon="gsheet" data-open="https://docs.google.com/spreadsheets/d/1bV80m6ndeMj_t2hH1E-6Dcc6RAegW-uyDC4rISfLHPQ/edit?usp=drive_link">Data</button>
+    </p>
 </div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}8.4 — Standing Waves`,
-    answerDate: "2024.6.10.15.20",
+    showDate: "2025.4.25",
+    answerDate: "2025.4.28",
     num: "8.4",
     up: "p20/home",
     prev: "p20/wave/beat",

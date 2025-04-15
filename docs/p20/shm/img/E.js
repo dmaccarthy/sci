@@ -97,7 +97,7 @@ spring: (sel) => {
 bar: (sel) => {
     svg = SVG2.ebg(sel, 10, 1, [
         ["E_k", (t) => 6.75 * t * t],
-        ["E_elas", true],
+        ["E_p", true],
     ], {E: 9, duration: 4, unit: "mJ", label: [0, "-6", 2]});
 },
 
