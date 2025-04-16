@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Time Value of Money</title>
+<script>
+
+class TVM { // Incomplete!!
+
+constructor(vals) {
+    this._data = {fv: 0, comp_interval: 1};
+    Object.assign(this._data, vals);
+}
+
+static round(amt, dec) {
+    return parseFloat(amt.toFixed(dec == null ? 2 : dec));
+}
+
+makeData(d) {
+    let data = {}
+    Object.assign(data, this._data);
+    if (d) Object.assign(data, d);
+    data.sched = [];
+    return data;
+}
+
+fv(d) {
+    // Solve for future value
+    let data = this.makeData(d);
+    let val = data.pv;
+    for (let i=0;i<data.n;i++) {
+        let intAmt = (i + 1) % data.comp_interval ? 0 : TVM.round(data.rate * val / 12);
+        val = TVM.round(val + intAmt + data.pay);
+        data.sched.push([intAmt, val]);
+    }
+    data.fv = val;
+    return data;
+}
+
+n(d) {
+    // Solve for number of payments
+    let data = this.makeData(d);
+    let val = data.pv;
+    let i = 0;
+    let neg = val > 0;
+    while (neg && val > 0 || !neg && val < 0) {
+        let intAmt = (i + 1) % data.comp_interval ? 0 : TVM.round(data.rate * val / 12);
+        val = TVM.round(val + intAmt + data.pay);
+        data.sched.push([intAmt, val]);
+        i++;
+    }
+    data.n = i;
+    return data;
+}
+
+pay(d) {
+    // Solve for payment amount
+    let data = this.makeData(d);
+    let intAmt = data.pv * data.rate / 12;
+    let pay = (data.fv - data.pv) / data.n;
+    let [a, b] = [pay, pay - intAmt];
+    [a, b] = [Math.min(a, b), Math.max(a, b)];
+    let fv = data.pv;
+    while (b - a > 0.01) {
+        data.sched = [];
+        data.pay = pay = (a + b) / 2;
+        fv = this.fv(data).fv;
+        if (fv > data.fv) b = pay;
+        else a = pay;
+    }
+    data.pay = TVM.round((a + b) / 2);
+    return this.fv(data);
+}
+
+}
+
+let loan = new TVM({
+    pv: 20000,
+    rate: 0.12,
+    n: 60,
+    pay: 150
+});
+
+</script>
+</head>
+<body>
+</body>
+</html>
