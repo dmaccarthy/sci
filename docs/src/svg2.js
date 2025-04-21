@@ -530,11 +530,11 @@ graph(options) {
             return pos;
         }
         if (x) {
-            this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6").find("g.LabelX").config({shift: x.shift});
+            if (x.tick) this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6").find("g.LabelX").config({shift: x.shift});
             if (x.title) txt.text(x.title[0], xy(0));
         }
         if (y) {
-            this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6").find("g.LabelY").config({shift: y.shift});
+            if (y.tick) this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6").find("g.LabelY").config({shift: y.shift});
             if (y.title) txt.group().config({theta: 90, shift: xy(1)}).text(y.title[0]);  
         }  
     }
