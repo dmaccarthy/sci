@@ -41,7 +41,6 @@ section.Post li {padding: 0.15em 0.5em}
     
 }
 
-
 div.Collapse.Indent {
     padding-left: 0.5em;
     border-left: 1px solid var(--grey2);
@@ -171,6 +170,12 @@ p.EchoControl > span.CodeTitle {
     font-style: italic;
     padding: 0.25em;
     vertical-align: middle;
+}
+
+
+div[data-latex], p[data-latex] {
+    max-width: 100%;
+    overflow: auto;
 }
 
 table.Calendar {

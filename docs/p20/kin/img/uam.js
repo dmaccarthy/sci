@@ -1,50 +1,40 @@
 SVG2.cache("p20/kin/img/uam.js", {
 
 vt: (sel) => {
-    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-    margin: [0.16, 0.03, 0.12, 0.06],
-    grid: [[0, 5, 0.5], [0, 24, 2], 1],
-    x: ["Time / s&nbsp;", [">", "12"], {interval: 1, offset: [0, "-22"], fixed: 0, length: "8"}],
-    y: ["Velocity / (m/s)", ["-48", "^"], {interval: 4, offset: ["-12", 0], fixed: 0, length: "8", omitZero: 1}],        
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 5, 0, 24], margin: [56, 10, 28, 12]});
+    svg.graph({grid: [0.5, 2], css: true,
+        x: {tick: [0, 5.1, 1], title: ["Time / s", [4.5, "10"]], shift: [0, "-20"]},
+        y: {tick: [0, 25, 4], title: ["Velocity / (m/s)", ["-36", 12]], shift: ["-10", "-5"]},
+        data: [{connect: [[0, 12], [5, 20]]}]
     });
-    svg.poly([[0, 0], [0, 12], [5, 20], [5,0]]).addClass("Shade");
-    svg.line([0, 12], [5, 20]);
-    svg.final();
-    svg.$.find(".TitleX").addClass("End");
+    svg.poly([[0, 0], [0, 12], [5, 20], [5,0]]).css({fill: "#0065fe", "fill-opacity": 0.2}).insertAfter(svg.$.find("g.Grid"));
 },
 
 upDown: (sel) => {
-    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
     let t = 20 / 9.81;
-    let svg = applet.graph(sel, {
-        grid: [[0, 2.25, 0.25], [-12, 12, 2], 1],
-        margin: [0.15, 0.02, 0.05, 0.05],
-        x: ["Time / s&nbsp;", [">", "12"], {interval: 0.5, offset: [0, "-22"], omitZero: 1, fixed: 1, length: "8"}],
-        y: ["Velocity / (m/s)", ["-48", "^"], {interval: 4, offset: ["-12", 0], fixed: 0, length: "8"}],        
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 2.25, -12, 12], margin: [56, 10, 12, 12]});
+    svg.graph({grid: [0.25, 2], css: true,
+        x: {tick: [0, 2.3, 0.5], dec: 1, title: ["Time / s", [2, "10"]], shift: [0, "-20"]},
+        y: {tick: [-12, 13, 4], title: ["Velocity / (m/s)", ["-36", 0]], shift: ["-10", "-5"]},
+        data: [{connect: [[0, 10], [t, -10]]}]
     });
-    svg.poly([[0, 10], [t, -10], [t, 0], [0, 0]]).addClass("Shade");
-    svg.line([0, 10], [t, -10]);
-    svg.final();
-    svg.$.find(".TitleX").addClass("End");
-    svg.$.find(":is(.Shade, .TickX, .TickLabelX)").hide();
+    svg.$.find("g.LabelX .Zero").remove();
+    svg.poly([[0, 10], [t, -10], [t, 0], [0, 0]]).css({fill: "#0065fe", "fill-opacity": 0.2}).insertAfter(svg.$.find("g.Grid"));
+    let hide = [svg.$.children("polyline")[0], svg.$.find("g.LabelX")[0]];
+    for (let e of hide) $(e).hide();
+
     svg.$.on("click", () => {
-        $(sel).find(".Shade, .TickX, .TickLabelX").toggle();    
+        for (let e of hide) $(e).fadeToggle();
     });
-    svg.final();
 },
 
 zag: (sel) => {
-    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
-    let svg = applet.graph(sel, {
-        grid: [[0, 5, 0.5], [-9, 9, 1.5], 1],
-        margin: [0.09, 0.02, 0.02, 0.02],
-        x: ["Time&nbsp;", [">", "12"]],
-        y: ["Velocity", ["-20", "^"]],     
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 5, -9, 9], margin: [32, 10, 4, 4]});
+    svg.graph({grid: [0.5, 1.5], css: true,
+        x: {title: ["Time", [4.5, "10"]], shift: [0, "-20"]},
+        y: {title: ["Velocity", ["-12", 0]], shift: ["-10", "-5"]},
+        data: [{connect: [[0, 0], [1, -8], [3, 6], [4.5, -6], [5, -2.5]]}]
     });
-    svg.poly([[0, 0], [1, -8], [3, 6], [4.5, -6], [5, -2.5]], 0);
-    svg.final();
-    svg.$.find(".TitleX").addClass("End");
 },
 
 });
