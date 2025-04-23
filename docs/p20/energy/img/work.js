@@ -38,33 +38,29 @@ ramp: (sel) => {
 },
 
 flow2: (sel) => {
-    $(sel).attr({width: 400, height: 240, "data-aspect": "40/24"});
-    let svg = new SVG_Animation(sel, -3.8, 4);
-    let css = {fill: "#0065FE"};
-    svg.circle(2.3, [1.5, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    let g = svg.group().css(css);
-    svg.symbol("E", {q4: "k", scale: 1}, [0, 0], g);
-    svg.symbol("E", {q4: "g", scale: 1}, [3, 0]).css(css);
-    svg.arrow([0.7, 0], 2, {tail: "6"}, g);
-    css = {"font-size": "24px"};
-    svg.text("5.0 J", [1.6, 0.3], g).addClass("joules");
-    g = svg.group().css({fill: "red"});
-    svg.text("Food", [-2.8, 1.3], g).css(css);
-    svg.text("Waste", [-2.9, -1.3], g).css(css);
-    let w = svg.group(g).anchor(-1.2, 0.7).config({theta: -30});
-    svg.arrow([-2.2, 0.7], 2, {tail: "6"}, w);
-    svg.text("9.0 J", [-1.4, 1], w).addClass("joules");
-    w = svg.group(g).anchor(-1.2, -0.7).config({theta: 210});
-    svg.arrow([-2.2, -0.7], 2, {tail: "6"}, w);
-    svg.text("1.0 J", [-1.2, -1], w).config({theta: 180}).addClass("joules");
-    svg.$.find(".joules").css({"font-size": "20px"});
-    svg.final();
+    let svg = new SVG2(sel, {size: [400, 260], lrbt: [-8.5, 4.5]});
+    svg.energy_flow({radius: 4,
+        labels: [
+            ["$E_k", [-2.5, 0]],
+            ["$E_g", [2.5, 0]],
+            ["Food", [-7, 2.8], "red"],
+            ["Waste", [-7, -2.5], "red"],
+        ],
+        arrows: [
+            [3, [-4.5, 1.75], -35, "9.0 J", "red"],
+            [3, [0, "12"], 0, "5.0 J"],
+            [-3, [-4.5, -1], 35, "1.0 J", "red"],
+        ]
+    }).finalize();
+    let i = 0;
+    for (let e of svg.$.find("g.Arrow > text")) $(e).addClass(`Toggle${i++}`);
 
-    clickCycle(svg.element, 3,
-        () => svg.$.find(".joules").fadeOut(),
-        () => $(svg.$.find(".joules")[1]).fadeIn(),
-        () => $(svg.$.find(".joules")[0]).fadeIn(),
-        () => $(svg.$.find(".joules")[2]).fadeIn(),
+    let t = clickCycle.toggle;
+    clickCycle(svg.element, -1,
+        () => {t(svg, false, 0, 1, 2)},
+        () => {t(svg, true, 0)},
+        () => {t(svg, true, 1)},
+        () => {t(svg, true, 2)},
     );
 },
 

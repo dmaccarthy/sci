@@ -1,0 +1,31 @@
+<section class="Post">
+<h2 class="Collapse">Test</h2><div class="Collapse Expand">
+<p class="Center"><svg id="S1"></svg></p>
+</div></section>
+
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
+    let sel = "#S1";
+    let svg = new SVG2(sel, {size: [400, 260], lrbt: [-8.5, 5]});
+    svg.energy_flow({
+        radius: 4,
+        labels: [
+            ["$E_k", [-2.5, 0]],
+            ["$E_g", [2.5, 0]],
+            ["Food", [-7, 2.8], "red"],
+            ["Waste", [-7, -2.5], "red"],
+        ],
+        arrows: [
+            [3, [0, "10"], 0, "5.0 J"],
+            [-3, [-4.5, -1], 35, "9.0 J", "red"],
+            [3, [-4.5, 2], -35, "1.0 J", "red"],
+        ]
+    }).finalize();
+}
+
+loadFeed.data = {
+    title: `Energy Flow`,
+}
+    
+</script>

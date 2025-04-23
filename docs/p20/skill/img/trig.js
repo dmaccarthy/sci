@@ -32,7 +32,7 @@ pretest: (sel) => {
     svg.delay(g.group(), {recenter: [5.6, 0]}).text("B");
     svg.delay(g.group(), {recenter: [-0.5, 0]}).text("C");
 
-    svg.addClass("NoClass").css_map("grid", "text").finalize();
+    svg.addClass("NoStyle").css_map("grid", "text").finalize();
 },
 
 similar: (sel) => {

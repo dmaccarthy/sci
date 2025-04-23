@@ -17,13 +17,13 @@ earth: (sel) => {
 
     for (let [t, xy] of [
         ["Centre", [0.2, 0]],
-        ["Radial", [0.93, 0.99]],
-        ["Centripetal", [0.5, 0.43]],
-        ["Tangential", [0.9, 0.43]],
-        ["Tangential", [0.5, 0.99]],
+        ["Radial", [0.93, 0.97]],
+        ["Centripetal", [0.5, 0.42]],
+        ["Tangential", [0.9, 0.42]],
+        ["Tangential", [0.5, 0.97]],
     ]) svg.delay(svg.group().addClass("Text"), {recenter: xy}).text(t);
 
-    svg.css_map().finalize().$.addClass("NoClass");
+    svg.css_map().finalize().$.addClass("NoStyle");
 },
 
 });

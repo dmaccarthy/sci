@@ -614,6 +614,39 @@ tip_to_tail(vecs, options) {
     return g;
 }
 
+energy_flow(data) {
+/* Draw an energy flow diagram */
+    let svg = this.svg;
+    this.circle(data.radius).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
+    for (let item of data.labels) {
+        let [txt, pos, color, shift] = item;
+        let attr = {recenter: pos, css: {fill: color ? color : "#0065fe"}};
+        if (txt.charAt(0) == '$') {
+            txt = txt.substring(1).split("_");
+            let sym = [[txt[0], 2]];
+            if (txt.length > 1) sym.push([txt[1], 6, shift ? shift : ["12", "-7"]]);
+            svg.delay(this.symbol(...sym), attr);
+        }
+        else svg.delay(this.group().addClass("Text"), attr).text(txt);
+    }
+    for (let item of data.arrows) {
+        let [l, pos, angle, txt, color] = item;
+        let attr = {recenter: pos, css: {fill: color ? color : "#0065fe"}};
+        let a = svg.delay(this.arrow(l, {tail: "6"}).config({theta: angle}), attr);
+        if (txt) {
+            if (!(txt instanceof Array)) txt = [txt, [l > 0 ? "-6": "6", "12"]];
+            a.label(...txt);
+        }
+    }
+    svg.addClass("NoStyle").css_map();
+    let g = this.$;
+    g.find("text.Small").css({"font-size": "18px"});
+    g.find("text:not(.Small)").css({"font-size": "24px"});
+    g.find("g.Symbol > text:not(.Small)").css({"font-size": "28px"});
+    g.find("g.Arrow > text").css({"font-size": "20px"});
+    return this;
+}
+
 coil(size, n, reverse, r, axle) {
 /* Draw a coil frame with turns of wire and axle */
     let g0 = this.group();
@@ -1364,6 +1397,7 @@ text: {
     ".Mono": {"font-family": SVG2.mono},
     ".Sans": {"font-family": SVG2.sans},
     ".Serif": {"font-family": SVG2.serif},
+    ".Ital": {"font-style": "italic"},
     ".Small": {"font-size": "14px"},
     "g.Large text.Small": {"font-size": "18px"},
 },

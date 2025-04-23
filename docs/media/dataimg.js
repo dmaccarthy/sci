@@ -4,7 +4,7 @@ function calendar_icon() {
     svg.poly([[-1 , 1], [-1, -1], [1, -1], [1, 1]]).css({fill: "none", stroke: "#0065fe", "stroke-width": "8px"});
     for (x of [1, -1]) svg.circle("7", [0.48 * x, 0.8]).css({stroke: "none", fill: "white"});
     svg.group().addClass("Text").text(new Date().getDate(), [0, -0.25]);
-    svg.$.addClass("NoClass").find("text").css({
+    svg.$.addClass("NoStyle").find("text").css({
         "dominant-baseline": "middle",
         "text-anchor": "middle",
         "font-size": "80px",

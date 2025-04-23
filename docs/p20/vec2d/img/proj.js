@@ -21,7 +21,7 @@ Q1: (sel) => {
     g.arrow({tail: p1, tip: p2}, tail).addClass("Toggle3");
 
     svg.$.find(".LabelY .Zero").remove();
-    svg.addClass("NoClass").css_map("text").finalize();
+    svg.addClass("NoStyle").css_map("text").finalize();
     svg.$.find("g.Series g.Locus").css({stroke: "black"});
 
     let t = clickCycle.toggle;
