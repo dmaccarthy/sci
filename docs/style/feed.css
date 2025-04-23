@@ -51,6 +51,11 @@ div.Collapse.Indent {
     overflow: auto;
 }
 
+.EqScroll {
+    max-width: 100%;
+    overflow: auto;
+}
+
 #Top {
     font-size: 120%;
     font-weight: bold;
@@ -170,12 +175,6 @@ p.EchoControl > span.CodeTitle {
     font-style: italic;
     padding: 0.25em;
     vertical-align: middle;
-}
-
-
-div[data-latex], p[data-latex] {
-    max-width: 100%;
-    overflow: auto;
 }
 
 table.Calendar {
