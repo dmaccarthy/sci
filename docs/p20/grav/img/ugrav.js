@@ -1,70 +1,62 @@
 SVG2.cache("p20/grav/img/ugrav.js", {
- 
+
 tri: (sel) => {
-    $(sel).attr({width: 400, height: 360, "data-aspect": "10/9"});
-    let a = 25;
-    let da = a / 25;
-    let b = a / (2 * cos(30));
-    let c = a * tan(30) / 2;
-    let h = a * sin(60);
-    let svg = new SVG_Animation(sel, -a/2-da, a/2+da, -da);
-    // svg.grid([-15, 15, 1], [0, a, 1]);
-    da = new RArray(da, 0);
-    let g = svg.group().css({stroke: "black", "stroke-width": "1px"});
-    let r = a / 30;
-    let [v1, v2, v3] = [[0, h], [-a/2, 0], [a/2, 0]];
-    a = new RArray(0, c);
-    b = new RArray(0, h - 10);
-    svg.line(v1, [0, 0], g);
-    svg.line(v2, [0, c], g);
-    svg.line(v3, b, g);
-    svg.poly([v1, v2, v3], 1, g).css({fill: "none"});
-    svg.circle(r, v1, g).css({fill: "#0065FE"});
-    svg.circle(r, v2, g).css({fill: "red"});
-    svg.circle(r, v3, g).css({fill: "green"});
-    r /= 4;
-    g = svg.group().css({stroke: "black", "stroke-width": "1px", fill: "black"});
-    svg.circle(r, a, g);
-    svg.circle(r, b, g);
-    svg.text("A", a.plus([-da[0], da[0] / 2]));
-    svg.text("B", b.plus(da));
-    svg.text("θ", new RArray(...v3).plus([-2* da[0], da[0] / 2]));
-    svg.symbol("r", {q4: "A"}, [-0.8 * c, 0.8 * c]).css({"font-style": "italic"});
-    svg.symbol("r", {q4: "B"}, [0.6 * c, 0.8 * c]).css({"font-style": "italic"});
-    svg.text("12.5 km", [0.8 * c, c/8]);
-    svg.text("12.5 km", [-0.8 * c, c/8]);
-    svg.text("25.0 km", [0, c/8]).anchor(...v2).config({theta: 60});
-    svg.text("25.0 km", [0, c/8]).anchor(...v3).config({theta: -60});
-    svg.symbol("y", {}, [c/8, 0.25 * h]);
+    let svg = new SVG2(sel, {size: [400, 348], lrbt: [-14, 14, -1.5]}).css({stroke: "black", "stroke-width": "1px"});
 
-    svg.text("30°", da.times(3).plus(v2)).anchor(...v2).config({theta: 42});
-    svg.text("30°", da.times(3).plus(v2)).anchor(...v2).config({theta: 12});
-    svg.text("30°", da.times(3).plus(v1)).anchor(...v1).config({theta: -78});
-    da = new RArray(0, c);
-    c = [-c/8, 0.75 * h];
-    svg.text("10.0 km", c).anchor(...c).config({theta: 90});
+    let h = 25 * cos(30), hA = 12.5 * tan(30);
+    let rb = root(sq(12.5) + sq(h - 10));
+    let rb_a = 90 + acos(12.5 / rb);
+    let pA = new RArray(0, hA);
+    let pB = new RArray(0, h - 10);
+    svg.poly([[0, h], [-12.5, 0], [12.5, 0], [0, h], [0, 0]]).css({fill: "none"});
+    svg.line([0, hA], [-12.5, 0]);
+    svg.line([0, h - 10], [12.5, 0]);
 
-    let attr = {anchor: "tail", tail: "6"};
-    da = da.times(0.56);
-    g = svg.group().addClass("FBD_A");
-    svg.arrow(a, a.plus(da), attr, g).addClass("Vector").css({fill: "#0065FE"});
-    svg.arrow(a, a.plus(da), attr, g).config({theta: 240}).addClass("Vector").css({fill: "green"});
-    svg.arrow(a, a.plus(da), attr, g).config({theta: 120}).addClass("Vector");
-    g = svg.group().addClass("FBD_B");
-    svg.arrow(b, b.plus(da.times(3.34/1.6)), attr, g).addClass("Vector").css({fill: "#0065FE"});
-    da = da.times(1.14/1.6);
-    svg.arrow(b, b.plus(da), attr, g).config({theta: 227}).addClass("Vector").css({fill: "green"});
-    svg.arrow(b, b.plus(da), attr, g).config({theta: 133}).addClass("Vector");
-    svg.$.find(".FBD_A, .FBD_B").hide().css("fill-opacity", 0.6);
-    svg.final();
+    svg.circle(1, [-12.5, 0]).css({fill: "red"});
+    svg.circle(1, [12.5, 0]).css({fill: "green"});
+    svg.circle(1, [0, h]).css({fill: "#0065fe"});
+    svg.circle("3", pA).css({fill: "black"});
+    svg.circle("3", [0, h - 10]).css({fill: "black"});
 
-    clickCycle(svg.element, 2,
-        () => svg.$.find(".FBD_A").fadeIn(),
-        () => {
-            svg.$.find(".FBD_A").fadeOut();
-            svg.$.find(".FBD_B").fadeIn();
-        },
-        () => svg.$.find(".FBD_B").fadeOut(),
+    let delay = (t, a) => svg.delay(svg.group().addClass("Text"), a).text(t);
+    delay("θ", {recenter: [10.5, 0.8]}).addClass("Ital");
+    delay("A", {recenter: [1, hA]});
+    delay("B", {recenter: [-1, h - 10]});
+    delay("12.5 km", {recenter: [6.25, 1]});
+    delay("12.5 km", {recenter: [-5, 1]});
+    delay("10.0 km", {wrap: [{theta: 90}, [h - 6, 1]]});
+    delay("25.0 km", {wrap: [{theta: 60, pivot: [-12.5, 0]}, [0, 1]]});
+    delay("25.0 km", {wrap: [{theta: -60, pivot: [12.5, 0]}, [0, 1]]});
+
+    for (let a of [15, 45]) delay("30°", {wrap: [{theta: a, pivot: [-12.5, 0]}, [-9, 0]]});
+    delay("30°", {wrap: [{theta: -75, pivot: [0, h]}, [3.5, h]]});
+
+    for (let [s, xy] of [["A", [-6, 6]], ["B", [4.5, 6]]])
+        svg.delay(svg.symbol(["r", 2], [s, 6, ["10", "-10"]]).addClass("Large"), {recenter: xy});
+    svg.delay(svg.symbol(["y", 2]).addClass("Large"), {recenter: [1, hA / 2]});
+
+    let g = svg.group().css({"fill-opacity": 0.6}).addClass("Toggle0");
+    g.$.hide();
+    let arrA = (a, c) => svg.delay(g.arrow({tail: pA, tip: pA.plus([0, 4])}, {tail: "6"}, "tail").config({theta: a}), {css: {fill: c}});
+    arrA(0, "#0065fe");
+    arrA(120, "red");
+    arrA(-120, "green");
+
+    g = svg.group().css({"fill-opacity": 0.6}).addClass("Toggle1");
+    g.$.hide();
+    let l = 4 * sq(2 * hA / rb);
+    let arrB = (a, c, l) => svg.delay(g.arrow({tail: pB, tip: pB.plus([0, l])}, {tail: "6"}, "tail").config({theta: a}), {css: {fill: c}});
+    arrB(0, "#0065fe", 4 * sq(hA / 5));
+    arrB(rb_a, "red", l);
+    arrB(-rb_a, "green", l);
+
+    svg.css_map().addClass("NoStyle").finalize();
+
+    let t = clickCycle.toggle;
+    clickCycle(svg.element, 0,
+        () => {t(svg, false, 1)},
+        () => {t(svg, true, 0)},
+        () => {t(svg, false, 0); t(svg, true, 1)},
     );
 },
 

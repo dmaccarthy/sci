@@ -1,14 +1,5 @@
-<section class="Post" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1GEY9k4bnfK_AqAzZsXTcflMDvv0cI19s">UCM Lab</button>
-    </p>
-</div></section>
-
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Centripetal Acceleration</h1>
@@ -16,78 +7,102 @@
 
 <!-- <section class="Slide Present">
     <div class="Assign"><p>Individually, complete the <i>Review</i> section of the <i>?</i> handout.</p></div>
-    <div class="Assign" data-cue="+"><p>In a small group, complete the <i>Activity</i> section of the <i>?</i> handout.</p></div>
+    <div class="Assign"><p>In a small group, complete the <i>Activity</i> section of the <i>?</i> handout.</p></div>
 </section> -->
 
-<section id="ac" class="Slide"><h3>Centripetal Acceleration</h3>
+<section class="Slide"><h3>Centripetal Acceleration</h3>
 <p>Although the speed (scalar!) of an object is constant for uniform circular motion, the object’s <em>velocity</em> (vector!) is continuously changing due to changes in direction.</p>
-<ul data-cue="+">
+<ul>
     <li>This means that the object is <em>accelerating</em> and there must be an <em>unbalanced force</em> causing the object to move in a circle.</li>
-    <li data-cue="+">If there was no unbalanced force, the object would have to move in a straight line.</li>
+    <li>If there was no unbalanced force, the object would have to move in a straight line.</li>
 </ul>
-<div data-cue="+">
+<div>
     <p>The illustration below (left) shows the motion of an object from <span class="TeX">P_1</span> to <span class="TeX">P_2</span> along a circle centred at point C. The illustration on the right is the vector diagram showing the change in velocity (<span class="TeX">\Delta{\vec{\bf v}}</span>).</p>
-    <p class="Center"><img alt="Image" src="p20/circ/img/ac.png" class="w20"/></p>
+    <p class="Center"><img alt="Image" src="p20/circ/img/ac.png" class="s20"/></p>
 </div>
-<ul data-cue="+">
+<ul>
     <li>The blue and red triangles are <em>similar</em>; they are both isosceles triangles with the same angles.</li>
-    <li data-cue="+">Similar triangles have the same ratio of sides:<p class="TeX">{s \over r} = {\Delta v\over v}</p></li>
-    <li data-cue="+">Since <span class="TeX">s</span> is the distance from <span class="TeX">P_1</span> to <span class="TeX">P_2</span>, <span class="TeX">s=v\Delta t</span>: <p class="TeX">{v\Delta t\over r} = {\Delta v\over v}</p></li>
-    <li data-cue="+">We can rearrange this to calculate the acceleration: <p class="TeX">a_c = {\Delta v\over \Delta t} = {v^2\over r}</p></li>
-    <li data-cue="+">The subscript “c” is for centripetal; it reminds us that the direction of the acceleration vector is always directed toward the centre for UCM.</li>
-    <li data-cue="+">We can get an alternate form of the equation by substituting <span class="TeX">v = {2\pi r\over T}</span> to eliminate <span class="TeX">v</span>:<p class="TeX">a_c=\frac{4\pi^2r}{T^2}</p></li>
-    <li data-cue="+">These equations are valid only for the <em>instantaneous</em> acceleration;
+    <li>Similar triangles have the same ratio of sides:<p class="TeX">{s \over r} = {\Delta v\over v}</p></li>
+    <li>Since <span class="TeX">s</span> is the distance from <span class="TeX">P_1</span> to <span class="TeX">P_2</span>, <span class="TeX">s=v\Delta t</span>: <p class="TeX">{v\Delta t\over r} = {\Delta v\over v}</p></li>
+    <li>We can rearrange this to calculate the acceleration: <p class="TeX">a_c = {\Delta v\over \Delta t} = {v^2\over r}</p></li>
+    <li>The subscript “c” is for centripetal; it reminds us that the direction of the acceleration vector is always directed toward the centre for UCM.</li>
+    <li>We can get an alternate form of the equation by substituting <span class="TeX">v = {2\pi r\over T}</span> to eliminate <span class="TeX">v</span>:<p class="TeX">a_c=\frac{4\pi^2r}{T^2}</p></li>
+    <li>These equations are valid only for the <em>instantaneous</em> acceleration;
         this is because the distance between <span class="TeX">P_1</span> and <span class="TeX">P_2</span> measured along the circular arc is only approximately equal to the line segment <span class="TeX">s</span>, when <span class="TeX">P_1</span> and <span class="TeX">P_2</span> are very close together.</li>
-    <li data-cue="+">The net force is also in the centripetal direction accoring to Newton’s 2<sup>nd</sup> Law:<p class="TeX">{\vec{\bf{F}}}_{net}=m{\vec{\bf{a}}}_c</p></li>
+    <li>The net force is also in the centripetal direction accoring to Newton’s 2<sup>nd</sup> Law:<p class="TeX">{\vec{\bf{F}}}_{net}=m{\vec{\bf{a}}}_c</p></li>
 </ul>
 </section>
 
-<section id="ex" class="Slide"><h3>Example</h3>
-<p class="Blue">A satellite orbiting at a radius of 7000 km experiences a centripetal acceleration of 8.14 m/s<sup>2</sup>. Calculate the orbital speed and period of the satellite.</p>
-<p data-cue="+" class="TeX">a_c = {v^2\over r}</p>
-<p data-cue="+" class="TeX">a_c r = v^2</p>
-<p data-cue="+" class="TeX">v = \sqrt{a_c r}</p>
-<p data-cue="+" class="TeX">v = \rm{\sqrt{8.14\ m/s^2\cdot 7.00\times 10^6\ m}}</p>
-<p data-cue="+" class="TeX">v = \rm{7.55\times 10^3\ m/s}</p>
-<p data-cue="+" class="TeX">v = {2\pi r\over T}</p>
-<p data-cue="+" class="TeX">vT = 2\pi r</p>
-<p data-cue="+" class="TeX">T = {2\pi r\over v}</p>
-<p data-cue="+" class="TeX">T = \rm{{2\pi\cdot 7.00\times 10^6\ m\over 7.55\times 10^3\ m/s}}</p>
-<p data-cue="+" class="TeX">T = \rm{5827\ s = 1.62\ h}</p>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+<p data-cue="none" class="Blue">A satellite orbiting at a radius of 7000 km experiences a centripetal acceleration of 8.14 m/s<sup>2</sup>. Calculate the orbital speed and period of the satellite.</p>
+<p class="TeX">a_c = \frac{v^2}{r}</p>
+<p class="TeX">a_c r = v^2</p>
+<p class="TeX">v = \sqrt{a_c r}</p>
+<p class="TeX">v = \rm{\sqrt{8.14\ m/s^2\cdot 7.00\times 10^6\ m}}</p>
+<p class="TeX">v = \rm{7.55\times 10^3\ m/s}</p>
+<p class="TeX">v = {2\pi r\over T}</p>
+<p class="TeX">vT = 2\pi r</p>
+<p class="TeX">T = {2\pi r\over v}</p>
+<p class="TeX">T = \rm{{2\pi\cdot 7.00\times 10^6\ m\over 7.55\times 10^3\ m/s}}</p>
+<p class="TeX">T = \rm{5827\ s = 1.62\ h}</p>
 </section>
 
-<section class="Slide Present">
-<div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Centripetal Acceleration</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
-    <p data-qr="p20/circ/ac"></p>
-</div>
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+<p data-cue="none" class="Blue">A curve on the highway has a radius of 250 metres. After an ice storm, the road is slippery and the coefficient of friction is 0.100. Assuming the road is unbanked (horizontal), what is the fastest safe speed for a car to move through the curve?</p>
+<p>Because the road is unbanked, the normal and gravity forces balance:</p>
+<p class="TeX">F_n = F_g = mg</p>
+<p>The only unbalanced force is friction:</p>
+<p class="TeX">F_f = ma = \mu F_n = \mu mg</p>
+<p>Divide by <span class="TeX">m</span>:</p>
+<p class="TeX">a = \mu g = \rm 0.100\cdot 9.81\ m/s^2 = 0.981\ m/s^2</p>
+<p>The equation for centripetal acceleration is:</p>
+<p class="TeX">a_c = \frac{v^2}{r}</p>
+<p class="TeX">a_c r = v^2</p>
+<p class="TeX">v = \sqrt{a_c r} = \rm \sqrt{0.981\ m/s^2\cdot 250\ m} = 15.7\ m/s = 56.4\ km/h</p>
 </section>
 
-</div></div></section>
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+<p data-cue="none" class="Blue">What would happen to a car that tried to take the curve at 25.0 m/s?</p>
+<p>Solve for the radius:</p>
+<p class="TeX">a_c = \frac{v^2}{r}</p>
+<p class="TeX">a_c r = v^2</p>
+<p class="TeX">r = \frac{v^2}{a_c} = \rm \frac{(25.0\ m/s)^2}{0.981\ m/s^2} = 637\ m</p>
+<p>Since the radius of the car’s motion is much larger than the radius of the road, the car will slide to the outside and end up in the ditch!</p>
+</section>    
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse Expand">
+<section class="Slide"><h3>Connection to SHM</h3>
+<p data-cue="none">The equations for UCM are similar to the equations for SHM:</p>
+<p class="TeX" data-cue="none">v = \frac{2\pi r}{T}</p>
+<p class="TeX" data-cue="none">a_c = \frac{v^2}{r} = \frac{4\pi^2 r}{T^2}</p>
+<p>The reason is that when an object is moving in a circle with constant speed, its <span class="TeX">x</span> and <span class="TeX">y</span> coordinates will change as a <span class="TeX">\sin</span> or <span class="TeX">\cos</span> function...</p>
+<p class="Center"><svg class="s12" data-svg2="p20/circ/img/ac.js#ucm"></svg></p>
+</section>
+
+<section class="Slide Present"><div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Centripetal Acceleration</i> handout.</p>
+    <ul data-cue="none" class="Var">assign</ul>
+</div></section>
+
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
     <li>A satellite orbits the Earth in a circular path. The satellite’s period is 3.98 hours and the acceleration due to Earth’s gravity is 2.45 m/s<sup>2</sup>. (Remember that <span class="TeX">g</span> becomes smaller than 9.81 m/s<sup>2</sup> the further one gets from Earth’s surface.) Calculate the satellite’s speed and the radius of its orbit.</li>
-    <div class="Answer"><p>Remember to convert the time to standard units, <span class="TeX">T = \rm{3.98\ h\cdot 3600\ s/h = 14328\ s}</span>:</p>
-<p class="TeX">a_c = \frac{4\pi^2 r}{T^2}</p>
-<p class="TeX">a_cT^2 = 4\pi^2 r</p>
-<p class="TeX">r = \frac{a_cT^2}{4\pi^2}
-= \rm{\frac{2.45\ m/s^2 (14328\ s)^2}{4\pi^2}
-= 1.27\times 10^7\ m}</p>
-<p>Be sure to enclose the demoninator in parentheses <span class="TeX">(4\pi^2)</span> when entering it on your calculator!</p>
-
-<p class="TeX">v = \frac{2\pi r}{T}
-= \rm{\frac{2\pi (1.27\times 10^7\ m)}{14328\ s} = 5.59\times 10^3\ m/s}</p>
+    <div class="Answer">
+        <p>Remember to convert the time to standard units, <span class="TeX">T = \rm{3.98\ h\cdot 3600\ s/h = 14328\ s}</span>:</p>
+        <p class="TeX">a_c = \frac{4\pi^2 r}{T^2}</p>
+        <p class="TeX">a_cT^2 = 4\pi^2 r</p>
+        <p class="TeX">r = \frac{a_cT^2}{4\pi^2} = \rm \frac{2.45\ m/s^2 (14328\ s)^2}{4\pi^2} = 1.27\times 10^7\ m</p>
+        <p>Be sure to enclose the demoninator in parentheses <span class="TeX">(4\pi^2)</span> when entering it on your calculator!</p>
+        <p class="TeX">v = \frac{2\pi r}{T} = \rm \frac{2\pi (1.27\times 10^7\ m)}{14328\ s} = 5.59\times 10^3\ m/s</p>
     </div>
     
     <li><ol type="a">
         <li>There is a 3.20 g stone lodged in the tread of a bicycle tire. The tire has a 26-inch diameter (1 inch = 2.54 cm). What is the stone’s centripetal acceleration when the bike is being ridden at 27.0 km/h?</li>
         <div class="Answer">
-<p class="TeX">r = \rm{26\ in / 2 = 13\ in\cdot 0.0254\ m/in = 0.33\ m}</p>
-<p class="TeX">a_c = \frac{v^2}{r}
-= \rm{\frac{(7.50\ m/s)^2}{0.33\ m}}
-= \rm{1.7\times 10^2\ m/s^2}</p>
+            <p class="TeX">r = \rm 26\ in / 2 = 13\ in\cdot 0.0254\ m/in = 0.33\ m</p>
+            <p class="TeX">a_c = \frac{v^2}{r} = \rm \frac{(7.50\ m/s)^2}{0.33\ m} = 1.7\times 10^2\ m/s^2</p>
         </div>
 
         <li>Calculate the net force that the stone experiences.</li>
@@ -140,9 +155,7 @@ a_c &= \frac{v^2}{r}
         <li>Calculate the acceleration and radius of motion for normal “helium-4” atoms with a mass of 6.65 × 10<sup>–27</sup> kg.</li>
         <div class="Answer">
 <p>Use Newton’s 2<sup>nd</sup> Law to find acceleration:</p>
-<p class="TeX">a_c = \frac{F_{net}}{m}
-= \rm{\frac{2.72\times 10^{-16}\ N}{6.65\times 10^{-27}\ kg} = 4.09\times 10^{10}\ m/s^2}</p>
-
+<p class="TeX">a_c = \frac{F_{net}}{m} = \rm \frac{2.72\times 10^{-16}\ N}{6.65\times 10^{-27}\ kg} = 4.09\times 10^{10}\ m/s^2</p>
 <p>Now use the centripetal acceleration equation to solve for the radius:</p>
 <p class="TeX">\begin{align}a_c &= \frac{v^2}{r}
 \\[10pt] ra_c &= v^2
@@ -151,49 +164,49 @@ a_c &= \frac{v^2}{r}
 \\[10pt] &= \rm{7.07\times 10^{-5}\ m}
 \end{align}</p>
         </div>
-        <li>Calculate the acceleration and radius of motion for the lighter isotope of helium, “helium-3”, which has a mass of 5.00 × 10<sup>–27</sup> kg.</li>
-        <div class="Answer"><p class="TeX">a_c = \frac{F_{net}}{m}
-= \rm{\frac{2.72\times 10^{-16}\ N}{5.00\times 10^{-27}\ kg} = 5.44\times 10^{10}\ m/s^2}</p>
 
-<p class="TeX">r = \frac{v^2}{a_c}
-= \rm{\frac{(1.70\times 10^3\ m/s)^2}{5.44\times 10^{10}\ m/s^2}}
-= \rm{5.31\times 10^{-5}\ m}</p>
+        <li>Calculate the acceleration and radius of motion for the lighter isotope of helium, “helium-3”, which has a mass of 5.00 × 10<sup>–27</sup> kg.</li>
+        <div class="Answer">
+            <p class="TeX">a_c = \frac{F_{net}}{m} = \rm \frac{2.72\times 10^{-16}\ N}{5.00\times 10^{-27}\ kg} = 5.44\times 10^{10}\ m/s^2</p>
+            <p class="TeX">r = \frac{v^2}{a_c} = \rm \frac{(1.70\times 10^3\ m/s)^2}{5.44\times 10^{10}\ m/s^2} = 5.31\times 10^{-5}\ m</p>
         </div>
     </ol></li>
 
     <li><p>A Merry-Go-Round is made from a horizontal platform that rotates around a vertical axis.</p>
+        <p class="Center"><svg data-svg2="p20/circ/img/ac.js#merry"></svg></p>
     <ol type="a">
         <li>Why would it be unsafe to stand on a moving Merry-Go-Round if the platform was covered with ice?</li>
         <p class="Answer">Without friction, there is no unbalanced force capable of causing the centripetal acceleration; passengers would move in a straight line and would fall off the outside of the Merry-Go-Round.</p>
 
         <li>A daring Physics 20 student decided to brave the icy Merry-Go-Round by tying a bungee cord between her waist and the axis of the ride as illustrated. Explain what purpose the bungee serves.
         </li>
-        <p class="Center"><svg data-svg2="p20/circ/img/ac.js#merry"></svg></p>
         <p class="Answer">The elastic force replaces the missing friction to provide the centripetal acceleration.</p>
     
         <li>The 52.0 kg student rode the Merry-Go-Round at a radius of 4.20 m. Her classmates later measured the elastic force of the bungee cord to be 250 N when stretched to this length. Determine the student’s velocity and period while on the Merry-Go-Round.</li>
         <div class="Answer">Algebra is the same as #3b...
-<p class="TeX">a_c = \frac{F_{net}}{m} = \rm{\frac{250\ N}{52.0\ kg} = 4.81\ m/s^2}</p>
-<p class="TeX">v = \sqrt{ra_c} = \rm{\sqrt{4.20\ m\cdot 4.81\ m/s^2} = 4.49\ m/s}</p>
-<p class="TeX">T = \frac{2πr}{v} = \rm{\frac{2\pi (4.20\ m)}{4.49\ m/s} = 5.87\ s}</p>
+            <p class="TeX">a_c = \frac{F_{net}}{m} = \rm{\frac{250\ N}{52.0\ kg} = 4.81\ m/s^2}</p>
+            <p class="TeX">v = \sqrt{ra_c} = \rm{\sqrt{4.20\ m\cdot 4.81\ m/s^2} = 4.49\ m/s}</p>
+            <p class="TeX">T = \frac{2πr}{v} = \rm{\frac{2\pi (4.20\ m)}{4.49\ m/s} = 5.87\ s}</p>
         </div>
     </ol></li>
 
     <li><ol type="a">
         <li>If humankind establishes a permanent presence on the Moon, people might use projectile trains to travel between settlements. Such trains would not touch the ground but would orbit slightly above the Moon’s surface. If the Moon’s surface gravity is 1.63 m/s<sup>2</sup> and its radius is 1.74 × 10<sup>6</sup> m, what speed would the train have to have to enter a surface orbit?</li>
-        <div class="Answer">Algebra is the same as #3b...
-<p class="TeX">v = \sqrt{ra_c} = \rm{\sqrt{1.74\times 10^6\ m\cdot 1.63\ m/s^2} = 1.68\times 10^3\ m/s}</p>
+        <div class="Answer">
+            <p>Algebra is the same as #3b...</p>
+            <p class="TeX">v = \sqrt{ra_c} = \rm{\sqrt{1.74\times 10^6\ m\cdot 1.63\ m/s^2} = 1.68\times 10^3\ m/s}</p>
         </div>
+    
         <li>What speed would such a train need to have to orbit just above the Earth’s surface? What problem would such a train encounter on Earth that would be absent on the Moon?</li>
         <div class="Answer">
             <p class="TeX">v = \sqrt{ra_c} = \rm{\sqrt{6.37\times 10^6\ m\cdot 9.81\ m/s^2} = 7.91\times 10^3\ m/s}</p>
             <p>At such a high speed, air resistance on Earth would be extreme. This is not a problem on the Moon because there is no atmosphere.</p>
-    </div>
+        </div>
     </ol></li>
 </ol>
 </div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>Explain how an object exhibiting uniform circular motion is accelerating even though its speed is constant.</li>
@@ -219,15 +232,24 @@ a_c &= \frac{v^2}{r}
 </ol>
 </div></section>
 
+<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="">Assignment</button>
+    </p>
+</div></section>
+
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}5.2 — Centripetal Acceleration`,
-    answerDate: "2024.4.25.16",
+    showDate: "2025.5.1",
+    answerDate: "2025.5.2",
     num: "5.2",
     up: "p20/home",
     prev: "p20/circ/ucm",
-    next: "p20/circ/appWt",
+    // next: "p20/circ/appWt",
 }
 
 </script>
