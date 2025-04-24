@@ -23,7 +23,10 @@ constructor(parent, g) {
     }
 }
 
-find(sel, n) {return this.$.find(sel)[n ? n : 0].graphic}
+find(sel, n) {
+    let e = this.$.find(sel)[n ? n : 0];
+    return e ? e.graphic : null;
+}
 
 findAll(sel) {
     let g = [];
@@ -80,6 +83,15 @@ recenter(xy, dim) {
     }
     this._shift = this._shift.plus(dxy);
     return this.update_transform();
+}
+
+wrap(cfg, xy) {
+/* Recenter and wrap in a SVG2g instance */
+    this.recenter(xy ? xy : [0, 0]);
+    let g = this.svg.group().config(cfg);
+    this.$.replaceWith(g.$);
+    g.$.append(this.$);
+    return g;
 }
 
 
@@ -1068,6 +1080,8 @@ finalize() {
             let a = options[k];
             if (k == "recenter") e.recenter(a);
             else if (k == "recenter_dim") e.recenter(...a);
+            else if (k == "wrap") e.wrap(...a);
+            else if (k == "config") e.config(a);
             else if (k == "css") e.css(a);
         }
     }
@@ -1211,6 +1225,7 @@ static cached(url) {return SVG2._cache[new URL(url, SVG2.url).href]}
 static vec_diag(sel, vecs, opt) {
 /* Draw a vector diagram in an <svg> tag */
     let svg = new SVG2(sel, opt);
+    if (!opt) opt = {};
     svg.$.addClass("NoStyle");
     let g = svg.tip_to_tail(vecs);
     if (opt.shift) g.config({shift: opt.shift});
@@ -1230,7 +1245,10 @@ static vec_diag(sel, vecs, opt) {
         }
     }
     g.$.appendTo(svg.$);
-    for (let s of "XY") svg.find(`g.Label${s}`).shiftBy([0, "-5"]);
+    for (let s of "XY") {
+        let e = svg.find(`g.Label${s}`);
+        if (e) e.shiftBy([0, "-5"]);
+    }
     svg.$.find(".Zero").hide();
     if (opt.cycle == -1) g.$.find(".Component").hide();
     else if (opt.cycle) svg.vec_cycle(g.$, vecs.length > 1);
