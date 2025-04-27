@@ -22,13 +22,13 @@ fbd: (sel) => {
     let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
-    g = svg.group().css("red");
-    g.sym([-0.12, -0.55], 28, ["θ", IT]);
-    g.sym([-0.8, -1.2], 28, ["L", IT]);
-    g.sym([-0.6, -2.5], 28, ["x", IT], ["H", SM_IT, sub]);
-    g.sym([-0.65, -3.1], 28, ["x", IT]).css("blue");
-    g.sym([-1.4, -2.1], 28, ["F", BD], arr, ["t", SM_IT, sub]);
-    g.sym([-1.7, -3.3], 28, ["F", BD], arr, ["g", SM_IT, sub]);
+    g = svg.group().css("symbol", "f28", "red");
+    g.sym([-0.12, -0.55], 0, ["θ", IT]);
+    g.sym([-0.8, -1.2], 0, ["L", IT]);
+    g.sym([-0.6, -2.5], 0, ["x", IT], ["H", SM_IT, sub]);
+    g.sym([-0.65, -3.1], 0, ["x", IT]).css("blue");
+    g.sym([-1.4, -2.1], 0, ["F", BD], arr, ["t", SM_IT, sub]);
+    g.sym([-1.7, -3.3], 0, ["F", BD], arr, ["g", SM_IT, sub]);
 },
 
 vec: (sel) => {
@@ -39,11 +39,12 @@ vec: (sel) => {
     let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
-    svg.sym([0.9, -1.9], 28, ["F", BD], arr, ["t", SM_IT, sub]).css("red");
-    svg.sym([-0.35, -1.5], 28, ["F", BD], arr, ["g", SM_IT, sub]).css("red");
+    let g = svg.group().css("symbol", "f28", "red");
+    g.sym([0.9, -1.9], 0, ["F", BD], arr, ["t", SM_IT, sub]);
+    g.sym([-0.35, -1.5], 0, ["F", BD], arr, ["g", SM_IT, sub]);
     sub[0] = "16";
-    svg.sym([0.65, 0.07], 28, ["F", BD], arr, ["net", SM_IT, sub]).css("blue");
-    svg.sym([0.15, -2.3], 28, ["θ", IT]).css("red");
+    g.sym([0.65, 0.07], 0, ["F", BD], arr, ["net", SM_IT, sub]).css("blue");
+    g.sym([0.15, -2.3], 0, ["θ", IT]);
 },
 
 });

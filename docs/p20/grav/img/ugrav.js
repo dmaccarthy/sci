@@ -1,7 +1,7 @@
 SVG2.cache("p20/grav/img/ugrav.js", {
 
 tri: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 348], lrbt: [-14, 14, -1.5]}).css(".NoStyle", "text");
+    let svg = new SVG2(sel, {size: [400, 348], lrbt: [-14, 14, -1.5]}).css(".NoStyle");
 
     // Calculate point locations
     let h = 25 * cos(30), hA = 12.5 * tan(30);
@@ -22,18 +22,20 @@ tri: (sel) => {
     g.circle("3", [0, h - 10]).css({fill: "black"});
 
     // Labels
-    svg.ctext(["A", [1, hA]], ["B", [-1, h - 10]], ["θ", [10.5, 0.8], "ital"],
+    g = svg.group().css("text");
+    g.ctext(["A", [1, hA]], ["B", [-1, h - 10]], ["θ", [10.5, 0.8], "ital"],
         ["12.5 km", [6.25, 1]], ["12.5 km", [-5, 1]]);
-    let wrap = (cfg, txt, xy) => svg.group().config(cfg).ctext([txt, xy]);
+    let wrap = (cfg, txt, xy) => g.group().config(cfg).ctext([txt, xy]);
     wrap({theta: 90}, "10.0 km", [h - 6, 1]);
     wrap({theta: 60, pivot: [-12.5, 0]}, "25.0 km", [0, 1]);
     wrap({theta: -60, pivot: [12.5, 0]}, "25.0 km", [0, 1]);
     wrap({theta: 15, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: 45, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: -75, pivot: [0, h]}, "30°", [3.5, h]);
-    svg.sym([1, hA / 2], 28, ["y", 2]).$.attr({id: "y"});
-    svg.sym([-6, 6], 28, ["r", 2], ["A", 6, ["10", "-10"]]);
-    svg.sym([4.5, 6], 28, ["r", 2], ["B", 6, ["10", "-10"]]);
+    g = g.group().css("symbol", "f28");
+    g.sym([-6, 6], 0, ["r", 2], ["A", 6, ["10", "-10"]]);
+    g.sym([4.5, 6], 0, ["r", 2], ["B", 6, ["10", "-10"]]);
+    g.sym([1, hA / 2], 0, ["y", 2]);
 
     // Forces at point A
     g = svg.group().css("black1", {"fill-opacity": 0.6}).addClass("Toggle0");

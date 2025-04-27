@@ -10,12 +10,12 @@ bar: (sel) => {
 },
 
 flow1: (sel, label) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-1, 5]}).css(".NoStyle", "text");
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-1, 5]}).css(".NoStyle", "middle");
     svg.circle(1.7, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
-    let g = svg.group().css("blue");
-    g.sym([0, 0], 28, ["E", 2], ["g", 6, ["16", "-6"]]);
-    g.sym([2, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]);
+    let g = svg.group().css("symbol", "f28", "blue");
+    g.sym([0, 0], 0, ["E", 2], ["g", 6, ["16", "-6"]]);
+    g.sym([2, 0], 0, ["E", 2], ["k", 6, ["16", "-6"]]);
     svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [4.3, 0]]);
 
     let dx = 0.4;
@@ -30,11 +30,11 @@ flow1: (sel, label) => {
 },
 
 flow2: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]}).css(".NoStyle", "text");
+    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]}).css(".NoStyle", "middle");
     svg.circle(0.8, [2, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("blue");
-    g.sym([2, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]);
+    g.sym([2, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]); //.css("blue");
     svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [0, -1.8]], ["Food"]);
 
     g = svg.group().css("arrow");
@@ -44,7 +44,7 @@ flow2: (sel) => {
 },
 
 flow3: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle", "text");
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle", "middle");
     svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("blue");
@@ -63,7 +63,7 @@ flow3: (sel) => {
 },
 
 flow4: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle", "text");
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle", "middle");
     svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("blue");

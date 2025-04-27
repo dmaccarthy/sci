@@ -10,7 +10,7 @@ ex2: (sel) => {
 },
 
 ramp: (sel) => {
-	let svg = new SVG2(sel, {size: [360, 360], lrbt: [-1.5, 2.5]}).css(".NoStyle", "text");
+	let svg = new SVG2(sel, {size: [360, 360], lrbt: [-1.5, 2.5]}).css(".NoStyle");
     let g = svg.group().config({theta: 30});
     let tail = {tail: "6"};
     g.line([-4, "-4"], [4, "-4"]).css({stroke: "black", "stroke-width": "3px"});
@@ -25,12 +25,12 @@ ramp: (sel) => {
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "24"]];
     let sub = ["14", "-8"];
-    g = svg.group().css("red");
-    g.sym([0.5, 1.4], 28, ["F", BD], arr, ["a", SM_IT, sub]);
-    g.sym([-1.2, 0.15], 28, ["F", BD], arr, ["f", SM_IT, sub]);
-    g.sym([-0.5, 1.5], 28, ["F", BD], arr, ["n", SM_IT, sub]);
-    g.sym([0.05, -1], 28, ["F", BD], arr, ["g", SM_IT, sub]);
-    g.sym([1.25, 0.1], 28, ["d", BD], arr, ["Δ", 0, ["-20", 0]]).css("blue");
+    g = svg.group().css("symbol", "f28", "red");
+    g.sym([0.5, 1.4], 0, ["F", BD], arr, ["a", SM_IT, sub]);
+    g.sym([-1.2, 0.15], 0, ["F", BD], arr, ["f", SM_IT, sub]);
+    g.sym([-0.5, 1.5], 0, ["F", BD], arr, ["n", SM_IT, sub]);
+    g.sym([0.05, -1], 0, ["F", BD], arr, ["g", SM_IT, sub]);
+    g.sym([1.25, 0.1], 0, ["d", BD], arr, ["Δ", 0, ["-20", 0]]).css("blue");
 },
 
 flow2: (sel) => {

@@ -52,11 +52,11 @@ vec1: (sel) => {
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["14", "-8"];
 
-    let g = svg.group().css("red");
-    g.sym([-8, -29], 28, ["F", BD], arr, ["g", SM_IT, sub]);
-    g.sym([16, -38], 28, ["F", BD], arr, ["n", SM_IT, sub]);
-    g.sym([21, -4], 28, ["F", BD], arr, ["f", SM_IT, sub]);
-    g.sym([6, 4], 28, ["F", BD], arr, ["net", SM_IT, ["16", "-8"]]).css("blue");
+    let g = svg.group().css("symbol", "f28", "red");
+    g.sym([-8, -29], 0, ["F", BD], arr, ["g", SM_IT, sub]);
+    g.sym([16, -38], 0, ["F", BD], arr, ["n", SM_IT, sub]);
+    g.sym([21, -4], 0, ["F", BD], arr, ["f", SM_IT, sub]);
+    g.sym([6, 4], 0, ["F", BD], arr, ["net", SM_IT, ["16", "-8"]]).css("blue");
 },
 
 Q1: (sel) => {

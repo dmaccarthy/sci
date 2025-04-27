@@ -66,10 +66,11 @@ css(...rules) {
 align(xy, x, y) {
 /* Align the element based on its bounding box */
     if (!this.$.is(":visible")) throw("Cannot align hidden elements");
-    let box = this.element.getBBox();
+    if (typeof(xy) == "number") xy = [xy, xy];
     if (x == null && y == null) x = y = 0.5;
     let nx = x == null;
     let ny = y == null;
+    let box = this.element.getBBox();
     let dxy = this.svg.p2a(box.x + (nx ? 0 : x) * box.width, box.y + (ny ? 0 : y) * box.height).plus(this._shift);
     dxy = this._cs(xy).minus(dxy);
     if (nx) dxy[0] = 0;
@@ -450,23 +451,27 @@ sym(xy, size, ...args) {
     let align = xy[2];
     if (align == null) align = [null, null];
     if (xy.length > 2) xy = xy.slice(0, 2);
-    if (typeof(size) == "number") size = [size, Math.round(0.6 * size)];
-    let g = this.group().css(".Symbol", "symbol", {"font-size": `${size[0]}px`});
+    let g = this.group().css(".Symbol");
+    let szStr = (s) => typeof(s) == "number" ? `${size}px` : s;
+    if (size) {
+        // if (typeof(size) == "number") size = `${size}px`;
+        g.css("symbol", {"font-size": szStr(size)});
+    }
     for (let [s, opt, pos] of args) {
         let f = 0;
         if (typeof(opt) == "number") [f, opt] = [opt, {}];
         let txt = g.text(s, pos);
-        if (f & 4) txt.css({"font-size": `${size[1]}px`});
+        if (f & 4) txt.css({"font-size": "60%"});
         if (f & 1) txt.css(SVG2._style.bold);
         if (f & 2) txt.css(SVG2._style.ital);
         if (opt) {
-            if (opt.size) txt.css({"font-size": `${opt.size}px`});
+            if (opt.size) txt.css({"font-size": szStr(opt.size)});
             if (opt.css) txt.css(opt.css);
         }
     }
-    g.align(xy, ...align);
-    return g;
+    return g.align(xy, ...align);
 }
+
 
 ctext(...args) {
 /* Render multiple centred <g> elements with <text> child nodes */
@@ -482,7 +487,7 @@ ctext(...args) {
             g.css(...css);
         }
         g.text(t);
-        gs.push(g.align(xy ? xy : [0, 0]));
+        gs.push(g.align(xy ? xy : 0));
     }
     return gs;
 }
@@ -653,8 +658,10 @@ tip_to_tail(vecs, options) {
 
 energy_flow(data) {
 /* Draw an energy flow diagram */
-    this.css(".NoStyle", "text");
-    this.circle(data.radius).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
+    this.svg.css(".NoStyle");
+    let g = this.group().css("text");
+    g.circle(data.radius).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
+    let gs = g.group().css("symbol", "f28");
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
         color = {fill: color ? color : "#0065fe"};
@@ -662,11 +669,11 @@ energy_flow(data) {
             txt = txt.substring(1).split("_");
             let sym = [[txt[0], 2]];
             if (txt.length > 1) sym.push([txt[1], 6, shift ? shift : ["12", "-7"]]);
-            this.sym(pos, 28, ...sym).css(color);
+            gs.sym(pos, 0, ...sym).css(color);
         }
-        else this.group().css(color, {"font-size": "24px"}).ctext([txt, pos]);
+        else g.group().css(color, {"font-size": "24px"}).ctext([txt, pos]);
     }
-    let g = this.group().css("arrow");
+    g = g.group().css("arrow");
     for (let item of data.arrows) {
         let [l, pos, angle, txt, color] = item;
         color = {fill: color ? color : "#0065fe"};
@@ -1314,6 +1321,7 @@ static ebg(sel, Emax, step, data, options) {
     svg.grid([0, n], [0, Emax, step]).grid([0, 1, 2], [0, Emax]);
 
     let bars = [];
+    let sym = svg.group().css("symbol", "f28");
     for (let i=0;i<n;i++) {
         let d = data[i];
         let c = d[2] ? d[2] : "#0065fe"
@@ -1321,7 +1329,7 @@ static ebg(sel, Emax, step, data, options) {
         let [t, sub] = d[0].split("_");
         t = [[t, 2]];
         if (sub) t.push([sub, 6, [`${8 + 5 * sub.length}`, "-8"]]);
-        svg.sym([i + 0.5, "-2", [0.5, 0]], 28, ...t).css({fill: c});
+        sym.sym([i + 0.5, "-2", [0.5, 0]], 0, ...t).css({fill: c});
     }
     svg.config({data: data, options: options});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$);
@@ -1413,6 +1421,7 @@ SVG2.symbol = "KaTeX_Main, 'Latin Modern Roman', 'Droid Serif', 'Noto Serif', se
 SVG2._style = {
     grid: {stroke: "lightgrey", "stroke-width": "0.5px"},
     text: {"font-family": SVG2.sans, "font-size": "18px", "text-anchor": "middle"},
+    middle: {"text-anchor": "middle"},
     symbol: {"font-family": SVG2.symbol, "font-size": "18px", "text-anchor": "middle"},
     arrow: {fill: "red", stroke: "black", "stroke-width": "0.5px"},
     f28: {"font-size": "28px"},
