@@ -48,10 +48,9 @@ geom: (sel) => {
     g.$.find("text, circle").css({fill: "red"});
     svg.$.find("g.Symbol").addClass("Large");
 
-    g = svg.group();
+    g = svg.group().css(".Symbol", ".Large", "ital");
     g.text("nλ", [-1.05, 0.4]).addClass("Toggle2");
     g.text("d", [0, -0.3]);
-    g.$.addClass("Symbol Large").find("text").addClass("Ital");
     g.text("θ", [0.35, 0.1]).addClass("Small Toggle3");
     g.text("θ", [-0.85, 0.375]).addClass("Small Toggle4").hide();
 

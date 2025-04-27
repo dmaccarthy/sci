@@ -13,7 +13,7 @@ merry: (sel) => {
     svg.delay(g.group(), {recenter: [-4, 3.3]}).text("Bungee Cord");
     g.$.children("g").addClass("Text");
     svg.line([-10, 0], [10, 0]).css({stroke: "black", "stroke-width": "2px"});
-    svg.addClass("NoStyle").css_map().finalize();
+    svg.css(".NoStyle", "text").finalize();
 },
 
 ucm: (sel) => {

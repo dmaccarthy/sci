@@ -3,7 +3,7 @@ SVG2.cache("p20/kin/img/graph.js", {
 bike: (sel) => {
     let pts = [[0, -5], [1, -2], [2, 1], [3, 4], [4, 7]];
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -6, 8], margin: [54, 10, 10, 10]});
-    svg.graph({grid: [0.5, 1], css: true,
+    svg.graph({grid: [0.5, 1],
         x: {tick: [0, 4.1, 1], title: ["Time / s", [3.5, "12"]], shift: [0, "-24"]},
         y: {tick: [-6, 8.1, 2], title: ["Position / m", "-36"], shift: ["-10", "-5"]},
         data: [
@@ -29,13 +29,11 @@ dt: (sel) => {
         ]
     });
     svg.$.find("g.LabelX text.Zero, g.Ticks").remove();
-    let g = svg.$.find("g.Series").css({fill: "none", "stroke-width": "3px"});
-    let lines = g.find("g.Locus");
+    let lines = svg.$.find("g.Series g.Locus").css({"stroke-width": "3px"});
     let color = ["#0065fe", "red", "green", "cyan", "gold", "violet"];
     for (let i=0;i<lines.length;i++) {
         $(lines[i]).addClass(`Toggle${i}`).css({stroke: color[i]});
     }
-    svg.addClass("NoStyle").css_map("grid", "text");
 
     let t = clickCycle.toggle;
     clickCycle(svg.element, 0,
@@ -52,7 +50,7 @@ dt: (sel) => {
 
 vt: (sel) => { // Motion of an skydiver v-t graph
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 28], margin: [56, 10, 26, 12]});
-    svg.graph({grid: [0.5, 2], css: true, appendAxes: 1,
+    svg.graph({grid: [0.5, 2], appendAxes: 1,
         x: {tick: [0, 8.1, 1], title: ["Time / s", [7, "10"]], shift: [0, "-22"]},
         y: {tick: [0, 29, 4], title: ["Velocity / (m/s)", "-40"], shift: ["-10", "-4"]},
         data: [{connect: [[0, 8], [4, 24], [8, 24]]}],
@@ -84,7 +82,7 @@ vt: (sel) => { // Motion of an skydiver v-t graph
 
 elevator: (sel) => { // Motion of an elevator d-t graph
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 50], margin: [56, 10, 28, 12]});
-    svg.graph({grid: [1, 5], css: true,
+    svg.graph({grid: [1, 5],
         x: {tick: [0, 11, 2], title: ["Time / s", [9, "12"]], shift: [0, "-22"]},
         y: {tick: [0, 51, 10], title: ["Position / m", "-40"], shift: ["-10", "-4"]},
         data: [{locus: [(x) => x <= 5 ? x * x : 50 - (10 - x) * (10 - x), [0, 10]]}],
@@ -93,7 +91,7 @@ elevator: (sel) => { // Motion of an elevator d-t graph
 
 skydive: (sel) => { // Motion of an skydiver v-t graph
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 15, -50, 0], margin: [60, 12, 10, 32]});
-    svg.graph({grid: [1, 5], css: true,
+    svg.graph({grid: [1, 5],
         x: {tick: [0, 16, 3], title: ["Time / s", [13.5, "12"]], shift: [0, "-22"]},
         y: {tick: [-50, 1, 10], title: ["Velocity / (m/s)", "-44"], shift: ["-10", "-4"]},
         data: [{locus: [(x) => 50 * (Math.exp(-9.81 * x / 50) - 1), [0, 15]]}],

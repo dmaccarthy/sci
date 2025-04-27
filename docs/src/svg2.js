@@ -1,6 +1,6 @@
 /**
 Simple JavaScript animations rendered in an <svg> element
-(c) 2023-2024 by D.G. MacCarthy <sc8pr.py@gmail.com>
+(c) 2023-2025 by D.G. MacCarthy <sc8pr.py@gmail.com>
 **/
 
 
@@ -47,10 +47,20 @@ addClass(...args) {
     return this;
 }
 
-css(rules) {
+css(...rules) {
 /* Apply CSS rules to <g> */
-    if (typeof(rules) == "string") this.css_map(rules);
-    else this.$.css(rules);
+    for (let r of rules) {
+        let s = typeof(r) == "string";
+        if (s) {
+            if (r.charAt(0) == ".") this.$.addClass(r.substring(1));
+            else if (SVG2._style[r]) {
+                r = SVG2._style[r];
+                s = false;
+            }
+            // else this.css_map(r);
+        }
+        if (!s) this.$.css(r);
+    }
     return this;
 }
 
@@ -87,7 +97,7 @@ recenter(xy, dim) {
 
 wrap(cfg, xy) {
 /* Recenter and wrap in a SVG2g instance */
-    this.recenter(xy ? xy : [0, 0]);
+    if (xy) this.recenter(xy == true ? [0, 0] : xy);
     let g = this.svg.group().config(cfg);
     this.$.replaceWith(g.$);
     g.$.append(this.$);
@@ -283,7 +293,7 @@ image(href, size, center, sel) {
 
 plot(pts, size, href, theta) {
 /* Plot an array of points as circles, rectangles, or images */
-    let g = this.group();
+    let g = this.group().css("black1", "blue");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     if (theta) theta *= svg.angleDir;
@@ -331,8 +341,12 @@ label(fn, x, y) {
             if (parseFloat(txt.html()) == 0) txt.addClass("Zero");
         }
     }
-    if (tick) g.$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`);
-    else g.$.addClass(`Labels Label${ya ? 'Y' : 'X'}`);
+    if (tick) g.$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`).css(SVG2._style.black1);
+    else {
+        g.$.addClass(`Labels Label${ya ? 'Y' : 'X'}`);
+        if (ya) g.css({"text-anchor": "end"});
+        g.css("f15");
+    }
     return g;
 }
 
@@ -406,7 +420,7 @@ ray(p1, p2, size, ...pos) {
 
 grid(x, y, appendAxes) {
 /* Draw a coordinate grid */
-    let g = this.group();
+    let g = this.group().css("grid");
     this._grid(g, x, y);
     this._grid(g, y, x, 1);
     let e = g.$.addClass("Grid");
@@ -427,7 +441,7 @@ _grid(g, x, y, swap) {
         while (x0 <= x1) {
             let pts = swap ? [[y0, x0], [y1, x0]] : [[x0, y0], [x0, y1]];
             let line = g.line(...pts);
-            if (Math.abs(x0) < ddx) line.addClass("Axis");
+            if (Math.abs(x0) < ddx) line.addClass("Axis").css(SVG2._style.black1);
             x0 += dx;
         }
     }
@@ -441,21 +455,59 @@ text(data, xy) {
     return this.create_child("text", {x: f(x), y: f(y)}).html(data);
 }
 
-symbol(...args) {
-/* Render a symbol from a list of text elements */
-//  BOLD = 1, ITAL = 2, SMALL = 4
+symbol(...args) { // Deprecated!
     let g = this.group();
-    g.$.addClass("Symbol");
+    g.css(".Symbol");
     for (let [s, f, xy, opt] of args) {
         let txt = g.text(s, xy);
         if (f & 4) txt.addClass("Small");
-        if (f & 2) txt.addClass("Ital");
-        if (f & 1) txt.addClass("Bold");
+        if (f & 2) txt.css(SVG2._style.ital);
+        if (f & 1) txt.css(SVG2._style.bold);
         if (opt) {
             if (opt.size) txt.css({"font-size": `${opt.size}px`});
         }
     }
     return g;
+}
+
+sym(xy, size, ...args) {
+/* Render a symbol from a list of text elements */
+//  BOLD = 1, ITAL = 2, SMALL = 4
+if (typeof(size) == "number") size = [size, Math.round(0.6 * size)];
+    let g = this.group().css(".Symbol", "symbol", {"font-size": `${size[0]}px`});
+    for (let [s, opt, xy] of args) {
+        let f = 0;
+        if (typeof(opt) == "number") [f, opt] = [opt, {}];
+        let txt = g.text(s, xy);
+        if (f & 4) txt.css({"font-size": `${size[1]}px`});
+        if (f & 1) txt.css(SVG2._style.bold);
+        if (f & 2) txt.css(SVG2._style.ital);
+        if (opt) {
+            if (opt.size) txt.css({"font-size": `${opt.size}px`});
+            if (opt.css) txt.css(opt.css);
+        }
+    }
+    return g.recenter(xy);
+}
+
+ctext(...args) {
+/* Render multiple centred <g> elements with <text> child nodes */
+    let gs = [];
+    for (let [t, xy, options] of args) {
+        if (options == null) options = {};
+        if (typeof(options) == "string") options = {css: options};
+        let g = this.group();
+        if (options.config) g.config(options.config);
+        let css = options.css;
+        if (css) {
+            if (!(css instanceof Array)) css = [css];
+            g.css(...css);
+        }
+        g.text(t);
+        gs.push(g.recenter(xy ? xy : [0, 0]));
+        if (options.wrap) g = g.wrap(options.wrap);
+    }
+    return gs;
 }
 
 textm(text, space) {
@@ -522,7 +574,7 @@ stickman(h) {
 
 graph(options) {
 /* Add common scatter plot / line graph elements */
-    let svg = this.svg;
+    let svg = this.svg.css(".NoStyle", "text");
     let x = options.x, y = options.y;
     if (options.grid) {
         let [dx, dy] = options.grid;
@@ -557,7 +609,7 @@ graph(options) {
         for (let series of data) {
             if (series.plot) s.push(g.plot(...series.plot));
             else {
-                let gs = g.group().addClass("Locus");
+                let gs = g.group().css(".Locus", "blue2", "nofill");
                 s.push(gs);
                 if (series.connect) {
                     let pts = series.connect;
@@ -569,10 +621,10 @@ graph(options) {
         }
         this.series = s;
     }
-    if (options.css) {
-        let map = options.css === true ? ["grid", "text", "plot"] : options.css;
-        svg.addClass("NoStyle").css_map(...map);
-    }
+    // if (options.css) {
+    //     let map = options.css === true ? ["grid", "plot", "text"] : options.css;
+    //     svg.css_map(...map);
+    // }
     return this;
 }
 
@@ -628,34 +680,29 @@ tip_to_tail(vecs, options) {
 
 energy_flow(data) {
 /* Draw an energy flow diagram */
-    let svg = this.svg;
+    this.css(".NoStyle", "text");
     this.circle(data.radius).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
-        let attr = {recenter: pos, css: {fill: color ? color : "#0065fe"}};
+        color = {fill: color ? color : "#0065fe"};
         if (txt.charAt(0) == '$') {
             txt = txt.substring(1).split("_");
             let sym = [[txt[0], 2]];
             if (txt.length > 1) sym.push([txt[1], 6, shift ? shift : ["12", "-7"]]);
-            svg.delay(this.symbol(...sym), attr);
+            this.sym(pos, 28, ...sym).css(color);
         }
-        else svg.delay(this.group().addClass("Text"), attr).text(txt);
+        else this.group().css(color, {"font-size": "24px"}).ctext([txt, pos]);
     }
+    let g = this.group().css("arrow");
     for (let item of data.arrows) {
         let [l, pos, angle, txt, color] = item;
-        let attr = {recenter: pos, css: {fill: color ? color : "#0065fe"}};
-        let a = svg.delay(this.arrow(l, {tail: "6"}).config({theta: angle}), attr);
+        color = {fill: color ? color : "#0065fe"};
+        let a = g.arrow(l, {tail: "6"}).css(color).config({theta: angle, shift: pos});
         if (txt) {
             if (!(txt instanceof Array)) txt = [txt, [l > 0 ? "-6": "6", "12"]];
-            a.label(...txt);
+            a.label(...txt).css({stroke: "none"});
         }
     }
-    svg.addClass("NoStyle").css_map();
-    let g = this.$;
-    g.find("text.Small").css({"font-size": "18px"});
-    g.find("text:not(.Small)").css({"font-size": "24px"});
-    g.find("g.Symbol > text:not(.Small)").css({"font-size": "28px"});
-    g.find("g.Arrow > text").css({"font-size": "20px"});
     return this;
 }
 
@@ -773,6 +820,8 @@ label(text, shift) {
 
 class SVG2locus {
 
+css = SVG2g.prototype.css;
+
 constructor(g, eq, param, args) {
     let svg = this.svg = g.svg;
     this.eq = eq;
@@ -780,6 +829,7 @@ constructor(g, eq, param, args) {
     this.param = param.length > 2 ? param : param.concat([svg.$.width() / 3]);
     this.args = args;
     this.$ = g.create_child("polyline", {}).addClass("Locus");
+    this.css("nofill");
     this.element = this.$[0];
     this.element.graphic = this;
     this.update();
@@ -1080,13 +1130,26 @@ finalize() {
             let a = options[k];
             if (k == "recenter") e.recenter(a);
             else if (k == "recenter_dim") e.recenter(...a);
-            else if (k == "wrap") e.wrap(...a);
+            // else if (k == "wrap") e.wrap(...a);
             else if (k == "config") e.config(a);
             else if (k == "css") e.css(a);
         }
     }
     delete this._delay;
     return this;
+}
+
+static style(items, ...styles) {
+    for (let e of items) {
+        if (e instanceof SVG2g) e.css(...styles);
+        else {
+            e = $(e);
+            for (let s of styles) {
+                if (typeof(s) == "string" && s.charAt(0) == ".") e.addClass(s.substring(1));
+                else e.css(SVG2._style[s] ? SVG2._style[s] : s);
+            }
+        }
+    }
 }
 
 
@@ -1310,7 +1373,7 @@ static ebg(sel, Emax, step, data, options) {
             t.$.addClass("Large").find("text").css({fill: c});
             t.recenter(xy, 1);
         }
-        else svg.text(t[0], xy).addClass("Symbol Large Ital").css({fill: c});
+        else svg.text(t[0], xy).addClass("Symbol Large").css({fill: c, "font-style": "italic"});
     }
     svg.config({data: data, options: options});
     svg.$.addClass("SVG2").find("g.Grid line.Axis").appendTo(svg.$);
@@ -1396,7 +1459,7 @@ if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
 
 SVG2.sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
 SVG2.mono = "Inconsolata, 'Droid Sans Mono', monospace";
-SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', Oxygen, sans-serif";
+SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
 SVG2.symbol = "KaTeX_Main, 'Latin Modern Roman', 'Droid Serif', 'Noto Serif', serif";
 
 SVG2.css = { /* Default styles */
@@ -1432,4 +1495,26 @@ arrow: {
     "g.Arrow.Component": {"fill-opacity": 0.3},
 },
 
+};
+
+SVG2._style = {
+    grid: {stroke: "lightgrey", "stroke-width": "0.5px"},
+    text: {"font-family": SVG2.sans, "font-size": "18px", "text-anchor": "middle"},
+    symbol: {"font-family": SVG2.symbol, "font-size": "18px", "text-anchor": "middle"},
+    arrow: {fill: "red", stroke: "black", "stroke-width": "0.5px"},
+    f28: {"font-size": "28px"},
+    f18: {"font-size": "18px"},
+    f15: {"font-size": "15px"},
+    f14: {"font-size": "14px"},
+    ital: {"font-style": "italic"},
+    bold: {"font-weight": "bold"},
+    nofill: {fill: "none"},
+    red: {fill: "red"},
+    green: {fill: "green"},
+    blue: {fill: "#0065fe"},
+    red2: {stroke: "red", "stroke-width": "2px"},
+    green2: {stroke: "green", "stroke-width": "2px"},
+    blue2: {stroke: "#0065fe", "stroke-width": "2px"},
+    black1: {stroke: "black", "stroke-width": "1px"},
+    black2: {stroke: "black", "stroke-width": "2px"},
 };

@@ -2,7 +2,6 @@ SVG2.cache("p20/circ/img/kep.js", {
 
 orbit: (sel) => {
     let svg = new SVG2(sel, {size: [401, 265], lrbt: [-1.12, 1.12]});
-    svg.$.find(".Axis").removeClass("Axis");
 
     let e = 0.7;
     let r = [1, e];
@@ -20,23 +19,15 @@ orbit: (sel) => {
     g = svg.group().css({stroke: "grey"});
     g.line([-1, 0], [1, 0]);
     g.line([0, -e], [0, e]);
-    g = svg.delay(svg.group().addClass("Text"), {css: {fill: "grey"}});
-    svg.delay(g.group(), {recenter: [0.7, 0.06]}).text("Major Axis");
-    svg.delay(g.group().config({theta: 90}), {recenter: [-0.06, -0.4]}).text("Minor Axis");
 
-    g = svg.group().addClass("Text");
+    g = svg.group().css({fill: "grey"});    
+    g.ctext(["Major Axis", [0.7, 0.06]], ["Minor Axis", null, {wrap: {theta: 90, shift: [-0.06, -0.4]}}]);
+
     let c = [0.06, -0.07];
-    for (let [t, xy] of [
-        ["A", [1.05, 0]],
-        ["C", c],
-        ["F", f.plus(c)],
-        ["P", [-1.05, 0]],
-    ]) svg.delay(g.group(), {recenter: xy}).text(t);
-
+    svg.ctext(["A", [1.05, 0]], ["C", c], ["F", f.plus(c)], ["P", [-1.05, 0]]);
     svg.circle("5", planet).css({fill: "red"});
     svg.circle("5", f).css({fill: "orange"});
 
-    svg.css_map().finalize();
     svg.$.on("click", () => sector.fadeToggle());
 },
 

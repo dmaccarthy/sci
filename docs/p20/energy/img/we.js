@@ -2,7 +2,7 @@ SVG2.cache("p20/energy/img/we.js", {
 
 work: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 20, -400, 400], margin: [68, 12, 12, 12]});
-    svg.graph({grid: [1, 50], css: true,
+    svg.graph({grid: [1, 50],
         x: {tick: [0, 21, 5], title: ["Position / m", [17, 25]], shift: [0, "-22"]},
         y: {tick: [-400, 401, 100], title: ["Force / N", "-50"], shift: ["-10", "-4"]},
         data: [
@@ -14,22 +14,21 @@ work: (sel) => {
     let g = shade.group().addClass("Toggle0");
     g.poly([[0, 0], [5, 400], [5, 0]], 1);
     g.line([5, 400], [5, 0]);
-    svg.delay(g.group(), {recenter: [3, 75]}).text("1000 J");
+    g.ctext(["1000 J", [3, 75]]);
 
     g = shade.group().addClass("Toggle1");
     g.rect([5, 400], [7.5, 200]);
     g.line([10, 400], [10, 0]);
-    svg.delay(g.group(), {recenter: [7.5, 200]}).text("2000 J");
+    g.ctext(["2000 J", [7.5, 200]]);
 
     g = shade.group().addClass("Toggle2");
     g.poly([[10, 400], [10, 0], [15, 0]], 1);
-    svg.delay(g.group(), {recenter: [12, 75]}).text("1000 J");
+    g.ctext(["1000 J", [12, 75]]);
 
     g = shade.group().addClass("Toggle3");
     g.poly([[20, -400], [20, 0], [15, 0]], 1);
-    svg.delay(g.group(), {recenter: [18, -75]}).text("–1000 J");
+    g.ctext(["–1000 J", [18, -75]]);
 
-    svg.addClass("NoStyle").css_map().finalize();
     g = shade.$.insertBefore("g.Series").css({fill: "#0065fe", "fill-opacity": 0.2, stroke: "none"});
     g.find("line").css({stroke: "#0065fe"});
     g.find("text").css({"fill-opacity": 1});
@@ -47,7 +46,7 @@ work: (sel) => {
 
 tennis: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 80, 0, 90], margin: [58, 12, 54, 12]});
-    svg.graph({grid: [5, 5], css: true,
+    svg.graph({grid: [5, 5],
         x: {tick: [0, 81, 10], title: ["Position / cm", [40, "-44"]], shift: [0, "-22"]},
         y: {tick: [0, 91, 10], title: ["Force / N", "-40"], shift: ["-10", "-4"]},
         data: [{connect: [[0, 0], [40, 80], [50, 80], [75, 0]]}],

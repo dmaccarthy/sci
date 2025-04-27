@@ -2,15 +2,15 @@ SVG2.cache("p20/shm/img/eqm.js", {
 
 mass: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 3, -0.2, 0.5], margin: [62, 16, 12, 12]});
-    svg.graph({grid: [0.25, 0.05], css: true,
+    svg.graph({grid: [0.25, 0.05],
         x: {tick: [0, 3.1, 0.5], dec: 1, title: ["Time / s", [2.25, "-44"]], shift: [0, "-20"]},
         y: {tick: [-0.2, 0.51, 0.1], dec: 1, title: ["Position / cm", "-44"], shift: ["-10", "-5"]},
         data: [{locus: [(x) => 0.3 * sin(240 * x - 60) + 0.15, [0, 3]]}]
     });
     svg.$.find("g.LabelX text.Zero").remove();
-    svg.addClass("NoStyle").css_map("grid", "text", "plot").$.find("g.Locus").css({stroke: "red"});
+    svg.$.find("g.Locus").css({stroke: "red"});
     let v = pi / 2.5;
-    let g = svg.group().css({stroke: "black", "stroke-width": "2px"});
+    let g = svg.group().css("black2");
     g.line([0, 0.15], [3, 0.15]);
     g.line([1.75 + 0.35 / v, 0.5], [1.75 - 0.4 / v, -0.25]).css({stroke: "#0065fe"});
     g.circle("5", [1.75, 0.15]).css({fill: "#0065fe", "stroke-width": "1px"});

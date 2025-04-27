@@ -1,14 +1,15 @@
 SVG2.cache("p20/circ/img/helio.js", {
 
 helio: (sel) => {
-    let svg = new SVG2(sel, {size: [641, 641], margin: 0, lrbt: [-1.7, 1.7]});
+    let svg = new SVG2(sel, {size: [641, 641], margin: 0, lrbt: [-1.7, 1.7]}).css(".NoStyle", "text");
     svg.create_child("defs").html(`<linearGradient id="grey1" x1="100%" y2="100%"><stop offset="0%" stop-color="black" /><stop offset="100%" stop-color="#232323"/></linearGradient>`);
 
     // Draw zodiac background
     svg.rect([3.41, 3.41]).css({fill: "black"});
     let names = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
         "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
-    let zodiac = svg.group().addClass("Text Zodiac");
+    let zodiac = svg.group().css(".Zodiac", {fill: "grey", "font-size": "16px"});
+
     for (let i=0;i<12;i++) {
         let g = zodiac.group().config({theta: 30 * i});
         if (i % 2 == 0) g.poly([[0, 0], vec2d(2.5, 75), vec2d(2.5, 105)], 1).css({fill: "url(#grey1)", stroke: "none"});
@@ -16,8 +17,8 @@ helio: (sel) => {
     }
 
     // Draw timer, line-of-sight arrow and Sun
-    let years = svg.text("", [1.6, 1.55]).addClass("Mono Bold").css({"font-size": "36px", "text-anchor": "end", fill: "white"});
-    let sight = svg.arrow(0.4, {tail: "6"});
+    let years = svg.text("", [1.6, 1.5]).css({"font-family": SVG2.mono, "font-size": "36px", "font-weight": "bold", "text-anchor": "end", fill: "white"});
+    let sight = svg.arrow(0.4, {tail: "6"}).css("red", {stroke: "none"});
     svg.circle("12").css({fill: "yellow"});
 
     // Draw the inner planets
@@ -44,10 +45,6 @@ helio: (sel) => {
         sight.config({theta: s.deg, shift: s.point(0.27)});
         zodiac.config({shift: earthXY});
     }
-
-    // Styling
-    svg.css_map("text", "arrow");
-    zodiac.css({fill: "grey", "font-size": "17px"});
 
     // Run the animation
     svg.animate(...animate).play();

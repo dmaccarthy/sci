@@ -1,8 +1,7 @@
 SVG2.cache("s10/chem1/img/atomic.js", {
  
 bun: (sel) => {
-    let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], margin: 2});
-    svg.$.addClass("NoStyle");
+    let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], margin: 2}).css(".NoStyle", "text");
     svg.circle(1, [0, 0]).css({fill: "#F1B9A1", stroke: "black"});
     let a = 0.15, b = 0.75;
     svg.poly([[a, b], [a, a], [b, a], [b, -a], [a, -a], [a, -b], [-a, -b], [-a, -a],
@@ -13,9 +12,8 @@ bun: (sel) => {
     svg.line(pts[0], [0.85, 0.78]).css({stroke: "green"});
     let g = svg.group();
     for (let i=0;i<pts.length;i++) g.circle(0.04, pts[i]).css(attr);
-    g.text("Electron", [0.7, 0.85]);
+    g.ctext(["Electron", [0.87, 0.9]]);
     g.$.find("text, circle").css({fill: "green"});
-    return svg.css_map("text");
 },
 
 rutherford: (sel) => {

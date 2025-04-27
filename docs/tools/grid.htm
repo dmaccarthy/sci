@@ -30,7 +30,7 @@ _ = loadFeed.grid = (w, h, minors, opt) => {
     let svg = new SVG2($("#Grid").html(""), {scale: scale * minors, margin: margin, grid: 1 / minors,
         lrbt: [x0, x1, y0, y1],
     });
-    let g = svg.$.addClass("NoStyle").removeAttr("data-aspect").find("g.Grid");
+    let g = svg.css(".NoStyle", "text").$.removeAttr("data-aspect").find("g.Grid");
 
     if (opt.interval) {
         let dx = opt.interval;
@@ -53,7 +53,7 @@ _ = loadFeed.grid = (w, h, minors, opt) => {
         l = $(l).appendTo(g);
         if (!l.hasClass("Axis")) l.css(bold);
     }
-    return svg.css_map("grid", "text");
+    return svg;
 }
 
 </script>

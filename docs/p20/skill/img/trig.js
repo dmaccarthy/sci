@@ -1,38 +1,26 @@
 SVG2.cache("p20/skill/img/trig.js", {
 
 pretest: (sel) => {
-    let svg = new SVG2(sel, {scale: 37, lrbt: [-1, 15, -1, 5], grid: 1});
-    svg.$.find("g.Grid line.Axis").removeClass("Axis");
+    let svg = new SVG2(sel, {scale: 37, lrbt: [-1, 15, -1, 5], grid: 1}).css(".NoStyle", "text", "nofill");
+    svg.$.find("g.Grid line.Axis").css({stroke: "lightgrey", "stroke-width": "0.5px"});
 
     // PQR
     let r = vec2d(7, 35);
     let q = new RArray(r[0], 0);
     let l = 0.38;
-    let text = svg.group().addClass("Text");
-    let blue = svg.group().css({fill: "none", stroke: "#0065fe", "stroke-width": "2px"});
-    let g = blue.group();
-    g.poly([[0, 0], q, r], 1);
-    g.poly([q.plus([0, l]), q.plus([-l, l]), q.plus([-l, 0])]).css({"stroke-width": "1px"});
-    svg.delay(text.group(), {recenter: [2.5, 2.5]}).text("7.00");
-    svg.delay(text.group(), {recenter: [1.5, 0.3]}).text("35.0°");
-    g = text.group().css({fill: "#0065fe"});
-    svg.delay(g.group(), {recenter: [-0.5, 0]}).text("P");
-    svg.delay(g.group(), {recenter: [6.1, 0]}).text("Q");
-    svg.delay(g.group(), {recenter: [6.1, 4]}).text("R");
+    let blue = svg.group().css("blue2");
+    blue.poly([[0, 0], q, r], 1);
+    blue.poly([q.plus([0, l]), q.plus([-l, l]), q.plus([-l, 0])]);
+    svg.group().css("blue", {stroke: "none"}).ctext(["P", [-0.5, 0]], ["Q", [6.1, 0]], ["R", [6.1, 4]]);
+    svg.group().css({fill: "black"}).ctext(["7.00", [2.5, 2.5]], ["35.0°", [1.5, 0.3]]);
 
     // ABC
-    text = svg.group().addClass("Text").config({shift: [9, 4]});
-    g = blue.group().config({shift: [9, 4]});
-    g.poly([[0, 0], [5, 0], [0, -4]], 1);
-    g.poly([[0, -l], [l, -l], [l, 0]]).css({"stroke-width": "1px"});
-    svg.delay(text.group(), {recenter: [2.5, 0.3]}).text("5.00");
-    svg.delay(text.group(), {recenter: [-0.7, -2]}).text("4.00");
-    g = text.group().css({fill: "#0065fe"});
-    svg.delay(g.group(), {recenter: [-0.5, -4]}).text("A");
-    svg.delay(g.group(), {recenter: [5.6, 0]}).text("B");
-    svg.delay(g.group(), {recenter: [-0.5, 0]}).text("C");
-
-    svg.addClass("NoStyle").css_map("grid", "text").finalize();
+    let g = svg.group().config({shift: [9, 4]});
+    blue = g.group().css("blue2");
+    blue.poly([[0, 0], [5, 0], [0, -4]], 1);
+    blue.poly([[0, -l], [l, -l], [l, 0]]);
+    g.group().css("blue", {stroke: "none"}).ctext(["A", [-0.5, -4]], ["B", [5.6, 0]], ["C", [-0.5, 0]]);
+    g.group().css({fill: "black"}).ctext(["4.00", [-0.7, -2]], ["5.00", [2.5, 0.3]]);
 },
 
 similar: (sel) => {
@@ -80,55 +68,6 @@ ramp: (sel) => {
     svg.text("θ", [0.46, 0.03]).css({"font-size": "14px"});
     svg.final();
 },
-
-/*
-abc: (sel) => {
-    $(sel).attr({width: 320, height: 320, "data-aspect": "1"});
-    let svg = new SVG_Animation(sel, -7, 2, -8, 1, 1);
-    svg.grid([-7, 2, 1], [-8, 1, 1]);
-    svg.$.find("line.Axis").removeClass("Axis");
-    let p = -5 * tan(57);
-    let x = 0.4;
-    let g = svg.group().css({fill: "none", stroke: "#0065FE"});
-    svg.poly([[0, 0], [-5, 0], [0, p]], 1, g).css({"stroke-width": "2px"});
-    svg.poly([[-x, 0], [-x, -x], [0, -x]], 0, g);
-    g = svg.group().css({stroke: "none", fill: "#0065FE"});
-    svg.text("A", [0.5, p], g);
-    svg.text("B", [-5.5, 0], g);
-    svg.text("C", [0.5, 0], g);
-    let ital = {"font-style": "italic"};
-    svg.text("<tspan>a</tspan> = 5.00", [-2.5, 0.4]);
-    svg.text("b", [0.5, p/2]).css(ital);
-    svg.text("c", [-3, -4]).css(ital);
-    svg.text("57.0°", [-4, -0.4]);
-    svg.$.find("tspan").css(ital);
-    svg.$.find("text").css({"font-size": "18px"});
-    svg.final();
-},
-
-pqr: (sel) => {
-    $(sel).attr({width: 320, height: 320, "data-aspect": "1"});
-    let svg = new SVG_Animation(sel, -7, 4, -1, 10, 1);
-    svg.grid([-7, 4, 1], [-1, 10, 1]);
-    svg.$.find("line.Axis").removeClass("Axis");
-    let q = root(84);
-    let x = 0.5;
-    let g = svg.group().css({fill: "none", stroke: "#0065FE"});
-    svg.poly([[0, 0], [-4, 0], [0, q]], 1, g).css({"stroke-width": "2px"});
-    svg.poly([[-x, 0], [-x, x], [0, x]], 0, g);
-    g = svg.group().css({stroke: "none", fill: "#0065FE"});
-    svg.text("P", [0.5, q], g);
-    svg.text("Q", [-4.5, 0], g);
-    svg.text("R", [0.5, 0], g);
-    let ital = {"font-style": "italic"};
-    svg.text("<tspan>p</tspan> = 4.00", [-2, -0.6]);
-    svg.text("<tspan>r</tspan> = 10.0", [-3.5, q/2]);
-    svg.text("q", [0.5, q/2]).css(ital);
-    svg.$.find("tspan").css(ital);
-    svg.$.find("text").css({"font-size": "18px"});
-    svg.final();
-},
-*/
 
 ball8: (sel) => {
     $(sel).attr({width: 402, height: 302, "data-aspect": "402/302"});

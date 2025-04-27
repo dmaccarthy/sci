@@ -21,12 +21,11 @@ london: (sel) => {
     for (let i=1;i<12;i++) $(g[i]).addClass(i == 1 ? "Toggle6" : "Toggle7");
 
     // Right-side axis
-    $(svg.$.find("g.Grid line")[12]).addClass("Axis");
+    $(svg.$.find("g.Grid line")[12]).addClass("Axis").css({stroke: "black", "stroke-width": "1px"});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$.find("g.Grid"));
-    let T = svg.group().addClass("Text Toggle4").config({theta: 90});
-    svg.delay(T, {recenter: [13.7, 45]}).text("Temperature / °C");
     g = svg.tick_label((x, y) => (y/5).toFixed(0), 12, [...range(0, 91, 10)], "6", 12.3).$.find("g.LabelY")[1].graphic;
-    svg.delay(g.addClass("Toggle4").config({shift: [0, "-5"]}), {css: {"text-anchor": "start"}});
+    g.config({shift: [0, "-5"]}).css(".Toggle4", {"text-anchor": "start"});
+    svg.ctext(["Temperature / °C", null, {css: ".Toggle4", wrap: {theta: 90, shift: [13.4, 45]}}]);
 
     // Draw precipitation bars and month labels
     let months = "JFMAMJJASOND";
@@ -39,8 +38,7 @@ london: (sel) => {
         if (i) p.addClass(i == 1 ? "Toggle2" : "Toggle3");
     }
 
-    // Finish styling; layer temperature data over precipitation bars
-    svg.css_map("grid", "text").finalize();
+    // Layer temperature data over precipitation bars
     g = svg.$.find("g.Series").appendTo(svg.$);
     g.find("g.Locus").css({stroke: "red"});
     g.find("g.Plot").css({fill: "red"});

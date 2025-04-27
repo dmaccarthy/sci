@@ -5,7 +5,7 @@ wave: (sel, t, y, wave) => {
     let [ymax, dy, dec_y] = y ? y : [4, 1, 0];
     let [ux, uy, v] = wave;
     let svg = new SVG2(sel, {size: [512, 360], lrbt: [-dt, 9*dt, -5*dy, 5*dy], margin: [36, 16, 12, 12]});
-    svg.graph({grid: [dt, dy], css: true,
+    svg.graph({grid: [dt, dy],
         x: {tick: [dt, 9.1*dt, dt], dec: dec_t, title: [`Position / ${ux}`, [7.5*dt, "8"]], shift: [0, "-22"]},
         y: {tick: [-5*dy, 5.1*dy, dy], dec: dec_y, title: [`Displacement / ${uy}`, "-60"], shift: ["-10", "-4"]},
         data: [{locus: [(x, t, v) => ymax * sin(360 / T * (x - v * t)), null, v]}]
@@ -138,7 +138,7 @@ tr: (sel) => {
 
 Q6: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 6, -5, 5], margin: [60, 12, 10, 12]});
-    svg.graph({grid: [0.2, 0.5], css: true,
+    svg.graph({grid: [0.2, 0.5],
         x: {tick: [0, 6.1, 1], title: ["Position / m", [5.2, "8"]], shift: [0, "-22"]},
         y: {tick: [-5, 5.1, 1], title: ["Displacement / cm", "-40"], shift: ["-10", "-4"]},
         data: [
@@ -149,9 +149,7 @@ Q6: (sel) => {
     svg.$.find("g.LabelX text.Zero").remove();
 
     let g = svg.group().css({"font-family": SVG2.sans, "font-size": "18px", fill: "#0065FE", "font-weight": "bold"});
-    svg.delay(g.group(), {recenter: [0.4, 3.2]}).text("A");
-    svg.delay(g.group(), {recenter: [2.8, 1.5]}).text("B");
-    svg.delay(g.group(), {recenter: [4.4, -0.5]}).text("C");
+    g.ctext(["A", [0.4, 3.2]], ["B", [2.8, 1.5]], ["C", [4.4, -0.5]]);
 
     let loci = svg.series;
 
@@ -170,7 +168,6 @@ Q6: (sel) => {
         else svg.toggle();
     });
 
-    svg.css_map().finalize();
     loci[0].$.find("polyline").css({stroke: "black", "stroke-width": "1px"});
     loci[1].$.find("polyline").css({"stroke-width": "3px"});
 },

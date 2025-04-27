@@ -45,20 +45,18 @@ vec1: (sel) => {
     let a = 25, Fg = 60, Fn = Fg * cos(a), Ff = Fg * sin(a) / 2;
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 90-a), vec2d(Ff, 180-a)], {lrbt: [-16, 32, -64, 8],
         scale: 6, margin: 8, grid: 4, label: [8, 0, "-4", "-12"]});
-    svg.text("N", [28, -60]);
     svg.$.find(".Component").remove();
+    svg.ctext(["N", [28, -60]]);
 
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["14", "-8"];
-    let g = svg.group();
-    g.symbol(["F", BD], arr, ["g", SM_IT, sub]).config({shift: [-8, -34]});
-    g.symbol(["F", BD], arr, ["n", SM_IT, sub]).config({shift: [18, -38]});
-    g.symbol(["F", BD], arr, ["f", SM_IT, sub]).config({shift: [22, -6]});
-    let F = g.symbol(["F", BD], arr, ["net", SM_IT, ["16", "-8"]]).config({shift: [5, 3]});
-    g.$.find("g.Symbol").addClass("Large").find("text").css({fill: "red"});
-    F.$.find("text").css({fill: "#0065fe"});
-    svg.css_map();
+
+    let g = svg.group().css("red");
+    g.sym([-8, -29], 28, ["F", BD], arr, ["g", SM_IT, sub]);
+    g.sym([16, -38], 28, ["F", BD], arr, ["n", SM_IT, sub]);
+    g.sym([21, -4], 28, ["F", BD], arr, ["f", SM_IT, sub]);
+    g.sym([6, 4], 28, ["F", BD], arr, ["net", SM_IT, ["16", "-8"]]).css("blue");
 },
 
 Q1: (sel) => {

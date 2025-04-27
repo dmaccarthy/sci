@@ -5,8 +5,8 @@ ebar: (sel) => {
     let x = [...range(10, 81, 10)];
     let y = [62.6, 51.2, 43.8, 37.4, 33, 23.6, 18.2, 6.8]; // [...fn_eval((x) => randint(66, 70) - 0.74 * x, x)]
     let f = linRegXY(x, y).fn;
-    svg.graph({grid: [5, 5], css: true,
-        x: {tick: [0, 91, 10], title: ["Mass / g", [40, "-44"]], shift: [0, "-20"]},
+    svg.graph({grid: [5, 5],
+        x: {tick: [0, 91, 10], title: ["Mass / g", [45, "-44"]], shift: [0, "-20"]},
         y: {tick: [0, 71, 10], title: ["Final Temperature / °C", "-44"], shift: ["-10", "-5"]},
         data: [
             {connect: [[0, f(0)], [90, f(90)]]},
@@ -29,9 +29,6 @@ ebar: (sel) => {
         bars.errorBarX(xi - dx, xi + dx, yi, "8");
         bars.errorBarY(xi, yi - dy, yi + dy, "8");
     }
-
-    svg.$.addClass("NoStyle");
-    svg.css_map("grid", "text", "plot");
 
     let t = clickCycle.toggle;
     clickCycle(svg.element, -1,

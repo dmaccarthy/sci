@@ -10,81 +10,73 @@ bar: (sel) => {
 },
 
 flow1: (sel, label) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-1, 5]});
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-1, 5]}).css(".NoStyle", "text");
     svg.circle(1.7, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    let css = {fill: "#0065fe", "font-size": "28px"};
-    svg.delay(svg.symbol(["E", 2], ["g", 6, ["16", "-6"]]), {recenter: [0, -0.07], css: css});
-    svg.delay(svg.symbol(["E", 2], ["k", 6, ["16", "-6"]]), {recenter: [2, -0.07], css: css});
-    svg.group("Text", {recenter: [4.3, 0], css: {fill: "red", "font-size": "24px"}}).text("Waste");
+
+    let g = svg.group().css("blue");
+    g.sym([0, 0], 28, ["E", 2], ["g", 6, ["16", "-6"]]);
+    g.sym([2, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]);
+    svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [4.3, 0]]);
+
     let dx = 0.4;
-    let a1 = svg.delay(svg.arrow({tail: [dx, 0], tip: [2-dx, 0]}, {tail: "6"}), {css: {fill: "#0065fe"}});
-    let a2 = svg.arrow({tail: [2+dx, 0], tip: [4-dx, 0]}, {tail: "6"});
+    g = svg.group().css("arrow");
+    let a1 = g.arrow({tail: [dx, 0], tip: [2-dx, 0]}, {tail: "6"}).css("blue");
+    let a2 = g.arrow({tail: [2+dx, 0], tip: [4-dx, 0]}, {tail: "6"});
     if (label) {
-        a1.label("9.81 J", ["-12", "-24"]);
-        a2.label("3.56 J", ["4", "-32"]);
+        let text = {stroke: "none"}
+        a1.label("9.81 J", ["-12", "-24"]).css(text);
+        a2.label("3.56 J", ["4", "-32"]).css(text);
     }
-    svg.addClass("NoStyle").css_map().finalize();
-    svg.$.find("text.Small").css({"font-size": "18px"});
 },
 
 flow2: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]});
+    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]}).css(".NoStyle", "text");
     svg.circle(0.8, [2, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    svg.delay(svg.symbol(["E", 2], ["k", 6, ["16", "-6"]]), {recenter: [2, -0.07], css: {fill: "#0065fe", "font-size": "28px"}});
-    let css = {fill: "red", "font-size": "24px"};
-    svg.group("Text", {recenter: [0, -1.8], css: css}).text("Waste");
-    svg.group("Text", {recenter: [0, 0], css: css}).text("Food");
-    svg.arrow({tail: [0.5, 0], tip: [1.7, 0]}, {tail: "6"}).label("59.6 J", ["-20", "-24"]);
-    svg.arrow({tail: [0, -0.3], tip: [0, -1.5]}, {tail: "6"});
-    svg.addClass("NoStyle").css_map().finalize();
-    svg.$.find("text.Small").css({"font-size": "18px"});
+
+    let g = svg.group().css("blue");
+    g.sym([2, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]);
+    svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [0, -1.8]], ["Food"]);
+
+    g = svg.group().css("arrow");
+    let a = g.arrow({tail: [0.5, 0], tip: [1.7, 0]}, {tail: "6"});
+    a.label("59.6 J", ["-20", "-24"]).css({stroke: "none"});
+    g.arrow({tail: [0, -0.3], tip: [0, -1.5]}, {tail: "6"});
 },
 
 flow3: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]});
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle", "text");
     svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
-    let css = {fill: "#0065fe", "font-size": "28px"};
-    svg.delay(svg.symbol(["E", 2], ["k", 6, ["16", "-6"]]), {recenter: [0.2, -0.07], css: css});
-    svg.delay(svg.symbol(["E", 2], ["g", 6, ["16", "-6"]]), {recenter: [-1.8, 1], css: css});
-    svg.delay(svg.symbol(["E", 2], ["elas", 6, ["24", "-6"]]), {recenter: [-1.8, -1], css: css});
+    let g = svg.group().css("blue");
+    g.sym([0.15, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]);
+    g.sym([-1.8, 1], 28, ["E", 2], ["g", 6, ["16", "-6"]]);
+    g.sym([-1.8, -1], 28, ["E", 2], ["elas", 6, ["24", "-6"]]);
+    svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [2.5, 0]]);
 
-    css = {fill: "red", "font-size": "24px"};
-    svg.group("Text", {recenter: [2.5, 0], css: css}).text("Waste");
-
-    let g = svg.group();
-    g.arrow({tail: [0.6, 0], tip: [1.8, 0]}, {tail: "6"}).label("3.00 J", ["6", "-32"]);
-
-    let shift = ["-6", "-24"];
-    css = {fill: "#0065fe"};
-    g = svg.group().config({theta: -30, shift: [-0.8, 0.55]});
-    svg.delay(g.arrow(1.4, {tail: "6"}), {css: css}).label("0.26 J", shift);
-    g = svg.group().config({theta: 30, shift: [-0.8, -0.55]});
-    svg.delay(g.arrow(1.4, {tail: "6"}), {css: css}).label("8.00 J", shift);
-
-    svg.addClass("NoStyle").css_map().finalize();
-    svg.$.find("text.Small").css({"font-size": "18px"});
+    let a = svg.group().css("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
+    a.label("3.00 J", ["6", "-30"]).css({stroke: "none"});
+    g = svg.group().css("arrow", "blue");
+    a = g.group().config({theta: -30, shift: [-0.8, 0.55]}).arrow(1.4, {tail: "6"});
+    a.label("0.26 J", ["-8", "-24"]).css({stroke: "none"});
+    a = g.group().config({theta: 30, shift: [-0.8, -0.55]}).arrow(1.4, {tail: "6"});
+    a.label("8.00 J", ["-8", "-24"]).css({stroke: "none"});
 },
 
 flow4: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]});
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle", "text");
     svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
-    let css = {fill: "#0065fe", "font-size": "28px"};
-    svg.delay(svg.symbol(["E", 2], ["k", 6, ["16", "-6"]]), {recenter: [0.2, -0.07], css: css});
-    svg.delay(svg.symbol(["E", 2], ["g", 6, ["16", "-6"]]), {recenter: [-2, -0.07], css: css});
+    let g = svg.group().css("blue");
+    g.sym([0.15, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]);
+    g.sym([-2, 0], 28, ["E", 2], ["g", 6, ["16", "-6"]]);
+    svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [2.5, 0]]);
 
-    css = {fill: "red", "font-size": "24px"};
-    svg.group("Text", {recenter: [2.5, 0], css: css}).text("Waste");
-    let g = svg.group();
-    g.arrow({tail: [0.6, 0], tip: [1.8, 0]}, {tail: "6"}).label("1.68 J", ["6", "-32"]);
+    let a = svg.group().css("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
+    a.label("1.68 J", ["6", "-30"]).css({stroke: "none"});
 
-    css = {fill: "#0065fe"};
-    g = svg.group().config({shift: [-1, 0]});
-    svg.delay(g.arrow(-1.4, {tail: "6"}), {css: css}).label("6.13 J", ["12", "-24"]);
-
-    svg.addClass("NoStyle").css_map().finalize();
-    svg.$.find("text.Small").css({"font-size": "18px"});
+    g = svg.group().css("arrow", "blue");
+    a = g.group().config({theta: 0, shift: [-1, 0]}).arrow(-1.4, {tail: "6"});
+    a.label("6.13 J", ["8", "-30"]).css({stroke: "none"});
 },
 
 Q1: (sel) => {

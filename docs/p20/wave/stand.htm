@@ -68,6 +68,21 @@
 <ul><li>This equation tells us that the frequency of the <span class="TeX">n</span>’th harmonic is <span class="TeX">n</span> times the fundamental frequency.</li></ul>
 </section>
 
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+<p data-cue="none" class="Blue">A guitar has string lengths of 0.800 m. Calculate the speed of the waves on the string that produces a fundamental frequency of 500 Hz.</p>
+<p class="TeX">f_n = \frac{nv}{2L}</p>
+<p class="TeX">2Lf_n = nv</p>
+<p class="TeX">v = \frac{2Lf_n}{n} = \rm \frac{2\cdot 0.800\ m \cdot 500\ Hz}{1} = 800\ m/s</p>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+<p data-cue="none" class="Blue">A second (thicker) string on the same guitar produces waves with a speed of 600 m/s. Calculate the first three harmonics that this string would produce.</p>
+<p class="TeX">f_n = \frac{nv}{2L}</p>
+<p class="TeX">f_1 = {\rm \frac{1\cdot 600\ m/s}{2\cdot 0.800\ m} = 375\ Hz}</p>
+<p class="TeX">f_2 = {\rm \frac{2\cdot 600\ m/s}{2\cdot 0.800\ m} = 750\ Hz}</p>
+<p class="TeX">f_3 = {\rm \frac{3\cdot 600\ m/s}{2\cdot 0.800\ m} = 1125\ Hz}</p>
+</section>
+
 <section class="Slide"><h3>Air Columns</h3>
 <p>Sound waves inside a simple <em class="Defn">air column</em> (open at both ends) form standing waves in the same way that waves on a string do.</p>
 <ul>
@@ -90,6 +105,16 @@
 </ul>
 </section>
 
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+<p data-cue="none" class="Blue">How long would a closed (at one end) air column need to be to produce standing waves at 500 Hz as its third harmonic? What would the lower harmonic(s?) be?</p>
+<p class="TeX">f_n = \frac{nv}{4L}</p>
+<p class="TeX">Lf_n = \frac{nv}{4}</p>
+<p class="TeX">L = \frac{nv}{4f_n} = {\rm \frac{3\cdot 343\ m/s}{4\cdot 500\ Hz} = 0.515\ m}</p>
+<p>The fundamental (first harmonic) frequency would be one-third of the third harmonic:</p>
+<p data-cue="prev" class="TeX">f_1 = \frac{f_3}{3} = \rm \frac{500\ Hz}{3} = 167\ Hz</p>
+<p>There is no second harmonic for a closed air column! Only odd harmonics can be produced.</p>
+</section>
+
 <section class="Slide"><h3>Resonance</h3>
 <p>Resonance is the phenomenon whereby disturbances of initially small amplitude grow to very large amplitudes as a result of constructive interference.</p>
 <ul>
@@ -99,31 +124,7 @@
     <li>These behaviours are called <em class="Defn">acoustic resonance</em>.</li>
     <li>Harmonic frequencies are also called resonant frequencies.</li>
 </ul>
-</section>
-
-<section class="Slide"><h3 class="Blue">Example 1</h3>
-<p data-cue="none" class="Blue">A guitar has string lengths of 0.800 m. Calculate the speed of the waves on the string that produces a fundamental frequency of 500 Hz.</p>
-<p class="TeX">f_n = \frac{nv}{2L}</p>
-<p class="TeX">2Lf_n = nv</p>
-<p class="TeX">v = \frac{2Lf_n}{n} = \rm \frac{2\cdot 0.800\ m \cdot 500\ Hz}{1} = 800\ m/s</p>
-</section>
-
-<section class="Slide"><h3 class="Blue">Example 2</h3>
-<p data-cue="none" class="Blue">A second (thicker) string on the same guitar produces waves with a speed of 600 m/s. Calculate the first three harmonics that this string would produce.</p>
-<p class="TeX">f_n = \frac{nv}{2L}</p>
-<p class="TeX">f_1 = {\rm \frac{1\cdot 600\ m/s}{2\cdot 0.800\ m} = 375\ Hz}</p>
-<p class="TeX">f_2 = {\rm \frac{2\cdot 600\ m/s}{2\cdot 0.800\ m} = 750\ Hz}</p>
-<p class="TeX">f_3 = {\rm \frac{3\cdot 600\ m/s}{2\cdot 0.800\ m} = 1125\ Hz}</p>
-</section>
-
-<section class="Slide"><h3 class="Blue">Example 3</h3>
-<p data-cue="none" class="Blue">How long would a closed (at one end) air column need to be to produce standing waves at 500 Hz as its third harmonic? What would the lower harmonic(s?) be?</p>
-<p class="TeX">f_n = \frac{nv}{4L}</p>
-<p class="TeX">Lf_n = \frac{nv}{4}</p>
-<p class="TeX">L = \frac{nv}{4f_n} = {\rm \frac{3\cdot 343\ m/s}{4\cdot 500\ Hz} = 0.515\ m}</p>
-<p>The fundamental (first harmonic) frequency would be one-third of the third harmonic:</p>
-<p data-cue="prev" class="TeX">f_1 = \frac{f_3}{3} = \rm \frac{500\ Hz}{3} = 167\ Hz</p>
-<p>There is no second harmonic for a closed air column! Only odd harmonics can be produced.</p>
+<p class="Center" data-yt="fr3gWpxuJxE"></p>
 </section>
 
 <section class="Slide Present"><div class="Assign">
@@ -274,7 +275,11 @@ The air column must be closed (<span class="TeX">n</span> = 1, 3, 5...) so that 
     </p>
 </div></section>
 
-<script type="text/javascript">
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
+    $("iframe").addClass("s24");
+}
 
 loadFeed.data = {
     title: `${siteData.lesson}8.4 — Standing Waves`,

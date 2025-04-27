@@ -1,27 +1,26 @@
 SVG2.cache("p20/skill/img/sciNot.js", {
 
 au: (sel) => {
-    $(sel).attr({width: 180, height: 40, "data-aspect": "4.5"});
-    let svg = new SVG_Animation(sel, -1, 1, -0.2);
-    let x0 = -0.77, x1 = 0.65;
-    svg.text("149 600 000 000 m", [0, 0.03]).addClass("Serif").css({"font-size": "20px", "dominant-baseline": "auto"});
-    svg.poly([[x1, 0], [x1, -0.15], [x0, -0.15], [x0, 0]]);
-    svg.poly([[x0 + 0.1, 0], [x0, 0], [x0, -0.1]]).anchor(x0, 0).config({theta: -45});
+    let [x, y, dy] = [-0.79, -0.1, 0.17];
+    let svg = new SVG2(sel, {size: [180, 40], lrbt: [-1, 1, -0.3]});
+    SVG2.style(svg.delay(svg.group(), {recenter: [0, 0]}).text("149 600 000 000 m"), "text");
+    svg.poly([[0.65, y], [0.65, y - dy], [x, y - dy], [x, y]]);
+    let g = svg.group().config({theta: -135, shift: [x, y]});
+    g.poly([[0.1, 0], [0, 0], [0, 0.1]]);
+    svg.css(".NoStyle").finalize();
     svg.$.find("polyline").css({fill: "none", stroke: "red", "stroke-width": "2px"});
-    svg.final();
     svg.$.on("click", () => svg.$.find("polyline").toggle());
 },
 
 qe: (sel) => {
-    $(sel).attr({width: 324, height: 40, "data-aspect": "8.1"});
-    let svg = new SVG_Animation(sel, -1.8, 1.8, -0.2);
-    // svg.grid([-2, 2, 0.1], [-1, 1, 0.1]);
-    let x0 = 1, x1 = -1.48;
-    svg.text("0.000 000 000 000 000 000 160 2 C", [0, 0.03]).addClass("Serif").css({"font-size": "20px", "dominant-baseline": "auto"});
-    svg.poly([[x1, 0], [x1, -0.15], [x0, -0.15], [x0, 0]]);
-    svg.poly([[x0 + 0.1, 0], [x0, 0], [x0, -0.1]]).anchor(x0, 0).config({theta: -45});
+    let [x, y, dy] = [1.02, -0.1, 0.17];
+    let svg = new SVG2(sel, {size: [324, 40], grid: 0, lrbt: [-324/180, 324/180, -0.3]});
+    SVG2.style(svg.delay(svg.group(), {recenter: [0, 0]}).text("0.000 000 000 000 000 000 160 2 C"), "text");
+    svg.poly([[-1.48, y], [-1.48, y - dy], [x, y - dy], [x, y]]);
+    let g = svg.group().config({theta: -135, shift: [x, y]});
+    g.poly([[0.1, 0], [0, 0], [0, 0.1]]);
+    svg.css(".NoStyle").finalize();
     svg.$.find("polyline").css({fill: "none", stroke: "red", "stroke-width": "2px"});
-    svg.final();
     svg.$.on("click", () => svg.$.find("polyline").toggle());
 },
 
