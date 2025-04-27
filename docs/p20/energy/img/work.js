@@ -106,15 +106,18 @@ Q4: (sel) => {
 },
 
 F4: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 256], lrbt: [-3.6, 3.8]});
-    svg.circle(1.9).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    svg.delay(svg.symbol(["E", 2], ["k", 6, ["16", "-6"]]), {recenter: [0, "-6"], css: {fill: "#0065fe", "font-size": "28px"}});
-    let css = {fill: "red", "font-size": "24px"};
-    svg.group("Text", {recenter: [3.1, 0], css: css}).text("Waste");
-    svg.group("Text", {recenter: [-3, 0], css: css}).text("Fuel");
-    svg.delay(svg.arrow({tip: [-0.5, 0], tail: [-2.3, 0]}, {tail: "6"})).label("50.0 kJ", ["8", "-32"]);
-    svg.arrow({tail: [0.5, 0], tip: [2.3, 0]}, {tail: "6"}).label("15.0 kJ", ["-8", "-32"]);
-    svg.addClass("NoStyle").css_map().finalize().$.find("text.Small").css({"font-size": "18px"});
+    let svg = new SVG2(sel, {size: [420, 230], grid: 0, lrbt: [-5.75, 6.25]});
+    svg.energy_flow({radius: 3,
+        labels: [
+            ["$E_k", [0, 0]],
+            ["Fuel", [-4.5, 0], "red"],
+            ["Waste", [5, 0], "red"],
+        ],
+        arrows: [
+            [2.75, [-2.1, 0], 0, ["50.0 kJ", ["2", "-28"]], "red"],
+            [2.75, [2.1, 0], 0, ["15.0 kJ", ["-8", "-28"]], "red"],
+        ]
+    });
 },
 
 });

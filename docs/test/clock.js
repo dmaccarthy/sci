@@ -13,7 +13,7 @@ clock: (sel) => {
 	for (let i=1;i<13;i++) {
 		let g = text.group();
 		g.text(`${i}`);
-		g.recenter(vec2d(0.86, 30 * (3 - i)));
+		g.align(vec2d(0.86, 30 * (3 - i)));
 	}
 	let hr = svg.group();
 	let min = svg.group();

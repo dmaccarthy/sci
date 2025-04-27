@@ -12,6 +12,7 @@ planck: (sel, T0, ...args) => {
 
     // Create diagram and store scale temperature
     let svg = new SVG2(sel, {size: [512, 384], lrbt: [0, opt.wMax, 0, opt.iMax], grid: opt.grid, margin: [28, 16, 28, 1]}).config({T0: T0});
+    svg.css(".NoStyle", "text");
 
     // Locate peak and create scaled Planck Law function
     let w0 = wien(T0);
@@ -47,7 +48,7 @@ planck: (sel, T0, ...args) => {
     txt.text("Wavelength", [opt.wMax / 2, "-24"]);
     txt.group().config({theta: 90, shift: ["-12", opt.iMax / 2]}).text("Intensity");
 
-    return svg.addClass("NoStyle").css_map();
+    return svg;
 },
 
 r_j: (sel) => {

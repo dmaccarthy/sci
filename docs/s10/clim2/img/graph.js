@@ -25,7 +25,7 @@ london: (sel) => {
     svg.$.find("g.Grid line.Axis").appendTo(svg.$.find("g.Grid"));
     g = svg.tick_label((x, y) => (y/5).toFixed(0), 12, [...range(0, 91, 10)], "6", 12.3).$.find("g.LabelY")[1].graphic;
     g.config({shift: [0, "-5"]}).css(".Toggle4", {"text-anchor": "start"});
-    svg.ctext(["Temperature / °C", null, {css: ".Toggle4", wrap: {theta: 90, shift: [13.4, 45]}}]);
+    svg.group().css(".Toggle4").config({theta: 90, shift: [13.4, 45]}).ctext(["Temperature / °C"]);
 
     // Draw precipitation bars and month labels
     let months = "JFMAMJJASOND";

@@ -18,7 +18,7 @@ diag: (sel, lens, f, d) => {
     x1 -= dx; x2 += dx;
 
     // Create drawing
-    let svg = new SVG2(sel, {size: [702, 352], lrbt: [x1, x2, -y2, y2]});
+    let svg = new SVG2(sel, {size: [702, 352], lrbt: [x1, x2, -y2, y2]}).css(".NoStyle", "text");
     svg.element.cycleStatus = -1;
     svg.element.data = [f, d, di, m];
 
@@ -110,10 +110,9 @@ diag: (sel, lens, f, d) => {
         p.$.css({stroke: "silver", "stroke-width": "5px", fill: "none"});
     }
     p.$.prependTo(svg.$);
-    svg.addClass("NoStyle").css_map("text");
     y2 /= -10;
-    gf.recenter([f, y2]);
-    gc.recenter([lens ? -f : 2 * f, y2]);
+    gf.align([f, y2]);
+    gc.align([lens ? -f : 2 * f, y2]);
     return svg;
 },
 

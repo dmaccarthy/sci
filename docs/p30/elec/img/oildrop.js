@@ -2,6 +2,7 @@ SVG2.cache("p30/elec/img/oildrop.js", {
 
 distr: (sel) => {
     let svg = new SVG2(sel, {size: [512, 160], lrbt: [0, 20, 0, 2], grid: 2, margin: [8, 16, 60, 8]});
+    svg.css(".NoStyle", "text");
     svg.tick_label(0, [...range(0, 21, 2)], 0, "-6", "-20");
     $(svg.$.find("g.Grid line.Axis")[0]).removeClass("Axis");
 
@@ -10,8 +11,7 @@ distr: (sel) => {
     txt.text("Charge / 10");
     txt.text("–19", ["62", "12"]).addClass("Small");
     txt.text("C", ["84", 0]);
-    txt.recenter([10, "-44"]);
-    svg.css_map("grid", "text").addClass("NoStyle");
+    txt.align([10, "-44"]);
 
     let makeData = () => {
         let err = makeData.err;
@@ -26,7 +26,6 @@ distr: (sel) => {
         for (let i=0;i<50;i++) y.push(2 * Math.random());
         svg.$.find("g.Plot").remove();
         svg.group().addClass("Plot").plot({x:x, y:y}, "6");
-        svg.css_map("plot");
     }
 
     makeData.err = 5;
