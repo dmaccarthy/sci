@@ -199,10 +199,10 @@ create_child(tag, attr) {
     return c.attr(attr ? attr : {}).appendTo(this.element);
 }
 
-group(classes, delay) {
+group(classes) {
     let g = new SVG2g(this.svg, this.create_child("g"));
     if (classes) g.addClass(classes);
-    if (delay) this.svg.delay(g, delay);
+    // if (delay) this.svg.delay(g, delay);
     return g;
 }
 
@@ -1071,10 +1071,10 @@ adjustAngle(a, invert) {
     return atan2(sy * this.angleDir * sin(a), sx * cos(a));
 }
 
-group(classes, delay) {
+group(classes) {
     let g = new SVG2g(this);
     if (classes) g.addClass(classes);
-    if (delay) this.delay(g, delay);
+    // if (delay) this.delay(g, delay);
     return g;
 }
 

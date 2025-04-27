@@ -7,7 +7,7 @@ Get the <svg>/<g> element or its jQuery object:
     g.$ -> jQuery
 
 Create, configure, and style an animated group:
-    g = svg.group(classes, delay) -> SVG2g
+    g = svg.group(classes) -> SVG2g
     g.config({theta, omega, alpha, pivot, shift, vel, acc}) -> g
     g.addClass(string) -> g
     g.css(object(s) or string(s)) -> g
