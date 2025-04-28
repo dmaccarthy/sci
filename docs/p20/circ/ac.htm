@@ -1,6 +1,18 @@
 <section class="Post" data-icon="slides">
 <h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
+<style type="text/css">
+
+body:not(.Present) #delta_v {
+    width: 240.56px;
+}
+
+body.Present #delta_v {
+    width: 453.05px;
+}
+
+</style>
+
 <section class="Slide Center">
 <h1 id="Title">Centripetal Acceleration</h1>
 </section>
@@ -17,8 +29,11 @@
     <li>If there was no unbalanced force, the object would have to move in a straight line.</li>
 </ul>
 <div>
-    <p>The illustration below (left) shows the motion of an object from <span class="TeX">P_1</span> to <span class="TeX">P_2</span> along a circle centred at point C. The illustration on the right is the vector diagram showing the change in velocity (<span class="TeX">\Delta{\vec{\bf v}}</span>).</p>
-    <p class="Center"><img alt="Image" src="p20/circ/img/ac.png" class="s20"/></p>
+    <p>The first illustration below shows the motion of an object from <span class="TeX">P_1</span> to <span class="TeX">P_2</span> along a circle centred at point C. The second illustration is the vector diagram showing the change in velocity (<span class="TeX">\Delta{\vec{\bf v}}</span>).</p>
+    <p data-cue="prev" class="Center BtnGrid">
+        <svg class="s12" style="padding:0 1em" data-svg2="p20/circ/img/ac.js#orbit"></svg>
+        <svg id="delta_v" style="padding:0 1em" data-svg2="p20/circ/img/ac.js#delta_v"></svg>
+    </p>
 </div>
 <ul>
     <li>The blue and red triangles are <em>similar</em>; they are both isosceles triangles with the same angles.</li>
@@ -99,7 +114,7 @@
     </div>
     
     <li><ol type="a">
-        <li>There is a 3.20 g stone lodged in the tread of a bicycle tire. The tire has a 26-inch diameter (1 inch = 2.54 cm). What is the stone’s centripetal acceleration when the bike is being ridden at 27.0 km/h?</li>
+        <li>There is a 3.20-gram stone lodged in the tread of a bicycle tire. The tire has a 26-inch diameter (1 inch = 2.54 cm). What is the stone’s centripetal acceleration when the bike is being ridden at 27.0 km/h?</li>
         <div class="Answer">
             <p class="TeX">r = \rm 26\ in / 2 = 13\ in\cdot 0.0254\ m/in = 0.33\ m</p>
             <p class="TeX">a_c = \frac{v^2}{r} = \rm \frac{(7.50\ m/s)^2}{0.33\ m} = 1.7\times 10^2\ m/s^2</p>
@@ -131,9 +146,11 @@ a_c &= \frac{v^2}{r}
     </ol></li>
 
     <li><ol type="a">
-        <li>Identify the three types of force that act on a car as it turns a corner? Assuming the road is unbanked (horizontal), which of those forces balance?  Which force causes the centripetal acceleration?</li>
-        <p class="Answer">Gravity and normal balance; friction is unbalanced.</p>
-
+        <li>Identify the three types of force that act on a car as it turns a corner. Draw a free body diagram for a car making a left turn. Assume the road is unbanked (horizontal). Which of those forces balance? Which force causes the centripetal acceleration?</li>
+        <div class="Answer">
+            <p class="Center"><svg data-svg2="p20/circ/img/ac.js#car"></svg></p>
+            <p>Gravity and normal balance; friction is unbalanced.</p>
+        </div>
         <li>A car rounding a circular turn with <span class="TeX">r</span> = 250 m can have a maximum centripetal acceleration of 7.00 m/s<sup>2</sup>. What is the maximum speed that the car can have while rounding the turn?</li>
         <p class="TeX Answer">\begin{align}
 a_c &= \frac{v^2}{r}
@@ -236,7 +253,7 @@ a_c &= \frac{v^2}{r}
     <h2 class="Collapse">Handouts</h2><div class="Collapse">
     <p class="Var">handouts</p>
     <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="">Assignment</button>
+        <button data-icon="gdrv" data-gdrv="1BfH3rRITfgh4Z8hiZn0R7s44XgV6ZWMr">Assignment</button>
     </p>
 </div></section>
 

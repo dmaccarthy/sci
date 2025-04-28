@@ -1329,7 +1329,7 @@ static ebg(sel, Emax, step, data, options) {
         let [t, sub] = d[0].split("_");
         t = [[t, 2]];
         if (sub) t.push([sub, 6, [`${8 + 5 * sub.length}`, "-8"]]);
-        sym.sym([i + 0.5, "-2", [0.5, 0]], 0, ...t).css({fill: c});
+        sym.sym([i + 0.5, "-4", [0.5, 0]], 0, ...t).css({fill: c});
     }
     svg.config({data: data, options: options});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$);
@@ -1425,6 +1425,7 @@ SVG2._style = {
     symbol: {"font-family": SVG2.symbol, "font-size": "18px", "text-anchor": "middle"},
     arrow: {fill: "red", stroke: "black", "stroke-width": "0.5px"},
     f28: {"font-size": "28px"},
+    f24: {"font-size": "24px"},
     f18: {"font-size": "18px"},
     f15: {"font-size": "15px"},
     f14: {"font-size": "14px"},
@@ -1436,43 +1437,8 @@ SVG2._style = {
     blue: {fill: "#0065fe"},
     red2: {stroke: "red", "stroke-width": "2px"},
     green2: {stroke: "green", "stroke-width": "2px"},
+    blue1: {stroke: "#0065fe", "stroke-width": "1px"},
     blue2: {stroke: "#0065fe", "stroke-width": "2px"},
     black1: {stroke: "black", "stroke-width": "1px"},
     black2: {stroke: "black", "stroke-width": "2px"},
 };
-
-
-// SVG2.css = { /* Default styles */
-
-// grid: {
-//     "g.Grid": {stroke: "lightgrey", "stroke-width": "0.5px"},
-//     "g.Grid line.Axis, g.Ticks line": {stroke: "black", "stroke-width": "1px"},
-//     "g.Labels": {"font-family": SVG2.sans, "font-size": "15px", stroke: "none", fill: "black", "text-anchor": "middle"},
-//     "g.LabelY": {"text-anchor": "end"},
-// },
-
-// text: {
-//     ".Text, .Symbol": {"font-family": SVG2.sans, "font-size": "18px", stroke: "none", fill: "black", "text-anchor": "middle"},
-//     ".Large": {"font-size": "28px"},
-//     ".Symbol": {"font-family": SVG2.symbol},
-//     ".Mono": {"font-family": SVG2.mono},
-//     ".Sans": {"font-family": SVG2.sans},
-//     ".Serif": {"font-family": SVG2.serif},
-//     ".Ital": {"font-style": "italic"},
-//     ".Small": {"font-size": "14px"},
-//     "g.Large text.Small": {"font-size": "18px"},
-// },
-
-// plot: {
-//     "g.Plot": {fill: "#0065fe", stroke: "black", "stroke-width": "1px"},
-//     "g.Locus": {fill: "none", stroke: "#0065fe", "stroke-width": "2px"},
-// },
-
-// arrow: {
-//     "g.Arrow": {fill: "red", "stroke-width": "0.5px", stroke: "black"},
-//     "g.Arrow text": {"font-family": SVG2.sans, "font-size": "18px", stroke: "none", "text-anchor": "middle"},
-//     "g.Arrow.Resultant": {fill: "#0065fe"},
-//     "g.Arrow.Component": {"fill-opacity": 0.3},
-// }
-
-// };
