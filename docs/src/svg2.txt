@@ -11,6 +11,7 @@ Create, configure, and style an animated group:
     g.config({theta, omega, alpha, pivot, shift, vel, acc}) -> g
     g.addClass(string) -> g
     g.css(object(s) or string(s)) -> g
+    g.align(xy, x, y) -> g
 
 Create a <g> for scaling (cannot be animated, but can be nested in an animated <g>):
     s = g.scaled(s) -> SVGscaled

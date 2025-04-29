@@ -203,7 +203,6 @@ create_child(tag, attr) {
 group(classes) {
     let g = new SVG2g(this.svg, this.create_child("g"));
     if (classes) g.addClass(classes);
-    // if (delay) this.svg.delay(g, delay);
     return g;
 }
 
@@ -1081,7 +1080,6 @@ adjustAngle(a, invert) {
 group(classes) {
     let g = new SVG2g(this);
     if (classes) g.addClass(classes);
-    // if (delay) this.delay(g, delay);
     return g;
 }
 
