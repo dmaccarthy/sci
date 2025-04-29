@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2>
-<div class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Vector Arithmetic</h1>
@@ -116,7 +115,7 @@ loadFeed.notes = () => {
     </p>
 </div></section> -->
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice">
 <ol>
@@ -185,7 +184,58 @@ We can now calculate the paddling velocty in Cartesian form:
 <p>The direction of the paddling velocity is:</p>
 <p class="TeX">\theta = \mathrm{\tan^{-1}\left(\frac{+4.65}{-1.85}\right) + 180^\circ = 112^\circ}</p> (i.e. 22° upstream from straight across)</p>
     </div>
-    
+
+    <li>Three asteroids have identical masses (5.00 × 10<sup>13</sup> kg) and are arranged in the form of an equilateral triangle, separated from each other by 25.0 km.
+        <p class="Center"><svg class="s20" data-svg2="p20/grav/img/ugrav.js#tri"></svg></p>
+    <ol type="a">
+        <li>A spacecraft is located at point “A” which is the “centroid” of the triangle; it is the same separation from each asteroid.
+            Use trigonometry to calculate <span class="TeX">r_A</span>, the separation from “A” to each of the asteroids. (Remember that the angles of an equilateral triangle are all 60°.)</li>
+        <div class="Answer">
+            <p class="TeX">\cos(30.0^\circ) = {\rm\frac{Adj}{Hyp}} = \frac{\rm 12.5\ km}{r_A}</p>
+            <p class="TeX">r_A = \rm \frac{12.5\ km}{\cos(30.0^\circ)} = 14.4\ km</p>
+        </div>
+
+        <li>Calculate the gravitational field at point “A” due to each individual asteroid. Include directions as well as a magnitude. Recall the equation for the gravitational field near a spherical mass is:</li>
+        <p class="TeX">g = \frac{GM}{r^2}</p>
+    <div class="Answer">
+        <p class="TeX">g = \rm \frac{6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}\cdot 5.00\times 10^{13}\ kg}{(1.44\times 10^4\ m)^2}</p>
+        <p class="TeX">g = \rm 1.60\times 10^{-5}\ m/s^2</p>
+        <p>The magntiude of the field is the same for all three asteroids but the directions are 90.0°, 210.0°, and 330.0°. Click the illustration above to see the free body diagram.</p>
+</div>
+
+        <li>What is the net gravitational field at “A”? Explain. Include a vector diagram.</li>
+        <p class="Answer">The net field is zero because the three asteroids cancel out exactly:
+            <a target="Q10c" href="./?{%22scaleExp%22:-6,%22symbol%22:%22g%22,%22square%22:[1.5,0],%22corner%22:[-22.5,-7.5],%22vectors%22:[{%22mag%22:0.000016,%22dir%22:90},{%22mag%22:0.000016,%22dir%22:210},{%22mag%22:0.000016,%22dir%22:330}],%22unit%22:%22m/s^2%22,%22quadrant%22:2}#p20/vec2d/vec2d">Vector Diagram &amp; Calculations</a>
+        </p>
+
+        <li>Calculate the gravitational field at point “B” due to each of the three asteroids. Point “B” is 10.0 km from the nearest asteroid, along the segment connecting the asteroid to the centroid “A”, as illustrated.
+            You will have to use trigonometry to find the segments labelled <span class="TeX">y</span> and <span class="TeX">r_B</span> and the angle <span class="TeX">\theta</span> first.
+            The symbol <span class="TeX">y</span> refers to the segment from point “B” to the centre of the triangle’s base.
+        </li>
+        <div class="Answer">
+<p>Apply Pythagoras to the large right triangles (the left or right half of the equilateral triangle):</p>
+    <p class="TeX">y + \rm{10.0\ km} = \sqrt{25.0^2 - 12.5^2}\ \rm{km = 21.7\ km}</p>
+    <p class="TeX">y = \rm{21.7\ km - 10.0\ km = 11.7\ km}</p>
+<p>Now apply Pythagoras to the smaller right triangle with sides <span class="TeX">y</span>, <span class="TeX">r_B</span>, and 12.5 km:</p>
+    <p class="TeX">r = \rm{\sqrt{12.5^2 + 11.7^2} \ km = 17.1\ km}</p>
+<p>Use the <span class="TeX">\tan</span> ratio to find <span class="TeX">\theta</span>:</p>
+    <p class="TeX">\theta = \tan^{-1}\left(\rm{\frac{11.7\ km}{12.5\ km}}\right) = \rm{43.0^\circ}</p>
+<p>The field due to the “top” asteroid (which has a direction of 90.0°) is:</p>
+    <p class="TeX">g = \frac{GM}{r^2} = \rm{\frac{6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}\cdot 5.00\times 10^{13}\ kg}{(1.00\times 10^4\ m)^2} = 3.34\times 10^{-5}\ m/s^2}</p>
+<p>The fields due to the “bottom” asteroids (which have directions of 180° + 43.0° = 223.0° and –43.0°) are:</p>
+    <p class="TeX">g = \frac{GM}{r^2} = \rm{\frac{6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}\cdot 5.00\times 10^{13}\ kg}{(1.71\times 10^4\ m)^2} = 1.14\times 10^{-5}\ m/s^2}</p>
+<p>Click the illustration above to see the free body diagram</p>
+</div>
+
+        <li>Calculate the net gravitational field at point “B”. Include a vector diagram.</li>
+        <div class="Answer">
+            <p>Convert the <span class="TeX">\vec{\bf g}</span> vectors to Cartesian form and add:
+                <a target="Q10e" href="./?{%22scaleExp%22:-6,%22symbol%22:%22g%22,%22square%22:[3,0],%22corner%22:[-33,-12],%22vectors%22:[{%22mag%22:0.0000334,%22dir%22:90},{%22mag%22:0.0000114,%22dir%22:223},{%22mag%22:0.0000114,%22dir%22:-43}],%22unit%22:%22m/s^2%22,%22quadrant%22:2}#p20/vec2d/vec2d">Vector Diagram &amp; Calculations</a></p>
+            <p>The resultant vector (i.e. the net gravitational field) is <span class="TeX">\rm{1.79\times 10^{-5}\ m/s^2\ [90.0^\circ]}</span></p>
+        </div>
+
+    </ol></li>
+
     <li>A spacecraft moves between a planet and its moon as illustrated below. The observed acceleration of the spacecraft due to the combined gravity of the planet and moon has a direction of +270º. Mission Control calculates that the gravity due to the planet only is 0.462 m/s<sup>2</sup> [+230º]. The moon’s direction relative to the spacecraft is +300º, however the moon’s mass is unknown so Mission Control cannot calculate its gravitational field strength.<ol type="a">
         <li>Sketch and label a vector diagram (“tip-to-tail”) of the two gravitational fields and the resultant (net) gravitational field.</li>
         <div class="Answer"><a target="Q5" href="./?{%22symbol%22:%22g%22,%22square%22:[7.5,-2],%22corner%22:[-0.9,-1.2],%22vectors%22:[{%22mag%22:0.462,%22dir%22:230},{%22mag%22:0.5939,%22dir%22:300}],%22unit%22:%22m/s^2%22}#p20/vec2d/vec2d">Vector Diagram</a></div>
@@ -227,7 +277,7 @@ We can now calculate the paddling velocty in Cartesian form:
 </ol>
 </div></div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>Which form of 2D vector (polar or Cartesian) is more convenient when adding or subtracting vectors?</li>
@@ -254,7 +304,8 @@ We can now calculate the paddling velocty in Cartesian form:
 
 loadFeed.data = {
     title: `${siteData.lesson}2.4 — Vector Arithmetic`,
-    answerDate: "2024.3.7.16",
+    showDate: "2025.6",
+    answerDate: "2025.6",
     num: "2.4",
     up: "p20/home",
     prev: "p20/vec2d/polar",

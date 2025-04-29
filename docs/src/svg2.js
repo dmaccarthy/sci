@@ -200,9 +200,9 @@ create_child(tag, attr) {
     return c.attr(attr ? attr : {}).appendTo(this.element);
 }
 
-group(classes) {
+group(...css) {
     let g = new SVG2g(this.svg, this.create_child("g"));
-    if (classes) g.addClass(classes);
+    if (css) g.css(...css);
     return g;
 }
 
@@ -919,13 +919,25 @@ arc(c, a, choice) { // Draw a circular arc to the specified angle
 curveTo(xy, p1, p2) { // Bezier curve to the specified point using two reference points
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
-    let [x, y] = xy;        
+    let [x, y] = xy;
     this.x = x;
     this.y = y;
     [x, y] = svg.a2p(x, y);
     let [x1, y1] = svg.a2p(...p1);
     let [x2, y2] = svg.a2p(...p2);
     this.d += `C ${f(x1)} ${f(y1)}, ${f(x2)} ${f(y2)}, ${f(x)} ${f(y)} `;
+    return this;
+}
+
+quadTo(xy, p) { // Quadratic Bezier curve to the specified point
+    let svg = this.svg;
+    let f = (x) => x.toFixed(svg.decimals);
+    let [x, y] = xy;
+    this.x = x;
+    this.y = y;
+    [x, y] = svg.a2p(x, y);
+    let [x1, y1] = svg.a2p(...p);
+    this.d += `Q ${f(x1)} ${f(y1)}, ${f(x)} ${f(y)} `;
     return this;
 }
 
@@ -1077,9 +1089,9 @@ adjustAngle(a, invert) {
     return atan2(sy * this.angleDir * sin(a), sx * cos(a));
 }
 
-group(classes) {
+group(...css) {
     let g = new SVG2g(this);
-    if (classes) g.addClass(classes);
+    if (css) g.css(...css);
     return g;
 }
 
