@@ -54,8 +54,8 @@ loopy: (sel) => {
         g.stickman(0.3).css({"stroke-opacity": 0.6}).config({shift: [0, y]});
         red.arrow({tail: [0, y - 0.02], tip: [0, y - 0.4]}, {tail: "5"});
         red.arrow({tail: [0, y + 0.02], tip: [0, y + (y < 0 ? 0.6: 0.2)]}, {tail: "5"});
-        sym.sym([0.3, y - 0.19], 0, ["F", BD], arr, ["g", SM_IT, sub]);
-        sym.sym([0.3, y + (y < 0 ? 0.24 : 0.14)], 0, ["F", BD], arr, ["n", SM_IT, sub]);
+        sym.sym([0.25, y - 0.19], 0, ["F", BD], arr, ["g", SM_IT, sub]);
+        sym.sym([0.25, y + (y < 0 ? 0.24 : 0.14)], 0, ["F", BD], arr, ["n", SM_IT, sub]);
     }
 },
 
