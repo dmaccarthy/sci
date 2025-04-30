@@ -758,16 +758,30 @@ coord_from_parent(xy) {
 
 class SVG2arrow extends SVG2g {
 
-constructor(g, length, options, anchor) {
+constructor(g, info, options, anchor) {
     super(g);
     this.$.addClass("Arrow");
     this._poly = this.poly([], 1);
-    this.reshape(length, options, anchor);
+    this.reshape(info, options, anchor);
 }
 
-reshape(length, options, anchor) {
+reshape(info, options, anchor) {
+    let tail_and_tip = (info) => {
+        if (typeof(info) == "number") return [[-info / 2, 0], [info / 2, 0]];
+        else {
+            let tail = info.tail;
+            let tip = info.tip;
+            if (tail == null) tail = [0, 0];
+            if (tip == null) {
+                let angle = info.angle;
+                tip = vec2d(info.length, angle ? angle : 0).plus(tail);
+            }
+            return [tail, tip];
+        }
+    }
+
     let svg = this.svg;
-    let [tail, tip] = typeof(length) == "number" ? [[-length / 2, 0], [length / 2, 0]] : [length.tail, length.tip];
+    let [tail, tip] = tail_and_tip(info);
     tail = svg._cs(tail);
     tip = svg._cs(tip);
     let seg = this.seg = new Segment(...tail, ...tip);
@@ -955,11 +969,11 @@ update() {return this.$.attr({d: this.d.trim()})}
 
 class SVG2 extends SVG2g {
 
-constructor(jSelect, options) {
+constructor(selector, options) {
     super();
     this.svg = this;
-    this.element = $(jSelect)[0];
-    jSelect = this.$ = $(this.element).attr("xmlns", SVG2.nsURI);
+    this.element = $(selector).filter("svg")[0];
+    selector = this.$ = $(this.element).attr("xmlns", SVG2.nsURI);
     this.element.graphic = this;
     this.decimals = 2;
 
@@ -971,10 +985,10 @@ constructor(jSelect, options) {
     if (s && !(s instanceof Array)) s = [s, s];
     let [w, h] = options.size ? options.size :
         (s && lrbt.length > 3 ? [s[0] * (lrbt[1] - lrbt[0]) + margin[0] + margin[1] + 1, s[1] * (lrbt[3] - lrbt[2]) + margin[2] + margin[3] + 1] :
-            [jSelect.width(), jSelect.height()]);
+            [selector.width(), selector.height()]);
     w = Math.abs(Math.round(w));
     h = Math.abs(Math.round(h));
-    jSelect.attr({width: w, height: h, "data-aspect": w/h, viewBox: `0 0 ${w} ${h}`});
+    selector.attr({width: w, height: h, "data-aspect": w/h, viewBox: `0 0 ${w} ${h}`});
 
     /* Coordinate system */
     if (lrbt) {

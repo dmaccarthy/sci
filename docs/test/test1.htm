@@ -5,7 +5,15 @@
 <p class="Center"><svg id="S1"></svg></p>
 </section>
 
-<script type="text/javascript" data-init="resonance">
+<script type="text/javascript" data-init="test">
+
+loadFeed.test = () => {
+    let svg = new SVG2("#S1", {size: [480, 360], lrbt: [-10, 10], grid: 1, margin: 2}).css(".NoStyle");
+    let g = svg.group();
+    let a = g.arrow({tail: [0, 0], length: 5, angle: 30}, {tail: "6"}, "tail").css("arrow");
+    console.log(g);
+    console.log(g.parent.parent);
+}
 
 loadFeed.data = {
     title: `Test`,

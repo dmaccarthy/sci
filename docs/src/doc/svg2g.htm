@@ -1,0 +1,34 @@
+<section class="Post NoPrintIcon" data-icon="slides">   
+<h2 class="Collapse">class <code>SVG2g</code></h2>
+<div class="Collapse Expand">
+<p>Instances of <code>SVG2g</code> represent <code>&lt;g&gt;</code> tags (groups) within the drawing. Groups can be used for applying CSS styles and for transforming (rotating, translating, etc.) and animating content.</p>
+<p>It is not necessary to call the constructor directly. Instead, use the <code>group</code> method of any <code>SVG2g</code> instance to create a child group.</p>
+<p>The data attributes of each instance are:</p>
+<ul>
+    <li><code>$</code>: A jQuery object representing the element node associated with the <code>SVG2g</code> instance.</li>
+    <li><code>acc</code>: A 2-array* specifying the rates at which to change the <i>x</i>- and <i>y</i>-<code>vel</code> when the animation is playing.</li>
+    <li><code>alpha</code>: The rate at which to change <code>omega</code> when the animation is playing.</li>
+    <li><code>element</code>: .</li>
+    <li><code>omega</code>: The rate at which to change <code>theta</code> when the animation is playing.</li>
+    <li><code>parent</code>: An <code>SVG2g</code> instance associated with the <code>&lt;g&gt;</code> element’s parent node, or <code>null</code> if such an instance does not exist.</li>
+    <li><code>pivot</code>: An 2-array* specifying the center of rotation.</li>
+    <li><code>shift</code>: An 2-array* specifying how much to translate the group.</li>
+    <li><code>theta</code>: The angle in degrees by which to rotate the group around its pivot point.</li>
+    <li><code>vel</code>: A 2-array* specifying the rates at which to change the <i>x</i>- and <i>y</i>-<code>shift</code> when the animation is playing.</li>
+</ul>
+</div>
+</section>
+
+<section class="Post NoPrintIcon" data-icon="slides">   
+<h2 class="Collapse Code">.group(...css)</h2>
+<div class="Collapse">
+</div></section>
+
+<script type="text/javascript" data-ini="">
+
+loadFeed.data = {
+    title: `SVG2g Documentation`,
+    up: "src/doc/svg2",
+}
+
+</script>
