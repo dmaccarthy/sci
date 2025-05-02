@@ -28,9 +28,9 @@ find(sel, n) {
     return e ? e.graphic : null;
 }
 
-findAll(sel) {
+findAll(selector) {
     let g = [];
-    for (let e of this.$.find(sel))
+    for (let e of this.$.find(selector))
         if (e.graphic instanceof SVG2g) g.push(e.graphic);
     return g;
 }
@@ -221,9 +221,9 @@ _cs(xy) {
     return new RArray(x, y);
 }
 
-circle(r, center, sel) {
+circle(r, center, selector) {
 /* Modify or append a <circle> to the <g> element */
-    let e = sel ? $(sel) : this.create_child("circle");
+    let e = selector ? $(selector) : this.create_child("circle");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = svg.a2p(...this._cs(center));
@@ -232,9 +232,9 @@ circle(r, center, sel) {
     return e.attr({r: f(r), cx: f(x), cy: f(y)});
 }
 
-ellipse(r, center, sel) {
+ellipse(r, center, selector) {
 /* Modify or append an <ellipse> to the <g> element */
-    let e = sel ? $(sel) : this.create_child("ellipse");
+    let e = selector ? $(selector) : this.create_child("ellipse");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let rx = this._px(r[0], 0);
@@ -243,9 +243,9 @@ ellipse(r, center, sel) {
     return e.attr({rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
 }
 
-rect(size, center, sel) {
+rect(size, center, selector) {
 /* Modify or append a <rect> to the <g> element */
-    let e = sel ? $(sel) : this.create_child("rect");
+    let e = selector ? $(selector) : this.create_child("rect");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let w = this._px(size[0], 0);
@@ -254,9 +254,9 @@ rect(size, center, sel) {
     return e.attr({width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
 
-image(href, size, center, sel) {
+image(href, size, center, selector) {
 /* Modify or append an <image> to the <g> element */
-    let e = sel ? $(sel) : this.create_child("image");
+    let e = selector ? $(selector) : this.create_child("image");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let w = this._px(size[0], 0);
@@ -265,15 +265,14 @@ image(href, size, center, sel) {
     return e.attr({href: href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
 
-plot(pts, size, href, theta) {
+plot(points, size, href, theta) {
 /* Plot an array of points as circles, rectangles, or images */
-    let g = this.group().css("black1", "blue");
+    let g = this.group().css(".Plot", "black1", "blue");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     if (theta) theta *= svg.angleDir;
-    g.$.addClass("Plot");
-    if (!(pts instanceof Array)) pts = zip(pts.x, pts.y);
-    for (let pt of pts) {
+    if (!(points instanceof Array)) points = zip(points.x, points.y);
+    for (let pt of points) {
         let e;
         if (href) e = g.image(href, size, pt);
         else if (size instanceof Array) e = g.rect(size, pt);
@@ -335,9 +334,9 @@ tick_label(fn, x, y, tick, offset) {
     return this;
 }
 
-poly(pts, closed) {
+poly(points, closed) {
 /* Modify or append a <polygon> or <polyline> to the <g> element */
-    let attr = {points: this.svg.pts_str(pts)};
+    let attr = {points: this.svg.pts_str(points)};
     return $(closed)[0] instanceof SVGElement ? $(closed).attr(attr) :
         this.create_child(closed ? "polygon" : "polyline", attr);
 }
@@ -345,8 +344,8 @@ poly(pts, closed) {
 _cs_size(r) {return typeof(r) == "string" ? parseFloat(r) / this.svg.unit : r}
 _px_size(r) {return typeof(r) == "string" ? parseFloat(r) : r * this.svg.unit}
 
-star(sides, big, small) {
-    let pts = star_points(sides, this._cs_size(big), small == null ? null : this._cs_size(small));
+star(n, big, small) {
+    let pts = star_points(n, this._cs_size(big), small == null ? null : this._cs_size(small));
     return this.poly(pts, 1);
 }
 
@@ -354,9 +353,9 @@ arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
 locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
 path(start) {return new SVG2path(this, start)}
 
-line(p1, p2, sel) {
+line(p1, p2, selector) {
 /* Modify or append a <line> to the <g> element */
-    let e = sel ? $(sel) : this.create_child("line");
+    let e = selector ? $(selector) : this.create_child("line");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x1, y1] = svg.a2p(...this._cs(p1));
@@ -371,7 +370,6 @@ chevron(xy, dir, size) {
     else size = size.size;
     let svg = this.svg;
     let s = svg.scale;
-    // size = typeof(size) == "string" ? parseFloat(size) : size / svg.unit;
     size = this._px_size(size);
     let dx = -size / s[0], dy = ratio * size / s[1];
     let g = this.group();
@@ -421,12 +419,13 @@ _grid(g, x, y, swap) {
     }
 }
 
-text(data, xy) {
+text(data, xy, selector) {
 /* Add a <text> element to the group */
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = svg.a2p(...this._cs(xy));
-    return this.create_child("text", {x: f(x), y: f(y)}).html(data);
+    let e = selector ? $($(selector)[0]) : this.create_child("text");
+    return e.attr({x: f(x), y: f(y)}).html(data);
 }
 
 symbol(...args) { // Deprecated!

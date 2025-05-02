@@ -8,11 +8,9 @@
 <script type="text/javascript" data-init="test">
 
 loadFeed.test = () => {
-    let svg = new SVG2("#S1", {size: [480, 360], lrbt: [-10, 10], grid: 1, margin: 2}).css(".NoStyle");
-    let g = svg.group();
-    let a = g.arrow({tail: [0, 0], length: 5, angle: 30}, {tail: "6"}, "tail").css("arrow");
-    console.log(g);
-    console.log(g.parent.parent);
+    let svg = new SVG2("#S1", {size: [480, 360], lrbt: [-10, 10], grid: 1, margin: 1});
+    svg.plot([[1,2], [3,4], [5,6]], "5").css("red");
+    svg.plot({x: [3, 0, 4], y: [-1, 5, 2]}, ["10", "10"], null, 45);
 }
 
 loadFeed.data = {
