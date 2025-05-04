@@ -44,12 +44,14 @@
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Circular & Planetary Motion Review`,
     num: "5.5",
     up: "p20/home",
-    prev: ["p20/circ/kep", "p20/energy/rev"][clickLink.course],
-    next: ["p20/grav/ugrav", "p20/grav/rev"][clickLink.course],
+    prev: ["p20/circ/kep", "p20/wave/rev"][tmp],
+    next: ["p20/grav/ugrav", "p20/grav/rev"][tmp],
 }
 
 </script>

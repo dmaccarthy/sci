@@ -52,12 +52,14 @@
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Universal Gravitation Review`,
     num: "4.5",
     up: "p20/home",
-    prev: ["p20/grav/orbit", "p20/circ/rev"][clickLink.course],
-    next: ["p20/shm/eqm", "p20/shm/rev"][clickLink.course],
+    prev: ["p20/grav/orbit", "p20/circ/rev"][tmp],
+    next: ["p20/vec2d/mag", "p20/vec2d/rev"][tmp],
 }
 
 </script>

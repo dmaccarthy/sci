@@ -20,14 +20,15 @@ orbit: (sel) => {
     g.line([-1, 0], [1, 0]);
     g.line([0, -e], [0, e]);
 
-    g = svg.group().css({fill: "grey"});
+    g = svg.group().css("text", {fill: "grey"});
     g.ctext(["Major Axis", [0.7, 0.06]]);
     g.group().config({theta: 90, shift: [-0.06, -0.4]}).ctext(["Minor Axis"]);
 
     let c = [0.06, -0.07];
-    svg.ctext(["A", [1.05, 0]], ["C", c], ["F", f.plus(c)], ["P", [-1.05, 0]]);
-    svg.circle("5", planet).css({fill: "red"});
-    svg.circle("5", f).css({fill: "orange"});
+    svg.group().css("text").ctext(["A", [1.05, 0]], ["C", c], ["F", f.plus(c)], ["P", [-1.05, 0]]);
+    g = svg.group().css("black1");
+    g.circle("5", planet).css({fill: "blue"});
+    g.circle("5", f).css({fill: "orange"});
 
     svg.$.on("click", () => sector.fadeToggle());
 },
