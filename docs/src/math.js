@@ -143,7 +143,7 @@ function numberHtml(p, latex) {
 
 function arrow_points(L, opt) {
     /* Calculate the vertices of an arrow. See: www.desmos.com/calculator/kr61ws62tm
-       opt = {tail, head, angle, shape} */
+       opt = {tail, head, angle, shape, double} */
     if (!opt) opt = {};
     let A = (opt.angle ? opt.angle : 35) * DEG;
     let T = opt.tail ? opt.tail : L/14;

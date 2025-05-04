@@ -1,4 +1,4 @@
-<section class="Post NoPrintIcon" data-icon="slides">   
+<section class="Post" data-icon="slides">   
 <h2 class="Collapse">class <code>SVG2g</code></h2>
 <div class="Collapse">
 <p>Instances of <code>SVG2g</code> represent <code>&lt;g&gt;</code> tags (groups) within the drawing. Groups can be used for applying CSS styles and for transforming (rotating, translating, etc.) and animating content.</p>
@@ -104,17 +104,28 @@
 
     <h3 class="Collapse Code">.image(href, size, center, selector)</h3>
     <div class="Collapse">
-        <p>Modifies the <code>image</code> node identified by <code>selector</code> or creates a new <code>image</code> child element. The arguments specify the URL of the image (<code>href</code>), the width and height of the image as a 2-array (<code>size</code>), and the position of the image’s centre as a 2-array (<code>center</code>).</p>
+        <p>Creates or modifies an <code>image</code> node.</p>
+        <ul>
+            <li><code>href</code>: The URL of the image.</li>
+            <li><code>size</code>: The image width and height as a 2-array. The image will <em>not</em> be stretched if the aspect ratios do not match. Place the image inside a scaled <code>&lt;g&gt;</code> (<code>SVG2scaled</code> instance) to alter the aspect ratio.</li>
+            <li><code>center</code>: Coordinates of the centre as a 2-array.</li>
+            <li><code>selector</code>: A CSS/jQuery selector identifying an <code>image</code> node to be modified. If <code>null</code>, a new element node is created as a child of the group.</li>
+        </ul>
+        The arguments specify the URL of the image (<code>href</code>), the width and height of the image as a 2-array (<code>size</code>), and the position of the image’s centre as a 2-array (<code>center</code>).</p>
     </div>
 
     <h3 class="Collapse Code">.line(p1, p2, selector)</h3>
     <div class="Collapse">
-        <p>Draws a line between the coordiantes specified by 2-arrays <code>p1</code> and <code>p2</code>. As with other drawing methods, <code>selector</code> identifies the <code>line</code> node to be modified, and a new element will be creatred if this argument is omitted.</p>
+        <p>Draws a line between the coordinates specified by 2-arrays <code>p1</code> and <code>p2</code>. As with other drawing methods, <code>selector</code> identifies the <code>line</code> node to be modified, and a new element will be created if this argument is omitted.</p>
     </div>
 
     <h3 class="Collapse Code">.poly(points, closed)</h3>
     <div class="Collapse">
-        <p>Draw a polygon or polyline using the points provided. The arguments <code>points</code> is an array of 2-arrays. The second argument specifies whether to draw a closed <code>&lt;polygon&gt;</code> or a non-closed <code>&lt;polyline&gt;</code>. If a selector that identifies an existing <code>&lt;polygon&gt;</code> or <code>&lt;polyline&gt;</code> node is provided for the second argument, that node will be modified rather than creating a new node.</p>
+        <p>Draws a polygon or polyline.</p>
+        <ul>
+            <li><code>points</code>: An array of ordered pairs identifying the points to plot.</li>
+            <li><code>closed</code>: A boolean value specifying whether to draw a closed polygon (<code>true</code>) or a non-closed polyline (<code>false</code>); or a selector identifying an existing node to be modified.</li>
+        </ul>
     </div>
 
     <h3 class="Collapse Code">.rect(size, center, selector)</h3>
@@ -122,15 +133,24 @@
         <p>This method works like the <code>circle</code> method, except that <code>size</code> is a 2-array specifying the width and height of the rectangle.</p>
     </div>
 
-    <h3 class="Collapse Code">.star(n, big, small)</h3>
+    <h3 class="Collapse Code">.star(n, far, near)</h3>
     <div class="Collapse">
-        <p>Draw an <code>n</code>-sided star-shaped <code>&lt;polygon&gt;</code> centred at the origin. The <code>big</code> and <code>small</code> arguments specifiy the distance from the origin of the far and near vertices.</p>
+        <p>Draws a star-shaped <code>&lt;polygon&gt;</code> centred at the origin.</p>
+        <ul>
+            <li><code>n</code>: The number of points on the star.</li>
+            <li><code>far</code>: The distance from the center to the furthest vertices.</li>
+            <li><code>near</code>: The distance from the center to the nearest vertices (optional).</li>
+        </ul>
     </div>
 
     <h3 class="Collapse Code">.text(data, xy, selector)</h3>
     <div class="Collapse">
-        <p>Creates or modifies a <code>&lt;text&gt;</code> element. The argument <code>data</code> is the string (text or html) to be displayed, <code>xy</code> is a 2-array describing the position of the text, and the optional <code>selector</code> identifies the node to be modified.</p>
-        <p>Note that the alignment of the text relative to <code>xy</code> is determined by the <code>text-anchor</code> and <code>dominant-baseline</code> style values.</p>
+        <p>Creates or modifies a <code>&lt;text&gt;</code> element.</p>
+        <ul>
+            <li><code>text</code>: The text or html content of the <code>&lt;text&gt;</code> node.</li>
+            <li><code>xy</code>: A 2-array specifying the position of the text. The alignment of the text relative to <code>xy</code> is determined by the <code>text-anchor</code> and <code>dominant-baseline</code> style values.</li>
+            <li><code>selector</code>: A selector identifying an existing node to be modified; if omitted a new element node is created.</li>
+        </ul>
     </div>
 
 </div></section>
@@ -139,6 +159,24 @@
 <h2 class="Collapse Code">Composite Drawing</h2>
 <div class="Collapse Expand">
     <p>These methods draw more complicated graphics, usually wrapped in a <code>&lt;g&gt;</code> element and returning the associated <code>SVG2g</code> instance.</p>
+
+    <h3 class="Collapse Code">.arrow(info, options, anchor)</h3>
+    <div class="Collapse">
+        <p>Draws an arrow-shaped polygon and returns an instance of <code>SVG2arrow</code>, which is a subclass of <code>SVG2g</code>.</p>
+        <ul>
+            <li><code>info</code>: Information used to locate the tip and tail of the arrow. If <code>info</code> is a number, it will be interpreted as the length of the arrow which will be centred at the origin and pointed in the <i>x</i>-direction. The <code>info</code> can also be an object with a <code>tail</code> value specifying the coordinates of the arrow tail, and either a <code>tip</code> or <code>length</code> value. If a <code>length</code> is given, an <code>angle</code> can also be included to specify the direction of the arrow in degrees.</li>
+            <li><code>options</code>: An object which may include the following keys to override the default appearance of the arrow:
+                <ul>
+                    <li><code>tail</code>: The thickness of the arrow tail.</li>
+                    <li><code>head</code>: The length of the arrow head.</li>
+                    <li><code>angle</code>: The angle of the arrow head.</li>
+                    <li><code>shape</code>: One of the values <code>0</code>, <code>1</code>, or <code>2</code>, specifying the shape of the arrow.</li>
+                    <li><code>double</code>: A boolean indicating whether to draw arrowheads at both ends.</li>
+                </ul>
+            </li>
+            <li><code>anchor</code>: One of the strings <code>"tail"</code> (default), <code>"center"</code>, or <code>"tip"</code> specifying the pivot point for the arrow.</li>
+        </ul>
+    </div>
 
     <h3 class="Collapse Code">.ctext(...args)</h3>
     <div class="Collapse">
@@ -173,7 +211,7 @@ let locus = <span class="Blue">svg.locus(wave, [0, 10], [1.5, 3, 2])</span>;
 svg.animate(locus.css("blue2")).play();</pre>
     <p>In the example above, <code>wave</code> refers to the function that generates the locus. Its first argument is the parameter which may (or may not) be an <i>x</i>-coordinate. The next argument is the animation time, and the third argument is any additional data required by the function. In this case, the <code>wave</code> function draws a harmonic wave and <code>args</code> will be an array containing the wave amplitude, wavelength and speed.</p>
     <p>The function returns the <i>y</i>-coordinate calculated from the arguments provided. If the <code>x</code> argument is a parameter other than the <i>x-</i>coordinate, the function should return an ordered pair, <code>[x, y]</code>.</p>
-    <p>The code highlighted above in blue creates a locus defined by the <code>wave</code> function, draws it from <code>x = 0</code> and <code>x = 10</code>, and passes the additional data <code>[1.5, 3, 2]</code> as the amplitude, wavelength, and speed of the wave that the animation will draw.</p>
+    <p>The code highlighted above in blue creates a locus defined by the <code>wave</code> function, draws it from <code>x = 0</code> to <code>x = 10</code>, and passes the additional data <code>[1.5, 3, 2]</code> as the amplitude, wavelength, and speed of the wave that the animation will draw.</p>
     <p>The <code>locus</code> method returns an instance of <code>SVG2locus</code>.</p>
     </div>
 
@@ -182,13 +220,35 @@ svg.animate(locus.css("blue2")).play();</pre>
         <p>Plots an array of points as circles, rectangles, or images .</p>
         <pre class="Code" data-echo="js">some_g.plot([[1,2], [3,4], [5,6]], "5").css("red");
 some_g.plot({x: [3, 0, 4], y: [-1, 5, 2]}, ["10", "10"], null, 45);</pre>
-        <p>The first argument, <code>points</code>, specifies the points to plot as either an array of ordered pairs, or an object with <code>x</code> and <code>y</code> as separate arrays.</p>
-        <p>The <code>size</code> argument is a number specifying the radius when the points are to be plotted as circles, or a 2-array specifying the width and height for a rectangle or image. Numbers that are quoted will be interpreted as pixel units and unquoted numbers will use the drawing coordinate system.</p>
-        <p>The <code>href</code> argument is a URL of an image to use as point markers; this should be <code>null</code> for circle or rectangle markers.</p>
-        <p>The <code>theta</code> argument is an angle of rotation for rectangle and image markers.</p>
+        <ul>
+            <li><code>points</code>: The points to plot as either an array of ordered pairs, or an object with <code>x</code> and <code>y</code> as separate arrays.</li>
+            <li><code>size</code>: A number specifying the radius when the points are to be plotted as circles, or a 2-array specifying the width and height for a rectangle or image. Numbers that are quoted will be interpreted as pixel units and unquoted numbers will use the drawing coordinate system.</li>
+            <li><code>href</code>: A URL of an image to use as point markers; this should be <code>null</code> for circle or rectangle markers.</li>
+            <li><code>theta</code>: The angle of rotation for rectangle and image markers.</li>
+        </ul>
     </div>
 
-    <!-- g.plot(pts or {x, y}, size, href, theta) -> SVG2g
+    <h3 class="Collapse Code">.sym(xy, size, ...args)</h3>
+    <div class="Collapse">
+        <p>Composes a symbol which may contain subscripts, superscripts, arrows, etc. Returns a new <code>SVG2g</code> instance.</p>
+        <pre class="Code" data-echo="js">some_g.group().css("symbol", "red").sym([0, 0, [0.5, 1]], 28,
+    ["F", 1],
+    ["→", 5, [0, "20"]],
+    ["g", 6, ["12", "-8"]]
+);</pre>
+        <ul>
+            <li><code>xy</code>: A 2-array specifying the position of the symbol. By default, the symbol group will be centred at that position. A third (optional) item can be included in the array to be passed to the <code>align</code> method.</li>
+            <li><code>size</code>: The default font size in pixels. If <code>0</code> or <code>null</code>, the font size will be inherited from the group’s parent.</li>
+        </ul>
+        <p>Additional <code>args</code> are arrays containing up to three items:</p>
+        <ul>
+            <li>A portion of the symbol text.</li>
+            <li>An options object which may contain the keys <code>size</code> (font size in pixels) and/or <code>css</code> (an object to be passed to jQuery <code>css</code> method). Alternatively, a flag (number) will be accepted where <code>1</code> = bold, <code>2</code> = italics, and <code>4</code> = smaller text (60% of the default).</li>
+            <li>A 2-array specifying the offset for the element relative to the group.</li>
+        </ul>
+    </div>
+
+    <!-- 
     g.arrow({tail, tip} or length, {tail, head, angle, shape, double}, anchor) -> SVG2arrow
     g.grid([x1, x2, dx], [y1, y2, dy]) -> SVG2g
     g.cylinder([rx, ry], L) -> SVG2g
@@ -198,7 +258,6 @@ some_g.plot({x: [3, 0, 4], y: [-1, 5, 2]}, ["10", "10"], null, 45);</pre>
     g.ray(p1, p2, size or {size, ratio}, ...pos) -> SVG2g
     g.chevron(xy, dir, size or {size, ratio}) -> SVG2g
     g.stickman(h) -> SVG2g
-    g.sym(xy, size, ...args) -> SVG2g
     g.coil(size, n, reverse, r, axle) -> SVG2g
     g.textm(text, space) -> SVG2g
     g.energy_flow({radius, labels, arrows}) -> g

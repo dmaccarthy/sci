@@ -206,8 +206,6 @@ group(...css) {
     return g;
 }
 
-
-
 scaled(s) {return new SVG2scaled(this.svg, this.create_child("g"), s)}
 
 _px(x, i) {return Math.abs(typeof(x) == "string" ? parseFloat(x) : x * this.svg.scale[i])}
@@ -344,8 +342,8 @@ poly(points, closed) {
 _cs_size(r) {return typeof(r) == "string" ? parseFloat(r) / this.svg.unit : r}
 _px_size(r) {return typeof(r) == "string" ? parseFloat(r) : r * this.svg.unit}
 
-star(n, big, small) {
-    let pts = star_points(n, this._cs_size(big), small == null ? null : this._cs_size(small));
+star(n, far, near) {
+    let pts = star_points(n, this._cs_size(far), near == null ? null : this._cs_size(near));
     return this.poly(pts, 1);
 }
 
@@ -451,13 +449,10 @@ sym(xy, size, ...args) {
     if (xy.length > 2) xy = xy.slice(0, 2);
     let g = this.group().css(".Symbol");
     let szStr = (s) => typeof(s) == "number" ? `${size}px` : s;
-    if (size) {
-        // if (typeof(size) == "number") size = `${size}px`;
-        g.css("symbol", {"font-size": szStr(size)});
-    }
+    if (size) g.css("symbol", {"font-size": szStr(size)});
     for (let [s, opt, pos] of args) {
         let f = 0;
-        if (typeof(opt) == "number") [f, opt] = [opt, {}];
+        if (typeof(opt) == "number") [f, opt] = [opt, null];
         let txt = g.text(s, pos);
         if (f & 4) txt.css({"font-size": "60%"});
         if (f & 1) txt.css(SVG2._style.bold);
