@@ -8,9 +8,12 @@
 <script type="text/javascript" data-init="test">
 
 loadFeed.test = () => {
-    let svg = new SVG2("#S1", {size: [480, 360], lrbt: [-10, 10], grid: 1, margin: 1});
+    let svg = new SVG2("#S1", {size: [480, 360], lrbt: [-10, 10, -50, 50], grid: [1, 10], margin: 1});
     svg.plot([[1,2], [3,4], [5,6]], "5").css("red");
     svg.plot({x: [3, 0, 4], y: [-1, 5, 2]}, ["10", "10"], null, 45);
+    let opt = {tail: "6", head: "24", angle: 35, double: 1, shape: 0}
+    let a = svg.arrow({tail: [0, 0], length: 6}, opt, 2);
+    a.config({theta: 45});
 }
 
 loadFeed.data = {
