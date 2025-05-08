@@ -8,12 +8,18 @@
 <script type="text/javascript" data-init="test">
 
 loadFeed.test = () => {
-    let svg = new SVG2("#S1", {size: [480, 360], lrbt: [-10, 10, -50, 50], grid: [1, 10], margin: 1});
+    let svg = new SVG2("#S1", {size: [480, 360], lrbt: [-5, 10, -30, 50], grid: [1, 10], margin: [10, 0, 0, 10]}).clipRect();
+    let cp = svg.group().config({theta: 30}).css({"fill-opacity": 0.2});
+    cp.ellipse([5, 5]).css({fill: "#0065fe", "stroke-width": "12px"});
+    cp.circle("25", [5, 0]).css({fill: "red"});
+    cp.clipPath("ellipse", 1).children().removeAttr("style");
+    let g = svg.group().clip("ellipse");
     svg.plot([[1,2], [3,4], [5,6]], "5").css("red");
     svg.plot({x: [3, 0, 4], y: [-1, 5, 2]}, ["10", "10"], null, 45);
-    let opt = {tail: "6", head: "24", angle: 35, double: 1, shape: 0}
-    let a = svg.arrow({tail: [0, 0], length: 6}, opt, 2);
-    a.config({theta: 45});
+    let opt = {tail: "6", head: "24", angle: 35, double: 1, shape: 0};
+    let a = g.arrow({tail: [-6, 0], length: 6}, opt, 2).css("arrow");
+    a.config({theta: 0*45});
+    g.locus((x) => 5 * sq(x - 2), [-6, 11]).css("blue2");
 }
 
 loadFeed.data = {

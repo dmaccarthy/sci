@@ -1,4 +1,27 @@
-SVG2.cache("test/plot.js", {
+SVG2.cache("_test/plot.js", {
+
+g: (sel) => {
+    let svg = new SVG2(sel, {scale: 40, lrbt: [-20, 20, -12, 12], grid: 1}).css(".NoStyle");
+    svg.$.find("g.Grid").css({"stroke-width": "1"});
+    let g = svg.group().css("black1");
+    g.circle("25", [8, 0]).css({fill: "lime"});
+    g.circle("25", [-8, 0]).css({fill: "#0065fe"});
+},
+
+tri: (sel) => {
+    let h = root(300);
+    let t = 8 + Math.round(h);
+    let svg = new SVG2(sel, {scale: 40, lrbt: [-18, 18, -8, t], grid: 0}).css(".NoStyle");
+    let g = svg.group().css("black1", {"stroke-width": "3px"});
+    let pts = [[-30, 0], [30, 0]];
+    g.line([0, -10], [0, t]);
+    g.group().config({pivot: [-10, 0], theta: 30}).line(...pts);
+    g.group().config({pivot: [10, 0], theta: -30}).line(...pts);
+    g = svg.group().css("black1");
+    g.circle("25", [10, 0]).css({fill: "lime"});
+    g.circle("25", [-10, 0]).css({fill: "red"});
+    g.circle("25", [0, h]).css({fill: "#0065fe"});
+},
 
 pi: (sel) => {
     let svg = new SVG2(sel, {size: [64, 64], lrbt: [-2, 2], grid: 1});

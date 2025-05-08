@@ -105,6 +105,27 @@ shiftBy(xy) {
 }
 
 
+/** Clipping **/
+
+clipPath(id, clone) {
+/* Clone or move the <g> content to a <clipPath> */
+    let e = this.$;
+    let cp = $(document.createElementNS(SVG2.nsURI, "clipPath")).attr({id: id});
+    cp.appendTo(this.svg.defs[0]);
+    if (clone) cp.html(e.html());
+    else e.children().appendTo(cp);
+    let tr = e.attr("transform");
+    if (tr) cp.children().attr({"transform": tr});
+    return cp;
+}
+
+clip(id) {
+/* Set the clip-path attribute */
+    this.$.attr({"clip-path": `url(#${id})`});
+    return this;
+}
+
+
 /** Coordinate transformations **/
 
 get parent() {
@@ -394,7 +415,8 @@ grid(x, y, appendAxes) {
     this._grid(g, x, y);
     this._grid(g, y, x, 1);
     let e = g.$.addClass("Grid");
-    if (appendAxes) e.find(".Axis").appendTo(e);
+    if (appendAxes == null || appendAxes) // Modified!
+        e.find(".Axis").appendTo(e);
     return g;
 }
 
@@ -1028,9 +1050,26 @@ save(callback) {
     return this;
 }
 
+get defs() {
+    let d = this.$.find("defs");
+    if (d.length == 0) d = this.create_child("defs").prependTo(this.$);
+    return d;
+}
+
 get center() {
     let [l, r, b, t] = this.lrbt;
     return new RArray((l + r) / 2, (b + t) / 2);
+}
+
+clipRect(xy, id) {
+/* Create a clip path that excludes the margin */
+    if (xy == null) xy = 0;
+    xy = this._cs(xy instanceof Array ? xy : [xy, xy]).times(2);
+    let clip = this.group();
+    let [l, r, b, t] = this.lrbt;
+    clip.rect([Math.abs(r - l) + xy[0], Math.abs(t - b) + xy[1]], this.center);
+    clip.clipPath(id ? id : "lrbt");
+    return this;
 }
 
 static svg(sel, i, ev) {

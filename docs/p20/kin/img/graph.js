@@ -50,7 +50,7 @@ dt: (sel) => {
 
 vt: (sel) => { // Motion of an skydiver v-t graph
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 28], margin: [56, 10, 26, 12]});
-    svg.graph({grid: [0.5, 2], appendAxes: 1,
+    svg.graph({grid: [0.5, 2],
         x: {tick: [0, 8.1, 1], title: ["Time / s", [7, "10"]], shift: [0, "-22"]},
         y: {tick: [0, 29, 4], title: ["Velocity / (m/s)", "-40"], shift: ["-10", "-4"]},
         data: [{connect: [[0, 8], [4, 24], [8, 24]]}],

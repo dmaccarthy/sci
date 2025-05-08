@@ -20,7 +20,7 @@ lightbulb: (sel, linear) => {
     let xLabel = "Separation / m";
     if (linear) xLabel = `(${xLabel}) &nbsp;`;
     let svg = new SVG2(sel, {size: [480, 360], lrbt: lrbt, margin: [56, 10, 56, 12]});
-    svg.graph({grid: [0.25, 0.25], appendAxes: 1,
+    svg.graph({grid: [0.25, 0.25],
         x: {tick: [0, lrbt[1] + 0.1, 0.5], dec: 1, title: [xLabel, "-44"], shift: [0, "-22"]},
         y: {tick: [0, 2.1, 0.5], dec: 1, title: ["Intensity / (W/m &nbsp; )", "-40"], shift: ["-10", "-4"]},
         data: [data, {plot: [zip(x, y), "5"]}],
