@@ -9,10 +9,10 @@ delta_v: (sel) => {
     let arr = ["→", SM + BD, [0, "14"]];
     let sub = ["12", "-8"];
     let g = svg.group().css("symbol", "f28", "red");
-    g.sym([-1.75, 2.5], 0, ["θ", IT]);
-    g.sym([-0.6, 2], 0, ["v", BD], arr, ["2", SM, sub]);
-    g.sym([-2.6, 1.75], 0, ["–", 0, ["-18", "-2"]], ["v", BD], arr, ["1", SM, sub]);
-    g.group().css("blue").sym([-0.9, -0.6], 0, ["v", BD], arr, ["Δ", 0, ["-18", 0]]);
+    g.symb(0, ["θ", IT]).align([-1.75, 2.5]);
+    g.symb(0, ["v", BD], arr, ["2", SM, sub]).align([-0.6, 2]);
+    g.symb(0, ["–", 0, ["-18", "-2"]], ["v", BD], arr, ["1", SM, sub]).align([-2.6, 1.75]);
+    g.group().css("blue").symb(0, ["v", BD], arr, ["Δ", 0, ["-18", 0]]).align([-0.9, -0.6]);
 },
 
 orbit: (sel) => {
@@ -31,17 +31,17 @@ orbit: (sel) => {
     let arr = ["→", SM + BD, [0, "14"]];
     let sub = ["12", "-8"];
     g = svg.group().css("symbol", "blue", "f24");
-    g.sym(p.times(0.5).plus([0, 1]), 0, ["r", IT]);
-    g.sym([5, -0.7], 0, ["r", IT]);
-    g.sym([8.5, 2], 0, ["s", IT]);
-    g.sym([1.5, 0.6], 0, ["θ", IT]);
-    g.sym([-0.6, 0.6], 0, ["C"]);
-    g.sym([11, 0], 0, ["P"], ["1", SM, sub]);
-    g.sym(p.times(1.1), 0, ["P"], ["2", SM, sub]);
+    g.symb(0, ["r", IT]).align(p.times(0.5).plus([0, 1]));
+    g.symb(0, ["r", IT]).align([5, -0.7]);
+    g.symb(0, ["s", IT]).align([8.5, 2]);
+    g.symb(0, ["θ", IT]).align([1.5, 0.6]);
+    g.symb(0, ["C"]).align([-0.6, 0.6]);
+    g.symb(0, ["P"], ["1", SM, sub]).align([11, 0]);
+    g.symb(0, ["P"], ["2", SM, sub]).align(p.times(1.1));
     g = g.group().css("red");
-    g.sym([11.2, 2], 0, ["v", BD], arr, ["1", SM, sub]);
-    g.sym(vec2d(11.3, a + 10), 0, ["v", BD], arr, ["2", SM, sub]);
-    g.sym([7, 4.5], 0, ["v", BD], arr, ["Δ", 0, ["-16", 0]]).css(".Toggle0");
+    g.symb(0, ["v", BD], arr, ["1", SM, sub]).align([11.2, 2]);
+    g.symb(0, ["v", BD], arr, ["2", SM, sub]).align(vec2d(11.3, a + 10));
+    g.symb(0, ["v", BD], arr, ["Δ", 0, ["-16", 0]]).css(".Toggle0").align([7, 4.5]);
 
     L = root(32 * (1 - cos(a)))
     g = svg.group().css("arrow");
@@ -67,9 +67,9 @@ car: (sel) => {
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
     g = svg.group().css("symbol", "f28", "red");
-    g.sym([-1.5, -3], 0, ["F", BD], arr, ["g", SM_IT, sub]);
-    g.sym([-1.5, 5.5], 0, ["F", BD], arr, ["n", SM_IT, sub]);
-    g.sym([4, 3], 0, ["F", BD], arr, ["f", SM_IT, sub]);
+    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-1.5, -3]);
+    g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([-1.5, 5.5]);
+    g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([4, 3]);
 },
 
 merry: (sel) => {
@@ -85,35 +85,32 @@ merry: (sel) => {
 },
 
 ucm: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-    let svg = new SVG_Animation(sel, -1.15, 1.15);
-    svg.axis({x: [-1, 1]});
-    svg.axis({y: [-1, 1]});
-    svg.$.find("line").css({stroke: "grey"});
-    let g = svg.group().css({stroke: "black"});
-    svg.circle(1, [0, 0]).css({fill: "none", stroke: "black", "stroke-width": "3px"});
-    svg.final();
-    svg.circle(0.05, [1, 0]).anchor(0, 0).config({omega: 60}).css({fill: "#0065FE"});
-    let arrow = {fill: "#0065FE", "fill-opacity": 0.4};
-    svg.arrow([0, -0.15], [0, 0], {anchor: "tip", tail: "4"}).css(arrow);
-    svg.arrow([-0.15, 0], [0, 0], {anchor: "tip", tail: "4"}).css(arrow);
-    svg.line([0, 0], [1, 0], g);
-    svg.line([0, 0], [0, 0], g);
-    svg.line([0, 0], [1, 0], g);
+    let svg = new SVG2(sel, {size: [360, 360], lrbt: [-1, 1], margin: 12});
+    let g = svg.group().css("black1");
+    g.line([0, -1], [0, 1]);
+    g.line([-1, 0], [1, 0]);
+    svg.circle(1).css({fill: "none", stroke: "black", "stroke-width": "3px"});
+
+    let circ = svg.group().config({omega: 60}).css("black1", "blue");
+    let vert = g.line([1, 0], [1, 0]);
+    circ.line([0, 0], [1, 0]);
+    circ.circle(0.05, [1, 0]);
+
+    let arrows = svg.group().css({fill: "#0065FE", "fill-opacity": 0.4});
+    arrows.arrow({tip: [0, 0], tail: [-0.15, 0]}, {tail: "4"}, "tip");
+    arrows.arrow({tip: [0, 0], tail: [0, -0.15]}, {tail: "4"}, "tip");
+    arrows = arrows.findAll("g.Arrow");
 
     svg.beforeupdate = function() {
-        let items = this.items;
-        let a = items[0].theta + items[0].omega / this.frameRate;
+        let a = circ.theta;
         let [c, s] = [cos(a), sin(a)];
-        items[1].config({position: [c, 0]});
-        items[2].config({position: [0, s]});
-        items[3].setPoints([[0, 0], [c, 0]], 1);
-        items[4].setPoints([[c, s], [c, 0]], 1);
-        items[5].setPoints([[c, s], [0, 0]], 1);
+        g.line([c, s], [c, 0], vert);
+        arrows[0].config({shift: [0, s]});
+        arrows[1].config({shift: [c, 0]});
     };
 
-    svg.play();
     svg.$.on("click", () => svg.toggle());
+    return svg.animate(circ).play();
 },
 
 });

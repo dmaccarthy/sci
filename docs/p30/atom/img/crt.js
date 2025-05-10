@@ -45,7 +45,7 @@ _crt: (sel) => {
     let arr = [0, "20"];
     mag.circle(0.3).css({fill: "none", stroke: "green"});
     mag.circle(0.05).css({fill: "green", stroke: "none"});
-    mag.sym([0.75, 0], 28, ["B", BD], ["→", SM_BD, arr]).css({fill: "green"});
+    mag.symb(28, ["B", BD], ["→", SM_BD, arr]).align([0.75, 0]).css({fill: "green"});
     mag.$.hide();
 
     return svg;

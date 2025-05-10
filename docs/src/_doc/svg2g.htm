@@ -242,16 +242,15 @@ some_g.plot({x: [3, 0, 4], y: [-1, 5, 2]}, ["10", "10"], null, 45);</pre>
         </ul>
     </div>
 
-    <h3 class="Collapse Code">.sym(xy, size, ...args)</h3>
+    <h3 class="Collapse Code">.symb(size, ...args)</h3>
     <div class="Collapse">
         <p>Composes a symbol which may contain subscripts, superscripts, arrows, etc. Returns a new <code>SVG2g</code> instance.</p>
-        <pre class="Code" data-echo="js">some_g.group().css("symbol", "red").sym([0, 0, [0.5, 1]], 28,
+        <pre class="Code" data-echo="js">some_g.group().css("symbol", "red").symb(28,
     ["F", 1],
     ["→", 5, [0, "20"]],
     ["g", 6, ["12", "-8"]]
 );</pre>
         <ul>
-            <li><code>xy</code>: A 2-array specifying the position of the symbol. By default, the symbol group will be centred at that position. A third (optional) item can be included in the array to be passed to the <code>align</code> method.</li>
             <li><code>size</code>: The default font size in pixels. If <code>0</code> or <code>null</code>, the font size will be inherited from the group’s parent.</li>
         </ul>
         <p>Additional <code>args</code> are arrays containing up to three items:</p>
@@ -292,7 +291,7 @@ some_g.plot({x: [3, 0, 4], y: [-1, 5, 2]}, ["10", "10"], null, 45);</pre>
 
 loadFeed.data = {
     title: `SVG2g Documentation`,
-    up: "src/doc/svg2",
+    up: "src/_doc/svg2",
 }
 
 </script>

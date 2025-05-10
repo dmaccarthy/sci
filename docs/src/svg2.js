@@ -80,7 +80,7 @@ align(xy, x, y) {
 }
 
 
-/** Kinematics getters and setter **/
+/** Kinematics getters and setters **/
 
 get pivot() {return this._pivot};
 get shift() {return this._shift};
@@ -193,7 +193,7 @@ update_transform() {
 }
 
 update(dt) {
-    /* Update kinematics */
+/* Update kinematics */
     let alpha = this.alpha;
     let omega = this.omega;
     if (alpha) {
@@ -336,8 +336,8 @@ label(fn, x, y) {
     if (tick) g.$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`).css(SVG2._style.black1);
     else {
         g.$.addClass(`Labels Label${ya ? 'Y' : 'X'}`);
+        g.css("text", "f15");
         if (ya) g.css({"text-anchor": "end"});
-        g.css("f15");
     }
     return g;
 }
@@ -463,12 +463,9 @@ symbol(...args) { // Deprecated!
     return g;
 }
 
-sym(xy, size, ...args) {
+symb(size, ...args) {
 /* Render a symbol from a list of text elements */
 //  BOLD = 1, ITAL = 2, SMALL = 4
-    let align = xy[2];
-    if (align == null) align = [null, null];
-    if (xy.length > 2) xy = xy.slice(0, 2);
     let g = this.group().css(".Symbol");
     let szStr = (s) => typeof(s) == "number" ? `${size}px` : s;
     if (size) g.css("symbol", {"font-size": szStr(size)});
@@ -484,9 +481,8 @@ sym(xy, size, ...args) {
             if (opt.css) txt.css(opt.css);
         }
     }
-    return g.align(xy, ...align);
+    return g;
 }
-
 
 ctext(...args) {
 /* Render multiple centred <g> elements with <text> child nodes */
@@ -556,8 +552,7 @@ cylinder(r, L) {
 
 stickman(h) {
 /* Add a stick man as an SVG2g instance */
-    let g = this.group();
-    g.$.addClass("StickMan");
+    let g = this.group().css("nofill", "black1", "px3");
     let r = h / 8;
     g.circle(r, [0, 7 * r]);
     g.line([0, 6 * r], [0, 3 * r]);
@@ -571,7 +566,7 @@ stickman(h) {
 
 graph(options) {
 /* Add common scatter plot / line graph elements */
-    let svg = this.svg.css(".NoStyle", "text");
+    let svg = this.svg.css(".NoStyle");
     let x = options.x, y = options.y;
     if (options.grid) {
         let [dx, dy] = options.grid;
@@ -584,29 +579,39 @@ graph(options) {
     }
 
     if (x || y) {
-        let txt = this.group().addClass("Text");
+        let txt = this.group(".AxisTitle", "text");
         let xy = (i) => {
             let pos = (i ? y : x).title[1];
             if (!(pos instanceof Array)) pos = i ? [pos, svg.center[1]] : [svg.center[0], pos];
             return pos;
         }
         if (x) {
-            if (x.tick) this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6").find("g.LabelX").config({shift: x.shift});
-            if (x.title) txt.text(x.title[0], xy(0));
+            let dy = [0, x.y ? x.y : 0];
+            if (x.tick) {
+                this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6");
+                this.find("g.LabelX").config({shift: x.shift}).shiftBy(dy);
+                this.find("g.TickX").shiftBy(dy);
+            }
+            if (x.title) txt.group().shiftBy(dy).text(x.title[0], xy(0));
         }
         if (y) {
-            if (y.tick) this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6").find("g.LabelY").config({shift: y.shift});
-            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).text(y.title[0]);  
+            let dx = [y.x ? y.x : 0, 0];
+            if (y.tick) {
+                this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6");
+                this.find("g.LabelY").config({shift: y.shift}).shiftBy(dx);
+                this.find("g.TickY").shiftBy(dx);
+            }
+            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).shiftBy(dx).text(y.title[0]);  
         }  
     }
 
     let data = options.data;
     if (data) {
-        let g = this.group().addClass("Series"), s = [];
+        let g = this.group(".Series"), s = [];
         for (let series of data) {
             if (series.plot) s.push(g.plot(...series.plot));
             else {
-                let gs = g.group().css(".Locus", "blue2", "nofill");
+                let gs = g.group(".Locus", "blue2", "nofill");
                 s.push(gs);
                 if (series.connect) {
                     let pts = series.connect;
@@ -674,9 +679,9 @@ tip_to_tail(vecs, options) {
 energy_flow(data) {
 /* Draw an energy flow diagram */
     this.svg.css(".NoStyle");
-    let g = this.group().css("text");
+    let g = this.group("text");
     g.circle(data.radius).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    let gs = g.group().css("symbol", "f28");
+    let gs = g.group("symbol", "f28");
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
         color = {fill: color ? color : "#0065fe"};
@@ -684,11 +689,11 @@ energy_flow(data) {
             txt = txt.substring(1).split("_");
             let sym = [[txt[0], 2]];
             if (txt.length > 1) sym.push([txt[1], 6, shift ? shift : ["12", "-7"]]);
-            gs.sym(pos, 0, ...sym).css(color);
+            gs.symb(0, ...sym).css(color).align(pos);
         }
-        else g.group().css(color, {"font-size": "24px"}).ctext([txt, pos]);
+        else g.group(color, {"font-size": "24px"}).ctext([txt, pos]);
     }
-    g = g.group().css("arrow");
+    g = g.group("arrow");
     for (let item of data.arrows) {
         let [l, pos, angle, txt, color] = item;
         color = {fill: color ? color : "#0065fe"};
@@ -1378,7 +1383,7 @@ static ebg(sel, Emax, step, data, options) {
     svg.grid([0, n], [0, Emax, step]).grid([0, 1, 2], [0, Emax]);
 
     let bars = [];
-    let sym = svg.group().css("symbol", "f28");
+    let sym = svg.group("symbol", "f28");
     for (let i=0;i<n;i++) {
         let d = data[i];
         let c = d[2] ? d[2] : "#0065fe"
@@ -1386,7 +1391,7 @@ static ebg(sel, Emax, step, data, options) {
         let [t, sub] = d[0].split("_");
         t = [[t, 2]];
         if (sub) t.push([sub, 6, [`${8 + 5 * sub.length}`, "-8"]]);
-        sym.sym([i + 0.5, "-4", [0.5, 0]], 0, ...t).css({fill: c});
+        sym.symb(0, ...t).align([i + 0.5, "-4"], 0.5, 0).css({fill: c});
     }
     svg.config({data: data, options: options});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$);
@@ -1498,4 +1503,6 @@ SVG2._style = {
     blue2: {stroke: "#0065fe", "stroke-width": "2px"},
     black1: {stroke: "black", "stroke-width": "1px"},
     black2: {stroke: "black", "stroke-width": "2px"},
+    px3: {"stroke-width": "3px"},
+
 };

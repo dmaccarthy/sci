@@ -53,10 +53,10 @@ vec1: (sel) => {
     let sub = ["14", "-8"];
 
     let g = svg.group().css("symbol", "f28", "red");
-    g.sym([-8, -29], 0, ["F", BD], arr, ["g", SM_IT, sub]);
-    g.sym([16, -38], 0, ["F", BD], arr, ["n", SM_IT, sub]);
-    g.sym([21, -4], 0, ["F", BD], arr, ["f", SM_IT, sub]);
-    g.sym([6, 4], 0, ["F", BD], arr, ["net", SM_IT, ["16", "-8"]]).css("blue");
+    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-8, -29]);
+    g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([16, -38]);
+    g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([21, -4]);
+    g.symb(0, ["F", BD], arr, ["net", SM_IT, ["16", "-8"]]).css("blue").align([6, 4]);
 },
 
 Q1: (sel) => {

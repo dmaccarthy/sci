@@ -33,9 +33,9 @@ tri: (sel) => {
     wrap({theta: 45, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: -75, pivot: [0, h]}, "30°", [3.5, h]);
     g = g.group().css("symbol", "f28");
-    g.sym([-6, 6], 0, ["r", 2], ["A", 6, ["10", "-10"]]);
-    g.sym([4.5, 6], 0, ["r", 2], ["B", 6, ["10", "-10"]]);
-    g.sym([1, hA / 2], 0, ["y", 2]);
+    g.symb(0, ["r", 2], ["A", 6, ["10", "-10"]]).align([-6, 6]);
+    g.symb(0, ["r", 2], ["B", 6, ["10", "-10"]]).align([4.5, 6]);
+    g.symb(0, ["y", 2]).align([1, hA / 2]);
 
     // Forces at point A
     g = svg.group().css("black1", {"fill-opacity": 0.6}).addClass("Toggle0");

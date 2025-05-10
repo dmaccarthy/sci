@@ -1,34 +1,31 @@
 SVG2.cache("p20/skill/img/scatter.js", {
 
 wtLoss: (sel) => {
-    $(sel).attr({width: 640, height: 400, "data-aspect": "1.6"});
-
     let x = [...range(3, 28, 3)];
     let y = [80.8, 80.8, 80, 79.8, 80, 79.7, 79.1, 79.3, 78.5];
-    let svg = new SVG_Animation(sel, -4, 31, 76, 82.25);
-    svg.grid([0, 30, 1], [77, 82, 0.25]);
-    svg.find("line.Axis").$.removeClass("Axis");
-    let axes = svg.group().attr({id: "Axes"});
-    svg.axis({y: [77, 82],
-        title: {text: "Mass / kg", position: [-2.85, 81.9]},
-        ticks: {interval: 1, length: "12", fixed: 0, offset: [-1, 0]},
-    }, axes);
-    svg.axis({x: [0, 30], y: 77,
-        title: {text: "Time / days", position: [30, 76.25]},
-        ticks: {interval: 3, length: "12", fixed: 0, offset: [0, -0.4]},
-    }, axes);
-    svg.$.find(".TitleX, .TitleY").addClass("End");
-    let bestfit = svg.line([0, 81.1], [30, 78.5]);
-    let marks = svg.plot({x:x, y:y}, "6");
+    let eq = linRegXY(x, y).fn;
+    let svg = new SVG2(sel, {size: [640, 400], lrbt: [0, 30, 77, 82], margin: [64, 10, 54, 10]});
+    svg.graph({grid: [1, 0.25],
+        x: {tick: [3, 31, 3], y: 77, title: ["Time / days", [15, "-48"]], shift: [0, "-24"]},
+        y: {tick: [77, 82.1, 1], title: ["Mass / kg", "-44"], shift: ["-10", "-5"]},
+        data: [
+            {connect: [[0, eq(0)], [30, eq(30)]]},
+            {plot: [{x: x, y: y}, "6"]},
+        ]
+    });
+    $(svg.$.find("g.Grid line")[30]).css({stroke: "black", "stroke-width": "1px"});
+    svg.$.find("g.Ticks, g.Labels, g.AxisTitle").addClass("Toggle0");
+    svg.$.find("g.Series").addClass("Toggle1");
+    svg.$.find("g.Series g.Locus").addClass("Toggle2");
     let title = svg.$.closest("p").children("span");
-    svg.final();
 
+    let t = clickCycle.toggle;
     if (svg.$.attr("data-interact")) clickCycle(svg.element, -1,
-        () => {axes.$.fadeOut(); marks.$.fadeOut(); bestfit.$.fadeOut(); title.fadeOut()},
-        () => {title.fadeIn()},
-        () => {axes.$.fadeIn()},
-        () => {marks.$.fadeIn()},
-        () => {bestfit.$.fadeIn()},
+        () => {t(svg, false, 0, 1, 2); title.css({visibility: "hidden"})},
+        () => {title.css({visibility: "visible"})},
+        () => {t(svg, true, 0)},
+        () => {t(svg, true, 1)},
+        () => {t(svg, true, 2)},
     );
 },
 

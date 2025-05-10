@@ -14,8 +14,8 @@ flow1: (sel, label) => {
     svg.circle(1.7, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("symbol", "f28", "blue");
-    g.sym([0, 0], 0, ["E", 2], ["g", 6, ["16", "-6"]]);
-    g.sym([2, 0], 0, ["E", 2], ["k", 6, ["16", "-6"]]);
+    g.symb(0, ["E", 2], ["g", 6, ["16", "-6"]]).align([0, 0]);
+    g.symb(0, ["E", 2], ["k", 6, ["16", "-6"]]).align([2, 0]);
     svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [4.3, 0]]);
 
     let dx = 0.4;
@@ -34,7 +34,7 @@ flow2: (sel) => {
     svg.circle(0.8, [2, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("blue");
-    g.sym([2, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]); //.css("blue");
+    g.symb(28, ["E", 2], ["k", 6, ["16", "-6"]]).align([2, 0]);
     svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [0, -1.8]], ["Food"]);
 
     g = svg.group().css("arrow");
@@ -48,9 +48,9 @@ flow3: (sel) => {
     svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("blue");
-    g.sym([0.15, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]);
-    g.sym([-1.8, 1], 28, ["E", 2], ["g", 6, ["16", "-6"]]);
-    g.sym([-1.8, -1], 28, ["E", 2], ["elas", 6, ["24", "-6"]]);
+    g.symb(28, ["E", 2], ["k", 6, ["16", "-6"]]).align([0.15, 0]);
+    g.symb(28, ["E", 2], ["g", 6, ["16", "-6"]]).align([-1.8, 1]);
+    g.symb(28, ["E", 2], ["elas", 6, ["24", "-6"]]).align([-1.8, -1]);
     svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [2.5, 0]]);
 
     let a = svg.group().css("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
@@ -67,8 +67,8 @@ flow4: (sel) => {
     svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("blue");
-    g.sym([0.15, 0], 28, ["E", 2], ["k", 6, ["16", "-6"]]);
-    g.sym([-2, 0], 28, ["E", 2], ["g", 6, ["16", "-6"]]);
+    g.symb(28, ["E", 2], ["k", 6, ["16", "-6"]]).align([0.15, 0]);
+    g.symb(28, ["E", 2], ["g", 6, ["16", "-6"]]).align([-2, 0]);
     svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [2.5, 0]]);
 
     let a = svg.group().css("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
