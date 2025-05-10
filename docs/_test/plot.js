@@ -1,5 +1,15 @@
 SVG2.cache("_test/plot.js", {
 
+earth: (sel) => {
+    let svg = new SVG2(sel, {scale: 40, lrbt: [-1, 20, -6, 6]}).css(".NoStyle");
+    svg.graph({grid: [0.25, 0.25],
+        x: {tick: [8, 19, 2], shift: [0, "-22"]},
+    });
+    let g = svg.group().css("text");
+    g.symb(0, ["× 10"], ["m", 0, ["40", 0]], ["6", 4, ["22", "8"]]).align([19, "16"]);
+    svg.circle(6.37).css({fill: "#0065fe", "fill-opacity": 0.3, stroke: "black"});
+},
+
 g: (sel) => {
     let svg = new SVG2(sel, {scale: 40, lrbt: [-20, 20, -12, 12], grid: 1}).css(".NoStyle");
     svg.$.find("g.Grid").css({"stroke-width": "1"});
@@ -57,9 +67,8 @@ pe: (sel) => { // Photoelectric Effect graph
         ]
     });
     let g = svg.find("g.Text");
-    let f = g.symbol(["Frequency / 10 ", 0], ["14", 4, ["70", "12"]], ["Hz", 0, ["96", 0]]).recenter([6, "-44"]);
-    svg.css_map("grid", "text", "plot").addClass("NoStyle");
-    f.css({"font-family": SVG2.sans});
+    let f = g.symb(0, ["Frequency / 10 ", 0], ["14", 4, ["70", "12"]], ["Hz", 0, ["96", 0]]).align([6, "-44"]);
+    svg.css(".NoStyle", "text", "plot");
     g.text("P", [9.6, 2.4]).css({fill: "#0065fe"});
     // svg.save();
 },
