@@ -67,7 +67,11 @@ align(xy, x, y) {
 /* Align the element based on its bounding box */
     if (!this.$.is(":visible")) throw("Cannot align hidden elements");
     if (typeof(xy) == "number") xy = [xy, xy];
-    if (x == null && y == null) x = y = 0.5;
+    if (y == null) {
+        if (x == null) x = y = 0.5;
+        else if (typeof(x) == "string")
+            [x, y] = {top: [0.5, 0], bottom: [0.5, 1], left: [0, 0.5], right: [1, 0.5]}[x];
+    }
     let nx = x == null;
     let ny = y == null;
     let box = this.element.getBBox();
@@ -1077,6 +1081,26 @@ clipRect(xy, id) {
     return this;
 }
 
+gradient(id, c1, c2, x1, x2, y1, y2) {
+/* Create a <linearGradient> */
+    let elem = (t, a) => {
+        let e = document.createElementNS(SVG_Item.nsURI, t);
+        if (a != null) $(e).attr(a);
+        return e;
+    }
+
+    let e = $(elem("linearGradient", {
+        id: id,
+        x1 : `${x1 == null ? 0 : x1}%`,
+        x2 : `${x2 == null ? 100 : x2}%`,
+        y1 : `${y1 == null ? 0 : y1}%`,
+        y2 : `${y2 == null ? 0 : y2}%`
+    })).appendTo(this.defs[0]);
+    e.append(elem("stop", {offset: "0%", "stop-color" : c1}));
+    e.append(elem("stop", {offset: "100%", "stop-color" : c2}));
+    return this;
+}
+
 static svg(sel, i, ev) {
 /* Save an SVG2 drawing as an SVG file */
     if (ev) ev.stopPropagation();
@@ -1494,9 +1518,10 @@ SVG2._style = {
     ital: {"font-style": "italic"},
     bold: {"font-weight": "bold"},
     nofill: {fill: "none"},
-    red: {fill: "red"},
-    green: {fill: "green"},
     blue: {fill: "#0065fe"},
+    red: {fill: "red"},
+    lime: {fill: "limegreen"},
+    green: {fill: "green"},
     red2: {stroke: "red", "stroke-width": "2px"},
     green2: {stroke: "green", "stroke-width": "2px"},
     blue1: {stroke: "#0065fe", "stroke-width": "1px"},

@@ -133,3 +133,14 @@ uam.solve3 = (vf, vi, a, d) => {
     else if (d == null) d = (vf * vf - vi * vi) / (2 * a);
     return [vf, vi, a, d];
 }
+
+const dopp = function(info) {
+/* 1D non-relativistic Doppler shift */
+    let [fs, fo, vs, vo, v] = [info.fs, info.fo, info.vs, info.vo, info.v];
+    if (fo == null) fo = fs * (v - vo) / (v - vs);
+    else if (fs == null) fs = fo * (v - vs) / (v - vo);
+    else if (vs == null) vs = v - (v - vo) * fs / fo;
+    else if (vo == null) vo = v - (v - vs) * fo / fs;
+    else v = (fo * vs - fs * vo) / (fo - fs);
+    return {fs: fs, fo: fo, vs: vs, vo: vo, v: v}
+}

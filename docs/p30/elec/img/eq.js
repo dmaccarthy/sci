@@ -1,28 +1,23 @@
 SVG2.cache("p30/elec/img/eq.js", {
 
-    eq: (sel) => {
-        $(sel).attr({width: 400, height: 240, "data-aspect": "5/3"});
-        svg = new SVG_Animation(sel, -1.15, 1.25);
-        svg.$.addClass("FBD");
-        // svg.grid([-1.5, 1.5, 0.25], [-1.5, 1.5, 0.25]);
+eq: (sel) => {
+    let svg = new SVG2(sel, {size: [400, 240], margin: [24, 24, 16, 16], lrbt: [-1, 1]}).css(".NoStyle");
+    let g = svg.group("symbol", "f28");
+    let arr = ["→", 5, [0, "20"]];
+    g.symb(0, ["a", 1], arr).align([-1, 0.5]);
+    g.symb(0, ["F", 1], arr, ["e", 6, ["14", "-8"]]).align([0, 0.5]);
+    g.symb(0, ["E", 1], arr).align([1, 0.5]);
+    g.symb(0, ["v", 1], arr).align([-1, -0.5]);
+    g.symb(0, ["W", 2]).align([0, -0.5]);
+    g.symb(0, ["V", 2], ["Δ", 0, ["-16", 0]]).align([1, -0.5]);
 
-        svg.symbol("a", {vec:1}, [-1, 0.5]);
-        svg.symbol("F", {vec:1}, [0, 0.5]);
-        svg.symbol("E", {vec:1}, [1, 0.5]);
-        svg.symbol("v", {vec:1}, [-1, -0.5]);
-        svg.symbol("W", {}, [0, -0.5]);
-        svg.symbol("V", {delta:1}, [1.1, -0.5]);
-
-        let g = svg.group();
-        let arrow = (p) => svg.arrow(0.6, null, {double: 1}, g).config({position: p});
-        let posn = [[-0.5, 0.5], [0.5, 0.5], [-0.5, -0.5],
-            [0.5, -0.5], [-1, 0], [0, 0], [1, 0]];
-        let fill = ["red", "green", "gold", "violet", "grey", "tan", "#0065FE"];
-        for (let i=0;i<posn.length;i++) {
-            let a = arrow(posn[i]).css({fill: fill[i]});
-            if (i > 3) a.config({theta: 90});
-        }
-        svg.final();
-    },
+    g = svg.group("arrow");
+    let data = [[-0.5, 0.5, 0, "red"], [0.5, 0.5, 0, "green"], [-0.5, -0.5, 0, "gold"],
+        [0.5, -0.5, 0, "violet"], [-1, 0, 1, "grey"], [0, 0, 1, "tan"], [1, 0, 1, "#0065fe"]];
+    for (let [x, y, v, c] of data) {
+        let a = g.arrow(0.65, {tail: "7", "double": 1}).config({shift: [x, y]}).css({fill: c});
+        if (v) a.config({theta: 90});
+    }
+},
 
 });

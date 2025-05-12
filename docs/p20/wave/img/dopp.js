@@ -1,31 +1,30 @@
 SVG2.cache("p20/wave/img/dopp.js", {
 
 Q1: (sel) => {
-    let e = $(sel).attr({width: 480, height: 120, "data-aspect": "4"});
-    let svg = new SVG_Animation(sel, -2.6, 2.4, -0.25);
-    svg.axis({x: [-2.6, 2.4]});
-
-    svg.stickMan(0.6, [2, 0.6]);
+    let svg = new SVG2(sel, {size: [480, 120], lrbt: [-2.6, 2.4, -0.2]});
+    svg.line([-2.6, 0], [2.4, 0]).css({stroke: "black"});
+    svg.stickman(0.6).align([2, 0], "bottom");
     svg.rect([0.9, 0.4], [-2, 0.3]).css({fill: "red", stroke: "black"});
-    svg.circle(0.1, [-2.25, 0.1]).css({fill: "black", stroke: "none"});
-    svg.circle(0.1, [-1.75, 0.1]).css({fill: "black", stroke: "none"});
+    let g = svg.group({fill: "black", stroke: "none"});
+    g.circle(0.1, [-2.25, 0.1]);
+    g.circle(0.1, [-1.75, 0.1]);
 
-    let g = svg.group().css({fill: "red"});
-    let attr = {tail: "6"};
-    svg.arrow([-1.4, 0.25], [-0.4, 0.25], attr, g);
-    svg.symbol("v", {q4: "s", vec: 1}, [-1, 0.6], g);
-    svg.arrow([1.7, 0.25], [1.2, 0.25], attr, g);
-    svg.symbol("v", {q4: "o", vec: 1}, [1.45, 0.6], g);
-    
-    g = svg.group().css({fill: "blue"});
-    svg.arrow([-0.1, 0.7], [0.9, 0.7], attr, g);
-    svg.symbol("v", {vec: 1}, [0.4, 0.35], g);
-    
-    svg.final();
+    g = svg.group("arrow", "red");
+    let t6 = {tail: "6"};
+    g.arrow({tail: [-1.4, 0.25], tip: [-0.4, 0.25]}, t6);
+    g.arrow({tail: [1.7, 0.25], tip: [1, 0.25]}, t6);
+    g.arrow({tail: [-0.1, 0.8], tip: [0.9, 0.8]}, t6).css("blue");
+
+    g = svg.group("symbol", "f28", "red");
+    let v = [0, ["v", 1], ["→", 5, [0, "14"]], ["s", 6, ["14", "-8"]]];
+    g.symb(...v).align([-1, 0.6]);
+    v[3][0] = "o";
+    g.symb(...v).align([1.45, 0.6]);
+    g.symb(...v.slice(0, 3)).align([0.4, 0.55]).css("blue");
 },
 
 Q2: (sel) => {
-    let e = $(sel).attr({width: 480, height: 120, "data-aspect": "4"});
+    $(sel).attr({width: 480, height: 120, "data-aspect": "4"});
     let svg = new SVG_Animation(sel, -2.6, 2.4, -0.3);
     svg.axis({x: [-2.6, 2.4]});
 
@@ -45,9 +44,8 @@ Q2: (sel) => {
 },
 
 Q3: (sel) => {
-    let e = $(sel).attr({width: 480, height: 144, "data-aspect": "10/3"});
+    $(sel).attr({width: 480, height: 144, "data-aspect": "10/3"});
     let svg = new SVG_Animation(sel, -2.6, 2.4, -0.25);
-    // svg.grid([-3, 3, 0.25], [-3, 3, 0.25], 1);
     svg.axis({x: [-2.6, 2.4]});
 
     svg.stickMan(0.8, [2, 0.8]);

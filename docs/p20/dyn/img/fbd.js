@@ -1,44 +1,52 @@
 SVG2.cache("p20/dyn/img/fbd.js", {
 
 fbd: (sel) => {
-    $(sel).attr({width: 288, height: 360, "data-aspect": "288/360"});
-    // let Fg = 0.9, Ff = 0.3;
-    svg = new SVG_Animation(sel, -5/8, 1.04, -1.07);
-    let g = svg.group();
+    let svg = new SVG2(sel, {size: [288, 360], lrbt: [-5/8, 1.04, -1.07]}).css(".NoStyle");
     svg.gradient("gradFBD", "#D0D0FF", "royalblue", 80, 0, 0, 100);
-    svg.rect([0.5, 0.25], [0, 0], g).css({fill: "url(#gradFBD)", stroke: "black"});
-    svg.line([-0.7, -0.125], [1.05, -0.125], g).css({stroke: "black", "stroke-width": 3});
-    svg.symbol("F", {vec:1, q4: "g"}, [0.12, -0.6]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "n"}, [0.12, 0.4], g).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "a"}, [0.6, 0.1], g).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "f"}, [-0.4, 0.14], g).css({fill: "red"});
-    svg.symbol("a", {vec:1}, [0.6, 0.5], g).css({fill: "#0065FE"});
-    svg.arrow([0, -0.16], [0, -1.02], {tail: "6"}).css({fill: "red"});
-    svg.arrow([0, -0.1], [0, 0.76], {tail: "6"}, g).css({fill: "red"});
-    svg.arrow([0.3, -0.08], [1, -0.08], {tail: "6"}, g).css({fill: "red"});
-    svg.arrow([-0.3, -0.08], [-0.6, -0.08], {tail: "6"}, g).css({fill: "red"});
-    svg.arrow([0.4, 0.7], [0.9, 0.7], {tail: "6"}).css({fill: "#0065FE"});
-    svg.final();
+    let g = svg.group("black1");
+    g.rect([0.5, 0.25]).css({fill: "url(#gradFBD)"});
+    g.line([-0.7, -0.125], [1.05, -0.125]).css({"stroke-width": 3});
+
+    g = svg.group("symbol", "f28", "red");
+    let [arr, sub] = [["→", 5, [0, "20"]], [6, ["14", "-8"]]];
+    g.symb(0, ["F", 1], arr, ["g", ...sub]).align([0.15, -0.6]);
+    g.symb(0, ["F", 1], arr, ["n", ...sub]).align([0.15, 0.4]);
+    g.symb(0, ["F", 1], arr, ["a", ...sub]).align([0.6, 0.15]);
+    g.symb(0, ["F", 1], arr, ["f", ...sub]).align([-0.4, 0.15]);
+    arr[2][1] = "16";
+    g.symb(0, ["a", 1], arr).align([0.6, 0.6]).css("blue");
+
+    let t7 = {tail: "7"};
+    g = svg.group("arrow", "red");
+    g.arrow({tail: [0, -0.16], tip: [0, -1.02]}, t7);
+    g.arrow({tail: [0, -0.1], tip: [0, 0.76]}, t7);
+    g.arrow({tail: [0.3, -0.08], tip: [1, -0.08]}, t7);
+    g.arrow({tail: [-0.3, -0.08], tip: [-0.6, -0.08]}, t7);
+    g.arrow({tail: [0.4, 0.75], tip: [0.9, 0.75]}, t7).css("blue");
 },
 
 fbd1: (sel) => {
-    $(sel).attr({width: 275, height: 400, "data-aspect": "11/16"});
-    let a = 25, Fg = 1, Fn = Fg * cos(a), Ff = Fg * sin(a) / 2;
-    svg = new SVG_Animation(sel, -5/8, 5/8, -1.05);
+    let svg = new SVG2(sel, {size: [275, 400], lrbt: [-5/8, 5/8, -1.07]}).css(".NoStyle");
     svg.gradient("gradFBD1", "#D0D0FF", "royalblue", 80, 0, 0, 100);
-    let g = svg.group().config({theta: -a});
-    svg.rect([0.5, 0.25], [0, 0], g).css({fill: "url(#gradFBD1)", stroke: "black"});
-    svg.line([-0.7, -0.125], [0.7, -0.125], g).css({stroke: "black", "stroke-width": 3});
-    svg.symbol("F", {vec:1, q4: "g"}, [0.12, -0.6]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "n"}, [0.12, 0.4], g).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "f"}, [-0.5, 0.05], g).css({fill: "red"});
-    svg.arrow([0, -0.028], [0, -Fg], {tail: 0.03}).addClass("Vector");
-    let tail = [0, -0.125];
-    svg.arrow(tail, vec2d(Fn, 90).plus(tail), {tail: 0.03}, g).addClass("Vector");
-    tail[0] = -0.25;
-    svg.arrow(tail, vec2d(Ff, 180).plus(tail), {tail: 0.03}, g).addClass("Vector");
-    svg.circle("5", [0, 0], g).css({fill: "black"});
-    svg.final();
+
+    let a = 25;
+    let g = svg.group("black1").config({theta: -a});
+    g.rect([0.5, 0.25]).css({fill: "url(#gradFBD1)"});
+    g.line([-0.7, -1/8], [0.7, -1/8]).css({"stroke-width": 3});
+
+    let t7 = {tail: "7"};
+    let [arr, sub] = [["→", 5, [0, "20"]], [6, ["14", "-8"]]];
+    let arrow = g.group("arrow", "red");
+    arrow.arrow({tail: [0, -1/8], tip: [0, cos(a) - 1/8]}, t7);
+    let tail = new RArray(-0.25, -1/8);
+    arrow.arrow({tail: tail, tip: tail.minus([0.6 * sin(a), 0])}, t7);
+    g = g.group("symbol", "f28", "red", {stroke: "none"});
+    g.symb(0, ["F", 1], arr, ["n", ...sub]).align([1/8, 0.4]);
+    g.symb(0, ["F", 1], arr, ["f", ...sub]).align([-0.45, 0.08]);
+
+    svg.arrow({tail: [0, -0.03], tip: [0, -1.03]}, t7).css("arrow", "red");
+    svg.symb(0, ["F", 1], arr, ["g", ...sub]).align([1/8, -0.6]).css("f28", "red");
+    svg.circle("5").css({fill: "black"});
 },
 
 vec1: (sel) => {
@@ -52,7 +60,7 @@ vec1: (sel) => {
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["14", "-8"];
 
-    let g = svg.group().css("symbol", "f28", "red");
+    let g = svg.group("symbol", "f28", "red");
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-8, -29]);
     g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([16, -38]);
     g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([21, -4]);
