@@ -50,14 +50,7 @@ flow2: (sel) => {
     });
     let i = 0;
     for (let e of svg.$.find("g.Arrow > text")) $(e).addClass(`Toggle${i++}`);
-
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, -1,
-        () => {t(svg, false, 0, 1, 2)},
-        () => {t(svg, true, 0)},
-        () => {t(svg, true, 1)},
-        () => {t(svg, true, 2)},
-    );
+    svg.clickToggle(3);
 },
 
 Q2: (sel) => {

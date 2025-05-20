@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Circular Orbital Motion</h1>
@@ -8,63 +7,66 @@
 
 <section class="Slide"><h3>Kepler’s 3<sup>rd</sup> Law, Again</h3>
 <p>Let’s reconsider the case of a mass (<span class="TeX">m</span>) orbiting in uniform circular motion around a very large central mass <span class="NoWrap">(<span class="TeX">M</span>).</span></p>
-<ul data-cue="+">
+<ul>
     <li>We know for uniform circular motion that the orbiting object’s acceleration is directed toward the centre of its circular orbit and has a magnitude of:
         <p class="TeX">a_c=\frac{v^2}{r}=\frac{4\pi^2r}{T^2}</p></li>
-    <li data-cue="+">If the central mass is much larger than any other nearby mass, then the gravitational field will be dominated by the central mass’s contribution:
+    <li>If the central mass is much larger than any other nearby mass, then the gravitational field will be dominated by the central mass’s contribution:
         <p class="TeX">|\vec{\bf{g}}|=\frac{GM}{r^2}</p></li>
-    <li data-cue="+">If there are no forces other than gravity, we know that <span class="TeX">\vec{\bf{a}}=\vec{\bf{g}}</span>!</li>
-    <li data-cue="+">This would not be the case if, for example, the orbiting mass was moving under rocket thrust, or if it was moving through an atmosphere.</li>
-    <li data-cue="+">By substituting the equations for <span class="TeX">\vec{\bf{a}}</span> and <span class="TeX">\vec{\bf{g}}</span> we get: <p class="TeX">\frac{4\pi^2r}{T^2}=\frac{GM}{r^2}</p></li>
-    <li data-cue="+">Note that the mass of the orbiting object <span class="NoWrap">(<span class="TeX">m</span>)</span> does not matter...</li>
-    <li data-cue="+">Gravitational fields affect all masses equally, so a tiny dust mote orbits the same as a large moon!</li>
-    <li data-cue="+">We can rearrange this as: <p class="TeX">4\pi^2r^3=GMT^2</p></li>
-    <li data-cue="+">This is Kepler’s 3<sup>rd</sup> Law, expressed in terms of the central mass rather than the “Kepler coefficient” (<span class="TeX">k</span>)!</li>
+    <li>If there are no forces other than gravity, we know that <span class="TeX">\vec{\bf{a}}=\vec{\bf{g}}</span>!</li>
+    <li>This would not be the case if, for example, the orbiting mass was moving under rocket thrust, or if it was moving through an atmosphere.</li>
+    <li>By substituting the equations for <span class="TeX">\vec{\bf{a}}</span> and <span class="TeX">\vec{\bf{g}}</span> we get: <p class="TeX">\frac{4\pi^2r}{T^2}=\frac{GM}{r^2}</p></li>
+    <li>Note that the mass of the orbiting object <span class="NoWrap">(<span class="TeX">m</span>)</span> does not matter...</li>
+    <li>Gravitational fields affect all masses equally, so a tiny dust mote orbits the same as a large moon!</li>
+    <li>We can rearrange this as: <p class="TeX">4\pi^2r^3=GMT^2</p></li>
+    <li>This is Kepler’s 3<sup>rd</sup> Law, expressed in terms of the central mass rather than the “Kepler coefficient” (<span class="TeX">k</span>)!</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Planetary &amp; Stellar Masses</h3>
 <p>This equation gives us a means of calculating masses (<span class="TeX">M</span>) for stars and planets by measuring the orbital radius (<span class="TeX">r</span>) and period (<span class="TeX">T</span>) of objects in orbit.</p>
-<ul data-cue="+">
+<ul>
     <li>We can determine Earth’s mass using the radius and period of the Moon’s orbit.</li>
-    <li data-cue="+">We can determine the Sun’s mass from the radius and period of Earth’s orbit.</li>
+    <li>We can determine the Sun’s mass from the radius and period of Earth’s orbit.</li>
 </ul>
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
-<p class="Blue">A spacecraft moving with a speed of 6.00 km/s follows a circular orbit with a radius of 9.20 × 10<sup>6</sup> metres. Find the mass of the planet and the period of the spacecraft’s orbit.</p>
-<div data-cue="+">
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+<p data-cue="none" class="Blue">A spacecraft moving with a speed of 6.00 km/s follows a circular orbit with a radius of 9.20 × 10<sup>6</sup> metres. Find the mass of the planet and the period of the spacecraft’s orbit.</p>
+<div>
     <p>First calculate the centripetal acceleration, which is equal to the planet’s gravitational field:</p>
     <p class="TeX">g = a_c = \frac{v^2}{r} = {\rm \frac{(6000\ m/s)^2}{9.20\times 10^6\ m} = 3.91\ m/s^2}</p>
 </div>
-<div data-cue="+">
+<div>
     <p>Now use Newton’s gravitational field equation to solve for <span class="TeX">M</span>:</p>
     <p class="TeX">g = \frac{GM}{r^2}</p>
-    <p data-cue="+" class="TeX">gr^2 = GM</p>
-    <p data-cue="+" class="TeX">M = \frac{gr^2}{G} = {\rm \frac{3.91\ m/s^2\cdot(9.20\times 10^6\ m)^2}{6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}} = 4.97\times 10^{24}\ kg}</p>
+    <p class="TeX">gr^2 = GM</p>
+    <p class="TeX">M = \frac{gr^2}{G}</p>
+    <p class="TeX">M = \rm \frac{3.91\ m/s^2\cdot(9.20\times 10^6\ m)^2}{6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}}</p>
+    <p class="TeX">M = \rm 4.97\times 10^{24}\ kg</p>
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
-<p class="Blue">A planet with a mass of 3.50 × 10<sup>24</sup> kg has a satellite that moves in a circular orbit with a period of 48.0 hours. Find the speed and orbital radius of the satellite, and the gravitational field that it experiences.</p>
-<div data-cue="+">
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+<p data-cue="none" class="Blue">A planet with a mass of 3.50 × 10<sup>24</sup> kg has a satellite that moves in a circular orbit with a period of 48.0 hours. Find the speed and orbital radius of the satellite, and the gravitational field that it experiences.</p>
+<div>
     <p>Equate the equations for <span class="TeX">a_c</span> and <span class="TeX">g</span>:</p>
     <p class="TeX">a_c = g</p>
     <p class="TeX">\frac{4\pi^2 r}{T^2} = \frac{GM}{r^2}</p>
 </div>
-<p data-cue="+">Note that we want to avoid using <span class="TeX">a_c = v^2/r</span> since both <span class="TeX">v</span> and <span class="TeX">r</span> are unknown.</p>
-<p data-cue="+" class="TeX">4\pi^2 r^3 = GMT^2</p>
-<p data-cue="+" class="TeX">r^3 = \frac{GMT^2}{4\pi^2}</p>
-<p data-cue="+" class="TeX">r = \left(\frac{GMT^2}{4\pi^2}\right)^{1/3}</p>
-<div data-cue="+">
+<p>Note that we want to avoid using <span class="TeX">a_c = v^2/r</span> since both <span class="TeX">v</span> and <span class="TeX">r</span> are unknown.</p>
+<p class="TeX">4\pi^2 r^3 = GMT^2</p>
+<p class="TeX">r^3 = \frac{GMT^2}{4\pi^2}</p>
+<p class="TeX">r = \left(\frac{GMT^2}{4\pi^2}\right)^{1/3}</p>
+<div>
     <p>Now we can evaluate:</p>
-    <p class="TeX">r = \rm \left(\frac{6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}\cdot 3.50\times 10^{24}\ kg \cdot (172800\ s)^2}{4\pi^2}\right)^{1/3} = 5.61\times 10^7\ m</p>
+    <p class="TeX">r = \rm \left(\frac{6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}\cdot 3.50\times 10^{24}\ kg \cdot (172800\ s)^2}{4\pi^2}\right)^{1/3}</p>
+    <p class="TeX">r = \rm 5.61\times 10^7\ m</p>
 </div>
-<div data-cue="+">
+<div>
     <p>Finally, find the other unknowns:</p>
     <p class="TeX">v = \frac{2\pi r}{T} = \rm \frac{2\pi\cdot 5.61\times 10^7\ m}{172800\ s} = 2.04\times 10^3\ m/s</p>
     <p class="TeX">g = a_c = \frac{v^2}{r} = \rm \frac{(2.04\times 10^3\ m/s)^2}{5.61\times 10^7\ m} = 0.0742\ m/s^2</p>
 </div>
-<div data-cue="+">
+<div>
     <p>We would get the same answer using either of the two remaining equations:</p>
     <p class="TeX">g = a_c = \frac{GM}{r^2} = \frac{4\pi^2 r}{T^2}</p>
 </div>
@@ -72,28 +74,25 @@
 
 <section class="Slide"><h3>Geosynchronous Orbits</h3>
 <p>When a satellite has the same period as the planet’s rotation (e.g. 24 hours for Earth), the orbit is called <em class="Defn">geosynchronous</em>.</p>
-<ul data-cue="+">
+<ul>
     <li>A satellite in a geosynchronous orbit passes over the same point on the ground at the same time each day.</li>
-    <li data-cue="+">A circular, geosynchronous orbit around the equator is called <em class="Defn">geostationary</em>.</li>
-    <li data-cue="+">The satellite remains in orbit permanently above the same point on the ground.</li>
+    <li>A circular, geosynchronous orbit around the equator is called <em class="Defn">geostationary</em>.</li>
+    <li>The satellite remains in orbit permanently above the same point on the ground.</li>
 </ul>
 </section>
 
-<section class="Slide Present">
-<div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Circular Orbital Motion</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
-    <p data-qr="p20/grav/orbit"></p>
-</div>
-</section>
+<section class="Slide Present"><div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Circular Orbital Motion</i> handout.</p>
+    <ul data-cue="none" class="Var">assign</ul>
+</div></section>
 
-</div></div></section>
+</div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
     <li><ol type="a">
-        <li>Use the mass of Earth to calculate the orbital radius of a satellite in geosynchronous orbit around the Earth. Compare this to the answer you calculated in #4c of the Planetary Motion (Kepler’s 3<sup>rd</sup> Law) assignment.</li>
+        <li>Use the mass of Earth to calculate the orbital radius of a satellite in geosynchronous orbit around the Earth.</li>
         <div class="Answer">
 <p class="TeX">\frac{GM}{r^2} = g = a_c = \frac{4\pi^2r}{T^2}</p>
 <p class="TeX">GMT^2 = 4\pi^2r^3</p>
@@ -101,100 +100,111 @@
 <p class="TeX">r = \left(\frac{GMT^2}{4\pi^2}\right)^{1/3}</p>
 <p class="TeX">r = \rm{\left(\frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}) (5.97\times 10^{24}\ kg) (8.64\times 10^4\ s)^2}{4\pi^2}\right)^{1/3}}</p>
 <p class="TeX">r = \rm{4.22\times 10^7\ m}</p></div>
+
+        <li>The Moon has an orbital period of 27.3 days. Calculate the orbital radius of a geosynchronous satellite using Kepler’s 3<sup>rd</sup> Law to verify that it gives the same result as (a).</li>
+        <div class="Answer">
+            <p class="TeX">\left(\frac{T_2}{T_1}\right)^2 = \left(\frac{r_2}{r_1}\right)^3</p>
+            <p class="TeX">r_2 = r_1 \left(\frac{T_2}{T_1}\right)^{2/3}</p>
+            <p class="TeX">r_2 = \rm 3.84\times 10^8\ m \left(\frac{1.00\ d}{27.3\ d}\right)^{2/3} = 4.24\times 10^7\ m</p>
+        </div>
     
         <li>Calculate the speed of the satellite and the gravitational field strength that it experiences.</li>
         <div class="Answer">
-<p class="TeX">v = \frac{2\pi r}{T} = \rm{\frac{2\pi\cdot 4.22\times 10^7\ m}{8.64\times 10^4\ s} = 3.07\times 10^3\ m/s}</p>
-<p class="TeX">\begin{align}\ 
-\\g &= \frac{GM}{r^2}
-\\\\ &= \rm{\frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}) (5.97\times 10^{24}\ kg)}{(4.22\times 10^7\ m)^2}}
-\\\\ &= \rm{0.223\ m/s^2}\end{align}</p></div>
+            <p class="TeX">v = \frac{2\pi r}{T} = \rm{\frac{2\pi\cdot 4.22\times 10^7\ m}{8.64\times 10^4\ s} = 3.07\times 10^3\ m/s}</p>
+            <p class="TeX">g = \frac{GM}{r^2}</p>
+            <p class="TeX">g = \rm \frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}) (5.97\times 10^{24}\ kg)}{(4.22\times 10^7\ m)^2}</p>
+            <p class="TeX">g = \rm 0.223\ m/s^2</p>
+        </div>
     </ol></li>
 
     <li><ol type="a">
         <li>What speed does a space shuttle need to have to orbit the Earth at an altitude of 170 km above the ground? [Remember that <span class="TeX">r</span> must be measured from the Earth’s centre, not the ground!]</li>
         <div class="Answer">
-<p class="TeX">r = \rm{6.37\times 10^6\ m + 1.70\times 10^5\ m = 6.54\times 10^6\ m}</p>
-<p class="TeX">\frac{GM}{r^2} = g = a_c = \frac{v^2}{r}</p>
-<p class="TeX">\frac{GM}{r} = v^2</p>
-<p class="TeX">v = \sqrt{\frac{GM}{r}}</p>
-<p class="TeX">v = \rm{\sqrt{\frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2})(5.97\times 10^{24}\ kg)}{6.54\times 10^6\ m}}} =
-    \rm{7.80\times 10^3\ m/s}</p>
+            <p class="TeX">r = \rm{6.37\times 10^6\ m + 1.70\times 10^5\ m = 6.54\times 10^6\ m}</p>
+            <p class="TeX">\frac{GM}{r^2} = g = a_c = \frac{v^2}{r}</p>
+            <p class="TeX">\frac{GM}{r} = v^2</p>
+            <p class="TeX">v = \sqrt{\frac{GM}{r}}</p>
+            <p class="TeX">v = \rm \sqrt{\frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2})(5.97\times 10^{24}\ kg)}{6.54\times 10^6\ m}} = 7.80\times 10^3\ m/s</p>
         </div>
     
         <li>What would the period of this orbit be?</li>
         <div class="Answer">
-<p class="TeX">v = \frac{2\pi r}{T}</p>
-<p class="TeX">vT = 2\pi r</p>
-<p class="TeX">T = \frac{2\pi r}{v} =
-    \rm{\frac{2\pi\cdot 6.54\times 10^6\ m}{7.80\times 10^3\ m/s} = 5.27\times 10^3\ s}</p>
+            <p class="TeX">v = \frac{2\pi r}{T}</p>
+            <p class="TeX">vT = 2\pi r</p>
+            <p class="TeX">T = \frac{2\pi r}{v} = \rm \frac{2\pi\cdot 6.54\times 10^6\ m}{7.80\times 10^3\ m/s} = 5.27\times 10^3\ s</p>
         </div>
     
         <li>What would the space shuttle’s centripetal acceleration be?</li>
-        <div class="Answer">
-<p class="TeX">a_c = \frac{v^2}{r} = \rm{\frac{(7.80\times 10^3\ m/s)^2}{6.54\times 10^6\ m} = 9.31\ m/s^2}</p>
-        </div>
+        <p class="TeX Answer">a_c = \frac{v^2}{r} = \rm{\frac{(7.80\times 10^3\ m/s)^2}{6.54\times 10^6\ m} = 9.31\ m/s^2}</p>
 
         <li>How strong is Earth’s gravitational field at this altitude?</li>
-        <div class="Answer">9.31 m/s<sup>2</sup>!</div>
+        <p class="Answer">9.31 m/s<sup>2</sup>!</p>
     </ol></li>
 
     <li>A comet with a speed of 2.45 km/s is captured by the gravity of a planet that has a mass of 3.16 × 10<sup>25</sup> kg. Determine the orbital radius and period of the comet assuming uniform circular motion.</li>
     <div class="Answer">
-<p class="TeX">\frac{GM}{r^2} = g = a_c = \frac{v^2}{r}</p>
-<p class="TeX">GM = v^2r</p>
-<p class="TeX">r = \frac{GM}{v^2} = \rm{\frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2})(3.16\times 10^{25}\ kg)}{(2.45\times 10^3\ m/s)^2} = 3.51\times 10^8\ m}</p>
-For <span class="TeX">T</span>, the algebra is the same as #2b...
-<p class="TeX">T = \frac{2\pi r}{v} = \rm{\frac{2\pi\cdot 3.51\times 10^8\ m}{2.45\times 10^3\ m/s} = 9.01\times 10^5\ s}</p>
+        <p class="TeX">\frac{GM}{r^2} = g = a_c = \frac{v^2}{r}</p>
+        <p class="TeX">GM = v^2r</p>
+        <p class="TeX">r = \frac{GM}{v^2} = \rm \frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2})(3.16\times 10^{25}\ kg)}{(2.45\times 10^3\ m/s)^2} = 3.51\times 10^8\ m</p>
+        <p>For <span class="TeX">T</span>, the algebra is the same as #2b...</p>
+        <p class="TeX">T = \frac{2\pi r}{v} = \rm{\frac{2\pi\cdot 3.51\times 10^8\ m}{2.45\times 10^3\ m/s} = 9.01\times 10^5\ s}</p>
     </div>
 
     <li><ol type="a">
         <li>Jupiter orbits the Sun with a period of 11.86 years. Using this period, calculate the Jupiter’s speed and orbital radius.</li>
-        <div class="Answer">Algebra is the same as #1...
-<p class="TeX">r = \left(\frac{GMT^2}{4\pi^2}\right)^{1/3}</p>
-<p class="TeX">r = \rm{\left(\frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}) (1.99\times 10^{30}\ kg) (3.74\times 10^8\ s)^2}{4\pi^2}\right)^{1/3}}</p>
-<p class="TeX">r = \rm{7.78\times 10^{11}\ m}</p>
-
-<p class="TeX">v = \frac{2\pi r}{T}
-    = \rm{\frac{2\pi\cdot 7.78\times 10^{11}\ m}{3.74\times 10^8\ s} = 1.31\times 10^4\ m/s}</p>
+        <div class="Answer">
+            <p>Algebra is the same as #1a...</p>
+            <p class="TeX">r = \left(\frac{GMT^2}{4\pi^2}\right)^{1/3}</p>
+            <p class="TeX">r = \rm\left(\frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2}) (1.99\times 10^{30}\ kg) (3.74\times 10^8\ s)^2}{4\pi^2}\right)^{1/3}</p>
+            <p class="TeX">r = \rm{7.78\times 10^{11}\ m}</p>
+            <p class="TeX">v = \frac{2\pi r}{T} = \rm \frac{2\pi\cdot 7.78\times 10^{11}\ m}{3.74\times 10^8\ s} = 1.31\times 10^4\ m/s</p>
         </div>
 
         <li>Suppose a planet with the same speed as Jupiter was in a circular orbit around a star with half the mass of the Sun. What would the orbital period and radius of the orbit be?</li>
-        <div class="Answer">Algebra is the same as #3...
-<p class="TeX">r = \frac{GM}{v^2} = \rm{\frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2})(9.95\times 10^{29}\ kg)}{(1.31\times 10^4\ m/s)^2} = 3.89\times 10^{11}\ m}</p>
-<p class="TeX">T = \frac{2\pi r}{v} = \rm{\frac{2\pi\cdot 3.89\times 10^{11}\ m}{1.31\times 10^4\ m/s} = 1.87\times 10^8\ s}</p>
+        <div class="Answer">
+            <p>Algebra is the same as #3...</p>
+            <p class="TeX">r = \frac{GM}{v^2} = \rm \frac{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2})(9.95\times 10^{29}\ kg)}{(1.31\times 10^4\ m/s)^2} = 3.89\times 10^{11}\ m</p>
+            <p class="TeX">T = \frac{2\pi r}{v} = \rm \frac{2\pi\cdot 3.89\times 10^{11}\ m}{1.31\times 10^4\ m/s} = 1.87\times 10^8\ s</p>
         </div>
     
     </ol></li>
 
     <li>A research satellite orbits a newly discovered planet. The satellite has an orbital radius of 2.85 × 10<sup>7</sup> m and a period of 3.20 h. Calculate the mass of the planet.</li>
     <div class="Answer">
-<p class="TeX">\frac{GM}{r^2} = g = a_c = \frac{4\pi^2r}{T^2}</p>
-<p class="TeX">GM = \frac{4\pi^2r^3}{T^2}</p>
-<p class="TeX">M = \frac{4\pi^2r^3}{GT^2} =
-    \rm{\frac{4\pi^2 (2.85\times 10^7\ m)^3}{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2})(1.15\times 10^4\ s)^2} = 1.03\times 10^{26}\ kg}</p>
+        <p class="TeX">\frac{GM}{r^2} = g = a_c = \frac{4\pi^2r}{T^2}</p>
+        <p class="TeX">GM = \frac{4\pi^2r^3}{T^2}</p>
+        <p class="TeX">M = \frac{4\pi^2r^3}{GT^2} = \rm \frac{4\pi^2 (2.85\times 10^7\ m)^3}{(6.67\times 10^{-11}\ \frac{N\cdot m^2}{kg^2})(1.15\times 10^4\ s)^2} = 1.03\times 10^{26}\ kg</p>
     </div>
 </ol>
-</div></div></section>
+</div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li><ol type="a">
         <li>Under what circumstances can we equate the formula for gravitational field strength to the formula for centripetal acceleration?</li>
-        <div class="Answer">This is appropriate when the object is in a circular orbit around a single source of gravity, which is the <em>only</em> force acting on the mass.</div>
+        <p class="Answer">This is appropriate when the object is in a circular orbit around a single source of gravity, which is the <em>only</em> force acting on the mass.</p>
     
         <li>Demonstrate how doing this allows us to express Kepler’s 3<sup>rd</sup> Law in terms of the central mass rather than its Kepler coefficient.</li>
-        <div class="Answer">See the first part of the Lesson Notes.</div>
+        <p class="Answer">See the first part of the Lesson Notes.</p>
     </ol></li>
 </ol>
+</div></section>
+
+<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1-qh9PoMT5ykfZaP3sxfUBT7XMuI0M-MG">Assignment</button>
+    </p>
 </div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}4.4 — Circular Orbital Motion`,
-    answerDate: "2024.5.13.16",
+    showDate: "2025.5.23",
+    answerDate: "2025.5.26",
     num: "4.4",
     up: "p20/home",
     prev: "p20/grav/field",

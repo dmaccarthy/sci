@@ -10,8 +10,8 @@ bike: (sel) => {
         let b = svg.image(bike, [2, 2], [x, 1.1]);
         if (x < 6) b.attr({filter: "url(#gray)"});
     }
-    svg.label(0, [...range(-6, 9, 2)], -1.25);
-    svg.text("m", [8.7, -1.25]);
+    svg.label(0, [...range(-6, 9, 2)], -1);
+    svg.text("m", [8.7, -1]);
     svg.label(["-2", "-18"], [...range(-6, 9, 1)], 0);
     svg.arrow({tail: [-5, "-10"], tip: [7, "-10"]}, {tail: "8"});
     svg.$.find("text").removeClass("Zero").addClass("Mono");
