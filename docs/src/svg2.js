@@ -1258,6 +1258,15 @@ pause() {
 
 toggle() {return this.playing ? this.pause() : this.play()}
 
+clickToggle(n, click, init) {
+    let a = [() => clickCycle.toggle(this, false, ...range(n))];
+    for (let i=0;i<n;i++) a.push(() => clickCycle.toggle(this, true, i));
+    clickCycle(this.element, init == null ? -1 : init, ...a);
+    if (click) for (let i=0;i<click;i++)
+        this.$.trigger("click");
+    return this;
+}
+
 
 /** Load and run SVG2 JavaScripts **/
 
@@ -1518,6 +1527,7 @@ SVG2._style = {
     ital: {"font-style": "italic"},
     bold: {"font-weight": "bold"},
     nofill: {fill: "none"},
+    black: {fill: "black"},
     blue: {fill: "#0065fe"},
     red: {fill: "red"},
     lime: {fill: "limegreen"},
