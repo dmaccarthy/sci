@@ -452,6 +452,14 @@ text(data, xy, selector) {
     return e.attr({x: f(x), y: f(y)}).html(data);
 }
 
+gtext(data, css, xy, ...align) {
+/* Create a <g> element with an aligned <text> child */
+    if (!(css instanceof Array)) css = [css];
+    let g = this.group(...css);
+    g.text(data);
+    return g.align(xy, ...align);
+}
+
 symbol(...args) { // Deprecated!
     let g = this.group();
     g.css(".Symbol");
@@ -655,8 +663,7 @@ errorBarX(x0, x1, y, dy) {return this.errorBarY(y, x0, x1, dy, 1)}
 tip_to_tail(vecs, options) {
 /* Draw a 2D "tip-to-tail" vector diagram */
     if (options == null) options = {};
-    let g = this.group();
-    g.$.addClass("TipToTail2D");
+    let g = this.group(".TipToTail2D");
     let pt = new RArray(0, 0);
     let opt = Object.assign({tail: "7"}, options);
     for (let v of vecs) {
@@ -664,8 +671,8 @@ tip_to_tail(vecs, options) {
         let tmp = pt0.plus([v[0], 0]);
         pt = pt.plus(v);
         if (v[0] || v[1]) {
-            if (v[0]) g.arrow({tail: pt0, tip: tmp}, opt).$.addClass("Component");
-            if (v[1]) g.arrow({tail: tmp, tip: pt}, opt).$.addClass("Component");
+            if (v[0]) g.arrow({tail: pt0, tip: tmp}, opt).css(".Component");
+            if (v[1]) g.arrow({tail: tmp, tip: pt}, opt).css(".Component");
             g.arrow({tail: pt0, tip: pt}, opt);
         }
     }
@@ -1339,7 +1346,7 @@ static cached(url) {return SVG2._cache[new URL(url, SVG2.url).href]}
 
 static vec_diag(sel, vecs, opt) {
 /* Draw a vector diagram in an <svg> tag */
-    let svg = new SVG2(sel, opt).css(".NoStyle", "text");
+    let svg = new SVG2(sel, opt).css(".NoStyle");
     if (!opt) opt = {};
     let g = svg.tip_to_tail(vecs);
     if (opt.shift) g.config({shift: opt.shift});
