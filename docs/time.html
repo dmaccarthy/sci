@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Time</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+function sched(success) {
+    if (!success) $("#Time").html("Failed!");
+    setTimeout(update, 600000);
+}
+
+function update() {
+    let url = "https://exp186.onrender.com/utc.json";
+    console.log(`Fetching ${url}`);
+    fetch(url).then((a) => {
+        if (a.status == 200) {
+            a.json().then((a) => {
+                $("#Time").html(JSON.stringify(a));
+                sched(1);
+            }, sched);
+        }
+        else sched();
+    }, sched);
+}
+
+$(update);
+
+</script>
+</head>
+<body>
+    <p id="Time"></p>
+</body>
+</html>
