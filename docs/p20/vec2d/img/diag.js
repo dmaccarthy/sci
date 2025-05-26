@@ -86,7 +86,10 @@ Q4: (sel) => {
 },
 
 Q5: (sel) => {
-    let svg = SVG2.vec_diag(sel, [[0, -3.5], vec2d(3.4, 76)], {lrbt: [-1, 1.5, -4, 0.5],
+    let Fg = 0.347 * 9.81;
+    let Fn = Fg * cos(14);
+    let Ff = 0.12 * Fn;
+    let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 76), vec2d(Ff, 166)], {lrbt: [-1, 1.5, -4, 0.5],
         scale: 90, margin: 8, grid: 0.25, tick: "-8", label: [1, 0, "-12", "-20"]});
     svg.$.find(".Component").remove();
     svg.gtext("N", "text", [1.25, -3.75]);
@@ -97,7 +100,9 @@ Q5: (sel) => {
     let g = svg.group("symbol", "f28", "red");
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-0.5, -1.5]);
     g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([0.75, -2]);
-    g.symb(0, ["F", BD], arr, ["net", SM_IT, sub]).align([0.5, 0.3]).css("blue");
+    g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([0.8, 0.3]);
+    g.symb(0, ["F", BD], arr, ["net", SM_IT, sub]).align([0.2, 0.4]).css("blue");
+    svg.line([-1, tan(14)], [1.5, -1.5*tan(14)]).css({stroke: "lightgrey"}).insertBefore(svg.$.find(".TipToTail2D")[0]);
 },
 
 });

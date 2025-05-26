@@ -21,6 +21,7 @@ loadFeed.init = () => {
 
 _ = loadFeed.grid = (w, h, minors, opt) => {
     if (opt == null) opt = {};
+    if (!minors) minors = 1;
     let [x0, y0] = [opt.x0 ? opt.x0 : 0, opt.y0 ? opt.y0 : 0];
     let bold = {stroke: "grey", "stroke-width": "1px"};
     let scale = opt.scale ? opt.scale : 15;
@@ -28,7 +29,7 @@ _ = loadFeed.grid = (w, h, minors, opt) => {
 
     let [x1, y1] = [x0 + w, y0 + h];
     let svg = new SVG2($("#Grid").html(""), {scale: scale * minors, margin: margin, grid: 1 / minors,
-        lrbt: [x0, x1, y0, y1],
+        lrbt: [x0, x1, y0, y1], appendAxes: 0
     });
     let g = svg.css(".NoStyle", "text").$.removeAttr("data-aspect").find("g.Grid");
 
@@ -53,6 +54,9 @@ _ = loadFeed.grid = (w, h, minors, opt) => {
         l = $(l).appendTo(g);
         if (!l.hasClass("Axis")) l.css(bold);
     }
+
+    svg.line([0, 9+tan(14)], [10, 9-9*tan(14)]).css({stroke: "lightgrey"});
+
     return svg;
 }
 
