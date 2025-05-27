@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Polar &amp; Cartesian Forms</h1>
@@ -8,239 +7,219 @@
 
 <section class="Slide"><h3>Components</h3>
 <p>Imagine an object undergoing a displacement from an initial position <span class="TeX">{\vec{\bf{d}}}_i = (+3.0,\ −2.0)\ \rm{m}</span> to a final position <span class="TeX">{\vec{\bf{d}}}_f = (+1.0,\ +2.0)\ \rm{m}</span>.</p>
-<p class="Center"><svg data-svg2="p20/vec2d/img/diag.js#Q1" id="Displ" class="w22"><style>
-    #Displ g.Plot circle {fill: blue; fill-opacity: 0.7; stroke: black}
-</style></svg></p>
-<ul data-cue="+">
+<p class="Center"><svg data-svg2="p20/vec2d/img/diag.js#Q1#1" class="s12"></svg></p>
+<ul>
     <li>The displacement can be calculated — just like for 1D — as the change in position:
 <p class="TeX">\begin{align}\Delta\vec{\bf{d}} &={\vec{\bf{d}}}_f-{\vec{\bf{d}}}_i
 \\&= (+1.0,\ +2.0)\ \rm{m} − (+3.0,\ −2.0)\ \rm{m}\end{align}</p></li>
-    <li data-cue="+">Because the motion is 2D, the positions are ordered pairs with <span class="TeX">x</span> and <span class="TeX">y</span> coordinates.</li>
-    <li data-cue="+">Arithmetic is performed on the <em class="Defn">components</em> separately...</li>
-    <li data-cue="+">In the <span class="TeX">x</span> direction the motion from +3.0 to +1.0 m gives a displacement of –2.0 m.</li>
-    <li data-cue="+">In the <span class="TeX">y</span> direction the motion from –2.0 to +2.0 m gives a displacement of +4.0 m.</li>
+    <li>Because the motion is 2D, the positions are ordered pairs with <span class="TeX">x</span> and <span class="TeX">y</span> coordinates.</li>
+    <li>Arithmetic is performed on the <em class="Defn">components</em> separately...</li>
+    <li>In the <span class="TeX">x</span> direction the motion from +3.0 to +1.0 m gives a displacement of –2.0 m.</li>
+    <li>In the <span class="TeX">y</span> direction the motion from –2.0 to +2.0 m gives a displacement of +4.0 m.</li>
 </ul>
-<p data-cue="+" class="TeX">\Delta\vec{\bf{d}}= (-2.0,\ +4.0)\ \rm{m}</p>
-<ul data-cue="+">
+<p class="TeX">\Delta\vec{\bf{d}}= (-2.0,\ +4.0)\ \rm{m}</p>
+<ul>
     <li>When we use the <span class="TeX">x</span> and <span class="TeX">y</span> components to describe a vector, this is called the <em class="Defn">Cartesian form</em> of the vector (named after French mathematician Rene Descartes.)</li>
-    <li data-cue="+">In the vector diagram above, the displacement vector is drawn as a darker red arrow from <span class="TeX">{\vec{\bf{d}}}_i</span> to <span class="TeX">{\vec{\bf{d}}}_f</span> and is labelled <span class="TeX">\Delta\vec{\bf{d}}</span>.</li>
-    <li data-cue="+">The <span class="TeX">x</span> and <span class="TeX">y</span> components are drawn tip-to-tail as lighter pink arrows and are labelled <span class="TeX">\Delta{\vec{\bf{d}}}_x</span> and <span class="TeX">\Delta{\vec{\bf{d}}}_y</span>.</li>
-    <li data-cue="+">For a vector diagram to be accurate, we must always use the same scale for both the <span class="TeX">x</span>- and <span class="TeX">y</span>-axis.</li>
+    <li>In the vector diagram above, the displacement vector is drawn as a red arrow from <span class="TeX">{\vec{\bf{d}}}_i</span> to <span class="TeX">{\vec{\bf{d}}}_f</span> and is labelled <span class="TeX">\Delta\vec{\bf{d}}</span>.</li>
+    <li>The <span class="TeX">x</span> and <span class="TeX">y</span> components are drawn tip-to-tail as yellow arrows and are labelled <span class="TeX">\Delta{\vec{\bf{d}}}_x</span> and <span class="TeX">\Delta{\vec{\bf{d}}}_y</span>.</li>
+    <li>For a vector diagram to be accurate, we must always use the same scale for both the <span class="TeX">x</span>- and <span class="TeX">y</span>-axis.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Cartesian → Polar Conversion</h3>
 <p>As the vector diagram shows, a vector and its components form a right-angle triangle.</p>
-<!-- <p class="Center Present" data-cue="="><img src="img/components.png" alt="Comp" class="w16"/></p> -->
-<ul data-cue="+">
+<ul>
     <li>The <span class="TeX">x</span> component will be the ‘Adjacent’ side, the <span class="TeX">y</span> component will be the ‘Opposite’ side, and the resultant displacement will be ‘Hypotenuse’.</li>
-    <li data-cue="+">We can use trigonometry to calculate the magnitude and direction (<em class="Defn">polar form</em>) of the vector:
+    <li>We can use trigonometry to calculate the magnitude and direction (<em class="Defn">polar form</em>) of the vector:
         <p class="TeX">\left|\Delta\vec{\bf{d}}\right|=\sqrt{(\Delta{\vec{\bf{d}}}_x)^2 + (\Delta{\vec{\bf{d}}}_y)^2}</p>
         <p class="TeX">\tan{\theta}=\frac{\Delta{\vec{\bf{d}}}_y}{\Delta{\vec{\bf{d}}}_x}</p></li>
-    <li data-cue="+">Substituting the values -2.0 m and +4.0 m for the <span class="TeX">x</span> and <span class="TeX">y</span> components gives us the polar form of the vector:<p class="TeX">\Delta\vec{\bf{d}} = 4.5\ \rm{m}\ [117°]</p></li>
-    <li data-cue="+">When calculating the direction using the tan<sup>−1</sup> operation, it is important to know that your calculator will give the correct answer only when the <span class="TeX">x</span> component is positive.</li>
-    <li data-cue="+">For cases where the <span class="TeX">x</span> component is negative, you must add 180° to the angle your calculator gives!</li>
+    <li>Substituting the values –2.0 m and +4.0 m for the <span class="TeX">x</span> and <span class="TeX">y</span> components gives us the polar form of the vector:<p class="TeX">\Delta\vec{\bf{d}} = 4.5\ \rm{m}\ [117°]</p></li>
+    <li>When calculating the direction using the tan<sup>−1</sup> operation, it is important to know that your calculator will give the correct answer only when the <span class="TeX">x</span> component is positive.</li>
+    <li>For cases where the <span class="TeX">x</span> component is negative, you must add 180° to the angle your calculator gives!</li>
 </ul>
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
-<p class="Blue">The velocity of a bird is (+8.00, -2.50) m/s. Express this is polar form.</p>
-<p class="Center" data-cue="+"><svg data-svg2="p20/vec2d/img/polar.js#Ex1" class="s22"></svg></p>
-<p data-cue="+" class="TeX">\left|\vec{\bf{v}}\right|=\sqrt{{\vec{\bf{v}}}_x^2+{\vec{\bf{v}}}_y^2}</p>
-<p data-cue="+" class="TeX">\left|\vec{\bf{v}}\right|=\rm{\sqrt{(+8.00\ m/s)^2 + (-2.50\ m/s)^2} = 8.38\ m}</p>
-<p data-cue="+" class="TeX">\tan{\theta}=\frac{{\vec{\bf{v}}}_y}{{\vec{\bf{v}}}_x} = {-2.50\over +8.00} =\ -0.3125</p>
-<p data-cue="+" class="TeX">\theta=\tan^{-1}(-0.3125) = \ -17.4^\circ</p>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+<p data-cue="none" class="Blue">The velocity of a bird is (+8.00, –2.50) m/s. Express this is polar form.</p>
+<p class="Center"><svg data-svg2="p20/vec2d/img/polar.js#Ex1" class="s20"></svg></p>
+<p class="TeX">\left|\vec{\bf{v}}\right|=\sqrt{{\vec{\bf{v}}}_x^2+{\vec{\bf{v}}}_y^2}</p>
+<p class="TeX">\left|\vec{\bf{v}}\right|=\rm{\sqrt{(+8.00\ m/s)^2 + (-2.50\ m/s)^2} = 8.38\ m}</p>
+<p class="TeX">\tan{\theta}=\frac{{\vec{\bf{v}}}_y}{{\vec{\bf{v}}}_x} = {-2.50\over +8.00} =\ -0.3125</p>
+<p class="TeX">\theta=\tan^{-1}(-0.3125) = \ -17.4^\circ</p>
+<p>If we reversed the signs of both components, <span class="TeX">\vec{\bf v}</span> = (–8.00, +2.50) m/s, the equations would give us the same answer!</p>
+<ul>
+    <li>This is because there are two different angles that have the same <span class="TeX">\tan</span> ratio. Your Math teacher may have called this the CAST Rule.</li>
+    <li>When using <span class="TeX">\tan^{-1}</span> with a negative <span class="TeX">x</span>-component, add 180° to the angle your calculator gives you.</li>
+    <li>Always check your vector diagram to ensure that your answer is in the correct quadrant.</li>
+</ul>
 
 </section>
 
 <section class="Slide"><h3>Polar → Cartesian Conversion</h3>
-<p data-cue="+">When a vector is known in polar form and we want to convert it to Cartesian form, we can use the other trigonometry relations: sine and cosine.</p>
-<ul data-cue="+">
+<p>When a vector is known in polar form and we want to convert it to Cartesian form, we can use the other trigonometry relations: sine and cosine.</p>
+<ul>
     <li>The trigonometry relations apply not just to displacement vectors but to any vector, including velocity, acceleration, and force.</li>
 </ul>
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
-<p class="Blue">Suppose a force of 50.0 newtons is applied with a direction of 160° to push an object up an incline. Calculate the Cartesian components.</p>
-<p class="Center" data-cue="+" ><svg data-svg2="p20/vec2d/img/polar.js#Ex2" class="s22"></svg></p>
-<p data-cue="+" class="TeX">{\vec{\bf{F}}}_x=\left|\vec{\bf{F}}\right|\cos{\theta} = 50.0\ \rm{N}\cdot\cos 160^\circ = -47.0\ \rm{N}</p>
-<p data-cue="+" class="TeX">{\vec{\bf{F}}}_y=\left|\vec{\bf{F}}\right|\sin{\theta = 50.0\ \rm{N}\cdot\sin 160^\circ = +17.1\ \rm{N}}</p>
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+<p data-cue="none" class="Blue">Suppose a force of 50.0 newtons is applied with a direction of 160° to push an object up an incline. Calculate the Cartesian components.</p>
+<p class="Center" ><svg data-svg2="p20/vec2d/img/polar.js#Ex2" class="s22"></svg></p>
+<p class="TeX">{\vec{\bf{F}}}_x=\left|\vec{\bf{F}}\right|\cos{\theta} = 50.0\ \rm{N}\cdot\cos 160^\circ = -47.0\ \rm{N}</p>
+<p class="TeX">{\vec{\bf{F}}}_y=\left|\vec{\bf{F}}\right|\sin{\theta = 50.0\ \rm{N}\cdot\sin 160^\circ = +17.1\ \rm{N}}</p>
 </section>
 
-<section class="Slide Present">
-<div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Polar &amp; Cartesian Forms</i> webpage. Staple your completed answers to the handout and keep everything organized in your Physics 20 binder.</p>
-    <p data-qr="p20/vec2d/polar"></p>
-</div>
-</section>
+<section class="Slide Present"><div class="Assign">
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Vector Diagrams</i> handout.</p>
+    <ul data-cue="none" class="Var">assign</ul>
+</div></section>
 
-</div></div></section>
-<!-- 
-<section class="Post" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="">Assignment 2.3</button>
-    </p>
-</div></section> -->
+</div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
 <li>A spacecraft experiences a force of 15.0 kilonewtons at a direction of –65.0° due to the thrust of its rockets. 
 <ol type="a">
     <li>Convert this vector to Cartesian form using the appropriate trigonometry relations.</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\bf F}_x = |\vec{\bf F}| \cos\theta = \rm{(15.0\ kN) \cos(-65.0^\circ) = +6.34\ kN}</p>
+        <p class="TeX">\vec{\bf F}_y = |\vec{\bf F}| \sin\theta = \rm{(15.0\ kN) \sin(-65.0^\circ) = -13.6\ kN}</p>
+    </div>
+
     <li>Compare your answer to the result you obtained for question 3b of the <em>Vector Diagrams</em> assignment. Does your calculated answer agree with the answer you obtained by making measurements from a vector diagram?</li>
 </ol></li>
-<div class="Answer">
-<p class="TeX">\vec{\bf F}_x = |\vec{\bf F}| \cos\theta = \rm{(15.0\ kN) \cos(-65.0^\circ) = +6.34\ kN}</p>
-<p class="TeX">\vec{\bf F}_y = |\vec{\bf F}| \sin\theta = \rm{(15.0\ kN) \sin(-65.0^\circ) = -13.6\ kN}</p>
-</div>
 
-<li>A student undergoes a displacement in Cartesian form of (+18.0, +12.0) m. Convert this vector to polar form using the appropriate trigonometry relations.
-Include a vector diagram on graph paper. Take the initial position as the origin.</li>
+<li>A student undergoes a displacement in Cartesian form of (+18.0, +12.0) m. Convert this vector to polar form using the appropriate trigonometry relations. Include a vector diagram on graph paper. Take the initial position as the origin.</li>
 <div class="Answer">
-<p class="TeX">|\Delta\vec{\bf d}| = \sqrt{(\Delta\vec{\bf d}_x)^2 + (\Delta\vec{\bf d}_y)^2}
-    = \rm{\sqrt{(18.0)^2 + (12.0)^2}\ m = 21.6\ m}</p>
-<p class="TeX">\theta = \tan^{-1}\left(\frac{\Delta\vec{\bf d}_y}{\Delta\vec{\bf d}_x}\right)
-    = \tan^{-1} \rm{\left(\frac{+12.0\ m}{+18.0\ m}\right) = +33.7^\circ}</p>
-<p><a target="V2" href="./?{%22symbol%22:%22%CE%94d%22,%22square%22:[1.5,0],%22corner%22:[-6,-9],%22vectors%22:[[18,12]],%22unit%22:%22m%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+    <p class="TeX">|\Delta\vec{\bf d}| = \sqrt{(\Delta\vec{\bf d}_x)^2 + (\Delta\vec{\bf d}_y)^2} = \rm{\sqrt{(18.0)^2 + (12.0)^2}\ m = 21.6\ m}</p>
+    <p class="TeX">\theta = \tan^{-1}\left(\frac{\Delta\vec{\bf d}_y}{\Delta\vec{\bf d}_x}\right) = \tan^{-1} \rm{\left(\frac{+12.0\ m}{+18.0\ m}\right) = +33.7^\circ}</p>
+    <p><a target="V2" href="./?{%22symbol%22:%22%CE%94d%22,%22square%22:[1.5,0],%22corner%22:[-6,-9],%22vectors%22:[[18,12]],%22unit%22:%22m%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
 </div>
 
 <li>An applied force can be expressed in Cartesian form as <span class="TeX">{\vec{\bf{F}}}_a = \rm{(+120, -85.0)\ N}</span>.
 <ol type="a">
 <li>Using trigonometric relationships, calculate the magnitude and the direction of the applied force vector.</li>
-<li>Draw a vector diagram on graph paper. Remember to use the same scale for both axes and indicate what the scale is. Label the force vector <span class="TeX">({\vec{\bf{F}}}_a)</span>, the x- and y-components (<span class="TeX">{\vec{\bf{F}}}_{ax}</span>, <span class="TeX">{\vec{\bf{F}}}_{ay}</span>) and the direction (<span class="TeX">\theta</span>). Take the tail of the vector to be the origin.</li>    
-</ol></li>
 <div class="Answer">
-    <p class="TeX">|\vec{\bf F}| = \sqrt{\vec{\bf F}_x^2 + \vec{\bf F}_y^2}
-        = \rm{\sqrt{(+120)^2 + (-85.0)^2}\ N = 147\ N}</p>
-    <p class="TeX">\theta = \tan^{-1}\left(\frac{\vec{\bf F}_y}{\vec{\bf F}_x}\right)
-        = \tan^{-1} \rm{\left(\frac{-85.0\ N}{+120\ N}\right) = -35.3^\circ}</p>
-    <p><a target="V3" href="./?{%22symbol%22:%22F%22,%22square%22:[7.5,0],%22corner%22:[-15,-120],%22vectors%22:[[120,-85]],%22unit%22:%22N%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+    <p class="TeX">|\vec{\bf F}| = \sqrt{\vec{\bf F}_x^2 + \vec{\bf F}_y^2} = \rm \sqrt{(+120)^2 + (-85.0)^2}\ N = 147\ N</p>
+    <p class="TeX">\theta = \tan^{-1}\left(\frac{\vec{\bf F}_y}{\vec{\bf F}_x}\right) = \tan^{-1} \rm \left(\frac{-85.0\ N}{+120\ N}\right) = -35.3^\circ</p>
 </div>
+<li>Draw a vector diagram on graph paper. Remember to use the same scale for both axes and indicate what the scale is. Label the force vector <span class="TeX">({\vec{\bf{F}}}_a)</span>, the x- and y-components (<span class="TeX">{\vec{\bf{F}}}_{ax}</span>, <span class="TeX">{\vec{\bf{F}}}_{ay}</span>) and the direction (<span class="TeX">\theta</span>). Take the tail of the vector to be the origin.</li>    
+<p class="Answer"><a target="V3" href="./?{%22symbol%22:%22F%22,%22square%22:[7.5,0],%22corner%22:[-15,-120],%22vectors%22:[[120,-85]],%22unit%22:%22N%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+</ol></li>
 
 <li>Calculate the magnitude and direction for each vector using trigonometric relationships. Draw a component diagram for each vector.
 <ol type="a">
     <li><span class="TeX">\bf{\Delta}\vec{\bf{d}} = \rm{(+32.0, +20.5)\ m}</span></li>
-<div class="Answer">
-<p class="TeX">|\Delta\vec{\bf d}| = \sqrt{(\Delta\vec{\bf d}_x)^2 + (\Delta\vec{\bf d}_y)^2}
-        = \sqrt{32.0^2 + 20.5^2}\rm{\ m}
-        = \rm{38.0\ m}</p>
-<p class="TeX">\theta = \tan^{-1}\left(\frac{\Delta\vec{\bf d}_y}{\Delta\vec{\bf d}_x}\right)
-    = \tan^{-1}\left(\rm{\frac{+20.5\ m}{+32.0\ m}}\right)
-    = +32.6^\circ</p>
-<p><a target="V4a" href="./?{%22symbol%22:%22%CE%94d%22,%22square%22:[2,0],%22corner%22:[-4,-10],%22vectors%22:[[32,20.5]],%22unit%22:%22m%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
-</div>
+    <div class="Answer">
+        <p class="TeX">|\Delta\vec{\bf d}| = \sqrt{(\Delta\vec{\bf d}_x)^2 + (\Delta\vec{\bf d}_y)^2} = \rm \sqrt{32.0^2 + 20.5^2} \ m 38.0\ m</p>
+        <p class="TeX">\theta = \tan^{-1}\left(\frac{\Delta\vec{\bf d}_y}{\Delta\vec{\bf d}_x}\right) = \tan^{-1}\left(\rm{\frac{+20.5\ m}{+32.0\ m}}\right) = +32.6^\circ</p>
+        <p><a target="V4a" href="./?{%22symbol%22:%22%CE%94d%22,%22square%22:[2,0],%22corner%22:[-4,-10],%22vectors%22:[[32,20.5]],%22unit%22:%22m%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+    </div>
 
     <li><span class="TeX">\vec{\bf{v}} = \rm{(-45.0, +63.5)\ km/h}</span></li>
-<div class="Answer">
-<p class="TeX">|\vec{\bf v}| = \sqrt{(\vec{\bf v}_x)^2 + (\vec{\bf v}_y)^2}
-        = \sqrt{45.0^2 + 63.5^2}\rm{\ km/h}
-        = \rm{77.8\ km/h}</p>
-<p class="TeX">\theta = \tan^{-1}\left(\frac{\vec{\bf v}_y}{\vec{\bf v}_x}\right) + 180^\circ
-    = \tan^{-1}\left(\rm{\frac{+63.5\ km/h}{-45.0\ km/h}}\right) + 180^\circ
-    = +125^\circ</p>
-<p><a target="V4b" href="./?{%22symbol%22:%22v%22,%22square%22:[4,0],%22corner%22:[-64,-8],%22vectors%22:[[-45,63.5]],%22unit%22:%22km/h%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
-</div>
+    <div class="Answer">
+        <p class="TeX">|\vec{\bf v}| = \sqrt{(\vec{\bf v}_x)^2 + (\vec{\bf v}_y)^2} = \rm \sqrt{45.0^2 + 63.5^2} \ km/h = 77.8\ km/h</p>
+        <p class="TeX">\theta = \tan^{-1}\left(\frac{\vec{\bf v}_y}{\vec{\bf v}_x}\right) + 180^\circ = \tan^{-1}\left(\rm{\frac{+63.5\ km/h}{-45.0\ km/h}}\right) + 180^\circ = +125^\circ</p>
+        <p><a target="V4b" href="./?{%22symbol%22:%22v%22,%22square%22:[4,0],%22corner%22:[-64,-8],%22vectors%22:[[-45,63.5]],%22unit%22:%22km/h%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+    </div>
 
 </ol></li>
     
 <li>Calculate the Cartesian components for each vector using trigonometric relationships. Draw a component diagram for each vector.
 <ol type="a">
     <li><span class="TeX">\vec{\bf{p}} = \rm{250\ N\cdot s\ [+145^\circ]}</span> (The symbol <span class="TeX">\vec{\bf{p}}</span> represents a “momentum” vector and N·s stands for newton-seconds which is the SI unit of momentum.)</li>
-<div class="Answer">
-<p class="TeX">\vec{\bf p}_x = |\vec{\bf p}| \cos\theta = \rm{(250\ N\cdot s) \cos(+145^\circ) = -205\ N\cdot s}</p>
-<p class="TeX">\vec{\bf p}_y = |\vec{\bf p}| \sin\theta = \rm{(250\ N\cdot s) \sin(+145^\circ) = +143\ N\cdot s}</p>
-<p><a target="V5a" href="./?{%22symbol%22:%22p%22,%22square%22:[1.5,1],%22corner%22:[-255,-75],%22vectors%22:[{%22mag%22:250,%22dir%22:145}],%22quadrant%22:2,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
-</div>
+    <div class="Answer">
+        <p class="TeX">\vec{\bf p}_x = |\vec{\bf p}| \cos\theta = \rm{(250\ N\cdot s) \cos(+145^\circ) = -205\ N\cdot s}</p>
+        <p class="TeX">\vec{\bf p}_y = |\vec{\bf p}| \sin\theta = \rm{(250\ N\cdot s) \sin(+145^\circ) = +143\ N\cdot s}</p>
+        <p><a target="V5a" href="./?{%22symbol%22:%22p%22,%22square%22:[1.5,1],%22corner%22:[-255,-75],%22vectors%22:[{%22mag%22:250,%22dir%22:145}],%22quadrant%22:2,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+    </div>
 
     <li><span class="TeX">\vec{\bf{B}} = \rm{85.2\ mT\ [-78.2^\circ]}</span> (The symbol <span class="TeX">\vec{\bf{B}}</span> represents a “magnetic field” vector and mT stands for milliteslas, a common unit for measuring magnetic field strength.)</li>
-<div class="Answer">
-<p class="TeX">\vec{\bf B}_x = |\vec{\bf B}| \cos\theta = \rm{85.2\ mT\cdot \cos(-78.2^\circ) = +17.4\ mT}</p>
-<p class="TeX">\vec{\bf B}_y = |\vec{\bf B}| \sin\theta = \rm{85.2\ mT\cdot \sin(-78.2^\circ) = -83.4\ mT}</p>
-<p><a target="V5b" href="./?{%22symbol%22:%22B%22,%22square%22:[7.5,0],%22corner%22:[-67.5,-120],%22vectors%22:[{%22mag%22:85.2,%22dir%22:-78.2}],%22unit%22:%22mT%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
-</div>
+    <div class="Answer">
+        <p class="TeX">\vec{\bf B}_x = |\vec{\bf B}| \cos\theta = \rm{85.2\ mT\cdot \cos(-78.2^\circ) = +17.4\ mT}</p>
+        <p class="TeX">\vec{\bf B}_y = |\vec{\bf B}| \sin\theta = \rm{85.2\ mT\cdot \sin(-78.2^\circ) = -83.4\ mT}</p>
+        <p><a target="V5b" href="./?{%22symbol%22:%22B%22,%22square%22:[7.5,0],%22corner%22:[-67.5,-120],%22vectors%22:[{%22mag%22:85.2,%22dir%22:-78.2}],%22unit%22:%22mT%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+    </div>
 </ol>
 
 <li>Students observe a ball rolling down a ramp and determine that its acceleration is 0.850 m/s<sup>2</sup> [191.0°].
 <ol type="a">
     <li>Convert the acceleration vector to Cartesian form using trigonometric equations.</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\bf a}_x = |\vec{\bf a}| \cos\theta = \rm{0.850\ m/s^2\cdot \cos(+191^\circ) = -0.834\ m/s^2}</p>
+        <p class="TeX">\vec{\bf a}_y = |\vec{\bf a}| \sin\theta = \rm{0.850\ m/s^2\cdot \sin(+191^\circ) = -0.162\ m/s^2}</p>
+    </div>
+
     <li>Draw an accurate component diagram of the acceleration vector on graph paper.</li>
+    <p class="Answer"><a target="V6" href="./?{%22symbol%22:%22a%22,%22square%22:[7.5,-2],%22corner%22:[-1.2,-0.825],%22vectors%22:[{%22mag%22:0.85,%22dir%22:191}],%22unit%22:%22m/s^2%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
 </ol>
-<div class="Answer">
-<p class="TeX">\vec{\bf a}_x = |\vec{\bf a}| \cos\theta = \rm{0.850\ m/s^2\cdot \cos(+191^\circ) = -0.834\ m/s^2}</p>
-<p class="TeX">\vec{\bf a}_y = |\vec{\bf a}| \sin\theta = \rm{0.850\ m/s^2\cdot \sin(+191^\circ) = -0.162\ m/s^2}</p>
-<p><a target="V6" href="./?{%22symbol%22:%22a%22,%22square%22:[7.5,-2],%22corner%22:[-1.2,-0.825],%22vectors%22:[{%22mag%22:0.85,%22dir%22:191}],%22unit%22:%22m/s^2%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
-</div>
 
 <li>Doppler radar indicates that a storm system is moving into Sherwood Park with a velocity of 18.2 km/h [S 18.0° E].
 <ol type="a">
     <li>Express the direction as a positive angle measured counterclockwise from the x-axis (East).</li>
-    <div class="Answer">S 18.0° E = 270° + 18.0° = 288.0° (or &ndash;72.0°)</div>
+    <p class="Answer">S 18.0° E = 270° + 18.0° = 288.0° (or &ndash;72.0°)</p>
 
     <li>Express the velocity vector in Cartesian form by calculation.</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\bf v}_x = |\vec{\bf v}| \cos\theta = \rm{18.2\ km/h\cdot \cos(+288^\circ) = +5.62\ km/h}</p>
+        <p class="TeX">\vec{\bf v}_y = |\vec{\bf v}| \sin\theta = \rm{18.2\ km/h\cdot \sin(+288^\circ) = -17.3\ km/h}</p>
+    </div>
+
     <li>Draw an accurate component diagram of the velocity vector on graph paper.</li>
+    <p class="Answer"><a target="V7" href="./?{%22symbol%22:%22v%22,%22square%22:[1.5,0],%22corner%22:[-12,-24],%22vectors%22:[{%22mag%22:18.2,%22dir%22:288}],%22unit%22:%22km/h%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+
 </ol></li>
-<div class="Answer">
-<p class="TeX">\vec{\bf v}_x = |\vec{\bf v}| \cos\theta = \rm{18.2\ km/h\cdot \cos(+288^\circ) = +5.62\ km/h}</p>
-<p class="TeX">\vec{\bf v}_y = |\vec{\bf v}| \sin\theta = \rm{18.2\ km/h\cdot \sin(+288^\circ) = -17.3\ km/h}</p>
-<p><a target="V7" href="./?{%22symbol%22:%22v%22,%22square%22:[1.5,0],%22corner%22:[-12,-24],%22vectors%22:[{%22mag%22:18.2,%22dir%22:288}],%22unit%22:%22km/h%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
-</div>
 
 <li>A hiker begins at coordinates (3.2, 4.7) km and walks at 4.0 km/h [N 25° W] for 45 minutes.
 <ol type="a">
     <li>Determine the hiker’s displacement <p class="TeX">\Delta\vec{\bf{d}}=\vec{\bf{v}}\Delta t</p> and express it in both polar and Cartesian form.</li>
+    <div class="Answer">
+        <p class="TeX">\Delta\vec{\bf d} = \vec{\bf v}\Delta t = \rm 4.0\ km/h\ [N\ 25^\circ\ W]\cdot 0.750\ h = 3.0\ km\ [115^\circ]</p>
+        <p class="TeX">\Delta\vec{\bf d} = \rm (3.0\cos(115^\circ), 3.0\sin(115^\circ))\ km = (-1.3, +2.7)\ km</p>
+        <p class="TeX">\vec{\bf d}_f = \vec{\bf d}_i + \Delta\vec{\bf d} = \rm (3.2, 4.7)\ km + (-1.3, +2.7)\ km = (1.9, 7.4)\ km</p>
+    </div>
+
     <li>Draw an accurate, labelled diagram of the motion on graph paper.  Identify the coordinates of the hiker’s final position.</li>
+    <p class="Answer"><a target="V8" href="./?{%22symbol%22:%22%CE%94d%22,%22square%22:[5,-1],%22corner%22:[-3.5,-1.5],%22vectors%22:[[-1.3,2.7]],%22unit%22:%22km%22,%22shift%22:[3.2,4.7]}#p20/vec2d/vec2d">Vector Diagram</a></p>
 </ol>
-<div class="Answer">
-<p class="TeX">\begin{align}\Delta\vec{\bf d} &= \vec{\bf v}\Delta t
-    \\ &= \rm{4.0\ km/h\ [N 25^\circ W]\cdot 0.750\ h}
-    \\ &= \rm{3.0\ km\ [115^\circ]}
-    \\ &= \rm{(3.0\cos(115^\circ), 3.0\sin(115^\circ))\ km}
-    \\ &= \rm{(-1.3, +2.7)\ km}
-    \end{align}</p>
-<p class="TeX">\begin{align}\vec{\bf d}_f &= \vec{\bf d}_i + \Delta\vec{\bf d}
-    \\ &= \rm{(3.2, 4.7)\ km + (-1.3, +2.7)\ km}
-    \\ &= \rm{(1.9, 7.4)\ km}
-    \end{align}</p>
-<p><a target="V8" href="./?{%22symbol%22:%22%CE%94d%22,%22square%22:[5,-1],%22corner%22:[-3.5,-1.5],%22vectors%22:[[-1.3,2.7]],%22unit%22:%22km%22,%22shift%22:[3.2,4.7]}#p20/vec2d/vec2d">Vector Diagram</a></p>
-</div></li>
+</li>
     
 <li>During its launch, a toy rocket experiences two forces: the force of gravity and the thrust of the rocket engine. The thrust is 52 newtons [+65°] and the force of gravity is 24 N <span class="NoWrap">[–90°]</span>.
 <ol type="a">
     <li>Express both vectors in Cartesian form.</li>
-    <li>Draw a vector diagram on graph paper to add (“tip-to-tail”) the thrust and gravitational forces. Draw and label the resultant (net) force vector.</li>
-</ol>
-<div class="Answer">
-<p class="TeX">\begin{align}\vec{\bf F}_a &= \rm{52\ N\ [+65^\circ]}
-    \\ &= \rm{(52\cos(+65^\circ), 52\sin(+65^\circ))\ N}
-    \\ &= \rm{(+22, +47)\ N}
-    \end{align}</p>
-<p class="TeX">\begin{align}\vec{\bf F}_g &= \rm{24\ N\ [-90^\circ]}
-    \\ &= \rm{(24\cos(-90^\circ), 24\sin(-90^\circ))\ N}
-    \\ &= \rm{(0, -24)\ N}
-    \end{align}</p>
-<p><a target="V9" href="./?{%22symbol%22:%22F%22,%22square%22:[3,0],%22corner%22:[-18,-6],%22vectors%22:[{%22mag%22:52,%22dir%22:65},[0,-24]],%22unit%22:%22N%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
-</div></li>
-</ol>
-</div></div></section>
+    <div class="Answer">
+        <p class="TeX">\begin{align}\vec{\bf F}_a &= \rm 52\ N\ [+65^\circ]
+            \\[5pt] &= \rm (52\cos(+65^\circ), 52\sin(+65^\circ))\ N
+            \\[5pt] &= \rm (+22, +47)\ N
+            \end{align}</p>
+        <p class="TeX">\begin{align}\vec{\bf F}_g &= \rm 24\ N\ [-90^\circ]
+            \\[5pt] &= \rm (24\cos(-90^\circ), 24\sin(-90^\circ))\ N
+            \\[5pt] &= \rm (0, -24)\ N
+            \end{align}</p>
+    </div>
 
-<section class="Post" data-answers="1" data-icon="correct">
+    <li>Draw a vector diagram on graph paper to add (“tip-to-tail”) the thrust and gravitational forces. Draw and label the resultant (net) force vector.</li>
+    <p class="Answer"><a target="V9" href="./?{%22symbol%22:%22F%22,%22square%22:[3,0],%22corner%22:[-18,-6],%22vectors%22:[{%22mag%22:52,%22dir%22:65},[0,-24]],%22unit%22:%22N%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
+
+</ol></li>
+</ol>
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
 <li><ol type="a">
     <li>Explain what we mean by the <em class="Defn">components</em> of the displacement or of any other vector.</li>
-    <div class="Answer">The <em class="Defn">Cartesian components</em> describe the motion in each dimension (<span class="TeX">x</span> or <span class="TeX">y</span>) separately.</div>
+    <p class="Answer">The <em class="Defn">Cartesian components</em> describe the motion in each dimension (<span class="TeX">x</span> or <span class="TeX">y</span>) separately.</p>
 
     <li>What shape will always be produced if we draw a 2D vector along with its <span class="TeX">x</span>- and <span class="TeX">y</span>-components?</li>
-    <div class="Answer">A right-angle triangle</div>
+    <p class="Answer">A right-angle triangle</p>
 </ol></li>
 
 <li>Define the <em class="Defn">polar form</em> and the <em class="Defn">Cartesian form</em> of a 2D vector.</li>
-<div class="Answer">A vector described by its magnitude and direction is in <em class="Defn">polar form</em>.
-    A vector decribed by its <span class="TeX">x</span>- and <span class="TeX">y</span>-components is in <em class="Defn">Cartesian form</em></div>
+<p class="Answer">A vector described by its magnitude and direction is in <em class="Defn">polar form</em>.
+    A vector decribed by its <span class="TeX">x</span>- and <span class="TeX">y</span>-components is in <em class="Defn">Cartesian form</em></p>
 
 
 <li><ol type="a">
@@ -258,19 +237,28 @@ Include a vector diagram on graph paper. Take the initial position as the origin
     </div></ol></li>
 
 <li>When using a vector equation that involves addition or subtraction, should we express the vectors in polar or Cartesian form? How do we perform the calculation?</li>
-<div class="Answer">Cartesian: Add or subtract the components independently.</div>
+<p class="Answer">Cartesian: Add or subtract the components independently.</p>
 </ol>
+</div></section>
+
+<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="18BfIaEEsk0igpIeIlHZZKgXSnVCe7yg9">Assignment</button>
+    </p>
 </div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}2.3 — Polar & Cartesian Forms`,
-    answerDate: "2024.3.5.16",
+    showDate: "2025.5.29",
+    answerDate: "2025.5.30",
     num: "2.3",
     up: "p20/home",
     prev: "p20/vec2d/diag",
-    next: "p20/vec2d/arith",
+    // next: "p20/vec2d/arith",
 }
 
 </script>

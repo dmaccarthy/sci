@@ -29,13 +29,14 @@ Ex3: (sel) => {
     svg.clickToggle(3);
 },
 
-Q1: (sel) => {
+Q1: (sel, comp) => {
     let svg = SVG2.vec_diag(sel, [[-2, 4]], {shift: [3, -2], lrbt: [0, 4.5, -3.5, 3.5],
         scale: 50, margin: [32, 10, 2, 2], grid: 0.5, tick: "-8", label: [1, 0, "-12", "-20"]});
     svg.$.find("g.LabelY text.Zero").removeClass("Zero");
     svg.gtext("m", "text", [4.5, 3]);
     let diag = svg.$.find(".TipToTail2D");
-    diag.find(".Component").remove();
+    let yellow = diag.find(".Component");
+    if (!comp) yellow.remove();
 
     let sym = svg.group("symbol", "f28", "blue");
     let [BD, SM, SM_IT] = [1, 4, 6];
@@ -51,6 +52,7 @@ Q1: (sel) => {
     g.circle("5", [1, 2]);
     g.$.insertBefore(diag).find("circle").css({fill: "#0065fe"});
     g.gtext("θ", ["text", {"font-style": "italic"}], [3.3, -1.7]);
+    if (comp) svg.$.on("click", () => yellow.fadeToggle());
 },
 
 Q2: (sel) => {

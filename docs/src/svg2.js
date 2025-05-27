@@ -65,7 +65,10 @@ css(...rules) {
 
 align(xy, x, y) {
 /* Align the element based on its bounding box */
-    if (!this.$.is(":visible")) throw("Cannot align hidden elements");
+    if (!this.$.is(":visible")) {
+        console.log(this);
+        throw("Cannot align hidden elements");
+    }
     if (typeof(xy) == "number") xy = [xy, xy];
     if (y == null) {
         if (x == null) x = y = 0.5;
@@ -457,7 +460,8 @@ gtext(data, css, xy, ...align) {
     if (!(css instanceof Array)) css = [css];
     let g = this.group(...css);
     g.text(data);
-    return g.align(xy, ...align);
+    g.align(xy, ...align);
+    return g;
 }
 
 symbol(...args) { // Deprecated!
