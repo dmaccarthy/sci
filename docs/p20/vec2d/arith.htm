@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Vector Arithmetic</h1>
@@ -14,7 +14,7 @@
 <p>A <em class="Defn">vector diagram</em> is a <u>tip-to-tail</u> illustration of two or more vectors being added.</p>
 <p class="Blue">Example: Illustrate the displacement of an object that moves 50 m [60°] and then 40 m [340°].
 <!-- <p>To <em class="Defn">add 2D vectors</em>, imagine an object undergoing two successive displacements as illustrated in the vector diagram below.</p> -->
-<p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#Ex1" class="s20"></svg></p>
+<p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#Ex1" class="s18"></svg></p>
 <ul>
     <li>We can take the original starting point as the origin.</li>
     <li>Note that the second part of the displacement begins from the point where the first displacement ends.</li>
@@ -35,20 +35,20 @@
     <li>Convert each vector to Cartesian form:</li>
 </ul>
 <div>
-    <p class="TeX">\Delta{\vec{\bf d}}_{1x} = 50\ {\rm m}\cdot\cos(60^\circ) = 25\ {\rm m}</p>
-    <p class="TeX">\Delta{\vec{\bf d}}_{1y} = 50\ {\rm m}\cdot\sin(60^\circ) = 43\ {\rm m}</p>
+    <p class="TeX">\Delta{\vec{\bf d}}_{1x} = 50\ {\rm m}\cdot\cos(60^\circ) = +25\ {\rm m}</p>
+    <p class="TeX">\Delta{\vec{\bf d}}_{1y} = 50\ {\rm m}\cdot\sin(60^\circ) = +43\ {\rm m}</p>
 </div>
 <div>
-    <p class="TeX">\Delta{\vec{\bf d}}_{2x} = 40\ {\rm m}\cdot\cos(340^\circ) = 38\ {\rm m}</p>
+    <p class="TeX">\Delta{\vec{\bf d}}_{2x} = 40\ {\rm m}\cdot\cos(340^\circ) = +38\ {\rm m}</p>
     <p class="TeX">\Delta{\vec{\bf d}}_{2y} = 40\ {\rm m}\cdot\sin(340^\circ) = -14\ {\rm m}</p>
 </div>
-<p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#Ex1p" class="s20 Present"></svg></p>
+<p class="Center"><svg id="Ex1Dup" data-svg2="p20/vec2d/img/arith.js#Ex1" class="s20"></svg></p>
 <ul>
     <li>Now total the <span class="TeX">x</span>- and <span class="TeX">y</span>-components independently:</li>
 </ul>
 <div>
-    <p class="TeX">\Delta{\vec{\bf d}}_x = \rm{25\ m + 38\ m = 63\ m}</p>
-    <p class="TeX">\Delta{\vec{\bf d}}_y = \rm{43\ m + (-14\ m) = 30\ m}</p>
+    <p class="TeX">\Delta{\vec{\bf d}}_x = \rm{+25\ m + 38\ m = +63\ m}</p>
+    <p class="TeX">\Delta{\vec{\bf d}}_y = \rm{+43\ m + (-14\ m) = +30\ m}</p>
 </div>
 <ul><li>You can convert the answer back to polar form if necessary.</li></ul>
 </section>
@@ -81,9 +81,9 @@
 <table class="Center Five Bottom">
     <tr><th>Force</th><th><span class="TeX">|\vec{\bf F}|</span> / N</th><th><span class="TeX">\theta</span></th><th><span class="TeX">\vec{\bf F}_x = |\vec{\bf F}|\cos\theta</span></th><th><span class="TeX">\vec{\bf F}_y = |\vec{\bf F}|\sin\theta</span></th></tr>
     <tr><td>Gravity</td><td>98.1</td><td>270°</td><td>0</td><td>–98.1</td></tr>
-    <tr><td>Normal</td><td>96.6</td><td>80.0°</td><td class="Reveal"><span>16.8</span></td><td class="Reveal"><span>95.1</span></td></tr>
-    <tr><td>Friction</td><td>8.00</td><td>170°</td><td class="Reveal"><span>–7.88</span></td><td class="Reveal"><span>1.39</span></td></tr>
-    <tr><td>Net</td><td class="Reveal"><span>9.04</span></td><td class="Reveal"><span>350°</span></td><td class="Reveal"><span>8.90</span></td><td class="Reveal"><span>–1.57</span></td></tr>
+    <tr><td>Normal</td><td>96.6</td><td>80.0°</td><td class="Reveal"><span>+16.8</span></td><td class="Reveal"><span>+95.1</span></td></tr>
+    <tr><td>Friction</td><td>8.00</td><td>170°</td><td class="Reveal"><span>–7.88</span></td><td class="Reveal"><span>+1.39</span></td></tr>
+    <tr><td>Net</td><td class="Reveal"><span>9.04</span></td><td class="Reveal"><span>350°</span></td><td class="Reveal"><span>+8.90</span></td><td class="Reveal"><span>–1.57</span></td></tr>
 </table>
 <!--p>Now use Newton’s 2nd Law: <p class="TeX">\vec{\bf a} = {\vec{\bf F}_{net} \over m}</p></p>
 <p>The acceleration is 0.904 m/s<sup>2</sup> [350°] in polar form, or (0.890, –0.157) m/s<sup>2</sup> in Cartesian form.</p-->
@@ -96,28 +96,10 @@
 </div>
 </section>
 
-<script type="text/javascript" data-init="notes">
-
-loadFeed.notes = () => {
-    let rev = $("td.Reveal").on("click", (ev) => {
-        $(ev.currentTarget).find("span").fadeToggle();
-    });
-}
-
-</script>
 </div></section>
 
-<!-- <section class="Post" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="">Assignment 2.4</button>
-    </p>
-</div></section> -->
-
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
     <li>Three students (Kelly, Chris, and Sam) are pulling on a backpack, each trying to get the backpack away from the others. Kelly exerts a force of 82.0 N [+25.0°] on the backpack; Chris exerts a force of (–57.4, +48.2) N; Sam exerts a force of 86.0 N [–63.5°].<ol type="a">
         <li>Express Kelly and Sam’s force in Cartesian form and use the results to calculate the net force acting on the backpack.</li>
@@ -172,21 +154,22 @@ loadFeed.notes = () => {
     <li>A student can paddle a canoe with a speed of 5.00 m/s. The student wants to cross a stream that has a current of 1.85 m/s. The actual velocity of the student will be the vector sum of the paddling velocity added to the current velocity. Determine the direction that the student should paddle (i.e. how many degrees upstream) so that the resultant velocity will be straight across the stream (i.e. neither upstream nor downstream.) Also, determine the magnitude of the resultant velocity. Take the current direction to be the x-axis and the direction of the resultant velocity to be the y-axis.</li>
     <div class="Answer">
         <p><a target="Q4" href="./?{%22symbol%22:%22v%22,%22square%22:[3,-1],%22corner%22:[-3.9,-0.6],%22vectors%22:[{%22mag%22:5,%22dir%22:111.7156},[1.85,0]],%22unit%22:%22m/s%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
-        <p>Since we know the magnitudes of the current and paddling velocity, we can calculate the magnitude of the resultant velocity using Pythagoras:
-<p class="TeX">\vec{\mathbf v}_{net} = \mathrm{\sqrt{(5.00\ m/s)^2 - (1.85\ m/s)^2} = 4.65\ m/s}</p>
-We can now calculate the paddling velocty in Cartesian form:
-<p class="TeX">\begin{align}
-\vec{\mathbf v}_{paddle} &= \vec{\mathbf v}_{net} - \vec{\mathbf v}_{current}
-\\ &= \mathrm{(0.00, +4.65)\ m/s - (1.85, 0.00)\ m/s}
-\\ &= \mathrm{(-1.85, +4.65)\ m/s}
-\end{align}</p>
+        <p>Since we know the magnitudes of the current and paddling velocity, we can calculate the magnitude of the resultant velocity using Pythagoras:</p>
+        <p class="TeX">\vec{\mathbf v}_{net} = \mathrm{\sqrt{(5.00\ m/s)^2 - (1.85\ m/s)^2} = 4.65\ m/s}</p>
+        <p>We can now calculate the paddling velocty in Cartesian form:</p>
+        <p class="TeX">\begin{align}
+        \vec{\mathbf v}_{paddle} &= \vec{\mathbf v}_{net} - \vec{\mathbf v}_{current}
+        \\ &= \mathrm{(0.00, +4.65)\ m/s - (1.85, 0.00)\ m/s}
+        \\ &= \mathrm{(-1.85, +4.65)\ m/s}
+        \end{align}</p>
 
-<p>The direction of the paddling velocity is:</p>
-<p class="TeX">\theta = \mathrm{\tan^{-1}\left(\frac{+4.65}{-1.85}\right) + 180^\circ = 112^\circ}</p> (i.e. 22° upstream from straight across)</p>
+        <p>The direction of the paddling velocity is:</p>
+        <p class="TeX">\theta = \mathrm{\tan^{-1}\left(\frac{+4.65}{-1.85}\right) + 180^\circ = 112^\circ}</p>
+        <p>(i.e. 22° upstream from straight across)</p>
     </div>
 
-    <li>Three asteroids have identical masses (5.00 × 10<sup>13</sup> kg) and are arranged in the form of an equilateral triangle, separated from each other by 25.0 km.
-        <p class="Center"><svg class="s20" data-svg2="p20/grav/img/ugrav.js#tri"></svg></p>
+    <!-- <li>Three asteroids have identical masses (5.00 × 10<sup>13</sup> kg) and are arranged in the form of an equilateral triangle, separated from each other by 25.0 km.
+        <p class="Center"><svg class="s20" data-svg2="p20/vec2d/img/arith.js#tri"></svg></p>
     <ol type="a">
         <li>A spacecraft is located at point “A” which is the “centroid” of the triangle; it is the same separation from each asteroid.
             Use trigonometry to calculate <span class="TeX">r_A</span>, the separation from “A” to each of the asteroids. (Remember that the angles of an equilateral triangle are all 60°.)</li>
@@ -234,11 +217,15 @@ We can now calculate the paddling velocty in Cartesian form:
             <p>The resultant vector (i.e. the net gravitational field) is <span class="TeX">\rm{1.79\times 10^{-5}\ m/s^2\ [90.0^\circ]}</span></p>
         </div>
 
-    </ol></li>
+    </ol></li> -->
 
-    <li>A spacecraft moves between a planet and its moon as illustrated below. The observed acceleration of the spacecraft due to the combined gravity of the planet and moon has a direction of +270º. Mission Control calculates that the gravity due to the planet only is 0.462 m/s<sup>2</sup> [+230º]. The moon’s direction relative to the spacecraft is +300º, however the moon’s mass is unknown so Mission Control cannot calculate its gravitational field strength.<ol type="a">
+    <li>
+        <p>A spacecraft (‘S’) moves between a planet (‘P’) and its moon (‘M’) as illustrated below.</p>
+        <p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#ship"></svg></p>
+        <p>The observed acceleration of the spacecraft due to the combined gravity of the planet and moon has a direction of +270º. Mission Control calculates that the gravity due to the planet only is 0.462 m/s<sup>2</sup> [+230º]. The moon’s direction relative to the spacecraft is +300º, however the moon’s mass is unknown so Mission Control cannot calculate its gravitational field strength.</p>
+        <ol type="a">
         <li>Sketch and label a vector diagram (“tip-to-tail”) of the two gravitational fields and the resultant (net) gravitational field.</li>
-        <div class="Answer"><a target="Q5" href="./?{%22symbol%22:%22g%22,%22square%22:[7.5,-2],%22corner%22:[-0.9,-1.2],%22vectors%22:[{%22mag%22:0.462,%22dir%22:230},{%22mag%22:0.5939,%22dir%22:300}],%22unit%22:%22m/s^2%22}#p20/vec2d/vec2d">Vector Diagram</a></div>
+        <p class="Answer"><a target="Q5" href="./?{%22symbol%22:%22g%22,%22square%22:[7.5,-2],%22corner%22:[-0.9,-1.2],%22vectors%22:[{%22mag%22:0.462,%22dir%22:230},{%22mag%22:0.5939,%22dir%22:300}],%22unit%22:%22m/s^2%22}#p20/vec2d/vec2d">Vector Diagram</a></p>
 
         <li>Solve for all unknowns in the table below.
         </li>
@@ -275,7 +262,7 @@ We can now calculate the paddling velocty in Cartesian form:
         </div>
     </ol></li>
 </ol>
-</div></div></section>
+</div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
@@ -300,12 +287,27 @@ We can now calculate the paddling velocty in Cartesian form:
 </ol>
 </div></section>
 
-<script type="text/javascript">
+<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1pcUhIjLOunWia3X1dv8_Vs8CA3Bk78aO">Assignment</button>
+    </p>
+</div></section>
+
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
+    $("td.Reveal").on("click", (ev) => {
+        $(ev.currentTarget).find("span").fadeToggle();
+    });
+    $("#Ex1Dup").addClass("Present");
+}
 
 loadFeed.data = {
     title: `${siteData.lesson}2.4 — Vector Arithmetic`,
-    showDate: "2025.6",
-    answerDate: "2025.6",
+    showDate: "2025.5.30",
+    answerDate: "2025.6.2",
     num: "2.4",
     up: "p20/home",
     prev: "p20/vec2d/polar",

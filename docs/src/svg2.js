@@ -1310,6 +1310,7 @@ static load(cb) {
         }
     }
     if (SVG2.load.pending.length == 0) cb();
+    
 }
 
 static cache_run(url, id, ...arg) {
