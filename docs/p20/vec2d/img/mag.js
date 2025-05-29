@@ -36,7 +36,7 @@ hiker: (sel) => {
         margin: [8, 8, 8, 12], grid: 0.5, shift: [-2, 5], label: [1, 0, "-6", "-12"]});
     svg.css(".NoStyle").$.find(".Component").remove();
 
-    svg.text("km", [5.5, 5.5]);
+    svg.gtext("km", "text", [0.5, 6]);
     let g = svg.group();
     g.$.insertBefore(svg.$.find(".TipToTail2D"));
     g.line([1, 5], [-2, 5]).css({stroke: "black", "stroke-width": 2});
@@ -58,7 +58,7 @@ soccer: (sel) => {
         scale: 20, margin: 8, grid: 1, label: [2, 0, "-6", "-12"]});
     svg.css(".NoStyle").$.find(".Component").remove();
     svg.circle(20).css({"stroke-width": "0.5px", stroke: "grey", fill: "none"});
-    svg.text("m", [-11, 19]);
+    svg.gtext("m", "text", [1, 20]);
 },
  
 });

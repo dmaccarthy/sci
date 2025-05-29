@@ -3,8 +3,12 @@ SVG2.cache("p20/vec2d/img/diag.js", {
 Ex1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[5, -4]], {shift: [-3, 2],
         lrbt: [-4, 3, -3, 3], scale: 50, margin: 8, grid: 0.5, tick: "-8", label: [1, 0, "-12", "-20"]});
+    let g = svg.group("blue");
+    g.$.insertBefore(svg.$.find(".TipToTail2D"));
+    g.circle("5", [-3, 2]);
+    g.circle("5", [2, -2]);
     svg.$.find(".Component").remove();
-    svg.group("text").text("m", [2.5, 2.5]);
+    svg.gtext("m", "text", [2.5, 2.5]);
     let toggle = svg.group();
     toggle.group("black2").line([-3, 2], [-1, 2]);
     toggle.gtext("θ", ["text", {"font-style": "italic"}], [-2.2, 1.75]);
