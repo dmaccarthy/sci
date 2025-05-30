@@ -9,18 +9,18 @@
     for a school, we might want to search for all students born in 2007 who are enrolled in
     Computing Science 30. Add a <code>find</code> method as a <em>generator</em> to locate
     nodes that match criteria specified by a supplied <code>match</code> function...</p>
-<pre class="Code" data-echo="dds3_search.py" data-title="1">from resource.school import Student
+<pre class="Code" data-echo="dds3_search.py" data-title="1">from sal_cs.school import student_list
 
 <span class="Comment"># Randomly generate data for 1200 students</span>
 students = LinkedList()
-students.insert(Student() for i in range(1200))
+students.insert(student_list(1200, courses=4))
 
 <span class="Comment"># Search criteria</span>
-crit = {"birthyear": 2007, "courses":["Computing Science 30"]}
+crit = {"birthyear":2008, "courses":["Computing Science 30"]}
 
 <span class="Comment"># Perform search</span>
-for student in students.find(match, 20, **crit):
-    print(student.data)</pre>
+for index in students.find(match, 20, **crit):
+    print(students[index].data)</pre>
 
 <p>In the example above, the <code>Student</code> constructor generates random data for one
     student. The <code>find</code> method should yield the students who match the search
@@ -36,11 +36,11 @@ for student in students.find(match, 20, **crit):
 <p>Also add an <code>mSort</code> method that sorts the linked list using a <a href="#cs_new/rec/merge">merge sort</a> recursive algorithm. This should be an <em>out-of-place</em> algorithm that returns a new <code>LinkedList</code> instance, leaving the original list unchanged.</p>
 
 <p>Do not use any built-in or standard library sorting functions. Test the algorithm by sorting the students by birthday. In the program below, the <code>compareBirthday</code> function (which you will need to write) should take two nodes as arguments; it should return 0 if both students have the same birthday, 1 if the second node is greater than the first, and -1 if the second node is less than the first.</p>
-<pre class="Code" data-echo="dds3_sort.py" data-title="1">from resource.school import Student
+<pre class="Code" data-echo="dds3_sort.py" data-title="1">from sal_cs.school import student_list
 
 <span class="Comment"># Randomly generate data for 1200 students</span>
 students = LinkedList()
-students.insert(Student() for i in range(1200))
+students.insert(student_list(1200, courses=4))
 
 <span class="Comment"># Sort</span>
 recursive = False

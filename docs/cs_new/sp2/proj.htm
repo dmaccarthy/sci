@@ -74,14 +74,27 @@ Contestant wins 1650 out of 2464 (67.0%) when switching.
 <h2 class="Collapse">Molar Mass</h2><div class="Collapse">
 <p>In chemistry, each substance can be described by a chemical formula like <span class="TeX">\rm H_2O</span> or <span class="TeX">\rm CaCl_2</span>. Each formula has one or more element symbols that are either a single upper case letter (e.g. <span class="TeX">\rm H</span>), or an upper case letter followed by a lower case letter (e.g. <span class="TeX">\rm Ca</span>). Each element can be followed by a subscript that indicates how many of each atom are present in each unit of the substance. If no subscript is included, we can assume <em>one</em> atom; for example <span class="TeX">\rm H_2O</span> means two atoms of hydrogen (<span class="TeX">\rm H</span>) and one atom of oxygen (<span class="TeX">\rm O</span>).</p>
 
-<p>To calculate the <em class="Defn">molar mass</em> of <span class="TeX">\rm H_2O</span>, we can look up the masses of <span class="TeX">\rm H</span> and <span class="TeX">\rm O</span> in a database, and then calculate the total mass of two hydrogens and one oxygen.</p>
+<p>Create a program <code>sp2/chemical.py</code> that asks the user to enter a chemical formula, and then prints out the symbols for all of the elements individually, with the number of atoms of each:</p>
 
-<p>Download this program into your <code>sp2</code> OneDrive folder.</p>
-<pre data-echo="molar.py" data-title="1" class="Code">from elements import mass
+<pre data-echo="io" class="Code">Enter a chemical formuala: <span class="Blue">H2O</span>
+H 2
+O 1
 
+Enter a chemical formuala: <span class="Blue">CaCl2</span>
+Ca 1
+Cl 2
+</pre>
+
+<p>The program should work for <em>any</em> chemical formula that does <em>not</em> have parenthesis. For example, you may have learned in your Science class that some substances have formulas like <span class="TeX">\rm (NH_4)_2CO_3</span>. Your program does not need to work with chemical formulas like this.</p>
+
+<p>Once you have completed the program and it works correctly, copy the file to <code>sp2/molar.py</code>. Paste the following code to the beginning of the file.</p>
+
+<pre data-echo="py" class="Code">from elements import mass
+
+<span class="Comment"># Calculate mass of H2O...</span>
 print(mass("H") * 2 + mass("O"))</pre>
 
-<p>To make the program work, you will need to download this database of masses into the same folder. Do <b>not</b> make any changes to the <code>elements.py</code> file!</p>
+<p>To make the program work, you will need to download this database of element masses into the same folder. Do <b>not</b> make any changes to the <code>elements.py</code> file!</p>
 
 <pre data-echo="elements.py" data-title="1" class="Code"><span class="DocString">"Molar mass data for elements 1 through 103"</span>
 
@@ -90,10 +103,19 @@ MASSES = {"H": 1.00794, "He": 4.002602, "Li": 6.941, "Be": 9.01218, "B": 10.811,
 def mass(sym):
     return MASSES[sym]</pre>
 
-<p>Modify the <code>molar.py</code> program so that it prompts the user for a chemical formula and then calculates and outputs its molar mass. The program should work for <em>any</em> chemical formula that does <em>not</em> have parenthesis. For example, you may have learned in your Science class that some substances have formulas like <span class="TeX">\rm (NH_4)_2CO_3</span>. Your program does not need to work with chemical formulas like this.</p>
+<!-- <p>To calculate the <em class="Defn">molar mass</em> of <span class="TeX">\rm H_2O</span>, we can look up the masses of <span class="TeX">\rm H</span> and <span class="TeX">\rm O</span> in a database, and then calculate the total mass of two hydrogens and one oxygen.</p> -->
+
+<p>Modify the <code>molar.py</code> program so that after prompting the user for a chemical formula, it prints out the total mass of the substance (called <em class="Defn">molar mass</em>) after printing the number of atoms. Use the <code>mass</code> functions of the <code>elements.py</code> database to lookup the mass of any atom.</p>
 
 <pre data-echo="io" class="Code">Enter a chemical formuala: <span class="Blue">H2O</span>
+H 2
+O 1
 The molar mass of H2O is 18.01528 grams.
+
+Enter a chemical formuala: <span class="Blue">CaCl2</span>
+Ca 1
+Cl 2
+The molar mass of CaCl2 is 110.9834 grams.
 </pre>
 
 </div></section>

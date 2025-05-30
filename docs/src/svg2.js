@@ -1284,17 +1284,18 @@ clickToggle(n, click, init) {
 static async load(cb) {
 /* Send AJAX requests for SVG2 scripts */
     let svgs = $("svg[data-svg2]");
-    let pending = [];
+    let pending = {};
     for (let svg of svgs) {
         let [url, id, args] = $(svg).attr("data-svg2").split("#");
         url = new URL(url, SVG2.url).href;
         svg.info = [url, id, args];
-        if (SVG2._cache[url] == null)
-            pending.push(fetch(url).then((a) => a.text()).then(eval));
+        if (pending[url] == null && SVG2._cache[url] == null)
+            pending[url] = fetch(url).then((a) => a.text()).then(eval);
     }
-    for (let p of pending) await p;
+    for (let p in pending) await pending[p];
     for (let svg of svgs) {
         let [url, id, args] = svg.info;
+        delete svg.info;
         $(svg).removeAttr("data-svg2").attr("data-svg2x", `${url}#${id}`);
         if (args) {
             try {args = jeval(args)}

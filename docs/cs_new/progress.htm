@@ -1,0 +1,59 @@
+<section class="Post" data-icon="laptop.svg">
+<h2 class="Collapse">Progress Update</h2><div class="Collapse Expand">
+
+<form action="https://dmaccarthy.vercel.app/formecho" method="post">
+    <p><input style="display:none" type="text" name="id" id="UserId" value="abcdefg"/></p>
+    <p>Select the course you are currently working on.</p>
+    <p class="Right"><select name="crs" id="Course">
+        <option value="none">Select...</option>
+        <option value="SP">Structured Programming 1 &amp; 2</option>
+        <option value="Web">Client-Side Scripting 1 &amp; 2</option>
+    </select></p>
+    <p>Select the assignment you are currently working on.</p>
+    <p class="Right"><select name="asn" id="Assign">
+        <option value="none">Select...</option>
+    </select></p>
+    <p><input type="checkbox" name="confirm"/> <label for="confirm">Confirm that you have completed all previous assignments, projects, and assessments.</label></p>
+    <p><input type="submit"/></p>
+</form>
+
+</section>
+
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
+    let id = qsArgs("userid");
+    if (id) {
+        let url = `${location.pathname}#${loadFeed.current}`;
+        history.replaceState({}, null, url);
+        $("form select").css({width: "18em"});
+        $("#UserId").val(id);
+        $("#Course").on("change", (ev) => {
+            let opt = ev.currentTarget.options;
+            let assign = loadFeed.data.assign[opt[opt.selectedIndex].value];
+            opt = $("#Assign")[0];
+            if (assign) {
+                opt.length = assign.length + 1;
+                for (let i=1;i<=assign.length;i++) {
+                    opt[i].innerHTML = assign[i-1];
+                    opt[i].value = i;
+                }
+            }
+            else opt.length = 1;
+            opt.selectedIndex = 0;
+        });
+    }
+    else $("body").html("Not authorized");
+}
+
+loadFeed.data = {
+    title: "CS Daily Report",
+    up: "cs_new/home",
+}
+
+loadFeed.data.assign = {
+    "SP": ["Intro to Programming", "Integrated Development Environments", "Programming in Python"],
+    "Web": ["World Wide Web", "Data Trees"],
+};
+
+</script>
