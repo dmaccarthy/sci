@@ -1281,61 +1281,36 @@ clickToggle(n, click, init) {
 
 /** Load and run SVG2 JavaScripts **/
 
-static load(cb) {
+static async load(cb) {
 /* Send AJAX requests for SVG2 scripts */
-    if (!cb) cb = aspect;
     let svgs = $("svg[data-svg2]");
+    let pending = [];
     for (let svg of svgs) {
-        svg = $(svg);
-        let [url, id, args] = svg.attr("data-svg2").split("#");
+        let [url, id, args] = $(svg).attr("data-svg2").split("#");
         url = new URL(url, SVG2.url).href;
-        if (SVG2._cache[url]) {
-            SVG2.remove_pending(url);
-            svg.removeAttr("data-svg2").attr("data-svg2x", `${url}#${id}`);
-            if (args) {
-                try {args = jeval(args)}
-                catch(err) {console.warn(err)}
-                if (!(args instanceof Array)) args = [args];
-            }
-            else args = [];
-            try {SVG2._cache[url][id](svg, ...args)}
-            catch(err) {console.warn(err)}
-        }
-        else if (SVG2.load.pending.indexOf(url) == -1) {
-            SVG2.load.pending.push(url);
-            $.getScript({url: url, success: () => SVG2.load(cb), error: (e) => {
-                console.warn(`Error fetching '${url}'`);
-                SVG2.remove_pending(url, cb);
-            }});
-        }
+        svg.info = [url, id, args];
+        if (SVG2._cache[url] == null)
+            pending.push(fetch(url).then((a) => a.text()).then(eval));
     }
-    if (SVG2.load.pending.length == 0) cb();
-    
+    for (let p of pending) await p;
+    for (let svg of svgs) {
+        let [url, id, args] = svg.info;
+        $(svg).removeAttr("data-svg2").attr("data-svg2x", `${url}#${id}`);
+        if (args) {
+            try {args = jeval(args)}
+            catch(err) {console.warn(err)}
+            if (!(args instanceof Array)) args = [args];
+        }
+        else args = [];
+        try {SVG2._cache[url][id](svg, ...args)}
+        catch(err) {console.warn(err)}
+    }
+    return cb ? cb() : null;
 }
 
 static cache_run(url, id, ...arg) {
     let js = SVG2._cache[new URL(url, SVG2.url).href];
     return js[id](...arg);
-}
-
-static async cache_and_run(url, id, ...args) {
-    let c = SVG2._cache[new URL(url, SVG2.url).href];
-    if (c) return new Promise(res => {
-        res(c[id](...args));
-    });
-    else return fetch(url).then((a) => {
-        a.text().then((a) => {
-            eval(a);
-            return SVG2.cache_run(url, id, ...args);
-        });
-    });
-}
-
-static remove_pending(url, cb) {
-/* Remove completed request from pending list */
-    let i = SVG2.load.pending.indexOf(url);
-    SVG2.load.pending.splice(i, 1);
-    if (cb && SVG2.load.pending.length == 0) cb();
 }
 
 static cache(url, obj) {
