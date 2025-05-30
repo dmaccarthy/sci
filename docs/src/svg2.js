@@ -1296,7 +1296,9 @@ static async load(cb) {
     for (let svg of svgs) {
         let [url, id, args] = svg.info;
         delete svg.info;
-        $(svg).removeAttr("data-svg2").attr("data-svg2x", `${url}#${id}`);
+        let data = `${url}#${id}`;
+        if (args) data += `#${args}`;
+        $(svg).removeAttr("data-svg2").attr("data-svg2x", data);
         if (args) {
             try {args = jeval(args)}
             catch(err) {console.warn(err)}
