@@ -1285,12 +1285,13 @@ static async load(cb) {
 /* Send AJAX requests for SVG2 scripts */
     let svgs = $("svg[data-svg2]");
     let pending = {};
+    let ts = Date.now();
     for (let svg of svgs) {
         let [url, id, args] = $(svg).attr("data-svg2").split("#");
         url = new URL(url, SVG2.url).href;
         svg.info = [url, id, args];
         if (pending[url] == null && SVG2._cache[url] == null)
-            pending[url] = fetch(url).then((a) => a.text()).then(eval);
+            pending[url] = fetch(`${url}?_=${ts}`).then((a) => a.text()).then(eval);
     }
     for (let p in pending) await pending[p];
     for (let svg of svgs) {

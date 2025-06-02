@@ -8,7 +8,7 @@ Q1: (sel) => {
         y: {tick: [0, 15, 2], shift: ["-10", "-5"]},
         data: [{locus: [(t) => [8*t, 12.5 - 9.81/2 * t * t], [0, land]]}]
     });
-    svg.ctext(["m", [13, 13]]);
+    svg.gtext("m", "text", [13, 13]);
     svg.rect([2, 12.5], [-1, 6.25]).css({fill: "tan", stroke: "black"}).prependTo(svg.$);
 
     let p2 = new RArray(8 * land, 0);
@@ -22,16 +22,7 @@ Q1: (sel) => {
 
     svg.$.find(".LabelY .Zero").remove();
     svg.$.find("g.Series g.Locus").css({stroke: "black"});
-
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, -1,
-        () => {t(svg, false, 0, 1, 2, 3)},
-        () => {t(svg, true, 0)},
-        () => {t(svg, true, 1)},
-        () => {t(svg, true, 2)},
-        () => {t(svg, true, 3)},
-    );
-
+    svg.clickToggle(4);
 },
 
 });

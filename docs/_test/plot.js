@@ -1,5 +1,48 @@
 SVG2.cache("_test/plot.js", {
 
+dt4: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 16, 0, 15], margin: [60, 12, 32, 12]});
+    svg.graph({grid: [1, 1],
+        x: {tick: [0, 21, 2], title: ["Time / s", [14, "10"]], shift: [0, "-22"]},
+        y: {tick: [0, 16, 3], title: ["Position / m", "-40"], shift: ["-10", "-4"]},
+        data: [{connect: [[0, 0], [7, 7], [13, 7], [16, 14]]}],
+    });
+    svg.$.find("g.LabelX .Zero").remove();
+},
+
+dt1: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, -10, 10], margin: [60, 12, 12, 12]});
+    svg.graph({grid: [0.5, 1],
+        x: {tick: [0, 10.1, 1], title: ["Time / s", [9, "10"]], shift: [0, "-22"]},
+        y: {tick: [-10, 11, 2], title: ["Position / m", "-40"], shift: ["-10", "-4"]},
+        data: [{connect: [[0, 0], [2, 8], [4, 8], [6, -6], [10, 0]]}],
+    });
+    svg.$.find("g.LabelX .Zero").remove();
+},
+
+vt5: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 20, -8, 8], margin: [60, 12, 12, 12]});
+    svg.graph({grid: [1, 1],
+        x: {tick: [0, 21, 2], title: ["Time / s", [18, "10"]], shift: [0, "-22"]},
+        y: {tick: [-6, 7, 3], title: ["Velocity / (m/s)", "-40"], shift: ["-10", "-4"]},
+        data: [{connect: [[0, 0], [6, 6], [8, 6], [12, -6], [14, -6], [20, 0]]}],
+    });
+    svg.$.find("g.LabelX .Zero").remove();
+},
+
+vt3: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 22, -10, 10], margin: [60, 12, 12, 12]});
+    svg.graph({grid: [2, 1],
+        x: {tick: [0, 23, 2], title: ["Time / s", [18, "10"]], shift: [0, "-22"]},
+        y: {tick: [-10, 11, 2], title: ["Velocity / (m/s)", "-40"], shift: ["-10", "-4"]},
+        data: [{connect: [[0, 0], [6, -6], [8, -6], [10, 0], [17, 5], [20, 3], [22, 0]]}],
+    });
+    svg.$.find("g.LabelX .Zero").remove();
+    let g = svg.group("text", "blue");
+    for (let [t, x, y] of [["A", 3.5, -2], ["B", 7, -7], ["C", 10, -3.5], ["D", 13.5, 3.5], ["E", 19, 4.8], ["F", 21.5, 2]])
+        g.gtext(t, {}, [x, y]);
+},
+
 earth: (sel) => {
     let svg = new SVG2(sel, {scale: 40, lrbt: [-1, 20, -6, 6]}).css(".NoStyle");
     svg.graph({grid: [0.25, 0.25],
@@ -34,9 +77,10 @@ tri: (sel) => {
 },
 
 pi: (sel) => {
-    let svg = new SVG2(sel, {size: [64, 64], lrbt: [-2, 2], grid: 1});
-    svg.delay(svg.group().addClass("Text"), {recenter: [0, 0]}).text("π").css({fill: "#0065fe", "font-family": "serif", "font-size": "64px"});
-    svg.addClass("NoStyle").css_map().finalize();
+    let svg = new SVG2(sel, {size: [64, 64], lrbt: [-2, 2, -2.28], grid: 0}).css(".NoStyle");
+    let arr = ["→", 5, [0, "26"]];
+    let j = ["j", 6, ["26", "-12"]];
+    svg.group("symbol", "blue", {"font-size": "52px", "font-family": "serif"}).symb(0, ["m", 1], arr, j).align([0, 0]);
 },
     
 plot: (sel) => {
@@ -73,7 +117,7 @@ pe: (sel) => { // Photoelectric Effect graph
     // svg.save();
 },
 
-vt: (sel) => {
+vtb: (sel) => {
     let eq = quadRegXY([0, 2, 4], [8, 12, 0]).fn;
     let pts = [...range(1, 3.01, 0.1)];
     pts = zip(pts, [...fn_eval(eq, pts)]);
@@ -97,7 +141,7 @@ lrt: (sel) => {
     });
 },
 
-vt1: (sel) => {
+vta: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 20], margin: [60, 12, 50, 12]});
     svg.graph({grid: [1, 2], css: true,
         x: {tick: [0, 10.1, 1], title: ["Time / s", [5, "-44"]], shift: [0, "-22"]},
