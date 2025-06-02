@@ -21,7 +21,7 @@
 </section>
 
 <section class="Slide"><h3 class="Blue">Example 1</h3>
-<p data-cue="none" class="Blue">A golfer imparts an initial velocity of 40.0 m/s [52.0°] to a ball. The ball lands on the green 3.00 metres lower than the tee area. Calculate the “hang time” and “range” of the ball.</p>
+<p data-cue="none" class="Blue">A golfer imparts an initial velocity of 40.0 m/s [+52.0°] to a ball. The ball lands on the green 3.00 metres lower than the tee area. Calculate the “hang time” and “range” of the ball.</p>
 <ul>
     <li><em class="Defn">Hang time</em> means the time the projectile is in motion before it contacts the ground.</li>
     <li><em class="Defn">Range</em> means the horizontal displacement of the projectile before it hits the ground.</li>
@@ -31,7 +31,7 @@
 <table class="Center Four">
     <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
-    <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">40.0 cos 52.0°<br/>= +24.6</td><td>40.0 sin 52.0°<br/>= +31.5</td></tr>
+    <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">40.0 cos(+52.0°)<br/>= +24.6</td><td>40.0 sin(+52.0°)<br/>= +31.5</td></tr>
     <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td class="Reveal"><span>–32.4</span></td></tr>
     <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td class="Reveal"><span>+161</span></td><td>–3.00</td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2" class="Reveal"><span>6.52</span></td></tr>
@@ -45,7 +45,7 @@
 <p>Next find the time...</p>
 <p class="TeX">\vec{\bf a}_y = {\vec{\bf v}_{fy} - \vec{\bf v}_{iy} \over \Delta t}</p>
 <p class="TeX">\Delta t = {\vec{\bf v}_{fy} - \vec{\bf v}_{iy} \over \vec{\bf a}_y}</p>
-<p class="TeX">\Delta t = \rm{{-32.4\ m/s - 31.5\ m/s \over -9.81\ m/s^2} = 6.52\ s}</p>
+<p class="TeX">\Delta t = \rm{{-32.4\ m/s - (+31.5\ m/s) \over -9.81\ m/s^2} = 6.52\ s}</p>
 
 <p>Now solve the <span class="TeX">x</span>-motion as uniform motion...</p>
 <p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x\Delta t = \rm{+24.6\ m/s\cdot 6.52\ s = +161\ m}</p>
@@ -55,13 +55,13 @@
 </section>
 
 <section class="Slide"><h3 class="Blue">Example 2</h3>
-<p data-cue="none" class="Blue">A soccer ball is kicked from the ground with an initial velocity of 20.0 m/s [60.0°]. A spectator sitting in the stands 10.0 metres above the field observes the ball passing the 10.0-metre mark on the way up and again on the way down. Find the times at which these events occur and how far down the field the ball has travelled.</p>
+<p data-cue="none" class="Blue">A soccer ball is kicked from the ground with an initial velocity of 20.0 m/s [+60.0°]. A spectator sitting in the stands 10.0 metres above the field observes the ball passing the 10.0-metre mark on the way up and again on the way down. Find the times at which these events occur and how far down the field the ball has travelled.</p>
 <table class="Center Four">
     <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
-    <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">20.0 cos(60.0°)<br/>= +10.0</td><td>20.0 sin(60.0°)<br/>= +17.3</td></tr>
+    <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">20.0 cos(+60.0°)<br/>= +10.0</td><td>20.0 sin(+60.0°)<br/>= +17.3</td></tr>
     <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td class="Reveal"><span>±10.2</span></td></tr>
-    <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td class="Reveal"><span>7.27 or 28.0</span></td><td>10.0</td></tr>
+    <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td class="Reveal"><span>+7.27 or +28.0</span></td><td>+10.0</td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2" class="Reveal"><span>0.727 or 2.80</span></td></tr>
 </table>
 <p>Solve the <span class="TeX">y</span>-motion as uniform accelerated motion. First find the final velocity...</p>
@@ -73,11 +73,11 @@
 <p class="TeX">\Delta t = \rm{{+10.2\ m/s - 17.3\ m/s \over -9.81\ m/s^2} = 0.727\ s}</p>
 
 <p>Now solve the <span class="TeX">x</span>-motion as uniform motion...</p>
-<p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x\Delta t = \rm{10.0\ m/s\cdot 0.727\ s = 7.27\ m}</p>
+<p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x\Delta t = \rm{+10.0\ m/s\cdot 0.727\ s = +7.27\ m}</p>
 
 <p>To find the solution for when the ball is on the way back down, repeat the above calculations using the negative answer for <span class="TeX">\vec{\bf v}_{fy}</span>...</p>
-<p class="TeX">\Delta t = \rm{{-10.2\ m/s - 17.3\ m/s \over -9.81\ m/s^2} = 2.80\ s}</p>
-<p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x\Delta t = \rm{10.0\ m/s\cdot 2.80\ s = 28.0\ m}</p>
+<p class="TeX">\Delta t = \rm{{-10.2\ m/s - (+17.3\ m/s) \over -9.81\ m/s^2} = 2.80\ s}</p>
+<p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x\Delta t = \rm{+10.0\ m/s\cdot 2.80\ s = +28.0\ m}</p>
     
 </section>
 
@@ -106,7 +106,7 @@ loadFeed.notes = () => {
     <table class="Center Top Bottom">
         <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
         <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
-        <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">8.00</td><td>0.00</td></tr>
+        <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">+8.00</td><td>0.00</td></tr>
         <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td></td></tr>
         <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td></td><td>–12.5</td></tr>
         <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
@@ -128,20 +128,20 @@ loadFeed.notes = () => {
         </div>
 
         <li>Using the time you just calculated, solve for the <span class="TeX">x</span>-motion.</li>
-        <p class="TeX Answer">\Delta\vec{\bf d}_x = \vec{\bf v}_x \Delta t = \rm 8.00\ m/s\cdot 1.60\ s = +12.8\ m</p>
+        <p class="TeX Answer">\Delta\vec{\bf d}_x = \vec{\bf v}_x \Delta t = \rm +8.00\ m/s\cdot 1.60\ s = +12.8\ m</p>
 
         <li>Express the final velocity vector in polar form.</li>
         <div class="Answer">
             <p class="TeX">|\vec{\bf v}_f| = \rm \sqrt{8.00^2 + (-15.7)^2}\ m/s = 17.6\ m/s</p>
-            <p class="TeX">\theta = \rm \tan^{-1}\left(\frac{-15.7}{8.00}\right) = -62.9^\circ</p>
+            <p class="TeX">\theta = \rm \tan^{-1}\left(\frac{-15.7}{+8.00}\right) = -62.9^\circ</p>
         </div>
     </ol></li>
 
-    <li>A cannonball is shot from the top of a 15.0 m tall castle, with a launch velocity of 35.3 m/s [50.0°].<ol type="a">
+    <li>A cannonball is shot from the top of a 15.0 m tall castle, with a launch velocity of 35.3 m/s [+50.0°].<ol type="a">
         <li>Express the initial velocity in Cartesian form.</li>
         <div class="Answer">
-            <p class="TeX">\vec{\bf v}_x = |\vec{\bf v}_i| \cos\theta = \rm 35.3\ m/s\cdot\cos(50.0^\circ) = 22.7\ m/s</p>
-            <p class="TeX">\vec{\bf v}_{iy} = |\vec{\bf v}_i| \sin\theta = \rm 35.3\ m/s\cdot\sin(50.0^\circ) = 27.0\ m/s</p>
+            <p class="TeX">\vec{\bf v}_x = |\vec{\bf v}_i| \cos\theta = \rm 35.3\ m/s\cdot\cos(+50.0^\circ) = +22.7\ m/s</p>
+            <p class="TeX">\vec{\bf v}_{iy} = |\vec{\bf v}_i| \sin\theta = \rm 35.3\ m/s\cdot\sin(+50.0^\circ) = +27.0\ m/s</p>
         </div>
 
         <li>Calculate the hang time and range (<span class="TeX">x</span>-displacement) of the ball.</li>
@@ -149,7 +149,7 @@ loadFeed.notes = () => {
     <table class="Center Top Bottom">
         <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
         <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
-        <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">22.7</td><td>27.0</td></tr>
+        <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">+22.7</td><td>+27.0</td></tr>
         <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td></td></tr>
         <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td></td><td>–15.0</td></tr>
         <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
@@ -157,8 +157,8 @@ loadFeed.notes = () => {
         <p class="TeX">\vec{\bf v}_{fy} = -\sqrt{v_{iy}^2 + 2\vec{\bf a}\cdot \Delta\vec{\bf d}}</p>
         <p class="TeX">\vec{\bf v}_{fy} = \rm -\sqrt{(27.0\ m/s)^2 + 2(-9.81\ m/s^2)(-15.0\ m)} = -32.0\ m/s</p>
         <p class="TeX">\Delta t = \frac{\vec{\bf v}_{fy} - \vec{\bf v}_{iy}}{\vec{\bf a}}</p>
-        <p class="TeX">\Delta t = \rm \frac{-32.0\ m/s - 27.0\ m/s}{-9.81\ m/s^2} = 6.01\ s</p>
-        <p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x \Delta t = \rm 22.7\ m/s\cdot 6.01\ s = 136\ m</p>
+        <p class="TeX">\Delta t = \rm \frac{-32.0\ m/s - (+27.0\ m/s)}{-9.81\ m/s^2} = 6.01\ s</p>
+        <p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x \Delta t = \rm +22.7\ m/s\cdot 6.01\ s = +136\ m</p>
     </div>
 
         <li>Calculate the maximum height the ball reaches. You will need to make a new table since the “final” position is different than in (b).</li>
@@ -166,42 +166,42 @@ loadFeed.notes = () => {
     <table class="Center Top Bottom">
         <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
         <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
-        <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">22.7</td><td>27.0</td></tr>
+        <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">+22.7</td><td>+27.0</td></tr>
         <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td>0.00</td></tr>
         <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td></td><td></td></tr>
         <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
     </table>
     <p class="TeX">\Delta t = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\vec{\bf a}}</p>
-    <p class="TeX">\Delta t = \rm \frac{0.00\ m/s - 27.0\ m/s}{-9.81\ m/s^2} = 2.76\ s</p>
+    <p class="TeX">\Delta t = \rm \frac{0.00\ m/s - (+27.0\ m/s)}{-9.81\ m/s^2} = 2.76\ s</p>
     <p class="TeX">\Delta\vec{\bf d}_y = \frac{\vec{\bf v}_i + \vec{\bf v}_f}{2}\Delta t</p>
-    <p class="TeX">\Delta\vec{\bf d}_y = \rm \frac{27.0\ m/s + 0.00\ m/s}{2} 2.76\ s = 37.2\ m</p>
+    <p class="TeX">\Delta\vec{\bf d}_y = \rm \frac{+27.0\ m/s + 0.00\ m/s}{2} 2.76\ s = +37.2\ m</p>
     <p>Note that this is 37.2 m above the initial height of 15.0 m, for a total height of 52.2 m above the ground!</p>
     </div>
     </ol></li>
 
-    <li>An object thrown from the ground reaches its maximum height in 1.75 s, at which point its horizontal displacement is 7.00 m. Determine the object’s initial velocity and the maximum height it reaches.</li>
+    <li>An object thrown from the ground reaches its maximum height in 1.75 s, at which point its horizontal displacement is +7.00 m. Determine the object’s initial velocity and the maximum height it reaches.</li>
     <div class="Answer">
     <table class="Center Top Bottom">
         <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
         <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
         <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2"></td><td></td></tr>
         <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td>0.00</td></tr>
-        <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td>7.00</td><td></td></tr>
+        <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td>+7.00</td><td></td></tr>
         <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2">1.75</td></tr>
     </table>
     <p class="TeX">\vec{\bf v}_x = \frac{\Delta\vec{\bf d}_x}{\Delta t}</p>
-    <p class="TeX">\vec{\bf v}_x = \rm \frac{7.00\ m}{1.75\ s} = 4.00\ m/s</p>
+    <p class="TeX">\vec{\bf v}_x = \rm \frac{+7.00\ m}{1.75\ s} = +4.00\ m/s</p>
     <p class="TeX">\vec{\bf v}_{iy} = \vec{\bf v}_{fy} - \vec{\bf a}\Delta t</p>
-    <p class="TeX">\vec{\bf v}_{iy} = \rm 0.00\ m/s - (-9.81\ m/s^2)\ 1.75\ s = 17.2\ m/s</p>
+    <p class="TeX">\vec{\bf v}_{iy} = \rm 0.00\ m/s - (-9.81\ m/s^2)\ 1.75\ s = +17.2\ m/s</p>
     <p class="TeX">\Delta\vec{\bf d}_y = \frac{\vec{\bf v}_i + \vec{\bf v}_f}{2}\Delta t</p>
-    <p class="TeX">\Delta\vec{\bf d}_y = \rm \frac{17.2\ m/s + 0.00\ m/s}{2} 1.75\ s = 15.0\ m</p>
+    <p class="TeX">\Delta\vec{\bf d}_y = \rm \frac{+17.2\ m/s + 0.00\ m/s}{2} 1.75\ s = +15.0\ m</p>
     </div>
 
-    <li>A golfer drives the ball with an initial velocity of 42.5 m/s [52.4°]. The ball lands on top of a hill that is 2.50 metres higher than the ground from where the shot was made.<ol type="a">
+    <li>A golfer drives the ball with an initial velocity of 42.5 m/s [+52.4°]. The ball lands on top of a hill that is 2.50 metres higher than the ground from where the shot was made.<ol type="a">
         <li>Express the initial velocity in Cartesian form.</li>
         <div class="Answer">
-            <p class="TeX">\vec{\bf v}_x = |\vec{\bf v}_i| \cos\theta = \rm{42.5\ m/s\cdot\cos(52.4^\circ) = 25.9\ m/s}</p>
-            <p class="TeX">\vec{\bf v}_{iy} = |\vec{\bf v}_i| \sin\theta = \rm{42.5\ m/s\cdot\sin(52.4^\circ) = 33.7\ m/s}</p>
+            <p class="TeX">\vec{\bf v}_x = |\vec{\bf v}_i| \cos\theta = \rm{42.5\ m/s\cdot\cos(+52.4^\circ) = +25.9\ m/s}</p>
+            <p class="TeX">\vec{\bf v}_{iy} = |\vec{\bf v}_i| \sin\theta = \rm{42.5\ m/s\cdot\sin(+52.4^\circ) = +33.7\ m/s}</p>
         </div>
 
         <li>Determine the hang time and range of the ball.</li>
@@ -209,21 +209,21 @@ loadFeed.notes = () => {
 <table class="Center Top Bottom">
     <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
-    <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">25.9</td><td>33.7</td></tr>
+    <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2">+25.9</td><td>+33.7</td></tr>
     <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td></td></tr>
-    <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td></td><td>2.50</td></tr>
+    <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td></td><td>+2.50</td></tr>
     <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
 </table>
 <p class="TeX">\begin{align}
     \vec{\bf v}_{fy} &= -\sqrt{v_{iy}^2 + 2\vec{\bf a}\cdot \Delta\vec{\bf d}}
-    \\[10pt] &= \rm{-\sqrt{(33.7\ m/s)^2 + 2(-9.81\ m/s^2)(2.50\ m)}}
+    \\[10pt] &= \rm{-\sqrt{(33.7\ m/s)^2 + 2(-9.81\ m/s^2)(+2.50\ m)}}
     \\[10pt] &= \rm{-32.9\ m/s}
     \\[16pt]\Delta t &= \frac{\vec{\bf v}_{fy} - \vec{\bf v}_{iy}}{\vec{\bf a}}
-    \\[10pt] &= \rm{\frac{-32.9\ m/s - 33.7\ m/s}{-9.81\ m/s^2}}
+    \\[10pt] &= \rm{\frac{-32.9\ m/s - (+33.7\ m/s)}{-9.81\ m/s^2}}
     \\[10pt] &= \rm{6.79\ s}
     \\[16pt]\Delta\vec{\bf d}_x &= \vec{\bf v}_x \Delta t
-    \\[10pt] &= \rm{25.9\ m/s\cdot 6.79\ s}
-    \\[10pt] &= \rm{176\ m}
+    \\[10pt] &= \rm{+25.9\ m/s\cdot 6.79\ s}
+    \\[10pt] &= \rm{+176\ m}
 \end{align}</p>
         </div>
     </ol></li>
@@ -235,18 +235,18 @@ loadFeed.notes = () => {
         <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
         <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2"></td><td></td></tr>
         <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td></td></tr>
-        <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td>80.0</td><td>0.00</td></tr>
+        <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td>+80.0</td><td>0.00</td></tr>
         <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2">5.25</td></tr>
     </table>
 <p class="TeX">\begin{align}
     \vec{\bf v}_x &= \frac{\Delta\vec{\bf d}_x}{\Delta t}
-    \\[10pt] &= \rm{\frac{80.0\ m}{5.25\ s}}
-    \\[10pt] &= \rm{15.2\ m/s}
+    \\[10pt] &= \rm{\frac{+80.0\ m}{5.25\ s}}
+    \\[10pt] &= \rm{+15.2\ m/s}
     \\[16pt]\vec{\bf v}_{iy} &= \frac{\Delta\vec{\bf d} - \frac{1}{2}\vec{\bf a}_y (\Delta t)^2}{\Delta t}
     \\[10pt] &= \rm{\frac{0.00\ m - \frac{1}{2}(-9.81\ m/s^2) (5.25\ s)^2}{5.25\ s}}
-    \\[10pt] &= \rm{25.8\ m/s}
+    \\[10pt] &= \rm{+25.8\ m/s}
     \\[16pt]|\vec{\bf v}_i| &= \rm{\sqrt{15.2^2 + 25.8^2}\ m/s = 29.9\ m/s}
-    \\[10pt]\theta &= \rm{\tan^{-1}\left(\frac{25.8}{15.2}\right) = 59.5^\circ}
+    \\[10pt]\theta &= \rm{\tan^{-1}\left(\frac{+25.8}{+15.2}\right) = +59.5^\circ}
 \end{align}</p>
     </div>
 
@@ -255,32 +255,32 @@ loadFeed.notes = () => {
     <table class="Center Top Bottom">
         <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
         <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td>–9.81</td></tr>
-        <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2"><span class="TeX">v_i\cos(70^\circ)</span></td><td><span class="TeX">v_i\sin(70^\circ)</span></td></tr>
+        <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2"><span class="TeX">v_i\cos(+70.0^\circ)</span></td><td><span class="TeX">v_i\sin(+70.0^\circ)</span></td></tr>
         <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td></td></tr>
-        <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td>4.00</td><td>1.25</td></tr>
+        <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td>+4.00</td><td>+1.25</td></tr>
         <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
     </table>
     <p>For the <span class="TeX">x</span>-motion...</p>
 <p class="TeX">\begin{align}
     \Delta\vec{\bf d}_x &= \vec{\bf v}_x \Delta t
-    \\[10pt]\rm{4.00\ m} &= v_i\cos(70^\circ)\cdot \Delta t
+    \\[10pt]{\rm +4.00\ m} &= v_i\cos(+70.0^\circ)\cdot \Delta t
 \end{align}</p>
     <p>For the <span class="TeX">y</span>-motion...</p>
 <p class="TeX">\begin{align}
     \Delta\vec{\bf d}_y &= \vec{\bf v}_{iy} \Delta t + \frac{1}{2} \vec{\bf a}_y (\Delta t)^2
-    \\[10pt]\rm{1.25\ m} &= v_i\sin(70^\circ)\cdot \Delta t + \frac{1}{2}\vec{\bf g}(\Delta t)^2
+    \\[10pt]{\rm +1.25\ m} &= v_i\sin(+70.0^\circ)\cdot \Delta t + \frac{1}{2}\vec{\bf g}(\Delta t)^2
 \end{align}</p>
     <p>We can rearrange the <span class="TeX">x</span>-equation...</p>
-<p class="TeX">v_i \Delta t = \frac{\rm{4.00\ m}}{\cos(70^\circ)} = \rm{11.7\ m}</p>
+<p class="TeX">v_i \Delta t = \frac{\rm +4.00\ m}{\cos(+70.0^\circ)} = \rm +11.7\ m</p>
     <p>...and substitute into the <span class="TeX">y</span>-equation...</p>
-<p class="TeX">\rm{1.25\ m} = \rm{11.7\ m}\cdot\sin(70^\circ) + \frac{1}{2}\vec{\bf g}(\Delta t)^2</p>
-<p class="TeX">\frac{2}{\vec{\bf g}} (\rm{1.25\ m} - \rm{11.7\ m}\cdot\sin(70^\circ)) = (\Delta t)^2</p>
+<p class="TeX">{\rm +1.25\ m} = {\rm +11.7\ m}\cdot\sin(+70.0^\circ) + \frac{1}{2}\vec{\bf g}(\Delta t)^2</p>
+<p class="TeX">\frac{2}{\vec{\bf g}} ({\rm +1.25\ m} - {\rm +11.7\ m}\cdot\sin(+70.0^\circ)) = (\Delta t)^2</p>
 <p class="TeX">\rm{1.99\ s^2} = (\Delta t)^2</p>
-<p class="TeX">\Delta t = \rm{\sqrt{1.99\ s^2} = 1.41\ s}</p>
+<p class="TeX">\Delta t = \rm \sqrt{1.99\ s^2} = 1.41\ s</p>
     <p>We’ve already calculated (see above)...</p>
-<p class="TeX">v_i \Delta t = \rm{11.7\ m}</p>
+<p class="TeX">v_i \Delta t = \rm +11.7\ m</p>
     <p>Use the time to find the initial speed...</p>
-<p class="TeX">v_i = \rm{\frac{11.7\ m}{1.41\ s} = 8.30\ m/s}</p>
+<p class="TeX">v_i = \rm \frac{+11.7\ m}{1.41\ s} = +8.30\ m/s</p>
     </div>
 </ol>
 
@@ -301,31 +301,21 @@ loadFeed.notes = () => {
     </div>
 
     <li>What do we mean by the <em class="Defn">hang time</em> and the <em class="Defn">range</em> in a projectile motion context?</li>
-    <div class="Answer">The hang time is the total time that the projectile remains airborne before it contacts the ground. The range is the horizontal component of the total displacement.</div>
+    <p class="Answer">The hang time is the total time that the projectile remains airborne before it contacts the ground. The range is the horizontal component of the total displacement.</p>
 
     <li>Why might the motion of actual projectiles near Earth differ from the answers we get when we solve a projectile motion problem?</li>
-    <div class="Answer">Air resistance will affect the motion because it changes the acceleration. Also, gravity will not remain constant if the motion occurs over very large distance scales (e.g. hundreds of km or more).</div>
+    <p class="Answer">Air resistance will affect the motion because it changes the acceleration. Also, gravity will not remain constant if the motion occurs over very large distance scales (e.g. hundreds of km or more).</p>
 </ol>
 </div></section>
-
-<!-- <section class="Post" data-icon="gdrv">
-    <h2 class="Collapse">Cannonball Simulation</h2><div class="Collapse">
-    <p>Here are the handout and simulation link for the Cannonball Experiment...</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1zwfLRreK2f2XvPE6X7fpwLymeXPyH28B">Cannonball Lab</button>
-        <button data-icon="simulation.svg" data-feed="p20/vec2d/cannon">Simulation</button>
-        <button data-icon="desmos" data-open="https://www.desmos.com/calculator/ts8kwszdut">Desmos.com</button>
-    </p>
-</div></section> -->
 
 <section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
     <h2 class="Collapse">Handouts &amp; Links</h2><div class="Collapse">
     <p class="Var">handouts</p>
     <p class="BtnGrid">
         <button data-icon="gdrv" data-gdrv="1Ptla_NnPLuBhw18AlDK4yCKu6xy3lpgJ">Assignment</button>
-        <button data-icon="gdrv" data-gdrv="">Cannonball Lab</button>
+        <button data-icon="gdrv" data-gdrv="12nHk2O4QJIdTM3PKbd3lktgpbo9jEFd2">Cannonball Lab</button>
         <button data-icon="simulation.svg" data-feed="p20/vec2d/cannon">Simulation</button>
-        <button data-show="9999" data-icon="desmos" data-open="https://www.desmos.com/calculator/ts8kwszdut">Desmos.com</button>
+        <button data-icon="desmos" data-open="https://www.desmos.com/calculator/ts8kwszdut">Desmos.com</button>
     </p>
 </div></section>
 
@@ -338,7 +328,7 @@ loadFeed.data = {
     num: "2.5",
     up: "p20/home",
     prev: "p20/vec2d/arith",
-    next: "p20/vec2d/rev",
+    // next: "p20/vec2d/adv",
 }
 
 </script>

@@ -88,6 +88,20 @@ Ex2: (sel) => {
     g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([20, 5]);
 },
 
+Ex3: (sel) => {
+    let svg = SVG2.vec_diag(sel, [vec2d(7.25, 75), vec2d(6.5, -60)], {lrbt: [-1, 6, -1, 8],
+        scale: 50, cycle: 1, margin: [12, 12, 6, 16], grid: 1, tick: "-8", label: [1, 0, "-12", "-20"]}).css(".NoStyle");
+    svg.gtext("m/s", "text", [0.1, 8], 0, 0.5);
+
+    let [BD, SM_IT] = [1, 6];
+    let arr = ["→", 5, [0, "15"]];
+    let g = svg.group("symbol", "f28", "red");
+    g.symb(0, ["v", BD], arr, ["Δ", 0, ["-18", 0]]).css("blue").align([2.7, 1.4]);
+    g.symb(0, ["v", BD], arr, ["f", SM_IT, ["10", "-10"]]).align([0.5, 4.2]);
+    arr[2][0] = "8";
+    g.symb(0, ["–v", BD], arr, ["i", SM_IT, ["16", "-10"]]).align([4, 4.5]);
+},
+
 tri: (sel) => {
     let svg = new SVG2(sel, {size: [400, 348], lrbt: [-14, 14, -1.5]}).css(".NoStyle");
 

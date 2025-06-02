@@ -309,6 +309,7 @@ function onFeedLoaded(feed, e, noHist) {
     setTimeout(() => $("div:is(.MJX_ToolTip, .MJX_LiveRegion, .MJX_HoverRegion)").remove(), 2000);
 
     // Finish up
+    $("tr.NoBold th:not(.Bold)").addClass("NoBold");
     $("#Main, #Copy").show();
     drawChevrons();
     renderTeX();

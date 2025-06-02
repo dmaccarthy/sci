@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
-<div id="LessonNotes">
+<h2 class="Collapse">Notes</h2><div class="Collapse Expand">
 
 <section class="Slide">
 
@@ -63,26 +62,29 @@
     <li>By doing this, the friction force and acceleration vector will only have an <span class="TeX">x</span>-component, and the normal force will only have a <span class="TeX">y</span>-component.</li>
     <li>When the axes are rotated this way, the direction of <span class="TeX">\vec{\bf F}_g</span> will be 270° plus or minus the angle of incline, depending on whether the axes are rotated clockwise or counterclockwise.</li>
 </ul>
-</div>
+</div></section>
 
 </section>
 
-<script type="text/javascript" data-init="notes">
+<section data-show="1" class="Post" data-icon="gdrv">
+    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid"><button data-icon="gdrv" data-show="1" data-gdrv="1dX8fkQrOkFENjVXDdD9kcnlIYMzyT43F">Assignment</button></p>
+</div></section>
 
-loadFeed.notes = () => {
+</div></section>
+
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
     $("svg.FBD .Friction").show();
 }
-
-</script>
-</div></div>
-</section>
-
-<script type="text/javascript">
 
 tmp = chapRev() ? 1 : 0;
 
 loadFeed.data = {
     title: `${siteData.lesson}Newton’s Laws Review`,
+    showDate: "2025.6.6",
     num: "3.7",
     up: "p20/home",
     prev: ["p20/dyn/fric", "p20/energy/rev"][tmp],
