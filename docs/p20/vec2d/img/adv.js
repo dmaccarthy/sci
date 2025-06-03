@@ -1,4 +1,4 @@
-SVG2.cache("p20/dyn/img/adv.js", {
+SVG2.cache("p20/vec2d/img/adv.js", {
 
 fbd1: (sel) => {
     $(sel).attr({width: 400, height: 240, "data-aspect": "5/3"});
@@ -17,36 +17,28 @@ fbd1: (sel) => {
 },
 
 fbd2: (sel) => {
-    $(sel).attr({width: 225, height: 300, "data-aspect": "3/4"});
-    let svg = new SVG_Animation(sel, -2.5, 72.5, 0, 100, 2); 
-    let g = svg.group().css({stroke: "black", "stroke-width": 1});
-    svg.line([20, 100], [70, 75], g);
-    svg.rect([20, 100], [10, 50], g).css({fill: "tan"});
-    svg.rect([50, 30], [45, 60], g).css({fill: "#D0D0FF"});
-    g = svg.group();
-    svg.arrow([45, 60], [45, 20], {tail: "8"}, g).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "g"}, [52, 35], g).css({fill: "red"});
-    svg.arrow([70, 75], [30, 95], {tail: "8"}, g).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "t"}, [60, 92], g).css({fill: "red"});
-    svg.arrow([20, 60], [40, 60], {tail: "8"}, g).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "n"}, [27, 45], g).css({fill: "red"});
-    svg.arrow([20, 65], [20, 85], {tail: "8"}, g).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "f"}, [6, 75], g).css({fill: "red"});
-    svg.final();
+    let svg = new SVG2(sel, {size: [225, 300], lrbt: [-2.5, 72.5, 0, 100], margin: [0, 0, 2, 6]}).css(".NoStyle");
+    let g = svg.group("black1");
+    g.line([20, 100], [70, 75]);
+    g.rect([20, 100], [10, 50]).css({fill: "tan"});
+    g.rect([50, 30], [45, 60]).css({fill: "#D0D0FF"});
+    g = svg.group("arrow");
+    let attr = {tail: "6"};
+    let data = [
+        [[45, 60], [45, 20]], [[70, 75], [30, 95]],
+        [[20, 60], [40, 60]], [[20, 65], [20, 85]]
+    ];
+    let i = 0;
+    for (let [tail, tip] of data) g.arrow({tail: tail, tip: tip}, attr).css(`.Toggle${i++}`);
 
-    let show = (n) => {
-        let e = g.$.children();
-        $(e[n]).fadeIn();
-        $(e[n+1]).fadeIn();
-    }
+    let [BD, SM, SM_IT] = [1, 4, 6];
+    g = svg.group("symbol", "f28", "red");
+    data = [["g", [55, 38]], ["t", [56, 95]], ["n", [27, 52]], ["f", [10, 75]]];
+    i = 0;
+    for (let [c, xy] of data)
+        g.symb(0, ["F", BD], ["→", SM + BD, [0, "20"]], [c, SM_IT, ["10", "-6"]]).align(xy).css(`.Toggle${i++}`);
 
-    clickCycle(svg.element, 4,
-        () => g.$.children().fadeOut(),
-        () => show(0),
-        () => show(2),
-        () => show(4),
-        () => show(6),
-    );
+    svg.clickToggle(4);
 },
 
 
@@ -83,15 +75,15 @@ fbd3: (sel) => {
 },
 
 sign: (sel) => {
-    $(sel).attr({width: 360, height: 180, "data-aspect": "2"});
-    let svg = new SVG_Animation(sel, -2, 2, -0.5, 1.5, 1);
-    svg.line([-0.5, 0], [-2, 1.5]).css({stroke: "black", "stroke-width": 4});
-    svg.line([0.5, 0], [2, 1.5]).css({stroke: "black", "stroke-width": 4});
+    let svg = new SVG2(sel, {size: [360, 180], lrbt: [-2, 2, -0.5, 1.5], margin: 1}).css(".NoStyle");
+    let g = svg.group({stroke: "black", "stroke-width": 4});
+    g.line([-0.5, 0], [-2, 1.5]);
+    g.line([0.5, 0], [2, 1.5]);
     svg.rect([2, 1], [0, 0]).css({fill: "#E0E0E0", stroke: "black", "stroke-width": 2});
-    let g = svg.group().css({"font-weight": "bold", fill: "#0065FE"});
-    svg.text("Mr. Mac’s", [0, 0.12], g);
-    svg.text("House of Physics", [0, -0.12], g);
-    svg.final();    
+    g = svg.group("text", "blue", {"font-weight": "bold"});
+    g.gtext("Mr. Mac’s", {}, [0, 0.12]);
+    g.gtext("House of Physics", {}, [0, -0.12]);
+   
 },
 
 sign_vec: (sel) => {
@@ -99,16 +91,15 @@ sign_vec: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(F, 45), vec2d(F, 135)], {lrbt: [-120, 300, -540, 30],
         scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]});
     svg.$.find(".Component, .Resultant").remove();
-    svg.text("N", [270, -510]);
+    svg.gtext("N", "text", [270, -510]);
 
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["14", "-8"];
-    let g = svg.group();
-    g.symbol(["F", BD], arr, ["g", SM_IT, sub]).config({shift: [30, -240]});
-    g.symbol(["F", BD], arr, ["1", SM, sub]).config({shift: [150, -400]});
-    g.symbol(["F", BD], arr, ["2", SM, sub]).config({shift: [150, -100]});
-    g.$.addClass("Large").find("text").css({fill: "red"});
+    let g = svg.group("symbol", "f28", "red");
+    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([30, -240]);
+    g.symb(0, ["F", BD], arr, ["1", SM, sub]).align([150, -400]);
+    g.symb(0, ["F", BD], arr, ["2", SM, sub]).align([150, -100]);
 },
 
 sign_uneven: (sel) => {
