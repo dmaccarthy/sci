@@ -9,8 +9,7 @@ textarea, #CalcTable table {
 
 <section class="Post" id="Tip2Tail" data-icon="vec.svg">
 <h2 class="Collapse">Tip-to-Tail Diagram
-    <span class="Action"><img alt="Bookmark" title="Reload page with custom URL" data-src="bookmark.svg" onclick="location.href=loadFeed.init.url()"/></span>
-    <span class="Action"><img alt="Download" title="Download diagram as SVG" data-src="$download" onclick="SVG2.svg('#Output svg', 0, event)"/></span>
+    <span class="Action"><img alt="Download" title="Download diagram as SVG" data-src="$download" onclick="SVG2.svg('#Output svg', 0)"/></span>
 </h2><div class="Center Collapse Expand">
 <p><input type="checkbox" id="Shift" onclick="loadFeed.init.draw()"/> <label for="Shift">Shift</label></p>
 <p><textarea rows="4" onblur="loadFeed.init.draw()">[3, 5], @(6, -60)</textarea></p>
@@ -38,7 +37,7 @@ loadFeed.init = () => {
     loadFeed.init.units = data.unit ? data.unit : "m/s";
     $("#Shift")[0].checked = data.shift == null ? false : true;
     if (data.v) $("textarea").val(data.v);
-    loadFeed.init.draw();
+    loadFeed.init.draw(1);
 }
 
 loadFeed.init.url = () => {
@@ -120,17 +119,26 @@ loadFeed.init.redraw = (vecs) => {
                 loadFeed.init.symbol = sym;
                 loadFeed.init.units = unit;
                 loadFeed.init.redraw(svg.vecs);
+                loadFeed.init.hist();
             }
         }
     });
 }
 
-loadFeed.init.draw = () => {
+loadFeed.init.hist = (init) => {
+/* Add drawing search parameters to history */
+    let args = [{}, 0, loadFeed.init.url()];
+    if (init) history.replaceState(...args);
+    else history.pushState(...args);
+}
+
+loadFeed.init.draw = (init) => {
 /* Draw the diagram from <textarea> data */
     let vecs = eval(`[${$("textarea").val().replaceAll("@", "vec2d")}]`);
     loadFeed.init.viewport.n = 0;
     loadFeed.init.viewport(vecs);
     loadFeed.init.redraw(vecs);
+    loadFeed.init.hist(init);
 }
 
 loadFeed.init.randomize = (n) => {
@@ -147,6 +155,7 @@ loadFeed.init.randomize = (n) => {
 
 loadFeed.data = {
     title: `2D Vector Diagrams`,
+    up: "p20/home",
 }
     
 </script>

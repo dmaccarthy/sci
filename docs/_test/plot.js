@@ -1,5 +1,18 @@
 SVG2.cache("_test/plot.js", {
 
+xpdq: (sel) => {
+    let svg = new SVG2(sel, {scale: 112, lrbt: [-1.52, 2, -0.1, 1.23]}).css(".NoStyle");
+    svg.poly([[-1.5, 1], [-1, 1], [0, 0], [1, 0], [2, 0.7]]).css({fill: "none", stroke: "#0065fe", "stroke-width": "2px"});
+    svg.$.find("g.Grid").css({"stroke-width": "1"});
+    let g = svg.group().css("black1", "red");
+    g.circle(0.1, [-1, 1.1]);
+    g = svg.group("text");
+    g.gtext("X", {}, [-1.2, 1.1]);
+    g.gtext("P", {}, [-0.45, 0.6]);
+    g.gtext("D", {}, [0.5, 0.1]);
+    g.gtext("Q", {}, [1.8, 0.7]);
+},
+
 dt4: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 16, 0, 15], margin: [60, 12, 32, 12]});
     svg.graph({grid: [1, 1],
