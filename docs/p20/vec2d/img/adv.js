@@ -127,7 +127,7 @@ sign_uneven: (sel) => {
 },
     
 pulley: (sel, fbd) => {
-    let h = fbd ? 400 : 276;
+    let h = fbd ? 420 : 276;
     let svg = new SVG2(sel, {size: [400, h], lrbt: [-12, 4, -10], margin: [0, 18, 1, 0]}).css(".NoStyle");
 
     let c = [1, 0.5];
@@ -146,16 +146,26 @@ pulley: (sel, fbd) => {
 
     let tail = {tail: "6"};
     if (fbd) {
+        g.line([-8, -8], [-8, 10]).css({stroke: "black", "stroke-width": "1px", "stroke-dasharray": "7,5"}).prependTo(g.$);
         let v = g.group("arrow");
         v.arrow({tail: [-8, 2.2], length: 6*cos(10)}, tail, "tail").config({theta: 90});
         v.arrow({tail: [-10.2, 0.2], length: 1.5}, tail, "tail").config({theta: 180});
         v.arrow({tail: [-5.8, 1], length: 2}, tail, "tail");
     }
 
-    let [IT, SM] = [2, 4];
+    let [BD, IT, SM] = [1, 2, 4];
     let sub = ["15", "-6"];
+    let subv = ["12", "-6"];
+    let arr = ["→", SM+BD, [0, "22"]];
     g = g.group("symbol", "f24", "black", {stroke: "none"});
+    g.symb(0, ["y", IT]).align([-7.5, 8.5]);
     g.symb(0, ["m", IT], ["1", SM, sub]).align([-8, 1]);
+    if (fbd) {
+        g = g.group("f28", "red");
+        g.symb(0, ["F", BD], arr, ["n", SM+IT, subv]).align([-9, 5]);
+        g.symb(0, ["F", BD], arr, ["f", SM+IT, subv]).align([-11, 2]);
+        g.symb(0, ["F", BD], arr, ["t", SM+IT, subv]).align([-5, 2.7]);
+    }
     
     c = transform({angle: a, deg:true}, c)[0].plus([0.5, 0]);
     let x = c[0];
@@ -169,6 +179,12 @@ pulley: (sel, fbd) => {
     g = svg.group("symbol", "f24");
     g.symb(0, ["h", IT]).align([4, (y - 11.5)/ 2]);
     g.symb(0, ["m", IT], ["2", SM, sub]).align([x, y]);
+    if (fbd) {
+        g = g.group("f28", "red");
+        g.symb(0, ["F", BD], arr, ["g", SM+IT, subv]).align([-9, -4]);
+        g.symb(0, ["F", BD], arr, ["g", SM+IT, subv]).align([2, -8]);
+        g.symb(0, ["F", BD], arr, ["t", SM+IT, subv]).align([2, 2]);
+    }
 
     if (fbd) {
         g = svg.group("arrow");
