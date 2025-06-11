@@ -127,12 +127,8 @@ sign_uneven: (sel) => {
 },
     
 pulley: (sel, fbd) => {
-
-    let svg;
-    svg = fbd ?
-        new SVG2(sel, {size: [400, 400], lrbt: [-12, 4, -10], margin: [0, 18, 1, 0], grid: 1}) :
-        new SVG2(sel, {size: [400, 276], lrbt: [-12, 4, -10], margin: [0, 18, 1, 0]});
-    svg.css(".NoStyle");
+    let h = fbd ? 400 : 276;
+    let svg = new SVG2(sel, {size: [400, h], lrbt: [-12, 4, -10], margin: [0, 18, 1, 0]}).css(".NoStyle");
 
     let c = [1, 0.5];
     let a = 10;
@@ -148,8 +144,12 @@ pulley: (sel, fbd) => {
     g.rect([4, 2], [-8, 1]).css({fill: "lightgrey"});
     g.line([0, 0], [-12, 0]).css(black3);
 
+    let tail = {tail: "6"};
     if (fbd) {
-        
+        let v = g.group("arrow");
+        v.arrow({tail: [-8, 2.2], length: 6*cos(10)}, tail, "tail").config({theta: 90});
+        v.arrow({tail: [-10.2, 0.2], length: 1.5}, tail, "tail").config({theta: 180});
+        v.arrow({tail: [-5.8, 1], length: 2}, tail, "tail");
     }
 
     let [IT, SM] = [2, 4];
@@ -172,7 +172,6 @@ pulley: (sel, fbd) => {
 
     if (fbd) {
         g = svg.group("arrow");
-        let tail = {tail: "6"};
         g.arrow({tail: [-8, -1.6], length: 6}, tail, "tail").config({theta: -90});
         g.arrow({tail: [x, -4], length: 3}, tail, "tail").config({theta: -90});
         g.arrow({tail: [x, -0.7], length: 2}, tail, "tail").config({theta: 90});
