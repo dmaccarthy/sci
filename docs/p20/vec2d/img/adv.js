@@ -41,7 +41,6 @@ fbd2: (sel) => {
     svg.clickToggle(4);
 },
 
-
 fbd3: (sel) => {
     $(sel).attr({width: 400, height: 300, "data-aspect": "4/3"});
     let svg = new SVG_Animation(sel, -1, 1, -0.7);
@@ -89,7 +88,7 @@ sign: (sel) => {
 sign_vec: (sel) => {
     let Fg = 491, F = Fg / root(2);
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(F, 45), vec2d(F, 135)], {lrbt: [-120, 300, -540, 30],
-        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]});
+        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]}).css(".NoStyle");
     svg.$.find(".Component, .Resultant").remove();
     svg.gtext("N", "text", [270, -510]);
 
@@ -100,6 +99,10 @@ sign_vec: (sel) => {
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([30, -240]);
     g.symb(0, ["F", BD], arr, ["1", SM, sub]).align([150, -400]);
     g.symb(0, ["F", BD], arr, ["2", SM, sub]).align([150, -100]);
+    g = svg.group("text", "red");
+    g.group().gtext("90.0°", {}, [180, -240]);
+    g.group().config({theta: -67.5}).gtext("45.0°", {}, [75, 0]);
+    g.group().config({theta: 67.5, pivot: [0, -Fg]}).gtext("45.0°", {}, [75, -Fg]);
 },
 
 sign_uneven: (sel) => {
@@ -107,44 +110,74 @@ sign_uneven: (sel) => {
     let F1 = Fg / sin(105) * sin(45);
     let F2 = Fg / sin(105) * sin(30);
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(F1, 60), vec2d(F2, 135)], {lrbt: [-120, 300, -540, 30],
-        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]});
+        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]}).css(".NoStyle");
     svg.$.find(".Component, .Resultant").remove();
-    svg.text("N", [270, -510]);
+    svg.gtext("N", "text", [270, -510]);
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["14", "-8"];
-    let g = svg.group();
-    g.symbol(["F", BD], arr, ["g", SM_IT, sub]).config({shift: [30, -240]});
-    g.symbol(["F", BD], arr, ["1", SM, sub]).config({shift: [135, -330]});
-    g.symbol(["F", BD], arr, ["2", SM, sub]).config({shift: [150, -100]});
-    g.$.addClass("Large").find("text").css({fill: "red"});
+    let g = svg.group("symbol", "f28", "red");
+    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([30, -240]);
+    g.symb(0, ["F", BD], arr, ["1", SM, sub]).align([135, -330]);
+    g.symb(0, ["F", BD], arr, ["2", SM, sub]).align([140, -80]);
+    g = svg.group("text", "red");
+    g.group().gtext("105.0°", {}, [120, -180]);
+    g.group().config({theta: -67.5}).gtext("45.0°", {}, [75, 0]);
+    g.group().config({theta: 75, pivot: [0, -Fg]}).gtext("30.0°", {}, [85, 1 - Fg]);
 },
+    
+pulley: (sel, fbd) => {
 
-pulley: (sel) => {
-    $(sel).attr({width: 400, height: 300, "data-aspect": "4/3"});
-    let svg = new SVG_Animation(sel, -12, 4, -10, 2, 1);
-    let a = 10;
-    svg.line([0, 0], [0, -11]).css({stroke: "black", "stroke-width": 3});
-    let g = svg.group().config({theta: a});
+    let svg;
+    svg = fbd ?
+        new SVG2(sel, {size: [400, 400], lrbt: [-12, 4, -10], margin: [0, 18, 1, 0], grid: 1}) :
+        new SVG2(sel, {size: [400, 276], lrbt: [-12, 4, -10], margin: [0, 18, 1, 0]});
+    svg.css(".NoStyle");
+
     let c = [1, 0.5];
-    svg.circle(0.5, c, g).css({fill: "#D0D0FF", stroke: "black"});
-    svg.line([-6.1, 1], [1, 1], g).css({stroke: "black", "stroke-width": 1});
-    svg.line([0, 0], c, g).css({stroke: "black", "stroke-width": 2});
-    svg.rect([4, 2], [-8, 1], g);
+    let a = 10;
+    let black2 = {stroke: "black", "stroke-width": 2};
+    let black3 = {stroke: "black", "stroke-width": 3};
+    svg.line([0, 0], [0, -10]).css(black3);
+    svg.line([-12, -10], [5, -10]).css(black2);
+
+    let g = svg.group("black1", "nofill").config({theta: a});
+    g.circle(0.5, c).css({fill: "#d0d0ff"});
+    g.line([-7, 1], [1, 1]);
+    g.line([0, 0], c).css(black2);
+    g.rect([4, 2], [-8, 1]).css({fill: "lightgrey"});
+    g.line([0, 0], [-12, 0]).css(black3);
+
+    if (fbd) {
+        
+    }
+
+    let [IT, SM] = [2, 4];
+    let sub = ["15", "-6"];
+    g = g.group("symbol", "f24", "black", {stroke: "none"});
+    g.symb(0, ["m", IT], ["1", SM, sub]).align([-8, 1]);
+    
     c = transform({angle: a, deg:true}, c)[0].plus([0.5, 0]);
     let x = c[0];
     let y = c[1] - 3;
-    svg.line(c, [x, y]).css({stroke: "black", "stroke-width": 1});
-    svg.rect([1.5, 3], [x, y]);
-    svg.symbol("m", {q4: 1}, [-8.25, 1], g);
-    svg.symbol("m", {q4: 2}, [x-0.25, y]);
-    svg.symbol("h", {}, [2, -7]);
-    x += 1.5;
-    svg.line([x, -10], [x, y - 1.5]).css({stroke: "black", "stroke-width": 1});
-    svg.$.find("rect").css({fill: "lightgrey", stroke: "black"});
-    svg.line([0, 0], [-12, 0], g).css({stroke: "black", "stroke-width": 3});
-    svg.line([4, -10], [-12, -10]).css({stroke: "black", "stroke-width": 2});
-    svg.final();
+
+    g = svg.group("black1");
+    g.line(c, [x, y]);
+    g.rect([1.5, 3], [x, y]).css({fill: "lightgrey"});
+    g.line([3, y - 1.5], [3, -10]);
+
+    g = svg.group("symbol", "f24");
+    g.symb(0, ["h", IT]).align([4, (y - 11.5)/ 2]);
+    g.symb(0, ["m", IT], ["2", SM, sub]).align([x, y]);
+
+    if (fbd) {
+        g = svg.group("arrow");
+        let tail = {tail: "6"};
+        g.arrow({tail: [-8, -1.6], length: 6}, tail, "tail").config({theta: -90});
+        g.arrow({tail: [x, -4], length: 3}, tail, "tail").config({theta: -90});
+        g.arrow({tail: [x, -0.7], length: 2}, tail, "tail").config({theta: 90});
+    }
+
 },
 
 Q3: (sel) => {
