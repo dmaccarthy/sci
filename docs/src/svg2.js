@@ -1420,10 +1420,12 @@ static ebg(sel, Emax, step, data, options) {
     svg.config({data: data, options: options});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$);
 
-    if (options.E) svg.line([0, options.E], [n, options.E]).addClass("TotalEnergy").css({"stroke-width": "2px"});
+    if (options.E) svg.line([0, options.E], [n, options.E]).addClass("TotalEnergy").css({stroke: "black", "stroke-width": "2px"});
     if (options.label) {
         let [dec, x, skip] = options.label;
         let g = svg.label(dec, x, [...range(0, Emax + step, skip ? skip * step : step)]);
+        let dy = options.yShift;
+        g.shiftBy([0, dy != null ? dy : "-6"]);
         if (options.unit) g.text(options.unit, ["6", Emax]).css({"text-anchor" : "start"});
         g.$.find(".Zero").removeClass("Zero");
         g.$.find("text").css({"font-size": "16px"});
