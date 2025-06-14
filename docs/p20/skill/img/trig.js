@@ -24,73 +24,57 @@ pretest: (sel) => {
 },
 
 similar: (sel) => {
-    $(sel).attr({width: 326, height: 191, "data-aspect": "326/191"});
-    let svg = new SVG_Animation(sel, -1, 11, -1, 6, 1);
-    svg.grid([-1, 11, 1], [-1, 6, 1]);
     let p = root(75);
-    let x = 0.5;
-    let g = svg.group().css({fill: "none", stroke: "#0065FE"});
-    svg.poly([[0, 0], [p, 0], [p, 5]], 1, g).css({"stroke-width": "2px"});
-    svg.poly([[p, x], [p-x, x], [p-x, 0]], 0, g);
-    g = svg.group().css({fill: "none", stroke: "red"});
+    let dx = 0.5;
+    let svg = new SVG2(sel, {grid: 1, scale: 28, lrbt: [-1, 11, -1, 6]});
+    let g = svg.group("nofill", "blue2");
+    g.poly([[0, 0], [p, 0], [p, 5]], 1);
+    g.poly([[p - dx, 0], [p  - dx, dx], [p, dx]]).css({"stroke-width": "1px"});
+    g = svg.group("text", "blue");
+    g.gtext("5", {}, [9.3, 2.5]);
+    g.gtext("8.66", {}, [5, -0.5]);
+    g.gtext("10", {}, [5, 3.6]);
     p /= 2;
-    svg.poly([[0, 0], [p, 0], [p, 2.5]], 1, g).css({"stroke-width": "2px"});
-    svg.poly([[p, x], [p-x, x], [p-x, 0]], 0, g);
-    g = svg.group().css({stroke: "none", fill: "red"});
-    svg.text("2.5", [5, 1.25], g);
-    svg.text("5", [2, 1.7], g);
-    svg.text("4.33", [2.1, -0.6], g);
-    g = svg.group().css({stroke: "none", fill: "#0065FE"});
-    svg.text("5", [9.25, 2.5], g);
-    svg.text("10", [5, 3.5], g);
-    svg.text("8.66", [5, -0.6], g);
-    svg.$.find("text").css({"font-size": "18px"});
-    g = svg.group().css({"font-size": "15px"});
-    svg.text("30°", [1.5, 0.3], g);
-    svg.text("60°", [8.1, 4.1], g);
-    svg.text("60°", [3.8, 1.6], g);
-    svg.final();
-},
+    g = svg.group("nofill", "red2");
+    g.poly([[0, 0], [p, 0], [p, 2.5]], 1);
+    g.poly([[p - dx, 0], [p  - dx, dx], [p, dx]]).css({"stroke-width": "1px"});
+    g = svg.group("text", "red");
+    g.gtext("2.5", {}, [5, 1.25]);
+    g.gtext("5", {}, [p/2, 1.9]);
+    g.gtext("4.33", {}, [p/2, -0.5]);
+    g = svg.group("text", "black", "f15");
+    g.gtext("30°", {}, [1.5, 0.35]);
+    g.gtext("60°", {}, [3.82, 1.7]);
+    g.gtext("60°", {}, [8.15, 4.2]);
+}, 
 
 ramp: (sel) => {
-    $(sel).attr({width: 401, height: 135, "data-aspect": "401/135"});
-    let svg = new SVG_Animation(sel, -0.25, 2, -0.25, 0.5, 1);
-    svg.grid([-0.25, 2, 0.25], [-0.25, 0.5, 0.25]);
-    svg.$.find("line.Axis").removeClass("Axis");
-    let p = root(2.1875);
-    let x = 0.06;
-    let g = svg.group().css({fill: "none", stroke: "#0065FE"});
-    svg.poly([[0, 0], [p, 0.25], [p, 0]], 1, g).css({"stroke-width": "2px"});
-    svg.poly([[p, x], [p-x, x], [p-x, 0]], 0, g);
-    svg.text("0.250 m", [1.72, 0.125]);
-    svg.text("1.50 m", [0.75, 0.2]);
-    svg.$.find("text").css({"font-size": "18px"});
-    svg.text("θ", [0.46, 0.03]).css({"font-size": "14px"});
-    svg.final();
+    let x = root(2.25 - 1/16);
+    let dx = 0.06;
+    let svg = new SVG2(sel, {grid: 0.25, scale: 180, lrbt: [-0.25, 2, -0.25, 0.5]});
+    let g = svg.group("nofill", "blue2");
+    g.poly([[0, 0], [x, 0], [x, 0.25]], 1);
+    g.poly([[x, dx], [x  - dx, dx], [x - dx, 0]]).css({"stroke-width": "1px"});
+    g = svg.group("text", "black");
+    g.gtext("1.50 m", {}, [x/2, 0.23]);
+    g.gtext("0.250 m", {}, [1.7, 0.12]);
+    g.gtext("θ", {}, [0.48, 0.04]).css("f15", {"font-style": "italic"});
+    svg.$.find("line.Axis").css(SVG2.css("grid"));
 },
 
 ball8: (sel) => {
-    $(sel).attr({width: 402, height: 302, "data-aspect": "402/302"});
-    let svg = new SVG_Animation(sel, 30, 90, 30, 75, 1);
-    let g = svg.grid([30, 90, 5], [30, 75, 5], 1);
-    let attr = {interval: 10, fixed: 0, offset: [0, 35]};
-    svg.axis({x: [40, 80], ticks: attr}, g);
-    attr.offset = [35, 0];
-    svg.axis({y: [40, 70], ticks: attr}, g);
-    g.$.find("text").css({fill: "lightgrey"});
-    let x = 2;
-    g = svg.group().css({fill: "none", stroke: "red"});
-    svg.poly([[40, 50], [80, 50], [80, 65]], 0, g).css({"stroke-width": "2px"});
-    svg.poly([[80, 50+x], [80-x, 50+x], [80-x, 50]], 0, g);
-    g = svg.group().css({stroke: "none", fill: "#0065FE"});
-    svg.arrow([80, 65], [40, 50], {tail: "3"}, g);
-    svg.text("F", [37.5, 50], g);
-    svg.text("I", [82.5, 65], g);
-    g = svg.group().css({stroke: "none", fill: "red"});
-    svg.text("15.0 cm", [83, 57.5], g).config({theta: 90});
-    svg.text("40.0 cm", [60, 47], g);
-    svg.$.find("text").css({"font-size": "18px"});
-    svg.final();
-},
+    let svg = new SVG2(sel, {grid: 5, scale: 7, lrbt: [30, 90, 30, 75]});
+    let g = svg.group({fill: "grey"});
+    g.label(0, 35, [...range(40, 71, 10)]);
+    g.label(0, [...range(40, 81, 10)], 35);
+    svg.poly([[80, 65], [80, 50], [40, 50]]).css(SVG2.css("nofill", "red2"));
+    svg.arrow({tail: [80, 65], tip: [40, 50]}, {tail: "4"}).css("arrow", "blue");
+    g = svg.group("text", "blue", "f24");
+    g.gtext("I", {}, [82, 65]);
+    g.gtext("F", {}, [40, 53]);
+    g = svg.group("text", "red");
+    g.gtext("40.0 cm", {}, [60, 47.5]);
+    g.gtext("15.0 cm", {}, [82.5, 57.5]).config({theta: 90});
+}, 
 
 });

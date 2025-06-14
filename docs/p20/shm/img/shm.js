@@ -24,9 +24,10 @@ v_t: (sel, n, click) => {
         data: [{locus: [(x) => Math.sin(2 * Math.PI * (x + xva.n / 4))]}]
     });
     svg.animate(svg.series[0].find("polyline"));
-    let arr = ["→", 5, [0, "12"]];
-    svg.symbol(["t", 2]).config({shift: [1.875, "-24"]});
-    let sym = svg.symbol(["x", 1], arr).config({shift: ["-18", 1.05]});
+    let arr = ["→", 5, [0, "14"]];
+    let g = svg.group("symbol", "f24");
+    g.symb(0, ["t", 2]).align([1.9, "-14"]);
+    let sym = g.symb(0, ["x", 1], arr).align(["-14", 1.125]);
     sym.css({fill: "#0065fe"});
 
     let next_graph = (n) => {

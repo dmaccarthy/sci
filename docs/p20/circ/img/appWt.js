@@ -112,7 +112,7 @@ loop: (sel) => {
 
 rope: (sel) => {
     let svg = new SVG2(sel, {size: [512, 488], lrbt: [-1, 1, -0.63]}).css(".NoStyle");
-    let g = svg.group().css("black1", "px3");
+    let g = svg.group().css("black3");
     g.line([-0.5, 1], [-0.5, 0.4]);
     g.line([0.5, -0.1], [0.5, 0.5]);
     g = svg.group().css("blue", "black1");
@@ -146,7 +146,7 @@ book: (sel) => {
     books.rect(["20", "5"], [0, -0.25]);
     books.align([0, -0.99], 0.5, 1);
 
-    let g = svg.group().css("nofill", "black2", "px3");
+    let g = svg.group().css("nofill", "black3");
     g.circle(0.25);
     g.circle(0.625);
     g.circle(1);

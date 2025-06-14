@@ -78,15 +78,16 @@ Q1: (sel) => {
 },
 
 F2: (sel) => {
-    $(sel).attr({width: 360, height: 256, "data-aspect": "360/256"});
-    let svg = new SVG_Animation(sel, -0.5, 1.9);
-    svg.circle(0.8, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    svg.symbol("E", {q4: "k", scale: 1}, [1, 0]).css({fill: "#0065FE"});
-    let g = svg.group().css({fill: "red"});
-    svg.text("Food", [-0.25, 0], g).css({"font-size": "24px"});
-    svg.arrow([0.05, 0], 0.8, {tail: "6"}, g);
-    svg.text("4.46 kJ", [0.45, -0.15], g).css({"font-size": "18px"});
-    svg.final();
+    let svg = new SVG2(sel, {size: [400, 260], lrbt: [-8.5, 4.5]});
+    svg.energy_flow({radius: 4,
+        labels: [
+            ["$E_k", [0, 0]],
+            ["Food", [-7, 0], "red"],
+        ],
+        arrows: [
+            [4, [-3, 0], 0, ["4.46 kJ", ["6", "-24"]], "red"],
+        ]
+    });
 },
 
 Q2: (sel) => {

@@ -568,7 +568,7 @@ cylinder(r, L) {
 
 stickman(h) {
 /* Add a stick man as an SVG2g instance */
-    let g = this.group().css("nofill", "black1", "px3");
+    let g = this.group().css("nofill", "black3");
     let r = h / 8;
     g.circle(r, [0, 7 * r]);
     g.line([0, 6 * r], [0, 3 * r]);
@@ -1057,6 +1057,13 @@ constructor(selector, options) {
     this.time = 0;
 }
 
+static css(...key) {
+    let a = {};
+    for (let k of key)
+        Object.assign(a, typeof(k) == "string" ? SVG2._style[k] : k);
+    return a;
+}
+
 save(callback) {
 /* Clone <svg> and prepend <style> nodes; then save SVG file or pass to callback */
     if (callback == null) callback = `${randomString(12, 1)}.svg`;
@@ -1512,25 +1519,18 @@ SVG2._style = {
     middle: {"text-anchor": "middle"},
     symbol: {"font-family": SVG2.symbol, "font-size": "18px", "text-anchor": "middle"},
     arrow: {fill: "red", stroke: "black", "stroke-width": "0.5px"},
-    f28: {"font-size": "28px"},
-    f24: {"font-size": "24px"},
-    f18: {"font-size": "18px"},
-    f15: {"font-size": "15px"},
-    f14: {"font-size": "14px"},
     ital: {"font-style": "italic"},
     bold: {"font-weight": "bold"},
     nofill: {fill: "none"},
-    black: {fill: "black"},
-    blue: {fill: "#0065fe"},
-    red: {fill: "red"},
-    lime: {fill: "limegreen"},
-    green: {fill: "green"},
-    red2: {stroke: "red", "stroke-width": "2px"},
-    green2: {stroke: "green", "stroke-width": "2px"},
-    blue1: {stroke: "#0065fe", "stroke-width": "1px"},
-    blue2: {stroke: "#0065fe", "stroke-width": "2px"},
-    black1: {stroke: "black", "stroke-width": "1px"},
-    black2: {stroke: "black", "stroke-width": "2px"},
-    px3: {"stroke-width": "3px"},
-
 };
+
+for (let i=12;i<33;i++) SVG2._style[`f${i}`] = {"font-size": `${i}px`};
+for (let i=1;i<13;i++) SVG2._style[`px${i}`] = {"stroke-width": `${i}px`};
+for (let c of ["black", "red", "green", "lime", "blue"]) {
+    cc = (c) => c == "blue" ? "#0065fe" : c;
+    SVG2._style[`${c}`] = {fill: cc(c)};
+    for (let i=1;i<4;i++)
+        SVG2._style[`${c}${i}`] = {stroke: cc(c), "stroke-width": `${i}px`};
+}
+
+// console.log(SVG2._style);
