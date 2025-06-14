@@ -1057,6 +1057,8 @@ constructor(selector, options) {
     this.time = 0;
 }
 
+static arr(dy) {return ["→", 5, [0, dy == null ? "20" : dy]]}
+
 static css(...key) {
     let a = {};
     for (let k of key)
@@ -1522,6 +1524,9 @@ SVG2._style = {
     ital: {"font-style": "italic"},
     bold: {"font-weight": "bold"},
     nofill: {fill: "none"},
+    sans: {"font-family": SVG2.sans},
+    serif: {"font-family": SVG2.serif},
+    mono: {"font-family": SVG2.mono},
 };
 
 for (let i=12;i<33;i++) SVG2._style[`f${i}`] = {"font-size": `${i}px`};

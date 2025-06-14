@@ -67,35 +67,34 @@ vec1: (sel) => {
     g.symb(0, ["F", BD], arr, ["net", SM_IT, ["16", "-8"]]).css("blue").align([6, 4]);
 },
 
-Q1: (sel) => {
-    $(sel).attr({width: 400, height: 400, "data-aspect": "1"});
-    let svg = new SVG_Animation(sel, -63, 17, -75, 5);
-    let Fg = -63.8, Ff = 12.5;
-    let F = Fg + Ff, dx = 1.5;
-    svg.grid([-15, 15, 5], [-75, 5, 5], 1);
-    let attr = {interval: 10, minor: 2, fixed: 0, length: "8", omitZero: 1, offset: [0, "-18"]};
-    svg.axis({x: [-15, 15], ticks: attr});
-    attr.offset = ["-18", 0];
-    svg.axis({y: [-75, 5], ticks: attr});
-    svg.arrow([-dx, 0], [-dx, Fg], {tail: "8"}).addClass("Vector");
-    svg.arrow([dx, Fg],[dx, F],  {tail: "8"}).addClass("Vector");
-    svg.arrow([dx, 0],[dx, F],  {tail: "8"}).addClass("Resultant");
-    svg.symbol("F", {vec:1, q4: "g"}, [-10, Fg/2]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "f"}, [9, 0.94 * Fg]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "net"}, [6.5, F/2]).css({fill: "#0065FE"});
-    svg.final();
-
-    svg = new SVG_Animation(sel, -13, 57, -55, 25);
+Q1f: (sel) => {
+    let svg = new SVG2(sel, {size: [160, 403], lrbt: [-15, 22, -72.5], margin: 1}).css(".NoStyle");
     svg.gradient("gradQ1", "#D0D0FF", "royalblue", 80, 0, 0, 100);
-    svg.rect([10, 10], [0, 0]).css({fill: "url(#gradQ1)", stroke: "black"});
-    svg.arrow([0, -6], [0, Fg/1.5 - 6], {tail: "6"}).css({fill: "red"});
-    svg.arrow([0, 6],[0, Ff/1.5 + 6],  {tail: "6"}).css({fill: "red"});
-    svg.arrow([10, 0],[10, -20],  {tail: "6"}).css({fill: "#0065FE"});
-    svg.symbol("F", {vec:1, q4: "g"}, [-8, -25]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "f"}, [-8, 10]).css({fill: "red"});
-    svg.symbol("a", {vec:1}, [15, -10]).css({fill: "#0065FE"});
-    svg.final();
+    svg.rect([10, 10]).css({fill: "url(#gradQ1)", stroke: "black"});
+    let [BD, arr, sub] = [1, SVG2.arr(), [6, ["12", "-8"]]];
+    let g = svg.group("arrow");
+    g.arrow({tail: [0, -7.5], tip: [0, -7.5 - 63.8]}, {tail: "7"});
+    g.arrow({tail: [0, 7.5], tip: [0, 20]}, {tail: "7"});
+    g.arrow({tail: [10, 0], tip: [10, -30]}, {tail: "7"}).css("blue");
 
+    g = svg.group("symbol", "f28", "red");
+    g.symb(0, ["F", BD], arr, ["g", ...sub]).align([-9, -30]);
+    g.symb(0, ["F", BD], arr, ["f", ...sub]).align([-9, 12]);
+    g.symb(0, ["a", BD], arr).align([17, -10]).css("blue");
+},
+
+Q1v: (sel) => {
+    let svg = SVG2.vec_diag(sel, [[-3, 0], [0, -63.8], [3, 0], [0, 12.5]], {shift: [1.5, 0],
+        lrbt: [-15, 15, -75, 5], scale: 5, margin: 1, grid: 5, tick: "-8", label: [10, 0, "-14", "-18"]});
+    svg.$.find(".Component").remove();
+    let a = svg.$.find("g.Arrow").css({"fill-opacity": 0.6});
+    $([a[0], a[2]]).remove();
+    svg.$.find("g.Labels").css(SVG2.css("mono",{fill: "grey"}));
+    let [BD, arr, sub] = [1, SVG2.arr(), [6, ["12", "-8"]]];
+    let g = svg.group("symbol", "f28", "red");
+    g.symb(0, ["F", BD], arr, ["g", ...sub]).align([-10, -30]);
+    g.symb(0, ["F", BD], arr, ["f", ...sub]).align([8, -57]);
+    g.symb(0, ["F", BD], arr, ["net", ...sub]).align([8, -25]).css("blue");
 },
 
 Q3: (sel) => {

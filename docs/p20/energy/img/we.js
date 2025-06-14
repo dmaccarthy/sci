@@ -53,20 +53,21 @@ tennis: (sel) => {
     });
 },
 
+
 F1: (sel) => {
-    $(sel).attr({width: 512, height: 256, "data-aspect": "2"});
-    let svg = new SVG_Animation(sel, -0.5, 2.75);
-    svg.circle(0.8, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    svg.symbol("E", {q4: "k", scale: 1}, [1, 0]).css({fill: "#0065FE"});
-    let g = svg.group().css({fill: "red"});
-    svg.text("Food", [-0.25, 0], g).css({"font-size": "24px"});
-    svg.text("Waste", [2.4, 0], g).css({"font-size": "24px"});
-    svg.arrow([0.05, 0], 0.8, {tail: "6"}, g);
-    svg.arrow([1.25, 0], 0.8, {tail: "6"}, g);
-    let css = {"font-size": "18px"};
-    svg.text("75.0 J", [0.45, -0.15], g).css(css);
-    svg.text("30.0 J", [1.55, -0.15], g).css(css);
-    svg.final();
+    let svg = new SVG2(sel, {size: [500, 256], lrbt: [-1.5, 1.6]}).css(".NoStyle");
+    let L = 0.75;
+    svg.energy_flow({radius: 0.75,
+        labels: [
+            ["$E_k", [0, 0]],
+            ["Food", [-1.25, 0], "red"],
+            ["Waste", [1.3, 0], "red"],
+        ],
+        arrows: [
+            [L, [-0.6, 0], 0, ["75.0 J", ["6", "-24"]], "red"],
+            [L, [0.6, 0], 0, ["30.0 J", ["-6", "-24"]], "red"],
+        ]
+    });
 },
 
 Q1: (sel) => {
@@ -78,7 +79,7 @@ Q1: (sel) => {
 },
 
 F2: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 260], lrbt: [-8.5, 4.5]});
+    let svg = new SVG2(sel, {size: [400, 260], lrbt: [-8.5, 4.5]}).css(".NoStyle");
     svg.energy_flow({radius: 4,
         labels: [
             ["$E_k", [0, 0]],
@@ -99,26 +100,23 @@ Q2: (sel) => {
     ], {E: 5.4, unit: "kJ", duration: 3, margin: [32, 4, 40, 16], label: [0, "-6"]});
 },
 
-F4: (sel) => {
-    $(sel).attr({width: 512, height: 256, "data-aspect": "2"});
-    let svg = new SVG_Animation(sel, -0.5, 2.75, -0.3);
-    svg.circle(0.75, [1.05, 0.55]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    svg.symbol("E", {q4: "k", scale: 1}, [1, 0]).css({fill: "#0065FE"});
-    svg.symbol("E", {q4: "g", scale: 1}, [1, 1.1]).css({fill: "#0065FE"});
 
-    let g = svg.group().css({fill: "#0065FE"}).config({position: [1.05, 0.55], theta: 90});
-    svg.arrow([-0.4, 0], 0.8, {tail: "6"}, g);
-    let css = {"font-size": "18px"};
-    svg.text("13.7 J", [-0.1, 0.1], g).css(css);
-    
-    g = svg.group().css({fill: "red"});
-    svg.text("Food", [-0.25, 0], g).css({"font-size": "24px"});
-    svg.text("Waste", [2.4, 0], g).css({"font-size": "24px"});
-    svg.arrow([0.05, 0], 0.8, {tail: "6"}, g);
-    svg.arrow([1.25, 0], 0.8, {tail: "6"}, g);
-    svg.text("20.0 J", [0.4, -0.1], g).css(css);
-    svg.text("6.35 J", [1.7, -0.1], g).css(css);
-    svg.final();
+F4: (sel) => {
+    let svg = new SVG2(sel, {size: [500, 256], lrbt: [-1.5, 1.5]}).css(".NoStyle");
+    let L = 0.7;
+    svg.energy_flow({radius: 0.75,
+        labels: [
+            ["$E_k", [0, -0.5]],
+            ["$E_g", [0, 0.5]],
+            ["Food", [-1.15, -0.5], "red"],
+            ["Waste", [1.15, -0.5], "red"],
+        ],
+        arrows: [
+            [L, [0, 0], 90, ["13.7 J", ["-12", "-24"]]],
+            [L, [-0.5, -0.5], 0, ["20.0 J", ["6", "14"]], "red"],
+            [L, [0.5, -0.5], 0, ["6.35 J", ["-18", "14"]], "red"],
+        ]
+    });
 },
 
 Q4: (sel) => {
@@ -132,7 +130,7 @@ Q4: (sel) => {
 },
 
 ramp : (sel) => {
-    svg = new SVG2(sel, {size: [480, 80], lrbt: [0, 2.15, -0.02], margin: 2});
+    svg = new SVG2(sel, {size: [480, 80], lrbt: [0, 2.15, -0.02], margin: 2}).css(".NoStyle");
     svg.$.addClass("SVG2");
     let pt = vec2d(2, 8);
     svg.poly([pt, [pt[0], 0], [0, 0]], 1).css({"stroke-width": "2px"});
