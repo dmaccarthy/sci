@@ -1531,7 +1531,7 @@ SVG2._style = {
 
 for (let i=12;i<33;i++) SVG2._style[`f${i}`] = {"font-size": `${i}px`};
 for (let i=1;i<13;i++) SVG2._style[`px${i}`] = {"stroke-width": `${i}px`};
-for (let c of ["black", "red", "green", "lime", "blue"]) {
+for (let c of ["black", "red", "green", "limegreen", "blue"]) {
     cc = (c) => c == "blue" ? "#0065fe" : c;
     SVG2._style[`${c}`] = {fill: cc(c)};
     for (let i=1;i<4;i++)

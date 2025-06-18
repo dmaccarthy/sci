@@ -31,7 +31,7 @@ pool: (sel) => {
     g = svg.group("arrow");
     g.arrow({tail: [3.2, 1.5], tip: [5, 1.5]}, {tail: "6"}).css("blue");
     g.arrow({tail: [-1.2, 1.5], tip: [-3, 1.5]}, {tail: "6"}).css("red");
-    g.arrow({tail: [-1.3, 5.5], tip: [0.3, 5.5]}, {tail: "6"}).css("lime");
+    g.arrow({tail: [-1.3, 5.5], tip: [0.3, 5.5]}, {tail: "6"}).css("limegreen");
 
     g = svg.group("symbol", "f28");
     let v = [0, ["F", 1], ["→", 5, [0, "18"]], ["a", 6, ["12", "-8"]]];
@@ -40,7 +40,7 @@ pool: (sel) => {
     v[1][0] = "v";
     v[2][2][1] = "14";
     v[3][0] = "i";
-    g.symb(...v).align([-0.5, 5.7], 0.5, 1).css("lime");
+    g.symb(...v).align([-0.5, 5.7], 0.5, 1).css("limegreen");
 },
 
 rocket: (sel) => {

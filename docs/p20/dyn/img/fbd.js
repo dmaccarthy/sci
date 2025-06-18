@@ -98,47 +98,39 @@ Q1v: (sel) => {
 },
 
 Q3: (sel) => {
-    $(sel).attr({width: 150, height: 375, "data-aspect": "2/5"});
-    let svg = new SVG_Animation(sel, -150, 150, -575, 175);
     let Fg = -567, Ff = 725;
-    let F = Fg + Ff, dx = 15;
-    svg.grid([-150, 150, 50], [-600, 175, 50], 1);
-    let attr = {interval: 100, minor: 2, fixed: 0, length: "8", omitZero: 1, offset: [0, "-18"]};
-    svg.axis({x: [-125, 125], ticks: attr});
-    attr.offset = ["-12", 0];
-    svg.axis({y: [-600, 175], ticks: attr});
-    svg.arrow([-dx, 0], [-dx, Fg], {tail: "8"}).addClass("Vector");
-    svg.arrow([dx, Fg],[dx, F],  {tail: "8"}).addClass("Vector");
-    svg.arrow([-dx, 0],[-dx, F],  {tail: "8"}).addClass("Resultant");
-    svg.symbol("F", {vec:1, q4: "g"}, [-90, -250]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "f"}, [70, -250]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "net"}, [-110, 50]).css({fill: "#0065FE"});
-    svg.final();
+    let svg = SVG2.vec_diag(sel, [[0, Fg], [30, 0], [0, Ff], [-30, 0]], {shift: [-15, 0],
+        lrbt: [-150, 150, -575, 175], scale: 0.5, margin: 1, grid: 50, tick: "-8", label: [100, 0, "-14", "-18"]});
+    svg.$.find(".Component").remove();
+    let a = svg.$.find("g.Arrow").css({"fill-opacity": 0.6});
+    $([a[1], a[3]]).remove();
+    svg.$.find("g.Labels").css(SVG2.css("mono",{fill: "grey"}));
+    let [BD, arr, sub] = [1, SVG2.arr(), [6, ["10", "-6"]]];
+    let g = svg.group("symbol", "f28", "red");
+    g.symb(0, ["F", BD], arr, ["g", ...sub]).align([-80, -250]);
+    g.symb(0, ["F", BD], arr, ["f", ...sub]).align([80, -225]);
+    sub[1][0] = "16";
+    g.symb(0, ["F", BD], arr, ["net", ...sub]).align([-90, 50]).css("blue");
 },
 
 Q7: (sel) => {
-    $(sel).attr({width: 360, height: 250, "data-aspect": "36/25"});
-    let svg = new SVG_Animation(sel, -4, 5, -2.8);
-    svg.line([-5, 0], [-1, 0]).css({stroke: "black", "stroke-width": 3});
-    svg.line([1, 0], [5, 0]).css({stroke: "black", "stroke-width": 3});
-
-    let r = 1, h = r/2;
-    let p1 = [-r, h];
-    let p2 = [r, h];
-    let rp = [r, 0.4 * h];
-    let puck = svg.path(p1).lineTo([-r, 0]).arcTo([r, 0], rp).lineTo(p2).arcTo(p1, rp).arcTo(p2, rp);
-    puck.item().css({fill: "grey", stroke: "black"});
-
-    svg.arrow([0, -0.5], [0, -2.5], {tail: "6"}).css({fill: "red"});
-    svg.arrow([0, 1], [0, 3], {tail: "6"}).css({fill: "red"});
-    svg.arrow([-1.5, 0.2], [-3, 0.2], {tail: "6"}).css({fill: "red"});
-    svg.arrow([2, 1], [4, 1], {tail: "6"}).css({fill: "limegreen"});
-    svg.symbol("F", {vec:1, q4: "g"}, [0.8, -1.3]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "n"}, [0.8, 1.8]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "f"}, [-2.1, 1.2]).css({fill: "red"});
-    svg.symbol("v", {vec:1, q4: "i"}, [2.7, 2]).css({fill: "limegreen"});
-
-    svg.final();
+    let svg = new SVG2(sel, {size: [360, 250], lrbt: [-4, 5, -2.8], grid: 1});
+    svg.line([-4.1, 0], [5.1, 0]).css(SVG2.css("black3"));
+    svg.cylinder([1, 0.2], 0.5).css("black1", {fill: "grey"}).align([0, 0.25]);
+    let g = svg.group("arrow");
+    let t7 = {tail: "7"};
+    g.arrow({tail: [0, 1], tip: [0, 3]}, t7);
+    g.arrow({tail: [0, -0.5], tip: [0, -2.5]}, t7);
+    g.arrow({tail: [-1.3, 0.2], tip: [-2.7, 0.2]}, t7);
+    g.arrow({tail: [2, 1], tip: [4, 1]}, t7).css("limegreen");
+    let [BD, arr, sub] = [1, SVG2.arr(), [6, ["10", "-6"]]];
+    g = svg.group("symbol", "f28", "red");
+    g.symb(0, ["F", BD], arr, ["g", ...sub]).align([0.8, -1.25]);
+    g.symb(0, ["F", BD], arr, ["n", ...sub]).align([0.8, 1.75]);
+    g.symb(0, ["F", BD], arr, ["f", ...sub]).align([-1.5, 1.25]);
+    arr[2][1] = "12";
+    console.log(arr);
+    g.symb(0, ["v", BD], arr, ["i", ...sub]).align([2.75, 2]).css("limegreen");
 },
 
 });
