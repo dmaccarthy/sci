@@ -3,7 +3,7 @@
     <p>We have already studied sequential versus direct file access. Sequential access involves reading the file from the beginning; this can be inefficient for large files. Direct access involves jumping to the location where the data we want to read or modify is located. This is more efficient than sequential access, but it works best when all records are the same size.</p>
     <p>One technique that programmers can use to improve access to large data files is to create an <em class="Defn">index</em>. An index is a secondary data file that contains pointers or links to records in the primary data file.</p>
     <p>Consider this small portion of a database of Alberta municipalities. Each record contains the municipality name, type, population, latitude, and longitude...</p>
-    <pre class="IO" data-echo="resource/ab.txt" data-title="1">Airdrie;City;45711;N51-17-30;W114-00-52
+    <pre class="IO" data-echo="data/ab.txt" data-title="1">Airdrie;City;45711;N51-17-30;W114-00-52
 Banff;Town;7584;N51-10-41;W115-34-19
 Calgary;City;1120225;N51-03;W114-04
 Camrose;City;17286;N53-01-22;W112-49-42
@@ -20,7 +20,7 @@ Edmonton;City;817498;N53-32;W113-30
 <section class="Post" data-icon="ide">
 <h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
 <ol class="Assign">
-    <li>The file <code>resources/ab.txt</code> is a text file containing the sample data for five Alberta municipalities given in the notes above. Write a Python 3 program <code>f06_makeIndex.py</code> that reads the file and creates a binary index file named <code>resources/ab.indx</code> of 4-byte unsigned pointers.</li>
+    <li>The file <code>data/ab.txt</code> is a text file containing the sample data for five Alberta municipalities given in the notes above. Write a Python 3 program <code>f06_makeIndex.py</code> that reads the file and creates a binary index file named <code>data/ab.indx</code> of 4-byte unsigned pointers.</li>
     <li>The program <code>f06_browse.py</code> uses the primary data file and the index file from question 1. The program allows the user to type a record number and responds by outputting the corresponding data.The user can type -1 to quit the program. Complete the program by implementing the functions <code>readIndex</code> and <code>getRecord</code>.</li>
     <li>Duplicate your program from question 2 as <code>f06_Alberta.py</code>. Modify the program so that the user can add, delete, and edit records. Note 1: You must update the index every time you make changes to the data file. Note 2: To delete a record, you only need to remove its pointer from the index; you do not actually have to remove the data from the primary file.</li>
 </ol>

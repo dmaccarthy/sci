@@ -418,7 +418,7 @@ ray(p1, p2, size, ...pos) {
 
 grid(x, y, appendAxes) {
 /* Draw a coordinate grid */
-    let g = this.group().css("grid");
+    let g = this.group("grid");
     this._grid(g, x, y);
     this._grid(g, y, x, 1);
     let e = g.$.addClass("Grid");
@@ -1046,7 +1046,8 @@ constructor(selector, options) {
         let [gx, gy] = typeof(grid) == "number" ? [grid, grid] : grid;
         let x0 = gx * Math.round(lrbt[0] / gx);
         let y0 = gy * Math.round(lrbt[2] / gy);
-        this.grid([x0, lrbt[1], gx], [y0, lrbt[3], gy], options.appendAxes);
+        let g = this.grid([x0, lrbt[1], gx], [y0, lrbt[3], gy], options.appendAxes);
+        if (options.noAxes) g.$.find(".Axis").removeClass("Axis").css(SVG2.css("grid"));
     }
 
     /* Animation data */
@@ -1531,7 +1532,7 @@ SVG2._style = {
 
 for (let i=12;i<33;i++) SVG2._style[`f${i}`] = {"font-size": `${i}px`};
 for (let i=1;i<13;i++) SVG2._style[`px${i}`] = {"stroke-width": `${i}px`};
-for (let c of ["black", "red", "green", "limegreen", "blue"]) {
+for (let c of ["black", "red", "green", "limegreen", "blue", "grey"]) {
     cc = (c) => c == "blue" ? "#0065fe" : c;
     SVG2._style[`${c}`] = {fill: cc(c)};
     for (let i=1;i<4;i++)

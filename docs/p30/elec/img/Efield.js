@@ -1,51 +1,41 @@
 SVG2.cache("p30/elec/img/Efield.js", {
 
-ex1fbd: (sel) => {
-    $(sel).attr({width: 364, height: 338, "data-aspect": "14/13"});
-    let svg = new SVG_Animation(sel, -1, 13, -1);
-    svg.grid([-1, 13, 1], [-1, 12, 1]).$.find(".Axis").removeClass("Axis");
-    let g = svg.group();
-    let tog = [
-        svg.circle(0.2, [6, 0], g).$,
-        svg.poly([[0, 6], [0, 0], [12, 0], [0, 6], [3, 6]], 1).css({fill: "none", stroke: "black"}).before(g.$).$,
-        svg.circle(0.2, [0, 6], g).$,
-    ];
-    g.$.children().css({fill: "green"});
+fbd1: (sel) => {
+    let svg = new SVG2(sel, {size: [364, 338], lrbt: [-1, 13, -1], grid: 1, noAxes: 1});
+    let g = svg.group("nofill", "grey1", ".Toggle3");
+    g.poly([[0, 6], [0, 0], [12, 0], [0, 6], [3, 6]]);
+    g = svg.group("blue", "black1");
+    g.circle(0.6);
+    g.circle(0.6, [12, 0]);
+    g = g.group("green");
+    g.circle(0.2, [6, 0]).addClass("Toggle0");
+    g.circle(0.2, [0, 6]).addClass("Toggle3");
 
-    g = svg.group();
+    g = svg.group("text", "f28", "bold", {fill: "white"});
+    g.gtext("+", {}, [0, 0]);
+    g.gtext("–", {}, [12, "3"]);
+    g = svg.group("text", "f18", "ital", ".Toggle3");
+    g.gtext("θ", {}, [2, 5.55]);
+    g.gtext("θ", {}, [10, 0.4]);
+
+    let t7 = {tail: "7"};
     let E1 = 12.49, E2 = 7.492, E3 = 1.5;
-    let s = 2.4, y = 0.2, p = 6.25;
-    tog = tog.concat([
-        svg.arrow([p, -y], [p + E1 / s, -y], {tail: "8"}, g).$,
-        svg.arrow([p, y], [6.2 + E2 / s, y], {tail: "8"}, g).$,
-        svg.arrow([0, p], [0, p + E1 / s], {tail: "8"}, g).$,
-        svg.arrow([0, 0], E3 / s, {tail: "2", anchor: "tail"}, g).config({theta: -26.565, position: [0.3, 5.85]}).$,
-    ]);
-    g.$.children().addClass("Vector");
+    let s = 2.4, y = 0.2, p = 6.25, a = -26.565;
+    g = svg.group("arrow", {"fill-opacity": 0.5});
+    g.arrow({tail: [p, -y], tip: [p + E1 / s, -y]}, t7).css(".Toggle1");
+    g.arrow({tail: [p, y], tip: [6.2 + E2 / s, y]}, t7).css(".Toggle2");
+    g.arrow({tail: [0, p], tip: [0, p + E1 / s]}, t7).css(".Toggle4");
+    g.arrow({angle: a, length: E3/s, tail: [0, 0]}, {tail: "2"}).shiftBy(vec2d(0.3, a).plus([0, 6])).css(".Toggle5");
 
-    svg.circle(0.6, [0, 0]);
-    svg.circle(0.6, [12, 0]);
-    g = svg.group().css({"font-size": "24px", fill: "white", "font-weight": "bold"});
-    svg.text("+", [0, -0.05], g);
-    svg.text("–", [12, 0], g);
+    svg.clickToggle(6);
+    svg.$.on("click", () => {
+        if (svg.element.cycleStatus == 4) {
+            let c = "";
+            for (let i=0;i<3;i++) c += (c.length ? ", " : "") + `.Toggle${i}`;
+            $(c).fadeOut();
+        }
+    });
 
-    g = svg.group().css({"font-size": "18px"});
-    tog.push(g.$);
-    svg.text("θ", [9.8, 0.5], g);
-    svg.text("θ", [1.7, 5.55], g);
-    svg.final().$.addClass("VDiag");
-
-    let t = clickCycle.toggle;
-
-    clickCycle(svg.element, -1,
-        () => {t(tog, false, 0, 1, 2, 3, 4, 5, 6, 7)},
-        () => {t(tog, true, 0)},
-        () => {t(tog, true, 3)},
-        () => {t(tog, true, 4)},
-        () => {t(tog, false, 0, 3, 4); t(tog, true, 1, 2, 7)},
-        () => {t(tog, true, 5)},
-        () => {t(tog, true, 6)},
-    );
 },
 
 ex1: (sel) => {

@@ -1,6 +1,14 @@
 SVG2.cache("p30/mag/img/faraday.js", {
 
 lenz_law: (sel) => {
+    // NOT FINISHED!
+    let svg = new SVG2(sel, {scale: 36, lrbt: [-4, 3, -3, 3], grid: 1});
+    let g = svg.coil([2, 4], 11, 0, 0, "3").css("nofill", {stroke: "#b87333"});
+    g.$.find("rect").css({stroke: "black", fill: "#f8f8f8"});
+    g.$.find("circle").css({"stroke-width": "0.5px", stroke: "black", fill: "silver"});
+},
+
+lenz_law0: (sel) => {
     $(sel).attr({width: 259, height: 222, "data-aspect": "7/6"});
     let svg = new SVG_Animation(sel, -4, 3);
     svg.arrows = true;
