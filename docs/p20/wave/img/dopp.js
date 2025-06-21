@@ -24,49 +24,38 @@ Q1: (sel) => {
 },
 
 Q2: (sel) => {
-    $(sel).attr({width: 480, height: 120, "data-aspect": "4"});
-    let svg = new SVG_Animation(sel, -2.6, 2.4, -0.3);
-    svg.axis({x: [-2.6, 2.4]});
-
-    svg.stickMan(0.6, [1.35, 0.6]);
+    let svg = new SVG2(sel, {size: [480, 120], lrbt: [-2.2, 2.6, -0.3]});
+    svg.line([-2.2, 0], [2.6, 0]).css(SVG2.css("black2"));
+    svg.stickman(0.6).align([1.35, 0], 0.5, 1);
     svg.image("p20/wave/img/guitar.svg", [1, 0.42], [-1.5, 0.3]);
-
-    let g = svg.group().css({fill: "red"});
-    let attr = {tail: "6"};
-    svg.arrow([1.6, 0.25], [2.1, 0.25], attr, g);
-    svg.symbol("v", {q4: "o", vec: 1}, [1.85, 0.6], g);
-    
-    g = svg.group().css({fill: "blue"});
-    svg.arrow([-0.5, 0.25], [0.5, 0.25], attr, g);
-    svg.symbol("v", {vec: 1}, [0, 0.6], g);
-    
-    svg.final();
+    let g = svg.group("arrow");
+    let t6 = {tail: "6"};
+    g.arrow({tail: [1.6, 0.3], length: 0.8}, t6);
+    g.arrow({tail: [-0.6, 0.3], length: 1.2}, t6).css("blue");
+    g = svg.group("symbol", "f28", "red");
+    let v = [["v", 1], SVG2.arr("14")];
+    g.symb(0, ...v, ["o", 6, ["10", "-8"]]).align([1.9, 0.8], 0.5, 0);
+    g.symb(0, ...v).align([0, 0.8], 0.5, 0).css("blue");
 },
 
 Q3: (sel) => {
-    $(sel).attr({width: 480, height: 144, "data-aspect": "10/3"});
-    let svg = new SVG_Animation(sel, -2.6, 2.4, -0.25);
-    svg.axis({x: [-2.6, 2.4]});
-
-    svg.stickMan(0.8, [2, 0.8]);
-    svg.stickMan(0.8, [-1.9, 0.8]);
-    
-    svg.line([-1.75, 0.1], [-1.75, 0.94]).css({stroke: "black"});
-    let g = svg.group().css({stroke: "black", fill: "skyblue"});
-    svg.circle("6", [-1.75, 0.1], g)
-    svg.circle("6", [-1.75, 0.94], g)
-
-    g = svg.group().css({fill: "red"});
-    let attr = {tail: "6"};
-    svg.arrow([-1.55, 0.1], [-1.05, 0.1], attr, g);
-    svg.arrow([-1.95, 0.94], [-2.45, 0.94], attr, g);
-    svg.symbol("v", {q4: "s", vec: 1}, [-1.5, 0.5], g);
-    
-    g = svg.group().css({fill: "blue"}).config({position: [0.5, 0]});
-    svg.arrow([-0.5, 0.25], [0.5, 0.25], attr, g);
-    svg.symbol("v", {vec: 1}, [0, 0.6], g);
-    
-    svg.final();
+    let svg = new SVG2(sel, {size: [480, 144], lrbt: [-2.6, 2.4, -0.25]});
+    svg.line([-2.6, 0], [2.4, 0]).css(SVG2.css("black2"));
+    svg.stickman(0.8).align([2, 0], 0.5, 1);
+    svg.stickman(0.8).align([-1.9, 0], 0.5, 1);
+    svg.line([-1.75, 0.1], [-1.75, 0.94]).css(SVG2.css("black1"));
+    let g = svg.group("black1", {fill: "skyblue"});
+    g.circle("6", [-1.75, 0.1]);
+    g.circle("6", [-1.75, 0.94]);
+    g = svg.group("arrow");
+    let t6 = {tail: "6"};
+    g.arrow({tail: [-1.6, 0.1], length: 0.5}, t6);
+    g.arrow({tail: [-1.9, 0.94], length: -0.5}, t6);
+    g.arrow({tail: [0, 0.3], length: 1}, t6).css("blue");
+    g = svg.group("symbol", "f28", "red");
+    let v = [["v", 1], SVG2.arr("14")];
+    g.symb(0, ...v, ["s", 6, ["10", "-8"]]).align([-1.6, 0.8], 0, 0);
+    g.symb(0, ...v).align([0.5, 0.8], 0.5, 0).css("blue");
 },
 
 });

@@ -1,19 +1,24 @@
 SVG2.cache("p20/vec2d/img/adv.js", {
 
 fbd1: (sel) => {
-    $(sel).attr({width: 400, height: 240, "data-aspect": "5/3"});
-    let svg = new SVG_Animation(sel, -1.3, 1.7, -0.9);
-    let g = svg.group().css({stroke: "black", "stroke-width": 2});
+    let svg = new SVG2(sel, {size: [400, 240], lrbt: [-1.3, 1.7, -0.9]}).css(".NoStyle");
+    let g = svg.group("black2");
     let w = 0.15;
-    svg.line([-1.3, -w], [1.7, -w], g);
-    svg.line([-1.3, w], [1.7, w],g);
+    g.line([-1.3, -w], [1.7, -w]);
+    g.line([-1.3, w], [1.7, w]);
+    g.rect([1.5, 4 * w]).css({fill: "lightgrey"});
+
     let v = vec2d(1.5, -30);
-    svg.rect([1.5, 4 * w], [0, 0], g).css({fill: "lightgrey"});
-    svg.arrow([0, 0], v, {tail: "8"}).addClass("Vector");
-    svg.arrow([0, 0], [0, -v[1]], {tail: "8"}).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: 1}, [0.45, -0.6]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: 2}, [-0.4, 0.5]).css({fill: "red"});    
-    svg.final();
+    g = svg.group("arrow");
+    g.arrow({tip: [0, -v[1]]}, {tail: "7"});
+    g.arrow({tip: v}, {tail: "7"});
+
+    g = svg.group("symbol", "f28", "red");
+    let F = [["F", 1], SVG2.arr("20")];
+    let sub = [4, ["11", "-8"]];
+    g.symb(0, ...F, ["1", ...sub]).align([0.6, -0.6]);
+    g.symb(0, ...F, ["2", ...sub]).align([-0.3, 0.5]);
+
 },
 
 fbd2: (sel) => {
@@ -42,35 +47,35 @@ fbd2: (sel) => {
 },
 
 fbd3: (sel) => {
-    $(sel).attr({width: 400, height: 300, "data-aspect": "4/3"});
-    let svg = new SVG_Animation(sel, -1, 1, -0.7);
-    let Fg = 0.6, a = 8, Fn = Fg * cos(a), Fa = 5/9.81 * Fg;
-    let rot = svg.group().config({theta: a});
-    let attr = {stroke: "black", "stroke-width": 1};
-    let p1 = vec2d(1, a);
-    let p2 = [p1[0], -p1[1]]
-    svg.line(p1, p2).css(attr);
-    svg.line(p1.neg(), p2).css(attr);
-    let g = svg.group(rot).css(attr);
-    attr["stroke-width"] = 2;
-    svg.line([-1, 0], [1, 0], g).css(attr); 
-    svg.line([0, -1], [0, 1], g);
-    attr = {"font-size": 18, "font-style": "italic", stroke: "none"};
-    svg.text("x", [0.9, 0.03], g).css(attr);
-    svg.text("y", [0.03, 0.65], g).css(attr);
-    svg.rect([0.25, 0.16], [0, 0.08], g).css({fill: "#D0D0FF"});
-    g = svg.group(rot);
-    svg.arrow([0, 0], [0, Fn], {tail: "8"}, g).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "n"}, [-0.15, 0.35], g).css({fill: "red"});
-    svg.arrow([0.15, 0], [0.15 + Fa, 0], {tail: "8"}, g).addClass("Vector Applied");
-    svg.symbol("F", {vec:1, q4: "a"}, [0.4, 0.14], g).addClass("Applied").css({fill: "red"});
-    svg.arrow([-0.15, 0], [-0.15 - Fn / 5, 0], {tail: "4"}, g).addClass("Vector Friction");
-    svg.symbol("F", {vec:1, q4: "f"}, [-0.4, 0.1], g).addClass("Friction").css({fill: "red"});
-    svg.arrow([0, 0], [0, -Fg], {tail: "8"}).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "g"}, [-0.2, -0.3]).css({fill: "red"});
-    svg.final();
-    svg.$.find(".Friction").hide();
-    svg.$.on("click", () => svg.$.find(".Friction").fadeToggle());
+    let svg = new SVG2(sel, {size: [400, 300], lrbt: [-1, 1, -0.7], margin: 1}).css(".NoStyle");
+    let a = 8, p = new RArray(1, tan(a)), Fg = 0.6, Fn = Fg * cos(a), Fa = 5/9.81 * Fg, dy = 0.02;
+    svg.poly([p, [1, -p[1]], p.times(-1)]).css(SVG2.css("nofill", "black1"));
+    let incline = svg.group("black1").config({theta: a});
+    incline.line([0, -1], [0, 1]).css({"stroke-dasharray": "8,8"});
+    incline.rect([0.25, 0.16], [0, 0.08]).css({fill: "#d0d0ff"});
+    incline.line([-2, 0], [2, 0]).css(SVG2.css("black2"));
+    let g = incline.group("symbol", "f24", {stroke: "none"});
+    g.symb(0, ["x", 2]).align([0.9, 0.07]);
+    g.symb(0, ["y", 2]).align([0.07, 0.75]);
+
+    g = incline.group("arrow");
+    let t6 = {tail: "6"};
+    let arr = SVG2.arr("22");
+    let sub = [6, ["11", "-8"]];
+    g.arrow({tail: [0.15, 0.08], tip: [Fa + 0.15, 0.08]}, t6);
+    let fric = [g.arrow({tail: [-0.15, dy], tip: [-0.15 - Fn / 5, dy]}, {tail: "4"}).element];
+    g.arrow({tail: [0, dy], tip: [0, Fn + dy]}, t6);
+    g = incline.group("symbol", "f28", "red", {stroke: "none"});
+    g.symb(0, ["F", 1], arr, ["n", ...sub]).align([-0.15, 0.35]);
+    g.symb(0, ["F", 1], arr, ["a", ...sub]).align([0.4, 0.28]);
+    fric.push(g.symb(0, ["F", 1], arr, ["f", ...sub]).align([-0.35, 0.18]).element);
+
+    svg.group("symbol", "f28", "red").symb(0, ["F", 1], arr, ["g", ...sub]).align([-0.15, -0.25]);
+    svg.group("arrow").arrow({tail: [0, -dy], tip: [0, -dy - Fg]}, t6);
+
+    fric = $(fric).hide();
+    svg.$.on("click", () => fric.fadeToggle());
+
 },
 
 sign: (sel) => {
@@ -222,5 +227,5 @@ Q3: (sel) => {
     svg.symbol("F", {vec:1, q4: "g"}, [-0.2, -0.3]).css({fill: "red"});
     svg.final();
 },
-    
+
 });

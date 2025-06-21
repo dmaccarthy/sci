@@ -27,7 +27,7 @@ orbit: (sel) => {
     g.circle("3", p);
     g.circle("3", [10, 0]);
 
-    let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
+    let [BD, IT, SM] = [1, 2, 4];
     let arr = ["→", SM + BD, [0, "14"]];
     let sub = ["12", "-8"];
     g = svg.group("symbol", "blue", "f24");

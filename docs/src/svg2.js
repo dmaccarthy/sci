@@ -1502,6 +1502,23 @@ static async latex_img(code) {
     })
 }
 
+static* spring_points(p0, p1, n, dx, dy) {
+    let seg = new Segment(...p0, ...p1);
+    let L = seg.length;
+    if (!dx) dx = L / 10;
+    if (!dy) dy = L / 10;
+    let dL = (L - 2 * dx) / (2 * n);
+    let norm = seg.normal.times(dy);
+    yield seg.point(0);
+    let x = dx;
+    for (let i=0;i<=n;i++) {
+        yield seg.point(x).plus(norm.times(i ? (i % 2 ? 1 : -1) : 0));
+        x += (i ? 2 : 1) * dL;
+    }
+    yield seg.point(L - dx);
+    yield seg.point(L);
+}
+
 }
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";

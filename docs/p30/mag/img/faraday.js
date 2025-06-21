@@ -1,118 +1,80 @@
 SVG2.cache("p30/mag/img/faraday.js", {
 
 lenz_law: (sel) => {
-    // NOT FINISHED!
-    let svg = new SVG2(sel, {scale: 36, lrbt: [-4, 3, -3, 3], grid: 1});
-    let g = svg.coil([2, 4], 11, 0, 0, "3").css("nofill", {stroke: "#b87333"});
-    g.$.find("rect").css({stroke: "black", fill: "#f8f8f8"});
-    g.$.find("circle").css({"stroke-width": "0.5px", stroke: "black", fill: "silver"});
-},
+    let svg = new SVG2(sel, {scale: 36, lrbt: [-4, 3, -3, 3]});
 
-lenz_law0: (sel) => {
-    $(sel).attr({width: 259, height: 222, "data-aspect": "7/6"});
-    let svg = new SVG_Animation(sel, -4, 3);
-    svg.arrows = true;
-    svg.$.css({"font-size": "24px"}).addClass("FBD");
-
-    // Draw the external magnet
-    let magnet = svg.path([-2.5, 2.5]).linesTo([-2.5, -2.5], [-3.8, -2.5]);
+    // Magnet
+    let x = -2.65;
+    let magnet = svg.path([x, 2.5]).linesTo([x, -2.5], [x - 1.3, -2.5]);
     for (let i=1;i<20;i++)
-        magnet.lineTo([-3.3 - 0.5 * Math.random(), i / 4 - 2.5]);
-    magnet = magnet.lineTo([-3.8, 2.5]).close().item();
+        magnet.lineTo([-3.95 + 0.5 * Math.random(), i / 4 - 2.5]);
+    magnet = magnet.lineTo([x - 1.3, 2.5]).close().update();
     magnet.css({stroke: "black", fill: "lightgrey"});
-    let poleXY = [-2.9, 0];
-    let tog = [magnet.$, svg.text("N", poleXY).$];
+    x -= 0.4;
+    svg.gtext("N", ["text", "f24"], [x, 0]);
 
-    let turn = (w, r, circ) => {
-        // Render a turn of wire as a path
-        if (circ == null) circ = 0;
-        w /= 2;
-        let p = svg.path([w, circ & 1 ? 4 * r : 2 * r]);
-        if (circ & 1) p.arc([w, 3 * r], -90);
-        p.lineTo([-w, -2 * r]);
-        if (circ & 2) p. arc([-w, -r], 90, 2);
-        return p;
-    }
-
-    // Draw the solenoid frame and coils
-    let r = 0.08;
-    let coil = svg.group().css({fill: "none", stroke: "#B87333"}).config({theta: -10*0, omega: -25});
-    svg.rect([2, 4], [0, 0], coil).css({stroke: "black", fill: "#F8F8F8"});
-    svg.circle(0.07, [0, 0], coil).css({stroke: "black", fill: "silver", "stroke-width": "0.5px"});
-    for (let i=-6;i<6;i++)
-        turn(2, r, i == 5 ? 2 : 3).item(coil).anchor(0, 0).config({position: [0, (i + 0.5) / 3.5]});
-    let y = 5.5 / 3.5 + 2 * r;
-    svg.line([1, y], [1.1, y + r / 4], coil);
-    y -= r;
-    svg.line([1, -y], [1.1, -y], coil);
-
-    // Label the magnetic poles and electric terminals of the solenoid
-    tog.push(svg.text("S", [0, 1.6], coil).$);
-    tog.push(svg.text("N", [0, -1.7], coil).$);
-    tog.push(svg.text("–", [1.3, 1.8], coil).$);
-    tog.push(svg.text("+", [1.3, -1.8], coil).$);
-    coil.$.children("text").css({stroke: "none", fill: "blue"});
-
-    // Event handlers
-
-    coil.$.on("click", (ev) => {
-        // Toggle slo-mo when coil is clicked
-        let g = ev.currentTarget.graphic;
-        let svg = g.svg;
+    // Coil
+    let coil = svg.coil([2, 4], 11, 0, 0, "3").css("nofill", {stroke: "#b87333"});
+    let c$ = coil.$.on("click", function(ev) {
+        ev.stopPropagation();
+        let svg = coil.svg;
         if (!svg.playing) {
-            g.omega = -25;
+            coil.config({omega: -25});
             svg.play();
         }
-        else if (g.omega == -25) g.config({omega: -3});
+        else if (coil.omega < -10) coil.config({omega: -3});
         else svg.pause();
-        return false;
     });
+    c$.find("rect").css({stroke: "black", fill: "#f8f8f8"});
+    c$.find("circle").css({"stroke-width": "0.5px", stroke: "black", fill: "silver"});
+
+    // Poles
+    let g = coil.group("text", "f24", "blue", {stroke: "none"}, ".Toggle1");
+    let pole = 1.65;
+    g.gtext("N", {}, [0, -pole]);
+    g.gtext("S", {}, [0, pole]);
+    g = g.group(".Toggle2");
+    g.gtext("+", {}, [1.45, -1.95]);
+    g.gtext("–", {}, [1.45, 1.95]);
+
+    // Magnetic force vectors
+    g = svg.group("arrow", ".Toggle0");
+    let arrows = [g.arrow({length: 1}), g.arrow({length: 1})];
+
+    // Fade in / out
+    let tog = 3;
+    svg.$.on("click", () => {
+        let e = svg.$;
+        if (tog == 3) e.find(".Toggle0, .Toggle1, .Toggle2").fadeOut();
+        else e.find(`.Toggle${tog}`).fadeIn();
+        tog = (tog + 1) % 4;
+    })
 
     svg.beforeupdate = function() {
-        // Rotate coil; draw magnetic force vectors; alternate poles
+        // Poles
         let t = coil.theta;
-        if (coil.Fm) {
-            coil.Fm.final(2);
-            delete coil.Fm;
-        }
-        let c = coil.$.children("text");
-        if (t == 90 || t == -90) c.html("");
+        let i = t > 90 && t < 270 ? 1 : 0;
+        let text = c$.find("text");
+        if (t == 90 || t == 270) c.html("");
         else {
-            let i = t < -90 || t > 90 ? 0 : 1;
-            $(c[i]).html("N"); //.css({transform: `rotate(${180*i}deg)`});
-            $(c[1 - i]).html("S");
-            c[i + 2].innerHTML = "+";
-            c[3 - i].innerHTML = "–";
-            
-            let poles = [vec2d(1.6, t + 90), vec2d(1.6, t - 90)];
-            if (svg.arrows) {
-                coil.Fm = svg.group();
-                let Fm = 1.5 * Math.abs(cos(t));
-                let attr = {anchor: "tail"};
-                let a0 = svg.arrow(Fm, null, attr, coil.Fm);
-                let a1 = svg.arrow(Fm, null, attr, coil.Fm);
-                coil.Fm.$.children().addClass("Vector");
-                let seg = new Segment(...poles[1 - i], ...poleXY);
-                a0.config({theta: seg.deg, position: poles[1 - i].plus(vec2d(0.4, seg.deg))});
-                seg = new Segment(...poleXY, ...poles[i]);
-                a1.config({theta: seg.deg, position: poles[i].plus(vec2d(0.4, seg.deg))});
-            }
+            $(text[i]).html("N");
+            $(text[1 - i]).html("S");
+            text[i + 2].innerHTML = "+";
+            text[3 - i].innerHTML = "–";
         }
+
+        // Magnetic force vectors
+        let Fm = 1.5 * Math.abs(cos(t));
+        t = t + 90;
+        s = 2 * i - 1;
+        let seg = new Segment(...vec2d(-pole, t), x, 0);
+        arrows[0].reshape({tail: seg.point(0.5 * s), tip: seg.point((0.5 + Fm) * s)});
+        seg = new Segment(...vec2d(pole, t), x, 0);
+        s = -s;
+        arrows[1].reshape({tail: seg.point(0.5 * s), tip: seg.point((0.5 + Fm) * s)});
     }
 
-    clickCycle(svg.element, -1,
-        () => {clickCycle.toggle(tog, false, 0, 1, 2, 3, 4, 5); svg.arrows = false; svg.update(0)},
-        () => {clickCycle.toggle(tog, true, 0, 1)},
-        () => {svg.arrows = true; svg.update(0)},
-        () => {clickCycle.toggle(tog, true, 2, 3)},
-        () => {clickCycle.toggle(tog, true, 4, 5)},
-    );
-
-    // Finalize non-animated items and initialize the animation
-    let final = [];
-    for (let item of svg.items) if (item !== coil) final.push(item);
-    svg.final(final);
-    svg.update(0);
+    svg.animate(coil).update(0);
 },
 
 });

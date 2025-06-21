@@ -53,7 +53,7 @@
 </ul>
 <p class="Center"><b>Standing Waves</b></p>
 <p data-cue="prev" class="Center"><span class="TeX">n</span> = <input id="Harmonic" type="number" step="1" min="1" value="2"/></p>
-<p data-cue="prev" class="Center"><svg class="s24" id="StandingWave" data-svg2="p20/wave/img/stand.js#stand" data-harmonic="2"></svg></p>
+<p data-cue="prev" class="Center"><svg id="StandingWave" class="s24" data-svg2="p20/wave/img/stand.js#stand#2"></svg></p>
 <p class="Center NoPrint NoPresent"><em>Click the diagram to toggle animation.</em></p>
 <ul>
     <li>We can continue adding more nodes by increasing the frequency to produce higher harmonics.</li>
@@ -94,7 +94,7 @@
 <div>
     <p class="Center"><b>Standing Waves for Closed Air Columns</b></p>
     <p data-cue="prev" class="Center"><span class="TeX">n</span> = <input id="OddHarmonic" style="width:4em" type="number" step="2" min="1" value="1"/></p>
-    <p data-cue="prev" class="Center"><svg class="s24" id="ClosedAirColumn" data-svg2="p20/wave/img/stand.js#closed"></svg></p>
+    <p data-cue="prev" class="Center"><svg class="s24" id="ClosedAirColumn" data-svg2="p20/wave/img/stand.js#stand#[1, 1]"></svg></p>
     <p class="Center NoPrint NoPresent"><em>Click the diagram to toggle animation.</em></p>
 </div>
 <ul>
@@ -135,23 +135,21 @@
 <script type="text/javascript">
 
 $("#Harmonic").on("change", (ev) => {
-    let svg = $("#StandingWave")[0].graphic.pause();
     let e = $(ev.currentTarget);
     let n = Math.round(Math.abs(e.val()));
     if (!n || isNaN(n)) n = 1;
     e.val(n);
-    svg.$.html("").attr("data-harmonic", n);
-    SVG2.cached("p20/wave/img/stand.js").stand("#StandingWave");
+    $("#StandingWave").html("").attr("data-svg2", `p20/wave/img/stand.js#stand#${n}`);
+    SVG2.load();
 });
 
 $("#OddHarmonic").on("change", (ev) => {
-    let svg = $("#ClosedAirColumn")[0].graphic.pause();
     let e = $(ev.currentTarget);
     let n = 1 + 2 * Math.round((Math.abs(e.val()) - 1) / 2);
     if (!n || isNaN(n)) n = 1;
     e.val(n);
-    svg.$.html("").attr("data-harmonic", n);
-    SVG2.cached("p20/wave/img/stand.js").closed("#ClosedAirColumn");
+    $("#ClosedAirColumn").html("").attr("data-svg2", `p20/wave/img/stand.js#stand#[${n},1]`);
+    SVG2.load();
 });
     
 </script> 
