@@ -101,6 +101,42 @@
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
 <div id="Practice"><ol>
+
+<li>Students wanted to see if there was a relationship between the number of absences a student has in a class and the student’s grade in the class. They recorded data for 12 students in a Physics 20 class.
+<p class="Center"><b>Physics 20 Grades</b>:<br/>Grade vs. Absences</p>
+<table class="TD6 Two Center Top Bottom">
+    <tr><th>Absences</th><th>Grade / %</th></tr>
+    <tr><td>20</td><td>46</td></tr>
+    <tr><td>19</td><td>52</td></tr>
+    <tr><td>15</td><td>51</td></tr>
+    <tr><td>18</td><td>57</td></tr>
+    <tr><td>1</td><td>67</td></tr>
+    <tr><td>4</td><td>61</td></tr>
+    <tr><td>5</td><td>71</td></tr>
+    <tr><td>3</td><td>63</td></tr>
+    <tr><td>7</td><td>61</td></tr>
+    <tr><td>14</td><td>51</td></tr>
+    <tr><td>4</td><td>71</td></tr>
+    <tr><td>12</td><td>59</td></tr>
+</table>
+<ol type="a">
+    <li>Create a scatter plot of the data on graph paper.</li>
+    <li>Add a best-fit line.</li>
+    <div class="Answer">Graph at <a target="des3" href="https://www.desmos.com/calculator/gc3awsdzuf">desmos.com</a></div>
+    <li>Calculate the slope of the best-fit line.</li>
+    <div class="Answer">Using the points (5, 64%) and (19, 50%) the slope is:
+        <p class="TeX">k = \mathrm{\frac{(50 - 64)\%}{19 - 5} = -1.0\%}</p></div>
+    <li>What is the significance of the slope?</li>
+    <div class="Answer">This means that based on this data a student’s mark drops by 1.0% for each additional absence.</div>
+
+    <li>Use your best-fit line to estimate the <span class="TeX">y</span>-intercept of the relationship. What is the significance of this value?</li>
+    <div class="Answer">The line crosses the <span class="TeX">y</span>-axis near 69.5%. This is the expected mark for an average student with zero absences.</div>
+
+    <li>Why are the data points so scattered?</li>
+    <div class="Answer">There are many other independent variables besides absences that were not controlled for. This often causes the data to become more scattered than in a properly controlled experiment.</div>
+</ol>
+</li>
+
 <li>Science 10 students conducted measurements of heat capacity by measuring the temperature of a beaker of water as heat was added. Their data is recorded in the table.
     <p class="Center"><b>Heat Capacity</b><br/>Temperature vs. Heat</p>
     <table class="TD6 Two Center Top Bottom">
@@ -161,42 +197,6 @@
 </ol>
 </li>
 
-<li>Students wanted to see if there was a relationship between the number of absences a student has in a class and the student’s grade in the class. They recorded data for 12 students in a Physics 20 class.
-<div class="NoPageBreak">
-    <p class="Center"><b>Physics 20 Grades</b>:<br/>Grade vs. Absences</p>
-    <table class="TD6 Two Center Top Bottom">
-        <tr><th>Absences</th><th>Grade / %</th></tr>
-        <tr><td>20</td><td>46</td></tr>
-        <tr><td>19</td><td>52</td></tr>
-        <tr><td>15</td><td>51</td></tr>
-        <tr><td>18</td><td>57</td></tr>
-        <tr><td>1</td><td>67</td></tr>
-        <tr><td>4</td><td>61</td></tr>
-        <tr><td>5</td><td>71</td></tr>
-        <tr><td>3</td><td>63</td></tr>
-        <tr><td>7</td><td>61</td></tr>
-        <tr><td>14</td><td>51</td></tr>
-        <tr><td>4</td><td>71</td></tr>
-        <tr><td>12</td><td>59</td></tr>
-    </table>
-</div>
-<ol type="a">
-    <li>Create a scatter plot of the data on graph paper.</li>
-    <li>Add a best-fit line.</li>
-    <div class="Answer">Graph at <a target="des3" href="https://www.desmos.com/calculator/gc3awsdzuf">desmos.com</a></div>
-    <li>Calculate the slope of the best-fit line.</li>
-    <div class="Answer">Using the points (5, 64%) and (19, 50%) the slope is:
-        <p class="TeX">k = \mathrm{\frac{(50 - 64)\%}{19 - 5} = -1.0\%}</p></div>
-    <li>What is the significance of the slope?</li>
-    <div class="Answer">This means that based on this data a student’s mark drops by 1.0% for each additional absence.</div>
-
-    <li>Use your best-fit line to estimate the <span class="TeX">y</span>-intercept of the relationship. What is the significance of this value?</li>
-    <div class="Answer">The line crosses the <span class="TeX">y</span>-axis near 69.5%. This is the expected mark for an average student with zero absences.</div>
-
-    <li>Why are the data points so scattered?</li>
-    <div class="Answer">There are many other independent variables besides absences that were not controlled for. This often causes the data to become more scattered than in a properly controlled experiment.</div>
-</ol>
-</li>
 </ol></div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
@@ -250,8 +250,8 @@
 <script type="text/javascript">
 
 loadFeed.data = {
-    showDate: "2025.2.10",
-    answerDate: "2025.2.11",
+    showDate: "2026.2.10",
+    answerDate: "2026.2.11",
     title: `${siteData.lesson}0.5 — Scatter Plots & Slope`,
     num: "0.5",
     up: "p20/home",

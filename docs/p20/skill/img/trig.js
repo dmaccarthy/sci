@@ -77,4 +77,16 @@ ball8: (sel) => {
     g.gtext("15.0 cm", {}, [82.5, 57.5]).config({theta: 90});
 }, 
 
+Q2: (sel) => {
+    let svg = SVG2.vec_diag(sel, [[5, 0], [-5, 8]], {lrbt: [-2, 6, -1, 9],
+        scale: 40, margin: 8, grid: 0.5, tick: "-8", label: [1, 0, "-12", "-20"]});
+    svg.$.find(".Component").remove();
+    let g = svg.group("text", "f18");
+    g.gtext("km", {}, [-2, "2"], 0, 1);
+    g = g.group("f20", "bold");
+    g.gtext("A", {}, [0.35, "2"], 0.5, 1);
+    g.gtext("B", {}, [5.35, 0.35]);
+    g.gtext("C", {}, [0.4, 8.25]);
+},
+
 });
