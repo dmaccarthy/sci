@@ -30,9 +30,8 @@
     </p>
 </div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <style type="text/css">
 
 body.Print ol.WHMIS {column-count: 4}
@@ -46,7 +45,7 @@ table.MSDS {
     
 </style>
 <ol>
-<li>Familiarize yourself with the pictograms for both WHMIS 2015 and WHMIS 1988 by following the links on the webpage for this lesson.
+<li>Familiarize yourself with the pictograms for both WHMIS 2015 and WHMIS 1988 by following the links.
     Label each of the pictograms below with its meaning and state whether each is from WHMIS 2015 or 1988.
 <ol type="a" class="WHMIS"></ol>
 <ol class="Answer" type="a">
@@ -78,9 +77,9 @@ table.MSDS {
         <tr><td>Precautions</td><td>Goggles, gloves, aprons</td><td style="font-weight: bold; border-top: none" rowspan="2">
             <p>Caution</p>
             <p>Harmful if swallowed!</p>
-            <p>Wash throuoghly after handling</p>
+            <p>Wash thoroughly after handling</p>
         </td></tr>
-        <tr><td>First Aid</td><td>Flush exposed area with water. In case of ingestion induce vomitting immediately as directed by medical personnel. Get immediate medical attention.</td></tr>
+        <tr><td>First Aid</td><td>Flush exposed area with water. In case of ingestion induce vomiting immediately as directed by medical personnel. Get immediate medical attention.</td></tr>
         <tr><td>Disposal</td><td>Use waste container</td><td>UN #3077</td></tr>
     </table>
     <ol type="a">
@@ -110,7 +109,7 @@ loadFeed.whmis = () => {
         "environment", "biohazardous", "exclamation_mark", "reactive",
         "exploding_bomb", "flame_circle", "flame", "skull_crossbones"];
     let ol = $("ol.WHMIS");
-    let media = "./media/whmis";
+    let media = "media/whmis";
     for (let src of source) {
         let svg = ["reactive", "toxic"].indexOf(src) == -1 ? "svg" : "png";
         let img = $("<img>").attr({alt: "WHMIS Pictogram", src: `${media}/${src}.${svg}`});
@@ -127,92 +126,93 @@ loadFeed.whmis = () => {
 }
 
 </script>
-</div></div></section>
+</div></section>
 
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">WHMIS / Lab Safety</h1>
-<p class="Present"><img class="s28" src="https://sbt.blob.core.windows.net/storyboards/oliversmith/lab-safety.png" alt="Lab Safety"/></p>
+<p class="Present"><img class="s20" src="https://sbt.blob.core.windows.net/storyboards/oliversmith/lab-safety.png" alt="Lab Safety"/></p>
 </section>
 
 <section class="Slide"><h3>WHMIS 1988</h3>
 <p>WHMIS stands for <em class="Defn">Workplace Hazardous Materials Information System</em>.</p>
-<ul data-cue="+">
+<ul>
     <li>WHMIS is the Canadian government system for identifying hazards in the workplace.</li>
-    <li data-cue="+">WHMIS requires hazardous material to be properly labelled and for the label to include a warning and pictogram.
-        <p class="Center"><img class="w10" src="./media/whmis/reactive.png" alt="Pictogram"/></p>
+    <li>WHMIS requires hazardous material to be properly labelled and for the label to include a warning and pictogram.
+        <p class="Center"><img class="w10" src="media/whmis/reactive.png" alt="Pictogram"/></p>
     </li>
 </ul>
-<ul data-cue="+">
+<ul>
     <li>Your textbook illustrates the pictograms for WHMIS 1988, the year WHMIS was first standardized.</li>
 </ul>
 </section>
 
 <section class="Slide"><h3>WHMIS 2015 &amp; GHS</h3>
 <p>The <em class="Defn">Global Harmonized System</em> (GHS) is an international agreement to use the same hazard pictograms in different countries.</p>
-<ul data-cue="+">
+<ul>
     <li>WHMIS was revised in 2015 to be compatible with the GHS.</li>
-    <li data-cue="+">WHMIS 2015 pictograms are easily recognized by the red diamond outline.
-        <p class="Center"><img class="w10" src="./media/whmis/skull_crossbones.svg" alt="Pictogram"/></p>
+    <li>WHMIS 2015 pictograms are easily recognized by the red diamond outline.
+        <p class="Center"><img class="w10" src="media/whmis/skull_crossbones.svg" alt="Pictogram"/></p>
     </li>
 </ul>
-<ul data-cue="+"><li>WHMIS 2015 pictograms are shown on the WHMIS website.</li></ul>
+<ul><li>WHMIS 2015 pictograms are shown on the WHMIS website.</li></ul>
 </section>
 
 <section class="Slide"><h3>Safety Data Sheets</h3>
 <p>Another requirement is that each hazardous material have an available <em class="Defn">Material Safety Data Sheet</em> (MSDS or SDS).</p>
-<p data-cue="+">Every SDS has a number of requirements including:</p>
-<ul data-cue="+">
+<p>Every SDS has a number of requirements including:</p>
+<ul>
     <li>Name & Formula</li>
-    <li data-cue="+">Physical Properties</li>
-    <li data-cue="+">Stability & Reactivity</li>
-    <li data-cue="+">Potential Health Effects</li>
-    <li data-cue="+">Handling & Storage</li>
-    <li data-cue="+">Disposal</li>
+    <li>Physical Properties</li>
+    <li>Stability & Reactivity</li>
+    <li>Potential Health Effects</li>
+    <li>Handling & Storage</li>
+    <li>Disposal</li>
 </ul>
 </section>
 
-</div></div></section>
+</div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-icon="correct">
 <h2 class="Collapse">Activity</h2><div class="Collapse">
-<div id="Activity">
 <ol>
     <li>Write down as many laboratory safety rules as you can think of. Rules should address working with chemicals, glassware, heat, electrical equipment, and other tools.</li>
     <li>After discussing the rules as a class, make a lab safety poster for <b><u>one</u></b> of the rules you created. Posters may be posted in the classroom and must therefore be appropriate!</li>
-</ol></div></div></section>
+</ol>
+</div></section>
 
-<section class="Post" data-show="2024.8.30.10" data-answers="1" data-icon="correct">
-<h2 class="Collapse" data-booklet="no">Review<span data-print="Review"></span></h2><div class="Collapse">
-<div id="Review">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse" data-booklet="no">Review</h2><div class="Collapse">
 <ol>
     <li>What do WHMIS and GHS stand for? What is WHMIS?</li>
-    <div class="Answer">Workplace Hazardous Material Information System; Global Harmonized System. A system for describing dangerous materials in the lab or workplace.</div>
+    <p class="Answer">Workplace Hazardous Material Information System; Global Harmonized System. A system for describing dangerous materials in the lab or workplace.</p>
     
     <li>What is the difference between WHMIS 1988 and WHMIS 2015?</li>
-    <div class="Answer">Pictographs have changed to comply with GHS.</div>
+    <p class="Answer">Pictographs have changed to comply with GHS.</p>
     
     <li>What does MSDS stand for? What does it mean?</li>
-    <div class="Answer">Material Safety Data Sheet. Detailed information about each chemical.</div>
+    <p class="Answer">Material Safety Data Sheet. Detailed information about each chemical.</p>
     
     <li>List 5 key points that must be on all MSDS labels.</li>
-    <div class="Answer">Name & Formula, Physics Properties, Stability & Reactivity, Potential Health Effects, Handling & Storage, Disposal</div>
+    <p class="Answer">Name & Formula, Physics Properties, Stability & Reactivity, Potential Health Effects, Handling & Storage, Disposal</p>
 </ol>
-</div>
 </div></section>
+
+
+<!-- https://drive.google.com/file/d/1TRd2vNgQvuczfoBTDJRQdNXt2OcfKBNP -->
 
 <script type="text/javascript">
 
 loadFeed.data = {
-    title: `${siteData.lesson}A.01 — WHMIS / Lab Safety`,
-    answerDate: "2024.8.31.16",
-    num: "A.01",
+    title: `${siteData.lesson}C01 — WHMIS / Lab Safety`,
+    showDate: "2025.8.28",
+    answerDate: "2025.8.29",
+    num: "C01",
     up: "s10/unitA",
     // prev: "s10/chem/",
-    next: "s10/chem1/expDes",
+    // next: "s10/chem1/expDes",
 }
 
 </script>
