@@ -1,0 +1,24 @@
+<section class="Post" data-icon="$today">
+<h2>Class Calendar</h2>
+<table class="Calendar">
+    <thead><tr><th>Date</th><th>Activity</th></tr></thead>
+    <tbody id="Cal"></tbody>
+</table>
+<p class="Center"><input id="ShowOld" type="checkbox"/> <label for="ShowOld">Show Past Events</label></p>
+</section>
+
+<script type="text/javascript" data-ini="init">
+
+loadFeed.data = {
+    title: "Science 10",
+    folder: "s10/",
+    up: "s10/home",
+    cal: [
+        ["2025.8.28", "@WHMIS", {"data-feed": "s10/chem1/whmis"}],
+        ["2025.8.29", "@Lab Safety", {"data-feed": "s10/chem1/whmis"}],
+        ["2025.9.2", "@Experiment Design", {"data-feed": "s10/chem1/expDes"}],
+        // ["2026.1", "Final Exam", {"data-feed": "s120/home"}],
+    ]
+}
+
+</script>
