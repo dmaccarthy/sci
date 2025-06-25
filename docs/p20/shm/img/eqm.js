@@ -17,34 +17,60 @@ mass: (sel) => {
     g.$.hide().addClass("Toggle");
 },
 
-pend_eq: (sel) => {
-    $(sel).attr({width: 120, height: 400, "data-aspect": "3/10"});
-    let svg = new SVG_Animation(sel, -0.5, 0.5, -3.1);
-    svg.line([0, 0], [0, -2]).css({stroke: "black", "stroke-width": "3px"});
-    svg.line([-0.5, 0], [0.5, 0]).css({stroke: "black"});
-    svg.circle(0.1, [0, -2]).css({fill: "#0065FE", stroke: "black"});
-    svg.arrow([0, -2.2], [0, -3], {tail: "8"}).addClass("Vector");
-    svg.arrow([0.1, -1.8], [0.1, -1], {tail: "8"}).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "t"}, [0.3, -1.5]).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "g"}, [0.2, -2.5]).css({fill: "red"});
-    svg.final();
-},
-
-pend: (sel) => {
-    $(sel).attr({width: 180, height: 400, "data-aspect": "18/40"});
-    let svg = new SVG_Animation(sel, -0.8, 0.7, -3.1);
-    svg.line([-0.5, 0], [0.5, 0]).css({stroke: "black"});
-    let g = svg.group().config({theta: -15});
-    svg.line([0, 0], [0, -2], g).css({stroke: "black", "stroke-width": "3px"});
-    svg.circle(0.1, [0, -2], g).css({fill: "#0065FE", stroke: "black"});
-    svg.arrow([-0.5, -2.2], [-0.5, -3], {tail: "8"}).addClass("Vector");
-    svg.arrow([0.1, -1.8], [0.1, -1], {tail: "8"}, g).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "t"}, [0.3, -1.5], g).css({fill: "red"});
-    svg.symbol("F", {vec:1, q4: "g"}, [-0.3, -2.5]).css({fill: "red"});
-    svg.final();
+pend: (sel, a) => {
+    if (!a) a = 0;
+    let x = -0.4 - 0.02 * a;
+    let svg = new SVG2(sel, {scale: 140, lrbt: [x, 0.4, -3, 0], margin: 2});
+    svg.line([-0.4, 0], [0.4, 0]).css(SVG2.css("black1"));
+    let pend = svg.group().config({theta: -a});
+    pend.line([0, 0], [0, -2]).css(SVG2.css("black3"));
+    pend.circle(0.1, [0, -2]).css(SVG2.css("blue", "black1"));
+    let g = pend.group("arrow", {"fill-opacity": 0.8});
+    let t7 = {tail: "7"};
+    g.arrow({tail: [0, -1.8], tip: [0, -1]}, t7);
+    g.group().config({pivot: [0, -2], theta: a}).arrow({tail: [0, -2.2], tip: [0, -3]}, t7);
+    g = pend.group("symbol", "f28", "red");
+    let arr = SVG2.arr("20");
+    let sub = [6, ["12", "-8"]];
+    g.symb(0, ["F", 1], arr, ["t", ...sub]).align([0.2, -1.5]);
+    g = svg.group("symbol", "f28", "red").symb(0, ["F", 1], arr, ["g", ...sub]);
+    let pt = transform({angle: -a, deg: true}, [0, -2])[0].plus([0.2, -0.5])
+    g.align(pt);
 },
 
 eqm: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 384], lrbt: [-1.1, 0.9, -0.25], grid: 0.1});
+    let land = (x) => sq(sin(-100 * (x - 0.3)));
+    svg.locus(land, [-1.1, 0.9]).css("nofill", "black1");
+
+    let r = 0.03;
+    let balls = [
+        [0, [0.3, r]],
+        [0, [-0.6, r + 1]],
+        [50, [-0.9, r + land(-0.9) + 0.024]],
+        [50, [0.6, r + land(0.6) + 0.024]]];
+    let g = svg.group("blue", "black1");
+    let a = svg.group("arrow");
+    let s = svg.group("symbol", "f28", "red");
+    let p0 = new RArray(0, -0.05);
+    let p1 = new RArray(0, -0.2);
+    for (let b of balls) {
+        let c = new RArray(...b[1]);
+        g.circle(r, c);
+        for (let f of [1, -1]) {
+            let vec = a.arrow({tail: p0.times(f).plus(c), tip: p1.times(f).plus(c)}, {tail: "4"});
+            let sym = s.group();
+            sym.symb(0, ["F", 1]).align(c.plus([0.12, -0.12 * f]));
+            if (b[0] && f == -1) {
+                let rotate = {pivot: c, theta: b[0]};
+                vec.config(rotate);
+                sym.config(rotate);
+            }
+        }
+    }
+},
+
+eqm0: (sel) => {
     $(sel).attr({width: 480, height: 384, "data-aspect": "5/4"});
     let svg = new SVG_Animation(sel, -1.1, 0.9, -0.25);
     let land = (x) => sq(sin(-100 * (x - 0.3)));

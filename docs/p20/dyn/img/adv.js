@@ -46,9 +46,12 @@ fbd2: (sel) => {
     svg.clickToggle(4);
 },
 
-fbd3: (sel) => {
+fbd3: (sel, a) => {
     let svg = new SVG2(sel, {size: [400, 300], lrbt: [-1, 1, -0.7], margin: 1}).css(".NoStyle");
-    let a = 8, p = new RArray(1, tan(a)), Fg = 0.6, Fn = Fg * cos(a), Fa = 5/9.81 * Fg, dy = 0.02;
+    let applied = a == null;
+    if (!a) a = 8;
+    let p = new RArray(1, tan(a)), Fg = 0.6, Fn = Fg * cos(a), dy = 0.02;
+    let Fa = Fg * (applied ? 5/9.81 : sin(a));
     svg.poly([p, [1, -p[1]], p.times(-1)]).css(SVG2.css("nofill", "black1"));
     let incline = svg.group("black1").config({theta: a});
     incline.line([0, -1], [0, 1]).css({"stroke-dasharray": "8,8"});
@@ -67,14 +70,17 @@ fbd3: (sel) => {
     g.arrow({tail: [0, dy], tip: [0, Fn + dy]}, t6);
     g = incline.group("symbol", "f28", "red", {stroke: "none"});
     g.symb(0, ["F", 1], arr, ["n", ...sub]).align([-0.15, 0.35]);
-    g.symb(0, ["F", 1], arr, ["a", ...sub]).align([0.4, 0.28]);
+    g.symb(0, ["F", 1], arr, [applied ? "a" : "f", ...sub]).align([0.4, 0.28]);
     fric.push(g.symb(0, ["F", 1], arr, ["f", ...sub]).align([-0.35, 0.18]).element);
 
     svg.group("symbol", "f28", "red").symb(0, ["F", 1], arr, ["g", ...sub]).align([-0.15, -0.25]);
     svg.group("arrow").arrow({tail: [0, -dy], tip: [0, -dy - Fg]}, t6);
 
-    fric = $(fric).hide();
-    svg.$.on("click", () => fric.fadeToggle());
+    if (applied) {
+        fric = $(fric).hide();
+        svg.$.on("click", () => fric.fadeToggle());
+    }
+    else $(fric).remove();
 
 },
 
@@ -198,34 +204,6 @@ pulley: (sel, fbd) => {
         g.arrow({tail: [x, -0.7], length: 2}, tail, "tail").config({theta: 90});
     }
 
-},
-
-Q3: (sel) => {
-    $(sel).attr({width: 400, height: 300, "data-aspect": "4/3"});
-    let svg = new SVG_Animation(sel, -1, 1, -0.7);
-    let Fg = 0.6, a = 8, Fn = Fg * cos(a), Fa = 5/9.81 * Fg;
-    let rot = svg.group().config({theta: a});
-    let attr = {stroke: "black", "stroke-width": 1};
-    let p1 = vec2d(1, a);
-    let p2 = [p1[0], -p1[1]]
-    svg.line(p1, p2).css(attr);
-    svg.line(p1.neg(), p2).css(attr);
-    let g = svg.group(rot).css(attr);
-    attr["stroke-width"] = 2;
-    svg.line([-1, 0], [1, 0], g).css(attr); 
-    svg.line([0, -1], [0, 1], g);
-    attr = {"font-size": 18, "font-style": "italic", stroke: "none"};
-    svg.text("x", [0.9, 0.03], g).css(attr);
-    svg.text("y", [0.03, 0.65], g).css(attr);
-    svg.rect([0.25, 0.16], [0, 0.08], g).css({fill: "#D0D0FF"});
-    g = svg.group(rot);
-    svg.arrow([0, 0], [0, Fn], {tail: "8"}, g).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "n"}, [-0.15, 0.35], g).css({fill: "red"});
-    svg.arrow([0.15, 0], [0.15 + Fa, 0], {tail: "8"}, g).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "f"}, [0.4, 0.14], g).css({fill: "red"});
-    svg.arrow([0, 0], [0, -Fg], {tail: "8"}).addClass("Vector");
-    svg.symbol("F", {vec:1, q4: "g"}, [-0.2, -0.3]).css({fill: "red"});
-    svg.final();
 },
 
 });
