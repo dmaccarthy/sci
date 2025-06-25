@@ -1,4 +1,4 @@
-SVG2.cache("p20/vec2d/img/adv.js", {
+SVG2.cache("p20/dyn/img/adv.js", {
 
 fbd1: (sel) => {
     let svg = new SVG2(sel, {size: [400, 240], lrbt: [-1.3, 1.7, -0.9]}).css(".NoStyle");
