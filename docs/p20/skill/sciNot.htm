@@ -1,5 +1,5 @@
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Remember?</h2><div class="Collapse">
+<h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>Convert the following measurements to scientific notation:<ol type="a">
         <li>299 800 000 m/s</li>
@@ -30,11 +30,57 @@
 <h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
-<h1 id="Title">Scientific Notation</h1>
+<h1 id="Title">Significant Digits &amp; Scientific Notation</h1>
 </section>
 
-<section class="Slide Present">
-    <div class="Assign"><p>Complete the <i>Remember?</i> section of the <i>Scientific Notation</i> handout.</p></div>
+<section class="Slide"><h3>Significant Digits</h3>
+    <p>Many of the values we use in Science are the result of a <em class="Defn">measurement</em>...</p>
+    <ul>
+        <li>The temperature of a solution.</li>
+        <li>The time it takes a pendulum to swing.</li>
+        <li>The height a baseball rises to before it starts to fall.</li>
+    </ul>
+    <p>Measurements are rarely exact; there is usually a <em class="Defn">measurement uncertainty</em> due to limitations in the measuring procedure.</p>
+    <ul>
+        <li>The number of digits we record indicates how accurate we believe a measurement to be.</li>
+        <li>Recording a distance as 21.53 metres indicates we believe our <em>uncertainty</em> to be up to a few hundredths of a metre (the last digit we recorded).</li>
+        <li>This measurement has four <em class="Defn">significant digits</em>.</li>
+        <li>Recording a distance as 22 metres indicates we believe our <em>uncertainty</em> to be up to a few metres.</li>
+        <li>This measurement has two significant digits.</li>
+        <li>All digits are counted as significant except for <em>leading zeroes</em>.</li>
+        <li>A measurement of 0.002050 metres has <em>four</em> significant digits.</li>
+    </ul>
+    <p>When performimg calculations, our answer cannot contain more significant digits than <em>any</em> of the measurements used to perform the calculation.</p>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+    <p data-cue="none" class="Blue">Calculate the volume of a sphere whose diamter is measured to be 2.31 cm, using the formula:</p>
+    <p data-cue="none" class="TeX Blue">V = \frac{4\pi}{3}r^3</p>
+    <p>First calculate the radius by dividing the diameter by 2:</p>
+    <p class="TeX">r=\frac{d}{2} = \rm\frac{2.31\ cm}{2} = 1.155\ cm</p>
+    <ul>
+        <li>If this was our “final answer”, we would round it to 1.16 cm (three significant digits).</li>
+        <li>We do not use the 2 in the denominator for significant digits because it is an exact value, not a measurement.</li>
+        <li>Do not round yet, because we will be using this value to make another calculation.</li>
+    </ul>
+    <p>Now evaluate the volume:</p>
+    <p data-cue="prev" class="TeX">V = \rm\frac{4\pi}{3}(1.155\ cm)^3 = 6.454083235\ cm^3 \approx 6.45\ cm^3</p>
+    <ul>
+        <li>The final answer is rounded to three significant digits because the diameter was given to three digits.</li>
+        <li>The <span class="TeX">4\pi/3</span> that appears in the formula does not affect the significant digits becaue it is not a measurement.</li>
+        <li>Make sure you use <span class="TeX">\pi</span> as accurately as your calculator can; if you round the value of <span class="TeX">\pi</span> then this <em>will</em> affect the accuracy of your answer.</li>
+    </ul>
+</section>
+
+
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+    <p data-cue="none" class="Blue">Calculate the <em>change in</em> the temperature of a solution that is initially at 15.0 °C and is then heated to 17.2 °C.</p>
+    <p class="TeX">\Delta T = T_f - T_i = \rm (17.2 - 15.0)\ ^\circ C = 2.2\ ^\circ C</p>
+    <ul>
+        <li>Should we record the result as 2.20 °C (three sig digs)?</li>
+        <li>The answer cannot be more precise than any of the measurements!</li>
+        <li>For addition and substraction, round based on the precision of the <em>last</em> digit rather than the <em>total</em> number of digits.</li>
+    </ul>
 </section>
 
 <section class="Slide"><h3>Big Numbers</h3>
@@ -44,14 +90,15 @@
         <li>We can avoid writing the zeroes by using powers of 10.</li>
         <li>Each time we multiply (or divide) by 10, we move the decimal point in the number.</li>
     </ul>
-    <div>
-        <ul class="NoTop"><li>Count the number of places the decimal point is moved...</li></ul>
-        <p class="TeX">\rm{1.496\times 10^{11}\ m}</p>
-    </div>
+    <ul class="NoTop"><li>Count the number of places the decimal point is moved...</li></ul>
+    <p class="TeX">\rm{1.496\times 10^{11}\ m}</p>
     <ul>
         <li>The exponent tells us that the decimal place has been moved by 11 positions.</li>
         <li>In <em class="Defn">scientific notation</em>, the decimal point is always placed after the first non-zero digit.</li>
         <li>The normal way of writing numbers (without powers of 10) is called <em class="Defn">decimal notation</em>.</li>
+        <li>For significant digits, we use the coefficient only; 1.496 × 10<sup>11</sup> m has <em>four</em> significant digits.</li>
+        <li>Because the number is so large, there is no way to write the number in decimal notation with fewer than 12 significant digits.</li>
+        <li>You may <em>have to</em> write your answer in scientific notation to make the number of significant digits correct.</li>
     </ul>
 </section>
 
@@ -75,17 +122,16 @@
     </ul>
 </section>
 
-<section class="Slide"><h3>Example</h3>
-    <p data-cue="none" class="TeX">3.00\times 10^8 \over 6.33\times 10^{-7}</p>
-    <div>
-        <p class="TeX">{3.00\times 10^8 \over 6.33\times 10^{-7}} = 4.74\times 10^{14}</p>
-        <p class="Center"><img data-aspect="385/603" class="w16 s10" src="./p20/skill/img/ti.jpg" alt="TI-83+"/></p>
-    </div>
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+    <p data-cue="none" class="TeX Blue">\rm\frac{3.00\times 10^8}{6.33\times 10^{-7}}</p>
+    <p class="Center"><img data-aspect="385/603" class="w16 s10" src="./p20/skill/img/ti.jpg" alt="TI-83+"/></p>
+    <p class="TeX">\rm\frac{3.00\times 10^8}{6.33\times 10^{-7}} \approx 4.74\times 10^{14}</p>
+    <p>The final answer is rounded to three significant digits.</p>
 </section>
 
 <section class="Slide Present"><div class="Assign">
-<p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Scientific Notation</i> handout.</p>
-<ul data-cue="none" class="Var">assign</ul>
+    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Scientific Notation</i> handout.</p>
+    <ul data-cue="none" class="Var">assign</ul>
 </div></section>
 
 </section>
@@ -96,8 +142,30 @@
 </section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice"><ol>
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+
+<li>Calculate the result of each expression and round each answer to the correct number of significant digits.<ol type="a">
+    <li>2.5 m × 11.7 m</li>
+    <p class="Answer">29 m<sup>2</sup></p>
+
+    <li>36.25 N / 1.72 m<sup>2</sup></li>
+    <p class="Answer">21.1 N/m<sup>2</sup></p>
+
+    <li>8.260 cm – 7.4 cm</li>
+    <p class="Answer">0.9 cm</p>
+
+    <li><span class="TeX">A=\pi r^2</span> where <span class="TeX">r</span> = 14.2 cm</li>
+    <p class="Answer">633 cm<sup>2</sup></p>
+
+    <li><span class="TeX">E_k=\frac{1}{2}mv^2</span> where <span class="TeX">m</span> = 1.5 kg and <span class="TeX">v</span> = 25.2 m/s</li>
+    <p class="Answer">4.8 × 10<sup>2</sup> J</p>
+
+    <li><span class="TeX">F_g=mg</span> where <span class="TeX">m</span> = 1.2500 kg and <span class="TeX">g</span> = 9.81 m/s<sup>2</sup></li>
+    <p class="Answer">12.3 N</p>
+
+</ol></li>
+
 <li>Convert these measurements from scientific to decimal notation. Do not change units.
 <ol type="a">
     <li>1.65 × 10<sup>8</sup> watts</li>
@@ -152,40 +220,36 @@
     </ol>    
 </li>
 
-</ol>
+<!-- </ol>
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol><li>Define <em class="Defn">decimal notation</em> and <em class="Defn">scientific notation</em>.</li>
-<div class="Answer">
-    <p>Decimal notation is the “normal” way of writing numbers: 0.00050.</p>
-    <p>Scientific notation writes numbers as a coefficient multiplied by a power of 10:</p>
-    <p data-cue="prev" class="Center">5.0 × 10<sup>–4</sup></p>
-    <p>The decimal point always follows immediately after the first non-zero digit.</p>
-</div>
-<li>Explain how to convert between decimal and scientific notation.</li>
-<p class="Answer">Simply move the decimal point by the number of places indicated by the exponent in the power of 10. Positive exponents correspond to “big” numbers (> 10) and negative exponents to “small”  numbers (< 1).</p>
-<li>Explain how to enter numbers in scientific notation on a graphing calculator, a spreadsheet, or similar computer program.</li>
-<p class="Answer">Many calculators and computer programs use the letter “E”, or a button labelled “EE” to abbreviate scientific notation. You can enter the number 5.0 × 10<sup>–4</sup> as <code>5.0E-4</code>.</p>
+<ol> -->
+    <li>Define <em class="Defn">decimal notation</em> and <em class="Defn">scientific notation</em>.</li>
+    <div class="Answer">
+        <p>Decimal notation is the “normal” way of writing numbers: 0.00050.</p>
+        <p>Scientific notation writes numbers as a coefficient multiplied by a power of 10:</p>
+        <p data-cue="prev" class="Center">5.0 × 10<sup>–4</sup></p>
+        <p>The decimal point always follows immediately after the first non-zero digit.</p>
+    </div>
 
+    <li>Explain how to convert between decimal and scientific notation.</li>
+    <p class="Answer">Simply move the decimal point by the number of places indicated by the exponent in the power of 10. Positive exponents correspond to “big” numbers (> 10) and negative exponents to “small”  numbers (< 1).</p>
+
+    <li>Explain how to enter numbers in scientific notation on a graphing calculator, a spreadsheet, or similar computer program.</li>
+    <p class="Answer">Many calculators and computer programs use the letter “E”, or a button labelled “EE” to abbreviate scientific notation. You can enter the number 5.0 × 10<sup>–4</sup> as <code>5.0E-4</code>.</p>
 </ol></div>
 
-</div></section>
-
-<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid"><button data-icon="gdrv" data-gdrv="1uFj38YRaH43-3S4fBmMzp3YUhafEGje_">Assignment</button></p>
 </div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
-    showDate: "2026.2.4",
-    answerDate: "2026.2.5",
-    title: `${siteData.lesson}0.3 — Scientific Notation`,
-    num: "0.3",
+    showDate: "2025.9.3",
+    answerDate: "2025.9.4",
+    title: `${siteData.lesson}1.3 — Significant Digits & Scientific Notation`,
+    num: "1.3",
     up: "p20/home",
     prev: "p20/skill/algebra",
     next: "p20/skill/si",
