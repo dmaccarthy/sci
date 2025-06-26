@@ -460,7 +460,7 @@ gtext(data, css, xy, ...align) {
     if (!(css instanceof Array)) css = [css];
     let g = this.group(...css);
     g.text(data);
-    g.align(xy, ...align);
+    g.align(xy ? xy : [0, 0], ...align);
     return g;
 }
 
@@ -577,6 +577,26 @@ stickman(h) {
     let pt = new RArray(0, 5 * r);
     r *= 1.5;
     g.poly([pt.plus(vec2d(r, uniform(150, 210))), pt, pt.plus(vec2d(r, uniform(-30, 30)))]);
+    return g;
+}
+
+edot(n, r) {
+/* Electron dot diagram */
+    if (!r) r = 1;
+    let d = 0.25 * r;
+    let pts = [[-r, d], [-r, -d]];
+    if (n == -1) n = 2;
+    else {
+        pts = [[-r, 0], [0, r], [r, 0], [0, -r], [-r, 0], [0, r], [r, 0], [0, -r]];
+        if (n > 4) {
+            for (let i=0;i<n-4;i++) {
+                pts[i][1 - i % 2] = d;
+                pts[i + 4][1 - i % 2] = -d;
+            }
+        }
+    }
+    let g = this.group({stroke: "none"});
+    for (let i=0;i<n;i++) g.circle(0.125 * r, pts[i]);
     return g;
 }
 
@@ -1547,7 +1567,7 @@ SVG2._style = {
     mono: {"font-family": SVG2.mono},
 };
 
-for (let i=12;i<33;i++) SVG2._style[`f${i}`] = {"font-size": `${i}px`};
+for (let i=12;i<37;i++) SVG2._style[`f${i}`] = {"font-size": `${i}px`};
 for (let i=1;i<13;i++) SVG2._style[`px${i}`] = {"stroke-width": `${i}px`};
 for (let c of ["black", "red", "green", "limegreen", "blue", "grey"]) {
     cc = (c) => c == "blue" ? "#0065fe" : c;
