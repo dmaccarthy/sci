@@ -39,11 +39,11 @@ pend: (sel, a) => {
 },
 
 eqm: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 384], lrbt: [-1.1, 0.9, -0.25], grid: 0.1});
+    let svg = new SVG2(sel, {size: [480, 384], lrbt: [-1.1, 0.9, -0.25]});
     let land = (x) => sq(sin(-100 * (x - 0.3)));
     svg.locus(land, [-1.1, 0.9]).css("nofill", "black1");
 
-    let r = 0.03;
+    let r = 0.03, i = 0;
     let balls = [
         [0, [0.3, r]],
         [0, [-0.6, r + 1]],
@@ -54,58 +54,32 @@ eqm: (sel) => {
     let s = svg.group("symbol", "f28", "red");
     let p0 = new RArray(0, -0.05);
     let p1 = new RArray(0, -0.2);
+    let arr = SVG2.arr("20");
+    let sub = [6, ["12", "-8"]];
     for (let b of balls) {
+        let toggle = `Toggle${[0, 0, 1, 2][i++]}`;
         let c = new RArray(...b[1]);
-        g.circle(r, c);
+        g.circle(r, c).addClass(toggle);
         for (let f of [1, -1]) {
-            let vec = a.arrow({tail: p0.times(f).plus(c), tip: p1.times(f).plus(c)}, {tail: "4"});
-            let sym = s.group();
-            sym.symb(0, ["F", 1]).align(c.plus([0.12, -0.12 * f]));
+            let vec = a.arrow({tail: p0.times(f).plus(c), tip: p1.times(f).plus(c)}, {tail: "4"}).css("."+toggle);
+            let sym = s.group().css("."+toggle);
+            sym.symb(0, ["F", 1], arr, [f == -1 ? "n" : "g", ...sub]).align(c.plus([0.12, -0.12 * f]));
             if (b[0] && f == -1) {
-                let rotate = {pivot: c, theta: b[0]};
-                vec.config(rotate);
-                sym.config(rotate);
+                vec.config({pivot: c, theta: b[0]});
+                sym.shiftBy([-0.15, 0.1]);
             }
         }
     }
-},
+    g = svg.group("text", "f20");
+    g.gtext("Stable", {}, [-0.05, -0.05]).css(".Toggle2");
+    g.gtext("Unstable", {}, [-0.1, 1.1]).css(".Toggle1");
 
-eqm0: (sel) => {
-    $(sel).attr({width: 480, height: 384, "data-aspect": "5/4"});
-    let svg = new SVG_Animation(sel, -1.1, 0.9, -0.25);
-    let land = (x) => sq(sin(-100 * (x - 0.3)));
-    svg.locus(land, [-1.1, 0.9]).css({fill: "none", stroke: "black"});
-
-    let g0 = svg.group().addClass("Eqm").css({fill: "red"});
-    let g1 = svg.group().addClass("Unstable").css({fill: "red"});
-    let g2 = svg.group().addClass("Stable").css({fill: "red"});
-
-    let r = 0.03;
-    let arrow = [[0, r + 0.02], [0, r + 0.2], [0, r + 0.02 + 0.18 * cos(50)]];
-    let balls = [[0.3, r], [-0.6, r + 1], [-0.9, r + land(-0.9) + 0.024], [0.6, r + land(0.6) + 0.024]];
-    for (let i=0;i<balls.length;i++) {
-        let pt = new RArray(...balls[i]);
-        let g = i == 3 ? g2 : (i == 2 ? g1 : g0);
-        svg.circle(r, pt, g);
-        let a = svg.arrow(pt.plus(arrow[0]), pt.plus(arrow[i < 2 ? 1 : 2]), {tail: "4"}, g);
-        if (i > 1) a.anchor(...pt).config({theta: 50});
-        svg.symbol("F", {q4: "g", vec: 1}, pt.plus([0.1, -0.15]), g);
-        a = svg.arrow(pt.minus(arrow[0]), pt.minus(arrow[1]), {tail: "4"}, g);
-        pt = pt.plus(i == 0 ? [-0.15, 0.1] : (i == 1 ? [0.1, 0.1] : [-0.08, 0.17]));
-        svg.symbol("F", {q4: "n", vec: 1}, pt, g);
-    }
-
-    svg.text("Unstable", [-0.15, 1.1], g1).css({fill: "black", "font-size": "20px"});
-    svg.text("Stable", [-0.1, 0], g2).css({fill: "black", "font-size": "20px"});
-
-    svg.$.find("circle").css({fill: "#0065FE"});
-    svg.final();
-
+    let t = clickCycle.toggle;
     clickCycle(svg.element, 0,
-        () => {svg.$.find("g").fadeIn()},
-        () => {g2.$.fadeOut(); g1.$.fadeOut()},
-        () => {g0.$.fadeOut(); g1.$.fadeIn()},
-        () => {g1.$.fadeOut(); g2.$.fadeIn()},
+        () => {t(svg, true, 0, 1, 2)},
+        () => {t(svg, false, 1, 2)},
+        () => {t(svg, false, 0); t(svg, true, 1)},
+        () => {t(svg, false, 1); t(svg, true, 2)},
     );
 },
 
