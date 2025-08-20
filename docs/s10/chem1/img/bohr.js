@@ -74,43 +74,28 @@ dot: (sel) => {
 },
 
 carbon: (sel) => {
-    $(sel).attr({width: 256, height: 256, "data-aspect": "1"});
-    let svg = new SVG_Animation(sel, -1, 1, -1, 1, 2);
-    let a = 0.35, b = 0.04;
-    // let g = svg.group();
+    let svg = new SVG2(sel, {size: [256, 256], lrbt: [-1, 1]}).css(".NoStyle");
+
+    let b = 0.04, css = SVG2.css("green", "black1");
+
+    // Electrons
+    let g = svg.group("nofill", "green1");
     for (let [r, n] of [[0.35, 2], [0.62, 4], [0.95, 0]]) {
-        svg.circle(r, [0, 0]).css({fill: "none", stroke: "green"});
+        g.circle(r, [0, 0]);
         let angle = 360 * Math.random();
         let elec = (i) => vec2d(r, angle + 360 * i / n)
-        for (let i=0;i<n;i++) 
-            svg.circle(0.75 * b, elec(i)).css({fill: "green", stroke: "black", "stroke-width": "0.5px"});
+        for (let i=0;i<n;i++) svg.circle(0.75 * b, elec(i)).css(css);
     }
-    // let elec = [a * sin(140), cos(140)];
-    let pts = [[-0.0417, 0.0446], [0.0402, -0.0345], [-0.0178, -0.0509],
-        [0.0481, 0.0360], [-0.0389, 0.0567], [-0.0475, 0.0403],
-        [-0.0199, 0.0177], [-0.0613, -0.0053], [-0.0078, 0.0413],
-        [-0.0048, -0.0071], [0.0207, 0.0021], [0.0284, -0.0517]];
-    // let nuke = () => {
-    //     let p = [0.15 * (Math.random() - 0.5), 0.12 * (Math.random() - 0.5)];
-    //     pts += `[${p[0].toFixed(4)}, ${p[1].toFixed(4)}], `
-    //     return p;
-    // }
-    for (let i=0;i<6;i++) {
-        // let g = svg.group();
-        // if (i) g.config({theta: 120 * i});
-        // svg.ellipse(a, 1, [0, 0], g);
-        // svg.circle(0.75 * b, elec, g).addClass("Electron");
-        svg.circle(b, pts[2*i]).addClass("Neutron");
-        svg.circle(b, pts[2*i+1]).addClass("Proton");
+
+    // Nucleons
+    g = svg.group("black1", "red");
+    let proton = true;
+    for (let pt of [[-0.0417, 0.0446], [0.0402, -0.0345], [-0.0178, -0.0509], [0.0481, 0.0360],
+        [-0.0389, 0.0567], [-0.0475, 0.0403], [-0.0199, 0.0177], [-0.0613, -0.0053],
+        [-0.0078, 0.0413], [-0.0048, -0.0071], [0.0207, 0.0021], [0.0284, -0.0517]]) {
+            g.circle(b, pt).css(proton ? {fill: "#0065fe"} : {});
+            proton = !proton;
     }
-    svg.$.find("ellipse").css({fill: "none", stroke: "green"});
-    let attr = {stroke: "black", "stroke-width": "0.5px", fill: "green"};
-    svg.$.find(".Electron").css(attr);
-    attr.fill = "red";
-    svg.$.find(".Proton").css(attr);
-    attr.fill = "#0065FE";
-    svg.$.find(".Neutron").css(attr);
-    svg.final();
 
 },
 
