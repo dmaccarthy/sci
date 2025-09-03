@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Model Equations</h1>
@@ -60,14 +60,14 @@
 <p>We can use the equation to make <em>predictions</em> about the data.</p>
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
 <p data-cue="none" class="Blue">Predict the voltage when the current is 3.5 A.</p>
 <p class="TeX">\mathcal{E} = {\rm (-1.9\ V/A)} I + {\rm 11.4\ V}</p>
 <p class="TeX">\mathcal{E} = \rm{(-1.9\ V/A)\ {\color{red} 3.5\ A} + 11.4\ V = 4.8\ V}</p>
 <ul><li>A prediction <em>within</em> the range of data is called <em class="Defn">interpolation</em>.</li></ul>
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
+<section class="Slide"><h3 class="Blue">Example 2</h3>
 <p data-cue="none" class="Blue">What current would be needed for the voltage to reach zero?</p>
 <p class="TeX">\mathcal{E} = {\rm (-1.9\ V/A)} I + \rm{11.4\ V}</p>
 <p class="TeX">\mathcal{E} - {\rm 11.4\ V} = {\rm (-1.9\ V/A)} I</p>
@@ -76,39 +76,32 @@
 <ul><li>A prediction <em>outside</em> the range of data is called <em class="Defn">extrapolation</em>.</li></ul>
 </section>
 
-<section class="Slide Present"><div class="Assign">
-<p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Model Equations</i> handout.</p>
-<ul data-cue="none" class="Var">assign</ul>
-</div></section>
-
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>Science 10 students performed an experiment for their “Heat” chapter in which they measured the temperature (<span class="TeX">T</span>) of some water as they burned a marshmallow beneath it. They constructed a scatter plot for the temperature as a function of the time (<span class="TeX">t</span>) for which the water was heated. They noted that their best-fit line passed through the points <span class="NoWrap">(0.0 s, 18 °C)</span> and <span class="NoWrap">(20.0 s, 25 °C).</span>
     <ol type="a">
         <li>Determine the model equation for the students’ data.</li>
         <div class="Answer">
-<p class="TeX">k = \frac{T_2 - T_1}{t_2 - t_1} = \rm{\frac{(25 - 18)\ ^\circ C}{(20.0 - 0.0)\ s} = 0.35\ ^\circ C/s}</p>
-<p class="TeX">b = \rm{18\ ^\circ C}</p>
-<p class="TeX">T = ({\rm 0.35\ ^\circ C/s})\ t + {\rm 18\ ^\circ C}</p>
+            <p class="TeX">k = \frac{T_2 - T_1}{t_2 - t_1} = \rm{\frac{(25 - 18)\ ^\circ C}{(20.0 - 0.0)\ s} = 0.35\ ^\circ C/s}</p>
+            <p class="TeX">b = \rm{18\ ^\circ C}</p>
+            <p class="TeX">T = ({\rm 0.35\ ^\circ C/s})\ t + {\rm 18\ ^\circ C}</p>
         </div>
 
         <li>Use the model equation to predict the water temperature after 15.0 seconds.</li>
         <div class="Answer"><p class="TeX">T = \rm{(0.35\ ^\circ C/s)\ 15.0\ s + 18\ ^\circ C = 23\ ^\circ C}</p></div>
 
         <li>Use the model equation to predict the water temperature after 60.0 seconds.</li>
-        <div class="Answer"><p class="TeX">T = \rm{(0.35\ ^\circ C/s)\ 60.0\ s + 18\ ^\circ C = 39\ ^\circ C}</p></div>
+        <p class="Answer TeX">T = \rm{(0.35\ ^\circ C/s)\ 60.0\ s + 18\ ^\circ C = 39\ ^\circ C}</p>
 
         <li>Use the model equation to predict how long it would take the water to boil <span class="NoWrap">(100 °C).</span></li>
         <div class="Answer">
-<p class="TeX">T - {\rm 18\ ^\circ C} = ({\rm 0.35\ ^\circ C/s})\ t</p>
-<p class="TeX">t = \frac{T - \rm{18\ ^\circ C}}{\rm{0.35\ ^\circ C/s}}
-= \frac{(100 - 18)\ \rm{^\circ C}}{\rm{0.35\ ^\circ C/s}}
-= \rm{234\ s}
-</p></div>
+            <p class="TeX">T - {\rm 18\ ^\circ C} = ({\rm 0.35\ ^\circ C/s})\ t</p>
+            <p class="TeX">t = \frac{T - \rm{18\ ^\circ C}}{\rm{0.35\ ^\circ C/s}}
+            = \rm \frac{(100 - 18)\ ^\circ C}{0.35\ ^\circ C/s} = \rm 234\ s</p>
+        </div>
 
     </ol></li>
 
@@ -126,34 +119,39 @@
         <tr><td>27</td><td>78.5</td></tr>
     </table>
     <ol type="a">
-        <li>Analyze the data by drawing a scatter plot with a best-fit line and calculating the model equation.</li>
+        <li>Determine the model equation for you best-fit line.</li>
         <div class="Answer">
-<p><a target="Desmos1" href="https://www.desmos.com/calculator/mirqpifwnt">Graph</a></p>
-<p>The <span class="TeX">y</span>-intercept can be read from the graph: <span class="TeX">b</span> = 81.1 kg.</p>
-<p>Using the points (0 days, 81.1 kg) and (30 days, 78.5 kg), the slope is:</p>
-<p class="TeX">k = \frac{m_2 - m_1}{t_2 - t_1} = \rm{\frac{(78.5 - 81.1)\ kg}{(30-0)\ day} = -0.087\ kg/day}</p>
-<p>The model equation (i.e. the equation of the best-fit line) is:</p>
-<p class="TeX">m = ({\rm -0.087\ kg/day})\ t + {\rm 81.1\ kg}</p>
+            <p><a target="Desmos1" href="https://www.desmos.com/calculator/mirqpifwnt">Graph</a></p>
+            <p>The <span class="TeX">y</span>-intercept can be read from the graph: <span class="TeX">b</span> = 81.1 kg.</p>
+            <p>Using the points (0 days, 81.1 kg) and (30 days, 78.5 kg), the slope is:</p>
+            <p class="TeX">k = \frac{m_2 - m_1}{t_2 - t_1} = \rm{\frac{(78.5 - 81.1)\ kg}{(30-0)\ day} = -0.087\ kg/day}</p>
+            <p>The model equation (i.e. the equation of the best-fit line) is:</p>
+            <p class="TeX">m = ({\rm -0.087\ kg/day})\ t + {\rm 81.1\ kg}</p>
         </div>
 
-        <li>Interpret your results for the slope and the y-intercept. In other words, what do these values tell you about Kelly’s weight-loss progress?</li>
-        <div class="Answer">Kelly had a starting mass of 81.1 kg and lost 0.087 kg per day on average.</div>
-
-        <li>Estimate how long it should take Kelly to reach his goal of 75.0 kg. What assumptions are you making?</li>
+        <li>Use your model equation to estimate how long it should take Kelly to reach his goal of 75.0 kg. What assumptions are you making?</li>
         <div class="Answer">
-<p>Rearrange the model equation to isolate <span class="TeX">t</span>...</p>
-<p class="TeX">m - {\rm 81.1\ kg} = ({\rm -0.087\ kg/day})\ t</p>
-<p class="TeX">t = \frac{m - \rm{81.1\ kg}}{\rm{-0.087\ kg/day}}</p>
-<p>Now evaluate with <span class="TeX">m</span> = 75.0 kg...</p>
-<p class="TeX">t = \frac{\rm{(75.0 - 81.1)\ kg}}{\rm{-0.087\ kg/day}} = \rm{70\ days}</p>
+            <p>Rearrange the model equation to isolate <span class="TeX">t</span>...</p>
+            <p class="TeX">m - {\rm 81.1\ kg} = ({\rm -0.087\ kg/day})\ t</p>
+            <p class="TeX">t = \frac{m - \rm{81.1\ kg}}{\rm{-0.087\ kg/day}}</p>
+            <p>Now evaluate with <span class="TeX">m</span> = 75.0 kg...</p>
+            <p class="TeX">t = \frac{\rm{(75.0 - 81.1)\ kg}}{\rm{-0.087\ kg/day}} = \rm{70\ days}</p>
         </div>
 
         <li>Estimate what Kelly’s mass will be after 60 days. What assumptions are you making? Are these assumptions realistic? Explain.</li>
         <div class="Answer">
-<p class="TeX">m = \rm{(-0.087\ kg/day)\ 60\ days + 81.1\ kg = 75.9\ kg}</p>
-We are assuming that the weight loss continues at the same rate until at least day 60.</div>
+            <p class="TeX">m = \rm{(-0.087\ kg/day)\ 60\ days + 81.1\ kg = 75.9\ kg}</p>
+            <p>We are assuming that the weight loss continues at the same rate until at least day 60.</p>
+        </div>
     
     </ol></li>
+
+</ol>
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
 
     <li><p class="Bottom">Students recorded how the length of a spring changed as they stretched it by applying more force.</p>
     <table class="Two Center TD">
@@ -215,24 +213,18 @@ We are assuming that the weight loss continues at the same rate until at least d
 \\[10pt] &= {\rm 1.02\times 10^{15}\ Hz}\end{align}</p>
     </ol></li>
 
-<li>
-    <p>Students collected data for a mug of hot chocolate cooling over time. They determined that the relationship between temperature (<span class="TeX">T</span>) and time (<span class="TeX">t</span>) was best modelled by the <em>non-linear</em> relationship:</p>
-    <p data-cue="none" class="TeX">T = 21^\circ{\rm C} + 47^\circ{\rm C} \left(\frac{1}{2}\right)^{t/({\rm 23\ min})}</p>
-    <ol type="a">
-        <li>Predict the temperature after 5.0 minutes.</li>
-        <div class="Answer TeX Display">T = 21^\circ{\rm C} + 47^\circ{\rm C} \left(\frac{1}{2}\right)^{5.0/23} = {\rm 61^\circ C}</div>
-    
-        <li>Predict the time it will take for the hot chocolate to reach a temperature of 50° C. Unless you’ve studied logarithms (Math 30-1) you will not be able to solve this algebraically, but you should be able to solve it graphically using a graphing calculator or software.</li>
-        <p class="Answer">Based on the <a target="Desmos5" href="https://www.desmos.com/calculator/u2v31dxptf">graph</a>, the temperature will reach 50° C after 16 minutes.</p>
-    </ol>
-</li>
+    <li>
+        <p>Students collected data for a mug of hot chocolate cooling over time. They determined that the relationship between temperature (<span class="TeX">T</span>) and time (<span class="TeX">t</span>) was best modelled by the <em>non-linear</em> relationship:</p>
+        <p data-cue="none" class="TeX">T = 21^\circ{\rm C} + 47^\circ{\rm C} \left(\frac{1}{2}\right)^{t/({\rm 23\ min})}</p>
+        <ol type="a">
+            <li>Predict the temperature after 5.0 minutes.</li>
+            <p class="Answer TeX">T = \rm 21^\circ C + 47^\circ C \left(\frac{1}{2}\right)^{5.0/23} = 61^\circ C</p>
+        
+            <li>Predict the time it will take for the hot chocolate to reach a temperature of 50° C. Unless you’ve studied logarithms (Math 30-1) you will not be able to solve this algebraically, but you should be able to solve it graphically using a graphing calculator or software.</li>
+            <p class="Answer">Based on the <a target="Desmos5" href="https://www.desmos.com/calculator/u2v31dxptf">graph</a>, the temperature will reach 50° C after 16 minutes.</p>
+        </ol>
+    </li>
 
-</ol>
-</div></div></section>
-
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
     <li>What do we mean by a <em class="Defn">model equation</em> for the data collected during an experiment?</li>
     <p class="Answer">A model equation is an equation that describes the best-fit line (or best-fit curve if the data is non-linear) for data collected through experiments.</p>
 
@@ -251,19 +243,19 @@ We are assuming that the weight loss continues at the same rate until at least d
 <section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
     <h2 class="Collapse">Handouts</h2><div class="Collapse">
     <p class="Var">handouts</p>
-    <p class="BtnGrid"><button data-icon="gdrv" data-gdrv="1onLKpmNrp18wnFmupl3oqmrl1eSbJMkK">Assignment</button></p>
+    <p class="BtnGrid"><button data-icon="gdrv" data-gdrv="124XsZSMLwvP73kAauV0O3A6Pw3KqNl0T">Assignment</button></p>
 </div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
-    title: `${siteData.lesson}0.6 — Model Equations`,
-    showDate: "2026.2.11",
-    answerDate: "2026.2.12",
+    title: `${siteData.lesson}0.6 — Linear Relations`,
+    showDate: "2025.9.8",
+    answerDate: "2025.9.9",
     num: "0.6",
     up: "p20/home",
-    prev: "p20/skill/scatter",
-    next: "p20/skill/trig",
+    prev: "p20/skill/si",
+    next: "p20/kin/displ",
 }
 
 </script>

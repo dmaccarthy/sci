@@ -1,7 +1,7 @@
 SVG2.cache("s10/chem1/img/atomic.js", {
  
 bun: (sel) => {
-    let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], margin: 2}).css(".NoStyle", "text");
+    let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], margin: 2}).css(".NoStyle");
     svg.circle(1, [0, 0]).css({fill: "#F1B9A1", stroke: "black"});
     let a = 0.15, b = 0.75;
     svg.poly([[a, b], [a, a], [b, a], [b, -a], [a, -a], [a, -b], [-a, -b], [-a, -a],
@@ -10,7 +10,7 @@ bun: (sel) => {
     let pts = [[0.4243, 0.4243], [-0.28, 0.65], [-0.51, -0.07],
         [-0.15, -0.55], [0.1707, -0.1062], [0.5, -0.3]];
     svg.line(pts[0], [0.85, 0.78]).css({stroke: "green"});
-    let g = svg.group();
+    let g = svg.group("text");
     for (let i=0;i<pts.length;i++) g.circle(0.04, pts[i]).css(attr);
     g.ctext(["Electron", [0.87, 0.9]]);
     g.$.find("text, circle").css({fill: "green"});
@@ -23,9 +23,9 @@ rutherford: (sel) => {
     let elec = (x) => [a * sin(x), cos(x)];
     let n = [[0.0374, 0.019], [-0.0383, -0.0237], [-0.0558, 0.0394], [0.0516, -0.0361]];
     let p = [[-0.0138, 0.0375], [-0.0025, -0.0422], [0.0521, 0.0135]];
-    let hide = svg.group();
-    let gn = hide.group();
-    let gp = hide.group();
+    let hide = svg.group("text");
+    let gn = hide.group("text");
+    let gp = hide.group("text");
     let elecs = [];
     for (let i=0;i<3;i++) {
         let g = svg.group();
