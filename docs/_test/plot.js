@@ -13,6 +13,19 @@ xpdq: (sel) => {
     g.gtext("Q", {}, [1.8, 0.7]);
 },
 
+scatter1: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 16, 0, 15], margin: [60, 12, 32, 12]});
+    svg.graph({grid: [1, 1],
+        x: {tick: [0, 21, 2], title: ["Time / s", [14, "10"]], shift: [0, "-22"]},
+        y: {tick: [0, 16, 3], title: ["Position / m", "-40"], shift: ["-10", "-4"]},
+        data: [
+            {connect: [[0, 0], [16, 14]]},
+            {plot: [[[0, 0], [7, 7], [13, 7], [16, 14]], "5"]},
+        ],
+    });
+    // svg.$.find("g.LabelX .Zero").remove();
+},
+
 dt4: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 16, 0, 15], margin: [60, 12, 32, 12]});
     svg.graph({grid: [1, 1],
