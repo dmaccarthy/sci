@@ -91,12 +91,22 @@ elevator: (sel) => { // Motion of an elevator d-t graph
 
 skydive: (sel) => { // Motion of an skydiver v-t graph
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 15, -50, 0], margin: [60, 12, 10, 32]});
+    let v = (x) => 50 * (Math.exp(-9.81 * x / 50) - 1);
+    let t = [...range(3, 16, 3)];
+    let pts = zip(t, [...fn_eval(v, t)]);
     svg.graph({grid: [1, 5],
         x: {tick: [0, 16, 3], title: ["Time / s", [13.5, "12"]], shift: [0, "-22"]},
         y: {tick: [-50, 1, 10], title: ["Velocity / (m/s)", "-44"], shift: ["-10", "-4"]},
-        data: [{locus: [(x) => 50 * (Math.exp(-9.81 * x / 50) - 1), [0, 15]]}],
+        data: [{locus: [v, [0, 15]]}, {plot: [pts, "4"]}],
     });
-    svg.$.find("g.LabelX text.Zero").remove();
+    svg.series[1].$.hide();
+    let g = svg.group("blue1");
+    for (let [x, y] of pts) g.line([x, y], [x, 0]);
+    g.$.insertAfter(svg.$.find("g.Grid")).hide();
+    svg.$.on("click", () => {
+        svg.series[1].$.fadeToggle();
+        g.$.fadeToggle();
+    }).find("g.LabelX text.Zero").remove();
 },
 
 });

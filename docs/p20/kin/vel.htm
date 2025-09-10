@@ -1,34 +1,5 @@
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Remember?</h2><div class="Collapse">
-<ol>
-    <li>How long will it take an aircraft that travels at 425 km/h to fly 550 km from Edmonton to Saskatoon?</li>
-    <div class="Answer">
-        <p>Rearrange the speed equation to isolate the time:</p>
-        <p class="TeX">v = \frac{\Delta d}{\Delta t}</p>
-        <p class="TeX">v \Delta t = \Delta d</p>
-        <p class="TeX">\Delta t = \frac{\Delta d}{v}</p>
-        <p>We could convert to standard SI units, but this is not necessary because the km cancels:</p>
-        <p class="TeX">\Delta t = \rm \frac{550\ km}{425\ km/h} = 1.29\ h = 4.66\times 10^3\ s</p>
-    </div>
-
-    <li>A hiker follows a circular path, walking at an average speed of 5.00 km/h. After 3.20 hours of walking, she returns to her starting point, finishing one complete lap.
-        <ol type="a">
-            <li>What is the hiker’s <em>distance</em> traveled?</li>
-            <div class="Answer">
-            <p>Rearrange the speed equation to isolate the distance:</p>
-            <p class="TeX">v = \frac{\Delta d}{\Delta t}</p>
-            <p class="TeX">\Delta d = v \Delta t = \rm{5.00\ km/h\cdot 3.20\ h = 16.0\ km}</p>
-            </div>
-        
-            <li>What is the hiker’s <em>displacement</em> and average <em>velocity</em>?</li>
-            <p class="Answer">Since the hiker returns to her starting point (<span class="TeX">\vec{\mathbf d}_f = \vec{\mathbf d}_i</span>), the displacement will be zero and the average velocity will therefore be zero as well!</p>
-        </ol></li>
-
-</ol>
-</div></section>
-
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Velocity &amp; Speed</h1>
@@ -38,7 +9,7 @@
     <p>We learned in the last lesson that <em>displacement</em> measures the <em>change</em> in an object’s <em>position</em>.</p>
     <div>
         <p><em class="Defn">Velocity</em> measures how quickly the position changes, or the <em>rate</em> of displacement:</p>
-        <p data-cue="prev" class="TeX">\vec{\mathbf v} = {\Delta\vec{\mathbf d}\over \Delta t}</p>
+        <p data-cue="prev" class="TeX">\vec{\bf v} = {\Delta\vec{\bf d}\over \Delta t}</p>
     </div>
     <ul>
         <li>Velocity, like displacement, is a vector.</li>
@@ -49,12 +20,12 @@
 
 <section class="Slide"><h3>Motion Graph</h3>
     <p data-cue="none" class="Center"><svg id="Graph1" data-svg2="p20/kin/img/graph.js#bike" class="s20"></svg></p>
-    <p data-cue="none" class="Present TeX">\vec{\mathbf v} = {\Delta\vec{\mathbf d}\over \Delta t}</p>
-    <p class="TeX">\vec{\mathbf v} = \rm{(+7.0\ m) - (-5.0\ m)\over 4.0\ s - 0.0\ s}</p>
+    <p data-cue="none" class="Present TeX">\vec{\bf v} = {\Delta\vec{\bf d}\over \Delta t}</p>
+    <p class="TeX">\vec{\bf v} = \rm{(+7.0\ m) - (-5.0\ m)\over 4.0\ s - 0.0\ s}</p>
     <p class="TeX">= \rm{{+12.0\ m \over 4.0\ s}}</p>
     <p class="TeX">= \rm{+3.0\ m/s}</p>
 	<ul>
-        <li >Since <span class="TeX">\Delta\vec{\mathbf d}</span> is the “rise” of the graph and <span class="TeX">\Delta t</span> is the “run”, velocity is the <em>slope</em> of the line.</li>
+        <li >Since <span class="TeX">\Delta\vec{\bf d}</span> is the “rise” of the graph and <span class="TeX">\Delta t</span> is the “run”, velocity is the <em>slope</em> of the line.</li>
     </ul>
 	<p>When the graph is a straight line, the motion is classified as <em class="Defn">uniform motion</em>.</p>
     <ul>
@@ -79,33 +50,33 @@
     </ul>
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
     <p data-cue="none" class="Blue">What will be the displacement of a cyclist who rides with a velocity of 27.0 km/h [south] for one minute?</p>
     <p>Identify the variables and convert to standard SI units if necessary. Normally we use positive for north and negative for south:</p>
     <ul>
-        <li><span class="TeX">\vec{\mathbf v} = \rm{27.0\ km/h\ [S] = -7.50\ m/s}</span></li>
+        <li><span class="TeX">\vec{\bf v} = \rm{27.0\ km/h\ [S] = -7.50\ m/s}</span></li>
         <li><span class="TeX">\Delta t = \rm{1.00\ min = 60.0\ s}</span></li>
-        <li class="Red"><span class="TeX">\Delta\vec{\mathbf d} =\ ?</span></li>
+        <li class="Red"><span class="TeX">\Delta\vec{\bf d} =\ ?</span></li>
     </ul>
     <div>
         <p>Select the relevant relationship (equation):</p>
-        <p data-cue="prev" class="TeX">\vec{\mathbf v} = {\Delta \vec{\mathbf d}\over \Delta t}</p>
+        <p data-cue="prev" class="TeX">\vec{\bf v} = {\Delta \vec{\bf d}\over \Delta t}</p>
     </div>
     <div>
         <p>Rearrange the equation to isolate the unknown:</p>
-        <p class="TeX">\vec{\mathbf v}{\color{red}{\Delta t}} = {\Delta \vec{\mathbf d}\over \Delta t} \color{red}{\Delta t}</p>
+        <p class="TeX">\vec{\bf v}{\color{red}{\Delta t}} = {\Delta \vec{\bf d}\over \Delta t} \color{red}{\Delta t}</p>
     </div>
-    <p class="TeX">\vec{\mathbf v}\Delta t = \Delta \vec{\mathbf d}</p>
+    <p class="TeX">\vec{\bf v}\Delta t = \Delta \vec{\bf d}</p>
     <div>
         <p>Evaluate, including units:</p>
-        <p data-cue="prev" class="TeX">\Delta \vec{\mathbf d} = \rm {-7.50\ m/s \cdot 60.0\ s} = -450\ m</p>
+        <p data-cue="prev" class="TeX">\Delta \vec{\bf d} = \rm {-7.50\ m/s \cdot 60.0\ s} = -450\ m</p>
     </div>
     <ul>
         <li>Is the answer reasonable?</li>
     </ul>
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
+<section class="Slide"><h3 class="Blue">Example 2</h3>
     <p data-cue="none" class="Blue">An athlete can maintain an average speed of 7.80 m/s during an 800-metre race. How long will it take the runner to finish the race?</p>
     <p>Identify the variables:</p>
     <ul>
@@ -134,11 +105,35 @@
     </ul>
 </section>
 
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Velocity &amp; Speed</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
 </div></section>
 
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li>How long will it take an aircraft that travels at 425 km/h to fly 550 km from Edmonton to Saskatoon?</li>
+    <div class="Answer">
+        <p>Rearrange the speed equation to isolate the time:</p>
+        <p class="TeX">v = \frac{\Delta d}{\Delta t}</p>
+        <p class="TeX">v \Delta t = \Delta d</p>
+        <p class="TeX">\Delta t = \frac{\Delta d}{v}</p>
+        <p>We could convert to standard SI units, but this is not necessary because the km cancels:</p>
+        <p class="TeX">\Delta t = \rm \frac{550\ km}{425\ km/h} = 1.29\ h = 4.66\times 10^3\ s</p>
+    </div>
+
+    <li>A hiker follows a circular path, walking at an average speed of 5.00 km/h. After 3.20 hours of walking, she returns to her starting point, finishing one complete lap.
+        <ol type="a">
+            <li>What is the hiker’s <em>distance</em> traveled?</li>
+            <div class="Answer">
+            <p>Rearrange the speed equation to isolate the distance:</p>
+            <p class="TeX">v = \frac{\Delta d}{\Delta t}</p>
+            <p class="TeX">\Delta d = v \Delta t = \rm{5.00\ km/h\cdot 3.20\ h = 16.0\ km}</p>
+            </div>
+        
+            <li>What is the hiker’s <em>displacement</em> and average <em>velocity</em>?</li>
+            <p class="Answer">Since the hiker returns to her starting point (<span class="TeX">\vec{\bf d}_f = \vec{\bf d}_i</span>), the displacement will be zero and the average velocity will therefore be zero as well!</p>
+        </ol></li>
+
+</ol>
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
@@ -150,7 +145,7 @@
     <li>What is the car’s average velocity?</li>
     <div class="Answer">
         <p>Taking north as positive and south as negative:</p>
-        <p class="TeX">\vec{\mathbf v} = \frac{\Delta\vec{\mathbf d}}{\Delta t} = \rm{\frac{-285\ km}{3.25\ h} = -87.7\ km/h = -24.4\ m/s}</p>
+        <p class="TeX">\vec{\bf v} = \frac{\Delta\vec{\bf d}}{\Delta t} = \rm{\frac{-285\ km}{3.25\ h} = -87.7\ km/h = -24.4\ m/s}</p>
     </div>
 
     <li>Explain why the car’s average speed will be greater than the magnitude of the average velocity.</li>
@@ -221,16 +216,16 @@
     <li>Do your answers seem reasonable?</li>
     <p class="Answer">This seems like a reasonable speed; 4 m/s means the runner covers 100 metres every 25 seconds. Also, the overall average is between the the two interval averages.</p>
 </ol></li>
-</ol>
+<!-- </ol>
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
 <li><ol type="a">
     <li>Give the mathematical definition of <em class="Defn">velocity</em> and explain what this definition means.</li>
     <div class="Answer">
-        <p class="TeX">\vec{\mathbf v} = \frac{\Delta\vec{\mathbf d}}{\Delta t}</p>
+        <p class="TeX">\vec{\bf v} = \frac{\Delta\vec{\bf d}}{\Delta t}</p>
         <p>Velocity is the <em>rate</em> at which the position changes; the displacement per second.</p>
     </div>
 
@@ -250,20 +245,20 @@
     <h2 class="Collapse">Handouts</h2><div class="Collapse">
     <p class="Var">handouts</p>
     <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="14_gI2LLf_lqhNOMaNoh8Jt1ryj09ywEG">Assignment</button>
+        <button data-icon="gdrv" data-gdrv="1doqYZvyBTuy2XPlT5_Jt-tC0Q-vhZtXj">Assignment</button>
     </p>
 </div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
-    title: `${siteData.lesson}1.5 — Velocity & Speed`,
-    showDate: "2025.9.8",
-    answerDate: "2025.9.9",
-    num: "1.5",
+    title: `${siteData.lesson}1.2 — Velocity & Speed`,
+    showDate: "2025.9.11",
+    answerDate: "2025.9.12",
+    num: "1.2",
     up: "p20/home",
     prev: "p20/kin/displ",
-    // next: "p20/skill/scatter",
+    next: "p20/kin/graph",
 }
 
 </script>
