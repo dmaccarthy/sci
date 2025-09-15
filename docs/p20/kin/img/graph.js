@@ -85,8 +85,14 @@ elevator: (sel) => { // Motion of an elevator d-t graph
     svg.graph({grid: [1, 5],
         x: {tick: [0, 11, 2], title: ["Time / s", [9, "12"]], shift: [0, "-22"]},
         y: {tick: [0, 51, 10], title: ["Position / m", "-40"], shift: ["-10", "-4"]},
-        data: [{locus: [(x) => x <= 5 ? x * x : 50 - (10 - x) * (10 - x), [0, 10]]}],
+        data: [
+            {locus: [(x) => x <= 5 ? x * x : 50 - (10 - x) * (10 - x), [0, 10]]},
+            {locus: [(x) => 10 * x - 25, [2.5, 7.5]]}
+        ],
     });
+    let g = svg.series[1].css("red1").$.hide();
+    svg.$.on("click", () => g.fadeToggle());
+    // console.log();
 },
 
 skydive: (sel) => { // Motion of an skydiver v-t graph

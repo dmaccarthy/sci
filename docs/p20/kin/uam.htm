@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div id="LessonNotes" class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
  
 <section class="Slide Center">
 <h1 id="Title">Uniform Accelerated Motion</h1>
@@ -60,6 +60,26 @@
 </ul>
 </section>
 
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+<p data-cue="none" class="Blue">During takeoff, a jet aircraft can accelerate at 3.25 m/s<sup>2</sup>. The jet must reach a velocity of 360 km/h before it reaches the end of the runway. Calculate:</p>
+<ol data-cue="none" type="a" class="Blue Bottom">
+    <li>the minimum time that it would take the jet to reach takeoff speed from rest.</li>
+    <li data-cue="none">the minimum length of runway needed.</li>
+</ol>
+<table class="Three Center">
+    <tr><td><span class="TeX">\vec{\bf a}</span></td><td>+3.25</td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
+    <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>0.00</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
+    <tr><td><span class="TeX">{\vec{\bf v}}_f</span></td><td>+100</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
+    <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td class="Reveal"><span>+1.54 × 10<sup>3</sup></span></td><td><span class="TeX">{\rm{m}}</span></td></tr>
+    <tr><td><span class="TeX">\Delta t</span></td><td class="Reveal"><span>30.8</span></td><td><span class="TeX">{\rm{s}}</span></td></tr>
+</table>
+<div><p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
+<p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
+        = \rm{\frac{+100\ m/s - 0.00\ m/s}{+3.25\ m/s^2} = 30.8\ s}</p></div>
+<div><p>Evaluate <span class="TeX">\Delta \vec{\bf d}</span> with Eqn 21:</p>
+<p class="TeX">\Delta\vec{\bf d} = \rm{\frac{0.00\ m/s + 100.0\ m/s}{2} 30.8\ s = +1.54\times 10^3\ m}</p></div>
+</section>
+
 <section class="Slide"><h3>UAM Equations</h3>
 <p data-cue="none">Sometimes, <em>both</em> unknowns will appear in <em>both</em> equations...</p>
 <table data-cue="none" class="Three Center">
@@ -94,41 +114,23 @@
 </div>
 </section>
 
-<section class="Slide"><h3>Problem Solving Hints</h3>
-<p>Always draw a sketch of the <span class="TeX">\vec{\bf v}</span>-<span class="TeX">t</span> graph.</p>
-<p data-cue="prev" class="Center"><svg class="s20" data-svg2="p20/kin/img/uam.js#zag"></svg></p>
-<p>For scenarios where the object’s acceleration changes, we must solve each section of the motion as a separate problem!</p>
-<p>Remember that we always need at least three “givens” before we can solve a UAM problem.</p>
-<p>Sometimes, it may appear that the problem does not provide enough information...</p>
-<ul>
-    <li>If the object begins or ends at rest, this means one of the velocities is zero.</li>
-    <li>If the object returns to its starting position, this means the displacement is zero.</li>
-    <li>For <em class="Defn">projectiles</em> (gravity is the only force), we can assume the acceleration is &minus;9.81 m/s<sup>2</sup> if the problem takes place near Earth’s surface.</li>
-    <li>Also for projectiles, the <em>highest</em> point is where the velocity changes from positive to negative; the instantaneous velocity will be zero.</li>
-</ul>
-</section>
-
-<section class="Slide"><h3>Example 1</h3>
-<p data-cue="none" class="Blue">During takeoff, a jet aircraft can accelerate at 3.25 m/s<sup>2</sup>. The jet must reach a velocity of 360 km/h before it reaches the end of the runway. Calculate:</p>
-<ol data-cue="none" type="a" class="Blue Bottom">
-    <li>the minimum time that it would take the jet to reach takeoff speed from rest.</li>
-    <li data-cue="none">the minimum length of runway needed.</li>
-</ol>
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+<p data-cue="none" class="Blue Bottom">On an alien planet, Captain Kirk falls from a 52.0-metre high cliff. He hits the ground with a downward velocity of 1.50 m/s.</p>
 <table class="Three Center">
-    <tr><td><span class="TeX">\vec{\bf a}</span></td><td>+3.25</td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
+    <tr><td><span class="TeX">\vec{\bf a}</span></td><td class="Reveal"><span>–0.0216</span></td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
     <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>0.00</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
-    <tr><td><span class="TeX">{\vec{\bf v}}_f</span></td><td>+100</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
-    <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td class="Reveal"><span>+1.54 × 10<sup>3</sup></span></td><td><span class="TeX">{\rm{m}}</span></td></tr>
-    <tr><td><span class="TeX">\Delta t</span></td><td class="Reveal"><span>30.8</span></td><td><span class="TeX">{\rm{s}}</span></td></tr>
+    <tr><td><span class="TeX">{\vec{\bf v}}_f</span></td><td>–1.50</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
+    <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>–52.0</td><td><span class="TeX">{\rm{m}}</span></td></tr>
+    <tr><td><span class="TeX">\Delta t</span></td><td class="Reveal"><span>69.3</span></td><td><span class="TeX">{\rm{s}}</span></td></tr>
 </table>
-<div><p>Solve for <span class="TeX">\Delta t</span> in Eqn 20:</p>
-<p class="TeX">\Delta t = \frac{{\vec{\bf v}}_f - {\vec{\bf v}}_i}{\vec{\bf a}}
-        = \rm{\frac{+100\ m/s - 0.00\ m/s}{+3.25\ m/s^2} = 30.8\ s}</p></div>
-<div><p>Evaluate <span class="TeX">\Delta \vec{\bf d}</span> with Eqn 21:</p>
-<p class="TeX">\Delta\vec{\bf d} = \rm{\frac{0.00\ m/s + 100.0\ m/s}{2} 30.8\ s = +1.54\times 10^3\ m}</p></div>
+<div><p>Solve for <span class="TeX">\Delta t</span> in Eqn 21:</p>
+<p class="TeX">\Delta t = \frac{2\Delta\vec{\bf d}}{{\vec{\bf v}}_i + {\vec{\bf v}}_f}
+    = \rm{\frac{2\cdot(-52.0\ m)}{0.00\ m/s + (-1.50\ m/s)} = 69.3\ s}</p></div>
+<div><p>Evaluate <span class="TeX">\vec{\bf a}</span> with Eqn 20:</p>
+    <p class="TeX">\vec{\bf a} = \rm{\frac{-1.50\ m/s - 0.00\ m/s}{69.3\ s} = -0.0216\ m/s^2}</p></div>
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
+<section class="Slide"><h3 class="Blue">Example 3</h3>
 <p data-cue="none" class="Blue Bottom">A ball is dropped (i.e. <span class="TeX">{\vec{\bf{v}}}_i = 0</span>) from the top of a 35.0-metre tall building. The ball accelerates downward at 9.53 m/s<sup>2</sup> due to the combined forces of gravity and air resistance.</p>
 <table class="Three Center">
     <tr><td><span class="TeX">\vec{\bf a}</span></td><td>–9.53</td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
@@ -147,38 +149,41 @@
      = \rm{\frac{-25.8\ m/s - 0.00\ m/s}{-9.53\ m/s^2} = 2.71\ s}</p></div>
 </section>
 
-<section class="Slide"><h3>Example 3</h3>
-<p data-cue="none" class="Blue Bottom">On an alien planet, Captain Kirk falls from a 52.0-metre high cliff. He hits the ground with a downward velocity of 1.50 m/s.</p>
-<table class="Three Center">
-    <tr><td><span class="TeX">\vec{\bf a}</span></td><td class="Reveal"><span>–0.0216</span></td><td><span class="TeX">{\rm{m/s^2}}</span></td></tr>
-    <tr><td><span class="TeX">{\vec{\bf v}}_i</span></td><td>0.00</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
-    <tr><td><span class="TeX">{\vec{\bf v}}_f</span></td><td>–1.50</td><td><span class="TeX">{\rm{m/s}}</span></td></tr>
-    <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>–52.0</td><td><span class="TeX">{\rm{m}}</span></td></tr>
-    <tr><td><span class="TeX">\Delta t</span></td><td class="Reveal"><span>69.3</span></td><td><span class="TeX">{\rm{s}}</span></td></tr>
-</table>
-<div><p>Solve for <span class="TeX">\Delta t</span> in Eqn 21:</p>
-<p class="TeX">\Delta t = \frac{2\Delta\vec{\bf d}}{{\vec{\bf v}}_i + {\vec{\bf v}}_f}
-    = \rm{\frac{2\cdot(-52.0\ m)}{0.00\ m/s + (-1.50\ m/s)} = 69.3\ s}</p></div>
-<div><p>Evaluate <span class="TeX">\vec{\bf a}</span> with Eqn 20:</p>
-    <p class="TeX">\vec{\bf a} = \rm{\frac{-1.50\ m/s - 0.00\ m/s}{69.3\ s} = -0.0216\ m/s^2}</p></div>
+<section class="Slide"><h3>Problem Solving Hints</h3>
+<p>Always draw a sketch of the <span class="TeX">\vec{\bf v}</span>-<span class="TeX">t</span> graph.</p>
+<p data-cue="prev" class="Center"><svg class="s20" data-svg2="p20/kin/img/uam.js#zag"></svg></p>
+<p>For scenarios where the object’s acceleration changes, we must solve each section of the motion as a separate problem!</p>
+<p>Remember that we always need at least three “givens” before we can solve a UAM problem.</p>
+<p>Sometimes, it may appear that the problem does not provide enough information...</p>
+<ul>
+    <li>If the object begins or ends at rest, this means one of the velocities is zero.</li>
+    <li>If the object returns to its starting position, this means the displacement is zero.</li>
+    <li>For <em class="Defn">projectiles</em> (gravity is the only force), we can assume the acceleration is &minus;9.81 m/s<sup>2</sup> if the problem takes place near Earth’s surface.</li>
+    <li>Also for projectiles, the <em>highest</em> point is where the velocity changes from positive to negative; the instantaneous velocity will be zero.</li>
+</ul>
 </section>
 
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Uniform Accelered Motion</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
 </div></section>
 
-<script type="text/javascript" data-init="notes">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Problems</h2><div class="Collapse">
+<ol>
+    <li>
+        <p>During takeoff, a jet aircraft can accelerate at 3.25 m/s<sup>2</sup>. The jet must reach a velocity of 360 km/h before it reaches the end of the runway. Calculate:</p>
+        <ol type="a">
+            <li>the minimum time that it would take the jet to reach takeoff speed from rest.</li>
+            <li>the minimum length of runway needed.</li>
+        </ol>
+    </li>
 
-loadFeed.notes = () => {
-    let rev = $("#LessonNotes td.Reveal").on("click", (ev) => {
-        $(ev.currentTarget).find("span").fadeToggle();
-    });
-}
-
-</script>
-    
-</div></section>
+    <li>
+    <p>On an alien planet, Captain Kirk falls from a 52.0-metre high cliff. He hits the ground with a downward velocity of 1.50 m/s. Calculate:</p>
+        <ol type="a">
+            <li>the time it takes to fall.</li>
+            <li>the acceleration due to the planet’s gravity.</li>
+        </ol>
+    </li>
+</ol></div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
@@ -449,23 +454,12 @@ loadFeed.notes = () => {
 </div>
 </ol></li>
 
-</ol>
-
-<script type="text/javascript" data-init="soln">
-
-loadFeed.soln = () => {
-    let rev = $("#Practice td.Reveal").on("click", (ev) => {
-        $(ev.currentTarget).find("span").fadeToggle();
-    });
-}
-
-</script>
-
+<!-- </ol>
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
 <li>Define uniform accelerated motion and explain how we can recognize this type of motion from the shapes of the <span class="TeX">\vec{\bf{d}}{\text -}t</span> and <span class="TeX">\vec{\bf{v}}{\text -}t</span> graphs.</li>
 <p class="Answer">Uniform accelerated motion occurs when the acceleration is constant. A <span class="TeX">\vec{\bf{d}}{\text -}t</span> is a parabola and a <span class="TeX">\vec{\bf{v}}{\text -}t</span> is linear with a non-zero slope (i.e. not horizontal) for UAM.</p>
 
@@ -504,19 +498,25 @@ loadFeed.soln = () => {
 <section data-show="1" class="Post" data-icon="gdrv">
     <h2 class="Collapse">Handouts</h2><div class="Collapse">
     <p class="Var">handouts</p>
-    <p class="BtnGrid"><button data-icon="gdrv" data-show="1" data-gdrv="123lGyLU4grXi1XgvKq43_r_e-xwGXvXq">Assignment</button></p>
+    <p class="BtnGrid"><button data-icon="gdrv" data-show="1" data-gdrv="1Pe_UwNEWITaileOlQ-tJGs5UcMnQ0_lN">Assignment</button></p>
 </div></section>
 
-<script type="text/javascript">
+<script type="text/javascript" data-init="init">
 
 loadFeed.data = {
     title: `${siteData.lesson}1.5 — Uniform Accelerated Motion`,
-    showDate: "2027.2.24",
-    answerDate: "2027.2.25",
+    showDate: "2025.9.17",
+    answerDate: "2027.9.18.11",
     num: "1.5",
     up: "p20/home",
     prev: "p20/kin/acc",
     next: "p20/kin/rev",
+}
+
+loadFeed.init = () => {
+    let rev = $("td.Reveal").on("click", (ev) => {
+        $(ev.currentTarget).find("span").fadeToggle();
+    });
 }
 
 </script>
