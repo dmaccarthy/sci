@@ -1,4 +1,4 @@
-SVG2.cache("test/clock.js", {
+SVG2.cache("_test/clock.js", {
 
 clock: (sel) => {
 	const COLOR = "#0065fe";
