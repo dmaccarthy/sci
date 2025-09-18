@@ -1,8 +1,28 @@
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol><li>Solve for all missing sides and angles in each of these right-angle triangles. Show all calculations.
+<ol>
+    <li>Solve for all missing sides and angles in each of these right-angle triangles. Show all calculations.
     <p class="Center"><svg class="s24" data-svg2="p20/vec2d/img/trig.js#pretest"></svg></p>
-</li></ol>
+    <div class="Answer">
+        <p>Solve for side <span class="TeX">p</span> using the <span class="TeX">\sin</span> ratio...</p>
+        <p class="TeX">\sin\angle P = {\rm\frac{Opp}{Hyp}} = \frac{p}{q}</p>
+        <p class="TeX">p = q\sin\angle P = \rm 7.00\sin 35.0^\circ = 4.02</p>
+        <p>Solve for side <span class="TeX">r</span> using the <span class="TeX">\cos</span> ratio or Pythagoras...</p>
+        <p class="TeX">\sin\angle P = {\rm\frac{Adj}{Hyp}} = \frac{r}{q}</p>
+        <p class="TeX">r = q\cos\angle P = \rm 7.00\cos 35.0^\circ = 5.73</p>
+        <p>Solve for angle <span class="TeX">\angle R</span>...</p>
+        <p class="TeX">\angle R = 180^\circ - 90^\circ - 35.0^\circ = 55.0^\circ</p>
+        <p>Use Pythagoras to calculate side <span class="TeX">c</span>...</p>
+        <p class="TeX">c = \sqrt{a^2 + b^2} = \sqrt{4.00^2 + 5.00^2} = 6.40</p>
+        <p>Once all the sides are known, you can use any of the trig ratios to find the angles. For example...</p>
+        <p class="TeX">\tan\angle A = {\rm\frac{Opp}{Adj}} = \frac{a}{b} = \frac{5.00}{4.00} = 1.25</p>
+        <p class="TeX">\angle A = \tan^{-1} 1.25 = 51.3^\circ</p>
+        <p>Solve for angle <span class="TeX">\angle B</span>...</p>
+        <p class="TeX">\angle B = 180^\circ - 90^\circ - 51.3^\circ = 38.7^\circ</p>
+
+    </div>
+</li>
+</ol>
 </div></section>
 
 <section class="Post" data-icon="slides">
@@ -10,10 +30,6 @@
 
 <section class="Slide Center">
 <h1 id="Title">Trigonometry</h1>
-</section>
-
-<section class="Slide Present">
-    <div class="Assign"><p>Complete the <i>Remember?</i> section of the <i>Trigonometry</i> handout.</p></div>
 </section>
 
 <section class="Slide"><h3>Right Angle Triangles</h3>
@@ -74,17 +90,6 @@
 <section class="Slide"><h3>Example 2</h3>
 <p data-cue="none" class="Blue">Solve for the missing angles and side.</p>
 <p data-cue="none" class="Center"><svg class="s14" data-svg2="p20/vec2d/img/trig.js#pqr"></svg></p>
-<p>Solve for side <span class="TeX">q</span>...</p>
-<p class="TeX">r^2 = p^2+q^2</p>
-<p class="TeX">r^2 - p^2 = q^2</p>
-<p class="TeX">\sqrt{r^2 - p^2} = q</p>
-<p class="TeX">q = \sqrt{10.0^2 - 4.00^2} = 9.17</p>
-<p>Solve for angle <span class="TeX">\angle Q</span>...</p>
-<p class="TeX">\cos\angle Q=\frac{p}{r}</p>
-<p class="TeX">\angle Q = \cos^{-1}\left(\frac{p}{r}\right)</p>
-<p class="TeX">\angle Q = \cos^{-1}\left(\frac{4.00}{10.0}\right)= 66.4^\circ</p>
-<p>Solve for angle <span class="TeX">\angle P</span>...</p>
-<p class="TeX">\angle P=180^\circ - 90^\circ - 66.4^\circ = 23.6^\circ</p>
 </section> -->
     
 <section class="Slide"><h3>Example 2</h3>
@@ -159,6 +164,25 @@
     </li>
 </ol>
 
+<li>Astronomers observed a star during March and found that it appeared at an angle of 18.00000° from Earth’s orbit, as illustrated. They observed the same star in September and found the angle to be 18.00020°. The points labelled M and S represent Earth’s position in March and September respectively. The diameter of Earth’s orbit (the line segment MS) is known to be <span class="TeX">d</span> = 2.992 × 10<sup>8</sup> km. Calculate the distance to the star. (The diagram is <em>not</em> to scale because the star is <b>really</b> far away!)</li>
+<p class="Center"><svg class="s20" data-svg2="p20/vec2d/img/trig.js#star"></svg></p>
+<div class="Answer">
+    <p>Write the <span class="TeX">\tan</span> ratio for both triangles...</p>
+    <p class="TeX">\tan 18.00000^\circ = \frac{h}{x + d}</p>
+    <p class="TeX">\tan 18.00020^\circ = \frac{h}{x}</p>
+    <p>Isolate <span class="TeX">h</span> in both equations...</p>
+    <p class="TeX">h = x \tan 18.00020^\circ = (x + d) \tan 18.00000^\circ</p>
+    <p>Isolate <span class="TeX">x</span>...</p>
+    <p class="TeX">x \tan 18.00020^\circ = x \tan 18.00000^\circ + d \tan 18.00000^\circ</p>
+    <p class="TeX">x (\tan 18.00020^\circ - \tan 18.00000^\circ) = d \tan 18.00000^\circ</p>
+    <p class="TeX">x  = \frac{d \tan 18.00000^\circ}{\tan 18.00020^\circ - \tan 18.00000^\circ} = \rm 2.52\times 10^{13}\ km</p>
+    <p>Solve for <span class="TeX">r</span> using the <span class="TeX">\cos</span> ratio...</p>
+    <p class="TeX">\cos 18.00020^\circ = \frac{x}{r}</p>
+    <p class="TeX">r \cos 18.00020^\circ = x</p>
+    <p class="TeX">r = \frac{x}{\cos 18.00020^\circ} = \rm 2.65\times 10^{13}\ km</p>
+    <p>It makes almost no difference if we measure the distance using Earth’s position in March or September, because <span class="TeX">d</span> is more than 80000 times smaller than <span class="TeX">x</span> and <span class="TeX">r</span>.</p>
+</div>
+
 <li>State <em class="Defn">Pythagoras’ equation</em> and explain how and when it can be applied.</li>
 <div class="Answer">
     <p>Pythagoras can be used only for triangles containing a right angle. You can solve for any one of the sides if you know the other two:</p>
@@ -185,7 +209,7 @@
 <section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
     <h2 class="Collapse">Handouts</h2><div class="Collapse">
     <p class="Var">handouts</p>
-    <p class="BtnGrid"><button data-icon="gdrv" data-gdrv="">Assignment</button></p>
+    <p class="BtnGrid"><button data-icon="gdrv" data-gdrv="1dbeWmeTW-5YhaXQN7aZ2-6ZTevsGuHXo">Assignment</button></p>
 </div></section>
 
 <script type="text/javascript">
@@ -193,7 +217,7 @@
 loadFeed.data = {
     showDate: "2025.9.22",
     answerDate: "2025.9.23",
-    title: `${siteData.lesson}2.1 — Trigonometry`,
+    title: `${siteData.lesson}2.1 — Trigonometry Review`,
     num: "2.1",
     up: "p20/home",
     prev: "p20/kin/rev",

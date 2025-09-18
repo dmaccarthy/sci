@@ -1,8 +1,9 @@
 SVG2.cache("p20/vec2d/img/trig.js", {
 
 pretest: (sel) => {
-    let svg = new SVG2(sel, {scale: 37, lrbt: [-1, 15, -1, 5], grid: 1}).css(".NoStyle", "text", "nofill");
+    let svg = new SVG2(sel, {scale: 37, lrbt: [-1, 15, -1, 5], grid: 1}).css(".NoStyle", "nofill");
     svg.$.find("g.Grid line.Axis").css({stroke: "lightgrey", "stroke-width": "0.5px"});
+    let text = svg.group("text");
 
     // PQR
     let r = vec2d(7, 35);
@@ -11,11 +12,11 @@ pretest: (sel) => {
     let blue = svg.group().css("blue2");
     blue.poly([[0, 0], q, r], 1);
     blue.poly([q.plus([0, l]), q.plus([-l, l]), q.plus([-l, 0])]);
-    svg.group().css("blue", {stroke: "none"}).ctext(["P", [-0.5, 0]], ["Q", [6.1, 0]], ["R", [6.1, 4]]);
-    svg.group().css({fill: "black"}).ctext(["7.00", [2.5, 2.5]], ["35.0°", [1.5, 0.3]]);
+    text.group().css("blue", {stroke: "none"}).ctext(["P", [-0.5, 0]], ["Q", [6.1, 0]], ["R", [6.1, 4]]);
+    text.group().css({fill: "black"}).ctext(["7.00", [2.5, 2.5]], ["35.0°", [1.5, 0.3]]);
 
     // ABC
-    let g = svg.group().config({shift: [9, 4]});
+    let g = text.group().config({shift: [9, 4]});
     blue = g.group().css("blue2");
     blue.poly([[0, 0], [5, 0], [0, -4]], 1);
     blue.poly([[0, -l], [l, -l], [l, 0]]);
@@ -76,6 +77,32 @@ ball8: (sel) => {
     g.gtext("40.0 cm", {}, [60, 47.5]);
     g.gtext("15.0 cm", {}, [82.5, 57.5]).config({theta: 90});
 }, 
+
+star: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 240], grid: 0, lrbt: [-1.5, 4.5, -0.25, 1.1]}).css(".NoStyle");
+    let g = svg.group("nofill", "blue1");
+    g.poly([[0, 0], [4, 1], [-1, 0], [1, 0]]);
+    g.poly([[1, 0], [4, 0], [4, 1]]);
+    svg.line([-1, 0.1], [-0.7, 0.03]).css(SVG2.css("black1"));
+    g = svg.group("blue", "black1");
+    g.circle("5", [-1, 0]);
+    g.circle("5");
+    g.circle("7", [4, 1]).css({fill: "orange"});
+    g = svg.group("text", "f18", "blue");
+    g.text("M", [-1, -0.14]);
+    g.text("S", [0, -0.14]);
+    g = svg.group("text", "f18", "black");
+    g.gtext("18.00000°", {}, [-1, 0.1], 0.5, 1);
+    g.gtext("18.00020°", {}, [0.45, 0.005], 0, 1);
+    g = g.group("serif", {"font-style": "italic"});
+    g.gtext("d", {}, [-0.5, -0.09]);
+    g = g.group();
+    g.gtext("r", {}, [1.9, 0.4]);
+    g.gtext("x", {}, [2, -0.09]);
+    g.gtext("h", {}, [4.2, 0.5]);
+    // g.$.hide();
+    svg.$.on("click", () => g.$.fadeToggle());
+},
 
 Q2: (sel) => {
     let svg = SVG2.vec_diag(sel, [[5, 0], [-5, 8]], {lrbt: [-2, 6, -1, 9],
