@@ -1,4 +1,4 @@
-SVG2.cache("p20/skill/img/trig.js", {
+SVG2.cache("p20/vec2d/img/trig.js", {
 
 pretest: (sel) => {
     let svg = new SVG2(sel, {scale: 37, lrbt: [-1, 15, -1, 5], grid: 1}).css(".NoStyle", "text", "nofill");
