@@ -26,6 +26,7 @@ Ex3: (sel) => {
     let F1 = vec2d(25, 62), F2 = vec2d(30, -70);
     let svg = SVG2.vec_diag(sel, [F1, F2], {lrbt: [-3, 24, -9, 24],
         scale: 12, margin: 8, grid: 1.5, tick: "-8", label: [3, 0, "-12", "-20"]});
+    svg.line(F1, F1.plus([4, 0])).css(SVG2.css("black1")).addClass("Toggle1");
     svg.$.find(".Component").remove();
     svg.gtext("N", "text", [1.5, 24]);
     let g = svg.$.find("g.Arrow");
@@ -91,11 +92,12 @@ Q4: (sel) => {
     g.symb(0, ["d", BD], arr, delta).align([-11, 3]).css("blue");
 },
 
-Q5: (sel) => {
+Q5: (sel, mu) => {
     let Fg = 0.347 * 9.81;
     let Fn = Fg * cos(14);
-    let Ff = 0.12 * Fn;
-    let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 76), vec2d(Ff, 166)], {lrbt: [-1, 1.5, -4, 0.5],
+    let vecs = [[0, -Fg], vec2d(Fn, 76)];
+    if (mu) vecs.push(vec2d(mu * Fn, 166));
+    let svg = SVG2.vec_diag(sel, vecs, {lrbt: [-1, 1.5, -4, 0.5],
         scale: 90, margin: 8, grid: 0.25, tick: "-8", label: [1, 0, "-12", "-20"]});
     svg.$.find(".Component").remove();
     svg.gtext("N", "text", [1.25, -3.75]);
@@ -106,7 +108,7 @@ Q5: (sel) => {
     let g = svg.group("symbol", "f28", "red");
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-0.5, -1.5]);
     g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([0.75, -2]);
-    g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([0.8, 0.3]);
+    if (mu) g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([0.8, 0.3]);
     g.symb(0, ["F", BD], arr, ["net", SM_IT, sub]).align([0.2, 0.4]).css("blue");
     svg.line([-1, tan(14)], [1.5, -1.5*tan(14)]).css({stroke: "lightgrey"}).insertBefore(svg.$.find(".TipToTail2D")[0]);
 },
