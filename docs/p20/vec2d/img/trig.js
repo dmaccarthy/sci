@@ -99,7 +99,7 @@ star: (sel) => {
     g = g.group();
     g.gtext("r", {}, [1.9, 0.4]);
     g.gtext("x", {}, [2, -0.09]);
-    g.gtext("h", {}, [4.2, 0.5]);
+    g.gtext("y", {}, [4.2, 0.5]);
     // g.$.hide();
     svg.$.on("click", () => g.$.fadeToggle());
 },

@@ -118,22 +118,35 @@
     </li>
 </ol>
 
-<li>Astronomers observed a star during March and found that it appeared at an angle of 18.00000° from Earth’s orbit, as illustrated. They observed the same star in September and found the angle to be 18.00020°. The points labelled M and S represent Earth’s position in March and September respectively. The diameter of Earth’s orbit (the line segment MS) is known to be <span class="TeX">d</span> = 2.992 × 10<sup>8</sup> km. Calculate the distance to the star. (The diagram is <em>not</em> to scale because the star is <b>really</b> far away!)</li>
-<p class="Center"><svg class="s20" data-svg2="p20/vec2d/img/trig.js#star"></svg></p>
+<li>
+    <p>Astronomers observed a star during March and found that it appeared at an angle of 18.00000° from Earth’s orbit, as illustrated. They observed the same star in September and found the angle to be 18.00020°. The points labelled M and S represent Earth’s position in March and September respectively. The diameter of Earth’s orbit (the line segment MS) is <span class="TeX">d</span> = 2.992 × 10<sup>8</sup> km. The diagram is <b>not</b> to scale because the star is <em>really</em> far away!</p>
+    <p class="Center"><svg class="s20" data-svg2="p20/vec2d/img/trig.js#star"></svg></p>
+    <p>Calculate the distance to the star, i.e. the hypotenuse* of the two right triangles.</p>
+    <p>*The two measured angles (18.00000° and 18.00020°) would be <em>equal</em> if we round to five or fewer significant digits. This means that the two hypotenuses will also be equal up to five significant digits! You can solve for <em>either</em> hypotenuse since they are effectively the same!</p>
+</li>
 <div class="Answer">
-    <p>Write the <span class="TeX">\tan</span> ratio for both triangles...</p>
-    <p class="TeX">\tan 18.00000^\circ = \frac{h}{x + d}</p>
-    <p class="TeX">\tan 18.00020^\circ = \frac{h}{x}</p>
-    <p>Isolate <span class="TeX">h</span> in both equations...</p>
-    <p class="TeX">h = x \tan 18.00020^\circ = (x + d) \tan 18.00000^\circ</p>
-    <p>Isolate <span class="TeX">x</span>...</p>
-    <p class="TeX">x \tan 18.00020^\circ = x \tan 18.00000^\circ + d \tan 18.00000^\circ</p>
-    <p class="TeX">x (\tan 18.00020^\circ - \tan 18.00000^\circ) = d \tan 18.00000^\circ</p>
-    <p class="TeX">x  = \frac{d \tan 18.00000^\circ}{\tan 18.00020^\circ - \tan 18.00000^\circ} = \rm 2.52\times 10^{13}\ km</p>
+    <p>Write the <span class="TeX">\tan</span> ratio for both right-angle triangles...</p>
+    <p class="TeX">\begin{align}
+        \tan 18.00020^\circ &= \frac{y}{x}
+        \\[14pt]
+        \tan 18.00000^\circ &= \frac{y}{x + d}
+    \end{align}</p>
+    <p>This is what your Math 10C teacher called a <em>system of simultaneous equations</em>: two equations containing two unknowns (<span class="TeX">x</span> and <span class="TeX">y</span>).</p>
+    <p>Isolate <span class="TeX">y</span> by multiplying the first equation by <span class="TeX">x</span>...</p>
+    <p class="TeX">y = x \tan 18.00020^\circ</p>
+    <p>Substitute this expression into the second equation to eliminate <span class="TeX">y</span>...</p>
+    <p class="TeX">\tan 18.00000^\circ = \frac{x \tan 18.00020^\circ}{x + d}</p>
+    <p>Multiply both sides by <span class="TeX">(x+d)</span> to cancel the denominator of the right side...</p>
+    <p class="TeX">(x + d) \tan 18.00000^\circ = x \tan 18.00020^\circ</p>
+    <p>Isolate <span class="TeX">x</span> by “expanding and collecting like terms”...</p>
+    <p class="TeX">x \tan 18.00000^\circ + d \tan 18.00000^\circ = x \tan 18.00020^\circ</p>
+    <p class="TeX">d \tan 18.00000^\circ = x \tan 18.00020^\circ - x \tan 18.00000^\circ</p>
+    <p class="TeX">d \tan 18.00000^\circ = x (\tan 18.00020^\circ - \tan 18.00000^\circ)</p>
+    <p class="TeX">x = \frac{d \tan 18.00000^\circ}{\tan 18.00020^\circ - \tan 18.00000^\circ} = \rm 2.519\times 10^{13}\ km</p>
     <p>Solve for <span class="TeX">r</span> using the <span class="TeX">\cos</span> ratio...</p>
     <p class="TeX">\cos 18.00020^\circ = \frac{x}{r}</p>
     <p class="TeX">r \cos 18.00020^\circ = x</p>
-    <p class="TeX">r = \frac{x}{\cos 18.00020^\circ} = \rm 2.65\times 10^{13}\ km</p>
+    <p class="TeX">r = \frac{x}{\cos 18.00020^\circ} = \rm 2.649\times 10^{13}\ km</p>
     <p>It makes almost no difference if we measure the distance using Earth’s position in March or September, because <span class="TeX">d</span> is more than 80000 times smaller than <span class="TeX">x</span> and <span class="TeX">r</span>.</p>
 </div>
 
