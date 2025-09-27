@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Projectile Motion</h1>
@@ -78,29 +78,42 @@
 <p>To find the solution for when the ball is on the way back down, repeat the above calculations using the negative answer for <span class="TeX">\vec{\bf v}_{fy}</span>...</p>
 <p class="TeX">\Delta t = \rm{{-10.2\ m/s - (+17.3\ m/s) \over -9.81\ m/s^2} = 2.80\ s}</p>
 <p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x\Delta t = \rm{+10.0\ m/s\cdot 2.80\ s = +28.0\ m}</p>
-    
 </section>
 
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Projectile Motion</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
+
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+<p data-cue="none" class="Blue">Astronauts on the Moon kick a ball with a launch angle of 30.0°. The ball has a hang time of 9.82 seconds and a range of 136 metres. Use this data to determine the strength of the Moon’s gravity (i.e. the ball’s acceleration). Assume the terrain is flat.</p>
+<table class="Center Four TD6">
+    <tr><th colspan="2">Variable / Unit</th><td><span class="TeX">x</span></td><td><span class="TeX">y</span></td></tr>
+    <tr><td><span class="TeX">\vec{\bf a}</span></td><td>m/s<sup>2</sup></td><td>0</td><td class="Reveal"><span>–1.63</span></td></tr>
+    <tr><td><span class="TeX">\vec{\bf v}_i</span></td><td>m/s</td><td rowspan="2" class="Reveal"><span>+13.8</span></td><td class="Reveal"><span>+8.00</span></td></tr>
+    <tr><td><span class="TeX">\vec{\bf v}_f</span></td><td>m/s</td><td class="Reveal"><span>–8.00</span></td></tr>
+    <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td>+136</td><td>0.00</td></tr>
+    <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2">9.82</td></tr>
+</table>
+
+<!-- vy = 7.9959, vx = 13.849-->
+
+<!--<p>Solve the <span class="TeX">y</span>-motion as uniform accelerated motion. First find the final velocity...</p>
+<p class="TeX">v_{fy} = \sqrt{v_{iy}^2 + 2\vec{\bf a}_y\cdot\Delta\vec{\bf d}_y}</p>
+<p class="TeX">v_{fy} = \sqrt{\rm{(17.3\ m/s)^2 + 2(-9.81\ m/s^2)(-10.0\ m)}} = \rm{\pm 10.2\ m/s}</p>
+
+<p>Next find the time. Use the positive answer for the final velocity to find the time for the ball to reach 10-metres on the way up...</p>
+<p class="TeX">\Delta t = {\vec{\bf v}_{fy} - \vec{\bf v}_{iy} \over \vec{\bf a}_y}</p>
+<p class="TeX">\Delta t = \rm{{+10.2\ m/s - 17.3\ m/s \over -9.81\ m/s^2} = 0.727\ s}</p>
+
+<p>Now solve the <span class="TeX">x</span>-motion as uniform motion...</p>
+<p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x\Delta t = \rm{+10.0\ m/s\cdot 0.727\ s = +7.27\ m}</p>
+
+<p>To find the solution for when the ball is on the way back down, repeat the above calculations using the negative answer for <span class="TeX">\vec{\bf v}_{fy}</span>...</p>
+<p class="TeX">\Delta t = \rm{{-10.2\ m/s - (+17.3\ m/s) \over -9.81\ m/s^2} = 2.80\ s}</p>
+<p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x\Delta t = \rm{+10.0\ m/s\cdot 2.80\ s = +28.0\ m}</p> -->
+</section>
+
 </div></section>
 
-<script type="text/javascript" data-init="notes">
-
-loadFeed.notes = () => {
-    let rev = $("td.Reveal").on("click", (ev) => {
-        $(ev.currentTarget).find("span").fadeToggle();
-    });
-}
-
-</script>
-
-</div></section>
-
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
-<div id="Practice">
 <ol>
 <li>An object is thrown horizontally (i.e. with a direction of 0°) with a speed of 8.00 m/s from the top of a 12.5 m tall building. A Physics 20 students made a table of the <span class="TeX">x</span>- and <span class="TeX">y</span>-components of all kinematics vectors and filled in the known quantities, as shown below. Note that since the acceleration has no <span class="TeX">x</span>-component, this means that the initial and final <span class="TeX">x</span>-velocities are the same. Also note that time is a scalar, so it does not have separate <span class="TeX">x</span>- and <span class="TeX">y</span>-components.
     <table class="Center Top Bottom">
@@ -282,13 +295,13 @@ loadFeed.notes = () => {
     <p>Use the time to find the initial speed...</p>
 <p class="TeX">v_i = \rm \frac{+11.7\ m}{1.41\ s} = +8.30\ m/s</p>
     </div>
-</ol>
+<!-- </ol>
 
-</div></section>
+</section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
     <li>Define <em class="Defn">projectile motion</em>, including<ol type="a">
         <li>the shape of the trajectory,</li>
         <li>the cause of the motion,</li>
@@ -308,18 +321,13 @@ loadFeed.notes = () => {
 </ol>
 </div></section>
 
-<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts &amp; Links</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1Ptla_NnPLuBhw18AlDK4yCKu6xy3lpgJ">Assignment</button>
-        <button data-icon="gdrv" data-gdrv="12nHk2O4QJIdTM3PKbd3lktgpbo9jEFd2">Cannonball Lab</button>
-        <button data-icon="simulation.svg" data-feed="p20/vec2d/cannon">Simulation</button>
-        <button data-icon="desmos" data-open="https://www.desmos.com/calculator/ts8kwszdut">Desmos.com</button>
-    </p>
-</div></section>
+<script type="text/javascript" data-init="notes">
 
-<script type="text/javascript">
+loadFeed.notes = () => {
+    let rev = $("td.Reveal").on("click", (ev) => {
+        $(ev.currentTarget).find("span").fadeToggle();
+    });
+}
 
 loadFeed.data = {
     title: `${siteData.lesson}2.6 — Projectile Motion`,
@@ -329,6 +337,13 @@ loadFeed.data = {
     up: "p20/home",
     prev: "p20/vec2d/arith",
     next: "p20/vec2d/rev",
+    handouts: [
+        [null, {title: "Handouts & Links"}],
+        ["Assignment", {gdrv: "https://drive.google.com/file/d/1UY2qRFE2DQnsf1nKlA2rWCkQVlwPrCG_/view?usp=drive_link"}],
+        ["Cannon Ball Lab", {show: "2025.10.2", gdrv: "_"}],
+        ["Simulation", {show: "2025.10.2", icon: "simulation", feed: "p20/vec2d/cannon"}],
+        ["Desmos", {icon: "desmos", open: "https://www.desmos.com/calculator/ts8kwszdut"}],
+    ],
 }
 
 </script>

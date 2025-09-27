@@ -25,12 +25,12 @@
 
 <section class="Slide"><h3>Component Method</h3>
 <p>A more accurate and reliable method of vector addition is the <em class="Defn">component method</em>.</p>
+<p data-cue="prev" class="Center" id="Ex1Dup"><svg data-svg2="p20/vec2d/img/arith.js#Ex1" class="s18"></svg></p>
 <ul><li>Convert each vector to Cartesian form:</li></ul>
 <p class="TeX">\Delta{\vec{\bf d}}_{1x} = 50\ {\rm m}\cdot\cos(60^\circ) = +25\ {\rm m}</p>
 <p class="TeX">\Delta{\vec{\bf d}}_{1y} = 50\ {\rm m}\cdot\sin(60^\circ) = +43\ {\rm m}</p>
 <p class="TeX">\Delta{\vec{\bf d}}_{2x} = 40\ {\rm m}\cdot\cos(340^\circ) = +38\ {\rm m}</p>
 <p class="TeX">\Delta{\vec{\bf d}}_{2y} = 40\ {\rm m}\cdot\sin(340^\circ) = -14\ {\rm m}</p>
-<p class="Center"><svg id="Ex1Dup" data-svg2="p20/vec2d/img/arith.js#Ex1" class="s20"></svg></p>
 <ul><li>Now total the <span class="TeX">x</span>- and <span class="TeX">y</span>-components independently:</li></ul>
 <p class="TeX">\Delta{\vec{\bf d}}_x = \rm{+25\ m + 38\ m = +63\ m}</p>
 <p class="TeX">\Delta{\vec{\bf d}}_y = \rm{+43\ m + (-14\ m) = +30\ m}</p>
@@ -73,7 +73,7 @@
 
 <section class="Slide"><h3 class="Blue">Example 2</h3>
 <p data-cue="none" class="Blue">Calculate the net force acting on a mass that experiences a gravitational force of 98.1 N, a normal force of 96.6 N [+80.0°] and a friction force of 8.00 N [+170°].</p>
-<p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#Ex2" class="s12"></svg></p>
+<p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#Ex2" class="s10"></svg></p>
 <table class="TD6 Center Five Bottom">
     <tr class="NoBold"><th class="Bold">Force</th><th><span class="TeX">|\vec{\bf F}|</span> / N</th><th><span class="TeX">\theta</span></th><th><span class="TeX">\vec{\bf F}_x = \\ |\vec{\bf F}|\cos\theta</span></th><th><span class="TeX">\vec{\bf F}_y = \\ |\vec{\bf F}|\sin\theta</span></th></tr>
     <tr><td>Gravity</td><td>98.1</td><td>+270°</td><td>0</td><td>–98.1</td></tr>
@@ -182,7 +182,7 @@
 
         <li>Solve for all unknowns in the table below.
         </li>
-        <table class="Auto Center TD">
+        <table class="Auto Center TD Top">
             <tr><th>Object</th><th><span class="TeX">|\vec{\mathbf g}|</span></th><th><span class="TeX">\theta</span></th><th><span class="TeX">\vec{\mathbf g}_x</span></th><th><span class="TeX">\vec{\mathbf g}_y</span></th></tr>
             <tr><td>Planet</td><td>0.462</td><td>230°</td><td></td><td></td></tr>
             <tr><td>Moon</td><td></td><td>300°</td><td></td><td></td></tr>
@@ -239,21 +239,13 @@
 </ol>
 </div></section>
 
-<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="14BWvo1DqgCYIFTCTi5GE7aF-P2CHbi1z">Assignment</button>
-    </p>
-</div></section>
-
 <script type="text/javascript" data-init="init">
 
 loadFeed.init = () => {
     $("td.Reveal").on("click", (ev) => {
         $(ev.currentTarget).find("span").fadeToggle();
     });
-    $("#Ex1Dup").addClass("Present");
+    $("#Ex1Dup").addClass("Present").find("svg").trigger("click");
 }
 
 loadFeed.data = {
@@ -263,7 +255,8 @@ loadFeed.data = {
     num: "2.5",
     up: "p20/home",
     prev: "p20/vec2d/polar",
-    // next: "p20/vec2d/proj",
+    next: "p20/vec2d/proj",
+    handouts: [["Assignment", {gdrv: "14BWvo1DqgCYIFTCTi5GE7aF-P2CHbi1z"}]],
 }
 
 </script>
