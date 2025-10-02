@@ -70,69 +70,142 @@ const orbit = function(data) {
     return data;
 }
 
-const uam = function(info) {
-    let [a, vi, vf, d, t] = [info.a, info.vi, info.vf, info.d, info.t];
-    if (a == null) {
-        [vi, vf, d, t] = uam.solve2(vi, vf, d, t);
+// const uam = function(info) {
+//     let [a, vi, vf, d, t] = [info.a, info.vi, info.vf, info.d, info.t];
+//     if (a == null) {
+//         [vi, vf, d, t] = uam.solve2(vi, vf, d, t);
+//         a = (vf - vi) / t;
+//     }
+//     else if (d == null) {
+//         [a, vi, vf, t] = uam.solve1(a, vi, vf, t);   
+//         d = (vi + vf) * t / 2;
+//     }
+//     else if (t == null) {
+//         [vf, vi, a, d] = uam.solve3(vf, vi, a, d);
+//         if (a == 0) t = d / (typeof(vi) == "number" ? vi : vf);
+//         else if (vi instanceof Array) t = [(vf - vi[0]) / a, (vf - vi[1]) / a];
+//         else if (vf instanceof Array) t = [(vf[0] - vi) / a, (vf[1] - vi) / a];
+//         else t = (vf - vi) / a;
+//     }
+//     if (vi == null) vi = d / t - a / 2 * t;
+//     if (vf == null) vf = d / t + a / 2 * t;
+//     if (t instanceof Array) {
+//         if (t[0] < 0) {
+//             t = t[1];
+//             if (vi instanceof Array) vi = vi[1];
+//             if (vf instanceof Array) vf = vf[1];
+//         }
+//         else if (t[1] < 0) {
+//             t = t[0];
+//             if (vi instanceof Array) vi = vi[0];
+//             if (vf instanceof Array) vf = vf[0];
+//         }
+//     }
+//     return {a:a, vi:vi, vf:vf, d:d, t:t}
+// }
+
+// uam.solve1 = (a, vi, vf, t) => {
+//     if (a == null) a = (vf - vi) / t;
+//     else if (vf == null) vf = vi + a * t;
+//     else if (vi == null) vi = vf - a * t;
+//     else if (t == null) t = (vf - vi) / a;
+//     return [a, vi, vf, t];
+// }
+
+// uam.solve2 = (vi, vf, d, t) => {
+//     if (d == null) d = (vi + vf) * t / 2;
+//     else if (vf == null) vf = 2 * d / t - vi;
+//     else if (vi == null) vi = 2 * d / t - vf;
+//     else if (t == null) t = 2 * d / (vi + vf);
+//     return [vi, vf, d, t];
+// }
+
+// uam.solve3 = (vf, vi, a, d) => {
+//     if (vf == null) {
+//         vf = root(vi * vi + 2 * a * d);
+//         vf = [vf, -vf];
+//     }
+//     else if (vi == null) {
+//         vi = root(vf * vf - 2 * a * d);
+//         vi = [vi, -vi];
+//     }
+//     else if (a == null) a = (vf * vf - vi * vi) / (2 * d);
+//     else if (d == null) d = (vf * vf - vi * vi) / (2 * a);
+//     return [vf, vi, a, d];
+// }
+
+const count_keys = (obj, keys) => {
+    let n = 0;
+    for (let k in obj) if (keys == null || keys.indexOf(k) >= -1) n++;
+    return n;
+}
+
+const uam = (data) => {
+/* Solve for 2 unknowns of 5 variables for uniform accelerated motion */
+
+    // Check that 3 "givens" are provided
+    if (count_keys(data, uam.vars) != 3)
+        throw(`Exactly three of [${uam.vars}] must be given!`);
+
+    // Extract variables
+    let [a, vi, vf, d, t] = [data.a, data.vi, data.vf, data.d, data.t];
+    let alt = {}; // Possible second solution when 't' and one velocity are unknown
+
+    if (t == null) {
+        // Find (both?) solutions when 't' is unknown
+        if (a == null) a = (vf*vf - vi*vi) / (2 * d);
+        else if (d == null) d = (vf*vf - vi*vi) / (2 * a);
+        else if (vf == null) {
+            vf = root(vi*vi + 2 * a * d);
+            alt.vf = -vf;
+            alt.t = (-vf - vi) / a;
+        }
+        else {
+            vi = root(vf*vf - 2 * a * d);
+            alt.vi = -vi;
+            alt.t = (vf + vi) / a;
+        };
+        t = (vf - vi) / a;
+        if (alt.t) { // Ignore solution with t <= 0
+            if (t <= 0) {
+                t = alt.t;
+                if (alt.vi != null) vi = alt.vi;
+                else vf = alt.vf;
+                alt = {};
+            }
+            else if (alt.t <= 0) alt = {};
+        }
+    }
+    else if (a == null) {
+        // Find solution when 't' is known and 'a' unknown
+        if (d == null) d = (vi + vf) / 2 * t;
+        else if (vi == null) vi = 2 * d / t - vf;
+        else vf = 2 * d / t - vi;
         a = (vf - vi) / t;
     }
     else if (d == null) {
-        [a, vi, vf, t] = uam.solve1(a, vi, vf, t);   
-        d = (vi + vf) * t / 2;
+        // Find solution when 't' and 'a' are known and 'd' unknown
+        if (vf == null) d = (vi + a / 2 * t) * t;
+        else d = (vf - a / 2 * t) * t;
     }
-    else if (t == null) {
-        [vf, vi, a, d] = uam.solve3(vf, vi, a, d);
-        if (a == 0) t = d / (typeof(vi) == "number" ? vi : vf);
-        else if (vi instanceof Array) t = [(vf - vi[0]) / a, (vf - vi[1]) / a];
-        else if (vf instanceof Array) t = [(vf[0] - vi) / a, (vf[1] - vi) / a];
-        else t = (vf - vi) / a;
+    else {
+        // Find solution when only both velocities are unknown
+        vi = (d / t - a / 2 * t);
+        vf = vi + a * t;
     }
-    if (vi == null) vi = d / t - a / 2 * t;
-    if (vf == null) vf = d / t + a / 2 * t;
-    if (t instanceof Array) {
-        if (t[0] < 0) {
-            t = t[1];
-            if (vi instanceof Array) vi = vi[1];
-            if (vf instanceof Array) vf = vf[1];
-        }
-        else if (t[1] < 0) {
-            t = t[0];
-            if (vi instanceof Array) vi = vi[0];
-            if (vf instanceof Array) vf = vf[0];
-        }
-    }
-    return {a:a, vi:vi, vf:vf, d:d, t:t}
+
+    // Encapsulate solution
+    data = {a:a, vi:vi, vf:vf, d:d, t:t};
+    if (alt.t) data.alt = alt;
+
+    // Check that solution is valid
+    let noSoln = data.t <= 0;
+    for (let k in data) if (isNaN(data[k])) noSoln = true;
+
+    return noSoln ? null : data;
 }
 
-uam.solve1 = (a, vi, vf, t) => {
-    if (a == null) a = (vf - vi) / t;
-    else if (vf == null) vf = vi + a * t;
-    else if (vi == null) vi = vf - a * t;
-    else if (t == null) t = (vf - vi) / a;
-    return [a, vi, vf, t];
-}
-
-uam.solve2 = (vi, vf, d, t) => {
-    if (d == null) d = (vi + vf) * t / 2;
-    else if (vf == null) vf = 2 * d / t - vi;
-    else if (vi == null) vi = 2 * d / t - vf;
-    else if (t == null) t = 2 * d / (vi + vf);
-    return [vi, vf, d, t];
-}
-
-uam.solve3 = (vf, vi, a, d) => {
-    if (vf == null) {
-        vf = root(vi * vi + 2 * a * d);
-        vf = [vf, -vf];
-    }
-    else if (vi == null) {
-        vi = root(vf * vf - 2 * a * d);
-        vi = [vi, -vi];
-    }
-    else if (a == null) a = (vf * vf - vi * vi) / (2 * d);
-    else if (d == null) d = (vf * vf - vi * vi) / (2 * a);
-    return [vf, vi, a, d];
-}
+uam.vars = ["a", "vi", "vf", "d", "t"];
 
 const dopp = function(info) {
 /* 1D non-relativistic Doppler shift */

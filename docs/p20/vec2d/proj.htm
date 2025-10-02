@@ -134,9 +134,9 @@
 
         <li>Recall from when we studied 1D uniform accelerated motion, we need to know three of the five variables before we can solve for the missing two. Since we know three of the <span class="TeX">y</span>-variables, solve for the two missing <span class="TeX">y</span>-variables (i.e. the final <span class="TeX">y</span>-velocity and time).</li>
         <div class="Answer">
-            <p class="TeX">\vec{\bf v}_{fy} = -\sqrt{v_{iy}^2 + 2\vec{\bf a}\cdot \Delta\vec{\bf d}}</p>
-            <p class="TeX">\vec{\bf v}_{fy} = \rm -\sqrt{(8.00\ m/s)^2 + 2(-9.81\ m/s^2)(-12.5\ m)} = -15.7\ m/s</p>
-            <p class="TeX">\Delta t = \frac{\vec{\bf v}_{fy} - \vec{\bf v}_{iy}}{\vec{\bf a}}</p>
+            <p class="TeX">\vec{\bf v}_{fy} = -\sqrt{v_{iy}^2 + 2\vec{\bf a}_y\cdot \Delta\vec{\bf d}_y}</p>
+            <p class="TeX">\vec{\bf v}_{fy} = \rm -\sqrt{(0.00\ m/s)^2 + 2(-9.81\ m/s^2)(-12.5\ m)} = -15.7\ m/s</p>
+            <p class="TeX">\Delta t = \frac{\vec{\bf v}_{fy} - \vec{\bf v}_{iy}}{\vec{\bf a}_y}</p>
             <p class="TeX">\Delta t = \rm \frac{-15.7\ m/s - 0.00\ m/s}{-9.81\ m/s^2} = 1.60\ s</p>
         </div>
 
@@ -167,9 +167,9 @@
         <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td></td><td>–15.0</td></tr>
         <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
     </table>
-        <p class="TeX">\vec{\bf v}_{fy} = -\sqrt{v_{iy}^2 + 2\vec{\bf a}\cdot \Delta\vec{\bf d}}</p>
+        <p class="TeX">\vec{\bf v}_{fy} = -\sqrt{v_{iy}^2 + 2\vec{\bf a}_y\cdot \Delta\vec{\bf d}_y}</p>
         <p class="TeX">\vec{\bf v}_{fy} = \rm -\sqrt{(27.0\ m/s)^2 + 2(-9.81\ m/s^2)(-15.0\ m)} = -32.0\ m/s</p>
-        <p class="TeX">\Delta t = \frac{\vec{\bf v}_{fy} - \vec{\bf v}_{iy}}{\vec{\bf a}}</p>
+        <p class="TeX">\Delta t = \frac{\vec{\bf v}_{fy} - \vec{\bf v}_{iy}}{\vec{\bf a}_y}</p>
         <p class="TeX">\Delta t = \rm \frac{-32.0\ m/s - (+27.0\ m/s)}{-9.81\ m/s^2} = 6.01\ s</p>
         <p class="TeX">\Delta\vec{\bf d}_x = \vec{\bf v}_x \Delta t = \rm +22.7\ m/s\cdot 6.01\ s = +136\ m</p>
     </div>
@@ -184,9 +184,9 @@
         <tr><td><span class="TeX">\Delta\vec{\bf d}</span></td><td>m</td><td></td><td></td></tr>
         <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
     </table>
-    <p class="TeX">\Delta t = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\vec{\bf a}}</p>
+    <p class="TeX">\Delta t = \frac{\vec{\bf v}_{fy} - \vec{\bf v}_{iy}}{\vec{\bf a}_y}</p>
     <p class="TeX">\Delta t = \rm \frac{0.00\ m/s - (+27.0\ m/s)}{-9.81\ m/s^2} = 2.76\ s</p>
-    <p class="TeX">\Delta\vec{\bf d}_y = \frac{\vec{\bf v}_i + \vec{\bf v}_f}{2}\Delta t</p>
+    <p class="TeX">\Delta\vec{\bf d}_y = \frac{\vec{\bf v}_{iy} + \vec{\bf v}_{fy}}{2}\Delta t</p>
     <p class="TeX">\Delta\vec{\bf d}_y = \rm \frac{+27.0\ m/s + 0.00\ m/s}{2} 2.76\ s = +37.2\ m</p>
     <p>Note that this is 37.2 m above the initial height of 15.0 m, for a total height of 52.2 m above the ground!</p>
     </div>
@@ -204,9 +204,9 @@
     </table>
     <p class="TeX">\vec{\bf v}_x = \frac{\Delta\vec{\bf d}_x}{\Delta t}</p>
     <p class="TeX">\vec{\bf v}_x = \rm \frac{+7.00\ m}{1.75\ s} = +4.00\ m/s</p>
-    <p class="TeX">\vec{\bf v}_{iy} = \vec{\bf v}_{fy} - \vec{\bf a}\Delta t</p>
+    <p class="TeX">\vec{\bf v}_{iy} = \vec{\bf v}_{fy} - \vec{\bf a}_y\Delta t</p>
     <p class="TeX">\vec{\bf v}_{iy} = \rm 0.00\ m/s - (-9.81\ m/s^2)\ 1.75\ s = +17.2\ m/s</p>
-    <p class="TeX">\Delta\vec{\bf d}_y = \frac{\vec{\bf v}_i + \vec{\bf v}_f}{2}\Delta t</p>
+    <p class="TeX">\Delta\vec{\bf d}_y = \frac{\vec{\bf v}_{iy} + \vec{\bf v}_{fy}}{2}\Delta t</p>
     <p class="TeX">\Delta\vec{\bf d}_y = \rm \frac{+17.2\ m/s + 0.00\ m/s}{2} 1.75\ s = +15.0\ m</p>
     </div>
 
@@ -228,10 +228,10 @@
     <tr><td><span class="TeX">\Delta t</span></td><td>s</td><td colspan="2"></td></tr>
 </table>
 <p class="TeX">\begin{align}
-    \vec{\bf v}_{fy} &= -\sqrt{v_{iy}^2 + 2\vec{\bf a}\cdot \Delta\vec{\bf d}}
+    \vec{\bf v}_{fy} &= -\sqrt{v_{iy}^2 + 2\vec{\bf a}_y\cdot \Delta\vec{\bf d}_y}
     \\[10pt] &= \rm{-\sqrt{(33.7\ m/s)^2 + 2(-9.81\ m/s^2)(+2.50\ m)}}
     \\[10pt] &= \rm{-32.9\ m/s}
-    \\[16pt]\Delta t &= \frac{\vec{\bf v}_{fy} - \vec{\bf v}_{iy}}{\vec{\bf a}}
+    \\[16pt]\Delta t &= \frac{\vec{\bf v}_{fy} - \vec{\bf v}_{iy}}{\vec{\bf a}_y}
     \\[10pt] &= \rm{\frac{-32.9\ m/s - (+33.7\ m/s)}{-9.81\ m/s^2}}
     \\[10pt] &= \rm{6.79\ s}
     \\[16pt]\Delta\vec{\bf d}_x &= \vec{\bf v}_x \Delta t
@@ -255,7 +255,7 @@
     \vec{\bf v}_x &= \frac{\Delta\vec{\bf d}_x}{\Delta t}
     \\[10pt] &= \rm{\frac{+80.0\ m}{5.25\ s}}
     \\[10pt] &= \rm{+15.2\ m/s}
-    \\[16pt]\vec{\bf v}_{iy} &= \frac{\Delta\vec{\bf d} - \frac{1}{2}\vec{\bf a}_y (\Delta t)^2}{\Delta t}
+    \\[16pt]\vec{\bf v}_{iy} &= \frac{\Delta\vec{\bf d}_y - \frac{1}{2}\vec{\bf a}_y (\Delta t)^2}{\Delta t}
     \\[10pt] &= \rm{\frac{0.00\ m - \frac{1}{2}(-9.81\ m/s^2) (5.25\ s)^2}{5.25\ s}}
     \\[10pt] &= \rm{+25.8\ m/s}
     \\[16pt]|\vec{\bf v}_i| &= \rm{\sqrt{15.2^2 + 25.8^2}\ m/s = 29.9\ m/s}

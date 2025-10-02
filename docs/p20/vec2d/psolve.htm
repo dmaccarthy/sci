@@ -1,0 +1,66 @@
+<section class="Post" data-icon="simulation">
+<h2 class="Collapse">Solver</h2><div class="Collapse Expand">
+
+<table id="Projectile" class="Center TD6 Bottom">
+    <tr><th></th><th class="TeX">x</th><th class="TeX">y</th></tr>
+    <tr><td><span class="TeX">\vec{\bf a}</span> / (m/s<sup>2</sup>)</td><td>0.00</td><td><input id="ay" type="number" value="-9.81"/></td></tr>
+    <tr><td><span class="TeX">\vec{\bf v}_i</span> / (m/s)</td><td rowspan="2"><input id="vx" type="number" value="10.0"/></td><td><input id="viy" type="number" value="10.0"/></td></tr>
+    <tr><td><span class="TeX">\vec{\bf v}_f</span> / (m/s)</td><td><input id="vfy" type="number" value="0.00"/></td></tr>
+    <tr><td><span class="TeX">\Delta\vec{\bf d}</span> / m</td><td><input id="dx" type="number"/></td><td><input id="dy" type="number"/></td></tr>
+    <tr><td><span class="TeX">\Delta t</span> / s</td><td colspan="2"><input id="txy" type="number"/></td></tr>
+</table>
+<p class="Center"><button onclick="loadFeed.solve()">Solve</button></p>
+
+</div></section>
+
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
+    $("#Projectile td input").css({width: "6em", "text-align": "center"}).on("click", (ev) => {
+        $(ev.currentTarget).val("");
+    });
+}
+
+loadFeed.solve = () => {
+    let data_in = $("#Projectile td input");
+    let data = {};
+    for (let e of data_in) {
+        let v = $(e).val();
+        if (v) data[e.id] = parseFloat(v);
+    }
+    let getData = (xy, ...args) => {
+        let obj = {};
+        for (let a of args) {
+            let v = data[a + xy]
+            if (v != null) obj[a] = v;
+        }
+        return obj;
+    }
+    let datax = getData('x', 'v', 'd');
+    let datay = getData('y', 'a', 'vi', 'vf', 'd');
+    let t = data.txy;
+    if (t != null) datax.t = datay.t = t;
+    if (count_keys(datay) == 3) {
+        data = uam(datay);
+        if (t == null) datax.t = data.t;
+    }
+    else data = null;
+    if (count_keys(datax) == 2) {
+        if (datax.t == null) datax.t = datax.d / datax.v;
+        else if (datax.v == null) datax.v = datax.d / datax.t;
+        else datax.d = datax.v * datax.t;
+    }
+    if (data == null) {
+        datay.t = datax.t;
+        data = uam(datay);
+    }
+    console.log(datax, data);
+}
+
+loadFeed.data = {
+    title: `${siteData.lesson}Projectile Motion Solver`,
+    // num: "2.6",
+    up: "p20/vec2d/proj",
+}
+
+</script>
