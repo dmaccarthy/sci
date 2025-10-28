@@ -1,11 +1,11 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Forces &amp; Inertia</h1>
 </section>
 
-<section class="Slide"><h3>Inertia</h3>
+<section class="Slide"><h3>Inertia (Newton’s 1<sup>st</sup> Law)</h3>
 <p>If you stop pushing on an object, it will begin to slow and eventually come to rest.</p>
 <ul>
 	<li>How long it takes to come to rest depends on how much friction and air resistance are present, since these are the forces responsible for transforming the kinetic energy into other energy forms.</li>
@@ -20,24 +20,24 @@
     <li>In other words, <em>uniform motion</em> is the natural state of motion for objects when they are not interacting with other objects.</li></ul>
 </section>
 
-<section class="Slide"><h3>Force</h3>
+<section class="Slide"><h3>Force (Newton’s 2<sup>nd</sup> Law)</h3>
 <p>On their own, objects move in uniform motion.</p>
 <ul>
     <li>To make an object <em>accelerate</em> (speed up, slow down, or change direction) requires a <em class="Defn">force</em>.</li>
 	<li>An object’s <em>mass</em> determines its inertia; larger masses are more difficult to accelerate.</li>
-    <li>The work-energy theorem was one way to describe the effect a force has on the motion of an object:
+    <!-- <li>The work-energy theorem was one way to describe the effect a force has on the motion of an object:
         <p class="TeX">\Delta E_k = W = \vec{\bf F}_\parallel \cdot\Delta\vec{\bf d}</p>
-    </li>
+    </li> -->
     <li><em class="Defn">Newton’s 2<sup>nd</sup> Law</em> describes the effect of force on motion in terms of acceleration:
         <p data-cue="none" class="TeX">\vec{\bf F}_{net} = m\vec{\bf a}</p>
     </li>
 	<li>The SI unit of force is the newton: <span class="TeX">\rm{N = kg\cdot m/s^2}</span>.</li>
 	<li>If more than one force acts on the object, <span class="TeX">{\vec{\bf F}}_{net}</span> is the vector sum of all the individual forces.</li>
     <li>The net or total force is also called the <em class="Defn">unbalanced force</em> or the <em class="Defn">resultant force</em>.</li>
-    <li>The work-energy theorem equation can be derived by combining Newton’s 2<sup>nd</sup> Law with the uniform accelerated motion equations:
+    <!-- <li>The work-energy theorem equation can be derived by combining Newton’s 2<sup>nd</sup> Law with the uniform accelerated motion equations:
         <p data-cue="none" class="TeX">\vec{\bf F}_{net} = m\frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
         <p data-cue="none" class="TeX">\Delta\vec{\bf d} = \frac{\vec{\bf v}_i + \vec{\bf v}_f}{2} \Delta t</p>
-    </li>
+    </li> -->
 </ul>
 <p>Some common forces are:</p>
 <ul>
@@ -62,10 +62,36 @@
 <p class="TeX">{\vec{\bf a}} = {\vec{\bf F}_{net} \over m} = \rm{{90.0\ N\over 25.0\ kg} = 3.60\ m/s^2}</p>
 </section>
 
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Forces &amp; Inertia</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
-</div></section>
+<section class="Slide"><h3>Free Body Diagrams</h3>
+<p class="Center"><svg data-svg2="p20/dyn/img/fbd.js#fbd1" class="s12"></svg></p>
+<p>A <em class="Defn">free body diagram</em> is an illustration that shows the forces acting on an object.</p>
+<ul>
+	<li>Each force is drawn as a <em>vector</em> pointing in the direction that the force acts.</li>
+	<li>The length of each vector illustrates how strong the force is.</li>
+	<li>For a mass on a ramp, the forces are:
+        <ul>
+            <li>gravitational force pulling down</li>
+            <li>normal force pushing perpendicular to the ramp</li>
+            <li>friction parallel to the ramp, opposite to the motion</li>
+        </ul>
+    </li>
+</ul>
+<p>Free body diagrams are used to clarify the interactions that an object is experiencing, in order to determine the object’s acceleration.</p>
+</section>
+
+<section class="Slide"><h3>Vector Diagrams</h3>
+<p>A free body diagram should not be confused with a <em class="Defn">vector diagram</em>.</p>
+<p class="Center"><svg data-svg2="p20/dyn/img/fbd.js#vec1" class="s12"></svg></p>
+<ul>
+	<li>The vector diagram illustrates the same three forces as the free body diagram.</li>
+	<li>The main difference is that the arrows representing the force vectors have been redrawn “tip-to-tail” to show the resultant (net) force.</li>
+	<li>Vector diagram are drawn exactly the same for forces as for displacement.</li>
+	<li>For an object moving <em>horizontally</em>, the <em>vertical</em> forces must balance and the net force will be the total of the horizontal forces.</li>
+	<li>For an object moving <em>vertically</em>, the <em>horizontal</em> forces must balance and the net force will be the total of the vertical forces.</li>
+</ul>
+
+</section>
+
 
 </div></section>
 
@@ -119,17 +145,119 @@
 <p class="TeX">\vec{\bf F}_{net} = m\vec{\bf a} = \rm 82.0\ kg\cdot (+3.70\ m/s^2) = 303\ N</p>
 </div>
 
-<li>A 68.5 kg skydiver experiences a force of 672 N “down” due to gravity and a force of 138 N “up” due to air resistance. What is the skydiver’s acceleration? Include a direction.</li>
+<li>A 68.5 kg skydiver experiences a force of 672 N “down” due to gravity and a force of 138 N “up” due to air resistance. What is the skydiver’s acceleration (including direction)? Include a free body diagram with your solution.</li>
 <div class="Answer">
-<p class="TeX">\vec{\bf F}_{net} = \rm{+138\ N + (-672\ N) = -534\ N}</p>
-<p class="TeX">\vec{\bf a} = \frac{\vec{\bf F}_{net}}{m} = \rm{\frac{-534\ N}{68.5\ kg} = -7.80\ m/s^2}</p>
+    <p class="Center"><svg data-svg2="p20/dyn/img/weight.js#skydive" class="s8"></svg></p>
+    <p class="TeX">\vec{\bf F}_{net} = \rm{+138\ N + (-672\ N) = -534\ N}</p>
+    <p class="TeX">\vec{\bf a} = \frac{\vec{\bf F}_{net}}{m} = \rm{\frac{-534\ N}{68.5\ kg} = -7.80\ m/s^2}</p>
 </div>
-</ol>
+
+
+<li><ol type="a">
+    <li>Draw a free body diagram and a vector diagram, when a falling object experiences gravity of <span class="TeX">{\vec{\mathbf{F}}}_g</span> = –63.8 N and air resistance of <span class="TeX">{\vec{\mathbf{F}}}_f</span>  = +12.5 N.</li>
+<div class="Answer">
+    <p class="Center">
+        <svg data-svg2="p20/dyn/img/fbd.js#Q1f" style="padding:0 1em" class=""></svg>
+        <svg data-svg2="p20/dyn/img/fbd.js#Q1v" style="padding:0 1em" class=""></svg>
+    </p>
+    <p>The vectors have been shifted slightly off of the <span class="NoWrap"><span class="TeX">y</span>-axis</span> for better visibility.</p>
+</div>
+
+<li>The mass of the object is 6.50 kg. Calculate the net force and then use your result to calculate acceleration of the mass.</li>
+<div class="Answer">
+    <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_g + \vec{\mathbf F}_f = \mathrm{-63.8\ N + 12.5\ N = -51.3\ N}</p>
+    <p class="TeX">\vec{\mathbf a} = \frac{\vec{\mathbf F}_{net}}{m} = \mathrm{\frac{-51.3\ N}{6.50\ kg} = -7.89\ m/s^2}</p>
+</div>
+</ol></li>
+
+<li>Calculate the mass of an object that has an acceleration of –3.92 m/s<sup>2</sup> when the forces are <span class="TeX">{\vec{\mathbf{F}}}_f</span> = +15.0 N for air resistance and <span class="TeX">{\vec{\mathbf{F}}}_g</span> = –25.0 N for gravity. The free body diagram is the same as for the previous question. Include a labelled vector diagram drawn to scale as part of your solution.</li>
+<div class="Answer">
+    <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_g + \vec{\mathbf F}_f = \mathrm{-25.0\ N + 15.0\ N = -10.0\ N}</p>
+    <p class="TeX">m = \frac{\vec{\mathbf F}_{net}}{\vec{\mathbf a}} = \mathrm{\frac{-10.0\ N}{-3.92\ m/s^2} = 2.55\ kg}</p>
+</div>
+
+<li>
+    <p>When a skydiver first deploys her parachute, the upward air resistance is stronger than the downward gravity force due to the large surface area of the parachute. A 58.0 kg skydiver experiences gravity of <span class="TeX">{\vec{\mathbf{F}}}_g</span> = –567 N and air resistance of <span class="TeX">{\vec{\mathbf{F}}}_f</span> = +725 N.</p><ol type="a">
+    <li>Draw a free body diagram and a vector diagram to scale.</li>
+    <div class="Answer">
+        <p class="Center"><svg data-svg2="p20/dyn/img/fbd.js#Q3" class="s6"></svg></p>
+        <p>The vectors have been shifted slightly off of the <span class="NoWrap"><span class="TeX">y</span>-axis</span> for better visibility.
+            The free body diagram is the same as #1 except that the acceleration is directed up.</p>
+    </div>
+
+    <li>Calculate the skydiver’s acceleration.</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_g + \vec{\mathbf F}_f = \mathrm{-567\ N + 725\ N = +158\ N}</p>
+        <p class="TeX">\vec{\mathbf a} = \frac{\vec{\mathbf F}_{net}}{m} = \mathrm{\frac{+158\ N}{58.0\ kg} = +2.72\ m/s^2}</p>
+    </div>
+
+    <li>Explain what it means to have a positive acceleration while falling in the negative direction.</li>
+    <p class="Answer">It means that she is slowing down. For example, if her velocity was –30 m/s before she opened her parachute and –10 m/s after the parachute opened, her change in velocity would be positive: <span class="TeX">\Delta\vec{\mathbf v}</span> = (–10 m/s) – (–30 m/s) = +20 m/s.</p>
+</ol></li>
+
+<li>
+    <p>An object being pushed along a horizontal surface has the free body diagram shown below.</p>
+    <p class="Answer Center"><svg data-svg2="p20/dyn/img/fbd.js#fbd" class="s12"></svg></p>
+    <p>The force applied (<span class="TeX">{\vec{\mathbf{F}}}_a</span>) by the person pushes the object to the right (+) while the friction force (<span class="TeX">{\vec{\mathbf{F}}}_f</span>) acts in the opposite (–) direction. According to Newton’s 2nd Law, the acceleration will be in the positive direction when the applied force is stronger than the friction force, and in the negative direction when the friction is stronger.</p>
+    <p>The force of gravity pulling down and the upward normal force of the ground pushing on the object will also be present; however, if the object only moves in the horizontal direction, these vertical forces will be perfectly balanced so that we can ignore them when calculating <span class="TeX">{\vec{\mathbf{F}}}_{net}</span>.</p>
+
+<ol type="a">
+    <li>Calculate the friction force when an applied force of +58.9 N causes a 6.00 kg mass to accelerate at +4.00 m/s<sup>2</sup>.</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\mathbf F}_{net} = m\vec{\mathbf a} = \mathrm{6.00\ kg\cdot (+4.00\ m/s^2) = +24.0\ N}</p>
+        <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_a + \vec{\mathbf F}_f</p>
+        <p class="TeX">\vec{\mathbf F}_f = \vec{\mathbf F}_{net} - \vec{\mathbf F}_a = \mathrm{+24.0\ N - 58.9\ N = -34.9\ N}</p>
+    </div>
+
+    <li>A 2.00 kg mass experiences a friction force of –26.1 N and accelerates at –3.25 m/s<sup>2</sup>. Calculate the applied force acting on the mass and include a vector diagram.</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\mathbf F}_{net} = m\vec{\mathbf a} = \mathrm{2.00\ kg\cdot (-3.25\ m/s^2) = -6.50\ N}</p>
+        <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_a + \vec{\mathbf F}_f</p>
+        <p class="TeX">\vec{\mathbf F}_a = \vec{\mathbf F}_{net} - \vec{\mathbf F}_f = \mathrm{-6.50\ N - (-26.1\ N) = +19.6\ N}</p>     
+    </div>
+
+    <li>Calculate the mass of the object if it accelerates at +4.76 m/s<sup>2</sup> when the applied force is +35.0 N and the friction is –18.0 N. Include a vector diagram.</li>
+    <div class="Answer">
+        <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_a + \vec{\mathbf F}_f = \mathrm{+35.0\ N - 18.0\ N = +17.0\ N}</p>
+        <p class="TeX">m = \frac{\vec{\mathbf F}_{net}}{\vec{\mathbf a}} = \mathrm{\frac{+17.0\ N}{+4.76\ m/s^2} = 3.57\ kg}</p>
+    </div>
+</ol></li>
+
+<li>During launch, a toy rocket experiences a thrust (applied force) of +185 N, air resistance of –38.2 N, and gravity of –49.1 N. All forces are vertical. If the rocket accelerates at +19.5 m/s<sup>2</sup>, what is its mass?</li>
+<div class="Answer">
+    <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_a + \vec{\mathbf F}_g + \vec{\mathbf F}_f = \mathrm{+185\ N - 49.1\ N - 38.2\ N = +97.7\ N}</p>
+    <p class="TeX">m = \frac{\vec{\mathbf F}_{net}}{\vec{\mathbf a}} = \mathrm{\frac{+97.7\ N}{+19.5\ m/s^2} = 5.01\ kg}</p>
+</div>
+
+<li>A 1420 kg car accelerates from 50.0 km/h to 80.0 km/h over 108 m along a horizontal road. The air resistance acting on the car is –415 N. Calculate the applied force.</li>
+<div class="Answer">
+    <p>Use the uniform accelerated motion equations to find acceleration. Be sure to change km/h to m/s first...</p>
+    <p class="TeX">\vec{\mathbf a} = \frac{v_f^2 - v_i^2}{2\Delta\vec{\mathbf d}}
+        = \mathrm{\frac{(22.2\ m/s)^2 - (13.9\ m/s)^2}{2\cdot 108\ m} = +1.39\ m/s^2}</p>
+    <p class="TeX">\vec{\mathbf F}_{net} = m\vec{\mathbf a} = \mathrm{1420\ kg\cdot (+1.39\ m/s^2) = +1978\ N}</p>
+    <p class="TeX">\vec{\mathbf F}_{net} = \vec{\mathbf F}_a + \vec{\mathbf F}_f</p>
+    <p class="TeX">\vec{\mathbf F}_a = \vec{\mathbf F}_{net} - \vec{\mathbf F}_f = \mathrm{+1978\ N - (-415\ N) = +2393\ N}</p>     
+</div>
+
+<li>An ice hockey puck slowly decelerates due to air resistance and friction.<ol type="a">
+    <li>Draw a free body diagram for the puck, illustrating its direction of motion and the direction of all forces acting on the puck.</li>
+    <p class="Answer Center"><svg data-svg2="p20/dyn/img/fbd.js#Q7" class="s16"></svg></p>
+
+    <li>If the 376 g puck has an initial velocity of 1.25 m/s and takes 23.2 s to come to rest, determine the average net force it experienced.</li>
+    <div class="Answer">
+        <p>Use the uniform accelerated motion equations to find acceleration:</p>
+        <p class="TeX">\vec{\mathbf a} = \frac{\vec{\mathbf v}_f - \vec{\mathbf v}_i}{\Delta t}
+        = \mathrm{\frac{0.00\ m/s - 1.25\ m/s}{23.2\ s} = -0.0539\ m/s^2}</p>
+        <p class="TeX">\vec{\mathbf F}_{net} = m\vec{\mathbf a} = \mathrm{0.376\ kg\cdot (-0.0539\ m/s^2) = -0.0203\ N}</p>
+    </div>
+</ol></li>
+
+<!-- </ol>
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
     <li>Explain the <em class="Defn">Law of Inertia</em>, also called <em class="Defn">Newton’s 1<sup>st</sup> Law of Motion</em>.</li>
     <p class="Answer">Objects at rest will remain at rest and <em>objects in motion will remain in motion with a constant velocity</em> unless acted upon by an unbalanced force. Once an object is set in motion it does <b>not</b> require a force to keep the object in motion!</p>
 
@@ -156,27 +284,25 @@
 
     <li>Based on Newton’s Laws of Motion, what are the requirements for (a) uniform motion, and (b) uniform accelerated motion?</li>
     <p class="Answer">Uniform motion occurs when the net (unbalanced) force is exactly <em>zero</em>. Uniform accelerated motion occurs when there is a <em>constant</em>, non-zero unbalanced force.</p>
-</ol>
-</div></section>
 
-<section class="Post" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1o_9R5fvDw-KF4sA28mm5DFJUp5RffkRu">Assignment</button>
-    </p>
+    <li><ol type="a">
+        <li>Explain what a <em class="Defn">free body diagram</em> is and why it is used.</li>
+        <li>Explain how a free body diagram differs from a vector diagram.</li>
+    </ol></li>
+</ol>
 </div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
-    title: `${siteData.lesson}3.1 — Forces & Inertia`,
-    showDate: "2025.3.12",
-    answerDate: "2025.3.14",
+    title: `${siteData.lesson}3.1 — Force & Inertia`,
+    showDate: "2026.10.30",
+    answerDate: "2026.11.1",
     num: "3.1",
     up: "p20/home",
-    prev: "p20/energy/rev",
-    next: "p20/dyn/fbd",
+    prev: "p20/vec2d/rev",
+    // next: "p20/dyn/n3",
+    handouts: [["Assignment", {gdrv: "_"}]],
 }
 
 </script>
