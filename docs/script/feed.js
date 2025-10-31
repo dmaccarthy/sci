@@ -250,7 +250,8 @@ function onFeedLoaded(feed, e, noHist) {
     let data = loadFeed.data;
     title = data.title;
     if (!title) title = "Untitled Feed";
-    h2 = $("#TopTitle").html(document.title = title);
+    document.title = $("<p>").html(data.title).text();
+    h2 = $("#TopTitle").html(title);
     if (data.up)
         h2.addClass("FeedLink").attr({title: "Click to go up one level"});
     else
