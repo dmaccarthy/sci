@@ -21,7 +21,7 @@
     <h3>Fundamental Units</h3>
     <p>Scientists have agreed that the <em>official</em> unit for measuring distances will be the <em class="Defn">metre</em>, <span class="TeX">{\rm m}</span>.</p>
     <ul>
-        <li">A metre is officially defined as a certain number of wavelengths of a certain colour of light.</li>
+        <li>A metre is officially defined as a certain number of wavelengths of a certain colour of light.</li>
     </ul>
     <p>The <i>Système Internationale</i> uses seven <em class="Defn">fundamental</em> units (also called <em>base</em> units) upon which all other units are based.</p>
     <table class="Center">
@@ -42,15 +42,15 @@
     <ul>
         <li>To measure velocity, we use <span class="TeX">\rm{m/s}</span>.</li>
         <li>To measure density, we use <span class="TeX">\rm{kg/m^3}</span>.
-            <p class="Center"><img src="p20/skill/img/icecube.svg" alt="Cube" class="w10"/></p>
+            <p data-cue="prev" class="Center"><img src="p20/skill/img/icecube.svg" alt="Cube" class="w10"/></p>
         </li>
     </ul>
     <p>Sometimes derived units are given their own name and symbol.</p>
     <!-- <p data-cue="4" class="Center"><img src="img/newton.png" alt="Newton" class="w10"/></p> -->
     <ul>
-        <p class="Center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg/399px-Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg" alt="Newton" class="w10 NoPrint"/></p>
         <li>The SI unit of force is called the <em>newton</em>:
-            <p class="TeX">\rm{N = kg \cdot {m\over s^2}}</p></li>
+            <p data-cue="prev" class="TeX">\rm{N = kg \cdot {m\over s^2}}</p></li>
+            <p data-cue="prev" class="Center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg/399px-Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg" alt="Newton" class="w10 NoPrint"/></p>
         <li>Other derived units with names include: joule, watt, pascal, volt.</li>
     </ul>
 </section>
@@ -89,8 +89,8 @@
     <p>The <em class="Defn">factor-label</em> method of unit conversion can be used whenever we want to replace a unit by a different but equivalent unit...</p>
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
-    <p class="Blue">Convert <span class="TeX">\rm{25.0\ \mu m}</span> to <span class="TeX">\rm m</span>.</p>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+    <p data-cue="none" class="Blue">Convert <span class="TeX">\rm{25.0\ \mu m}</span> to <span class="TeX">\rm m</span>.</p>
     <p>We know that <span class="TeX">\rm{1\ \mu m = 10^{-6}\ m}</span>.</p>
     <div>
         <p>Write the measurement in scientific notation, and multiply the measurement by a fraction with the two equivalent measurements as the numerator and denominator...</p>
@@ -103,8 +103,8 @@
         \end{align}</p>                    
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
-    <p class="Blue">Convert <span class="TeX">\rm{5.00\times 10^{-7} s}</span> to <span class="TeX">\rm {ns}</span>.</p>
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+    <p data-cue="none" class="Blue">Convert <span class="TeX">\rm{5.00\times 10^{-7} s}</span> to <span class="TeX">\rm {ns}</span>.</p>
     <p><span class="TeX">\rm{1\ ns = 10^{-9}\ s}</span>...</p>
     <p class="TeX">\begin{align}
 \rm{5.00\times 10^{-7}\ s}
@@ -112,8 +112,8 @@
 \\[8pt]&= \rm{5.00\times 10^2\ ns}\end{align}</p>
 </section>
 
-<section class="Slide"><h3>Example 3</h3>
-    <p class="Blue">Convert <span class="TeX">\rm{1.50\ mW/cm^2}</span> to <span class="TeX">\rm{W/m^2}</span>.</p>
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+    <p data-cue="none" class="Blue">Convert <span class="TeX">\rm{1.50\ mW/cm^2}</span> to <span class="TeX">\rm{W/m^2}</span>.</p>
     <p><span class="TeX">\rm{1\ mW = 10^{-3}\ W}</span> and <span class="TeX">\rm{1\ cm = 10^{-2}\ m}</span>...</p>
     <p class="TeX">\begin{align}
 \rm{1.50\ \frac{mW}{cm^2}}
@@ -123,8 +123,8 @@
     <ul><li>When a unit is squared or cubed, you must square or cube the factor-label fraction too!</li></ul>
 </section>
 
-<section class="Slide"><h3>Example 4</h3>
-    <p class="Blue">Convert <span class="TeX">\rm{80.0\ km/h}</span> to <span class="TeX">\rm{m/s}</span>.</p>
+<section class="Slide"><h3 class="Blue">Example 4</h3>
+    <p data-cue="none" class="Blue">Convert <span class="TeX">\rm{80.0\ km/h}</span> to <span class="TeX">\rm{m/s}</span>.</p>
     <p><span class="TeX">\rm{1\ km = 10^3\ m}</span> and <span class="TeX">\rm{1\ h = 3600\ s}</span>...</p>
     <p class="TeX">\begin{align}
 \rm{80.0\frac{km}{h}} &= \rm{80.0\frac{\bcancel{km}}{\bcancel{h}}\ \color{red}{\left(\frac{10^3\ m}{1\ \bcancel{km}}\right)} \color{#0065fe}{\left(\frac{\bcancel{h}}{3600\ s}\right)}}
@@ -135,79 +135,55 @@
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<</h2><div class="Collapse">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
     <li>Write the name of each of these units and express each measurement in the standard SI unit.<ol type="a">
-        <li>1 mm</li><div class="Answer">millimeter = 10<sup>–3</sup> m</div>
-        <li>1 MV</li><div class="Answer">megavolt = 10<sup>6</sup> V</div>
-        <li>1 kPa</li><div class="Answer">kilopascal = 10<sup>3</sup> Pa</div>
-        <li>1 μs</li><div class="Answer">microsecond = 10<sup>–6</sup> s</div>
+        <li>1 mm</li><p class="Answer">millimeter = 10<sup>–3</sup> m</p>
+        <li>1 MV</li><p class="Answer">megavolt = 10<sup>6</sup> V</p>
+        <li>1 kPa</li><p class="Answer">kilopascal = 10<sup>3</sup> Pa</p>
+        <li>1 μs</li><p class="Answer">microsecond = 10<sup>–6</sup> s</p>
     </ol></li>
 
     <li>Convert each measurement to scientific notation, and then use the factor-label method to convert the measurement to standard SI units.
     <ol type="a">
         <li>12.1 MW</li>
-        <div class="Answer">
-            <p class="TeX">\mathrm{1.21\times 10^1\ MW = 1.21\times 10^1\ MW \color{#0065fe}{\left(\frac{10^6\ W}{MW}\right)} = 1.21\times 10^7\ W}</p>    
-        </div>
+        <p class="Answer TeX">\rm{1.21\times 10^1\ MW = 1.21\times 10^1\ MW \color{#0065fe}{\left(\frac{10^6\ W}{MW}\right)} = 1.21\times 10^7\ W}</p>    
 
         <li>734 pm</li>
-        <div class="Answer">
-            <p class="TeX">\mathrm{7.34\times 10^2\ pm = 7.34\times 10^2\ pm \color{#0065fe}{\left(\frac{10^{-12}\ m}{pm}\right)} = 7.34\times 10^{-10}\ m}</p>    
-        </div>
+        <p class="Answer TeX">\rm{7.34\times 10^2\ pm = 7.34\times 10^2\ pm \color{#0065fe}{\left(\frac{10^{-12}\ m}{pm}\right)} = 7.34\times 10^{-10}\ m}</p>    
 
         <li>0.254 ns</li>
-        <div class="Answer">
-            <p class="TeX">\mathrm{2.54\times 10^{-1}\ ns = 2.54\times 10^{-1}\ ns \color{#0065fe}{\left(\frac{10^{-9}\ s}{ns}\right)} = 2.54\times 10^{-10}\ s}</p>    
-        </div>
+        <p class="Answer TeX">\rm{2.54\times 10^{-1}\ ns = 2.54\times 10^{-1}\ ns \color{#0065fe}{\left(\frac{10^{-9}\ s}{ns}\right)} = 2.54\times 10^{-10}\ s}</p>    
     </ol></li>
 
     <li>Convert each measurement to the specified unit. Express your answer in scientific notation. Show all work.<ol type="a">
         <li>18.25 g to kg</li>
-        <div class="Answer">
-            <p class="TeX">\mathrm{1.825\times 10^1\ g = 1.825\times 10^1\ g \color{#0065fe}{\left(\frac{kg}{10^3\ g}\right)} = 1.825\times 10^{-2}\ g}</p>    
-        </div>
+        <p class="Answer TeX">\rm{1.825\times 10^1\ g = 1.825\times 10^1\ g \color{#0065fe}{\left(\frac{kg}{10^3\ g}\right)} = 1.825\times 10^{-2}\ g}</p>    
     
         <li>0.83 m to mm</li>
-        <div class="Answer">
-            <p class="TeX">\mathrm{8.3\times 10^{-1}\ m = 8.3\times 10^{-1}\ m \color{#0065fe}{\left(\frac{mm}{10^{-3}\ m}\right)} = 8.3\times 10^2 mm}</p>
-        </div>
+        <p class="Answer TeX">\rm{8.3\times 10^{-1}\ m = 8.3\times 10^{-1}\ m \color{#0065fe}{\left(\frac{mm}{10^{-3}\ m}\right)} = 8.3\times 10^2 mm}</p>
     
         <li>5.24 × 10<sup>–3</sup> s to μs</li>
-        <div class="Answer">
-            <p class="TeX">\mathrm{5.24\times 10^{-3}\ s = 5.24\times 10^{-3}\ s \color{#0065fe}{\left(\frac{\mu s}{10^{-6}\ s}\right)} = 5.24\times 10^3\ \mu s}</p>
-        </div>
+        <p class="Answer TeX">\rm{5.24\times 10^{-3}\ s = 5.24\times 10^{-3}\ s \color{#0065fe}{\left(\frac{\mu s}{10^{-6}\ s}\right)} = 5.24\times 10^3\ \mu s}</p>
     </ol></li>
 
     <li>The Earth orbits around the Sun with a radius of 149 600 000 km. Express this measurement in scientific notation (4 significant digits) and using the standard SI unit.</li>
-    <div class="Answer">
-        <p class="TeX">\mathrm{1.496\times 10^8\ km = 1.496\times 10^8\ km \color{#0065fe}{\left(\frac{10^3\ m}{km}\right)} = 1.496\times 10^{11}\ m}</p>
-    </div>
+    <p class="Answer TeX">\rm{1.496\times 10^8\ km = 1.496\times 10^8\ km \color{#0065fe}{\left(\frac{10^3\ m}{km}\right)} = 1.496\times 10^{11}\ m}</p>
 
     <li>A small amount of chemical is placed on an electronic balance and is determined to have a mass of 124 mg. Express this measurement in scientific notation and using the standard SI unit. Note: The SI unit of mass is kilograms, not grams!</li>
-    <div class="Answer">
-        <p class="TeX">\mathrm{1.24\times 10^2\ mg = 1.24\times 10^2\ mg \color{#0065fe}{\left(\frac{10^{-3}\ g}{mg}\right)\left(\frac{kg}{10^3\ g}\right)} = 1.24\times 10^{-4}\ kg}</p>
-    </div>
+    <p class="Answer TeX">\rm{1.24\times 10^2\ mg = 1.24\times 10^2\ mg \color{#0065fe}{\left(\frac{10^{-3}\ g}{mg}\right)\left(\frac{kg}{10^3\ g}\right)} = 1.24\times 10^{-4}\ kg}</p>
 
     <li>A cyclist is travelling at 24.0 km/h. Convert this measurement to the standard SI unit for speed.</li>
-    <div class="Answer">
-        <p class="TeX">\mathrm{24.0\ km/h = 24.0\ km/h \color{#0065fe}{\left(\frac{10^3\ m}{km}\right)\left(\frac{h}{3600\ s}\right)} = 6.67\ m/s}</p>
-    </div>
+    <p class="Answer TeX">\rm{24.0\ km/h = 24.0\ km/h \color{#0065fe}{\left(\frac{10^3\ m}{km}\right)\left(\frac{h}{3600\ s}\right)} = 6.67\ m/s}</p>
 
     <li>A sprinter can run at 11.2 m/s. How fast is this in km/h?</li>
-    <div class="Answer">
-        <p class="TeX">\mathrm{11.2\ m/s = 11.2\ m/s \color{#0065fe}{\left(\frac{km}{10^3\ m}\right)\left(\frac{3600\ s}{h}\right)} = 40.3\ km/h}</p>
-    </div>
+    <p class="Answer TeX">\rm{11.2\ m/s = 11.2\ m/s \color{#0065fe}{\left(\frac{km}{10^3\ m}\right)\left(\frac{3600\ s}{h}\right)} = 40.3\ km/h}</p>
 
     <li>A coin has an area of 3.72 cm<sup>2</sup>. Express this area in the standard SI unit.</li>
-    <div class="Answer">
-        <p class="TeX">\mathrm{3.72\ cm^2 = 3.72\ cm^2 \color{#0065fe}{\left(\frac{10^{-2}\ m}{cm}\right)^2} = 3.72\times 10^{-4}\ m^2}</p>
-    </div>
+    <p class="Answer TeX">\rm{3.72\ cm^2 = 3.72\ cm^2 \color{#0065fe}{\left(\frac{10^{-2}\ m}{cm}\right)^2} = 3.72\times 10^{-4}\ m^2}</p>
 
     <li>Copper has a density of 8.9 g/cm<sup>3</sup>. Convert this measurement to the standard SI unit (kg/m<sup>3</sup>).</li>
-    <div class="Answer">
-        <p class="TeX">\mathrm{8.9\ \frac{g}{cm^3} = 8.9\ \frac{g}{cm^3} \color{#0065fe}{\left(\frac{kg}{10^3\ g}\right) \left(\frac{cm}{10^{-2}\ m}\right)^3} = 8.9\times 10^3\ kg/m^3}</p>
-    </div>
+    <p class="Answer TeX">\rm{8.9\ \frac{g}{cm^3} = 8.9\ \frac{g}{cm^3} \color{#0065fe}{\left(\frac{kg}{10^3\ g}\right) \left(\frac{cm}{10^{-2}\ m}\right)^3} = 8.9\times 10^3\ kg/m^3}</p>
 </ol>
 </div></section>
 
@@ -215,16 +191,16 @@
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li>What is a <em class="Defn">unit</em>? Why are units important in science?</li>
-    <div class="Answer">A unit is a standard of measurement that scientists have agreed to use. Standardized units allow scientists to share their measurements with each other in a precise and reliable way.</div>
+    <p class="Answer">A unit is a standard of measurement that scientists have agreed to use. Standardized units allow scientists to share their measurements with each other in a precise and reliable way.</p>
     
     <li>What does <em class="Defn">SI</em> stand for? What does it mean?</li>
-    <div class="Answer">SI is the <i>Système Internationale</i>, or International System of Units. It is the set of units used by scientists.</div>
+    <p class="Answer">SI is the <i>Système Internationale</i>, or International System of Units. It is the set of units used by scientists.</p>
     
     <li>State the 7 <em class="Defn">fundamental</em> SI units and what quantity each unit measures.</li>
-    <div class="Answer">metres (distance), amperes (electric current), seconds (time), kilograms (mass), kelvins (temperature), moles (quantity of matter), candelas (luminous intensity)</div>
+    <p class="Answer">metres (distance), amperes (electric current), seconds (time), kilograms (mass), kelvins (temperature), moles (quantity of matter), candelas (luminous intensity)</p>
     
     <li>What is a <em class="Defn">derived unit</em>?</li>
-    <div class="Answer">Derived units are units that are made by combining fundamental units (like m/s for speed or kg/m<sup>3</sup> for density) or adding a prefix to make a larger or smaller unit (like microseconds). Sometimes derived units are given their own name. For example, kg·m/s<sup>2</sup> is called a newton. Other named derived units are joules, watts, pascals, volts, coulombs, and teslas.</div>
+    <p class="Answer">Derived units are units that are made by combining fundamental units (like m/s for speed or kg/m<sup>3</sup> for density) or adding a prefix to make a larger or smaller unit (like microseconds). Sometimes derived units are given their own name. For example, kg·m/s<sup>2</sup> is called a newton. Other named derived units are joules, watts, pascals, volts, coulombs, and teslas.</p>
     
     <li>Explain how <em class="Defn">prefixes</em> can be used to make larger or smaller units.</li>
     <div class="Answer">
@@ -236,8 +212,8 @@
     <div class="Answer">
         <p>Decide what the equivalence is between the unit you are trying to remove and the unit you are converting to. Then multiply the original measurement by a <em>fraction</em> where the numerator and denominator are the equivalent units. Decide which unit goes “on top” and which goes “underneath” so that the unit being removed cancels. If a unit is squared or cubed, you must do the same to the fraction before you can cancel.</em></p>
         <p>Example: Convert 1.50 g/cm<sup>3</sup> to kg/m<sup>3</sup>...</p>
-        <p>Answer: Since <span class="TeX">\mathrm{kg = 10^3\ g}</span> and <span class="TeX">\mathrm{cm = 10^{-2}\ m}</span>...
-            <p class="TeX">\mathrm{1.50\ \frac{g}{cm^3} = 1.50\ \frac{g}{cm^3} \color{#0065fe}{\left(\frac{kg}{10^3\ g}\right) \left(\frac{cm}{10^{-2}\ m}\right)^3} = 1.50\times 10^3\ kg/m^3}</p>
+        <p>Answer: Since <span class="TeX">\rm{kg = 10^3\ g}</span> and <span class="TeX">\rm{cm = 10^{-2}\ m}</span>...
+            <p class="TeX">\rm{1.50\ \frac{g}{cm^3} = 1.50\ \frac{g}{cm^3} \color{#0065fe}{\left(\frac{kg}{10^3\ g}\right) \left(\frac{cm}{10^{-2}\ m}\right)^3} = 1.50\times 10^3\ kg/m^3}</p>
         </p>
     </div>
 </ol>
@@ -253,7 +229,7 @@ loadFeed.data = {
     up: "s10/unitB",
     prev: "s10/chem3/mole",
     // next: "s10/phys1/graph",
-    handouts: [["Assignment", {gdrv: "_"}]],
+    handouts: [["Assignment", {gdrv: "1JkToLXFv0ob2Nwt_L_4VvWhamASq77Uo"}]],
 }
 
 </script>
