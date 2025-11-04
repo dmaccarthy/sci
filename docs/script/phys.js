@@ -188,11 +188,8 @@ const uam = (data) => {
         if (vf == null) d = (vi + a / 2 * t) * t;
         else d = (vf - a / 2 * t) * t;
     }
-    else {
-        // Find solution when only both velocities are unknown
-        vi = (d / t - a / 2 * t);
-        vf = vi + a * t;
-    }
+    if (vi == null) vi = (d / t - a / 2 * t);
+    if (vf == null) vf = vi + a * t;
 
     // Encapsulate solution
     data = {a:a, vi:vi, vf:vf, d:d, t:t};
