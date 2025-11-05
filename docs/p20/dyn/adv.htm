@@ -1,10 +1,12 @@
-<!-- Add 2D Work!! -->
+<!-- No 2D Work or Energy Conservation!!
+ Gravity is commented out!
+ -->
 
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Examples</h2><div class="Collapse Expand">
+<h2 class="Collapse">Examples</h2><div class="Collapse">
 
 <section class="Slide Center">
-<h1 id="Title">Advanced Dynamics</h1>
+<h1 id="Title">Dynamics in 2D</h1>
 </section>
 
 <section class="Slide"><h3 class="Blue">Example 1</h3>
@@ -83,11 +85,6 @@
 <!-- <section class="Slide"><h3>Example 3</h3>
 
 </section> -->
-
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Advanced (2D) Dynamics</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
-</div></section>
 
 </div></section>
 
@@ -349,7 +346,7 @@ v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
 </div>
     </ol></li>
 
-<li>Three asteroids have identical masses (5.00 × 10<sup>13</sup> kg) and are arranged in the form of an equilateral triangle, separated from each other by 25.0 km.
+<!-- <li>Three asteroids have identical masses (5.00 × 10<sup>13</sup> kg) and are arranged in the form of an equilateral triangle, separated from each other by 25.0 km.
     <p class="Center"><svg class="s20" data-svg2="p20/vec2d/img/arith.js#tri"></svg></p>
 <ol type="a">
     <li>A spacecraft is located at point “A” which is the “centroid” of the triangle; it is the same separation from each asteroid.
@@ -398,15 +395,14 @@ v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
         <p>The resultant vector (i.e. the net gravitational field) is <span class="TeX">\rm{1.79\times 10^{-5}\ m/s^2\ [90.0^\circ]}</span></p>
     </div>
 
-</ol></li>
+</ol></li> -->
 
-</ol>
-  
+<!-- </ol>
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
     <li><ol type="a">
         <li>What makes a problem <em class="Defn">2D</em> as opposed to <em class="Defn">1D</em>?</li>
         <li>In general, how can we solve 2D dynamics problems with Newton’s 2nd Law?</li>
@@ -414,14 +410,6 @@ v_f &= \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}
 
     <li>When using Newton’s Laws to solve problems involving motion along an inclined plane (ramp), why is it better to use a coordinate system where the x-axis is parallel to the ramp and the y-axis is perpendicular to the ramp rather than using the usual horizontal and vertical directions for the axes?</li>
 </ol>
-</div></section>
-
-<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1UFpDl3KhdjAR1ckj2yBIRrACXtZiN0ZG">Assignment</button>
-    </p>
 </div></section>
 
 <script type="text/javascript" data-init="init">
@@ -433,13 +421,14 @@ loadFeed.init = () => {
 }
 
 loadFeed.data = {
-    title: `${siteData.lesson}3.6 — Advanced Dynamics`,
-    showDate: "2025.12",
-    answerDate: "2025.12",
-    num: "3.6",
+    title: `${siteData.lesson}3.5 — Dynamics in 2D`,
+    showDate: "2025.11.7",
+    answerDate: "2025.11.18",
+    num: "3.5",
     up: "p20/home",
     prev: "p20/dyn/fric",
     next: "p20/dyn/rev",
+    handouts: [["Assignment", {gdrv: "_"}]],
 }
 
 </script>
