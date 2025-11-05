@@ -150,6 +150,7 @@ function apply(e, f) {
 function handouts(data) {
 /** Generate handouts post **/
     if (data) {
+        if (typeof(data) == "string") data = [data];
         let s = $("#Main section.Handouts");
         if (s.length == 0) s = $("<section>").appendTo("#Main");
         s.removeClass("Handouts").addClass("Post NoPrintIcon").attr({"data-show": "1", "data-icon": "gdrv"});
@@ -157,7 +158,8 @@ function handouts(data) {
         let div = $("<div>").addClass("Collapse").appendTo(s);
         let html = $("<p>").html(siteData.handouts).appendTo(div);
         let p = $("<p>").addClass("BtnGrid").appendTo(div);
-        for (let [title, info] of data) {
+        for (let item of data) {
+            let [title, info] = typeof(item) == "string" ? ["Assignment", {gdrv: item}] : item;
             if (title) {
                 let btn = $("<button>").html(title).appendTo(p);
                 if (info.gdrv) btn.attr({"data-icon": "gdrv"});
@@ -203,6 +205,7 @@ function onFeedLoaded(feed, e, noHist) {
     let a, title, i;
     $("#Main").css("visibility", "hidden");
     clearFeed().prepend(e);
+    loadFeed.data = process_loadData(feed);
     handouts(loadFeed.data.handouts);
     calendar(loadFeed.data.cal);
     if (!teacher.mode) {

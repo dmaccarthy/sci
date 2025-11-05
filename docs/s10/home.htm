@@ -18,7 +18,7 @@
     <h2 class="Collapse">Measurement Uncertainty</h2>
     <div class="Collapse"><ul>
         <li><a data-feed="$unc/unc">Lesson 1: Measurement Uncertainty</a></li>
-        <li data-show="2025.1.13"><a data-feed="$unc/prop">Lesson 2: Propagation of Errors</a></li>
+        <li data-show="9999"><a data-feed="$unc/prop">Lesson 2: Propagation of Errors</a></li>
     </ul></div>
 </section>
 
@@ -27,7 +27,7 @@
     <p class="Var">handouts</p>
     <p class="BtnGrid">
         <button data-icon="gdrv" data-gdrv="1s6csPlG5u-fBjGhiOePR5QNKtUeAJ5YN">Review Assignment</button>
-        <button data-show="2025.1.15" data-icon="gdrv" data-gdrv="1RsRfsT2nDmTDyczOBICtW_iPMo7w-F1U">Answer Key</button>
+        <button data-show="9999" data-icon="gdrv" data-gdrv="1RsRfsT2nDmTDyczOBICtW_iPMo7w-F1U">Answer Key</button>
     </p>
     <div data-show="9999">
     <h3 class="Collapse">Chapter Summaries</h3><div class="Indent Collapse Expand">
@@ -51,71 +51,8 @@
     </p>
 </div></section>
 
-<script type="text/javascript" data-init="today">
+<script type="text/javascript">
 
-loadFeed.today = () => {
-    if (qsArgs("today")) {
-        history.replaceState({}, "", feedURL(loadFeed.current));
-        loadFeed("_today_");
-    }
-}
-
-loadFeed.data = {
-    title: "Science 10",
-    folder: "s10/",
-    up: "home",
-    today: [
-    //    ["2024.1.1", "$chem1/whmis"],
-    //    ["2024.9.3", "$chem1/expDes"],
-    //    ["2024.9.4", "$chem1/classify"],
-    //    ["2024.9.5", "$chem1/atomic"],
-    //    ["2024.9.9", "$chem1/isotope"],
-    //    ["2024.9.10", "$chem1/bohr"],
-    //    ["2024.9.11", "$chem1/dot"],
-    //    ["2024.9.16", "$chem2/ionic"],
-    //    ["2024.9.17", "$chem2/molec"],
-    //    ["2024.9.18", "$chem2/poly"],
-    //    ["2024.9.19", "$chem2/acid"],
-    //    ["2024.9.24", "$chem2/water"],
-    //    ["2024.9.25", "$chem3/rxn"],
-    //    ["2024.10.1", "$chem3/rxn_fd"],
-    //    ["2024.10.2", "$chem3/rxn_c"],
-    //    ["2024.10.3", "$chem3/rxn_sr"],
-    //    ["2024.10.7", "$chem3/rxn_dr"],
-    //    ["2024.10.9", "$chem3/scinot"],
-    //    ["2024.10.10", "$chem3/mole"],
-    //    ["2024.10.15", "$phys1/si"],
-    //    ["2024.10.16", "$phys1/graph"],
-    //    ["2024.10.18", "$phys1/displ"],
-    //    ["2024.10.22", "$phys1/vel"],
-    //    ["2024.10.23", "$phys1/acc"],
-    //    ["2024.10.24", "$phys2/mech"],
-    //    ["2024.10.25", "$phys2/work"],
-    //    ["2024.10.30", "$phys2/we"],
-    //    ["2024.10.31", "$phys2/eff"],
-    //    ["2024.11.4", "$phys2/heat"],
-    //    ["2024.11.5", "$unitB"],
-    //    ["2024.11.20", "$bio1/micro"],
-    //    ["2024.11.21", "$bio1/cell"],
-    //    ["2024.11.22", "$bio1/org"],
-    //    ["2024.11.26", "$bio2/memb"],
-    //    ["2024.11.27", "$bio2/pass"],
-    //    ["2024.11.28", "$bio2/act"],
-    //    ["2024.11.28", "$bio3/photo"],
-    //    ["2024.12.2", "$bio3/spec"],
-    //    ["2024.12.5", "$bio3/gas"],
-    //    ["2024.12.6", "$bio3/water"],
-    //    ["2024.12.9", "$bio3/sys"],
-    //    ["2024.12.12", "$clim1/heatcap"],
-    //    ["2024.12.16", "$clim1/latent"],
-    //    ["2024.12.18", "$clim1/transfer"],
-       ["2024.12.19", "$clim1/budget"],
-       ["2025.1.6", "$clim2/graph"],
-       ["2025.1.7", "$clim2/biome"],
-       ["2025.1.8", "$clim2/ncc"],
-       ["2025.1.10", "$unc/unc"],
-       ["2025.1.13", "$unc/prop"],
-    ],
-}
+loadFeed.data = {folder: "s10/", today: true}
 
 </script>
