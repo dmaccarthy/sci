@@ -169,29 +169,13 @@
 </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1MJnS_8iguRwVLvtPRBjtUdJtm01C00eC">Assignment</button>
-        <button data-icon="gdrv" data-gdrv="19QXj_YnYYiPU6sGgBWSWO9h-C-FaTN3f">Evidence of Chemical Reactions Lab</button>
-    </p>
-</div></section>
-
 <script type="text/javascript" data-init="init">
 
 loadFeed.init = () => {
     $("table.NoBord td").css({border: "none", padding: "0.5em"}).find(".Answer").attr("data-cue", "none");
 }
 
-loadFeed.data = {
-    title: `${siteData.lesson}C13 — Chemical Reactions / Conservation Laws`,
-    showDate: "2025.9.22",
-    answerDate: "2025.9.24",
-    num: "C13",
-    up: "s10/unitA",
-    prev: "s10/chem2/water",
-    next: "s10/chem3/rxn_fd",
-}
+loadFeed.data = {up: "s10/unitA", prev: "s10/chem2/water", next: "s10/chem3/rxn_fd",
+    handouts: ["1MJnS_8iguRwVLvtPRBjtUdJtm01C00eC", ["Evidence of Chemical Reactions Lab", "19QXj_YnYYiPU6sGgBWSWO9h-C-FaTN3f"]]}
 
 </script>

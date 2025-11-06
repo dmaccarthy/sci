@@ -160,6 +160,7 @@ function handouts(data) {
         let p = $("<p>").addClass("BtnGrid").appendTo(div);
         for (let item of data) {
             let [title, info] = typeof(item) == "string" ? ["Assignment", {gdrv: item}] : item;
+            if (typeof(info) == "string") info = {gdrv: info}
             if (title) {
                 let btn = $("<button>").html(title).appendTo(p);
                 if (info.gdrv) btn.attr({"data-icon": "gdrv"});
