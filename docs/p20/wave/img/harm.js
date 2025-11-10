@@ -92,48 +92,38 @@ long: (sel) => {
     svg.$.on("click", () => svg.toggle());
 },
 
-tr: (sel) => {
-    $(sel).attr({width: 480, height: 360, "data-aspect": "4/3"});
-    let svg = new SVG_Animation(sel, 0, 3, -2.5, 1.8, 2);
-    svg.axis({x: [0, 3]});
-    let attr = {tail: "4"};
-    let css = {fill: "black", stroke: "none"};
-    let g = svg.group();
-    svg.arrow([1.78, -2], [2.22, -2], attr, g).css(css);
-    svg.text("Phase Velocity", [2, -2.35], g);
-    g = svg.group().css({fill: "red"}).config({theta: 90, position: [0.4, 0]});
-    css.fill = "red";
-    svg.arrow([-0.1, 0], [0.22, 0], attr, g).css(css);
-    svg.arrow([0.1, 0], [-0.22, 0], attr, g).css(css);
-    svg.text("Particle Velocity", [0, 0.35], g);
-
-    svg.final();
-
+trWave: (sel) => {
+    let svg = new SVG2(sel, {scale: [160, 80], lrbt: [0, 3, -2.5, 1.8], margin: [0, 0, 4, 4]});
     let travelingingWave = (x, t) => Math.sin(twoPi * (x - t / 2));
-    svg.locus(travelingingWave, [0, 3], {}).css({fill: "none", stroke: "#0065FE", "stroke-width": "3px"});
 
-    svg.circle(0.04, [0, 0]).css({fill: "red"}).beforeupdate = function() {
-        this.config({position: [0.6, travelingingWave(0.6, this.svg.time)]});
-    };
-
-    g = svg.group();
-    let g1 = svg.group(g).css({fill: "#0065FE"});
-    let g2 = svg.group(g).css({fill: "orange"});
-    for (let n=-2;n<3;n++) {
-        svg.arrow([n + 0.25, 1.5], [n + 0.25, 1.1], attr, g1);
-        svg.arrow([n + 0.75, -1.5], [n + 0.75, -1.1], attr, g2);
+    let g = svg.group("arrow", "text", "f18", {stroke: "none"});
+    let blue = g.group("blue");
+    let orange = g.group({fill: "orange"});
+    blue.gtext("Crest", [], [0.25, 1.7]);
+    orange.gtext("Trough", [], [0.75, -1.7]);
+    for (let x = -1.75; x < 3; x += 1) {
+        blue.arrow({tip: [x, 1.1], tail: [x, 1.5]}, {tail: "4"});
+        orange.arrow({tip: [x + 0.5, -1.1], tail: [x + 0.5, -1.5]}, {tail: "4"});
     }
-    svg.text("Crest", [0.25, 1.65], g1);
-    svg.text("Trough", [0.75, -1.65], g2);
+    svg.animate(svg.locus(travelingingWave, [0, 3], {}).css("blue3"));
+    let red = svg.group("red", "black1");
+    red.circle("5");
 
-    g.beforeupdate = function() {
-        let t = this.svg.time / 2;
-        this.config({position: [t % 2, 0]})
+    svg.beforeupdate = function() {
+        let t = this.time;
+        g.config({shift: [(t % 4) / 2, 0]});
+        red.config({shift: [0.6, travelingingWave(0.6, t)]});
     }
 
-    svg.$.find("text").css({"font-size": "18px"});
-    svg.update(0);
+    let text = svg.group("text", "f18", "black");
+    text.gtext("Phase Velocity", [], [2.25, -2.4]);
+    svg.arrow({tail: [2, -2.05], tip: [2.5, -2.05]}, {tail: "5"});
+    let rot = text.group("red").shiftBy([0.2, 0]).config({theta: 90});
+    rot.gtext("Particle Velocity", []);
+    rot.arrow({tail: [-0.25, -0.35], tip: [0.25, -0.35]}, {tail: "5", double: 1});
+
     svg.$.on("click", () => svg.toggle());
+    svg.update(0);
 },
 
 Q6: (sel) => {

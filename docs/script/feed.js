@@ -160,7 +160,7 @@ function handouts(data) {
         let p = $("<p>").addClass("BtnGrid").appendTo(div);
         for (let item of data) {
             let [title, info] = typeof(item) == "string" ? ["Assignment", {gdrv: item}] : item;
-            if (typeof(info) == "string") info = {gdrv: info}
+            if (typeof(info) == "string") info = {gdrv: info};
             if (title) {
                 let btn = $("<button>").html(title).appendTo(p);
                 if (info.gdrv) btn.attr({"data-icon": "gdrv"});
@@ -682,15 +682,47 @@ $(window).on("keydown", (ev) => {
         let k = ev.key.toLowerCase();
         if (k == "n") window.open(location.href);
         else if (k == "t") teacher(teacher.mode ? 0 : 2);
-        else if (k == "p") {
-            if (teacher.mode) assign();
-        }
+        else if (k == "p" && teacher.mode) assign();
     }
 });
 
+function process_loadData(feed) {
+    /* Add titles and due date from index.json */
+    let data = Object.assign({up: "home"}, loadFeed.index[feed]);
+    if (data.title) {
+        if (data.title.charAt(0) == "@") data.title = data.title.substring(1);
+        if (data.num) data.title = `${data.num} — ${data.title}`;
+    }
+    return Object.assign(data, loadFeed.data);
+}
 
-$(() => {
-/** Initialize page **/
+function make_cal(crs) {
+    /* Generate course calendar */
+    let cal = [];
+    for (let feed in loadFeed.index) {
+        let feedArray = feed.split("/")
+        if (feedArray[0] == crs) {
+            let data = loadFeed.index[feed];
+            if (!data.hide && data.title && data.showDate && data.showDate.split(".").length > 2) {
+                let attr = feedArray[feedArray.length - 1] == "@" ? {} : {"data-feed": feed.split("#")[0]};
+                if (data.attr) attr = Object.assign(attr, data.attr);
+                cal.push([data.showDate, data.title, attr, data.css]);
+            }
+        }
+    }
+    return cal.toSorted((a, b) => {
+        f = (x) => {
+            x = x.split(".");
+            if (x.length > 1) x[1] = parseInt(x[1]) - 1;
+            return new Date(...x);
+        }
+        [a, b] = [f(a[0]), f(b[0])];
+        return a > b ? 1 : (a < b ? -1 : 0);
+    });
+}
+
+function initPage() {
+    /* Initialize page */
     let latex = localStorage.getItem("latex-renderer");
     if (latex) {
         let r = {
@@ -707,4 +739,27 @@ $(() => {
     teacher(null, true);
     loadHash(true);
     document.getElementById("TopTitle").addEventListener("click", goUp);
+}
+
+$(() => {
+    /* Load index.json and then initialize page */
+    fetch("index.json", {cache: "reload"}).then((a) => a.json()).then((a) => {
+        let index = loadFeed.index = {};
+        for (let crs in a) {
+            let data = a[crs];
+            for (let k in data)
+                index[`${crs}/${k}`] = data[k];
+        }
+        let keys = {t: "title", s: "showDate", a: "answerDate", n: "num", h: "handouts"}
+        for (let i in index) {
+            let x = index[i];
+            for (let k in keys) {
+                if (x[k]) {
+                    x[keys[k]] = x[k];
+                    delete x[k];
+                }
+            }
+        }
+        initPage();
+    });
 });
