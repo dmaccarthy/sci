@@ -43,7 +43,7 @@ Add composite content:
     g.symbol(...args) -> SVG2g  # Deprecated!!
     g.coil(size, n, reverse, r, axle) -> SVG2g
     g.ctext(...args) -> [...SVG2g]
-    g.textm(text, space) -> SVG2g
+    g.multiline(text, space) -> SVG2g
     g.energy_flow({radius, labels, arrows}) -> g
     g.graph({x, y, grid, data, css, appendAxes}) -> g
     g.errorBarX(x, y0, y1, dx) -> SVG2g

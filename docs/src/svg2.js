@@ -519,7 +519,7 @@ ctext(...args) {
     return gs;
 }
 
-textm(text, space) {
+multiline(text, space) {
 /* Render multiple lines of text */
     if (!space) space = "20";
 	let g = this.group();
@@ -550,7 +550,7 @@ flow(text, shape, options) {
 			g.poly([[d-x, y], [x+d, y], [x-d, -y], [-x-d, -y]], 1);
 		}
 	}
-	g.textm(text, options.space).align([0, 0]);
+	g.multiline(text, options.space).align([0, 0]);
 	return g;
 }
 
@@ -1561,6 +1561,7 @@ SVG2._style = {
     arrow: {fill: "red", stroke: "black", "stroke-width": "0.5px"},
     ital: {"font-style": "italic"},
     bold: {"font-weight": "bold"},
+    nostroke: {stroke: "none"},
     nofill: {fill: "none"},
     sans: {"font-family": SVG2.sans},
     serif: {"font-family": SVG2.serif},
