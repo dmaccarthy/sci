@@ -9,24 +9,24 @@ orbit: (sel) => {
     let pt = (a) => new RArray(r[0] * cos(a), r[1] * sin(a));
 
     let planet = pt(100);
-    let g = svg.group().css({stroke: "none", fill: "#0065fe", "fill-opacity": 0.3});
+    let g = svg.group("nostroke", "blue", {"fill-opacity": 0.3});
     g.path(f).lineTo(pt(30)).arcTo(pt(45), r).update();
     g.path(f).lineTo(planet).arcTo(pt(130), r).update();
     g.path(f).lineTo(pt(185)).arcTo(pt(230), r).update();
     let sector = g.$;
 
-    svg.ellipse(r).css({fill: "none", stroke: "black", "stroke-width": "2px"});
-    g = svg.group().css({stroke: "grey"});
+    svg.group("nofill", "black2").ellipse(r);
+    g = svg.group({stroke: "grey"});
     g.line([-1, 0], [1, 0]);
     g.line([0, -e], [0, e]);
 
-    g = svg.group().css("text", {fill: "grey"});
+    g = svg.group("text", {fill: "grey"});
     g.ctext(["Major Axis", [0.7, 0.06]]);
     g.group().config({theta: 90, shift: [-0.06, -0.4]}).ctext(["Minor Axis"]);
 
     let c = [0.06, -0.07];
-    svg.group().css("text").ctext(["A", [1.05, 0]], ["C", c], ["F", f.plus(c)], ["P", [-1.05, 0]]);
-    g = svg.group().css("black1");
+    svg.group("text").ctext(["A", [1.05, 0]], ["C", c], ["F", f.plus(c)], ["P", [-1.05, 0]]);
+    g = svg.group("black1");
     g.circle("5", planet).css({fill: "blue"});
     g.circle("5", f).css({fill: "orange"});
 
