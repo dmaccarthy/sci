@@ -1,6 +1,17 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
+"grav/ugrav": {"t": "@Universal Gravitation", "n": "4.1", "s": "2025.11.19", "a": "2025.11.21", "h": "19ypn6fFlrR_ToP6RXWpKN9tzUmfi2ekm", "omitted": "Visualizing Gravity"},
+"da/regr": {"t": "@Regression Analysis", "n": "4.2", "s": "2025.11.21", "a": "2025.11.24", "h": "1NLkp40NhPtv3cygebVZZIWa4nQ9vW4-L"},
+"da/pwr": {"hide": 1, "t": "@Transforming Power Data", "n": "4.3", "s": "2025.11.24", "a": "2025.11.25"},
+"grav/cav": {"hide": 1, "t": "@Cavendish Experiment", "n": "4.4", "s": "2025.11.25", "a": "2025.11.26"},
+"grav/field": {"hide": 1, "t": "@Gravitational Fields", "n": "4.5", "s": "2025.11.26", "a": "2025.11.26.13"},
+"grav/field#1": {"t": "Activity: Visualizing Gravity", "s": "2027"},
+"grav/field#2": {"t": "Activity: Visualizing Gravity <i>(continued)</i>", "s": "2027"},
+"grav/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "4.6", "s": "2027"},
+"q4/@": {"t": "Quiz: Universal Gravitation", "s": "2025.11.27", "css": {"font-weight": "bold"}},
+"uB/@": {"t": "Unit B Exam", "s": "2025.12.1", "css": {"font-weight": "bold"}},
+
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2025.8.28", "a": "2025.8.29"},
 "skill/expDes#": {"t": "Lab: Self-Designed Experiment", "s": "2025.8.29"},
 "skill/scatter": {"t": "@Scatter Plots & Slope", "n": "0.2", "s": "2025.9.2", "a": "2025.9.3"},
@@ -42,17 +53,6 @@
 "dyn/adv#": {"t": "@Dynamics in 2D <i>(continued)</i>", "s": "2025.11.18"},
 "q3/@": {"t": "Quiz: Newton’s Laws", "s": "2025.11.20", "css": {"font-weight": "bold"}},
 
-"grav/ugrav": {"hide": 1, "t": "@Universal Gravitation", "n": "4.1", "s": "2025.11.19", "a": "2025.11.21"},
-"da/regr": {"hide": 1, "t": "@Regression Analysis", "n": "4.2", "s": "2025.11.21", "a": "2025.11.24"},
-"da/pwr": {"hide": 1, "t": "@Transforming Power Data", "n": "4.3", "s": "2025.11.24", "a": "2025.11.25"},
-"grav/cav": {"hide": 1, "t": "@Cavendish Experiment", "n": "4.4", "s": "2025.11.25", "a": "2025.11.26"},
-"grav/field": {"hide": 1, "t": "@Gravitational Fields", "n": "4.5", "s": "2025.11.26", "a": "2025.11.26.13"},
-"grav/field#1": {"t": "Activity: Visualizing Gravity", "s": "2027"},
-"grav/field#2": {"t": "Activity: Visualizing Gravity <i>(continued)</i>", "s": "2027"},
-"grav/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "4.6", "s": "2027"},
-"q4/@": {"t": "Quiz: Universal Gravitation", "s": "2025.11.27", "css": {"font-weight": "bold"}},
-"uB/@": {"t": "Unit B Exam", "s": "2025.12.1", "css": {"font-weight": "bold"}},
-
 "uC/@": {"hide": 1, "t": "Unit C Exam", "s": "2026.1.7", "css": {"font-weight": "bold"}},
 "uD/@": {"hide": 1, "t": "Unit D Exam", "s": "2026.1.22", "css": {"font-weight": "bold"}},
 
@@ -60,6 +60,9 @@
 },
 
 "s10": {"home": {"t": "@Science 10"},
+
+"phys2/mech": {"t": "@Mechanical Energy", "n": "P06", "s": "2025.11.19", "a": "2025.11.20", "h": "1BZGFdtlT_JnXd_LoTfxyq21bB00IqOg_"},
+"phys2/work": {"t": "@Energy Transformations", "n": "P07", "s": "2025.11.20", "a": "2025.11.21", "h": ["147isR3tlcLknZVhiawQprJ37F6TAjiMY", ["Pendulum Lab", "1NI_gCl094XeqjnK3DZcA4fc30LpH-Wt5"]]},
 
 "chem1/whmis": {"t": "@WHMIS / Lab Safety", "n": "C01", "s": "2025.8.28", "a": "2025.8.29"},
 "chem1/whmis#": {"t": "Lab Safety <i>(continued)</i>", "s": "2025.8.29"},
@@ -100,9 +103,6 @@
 "phys1/vel": {"t": "@Velocity & Speed", "n": "P04", "s": "2025.11.17", "a": "2025.11.18"},
 "phys1/acc": {"t": "@Acceleration", "n": "P05", "s": "2025.11.18", "a": "2025.11.19", "h": "1-q3l3L-ojj8wOwddwa6nlSNBaffhvkmX"},
 "qp1/@": {"t": "Quiz: Motion", "s": "2025.11.24", "css": {"font-weight": "bold"}},
-
-"phys2/mech": {"t": "@Mechanical Energy", "n": "P06", "s": "2025.11.19", "a": "2025.11.20", "h": "1BZGFdtlT_JnXd_LoTfxyq21bB00IqOg_"},
-"phys2/work": {"t": "@Energy Transformations", "n": "P07", "s": "2025.11.20", "a": "2025.11.21", "h": ["_", ["Pendulum Lab", "_"]]},
 
 "qp2/@": {"t": "Quiz: Energy / Heat", "s": "2025.12.5", "css": {"font-weight": "bold"}},
 "uB/@": {"t": "Physics Unit Exam", "s": "2025.12.9", "css": {"font-weight": "bold"}}

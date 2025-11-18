@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 <style type="text/css">
 
 img.TI {
@@ -73,18 +73,12 @@ body.Present img.TI {width: 12em}
 </ul>
 </section>
 
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Regression Analysis</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
-</div></section>
-
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
-<div id="Practice">
 <ol>
-    <li>Kelly decided to keep track of his mass over a one-month period to see how his weight-loss plan was proceeding. The data is recorded below. (You have already drawn a scatter plot for this data and determined the equation of the best-fit line in the <a data-feed="p20/skill/eqn">Model Equations</a> assignment.) Using your graphing calculator, perform a linear regression on the data, and compare the result to your model equation from the earlier assignment.
+    <li>Kelly decided to keep track of his mass over a one-month period to see how his weight-loss plan was proceeding. The data is recorded below. <!--(You have already drawn a scatter plot for this data and determined the equation of the best-fit line in the <a data-feed="p20/skill/eqn">Model Equations</a> assignment.)--> Using your graphing calculator, perform a linear regression on the data<!--, and compare the result to your model equation from the earlier assignment--> and record the model equation.
         <table data-cue="none" class="Two Center TD6 Top Bottom">
             <tr><td>Time<br/>/ days</td><td>Mass<br/>/ kg</td></tr>
             <tr><td>3</td><td>80.8</td></tr>
@@ -133,7 +127,43 @@ body.Present img.TI {width: 12em}
 
         <li>Use your model equation to predict the strength of Earth’s gravitational field acting on a spacecraft orbiting at a radius of 5.0 × 10<sup>7</sup> m.</li>
         <p class="Answer TeX">g = {\rm (3.98\times 10^{14}\ m^3/s^2) (5.0\times 10^7\ m)^{-2} = 0.16\ m/s^2}</p>
+    
+        <li>Newton’s equation for Earth’s gravitational field is a <em>power</em> relationship with an exponent of –2:
+            <p class="TeX">g=\frac{GM}{r^2} = GMr^{-2}</p>
+            <p>Is this consistent with your model equation? If so, calculate the mass of Earth by substituting your model equation into Newton’s equation.</p>
+        </li>
+        <div class="Answer">
+            <p class="TeX">g=GMr^{-2} = {\rm (3.98\times 10^{14}\ m^3/s^2)}\ r^{-2}</p>
+            <p class="TeX">GM = \rm 3.98\times 10^{14}\ m^3/s^2</p>
+            <p class="TeX">M = \frac{\rm 3.98\times 10^{14}\ m^3/s^2}{G} = \rm 5.97\times 10^{24}\ kg</p>
+        </div>
     </ol></li>
+
+    <li>The data below was collected for a falling basketball.
+    <table class="Two Center TD6 Top Bottom">
+    <tr>
+        <td>Time<br/><span class="TeX">t</span> / s</td>
+        <td>Height<br/><span class="TeX">h</span> / m</td>
+    </tr>
+    <tr><td>0.000</td><td>3.00</td></tr>
+    <tr><td>0.200</td><td>3.81</td></tr>
+    <tr><td>0.400</td><td>4.22</td></tr>
+    <tr><td>0.600</td><td>4.25</td></tr>
+    <tr><td>0.800</td><td>3.89</td></tr>
+    <tr><td>1.000</td><td>3.14</td></tr>
+    </table>
+    <ol type="a">
+        <li>From our study of kinematics, we expect the data to follow a <em>quadratic</em> relationship that produces a parabola shaped graph. Perform a quadratic regression and record the model equation.</li>
+        <p class="Answer TeX">h = {\rm -4.86\ m/s^2}\cdot t^2 + {\rm 5.00\ m/s}\cdot t + {\rm 3.00\ m}</p>
+    
+        <li>Based on the equation <span class="TeX">\Delta\vec{\bf d} = \vec{\bf v}_i \Delta t + \frac{1}{2}\vec{\bf a}(\Delta t)^2</span>, the coefficient of <span class="TeX">t</span> tells us the initial velocity and the coefficient of <span class="TeX">t^2</span> should equal <em>half</em> of the acceleration. (There is no difference between <span class="TeX">t</span> and <span class="TeX">\Delta t</span> when the initial time is 0!) Use your model equation to estimate the basketball’s initial velocity and acceleration.</li>
+        <div class="Answer">
+            <p class="TeX">\vec{\bf v}_i = \rm +5.00\ m/s</p>
+            <p class="TeX">\frac{1}{2}\vec{\bf a} = \rm -4.86\ m/s^2</p>
+            <p class="TeX">\vec{\bf a} = \rm 2\times (-4.86\ m/s^2) = -9.71\ m/s^2</p>
+        </div>
+    </ol>
+    </li>
 
     <li>A group of students measured the wavelength (responding variable) of sound waves as they manipulated the frequency. The students recorded the data below.
     <table class="Two Center TD6 Top Bottom">
@@ -166,12 +196,12 @@ body.Present img.TI {width: 12em}
             <p class="TeX">f = \frac{\rm 334\ m/s}{\lambda} = \rm \frac{334\ m/s}{1.00\ m} = 334\ Hz</p>
         </div>
     </ol></li>
-</ol>
-</div></div></section>
+<!-- </ol>
+</div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
     <li><ol type="a">
         <li>Define <em class="Defn">regression analysis</em>.</li>
         <p class="Answer">A mathematical procedure for determine the equation of a best-fit line or curve.</p>
@@ -184,24 +214,9 @@ body.Present img.TI {width: 12em}
 </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1AKiDshjF8FthQNUvEiyGT-cQ-mxQYcD4">Assignment</button>
-    </p>
-</div></section>
-
 <script type="text/javascript">
 
-loadFeed.data = {
-    title: `${siteData.lesson}7.1 — Regression Analysis`,
-    showDate: "2025.4.2",
-    answerDate: "2025.4.3",
-    num: "7.1",
-    up: "p20/home",
-    prev: "p20/dyn/rev",
-    next: "p20/da/pwr",
+loadFeed.data = {up: "p20/home", prev: "p20/grav/ugrav", // next: "p20/da/pwr",
 }
 
 </script>
