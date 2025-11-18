@@ -369,6 +369,7 @@ function printIcons() {
 
 function initFeed() {
     // Run scripts
+    $("._Present").removeClass("_Present").addClass("Present");
     for (let s of $("script[data-init]")) {
         let name = $(s).attr("data-init");
         try {loadFeed[name]()} catch(err) {console.error(err)};

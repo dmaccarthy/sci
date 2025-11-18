@@ -5,7 +5,7 @@
 <p>An <em class="Defn">array</em> is a data structure whereby several data objects, all having
     the same length in bytes, are stored in a <em>contiguous</em> section of the heap. A
     <em class="Defn">pointer</em> (memory address) to the first item in the array is kept in the stack. The illustration below shows a simplified map of the computer’s memory. An array occupies the orange memory locations and the address of the first byte of the array (53) is stored on the stack (<span class="Blue">blue</span>).</p>
-<p class="Center"><img src="cs_new/dds/img/array.png" alt="Array"/></p>
+<p class="Center"><img src="cs_new/dds/img/array.webp" alt="Array"/></p>
 <p>Suppose our program needs to access the 5th item (i.e. index 4) in the array, and that each item in the array occupies 2 bytes. Our interpreter or compiler could calculate the location of the desired item as (in hexadecimal) 53 + 4 * 2 = 5B. That is, we multiply the index (4) by the size of the objects in bytes (2) and add it to the array pointer stored in the stack (53) to get a pointer for the 5th item in the array. Thus we can locate any item in the array very easily, but this is dependent on the array items all having the same byte size and being stored contiguously in the heap.</p>
 
 </div></section>
@@ -15,7 +15,7 @@
 <p>Suppose we need to store a sequence of objects such as strings or dictionaries, that require varying amounts of memory. We cannot use a traditional array as described above because of the requirement that the items all use the same number of bytes.</p>
 <p>What we can do instead is to create an <em>array of pointers</em> to the data. As shown in
     the illustration below, the data (<span class="Green">green</span>) is stored in the heap. The pointers that describe the locations of the data are assembled into an array (<span style="color:#ecd4c6">orange</span>) and the pointer describing the location of that array is stored in the stack.</p>
-<p class="Center"><img src="cs_new/dds/img/heap.png" alt="heap"/></p>
+<p class="Center"><img src="cs_new/dds/img/heap.webp" alt="heap"/></p>
 <p>The price we pay for being able to store variable-length data is that there is one extra
     step in locating the data. When we want to locate the item with a particular index, we
     use the index to locate the item’s <em>pointer</em> in the pointer array (<span style="color:#ecd4c6">orange</span>) and then we use that pointer to locate the item itself (<span class="Green">green</span>).</p>
@@ -31,7 +31,7 @@
     a large contiguous area of the heap. The stack contains a pointer to the <em>first</em>
     item in the list. That item then contains a pointer (“link”) to the <em>second</em> item, which then links to the third item, and so forth. Since there are no special requirements for how the data is arranged in memory, there are no issues with inserting or appending to the list. The new data can be located anywhere in the heap; all that is necessary is to adjust the link pointers of the item being inserted and the item immediately before it so that the desired sequence is retained.</p>
 <p>The price we pay for using a linked list is that it is no longer easy to locate an arbitrary item within the list. If we need to access the 100th item in a linked list, the only place that item’s location is stored is with the 99th item, and the only place that item’s location is stored is in the 98th item and so on. Therefore, we must start at the beginning of the list (using the pointer kept in the stack) and <em class="Defn">traverse</em> the items one at a time to locate the next item until we have found the one we are looking for.</p>
-<p class="Center"><img src="cs_new/dds/img/link.png" alt="Linked List"/></p>
+<p class="Center"><img src="cs_new/dds/img/link.webp" alt="Linked List"/></p>
 
 </div></section>
 

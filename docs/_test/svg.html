@@ -37,7 +37,7 @@ let stest = () => {
 
     // g1 = svg.group().config({omega: 25, shift: [1, 0], pivot: [-1, 0.25]});
     // g2 = g1.scaled([2, -1]);
-    // g2.image("../media/mail.png", [1, 1]);
+    // g2.image("../media/mail.webp", [1, 1]);
 
     svg.animate(g1);
 
@@ -66,7 +66,7 @@ let test = () => {
     let plt = g.plot([[4,2], [2,4], [3,5]], ["24", "24"], "../media/train.svg", 45);
 
     let s = g.scaled([3, 1]);
-    s.image("../media/mail.png", [1, 1]);
+    s.image("../media/mail.webp", [1, 1]);
 
     let puck = svg.cylinder([1, 0.2], 3).config({pivot: [0, -1.6], shift: [2, 1], omega: 40});
     puck.$.find("ellipse").css({fill: "silver"});

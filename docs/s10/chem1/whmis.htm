@@ -111,7 +111,7 @@ loadFeed.whmis = () => {
     let ol = $("ol.WHMIS");
     let media = "media/whmis";
     for (let src of source) {
-        let svg = ["reactive", "toxic"].indexOf(src) == -1 ? "svg" : "png";
+        let svg = ["reactive", "toxic"].indexOf(src) == -1 ? "svg" : "webp";
         let img = $("<img>").attr({alt: "WHMIS Pictogram", src: `${media}/${src}.${svg}`});
         img.css(sz);
         ol.append($("<li>").html("<br/>").append(img));
@@ -141,7 +141,7 @@ loadFeed.whmis = () => {
 <ul>
     <li>WHMIS is the Canadian government system for identifying hazards in the workplace.</li>
     <li>WHMIS requires hazardous material to be properly labelled and for the label to include a warning and pictogram.
-        <p class="Center"><img class="w10" src="media/whmis/reactive.png" alt="Pictogram"/></p>
+        <p class="Center"><img class="w10" src="media/whmis/reactive.webp" alt="Pictogram"/></p>
     </li>
 </ul>
 <ul>
