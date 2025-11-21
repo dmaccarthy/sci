@@ -554,6 +554,22 @@ flow(text, shape, options) {
 	return g;
 }
 
+ruler(n, tick, opt) { //width, big, offset) {
+/* Draw a ruler */
+    opt = Object.assign({big: 10, offset: 0}, opt);
+    let g = this.group();
+    let length = g.rulerLength = tick * (n + 2 * opt.offset);
+    let width = opt.width ? opt.width : g.rulerLength / 25;
+    g.rect([length, width]);
+    let x = tick * opt.offset - length / 2;
+    width /= 2;
+    for (let i=0;i<=n;i++) {
+        g.line([x, -width], [x, width * (i % opt.big ? 0 : 0.5)]);
+        x += tick;
+    }
+    return g;
+}
+
 cylinder(r, L) {
 /* Draw a cylinder; pivot is center of the elliptical "top" */
     let g = this.group();
