@@ -1087,18 +1087,34 @@ static css(...key) {
     return a;
 }
 
-save(callback) {
-/* Clone <svg> and prepend <style> nodes; then save SVG file or pass to callback */
-    if (callback == null) callback = `${randomString(12, 1)}.svg`;
-    if (callback === true) callback = (html) => BData.init(html, "svg").open();
-    else if (typeof(callback) == "string") {
-        let fn = callback;
-        callback = (html) => BData.init(html, fn).save();
-    }
-    let html = $(this.element.outerHTML).attr({xmlns: SVG2.nsURI});
-    callback(html[0].outerHTML);
-    return this;
+// save(callback) { // Deprecated!!
+// /* Clone <svg> and prepend <style> nodes; then save SVG file or pass to callback */
+//     if (callback == null) callback = `${randomString(12, 1)}.svg`;
+//     if (callback === true) callback = (html) => BData.init(html, "svg").open();
+//     else if (typeof(callback) == "string") {
+//         let fn = callback;
+//         callback = (html) => BData.init(html, fn).save();
+//     }
+//     let html = $(this.element.outerHTML).attr({xmlns: SVG2.nsURI});
+//     callback(html[0].outerHTML);
+//     return this;
+// }
+
+get size() {
+    let e = this.$;
+    return [parseFloat(e.attr("width")), parseFloat(e.attr("height"))];
 }
+
+get url() {return "data:image/svg+xml;base64," + unicodeToBase64(this.element.outerHTML)}
+
+get img() {
+    let [w, h] = this.size;
+    return $("<img>").attr({src: this.url, "data-aspect": `${w}/${h}`})[0];
+}
+
+get bdata() {return new BData(this.element, "svg")}
+open() {this.bdata.open()}
+save(fn) {this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`)}
 
 get defs() {
     let d = this.$.find("defs");

@@ -46,7 +46,7 @@ pre.Code, pre.CodeScroll {
 
 pre.CodeScroll {max-height: 20em}
 
-div.WideScroll {
+.WideScroll, .AutoScroll {
     margin: auto;
     margin-bottom: 1em;
     max-width: calc(100% - 2px);

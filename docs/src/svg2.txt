@@ -75,9 +75,15 @@ Convert coordinates between child and parent coordinate systems:
     g.coord_to_svg([gx, gy]) -> RArray
     g.coord_from_svg([sx, sy]) -> RArray
 
-Save as SVG file:
-    svg.save(callback or string or null, [CSS files]) -> svg
+SVG data operations:
     SVG2.svg(sel, index) -> svg
+    svg.size -> [w, h]
+    svg.url -> string
+    svg.img -> <img>
+    svg.bdata -> BData
+    svg.open()
+    svg.save(fn)
+    svg.save(callback or string or null, [CSS files]) -> svg  # Deprecated!!
 
 Vector diagram helpers:
     SVG2.vec_diag = (jSelect, [vectors], {size or scale, lrbt, margin, grid, tick, label, cycle, shift}) -> SVG2

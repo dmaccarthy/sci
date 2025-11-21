@@ -344,7 +344,6 @@ function onFeedLoaded(feed, e, noHist) {
     drawChevrons();
     renderTeX();
     SVG2.load(initFeed);
-
 }
 
 function printIcons() {
@@ -383,9 +382,9 @@ function initFeed() {
     for (let i of toggle) $(div[i]).toggle();
 
     // Finalize layout
+    $("#Main").css("visibility", "visible");
     layoutWidth();
     $(window).scrollTop(0);
-    $("#Main").css("visibility", "visible");
 }
 
 function copy_or_open(ei) {
@@ -488,7 +487,7 @@ function video(s) {
 }
 
 function layoutWidth() {
-/** Adjust page metrics when body width changes **/
+/** Adjust page metrics when body width or content changes **/
     let body = $("body");
     let w = body.width();
     let x = ($(window).width() - w) / 2;
@@ -496,6 +495,8 @@ function layoutWidth() {
     let marg = body.hasClass("Present") ? "0px" : `calc(0.7em + ${top.outerHeight()}px)` ;
     body.css("margin-top", marg);
     top.width(w - (w < 780 ? 21.6 : 0 * 25.2)).css({left: `${x}px`});
+    for (let e of $("section.Post p[data-latex]").filter(":visible").removeClass("AutoScroll"))
+        if (e.scrollWidth > e.clientWidth) $(e).addClass("AutoScroll");
     aspect();
 }
 
@@ -510,17 +511,19 @@ function loadHash(init) {
 function collapse(e) {
 /** Toggle collapsible sections **/
     let alt = e.altKey && e.ctrlKey;
+    if (e.target != e.currentTarget) return;
     let div = $(e.currentTarget).next("div.Collapse");
     if (!alt || div.is(":hidden")) {
-        div.toggle();
-        layoutWidth();
-        drawChevrons();
+        div.toggle(250, () => {
+            drawChevrons();
+            layoutWidth();
+        });
         let t = collapse.toggled;
         let k = loadFeed.current;
         let i = $("div.Collapse").index(div[0]);
         let j = t[k].indexOf(i);
         if (j == -1) t[k].push(i);
-        else t[k].splice(j, 1);    
+        else t[k].splice(j, 1);
     }
     if (alt) slideShow(div);
 }

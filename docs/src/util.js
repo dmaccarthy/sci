@@ -145,6 +145,11 @@ function unzip(data, rarray) {
     return udata;
 }
 
+function unicodeToBase64(utext) {
+    let data = new TextEncoder().encode(utext);
+    return btoa(String.fromCharCode(...data));
+}
+
 
 /*** Math rendering with MathJax or KaTeX ***/
 
