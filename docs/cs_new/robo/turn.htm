@@ -1,4 +1,4 @@
-<section class="Post" data-icon="robot">
+<section class="Post" data-icon="robot.svg">
 <h2 class="Collapse">Gyroscope Sensor</h2><div class="Collapse Expand">
 <p>In the previous assignment, you made the robot draw a letter on the floor of the arena. You probably used trial and error to determine how long to run the motors to execute a given stroke or turn. One problem with this approach is that it does not give reliable results. For a real robot, running the motors on full power may produce different outcomes depending on whether the robot is on concrete, mud, ice, or grass. It can also depend on whether the robot’s power supply is fully charged or partly depleted.</p>
 <p>A better method is to rely on the robot’s <em class="Defn">sensors</em> to decide when to stop the motors. The <code>sc8pr</code> robot simulation has a sensor called <code>gyro</code> (gyroscope) that indicates the direction the robot is pointing.</p>
@@ -23,7 +23,7 @@ Arena.run(brain)    <span class="Comment"># Run the simulation</span></pre>
 
 </div></section>
 
-<section class="Post" data-icon="robot">
+<section class="Post" data-icon="robot.svg">
 <h2 class="Collapse">Sensor Loop</h2><div class="Collapse Expand">
 <p>The example above uses a loop with the condition <code>robot.active</code>. This will be <code>True</code> as long as the simulation is running. When the simulation is closed <code>robot.active</code> will become <code>False</code>, causing the loop to end and the robot <code>brain</code> to terminate.</p>
 <p>When running a loop, it is important to call <code>robot.updateSensors()</code>. This will ensure that the sensor data is current, and will also prevent the robot brain from using too much CPU power (which could cause the simulation to run slowly).</p>
