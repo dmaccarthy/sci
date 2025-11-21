@@ -514,7 +514,7 @@ function collapse(e) {
     if (e.target != e.currentTarget) return;
     let div = $(e.currentTarget).next("div.Collapse");
     if (!alt || div.is(":hidden")) {
-        div.toggle(250, () => {
+        div.fadeToggle(250, () => {
             drawChevrons();
             layoutWidth();
         });
