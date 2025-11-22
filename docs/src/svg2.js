@@ -587,6 +587,14 @@ cylinder(r, L) {
     return g;
 }
 
+pm(s, plus, xy) {
+/* Draw a plus or minus */
+    let g = this.group();
+    if (plus) g.rect([s/6, s], xy);
+    g.rect([s, s/6], xy);
+    return g;
+}
+
 stickman(h) {
 /* Add a stick man as an SVG2g instance */
     let g = this.group().css("nofill", "black3");
