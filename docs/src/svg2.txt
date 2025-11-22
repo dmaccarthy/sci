@@ -42,6 +42,7 @@ Add composite content:
     g.symb(size, ...args) -> SVG2g
     g.symbol(...args) -> SVG2g  # Deprecated!!
     g.coil(size, n, reverse, r, axle) -> SVG2g
+    g.ruler(n, tick, opt) -> SVG2g
     g.ctext(...args) -> [...SVG2g]
     g.multiline(text, space) -> SVG2g
     g.energy_flow({radius, labels, arrows}) -> g

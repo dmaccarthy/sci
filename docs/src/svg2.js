@@ -253,7 +253,6 @@ circle(r, center, selector) {
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = svg.a2p(...this._cs(center));
-    // r = typeof(r) == "string" ? parseFloat(r) : r * svg.unit;
     r = this._px_size(r);
     return e.attr({r: f(r), cx: f(x), cy: f(y)});
 }
@@ -312,7 +311,12 @@ plot(points, size, href, theta) {
 }
 
 label(fn, x, y) {
-/* Add a <g> containing <text> labels or tick marks as <line> */
+/** Add a <g> containing <text> labels or tick marks as <line>, Usage:
+ .label(["-5", "3"], [...range(-15, 31, 5)], 1); // Draw ticks from 5 pixels below x=1 to 3 pixels above
+ .label(1, [...range(-15, 31, 5)], 2);           // Label x-axis to 1 decimal place at y=2
+ .label(0, 0, [...range(-5, 5, 1)]);             // Label y-axis to 0 decimal places at x=0
+ .label(f, 0, [...range(-5, 5, 1)]);             // Label y-axis at x=0 with function f generating text
+**/
     let g = this.group();
     let xa = x instanceof Array;
     let ya = y instanceof Array;
@@ -556,6 +560,7 @@ flow(text, shape, options) {
 
 ruler(n, tick, opt) { //width, big, offset) {
 /* Draw a ruler */
+    if (typeof(tick) == "string") tick = parseFloat(tick) / Math.abs(this.svg.scale[1]);
     opt = Object.assign({big: 10, offset: 0}, opt);
     let g = this.group();
     let length = g.rulerLength = tick * (n + 2 * opt.offset);

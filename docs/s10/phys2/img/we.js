@@ -2,7 +2,7 @@ SVG2.cache("s10/phys2/img/we.js", {
 
 pend: (sel) => { // Illustration for Pendulum Lab handout
     let svg = new SVG2(sel, {scale: 16, lrbt: [-12, 12, -24, 1], margin: 2});
-    let g = svg.ruler(60, 0.35, {big: 5}).css({fill: "#ffcd82"}, "black1");
+    let g = svg.ruler(60, "5", {big: 5}).css({fill: "#ffcd82"}, "black1");
     g.config({theta: 90, shift: [-10, g.rulerLength/2 - 24]});
     let r = 20;
     let pts = [vec2d(r, -120), vec2d(r, -105), [0, -r], vec2d(r, -75), vec2d(r, -60)];
