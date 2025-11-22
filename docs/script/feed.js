@@ -563,6 +563,12 @@ function msg(html, time) {
 function serverUTC(cb) {$.ajax({url: serverUTC.url, success: cb ? cb : console.log})}
 serverUTC.url = "https://dmaccarthy.vercel.app/utc.json";
 
+function save(n, sel) {
+    let e = $(sel ? sel : "svg.NoStyle");
+    if (e.length) console.log(e);
+    e[n ? n : 0].graphic.save();
+}
+
 
 // Printing 
 
