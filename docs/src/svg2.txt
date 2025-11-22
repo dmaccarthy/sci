@@ -76,7 +76,6 @@ Convert coordinates between child and parent coordinate systems:
     g.coord_from_svg([sx, sy]) -> RArray
 
 SVG data operations:
-    SVG2.svg(sel, index) -> svg
     svg.size -> [w, h]
     svg.url -> string
     svg.img -> <img>

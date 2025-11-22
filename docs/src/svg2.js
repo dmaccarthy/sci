@@ -1174,19 +1174,6 @@ gradient(id, c1, c2, x1, x2, y1, y2) {
     return this;
 }
 
-static svg(sel, i, ev) {
-/* Save an SVG2 drawing as an SVG file */
-    if (ev) ev.stopPropagation();
-    let e = $(sel ? sel : "svg[data-svg2x]");
-    console.log(e);
-    let n = 0;
-    for (let ei of e) if (ei.graphic) n++;
-    if (n) {
-        if (i == null) i = n > 1 ? parseInt(prompt(`Choose index: 0..${n-1}`)): 0;
-        e[i].graphic.save();    
-    }
-}
-
 static create(options) {return new SVG2(document.createElementNS(SVG2.nsURI, "svg"), options)}
 
 static auto_lrbt(w, h, l, r, b, t) {
