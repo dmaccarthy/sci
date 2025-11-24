@@ -100,6 +100,7 @@ loadFeed.init.redraw = (vecs) => {
     );
     $(svg.$.find("g.Labels")[0]).find("text").css({"text-anchor": "end"});
     svg.vecs = vecs;
+    svg.resultant = RArray.add(...svg.vecs);
     $("#Units").html(`${n ? `10<sup>${n}</sup> ` : ""}${loadFeed.init.units}`);
 
     // Draw the calculations table
@@ -123,6 +124,8 @@ loadFeed.init.redraw = (vecs) => {
             }
         }
     });
+    console.log(svg.resultant);
+    console.log(`${svg.resultant.mag()} @ ${svg.resultant.dir()}`);
 }
 
 loadFeed.init.hist = (init) => {
