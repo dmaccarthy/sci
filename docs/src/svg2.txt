@@ -22,6 +22,7 @@ Add primitive content to an <svg>/<g> tag using an SVG2g instance (or subclasses
     g.ellipse([rx, ry], [cx, cy]) -> jQuery
     g.rect([w, h], [cx, cy]) -> jQuery
     g.image(href, [w, h], [cx, cy]) -> jQuery
+    g.image_svg(href, [w, h], [cx, cy]) -> jQuery
     g.poly([pts], closed) -> jQuery
     g.star(sides, big, small) -> jQuery
     g.text(data, xy) -> jQuery

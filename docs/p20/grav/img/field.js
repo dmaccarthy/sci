@@ -11,7 +11,7 @@ binstar: (sel) => {
 
     svg.circle(4, [0, 0]).css({fill: "#0065FE", stroke: "black"});
     svg.circle(2.5, [80, 0]).css({fill: "red", stroke: "black"});
-    svg.image("media/rocket.svg", [12, 12], ship);
+    svg.image_svg("media/rocket.svg", [12, 12], ship);
 
     g = svg.group().css("text");
     g.ctext(["10", [74, -3]], ["70", [35, -3]], ["20", [66, 10]]);

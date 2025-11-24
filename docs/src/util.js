@@ -263,7 +263,7 @@ function uHSVtoRGB(h, s, v) {
 
 /* Fetch images or other data as blobs or data URLs... 
 
-loadBlobs("video.png", "print.svg").then(console.log);  
+loadBlobs("video.png", "print.svg").then(console.log);
 loadDataURLs("video.png", "print.svg").then(console.log);  
 
 */

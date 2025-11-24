@@ -287,8 +287,33 @@ image(href, size, center, selector) {
     let w = this._px(size[0], 0);
     let h = this._px(size[1], 1);
     let [x, y] = svg.a2p(...this._cs(center));
-    return e.attr({href: href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
+    return e.attr({href: new URL(href, location.href).href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
+
+image_svg(href, size, center, selector) {return this.image(href, size, center, selector).addClass("SVG_Image")}
+
+_embed(url, size) {
+/* Embed an SVG file as a nested SVG element */
+    let outer = this.group();  // Container SVG2g instance
+    let mid = outer.group();   // Translate to origin
+    let inner = mid.group().$; // Scale to size
+    return [fetch(url).then((a) => a.text()).then((a => {
+        let svg = outer.svg;
+        inner.html($(a).filter("svg"));
+        let e = inner.find("svg");
+        if (size) {
+            size = [Math.abs(size[0] * svg.scale[0]), Math.abs(size[1] * svg.scale[1])];
+            let [w, h] = [e.attr("width"), e.attr("height")];
+            let [sx, sy] = [size[0] / w, size[1] / h];
+            inner.attr({transform: `scale(${sx} ${sy})`});
+            mid.shiftBy(svg.p2a(size[0] / 2, size[1] / 2).neg());
+        }
+        return outer;
+    })), outer];
+}
+
+embed(url, size) {return this._embed(url, size)[1]}
+embed_promise(url, size) {return this._embed(url, size)[0]}
 
 plot(points, size, href, theta) {
 /* Plot an array of points as circles, rectangles, or images */
@@ -1116,19 +1141,6 @@ static css(...key) {
     return a;
 }
 
-// save(callback) { // Deprecated!!
-// /* Clone <svg> and prepend <style> nodes; then save SVG file or pass to callback */
-//     if (callback == null) callback = `${randomString(12, 1)}.svg`;
-//     if (callback === true) callback = (html) => BData.init(html, "svg").open();
-//     else if (typeof(callback) == "string") {
-//         let fn = callback;
-//         callback = (html) => BData.init(html, fn).save();
-//     }
-//     let html = $(this.element.outerHTML).attr({xmlns: SVG2.nsURI});
-//     callback(html[0].outerHTML);
-//     return this;
-// }
-
 get size() {
     let e = this.$;
     return [parseFloat(e.attr("width")), parseFloat(e.attr("height"))];
@@ -1143,7 +1155,50 @@ get img() {
 
 get bdata() {return new BData(this.element, "svg")}
 open() {this.bdata.open()}
-save(fn) {this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`)}
+save_raw(fn) {this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`)}
+
+save(fn) {
+    this.embed_svg_images().then((g) => {
+        g.convert_image_hrefs().then(() => this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`));
+    });
+}
+
+async embed_svg_images() {
+    let g = this;
+    let svg = g.svg;
+    let promises = [];
+    let [sx, sy] = svg.scale;
+    sx = Math.abs(sx);
+    sy = Math.abs(sy);
+    for (let img of g.$.find("image.SVG_Image")) {
+        img = $(img);
+        let href = img.attr("href");
+        let w = parseFloat(img.attr("width")) / sx;
+        let h = parseFloat(img.attr("height")) / sy;
+        let x = parseFloat(img.attr("x"));
+        let y = parseFloat(img.attr("y"));
+        [x, y] = svg.p2a(x, y);
+        let [p, e] = g._embed(href, [w, h]);
+        img.replaceWith(e.config({shift: [x + w/2, y - h/2]}).$);
+        promises.push(p);
+    }
+    for (let i in promises) await promises[i];
+    return new Promise((resolve) => {resolve(g)});
+}
+
+convert_image_hrefs() {
+/* Replace <image> hrefs by data URLs */
+    let images = {};
+    let hrefs = [];
+    for (let img of this.$.find("image")) {
+        let href = $(img).attr("href");
+        hrefs.push(href);
+        images[href] = img;
+    }
+    return loadDataURLs(...hrefs).then((a) => {
+        for (let href in a) $(images[href]).attr({href: a[href]});
+    });
+}
 
 get defs() {
     let d = this.$.find("defs");
