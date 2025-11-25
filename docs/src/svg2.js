@@ -290,8 +290,6 @@ image(href, size, center, selector) {
     return e.attr({href: new URL(href, location.href).href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
 }
 
-image_svg(href, size, center, selector) {return this.image(href, size, center, selector).addClass("SVG_Image")}
-
 _embed(url, size) {
 /* Embed an SVG file as a nested SVG element */
     let outer = this.group();  // Container SVG2g instance
@@ -1155,48 +1153,49 @@ get img() {
 
 get bdata() {return new BData(this.element, "svg")}
 open() {this.bdata.open()}
-save_raw(fn) {this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`)}
+save(fn) {this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`)}
 
-save(fn) {
-    this.embed_svg_images().then((g) => {
-        g.convert_image_hrefs().then(() => this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`));
-    });
-}
+async embed_images() {return this.embed_svg_images().then(g => g.convert_image_hrefs())}
 
 async embed_svg_images() {
+/* Replace SVG <image> elements by embedded <svg> */
     let g = this;
     let svg = g.svg;
     let promises = [];
     let [sx, sy] = svg.scale;
     sx = Math.abs(sx);
     sy = Math.abs(sy);
-    for (let img of g.$.find("image.SVG_Image")) {
+    for (let img of g.$.find("image")) {
         img = $(img);
         let href = img.attr("href");
-        let w = parseFloat(img.attr("width")) / sx;
-        let h = parseFloat(img.attr("height")) / sy;
-        let x = parseFloat(img.attr("x"));
-        let y = parseFloat(img.attr("y"));
-        [x, y] = svg.p2a(x, y);
-        let [p, e] = g._embed(href, [w, h]);
-        img.replaceWith(e.config({shift: [x + w/2, y - h/2]}).$);
-        promises.push(p);
+        if (file_ext(href) == "svg") {
+            let w = parseFloat(img.attr("width")) / sx;
+            let h = parseFloat(img.attr("height")) / sy;
+            let x = parseFloat(img.attr("x"));
+            let y = parseFloat(img.attr("y"));
+            [x, y] = svg.p2a(x, y);
+            let [p, e] = g._embed(href, [w, h]);
+            img.replaceWith(e.config({shift: [x + w/2, y - h/2]}).$);
+            promises.push(p);
+        }
     }
     for (let i in promises) await promises[i];
     return new Promise((resolve) => {resolve(g)});
 }
 
-convert_image_hrefs() {
+async convert_image_hrefs() {
 /* Replace <image> hrefs by data URLs */
+    let g = this;
     let images = {};
     let hrefs = [];
-    for (let img of this.$.find("image")) {
+    for (let img of g.$.find("image")) {
         let href = $(img).attr("href");
         hrefs.push(href);
         images[href] = img;
     }
     return loadDataURLs(...hrefs).then((a) => {
         for (let href in a) $(images[href]).attr({href: a[href]});
+        return g;
     });
 }
 

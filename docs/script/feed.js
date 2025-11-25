@@ -10,11 +10,7 @@ function clearFeed() {
 
 function chapRev() {
     let f = loadFeed.referer;
-    if (f) {
-        f = f.split("/");
-        return ["rev", "home"].indexOf(f[f.length-1]) > -1;
-    }
-    return false;
+    return f ? ["rev", "home"].indexOf(f.split("/").item(-1)) > -1 : false;
 }
 
 function assign() {
@@ -84,11 +80,11 @@ mediaURL.urls = {
     python: "https://www.python.org/static/favicon.ico",
     thonny: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Thonny_logo.png/120px-Thonny_logo.png",
     replit: "https://replit.com/public/images/about/logo.png",
-    amoeba: "./media/amoeba.webp",
-    crash: "./media/crash.webp",
-    sc8pr: "./media/sc8pr.svg",
-    ide: "./media/vscode.svg",
-    sal: "./media/sal.webp",
+    amoeba: "media/amoeba.webp",
+    crash: "media/crash.webp",
+    sc8pr: "media/sc8pr.svg",
+    ide: "media/vscode.svg",
+    sal: "media/sal.webp",
     bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
     ps: "https://powerschool.eips.ca/favicon-196x196.png",
     desmos: "https://www.desmos.com/favicon.ico",
@@ -99,12 +95,12 @@ mediaURL.urls = {
     simulation: data_images.sim,
     "simulation.svg": data_images.sim,
     "html5.svg": data_images.html,
-    help: "./media/help.svg",
+    help: "media/help.svg",
     gdrv: data_images.gdrv,
     gdoc: "https://www.gstatic.com/images/branding/product/1x/docs_2020q4_48dp.png",
     gsheet: "https://ssl.gstatic.com/docs/spreadsheets/spreadsheets_2023q4.ico",
     slides: data_images.slides,
-    video: "./media/video.svg",
+    video: "media/video.svg",
     correct: data_images.correct,
 }
 
@@ -308,7 +304,7 @@ function onFeedLoaded(feed, e, noHist) {
                 if (url) url = "https://docs.google.com/document/d/" + url;
                 else {
                     url = ei.attr("data-doc");
-                    if (url) url = "./media/" + url;
+                    if (url) url = "media/" + url;
                     else url = ei.attr("data-open");
                 }
             }
@@ -563,10 +559,10 @@ function msg(html, time) {
 function serverUTC(cb) {$.ajax({url: serverUTC.url, success: cb ? cb : console.log})}
 serverUTC.url = "https://dmaccarthy.vercel.app/utc.json";
 
-function save(n, sel) {
+async function save(n, sel) {
     let e = $(sel ? sel : "svg.NoStyle");
     if (e.length) console.log(e);
-    e[n ? n : 0].graphic.save();
+    return e[n ? n : 0].graphic.embed_images().then(g => g.save());
 }
 
 

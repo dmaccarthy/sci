@@ -1,3 +1,5 @@
+Array.prototype.item = function(i) {return this[i < 0 ? i + this.length : i]}
+
 const sleep = async(t) => await new Promise(r => setTimeout(r, t));
 
 function jeval(a) {return JSON.parse(`{"a": ${a}}`).a}
@@ -40,6 +42,13 @@ function* range(x0, x1, dx) {
         yield x0;
         x0 += dx;
     }
+}
+
+function file_ext(url) {
+    url = new URL(url, location.href);
+    let path = url.pathname.split("/");
+    path = path.item(-1).split(".");
+    return path.item(-1).toLowerCase();
 }
 
 function qsArgs(key, str) {
