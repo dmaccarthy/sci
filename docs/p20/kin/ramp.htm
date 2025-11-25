@@ -97,7 +97,7 @@
 #Sim circle.Gate {fill: red}
 
 </style>
-<image width="641" height="601" x="0" y="0" href="./p20/kin/img/class.svg"></image>
+<image width="641" height="601" x="0" y="0" href="p20/kin/img/class.svg"></image>
 </svg></p>
 <p id="SimControls">
     <select title="Choose object type" onchange="loadFeed.run.setBall()" id="BallType">
@@ -217,7 +217,7 @@ loadFeed.run.redraw = () => {
 
     // Draw "ball"
     if (ballType == 0) // Basketball
-        ball = svg.image("./media/ball.svg", [d, d], [0, 0], g);
+        ball = svg.image("media/ball.svg", [d, d], [0, 0], g);
     else {
         ball = svg.group(g);
         let circ = svg.circle(r, [0, 0], ball).final();
