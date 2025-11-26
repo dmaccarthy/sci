@@ -150,7 +150,7 @@ function handouts(data) {
         let s = $("#Main section.Handouts");
         if (s.length == 0) s = $("<section>").appendTo("#Main");
         s.removeClass("Handouts").addClass("Post NoPrintIcon").attr({"data-show": "1", "data-icon": "gdrv"});
-        let h2 = $("<h2>").addClass("Collapse").html("Handouts").appendTo(s);
+        let h2 = $("<h2>").addClass("Collapse").html("Handouts / Links").appendTo(s);
         let div = $("<div>").addClass("Collapse").appendTo(s);
         let html = $("<p>").html(siteData.handouts).appendTo(div);
         let p = $("<p>").addClass("BtnGrid").appendTo(div);

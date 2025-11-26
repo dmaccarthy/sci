@@ -49,14 +49,6 @@ let stest = () => {
 
 }
 
-let coil = () => {
-    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-3, 3], margin: 6, grid: 1});
-    svg.$.addClass("SVG2");
-    let g = svg.coil([2, 5], 15, 1).config({omega: 25, vel: [0.1, 0.05]});
-    g.$.find("g")[0].graphic; //.config({theta: 45});
-    svg.animate(g).play();
-}
-
 let test = () => {
     svg = new SVG2("#S1", {size: [640, 640], lrbt: [-3, 10, -5], margin: 6, grid: 1});
     svg.$.addClass("SVG2");
@@ -110,13 +102,6 @@ let test = () => {
     });
 }
 
-let atest = () => {
-    svg = new SVG2("#S1", {size: [640, 640], lrbt: [-10, 10, -2, 2], margin: 1, grid: 1});
-    svg.$.addClass("SVG2");
-    let g = svg.arrow({tail: [0, 0], tip: [5, 0]}, {}, "tail").config({omega: 20, theta: svg.adjustAngle(45)});
-    svg.animate(g);
-}
-
 let matter = () => {
     svg = new SVG2("#S1", {size: [740, 340], lrbt: [-1, 7, 0.6, 5.4], margin: 0, grid: 0});
     let css = {fill: "none", stroke: "black", "stroke-width": "2px"};
@@ -146,7 +131,7 @@ let matter = () => {
     r.css({"font-size": "16px"});
 }
 
-$(matter);
+$(stest);
 
 </script>
 </head>
