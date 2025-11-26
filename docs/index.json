@@ -4,6 +4,9 @@
 "energy/mech": {"t": "@Mechanical Energy", "n": "6.1", "s": "2025.11.28", "a": "2025.12.1", "h": "1LVUnS8TD59eJ1KucQDPeSTs4rVVCnZaB"},
 "energy/@": {"hide": 1, "t": "@", "n": "6.", "s": "2025.11.21", "a": "2025.11.24", "h": "_"},
 
+"circ/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "5.5", "s": "2025.12.18", "a": "2025.12.19", "h": "_"},
+
+
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2025.8.28", "a": "2025.8.29"},
 "skill/expDes#": {"t": "Lab: Self-Designed Experiment", "s": "2025.8.29"},
 "skill/scatter": {"t": "@Scatter Plots & Slope", "n": "0.2", "s": "2025.9.2", "a": "2025.9.3"},
@@ -49,17 +52,16 @@
 "da/regr": {"t": "@Regression Analysis", "n": "4.2", "s": "2025.11.21", "a": "2025.11.24", "h": "1NLkp40NhPtv3cygebVZZIWa4nQ9vW4-L"},
 "da/pwr": {"t": "@Transforming Power Data", "n": "4.3", "s": "2025.11.24", "a": "2025.11.25", "h": "1jP3UvycUlhF_IN_ZBc-mLP86trg8Rcv0"},
 "grav/cav": {"t": "@Cavendish Experiment", "n": "4.4", "s": "2025.11.25", "a": "2025.11.26", "h": "163ABwJIWUfE9tzNjMzmS66bqW3DDiMpb"},
-"grav/field": {"t": "@Gravitational Fields", "n": "4.5", "s": "2025.11.26", "a": "2025.11.27", "h": [
-    "1JC8-YIlbmrrkY2vw1jKl9JAoZGhDXNRB"
+"grav/field": {"t": "@Gravitational Fields", "n": "4.5", "s": "2025.11.26", "a": "2025.11.26.16", "h": [
+    "1JC8-YIlbmrrkY2vw1jKl9JAoZGhDXNRB",
+    ["Falstad Applet", {"open": "https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&amp;fc=Floor%3A%20field%20magnitude&amp;fl=Overlay%3A%20equipotentials&amp;d=partsvel&amp;m=Mouse%20%3D%20Adjust%20Angle&amp;st=1&amp;pc=500&amp;hs=40&amp;ft=true&amp;rx=63&amp;ry=0&amp;rz=0&amp;zm=1.2", "icon": "html5", "show": 9999}],
+    ["PhET Applet", {"open": "https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html", "icon": "phet","show": 9999}],
+    ["Desmos Applet", {"open": "https://www.desmos.com/calculator/br0ig8pci1", "icon": "desmos", "show": 9999}]
 ]},
 "grav/field#1": {"t": "Activity: Visualizing Gravity", "s": "2027", "hs": [
-    ["Visualizing Gravity", ""],
-    ["Falstad Applet", "https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&amp;fc=Floor%3A%20field%20magnitude&amp;fl=Overlay%3A%20equipotentials&amp;d=partsvel&amp;m=Mouse%20%3D%20Adjust%20Angle&amp;st=1&amp;pc=500&amp;hs=40&amp;ft=true&amp;rx=63&amp;ry=0&amp;rz=0&amp;zm=1.2"],
-    ["PhET Applet", "https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html"],
-    ["Desmos Applet", "https://www.desmos.com/calculator/br0ig8pci1"]
+    ["Visualizing Gravity", ""]
 ]},
 "grav/field#2": {"t": "Activity: Visualizing Gravity <i>(continued)</i>", "s": "2027"},
-"grav/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "4.6", "s": "2027", "h": "_"},
 "q4/@": {"t": "Quiz: Universal Gravitation", "s": "2025.11.27", "css": {"font-weight": "bold"}},
 "uB/@": {"t": "Unit B Exam", "s": "2025.12.1", "css": {"font-weight": "bold"}},
 
@@ -76,6 +78,7 @@
 "phys2/work#": {"t": "Lab: Energy of a Pendulum", "s": "2025.11.21"},
 "phys2/we": {"t": "@Work-Energy Theorem", "n": "P08", "s": "2025.11.25", "a": "2025.11.26", "h": "1PmBbcbdMUEWtSK-8EuBOAZBEGH4Z8fL5"},
 "phys2/eff": {"t": "@Efficiency", "n": "P09", "s": "2025.11.26", "a": "2025.11.27", "h": "1m1Wa_BsXrw_W4Sz2ItL_mbansF2EABwY"},
+"phys2/eff#": {"t": "Activity: Energy Transforming Technologies", "s": "2025.11.27"},
 "phys2/heat": {"t": "@Theories of Heat", "n": "P10", "s": "2025.11.28", "a": "2025.12.1", "h": "1H6gXLWijZEnUKec6wOO2gz_go4G6XOHp"},
 
 "chem1/whmis": {"t": "@WHMIS / Lab Safety", "n": "C01", "s": "2025.8.28", "a": "2025.8.29"},
