@@ -11,9 +11,9 @@ techniques that are considered bad programmming practice that should be avoided.
 <p>The game show <em>Let’s Make a Deal</em> debuted on TV in 1963. One part of the game required contestants to choose one of three doors numbered 1, 2, and 3. Behind one of the doors was a prize. The other two doors contained nothing (or a “zonk” prize).</p>
 <p>After the contestant selected a door, the show host revealed one of the two other doors, showing that it contained no prize. The door containing the real prize would <em>never</em> be the one revealed.</p>
 <p>The contestant could then choose to keep their original selection, or switch to the remaining door that had not been revealed.</p>
-<p>Download this program as <code>lets_deal.py</code>.</p>
+<p>Download this program as <code>p3_deal.py</code>.</p>
 
-<pre data-echo="lets_deal.py" data-title="1" class="Code"><span class="DocString">"'Let's Make a Deal' Simulation"</span>
+<pre data-echo="p3_deal.py" data-title="1" class="Code"><span class="DocString">"'Let's Make a Deal' Simulation"</span>
 
 from random import randint
 
@@ -46,6 +46,7 @@ Contestant holds and LOSES!</pre>
 <pre data-echo="io" class="Code">Contestant wins 868 out of 2536 (34.2%) when holding.
 Contestant wins 1650 out of 2464 (67.0%) when switching.
 </pre>
+<p>The win probability <em>should</em> be around 33% when holding and 67% when switching.</p>
 </div></section>
 
 <section class="Post" data-show="1" data-icon="python">
@@ -54,17 +55,17 @@ Contestant wins 1650 out of 2464 (67.0%) when switching.
 
 <p>Employees in the shipping department need to calculate the total mass of each order. You need to write a Python program that does this. Each order will be represented by a string indicating the number of each package ordered. For example...</p>
 
-<pre data-echo="io" class="Code">5A 7B</pre>
+<pre data-echo="io" class="Code">12A 7B</pre>
 
-<p>The above string represents an order of five package <code>A</code>’s, seven package <code>B</code>’s and no package <code>C</code>’s. The packages do not need to be in order. Sometimes, two or more orders may be combined so that the package type might be repeated...</p>
+<p>The above string represents an order of twelve package <code>A</code>’s, seven package <code>B</code>’s and no package <code>C</code>’s. The packages do not need to be in order. Sometimes, two or more orders may be combined so that the package type might be repeated...</p>
 
-<pre data-echo="io" class="Code">2B 4A 3C 1A 7B</pre>
+<pre data-echo="io" class="Code">2B 4A 3C 10A 7B</pre>
 
-<p>The above would result in five <code>A</code>’s, nine <code>B</code>’s, and three <code>C</code>’s.</p>
+<p>The above would result in fourteen <code>A</code>’s, nine <code>B</code>’s, and three <code>C</code>’s.</p>
 
-<p>Download this program as <code>package.py</code>. Modify the program so that it asks the user to enter the order as described above, and then calculates the total number of each package and the total mass of the order.</p>
+<p>Download this program as <code>p3_package.py</code>. Modify the program so that it asks the user to enter the order as described above, and then calculates the total number of each package and the total mass of the order.</p>
 
-<pre data-echo="package.py" data-title="1" class="Code"><span class="DocString">"Package Factory shipping calculator"</span>
+<pre data-echo="p3_package.py" data-title="1" class="Code"><span class="DocString">"Package Factory shipping calculator"</span>
 
 <span class="Comment"># Package masses...</span>
 A = 27.5
