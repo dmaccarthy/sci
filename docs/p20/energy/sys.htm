@@ -1,14 +1,9 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Non-Isolated Systems</h1>
 </section>
-
-<!-- <section class="Slide Present">
-    <div class="Assign"><p>Individually, complete the <i>Review</i> section of the <i>?</i> handout.</p></div>
-    <div class="Assign"><p>In a small group, complete the <i>Activity</i> section of the <i>?</i> handout.</p></div>
-</section> -->
 
 <section class="Slide"><h3>Type of Systems</h3>
     <p><b>Isolated System</b>: A system that does not exchange either matter or energy with its environment.</p>
@@ -24,7 +19,7 @@
     </ul>
 </section>
 
-<section class="Slide"><h3 class="Blue">Example</h3>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
     <p data-cue="none" class="Blue">A 300-gram ball is dropped from a height of 4.00 metres. When the ball reaches the ground, its speed is measured to be 7.00 m/s.</p>
     <p class="TeX">E_{gi} = mgh_i = {\rm{0.300\ kg\cdot 9.81\ m/s^2\cdot 4.00\ m = 11.8\ J}}</p>
     <p class="TeX">E_{kf} = {1\over 2}mv_f^2 = {\rm{{1\over 2}0.300\ kg\cdot (7.00\ m/s)^2 = 7.35\ J}}</p>
@@ -44,14 +39,34 @@
     </ul>
 </section>
 
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Non-Isolated Systems</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
-</div></section>
+<section class="Slide"><h3>Efficiency</h3>
+<p>Most energy transformations produce unwanted “waste” forms of energy.</p>
+<ul>
+	<li>For example, a light bulb is intended to transform electrical energy into light energy. In reality, a significant fraction of the energy is wasted in the form of heat.</li>
+</ul>
+<div>
+    <p>Scientists use the concept of <em class="Defn">efficiency</em> to describe the fraction or percentage of the energy input that is transformed into its intended or useful output:</p>
+    <p class="TeX">\epsilon = {\Delta E_{useful} \over |\Delta E_{input}|}</p>
+</div>
+<ul>
+	<li>To say that a light bulb is 20% efficient means that 20% of the electrical energy consumed becomes light energy, and the remaining 80% of the energy consumed becomes waste (thermal energy).</li>
+    <li>Note that efficiency does not have any units, since the units of the numerator and denominator are the same.</li>
+    <li>The <em class="Defn">Second Law of Thermodynamics</em> states that energy transformations will always produce some heat, and therefore have an efficiency of less than 100% when thermal energy is not the intended output.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+    <p data-cue="none" class="Blue">Calculate the efficiency for the falling ball in Example 1.</p>
+    <p>The <em>input</em> is the gravitational potential energy that the ball has to begin with, 11.8 J.</p>
+    <p>The <em>useful</em> output is the kinetic energy that the ball reaches the ground with, 7.35 J.</p>
+    <p class="TeX">\epsilon = {\Delta E_{useful} \over |\Delta E_{input}|} = \rm \frac{7.35\ J}{11.8\ J} = 0.624</p>
+    <p>In other words, 62.4% of the gravitational potential energy becomes kinetic energy, while the other 37.6% becomes waste forms of energy such as thermal and/or sound energy.</p>
+</section>
+
 
 </div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
 <li>A 500-gram ball is dropped from a height of 2.00 metres.
@@ -76,8 +91,11 @@
         <p class="Center"><svg class="s20" data-svg2="p20/energy/img/sys.js#flow1#1"></svg></p>
     </div>
     
-    <li>Does the change in mechanical energy represent energy gained by the system from the environment, or energy lost by the system to the environment?</li>
-    <p class="Answer">This is a loss of energy by the system to the environment.</p>
+    <li>Does the change in mechanical energy represent energy gained by the system from the environment, or energy lost by the system to the environment? What was the efficiency of the energy transformation?</li>
+    <div class="Answer">
+        <p>This is a loss of energy by the system to the environment.</p>
+        <p class="TeX">\epsilon = \frac{\Delta E_{useful}}{|\Delta E_{input}|} = \rm\frac{6.25\ J}{9.81\ J} = 0.637</p>
+    </div>
 
     <li>Classify the system as isolated, closed, or open. Explain.</li>
     <p class="Answer">Closed. No matter enters or leaves the system but energy does.</p>
@@ -104,7 +122,7 @@
     <p data-cue="prev">Calculate the speed of the arrow just before it strikes the target 80.0 cm above the ground. Include appropriate energy bar charts and an energy flow diagram.</p>
 </li>
 <div class="Answer">
-    <p class="Center"><img alt="Archer" class="s24" data-aspect="628/184" src="p20/energy/img/archer.webp"/></p>
+    <p class="Center"><svg class="s24" data-svg2="p20/energy/img/sys.js#archer"></svg></p>
     <p class="Center"><svg class="s20" data-svg2="p20/energy/img/sys.js#Q3"></svg></p>
     <p class="TeX">E_g = mgh = \rm 0.0600\ kg\cdot 9.81\ m/s^2\cdot\ 1.25 m = 0.736\ J</p>
     <p class="TeX">E_{elas} = \frac{1}{2} k(\Delta L)^2 = \rm \frac{1}{2} (100\ N/m) (0.400\ m)^2 = 8.00\ J</p>
@@ -137,6 +155,9 @@
         <p class="Center"><svg class="s20" data-svg2="p20/energy/img/sys.js#Q4"></svg></p>
         <p class="Center"><svg data-svg2="p20/energy/img/sys.js#flow4" class="s20"></svg></p>
     </div>
+
+    <li>What was the efficiency of the energy transformation?</li>
+    <p class="Answer TeX">\epsilon = \frac{\Delta E_{useful}}{|\Delta E_{input}|} = \rm\frac{6.13\ J}{7.81\ J} = 0.785</p>
 </ol></li>
 
 <li>
@@ -177,12 +198,35 @@
         <p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm \sqrt{\frac{2\cdot 51875\ J}{625\ kg}} = 12.9\ m/s</p>
     </div>
 </ol></li>
-</ol>
+
+<li>A student running on a treadmill burns 120 kJ of food energy and produces 97.2 kJ of heat. What is the efficiency of the energy transformation?</li>
+<div class="Answer">
+    <p class="TeX">\Delta E_{useful} = \Delta E_{input} - \Delta E_{waste} = \rm{120\ kJ - 97.2\ kJ = 22.8\ kJ}</p>
+    <p class="TeX">\epsilon = \frac{\Delta E_{useful}}{\Delta E_{input}} = \rm{\frac{22.8\ kJ}{120\ kJ} = 0.190 = 19.0\%}</p>
+</div>
+
+<li>The diesel engine of a locomotive has an efficiency of 12.5% in transforming the chemical energy of the fuel into useful work as the locomotive hauls the train up a hill.
+<ol type="a">
+    <li>If the engine does 4.25 × 10<sup>7</sup> J of useful work in hauling the train up the hill, how much chemical energy (fuel) did the engine consume?</li>
+    <div class="Answer">
+        <p class="TeX">\epsilon  = \frac{\Delta E_{useful}}{\Delta E_{input}}</p>
+        <p class="TeX">\epsilon \Delta E_{input} = \Delta E_{useful}</p>
+        <p class="TeX">\Delta E_{input} = \frac{\Delta E_{useful}}{\epsilon} = \rm \frac{4.25\times 10^7\ J}{0.125} = 3.40\times 10^8\ J</p>
+    </div>
+
+    <li>How much waste (thermal and sound energy) did the engine produce?</li>
+    <div class="Answer">
+        <p class="TeX">\Delta E_{waste} = \Delta E_{input} - \Delta E_{useful}</p>
+        <p class="TeX">\Delta E_{waste} = \rm 3.40\times 10^8\ J - 4.25\times 10^7\ J = 2.98\times 10^8\ J</p>
+    </div>
+</ol></li>
+
+<!-- </ol>
 </div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
     <li>Define <em class="Defn">open</em>, <em class="Defn">closed</em>, and <em class="Defn">isolated systems</em>.</li>
     <p class="Answer">An open system allows both matter and energy into/out of the system. A closed system allows energy but not matter into/out of the system. An isolated system allows neither nergy nor matter in or out of the system.</p>
 
@@ -196,28 +240,27 @@
         <li>Describe how to draw energy bar charts and energy flow diagrams for non-isolated systems. Sketch examples below.</li>
         <p class="Answer">See lesson notes.</p>
     </ol></li>
-</ol>
-</div></section>
 
-<section class="Post" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1l0e_zZVHxbW2uMF-xdUK33YLul-3skjY">Ramp Lab</button>
-        <button data-icon="gdrv" data-gdrv="1FvTl_R76li7vkDNSZL85WrKPrlO9xcZ3">Assignment</button>
-    </p>
+    <li><ol type="a">
+    <li>Define efficiency.</li>
+    <div class="Answer">
+        <p>Efficiency indicates how much useful energy is produced as a fraction or percentage of the energy input:</p>
+        <p class="TeX">\epsilon = {\Delta E_{useful} \over |\Delta E_{input}|}</p>
+    </div>
+
+    <li>Explain what we mean by “useful” as opposed to “waste” energy.</li>
+    <p class="Answer">Energy is useful if it is the type of energy we intend to produce. For example, kinetic energy is the useful output of a car engine. Other types of energy produced as a by-product (e.g. sound and thermal energy) are considered waste.</p>
+
+    <li>State the Second Law of Thermodynamics and explain how it relates to efficiency.</li>
+    <p class="Answer">All mechanical energy transformations have an efficiency of less than 100%; some waste thermal energy will always be produced.</p>
+    </ol></li>
+
+</ol>
 </div></section>
 
 <script type="text/javascript">
     
-loadFeed.data = {
-    title: `${siteData.lesson}6.3 — Non-Isolated Systems`,
-    showDate: "2025.3.4",
-    answerDate: "2025.3.5",
-    num: "6.3",
-    up: "p20/home",
-    prev: "p20/energy/cons",
-    next: "p20/energy/work",
+loadFeed.data = {up: "p20/home", prev: "p20/energy/cons", //next: "p20/energy/work",
 }
 
 </script>

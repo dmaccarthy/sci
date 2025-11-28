@@ -1,5 +1,21 @@
 SVG2.cache("p20/energy/img/sys.js", {
 
+archer: (sel) => {
+    let svg = new SVG2(sel, {scale: 64, grid: 0, lrbt: [-1, 7, -0.1, 2.1]});
+    svg.group("black3", "nofill").line([-2, 0], [12, 0]);
+    let g = svg.group("black2", "nofill");
+    g.stickman(2).align([0, 1]);
+    let c = new RArray(6, 0.8);
+    g.poly([c.plus([-0.4, -0.8]), c, c.plus([0.4, -0.8])]);
+    g.circle(0.4, c).css({fill: "#a0a0ff"});
+    g.circle(0.08, c).css({fill: "red"});
+    g = svg.group("arrow", {fill: "#ffcd82"});
+    let v = [0.2, 1.25], L = 1.1;
+    let attr = {tail: "5", shape: 2};
+    g.arrow({tail: v, tip: vec2d(L, 20).plus(v)}, attr);
+    g.arrow({tail: c.minus(vec2d(L, -25)), tip: c}, attr);
+},
+
 bar: (sel) => {
     let E = 11.772;
     svg = SVG2.ebg(sel, 14, 1, [
@@ -10,7 +26,7 @@ bar: (sel) => {
 },
 
 flow1: (sel, label) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-1, 5]}).css(".NoStyle", "middle");
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-1, 5]}).css(".NoStyle");
     svg.circle(1.7, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("symbol", "f28", "blue");
@@ -23,14 +39,13 @@ flow1: (sel, label) => {
     let a1 = g.arrow({tail: [dx, 0], tip: [2-dx, 0]}, {tail: "6"}).css("blue");
     let a2 = g.arrow({tail: [2+dx, 0], tip: [4-dx, 0]}, {tail: "6"});
     if (label) {
-        let text = {stroke: "none"}
-        a1.label("9.81 J", ["-12", "-24"]).css(text);
-        a2.label("3.56 J", ["4", "-32"]).css(text);
+        a1.label("9.81 J", ["-4", "-32"]);
+        a2.label("3.56 J", ["4", "-32"]);
     }
 },
 
 flow2: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]}).css(".NoStyle", "middle");
+    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]}).css(".NoStyle");
     svg.circle(0.8, [2, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("blue");
@@ -39,12 +54,12 @@ flow2: (sel) => {
 
     g = svg.group().css("arrow");
     let a = g.arrow({tail: [0.5, 0], tip: [1.7, 0]}, {tail: "6"});
-    a.label("59.6 J", ["-20", "-24"]).css({stroke: "none"});
+    a.label("59.6 J", ["-20", "-24"]);
     g.arrow({tail: [0, -0.3], tip: [0, -1.5]}, {tail: "6"});
 },
 
 flow3: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle", "middle");
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle");
     svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("blue");
@@ -54,16 +69,16 @@ flow3: (sel) => {
     svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [2.5, 0]]);
 
     let a = svg.group().css("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
-    a.label("3.00 J", ["6", "-30"]).css({stroke: "none"});
+    a.label("3.00 J", ["6", "-30"]);
     g = svg.group().css("arrow", "blue");
     a = g.group().config({theta: -30, shift: [-0.8, 0.55]}).arrow(1.4, {tail: "6"});
-    a.label("0.26 J", ["-8", "-24"]).css({stroke: "none"});
+    a.label("0.26 J", ["-8", "-24"]);
     a = g.group().config({theta: 30, shift: [-0.8, -0.55]}).arrow(1.4, {tail: "6"});
-    a.label("8.00 J", ["-8", "-24"]).css({stroke: "none"});
+    a.label("8.00 J", ["-8", "-24"]);
 },
 
 flow4: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle", "middle");
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle");
     svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     let g = svg.group().css("blue");
@@ -72,11 +87,11 @@ flow4: (sel) => {
     svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [2.5, 0]]);
 
     let a = svg.group().css("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
-    a.label("1.68 J", ["6", "-30"]).css({stroke: "none"});
+    a.label("1.68 J", ["6", "-30"]);
 
     g = svg.group().css("arrow", "blue");
     a = g.group().config({theta: 0, shift: [-1, 0]}).arrow(-1.4, {tail: "6"});
-    a.label("6.13 J", ["8", "-30"]).css({stroke: "none"});
+    a.label("6.13 J", ["8", "-30"]);
 },
 
 Q1: (sel) => {
