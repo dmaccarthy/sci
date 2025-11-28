@@ -913,7 +913,7 @@ reshape(info, options, anchor) {
 
 label(text, shift) {
 /* Add text relative to arrow midpoint */
-    return this.text(text, this.seg.midpoint.plus(this._cs(shift)));
+    return this.css("text", "nostroke").text(text, this.seg.midpoint.plus(this._cs(shift)));
 }
 
 }
