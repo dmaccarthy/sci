@@ -13,38 +13,12 @@
 </style>
 <h2 class="Collapse">Simulation</h2>
 <div class="Collapse Expand Center">
-<p><svg id="Sim" class="Graph" data-aspect="804/444" width="804" height="444">
-<defs>
-<linearGradient id="grad1" x1="100%" x2="40%" y1="0%" y2="60%">
-    <stop offset="0%" stop-color="lightgrey" />
-    <stop offset="100%" stop-color="grey" />
-</linearGradient>
-</defs>
-<style>
-
-#Sim polygon {fill: url(#grad1)}
-#Sim polyline {fill: none; stroke: grey; stroke-width: 1}
-#Sim circle {fill: red}
-#Sim circle.Wheel {fill: none; stroke: brown; stroke-width: 2}
-
-#Sim text {
-    font-size: 32px;
-    font-family: Inconsolata, monospace;
-    text-anchor: end;
-}
-
-#Sim text:is(.TickLabelX, .TickLabelY) {font-size: 18px}
-#Sim text.TickLabelX {text-anchor: middle}
-#Sim text.TickLabelY {text-anchor: start}
-
-</style>
-</svg></p>
+<p><svg id="Sim"></svg>
 <table id="SimControls">
     <tr><td>Angle</td><td><input type="number" onchange="loadFeed.sim.launchAngle()" id="LaunchAngle" value="0" min="0" max="85" step="5" /></td></tr>
     <tr><td>Elevation</td><td><input type="number" id="Elev" value="10" min="0" max="60" step="5" onchange="loadFeed.sim.elevate()"/></td></tr>
     <tr><td>Slow Motion</td><td><input type="range" id="SloMo" value="1" min="0.02" max="1" step="0.005" /></td></tr>
 </table>
-<p class="Center"><button onclick="loadFeed.sim.clearTracks()">Clear</button></p>
 
 </div></section>
 
@@ -54,76 +28,72 @@
     <p>Click on the animation to fire the cannon, or to pause, resume or reset.</p>
     <p>Adjust the launch angle and cannon elevation using the numerical inputs.</p>
     <p>Use the Slow Motion slider to adjust the animation speed. The animation plays in real time when the slider is all the way to the right. The further left the slider is moved, the slower the animation will run.</p>
-    <p>The Clear button will clear all of the cannonball trajectories.</p>
     <p>Reloading the animation will change the muzzle speed!</p>
 </div></section>
 
 <script type="text/javascript" data-init="sim">
 
-loadFeed.sim = () => {  
-    svg = loadFeed.sim.svg = new SVG_Animation("#Sim", -5, 195, -5, 105, 2);
-    svg.grid([0, 195, 5], [0, 105, 5], 1);
-    let attr = {interval: 50, minor: 5, fixed: 0, length: "-10", omitZero: 1, offset: [0, "20"]};
-    svg.axis({x: [0, 195], ticks: attr});
-    attr.offset = ["16", 0];
-    svg.axis({y: [0, 105], ticks: attr});
-    $($("#Sim .TickLabelX")[2]).append(" m");
-    $($("#Sim .TickLabelY")[1]).append(" m");
-    svg.image("p20/vec2d/img/castle.svg", [3.75*5.3416, 3.75*4.0855], [170.5, 3]).addClass("Castle");
-    svg.final();
-    svg.hi = uniform(19, 21);
+loadFeed.sim = () => {
+    let svg = loadFeed.sim.svg = new SVG2("#Sim", {scale: 3.6, margin: [24, 2, 12, 0], grid: 5, lrbt: [0, 195, 0, 105]}).css(".NoStyle");
+    svg.label([0, "6"], [...range(0, 195, 10)], 0);
+    svg.label([0, "6"], 0, [...range(0, 105, 10)]);
+    svg.label(0, [...range(50, 195, 50)], 3);
+    let g = svg.label(0, 2, [...range(50, 105, 50)]).css({"text-anchor": "start"}).shiftBy([0, -1.5]);
+    $(g.$.find("text")[1]).html("100 m");
+
+    let size = new RArray(534.16, 408.55).times(0.042);
+    svg.castle = g = svg.group();
+    g.image("p20/vec2d/img/castle.svg", size).addClass("Castle");
+    g.align([175, 0], 0.5, 0.7);
+
+    svg.gradient("Platform", "lightgrey", "grey", 100, 40, 0, 60);
+    svg.platform = svg.group("black1", {fill: "url(#Platform)"});
+    svg.clock = svg.group("text", "f24").config({shift: [175, 95]}).text("");
+
     svg.vi = uniform(37, 42);
-    let size = new RArray(336.6, 66.4).times(0.03);
-    svg.ball = svg.circle(0.65, [0, 0]);
-    svg.cannon = svg.image("p20/vec2d/img/cannon.svg", size, [0, 0]);
-    svg.circle(2.5, [0, 0]).addClass("Wheel");
-    svg.platform = svg.poly([], 1).before(3);
-    svg.clock = svg.text("", [190, 95]);
+    svg.ball = svg.group("red", "black1");
+    svg.ball.circle(0.65);
+
+    size = new RArray(336.6, 66.4).times(0.03);
+    svg.cannon = g = svg.group("nofill");
+    g.image("p20/vec2d/img/cannon.svg", size);
+    g.circle(2.5).css({stroke: "brown", "stroke-width": "2px"}).addClass("Wheel");
+    g.align([0, 0], 0.5, 1);
+
     loadFeed.sim.elevate();
 
-    svg.clock.beforeupdate = function() {
-        this.$.html(`${svg.time.toFixed(3)} sec`);
-    }
-
-    svg.onupdate = function() {
+    svg.beforeupdate = function() {
         svg.timeFactor = parseFloat($("#SloMo").val());
         let t = svg.time;
         let b = svg.ball;
         let x = b.initVel[0] * t;
-        let y = svg.cannon.position[1] + t * (b.initVel[1] - 9.81 / 2 * t);
+        let y = svg.hi + t * (b.initVel[1] - 9.81 / 2 * t);
         if (y < 0) {
             svg.done = true;
             svg.pause();
         }
-        b.config({position: y < 0 ? [b.landing, 0] : [x, y]});
+        b.align(y < 0 ? [b.landing, 0] : [x, y]);
+        svg.clock.html(`${t.toFixed(2)} sec`);
     };
 
     svg.$.on("click", () => {
         if (svg.done) loadFeed.sim.launchAngle();
         else svg.toggle();  
     });
-}
 
-loadFeed.sim.fire = () => {
-    let svg = $("#Sim")[0].graphic;
-    if (svg.done) loadFeed.sim.launchAngle();
-    else svg.toggle();    
 }
 
 loadFeed.sim.elevate = () => {
+    let svg = loadFeed.sim.svg;
     svg.pause();
     let e = $("#Elev");
     let y = svg.hi = parseFloat(e.val());
-    // e.attr({title: `Cannon Elevation = ${y.toFixed(1)} metres`});
-    svg.platform.setPoints([[-5, y-2.7], [5, y-2.7], [5, -10], [-5, -10]]);
+    y -= 2.5;
+    svg.platform.$.html("");
+    svg.platform.poly([[-5, y], [5, y], [5, -10], [-5, -10]]);
     loadFeed.sim.launchAngle();
 }
 
-loadFeed.sim.clearTracks = () => {
-    $("#Sim polyline").remove();
-    loadFeed.sim.launchAngle();
-}
-    
 loadFeed.sim.launchAngle = () => {
     let svg = loadFeed.sim.svg.pause();
     let a = Math.round(parseFloat($("#LaunchAngle").val()));
@@ -133,23 +103,26 @@ loadFeed.sim.launchAngle = () => {
     }
     $("#LaunchAngle").val(svg.cannon.theta.toFixed(0));
     let y = svg.hi + uniform(-0.1, 0.1);
-    svg.$.find(".Wheel")[0].graphic.position = svg.cannon.position = [0, y];
     let v = svg.ball.initVel = vec2d(svg.vi, a);
     let vf = -root(v[1] * v[1] + 2 * y * 9.81);
     let t = (v[1] - vf) / 9.81;
-    svg.ball.config({position: [0, y], hang: t, landing: v[0] * t});
+    svg.ball.align([0, y]).config({hang: t, landing: v[0] * t});
+    svg.cannon.align([0, y], 0.5, 0.5);
+
     let p = svg.parab;
-    if (p) {
-        p.final();
-        if (p._param[1] == 0) p.$.remove();
-    }
-    svg.parab = p = svg.locus((t) => [v[0] * t, y + t * (v[1] - 9.81 / 2 * t)], [0, 0]);
-    p.before(".Castle").beforeupdate = function() {
+    if (p) p.config({animated: false}).$.remove();
+    svg.parab = p = svg.locus((t) => [v[0] * t, y + t * (v[1] - 9.81 / 2 * t)], [0, svg.ball.hang]);
+    p.config({animated: true}).$.insertBefore(svg.castle.$).css({stroke: "lightgrey"});
+
+    p.beforeupdate = function() {
         let svg = this.svg;
-        this._param[1] = Math.min(svg.time, svg.ball.hang);
+        let t = svg.time;
+        let t1 = svg.ball.hang;
+        this.param[1] = t ? Math.min(t, t1) : t1;
     }
+
+    svg.clock.html("");
     svg.config({time: 0, done: false});
-    svg.update(0);
 };
 
 loadFeed.data = {

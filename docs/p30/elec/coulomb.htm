@@ -1,7 +1,7 @@
-<section class="Post" data-icon="video">
+<!-- <section class="Post" data-icon="video">
     <h2 class="Collapse">Video</h2>
     <div class="Collapse" data-yt="#PLpVmtCaB-lymqo9502rf1ax_xrq2M_QeT"></div>
-</section>
+</section> -->
 
 <section class="Post" data-icon="simulation">
 <h2 class="Collapse">Simulation</h2><div class="Collapse Expand">
@@ -9,13 +9,102 @@
     <p class="Center">Calibration: <span id="mN_per_deg"></span> mN/°</p>
     <p class="Center"><a href="javascript:loadFeed.verify()">Experiment Code</a>: <span id="ExpCode"></span></p>
 </div>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Coulomb’s Law</h1>
+</section>
+
+<section class="Slide"><h3>Coulomb’s Hypothesis</h3>
+<p>The force of gravity between two masses, according to Newton, is:</p>
+<p class="TeX">F_g = {Gm_1 m_2\over r^2}</p>
+<div>
+    <p>Coulomb proposed that a similar relationship might describe the electric force between two charges:</p>
+    <p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
+</div>
+<ul>
+    <li>The electric force should depend on the charges (<span class="TeX">q_1</span> and <span class="TeX">q_2</span>) instead of the masses.</li>
+    <li>The constant (<span class="TeX">k</span>) for electric force must be different than for gravity (<span class="TeX">G</span>); charge and mass have different units.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Coulomb’s Experiment</h3>
+<p>To test whether his hypothesis was correct, Coulomb measured the electric force using a <em class="Defn">torsion balance</em>.</p>
+<p class="Center"><img data-aspect="355/419" class="s16" src="p30/elec/img/tb.webp" alt="Torsion Balance"/></p>
+<ul>
+    <li>A torsion balance was later used by Cavendish to measure gravitational force.</li>
+    <li>When a torsion (twisting force) is applied, the apparatus will twist until the wire’s tendency to untwist balances the torsion.</li>
+    <li>The angle at which the torsions balance tells us how strong the force is.</li>
+    <li>Coulomb manipulated the separation between the charges to see how the electric force  would change.</li>
+    <li>If the hypothesis is correct a graph of the raw data (<span class="TeX">F_e</span> vs. <span class="TeX">r</span>) will be <em>non-linear</em>.</li>
+    <li>A graph of <span class="TeX">F_e</span> vs. <span class="TeX">r^{-2}</span> should show a <em>direct</em> relationship with a slope <span class="TeX">kq_1 q_2</span>.</li>
+    <li>If we can measure the two charges, we can calculate <span class="TeX">k</span> from the slope of the graph.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Coulomb’s Law</h3>
+<p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
+<div>
+    <p>The accepted value of Coulomb’s constant is:</p>
+    <p class="TeX">k = 8.99\times 10^9\ \rm{N\cdot m^2/C^2}</p>
+</div>
+<ul>
+    <li>This means that two charges of 1 coulomb each that are 1 metre apart will repel (or attract if they have opposite signs) with a force of 8.99 <em>billion</em> newtons!</li>
+    <li>The electric force is typically much stronger than gravity.</li>
+    <li>Technically, Coulomb’s Law only applies to <em class="Defn">point charges</em>.</li>
+    <li>Coulomb’s Law can be used as an approximation when the separation between the objects is much larger than the size of the objects.</li>
+    <li>The separation <span class="TeX">r</span> is measured from the <em>centres</em> of the charges.</li>
+    <li>The equation tells us only the <em>magnitude</em> of the electric force.</li>
+    <li>The <em>direction</em> of the force depends on whether the charges attract (opposite sign) or repel (same sign).</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Example 1</h3>
+<p class="Blue">Calculate the electric force between a +5.00 μC charge and a −2.00 μC charge that are 20.0 cm apart.</p>
+<p class="TeX">F_e = \rm \frac{(8.99\times 10^9\ \frac{N\cdot m^2}{C^2}) (5.00\times 10^{-6}\ C) (2.00\times 10^{-6}\ C)}{(0.200\ m)^2} = 2.25\ N</p>
+<p>This force is <em>attractive</em>.</p>
+</section>
+
+<section class="Slide"><h3>Example 2</h3>
+<p class="Blue">Calculate the separation between two 75.0 nC charges that repel each other with a force of 1.50 newtons.</p>
+<p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
+<p class="TeX">F_e r^2 = |kq_1q_2|</p>
+<p class="TeX">r^2 = {|kq_1q_2|\over F_e}</p>
+<p class="TeX">r = \sqrt{|kq_1q_2|\over F_e} = \rm{{8.99\times 10^9 (7.50\times 10^{-8})^2\over 1.50}\ m = 5.81\ mm}</p>
+</section>
+
+<section class="Slide"><h3>Inverse Square Law</h3>
+<p>Coulomb’s Law is an <em class="Defn">inverse square</em> law.</p>
+<ul>
+    <li>This means that when the separation is <em>doubled</em>, the force will be <em><u>four</u> times weaker!</em></li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Example 3</h3>
+<p class="Blue">Two charges, <span class="TeX">q_1</span> and <span class="TeX">q_2</span>, exert an electric force <span class="TeX">F_1</span> on each other when separated by a distance <span class="TeX">r</span>. If one of the charges is doubled and the separation is tripled, the electric force becomes <span class="TeX">F_2</span>. Calculate the ratio <span class="TeX">F_2:F_1</span>.</p>
+<p class="TeX">F_1 = \left|{kq_1 q_2\over r^2}\right|</p>
+<p class="TeX">F_2 = \left|{k(2q_1)q_2\over(3r)^2}\right| = {2\over 9}\left|{kq_1 q_2\over r^2}\right|</p>
+<p class="TeX">{F_2 \over F_1} = {2\over 9} = 0.\bar{2}</p>
+<p class="TeX">{F_1 \over F_2} = {9\over 2} = 4.5</p>
+</section>
+
+</div></section>
+
+<section class="Post" data-show="2024.9.21" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1uY1-f-DxC1GJlf4iLhX6-STY1mIas0fl9JkEOTsbXXc">Answer Key</button>
+    </p>
+</div></section>
 
 <script type="text/javascript" data-init="sim">
 
 loadFeed.sim = () => {
-    let e = $("#CoulombSim").attr({width: 600, height: 600, "data-aspect": "1"});
     let R = 44;
-    let svg = new SVG_Animation(e, -R, R, -R, R, 1);
+    let svg = new SVG2("#CoulombSim", {scale: 7, lrbt: [-R, R, -R, R]});
 
     // Set charge and force calibration
     svg.charge = 1e-6 * uniform(2, 6);
@@ -26,53 +115,36 @@ loadFeed.sim = () => {
     svg.force = -parseFloat(f) / 1000;
 
     // Draw protractor
-    svg.circle(R, [0, 0]).css({fill: "#F0F0F0", "fill-opacity": 0.4, stroke: "#C0C0C0"});
-    let g = svg.group().css({stroke: "#C0C0C0"});
-    let t = svg.group().css({fill: "#909090"});
+    svg.circle(R).css({fill: "#f0f0f0", "fill-opacity": 0.4, stroke: "#c0c0c0"});
+    let g = svg.group({stroke: "#c0c0c0"});
+    let t = svg.group("text", {fill: "#909090"});
     for (let i=0;i<360;i++) {
         let p = vec2d(R, i);
         if (i % 20) {
             let r = i % 10 ? (i % 5 ? 1 : 2 ) : 3;
-            svg.line(vec2d(R - r, i), p, g);
+            g.line(vec2d(R - r, i), p);
         }
         else {
-            svg.line([0, 0], p, g);
-            svg.text(i > 270 ? i - 360 : i, vec2d(38, i), t);
+            g.line([0, 0], p);
+            t.text(i > 270 ? i - 360 : i, vec2d(40, i));
         }
     }
 
-    let pivot = svg.circle(0.7, [0, 0]).css({fill: "white", stroke: "black"});
-    svg.final();
-
     // Draw spheres
-    g = svg.group().config({thetaMode: 0}).before(pivot.$);
+    g = svg.group().config({thetaMode: 0, animated: true});
+    svg.circle(0.7, [0, 0]).css({fill: "white", stroke: "black"});
     let [p1, p2] = [[40, 0], [-25, 0]];
-    svg.line(p1, p2, g).css({stroke: "black", "stroke-width": "4px"});
-    svg.circle(2.4, p1, g).css({fill: "red", stroke: "black"});
-    svg.circle(3.4, p2, g).css({fill: "#B0B0B0", stroke: "black"});
-    svg.blue = svg.circle(2.4, vec2d(40, -60)).css({fill: "#0065FE", stroke: "black"});
-    // svg.blue.dragging = false;
-
-    // Event handlers for mouse actions
-    // svg.$.on("mouseup", () => {svg.blue.dragging = false});
-    // svg.$.on("mousemove", (ev) => {svg.mouseTheta = svg.eventCoords(ev).coords.dir()});
-    // svg.blue.$.on("mousedown", () => {svg.blue.dragging = true; return false});
-
-    svg.$.on("click", (ev) => {
-        let theta = svg.eventCoords(ev).coords.dir();
-        svg.blue.position = vec2d(40, theta);
-    });
-
-    // svg.blue.beforeupdate = function() {
-    //     // Drag the blue sphere
-    //     if (this.dragging) this.position = vec2d(40, this.svg.mouseTheta);
-    // }
+    g.line(p1, p2).css({stroke: "black", "stroke-width": "4px"});
+    g.circle(2.4, p1).css({fill: "red", stroke: "black"});
+    g.circle(3.4, p2).css({fill: "#B0B0B0", stroke: "black"});
+    svg.blue = svg.group("blue", "black1").config({shift: vec2d(40, -60)});
+    svg.blue.circle(2.4);
 
     g.beforeupdate = function() {
         // Calculate angular speed of torsion balance
         let svg = this.svg;
         let p = vec2d(40, this.theta);
-        let dx = p.minus(svg.blue.position);
+        let dx = p.minus(svg.blue.shift);
         let r = dx.mag() / 100;
         let Fe = vec2d(8.99e9 * sq(svg.charge) / sq(r), dx.dir());
         let unit = vec2d(1, this.theta + 90);
@@ -81,7 +153,10 @@ loadFeed.sim = () => {
         this.omega = Math.max(-200, Math.min(omega, 200));
     }
 
-    svg.play();
+    svg.play().$.on("click", (ev) => {
+        let theta = svg.eventCoords(ev).coords.dir();
+        svg.blue.config({shift: vec2d(40, theta)});
+    });
 }
 
 loadFeed.verify = (a) => {
@@ -93,101 +168,6 @@ loadFeed.verify = (a) => {
         alert(`Your calculated charge is off by ${c.toFixed(2)}%`);
     }
 }
-
-</script>
-</section>
-
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
-
-<section class="Slide Center">
-<h1 id="Title">Coulomb’s Law</h1>
-</section>
-
-<section class="Slide"><h3>Coulomb’s Hypothesis</h3>
-<p>The force of gravity between two masses, according to Newton, is:</p>
-<p class="TeX">F_g = {Gm_1 m_2\over r^2}</p>
-<div data-cue="+">
-    <p>Coulomb proposed that a similar relationship might describe the electric force between two charges:</p>
-    <p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
-</div>
-<ul data-cue="+">
-    <li>The electric force should depend on the charges (<span class="TeX">q_1</span> and <span class="TeX">q_2</span>) instead of the masses.</li>
-    <li data-cue="+">The constant (<span class="TeX">k</span>) for electric force must be different than for gravity (<span class="TeX">G</span>); charge and mass have different units.</li>
-</ul>
-</section>
-
-<section class="Slide"><h3>Coulomb’s Experiment</h3>
-<p>To test whether his hypothesis was correct, Coulomb measured the electric force using a <em class="Defn">torsion balance</em>.</p>
-<p class="Center"><img data-aspect="355/419" class="s16" src="p30/elec/img/tb.webp" alt="Torsion Balance"/></p>
-<ul data-cue="+">
-    <li>A torsion balance was later used by Cavendish to measure gravitational force.</li>
-    <li data-cue="+">When a torsion (twisting force) is applied, the apparatus will twist until the wire’s tendency to untwist balances the torsion.</li>
-    <li data-cue="+">The angle at which the torsions balance tells us how strong the force is.</li>
-    <li data-cue="+">Coulomb manipulated the separation between the charges to see how the electric force  would change.</li>
-    <li data-cue="+">If the hypothesis is correct a graph of the raw data (<span class="TeX">F_e</span> vs. <span class="TeX">r</span>) will be <em>non-linear</em>.</li>
-    <li data-cue="+">A graph of <span class="TeX">F_e</span> vs. <span class="TeX">r^{-2}</span> should show a <em>direct</em> relationship with a slope <span class="TeX">kq_1 q_2</span>.</li>
-    <li data-cue="+">If we can measure the two charges, we can calculate <span class="TeX">k</span> from the slope of the graph.</li>
-</ul>
-</section>
-
-<section class="Slide"><h3>Coulomb’s Law</h3>
-<p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
-<div data-cue="+">
-    <p>The accepted value of Coulomb’s constant is:</p>
-    <p class="TeX">k = 8.99\times 10^9\ \rm{N\cdot m^2/C^2}</p>
-</div>
-<ul data-cue="+">
-    <li>This means that two charges of 1 coulomb each that are 1 metre apart will repel (or attract if they have opposite signs) with a force of 8.99 <em>billion</em> newtons!</li>
-    <li data-cue="+">The electric force is typically much stronger than gravity.</li>
-    <li data-cue="+">Technically, Coulomb’s Law only applies to <em class="Defn">point charges</em>.</li>
-    <li data-cue="+">Coulomb’s Law can be used as an approximation when the separation between the objects is much larger than the size of the objects.</li>
-    <li data-cue="+">The separation <span class="TeX">r</span> is measured from the <em>centres</em> of the charges.</li>
-    <li data-cue="+">The equation tells us only the <em>magnitude</em> of the electric force.</li>
-    <li data-cue="+">The <em>direction</em> of the force depends on whether the charges attract (opposite sign) or repel (same sign).</li>
-</ul>
-</section>
-
-<section class="Slide"><h3>Example 1</h3>
-<p class="Blue">Calculate the electric force between a +5.00 μC charge and a −2.00 μC charge that are 20.0 cm apart.</p>
-<p data-cue="+" class="TeX">F_e = \rm \frac{(8.99\times 10^9\ \frac{N\cdot m^2}{C^2}) (5.00\times 10^{-6}\ C) (2.00\times 10^{-6}\ C)}{(0.200\ m)^2} = 2.25\ N</p>
-<p data-cue="+">This force is <em>attractive</em>.</p>
-</section>
-
-<section class="Slide"><h3>Example 2</h3>
-<p class="Blue">Calculate the separation between two 75.0 nC charges that repel each other with a force of 1.50 newtons.</p>
-<p data-cue="+" class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
-<p data-cue="+" class="TeX">F_e r^2 = |kq_1q_2|</p>
-<p data-cue="+" class="TeX">r^2 = {|kq_1q_2|\over F_e}</p>
-<p data-cue="+" class="TeX">r = \sqrt{|kq_1q_2|\over F_e} = \rm{{8.99\times 10^9 (7.50\times 10^{-8})^2\over 1.50}\ m = 5.81\ mm}</p>
-</section>
-
-<section class="Slide"><h3>Inverse Square Law</h3>
-<p>Coulomb’s Law is an <em class="Defn">inverse square</em> law.</p>
-<ul data-cue="+">
-    <li>This means that when the separation is <em>doubled</em>, the force will be <em><u>four</u> times weaker!</em></li>
-</ul>
-</section>
-
-<section class="Slide"><h3>Example 3</h3>
-<p class="Blue">Two charges, <span class="TeX">q_1</span> and <span class="TeX">q_2</span>, exert an electric force <span class="TeX">F_1</span> on each other when separated by a distance <span class="TeX">r</span>. If one of the charges is doubled and the separation is tripled, the electric force becomes <span class="TeX">F_2</span>. Calculate the ratio <span class="TeX">F_2:F_1</span>.</p>
-<p data-cue="+" class="TeX">F_1 = \left|{kq_1 q_2\over r^2}\right|</p>
-<p data-cue="+" class="TeX">F_2 = \left|{k(2q_1)q_2\over(3r)^2}\right| = {2\over 9}\left|{kq_1 q_2\over r^2}\right|</p>
-<p data-cue="+" class="TeX">{F_2 \over F_1} = {2\over 9} = 0.\bar{2}</p>
-<p data-cue="+" class="TeX">{F_1 \over F_2} = {9\over 2} = 4.5</p>
-</section>
-
-</div></div></section>
-
-<section class="Post" data-show="2024.9.21" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1uY1-f-DxC1GJlf4iLhX6-STY1mIas0fl9JkEOTsbXXc">Answer Key</button>
-    </p>
-</div></section>
-
-<script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}10.3 — Coulomb’s Law`,

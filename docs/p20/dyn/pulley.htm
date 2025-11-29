@@ -14,23 +14,7 @@
 
 <h2 class="Collapse">Simulation</h2>
 <div class="Collapse Expand Center">
-<p><svg id="Sim" data-aspect="24/19" width="480" height="380">
-<style>
-
-* {stroke: black; stroke-width: 1}
-rect {fill: tan}
-circle:not(*.Pulley) {fill: #606060; stroke-width: 0.5}
-circle.Pulley {fill: #D0D0D0}
-
-text.Timer {
-    text-anchor: middle;
-    font-family: Inconsolata, monospace;
-    stroke: none;
-    font-size: 28px;
-}
-
-</style>
-</svg></p>
+<p><svg id="Sim" class="s24"></svg></p>
 <table id="SimControls" class="Bottom">
     <tr><td style="color:#fe6500">Vertical Mass / kg</td><td><input type="number" id="Mass1" value="6" min="0.25" max="10" step="0.25" onchange="loadFeed.run.reset(0)"/></td></tr>
     <tr><td style="color:#0065fe">Horizontal Mass / kg</td><td><input type="number" id="Mass2" value="3" min="0.5" max="10" step="0.25" onchange="loadFeed.run.reset(1)"/></td></tr>
@@ -54,33 +38,34 @@ text.Timer {
 <script type="text/javascript" data-init="run">
 
 loadFeed.run = () => {
-    let svg = loadFeed.run.svg = new SVG_Animation("#Sim", -2.28, 0.18, -1.62);
+    let svg = loadFeed.run.svg = new SVG2("#Sim", {size: [480, 360], lrbt: [-2.26, 0.12, -1.6, 0.3]});
+    let pulley = svg.pulley = svg.group("black1", {fill: "#d0d0d0"});
 
     // Draw the table
-    svg.rect([0.06, 0.02], [-0.765, 0.006]).css({fill: "black"});
-    svg.rect([0.16, 1.6], [-0.2, -0.8]);
-    svg.rect([0.16, 1.6], [-2.05, -0.8]);
-    svg.rect([2.25, 0.16], [-1.125, -0.08]);
+    let g = svg.group("black1", {fill: "tan"});
+    g.rect([0.06, 0.02], [-0.765, 0.006]).css({fill: "black"});
+    g.rect([0.16, 1.6], [-0.2, -0.8]);
+    g.rect([0.16, 1.6], [-2.05, -0.8]);
+    g.rect([2.25, 0.16], [-1.125, -0.08]);
 
     // Draw the rulers
     for (let i=0;i<21;i++) {
         let x = -i / 20;
         let l = i % 5 ? 0.04 : 0.07;
-        svg.line([x-0.8, 0], [x-0.8, -l]);
-        if (i < 20) svg.line([-0.12-l, x-0.6], [-0.12, x-0.6]);
+        g.line([x-0.8, 0], [x-0.8, -l]);
+        if (i < 20) g.line([-0.12-l, x-0.6], [-0.12, x-0.6]);
     }
-    svg.final();
 
     // Draw the pulley
     let r = svg.r = 0.05;
-    let pulley = svg.pulley = svg.group().after("style");
-    svg.circle(r, [0, 0], pulley).addClass("Pulley").final();
-    svg.line([-r, 0], [r, 0], pulley).final();
-    svg.circle("2", [0, 0], pulley).final();
+    pulley.circle(r, [0, 0], );
+    pulley.line([-r, 0], [r, 0]);
+    pulley.circle("2", [0, 0]);
 
     // Create/update the timer
-    svg.text("", [-1.125, -1.5]).addClass("Timer").beforeupdate = function() {
-        this.$.html(`${this.svg.time.toFixed(3)} s`);
+    let timer = svg.gtext("??", ["text", "f32"], [-1.125, -1.5]);
+    timer.beforeupdate = function() {
+        this.$.find("text").html(`${this.svg.time.toFixed(3)} s`);
     };
 
     // Move the masses and strings, assuming uniform accelerated motion
@@ -93,10 +78,10 @@ loadFeed.run = () => {
         let x = this.accel / 2 * t * t;
         if (x > 1) x = 1;
         this.pulley.config({theta: 45 - x / this.r * RAD});
-        this.sys[0].setPoints([[x - 2, r]], true);
-        this.sys[1].setPoints([[r, -x - 0.6]], true);
-        this.sys[2].position = [0, -x];
-        this.sys[3].position = [x, 0];
+        this.sys[0].line([x - 2, r], [0, r], this.sys[0].$.find("line"));
+        this.sys[1].line([r, -x - 0.6], [r, 0], this.sys[1].$.find("line"));
+        this.sys[2].config({shift: [0, -x]});
+        this.sys[3].config({shift: [x, 0]});
     }
 
     // Play, pause, reset
@@ -104,6 +89,7 @@ loadFeed.run = () => {
         if (svg.done) loadFeed.run.reset();
         else svg.toggle();
     });
+    svg.animate(timer);
 
     // Initialize the simulation
     svg.sys = [];
@@ -136,14 +122,12 @@ loadFeed.run.reset = (n) => { // Reset the animation to t = 0
     svg.pause();
 
     // Delete old masses/strings and create new ones
-    for (let i=0;i<svg.sys.length;i++) svg.sys[i].final(1);
+    for (let i=0;i<svg.sys.length;i++) svg.sys[i].$.remove();
     let r = svg.r;
-    let sys = [
-        svg.line([-2, r], [0, r]),
-        svg.line([r, -0.6], [r, 0]),
-        svg.group(),
-        svg.group()
-    ];
+    let sys = [];
+    for (let i=0;i<4;i++) sys.push(svg.group("black1"));
+    sys[0].line([-2, r], [0, r]);
+    sys[1].line([r, -0.6], [r, 0])
 
     // Read control values
     let getVal = (s) => {
@@ -168,18 +152,16 @@ loadFeed.run.reset = (n) => { // Reset the animation to t = 0
     // Draw the new masses
     m1 = root(m1, 2.5) / 18;
     m2 = root(m2 - 0.5, 2.5) / 12;
-    svg.rect([m1, 3 * m1], [r, 1.5 * m1 - 0.6], sys[2]).css({fill: "#FE6500"}).final();
-    svg.rect([m2, m2], [-2, 1.18 * r + m2 / 2], sys[3]).css({fill: "#778899"}).final();
-    svg.rect([0.4, 1.2 * r], [-2, 0.6 * r], sys[3]).css({fill: "#2085FF"}).final();
+    sys[2].rect([m1, 3 * m1], [r, 1.5 * m1 - 0.6]).css({fill: "#FE6500"});
+    sys[3].rect([m2, m2], [-2, 1.18 * r + m2 / 2]).css({fill: "#778899"});
+    sys[3].rect([0.4, 1.2 * r], [-2, 0.6 * r]).css({fill: "#2085FF"});
 
     // Update the animation
     svg.config({done: false, time: 0, sys: sys, accel: a, endTime: a == 0 ? Infinity : root(2 / a)});
     svg.update(0);
 }
 
-loadFeed.data = {
-    title: "Pulley Dynamics",
-    up: "p20/home",
+loadFeed.data = {title: "Pulley Dynamics", up: "p20/home",
 }
 
 </script>

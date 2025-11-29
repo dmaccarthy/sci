@@ -2,9 +2,9 @@ SVG2.cache("p20/circ/img/helio.js", {
 
 helio: (sel) => {
     let svg = new SVG2(sel, {size: [641, 641], margin: 0, lrbt: [-1.7, 1.7]}).css(".NoStyle", "text");
-    svg.create_child("defs").html(`<linearGradient id="grey1" x1="100%" y2="100%"><stop offset="0%" stop-color="black" /><stop offset="100%" stop-color="#232323"/></linearGradient>`);
 
     // Draw zodiac background
+    svg.gradient("grey1", "black", "#232323", 100, 0, 0, 100);
     svg.rect([3.41, 3.41]).css({fill: "black"});
     let names = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
         "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
@@ -16,13 +16,16 @@ helio: (sel) => {
         g.text(names[i], [0, 1.3]);
     }
 
-    // Draw timer, line-of-sight arrow and Sun
-    let years = svg.text("", [1.6, 1.5]).css({"font-family": SVG2.mono, "font-size": "36px", "font-weight": "bold", "text-anchor": "end", fill: "white"});
+    // Draw animated timer
+    let g = svg.group("text", "f36", "bold", "white", {"text-anchor": "end", "font-family": SVG2.mono});
+    let years = g.text("", [1.6, 1.5]);
+    g.config({animated: true}).beforeupdate = () => years.html(`${svg.time.toFixed(2)} yr`);
+
+    // Draw line-of-sight arrow and Sun
     let sight = svg.arrow(0.4, {tail: "6"}).css("red", {stroke: "none"});
     svg.circle("12").css({fill: "yellow"});
 
     // Draw the inner planets
-    let animate = [];
     let mercury = {period: 0.242, color: "#b0b0b0", size: "4"};
     let venus = {period: 0.617, color: "#ffffe0", size: "7"};
     let earth = {period: 1, color: "#4090ff", size: "8"};
@@ -30,16 +33,12 @@ helio: (sel) => {
     for (let p of [mercury, venus, earth, mars]) {
         let T = p.period;
         p.orbit = Math.pow(T, 2/3);
-        let g = p.g = svg.group().config({omega: 360/T, theta: uniform(0, 360)});
-        g.circle(p.size, [p.orbit, 0]).css({fill: p.color});
-        animate.push(g);
+        let g = p.g = svg.group({fill: p.color}).config({animated: true, omega: 360/T, theta: uniform(0, 360)});
+        g.circle(p.size, [p.orbit, 0]);
     }
 
-    svg.beforeupdate = function() { // Update time
-        years.html(`${this.time.toFixed(2)} yr`);
-    }
-
-    svg.afterupdate = function() { // Update Earth-Mars line of sight
+    svg.afterupdate = function() {
+    // Update Earth-Mars line of sight and recenter zodiac
         let earthXY = vec2d(earth.orbit, earth.g.theta);
         let s = new Segment(...earthXY, ...vec2d(mars.orbit, mars.g.theta));
         sight.config({theta: s.deg, shift: s.point(0.27)});
@@ -47,8 +46,7 @@ helio: (sel) => {
     }
 
     // Run the animation
-    svg.animate(...animate).play();
-    svg.$.on("click", () => svg.toggle());
+    svg.play().$.on("click", () => svg.toggle());
 },
 
 });

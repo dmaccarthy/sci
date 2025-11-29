@@ -6,100 +6,10 @@
     <p class="Center"><input id="Voltage" type="range" min="0" max="2000" step="1" value="0"
         style="width: 16em" oninput="loadFeed.sim.drawE()"/></p>
 </div>
-
-<script type="text/javascript" data-init="sim">
-
-loadFeed.sim = () => {
-    let e = $("#OilDropSim").attr({width: 242, height: 482, "data-aspect": "242/482"});
-    let svg = new SVG_Animation(e, -1.5, 1.5, 0, 6, 1);
-
-    // Draw and label the ruler
-    let g = svg.group().css({fill: "none", stroke: "#0065FE", "stroke-width": "1px"});
-    svg.rect([1.6, 6], [0, 3], g).css({fill: "#F4F4FF"});
-    let t = svg.group().css({fill: "#0065FE", "font-size": "20px"});
-    for (let i=1; i<30; i++) {
-        let y = i / 5;
-        let mm = i % 5 == 0;
-        svg.line([0.8, y], [0.8 - (mm ? 1 : 0.7), y], g);
-        if (mm) svg.text(y, [-0.5, y], t);
-    }
-    svg.text("mm", [-0.5, 0.1], t);
-
-    // Randomize terminal speed coefficient
-    let c = loadFeed.sim.coeff = uniform(2.5, 3.5);
-    $("#CalcMass").html(c.toFixed(2));
-
-    // Finalize drawing
-    let drops = svg.group();
-    svg.final();
-
-    svg.beforeupdate = function() {
-        // Look up voltage and create new oil drops
-        let V = $("#Voltage").val();
-        loadFeed.sim.field = V / 0.006;
-        $("#Volts").html(V);
-        let n = svg.items.length;
-        let p = 1 - n / 8;
-        if (Math.random() < p / 40) {
-            loadFeed.sim.drop(drops);
-        }
-    }
-
-    svg.$.on("click", () => {
-        $("#Voltage").val(0);
-        loadFeed.sim.drawE();
-        $("#Timer").html(svg.time.toFixed(2));
-        svg.time = 0;
-    });
-
-    // Run the animation
-    svg.play();
-}
-
-loadFeed.sim.drop = (g) => {
-    // Create a new oil drop
-    let term = uniform(0.1, 0.8) / 1000;
-    let m = loadFeed.sim.coeff / 1e9 * Math.pow(term, 1.5);
-    let r = Math.pow(m * 1e14, 0.33) / 35;
-    let q_m = randint(1, 12) * 1.602e-19 / m;
-    // console.log(m, m*q_m/qe, term);
-    let circ = g.svg.circle(r, [uniform(-0.25, 1.5 - r), 6], g);
-
-    circ.onupdate = function() {
-        let y = this.position[1];
-        if (y > 6 + r || y < -r) // Remove drop when it leaves the screen
-            this.final(1);
-        else { // Recalculate droplet velocity
-            let v = (q_m * loadFeed.sim.field - 9.81) / 9.81;
-            let sign = v < 0 ? -1 : 1;
-            v = sign * term * Math.pow(sign * v, 0.67);
-            this.config({vel: [0, 1000 * v]});
-        }
-    }
-}
-
-loadFeed.sim.drawE = () => {
-    $('#Timer').html('0.00');
-    let svg = $("#OilDropSim")[0].graphic;
-    if (svg.efield) {
-        svg.efield.final(2);
-        delete svg.efield;
-    }
-    let E = $("#Voltage").val() / 1000;
-    if (E) {
-        let g = svg.efield = svg.group().css({fill: "red"});
-        let opt = {tail: E < 0.56 ? null : "8"};
-        svg.arrow([-1, 3 + E], [-1, 3 - E], opt, g).css({stroke: "black"});
-        svg.symbol("E", {vec:1}, [-1.25, 3], g).update(0);
-    }
-}
-
-</script>
 </section>
 
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Millikan’s Oil Drop Experiment</h1>
@@ -110,21 +20,21 @@ loadFeed.sim.drawE = () => {
 <h3>Millikan’s Experiment</h3>
 <p>Robert Millikan devised an experiment to measure the charge on a tiny droplet of oil.</p>
 <p class="Center"><a target="Credit" href="https://commons.wikimedia.org/wiki/File:Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg"><img class="Wide" alt="Apparatus" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg/640px-Simplified_scheme_of_Millikan%E2%80%99s_oil-drop_experiment.svg.png"/></a></p>
-<ul data-cue="+">
+<ul>
     <li>A fine mist of tiny droplets is produced using an “atomizer” (spray bottle).</li>
-    <li data-cue="+">Oil is used rather than water or alcohol because the oil will not evaporate as easily.</li>
-    <li data-cue="+">The oil droplets may be charged by friction as they leave the atomizer.</li>
-    <li data-cue="+">Alternatively, an x-ray machine can be used to ionize air molecules; electrons lost from the air will attach themselves to an oil droplet.</li>
-    <li data-cue="+">Charged oil droplets enter the electric field between two parallel plates.</li>
-    <li data-cue="+">Observing through a microscope, Millikan adjusted the potential difference between the plates so that the upward electric force exactly balanced the downward gravity:
+    <li>Oil is used rather than water or alcohol because the oil will not evaporate as easily.</li>
+    <li>The oil droplets may be charged by friction as they leave the atomizer.</li>
+    <li>Alternatively, an x-ray machine can be used to ionize air molecules; electrons lost from the air will attach themselves to an oil droplet.</li>
+    <li>Charged oil droplets enter the electric field between two parallel plates.</li>
+    <li>Observing through a microscope, Millikan adjusted the potential difference between the plates so that the upward electric force exactly balanced the downward gravity:
         <p class="TeX">F_e = F_g</p>
-        <p data-cue="+" class="TeX">q|\vec{\bf E}| = mg</p>
-        <p data-cue="+" class="TeX">q = \frac{mg}{|\vec{\bf E}|}</p>
+        <p class="TeX">q|\vec{\bf E}| = mg</p>
+        <p class="TeX">q = \frac{mg}{|\vec{\bf E}|}</p>
     </li>
 </ul>
-<ul data-cue="+">
+<ul>
     <li>The electric field is easily calculated from the potential difference and the separation between the plates.</li>
-    <li data-cue="+">Measuring the mass is more difficult because the droplets are too small for an electronic balance...</li>
+    <li>Measuring the mass is more difficult because the droplets are too small for an electronic balance...</li>
 </ul>
 </section>
 
@@ -132,20 +42,20 @@ loadFeed.sim.drawE = () => {
 <h3>Mass &amp; Terminal Speed</h3>
 <ul>
     <li>Because they are so small, the oil droplets experience a significant air resistance as they move.</li>
-    <li data-cue="+">Without the electric field, droplets tend to fall at a steady rate called the <em class="Defn">terminal speed</em>.</li>
-    <li data-cue="+">The terminal speed is faster for larger droplets; a droplet’s mass can be calculated from its terminal speed.</li>
-    <li data-cue="+">After recording the voltage necessary to suspend an oil droplet, Millikan turned off the electric field and measured how much time it took for the droplet to fall a known distance.</li>
-    <li data-cue="+">This measurement allows calculation of terminal speed, mass, and charge.</li>
-    <li data-cue="+">After calculating the charge of hundereds of different oil drops...</li>
-    <li data-cue="+">Millikan observed that the oil droplets always had a charge that was a multiple of <em class="Defn"><span class="TeX">\rm 1.60\times 10^{-19}\ C</span></em>.</li>
+    <li>Without the electric field, droplets tend to fall at a steady rate called the <em class="Defn">terminal speed</em>.</li>
+    <li>The terminal speed is faster for larger droplets; a droplet’s mass can be calculated from its terminal speed.</li>
+    <li>After recording the voltage necessary to suspend an oil droplet, Millikan turned off the electric field and measured how much time it took for the droplet to fall a known distance.</li>
+    <li>This measurement allows calculation of terminal speed, mass, and charge.</li>
+    <li>After calculating the charge of hundereds of different oil drops...</li>
+    <li>Millikan observed that the oil droplets always had a charge that was a multiple of <em class="Defn"><span class="TeX">\rm 1.60\times 10^{-19}\ C</span></em>.</li>
 </ul>
 <p class="Center"><svg class="s20" data-svg2="p30/elec/img/oildrop.js#distr"></svg></p>
-<ul data-cue="+">
+<ul>
     <li>Millikan concluded that this must be the <em>elementary charge</em> (the charge of a single electron or proton).</li>
 </ul>
 </section>
 
-</div></div></section>
+</div></section>
 
 <section class="Post" data-show="2024.10.2.10" data-icon="gdrv">
     <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
@@ -154,7 +64,82 @@ loadFeed.sim.drawE = () => {
     </p>
 </div></section>
 
-<script type="text/javascript">
+
+<script type="text/javascript" data-init="sim">
+
+loadFeed.sim = () => {
+    let svg = new SVG2("#OilDropSim", {scale: 80, grid: 0, lrbt: [-1.5, 1.5, 0, 6]});
+
+    // Draw and label the ruler
+    let g = svg.group("blue1", "nofill");
+    g.rect([1.6, 6], [0, 3]).css({fill: "#f4f4ff"});
+    let t = svg.group("text", "f20", "blue");
+    for (let i=1; i<30; i++) {
+        let y = i / 5;
+        let mm = i % 5 == 0;
+        g.line([0.8, y], [0.8 - (mm ? 1 : 0.7), y]);
+        if (mm) t.text(y, [-0.5, y]);
+    }
+    t.text("mm", [-0.5, 0.1]);
+
+    // Randomize terminal speed coefficient
+    let c = loadFeed.sim.coeff = uniform(2.5, 3.5);
+    $("#CalcMass").html(c.toFixed(2));
+
+    // Draw electric field vector
+    svg.efield = g = svg.group();
+    g.group("symbol", "red", "f28").symb(0, ["E", 1], ["→", 4, [0, "20"]]).align([-1.3, 3.05]);
+    svg.earrow = g.group("arrow").arrow({tail: [0, 0], tip: [0, 3]}, {tail: "6"});
+    g.$.hide();
+
+    let drops = svg.group();
+
+    svg.beforeupdate = function() {
+        // Look up voltage and create new oil drops
+        let V = $("#Voltage").val();
+        loadFeed.sim.field = V / 0.006;
+        $("#Volts").html(V);
+        let n = svg.items.length;
+        if (Math.random() < (1 - n / 8) / 40) loadFeed.sim.drop(drops);
+    }
+
+    svg.play().$.on("click", () => loadFeed.sim.drawE(0));
+}
+
+loadFeed.sim.drop = (g) => {
+    // Create a new oil drop
+    let term = uniform(0.1, 0.8) / 1000;
+    let m = loadFeed.sim.coeff / 1e9 * Math.pow(term, 1.5);
+    let r = Math.pow(m * 1e14, 0.33) / 35;
+    let q_m = randint(1, 12) * 1.602e-19 / m;
+    let drop = g.group().config({animated: true, shift: [uniform(-0.25, 1.5 - r), 6]});
+    drop.circle(r);
+
+    drop.beforeupdate = function() {
+        let y = this.shift[1];
+        if (y > 6 + r || y < -r) // Remove drop when it leaves the screen
+            this.config({animated: false}).$.remove();
+        else { // Recalculate droplet velocity
+            let v = (q_m * loadFeed.sim.field - 9.81) / 9.81;
+            let sign = v < 0 ? -1 : 1;
+            v = sign * term * Math.pow(sign * v, 0.67);
+            this.config({vel: [0, 1000 * v]});
+        }
+    }
+}
+
+loadFeed.sim.drawE = (V) => {
+    if (V != null) $("#Voltage").val(V);
+    let E = $("#Voltage").val() / 800;
+    let svg = $("#OilDropSim")[0].graphic;
+    let g = svg.efield.$;
+    if (E > 0) g.fadeIn();
+    else g.hide();
+    let opt = {tail: E < 0.7 ? null : "8"};
+    svg.earrow.reshape({tail: [-1, 3 + E], tip: [-1, 3 - E]}, opt);
+    $("#Timer").html(svg.time.toFixed(2));
+    svg.time = 0;
+}
 
 loadFeed.data = {
     title: `${siteData.lesson}11.4 — Millikan’s Oil Drop Experiment`,

@@ -48,48 +48,48 @@ ray: (sel) => {
     svg.$.addClass("NoStyle").css({"background-color": "#f8f8ff"});
 },
 
-long: (sel) => {
-    $(sel).attr({width: 480, height: 160, "data-aspect": "3"});
-    let svg = new SVG_Animation(sel, -1.5, 21);
-    let g = svg.group().css({fill: "red"});
-    let attr = {tail: "4"};
-    svg.arrow([2.8, -2], [4.5, -2], attr, g);
-    svg.arrow([3.2, -2], [1.5, -2], attr, g);
-    svg.text("Particle Velocity", [3, -3], g);
-    g = svg.group();
-    svg.arrow([14.5, -2], [17.5, -2], attr, g);
-    svg.text("Phase Velocity", [16, -3], g);
-    svg.final();
+longWave: (sel) => {
+    let svg = new SVG2(sel, {scale: 24, lrbt: [-1.6, 20.9, -3.6 , 3.8]});
+    let w = 5, T = 4, v = w / T;
 
-    g = svg.group().addClass("Particles");
-    for (let i=0;i<51;i++) svg.rect([0.093, 1.5], [0, 0], g);
-    svg.items[12].css({fill: "red"});
-    g = svg.group().addClass("CompRare");
-    let w = 5, x = 1.25;
-    let g1 = svg.group(g).css({fill: "#0065FE"});
-    let g2 = svg.group(g).css({fill: "orange"});
-    for (let n=-2;n<4;n++) {
-        svg.arrow([x + n * w, 2.5], [x + n * w, 1], attr, g1);
-        svg.arrow([x + (n + 0.5) * w, 2.5], [x + (n + 0.5) * w, 1], attr, g2);
-        
+    // Particles
+    let particles = svg.group("black");
+    for (let i=0;i<51;i++) particles.group().rect([0.093, 1.5]);
+    particles = particles.findAll("g");
+    particles[12].css("red");
+
+    // Velocities
+    let text = svg.group("text", "f18", "black");
+    text.gtext("Phase Velocity", [], [18, -3]);
+    svg.arrow({tail: [16.25, -2], tip: [19.75, -2]}, {tail: "5"});
+    let g = text.group("red");
+    g.gtext("Particle Velocity", [], [3.5, -3]);
+    g.arrow({tail: [1.75, -2], tip: [5.25, -2]}, {tail: "5", double: 1});
+
+    // Compression/Rarefaction lables
+    let blue = svg.group("text", "nostroke", "blue");
+    let x = 1.25;
+    blue.gtext("Compression", [], [x, 3.25]);
+    orange = blue.group({fill: "orange"});
+    orange.gtext("Rarefaction", [], [x + 1.5 * w, 3.25]).css();
+    for (let i=-2;i<4;i++) {
+        let x0 = x + i * w;
+        blue.arrow({tail: [x0, 2.5], tip: [x0, 1]}, {tail: "4"});
+        x0 += w / 2;
+        orange.arrow({tail: [x0, 2.5], tip: [x0, 1]}, {tail: "4"});
     }
-    svg.text("Compression", [x, 3.25], g1);
-    svg.text("Rarefaction", [x + 1.5 * w, 3.25], g2);
-    svg.$.find("text").css({"font-size": "18px"});
 
     svg.beforeupdate = function() {
-        let r = this.$.find("g.Particles > rect");
-        let A = 0.55, t = svg.time, T = 4, w = 5;
-        let v = w / T;
-        for (let i=0;i<r.length;i++) {
+        let t = svg.time, pi2 = 2 * Math.PI;
+        for (let i=0;i<particles.length;i++) {
             let x = (i - 5) / 2;
-            r[i].graphic.config({position: [x + A * cos(360 * (x / w - t / T)), 0]});
+            x += 0.55 * Math.cos(pi2 * (x / w - t / T));
+            particles[i].config({shift: [x, 0]});
         }
-        this.$.find("g.CompRare")[0].graphic.config({position: [(v * t) % (2 * w), 0]});
+        blue.config({shift: [(v * t) % (2 * w), 0]});
     }
-    
-    svg.update(0);
-    svg.$.on("click", () => svg.toggle());
+
+    svg.update(0).$.on("click", () => svg.toggle());
 },
 
 trWave: (sel) => {
