@@ -17,6 +17,7 @@ constructor(parent, g) {
         this._shift = new RArray(0, 0);
         this._vel = new RArray(0, 0);
         this._acc = new RArray(0, 0);
+        this.thetaMode = 1;
         this._theta = 0;
         this.omega = 0;
         this.alpha = 0;
@@ -101,8 +102,10 @@ set vel(xy) {this._vel = new RArray(...this._cs(xy))}
 set acc(xy) {this._acc = new RArray(...this._cs(xy))}
 
 set theta(a) {
-    while (a >= 360) a -= 360;
-    while (a < 0) a += 360;
+    if (this.thetaMode) {
+        while (a >= 360) a -= 360;
+        while (a < 0) a += 360;
+    }
     this._theta = a;
 }
 
@@ -219,6 +222,9 @@ update(dt) {
     return this.update_transform();
 }
 
+get animated() {return this.svg.items.indexOf(this) > -1}
+set animated(a) {SVG2.set_animated(this, a)}
+
 
 /** Create child elements within <svg> or <g> element **/
 
@@ -315,7 +321,7 @@ embed_promise(url, size) {return this._embed(url, size)[0]}
 
 plot(points, size, href, theta) {
 /* Plot an array of points as circles, rectangles, or images */
-    let g = this.group().css(".Plot", "black1", "blue");
+    let g = this.group(".Plot", "black1", "blue");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     if (theta) theta *= svg.angleDir;
@@ -585,7 +591,7 @@ ruler(n, tick, opt) { //width, big, offset) {
 /* Draw a ruler */
     if (typeof(tick) == "string") tick = parseFloat(tick) / Math.abs(this.svg.scale[1]);
     opt = Object.assign({big: 10, offset: 0}, opt);
-    let g = this.group();
+    let g = this.group(".Ruler");
     let length = g.rulerLength = tick * (n + 2 * opt.offset);
     let width = opt.width ? opt.width : g.rulerLength / 25;
     g.rect([length, width]);
@@ -600,8 +606,7 @@ ruler(n, tick, opt) { //width, big, offset) {
 
 cylinder(r, L) {
 /* Draw a cylinder; pivot is center of the elliptical "top" */
-    let g = this.group();
-    g.$.addClass("Cylinder");
+    let g = this.group(".Cylinder");
     let p1 = new RArray(r[0], 0);
     let p2 = p1.neg().minus([0, L]);
     let c = g.svg.angleDir == -1 ? 2 : 0;
@@ -620,7 +625,7 @@ pm(s, plus, xy) {
 
 stickman(h) {
 /* Add a stick man as an SVG2g instance */
-    let g = this.group().css("nofill", "black3");
+    let g = this.group(".Stickman", "nofill", "black3");
     let r = h / 8;
     g.circle(r, [0, 7 * r]);
     g.line([0, 6 * r], [0, 3 * r]);
@@ -936,6 +941,12 @@ constructor(g, eq, param, args) {
     this.update();
 }
 
+config(attr) {
+/* Encapsulate multiple attributes */
+    for (let k in attr) this[k] = attr[k];
+    return this;
+}
+
 update() {
     let svg = this.svg;
     let t = svg.time;
@@ -951,7 +962,11 @@ update() {
         x0 += dx;
     }
     this.$.attr({points: svg.pts_str(pts)});
+    return this;
 }
+
+get animated() {return this.svg.items.indexOf(this) > -1}
+set animated(a) {SVG2.set_animated(this, a)}
 
 }
 
@@ -1083,6 +1098,7 @@ constructor(selector, options) {
     this.element = $(selector).filter("svg")[0];
     selector = this.$ = $(this.element).attr("xmlns", SVG2.nsURI);
     this.element.graphic = this;
+    this.items = [];
     this.decimals = 2;
 
     /* <svg> element size */
@@ -1152,8 +1168,22 @@ get img() {
 }
 
 get bdata() {return new BData(this.element, "svg")}
-open() {this.bdata.open()}
-save(fn) {this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`)}
+open() {return this.bdata.open()}
+
+save(fn, raw) {
+/* Remove class and data-* attributes before saving */
+    if (raw) return this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`)
+    let svg = $(this.element.outerHTML).removeAttr("class");
+    // svg.find("[class]").removeAttr("class");
+    let attr = svg[0].attributes;
+    let keys = [];
+    for (let i=0;i<attr.length;i++) {
+        let a = attr.item(i);
+        if (a.name.split("-")[0] == "data") keys.push(a.name);
+    }
+    for (let k of keys) svg.removeAttr(k);
+    return BData.init(svg[0].outerHTML, fn ? fn : `${randomString(12, 1)}.svg`).save();
+}
 
 async embed_images() {return this.embed_svg_images().then(g => g.convert_image_hrefs())}
 
@@ -1325,13 +1355,28 @@ static style(items, ...styles) {
 
 /** Animation methods **/
 
+static set_animated(g, a) {
+    let svg = g.svg;
+    let items = svg.items;
+    let i = items.indexOf(g);
+    if (a) {if (i == -1) svg.animate(g)}
+    else if (i > -1) items.splice(i, 1);
+}
+
 animate(...args) {
-/* Save an array of animated SVG2g instances */
-    this.items = [];
+/* Append an array of animated SVG2g instances */
     for (let arg of args) {
         if (!arg.update) arg = $(arg)[0].graphic;
-        this.items.push(arg);
+        if (this.items.indexOf(arg) == -1) this.items.push(arg);
     }
+    return this;
+}
+
+unanimate(...args) {
+/* Remove items from animation */
+    let items = this.items;
+    for (let i = items.length-1;  i >= 0; i--)
+        if (args.indexOf(items[i]) > -1) items.splice(i, 1);
     return this;
 }
 
@@ -1341,7 +1386,7 @@ update(dt) {
     let anim = dt == null;
     if (anim) dt = this.timeFactor / this.frameRate;
     if (this.beforeupdate) this.beforeupdate.call(this);
-    if (this.items) for (let item of this.items) {
+    for (let item of this.items) {
         try {
             if (item.beforeupdate) item.beforeupdate(item);
             item.update(dt);
@@ -1656,7 +1701,7 @@ SVG2._style = {
 
 for (let i=12;i<37;i++) SVG2._style[`f${i}`] = {"font-size": `${i}px`};
 for (let i=1;i<13;i++) SVG2._style[`px${i}`] = {"stroke-width": `${i}px`};
-for (let c of ["black", "red", "green", "limegreen", "blue", "grey"]) {
+for (let c of ["black", "red", "green", "limegreen", "blue", "grey", "white"]) {
     cc = (c) => c == "blue" ? "#0065fe" : c;
     SVG2._style[`${c}`] = {fill: cc(c)};
     for (let i=1;i<4;i++)
