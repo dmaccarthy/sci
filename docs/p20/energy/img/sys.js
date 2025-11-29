@@ -14,6 +14,7 @@ archer: (sel) => {
     let attr = {tail: "5", shape: 2};
     g.arrow({tail: v, tip: vec2d(L, 20).plus(v)}, attr);
     g.arrow({tail: c.minus(vec2d(L, -25)), tip: c}, attr);
+    // console.log(svg.save());
 },
 
 bar: (sel) => {
