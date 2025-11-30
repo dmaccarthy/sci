@@ -49,7 +49,7 @@ x_t: (sel) => {
     svg.symbol(["T", 2]).addClass("Toggle1").config({shift: [0.75, 0.875]});
     svg.symbol(["A", 2]).addClass("Toggle0").config({shift: [1.31, 0.5]});
     svg.$.find(".Toggle0, .Toggle1").css({fill: "grey"});
-    svg.clickToggle(2);
+    svg.click_toggle(2);
 },
 
 });

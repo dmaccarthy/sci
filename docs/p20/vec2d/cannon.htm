@@ -38,7 +38,7 @@ loadFeed.sim = () => {
     svg.label([0, "6"], [...range(0, 195, 10)], 0);
     svg.label([0, "6"], 0, [...range(0, 105, 10)]);
     svg.label(0, [...range(50, 195, 50)], 3);
-    let g = svg.label(0, 2, [...range(50, 105, 50)]).css({"text-anchor": "start"}).shiftBy([0, -1.5]);
+    let g = svg.label(0, 2, [...range(50, 105, 50)]).css({"text-anchor": "start"}).shift_by([0, -1.5]);
     $(g.$.find("text")[1]).html("100 m");
 
     let size = new RArray(534.16, 408.55).times(0.042);

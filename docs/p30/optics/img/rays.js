@@ -74,7 +74,7 @@ concave: (sel) => {
     svg.tick_label(0, 0, [...range(-4, 4.1, 1)], "-6", "-10");
 
     let c = vec(6, 0), a = asin(4/6);
-    svg.path(vec2d(6, 180-a).plus(c)).arcTo(vec2d(6, 180+a).plus(c), 6).update().css({"stroke-width": "3px"});
+    svg.path(vec2d(6, 180-a).plus(c)).arc_to(vec2d(6, 180+a).plus(c), 6).update().css({"stroke-width": "3px"});
     svg.arrow({tail: [4,0], tip: [4,2]}, {tail: "5"}).$.find("polygon").css({fill: "#0065fe"});
     let g = svg.group();
     g.circle("4");
@@ -93,7 +93,7 @@ convex: (sel) => {
     svg.tick_label(0, 0, [...range(-4, 4.1, 1)], "-6", "-10");
 
     let c = vec(-6, 0), a = asin(4/6);
-    svg.path(vec2d(6, -a).plus(c)).arcTo(vec2d(6, a).plus(c), 6).update().css({"stroke-width": "3px"});
+    svg.path(vec2d(6, -a).plus(c)).arc_to(vec2d(6, a).plus(c), 6).update().css({"stroke-width": "3px"});
     svg.arrow({tail: [2,0], tip: [2,2]}, {tail: "5"}).$.find("polygon").css({fill: "#0065fe"});
     svg.tick_label(0, [...range(-7, 5.1, 1)], 0, "-6", "-16");
     let g = svg.group();

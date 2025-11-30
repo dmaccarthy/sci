@@ -28,7 +28,7 @@ dir2d: (sel) => {
     g.text("Q3", [-1, -1]);
     g.text("Q4", [1, -1]);
     g.align([0, 0]);
-    svg.clickToggle(7);
+    svg.click_toggle(7);
 },
 
 hiker: (sel) => {

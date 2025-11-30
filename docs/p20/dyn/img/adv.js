@@ -43,7 +43,7 @@ fbd2: (sel) => {
     for (let [c, xy] of data)
         g.symb(0, ["F", BD], ["→", SM + BD, [0, "20"]], [c, SM_IT, ["10", "-6"]]).align(xy).css(`.Toggle${i++}`);
 
-    svg.clickToggle(4);
+    svg.click_toggle(4);
 },
 
 fbd3: (sel, a) => {

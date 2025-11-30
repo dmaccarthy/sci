@@ -99,7 +99,7 @@ ucm: (sel) => {
     let arrows = svg.group({fill: "#0065FE", "fill-opacity": 0.4});
     arrows.arrow({tip: [0, 0], tail: [-0.15, 0]}, {tail: "4"}, "tip");
     arrows.arrow({tip: [0, 0], tail: [0, -0.15]}, {tail: "4"}, "tip");
-    arrows = arrows.findAll("g.Arrow");
+    arrows = arrows.find_all("g.Arrow");
 
     svg.beforeupdate = function() {
         let a = circ.theta;

@@ -4,7 +4,7 @@ pend: (sel) => {
     let svg = new SVG2(sel, {size: [300, 400], lrbt: [-1.5, 1, -3.25]}).css(".NoStyle");
     let p = vec2d(3, 245);
     svg.line(p, [0.2, p[1]]).css(SVG2.css("red2"));
-    svg.path(p).arcTo([0, -3], 3).update().css(SVG2.css("nofill", "blue2"));
+    svg.path(p).arc_to([0, -3], 3).update().css(SVG2.css("nofill", "blue2"));
     let g = svg.group("black2", {fill: "white"});
     g.poly([p, [0, 0], [0, -3]]).css(SVG2.css("nofill"));
     g.circle(0.1, p);

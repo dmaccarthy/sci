@@ -35,8 +35,8 @@ dt: (sel) => {
         $(lines[i]).addClass(`Toggle${i}`).css({stroke: color[i]});
     }
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, 0,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, 0,
         () => {t(svg, true, 0, 1, 2, 3, 4, 5)},
         () => {t(svg, false, 1, 2, 3, 4, 5)},
         () => {t(svg, false, 0); t(svg, true, 1)},
@@ -66,8 +66,8 @@ vt: (sel) => { // Motion of an skydiver v-t graph
     g.rect([3, 24], [6.5, 12]).addClass("Toggle5");
     g.$.find("*").hide();
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, 0,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, 0,
         () => {t(svg, false, 0, 1, 2, 3, 4, 5)},
         () => {t(svg, true, 0, 1, 2, 3)},
         () => {t(svg, false, 1, 2, 3)},

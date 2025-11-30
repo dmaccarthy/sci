@@ -31,7 +31,7 @@ induct: (sel) => {
     chg.pm(1.5, 1, [7, 0]).css("black")
     g = red.group("arrow");
     g.arrow({tail: [6, 3.5], tip: [1, 3.5]}, {tail: "8"});
-    svg.clickToggle(2);
+    svg.click_toggle(2);
 },
 
 pole: (sel) => {

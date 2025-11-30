@@ -4,101 +4,101 @@ const twoPi = 2 * pi, halfPi = pi / 2, quarterPi = pi / 4;
 
 class RArray extends Array {
 
-    static add(...args) {
-        let a = new RArray();
-        let dim = args[0].length;
-        for (let i=0;i<dim;i++) {
-            let s = 0;
-            for (let j=0;j<args.length;j++) s += args[j][i];
-            a.push(s);
-        }
-        return a;
+static add(...args) {
+    let a = new RArray();
+    let dim = args[0].length;
+    for (let i=0;i<dim;i++) {
+        let s = 0;
+        for (let j=0;j<args.length;j++) s += args[j][i];
+        a.push(s);
     }
+    return a;
+}
 
-    static convert(...args) {
-        let c = [];
-        for (let a of args) c.push(new RArray(...a));
-        return c;
+static convert(...args) {
+    let c = [];
+    for (let a of args) c.push(new RArray(...a));
+    return c;
+}
+
+sum() {
+    let n = this.length, s = 0;
+    if (n) {
+        s = this[0];
+        for (let i=1; i<n; i++) s += this[i];
     }
+    return s;
+}
 
-    sum() {
-        let n = this.length, s = 0;
-        if (n) {
-            s = this[0];
-            for (let i=1; i<n; i++) s += this[i];
-        }
-        return s;
+minmax() {
+    let min = this[0];
+    let max = min;
+    for (let i=0;i<this.length;i++) {
+        if (this[i] < min) min = this[i];
+        if (this[i] > max) max = this[i];
     }
+    return {min: min, max: max};
+}
 
-    minmax() {
-        let min = this[0];
-        let max = min;
-        for (let i=0;i<this.length;i++) {
-            if (this[i] < min) min = this[i];
-            if (this[i] > max) max = this[i];
-        }
-        return {min: min, max: max};
+extend(a) {
+    this.push.apply(this, a);
+    return this;
+}
+
+remove(val, removeAll) {
+    let loop = true;
+    while (loop) {
+        let i = this.indexOf(val);
+        if (i >= 0) this.splice(i, 1);
+        if ((i == -1) || (!removeAll)) loop = false;
     }
+    return this;
+}
 
-    extend(a) {
-        this.push.apply(this, a);
-        return this;
+times(s) {
+    let sa = s instanceof Array;
+    let a = new RArray();
+    for (let i=0;i<this.length;i++)
+        a.push(this[i] * (sa ? s[i] : s));
+    return a;
+}
+
+neg() {return this.times(-1)}
+plus(a) {return RArray.add(this, a)}
+
+minus(a) {
+    let d = new RArray();
+    for (let i=0;i<this.length;i++) {
+        d.push(this[i] - a[i]);
     }
+    return d;
+}
 
-    remove(val, removeAll) {
-        let loop = true;
-        while (loop) {
-            let i = this.indexOf(val);
-            if (i >= 0) this.splice(i, 1);
-            if ((i == -1) || (!removeAll)) loop = false;
-        }
-        return this;
+dot(a) {
+    let s = 0
+    for (let i=0;i<this.length;i++) s += this[i] * a[i];
+    return s;
+}
+
+mag() {return Math.sqrt(this.dot(this))}
+
+dir() {
+    if (this.length != 2) throw("ValueError: operation applies only to arrays of length 2");
+    return atan2(this[1], this[0]);
+}
+
+get matrix() {return new Matrix([this])}
+
+tr(p, scale) {
+    if (!p) p = 4;
+    let tr = $("<tr>");
+    let nums = [this.mag(), this.dir(), this[0], this[1]];
+    for (let n of nums) {
+        if (scale) n *= scale;
+        tr.append($("<td>").html(n.toPrecision(p)));
     }
-
-    times(s) {
-        let sa = s instanceof Array;
-        let a = new RArray();
-        for (let i=0;i<this.length;i++)
-            a.push(this[i] * (sa ? s[i] : s));
-        return a;
-    }
-
-    neg() {return this.times(-1)}
-    plus(a) {return RArray.add(this, a)}
-
-    minus(a) {
-        let d = new RArray();
-        for (let i=0;i<this.length;i++) {
-            d.push(this[i] - a[i]);
-        }
-        return d;
-    }
-
-    dot(a) {
-        let s = 0
-        for (let i=0;i<this.length;i++) s += this[i] * a[i];
-        return s;
-    }
-
-    mag() {return Math.sqrt(this.dot(this))}
-
-    dir() {
-        if (this.length != 2) throw("ValueError: operation applies only to arrays of length 2");
-        return atan2(this[1], this[0]);
-    }
-
-    get matrix() {return new Matrix([this])}
-
-    tr(p, scale) {
-        if (!p) p = 4;
-        let tr = $("<tr>");
-        let nums = [this.mag(), this.dir(), this[0], this[1]];
-        for (let n of nums) {
-            if (scale) n *= scale;
-            tr.append($("<td>").html(n.toPrecision(p)));
-        }
-        return tr;
-    }
+    return tr;
+}
     
 }
 
@@ -132,7 +132,7 @@ function shuffle(a) { // Re-order array randomly, in-place
     }
 }
 
-function numberHtml(p, latex) {
+function number_HTML(p, latex) {
     let s = this.toPrecision(p).toLowerCase().split("e");
     let n = s[1];
     n = s[0] + (s.length > 1 ?
@@ -212,7 +212,7 @@ const vec2d = (r, a, rad) => {
 
 const vec = (...xy) => {return new RArray(...xy)}
 
-const adjustAngle = (a, min, max) => {
+const adjust_angle = (a, min, max) => {
     if (min == null) min = 0;
     if (max == null) max = min + 360;
     while (a < min) a += 360;
@@ -223,41 +223,41 @@ const adjustAngle = (a, min, max) => {
 
 class Segment {
 
-    constructor(x1, y1, x2, y2) {
-        if (x2 == null) {
-            x2 = x1;
-            y2 = y1;
-            x1 = y1 = 0;
-        }
-        let dx = x2 - x1;
-        let dy = y2 - y1;
-        let r = Math.sqrt(dx*dx + dy*dy);
-        let u = new RArray(dx / r, dy / r);
-        let a = Math.atan2(dy, dx);
-        let t = this;
-        Object.assign(this, {
-            point1: new RArray(x1, y1),
-            point2: new RArray(x2, y2),
-            length: r, rad: a, deg: a * RAD, slope: u[1] / u[0],
-            midpoint: new RArray(x1 + dx/2, y1 + dy/2),
-            unitVector: u, vector: new RArray(dx, dy),
-            normal: new RArray(-u[1], u[0]),
-            point: (s) => {return new RArray(x1 + u[0] * s, y1 + u[1] * s)}, 
-            params: (x, y) => {
-                let p = (x - x1) * u[0] + (y - y1) * u[1];
-                let q = (x1 - x) * u[1] + (y - y1) * u[0];
-                return new RArray(p, q)
-            },
-            closest: (x, y) => {return t.point((x - x1) * u[0] + (y - y1) * u[1])}
-        });
+constructor(x1, y1, x2, y2) {
+    if (x2 == null) {
+        x2 = x1;
+        y2 = y1;
+        x1 = y1 = 0;
     }
+    let dx = x2 - x1;
+    let dy = y2 - y1;
+    let r = Math.sqrt(dx*dx + dy*dy);
+    let u = new RArray(dx / r, dy / r);
+    let a = Math.atan2(dy, dx);
+    let t = this;
+    Object.assign(this, {
+        point1: new RArray(x1, y1),
+        point2: new RArray(x2, y2),
+        length: r, rad: a, deg: a * RAD, slope: u[1] / u[0],
+        midpoint: new RArray(x1 + dx/2, y1 + dy/2),
+        unitVector: u, vector: new RArray(dx, dy),
+        normal: new RArray(-u[1], u[0]),
+        point: (s) => {return new RArray(x1 + u[0] * s, y1 + u[1] * s)}, 
+        params: (x, y) => {
+            let p = (x - x1) * u[0] + (y - y1) * u[1];
+            let q = (x1 - x) * u[1] + (y - y1) * u[0];
+            return new RArray(p, q)
+        },
+        closest: (x, y) => {return t.point((x - x1) * u[0] + (y - y1) * u[1])}
+    });
+}
 
-    static pointSlope(point, length, slope, middle) {
-        let [dx, dy] = Math.abs(slope) == Infinity ? new RArray(0, slope < 0 ? -length : length) : 
-            new RArray(1, slope).times(length / hypot(1, slope));
-        let [x1, y1] = middle ? new RArray(-dx/2, -dy/2).plus(point) : point;
-        return new Segment(x1, y1, x1+dx, y1+dy);
-    }
+static point_slope(point, length, slope, middle) {
+    let [dx, dy] = Math.abs(slope) == Infinity ? new RArray(0, slope < 0 ? -length : length) : 
+        new RArray(1, slope).times(length / hypot(1, slope));
+    let [x1, y1] = middle ? new RArray(-dx/2, -dy/2).plus(point) : point;
+    return new Segment(x1, y1, x1+dx, y1+dy);
+}
 
 }
 
@@ -331,7 +331,7 @@ const transform = (opt, ...pts) => { // 2D transformation
     return t;
 }
 
-function linRegXY(x, y) {
+function lin_reg_xy(x, y) {
     let n = x.length;
     if (y.length != n) throw("Dimension error");
     x = new RArray(...x);
@@ -343,17 +343,17 @@ function linRegXY(x, y) {
     return {m: m, b: b, fn: (x) => m * x + b}
 }
 
-function expRegXY(x, y) {
+function exp_reg_xy(x, y) {
     let n = y.length;
     let ln_y = new Array(n);
     for (let i=0;i<n;i++) ln_y[i] = Math.log(y[i]);
-    let reg = linRegXY(x, ln_y);
+    let reg = lin_reg_xy(x, ln_y);
     let a = Math.exp(reg.b);
     let k = reg.m;
     return {a:a, k:k, fn: (x) => a * Math.exp(k * x)}
 }
 
-function pwrRegXY(x, y) {
+function pwr_reg_xy(x, y) {
     let n = x.length;
     let ln_x = new Array(x);
     let ln_y = new Array(n);
@@ -361,16 +361,16 @@ function pwrRegXY(x, y) {
         ln_x[i] = Math.log(x[i]);
         ln_y[i] = Math.log(y[i]);
     }
-    let reg = linRegXY(ln_x, ln_y);
+    let reg = lin_reg_xy(ln_x, ln_y);
     let a = Math.exp(reg.b);
     n = reg.m;
     // console.log(a, n);
     return {a:a, n:n, fn: (x) => a * Math.pow(x, n)}
 }
 
-function linReg(...data) {return linRegXY(...unzip(data))}
-function expReg(...data) {return expRegXY(...unzip(data))}
-function pwrReg(...data) {return pwrRegXY(...unzip(data))}
+function lin_reg(...data) {return lin_reg_xy(...unzip(data))}
+function exp_reg(...data) {return exp_reg_xy(...unzip(data))}
+function pwr_reg(...data) {return pwr_reg_xy(...unzip(data))}
 
 function gcf(a, b) {
     let a1 = parseInt(a);

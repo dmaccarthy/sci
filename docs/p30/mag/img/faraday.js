@@ -5,10 +5,10 @@ lenz_law: (sel) => {
 
     // Magnet
     let x = -2.65;
-    let magnet = svg.path([x, 2.5]).linesTo([x, -2.5], [x - 1.3, -2.5]);
+    let magnet = svg.path([x, 2.5]).lines_to([x, -2.5], [x - 1.3, -2.5]);
     for (let i=1;i<20;i++)
-        magnet.lineTo([-3.95 + 0.5 * Math.random(), i / 4 - 2.5]);
-    magnet = magnet.lineTo([x - 1.3, 2.5]).close().update();
+        magnet.line_to([-3.95 + 0.5 * Math.random(), i / 4 - 2.5]);
+    magnet = magnet.line_to([x - 1.3, 2.5]).close().update();
     magnet.css({stroke: "black", fill: "lightgrey"});
     x -= 0.4;
     svg.gtext("N", ["text", "f24"], [x, 0]);

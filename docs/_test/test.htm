@@ -2,22 +2,24 @@
 <h2 class="Collapse">SVG Drawing
     <span class="Action"><img alt="Download" title="Download SVG file" data-src="$download" onclick="SVG2.svg('#S1')"/></span>
 </h2>
-<p class="Center"><svg id="S1" data-svg2="_test/test.js#Q3"></svg></p>
+<p class="Center"><svg id="S0"></svg></p>
+<!-- <p class="Center"><svg id="S1" data-svg2="_test/test.js#Q3"></svg></p> -->
 </section>
 
-<script type="text/javascript" data-initx="arr">
+<script type="text/javascript" data-init="arr">
 
-loadFeed.data = {
-    title: `Grid`,
-    up: "home",
+loadFeed.data = {title: `Grid`, up: "home",
 }
 
-// loadFeed.arr = () => {
-//     let svg = new SVG2("#S1", {scale: 50, lrbt: [-3, 3, -3, 3], grid: 1, appendAxes: 1});
-//     let a = svg.arrow(4, {tail: "6"}, "tail");
-//     a.label("Hello, world!", [0, "-16"]);
-//     svg.css_map();
-// }
+loadFeed.arr = () => {
+    let svg = new SVG2("#S0", {scale: 24, lrbt: [-10, 10, -10, 10], grid: 1});
+    let g1 = svg.group("black1", {fill: "red", "fill-opacity": 0.4}).config({theta: 30, shift: [2, 1]});
+    let r = g1.rect([4, 7]);
+    r.on("click", (ev) => {
+        let xy = svg.event_coords(ev).coords;
+        console.log(...xy, g1.coord_from_svg(xy));
+    });
+}
 
 // loadFeed.test = () => {
 //     let svg = new SVG2("#S1", {scale: 20, lrbt: [-10, 10, -10, 10], grid: 1, appendAxes: 1});
@@ -43,7 +45,7 @@ loadFeed.data = {
 //     svg.addClass("NoStyle").css_map("grid");
 //     let r = 12;
 //     let y = root(r * r - 25)
-//     let p = svg.path([-5, 0]).arcTo([5, 0], [6, 15], 0, 45);
+//     let p = svg.path([-5, 0]).arc_to([5, 0], [6, 15], 0, 45);
 //     p.update().css({fill: "none", stroke: "red", "stroke-width": "3px"});
 //     svg.circle("6", [0, y]);
 //     console.log(svg);
@@ -63,7 +65,7 @@ loadFeed.data = {
 //     let s = 0.6;
 //     svg.rect([s, s], [-0.5, -0.5]);
 //     g.rect([s, s], [0.5, 0.5]);
-//     g.shiftBy([0, 0]);
+//     g.shift_by([0, 0]);
 
 //     g = svg.cylinder([0.3, 0.1], 0.5).config({omega: 20}).css({fill: "#0065fe"});
 //     g.$.find("ellipse").css({fill: "grey"});

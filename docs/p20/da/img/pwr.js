@@ -6,12 +6,12 @@ lightbulb: (sel, linear) => {
     let data, lrbt;
     if (linear) {
         for (let i=0;i<x.length;i++) x[i] = Math.pow(x[i], -2);
-        let lin = linRegXY(x, y).fn;
+        let lin = lin_reg_xy(x, y).fn;
         data = {connect: [[0, lin(0)], [2, lin(2)]]};
         lrbt = [0, 2, 0, 2];
     }
     else {
-        let pwr = pwrRegXY(x, y);
+        let pwr = pwr_reg_xy(x, y);
         let x0 = Math.pow(2 / pwr.a, 1 / pwr.n);
         data = {locus: [pwr.fn, [x0, 3]]};
         lrbt = [0, 3, 0, 2];
@@ -30,7 +30,7 @@ lightbulb: (sel, linear) => {
     if (linear) svg.ctext(["–2", [1.36, -0.2], {css: "f14"}]);
 
     svg.$.find("g.Locus").addClass("Toggle0"); //.hide();
-    svg.clickToggle(1, 1);
+    svg.click_toggle(1, 1);
 },
     
 });

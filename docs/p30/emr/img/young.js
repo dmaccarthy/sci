@@ -14,7 +14,7 @@ laser: (sel) => {
     svg.line([-4, 0], [4, 0]).css({stroke: "black", "stroke-width": "3px"});
     svg.line([-r, -7], [r, -7]).css({stroke: "black", "stroke-width": "2px"});
     let arc = [r, d / 2];
-    let laser = svg.path([r, y-d]).ver(y+d).arcTo([-r, y+d], arc).ver(y-d).arcTo([r, y-d], arc);
+    let laser = svg.path([r, y-d]).ver(y+d).arc_to([-r, y+d], arc).ver(y-d).arc_to([r, y-d], arc);
     laser.close().update().css({stroke: "black", fill: "silver"});
 },
 
@@ -52,8 +52,8 @@ geom: (sel) => {
     g.text("θ", [0.35, 0.1]).addClass("Small Toggle3");
     g.text("θ", [-0.85, 0.375]).addClass("Small Toggle4").hide();
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, 4,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, 4,
         () => {t(svg, true, 0)},
         () => {t(svg, true, 1)},
         () => {t(svg, true, 2)},
@@ -86,8 +86,8 @@ single: (sel) => {
         svg.arrow(3, tail).config({theta: 45*i, shift: vec2d(2, 45*i)}).$.addClass("Toggle2");
     svg.$.find("g.Arrow polygon").css({fill: "lightgrey"});
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, 2,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, 2,
         () => {t(svg, true, 0)},
         () => {t(svg, true, 1)},
         () => {t(svg, true, 2)},

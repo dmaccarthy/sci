@@ -25,9 +25,9 @@ fbd1: (sel) => {
     g.arrow({tail: [p, -y], tip: [p + E1 / s, -y]}, t7).css(".Toggle1");
     g.arrow({tail: [p, y], tip: [6.2 + E2 / s, y]}, t7).css(".Toggle2");
     g.arrow({tail: [0, p], tip: [0, p + E1 / s]}, t7).css(".Toggle4");
-    g.arrow({angle: a, length: E3/s, tail: [0, 0]}, {tail: "2"}).shiftBy(vec2d(0.3, a).plus([0, 6])).css(".Toggle5");
+    g.arrow({angle: a, length: E3/s, tail: [0, 0]}, {tail: "2"}).shift_by(vec2d(0.3, a).plus([0, 6])).css(".Toggle5");
 
-    svg.clickToggle(6);
+    svg.click_toggle(6);
     svg.$.on("click", () => {
         if (svg.element.cycleStatus == 4) {
             let c = "";

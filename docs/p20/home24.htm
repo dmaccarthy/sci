@@ -196,7 +196,7 @@
 <script type="text/javascript" data-init="today">
 
 loadFeed.today = () => {
-    if (qsArgs("today")) {
+    if (qs_args("today")) {
         history.replaceState({}, "", feedURL(loadFeed.current));
         loadFeed("_today_");
     }

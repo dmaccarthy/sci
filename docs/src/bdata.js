@@ -59,91 +59,91 @@ BData.find("svg", "drawing.svg").save();
 
 **/
 
-    constructor(data, type) {
-        this.windows = [];
-        if (type) {
-            let t = type.split(".");
-            if (t.length > 1) this.filename = type;
-            type = t[t.length - 1].toLowerCase();
-        }
-        let elem = data instanceof HTMLElement ? 1 : (data instanceof SVGElement ? 2 : 0);
-        if (elem) {
-           if (data.tagName.toUpperCase() == "CANVAS") {
-                let bd = this;
-                data.toBlob((b) => {bd.blob = b});
-                return;
-            }
-            if (!type) type = elem == 1 ? "html" : "svg";
-            data = data.outerHTML;
-        }
-        else if (BData.isXML(data)) {
-            if (!type) type = (data instanceof XMLDocument) || data.tagName ? "xml" : "txt";
-            data = new XMLSerializer().serializeToString(data);
-        }
-        else if (typeof(data) != "string") {
-            data = JSON.stringify(data);
-            if (!type) type = "json";
-        }
-        type = {
-            html: "text/html",
-            htm: "text/html",
-            css: "text/css",
-            js: "text/javascript",
-            json: "application/json",
-            svg: "image/svg+xml",
-            xml: "application/xml",
-            csv: "text/csv",
-            py: "text/x-python"
-        }[type];
-        this.blob = new Blob([data], {type:type ? type : "text/plain"});
+constructor(data, type) {
+    this.windows = [];
+    if (type) {
+        let t = type.split(".");
+        if (t.length > 1) this.filename = type;
+        type = t[t.length - 1].toLowerCase();
     }
-
-    url() {return URL.createObjectURL(this.blob)}
-
-    save(filename) {
-        if (this.blob) {
-            let url = URL.createObjectURL(this.blob);
-            if (!filename) filename = this.filename;
-            let a = document.createElement("a");
-            a.setAttribute("href", url);
-            a.setAttribute("download", filename);
-            a.click();
+    let elem = data instanceof HTMLElement ? 1 : (data instanceof SVGElement ? 2 : 0);
+    if (elem) {
+        if (data.tagName.toUpperCase() == "CANVAS") {
+            let bd = this;
+            data.toBlob((b) => {bd.blob = b});
+            return;
         }
-        else {
-            let b = this;
-            setTimeout(() => {b.save(filename)}, 25);
-        }
-        return this;
+        if (!type) type = elem == 1 ? "html" : "svg";
+        data = data.outerHTML;
     }
-
-    _open() {
-        if (this.blob)
-            this.windows[0] = window.open(URL.createObjectURL(this.blob));
-        else {
-            let b = this;
-            setTimeout(() => {b._open()}, 25);
-        }
+    else if (BData.is_XML(data)) {
+        if (!type) type = (data instanceof XMLDocument) || data.tagName ? "xml" : "txt";
+        data = new XMLSerializer().serializeToString(data);
     }
-
-    open() {
-        this.windows.splice(0, 0, null);
-        this._open();
-        return this;
+    else if (typeof(data) != "string") {
+        data = JSON.stringify(data);
+        if (!type) type = "json";
     }
+    type = {
+        html: "text/html",
+        htm: "text/html",
+        css: "text/css",
+        js: "text/javascript",
+        json: "application/json",
+        svg: "image/svg+xml",
+        xml: "application/xml",
+        csv: "text/csv",
+        py: "text/x-python"
+    }[type];
+    this.blob = new Blob([data], {type:type ? type : "text/plain"});
+}
 
-    static isXML(x) {
-       if (x) {
-            let parent;
-            while (parent = x.parentNode) x = parent;          
-        }
-       return x instanceof XMLDocument;
-        // if (x instanceof XMLDocument) return true;
-        // if (x && x.parentNode) return BData.isXML(x.parentNode);
-        // return false;
+url() {return URL.createObjectURL(this.blob)}
+
+save(filename) {
+    if (this.blob) {
+        let url = URL.createObjectURL(this.blob);
+        if (!filename) filename = this.filename;
+        let a = document.createElement("a");
+        a.setAttribute("href", url);
+        a.setAttribute("download", filename);
+        a.click();
     }
+    else {
+        let b = this;
+        setTimeout(() => {b.save(filename)}, 25);
+    }
+    return this;
+}
 
-    static init(data, filename) {return new BData(data, filename)}
-    static find(selector, filename) {return new BData(document.querySelector(selector), filename)} 
+_open() {
+    if (this.blob)
+        this.windows[0] = window.open(URL.createObjectURL(this.blob));
+    else {
+        let b = this;
+        setTimeout(() => {b._open()}, 25);
+    }
+}
+
+open() {
+    this.windows.splice(0, 0, null);
+    this._open();
+    return this;
+}
+
+static is_XML(x) {
+    if (x) {
+        let parent;
+        while (parent = x.parentNode) x = parent;          
+    }
+    return x instanceof XMLDocument;
+    // if (x instanceof XMLDocument) return true;
+    // if (x && x.parentNode) return BData.is_XML(x.parentNode);
+    // return false;
+}
+
+static init(data, filename) {return new BData(data, filename)}
+static find(selector, filename) {return new BData(document.querySelector(selector), filename)} 
 }
 
 

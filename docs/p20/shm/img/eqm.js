@@ -66,7 +66,7 @@ eqm: (sel) => {
             sym.symb(0, ["F", 1], arr, [f == -1 ? "n" : "g", ...sub]).align(c.plus([0.12, -0.12 * f]));
             if (b[0] && f == -1) {
                 vec.config({pivot: c, theta: b[0]});
-                sym.shiftBy([-0.15, 0.1]);
+                sym.shift_by([-0.15, 0.1]);
             }
         }
     }
@@ -74,8 +74,8 @@ eqm: (sel) => {
     g.gtext("Stable", {}, [-0.05, -0.05]).css(".Toggle2");
     g.gtext("Unstable", {}, [-0.1, 1.1]).css(".Toggle1");
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, 0,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, 0,
         () => {t(svg, true, 0, 1, 2)},
         () => {t(svg, false, 1, 2)},
         () => {t(svg, false, 0); t(svg, true, 1)},

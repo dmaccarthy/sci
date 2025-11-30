@@ -153,7 +153,7 @@ loadFeed.sim = () => {
     svg.conics.$.children("*").hide();
 
     svg.$.on("click", (ev) => {
-        let [x, y] = svg.eventCoords(ev).coords;
+        let [x, y] = svg.event_coords(ev).coords;
         if (svg.circ) {
             svg.circ.remove();
             delete svg.circ;

@@ -33,8 +33,8 @@ work: (sel) => {
     g.find("line").css({stroke: "#0065fe"});
     g.find("text").css({"fill-opacity": 1});
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, -1,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, -1,
         () => {t(svg, false, 0, 1, 2, 3)},
         () => {t(svg, true, 0)},
         () => {t(svg, true, 1)},

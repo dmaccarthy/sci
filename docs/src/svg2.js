@@ -29,7 +29,7 @@ find(sel, n) {
     return e ? e.graphic : null;
 }
 
-findAll(selector) {
+find_all(selector) {
     let g = [];
     for (let e of this.$.find(selector))
         if (e.graphic instanceof SVG2g) g.push(e.graphic);
@@ -109,7 +109,7 @@ set theta(a) {
     this._theta = a;
 }
 
-shiftBy(xy) {
+shift_by(xy) {
     this._shift = this._shift.plus(this._cs(xy));
     return this.update_transform();
 }
@@ -117,10 +117,10 @@ shiftBy(xy) {
 
 /** Clipping **/
 
-clipPath(id, clone) {
-/* Clone or move the <g> content to a <clipPath> */
+clip_path(id, clone) {
+/* Clone or move the <g> content to a <clip_path> */
     let e = this.$;
-    let cp = $(document.createElementNS(SVG2.nsURI, "clipPath")).attr({id: id});
+    let cp = $(document.createElementNS(SVG2.nsURI, "clip_path")).attr({id: id});
     cp.appendTo(this.svg.defs[0]);
     if (clone) cp.html(e.html());
     else e.children().appendTo(cp);
@@ -156,7 +156,7 @@ coord_from_parent(xy) {
     xy = this._shift.neg().plus(xy);
     return transform({angle: a, deg: true, center: this._pivot}, xy)[0];
 }
-    
+
 coord_to_parent(xy) {
 /* Apply rotation and shift to convert child <g> coordinates xy relative to parent */
     let a = this.theta * this.svg.angleDir;
@@ -310,7 +310,7 @@ _embed(url, size) {
             let [w, h] = [e.attr("width"), e.attr("height")];
             let [sx, sy] = [size[0] / w, size[1] / h];
             inner.attr({transform: `scale(${sx} ${sy})`});
-            mid.shiftBy(svg.p2a(size[0] / 2, size[1] / 2).neg());
+            mid.shift_by(svg.p2a(size[0] / 2, size[1] / 2).neg());
         }
         return outer;
     })), outer];
@@ -445,7 +445,7 @@ ray(p1, p2, size, ...pos) {
     let svg = this.svg;
     let L = seg.length;
     if (pos.length == 0) pos = [0.5];
-    for (let pt of pos) g.chevron(seg.point(pt * L), svg.adjustAngle(seg.deg), size);
+    for (let pt of pos) g.chevron(seg.point(pt * L), svg.adjust_angle(seg.deg), size);
     return g;
 }
 
@@ -610,7 +610,7 @@ cylinder(r, L) {
     let p1 = new RArray(r[0], 0);
     let p2 = p1.neg().minus([0, L]);
     let c = g.svg.angleDir == -1 ? 2 : 0;
-    g.path(p1).ver(-L).arcTo(p2, r, c).ver(0).arcTo(p1, r).close().update();
+    g.path(p1).ver(-L).arc_to(p2, r, c).ver(0).arc_to(p1, r).close().update();
     g.ellipse(r);
     return g;
 }
@@ -682,19 +682,19 @@ graph(options) {
             let dy = [0, x.y ? x.y : 0];
             if (x.tick) {
                 this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6");
-                this.find("g.LabelX").config({shift: x.shift}).shiftBy(dy);
-                this.find("g.TickX").shiftBy(dy);
+                this.find("g.LabelX").config({shift: x.shift}).shift_by(dy);
+                this.find("g.TickX").shift_by(dy);
             }
-            if (x.title) txt.group().shiftBy(dy).text(x.title[0], xy(0));
+            if (x.title) txt.group().shift_by(dy).text(x.title[0], xy(0));
         }
         if (y) {
             let dx = [y.x ? y.x : 0, 0];
             if (y.tick) {
                 this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6");
-                this.find("g.LabelY").config({shift: y.shift}).shiftBy(dx);
-                this.find("g.TickY").shiftBy(dx);
+                this.find("g.LabelY").config({shift: y.shift}).shift_by(dx);
+                this.find("g.TickY").shift_by(dx);
             }
-            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).shiftBy(dx).text(y.title[0]);  
+            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).shift_by(dx).text(y.title[0]);  
         }  
     }
 
@@ -719,7 +719,7 @@ graph(options) {
     return this;
 }
 
-errorBarY(x, y0, y1, dx, _swap) {
+error_bar_y(x, y0, y1, dx, _swap) {
     /* Draw x or y error bars */
     dx = this._cs_size(dx);
     let g = this.group().addClass("ErrorBar");
@@ -738,7 +738,7 @@ errorBarY(x, y0, y1, dx, _swap) {
     return g;
 }
 
-errorBarX(x0, x1, y, dy) {return this.errorBarY(y, x0, x1, dy, 1)}
+error_bar_x(x0, x1, y, dy) {return this.error_bar_y(y, x0, x1, dy, 1)}
 
 
 tip_to_tail(vecs, options) {
@@ -828,7 +828,7 @@ _turn(w, r, circ) {
     w /= 2;
     let p = g.path([w, circ & 1 ? 4 * r : 2 * r]);
     if (circ & 1) p.arc([w, 3 * r], -90);
-    p.lineTo([-w, -2 * r]);
+    p.line_to([-w, -2 * r]);
     if (circ & 2) p. arc([-w, -r], 90, 2);
     p.update();
     return g;
@@ -978,10 +978,10 @@ constructor(g, xy) {
     this.svg = g.svg;
     this.$ = g.create_child("path", {});
     this.d = "";
-    this.moveTo(xy == null ? [0, 0] : xy);
+    this.move_to(xy == null ? [0, 0] : xy);
 }
 
-moveTo(xy, c) {
+move_to(xy, c) {
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = xy;        
@@ -992,11 +992,11 @@ moveTo(xy, c) {
     return this;
 }
 
-lineTo(xy) {return this.moveTo(xy, "L")}
+line_to(xy) {return this.move_to(xy, "L")}
 
-linesTo(...points) {
+lines_to(...points) {
     for (let xy of points)
-        this.lineTo(xy);
+        this.line_to(xy);
     return this;
 }
 
@@ -1018,7 +1018,7 @@ ver(y) { // Move vertically
     return this;
 }
 
-arcTo(xy, r, choice, rotn) { // Draw a circular or elliptical arc to the specified point
+arc_to(xy, r, choice, rotn) { // Draw a circular or elliptical arc to the specified point
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let rx, ry;
@@ -1050,10 +1050,10 @@ arc(c, a, choice) { // Draw a circular arc to the specified angle
         if (a < a0) choice += 2;
     }
     let p1 = c.plus([r * cos(a), r * sin(a)]);
-    return this.arcTo(p1, r, choice);
+    return this.arc_to(p1, r, choice);
 }
 
-curveTo(xy, p1, p2) { // Bezier curve to the specified point using two reference points
+curve_to(xy, p1, p2) { // Bezier curve to the specified point using two reference points
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = xy;
@@ -1066,7 +1066,7 @@ curveTo(xy, p1, p2) { // Bezier curve to the specified point using two reference
     return this;
 }
 
-quadTo(xy, p) { // Quadratic Bezier curve to the specified point
+quad_to(xy, p) { // Quadratic Bezier curve to the specified point
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = xy;
@@ -1160,7 +1160,7 @@ get size() {
     return [parseFloat(e.attr("width")), parseFloat(e.attr("height"))];
 }
 
-get url() {return "data:image/svg+xml;base64," + unicodeToBase64(this.element.outerHTML)}
+get url() {return "data:image/svg+xml;base64," + unicode_to_base64(this.element.outerHTML)}
 
 get img() {
     let [w, h] = this.size;
@@ -1172,7 +1172,7 @@ open() {return this.bdata.open()}
 
 save(fn, raw) {
 /* Remove class and data-* attributes before saving */
-    if (raw) return this.bdata.save(fn ? fn : `${randomString(12, 1)}.svg`)
+    if (raw) return this.bdata.save(fn ? fn : `${random_string(12, 1)}.svg`)
     let svg = $(this.element.outerHTML).removeAttr("class");
     // svg.find("[class]").removeAttr("class");
     let attr = svg[0].attributes;
@@ -1182,7 +1182,7 @@ save(fn, raw) {
         if (a.name.split("-")[0] == "data") keys.push(a.name);
     }
     for (let k of keys) svg.removeAttr(k);
-    return BData.init(svg[0].outerHTML, fn ? fn : `${randomString(12, 1)}.svg`).save();
+    return BData.init(svg[0].outerHTML, fn ? fn : `${random_string(12, 1)}.svg`).save();
 }
 
 async embed_images() {return this.embed_svg_images().then(g => g.convert_image_hrefs())}
@@ -1223,7 +1223,7 @@ async convert_image_hrefs() {
         hrefs.push(href);
         images[href] = img;
     }
-    return loadDataURLs(...hrefs).then((a) => {
+    return load_dataURLs(...hrefs).then((a) => {
         for (let href in a) $(images[href]).attr({href: a[href]});
         return g;
     });
@@ -1240,14 +1240,14 @@ get center() {
     return new RArray((l + r) / 2, (b + t) / 2);
 }
 
-clipRect(xy, id) {
+clip_rect(xy, id) {
 /* Create a clip path that excludes the margin */
     if (xy == null) xy = 0;
     xy = this._cs(xy instanceof Array ? xy : [xy, xy]).times(2);
     let clip = this.group();
     let [l, r, b, t] = this.lrbt;
     clip.rect([Math.abs(r - l) + xy[0], Math.abs(t - b) + xy[1]], this.center);
-    clip.clipPath(id ? id : "lrbt");
+    clip.clip_path(id ? id : "lrbt");
     return this;
 }
 
@@ -1303,7 +1303,7 @@ coords_by_map(p1, a1, p2, a2) {
     this.p2a = (x, y) => p1.minus([x,y]).times(t);
 }
 
-eventCoords(ev) {
+event_coords(ev) {
 /* Calculate the coordinates of a mouse event in pixels and using the SVG2 coordinate system */
     let e = this.$;
     let dx = parseFloat(e.css("padding-left")) + parseFloat(e.css("border-left-width"));
@@ -1315,7 +1315,7 @@ eventCoords(ev) {
     return {pixels: px, coords: this.p2a(...px)};
 }
 
-adjustAngle(a, invert) {
+adjust_angle(a, invert) {
 /* Adjust rotation angle when x and y scales differ */
     let [sx, sy] = this.scale;
     if (invert) {sx = 1 / sx; sy = 1 / sy}
@@ -1430,10 +1430,10 @@ pause() {
 
 toggle() {return this.playing ? this.pause() : this.play()}
 
-clickToggle(n, click, init) {
-    let a = [() => clickCycle.toggle(this, false, ...range(n))];
-    for (let i=0;i<n;i++) a.push(() => clickCycle.toggle(this, true, i));
-    clickCycle(this.element, init == null ? -1 : init, ...a);
+click_toggle(n, click, init) {
+    let a = [() => click_cycle.toggle(this, false, ...range(n))];
+    for (let i=0;i<n;i++) a.push(() => click_cycle.toggle(this, true, i));
+    click_cycle(this.element, init == null ? -1 : init, ...a);
     if (click) for (let i=0;i<click;i++)
         this.$.trigger("click");
     return this;
@@ -1483,7 +1483,7 @@ static cache(url, obj) {
     SVG2._cache[new URL(url, SVG2.url).href] = obj;
 }
 
-static makeURL(url) {return new URL(url, SVG2.url).href}
+static make_URL(url) {return new URL(url, SVG2.url).href}
 static cached(url) {return SVG2._cache[new URL(url, SVG2.url).href]}
 
 
@@ -1513,7 +1513,7 @@ static vec_diag(sel, vecs, opt) {
     g.$.appendTo(svg.$);
     for (let s of "XY") {
         let e = svg.find(`g.Label${s}`);
-        if (e) e.shiftBy([0, "-5"]);
+        if (e) e.shift_by([0, "-5"]);
     }
     svg.$.find(".Zero").hide();
     if (opt.cycle == -1) g.$.find(".Component").hide();
@@ -1525,9 +1525,9 @@ static vec_diag(sel, vecs, opt) {
 }
 
 vec_cycle(g, res) {
-/* Default 'clickCycle' for vector diagrams */
+/* Default 'click_cycle' for vector diagrams */
     g.find(".Component").hide();
-    if (res) clickCycle(this.element, 0,
+    if (res) click_cycle(this.element, 0,
         () => {g.find(".Component").fadeOut()},
         () => {g.find(".Resultant").fadeOut(); g.find(".Component:not(.Resultant)").fadeIn()},
         () => {g.find(".Component:not(.Resultant)").fadeOut(); g.find(".Component.Resultant").fadeIn()},
@@ -1586,7 +1586,7 @@ static ebg(sel, Emax, step, data, options) {
         let [dec, x, skip] = options.label;
         let g = svg.label(dec, x, [...range(0, Emax + step, skip ? skip * step : step)]);
         let dy = options.yShift;
-        g.shiftBy([0, dy != null ? dy : "-6"]);
+        g.shift_by([0, dy != null ? dy : "-6"]);
         if (options.unit) g.text(options.unit, ["6", Emax]).css({"text-anchor" : "start"});
         g.$.find(".Zero").removeClass("Zero");
         g.$.find("text").css({"font-size": "16px"});
@@ -1632,26 +1632,26 @@ static ebg(sel, Emax, step, data, options) {
     return svg.update(0);
 }
 
-static async latex(code, e) {
-/* Render LaTeX equation to SVG using MathJax */
-    let remove = e == null;
-    e = remove ? $("<p>").css({display: "none"}).appendTo("body") : $(e);
-    e.html(`$$${code}$$`);
-    return MathJax.typesetPromise().then(a => {
-        let svg;
-        try {svg = e.find("svg")[0].outerHTML}
-        catch(err) {}
-        if (remove) e.remove();
-        return svg;
-    });
-}
+// static async latex(code, e) {
+// /* Render LaTeX equation to SVG using MathJax */
+//     let remove = e == null;
+//     e = remove ? $("<p>").css({display: "none"}).appendTo("body") : $(e);
+//     e.html(`$$${code}$$`);
+//     return MathJax.typesetPromise().then(a => {
+//         let svg;
+//         try {svg = e.find("svg")[0].outerHTML}
+//         catch(err) {}
+//         if (remove) e.remove();
+//         return svg;
+//     });
+// }
 
-static async latex_img(code) {
-/* Render LaTeX equation to <img> */
-    return SVG2.latex(code).then(svg => {
-        return $("<img>").attr({src: "data:image/svg+xml," + encodeURIComponent($(svg)[0].outerHTML)})[0];
-    })
-}
+// static async latex_img(code) {
+// /* Render LaTeX equation to <img> */
+//     return SVG2.latex(code).then(svg => {
+//         return $("<img>").attr({src: "data:image/svg+xml," + encodeURIComponent($(svg)[0].outerHTML)})[0];
+//     })
+// }
 
 static* spring_points(p0, p1, n, dx, dy) {
     let seg = new Segment(...p0, ...p1);

@@ -22,7 +22,7 @@ Q1: (sel) => {
 
     svg.$.find(".LabelY .Zero").remove();
     svg.$.find("g.Series g.Locus").css({stroke: "black"});
-    svg.clickToggle(4);
+    svg.click_toggle(4);
 },
 
 });

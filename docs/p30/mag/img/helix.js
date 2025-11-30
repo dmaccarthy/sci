@@ -39,12 +39,12 @@ ucm: (sel) => {
     // svg.$.find("text").css({ "font-size": "28px"});    
     svg.animate(q, v, Fm);
 
-    clickCycle(svg.element, 3,
-        () => {clickCycle.toggle(tog, true, 1)},
+    click_cycle(svg.element, 3,
+        () => {click_cycle.toggle(tog, true, 1)},
         () => {svg.play()},
-        () => {clickCycle.toggle(tog, true, 0)},
+        () => {click_cycle.toggle(tog, true, 0)},
         () => {svg.pause()},
-        () => {clickCycle.toggle(tog, false, 0, 1)},
+        () => {click_cycle.toggle(tog, false, 0, 1)},
     );
 
 },

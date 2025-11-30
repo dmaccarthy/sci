@@ -71,9 +71,9 @@ loadFeed.sim = () => {
     }
     copy();
 
-    let t = clickCycle.toggle;
+    let t = click_cycle.toggle;
     let svg = () => $("#RayApplet")[0].graphic;
-    clickCycle($("#RayApplet")[0], -1,
+    click_cycle($("#RayApplet")[0], -1,
         () => {t(svg(), false, 0, 1, 2, 3, 4)},
         () => {t(svg(), true, 0)},
         () => {t(svg(), true, 1)},

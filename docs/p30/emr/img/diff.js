@@ -31,8 +31,8 @@ huygens: (sel) => {
     for (let i=1;i<8;i++) {
         let r = 0.11 * i;
         let c = i % 2 ? "#0065fe" : "red";
-        g.path([r-d, 0]).arcTo([-r-d, 0], r).update().css({stroke: c});
-        g.path([r+d, 0]).arcTo([d-r, 0], r).update().css({stroke: c});
+        g.path([r-d, 0]).arc_to([-r-d, 0], r).update().css({stroke: c});
+        g.path([r+d, 0]).arc_to([d-r, 0], r).update().css({stroke: c});
     }
  
     // All sources
@@ -41,8 +41,8 @@ huygens: (sel) => {
     for (let i=1;i<10;i++) g.circle(w/2, [d * (0.2 * i - 1), 0]);
     g.$.find("circle").css({fill: "#0065fe"});
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, -1,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, -1,
         () => {t(svg, false, 0, 1, 3); t(svg, true, 2)},
         () => {t(svg, true, 0)},
         () => {t(svg, true, 1)},

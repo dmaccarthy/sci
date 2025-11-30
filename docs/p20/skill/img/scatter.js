@@ -3,7 +3,7 @@ SVG2.cache("p20/skill/img/scatter.js", {
 wtLoss: (sel) => {
     let x = [...range(3, 28, 3)];
     let y = [80.8, 80.8, 80, 79.8, 80, 79.7, 79.1, 79.3, 78.5];
-    let eq = linRegXY(x, y).fn;
+    let eq = lin_reg_xy(x, y).fn;
     let svg = new SVG2(sel, {size: [640, 400], lrbt: [0, 30, 77, 82], margin: [64, 10, 54, 10]});
     svg.graph({grid: [1, 0.25],
         x: {tick: [3, 31, 3], y: 77, title: ["Time / days", [15, "-48"]], shift: [0, "-24"]},
@@ -19,8 +19,8 @@ wtLoss: (sel) => {
     svg.$.find("g.Series g.Locus").addClass("Toggle2");
     let title = svg.$.closest("p").children("span");
 
-    let t = clickCycle.toggle;
-    if (svg.$.attr("data-interact")) clickCycle(svg.element, -1,
+    let t = click_cycle.toggle;
+    if (svg.$.attr("data-interact")) click_cycle(svg.element, -1,
         () => {t(svg, false, 0, 1, 2); title.css({visibility: "hidden"})},
         () => {title.css({visibility: "visible"})},
         () => {t(svg, true, 0)},

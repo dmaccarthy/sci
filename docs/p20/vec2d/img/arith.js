@@ -17,7 +17,7 @@ ship: (sel) => {
     let arrow = (L, a) => {
         L *= scale;
         let pivot = new RArray(-L/2 - 0.04, 0);
-        return g.arrow(L, {tail: "6"}).config({pivot: pivot, theta: a}).shiftBy(pt.minus(pivot));
+        return g.arrow(L, {tail: "6"}).config({pivot: pivot, theta: a}).shift_by(pt.minus(pivot));
     }
     let fields = [[0.462, 230], [0.594, 300]];
     let a = vec2d(0, 0);
@@ -156,8 +156,8 @@ tri: (sel) => {
     arr(pB, l, -rb_a, "green");
 
     // Click sequence
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, 0,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, 0,
         () => {t(svg, false, 1)},
         () => {t(svg, true, 0)},
         () => {t(svg, false, 0); t(svg, true, 1)},

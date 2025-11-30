@@ -33,7 +33,7 @@ tennis: (sel) => {
     g.poly([[0, 0], [5, 35], [5, 0]], 1).css({fill: "#0065fe"}).addClass("Toggle0");
     g.poly([[5, 0], [5, 35], [7, 35], [7, 0]], 1).css({fill: "red"}).addClass("Toggle1");
     g.poly([[7, 0], [7, 35], [10, 0]], 1).css({fill: "yellow"}).addClass("Toggle2");
-    svg.clickToggle(3, 1, 3);
+    svg.click_toggle(3, 1, 3);
 },
 
 bump: (sel) => {

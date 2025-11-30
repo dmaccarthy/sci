@@ -36,7 +36,7 @@ function yt(args) {
 }
 
 $(() => {
-    let args = qsArgs();
+    let args = qs_args();
     let t = args.t ? args.t : document.title;
     document.title = t;
     $("#Title").html(t);

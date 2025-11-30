@@ -144,7 +144,7 @@ pe: (sel) => { // Photoelectric Effect graph
 },
 
 vtb: (sel) => {
-    let eq = quadRegXY([0, 2, 4], [8, 12, 0]).fn;
+    let eq = quad_regXY([0, 2, 4], [8, 12, 0]).fn;
     let pts = [...range(1, 3.01, 0.1)];
     pts = zip(pts, [...fn_eval(eq, pts)]);
     pts = pts.concat([[3, 0], [1, 0]]);

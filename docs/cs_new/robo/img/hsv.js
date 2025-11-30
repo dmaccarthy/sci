@@ -73,7 +73,7 @@ blue: (sel) => {
     let svg = SVG2.cache_run("cs_new/robo/img/hsv.js", "wheel", sel, 0, 0, 100);
     svg.$.children("g.HueSat").remove();
     let v = vec2d, r = 0.6, a = 205, b = 260;
-    let p = svg.path(v(r, a)).arcTo(v(r, b), r).lineTo(v(1, b)).arcTo(v(1, a), 1, 2).close().update();
+    let p = svg.path(v(r, a)).arc_to(v(r, b), r).line_to(v(1, b)).arc_to(v(1, a), 1, 2).close().update();
     p.css({fill: "none", stroke: "black", "stroke-width": "3px"});
 },
 

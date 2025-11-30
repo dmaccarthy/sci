@@ -9,7 +9,7 @@ function jeval_frac(s) {
     return jeval(s[0]) / (s.length > 1 ? jeval(s[1]) : 1);
 }
 
-function clickCycle(e, n, ...f) {
+function click_cycle(e, n, ...f) {
     e.cycleStatus = n;
     $(e).click((ev) => {
         let back = ev.ctrlKey;
@@ -22,7 +22,7 @@ function clickCycle(e, n, ...f) {
     });
 }
 
-clickCycle.toggle = (items, show, ...n) => {
+click_cycle.toggle = (items, show, ...n) => {
     let svg;
     try {svg = items instanceof SVG2 ? items : null}
     catch(err) {}
@@ -51,27 +51,14 @@ function file_ext(url) {
     return path.item(-1).toLowerCase();
 }
 
-function qsArgs(key, str) {
-    // Parse query string
-    if (str == null) str = location.search;
+function qs_args(key, str) {
+    // Convert query string to object
     let args = {};
-    try {
-        for (let [k, val] of new URLSearchParams(str))
-            args[k.trim()] = val;       
-    } catch(err) {
-        console.error(err);
-        let qs = str.split("?")[1];
-        if (qs == null) return key ? null : {};
-        qs = qs.split("&");
-        for (let i=0;i<qs.length;i++) {
-            let a = qs[i].split("=");
-            args[a[0].trim()] = decodeURIComponent(a[1]);
-        }
-    }
+    for (let [k, v] of new URLSearchParams(str ? str : location.search)) args[k] = v;
     return key ? args[key] : args;
 }
 
-function itemAspect(ei, w) {
+function item_aspect(ei, w) {
     // Adjust height(width) of element to maintain aspect ratio
     ei = $(ei);
     let a = jeval_frac(ei.attr("data-aspect"));
@@ -89,10 +76,10 @@ function itemAspect(ei, w) {
 
 function aspect(w) {
     let e = $("[data-aspect]");
-    for (let i=0;i<e.length;i++) itemAspect(e[i], w)
+    for (let i=0;i<e.length;i++) item_aspect(e[i], w)
 }
 
-function isAfter(due, date) {
+function is_after(due, date) {
     // Check whether a date (today) is after the specified due date
     if (due == null) return true;
     else if (due == false) return false;
@@ -105,12 +92,12 @@ function isAfter(due, date) {
     return date >= due;
 }
 
-function randomString(n, allowNum) {
+function random_string(n, allowNum) {
 // allowNum = 1: numerals are allowed
 // allowNum = 2: allowed except for first character
     let s = "";
     if (allowNum == 2) {
-        s = randomString(1);
+        s = random_string(1);
         n--;
     }
     while (n--) {
@@ -121,7 +108,7 @@ function randomString(n, allowNum) {
     return s;
 }
 
-function randomColor(digits) {
+function random_color(digits) {
     // Create a random RGB hex code
     let s = "#";
     if (!digits) digits = 6;
@@ -154,7 +141,7 @@ function unzip(data, rarray) {
     return udata;
 }
 
-function unicodeToBase64(utext) {
+function unicode_to_base64(utext) {
     let data = new TextEncoder().encode(utext);
     return btoa(String.fromCharCode(...data));
 }
@@ -201,6 +188,10 @@ async function mjax_svg(tex) {
             return svg;    
         });
     });
+}
+
+async function mjax_img(tex) {
+    return mjax_svg(tex).then((s) => $("<img>").attr({src: "data:image/svg+xml;base64," + unicode_to_base64(s)})[0]);
 }
 
 function mjax_render(e, interactive) {
@@ -272,12 +263,12 @@ function uHSVtoRGB(h, s, v) {
 
 /* Fetch images or other data as blobs or data URLs... 
 
-loadBlobs("video.png", "print.svg").then(console.log);
-loadDataURLs("video.png", "print.svg").then(console.log);  
+load_blobs("video.png", "print.svg").then(console.log);
+load_dataURLs("video.png", "print.svg").then(console.log);  
 
 */
 
-async function loadOneBlob(url, dataURL) {
+async function load_one_blob(url, dataURL) {
     return new Promise((resolve, reject) => {
         fetch(url).then(r => r.blob().then(b => {
             if (!r.ok) reject(b);
@@ -293,13 +284,13 @@ async function loadOneBlob(url, dataURL) {
     });  
 }
 
-async function _loadBlobs(dataURL, ...args) {
+async function _load_blobs(dataURL, ...args) {
     let data = {}, promises = {};
     for (let a of args)
-        promises[a] = loadOneBlob(a, dataURL).then(b => data[a] = b, () => data[a] = null);
+        promises[a] = load_one_blob(a, dataURL).then(b => data[a] = b, () => data[a] = null);
     for (let a of args) await promises[a];
     return new Promise((resolve) => {resolve(data)});
 }
 
-async function loadBlobs(...args) {return _loadBlobs(0, ...args)}
-async function loadDataURLs(...args) {return _loadBlobs(1, ...args)}
+async function load_blobs(...args) {return _load_blobs(0, ...args)}
+async function load_dataURLs(...args) {return _load_blobs(1, ...args)}

@@ -31,7 +31,7 @@ Ex3: (sel) => {
     svg.gtext("N", "text", [1.5, 24]);
     let g = svg.$.find("g.Arrow");
     for (let i=0;i<g.length;i++) $(g[i]).addClass(`Toggle${i}`);
-    svg.clickToggle(3);
+    svg.click_toggle(3);
 },
 
 Q1: (sel, comp) => {

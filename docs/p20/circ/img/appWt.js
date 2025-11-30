@@ -14,8 +14,8 @@ roller: (sel) => {
     let g = svg.group("nofill", "black2");
     g.circle(3, [0, 6]);
     let y = 6 - root(5);
-    let p = g.path([-10, 4]).arcTo([-4, 4], 4, 2).quadTo([2, y], [-1, 1.5]);
-    p.quadTo([5, 3], [4, 5]).arcTo([13, 6], 4).update();
+    let p = g.path([-10, 4]).arc_to([-4, 4], 4, 2).quad_to([2, y], [-1, 1.5]);
+    p.quad_to([5, 3], [4, 5]).arc_to([13, 6], 4).update();
 
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];

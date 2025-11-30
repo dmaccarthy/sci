@@ -154,7 +154,7 @@ loadFeed.sim = () => {
     }
 
     svg.play().$.on("click", (ev) => {
-        let theta = svg.eventCoords(ev).coords.dir();
+        let theta = svg.event_coords(ev).coords.dir();
         svg.blue.config({shift: vec2d(40, theta)});
     });
 }

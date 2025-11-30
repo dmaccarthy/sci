@@ -35,12 +35,12 @@
 
     <h3 class="Collapse Code">.clip(id)</h3>
     <div class="Collapse">
-        <p>Sets the group’s <code>clip-path</code> attribute to reference the <code>&lt;clipPath&gt;</code> element with the specified <code>id</code> attribute.</p>
+        <p>Sets the group’s <code>clip-path</code> attribute to reference the <code>&lt;clip_path&gt;</code> element with the specified <code>id</code> attribute.</p>
     </div>
 
-    <h3 class="Collapse Code">.clipPath(id, clone)</h3>
+    <h3 class="Collapse Code">.clip_path(id, clone)</h3>
     <div class="Collapse">
-        <p>Creates a new <code>&lt;clipPath&gt;</code> element as a child of the <code>&lt;defs&gt;</code> node and copies or moves the group’s content into this new node.</p>
+        <p>Creates a new <code>&lt;clip_path&gt;</code> element as a child of the <code>&lt;defs&gt;</code> node and copies or moves the group’s content into this new node.</p>
         <ul>
             <li><code>id</code>: A string value for the new node’s <code>id</code> attribute.</li>
             <li><code>clone</code>: A boolean value indicating whether to clone the group’s content.</li>
@@ -82,7 +82,7 @@
         <p>The <code>css</code> method returns the <code>SVG2g</code> instance on which it was called.</p>
     </div>
 
-    <h3 class="Collapse Code">.findAll(selector)</h3>
+    <h3 class="Collapse Code">.find_all(selector)</h3>
     <div class="Collapse">
         <p>This method searches the descendant nodes of the <code>&lt;g&gt;</code> or <code>&lt;svg&gt;</code> node associated with the <code>SVG2g</code> instance. It returns an array of <code>SVG2g</code> instances associated with nodes that match the <code>selector</code>.</p>
     </div>
@@ -93,7 +93,7 @@
         <p>The optional arguments to this method are passed to the <code>css</code> method of the new <code>SVG2g</code> instance.</p>
     </div>
 
-    <h3 class="Collapse Code">.shiftBy(xy)</h3>
+    <h3 class="Collapse Code">.shift_by(xy)</h3>
     <div class="Collapse">
         <p>Adjusts the <code>shift</code> attribute by the 2-array <code>xy</code>.</p>
     </div>
@@ -275,11 +275,11 @@ some_g.plot({x: [3, 0, 4], y: [-1, 5, 2]}, ["10", "10"], null, 45);</pre>
     g.multiline(text, space) -> SVG2g
     g.energy_flow({radius, labels, arrows}) -> g
     g.graph({x, y, grid, data, css, appendAxes}) -> g
-    g.errorBarX(x, y0, y1, dx) -> SVG2g
-    g.errorBarY(x0, x1, y, dy) -> SVG2g
+    g.error_bar_x(x, y0, y1, dx) -> SVG2g
+    g.error_bar_y(x0, x1, y, dy) -> SVG2g
     g.flow(text, shape, options) -> SVG2 
     
-    g.clipPath
+    g.clip_path
     g.clip
     
     -->

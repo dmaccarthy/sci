@@ -44,8 +44,8 @@ london: (sel) => {
     g.find("g.Plot").css({fill: "red"});
 
     // Toggle through graph
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, -1,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, -1,
         () => {t(svg, false, 0, 1, 2, 3, 4, 5, 6, 7, 8)},
         () => {t(svg, true, 0)},
         () => {t(svg, true, 1)},

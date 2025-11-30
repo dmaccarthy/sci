@@ -18,8 +18,8 @@ eld: (sel) => {
     }
     svg.arrow({tail: [0, E1/16], tip: [0, E1/4]}, {tail: "4"}).css(".Toggle1", "arrow");
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, 2,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, 2,
         () => {t(svg, false, 0, 1)},
         () => {t(svg, true, 0)},
         () => {t(svg, true, 1)},

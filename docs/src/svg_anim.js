@@ -302,7 +302,7 @@ class SVG_Animation {
         }
     }
 
-    eventCoords(ev) {
+    event_coords(ev) {
         let e = this.$;
         let dx = parseFloat(e.css("padding-left")) + parseFloat(e.css("border-left-width"));
         let dy = parseFloat(e.css("padding-top")) + parseFloat(e.css("border-top-width"));
@@ -744,10 +744,10 @@ class SVG_Path {
     constructor(svg, xy) {
         this.svg = svg;
         this.d = "";
-        this.moveTo(xy == null ? [0, 0] : xy);
+        this.move_to(xy == null ? [0, 0] : xy);
     }
 
-    moveTo(xy, c) {
+    move_to(xy, c) {
         let svg = this.svg;
         let f = svg._f;
         let [x, y] = xy;        
@@ -758,11 +758,11 @@ class SVG_Path {
         return this;
     }
 
-    lineTo(xy) {return this.moveTo(xy, "L")}
+    line_to(xy) {return this.move_to(xy, "L")}
 
-    linesTo(...points) {
+    lines_to(...points) {
         for (let xy of points)
-            this.lineTo(xy);
+            this.line_to(xy);
         return this;
     }
 
@@ -784,7 +784,7 @@ class SVG_Path {
         return this;
     }
 
-    arcTo(xy, r, choice, rotn) { // Draw a circular or elliptical arc to the specified point
+    arc_to(xy, r, choice, rotn) { // Draw a circular or elliptical arc to the specified point
         let svg = this.svg;
         let f = svg._f;
         let rx, ry;
@@ -816,10 +816,10 @@ class SVG_Path {
             if (a < a0) choice += 2;
         }
         let p1 = c.plus([r * cos(a), r * sin(a)]);
-        return this.arcTo(p1, r, choice);
+        return this.arc_to(p1, r, choice);
     }
 
-    curveTo(xy, p1, p2) { // Bezier curve to the specified point using two reference points
+    curve_to(xy, p1, p2) { // Bezier curve to the specified point using two reference points
         let svg = this.svg;
         let f = svg._f;
         let [x, y] = xy;        

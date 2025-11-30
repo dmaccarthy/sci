@@ -36,7 +36,7 @@ _crt: (sel) => {
     for (let i=2; i<4; i++) pm[i].css(".Toggle0");
 
     // Cathode ray tube
-    let tube = svg.path([6, 1]).hor(0).arcTo([0, -1], 1).hor(6).arcTo([6, 1], 2.6, 1);
+    let tube = svg.path([6, 1]).hor(0).arc_to([0, -1], 1).hor(6).arc_to([6, 1], 2.6, 1);
     tube.close().update().css({fill: "none", stroke: "black"});
 
     // Label magnetic field
@@ -60,8 +60,8 @@ crt_no_field: (sel) => {
 crt: (sel) => {
     let svg = SVG2.cache_run("p30/atom/img/crt.js", "_crt", sel);
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, 0,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, 0,
         () => {t(svg, false, 2, 3, 4); t(svg, true, 0, 1)},
         () => {t(svg, false, 1), t(svg, true, 2, 4)},
         () => {t(svg, false, 0, 2), t(svg, true, 3)},

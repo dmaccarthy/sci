@@ -46,8 +46,8 @@ deriv: (sel) => {
     svg.circle("4", [2, 0]);
     svg.$.find("circle").css({fill: "white"});
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, -1,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, -1,
         () => {t(svg, false, 0, 1, 2)},
         () => {t(svg, true, 0)},
         () => {t(svg, true, 1)},

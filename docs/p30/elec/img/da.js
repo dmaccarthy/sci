@@ -18,8 +18,8 @@ pend: (sel) => {
     model.locus((x) => twoPi * Math.sqrt(x / 9.81), [0, 2.5]).$.hide().addClass("Toggle1");
     p.plot({x:x, y:y}, "5");
 
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, 2,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, 2,
         () => {t(svg, true, 0)},
         () => {t(svg, false, 0); t(svg, true, 1)},
         () => {t(svg, false, 1)},

@@ -95,8 +95,8 @@ diag: (sel, lens, f, d) => {
     if (lens) {
         x = (x1 - x2) / 50;
         let r = ["20", "200"];
-        if (f > 0) p = svg.path([0, h]).arcTo([0, -h], r).arcTo([0, h], r);
-        else p = svg.path([x, h]).hor(-x).arcTo([-x, -h] , r).hor(x).arcTo([x, h], r);
+        if (f > 0) p = svg.path([0, h]).arc_to([0, -h], r).arc_to([0, h], r);
+        else p = svg.path([x, h]).hor(-x).arc_to([-x, -h] , r).hor(x).arc_to([x, h], r);
         p.close().update();
         p.$.css({stroke: "grey", fill: "lightgrey", "fill-opacity": 0.4});
     }
@@ -105,7 +105,7 @@ diag: (sel, lens, f, d) => {
         let r = (h * h / x + x) / 2;
         x *= f > 0 ? -0.5 : 0.5;
         let c = f > 0 ? 0 : 2;
-        p = svg.path([x, h]).arcTo([x, -h], r, c);
+        p = svg.path([x, h]).arc_to([x, -h], r, c);
         p.update();
         p.$.css({stroke: "silver", "stroke-width": "5px", fill: "none"});
     }
@@ -118,8 +118,8 @@ diag: (sel, lens, f, d) => {
 
 diag_toggle: (sel, lens, f, d) => {
     let svg = SVG2.cache_run("p30/optics/img/pr.js", "diag", sel, lens, f, d);
-    let t = clickCycle.toggle;
-    clickCycle(svg.element, -1,
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, -1,
         () => {t(svg, false, 0, 1, 2, 3, 4)},
         () => {t(svg, true, 0)},
         () => {t(svg, true, 1)},

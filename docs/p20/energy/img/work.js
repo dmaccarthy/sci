@@ -50,7 +50,7 @@ flow2: (sel) => {
     });
     let i = 0;
     for (let e of svg.$.find("g.Arrow > text")) $(e).addClass(`Toggle${i++}`);
-    svg.clickToggle(3);
+    svg.click_toggle(3);
 },
 
 Q2: (sel) => {

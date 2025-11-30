@@ -54,7 +54,7 @@ loadFeed._inits = [];
 function feedURL(feed, qs) {
 /** Compose a URL for a specific feed **/
     let query = "";
-    if (qs === true) qs = qsArgs();
+    if (qs === true) qs = qs_args();
     if (qs && qs.length) {
         query = "?";
         let k;
@@ -120,7 +120,7 @@ function calendar(cal) {
         let [date, text, attr, css] = ev;
         if (text.charAt(0) == "@") text = "Lesson: " + text.substring(1);
         let tr = $("<tr>").appendTo(tb);
-        if (isAfter(date) && !isToday(date)) tr.hide().addClass("PastDue");
+        if (is_after(date) && !isToday(date)) tr.hide().addClass("PastDue");
         let [w, m, d] = date.split(".");
         m = months[parseInt(m) - 1];
         w = days[new Date(date).getDay()];
@@ -209,12 +209,12 @@ function onFeedLoaded(feed, e, noHist) {
         apply("[data-answers]", (ei) => {
             let d = ei.attr("data-answers");
             if (d == "1") d = loadFeed.data.answerDate;
-            if (!isAfter(d)) ei.find(".Answer").remove();
+            if (!is_after(d)) ei.find(".Answer").remove();
         });
         apply("[data-show]", (ei) => {
             let d = ei.attr("data-show");
             if (d == "1") d = loadFeed.data.showDate;
-            if (!isAfter(d)) ei.remove();
+            if (!is_after(d)) ei.remove();
         });
     }
 
@@ -311,7 +311,7 @@ function onFeedLoaded(feed, e, noHist) {
         }
         if (ei[0].tagName == "A") {
             ei.attr({href: url});
-            if (tab) ei.attr({target: randomString(12, 2)});
+            if (tab) ei.attr({target: random_string(12, 2)});
         }
         else ei.addClass("FeedLink").click(() => {
             if (tab) window.open(url);

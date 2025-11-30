@@ -17,10 +17,10 @@ Ex1: (sel) => {
     g.$.find(".Resultant text").css({fill: "#0065fe"});
 
     tog = [[tog.element, svg.$.find("g.Arrow")[1]], svg.$.find(".Resultant")];
-    clickCycle(svg.element, 1,
-        () => {clickCycle.toggle(tog, true, 0)},
-        () => {clickCycle.toggle(tog, true, 1)},
-        () => {clickCycle.toggle(tog, false, 0, 1)},
+    click_cycle(svg.element, 1,
+        () => {click_cycle.toggle(tog, true, 0)},
+        () => {click_cycle.toggle(tog, true, 1)},
+        () => {click_cycle.toggle(tog, false, 0, 1)},
     );
 },
 
@@ -41,10 +41,10 @@ Ex2: (sel) => {
     g.$.find(".Resultant text").css({fill: "#0065fe"});
 
     tog = [[tog.element, svg.$.find("g.Arrow")[1]], svg.$.find(".Resultant")];
-    clickCycle(svg.element, 1,
-        () => {clickCycle.toggle(tog, true, 0)},
-        () => {clickCycle.toggle(tog, true, 1)},
-        () => {clickCycle.toggle(tog, false, 0, 1)},
+    click_cycle(svg.element, 1,
+        () => {click_cycle.toggle(tog, true, 0)},
+        () => {click_cycle.toggle(tog, true, 1)},
+        () => {click_cycle.toggle(tog, false, 0, 1)},
     );
 },
 
@@ -68,11 +68,11 @@ Ex3: (sel) => {
     pa = [pa.element, svg.$.find("g.Arrow")[0], g.text("35°", [0.07, 0.018])[0]];
     pb = [pb.element, svg.$.find("g.Arrow")[1], g.text("55°", [0.37, 0.018])[0]];
     tog = [pa, pb, g.text("90°", [0.275, 0.15])[0]];
-    clickCycle(svg.element, 2,
-        () => {clickCycle.toggle(tog, true, 0)},
-        () => {clickCycle.toggle(tog, true, 1)},
-        () => {clickCycle.toggle(tog, true, 2)},
-        () => {clickCycle.toggle(tog, false, 0, 1, 2)},
+    click_cycle(svg.element, 2,
+        () => {click_cycle.toggle(tog, true, 0)},
+        () => {click_cycle.toggle(tog, true, 1)},
+        () => {click_cycle.toggle(tog, true, 2)},
+        () => {click_cycle.toggle(tog, false, 0, 1, 2)},
     );
 }
 

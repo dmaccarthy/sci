@@ -95,7 +95,7 @@ loadFeed.data = {
 }
 
 loadFeed.auth = () => {
-    let prj = qsArgs("prj");
+    let prj = qs_args("prj");
     if (!prj) prj = "";
     prj = atob(prj.replaceAll('$', "="));
     let e = $("section[data-code]");

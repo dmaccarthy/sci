@@ -27,11 +27,11 @@ window.MathJax = {
 
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="src/util.js?_v=10"></script>
+<script type="text/javascript" src="src/util.js?_v=11"></script>
 <script type="text/javascript" src="src/bdata.js?_v=0"></script>
 <script type="text/javascript" src="src/math.js?_v=3"></script>
 <script type="text/javascript" src="src/matrix.js"></script>
-<script type="text/javascript" src="src/svg2.js?_v=15"></script>
+<script type="text/javascript" src="src/svg2.js?_v=16"></script>
 <script type="text/javascript" src="script/phys.js?_v=2"></script>
 <script type="text/javascript" src="src/svg_anim.js?_v=2"></script>
 <script type="text/javascript" src="media/dataimg.js"></script>
@@ -67,7 +67,7 @@ let tmp, _;
     
 let svgTrack = () => {
     let svg = $("svg").on("mousemove", (ev) => {
-        if (ev.ctrlKey) console.log(ev.currentTarget.graphic.eventCoords(ev).coords);
+        if (ev.ctrlKey) console.log(ev.currentTarget.graphic.event_coords(ev).coords);
     });
     return svg[0].graphic;
 }

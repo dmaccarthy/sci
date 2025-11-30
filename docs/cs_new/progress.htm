@@ -22,7 +22,7 @@
 <script type="text/javascript" data-init="init">
 
 loadFeed.init = () => {
-    let id = qsArgs("userid");
+    let id = qs_args("userid");
     if (id) {
         let url = `${location.pathname}#${loadFeed.current}`;
         history.replaceState({}, null, url);

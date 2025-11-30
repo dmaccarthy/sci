@@ -47,8 +47,8 @@ Add composite content:
     g.multiline(text, space) -> SVG2g
     g.energy_flow({radius, labels, arrows}) -> g
     g.graph({x, y, grid, data, css, appendAxes}) -> g
-    g.errorBarX(x, y0, y1, dx) -> SVG2g
-    g.errorBarY(x0, x1, y, dy) -> SVG2g
+    g.error_bar_x(x, y0, y1, dx) -> SVG2g
+    g.error_bar_y(x0, x1, y, dy) -> SVG2g
     g.flow(text, shape, options) -> SVG2
 
 Create a <path>; must call 'update' to write 'd' attribute to <path>:
@@ -68,7 +68,7 @@ Run the animation:
     svg.toggle() -> svg
 
 Get mouse event coordinates:
-    svg.eventCoords(ev) -> {coords: RArray, pixels: RArray}
+    svg.event_coords(ev) -> {coords: RArray, pixels: RArray}
 
 Convert coordinates between child and parent coordinate systems:
     g.coord_to_parent([cx, cy]) -> RArray
@@ -94,4 +94,4 @@ Energy Bar Graph:
     SVG2.ebg(sel, [Emax, step], data, options) -> SVG2
 
 Other methods:
-    svg.adjustAngle(a, invert) -> number
+    svg.adjust_angle(a, invert) -> number

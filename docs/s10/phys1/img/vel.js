@@ -15,7 +15,7 @@ uam: (sel) => {
     g.text("Position / m");
 
     /* Plot parabola through 3 points */
-    let f = quadReg([0,0], [5,11], [8,7]).fn;
+    let f = quad_reg([0,0], [5,11], [8,7]).fn;
     svg.locus(f, [0, 8]).css("blue2");
 },
     

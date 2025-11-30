@@ -254,7 +254,7 @@ comb(r1, r2, f1, f2) { // Replace r1 with f1*r1 + f2*r2
 
 /* Applications of matrix math */
 
-function quadRegXY(x, y) {
+function quad_regXY(x, y) {
     let n = x.length;
     if (y.length != n) throw("Dimension error");
     let mx = Matrix.make(n, 3, (r, c) => {
@@ -265,7 +265,7 @@ function quadRegXY(x, y) {
     return {a:a, b:b, c:c, fn: (x) => (a * x + b) * x + c}
 }
 
-function quadReg(...data) {return quadRegXY(...unzip(data))}
+function quad_reg(...data) {return quad_regXY(...unzip(data))}
 
 function linearSystem(...args) {
     return new Matrix(args).solve();

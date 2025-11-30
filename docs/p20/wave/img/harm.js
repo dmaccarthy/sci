@@ -55,7 +55,7 @@ longWave: (sel) => {
     // Particles
     let particles = svg.group("black");
     for (let i=0;i<51;i++) particles.group().rect([0.093, 1.5]);
-    particles = particles.findAll("g");
+    particles = particles.find_all("g");
     particles[12].css("red");
 
     // Velocities
@@ -118,7 +118,7 @@ trWave: (sel) => {
     let text = svg.group("text", "f18", "black");
     text.gtext("Phase Velocity", [], [2.25, -2.4]);
     svg.arrow({tail: [2, -2.05], tip: [2.5, -2.05]}, {tail: "5"});
-    let rot = text.group("red").shiftBy([0.2, 0]).config({theta: 90});
+    let rot = text.group("red").shift_by([0.2, 0]).config({theta: 90});
     rot.gtext("Particle Velocity", []);
     rot.arrow({tail: [-0.25, -0.35], tip: [0.25, -0.35]}, {tail: "5", double: 1});
 

@@ -42,7 +42,7 @@ let stest = () => {
     svg.animate(g1);
 
     svg.$.on("click", (ev) => {
-        let xy = svg.eventCoords(ev).coords;
+        let xy = svg.event_coords(ev).coords;
         console.log(xy, g2.coord_from_svg(xy));
         svg.toggle();
     })
@@ -83,7 +83,7 @@ let test = () => {
         if (g.svg.frameCount % 60 == 0) {
             let c = g.$.children("*");
             for (let i=0;i<2;i++)
-                $(c[i]).css({fill: randomColor()});
+                $(c[i]).css({fill: random_color()});
         }
     }
 
@@ -98,7 +98,7 @@ let test = () => {
 
     svg.$.on("click", (ev) => {
         svg.toggle();
-        console.log(svg.eventCoords(ev));
+        console.log(svg.event_coords(ev));
     });
 }
 

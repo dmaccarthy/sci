@@ -33,7 +33,7 @@ loadFeed.redraw = () => {
     $("#RefractIndex").val(1.4).on("change", () => loadFeed.click());
     $("#Depth")[0].graphic.$.on("click", (ev) => {
         let svg = $("#Depth")[0].graphic;
-        let v = svg.eventCoords(ev).coords;
+        let v = svg.event_coords(ev).coords;
         if (Math.abs(v[1]) < 0.1) loadFeed.click(v[0]);
     })
 }

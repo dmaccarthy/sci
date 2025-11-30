@@ -10,9 +10,9 @@ orbit: (sel) => {
 
     let planet = pt(100);
     let g = svg.group("nostroke", "blue", {"fill-opacity": 0.3});
-    g.path(f).lineTo(pt(30)).arcTo(pt(45), r).update();
-    g.path(f).lineTo(planet).arcTo(pt(130), r).update();
-    g.path(f).lineTo(pt(185)).arcTo(pt(230), r).update();
+    g.path(f).line_to(pt(30)).arc_to(pt(45), r).update();
+    g.path(f).line_to(planet).arc_to(pt(130), r).update();
+    g.path(f).line_to(pt(185)).arc_to(pt(230), r).update();
     let sector = g.$;
 
     svg.group("nofill", "black2").ellipse(r);

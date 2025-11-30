@@ -215,7 +215,7 @@ loadFeed.sim = () => {
     $("#HSV_Controls input").on("change", () => loadFeed.sim.redraw(1));
     $("#HSV").on("click", (e) => {
         let svg = e.currentTarget.graphic;
-        let pt = svg.eventCoords(e).coords;
+        let pt = svg.event_coords(e).coords;
         let h = pt.dir();
         $("#HSV_H").val(h < 0 ? h + 360 : h);
         $("#HSV_S").val(100 * pt.mag());
