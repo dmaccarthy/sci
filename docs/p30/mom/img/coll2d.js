@@ -9,7 +9,7 @@ Ex1: (sel) => {
     let [BD, SM_IT] = [1, 6];
     let arr = ["→", 5, [0, "14"]];
     let sub = ["18", "-10"];
-    g = svg.group();
+    let g = svg.group();
     g.symbol(["p", BD], arr, ["Σ", 0, ["-20", 0]]).config({shift: [-16, 12]}).$.addClass("Resultant");
     g.symbol(["p", BD], arr, ["iA", SM_IT, sub]).config({shift: [3, 14]});
     let tog = g.symbol(["p", BD], arr, ["iB", SM_IT, sub]).config({shift: [-12, 30]});
@@ -33,7 +33,7 @@ Ex2: (sel) => {
     let [BD, SM_IT] = [1, 6];
     let arr = ["→", 5, [0, "14"]];
     let sub = ["18", "-10"];
-    g = svg.group();
+    let g = svg.group();
     g.symbol(["p", BD], arr, ["Σ", 0, ["-20", 0]]).config({shift: [-14, 6]}).$.addClass("Resultant");
     g.symbol(["p", BD], arr, ["iA", SM_IT, sub]).config({shift: [3, 14]});
     let tog = g.symbol(["p", BD], arr, ["iB", SM_IT, sub]).config({shift: [-12, 24]});
@@ -58,7 +58,7 @@ Ex3: (sel) => {
     let [BD, SM_IT] = [1, 6];
     let arr = ["→", 5, [0, "14"]];
     let sub = ["18", "-10"];
-    g = svg.group();
+    let g = svg.group();
     g.symbol(["p", BD], arr, ["Σ", 0, ["-20", 0]]).config({shift: [0.225, -0.06]}).$.addClass("Resultant");
     pa = g.symbol(["p", BD], arr, ["iA", SM_IT, sub]).config({shift: [0.1, 0.125]});
     pb = g.symbol(["p", BD], arr, ["iB", SM_IT, sub]).config({shift: [0.36, 0.15]});

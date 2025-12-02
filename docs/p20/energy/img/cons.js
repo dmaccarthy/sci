@@ -2,7 +2,7 @@ SVG2.cache("p20/energy/img/cons.js", {
 
 pulley: (sel) => {
     let svg = new SVG2(sel, {scale: 24, lrbt: [-5, 7, -12.1, 2]});
-    let g = svg.group("black@1", "nofill");
+    let g = svg.group("black@1", "none");
     g.circle(1.5).css({"stroke-width": "2px"});
     g.line([-1.5, 0], [-1.5, -2.5]); // m1
     g.line([1.5, 0], [1.5, -10]);    // m2
