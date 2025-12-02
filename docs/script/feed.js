@@ -536,7 +536,7 @@ function teacher(t, init) {
         if (btoa(localStorage.getItem("teacher_code")) == teacher.access)
             teacher.mode = true;
     console.log("Teacher", teacher.mode);
-    if (teacher.mode) // if (location.hostname == "dmaccarthy.github.io")
+    if (teacher.mode) if (location.hostname == "dmaccarthy.github.io")
             serverUTC().then(a => a.json()).then(console.log);
     if (!init) loadFeed();
 }
