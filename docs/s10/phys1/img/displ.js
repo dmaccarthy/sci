@@ -6,7 +6,7 @@ student: (sel, arrow) => {
     svg.label(["-8", "0"], [...range(-15, 31, 1)], 0);
     svg.label(0, [...range(-15, 31, 5)], -2.5);
 
-    let text = svg.group("text", "f15");
+    let text = svg.group("text", 15);
     let disp = svg.group("arrow");
     let i = 0;
     let traj = [-10, 2, -3, 15, 30];
@@ -37,8 +37,8 @@ patrol: (sel, x0) => {
     svg.label(0, [...range(x, x+1401, 200)], -2.75);
 
     let cities = {500: "Swift Current", 0: "Calgary", 275: "Medicine Hat", 750: "Regina", 1325: "Winnipeg"};
-    let lines = svg.group("black1");
-    let names = svg.group("text", "f14");
+    let lines = svg.group("black@1");
+    let names = svg.group("text", 14);
     for (let i in cities) {
         let y = i == 500 ? 4.5 : 3;
         x = x0 + parseFloat(i);

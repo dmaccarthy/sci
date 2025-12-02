@@ -20,17 +20,17 @@ ramp: (sel) => {
     f.arrow({tail: [0.5, 0.5], tip: [1.5, 0.5]}, tail);
     f.arrow({tail: [-0.5, 0.2], tip: [-1.2, 0.2]}, tail);
     f.arrow({tail: [0, 0.5], tip: [0, -1.81]}, tail, "tail").config({theta: -30});
-    f.arrow(2, tail).config({shift: [1, "-20"]}).css("blue");
+    f.arrow(2, tail).config({shift: [1, "-20"]}).css("#0065fe");
 
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "24"]];
     let sub = ["14", "-8"];
-    g = svg.group().css("symbol", "f28", "red");
+    g = svg.group().css("symbol", 28, "red");
     g.symb(0, ["F", BD], arr, ["a", SM_IT, sub]).align([0.5, 1.4]);
     g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([-1.2, 0.15]);
     g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([-0.5, 1.5]);
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([0.05, -1]);
-    g.symb(0, ["d", BD], arr, ["Δ", 0, ["-20", 0]]).align([1.25, 0.1]).css("blue");
+    g.symb(0, ["d", BD], arr, ["Δ", 0, ["-20", 0]]).align([1.25, 0.1]).css("#0065fe");
 },
 
 flow2: (sel) => {

@@ -10,7 +10,7 @@ mass: (sel) => {
     svg.$.find("g.LabelX text.Zero").remove();
     svg.$.find("g.Locus").css({stroke: "red"});
     let v = pi / 2.5;
-    let g = svg.group().css("black2");
+    let g = svg.group().css("black@2");
     g.line([0, 0.15], [3, 0.15]);
     g.line([1.75 + 0.35 / v, 0.5], [1.75 - 0.4 / v, -0.25]).css({stroke: "#0065fe"});
     g.circle("5", [1.75, 0.15]).css({fill: "#0065fe", "stroke-width": "1px"});
@@ -21,19 +21,19 @@ pend: (sel, a) => {
     if (!a) a = 0;
     let x = -0.4 - 0.02 * a;
     let svg = new SVG2(sel, {scale: 140, lrbt: [x, 0.4, -3, 0], margin: 2});
-    svg.line([-0.4, 0], [0.4, 0]).css(SVG2.css("black1"));
+    css(svg.line([-0.4, 0], [0.4, 0]), "black@1");
     let pend = svg.group().config({theta: -a});
-    pend.line([0, 0], [0, -2]).css(SVG2.css("black3"));
-    pend.circle(0.1, [0, -2]).css(SVG2.css("blue", "black1"));
+    css(pend.line([0, 0], [0, -2]), "black@3");
+    css(pend.circle(0.1, [0, -2]), "#0065fe", "black@1");
     let g = pend.group("arrow", {"fill-opacity": 0.8});
     let t7 = {tail: "7"};
     g.arrow({tail: [0, -1.8], tip: [0, -1]}, t7);
     g.group().config({pivot: [0, -2], theta: a}).arrow({tail: [0, -2.2], tip: [0, -3]}, t7);
-    g = pend.group("symbol", "f28", "red");
+    g = pend.group("symbol", 28, "red");
     let arr = SVG2.arr("20");
     let sub = [6, ["12", "-8"]];
     g.symb(0, ["F", 1], arr, ["t", ...sub]).align([0.2, -1.5]);
-    g = svg.group("symbol", "f28", "red").symb(0, ["F", 1], arr, ["g", ...sub]);
+    g = svg.group("symbol", 28, "red").symb(0, ["F", 1], arr, ["g", ...sub]);
     let pt = transform({angle: -a, deg: true}, [0, -2])[0].plus([0.2, -0.5])
     g.align(pt);
 },
@@ -41,7 +41,7 @@ pend: (sel, a) => {
 eqm: (sel) => {
     let svg = new SVG2(sel, {size: [480, 384], lrbt: [-1.1, 0.9, -0.25]});
     let land = (x) => sq(sin(-100 * (x - 0.3)));
-    svg.locus(land, [-1.1, 0.9]).css("nofill", "black1");
+    svg.locus(land, [-1.1, 0.9]).css("nofill", "black@1");
 
     let r = 0.03, i = 0;
     let balls = [
@@ -49,9 +49,9 @@ eqm: (sel) => {
         [0, [-0.6, r + 1]],
         [50, [-0.9, r + land(-0.9) + 0.024]],
         [50, [0.6, r + land(0.6) + 0.024]]];
-    let g = svg.group("blue", "black1");
+    let g = svg.group("#0065fe", "black@1");
     let a = svg.group("arrow");
-    let s = svg.group("symbol", "f28", "red");
+    let s = svg.group("symbol", 28, "red");
     let p0 = new RArray(0, -0.05);
     let p1 = new RArray(0, -0.2);
     let arr = SVG2.arr("20");
@@ -70,7 +70,7 @@ eqm: (sel) => {
             }
         }
     }
-    g = svg.group("text", "f20");
+    g = svg.group("text", 20);
     g.gtext("Stable", {}, [-0.05, -0.05]).css(".Toggle2");
     g.gtext("Unstable", {}, [-0.1, 1.1]).css(".Toggle1");
 

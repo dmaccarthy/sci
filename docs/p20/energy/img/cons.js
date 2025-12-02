@@ -2,7 +2,7 @@ SVG2.cache("p20/energy/img/cons.js", {
 
 pulley: (sel) => {
     let svg = new SVG2(sel, {scale: 24, lrbt: [-5, 7, -12.1, 2]});
-    let g = svg.group("black1", "nofill");
+    let g = svg.group("black@1", "nofill");
     g.circle(1.5).css({"stroke-width": "2px"});
     g.line([-1.5, 0], [-1.5, -2.5]); // m1
     g.line([1.5, 0], [1.5, -10]);    // m2
@@ -11,15 +11,15 @@ pulley: (sel) => {
     g.line([-5, -12], [5, -12]);     // Floor
     g.line([-3, -12], [-3, -5.5]);   // h
 
-    g = svg.group("black1", {fill: "lightgrey"});
+    g = svg.group("black@1", {fill: "lightgrey"});
     g.rect([1.5, 3], [-1.5, -4]);    // m1
     g.rect([1.5, 2], [1.5, -11]);    // m2
 
-    g = svg.group("symbol", "f28");
+    g = svg.group("symbol", 28);
     g.symb(0, ["h", 2]).align([-4, -9]);
     g.symb(0, ["m", 2], ["1", 4, ["18", "-10"]]).align([-3.2, -4]);
     g.symb(0, ["m", 2], ["2", 4, ["18", "-10"]]).align([3.3, -11]);
-    svg.gtext("Ideal Pulley", ["text", "f20"], [4.5, 0]);
+    svg.gtext("Ideal Pulley", ["text", 20], [4.5, 0]);
     // svg.save();
 },
 

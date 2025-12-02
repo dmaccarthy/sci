@@ -3,7 +3,7 @@ SVG2.cache("p20/kin/img/acc.js", {
 vt: (sel) => {
     let pt = [2.5, -9.81 * 2.5];
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -45, 0], margin: [62, 12, 12, 28]});
-    let p = svg.group().css(".Plot", "black1");
+    let p = svg.group().css(".Plot", "black@1");
     svg.graph({grid: [0.5, 5],
         x: {tick: [0, 4.1, 1], tickSize: "6", title: ["Time / s", [3.5, "-20"]], shift: [0, "12"]},
         y: {tick: [-45, 0, 5], title: ["Velocity / (m/s)", "-44"], shift: ["-10", "-5"]},
@@ -18,7 +18,7 @@ dt: (sel) => {
     let t = 2.5, v = -9.81 * t, d = v * t / 2;
     let pt = new RArray(t, v * t / 2);
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -80, 0], margin: [62, 12, 12, 28]});
-    let p = svg.group().css(".Plot", "black1");
+    let p = svg.group().css(".Plot", "black@1");
     svg.graph({grid: [0.5, 10],
         x: {tick: [0, 4.1, 1], tickSize: "6", title: ["Time / s", [3.5, "-20"]], shift: [0, "12"]},
         y: {tick: [-80, 0, 10], title: ["Position / m", "-44"], shift: ["-10", "-5"]},

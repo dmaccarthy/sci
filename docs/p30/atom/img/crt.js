@@ -31,7 +31,7 @@ _crt: (sel) => {
     wires.poly([[1, -0.6], [1.6, -0.6], [1.6, -2]]);
 
     // Label electrode wires
-    g = svg.group().css("f28");
+    g = svg.group().css(28);
     let pm = g.ctext(["+", [1.6, -2.4]], ["–", [-.6, -2.4]], ["+", [x, -3.5]], ["–", [x, 3.3]]);
     for (let i=2; i<4; i++) pm[i].css(".Toggle0");
 

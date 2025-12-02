@@ -2,7 +2,7 @@ SVG2.cache("p30/elec/img/eq.js", {
 
 eq: (sel) => {
     let svg = new SVG2(sel, {size: [400, 240], margin: [24, 24, 16, 16], lrbt: [-1, 1]}).css(".NoStyle");
-    let g = svg.group("symbol", "f28");
+    let g = svg.group("symbol", 28);
     let arr = ["→", 5, [0, "20"]];
     g.symb(0, ["a", 1], arr).align([-1, 0.5]);
     g.symb(0, ["F", 1], arr, ["e", 6, ["14", "-8"]]).align([0, 0.5]);

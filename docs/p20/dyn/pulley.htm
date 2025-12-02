@@ -1,4 +1,4 @@
-<section class="Post" data-icon="simulation.svg">
+<section class="Post" data-icon="simulation">
 <style type="text/css">
 
 #SimControls td {
@@ -39,10 +39,10 @@
 
 loadFeed.run = () => {
     let svg = loadFeed.run.svg = new SVG2("#Sim", {size: [480, 360], lrbt: [-2.26, 0.12, -1.6, 0.3]});
-    let pulley = svg.pulley = svg.group("black1", {fill: "#d0d0d0"});
+    let pulley = svg.pulley = svg.group("black@1", {fill: "#d0d0d0"});
 
     // Draw the table
-    let g = svg.group("black1", {fill: "tan"});
+    let g = svg.group("black@1", {fill: "tan"});
     g.rect([0.06, 0.02], [-0.765, 0.006]).css({fill: "black"});
     g.rect([0.16, 1.6], [-0.2, -0.8]);
     g.rect([0.16, 1.6], [-2.05, -0.8]);
@@ -63,7 +63,7 @@ loadFeed.run = () => {
     pulley.circle("2", [0, 0]);
 
     // Create/update the timer
-    let timer = svg.gtext("??", ["text", "f32"], [-1.125, -1.5]);
+    let timer = svg.gtext("??", ["text", 32], [-1.125, -1.5]);
     timer.beforeupdate = function() {
         this.$.find("text").html(`${this.svg.time.toFixed(3)} s`);
     };
@@ -125,7 +125,7 @@ loadFeed.run.reset = (n) => { // Reset the animation to t = 0
     for (let i=0;i<svg.sys.length;i++) svg.sys[i].$.remove();
     let r = svg.r;
     let sys = [];
-    for (let i=0;i<4;i++) sys.push(svg.group("black1"));
+    for (let i=0;i<4;i++) sys.push(svg.group("black@1"));
     sys[0].line([-2, r], [0, r]);
     sys[1].line([r, -0.6], [r, 0])
 

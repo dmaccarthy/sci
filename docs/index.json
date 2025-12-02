@@ -3,7 +3,7 @@
 
 "energy/mech": {"t": "@Mechanical Energy", "n": "6.1", "s": "2025.11.28", "a": "2025.12.1", "h": "1LVUnS8TD59eJ1KucQDPeSTs4rVVCnZaB"},
 "energy/cons": {"t": "@Energy Conservation", "n": "6.2", "s": "2025.12.2", "a": "2025.12.3", "h": ["16feEBDiNXsq72QjX9LBa08Y028osNyAT", ["Ramp Lab", "_"]]},
-"energy/sys": {"t": "@Non-Isolated Systems", "n": "6.3", "s": "2025.12.3", "a": "2025.12.4", "h": "_"},
+"energy/sys": {"t": "@Non-Isolated Systems", "n": "6.3", "s": "2025.12.3", "a": "2025.12.4", "h": "1QIOHaWOycmAtmNJqkq3JWxJIXSXhcE-7"},
 "energy/@": {"hide": 1, "t": "@", "n": "6.", "s": "2025.12.", "a": "2025.12.", "h": "_"},
 
 "circ/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "5.5", "s": "2025.12.18", "a": "2025.12.19", "h": "_"},
@@ -43,7 +43,7 @@
 "dyn/weight": {"t": "@Mass & Weight", "n": "3.3", "s": "2025.11.5", "a": "2025.11.6", "h": "1QdHaFj17j4elf7Vxdlhc9BrJ4Z7Hwr3G"},
 "dyn/fric": {"t": "@Contact Forces", "n": "3.4", "s": "2025.11.6", "a": "2025.11.6.19", "h": [
     "1U6MQeUYeEa9hk1IecZZpfhq1ePPXEoWc", ["Lab Activity", "1pNmvZ-LTWTewWdRlATgNFlX8RGK6usZT"],
-    ["Pulley Simulation", {"icon": "simulation.svg", "feed": "p20/dyn/pulley"}]]},
+    ["Pulley Simulation", {"icon": "simulation", "feed": "p20/dyn/pulley"}]]},
 "dyn/fric#": {"t": "Lab: Friction", "s": "2025.11.17"},
 "dyn/adv": {"t": "@Dynamics in 2D", "n": "3.5", "s": "2025.11.7", "a": "2025.11.18.11", "h": "1T13oAkEMHhkv3OjsA7CV-CyaGxy7LhR8"},
 "dyn/adv#": {"t": "@Dynamics in 2D <i>(continued)</i>", "s": "2025.11.18"},
@@ -81,7 +81,7 @@
 "phys2/eff": {"t": "@Efficiency", "n": "P09", "s": "2025.11.26", "a": "2025.11.27", "h": "1m1Wa_BsXrw_W4Sz2ItL_mbansF2EABwY"},
 "phys2/eff#": {"t": "Activity: Energy Transforming Technologies", "s": "2025.11.27"},
 "phys2/heat": {"t": "@Theories of Heat", "n": "P10", "s": "2025.11.28", "a": "2025.12.1", "h": "1H6gXLWijZEnUKec6wOO2gz_go4G6XOHp"},
-"clim1/heatcap": {"t": "@Heat Capacity", "n": "P11", "s": "2025.12.1", "a": "2025.12.2", "h": ["1muqgYeE_5_XQG5tT_dc_gUJw1DaApbnQ", ["Lab Activity", {"gdrv": "_", "show": "2025.11.3"}]]},
+"clim1/heatcap": {"t": "@Heat Capacity", "n": "P11", "s": "2025.12.1", "a": "2025.12.2", "h": ["1muqgYeE_5_XQG5tT_dc_gUJw1DaApbnQ", ["Lab Activity", {"gdrv": "1lEE1UBJpp3t5kXDBswuWKSb_xa39G0Nf", "show": "2025.11.3"}]]},
 "clim1/heatcap#": {"t": "Lab: Food Energy", "s": "2025.12.3"},
 "clim1/latent": {"t": "@Latent Heat", "n": "P12", "s": "2025.12.2", "a": "2025.12.4", "h": "1fGbBR64XxX1RjLBMfHqfB-NHm5hmSLxG"},
 

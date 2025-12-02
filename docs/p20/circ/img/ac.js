@@ -8,21 +8,21 @@ delta_v: (sel) => {
     let [BD, IT, SM] = [1, 2, 4];
     let arr = ["→", SM + BD, [0, "14"]];
     let sub = ["12", "-8"];
-    let g = svg.group("symbol", "f28", "red");
+    let g = svg.group("symbol", 28, "red");
     g.symb(0, ["θ", IT]).align([-1.75, 2.5]);
     g.symb(0, ["v", BD], arr, ["2", SM, sub]).align([-0.6, 2]);
     g.symb(0, ["–", 0, ["-18", "-2"]], ["v", BD], arr, ["1", SM, sub]).align([-2.6, 1.75]);
-    g.group("blue").symb(0, ["v", BD], arr, ["Δ", 0, ["-18", 0]]).align([-0.9, -0.6]);
+    g.group("#0065fe").symb(0, ["v", BD], arr, ["Δ", 0, ["-18", 0]]).align([-0.9, -0.6]);
 },
 
 orbit: (sel) => {
     let a = 45;
     let p = vec2d(10, a);
     let svg = new SVG2(sel, {size: [306, 300], lrbt: [-1, 12, -2], grid: 0, margin: 3}).css(".NoStyle");
-    svg.group("nofill", "black2").circle(10);
-    let g = svg.group().css("nofill", "blue1");
+    svg.group("nofill", "black@2").circle(10);
+    let g = svg.group().css("nofill", "#0065fe@1");
     g.poly([[0, 0], [10, 0], p], 1);
-    g = g.group("blue", "black1");
+    g = g.group("#0065fe", "black@1");
     g.circle("3");
     g.circle("3", p);
     g.circle("3", [10, 0]);
@@ -30,7 +30,7 @@ orbit: (sel) => {
     let [BD, IT, SM] = [1, 2, 4];
     let arr = ["→", SM + BD, [0, "14"]];
     let sub = ["12", "-8"];
-    g = svg.group("symbol", "blue", "f24");
+    g = svg.group("symbol", "#0065fe", 24);
     g.symb(0, ["r", IT]).align(p.times(0.5).plus([0, 1]));
     g.symb(0, ["r", IT]).align([5, -0.7]);
     g.symb(0, ["s", IT]).align([8.5, 2]);
@@ -66,7 +66,7 @@ car: (sel) => {
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
-    g = svg.group("symbol", "f28", "red");
+    g = svg.group("symbol", 28, "red");
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-1.5, -3]);
     g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([-1.5, 5.5]);
     g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([4, 3]);
@@ -86,12 +86,12 @@ merry: (sel) => {
 
 ucm: (sel) => {
     let svg = new SVG2(sel, {size: [360, 360], lrbt: [-1, 1], margin: 12});
-    let g = svg.group("black1");
+    let g = svg.group("black@1");
     g.line([0, -1], [0, 1]);
     g.line([-1, 0], [1, 0]);
     svg.circle(1).css({fill: "none", stroke: "black", "stroke-width": "3px"});
 
-    let circ = svg.group("black1", "blue").config({omega: 60});
+    let circ = svg.group("black@1", "#0065fe").config({omega: 60});
     let vert = g.line([1, 0], [1, 0]);
     circ.line([0, 0], [1, 0]);
     circ.circle(0.05, [1, 0]);

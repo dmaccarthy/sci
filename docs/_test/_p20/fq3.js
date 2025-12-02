@@ -11,7 +11,7 @@ rocket: (sel) => {
             {locus: [(t) => 2880 + k * (t - 12), [6, 12]]},
         ],
     });
-    let g = svg.series[1].css("red1").$.hide();
+    let g = svg.series[1].css("red@1").$.hide();
     svg.$.on("click", () => g.fadeToggle());
 },
 
@@ -28,7 +28,7 @@ lrt: (sel) => {
             {plot: [pts, "4"]},
         ],
     });
-    let g1 = svg.group("blue1");
+    let g1 = svg.group("#0065fe@1");
     for (let i=1;i<11;i++) {
         [x, y] = pts[i];
         g1.line([x, y], [x, 0]);

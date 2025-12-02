@@ -8,13 +8,13 @@ fbd: (sel) => {
     svg.line(p, [0, p[1]]).css({stroke: "red", "stroke-width": "2px"});
     svg.path(p).arc([0, 0], -90).update().css({stroke: "#0065fe", "stroke-width": "2px"});
 
-    let g = svg.group().css("black2");
+    let g = svg.group().css("black@2");
     g.line([0, 0], [0, -3]);
     g.circle("12", [0, -3]).css({fill: "white"});
     let css = {fill: "red", stroke: "black", "stroke-width": "1px"}
     g.arrow(0.9, {tail: "7"}).config({theta: -90, shift: p.plus([0, -0.67])}).css(css);
 
-    g = svg.group().config({theta: a}).css("black2");
+    g = svg.group().config({theta: a}).css("black@2");
     g.line([0, 0], [0, -3]);
     g.circle("12", [0, -3]).css({fill: "white"});
     g.arrow(0.9 * cos(a), {tail: "7"}).config({theta: 90, shift: [0, -2.35]}).css(css);
@@ -22,11 +22,11 @@ fbd: (sel) => {
     let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
-    g = svg.group().css("symbol", "f28", "red");
+    g = svg.group().css("symbol", 28, "red");
     g.symb(0, ["θ", IT]).align([-0.12, -0.55]);
     g.symb(0, ["L", IT]).align([-0.8, -1.2]);
     g.symb(0, ["x", IT], ["H", SM_IT, sub]).align([-0.6, -2.5]);
-    g.symb(0, ["x", IT]).align([-0.65, -3.1]).css("blue");
+    g.symb(0, ["x", IT]).align([-0.65, -3.1]).css("#0065fe");
     g.symb(0, ["F", BD], arr, ["t", SM_IT, sub]).align([-1.4, -2.1]);
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-1.7, -3.3]);
 },
@@ -39,11 +39,11 @@ vec: (sel) => {
     let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
-    let g = svg.group().css("symbol", "f28", "red");
+    let g = svg.group().css("symbol", 28, "red");
     g.symb(0, ["F", BD], arr, ["t", SM_IT, sub]).align([0.9, -1.9]);
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-0.35, -1.5]);
     sub[0] = "16";
-    g.symb(0, ["F", BD], arr, ["net", SM_IT, sub]).align([0.65, 0.07]).css("blue");
+    g.symb(0, ["F", BD], arr, ["net", SM_IT, sub]).align([0.65, 0.07]).css("#0065fe");
     g.symb(0, ["θ", IT]).align([0.15, -2.3]);
 },
 

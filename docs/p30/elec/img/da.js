@@ -13,7 +13,7 @@ pend: (sel) => {
     let x = [...range(0.25, 2.2501, 0.25)];
     let y = [1.01, 1.43, 1.74, 2.01, 2.24, 2.45, 2.65, 2.85, 3.0];
     let p = svg.group();
-    let model = p.group().css(".Locus", "blue2");
+    let model = p.group().css(".Locus", "#0065fe@2");
     model.locus((x) => 0.965 * x + 0.947, [0, 2.5]).$.hide().addClass("Toggle0");
     model.locus((x) => twoPi * Math.sqrt(x / 9.81), [0, 2.5]).$.hide().addClass("Toggle1");
     p.plot({x:x, y:y}, "5");
@@ -42,7 +42,7 @@ pend_lin: (sel) => {
     let x = [...fn_eval(Math.sqrt, range(0.25, 2.2501, 0.25))];
     let y = [1.01, 1.43, 1.74, 2.01, 2.24, 2.45, 2.65, 2.85, 3.0];
     let p = svg.group();
-    let line = p.group().css(".Locus", "blue2").locus((x) => 2.01 * x, [0, 1.75]).$.hide();
+    let line = p.group().css(".Locus", "#0065fe@2").locus((x) => 2.01 * x, [0, 1.75]).$.hide();
     p.plot({x:x, y:y}, "5");
 
     svg.$.on("click", () => line.fadeToggle());

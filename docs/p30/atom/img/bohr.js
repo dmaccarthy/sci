@@ -3,7 +3,7 @@ SVG2.cache("p30/atom/img/bohr.js", {
 eld: (sel) => {
     let [w, E1, SM, IT] = [0.25, -13.6, 4, 2];
     let svg = new SVG2(sel, {scale: [160, 24], lrbt: [-1.2 * w, 6.2 * w, -14, 2.2]}).css(".NoStyle");
-    let lines = svg.group().css("blue2");
+    let lines = svg.group().css("#0065fe@2");
     let level = svg.group().css(".Toggle0", "symbol", {"text-anchor" : "start"});
     let label = svg.group().addClass("Toggle0").css({stroke: "black", "stroke-width": "1px"});
     for (let n=1;n<8;n++) {

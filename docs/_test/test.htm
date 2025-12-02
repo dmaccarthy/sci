@@ -13,7 +13,7 @@ loadFeed.data = {title: `Grid`, up: "home",
 
 loadFeed.arr = () => {
     let svg = new SVG2("#S0", {scale: 24, lrbt: [-10, 10, -10, 10], grid: 1});
-    let g1 = svg.group("black1", {fill: "red", "fill-opacity": 0.4}).config({theta: 30, shift: [2, 1]});
+    let g1 = svg.group("black@1", {fill: "red", "fill-opacity": 0.4}).config({theta: 30, shift: [2, 1]});
     let r = g1.rect([4, 7]);
     r.on("click", (ev) => {
         let xy = svg.event_coords(ev).coords;

@@ -26,8 +26,8 @@ lightbulb: (sel, linear) => {
         data: [data, {plot: [zip(x, y), "5"]}],
     });
     let x0 = linear ? -0.22 : -0.32;
-    svg.ctext(["2", [x0, 1.47], {css: "f14", config: {theta: 90}}]);
-    if (linear) svg.ctext(["–2", [1.36, -0.2], {css: "f14"}]);
+    svg.ctext(["2", [x0, 1.47], {css: 14, config: {theta: 90}}]);
+    if (linear) svg.ctext(["–2", [1.36, -0.2], {css: 14}]);
 
     svg.$.find("g.Locus").addClass("Toggle0"); //.hide();
     svg.click_toggle(1, 1);

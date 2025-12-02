@@ -137,7 +137,7 @@ loadFeed.sim = () => {
     g.line(p1, p2).css({stroke: "black", "stroke-width": "4px"});
     g.circle(2.4, p1).css({fill: "red", stroke: "black"});
     g.circle(3.4, p2).css({fill: "#B0B0B0", stroke: "black"});
-    svg.blue = svg.group("blue", "black1").config({shift: vec2d(40, -60)});
+    svg.blue = svg.group("#0065fe", "black@1").config({shift: vec2d(40, -60)});
     svg.blue.circle(2.4);
 
     g.beforeupdate = function() {

@@ -1,7 +1,7 @@
 SVG2.cache("p30/emr/img/refr.js", {
 
 tank: (sel) => {
-    svg = new SVG2(sel, {size: [640, 640], lrbt: [-1, 1], margin: 4}).css(".NoStyle", "nofill", "black1");
+    svg = new SVG2(sel, {size: [640, 640], lrbt: [-1, 1], margin: 4}).css(".NoStyle", "nofill", "black@1");
     svg.path([1, 0]).hor(-1).arc_to([1, 0], 1).close().update();
     svg.line([0, 1], [0, -1]);
     let g = svg.group().css("text", {stroke: "none", fill: "black"});

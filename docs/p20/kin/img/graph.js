@@ -90,7 +90,7 @@ elevator: (sel) => { // Motion of an elevator d-t graph
             {locus: [(x) => 10 * x - 25, [2.5, 7.5]]}
         ],
     });
-    let g = svg.series[1].css("red1").$.hide();
+    let g = svg.series[1].css("red@1").$.hide();
     svg.$.on("click", () => g.fadeToggle());
     // console.log();
 },
@@ -106,7 +106,7 @@ skydive: (sel) => { // Motion of an skydiver v-t graph
         data: [{locus: [v, [0, 15]]}, {plot: [pts, "4"]}],
     });
     svg.series[1].$.hide();
-    let g = svg.group("blue1");
+    let g = svg.group("#0065fe@1");
     for (let [x, y] of pts) g.line([x, y], [x, 0]);
     g.$.insertAfter(svg.$.find("g.Grid")).hide();
     svg.$.on("click", () => {

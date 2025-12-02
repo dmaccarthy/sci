@@ -7,7 +7,7 @@ dir2d: (sel) => {
     g.arrow(4, attr);
     g.arrow(4, attr).config({theta: 90});
     g.arrow({tip: vec2d(4, -14)}, {tail: "6"}).css("arrow", ".Toggle5");
-    g = svg.group("text", "f20");
+    g = svg.group("text", 20);
     let i = 1;
     for (let [t, x, y, ax, ay] of [
         ["0° or ±360°", 2.2, 0, 0, 0.5],
@@ -22,7 +22,7 @@ dir2d: (sel) => {
         i++;
     }
     $(g.$.find("g")[4]).css({fill: "red"});
-    g = g.group("blue", {"font-weight": "bold"}, ".Toggle0");
+    g = g.group("#0065fe", {"font-weight": "bold"}, ".Toggle0");
     g.text("Q1", [1, 1]);
     g.text("Q2", [-1, 1]);
     g.text("Q3", [-1, -1]);
@@ -45,11 +45,11 @@ hiker: (sel) => {
     let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
     let arr = ["→", SM + BD, [0, "22"]];
     let sub = ["12", "-8"];
-    g = svg.group("symbol", "f28", "blue");
+    g = svg.group("symbol", 28, "#0065fe");
     g.symb(0, ["d", BD], arr, ["i", SM_IT, sub]).align([-2.7, 5.75]);
     g.symb(0, ["d", BD], arr, ["f", SM_IT, sub]).align([5.5, 1.5]);
     g.symb(0, ["d", BD], arr, ["Δ", 0, ["-20", 0]]).align([2.5, 3.5]).css("red");
-    g.symb(0, ["θ", IT]).align([-0.8, 4.8]).css("black", "f18");
+    g.symb(0, ["θ", IT]).align([-0.8, 4.8]).css("black", 18);
 
 },
 

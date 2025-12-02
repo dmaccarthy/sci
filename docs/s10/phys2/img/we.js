@@ -2,12 +2,12 @@ SVG2.cache("s10/phys2/img/we.js", {
 
 pend: (sel) => { // Illustration for Pendulum Lab handout
     let svg = new SVG2(sel, {scale: 16, lrbt: [-12, 12, -24, 1], margin: 2});
-    let g = svg.ruler(60, "5", {big: 5}).css({fill: "#ffcd82"}, "black1");
+    let g = svg.ruler(60, "5", {big: 5}).css({fill: "#ffcd82"}, "black@1");
     g.config({theta: 90, shift: [-10, g.rulerLength/2 - 24]});
     let r = 20;
     let pts = [vec2d(r, -120), vec2d(r, -105), [0, -r], vec2d(r, -75), vec2d(r, -60)];
-    let g1 = svg.group("black1");
-    let g2 = svg.group("text", "f18", "bold");
+    let g1 = svg.group("black@1");
+    let g2 = svg.group("text", 18, "bold");
     let c = 0;
     for (let pt of pts) {
         let [x, y] = pt;
@@ -16,7 +16,7 @@ pend: (sel) => { // Illustration for Pendulum Lab handout
         c++;
     }
     g1.line([-12, -24], [12, -24]).css({"stroke-width": "2px"});
-    svg.plot(pts, "10").css("blue");
+    svg.plot(pts, "10").css("#0065fe");
     // svg.save();
 },
 

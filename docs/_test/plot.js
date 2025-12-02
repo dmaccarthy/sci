@@ -4,7 +4,7 @@ xpdq: (sel) => {
     let svg = new SVG2(sel, {scale: 112, lrbt: [-1.52, 2, -0.1, 1.23]}).css(".NoStyle");
     svg.poly([[-1.5, 1], [-1, 1], [0, 0], [1, 0], [2, 0.7]]).css({fill: "none", stroke: "#0065fe", "stroke-width": "2px"});
     svg.$.find("g.Grid").css({"stroke-width": "1"});
-    let g = svg.group().css("black1", "red");
+    let g = svg.group().css("black@1", "red");
     g.circle(0.1, [-1, 1.1]);
     g = svg.group("text");
     g.gtext("X", {}, [-1.2, 1.1]);
@@ -64,7 +64,7 @@ vt3: (sel) => {
         data: [{connect: [[0, 0], [6, -6], [8, -6], [10, 0], [17, 5], [20, 3], [22, 0]]}],
     });
     svg.$.find("g.LabelX .Zero").remove();
-    let g = svg.group("text", "blue");
+    let g = svg.group("text", "#0065fe");
     for (let [t, x, y] of [["A", 3.5, -2], ["B", 7, -7], ["C", 10, -3.5], ["D", 13.5, 3.5], ["E", 19, 4.8], ["F", 21.5, 2]])
         g.gtext(t, {}, [x, y]);
 },
@@ -82,7 +82,7 @@ earth: (sel) => {
 g: (sel) => {
     let svg = new SVG2(sel, {scale: 40, lrbt: [-20, 20, -12, 12], grid: 1}).css(".NoStyle");
     svg.$.find("g.Grid").css({"stroke-width": "1"});
-    let g = svg.group().css("black1");
+    let g = svg.group().css("black@1");
     g.circle("25", [8, 0]).css({fill: "lime"});
     g.circle("25", [-8, 0]).css({fill: "#0065fe"});
 },
@@ -91,12 +91,12 @@ tri: (sel) => {
     let h = root(300);
     let t = 8 + Math.round(h);
     let svg = new SVG2(sel, {scale: 40, lrbt: [-18, 18, -8, t], grid: 0}).css(".NoStyle");
-    let g = svg.group().css("black1", {"stroke-width": "3px"});
+    let g = svg.group().css("black@1", {"stroke-width": "3px"});
     let pts = [[-30, 0], [30, 0]];
     g.line([0, -10], [0, t]);
     g.group().config({pivot: [-10, 0], theta: 30}).line(...pts);
     g.group().config({pivot: [10, 0], theta: -30}).line(...pts);
-    g = svg.group().css("black1");
+    g = svg.group().css("black@1");
     g.circle("25", [10, 0]).css({fill: "lime"});
     g.circle("25", [-10, 0]).css({fill: "red"});
     g.circle("25", [0, h]).css({fill: "#0065fe"});
@@ -106,7 +106,7 @@ pi: (sel) => {
     let svg = new SVG2(sel, {size: [64, 64], lrbt: [-2, 2, -2.28], grid: 0}).css(".NoStyle");
     let arr = ["→", 5, [0, "26"]];
     let j = ["j", 6, ["26", "-12"]];
-    svg.group("symbol", "blue", {"font-size": "52px", "font-family": "serif"}).symb(0, ["m", 1], arr, j).align([0, 0]);
+    svg.group("symbol", "#0065fe", {"font-size": "52px", "font-family": "serif"}).symb(0, ["m", 1], arr, j).align([0, 0]);
 },
     
 plot: (sel) => {

@@ -50,17 +50,7 @@ addClass(...args) {
 
 css(...rules) {
 /* Apply CSS rules to <g> */
-    for (let r of rules) {
-        let s = typeof(r) == "string";
-        if (s) {
-            if (r.charAt(0) == ".") this.$.addClass(r.substring(1));
-            else if (SVG2._style[r]) {
-                r = SVG2._style[r];
-                s = false;
-            }
-        }
-        if (!s) this.$.css(r);
-    }
+    css(this.$, ...rules);
     return this;
 }
 
@@ -321,7 +311,7 @@ embed_promise(url, size) {return this._embed(url, size)[0]}
 
 plot(points, size, href, theta) {
 /* Plot an array of points as circles, rectangles, or images */
-    let g = this.group(".Plot", "black1", "blue");
+    let g = this.group(".Plot", "black@1", "#0065fe");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     if (theta) theta *= svg.angleDir;
@@ -373,10 +363,9 @@ label(fn, x, y) {
             if (parseFloat(txt.html()) == 0) txt.addClass("Zero");
         }
     }
-    if (tick) g.$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`).css(SVG2._style.black1);
+    if (tick) g.css("black@1").$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`);
     else {
-        g.$.addClass(`Labels Label${ya ? 'Y' : 'X'}`);
-        g.css("text", "f15");
+        g.css("text", 15).$.addClass(`Labels Label${ya ? 'Y' : 'X'}`);
         if (ya) g.css({"text-anchor": "end"});
     }
     return g;
@@ -473,7 +462,7 @@ _grid(g, x, y, swap) {
         while (x0 <= x1) {
             let pts = swap ? [[y0, x0], [y1, x0]] : [[x0, y0], [x0, y1]];
             let line = g.line(...pts);
-            if (Math.abs(x0) < ddx) line.addClass("Axis").css(SVG2._style.black1);
+            if (Math.abs(x0) < ddx) line.addClass("Axis").css({stroke: "black", "stroke-width": "1px"});
             x0 += dx;
         }
     }
@@ -587,10 +576,10 @@ flow(text, shape, options) {
 	return g;
 }
 
-ruler(n, tick, opt) { //width, big, offset) {
+ruler(n, tick, opt) { //width, big, offset, tickSmall, tickBig) {
 /* Draw a ruler */
     if (typeof(tick) == "string") tick = parseFloat(tick) / Math.abs(this.svg.scale[1]);
-    opt = Object.assign({big: 10, offset: 0}, opt);
+    opt = Object.assign({big: 10, offset: 0, tickSmall: 0.25, tickBig: 0.5}, opt);
     let g = this.group(".Ruler");
     let length = g.rulerLength = tick * (n + 2 * opt.offset);
     let width = opt.width ? opt.width : g.rulerLength / 25;
@@ -598,7 +587,7 @@ ruler(n, tick, opt) { //width, big, offset) {
     let x = tick * opt.offset - length / 2;
     width /= 2;
     for (let i=0;i<=n;i++) {
-        g.line([x, -width], [x, width * (i % opt.big ? 0 : 0.5)]);
+        g.line([x, -width], [x, width * (2 * (i % opt.big ? opt.tickSmall : opt.tickBig) - 1)]);
         x += tick;
     }
     return g;
@@ -625,7 +614,7 @@ pm(s, plus, xy) {
 
 stickman(h) {
 /* Add a stick man as an SVG2g instance */
-    let g = this.group(".Stickman", "nofill", "black3");
+    let g = this.group(".Stickman", "nofill", "black@3");
     let r = h / 8;
     g.circle(r, [0, 7 * r]);
     g.line([0, 6 * r], [0, 3 * r]);
@@ -704,7 +693,7 @@ graph(options) {
         for (let series of data) {
             if (series.plot) s.push(g.plot(...series.plot));
             else {
-                let gs = g.group(".Locus", "blue2", "nofill");
+                let gs = g.group(".Locus", "#0065fe@2", "nofill");
                 s.push(gs);
                 if (series.connect) {
                     let pts = series.connect;
@@ -773,7 +762,7 @@ energy_flow(data) {
     this.svg.css(".NoStyle");
     let g = this.group("text");
     g.circle(data.radius).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    let gs = g.group("symbol", "f28");
+    let gs = g.group("symbol", 28);
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
         color = {fill: color ? color : "#0065fe"};
@@ -1135,7 +1124,7 @@ constructor(selector, options) {
         let x0 = gx * Math.round(lrbt[0] / gx);
         let y0 = gy * Math.round(lrbt[2] / gy);
         let g = this.grid([x0, lrbt[1], gx], [y0, lrbt[3], gy], options.appendAxes);
-        if (options.noAxes) g.$.find(".Axis").removeClass("Axis").css(SVG2.css("grid"));
+        if (options.noAxes) g.$.find(".Axis").removeClass("Axis").css(SVG2._style.grid);
     }
 
     /* Animation data */
@@ -1148,12 +1137,25 @@ constructor(selector, options) {
 
 static arr(dy) {return ["→", 5, [0, dy == null ? "20" : dy]]}
 
-static css(...key) {
-    let a = {};
-    for (let k of key)
-        Object.assign(a, typeof(k) == "string" ? SVG2._style[k] : k);
-    return a;
-}
+// static css(...rules) {
+// /* Convert and combine CSS rules*/
+//     let css = {};
+//     for (let r of rules) {
+//         let s = ["string", "number"].indexOf(typeof(r));
+//         if (s == 0) {
+//             if (r.charAt(0) == ".") r = {};
+//             else if (SVG2._style[r]) r = SVG2._style[r];
+//             else {
+//                 r = r.split("@");
+//                 if (r.length == 1) r = {fill: r[0]};
+//                 else r = {stroke: r[0], "stroke-width": r[1]};
+//             }
+//         }
+//         else if (s == 1) r = {"font-size": `${r}px`};
+//         Object.assign(css, r);
+//     }
+//     return css;
+// }
 
 get size() {
     let e = this.$;
@@ -1254,7 +1256,7 @@ clip_rect(xy, id) {
 gradient(id, c1, c2, x1, x2, y1, y2) {
 /* Create a <linearGradient> */
     let elem = (t, a) => {
-        let e = document.createElementNS(SVG_Item.nsURI, t);
+        let e = document.createElementNS(SVG2.nsURI, t);
         if (a != null) $(e).attr(a);
         return e;
     }
@@ -1339,18 +1341,18 @@ pts_str(pts) {
     return s;
 }
 
-static style(items, ...styles) {
-    for (let e of items) {
-        if (e instanceof SVG2g) e.css(...styles);
-        else {
-            e = $(e);
-            for (let s of styles) {
-                if (typeof(s) == "string" && s.charAt(0) == ".") e.addClass(s.substring(1));
-                else e.css(SVG2._style[s] ? SVG2._style[s] : s);
-            }
-        }
-    }
-}
+// static style(items, ...styles) {
+//     for (let e of items) {
+//         if (e instanceof SVG2g) e.css(...styles);
+//         else {
+//             e = $(e);
+//             for (let s of styles) {
+//                 if (typeof(s) == "string" && s.charAt(0) == ".") e.addClass(s.substring(1));
+//                 else e.css(SVG2._style[s] ? SVG2._style[s] : s);
+//             }
+//         }
+//     }
+// }
 
 
 /** Animation methods **/
@@ -1519,7 +1521,7 @@ static vec_diag(sel, vecs, opt) {
     if (opt.cycle == -1) g.$.find(".Component").hide();
     else if (opt.cycle) svg.vec_cycle(g.$, vecs.length > 1);
     g.$.find(".Arrow").css(SVG2._style.arrow);
-    g.$.find(".Resultant").css(SVG2._style.blue);
+    g.$.find(".Resultant").css({fill: "#0065fe"});
     g.$.find(".Component").css({fill: "yellow"});
     return svg;
 }
@@ -1568,7 +1570,7 @@ static ebg(sel, Emax, step, data, options) {
     svg.grid([0, n], [0, Emax, step]).grid([0, 1, 2], [0, Emax]);
 
     let bars = [];
-    let sym = svg.group("symbol", "f28");
+    let sym = svg.group("symbol", 28);
     for (let i=0;i<n;i++) {
         let d = data[i];
         let c = d[2] ? d[2] : "#0065fe"
@@ -1687,9 +1689,11 @@ SVG2.symbol = "KaTeX_Main, 'Latin Modern Roman', 'Droid Serif', 'Noto Serif', se
 SVG2._style = {
     grid: {stroke: "lightgrey", "stroke-width": "0.5px"},
     text: {"font-family": SVG2.sans, "font-size": "18px", "text-anchor": "middle"},
+    start: {"text-anchor": "start"},
     middle: {"text-anchor": "middle"},
+    end: {"text-anchor": "end"},
     symbol: {"font-family": SVG2.symbol, "font-size": "18px", "text-anchor": "middle"},
-    arrow: {fill: "red", stroke: "black", "stroke-width": "0.5px"},
+    arrow: {fill: "red", stroke: "black", "stroke-width": "0.5px", "fill-opacity": 0.8},
     ital: {"font-style": "italic"},
     bold: {"font-weight": "bold"},
     nostroke: {stroke: "none"},
@@ -1699,13 +1703,31 @@ SVG2._style = {
     mono: {"font-family": SVG2.mono},
 };
 
-for (let i=12;i<37;i++) SVG2._style[`f${i}`] = {"font-size": `${i}px`};
-for (let i=1;i<13;i++) SVG2._style[`px${i}`] = {"stroke-width": `${i}px`};
-for (let c of ["black", "red", "green", "limegreen", "blue", "grey", "white"]) {
-    cc = (c) => c == "blue" ? "#0065fe" : c;
-    SVG2._style[`${c}`] = {fill: cc(c)};
-    for (let i=1;i<4;i++)
-        SVG2._style[`${c}${i}`] = {stroke: cc(c), "stroke-width": `${i}px`};
-}
+// for (let i=12;i<37;i++) SVG2._style[`f${i}`] = {"font-size": `${i}px`};
+// for (let i=1;i<13;i++) SVG2._style[`px${i}`] = {"stroke-width": `${i}px`};
+// for (let c of ["black", "red", "green", "limegreen", "#0065fe", "grey", "white"]) {
+//     cc = (c) => c == "#0065fe" ? "#0065fe" : c;
+//     SVG2._style[`${c}`] = {fill: cc(c)};
+//     for (let i=1;i<4;i++)
+//         SVG2._style[`${c}${i}`] = {stroke: cc(c), "stroke-width": `${i}px`};
+// }
+
+const css = (e, ...rules) => {
+    for (let r of rules) {
+        let s = ["string", "number"].indexOf(typeof(r));
+        if (s == 0) {
+            if (r.charAt(0) == ".") e.addClass(r.substring(1));
+            else if (SVG2._style[r]) e.css(SVG2._style[r]);
+            else {
+                r = r.split("@");
+                if (r.length == 1) e.css({fill: r[0]});
+                else e.css({stroke: r[0], "stroke-width": r[1]});
+            }
+        }
+        else if (s == 1) e.css({"font-size": `${r}px`});
+        else e.css(r);
+    }
+    return e;
+};
 
 // console.log(SVG2._style);

@@ -21,11 +21,11 @@ v_t: (sel, n, click) => {
     let xva = {n: (n ? n : 0) - 1};
     let svg = new SVG2(sel, {size: [480, 300], lrbt: [-0.25, 2, -1.25, 1.25], margin: 2});
     svg.graph({grid: [0.25, 0.25],
-        data: [{locus: [(x) => Math.sin(2 * Math.PI * (x + xva.n / 4))]}]
+        data: [{locus: [(x) => Math.sin(twoPi * (x + xva.n / 4))]}]
     });
     svg.animate(svg.series[0].find("polyline"));
     let arr = ["→", 5, [0, "14"]];
-    let g = svg.group("symbol", "f24");
+    let g = svg.group("symbol", 24);
     g.symb(0, ["t", 2]).align([1.9, "-14"]);
     let sym = g.symb(0, ["x", 1], arr).align(["-14", 1.125]);
     sym.css({fill: "#0065fe"});

@@ -9,7 +9,7 @@ earth: (sel) => {
     svg.circle(1).css({fill: "none", stroke: "#0065fe", "stroke-width": "2px"});
     svg.image("media/sun.svg", [0.16, 0.16], [0, 0]);
     svg.image("media/earth.svg", [0.075, 0.075], earth);
-    let g = svg.group().config({theta: angle, shift: earth}).css("red", "black1");
+    let g = svg.group().config({theta: angle, shift: earth}).css("red", "black@1");
     g.arrow({tail: [x1, 0], tip: [x2, 0]}, tail);
     g.arrow({tail: [-x1, 0], tip: [-x2, 0]}, tail);
     g.arrow({tail: [0, x1], tip: [0, x2]}, tail);

@@ -10,7 +10,7 @@ bat: (sel) => {
     txt.text("Time / s", [0.15, "-44"]);
     txt.group().config({theta: 90, shift: ["-40", 55]}).text("Force / N");
 
-    svg.group().css(".Locus", "nofill", "blue2").poly([[0, 0], [0.08, 100], [0.18, 100], [0.3, 0]]);
+    svg.group().css(".Locus", "nofill", "#0065fe@2").poly([[0, 0], [0.08, 100], [0.18, 100], [0.3, 0]]);
 },
 
 });

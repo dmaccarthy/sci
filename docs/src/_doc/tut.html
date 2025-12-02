@@ -20,7 +20,7 @@
 
 $(() => {
     let svg = new SVG2("#Draw", {scale: 20, lrbt: [-10, 10, -10, 10], grid: 1, margin: 1});
-    let outer = svg.group("blue", "black1").config({omega: 90});
+    let outer = svg.group("#0065fe", "black@1").config({omega: 90});
     let inner = outer.group().config({pivot: [6, 2], omega: 0});
     inner.circle("8", [6, 0]);
     inner.group("text", "nostroke").ctext(["Earth", [6, 2]]);

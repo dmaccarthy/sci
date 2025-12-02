@@ -59,7 +59,7 @@ longWave: (sel) => {
     particles[12].css("red");
 
     // Velocities
-    let text = svg.group("text", "f18", "black");
+    let text = svg.group("text", 18, "black");
     text.gtext("Phase Velocity", [], [18, -3]);
     svg.arrow({tail: [16.25, -2], tip: [19.75, -2]}, {tail: "5"});
     let g = text.group("red");
@@ -67,7 +67,7 @@ longWave: (sel) => {
     g.arrow({tail: [1.75, -2], tip: [5.25, -2]}, {tail: "5", double: 1});
 
     // Compression/Rarefaction lables
-    let blue = svg.group("text", "nostroke", "blue");
+    let blue = svg.group("text", "nostroke", "#0065fe");
     let x = 1.25;
     blue.gtext("Compression", [], [x, 3.25]);
     orange = blue.group({fill: "orange"});
@@ -80,10 +80,10 @@ longWave: (sel) => {
     }
 
     svg.beforeupdate = function() {
-        let t = svg.time, pi2 = 2 * Math.PI;
+        let t = svg.time;
         for (let i=0;i<particles.length;i++) {
             let x = (i - 5) / 2;
-            x += 0.55 * Math.cos(pi2 * (x / w - t / T));
+            x += 0.55 * Math.cos(twoPi * (x / w - t / T));
             particles[i].config({shift: [x, 0]});
         }
         blue.config({shift: [(v * t) % (2 * w), 0]});
@@ -96,8 +96,8 @@ trWave: (sel) => {
     let svg = new SVG2(sel, {scale: [160, 80], lrbt: [0, 3, -2.5, 1.8], margin: [0, 0, 4, 4]});
     let travelingingWave = (x, t) => Math.sin(twoPi * (x - t / 2));
 
-    let g = svg.group("arrow", "text", "f18", {stroke: "none"});
-    let blue = g.group("blue");
+    let g = svg.group("arrow", "text", 18, {stroke: "none"});
+    let blue = g.group("#0065fe");
     let orange = g.group({fill: "orange"});
     blue.gtext("Crest", [], [0.25, 1.7]);
     orange.gtext("Trough", [], [0.75, -1.7]);
@@ -105,8 +105,8 @@ trWave: (sel) => {
         blue.arrow({tip: [x, 1.1], tail: [x, 1.5]}, {tail: "4"});
         orange.arrow({tip: [x + 0.5, -1.1], tail: [x + 0.5, -1.5]}, {tail: "4"});
     }
-    svg.animate(svg.locus(travelingingWave, [0, 3], {}).css("blue3"));
-    let red = svg.group("red", "black1");
+    svg.animate(svg.locus(travelingingWave, [0, 3], {}).css("#0065fe@3"));
+    let red = svg.group("red", "black@1");
     red.circle("5");
 
     svg.beforeupdate = function() {
@@ -115,7 +115,7 @@ trWave: (sel) => {
         red.config({shift: [0.6, travelingingWave(0.6, t)]});
     }
 
-    let text = svg.group("text", "f18", "black");
+    let text = svg.group("text", 18, "black");
     text.gtext("Phase Velocity", [], [2.25, -2.4]);
     svg.arrow({tail: [2, -2.05], tip: [2.5, -2.05]}, {tail: "5"});
     let rot = text.group("red").shift_by([0.2, 0]).config({theta: 90});

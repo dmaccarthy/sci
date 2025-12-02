@@ -4,9 +4,11 @@
 
 #RampAngle {width: 4em}
 
-#SimControls svg {
+#SimControls img {
     cursor: pointer;
     vertical-align:middle;
+    width: 24px;
+    height: 24px;
 }
 
 #SimControls svg * {
@@ -19,102 +21,22 @@
 
 </style>
 
-<section class="Post" data-icon="simulation.svg">
+<section class="Post" data-icon="simulation">
 <h2 class="Collapse">Simulation</h2>
 
 <div class="Collapse Expand Center">
 
-<p><svg id="Sim" data-aspect="641/601" width="641" height="601">
-<style>
-
-#Sim .AxisX {
-    stroke: #0065fe;
-    stroke-width: 3;    
-}
-
-#Sim .TickX {
-    stroke: #0065fe;
-    stroke-width: 1;    
-}
-
-#Sim text {
-    font-family: Inconsolata, monospace;
-    fill: #0065fe;
-    text-anchor: middle;
-    dominant-baseline: middle;
-}
-
-#Sim text.Time, #Sim text#GateT, #Sim text#GateV {
-    font-size: 225%;
-    fill: black;
-    text-anchor: middle;
-    dominant-baseline: hanging;
-}
-
-#Sim text#GateT, #Sim text#GateV {
-    fill: red;
-    display: none;
-}
-
-#Sim .Ramp {
-    fill: white;
-    fill-opacity: 0.75;
-}
-
-#RampBall circle.Eight {fill: #404040}
-#RampBall circle.White {fill: white}
-
-#RampBall circle.Cylinder {
-    fill: #2020a0;
-    stroke: black;
-}
-
-#RampBall circle.Ring {
-    fill: none;
-    stroke: #2020a0;
-    stroke-width: 5;
-}
-
-#RampBall line.Cylinder {
-    stroke-width: 3;
-    stroke: white;
-}
-
-#RampBall circle.RingMark {fill: #ffc0c0}
-#RampBall line.Ring {stroke: silver}
-
-#RampBall text.Eight {
-    fill: black;
-    text-anchor: middle;
-    dominant-baseline: middle;
-}
-
-#Sim rect.Gate {
-    fill: #b0b0c0;
-    stroke: black;
-}
-
-#Sim circle.Gate {fill: red}
-
-</style>
-<image width="641" height="601" x="0" y="0" href="p20/kin/img/class.svg"></image>
-</svg></p>
+<p><svg id="Sim" onclick="loadFeed.sim.click()"></svg></p>
 <p id="SimControls">
-    <select title="Choose object type" onchange="loadFeed.run.setBall()" id="BallType">
+    <select title="Choose object type" onchange="loadFeed.sim.init()" id="BallType">
         <option>Hollow Sphere</option>
         <option>Solid Sphere</option>
         <option>Solid Cylinder</option>
         <option>Ring</option>
     </select> &nbsp;
-    <input type="number" title="Set ramp angle" onchange="loadFeed.run.setRamp()" id="RampAngle" value="30" min="0" max="90" step="5" /> &nbsp;
-    <svg width="20" height="20" viewBox="-5 -12 130 130" transform="scale(-1,1)" xmlns="http://www.w3.org/2000/svg"  onclick="loadFeed.run.step(-1)">
-        <path d="M 50 100 A 50 50 0 1 1 100 50"></path>
-        <polyline points="75,25 100,50 125,25" transform="rotate(-20 100,50)"></polyline>
-    </svg> &nbsp;
-    <svg width="20" height="20" viewBox="-5 -12 130 130" xmlns="http://www.w3.org/2000/svg" onclick="loadFeed.run.step(1)">
-        <path d="M 50 100 A 50 50 0 1 1 100 50"></path>
-        <polyline points="75,25 100,50 125,25" transform="rotate(-20 100,50)"></polyline>
-    </svg>
+    <input type="number" title="Set ramp angle" onchange="loadFeed.sim.init()" id="RampAngle" value="30" min="0" max="90" step="5" /> &nbsp;
+    <!-- <img src="media/arrow_cw.svg" alt="Backward" onclick="loadFeed.sim.step(-1)" style="transform: scaleX(-1)"></img> &nbsp;
+    <img src="media/arrow_cw.svg" alt="Forward" onclick="loadFeed.sim.step(1)"></img> -->
 </p>
 
 </div></section>
@@ -122,174 +44,128 @@
 <section class="Post" data-icon="help">
 <h2 class="Collapse">Help</h2>
 <div class="Collapse">
-    <p>Click on the animation to play, pause, and reset. The markings on the ramp are in centimetres and the object is initially positioned at 0 cm.</p>
+    <p>Click on the animation to play, pause, and reset. The markings on the ramp are in centimetres and the object is initially centred at 0 cm.</p>
     <p>Use the controls below the animation to...</p>
     <ul>
         <li>Select the object type: hollow sphere (basketball), solid sphere (billiard ball), solid cylinder, or ring.</li>
         <li>Set the ramp angle in degrees from 0 to 90.</li>
-        <li>Adjust the animation one frame (1/60<sup>th</sup> of a second) back or forward. These buttons will be deactivated when the animation is finished. For freefall (ramp angle set to 90), the back button will be deactivated when the ball bounces.</li>
+        <!-- <li>Adjust the animation one frame (1/60<sup>th</sup> of a second) back or forward. These buttons will be deactivated when the animation is finished. For freefall (ramp angle set to 90), the back button will be deactivated when the ball bounces.</li> -->
     </ul>
-    <p>The animation displays the time in black print on the whiteboard.</p>
-    <p>When the object passes the “photogate” (mounted at the 200 cm mark) the instantaneous velocity and the time at which the velocity was measured will appear below the timer in red.</p>
+    <p>The animation timer stops when the object reaches the photogate, at which point its displacement is 2.00 metres.</p>
+    <!-- <p>When the object passes the “photogate” (mounted at the 200 cm mark) the instantaneous velocity and the time at which the velocity was measured will appear below the timer in red.</p> -->
 </div></section>
 
-<script type="text/javascript" data-init="run">
+<script type="text/javascript" data-init="sim">
 
-loadFeed.run = () => {
-    renderTeX();
-    $("#Sim").on("click", () => {loadFeed.run.step(0)});
-    loadFeed.run.setBall();
-}
+loadFeed.sim = () => {
+    let svg = new SVG2("#Sim", {scale: 256, lrbt: [-2.2, 0.3, -0.2, 2.14]}).css(".NoStyle");
+    let [w, h] = svg.size;
+    $(svg.image("p20/kin/img/class.svg", [1, 1])).attr({x:0, y:0, width:w, height: h});
 
-loadFeed.run.step = (mode) => {
-    let svg = $('#Sim')[0].graphic;
-    if (mode) svg.pause();
-    if (svg.items.length) {
-        let dt = 1 / svg.frameRate;
-        if (mode == 0) svg.toggle();
-        else if (!$("#SimControls svg").hasClass("Disabled")) {
-            if (mode == 1) svg.update(dt);
-            else if (svg.time > dt / 2) svg.update(-dt);
+    let ramp = svg.ramp = svg.group();
+    let gate = svg.gate = ramp.group("black@1");
+    let balls = svg.balls = ramp.group().config({animated: true, shift: [-2, 0]});
+
+    // Draw ramp
+    ramp.ruler(60, 0.05, {width: 0.16, big: 5, tickSmall: 0.21, tickBig: 0.42}).css({fill: "lightgrey", "fill-opacity": 0.8}, "#0065fe@1").config({pivot: [-1, -0.08], shift: [1, 0.08], theta: 180});
+    let g = ramp.group("text", "#0065fe", 16);
+    for (let x = -225; x < 55; x += 25) g.text(Math.abs(200 + x), [x / 100, -0.13]);
+
+    // Draw timer
+    svg.timer = svg.gtext("0.000 s", ["text", 36, {"font-family": SVG2.mono}]);
+
+    // Draw photogate
+    gate.rect([0.08, 0.14]).css({fill: "lightgrey"});
+    gate.circle("4", [0, 0.03]).css({fill: "#0065fe"});
+
+    // Draw objects
+    let b = [];
+    for (let i=0;i<4;i++) {
+        let ball = loadFeed.sim.ballInfo[i];
+        let r = ball[0];
+        ball = balls.group().config({shift: [0, r]});
+        b.push(ball);
+        if (i == 0) ball.image("media/ball.svg", [2 * r, 2 * r]);
+        else if (i == 1) {
+            let c8 = [-r/10, r/10];
+            ball.config("text", "black").circle(r);
+            ball.circle(0.5 * r, c8).css({fill: "white"});
+            ball.gtext("8", [12], c8);
+        }
+        else {
+            let v = vec2d(r - 0.01, uniform(0, 360));
+            if (i == 2) {
+                v = v.times(0.7);
+                ball.circle(r).css({fill: "#2020a0", stroke: "black"});
+                ball.line(v, v.neg()).css({stroke: "white", "stroke-width": "3px"});
+            }
+            else {
+                ball.circle(r - 0.01).css({fill: "none", stroke: "#2020a0", "stroke-width": "5px"});
+                ball.circle("3", v).css({fill: "#ffc0c0"});
+            }
         }
     }
-    else if (mode == 0) loadFeed.run.redraw();
+
+    svg.beforeupdate = function() {
+        this.timeFactor = 1;
+        let t = this.time;
+        let i = svg.ballType;
+        let info = loadFeed.sim.ballInfo[i];
+        let r = info[0];
+        let balls = this.balls; 
+        let ball = balls.$.children("g")[i].graphic;
+        let vertical = balls.acc[0] == 9.81;
+        let d = balls.shift[0];
+        let d0 = 0.205 - r;
+        let done = false;
+        if (vertical) {
+            if (d > d0) {
+                balls.config({shift: [d0, 0], vel: [-balls.vel[0] * balls.elas, 0]});
+                done = balls.vel[0] > -0.2;
+            }
+        } else {
+            ball.config({theta: -d / r * RAD});
+            done = d > 0.45;
+        }
+        if (done) this.pause().config({done: true});
+        this.timer.$.find("text").html(`${Math.min(t, balls.tmax).toFixed(3)} s`);
+    }
+
+    loadFeed.sim.svg = svg;
+    loadFeed.sim.init();
+    // console.log(svg);
 }
 
-loadFeed.run.setRamp = () => {
+// Object size, moment of inertia, elasticity
+loadFeed.sim.ballInfo = [
+    [0.14, 1/3, 0.4, 0.6],    // Basketball
+    [0.06, 0.2, 0.1, 0.2],    // 8-Ball
+    [0.08, 0.25, 0.15, 0.3],  // Cylinder
+    [0.12, 0.5, 0.3, 0.5]     // Ring
+];
+
+loadFeed.sim.init = () => {
     e = $("#RampAngle");
-    if (e.val() < 0) e.val(0);
-    else if (e.val() > 90) e.val(90);
-    loadFeed.run.redraw();
+    let a = Math.min(90, Math.max(1, e.val()));
+    e.val(a);
+    let svg = loadFeed.sim.svg.pause().config({time: 0});
+    svg.ramp.config({theta: -a});
+    svg.timer.config({shift: [a < 62 ? -0.2 : -1.7, 1.8]});
+    let i = svg.ballType = $("#BallType")[0].selectedIndex;
+    let info = loadFeed.sim.ballInfo[i];
+    svg.gate.config({shift: [info[0], 0.07]});
+    let acc = 9.81 * (a == 90 ? 1 : sin(a) / (1 + 2 * info[1]));
+    let elas = Math.sqrt(uniform(info[2], info[3]));
+    let tmax = 2 / Math.sqrt(acc);
+    let balls = svg.balls.config({elas: elas, tmax: tmax, shift: [-2, 0], vel: [0, 0], acc: [acc, 0]});
+    $(balls.$.children().hide()[i]).show();
+    svg.config({done: false}).update(0);
 }
 
-loadFeed.run.setBall = () => {
-    let sel = $("#BallType")[0];
-    let info = sel.ballInfo = {};
-    let ballType = info.type = sel.selectedIndex;
-    info.rotn = [1/3, 1/5, 1/4, 1/2][ballType] * uniform(0.95, 1.05);
-    info.bounce = Math.sqrt(uniform(...[[0.4, 0.6], [0.1, 0.2], [0.15, 0.3], [0.3, 0.5]][ballType]));
-    info.radius = [0.14, 0.06, 0.08, 0.12][ballType];
-    info.grav = uniform(9.5, 9.75);
-    loadFeed.run.setRamp();
-}
-
-loadFeed.run.redraw = () => {
-
-    let ruler = (svg, r) => {
-        let g = svg.group();
-        let attr = {interval: 0.25, minor: 5, length: 12 * g.svg.pixelX, offset: [0, -0.1],
-            format: (x) => {
-                x = Math.abs(100 * (x + 2));
-                return x.toFixed(0);
-            }
-        };
-        svg.rect([0.08, r + 0.03], [0, r / 2 + 0.015], g).addClass("Gate");
-        svg.circle(0.015, [0, r], g).addClass("Gate");
-        svg.rect([3.14, 0.15], [-0.97, -0.07], g).addClass("Ramp");
-        svg.axis({x: [-2.5, 0.5], ticks: attr}, g);
-        return g;
-    }
-
-    // Delete previous drawing
-    let svg = $("#Sim");
-    if (svg.find("> *:not(style, image)").remove().length)
-        svg[0].graphic.pause();
-    svg = new SVG_Animation("#Sim", -2.2, 0.32, -0.2).config({fix: 1});
-
-    // Ball type and acceleration
-    let sel = $("#BallType")[0];
-    info = sel.ballInfo;
-    let ball, ballType = sel.selectedIndex;
-    let r = info.radius, d = 2 * r;
-
-    let accel = (t) => {
-        let a = info.grav * uniform(0.97, 1);
-        if (t == 0) a = 0;
-        else if (t < 90) a *= sin(t) / (1 + 2 * info.rotn);
-        return a;        
-    }
-
-    // Draw ruler and photogate
-    svg.theta = parseInt($("#RampAngle").val());
-    let g = ruler(svg, r).anchor(0, 0).config({theta: -svg.theta});
-    g.attr({id: "RampBall"});
-    svg.final();
-
-    // Draw "ball"
-    if (ballType == 0) // Basketball
-        ball = svg.image("media/ball.svg", [d, d], [0, 0], g);
-    else {
-        ball = svg.group(g);
-        let circ = svg.circle(r, [0, 0], ball).final();
-        if (ballType == 1) { // '8-Ball'
-            circ.addClass("Eight")
-            let xy = [-r/10, r/4];
-            svg.circle(r / 1.9, xy, ball).final().addClass("White");
-            svg.text("8", xy, ball).final().addClass("Eight");   
-        }
-        else if (ballType == 2) { // Solid Cylinder
-            circ.addClass("Cylinder");
-            let r1 = r - 4 * svg.pixelX;
-            let line = svg.line([-r1, 0], [r1, 0], ball).final();
-            line.addClass("Cylinder");
-        }
-        else if (ballType == 3) { // Ring
-            circ.addClass("Ring");
-            svg.circle(r/8, [0, r], ball).final().addClass("RingMark");
-        }
-    }
-
-    // Initialize ball kinematics
-    ball.config({
-        position: [-2, 0.005 + r],
-        acc: [accel(svg.theta), 0],
-        theta: svg.theta,
-    });
-    ball.vel = [ball.acc[0] == 0 ? uniform(0.5, 2) : 0, 0];
-
-    ball.onupdate = function() {
-        // Update ball attributes before drawing each frame
-        let svg = this.svg;
-        let final = false;
-        let x = this.position[0];
-        let v = this.vel[0];
-        if (x > 0 && !svg.find("#GateT")) {
-            let text = svg.find(".Time");
-            let dt = x / v;
-            let t = svg.time - dt;
-            let v0 = v - dt * this.acc[0];
-            svg.text(`${t.toFixed(3)} s`, text.position.plus([0, -0.4])).attr({id: "GateT"});
-            svg.text(`${v0.toFixed(2)} m/s`, text.position.plus([0, -0.2])).attr({id: "GateV"});
-        }
-        if (x > r || this.bounce && x < -r) svg.$.find("#GateT, #GateV").fadeIn();
-        if (svg.theta == 90) {
-            if (x >= 0.2 - r && v > 0) {
-                this.bounce = true;
-                $("#SimControls svg").addClass("Disabled");
-                if (v * svg.frameRate/ this.acc[0] < 3) final = true;
-                else this.vel = [-info.bounce * v, 0];
-            }
-        }
-        else if (x > 12 + r) final = true;
-        else this.theta = svg.theta -2 * (x + 2) / d * RAD;
-        if (final) {
-            $("#SimControls svg").addClass("Disabled");
-            this.final();
-            svg.pause().final();            
-        }
-    }
-
-    // Time display
-    let time = svg.text("?", [svg.theta <= 60 ? -0.4 : -1.5, 1.95]);
-    time.addClass("Time").final();
-    svg.onupdate = function() {
-        // Update the time before drawing each frame
-        this.$.find(".Time").html(`${Math.max(0, this.time).toFixed(3)} s`);
-    }
-
-    // Start simulation
-    $("#SimControls svg").removeClass("Disabled");
-    svg.update(0);
+loadFeed.sim.click = () => {
+    let svg = loadFeed.sim.svg;
+    if (svg.done) loadFeed.sim.init();
+    else svg.toggle();
 }
 
 loadFeed.data = {

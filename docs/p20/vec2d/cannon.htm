@@ -1,4 +1,4 @@
-<section class="Post" data-icon="simulation.svg">
+<section class="Post" data-icon="simulation">
 <style type="text/css">
 
 #SimControls td {
@@ -47,11 +47,11 @@ loadFeed.sim = () => {
     g.align([175, 0], 0.5, 0.7);
 
     svg.gradient("Platform", "lightgrey", "grey", 100, 40, 0, 60);
-    svg.platform = svg.group("black1", {fill: "url(#Platform)"});
-    svg.clock = svg.group("text", "f24").config({shift: [175, 95]}).text("");
+    svg.platform = svg.group("black@1", {fill: "url(#Platform)"});
+    svg.clock = svg.group("text", 24).config({shift: [175, 95]}).text("");
 
     svg.vi = uniform(37, 42);
-    svg.ball = svg.group("red", "black1");
+    svg.ball = svg.group("red", "black@1");
     svg.ball.circle(0.65);
 
     size = new RArray(336.6, 66.4).times(0.03);

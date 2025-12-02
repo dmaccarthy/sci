@@ -222,7 +222,7 @@ let svg = new SVG2("#Wave", {
     grid: 1, margin: 1
 });
 let locus = <span class="Blue">svg.locus(wave, [0, 10], [1.5, 3, 2])</span>;
-svg.animate(locus.css("blue2")).play();</pre>
+svg.animate(locus.css("#0065fe@2")).play();</pre>
     <p>In the example above, <code>wave</code> refers to the function that generates the locus. Its first argument is the parameter which may (or may not) be an <i>x</i>-coordinate. The next argument is the animation time, and the third argument is any additional data required by the function. In this case, the <code>wave</code> function draws a harmonic wave and <code>args</code> will be an array containing the wave amplitude, wavelength and speed.</p>
     <p>The function returns the <i>y</i>-coordinate calculated from the arguments provided. If the <code>x</code> argument is a parameter other than the <i>x-</i>coordinate, the function should return an ordered pair, <code>[x, y]</code>.</p>
     <p>The code highlighted above in blue creates a locus defined by the <code>wave</code> function, draws it from <code>x = 0</code> to <code>x = 10</code>, and passes the additional data <code>[1.5, 3, 2]</code> as the amplitude, wavelength, and speed of the wave that the animation will draw.</p>

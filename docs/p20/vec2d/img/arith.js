@@ -3,11 +3,11 @@ SVG2.cache("p20/vec2d/img/arith.js", {
 ship: (sel) => {
     let svg = new SVG2(sel, {size: [400, 300], lrbt: [-0.06, 1.04, -0.06], margin: 4}).css(".NoStyle");
     let pt = vec2d(sin(60) / sin(70), 50);
-    let g = svg.group("black1", "blue");
+    let g = svg.group("black@1", "#0065fe");
     g.circle(0.05);
     g.circle(0.03, [1, 0]);
     g.circle("3", pt).css({fill: "red"});
-    g = svg.group("text", "f24", "blue");
+    g = svg.group("text", 24, "#0065fe");
     g.gtext("P", {}, [0, 0.1]);
     g.gtext("M", {}, [1, 0.1]);
     g.gtext("S", "red", pt.plus([0.07, 0.03]));
@@ -25,15 +25,15 @@ ship: (sel) => {
         arrow(...f);
         a = a.plus(vec2d(...f));
     }
-    arrow(-a[1], -90).css("blue");
+    arrow(-a[1], -90).css("#0065fe");
 
     let [BD, SM] = [1, 4];
     let arr = ["→", 5, [0, "14"]];
     let sub = ["15", "-10"];
-    g = svg.group("symbol", "f28", "red");
+    g = svg.group("symbol", 28, "red");
     g.symb(0, ["g", BD], arr, ["P", SM, sub]).align([0.4, 0.65]);
     g.symb(0, ["g", BD], arr, ["M", SM, sub]).align([0.77, 0.6]);
-    g.symb(0, ["a", BD], arr).align([0.52, 0.4]).css("blue");
+    g.symb(0, ["a", BD], arr).align([0.52, 0.4]).css("#0065fe");
 },
 
 Ex1_init: (sel) => {
@@ -45,8 +45,8 @@ Ex1_init: (sel) => {
     let arr = ["→", 5, [0, "22"]];
     let sub = ["15", "-10"];
     let delta = ["Δ", 0, ["-20", 0]];
-    let g = svg.group("symbol", "f28", "red");
-    g.symb(0, ["d", BD], arr, delta).align([35, 10]).css("blue");
+    let g = svg.group("symbol", 28, "red");
+    g.symb(0, ["d", BD], arr, delta).align([35, 10]).css("#0065fe");
     g.symb(0, ["d", BD], arr, delta, ["1", SM, sub]).align([6, 27]);
     g.symb(0, ["d", BD], arr, delta, ["2", SM, sub]).align([42, 30]);
     return svg;
@@ -81,8 +81,8 @@ Ex2: (sel) => {
     let [BD, SM_IT] = [1, 6];
     let arr = ["→", 5, [0, "22"]];
     let sub = ["10", "-10"];
-    let g = svg.group("symbol", "f28", "red");
-    g.symb(0, ["F", BD], arr, ["net", SM_IT, ["16", "-10"]]).css("blue").align([5, 9]);
+    let g = svg.group("symbol", 28, "red");
+    g.symb(0, ["F", BD], arr, ["net", SM_IT, ["16", "-10"]]).css("#0065fe").align([5, 9]);
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-15, -45]);
     g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([20, -50]);
     g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([20, 5]);
@@ -95,8 +95,8 @@ Ex3: (sel) => {
 
     let [BD, SM_IT] = [1, 6];
     let arr = ["→", 5, [0, "15"]];
-    let g = svg.group("symbol", "f28", "red");
-    g.symb(0, ["v", BD], arr, ["Δ", 0, ["-18", 0]]).css("blue").align([2.7, 1.4]);
+    let g = svg.group("symbol", 28, "red");
+    g.symb(0, ["v", BD], arr, ["Δ", 0, ["-18", 0]]).css("#0065fe").align([2.7, 1.4]);
     g.symb(0, ["v", BD], arr, ["f", SM_IT, ["10", "-10"]]).align([0.5, 4.2]);
     arr[2][0] = "8";
     g.symb(0, ["–v", BD], arr, ["i", SM_IT, ["16", "-10"]]).align([4, 4.5]);
@@ -113,7 +113,7 @@ tri: (sel) => {
     let pB = new RArray(0, h - 10);
 
     // Segments and circles
-    let g = svg.group().css("nofill", "black1");
+    let g = svg.group().css("nofill", "black@1");
     g.poly([[0, h], [-12.5, 0], [12.5, 0], [0, h], [0, 0]]);
     g.line([0, hA], [-12.5, 0]);
     g.line([0, h - 10], [12.5, 0]);
@@ -134,13 +134,13 @@ tri: (sel) => {
     wrap({theta: 15, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: 45, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: -75, pivot: [0, h]}, "30°", [3.5, h]);
-    g = g.group("symbol", "f28");
+    g = g.group("symbol", 28);
     g.symb(0, ["r", 2], ["A", 6, ["10", "-10"]]).align([-6, 6]);
     g.symb(0, ["r", 2], ["B", 6, ["10", "-10"]]).align([4.5, 6]);
     g.symb(0, ["y", 2]).align([1, hA / 2]);
 
     // Forces at point A
-    g = svg.group().css("black1", {"fill-opacity": 0.6}).addClass("Toggle0");
+    g = svg.group().css("black@1", {"fill-opacity": 0.6}).addClass("Toggle0");
     g.$.hide();
     let arr = (p, l, a, c) => g.arrow({tail: p, tip: p.plus([0, l])}, {tail: "6"}, "tail").config({theta: a}).css({fill: c});
     arr(pA, 4, 0, "#0065fe");
@@ -148,7 +148,7 @@ tri: (sel) => {
     arr(pA, 4, -120, "green");
 
     // Forces at point B
-    g = svg.group().css("black1", {"fill-opacity": 0.6}).addClass("Toggle1");
+    g = svg.group().css("black@1", {"fill-opacity": 0.6}).addClass("Toggle1");
     g.$.hide();
     let l = 4 * sq(2 * hA / rb);
     arr(pB, 4 * sq(hA / 5), 0, "#0065fe");

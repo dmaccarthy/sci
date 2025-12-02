@@ -70,6 +70,28 @@ table td, table th {
     padding: 0.2em;
 }
 
+table.VectorTable {
+
+td, th {
+    text-align: center;
+    min-width: 6em;
+    width: 25%;
+}
+
+tr:not(.Resultant):nth-child(even) td:nth-child(even), tr:not(.Resultant):nth-child(odd) td:nth-child(odd)
+    {background-color: #ffe8e8}
+
+tr:not(.Resultant):nth-child(even) td:nth-child(odd), tr:not(.Resultant):nth-child(odd) td:nth-child(even)
+    {background-color: #ffd8d8}
+
+tr.Resultant td:nth-child(even) {background-color: #d8d8ff}
+tr.Resultant td:nth-child(odd) {background-color: #e8e8ff}
+
+tr:nth-child(even) th:nth-child(even), tr:nth-child(odd) th:nth-child(odd) {background-color: #e8e8e8}
+tr:nth-child(even) th:nth-child(odd), tr:nth-child(odd) th:nth-child(even) {background-color: #d8d8d8}
+
+}
+
 /* li p {margin-bottom: 0} */
 li > p {margin-bottom: 0}
 table.TD6 td {min-width: 6em}
@@ -97,6 +119,7 @@ body:is(.Present, .Slides) td.Reveal span {display: none}
 .w4, body.Present .s4 {width: 4em}
 .w5, body.Present .s5 {width: 5em}
 .w6, body.Present .s6 {width: 6em}
+body.Present .dot {width: 7.35em}
 .w8, body.Present .s8 {width: 8em}
 .w10, body.Present .s10 {width: 10em}
 .w11, body.Present .s11 {width: 11em}

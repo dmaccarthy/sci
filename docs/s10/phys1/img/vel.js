@@ -4,7 +4,7 @@ uam: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 12], grid: 1, margin: [56, 12, 56, 12]}).css(".NoStyle");
 
     /* Label x-axis */
-    let g = svg.group().css("text", "f16");
+    let g = svg.group().css("text", 16);
     // let t = svg.group("text");
     g.tick_label(0, [...range(0, 8.5, 1)], 0, "-6", "-20");
     g.text("Time / s", [4, "-44"]);
@@ -16,7 +16,7 @@ uam: (sel) => {
 
     /* Plot parabola through 3 points */
     let f = quad_reg([0,0], [5,11], [8,7]).fn;
-    svg.locus(f, [0, 8]).css("blue2");
+    svg.locus(f, [0, 8]).css("#0065fe@2");
 },
     
 });

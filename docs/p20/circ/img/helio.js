@@ -17,7 +17,7 @@ helio: (sel) => {
     }
 
     // Draw animated timer
-    let g = svg.group("text", "f36", "bold", "white", {"text-anchor": "end", "font-family": SVG2.mono});
+    let g = svg.group("text", 36, "bold", "white", {"text-anchor": "end", "font-family": SVG2.mono});
     let years = g.text("", [1.6, 1.5]);
     g.config({animated: true}).beforeupdate = () => years.html(`${svg.time.toFixed(2)} yr`);
 

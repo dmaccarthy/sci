@@ -7,7 +7,7 @@ water: (sel) => {
         y: {tick: [-50, 126, 25], title: ["Temperature / °C", "-44"], shift: ["-10", "-5"]},
         data: [{connect: [[0, -50], [0.1, 0], [0.434, 0], [0.853, 100], [3.108, 100], [3.159, 125]]}]
     });
-    let g = svg.group().css("text", "ital", "blue");
+    let g = svg.group().css("text", "ital", "#0065fe");
     g.ctext(["a", [0.15, -25]], ["b", [0.3, 8]], ["c", [0.52, 50]], ["d", [1.9, 90]], ["e", [3, 112]]);
     svg.$.find("g.LabelX .Zero").remove();
 },

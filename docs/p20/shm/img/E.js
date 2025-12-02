@@ -3,17 +3,17 @@ SVG2.cache("p20/shm/img/E.js", {
 pend: (sel) => {
     let svg = new SVG2(sel, {size: [300, 400], lrbt: [-1.5, 1, -3.25]}).css(".NoStyle");
     let p = vec2d(3, 245);
-    svg.line(p, [0.2, p[1]]).css(SVG2.css("red2"));
-    svg.path(p).arc_to([0, -3], 3).update().css(SVG2.css("nofill", "blue2"));
-    let g = svg.group("black2", {fill: "white"});
-    g.poly([p, [0, 0], [0, -3]]).css(SVG2.css("nofill"));
+    css(svg.line(p, [0.2, p[1]]), "red@2");
+    css(svg.path(p).arc_to([0, -3], 3).update(), "nofill", "#0065fe@2");
+    let g = svg.group("black@2", {fill: "white"});
+    css(g.poly([p, [0, 0], [0, -3]]), "nofill");
     g.circle(0.1, p);
     g.circle(0.1, [0, -3]);
 
     let [IT, SM_IT] = [2, 6];
-    g = svg.group("symbol", "f28", "red");
+    g = svg.group("symbol", 28, "red");
     g.symb(0, ["x", IT], ["H", SM_IT, ["16", "-8"]]).align([-0.6, -2.55]);
-    g.symb(0, ["x", IT]).align([-0.72, -3.1]).css(SVG2.css("blue"));
+    g.symb(0, ["x", IT]).align([-0.72, -3.1]).css("#0065fe");
     g.symb(0, ["θ", IT]).align([-0.1, -0.5]);
     g.symb(0, ["L", IT]).align([-0.8, -1.25]);
     g.symb(0, ["L", IT], ["cos", 0, ["32", 0]], ["θ", IT, ["64", 0]]).align([0.5, -1.5]);
@@ -22,21 +22,21 @@ pend: (sel) => {
 
 spring: (sel) => {
     let svg = new SVG2(sel, {size: [400, 180], lrbt: [0, 5.25, -0.77], margin: 2}).css(".NoStyle");
-    let g = svg.group("nofill", "black2");
+    let g = svg.group("nofill", "black@2");
     let spring = g.group({stroke: "silver"});
     let poly = spring.poly([]);
     g.poly([[0, 1], [0, 0], [5.25, 0]]);
 
     let mass = svg.group();
-    mass.rect([0.4, 0.4], [3, 0.2]).css(SVG2.css("blue", "black1"));
-    svg.gtext("Eqm", ["text", "f20", "blue"], [3, -0.6]);
-    svg.arrow({tail: [3, -0.4], tip: [3, 0]}, {tail: "4"}).css("arrow", "blue");
+    css(mass.rect([0.4, 0.4], [3, 0.2]), "#0065fe", "black@1");
+    svg.gtext("Eqm", ["text", 20, "#0065fe"], [3, -0.6]);
+    svg.arrow({tail: [3, -0.4], tip: [3, 0]}, {tail: "4"}).css("arrow", "#0065fe");
 
-    g = svg.group("symbol", "red", "f28");
-    g.symb(0, ["x", 1], SVG2.arr("15")).align([4.5, 0.6], 0, 0.6).css("blue");
+    g = svg.group("symbol", "red", 28);
+    g.symb(0, ["x", 1], SVG2.arr("15")).align([4.5, 0.6], 0, 0.6).css("#0065fe");
     g.symb(0, ["F", 1], SVG2.arr("22"), ["elas", 6, ["20", "-8"]]).align([4.5, 1.1], 0, 0.6);
     g = svg.group("arrow");
-    let arrows = [g.arrow(1), g.arrow(1).css("blue")];
+    let arrows = [g.arrow(1), g.arrow(1).css("#0065fe")];
 
     svg.beforeupdate = function() {
         let x = 1.25 * cos(60 * svg.time);

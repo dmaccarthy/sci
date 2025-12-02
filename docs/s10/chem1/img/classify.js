@@ -2,8 +2,8 @@ SVG2.cache("s10/chem1/img/classify.js", {
 
 chart: (sel) => {
     let svg = new SVG2(sel, {size: [640, 240], lrbt: [-0.5, 3.5, -0.25]});
-    let g = svg.group("nofill", "black1");
-    let t = svg.group("text", "f17");
+    let g = svg.group("nofill", "black@1");
+    let t = svg.group("text", 17);
     let labels = ["Element", "Compound", "Homogeneous", "Heterogeneous", "Pure Substance", "Mixture", "Matter"];
     let h = 0.26;
     for (let i=0;i<labels.length;i++) {

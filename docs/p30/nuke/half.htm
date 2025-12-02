@@ -1,4 +1,4 @@
-<section class="Post" data-icon="simulation.svg">
+<section class="Post" data-icon="simulation">
 <h2 class="Collapse">Simulation</h2><div class="Collapse Expand Center">
 <p>Time: <span id="Time"><a href="javascript:loadFeed.sim.startSim()">Click to start</a></span>
     <span style="padding-left:2em">Decays: <span id="Count">0</span></span></p>
@@ -166,7 +166,7 @@ loadFeed.sim.update = () => {
                 let xy = svg.p2a(n.attr("cx"), n.attr("cy"));
                 let v = vec2d(uniform(30, 60), uniform(0, 360));
                 let g = svg.group().config({shift: xy, vel: v});
-                g.circle("3").css({fill: "blue"});
+                g.circle("3").css({fill: "#0065fe"});
                 svg.animate(g);
             }
             ages[i] = null;

@@ -41,7 +41,7 @@ planck: (sel, T0, ...args) => {
     // Draw points to show visible wavelengths
     let g = svg.group().addClass("Visible").css({stroke: "black"});
     for (let [w, c] of [[740, "#900000"], [680, "red"], [610, "orange"], [580, "yellow"],
-        [530, "lightgreen"], [490, "cyan"], [460, "blue"], [400, "#9400d3"]]) 
+        [530, "lightgreen"], [490, "cyan"], [460, "#0065fe"], [400, "#9400d3"]]) 
             g.circle("4", [w * 1e-9 / w0, 0]).css({fill: c});
 
     // Label axes

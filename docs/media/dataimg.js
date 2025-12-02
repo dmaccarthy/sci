@@ -37,4 +37,4 @@ slides: `<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg id="svg11300
 };
 
 for (let i in data_images)
-    data_images[i] = `data:image/svg+xml;base64,` + btoa(data_images[i]);
+    data_images[i] = `data:image/svg+xml;base64,` + unicode_to_base64(data_images[i]);

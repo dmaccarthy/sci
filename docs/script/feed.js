@@ -34,18 +34,22 @@ function loadFeed(feed, noHist) {
     if (loadFeed.data.folder) feed = feed.replace("$", loadFeed.data.folder);
     loadFeed.opener = loadFeed.current;
     if (loadFeed.cache[feed]) onFeedLoaded(feed, true, noHist);
-    else $.ajax({url: feed + ".htm", cache: false, error: (e) => {
-        console.log(feed);
-        console.log(e);
-        msg();
-        if ($("#Main").html() == "")
-            setTimeout(() => {loadFeed("home")}, 1500);
-    }, success:(e) => {
-        onFeedLoaded(feed, e, noHist);
-    }});
+    else fetch(feed + ".htm", {cache: "reload"}).then(
+        e => {
+            if (e.ok) e.text().then(e => onFeedLoaded(feed, e, noHist));
+            else loadFeed.error(feed, e);
+        },
+        e => loadFeed.error(feed, e));
     loadFeed.refresh = setTimeout(() => {
         location.reload();
     }, 3600 * 4000);
+}
+
+loadFeed.error = (feed, e) => {
+    console.log(feed);
+    console.log(e);
+    msg();
+    if ($("#Main").html() == "") setTimeout(() => {loadFeed("home")}, 1500);
 }
 
 loadFeed.cache = {};
@@ -90,11 +94,9 @@ mediaURL.urls = {
     desmos: "https://www.desmos.com/favicon.ico",
     phet: "https://phet.colorado.edu/favicon.ico",
     print: data_images.print,
-    html5: data_images.sim,
+    html5: data_images.html,
     xml: data_images.xml,
     simulation: data_images.sim,
-    "simulation.svg": data_images.sim,
-    "html5.svg": data_images.html,
     help: "media/help.svg",
     gdrv: data_images.gdrv,
     gdoc: "https://www.gstatic.com/images/branding/product/1x/docs_2020q4_48dp.png",
@@ -534,7 +536,8 @@ function teacher(t, init) {
         if (btoa(localStorage.getItem("teacher_code")) == teacher.access)
             teacher.mode = true;
     console.log("Teacher", teacher.mode);
-    if (teacher.mode && location.hostname == "dmaccarthy.github.io") serverUTC();
+    if (teacher.mode) // if (location.hostname == "dmaccarthy.github.io")
+            serverUTC().then(a => a.json()).then(console.log);
     if (!init) loadFeed();
 }
 
@@ -556,7 +559,8 @@ function msg(html, time) {
     }, time ? time : 2500);
 }
 
-function serverUTC(cb) {$.ajax({url: serverUTC.url, success: cb ? cb : console.log})}
+
+function serverUTC() {return fetch(serverUTC.url)}
 serverUTC.url = "https://dmaccarthy.vercel.app/utc.json";
 
 async function save(n, sel) {

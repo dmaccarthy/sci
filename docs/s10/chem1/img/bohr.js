@@ -1,10 +1,14 @@
 SVG2.cache("s10/chem1/img/bohr.js", {
 
-bohr: (sel) => {
-    let e = $(sel);
-    let [elem, A, M, Q] = JSON.parse(e.attr("data-args"));
+bohr: (sel, A, M, Q) => {
+    if (!Q) Q = 0;
     let elec = A - Q;
-    let capacity = [2, 8, 8, 18, 18];
+    if (elec > 36) {
+        console.warn("Energy level diagrams not supported for more than 36 electrons");
+        return;
+    }
+
+    let capacity = [2, 8, 8, 18];
     let valence = 0;
     let econfig = [];
     while (elec) {
@@ -18,45 +22,40 @@ bohr: (sel) => {
     }
     if (econfig.length == 0) econfig = [0];
     valence = econfig.length;
-    let w = 128, ymin = -1.2;
-    let h = (w - 4) / 1 * (valence / 2 - ymin) + 4;
-    e.attr({width: w, height: h, "data-aspect": `${w}/${h}`});
-    let svg = new SVG_Animation(sel, -0.5, 0.5, ymin, valence / 2, 2);
-    let r = 0.45;
-    let g = svg.group().css({fill: "none", stroke: "black", "stroke-width": "2px"});
-    let t = svg.group().css({fill: "black"});
-    svg.circle(0.45, [0, r + ymin], g);
-    for (let i=0;i<valence;i++) {
-        let q = econfig[i];
-        let y = i / 2;
-        svg.line([-r, y], [r, y], g);
-        if (q) svg.symbol(`${q} e`, {q1: "–"}, [0, y + 0.14], t);
+
+    let svg = new SVG2(sel, {grid: 0, margin:2, scale: 40, lrbt: [-1, 1, -1.6, valence + 1]}).css(".NoStyle");
+    let color = svg.$.closest(".Answer").length ? "red" : "black";
+    let g = svg.group(`${color}@2`, "nofill");
+    let text = svg.group("symbol", 20, color);
+    g.circle(1, [0, -0.6]);
+    for (let y=1;y<=valence;y++) {
+        g.line([-1, y], [1, y]);
+        let e = econfig[y - 1];
+        if (e) {
+            e = `${e} e`;
+            text.symb(0, [e, 2], ["–", 0, ["20", "8"]]).align([0, y + 0.1], 0.5, 1);
+        }
     }
-    svg.symbol(`${A} p`, {q1: "+"}, [0, ymin + r * (M > A ? 1.25 : 1)], t);
-    if (M > A) svg.symbol(`${M - A} n`, {}, [0, ymin + 0.5 * r], t);
-    svg.$.find("g.Symbol text").css({"font-family": `"Noto Serif", serif`});
-    svg.final();
+    let p = `${A} p`;
+    text.symb(0, [p, 2], ["+", 0, [(10 + 4 * p.length).toFixed(0), "8"]]).align([0, -0.2]);
+    text.symb(0, [`${M-A} n`, 2]).align([0, -1]);
 },
 
-dot: (sel) => {
+dot: (sel, elem, q, val) => {
     let paired = 0;
-    let [elem, q, val] = JSON.parse($(sel).attr("data-args"));
     if (val == -2) {val = 5; paired = 1}
     else if (val == -5) {val = 6; paired = 2}
     let svg;
+    let color = $(sel).closest(".Answer").length ? "red" : "black";
     if (q) {
-        $(sel).attr({width: 135, height: 125, "data-aspect": "27/25"});
-        svg = new SVG_Animation(sel, -1.1, 1.6, -1.1, 1.4);
-        let g = svg.group().css({fill: "none", stroke: "black", "stroke-width": "2px"});
-        svg.poly([[-0.8, 1], [-1, 1], [-1, -1], [-0.8, -1]], 0, g);
-        svg.poly([[0.8, 1], [1, 1], [1, -1], [0.8, -1]], 0, g);
-        let t = svg.text(q > 0 ? `${q==1 ? "&nbsp;" : q}+` : `${q == -1 ? "&nbsp;" : -q}–`, [1.1, 1.1], g);
-        t.css({"text-anchor": "start", stroke: "none", fill: "black", "font-size": "18px"});
+        svg = new SVG2(sel, {scale: 36, lrbt: [-1.1, 1.6, -1.1, 1.4]}).css(".NoStyle");
+        let g = svg.group("nofill", `${color}@2`);
+        g.poly([[-0.8, 1], [-1, 1], [-1, -1], [-0.8, -1]]);
+        g.poly([[0.8, 1], [1, 1], [1, -1], [0.8, -1]]);
+        svg.gtext(q > 0 ? `${q==1 ? "&nbsp;" : q}+` : `${q == -1 ? "&nbsp;" : -q}–`, ["text", color, 18]).align([1.1, 1.1], 0, 0.5);
     }
-    else {
-        $(sel).attr({width: 110, height: 110, "data-aspect": "1"});
-        svg = new SVG_Animation(sel, -1.1, 1.1, -1.1, 1.1);        
-    }
+    else svg = new SVG2(sel, {scale: 36, lrbt: [-1.1, 1.1, -1.1, 1.1]});
+    let g = svg.group(color);
     let r = 0.7, dr = 0.18;
     let dots = [[0, r], [r, 0], [0, -r], [-r, 0]];
     for (let i=0;i<val;i++) {
@@ -66,29 +65,27 @@ dot: (sel) => {
             let dy = i % 2 == 0 ? 0 : (i > 3 ? dr : -dr);
             pos = pos.plus([dx, dy]);
         }
-        if (!paired || (paired == 1 && (i == 0 || i == 4)) || (paired == 2 && i != 3)) svg.circle(0.07, pos);
+        if (!paired || (paired == 1 && (i == 0 || i == 4)) || (paired == 2 && i != 3)) g.circle(0.07, pos);
     }
-    // svg.grid([-1, 2, 0.2], [-1, 2, 0.2]);
-    svg.text(elem, [0, 0]).css({"font-size": "28px"});
-    svg.final();
+    svg.gtext(elem, ["text", color, 24]).align([0, 0]);
 },
 
 carbon: (sel) => {
     let svg = new SVG2(sel, {size: [256, 256], lrbt: [-1, 1]}).css(".NoStyle");
-
-    let b = 0.04, css = SVG2.css("green", "black1");
+    let b = 0.04;
 
     // Electrons
-    let g = svg.group("nofill", "green1");
+    let g = svg.group("nofill", "green@1");
     for (let [r, n] of [[0.35, 2], [0.62, 4], [0.95, 0]]) {
         g.circle(r, [0, 0]);
         let angle = 360 * Math.random();
         let elec = (i) => vec2d(r, angle + 360 * i / n)
-        for (let i=0;i<n;i++) svg.circle(0.75 * b, elec(i)).css(css);
+        for (let i=0;i<n;i++)
+            css(svg.circle(0.75 * b, elec(i)), "limegreen", "black@1");
     }
 
     // Nucleons
-    g = svg.group("black1", "red");
+    g = svg.group("black@1", "red");
     let proton = true;
     for (let pt of [[-0.0417, 0.0446], [0.0402, -0.0345], [-0.0178, -0.0509], [0.0481, 0.0360],
         [-0.0389, 0.0567], [-0.0475, 0.0403], [-0.0199, 0.0177], [-0.0613, -0.0053],

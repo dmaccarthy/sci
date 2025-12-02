@@ -2,19 +2,19 @@ SVG2.cache("p30/elec/img/Efield.js", {
 
 fbd1: (sel) => {
     let svg = new SVG2(sel, {size: [364, 338], lrbt: [-1, 13, -1], grid: 1, noAxes: 1});
-    let g = svg.group("nofill", "grey1", ".Toggle3");
+    let g = svg.group("nofill", "grey@1", ".Toggle3");
     g.poly([[0, 6], [0, 0], [12, 0], [0, 6], [3, 6]]);
-    g = svg.group("blue", "black1");
+    g = svg.group("#0065fe", "black@1");
     g.circle(0.6);
     g.circle(0.6, [12, 0]);
     g = g.group("green");
     g.circle(0.2, [6, 0]).addClass("Toggle0");
     g.circle(0.2, [0, 6]).addClass("Toggle3");
 
-    g = svg.group("text", "f28", "bold", {fill: "white"});
+    g = svg.group("text", 28, "bold", {fill: "white"});
     g.gtext("+", {}, [0, 0]);
     g.gtext("–", {}, [12, "3"]);
-    g = svg.group("text", "f18", "ital", ".Toggle3");
+    g = svg.group("text", 18, "ital", ".Toggle3");
     g.gtext("θ", {}, [2, 5.55]);
     g.gtext("θ", {}, [10, 0.4]);
 

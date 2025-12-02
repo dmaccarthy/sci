@@ -3,14 +3,14 @@ SVG2.cache("p20/vec2d/img/diag.js", {
 Ex1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[5, -4]], {shift: [-3, 2],
         lrbt: [-4, 3, -3, 3], scale: 50, margin: 8, grid: 0.5, tick: "-8", label: [1, 0, "-12", "-20"]});
-    let g = svg.group("blue");
+    let g = svg.group("#0065fe");
     g.$.insertBefore(svg.$.find(".TipToTail2D"));
     g.circle("5", [-3, 2]);
     g.circle("5", [2, -2]);
     svg.$.find(".Component").remove();
     svg.gtext("m", "text", [2.5, 2.5]);
     let toggle = svg.group();
-    toggle.group("black2").line([-3, 2], [-1, 2]);
+    toggle.group("black@2").line([-3, 2], [-1, 2]);
     toggle.gtext("θ", ["text", {"font-style": "italic"}], [-2.2, 1.75]);
     svg.$.on("click", () => toggle.$.fadeToggle());
 },
@@ -26,7 +26,7 @@ Ex3: (sel) => {
     let F1 = vec2d(25, 62), F2 = vec2d(30, -70);
     let svg = SVG2.vec_diag(sel, [F1, F2], {lrbt: [-3, 24, -9, 24],
         scale: 12, margin: 8, grid: 1.5, tick: "-8", label: [3, 0, "-12", "-20"]});
-    svg.line(F1, F1.plus([4, 0])).css(SVG2.css("black1")).addClass("Toggle1");
+    css(svg.line(F1, F1.plus([4, 0])), "black@1").addClass("Toggle1");
     svg.$.find(".Component").remove();
     svg.gtext("N", "text", [1.5, 24]);
     let g = svg.$.find("g.Arrow");
@@ -43,7 +43,7 @@ Q1: (sel, comp) => {
     let yellow = diag.find(".Component");
     if (!comp) yellow.remove();
 
-    let sym = svg.group("symbol", "f28", "blue");
+    let sym = svg.group("symbol", 28, "#0065fe");
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "21"]];
     let sub = ["14", "-8"];
@@ -86,10 +86,10 @@ Q4: (sel) => {
     let arr = ["→", SM + BD, [0, "21"]];
     let sub = ["14", "-8"];
     let delta = ["Δ", 0, ["-20", 0]];
-    let g = svg.group("symbol", "f28", "red");
+    let g = svg.group("symbol", 28, "red");
     g.symb(0, ["d", BD], arr, delta, ["1", SM, sub]).align([11, 6]);
     g.symb(0, ["d", BD], arr, delta, ["2", SM, sub]).align([2, 18]);
-    g.symb(0, ["d", BD], arr, delta).align([-11, 3]).css("blue");
+    g.symb(0, ["d", BD], arr, delta).align([-11, 3]).css("#0065fe");
 },
 
 Q5: (sel, mu) => {
@@ -105,11 +105,11 @@ Q5: (sel, mu) => {
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "21"]];
     let sub = ["14", "-8"];
-    let g = svg.group("symbol", "f28", "red");
+    let g = svg.group("symbol", 28, "red");
     g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-0.5, -1.5]);
     g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([0.75, -2]);
     if (mu) g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([0.8, 0.3]);
-    g.symb(0, ["F", BD], arr, ["net", SM_IT, sub]).align([0.2, 0.4]).css("blue");
+    g.symb(0, ["F", BD], arr, ["net", SM_IT, sub]).align([0.2, 0.4]).css("#0065fe");
     svg.line([-1, tan(14)], [1.5, -1.5*tan(14)]).css({stroke: "lightgrey"}).insertBefore(svg.$.find(".TipToTail2D")[0]);
 },
 
