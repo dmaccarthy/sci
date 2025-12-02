@@ -10,9 +10,9 @@ p2d: (sel) => {
     let arr = ["→", SM + BD, [0, "16"]];
     let sub = ["14", "-10"];
     let g = svg.group("symbol", "red", 32);
-    g.symb(0, ["p", BD], arr, ["1", SM, sub]).align([14, 1.75]);
-    g.symb(0, ["p", BD], arr, ["2", SM, sub]).align([25, 17]);
-    g.symb(0, ["p", BD], arr, ["Σ", 0, ["-24", 0]]).align([11, 19]).css("#0065fe");
+    g.symb(["p", BD], arr, ["1", SM, sub]).align([14, 1.75]);
+    g.symb(["p", BD], arr, ["2", SM, sub]).align([25, 17]);
+    g.symb(["p", BD], arr, ["Σ", 0, ["-24", 0]]).align([11, 19]).css("#0065fe");
 },
 
 F: (sel) => {
@@ -24,9 +24,9 @@ F: (sel) => {
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
     let g = svg.group("symbol", "red", 24);
-    g.symb(0, ["F", BD], arr).align([3.25, 2.75]).css(".Resultant");
-    g.symb(0, ["F", BD], arr, ["x", SM_IT, sub]).align([3.5, -1]);
-    g.symb(0, ["F", BD], arr, ["y", SM_IT, sub]).align([7.75, 2]);
+    g.symb(["F", BD], arr).align([3.25, 2.75]).css(".Resultant");
+    g.symb(["F", BD], arr, ["x", SM_IT, sub]).align([3.5, -1]);
+    g.symb(["F", BD], arr, ["y", SM_IT, sub]).align([7.75, 2]);
 
     svg.$.on("click", () => {
         svg.$.find("g.TipToTail2D > g.Component").fadeToggle();
@@ -42,9 +42,9 @@ boat: (sel) => {
     let arr = ["→", SM + BD, [0, "16"]];
     let sub = ["14", "-10"];
     let g = svg.group("symbol", "red", 32);
-    g.symb(0, ["v", BD], arr, ["1", SM, sub]).align([-4, 10]);
-    g.symb(0, ["v", BD], arr, ["2", SM, sub]).align([-12.5, 18.5]);
-    g.symb(0, ["v", BD], arr).align([-10, 8]).css("#0065fe");
+    g.symb(["v", BD], arr, ["1", SM, sub]).align([-4, 10]);
+    g.symb(["v", BD], arr, ["2", SM, sub]).align([-12.5, 18.5]);
+    g.symb(["v", BD], arr).align([-10, 8]).css("#0065fe");
 },
 
 });

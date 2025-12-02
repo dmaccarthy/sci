@@ -13,7 +13,7 @@ eld: (sel) => {
         label.line([1.2 * w, E], [2.6 * w, xy[1] + 0.1]);
         let s = `${E.toPrecision(3)}`.replace("-", "–");
         s = [["E", IT], [n == 7 ? "∞" : n, SM, ["12", "-8"]], [`= &nbsp;${s} eV`, 0, ["26", 0]]];
-        s = level.symb(0, ...s).align([0, xy[1]]).css({"text-anchor" : "start"});
+        s = level.symb(...s).align([0, xy[1]]).css({"text-anchor" : "start"});
         s.config({shift: [2.8 * w, s.shift[1]]});
     }
     svg.arrow({tail: [0, E1/16], tip: [0, E1/4]}, {tail: "4"}).css(".Toggle1", "arrow");

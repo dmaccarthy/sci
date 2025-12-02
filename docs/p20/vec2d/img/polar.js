@@ -7,7 +7,7 @@ rev: (sel) => {
     p = p.update().addClass("Toggle0");
     p.css({fill: "none", stroke: "black"}).insertAfter(svg.$.find("g.Grid"));
     svg.gtext("m", "text", [1.5, 5.5]);
-    svg.group("text", 18, ".Toggle0").symb(0, ["θ", 2]).align([0.5, 0.6]);
+    svg.group("text", 18, ".Toggle0").symb(["θ", 2]).align([0.5, 0.6]);
     svg.$.find("g.TipToTail2D g.Arrow:not(.Component)").addClass("Toggle0");
     svg.$.on("click", () => svg.$.find(".Toggle0").fadeToggle());
 },
@@ -21,10 +21,10 @@ Ex1: (sel) => {
     let arr = ["→", 5, [0, "16"]];
     let sub = ["12", "-8"];
     let g = svg.group("symbol", 28, "black");
-    g.symb(0, ["v", BD], arr).align([4, -2]).css("red");
-    g.symb(0, ["v", BD], arr, ["x", SM_IT, sub]).align([4, 0.7]);
-    g.symb(0, ["v", BD], arr, ["y", SM_IT, sub]).align([8.6, -1.2]);
-    g.symb(0, ["θ", IT]).align([2.4, -0.36]).css(24);
+    g.symb(["v", BD], arr).align([4, -2]).css("red");
+    g.symb(["v", BD], arr, ["x", SM_IT, sub]).align([4, 0.7]);
+    g.symb(["v", BD], arr, ["y", SM_IT, sub]).align([8.6, -1.2]);
+    g.symb(["θ", IT]).align([2.4, -0.36]).css(24);
 },
 
 Ex2: (sel) => {
@@ -38,10 +38,10 @@ Ex2: (sel) => {
     let arr = ["→", 5, [0, "20"]];
     let sub = ["12", "-8"];
     let g = svg.group("symbol", 28, "black");
-    g.symb(0, ["F", BD], arr).align([-23, 13]).css("red");
-    g.symb(0, ["F", BD], arr, ["x", SM_IT, sub]).align([-25, -5]);
-    g.symb(0, ["F", BD], arr, ["y", SM_IT, sub]).align([-52, 8]);
-    g.symb(0, ["θ", IT]).align([3, 4]).css(24);
+    g.symb(["F", BD], arr).align([-23, 13]).css("red");
+    g.symb(["F", BD], arr, ["x", SM_IT, sub]).align([-25, -5]);
+    g.symb(["F", BD], arr, ["y", SM_IT, sub]).align([-52, 8]);
+    g.symb(["θ", IT]).align([3, 4]).css(24);
 }
 
 });

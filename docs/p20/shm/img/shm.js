@@ -26,8 +26,8 @@ v_t: (sel, n, click) => {
     svg.animate(svg.series[0].find("polyline"));
     let arr = ["→", 5, [0, "14"]];
     let g = svg.group("symbol", 24);
-    g.symb(0, ["t", 2]).align([1.9, "-14"]);
-    let sym = g.symb(0, ["x", 1], arr).align(["-14", 1.125]);
+    g.symb(["t", 2]).align([1.9, "-14"]);
+    let sym = g.symb(["x", 1], arr).align(["-14", 1.125]);
     sym.css({fill: "#0065fe"});
 
     let next_graph = (n) => {

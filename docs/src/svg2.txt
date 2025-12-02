@@ -39,7 +39,7 @@ Add composite content:
     g.ray(p1, p2, size or {size, ratio}, ...pos) -> SVG2g
     g.chevron(xy, dir, size or {size, ratio}) -> SVG2g
     g.stickman(h) -> SVG2g
-    g.symb(size, ...args) -> SVG2g
+    g.symb(...args) -> SVG2g
     g.symbol(...args) -> SVG2g  # Deprecated!!
     g.coil(size, n, reverse, r, axle) -> SVG2g
     g.ruler(n, tick, opt) -> SVG2g

@@ -7,9 +7,9 @@ Q1a: (sel) => {
     svg.text("km", [4.5, -0.85]).css({"font-size": "18px"});
     let [arr, sub] = [["→", 5, [0, "21"]], [6, ["12", "-8"]]];
     let g = svg.group("symbol", 28, "red");
-    g.symb(0, ["d", 1], arr, ["Δ", 0, ["-20", 0]]).align([-0.5, 0.55]);
-    g.symb(0, ["d", 1], arr, ["i", ...sub]).align([-4, 0.55]);
-    g.symb(0, ["d", 1], arr, ["f", ...sub]).align([3.2, 0.55]);
+    g.symb(["d", 1], arr, ["Δ", 0, ["-20", 0]]).align([-0.5, 0.55]);
+    g.symb(["d", 1], arr, ["i", ...sub]).align([-4, 0.55]);
+    g.symb(["d", 1], arr, ["f", ...sub]).align([3.2, 0.55]);
 
 },
 
@@ -22,7 +22,7 @@ Q1b: (sel) => {
     svg.text("km", [4.5, -0.85]).css({"font-size": "18px"});
     let arr = ["→", 5, [0, "21"]];
     g = svg.group("symbol", 28, "#0065fe");
-    g.symb(0, ["d", 1], arr, ["Δ", 0, ["-20", 0]]).align([-1.5, 0.8]);
+    g.symb(["d", 1], arr, ["Δ", 0, ["-20", 0]]).align([-1.5, 0.8]);
 },
 
 Q2: (sel) => {

@@ -26,15 +26,15 @@ roller: (sel) => {
         let c = cart(svg, 1.5, [x, y]);
         let x1 = x == 0 ? 0.3 : x;
         g.arrow(3, {tail: "6"}).config({theta: -90, shift: [x1, y - 1.5]});
-        sym.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([x1 + 1.2, y - 1.5]);
+        sym.symb(["F", BD], arr, ["g", SM_IT, sub]).align([x1 + 1.2, y - 1.5]);
         if (x == 0) {
             c.config({theta: 180});
             g.arrow(2, {tail: "6"}).config({theta: -90, shift: [-0.3, y - 1]});
-            sym.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([-1.75, y - 0.6]);
+            sym.symb(["F", BD], arr, ["n", SM_IT, sub]).align([-1.75, y - 0.6]);
         }
         else {
             g.arrow(2, {tail: "6"}).config({theta: 90, shift: [x, y + 2.25]});
-            sym.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([x + 1.2, y + 2]);
+            sym.symb(["F", BD], arr, ["n", SM_IT, sub]).align([x + 1.2, y + 2]);
         }
     }
 },
@@ -54,8 +54,8 @@ loopy: (sel) => {
         g.stickman(0.3).css({"stroke-opacity": 0.6}).config({shift: [0, y]});
         red.arrow({tail: [0, y - 0.02], tip: [0, y - 0.4]}, {tail: "5"});
         red.arrow({tail: [0, y + 0.02], tip: [0, y + (y < 0 ? 0.6: 0.2)]}, {tail: "5"});
-        sym.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([0.25, y - 0.19]);
-        sym.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([0.25, y + (y < 0 ? 0.24 : 0.14)]);
+        sym.symb(["F", BD], arr, ["g", SM_IT, sub]).align([0.25, y - 0.19]);
+        sym.symb(["F", BD], arr, ["n", SM_IT, sub]).align([0.25, y + (y < 0 ? 0.24 : 0.14)]);
     }
 },
 
@@ -64,7 +64,7 @@ car: (sel) => {
     let r = 3;
     svg.group("nofill", "black@2").circle(r, [0, -r]);
     svg.image("media/car.svg", new RArray(2.95, 1).times(0.2), [0.05, 0.11]);
-    svg.symb(0, ["F", 1], ["→", 5, [0, "20"]], ["g", 6, ["12", "-8"]]).align([0.15, -0.25]).css("symbol", "red", 28);
+    svg.symb(["F", 1], ["→", 5, [0, "20"]], ["g", 6, ["12", "-8"]]).align([0.15, -0.25]).css("symbol", "red", 28);
     svg.arrow({tail: [0, 0.02], tip: [0, -0.5]}, {tail: "5"}).css("arrow");
 },
 
@@ -78,8 +78,8 @@ stick: (sel) => {
     g.arrow({tail: [0, 1.2], tip: [0, 1.2 + 1.5 * 504/638]}, {tail: "8"});
     g = svg.group().css("symbol", "red", 28);
     let [arr, sub] = [["→", 4, [0, "20"]], ["12", "-8"]];
-    g.symb(0, ["F", 1], arr, ["g", 6, sub]).align([0.25, -0.75]);
-    g.symb(0, ["F", 1], arr, ["n", 6, sub]).align([0.25, 1.6]);
+    g.symb(["F", 1], arr, ["g", 6, sub]).align([0.25, -0.75]);
+    g.symb(["F", 1], arr, ["n", 6, sub]).align([0.25, 1.6]);
 },
 
 astro: (sel) => {
@@ -92,8 +92,8 @@ astro: (sel) => {
     g.arrow({tail: [0, 1.2], tip: [0, 1.2 + 1.5 * 200/736]}, {tail: "8"});
     let [arr, sub] = [["→", 4, [0, "20"]], ["12", "-8"]];
     g = svg.group().css("symbol", "red", 28);
-    g.symb(0, ["F", 1], arr, ["g", 6, sub]).align([0.4, -0.75]);
-    g.symb(0, ["F", 1], arr, ["n", 6, sub]).align([0.4, 1.3]);
+    g.symb(["F", 1], arr, ["g", 6, sub]).align([0.4, -0.75]);
+    g.symb(["F", 1], arr, ["n", 6, sub]).align([0.4, 1.3]);
 },
 
 loop: (sel) => {
@@ -106,8 +106,8 @@ loop: (sel) => {
     g.arrow({tail: [-0.1, 0], tip: [-0.1, -0.8]}, {tail: "8"});
     let [arr, sub] = [["→", 4, [0, "20"]], ["12", "-8"]];
     g = svg.group().css("symbol", "red", 28);
-    g.symb(0, ["F", 1], arr, ["n", 6, sub]).align([0.4, -0.75]);
-    g.symb(0, ["F", 1], arr, ["g", 6, sub]).align([-0.5, -0.4]);
+    g.symb(["F", 1], arr, ["n", 6, sub]).align([0.4, -0.75]);
+    g.symb(["F", 1], arr, ["g", 6, sub]).align([-0.5, -0.4]);
 },
 
 rope: (sel) => {
@@ -127,10 +127,10 @@ rope: (sel) => {
 
     let [arr, sub] = [["→", 4, [0, "20"]], ["12", "-8"]];
     g = svg.group().css("symbol", "red", 28);
-    g.symb(0, ["F", 1], arr, ["g", 6, sub]).align([-0.3, 0.7]);
-    g.symb(0, ["F", 1], arr, ["t", 6, sub]).align([-0.75, 0.85]);
-    g.symb(0, ["F", 1], arr, ["g", 6, sub]).align([0.3, -0.3]);
-    g.symb(0, ["F", 1], arr, ["t", 6, sub]).align([0.7, 0.5]);
+    g.symb(["F", 1], arr, ["g", 6, sub]).align([-0.3, 0.7]);
+    g.symb(["F", 1], arr, ["t", 6, sub]).align([-0.75, 0.85]);
+    g.symb(["F", 1], arr, ["g", 6, sub]).align([0.3, -0.3]);
+    g.symb(["F", 1], arr, ["t", 6, sub]).align([0.7, 0.5]);
 
     g = svg.group().css("text", 24);
     g.text("Top", [-0.5, 1.15]);
@@ -154,7 +154,7 @@ book: (sel) => {
 
     let Fn = svg.group().config({theta: a}).css("arrow", "red");
     Fn.arrow({tail: [0, -0.90], tip: [0, -0.4]}, {tail: "8"});
-    g = Fn.symb(0, ["F", 1], ["→", 4, [0, "20"]], ["n", 6, ["12", "-8"]]);
+    g = Fn.symb(["F", 1], ["→", 4, [0, "20"]], ["n", 6, ["12", "-8"]]);
     g.css("symbol", 28, {stroke: "none"}).align([0.15, -0.75]);
 },
 

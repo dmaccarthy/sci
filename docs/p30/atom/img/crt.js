@@ -31,7 +31,7 @@ _crt: (sel) => {
     wires.poly([[1, -0.6], [1.6, -0.6], [1.6, -2]]);
 
     // Label electrode wires
-    g = svg.group().css(28);
+    g = svg.group(28);
     let pm = g.ctext(["+", [1.6, -2.4]], ["–", [-.6, -2.4]], ["+", [x, -3.5]], ["–", [x, 3.3]]);
     for (let i=2; i<4; i++) pm[i].css(".Toggle0");
 
@@ -40,12 +40,12 @@ _crt: (sel) => {
     tube.close().update().css({fill: "none", stroke: "black"});
 
     // Label magnetic field
-    let mag = svg.group().config({shift: [x, -0.5]}).addClass("Toggle4");
+    let mag = svg.group(".Toggle4").config({shift: [x, -0.5]});
     let [BD, SM_BD] = [1, 5];
     let arr = [0, "20"];
-    mag.circle(0.3).css({fill: "none", stroke: "green"});
-    mag.circle(0.05).css({fill: "green", stroke: "none"});
-    mag.symb(28, ["B", BD], ["→", SM_BD, arr]).align([0.75, 0]).css({fill: "green"});
+    css(mag.circle(0.3), "nofill", "green@1");
+    css(mag.circle(0.05), "green", "nostroke");
+    mag.group("green", 28).symb(["B", BD], ["→", SM_BD, arr]).align([0.75, 0]);
     mag.$.hide();
 
     return svg;

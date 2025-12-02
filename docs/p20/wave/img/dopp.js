@@ -34,8 +34,8 @@ Q2: (sel) => {
     g.arrow({tail: [-0.6, 0.3], length: 1.2}, t6).css("#0065fe");
     g = svg.group("symbol", 28, "red");
     let v = [["v", 1], SVG2.arr("14")];
-    g.symb(0, ...v, ["o", 6, ["10", "-8"]]).align([1.9, 0.8], 0.5, 0);
-    g.symb(0, ...v).align([0, 0.8], 0.5, 0).css("#0065fe");
+    g.symb(...v, ["o", 6, ["10", "-8"]]).align([1.9, 0.8], 0.5, 0);
+    g.symb(...v).align([0, 0.8], 0.5, 0).css("#0065fe");
 },
 
 Q3: (sel) => {
@@ -54,8 +54,8 @@ Q3: (sel) => {
     g.arrow({tail: [0, 0.3], length: 1}, t6).css("#0065fe");
     g = svg.group("symbol", 28, "red");
     let v = [["v", 1], SVG2.arr("14")];
-    g.symb(0, ...v, ["s", 6, ["10", "-8"]]).align([-1.6, 0.8], 0, 0);
-    g.symb(0, ...v).align([0.5, 0.8], 0.5, 0).css("#0065fe");
+    g.symb(...v, ["s", 6, ["10", "-8"]]).align([-1.6, 0.8], 0, 0);
+    g.symb(...v).align([0.5, 0.8], 0.5, 0).css("#0065fe");
 },
 
 });

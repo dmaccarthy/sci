@@ -33,12 +33,12 @@ bohr: (sel, A, M, Q) => {
         let e = econfig[y - 1];
         if (e) {
             e = `${e} e`;
-            text.symb(0, [e, 2], ["–", 0, ["20", "8"]]).align([0, y + 0.1], 0.5, 1);
+            text.symb([e, 2], ["–", 0, ["20", "8"]]).align([0, y + 0.1], 0.5, 1);
         }
     }
     let p = `${A} p`;
-    text.symb(0, [p, 2], ["+", 0, [(10 + 4 * p.length).toFixed(0), "8"]]).align([0, -0.2]);
-    text.symb(0, [`${M-A} n`, 2]).align([0, -1]);
+    text.symb([p, 2], ["+", 0, [(10 + 4 * p.length).toFixed(0), "8"]]).align([0, -0.2]);
+    text.symb([`${M-A} n`, 2]).align([0, -1]);
 },
 
 dot: (sel, elem, q, val) => {

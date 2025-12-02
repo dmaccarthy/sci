@@ -16,11 +16,11 @@ binstar: (sel) => {
     g = svg.group().css("text");
     g.ctext(["10", [74, -3]], ["70", [35, -3]], ["20", [66, 10]]);
     g = g.group().css("symbol", "ital");
-    g.symb(0, ["α"]).align([13, 2]);
-    g.symb(0, ["β"]).align([76, 2]);
+    g.symb(["α"]).align([13, 2]);
+    g.symb(["β"]).align([76, 2]);
     g = g.group().css(28);
-    g.symb(0, ["r"], ["P", 4, ["8", "-8"]]).align([34, 14]);
-    g.symb(0, ["r"], ["S", 4, ["8", "-8"]]).align([79, 10]);
+    g.symb(["r"], ["P", 4, ["8", "-8"]]).align([34, 14]);
+    g.symb(["r"], ["S", 4, ["8", "-8"]]).align([79, 10]);
 },
 
 quiz_wr: (sel) => {

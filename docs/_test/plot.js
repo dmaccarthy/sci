@@ -75,7 +75,7 @@ earth: (sel) => {
         x: {tick: [8, 19, 2], shift: [0, "-22"]},
     });
     let g = svg.group().css("text");
-    g.symb(0, ["× 10"], ["m", 0, ["40", 0]], ["6", 4, ["22", "8"]]).align([19, "16"]);
+    g.symb(["× 10"], ["m", 0, ["40", 0]], ["6", 4, ["22", "8"]]).align([19, "16"]);
     svg.circle(6.37).css({fill: "#0065fe", "fill-opacity": 0.3, stroke: "black"});
 },
 
@@ -106,7 +106,7 @@ pi: (sel) => {
     let svg = new SVG2(sel, {size: [64, 64], lrbt: [-2, 2, -2.28], grid: 0}).css(".NoStyle");
     let arr = ["→", 5, [0, "26"]];
     let j = ["j", 6, ["26", "-12"]];
-    svg.group("symbol", "#0065fe", {"font-size": "52px", "font-family": "serif"}).symb(0, ["m", 1], arr, j).align([0, 0]);
+    svg.group("symbol", "#0065fe", {"font-size": "52px", "font-family": "serif"}).symb(["m", 1], arr, j).align([0, 0]);
 },
     
 plot: (sel) => {
@@ -137,7 +137,7 @@ pe: (sel) => { // Photoelectric Effect graph
         ]
     });
     let g = svg.find("g.Text");
-    let f = g.symb(0, ["Frequency / 10 ", 0], ["14", 4, ["70", "12"]], ["Hz", 0, ["96", 0]]).align([6, "-44"]);
+    let f = g.symb(["Frequency / 10 ", 0], ["14", 4, ["70", "12"]], ["Hz", 0, ["96", 0]]).align([6, "-44"]);
     svg.css(".NoStyle", "text", "plot");
     g.text("P", [9.6, 2.4]).css({fill: "#0065fe"});
     // svg.save();

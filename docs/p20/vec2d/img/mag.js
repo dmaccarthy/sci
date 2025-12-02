@@ -46,10 +46,10 @@ hiker: (sel) => {
     let arr = ["→", SM + BD, [0, "22"]];
     let sub = ["12", "-8"];
     g = svg.group("symbol", 28, "#0065fe");
-    g.symb(0, ["d", BD], arr, ["i", SM_IT, sub]).align([-2.7, 5.75]);
-    g.symb(0, ["d", BD], arr, ["f", SM_IT, sub]).align([5.5, 1.5]);
-    g.symb(0, ["d", BD], arr, ["Δ", 0, ["-20", 0]]).align([2.5, 3.5]).css("red");
-    g.symb(0, ["θ", IT]).align([-0.8, 4.8]).css("black", 18);
+    g.symb(["d", BD], arr, ["i", SM_IT, sub]).align([-2.7, 5.75]);
+    g.symb(["d", BD], arr, ["f", SM_IT, sub]).align([5.5, 1.5]);
+    g.symb(["d", BD], arr, ["Δ", 0, ["-20", 0]]).align([2.5, 3.5]).css("red");
+    g.symb(["θ", IT]).align([-0.8, 4.8]).css("black", 18);
 
 },
 

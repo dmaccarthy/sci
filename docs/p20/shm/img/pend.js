@@ -23,12 +23,12 @@ fbd: (sel) => {
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
     g = svg.group().css("symbol", 28, "red");
-    g.symb(0, ["θ", IT]).align([-0.12, -0.55]);
-    g.symb(0, ["L", IT]).align([-0.8, -1.2]);
-    g.symb(0, ["x", IT], ["H", SM_IT, sub]).align([-0.6, -2.5]);
-    g.symb(0, ["x", IT]).align([-0.65, -3.1]).css("#0065fe");
-    g.symb(0, ["F", BD], arr, ["t", SM_IT, sub]).align([-1.4, -2.1]);
-    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-1.7, -3.3]);
+    g.symb(["θ", IT]).align([-0.12, -0.55]);
+    g.symb(["L", IT]).align([-0.8, -1.2]);
+    g.symb(["x", IT], ["H", SM_IT, sub]).align([-0.6, -2.5]);
+    g.symb(["x", IT]).align([-0.65, -3.1]).css("#0065fe");
+    g.symb(["F", BD], arr, ["t", SM_IT, sub]).align([-1.4, -2.1]);
+    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([-1.7, -3.3]);
 },
 
 vec: (sel) => {
@@ -40,11 +40,11 @@ vec: (sel) => {
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
     let g = svg.group().css("symbol", 28, "red");
-    g.symb(0, ["F", BD], arr, ["t", SM_IT, sub]).align([0.9, -1.9]);
-    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-0.35, -1.5]);
+    g.symb(["F", BD], arr, ["t", SM_IT, sub]).align([0.9, -1.9]);
+    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([-0.35, -1.5]);
     sub[0] = "16";
-    g.symb(0, ["F", BD], arr, ["net", SM_IT, sub]).align([0.65, 0.07]).css("#0065fe");
-    g.symb(0, ["θ", IT]).align([0.15, -2.3]);
+    g.symb(["F", BD], arr, ["net", SM_IT, sub]).align([0.65, 0.07]).css("#0065fe");
+    g.symb(["θ", IT]).align([0.15, -2.3]);
 },
 
 });

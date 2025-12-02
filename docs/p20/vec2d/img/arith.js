@@ -31,9 +31,9 @@ ship: (sel) => {
     let arr = ["→", 5, [0, "14"]];
     let sub = ["15", "-10"];
     g = svg.group("symbol", 28, "red");
-    g.symb(0, ["g", BD], arr, ["P", SM, sub]).align([0.4, 0.65]);
-    g.symb(0, ["g", BD], arr, ["M", SM, sub]).align([0.77, 0.6]);
-    g.symb(0, ["a", BD], arr).align([0.52, 0.4]).css("#0065fe");
+    g.symb(["g", BD], arr, ["P", SM, sub]).align([0.4, 0.65]);
+    g.symb(["g", BD], arr, ["M", SM, sub]).align([0.77, 0.6]);
+    g.symb(["a", BD], arr).align([0.52, 0.4]).css("#0065fe");
 },
 
 Ex1_init: (sel) => {
@@ -46,9 +46,9 @@ Ex1_init: (sel) => {
     let sub = ["15", "-10"];
     let delta = ["Δ", 0, ["-20", 0]];
     let g = svg.group("symbol", 28, "red");
-    g.symb(0, ["d", BD], arr, delta).align([35, 10]).css("#0065fe");
-    g.symb(0, ["d", BD], arr, delta, ["1", SM, sub]).align([6, 27]);
-    g.symb(0, ["d", BD], arr, delta, ["2", SM, sub]).align([42, 30]);
+    g.symb(["d", BD], arr, delta).align([35, 10]).css("#0065fe");
+    g.symb(["d", BD], arr, delta, ["1", SM, sub]).align([6, 27]);
+    g.symb(["d", BD], arr, delta, ["2", SM, sub]).align([42, 30]);
     return svg;
 },
 
@@ -82,10 +82,10 @@ Ex2: (sel) => {
     let arr = ["→", 5, [0, "22"]];
     let sub = ["10", "-10"];
     let g = svg.group("symbol", 28, "red");
-    g.symb(0, ["F", BD], arr, ["net", SM_IT, ["16", "-10"]]).css("#0065fe").align([5, 9]);
-    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-15, -45]);
-    g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([20, -50]);
-    g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([20, 5]);
+    g.symb(["F", BD], arr, ["net", SM_IT, ["16", "-10"]]).css("#0065fe").align([5, 9]);
+    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([-15, -45]);
+    g.symb(["F", BD], arr, ["n", SM_IT, sub]).align([20, -50]);
+    g.symb(["F", BD], arr, ["f", SM_IT, sub]).align([20, 5]);
 },
 
 Ex3: (sel) => {
@@ -96,10 +96,10 @@ Ex3: (sel) => {
     let [BD, SM_IT] = [1, 6];
     let arr = ["→", 5, [0, "15"]];
     let g = svg.group("symbol", 28, "red");
-    g.symb(0, ["v", BD], arr, ["Δ", 0, ["-18", 0]]).css("#0065fe").align([2.7, 1.4]);
-    g.symb(0, ["v", BD], arr, ["f", SM_IT, ["10", "-10"]]).align([0.5, 4.2]);
+    g.symb(["v", BD], arr, ["Δ", 0, ["-18", 0]]).css("#0065fe").align([2.7, 1.4]);
+    g.symb(["v", BD], arr, ["f", SM_IT, ["10", "-10"]]).align([0.5, 4.2]);
     arr[2][0] = "8";
-    g.symb(0, ["–v", BD], arr, ["i", SM_IT, ["16", "-10"]]).align([4, 4.5]);
+    g.symb(["–v", BD], arr, ["i", SM_IT, ["16", "-10"]]).align([4, 4.5]);
 },
 
 tri: (sel) => {
@@ -135,9 +135,9 @@ tri: (sel) => {
     wrap({theta: 45, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: -75, pivot: [0, h]}, "30°", [3.5, h]);
     g = g.group("symbol", 28);
-    g.symb(0, ["r", 2], ["A", 6, ["10", "-10"]]).align([-6, 6]);
-    g.symb(0, ["r", 2], ["B", 6, ["10", "-10"]]).align([4.5, 6]);
-    g.symb(0, ["y", 2]).align([1, hA / 2]);
+    g.symb(["r", 2], ["A", 6, ["10", "-10"]]).align([-6, 6]);
+    g.symb(["r", 2], ["B", 6, ["10", "-10"]]).align([4.5, 6]);
+    g.symb(["y", 2]).align([1, hA / 2]);
 
     // Forces at point A
     g = svg.group().css("black@1", {"fill-opacity": 0.6}).addClass("Toggle0");

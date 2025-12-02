@@ -12,12 +12,12 @@ pend: (sel) => {
 
     let [IT, SM_IT] = [2, 6];
     g = svg.group("symbol", 28, "red");
-    g.symb(0, ["x", IT], ["H", SM_IT, ["16", "-8"]]).align([-0.6, -2.55]);
-    g.symb(0, ["x", IT]).align([-0.72, -3.1]).css("#0065fe");
-    g.symb(0, ["θ", IT]).align([-0.1, -0.5]);
-    g.symb(0, ["L", IT]).align([-0.8, -1.25]);
-    g.symb(0, ["L", IT], ["cos", 0, ["32", 0]], ["θ", IT, ["64", 0]]).align([0.5, -1.5]);
-    g.symb(0, ["h", IT]).align([0.25, -3.125]);
+    g.symb(["x", IT], ["H", SM_IT, ["16", "-8"]]).align([-0.6, -2.55]);
+    g.symb(["x", IT]).align([-0.72, -3.1]).css("#0065fe");
+    g.symb(["θ", IT]).align([-0.1, -0.5]);
+    g.symb(["L", IT]).align([-0.8, -1.25]);
+    g.symb(["L", IT], ["cos", 0, ["32", 0]], ["θ", IT, ["64", 0]]).align([0.5, -1.5]);
+    g.symb(["h", IT]).align([0.25, -3.125]);
 },
 
 spring: (sel) => {
@@ -33,8 +33,8 @@ spring: (sel) => {
     svg.arrow({tail: [3, -0.4], tip: [3, 0]}, {tail: "4"}).css("arrow", "#0065fe");
 
     g = svg.group("symbol", "red", 28);
-    g.symb(0, ["x", 1], SVG2.arr("15")).align([4.5, 0.6], 0, 0.6).css("#0065fe");
-    g.symb(0, ["F", 1], SVG2.arr("22"), ["elas", 6, ["20", "-8"]]).align([4.5, 1.1], 0, 0.6);
+    g.symb(["x", 1], SVG2.arr("15")).align([4.5, 0.6], 0, 0.6).css("#0065fe");
+    g.symb(["F", 1], SVG2.arr("22"), ["elas", 6, ["20", "-8"]]).align([4.5, 1.1], 0, 0.6);
     g = svg.group("arrow");
     let arrows = [g.arrow(1), g.arrow(1).css("#0065fe")];
 

@@ -12,8 +12,8 @@ scale: (sel) => {
 
     let [BD, SM_IT, arr, sub] = [1, 6, SVG2.arr(), ["12", "-8"]];
     g = svg.group("symbol", "red", 28);
-    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([0.3, -0.7]);
-    g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([-1.1, 1.6]);
+    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([0.3, -0.7]);
+    g.symb(["F", BD], arr, ["n", SM_IT, sub]).align([-1.1, 1.6]);
 },
 
 skydive: (sel) => {
@@ -25,8 +25,8 @@ skydive: (sel) => {
 
     let [BD, SM_IT, arr, sub] = [1, 6, SVG2.arr(), ["12", "-8"]];
     g = svg.group("symbol", "red", 28);
-    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([0.3, -0.6]);
-    g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([0.3, 2.1]);
+    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([0.3, -0.6]);
+    g.symb(["F", BD], arr, ["f", SM_IT, sub]).align([0.3, 2.1]);
 },
 
 });

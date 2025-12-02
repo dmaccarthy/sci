@@ -9,10 +9,10 @@ delta_v: (sel) => {
     let arr = ["→", SM + BD, [0, "14"]];
     let sub = ["12", "-8"];
     let g = svg.group("symbol", 28, "red");
-    g.symb(0, ["θ", IT]).align([-1.75, 2.5]);
-    g.symb(0, ["v", BD], arr, ["2", SM, sub]).align([-0.6, 2]);
-    g.symb(0, ["–", 0, ["-18", "-2"]], ["v", BD], arr, ["1", SM, sub]).align([-2.6, 1.75]);
-    g.group("#0065fe").symb(0, ["v", BD], arr, ["Δ", 0, ["-18", 0]]).align([-0.9, -0.6]);
+    g.symb(["θ", IT]).align([-1.75, 2.5]);
+    g.symb(["v", BD], arr, ["2", SM, sub]).align([-0.6, 2]);
+    g.symb(["–", 0, ["-18", "-2"]], ["v", BD], arr, ["1", SM, sub]).align([-2.6, 1.75]);
+    g.group("#0065fe").symb(["v", BD], arr, ["Δ", 0, ["-18", 0]]).align([-0.9, -0.6]);
 },
 
 orbit: (sel) => {
@@ -31,17 +31,17 @@ orbit: (sel) => {
     let arr = ["→", SM + BD, [0, "14"]];
     let sub = ["12", "-8"];
     g = svg.group("symbol", "#0065fe", 24);
-    g.symb(0, ["r", IT]).align(p.times(0.5).plus([0, 1]));
-    g.symb(0, ["r", IT]).align([5, -0.7]);
-    g.symb(0, ["s", IT]).align([8.5, 2]);
-    g.symb(0, ["θ", IT]).align([1.5, 0.6]);
-    g.symb(0, ["C"]).align([-0.6, 0.6]);
-    g.symb(0, ["P"], ["1", SM, sub]).align([11, 0]);
-    g.symb(0, ["P"], ["2", SM, sub]).align(p.times(1.1));
+    g.symb(["r", IT]).align(p.times(0.5).plus([0, 1]));
+    g.symb(["r", IT]).align([5, -0.7]);
+    g.symb(["s", IT]).align([8.5, 2]);
+    g.symb(["θ", IT]).align([1.5, 0.6]);
+    g.symb(["C"]).align([-0.6, 0.6]);
+    g.symb(["P"], ["1", SM, sub]).align([11, 0]);
+    g.symb(["P"], ["2", SM, sub]).align(p.times(1.1));
     g = g.group("red");
-    g.symb(0, ["v", BD], arr, ["1", SM, sub]).align([11.2, 2]);
-    g.symb(0, ["v", BD], arr, ["2", SM, sub]).align(vec2d(11.3, a + 10));
-    g.symb(0, ["v", BD], arr, ["Δ", 0, ["-16", 0]]).css(".Toggle0").align([7, 4.5]);
+    g.symb(["v", BD], arr, ["1", SM, sub]).align([11.2, 2]);
+    g.symb(["v", BD], arr, ["2", SM, sub]).align(vec2d(11.3, a + 10));
+    g.symb(["v", BD], arr, ["Δ", 0, ["-16", 0]]).css(".Toggle0").align([7, 4.5]);
 
     L = root(32 * (1 - cos(a)))
     g = svg.group("arrow");
@@ -67,9 +67,9 @@ car: (sel) => {
     let arr = ["→", SM + BD, [0, "20"]];
     let sub = ["12", "-8"];
     g = svg.group("symbol", 28, "red");
-    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-1.5, -3]);
-    g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([-1.5, 5.5]);
-    g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([4, 3]);
+    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([-1.5, -3]);
+    g.symb(["F", BD], arr, ["n", SM_IT, sub]).align([-1.5, 5.5]);
+    g.symb(["F", BD], arr, ["f", SM_IT, sub]).align([4, 3]);
 },
 
 merry: (sel) => {

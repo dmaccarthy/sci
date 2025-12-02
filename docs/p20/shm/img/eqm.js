@@ -32,8 +32,8 @@ pend: (sel, a) => {
     g = pend.group("symbol", 28, "red");
     let arr = SVG2.arr("20");
     let sub = [6, ["12", "-8"]];
-    g.symb(0, ["F", 1], arr, ["t", ...sub]).align([0.2, -1.5]);
-    g = svg.group("symbol", 28, "red").symb(0, ["F", 1], arr, ["g", ...sub]);
+    g.symb(["F", 1], arr, ["t", ...sub]).align([0.2, -1.5]);
+    g = svg.group("symbol", 28, "red").symb(["F", 1], arr, ["g", ...sub]);
     let pt = transform({angle: -a, deg: true}, [0, -2])[0].plus([0.2, -0.5])
     g.align(pt);
 },
@@ -63,7 +63,7 @@ eqm: (sel) => {
         for (let f of [1, -1]) {
             let vec = a.arrow({tail: p0.times(f).plus(c), tip: p1.times(f).plus(c)}, {tail: "4"}).css("."+toggle);
             let sym = s.group().css("."+toggle);
-            sym.symb(0, ["F", 1], arr, [f == -1 ? "n" : "g", ...sub]).align(c.plus([0.12, -0.12 * f]));
+            sym.symb(["F", 1], arr, [f == -1 ? "n" : "g", ...sub]).align(c.plus([0.12, -0.12 * f]));
             if (b[0] && f == -1) {
                 vec.config({pivot: c, theta: b[0]});
                 sym.shift_by([-0.15, 0.1]);

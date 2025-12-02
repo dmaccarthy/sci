@@ -47,9 +47,9 @@ Q1: (sel, comp) => {
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "21"]];
     let sub = ["14", "-8"];
-    sym.symb(0, ["d", BD], arr, ["Δ", 0, ["-20", 0]]).align([2.7, 0.5]).css("red");
-    sym.symb(0, ["d", BD], arr, ["i", SM_IT, sub]).align([3.2, -2.7]);
-    sym.symb(0, ["d", BD], arr, ["f", SM_IT, sub]).align([1, 2.6]);
+    sym.symb(["d", BD], arr, ["Δ", 0, ["-20", 0]]).align([2.7, 0.5]).css("red");
+    sym.symb(["d", BD], arr, ["i", SM_IT, sub]).align([3.2, -2.7]);
+    sym.symb(["d", BD], arr, ["f", SM_IT, sub]).align([1, 2.6]);
 
     let g = svg.group();
     g.line([3, -2], [4, -2]).css({stroke: "black"});
@@ -87,9 +87,9 @@ Q4: (sel) => {
     let sub = ["14", "-8"];
     let delta = ["Δ", 0, ["-20", 0]];
     let g = svg.group("symbol", 28, "red");
-    g.symb(0, ["d", BD], arr, delta, ["1", SM, sub]).align([11, 6]);
-    g.symb(0, ["d", BD], arr, delta, ["2", SM, sub]).align([2, 18]);
-    g.symb(0, ["d", BD], arr, delta).align([-11, 3]).css("#0065fe");
+    g.symb(["d", BD], arr, delta, ["1", SM, sub]).align([11, 6]);
+    g.symb(["d", BD], arr, delta, ["2", SM, sub]).align([2, 18]);
+    g.symb(["d", BD], arr, delta).align([-11, 3]).css("#0065fe");
 },
 
 Q5: (sel, mu) => {
@@ -106,10 +106,10 @@ Q5: (sel, mu) => {
     let arr = ["→", SM + BD, [0, "21"]];
     let sub = ["14", "-8"];
     let g = svg.group("symbol", 28, "red");
-    g.symb(0, ["F", BD], arr, ["g", SM_IT, sub]).align([-0.5, -1.5]);
-    g.symb(0, ["F", BD], arr, ["n", SM_IT, sub]).align([0.75, -2]);
-    if (mu) g.symb(0, ["F", BD], arr, ["f", SM_IT, sub]).align([0.8, 0.3]);
-    g.symb(0, ["F", BD], arr, ["net", SM_IT, sub]).align([0.2, 0.4]).css("#0065fe");
+    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([-0.5, -1.5]);
+    g.symb(["F", BD], arr, ["n", SM_IT, sub]).align([0.75, -2]);
+    if (mu) g.symb(["F", BD], arr, ["f", SM_IT, sub]).align([0.8, 0.3]);
+    g.symb(["F", BD], arr, ["net", SM_IT, sub]).align([0.2, 0.4]).css("#0065fe");
     svg.line([-1, tan(14)], [1.5, -1.5*tan(14)]).css({stroke: "lightgrey"}).insertBefore(svg.$.find(".TipToTail2D")[0]);
 },
 

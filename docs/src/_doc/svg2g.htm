@@ -242,10 +242,10 @@ some_g.plot({x: [3, 0, 4], y: [-1, 5, 2]}, ["10", "10"], null, 45);</pre>
         </ul>
     </div>
 
-    <h3 class="Collapse Code">.symb(size, ...args)</h3>
+    <h3 class="Collapse Code">.symb(...args)</h3>
     <div class="Collapse">
         <p>Composes a symbol which may contain subscripts, superscripts, arrows, etc. Returns a new <code>SVG2g</code> instance.</p>
-        <pre class="Code" data-echo="js">some_g.group().css("symbol", "red").symb(28,
+        <pre class="Code" data-echo="js">some_g.group().css("symbol", "red").symb(
     ["F", 1],
     ["→", 5, [0, "20"]],
     ["g", 6, ["12", "-8"]]
