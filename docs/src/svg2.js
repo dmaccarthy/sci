@@ -614,7 +614,7 @@ pm(s, plus, xy) {
 
 stickman(h) {
 /* Add a stick man as an SVG2g instance */
-    let g = this.group(".Stickman", "nofill", "black@3");
+    let g = this.group(".Stickman", "none", "black@3");
     let r = h / 8;
     g.circle(r, [0, 7 * r]);
     g.line([0, 6 * r], [0, 3 * r]);
@@ -693,7 +693,7 @@ graph(options) {
         for (let series of data) {
             if (series.plot) s.push(g.plot(...series.plot));
             else {
-                let gs = g.group(".Locus", "#0065fe@2", "nofill");
+                let gs = g.group(".Locus", "#0065fe@2", "none");
                 s.push(gs);
                 if (series.connect) {
                     let pts = series.connect;
@@ -907,7 +907,7 @@ reshape(info, options, anchor) {
 
 label(text, shift) {
 /* Add text relative to arrow midpoint */
-    return this.css("text", "nostroke").text(text, this.seg.midpoint.plus(this._cs(shift)));
+    return this.css("text", "none@").text(text, this.seg.midpoint.plus(this._cs(shift)));
 }
 
 }
@@ -922,7 +922,7 @@ constructor(g, eq, param, args) {
     this.param = param.length > 2 ? param : param.concat([svg.$.width() / 3]);
     this.args = args;
     this.$ = g.create_child("polyline", {}).addClass("Locus");
-    this.css("nofill");
+    this.css("none");
     this.element = this.$[0];
     this.element.graphic = this;
     this.update();
@@ -1658,7 +1658,10 @@ const css = (e, ...rules) => {
             else {
                 r = r.split("@");
                 if (r.length == 1) e.css({fill: r[0]});
-                else e.css({stroke: r[0], "stroke-width": r[1]});
+                else {
+                    if (r[0]) e.css({stroke: r[0]});
+                    if (r[1]) e.css({"stroke-width": r[1]});
+                }
             }
         }
         else if (s == 1) e.css({"font-size": `${r}px`});
