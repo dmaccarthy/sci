@@ -1650,6 +1650,7 @@ SVG2._style = {
 };
 
 const css = (e, ...rules) => {
+    let unit = (s) => isNaN(s) ? s : `${s}px`;
     for (let r of rules) {
         let s = ["string", "number"].indexOf(typeof(r));
         if (s == 0) {
@@ -1660,11 +1661,11 @@ const css = (e, ...rules) => {
                 if (r.length == 1) e.css({fill: r[0]});
                 else {
                     if (r[0]) e.css({stroke: r[0]});
-                    if (r[1]) e.css({"stroke-width": r[1]});
+                    if (r[1]) e.css({"stroke-width": unit(r[1])});
                 }
             }
         }
-        else if (s == 1) e.css({"font-size": `${r}px`});
+        else if (s == 1) e.css({"font-size": unit(r)});
         else e.css(r);
     }
     return e;

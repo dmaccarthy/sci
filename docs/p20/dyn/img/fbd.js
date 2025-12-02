@@ -1,11 +1,11 @@
 SVG2.cache("p20/dyn/img/fbd.js", {
 
 fbd: (sel) => {
-    let svg = new SVG2(sel, {size: [288, 360], lrbt: [-5/8, 1.04, -1.07]}).css(".NoStyle");
-    svg.gradient("gradFBD", "#D0D0FF", "royalblue", 80, 0, 0, 100);
+    let svg = new SVG2(sel, {size: [288, 360], lrbt: [-5/8, 1.04, -1.07]});
+    svg.gradient("gradFBD", "#d0d0ff", "royalblue", 80, 0, 0, 100);
     let g = svg.group("black@1");
     g.rect([0.5, 0.25]).css({fill: "url(#gradFBD)"});
-    g.line([-0.7, -0.125], [1.05, -0.125]).css({"stroke-width": 3});
+    css(g.line([-0.7, -0.125], [1.05, -0.125]), "@3");
 
     g = svg.group("symbol", 28, "red");
     let [arr, sub] = [["→", 5, [0, "20"]], [6, ["14", "-8"]]];
@@ -26,13 +26,13 @@ fbd: (sel) => {
 },
 
 fbd1: (sel) => {
-    let svg = new SVG2(sel, {size: [275, 400], lrbt: [-5/8, 5/8, -1.07]}).css(".NoStyle");
-    svg.gradient("gradFBD1", "#D0D0FF", "royalblue", 80, 0, 0, 100);
+    let svg = new SVG2(sel, {size: [275, 400], lrbt: [-5/8, 5/8, -1.07]});
+    svg.gradient("gradFBD1", "#d0d0ff", "royalblue", 80, 0, 0, 100);
 
     let a = 25;
     let g = svg.group("black@1").config({theta: -a});
     g.rect([0.5, 0.25]).css({fill: "url(#gradFBD1)"});
-    g.line([-0.7, -1/8], [0.7, -1/8]).css({"stroke-width": 3});
+    css(g.line([-0.7, -1/8], [0.7, -1/8]), "@3");
 
     let t7 = {tail: "7"};
     let [arr, sub] = [["→", 5, [0, "20"]], [6, ["14", "-8"]]];
@@ -40,7 +40,7 @@ fbd1: (sel) => {
     arrow.arrow({tail: [0, -1/8], tip: [0, cos(a) - 1/8]}, t7);
     let tail = new RArray(-0.25, -1/8);
     arrow.arrow({tail: tail, tip: tail.minus([0.6 * sin(a), 0])}, t7);
-    g = g.group("symbol", 28, "red", {stroke: "none"});
+    g = g.group("symbol", 28, "red", "none@");
     g.symb(["F", 1], arr, ["n", ...sub]).align([1/8, 0.4]);
     g.symb(["F", 1], arr, ["f", ...sub]).align([-0.45, 0.08]);
 
@@ -69,7 +69,7 @@ vec1: (sel) => {
 
 Q1f: (sel) => {
     let svg = new SVG2(sel, {size: [160, 403], lrbt: [-15, 22, -72.5], margin: 1}).css(".NoStyle");
-    svg.gradient("gradQ1", "#D0D0FF", "royalblue", 80, 0, 0, 100);
+    svg.gradient("gradQ1", "#d0d0ff", "royalblue", 80, 0, 0, 100);
     svg.rect([10, 10]).css({fill: "url(#gradQ1)", stroke: "black"});
     let [BD, arr, sub] = [1, SVG2.arr(), [6, ["12", "-8"]]];
     let g = svg.group("arrow");
