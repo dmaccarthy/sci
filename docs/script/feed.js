@@ -36,8 +36,13 @@ function loadFeed(feed, noHist) {
     if (loadFeed.cache[feed]) onFeedLoaded(feed, true, noHist);
     else fetch(feed + ".htm", {cache: "reload"}).then(
         e => {
-            if (e.ok) e.text().then(e => onFeedLoaded(feed, e, noHist));
-            else loadFeed.error(feed, e);
+            e.text().then(a=> {
+                if (!e.ok) a = $("<section>").addClass("Post").html(a);
+                onFeedLoaded(feed, a, noHist);
+                if (!e.ok) msg();
+            });
+            // if (e.ok) e.text().then(e => onFeedLoaded(feed, e, noHist));
+            // else loadFeed.error(feed, e);
         },
         e => loadFeed.error(feed, e));
     loadFeed.refresh = setTimeout(() => {
