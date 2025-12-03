@@ -37,25 +37,32 @@ function loadFeed(feed, noHist) {
     else fetch(feed + ".htm", {cache: "reload"}).then(
         e => {
             e.text().then(a=> {
-                if (!e.ok) a = $("<section>").addClass("Post").html(a);
+                if (!e.ok) a = loadFeed.error(e, feed);
                 onFeedLoaded(feed, a, noHist);
                 if (!e.ok) msg();
             });
-            // if (e.ok) e.text().then(e => onFeedLoaded(feed, e, noHist));
-            // else loadFeed.error(feed, e);
         },
-        e => loadFeed.error(feed, e));
+        e => {
+            let a = loadFeed.error(e, feed);
+            onFeedLoaded(feed, a, noHist);
+            msg();
+        });
     loadFeed.refresh = setTimeout(() => {
         location.reload();
     }, 3600 * 4000);
 }
 
-loadFeed.error = (feed, e) => {
-    console.log(feed);
-    console.log(e);
-    msg();
-    if ($("#Main").html() == "") setTimeout(() => {loadFeed("home")}, 1500);
+loadFeed.error = (e, feed) => {
+    console.warn(e);
+    return `<section class="Post"><p><b>${e.status} — ${e.statusText}</b></p><p>[${feed}]</p><p class="Center"><span class="Link" onclick="history.back()">Back</span> | <span class="Link" onclick="loadFeed('home')">Home</span></p><script type="text/javascript">loadFeed.data = {title: 'Error'}</script></section>`;
 }
+
+// loadFeed.error = (feed, e) => {
+//     console.log(feed);
+//     console.log(e);
+//     msg();
+//     if ($("#Main").html() == "") setTimeout(() => {loadFeed("home")}, 1500);
+// }
 
 loadFeed.cache = {};
 loadFeed._inits = [];
