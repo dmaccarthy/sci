@@ -18,9 +18,9 @@ delta_v: (sel) => {
 orbit: (sel) => {
     let a = 45;
     let p = vec2d(10, a);
-    let svg = new SVG2(sel, {size: [306, 300], lrbt: [-1, 12, -2], grid: 0, margin: 3}).css(".NoStyle");
-    svg.group("nofill", "black@2").circle(10);
-    let g = svg.group().css("nofill", "#0065fe@1");
+    let svg = new SVG2(sel, {size: [306, 300], lrbt: [-1, 12, -2], grid: 0, margin: 3});
+    svg.group("none", "black@2").circle(10);
+    let g = svg.group("none", "#0065fe@1");
     g.poly([[0, 0], [10, 0], p], 1);
     g = g.group("#0065fe", "black@1");
     g.circle("3");
@@ -53,8 +53,8 @@ orbit: (sel) => {
 },
 
 car: (sel) => {
-    let svg = new SVG2(sel, {size: [200, 332], lrbt: [-3, 7, -7]}).css(".NoStyle");
-    svg.line([-4, 0], [8, 0]).css({stroke: "black", "stroke-width": "2px"});
+    let svg = new SVG2(sel, {size: [200, 332], lrbt: [-3, 7, -7]});
+    css(svg.line([-4, 0], [8, 0]), "black@2");
     svg.image("p20/circ/img/car_front.svg", [4, 4], [0, 1.3]);
 
     let g = svg.group("arrow");
@@ -73,15 +73,15 @@ car: (sel) => {
 },
 
 merry: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 180], lrbt: [-10, 10, -0.5]}).css(".NoStyle");
-    svg.line([-8, 2.7], [0, 2.7]).css({"stroke": "orange"});
-    svg.rect([1, 8], [0, 4]);
-    svg.rect([18, 0.6], [0, 1]);
-    svg.$.find("rect").css({fill: "silver"});
+    let svg = new SVG2(sel, {size: [400, 180], lrbt: [-10, 10, -0.5]});
+    css(svg.line([-8, 2.7], [0, 2.7]), "orange@");
+    let g = svg.group("silver");
+    g.rect([1, 8], [0, 4]);
+    g.rect([18, 0.6], [0, 1]);
     svg.stickman(2.7).align([-8, 1.3], "bottom");
-    let g = svg.group("text");
+    g = svg.group("text");
     g.ctext(["Axis", [1.7, 6]], ["Icy Platform", [5, 2]], ["Bungee Cord", [-4, 3.3]]);
-    svg.line([-10, 0], [10, 0]).css({stroke: "black", "stroke-width": "2px"});
+    css(svg.line([-10, 0], [10, 0]), "black@2");
 },
 
 ucm: (sel) => {
@@ -89,7 +89,7 @@ ucm: (sel) => {
     let g = svg.group("black@1");
     g.line([0, -1], [0, 1]);
     g.line([-1, 0], [1, 0]);
-    svg.circle(1).css({fill: "none", stroke: "black", "stroke-width": "3px"});
+    css(svg.circle(1), "none", "black@3");
 
     let circ = svg.group("black@1", "#0065fe").config({omega: 60});
     let vert = g.line([1, 0], [1, 0]);

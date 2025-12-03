@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <style type="text/css">
 
@@ -68,7 +68,8 @@ body.Present #delta_v {
 <p>The equation for centripetal acceleration is:</p>
 <p class="TeX">a_c = \frac{v^2}{r}</p>
 <p class="TeX">a_c r = v^2</p>
-<p class="TeX">v = \sqrt{a_c r} = \rm \sqrt{0.981\ m/s^2\cdot 250\ m} = 15.7\ m/s = 56.4\ km/h</p>
+<p class="TeX">v = \sqrt{a_c r} = \rm \sqrt{0.981\ m/s^2\cdot 250\ m} </p>
+<p class="TeX">v = \rm 15.7\ m/s = 56.4\ km/h</p>
 </section>
 
 <section class="Slide"><h3 class="Blue">Example 3</h3>
@@ -121,23 +122,21 @@ body.Present #delta_v {
 
     <li>A 183 kg satellite orbits a planet. The satellite experiences a gravitational force of 1.30 × 10<sup>3</sup> N while orbiting with a radius of 7500 km.
     <ol type="a">
-        <li>Use Newton’s 2nd Law to calculate the satellite’s acceleration.</li>
-        <p class="TeX Answer">a_c = \frac{F_{net}}{m} = \rm{\frac{1.30\times 10^3\ N}{183\ kg} = 7.10\ m/s^2}</p>
+    <li>Use Newton’s 2nd Law to calculate the satellite’s acceleration.</li>
+    <p class="TeX Answer">a_c = \frac{F_{net}}{m} = \rm{\frac{1.30\times 10^3\ N}{183\ kg} = 7.10\ m/s^2}</p>
 
-        <li>Calculate the satellite’s velocity and orbital period.</li>
-<p class="TeX Answer">\begin{align}
-a_c &= \frac{v^2}{r}
-\\[10pt] ra_c &= v^2
-\\[10pt] v &= \sqrt{ra_c}
-\\[10pt] &= \rm{\sqrt{7.50\times 10^6\ m \cdot 7.10\ m/s^2}}
-\\[10pt] &= \rm{7.30\times 10^3\ m/s}
-
-\\[10pt] v &= \frac{2\pi r}{T}
-\\[10pt] vT &= 2\pi r
-\\[10pt] T &= \frac{2\pi r}{v}
-\\[10pt] &= \rm{\frac{2\pi (7.50\times 10^6\ m)}{7.30\times 10^3\ m/s}}
-\\[10pt] &= \rm{6.46\times 10^3\ s = 1.79\ h}
-\end{align}</p>
+    <li>Calculate the satellite’s velocity and orbital period.</li>
+    <div class="Answer">
+        <p>Use the centripetal acceleration to find the orbital speed:</p>
+        <p class="TeX">a_c = \frac{v^2}{r}</p>
+        <p class="TeX">ra_c = v^2</p>
+        <p class="TeX">v = \sqrt{ra_c} = \rm \sqrt{7.50\times 10^6\ m \cdot 7.10\ m/s^2} = 7.30\times 10^3\ m/s</p>
+        <p>Now solve for the period:</p>
+        <p class="TeX">v = \frac{2\pi r}{T}</p>
+        <p class="TeX">vT = 2\pi r</p>
+        <p class="TeX">T = \frac{2\pi r}{v} = \rm \frac{2\pi (7.50\times 10^6\ m)}{7.30\times 10^3\ m/s}</p>
+        <p class="TeX">T = \rm 6.46\times 10^3\ s = 1.79\ h</p>
+    </div>
     </ol></li>
 
     <li><ol type="a">
@@ -147,13 +146,11 @@ a_c &= \frac{v^2}{r}
             <p>Gravity and normal balance; friction is unbalanced.</p>
         </div>
         <li>A car rounding a circular turn with <span class="TeX">r</span> = 250 m can have a maximum centripetal acceleration of 7.00 m/s<sup>2</sup>. What is the maximum speed that the car can have while rounding the turn?</li>
-        <p class="TeX Answer">\begin{align}
-a_c &= \frac{v^2}{r}
-\\[10pt] ra_c &= v^2
-\\[10pt] v &= \sqrt{ra_c}
-\\[10pt] &= \rm{\sqrt{250\ m \cdot 7.00\ m/s^2}}
-\\[10pt] &= \rm{41.8\ m/s}
-\end{align}</p>
+        <div class="Answer">
+            <p class="TeX">a_c = \frac{v^2}{r}</p>
+            <p class="TeX">ra_c = v^2</p>
+            <p class="TeX">v = \sqrt{ra_c} = \rm \sqrt{250\ m \cdot 7.00\ m/s^2}= 41.8\ m/s</p>
+        </div>
 
         <li>What would happen to the car if it attempted the turn at a faster speed?</li>
         <p class="Answer">Its turning radius would become larger than the radius of the road.</p>
@@ -164,24 +161,21 @@ a_c &= \frac{v^2}{r}
 
     <li>A mass spectrometer is a device used to identify isotopes (atoms of the same element that have different masses) present in a sample. Helium atoms are given velocities of 1.70 × 10<sup>3</sup> m/s and are then subjected to a magnetic force of 2.72 × 10<sup>–16</sup> N, which causes them to move in a circle.
     <ol type="a">
-        <li>Calculate the acceleration and radius of motion for normal “helium-4” atoms with a mass of 6.65 × 10<sup>–27</sup> kg.</li>
-        <div class="Answer">
-<p>Use Newton’s 2<sup>nd</sup> Law to find acceleration:</p>
-<p class="TeX">a_c = \frac{F_{net}}{m} = \rm \frac{2.72\times 10^{-16}\ N}{6.65\times 10^{-27}\ kg} = 4.09\times 10^{10}\ m/s^2</p>
-<p>Now use the centripetal acceleration equation to solve for the radius:</p>
-<p class="TeX">\begin{align}a_c &= \frac{v^2}{r}
-\\[10pt] ra_c &= v^2
-\\[10pt] r &= \frac{v^2}{a_c}
-\\[10pt] &= \rm{\frac{(1.70\times 10^3\ m/s)^2}{4.09\times 10^{10}\ m/s^2}}
-\\[10pt] &= \rm{7.07\times 10^{-5}\ m}
-\end{align}</p>
-        </div>
+    <li>Calculate the acceleration and radius of motion for normal “helium-4” atoms with a mass of 6.65 × 10<sup>–27</sup> kg.</li>
+    <div class="Answer">
+        <p>Use Newton’s 2<sup>nd</sup> Law to find acceleration:</p>
+        <p class="TeX">a_c = \frac{F_{net}}{m} = \rm \frac{2.72\times 10^{-16}\ N}{6.65\times 10^{-27}\ kg} = 4.09\times 10^{10}\ m/s^2</p>
+        <p>Now use the centripetal acceleration equation to solve for the radius:</p>
+        <p class="TeX">a_c = \frac{v^2}{r}</p>
+        <p class="TeX">ra_c = v^2
+        <p class="TeX">r = \frac{v^2}{a_c} = \rm \frac{(1.70\times 10^3\ m/s)^2}{4.09\times 10^{10}\ m/s^2} = 7.07\times 10^{-5}\ m</p>
+    </div>
 
-        <li>Calculate the acceleration and radius of motion for the lighter isotope of helium, “helium-3”, which has a mass of 5.00 × 10<sup>–27</sup> kg.</li>
-        <div class="Answer">
-            <p class="TeX">a_c = \frac{F_{net}}{m} = \rm \frac{2.72\times 10^{-16}\ N}{5.00\times 10^{-27}\ kg} = 5.44\times 10^{10}\ m/s^2</p>
-            <p class="TeX">r = \frac{v^2}{a_c} = \rm \frac{(1.70\times 10^3\ m/s)^2}{5.44\times 10^{10}\ m/s^2} = 5.31\times 10^{-5}\ m</p>
-        </div>
+    <li>Calculate the acceleration and radius of motion for the lighter isotope of helium, “helium-3”, which has a mass of 5.00 × 10<sup>–27</sup> kg.</li>
+    <div class="Answer">
+        <p class="TeX">a_c = \frac{F_{net}}{m} = \rm \frac{2.72\times 10^{-16}\ N}{5.00\times 10^{-27}\ kg} = 5.44\times 10^{10}\ m/s^2</p>
+        <p class="TeX">r = \frac{v^2}{a_c} = \rm \frac{(1.70\times 10^3\ m/s)^2}{5.44\times 10^{10}\ m/s^2} = 5.31\times 10^{-5}\ m</p>
+    </div>
     </ol></li>
 
     <li><p>A Merry-Go-Round is made from a horizontal platform that rotates around a vertical axis.</p>
