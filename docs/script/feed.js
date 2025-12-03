@@ -54,7 +54,12 @@ function loadFeed(feed, noHist) {
 
 loadFeed.error = (e, feed) => {
     console.warn(e);
-    return `<section class="Post"><p><b>${e.status} — ${e.statusText}</b></p><p>[${feed}]</p><p class="Center"><span class="Link" onclick="history.back()">Back</span> | <span class="Link" onclick="loadFeed('home')">Home</span></p><script type="text/javascript">loadFeed.data = {title: 'Error'}</script></section>`;
+    return `<section class="Post">
+        <p><b>${e.status} — ${e.statusText}</b></p>
+        <p>[${feed}]</p>
+        <p class="Center"><span class="Link" onclick="history.back()">Back</span> | <span class="Link" onclick="loadFeed('home')">Home</span></p>
+        <script type="text/javascript">loadFeed.data = {title: 'Error'}</script>
+    </section>`;
 }
 
 // loadFeed.error = (feed, e) => {
