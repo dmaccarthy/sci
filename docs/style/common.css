@@ -12,7 +12,10 @@ body:not(.Present) .Present {display: none}
 .Defn {text-decoration: underline}
 [data-aspect], .Wide {max-width: 96%}
 
-.MathSerif {font-family: KaTeX_Main, "Latin Modern Roman", "Droid Serif", "Noto Serif", serif}
+.MathSerif {
+    font-family: "Droid Serif", "Noto Serif", serif; /* KaTeX_Main, "Latin Modern Roman"  */
+}
+
 .TeX {visibility: hidden}
 
 *[data-latex]:not(span) {

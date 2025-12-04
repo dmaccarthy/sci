@@ -1661,10 +1661,11 @@ static* spring_points(p0, p1, n, dx, dy) {
 }
 
 SVG2.ebg._size = (s) => {
+    // MathJax rendered image sizes for Energy Bar Graph labels
+    let data = [["+W", 59.49, 24.93], ["–W", 50.43, 22.97], ["E_k", 38.75, 27.29], ["E_g", 37.74, 31.77],
+        ["E_elas", 67.33, 27.29], ["E_elec", 65.05, 27.29], ["E_rotn", 70.44, 27.29], ["E_p", 38.33, 31.51]];
     let map = {};
-    let data = [["+W", 59.49, 24.93], ["–W", 50.43, 22.97], ["E_k", 38.75, 27.29], ["E_g", 37.74, 31.77], ["E_elas", 67.33, 27.29], ["E_elec", 65.05, 27.29], ["E_rotn", 70.44, 27.29]];
-    for (let [k, w, h] of data)
-        map[k] = [(s*w).toFixed(2), (s*h).toFixed(2)];
+    for (let [k, w, h] of data) map[k] = mjax_size(w, h, s);
     return map;
 };
 SVG2.ebg.size = SVG2.ebg._size(0.8);
@@ -1679,7 +1680,7 @@ if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
 SVG2.sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
 SVG2.mono = "Inconsolata, 'Droid Sans Mono', monospace";
 SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
-SVG2.symbol = "KaTeX_Main, 'Latin Modern Roman', 'Droid Serif', 'Noto Serif', serif";
+SVG2.symbol = "'Droid Serif', 'Noto Serif', serif"; // KaTeX_Main, 'Latin Modern Roman'
 
 SVG2._style = {
     grid: {stroke: "lightgrey", "stroke-width": "0.5px"},
