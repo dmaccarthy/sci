@@ -163,61 +163,79 @@ function katex_render(e, opt) {
     if (katex_render.hideEqNum) $("[data-latex]:is(p, div) .eqn-num").hide();
 }
 
+async function mjax_render(e) {
+    // Render TeX math with KaTeX
+    e = $(e ? e : ".TeX").removeClass("TeX");
+    let p = [];
+    for (let ei of e) {
+        let e$ = $(ei);
+        let tex = e$.text();
+        e$.attr("data-latex", tex);
+        p.push(MathJax.tex2svgPromise(tex).then(mj => e$.html($(mj).find("svg")[0])));
+    };
+    for (let i=0;i<p.length;i++) await p[i];
+}
+
 katex_render.hideEqNum = true;
-renderTeX = katex_render;
 
 async function mjax_wait(t) {
     // Wait until MathJax.typesetPromise is available
-    if ($("#MathJax-TeX-SVG").length == 0)
-        $("head").append($("<script>").attr({
-            type: "text/javascript",
-            id: "MathJax-TeX-SVG",
-            async: true,
-            src: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js",
-    }));
     while (!MathJax.typesetPromise) await sleep(t ? t : 50);
     return new Promise((res) => res(0));
 }
 
 async function mjax_svg(tex) {
-    return mjax_wait().then(() => {
-        let p = $("<p>").appendTo("body").html(`$$${tex}$$`);
-        return MathJax.typesetPromise(p).then(() => {
-            let svg = p.find("svg")[0].outerHTML;
-            p.remove();
-            return svg;    
-        });
-    });
-}
-
-async function mjax_img(tex) {
-    return mjax_svg(tex).then((s) => $("<img>").attr({src: "data:image/svg+xml;base64," + unicode_to_base64(s)})[0]);
-}
-
-function mjax_render(e, interactive) {
-    e = $(e ? e : ".TeX");
-    for (let item of e) {    
-        if ($(item).children().length) console.log(item);
-        let ei = $(item);
-        let [a, b] = ei.is("p, div, .Display") ? ["$$", "$$"] : ["\\(", "\\)"];
-        let tex = ei.html();
-        ei.attr("data-latex", tex);
-        ei.html(`${a}${tex}${b}`);
-    }
-    mjax_wait().then(() => {
-        try {
-            MathJax.typesetPromise().then(() => {
-                for (let item of $("[data-latex]")) {
-                    let ei = $(item).removeClass("TeX");
-                    if (!interactive) ei.html(ei.find("svg"));    
-                }
-            });
+    // Use MathJax to render LaTeX as SVG; return jquery object containing <svg>
+    return MathJax.tex2svgPromise(tex).then(a => {
+        let svg = $($(a).find("svg")[0]);
+        if (mjax_svg.log) {
+            let [w, h] = [parseFloat(svg.attr("width")), parseFloat(svg.attr("height"))];
+            console.log(tex,  [14.4 * w, 14.4 * h]);
         }
-        catch(err) {
-            console.error(err);
-        }  
+        return svg;
     })
 }
+
+async function mjax_url(tex) {
+    // Use MathJax to render LaTeX as an SVG data URL
+    return mjax_svg(tex).then(svg => "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML));
+}
+
+function mjax_img(tex) {
+    // Use MathJax to render LaTeX as SVG; return jquery object containng <img>
+    return mjax_url(tex).then(u => $("<img>").attr({src: u}));
+}
+
+function mjax_size(w, h, s) {
+    if (!s) s = 1
+    return [(w*s).toFixed(2), (h*s).toFixed(2)]}
+
+// function mjax_render0(e, mml) {
+//     e = $(e ? e : ".TeX");
+//     for (let item of e) {    
+//         if ($(item).children().length) console.log(item);
+//         let ei = $(item);
+//         let [a, b] = ei.is("p, div, .Display") ? ["$$", "$$"] : ["\\(", "\\)"];
+//         let tex = ei.html();
+//         ei.attr("data-latex", tex);
+//         ei.html(`${a}${tex}${b}`);
+//     }
+//     mjax_wait().then(() => {
+//         try {
+//             MathJax.typesetPromise().then(() => {
+//                 for (let item of $("[data-latex]")) {
+//                     let ei = $(item).removeClass("TeX");
+//                     if (!mml) ei.html(ei.find("svg"));    
+//                 }
+//             });
+//         }
+//         catch(err) {
+//             console.error(err);
+//         }  
+//     })
+// }
+
+renderTeX = mjax_render;
 
 
 /*** HSV Color ***/

@@ -54,12 +54,28 @@ css(...rules) {
     return this;
 }
 
+ralign(pos) {
+/* Align the element based on its bounding box */
+    let svg = this.svg;
+    let x, y;
+    let box = this.element.getBBox();
+    let [w, h] = [box.width, box.height];
+    if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
+    [w, h, x, y] = this.rect_xy([w.toFixed(2), h.toFixed(2)], pos);
+    let [dx, dy] = new RArray(x,y).minus([box.x, box.y]);
+    this.shift_by([dx / svg.scale[0], dy / svg.scale[1]]);
+    return this.update_transform();
+}
+
 align(xy, x, y) {
 /* Align the element based on its bounding box */
-    if (!this.$.is(":visible")) {
-        console.log(this);
-        throw("Cannot align hidden elements");
-    }
+    let box = this.element.getBBox();
+    let [w, h] = [box.width, box.height];
+    if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
+    // if (!this.$.is(":visible")) {
+    //     console.log(this);
+    //     throw("Cannot align hidden elements");
+    // }
     if (typeof(xy) == "number") xy = [xy, xy];
     if (y == null) {
         if (x == null) x = y = 0.5;
@@ -68,8 +84,7 @@ align(xy, x, y) {
     }
     let nx = x == null;
     let ny = y == null;
-    let box = this.element.getBBox();
-    let dxy = this.svg.p2a(box.x + (nx ? 0 : x) * box.width, box.y + (ny ? 0 : y) * box.height).plus(this._shift);
+    let dxy = this.svg.p2a(box.x + (nx ? 0 : x) * w, box.y + (ny ? 0 : y) * h).plus(this._shift);
     dxy = this._cs(xy).minus(dxy);
     if (nx) dxy[0] = 0;
     if (ny) dxy[1] = 0;
@@ -264,26 +279,48 @@ ellipse(r, center, selector) {
     return e.attr({rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
 }
 
-rect(size, center, selector) {
-/* Modify or append a <rect> to the <g> element */
-    let e = selector ? $(selector) : this.create_child("rect");
+rect_xy(size, posn) {
+    let ax = 0.5, ay = 0.5;
+    let x, y;
+    if (posn == null) x = y = 0;
+    else if (posn[0] instanceof Array) {
+        [x, y] = posn[0];
+        [ax, ay] = posn[1];
+    }
+    else [x, y] = posn;
     let svg = this.svg;
-    let f = (x) => x.toFixed(svg.decimals);
     let w = this._px(size[0], 0);
     let h = this._px(size[1], 1);
-    let [x, y] = svg.a2p(...this._cs(center));
-    return e.attr({width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
+    [x, y] = svg.a2p(...this._cs([x, y]));
+    return [w, h, x - ax * w, y - ay * h];
 }
 
-image(href, size, center, selector) {
+rect(size, posn, selector) {
+/* Modify or append a <rect> to the <g> element */
+    let e = selector ? $(selector) : this.create_child("rect");
+    let f = (x) => x.toFixed(this.svg.decimals);
+    let [w, h, x, y] = this.rect_xy(size, posn);
+    return e.attr({width: f(w), height: f(h), x: f(x), y: f(y)});
+}
+
+image(href, size, posn, selector) {
 /* Modify or append an <image> to the <g> element */
     let e = selector ? $(selector) : this.create_child("image");
-    let svg = this.svg;
-    let f = (x) => x.toFixed(svg.decimals);
-    let w = this._px(size[0], 0);
-    let h = this._px(size[1], 1);
-    let [x, y] = svg.a2p(...this._cs(center));
-    return e.attr({href: new URL(href, location.href).href, width: f(w), height: f(h), x: f(x - w / 2), y: f(y - h / 2)});
+    let f = (x) => x.toFixed(this.svg.decimals);
+    if (!(size instanceof Array)) size = [size, size];
+    let [w, h, x, y] = this.rect_xy(size, posn);
+    return e.attr({href: new URL(href, location.href).href, width: f(w), height: f(h), x: f(x), y: f(y)});
+}
+
+mjax(tex, size, xy, color) {
+/* Asynchronously render LaTeX to <image> with MathJax */
+    let g = this.group();
+    if (color) tex = `\\color{${color}}{${tex}}`
+    return mjax_svg(tex).then(svg => {
+        let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
+        g.image(url, size, xy);
+        return g;
+    });
 }
 
 _embed(url, size) {
@@ -759,26 +796,29 @@ tip_to_tail(vecs, options) {
 
 energy_flow(data) {
 /* Draw an energy flow diagram */
-    this.svg.css(".NoStyle");
-    let g = this.group("text");
-    g.circle(data.radius).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
-    let gs = g.group("symbol", 28);
+    css(this.circle(data.radius), "none", "#0065fe@3");
+    let g = this.group("text", 24);
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
-        color = {fill: color ? color : "#0065fe"};
+        if (!color) color = "#0065fe";
         if (txt.charAt(0) == '$') {
-            txt = txt.substring(1).split("_");
-            let sym = [[txt[0], 2]];
-            if (txt.length > 1) sym.push([txt[1], 6, shift ? shift : ["12", "-7"]]);
-            gs.symb(...sym).css(color).align(pos);
+            txt = txt.substring(1);
+            let size = SVG2.ebg.size[txt];
+            txt = txt.split("_");
+            this.mjax(`${txt[0]}_${txt[1]}`, size ? size : "32", pos, "#0065fe");
         }
-        else g.group(color, {"font-size": "24px"}).ctext([txt, pos]);
+        else {
+            // g.group(color).ctext([txt, pos]);
+            let t = g.group(color);
+            t.text(txt);
+            t.ralign(pos);
+        }
     }
-    g = g.group("arrow");
+    g = this.group("arrow");
     for (let item of data.arrows) {
         let [l, pos, angle, txt, color] = item;
-        color = {fill: color ? color : "#0065fe"};
-        let a = g.arrow(l, {tail: "6"}).css(color).config({theta: angle, shift: pos});
+        if (!color) color = "#0065fe";
+        let a = this.arrow(l, {tail: "6"}).css(color).config({theta: angle, shift: pos});
         if (txt) {
             if (!(txt instanceof Array)) txt = [txt, [l > 0 ? "-6": "6", "12"]];
             a.label(...txt).css({stroke: "none"});
@@ -1531,21 +1571,21 @@ static vec_diag_table(sym, vecs, prec, scale) {
 
 static ebg(sel, Emax, step, data, options) {
 /* Create an animated energy bar graph */
-    options= Object.assign({size: [512, 384], width: 0.5, duration: 0, unit: "J", margin: [32, 4, 44, 16]}, options);
+    options = Object.assign({size: [512, 384], width: 0.5, duration: 0, unit: "J", margin: [32, 4, 44, 16]}, options);
     let n = data.length;
-    let svg = new SVG2(sel, {size: options.size, lrbt: [0, n, 0, Emax], margin: options.margin}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: options.size, lrbt: [0, n, 0, Emax], margin: options.margin});
     svg.grid([0, n], [0, Emax, step]).grid([0, 1, 2], [0, Emax]);
 
     let bars = [];
-    let sym = svg.group("symbol", 28);
+    let sym = svg.group();
     for (let i=0;i<n;i++) {
         let d = data[i];
         let c = d[2] ? d[2] : "#0065fe"
         bars.push(svg.rect([options.width, 1], [i + 0.5, 1]).css({fill: c}));
         let [t, sub] = d[0].split("_");
-        t = [[t, 2]];
-        if (sub) t.push([sub, 6, [`${8 + 5 * sub.length}`, "-8"]]);
-        sym.symb(...t).align([i + 0.5, "-4"], 0.5, 0).css({fill: c});
+        let size = SVG2.ebg.size[d[0]];
+        if (mjax_svg.log) console.log(d[0], size);
+        sym.mjax(t + (sub ? `_{${sub}}` : ""), size ? size : "36", [[i + 0.5, "-8"], [0.5, 0]], c);
     }
     svg.config({data: data, options: options});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$);
@@ -1619,6 +1659,15 @@ static* spring_points(p0, p1, n, dx, dy) {
 }
 
 }
+
+SVG2.ebg._size = (s) => {
+    let map = {};
+    let data = [["+W", 59.49, 24.93], ["–W", 50.43, 22.97], ["E_k", 38.75, 27.29], ["E_g", 37.74, 31.77], ["E_elas", 67.33, 27.29], ["E_elec", 65.05, 27.29], ["E_rotn", 70.44, 27.29]];
+    for (let [k, w, h] of data)
+        map[k] = [(s*w).toFixed(2), (s*h).toFixed(2)];
+    return map;
+};
+SVG2.ebg.size = SVG2.ebg._size(0.8);
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";
 SVG2._cache = {};
