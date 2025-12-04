@@ -55,8 +55,8 @@ function loadFeed(feed, noHist) {
 loadFeed.error = (e, feed) => {
     console.warn(e);
     return `<section class="Post">
-        <p><b>${e.status} — ${e.statusText}</b></p>
-        <p>[${feed}]</p>
+        <h2 class="FeedLink">${e.status} — ${e.statusText}</h2>
+        <p>${feed}</p>
         <p class="Center"><span class="Link" onclick="history.back()">Back</span> | <span class="Link" onclick="loadFeed('home')">Home</span></p>
         <script type="text/javascript">loadFeed.data = {title: 'Error'}</script>
     </section>`;
@@ -751,25 +751,22 @@ function make_cal(crs) {
 function initPage() {
     /* Initialize page */
     let latex = localStorage.getItem("latex-renderer");
-    if (latex) {
-        let r = {
-            svg: mjax_render,
-            katex: katex_render,
-            mjax: (e) => mjax_render(e, 1),
-            none: (e) => $(e ? e : ".TeX").css({visibility: "visible"}),
-        }[latex];
-        if (r) {
-            renderTeX = r;
-            console.log(`latex-renderer = ${latex}`);
-        }
-    }
+    if (!latex) latex = "mjax";
+    renderTeX = {
+        svg: mjax_render,
+        katex: katex_render,
+        mjax: mjax_render, //(e) => mjax_render(e),
+        none: (e) => $(e ? e : ".TeX").css({visibility: "visible"}),
+    }[latex];
+    console.log(`latex-renderer = ${latex}`);
     teacher(null, true);
     loadHash(true);
     document.getElementById("TopTitle").addEventListener("click", goUp);
 }
 
-$(() => {
+$(async () => {
     /* Load index.json and then initialize page */
+    await mjax_wait();
     fetch("index.json", {cache: "reload"}).then((a) => a.json()).then((a) => {
         let index = loadFeed.index = {};
         for (let crs in a) {
@@ -787,6 +784,7 @@ $(() => {
                 }
             }
         }
+        // console.log(MathJax.tex2svg);
         initPage();
     });
 });
