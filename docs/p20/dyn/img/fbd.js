@@ -45,7 +45,7 @@ fbd1: (sel) => {
     g.symb(["F", 1], arr, ["f", ...sub]).align([-0.45, 0.08]);
 
     svg.arrow({tail: [0, -0.03], tip: [0, -1.03]}, t7).css("arrow", "red");
-    svg.symb(["F", 1], arr, ["g", ...sub]).align([1/8, -0.6]).css(28, "red");
+    svg.symb(["F", 1], arr, ["g", ...sub]).align([1/8, -0.6]).css("symbol", 28, "red");
     svg.circle("5").css({fill: "black"});
 },
 

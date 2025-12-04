@@ -13,7 +13,7 @@ body:not(.Present) .Present {display: none}
 [data-aspect], .Wide {max-width: 96%}
 
 .MathSerif {
-    font-family: "Droid Serif", "Noto Serif", serif; /* KaTeX_Main, "Latin Modern Roman"  */
+    font-family: 'Noto Serif', 'Open Serif', 'Droid Serif', serif; /* KaTeX_Main, "Latin Modern Roman"  */
 }
 
 .TeX {visibility: hidden}

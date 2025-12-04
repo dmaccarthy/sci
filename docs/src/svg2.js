@@ -1679,8 +1679,8 @@ if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
 
 SVG2.sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
 SVG2.mono = "Inconsolata, 'Droid Sans Mono', monospace";
-SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
-SVG2.symbol = "'Droid Serif', 'Noto Serif', serif"; // KaTeX_Main, 'Latin Modern Roman'
+SVG2.symbol = SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
+// SVG2.symbol = "KaTeX_Main, 'Latin Modern Roman', 'Droid Serif', 'Noto Serif', serif";
 
 SVG2._style = {
     grid: {stroke: "lightgrey", "stroke-width": "0.5px"},
