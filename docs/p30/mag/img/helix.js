@@ -7,22 +7,24 @@ ucm: (sel) => {
     let tog = [css(svg.circle(1), "none", "black@1")];
 
     /* Magnetic field */
-    css(svg.circle(0.1), "none", "green@1");
-    svg.gtext("×", ["green", 28], ["-1", "1"])
-    svg.mjax("\\color{green}\\vec{\\bf B}", "36").then(g => g.shift_by([-0.25, 0]));
+    svg.gtext("⨂", ["green", 32]);
+    svg.mj("B", 1, [-0.2, 0], "green");
 
     let q = svg.group().config({omega: 20, animated: true});
 
     /* Velocity */
     let g = q.group();
     q.arrow({tail: [1, 0], tip: [1, 0.5]}, {tail: "6"}, "tail").css("red");
-    q.mjax("\\color{red}\\vec{\\bf v}", "29").then(g => g.config({shift: [0.8, 0.27], omega: -20, animated: true}));
+    let cfgv = {omega: -20, animated: true, pivot: [0.8, 0.27]};
+    q.mj("v", 1, cfgv.pivot, "red").then(g => g.config(cfgv));
 
     /* Force */
     g = q.group();
     tog.push(g.$);
     g.arrow({tail: [1, 0], tip: [0.5, 0]}, {tail: "6"}, "tail").css("#0065fe");
-    g.mjax("\\color{#0065fe}\\vec{\\bf F}_m", "42").then(g => g.config({shift: [0.8, -0.2], omega: -20, animated: true}));
+    let cfgF = {...cfgv};
+    cfgF.pivot = [0.8, -0.2];
+    g.mj("Fm", 1, cfgF.pivot, "#0065fe").then(g => g.config(cfgF));
 
     /* Charge */
     css(q.circle("5", [1, 0]), "yellow", "black@1");

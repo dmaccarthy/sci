@@ -4,6 +4,7 @@
 "energy/mech": {"t": "@Mechanical Energy", "n": "6.1", "s": "2025.11.28", "a": "2025.12.1", "h": "1LVUnS8TD59eJ1KucQDPeSTs4rVVCnZaB"},
 "energy/cons": {"t": "@Energy Conservation", "n": "6.2", "s": "2025.12.2", "a": "2025.12.3", "h": "16feEBDiNXsq72QjX9LBa08Y028osNyAT"},
 "energy/sys": {"t": "@Non-Isolated Systems", "n": "6.3", "s": "2025.12.3", "a": "2025.12.4", "h": ["1QIOHaWOycmAtmNJqkq3JWxJIXSXhcE-7", ["Ramp Lab", "1Ec6T5oU7C6qNeMeEq5HVjRU96eeKJPis"]]},
+"energy/sys#": {"t": "Lab: Energy Transformation on a Ramp", "s": "2025.12.4"},
 "energy/work": {"t": "@Energy Transformations (Work)", "n": "6.4", "s": "2025.12.5", "a": "2025.12.8", "h": "1QAmjL9mCQyHENQ5CtCtryokR_0doTNGZ"},
 "energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2025.12.8", "a": "2025.12.9", "h": "_"},
 "energy/@": {"hide": 1, "t": "@", "n": "6.", "s": "2025.12.", "a": "2025.12.", "h": "_"},
@@ -132,5 +133,39 @@
 
 "qp2/@": {"t": "Quiz: Energy / Heat", "s": "2025.12.5", "css": {"font-weight": "bold"}},
 "uB/@": {"t": "Physics Unit Exam", "s": "2025.12.9", "css": {"font-weight": "bold"}}
+}, 
+
+"mjax": {
+    "+W": ["+W", 59.49, 24.93],
+    "-W": ["–W", 50.43, 22.97],
+    "–W": ["–W", 50.43, 22.97],
+    "Ek": ["E_k", 38.75, 27.29],
+    "Eg": ["E_g", 37.74, 31.77],
+    "Eelas": ["E_{elas}", 67.33, 27.29],
+    "Eelec": ["E_{elec}", 65.05, 27.29],
+    "Erotn": ["E_{rotn}", 70.44, 27.29],
+    "Ep": ["E_p", 38.33, 31.51],
+    "hf": ["h_f", 34.14, 32.21],
+    "Δd": ["\\Delta\\vec{\\bf d}", 48, 35.93],
+    "di": ["\\vec{\\bf d}_i"],
+    "df": ["\\vec{\\bf d}_f"],
+    "a": ["\\vec{\\bf a}"],
+    "v": ["\\vec{\\bf v}", 19.77, 27.59],
+    "Δv": ["\\Delta\\vec{\\bf v}"],
+    "vi": ["\\vec{\\bf v}_i"],
+    "vf": ["\\vec{\\bf v}_f"],
+    "Fnet": ["\\vec{\\bf F}_{net}", 59.17, 40.42],
+    "Fg": ["\\vec{\\bf F}_g"],
+    "Fn": ["\\vec{\\bf F}_n", 40.12, 40.42],
+    "Ff": ["\\vec{\\bf F}_f"],
+    "Ft": ["\\vec{\\bf F}_t"],
+    "Fe": ["\\vec{\\bf F}_e"],
+    "Fm": ["\\vec{\\bf F}_m", 46.51, 40.42],
+    "Felas": ["\\vec{\\bf F}_{elas}"],
+    "Fa": ["\\vec{\\bf F}_a", 38.5, 40.4],
+    "Δp": ["\\Delta\\vec{\\bf p}"],
+    "pi": ["\\vec{\\bf p}_i"],
+    "pf": ["\\vec{\\bf p}_f"],
+    "B": ["\\vec{\\bf B}", 26.65, 35.48]
 }
 }

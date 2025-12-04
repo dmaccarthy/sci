@@ -59,7 +59,7 @@ F1: (sel) => {
     let L = 0.75;
     svg.energy_flow({radius: 0.75,
         labels: [
-            ["$E_k", [0, -0.01]],
+            ["Ek", [0, -0.01]],
             ["Food", [-1.25, 0.02], "red"],
             ["Waste", [1.3, 0.02], "red"],
         ],
@@ -74,8 +74,8 @@ Q1: (sel) => {
     // mjax_svg.log = true;
     SVG2.ebg(sel, 80, 10, [
         ["+W", (t) => 75 * (1 - t * t), "red"],
-        ["E_k", true],
-        ["–W", (t) => 30 * t * t, "red"],
+        ["Ek", true],
+        ["-W", (t) => 30 * t * t, "red"],
     ], {E: 75, duration: 3, margin: [32, 4, 40, 16], label: [0, "-6"]});
 },
 
@@ -83,7 +83,7 @@ F2: (sel) => {
     let svg = new SVG2(sel, {size: [400, 260], lrbt: [-8.5, 4.5]}).css(".NoStyle");
     svg.energy_flow({radius: 4,
         labels: [
-            ["$E_k", [0, 0]],
+            ["Ek", [0, 0]],
             ["Food", [-7, 0], "red"],
         ],
         arrows: [
@@ -98,7 +98,7 @@ Q2: (sel) => {
     let W = 5.4 - Ei;
     SVG2.ebg(sel, 6, 1, [
         ["+W", (t) => W * (1 - t * t), "red"],
-        ["E_k", true],
+        ["Ek", true],
     ], {E: 5.4, unit: "kJ", duration: 3, margin: [32, 4, 40, 16], label: [0, "-6"]});
 },
 
@@ -107,8 +107,8 @@ F4: (sel) => {
     let L = 0.7;
     svg.energy_flow({radius: 0.75,
         labels: [
-            ["$E_k", [0, -0.5]],
-            ["$E_g", [0, 0.5]],
+            ["Ek", [0, -0.5]],
+            ["Eg", [0, 0.5]],
             ["Food", [-1.15, -0.5], "red"],
             ["Waste", [1.15, -0.5], "red"],
         ],
@@ -118,20 +118,20 @@ F4: (sel) => {
             [L, [0.5, -0.5], 0, ["6.35 J", ["-18", "14"]], "red"],
         ]
     });
+    svg.mj("Fn");
 },
 
 Q4: (sel) => {
     let Eg = 98.1 * sin(8);
     SVG2.ebg(sel, 24, 2, [
         ["+W", (t) => 20 * (1 - t), "red"],
-        ["E_k", (t) => 1 - 2 * Math.abs(t - 0.5)],
-        ["E_g", (t) => Eg * t],
-        ["–W", true, "red"],
+        ["Ek", (t) => 1 - 2 * Math.abs(t - 0.5)],
+        ["Eg", (t) => Eg * t],
+        ["-W", true, "red"],
     ], {E: 20, duration: 3, margin: [32, 4, 40, 16], label: [0, "-6", 2]});
 },
 
 ramp : (sel) => {
-    // mjax_svg.log = true;
     svg = new SVG2(sel, {scale: 220, grid: 0, lrbt: [0, 2.15, 0, 0.3], margin: 2});
     let pt = vec2d(2, 8);
     css(svg.poly([pt, [pt[0], 0], [0, 0]], 1), "none", "red@2");
@@ -139,7 +139,7 @@ ramp : (sel) => {
     let g = svg.group().config({theta: 8});
     let mj = (w, h) => mjax_size(w, h, 0.7);
     g.mjax("\\Delta\\vec{\\bf d} = \\rm +2.00\\ m", mj(209.95, 38.4), [1, 0.08], "red");
-    svg.mjax("h_f", mj(34.14, 32.21), [[2, 0.15], [-0.1, 0.5]], "red");
+    svg.mj("hf",0.7, [[2, 0.15], [-0.1, 0.5]], "red");
     svg.mjax("\\rm 8.00^\\circ", mj(72.14, 24.39), [0.2, 0.1], "red");
 },
 

@@ -768,6 +768,8 @@ $(async () => {
     await mjax_wait();
     fetch("index.json", {cache: "reload"}).then((a) => a.json()).then((a) => {
         let index = loadFeed.index = {};
+        mjax_size.map = a.mjax;
+        delete a.mjax;
         for (let crs in a) {
             let data = a[crs];
             for (let k in data)

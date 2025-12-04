@@ -190,7 +190,7 @@ async function mjax_svg(tex) {
     // Use MathJax to render LaTeX as SVG; return jquery object containing <svg>
     return MathJax.tex2svgPromise(tex).then(a => {
         let svg = $($(a).find("svg")[0]);
-        if (mjax_svg.log) {
+        if (mjax_svg.log == true || mjax_svg.log == tex) {
             let [w, h] = [parseFloat(svg.attr("width")), parseFloat(svg.attr("height"))];
             console.log(tex,  [14.4 * w, 14.4 * h]);
         }
@@ -212,9 +212,6 @@ function mjax_size(w, h, s) {
     if (typeof(w) == "string") [w, h, s] = [...mjax_size.map[w], h];
     if (!s) s = 1;
     return [(w*s).toFixed(2), (h*s).toFixed(2)]}
-
-mjax_size.map = {"+W": [59.49, 24.93], "–W": [50.43, 22.97], "E_k": [38.75, 27.29], "E_g": [37.74, 31.77],
-        "E_elas": [67.33, 27.29], "E_elec": [65.05, 27.29], "E_rotn": [70.44, 27.29], "E_p": [38.33, 31.51]};
 
 renderTeX = mjax_render;
 

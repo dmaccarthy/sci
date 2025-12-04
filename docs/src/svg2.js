@@ -315,12 +315,20 @@ image(href, size, posn, selector) {
 mjax(tex, size, xy, color) {
 /* Asynchronously render LaTeX to <image> with MathJax */
     let g = this.group();
-    if (color) tex = `\\color{${color}}{${tex}}`
+    if (color) tex = `\\color{${color}}{${tex}}`;
+    if (!(size instanceof Array) && mjax_svg.log != true) mjax_svg.log = tex;
     return mjax_svg(tex).then(svg => {
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
         g.image(url, size, xy);
         return g;
     });
+}
+
+mj(key, scale, xy, color) {
+/* Call .mjax with mjax_size.map data */
+    let [tex, w, h] = mjax_size.map[key];
+    let size = w ? mjax_size(w, h, scale) : "32";
+    return this.mjax(tex, size, xy, color);
 }
 
 _embed(url, size) {
@@ -801,12 +809,8 @@ energy_flow(data) {
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
         if (!color) color = "#0065fe";
-        if (txt.charAt(0) == '$') {
-            txt = txt.substring(1);
-            let size = mjax_size(txt, 0.8);
-            let [a, b] = txt.split("_");
-            this.mjax(`${a}_${b}`, size ? size : "32", pos, "#0065fe");
-        }
+        txt = txt.replace("_", "").replace("$", "");
+        if (mjax_size.map[txt])  this.mj(txt, 0.8, pos, color);
         else {
             // g.group(color).ctext([txt, pos]);
             let t = g.group(color);
@@ -1582,10 +1586,7 @@ static ebg(sel, Emax, step, data, options) {
         let d = data[i];
         let c = d[2] ? d[2] : "#0065fe"
         bars.push(svg.rect([options.width, 1], [i + 0.5, 1]).css({fill: c}));
-        let [t, sub] = d[0].split("_");
-        let size = mjax_size(d[0], 0.9);
-        if (mjax_svg.log) console.log(d[0], mjax_size(d[0]));
-        sym.mjax(t + (sub ? `_{${sub}}` : ""), size ? size : "36", [[i + 0.5, "-8"], [0.5, 0]], c);
+        sym.mj(d[0].replace("_", ""), 0.9, [[i + 0.5, "-8"], [0.5, 0]], c);
     }
     svg.config({data: data, options: options});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$);
@@ -1660,15 +1661,6 @@ static* spring_points(p0, p1, n, dx, dy) {
 
 }
 
-// SVG2.ebg._size = (s) => {
-//     // MathJax rendered image sizes for Energy Bar Graph labels
-//     let data = [["+W", 59.49, 24.93], ["–W", 50.43, 22.97], ["E_k", 38.75, 27.29], ["E_g", 37.74, 31.77],
-//         ["E_elas", 67.33, 27.29], ["E_elec", 65.05, 27.29], ["E_rotn", 70.44, 27.29], ["E_p", 38.33, 31.51]];
-//     let map = {};
-//     for (let [k, w, h] of data) map[k] = mjax_size(w, h, s);
-//     return map;
-// };
-// SVG2.ebg.size = SVG2.ebg._size(0.8);
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";
 SVG2._cache = {};
