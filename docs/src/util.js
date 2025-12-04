@@ -163,7 +163,7 @@ function katex_render(e, opt) {
     if (katex_render.hideEqNum) $("[data-latex]:is(p, div) .eqn-num").hide();
 }
 
-async function mjax_render(e) {
+async function mjax_render(e, nosvg) {
     // Render TeX math with KaTeX
     e = $(e ? e : ".TeX").removeClass("TeX");
     let p = [];
@@ -171,7 +171,9 @@ async function mjax_render(e) {
         let e$ = $(ei);
         let tex = e$.text();
         e$.attr("data-latex", tex);
-        p.push(MathJax.tex2svgPromise(tex).then(mj => e$.html($(mj).find("svg")[0])));
+        f = nosvg ? mj => $(mj) : mj => $(mj).find("svg");
+        p.push(MathJax.tex2svgPromise(tex).then(mj => e$.html(f(mj)[0])));
+        // p.push(MathJax.tex2svgPromise(tex).then(mj => e$.html($(mj).find("svg")[0])));
     };
     for (let i=0;i<p.length;i++) await p[i];
 }
@@ -207,33 +209,12 @@ function mjax_img(tex) {
 }
 
 function mjax_size(w, h, s) {
-    if (!s) s = 1
+    if (typeof(w) == "string") [w, h, s] = [...mjax_size.map[w], h];
+    if (!s) s = 1;
     return [(w*s).toFixed(2), (h*s).toFixed(2)]}
 
-// function mjax_render0(e, mml) {
-//     e = $(e ? e : ".TeX");
-//     for (let item of e) {    
-//         if ($(item).children().length) console.log(item);
-//         let ei = $(item);
-//         let [a, b] = ei.is("p, div, .Display") ? ["$$", "$$"] : ["\\(", "\\)"];
-//         let tex = ei.html();
-//         ei.attr("data-latex", tex);
-//         ei.html(`${a}${tex}${b}`);
-//     }
-//     mjax_wait().then(() => {
-//         try {
-//             MathJax.typesetPromise().then(() => {
-//                 for (let item of $("[data-latex]")) {
-//                     let ei = $(item).removeClass("TeX");
-//                     if (!mml) ei.html(ei.find("svg"));    
-//                 }
-//             });
-//         }
-//         catch(err) {
-//             console.error(err);
-//         }  
-//     })
-// }
+mjax_size.map = {"+W": [59.49, 24.93], "–W": [50.43, 22.97], "E_k": [38.75, 27.29], "E_g": [37.74, 31.77],
+        "E_elas": [67.33, 27.29], "E_elec": [65.05, 27.29], "E_rotn": [70.44, 27.29], "E_p": [38.33, 31.51]};
 
 renderTeX = mjax_render;
 

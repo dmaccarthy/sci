@@ -55,13 +55,13 @@ tennis: (sel) => {
 
 
 F1: (sel) => {
-    let svg = new SVG2(sel, {size: [500, 256], lrbt: [-1.5, 1.6]}).css(".NoStyle");
+    let svg = new SVG2(sel, {scale: 160, lrbt: [-1.5, 1.6, -0.8, 0.8]});
     let L = 0.75;
     svg.energy_flow({radius: 0.75,
         labels: [
-            ["$E_k", [0, 0]],
-            ["Food", [-1.25, 0], "red"],
-            ["Waste", [1.3, 0], "red"],
+            ["$E_k", [0, -0.01]],
+            ["Food", [-1.25, 0.02], "red"],
+            ["Waste", [1.3, 0.02], "red"],
         ],
         arrows: [
             [L, [-0.6, 0], 0, ["75.0 J", ["6", "-24"]], "red"],
@@ -71,6 +71,7 @@ F1: (sel) => {
 },
 
 Q1: (sel) => {
+    // mjax_svg.log = true;
     SVG2.ebg(sel, 80, 10, [
         ["+W", (t) => 75 * (1 - t * t), "red"],
         ["E_k", true],
@@ -89,6 +90,7 @@ F2: (sel) => {
             [4, [-3, 0], 0, ["4.46 kJ", ["6", "-24"]], "red"],
         ]
     });
+    // console.log(svg);
 },
 
 Q2: (sel) => {
@@ -135,7 +137,6 @@ ramp : (sel) => {
     css(svg.poly([pt, [pt[0], 0], [0, 0]], 1), "none", "red@2");
 
     let g = svg.group().config({theta: 8});
-    let [c, s] = ["red", 0.7];
     let mj = (w, h) => mjax_size(w, h, 0.7);
     g.mjax("\\Delta\\vec{\\bf d} = \\rm +2.00\\ m", mj(209.95, 38.4), [1, 0.08], "red");
     svg.mjax("h_f", mj(34.14, 32.21), [[2, 0.15], [-0.1, 0.5]], "red");

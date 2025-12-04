@@ -803,9 +803,9 @@ energy_flow(data) {
         if (!color) color = "#0065fe";
         if (txt.charAt(0) == '$') {
             txt = txt.substring(1);
-            let size = SVG2.ebg.size[txt];
-            txt = txt.split("_");
-            this.mjax(`${txt[0]}_${txt[1]}`, size ? size : "32", pos, "#0065fe");
+            let size = mjax_size(txt, 0.8);
+            let [a, b] = txt.split("_");
+            this.mjax(`${a}_${b}`, size ? size : "32", pos, "#0065fe");
         }
         else {
             // g.group(color).ctext([txt, pos]);
@@ -1583,8 +1583,8 @@ static ebg(sel, Emax, step, data, options) {
         let c = d[2] ? d[2] : "#0065fe"
         bars.push(svg.rect([options.width, 1], [i + 0.5, 1]).css({fill: c}));
         let [t, sub] = d[0].split("_");
-        let size = SVG2.ebg.size[d[0]];
-        if (mjax_svg.log) console.log(d[0], size);
+        let size = mjax_size(d[0], 0.9);
+        if (mjax_svg.log) console.log(d[0], mjax_size(d[0]));
         sym.mjax(t + (sub ? `_{${sub}}` : ""), size ? size : "36", [[i + 0.5, "-8"], [0.5, 0]], c);
     }
     svg.config({data: data, options: options});
@@ -1660,15 +1660,15 @@ static* spring_points(p0, p1, n, dx, dy) {
 
 }
 
-SVG2.ebg._size = (s) => {
-    // MathJax rendered image sizes for Energy Bar Graph labels
-    let data = [["+W", 59.49, 24.93], ["–W", 50.43, 22.97], ["E_k", 38.75, 27.29], ["E_g", 37.74, 31.77],
-        ["E_elas", 67.33, 27.29], ["E_elec", 65.05, 27.29], ["E_rotn", 70.44, 27.29], ["E_p", 38.33, 31.51]];
-    let map = {};
-    for (let [k, w, h] of data) map[k] = mjax_size(w, h, s);
-    return map;
-};
-SVG2.ebg.size = SVG2.ebg._size(0.8);
+// SVG2.ebg._size = (s) => {
+//     // MathJax rendered image sizes for Energy Bar Graph labels
+//     let data = [["+W", 59.49, 24.93], ["–W", 50.43, 22.97], ["E_k", 38.75, 27.29], ["E_g", 37.74, 31.77],
+//         ["E_elas", 67.33, 27.29], ["E_elec", 65.05, 27.29], ["E_rotn", 70.44, 27.29], ["E_p", 38.33, 31.51]];
+//     let map = {};
+//     for (let [k, w, h] of data) map[k] = mjax_size(w, h, s);
+//     return map;
+// };
+// SVG2.ebg.size = SVG2.ebg._size(0.8);
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";
 SVG2._cache = {};

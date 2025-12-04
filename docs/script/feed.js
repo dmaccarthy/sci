@@ -748,15 +748,14 @@ function make_cal(crs) {
     });
 }
 
-function initPage() {
+function initPage(latex) {
     /* Initialize page */
-    let latex = localStorage.getItem("latex-renderer");
-    if (!latex) latex = "mjax";
+    if (!latex) latex = "svg";
     renderTeX = {
         svg: mjax_render,
+        mjax: e => mjax_render(e, true),
         katex: katex_render,
-        mjax: mjax_render, //(e) => mjax_render(e),
-        none: (e) => $(e ? e : ".TeX").css({visibility: "visible"}),
+        none: e => $(e ? e : ".TeX").css({visibility: "visible"}),
     }[latex];
     console.log(`latex-renderer = ${latex}`);
     teacher(null, true);
