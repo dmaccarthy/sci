@@ -100,7 +100,6 @@ Q2: (sel) => {
     ], {E: 5.4, unit: "kJ", duration: 3, margin: [32, 4, 40, 16], label: [0, "-6"]});
 },
 
-
 F4: (sel) => {
     let svg = new SVG2(sel, {size: [500, 256], lrbt: [-1.5, 1.5]}).css(".NoStyle");
     let L = 0.7;
@@ -130,18 +129,17 @@ Q4: (sel) => {
 },
 
 ramp : (sel) => {
-    svg = new SVG2(sel, {size: [480, 80], lrbt: [0, 2.15, -0.02], margin: 2}).css(".NoStyle");
-    svg.$.addClass("SVG2");
+    // mjax_svg.log = true;
+    svg = new SVG2(sel, {scale: 220, grid: 0, lrbt: [0, 2.15, 0, 0.3], margin: 2});
     let pt = vec2d(2, 8);
-    svg.poly([pt, [pt[0], 0], [0, 0]], 1).css({"stroke-width": "2px"});
-    svg.text("8.00°", [0.22, 0.1]);
+    css(svg.poly([pt, [pt[0], 0], [0, 0]], 1), "none", "red@2");
 
-    let [BD, IT, SM] = [1, 2, 4];
-    let arr = ["→", SM + BD, [0, "20"]];
-    let g = svg.group().config({shift: [0.75, 0.18], theta: 8});
-    g.symbol(["d", BD], arr, ["Δ", 0, ["-20", 0]]).$.addClass("Large");
-    g.text("= +2.00 m", [0.37, 0]).addClass("Large Symbol");
-    svg.symbol(["h", IT], ["f", SM + IT, ["12", "-12"]]).config({shift: [2.05, 0.12]}).$.addClass("Large");
+    let g = svg.group().config({theta: 8});
+    let [c, s] = ["red", 0.7];
+    let mj = (w, h) => mjax_size(w, h, 0.7);
+    g.mjax("\\Delta\\vec{\\bf d} = \\rm +2.00\\ m", mj(209.95, 38.4), [1, 0.08], "red");
+    svg.mjax("h_f", mj(34.14, 32.21), [[2, 0.15], [-0.1, 0.5]], "red");
+    svg.mjax("\\rm 8.00^\\circ", mj(72.14, 24.39), [0.2, 0.1], "red");
 },
 
 });

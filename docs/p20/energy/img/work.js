@@ -1,5 +1,15 @@
 SVG2.cache("p20/energy/img/work.js", {
 
+test_rect: (sel) => {
+    let svg = new SVG2(sel, {scale: 20, grid: 1, lrbt: [-10, 10, -5, 15]});
+    let g = svg.group().config({omega: 10, pivot: [1, 2], animated: true});
+    g = g.group();
+    css(g.rect([3, 5], [[2, 2], [0.75, 0.25]]), "none", "red@3");
+    g.image("media/car.svg", [6, 3], [[0, 0], [1, 1]]);
+    g.ralign([[0, 0], [0.25, 0.25]])
+    svg.play();
+},
+
 ex2: (sel) => {
     svg = SVG2.ebg(sel, 10, 1, [
         ["+W", true, "red"],
@@ -10,37 +20,37 @@ ex2: (sel) => {
 },
 
 ramp: (sel) => {
-	let svg = new SVG2(sel, {size: [360, 360], lrbt: [-1.5, 2.5]}).css(".NoStyle");
+	let svg = new SVG2(sel, {size: [360, 360], lrbt: [-1.5, 2.5]});
+    svg.gradient("gradFBD", "#d0d0ff", "royalblue", 80, 0, 0, 100);
     let g = svg.group().config({theta: 30});
     let tail = {tail: "6"};
-    g.line([-4, "-4"], [4, "-4"]).css({stroke: "black", "stroke-width": "3px"});
-    g.rect([1, 1], [0, 0.5]).css({"fill-opacity": "0.4", fill: "#0065fe", stroke: "black"});
-    let f = g.group().css("arrow");
+    css(g.line([-4, "-4"], [4, "-4"]), "black@3");
+    css(g.rect([1, 1], [0, 0.5]), "url(#gradFBD)", "black@1", {"fill-opacity": 0.4});
+    let f = g.group("arrow");
     f.arrow({tail: [0, 0], tip: [0, 2]}, tail);
     f.arrow({tail: [0.5, 0.5], tip: [1.5, 0.5]}, tail);
     f.arrow({tail: [-0.5, 0.2], tip: [-1.2, 0.2]}, tail);
     f.arrow({tail: [0, 0.5], tip: [0, -1.81]}, tail, "tail").config({theta: -30});
     f.arrow(2, tail).config({shift: [1, "-20"]}).css("#0065fe");
 
-    let [BD, SM, SM_IT] = [1, 4, 6];
-    let arr = ["→", SM + BD, [0, "24"]];
-    let sub = ["14", "-8"];
-    g = svg.group().css("symbol", 28, "red");
-    g.symb(["F", BD], arr, ["a", SM_IT, sub]).align([0.5, 1.4]);
-    g.symb(["F", BD], arr, ["f", SM_IT, sub]).align([-1.2, 0.15]);
-    g.symb(["F", BD], arr, ["n", SM_IT, sub]).align([-0.5, 1.5]);
-    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([0.05, -1]);
-    g.symb(["d", BD], arr, ["Δ", 0, ["-20", 0]]).align([1.25, 0.1]).css("#0065fe");
+    g = svg.group();
+    let F = (s, sz, xy) => [`\\vec{\\bf F}_${s}`, sz, xy, "red"];
+    g.mjax(...F('a', ["38.5", "40.4"], [0.5, 1.4]));
+    g.mjax(...F('n', ["40.1", "40.4"], [-0.45, 1.5]));
+    g.mjax(...F('g', ["37.3", "44.9"], [0.05, -1]));
+    g.mjax(...F('f', ["39", "44.9"], [-1.2, 0.15]));
+    g.mjax("\\Delta\\vec{\\bf d}", ["48", "35.9"], [1.25, 0.1], "#0065fe");
 },
 
 flow2: (sel) => {
     let svg = new SVG2(sel, {size: [400, 260], lrbt: [-8.5, 4.5]});
+    let top = [0.5, 0];
     svg.energy_flow({radius: 4,
         labels: [
-            ["$E_k", [-2.5, 0]],
-            ["$E_g", [2.5, 0]],
-            ["Food", [-7, 2.8], "red"],
-            ["Waste", [-7, -2.5], "red"],
+            ["$E_k", [[-2.5, 0.3], top]],
+            ["$E_g", [[2.5, 0.3], top]],
+            ["Food", [-7, 2.4], "red"],
+            ["Waste", [-7, -2.2], "red"],
         ],
         arrows: [
             [3, [-4.5, 1.25], -35, "9.0 J", "red"],
@@ -67,11 +77,12 @@ Q2: (sel) => {
 F2: (sel, Wg, dW, unit) => {
     if (unit == null) unit = "J";
     let svg = new SVG2(sel, {size: [420, 256], lrbt: [-4.5, 9.5]});
+    let top = [0.5, 0];
     svg.energy_flow({radius: 4,
         labels: [
-            ["$E_g", [-2.5, 0]],
-            ["$E_k", [2.5, 0]],
-            ["Waste", [8, -0], "red"],
+            ["$E_g", [[-2.5, 0.3], top]],
+            ["$E_k", [[2.5, 0.3], top]],
+            ["Waste", [8, 0], "red"],
         ],
         arrows: [
             [3, [5, 0], 0, `${dW} ${unit}`, "red"],

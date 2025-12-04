@@ -48,6 +48,7 @@ Ex2: (sel) => {
 },
 
 Ex3: (sel) => {
+    // mjax_svg.log = true;
     let Eg = (t) => 10 * Math.pow((t - 0.05) / 0.95, 2);
     SVG2.ebg(sel, 11, 1, [
         ["E_k", (t) => t < 0.05 ? 1000 * t / 7 : 5/7 * (10 - Eg(t))],

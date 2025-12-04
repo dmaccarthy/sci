@@ -4,9 +4,14 @@
 "energy/mech": {"t": "@Mechanical Energy", "n": "6.1", "s": "2025.11.28", "a": "2025.12.1", "h": "1LVUnS8TD59eJ1KucQDPeSTs4rVVCnZaB"},
 "energy/cons": {"t": "@Energy Conservation", "n": "6.2", "s": "2025.12.2", "a": "2025.12.3", "h": "16feEBDiNXsq72QjX9LBa08Y028osNyAT"},
 "energy/sys": {"t": "@Non-Isolated Systems", "n": "6.3", "s": "2025.12.3", "a": "2025.12.4", "h": ["1QIOHaWOycmAtmNJqkq3JWxJIXSXhcE-7", ["Ramp Lab", "1Ec6T5oU7C6qNeMeEq5HVjRU96eeKJPis"]]},
+"energy/work": {"t": "@Energy Transformations (Work)", "n": "6.4", "s": "2025.12.5", "a": "2025.12.8", "h": "1QAmjL9mCQyHENQ5CtCtryokR_0doTNGZ"},
+"energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2025.12.8", "a": "2025.12.9", "h": "_"},
 "energy/@": {"hide": 1, "t": "@", "n": "6.", "s": "2025.12.", "a": "2025.12.", "h": "_"},
+"q6/@": {"t": "Quiz: Work & Energy", "s": "2025.12.11", "css": {"font-weight": "bold"}},
 
 "circ/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "5.5", "s": "2025.12.18", "a": "2025.12.19", "h": "_"},
+"q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2025.12.19", "css": {"font-weight": "bold"}},
+"uC/@": {"t": "Unit C Exam", "s": "2026.1.8", "css": {"font-weight": "bold"}},
 
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2025.8.28", "a": "2025.8.29"},
 "skill/expDes#": {"t": "Lab: Self-Designed Experiment", "s": "2025.8.29"},
@@ -66,7 +71,6 @@
 "q4/@": {"t": "Quiz: Universal Gravitation", "s": "2025.11.27", "css": {"font-weight": "bold"}},
 "uB/@": {"t": "Unit B Exam", "s": "2025.12.1", "css": {"font-weight": "bold"}},
 
-"uC/@": {"hide": 1, "t": "Unit C Exam", "s": "2026.1.7", "css": {"font-weight": "bold"}},
 "uD/@": {"hide": 1, "t": "Unit D Exam", "s": "2026.1.22", "css": {"font-weight": "bold"}},
 
 "galaxy/@": {"t": "Galaxyland", "s": "2027", "attr": {"href": "https://drive.google.com/file/d/1DfO81FZvQzby3lBU9qp39PLeIkiXuBwd/view?usp=drive_link", "target": "Galaxy"}}
