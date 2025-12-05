@@ -1,9 +1,7 @@
-
-
 SVG2.cache("p30/mag/img/helix.js", {
 
 ucm: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 400], grid: 0, lrbt: [-1.16, 1.16]});
+    let svg = new SVG2(sel, {size: [400, 400], grid: 0.10, lrbt: [-1.16, 1.16]});
     let tog = [css(svg.circle(1), "none", "black@1")];
 
     /* Magnetic field */
@@ -29,6 +27,8 @@ ucm: (sel) => {
     /* Charge */
     css(q.circle("5", [1, 0]), "yellow", "black@1");
 
+    // svg.blob().text().then(console.log);
+
     click_cycle(svg.element, 3,
         () => {click_cycle.toggle(tog, true, 1)},
         () => {svg.play()},
@@ -36,6 +36,8 @@ ucm: (sel) => {
         () => {svg.pause()},
         () => {click_cycle.toggle(tog, false, 0, 1)},
     );
+
+    // setTimeout(() => svg.save(), 2000); // Does not work until Promises resolved!
 
 },
 
