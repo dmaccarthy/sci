@@ -15,23 +15,22 @@ window.MathJax = {
 };
 
 </script>
-<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
-<!-- <script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script> -->
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script><!-- mathjax@3/es5/tex-svg.js -->
 <link rel="shortcut icon" type="image/svg+xml" href="media/rocket.svg" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
-<link rel="stylesheet" href="style/common.css?_v=0"/>
-<link rel="stylesheet" href="style/feed.css?v=0"/>
+<link rel="stylesheet" href="style/common.css?_v=1"/>
+<link rel="stylesheet" href="style/feed.css?v=1"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="src/util.js?_v=13"></script>
+<script type="text/javascript" src="src/util.js?_v=14"></script>
 <script type="text/javascript" src="src/bdata.js?_v=1"></script>
 <script type="text/javascript" src="src/math.js?_v=4"></script>
 <script type="text/javascript" src="src/matrix.js"></script>
-<script type="text/javascript" src="src/svg2.js?_v=20"></script>
+<script type="text/javascript" src="src/svg2.js?_v=21"></script>
 <script type="text/javascript" src="script/phys.js?_v=2"></script>
 <script type="text/javascript" src="media/dataimg.js"></script>
-<script type="text/javascript" src="script/feed.js?_v=19"></script>
+<script type="text/javascript" src="script/feed.js?_v=20"></script>
 <style type="text/css">
 
 #Top, #Main, #Copy {display:none}
@@ -68,6 +67,8 @@ let svgTrack = () => {
     });
     return svg[0].graphic;
 }
+
+let svgn = (n) => $("svg[data-svg2x]")[n].graphic;
 
 </script>
 </head>

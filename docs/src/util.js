@@ -163,22 +163,23 @@ function katex_render(e, opt) {
     if (katex_render.hideEqNum) $("[data-latex]:is(p, div) .eqn-num").hide();
 }
 
-async function mjax_render(e, nosvg) {
-    // Render TeX math with KaTeX
+katex_render.hideEqNum = true;
+
+async function mjax_render(e, mode) {
+    // Render TeX math with MathJax
+    // mode = 0 => <svg>
+    // mode = 1 => <mjx-container><svg>
     e = $(e ? e : ".TeX").removeClass("TeX");
     let p = [];
     for (let ei of e) {
         let e$ = $(ei);
         let tex = e$.text();
         e$.attr("data-latex", tex);
-        f = nosvg ? mj => $(mj) : mj => $(mj).find("svg");
+        f = mode ? mj => $(mj) : mj => $(mj).find("svg");
         p.push(MathJax.tex2svgPromise(tex).then(mj => e$.html(f(mj)[0])));
-        // p.push(MathJax.tex2svgPromise(tex).then(mj => e$.html($(mj).find("svg")[0])));
     };
     for (let i=0;i<p.length;i++) await p[i];
 }
-
-katex_render.hideEqNum = true;
 
 async function mjax_wait(t) {
     // Wait until MathJax.typesetPromise is available
@@ -204,7 +205,7 @@ async function mjax_url(tex) {
 }
 
 function mjax_img(tex) {
-    // Use MathJax to render LaTeX as SVG; return jquery object containng <img>
+    // Use MathJax to render LaTeX as SVG; return jquery object containing <img>
     return mjax_url(tex).then(u => $("<img>").attr({src: u}));
 }
 
@@ -214,6 +215,31 @@ function mjax_size(w, h, s) {
     return [(w*s).toFixed(2), (h*s).toFixed(2)]}
 
 renderTeX = mjax_render;
+
+
+async function load_img(url) {
+    return new Promise(res => {
+        let img = new Image();
+        img.addEventListener("load", () => res(img));
+        img.src = url;
+    });
+}
+
+// async function img_dataURL(url, format) {
+//     /* Load a URL and convert to data URL */
+//     return load_img(url).then((img) => {
+//         img = $(img).appendTo("body");
+//         let cv = $("<canvas>").attr({width: img.width(), height: img.height()}).appendTo("body");
+//         img.remove();
+//         let cx = cv[0].getContext("2d");
+//         cx.drawImage(img[0], 0, 0);
+//         if (!format) format = "png";
+//         if (format.indexOf("/") == -1) format = "image/" + format;
+//         img = cv[0].toDataURL(format);
+//         cv.remove();
+//         return img;
+//     });
+// }
 
 
 /*** HSV Color ***/

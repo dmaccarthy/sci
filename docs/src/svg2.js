@@ -693,7 +693,7 @@ edot(n, r) {
 
 graph(options) {
 /* Add common scatter plot / line graph elements */
-    let svg = this.svg.css(".NoStyle");
+    let svg = this.svg;
     let x = options.x, y = options.y;
     if (options.grid) {
         let [dx, dy] = options.grid;
@@ -1186,21 +1186,16 @@ get size() {
     return [parseFloat(e.attr("width")), parseFloat(e.attr("height"))];
 }
 
+get bdata() {return new BData(this.element.outerHTML, "svg")}
 get url() {return "data:image/svg+xml;base64," + unicode_to_base64(this.element.outerHTML)}
-
-get img() {
-    let [w, h] = this.size;
-    return $("<img>").attr({src: this.url, "data-aspect": `${w}/${h}`})[0];
-}
-
-get bdata() {return new BData(this.element, "svg")}
 open() {return this.bdata.open()}
+save(fn) {return this.bdata.save(fn ? fn : `${random_string(12, 1)}.svg`)}
 
-save(fn, raw) {
-/* Remove class and data-* attributes before saving */
-    if (raw) return this.bdata.save(fn ? fn : `${random_string(12, 1)}.svg`)
-    let svg = $(this.element.outerHTML).removeAttr("class");
-    // svg.find("[class]").removeAttr("class");
+static async cleanup_svg(svg, bg) {
+    // Make new SVGElement without class or style attributes
+    svg = $(svg).removeAttr("class style");
+
+    // Remove all data-* attributes
     let attr = svg[0].attributes;
     let keys = [];
     for (let i=0;i<attr.length;i++) {
@@ -1208,52 +1203,82 @@ save(fn, raw) {
         if (a.name.split("-")[0] == "data") keys.push(a.name);
     }
     for (let k of keys) svg.removeAttr(k);
-    return BData.init(svg[0].outerHTML, fn ? fn : `${random_string(12, 1)}.svg`).save();
-}
 
-async embed_images() {return this.embed_svg_images().then(g => g.convert_image_hrefs())}
+    // Add background
+    if (bg) {
+        svg.appendTo("body");
+        let r = $(document.createElementNS(SVG2.nsURI, "rect")).prependTo(svg);
+        console.log(r);
+        r.attr({x:0, y:0, width: svg.width(), height: svg.height(), style: `fill: ${bg}`});
+        svg.remove();
+    }
 
-async embed_svg_images() {
-/* Replace SVG <image> elements by embedded <svg> */
-    let g = this;
-    let svg = g.svg;
-    let promises = [];
-    let [sx, sy] = svg.scale;
-    sx = Math.abs(sx);
-    sy = Math.abs(sy);
-    for (let img of g.$.find("image")) {
-        img = $(img);
-        let href = img.attr("href");
-        if (file_ext(href) == "svg") {
-            let w = parseFloat(img.attr("width")) / sx;
-            let h = parseFloat(img.attr("height")) / sy;
-            let x = parseFloat(img.attr("x"));
-            let y = parseFloat(img.attr("y"));
-            [x, y] = svg.p2a(x, y);
-            let [p, e] = g._embed(href, [w, h]);
-            img.replaceWith(e.config({shift: [x + w/2, y - h/2]}).$);
-            promises.push(p);
+    // Get <image> list
+    let hrefs = [];
+    let imgs = [];
+    for (let img of svg.find("image")) {
+        let href = $(img).attr("href");
+        if (href.substring(0, 5) != "data:") {
+            imgs.push(img);
+            hrefs.push(href);
         }
     }
-    for (let i in promises) await promises[i];
-    return new Promise((resolve) => {resolve(g)});
-}
 
-async convert_image_hrefs() {
-/* Replace <image> hrefs by data URLs */
-    let g = this;
-    let images = {};
-    let hrefs = [];
-    for (let img of g.$.find("image")) {
-        let href = $(img).attr("href");
-        hrefs.push(href);
-        images[href] = img;
-    }
-    return load_dataURLs(...hrefs).then((a) => {
-        for (let href in a) $(images[href]).attr({href: a[href]});
-        return g;
+    // Load images as data URLs
+    return load_dataURLs(...hrefs).then(map => {
+        for (let i=0;i<hrefs.length;i++) {
+            let href = map[hrefs[i]];
+            $(imgs[i]).attr({href: href});
+        }
+        return svg[0];
     });
 }
+
+static async svg_to_data(svg, scale, format) {
+    /* Convert and scale <svg> to PNG/WebP/JPEG data URL */
+    if (!scale) scale = 1;
+    return load_img("data:image/svg+xml;base64," + unicode_to_base64(svg.outerHTML)).then(img => {
+        let img$ = $(img).appendTo("body");
+        let [w, h] = [Math.round(scale * img$.width()), Math.round(scale * img$.height())];
+        img$.remove();
+        let cv = $("<canvas>").attr({width: w, height: h})[0];
+        let cx = cv.getContext("2d");
+        cx.drawImage(img, 0, 0, w, h);
+        return cv.toDataURL(`image/${format ? format : "png"}`);
+    });
+}
+
+async image_data(scale, format, bg) {
+    /* Return drawing as scaled PNG data URL */
+    return SVG2.cleanup_svg(this.element.outerHTML, bg).then(svg => SVG2.svg_to_data(svg, scale, format));
+}
+
+async save_image(fn, scale, bg) {
+    /* Save scaled drawing as PNG/WebP/JPEG file*/
+    if (!fn) fn = `${random_string(12, 1)}.png`;
+    let format = fn.split(".").item(-1).toLowerCase();
+    if (format == "jpg") format = "jpeg";
+    return this.image_data(scale, format, bg).then(png => {
+        $("<a>").attr({href: png, download: fn})[0].click();
+        return png;
+    });
+}
+
+// async img(scale) {
+//     if (!scale) scale = 1;
+//     let [w, h] = this.size;
+//     return load_img(this.url).then(img => $(img).attr({width: w * scale, height: h * scale})[0]);
+// }
+
+// async png(scale) {
+//     let [w, h] = new RArray(...this.size).times(scale ? scale : 1);
+//     return load_img(this.url).then(img => {
+//         let cv = $("<canvas>").attr({width: w, height: h})[0];
+//         let cx = cv.getContext("2d");
+//         cx.drawImage(img, 0, 0, w, h);
+//         return cv;
+//     });
+// }
 
 get defs() {
     let d = this.$.find("defs");
@@ -1504,7 +1529,7 @@ static cached(url) {return SVG2._cache[new URL(url, SVG2.url).href]}
 
 static vec_diag(sel, vecs, opt) {
 /* Draw a vector diagram in an <svg> tag */
-    let svg = new SVG2(sel, opt).css(".NoStyle");
+    let svg = new SVG2(sel, opt);
     if (!opt) opt = {};
     let g = svg.tip_to_tail(vecs);
     if (opt.shift) g.config({shift: opt.shift});

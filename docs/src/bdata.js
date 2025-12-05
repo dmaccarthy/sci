@@ -90,6 +90,8 @@ constructor(data, type) {
         css: "text/css",
         js: "text/javascript",
         json: "application/json",
+        png: "image/png",
+        jpg: "image/jpeg",
         svg: "image/svg+xml",
         xml: "application/xml",
         csv: "text/csv",
