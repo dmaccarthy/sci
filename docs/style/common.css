@@ -20,7 +20,7 @@ body:not(.Present) .Present {display: none}
 
 *[data-latex]:not(span) {
     text-align: center;
-    margin: 1em auto;
+    /* margin: 1em auto; */
 }
 
 a[href], .Blue {color: var(--blue);}
