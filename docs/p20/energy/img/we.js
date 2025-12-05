@@ -10,7 +10,7 @@ work: (sel) => {
         ]
     });
     svg.$.find("g.LabelX text.Zero").remove();
-    let shade = svg.group();
+    let shade = svg.group("text", 18);
     let g = shade.group().addClass("Toggle0");
     g.poly([[0, 0], [5, 400], [5, 0]], 1);
     g.line([5, 400], [5, 0]);
@@ -80,7 +80,7 @@ Q1: (sel) => {
 },
 
 F2: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 260], lrbt: [-8.5, 4.5]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [400, 260], lrbt: [-8.5, 4.5]});
     svg.energy_flow({radius: 4,
         labels: [
             ["Ek", [0, 0]],
@@ -103,7 +103,7 @@ Q2: (sel) => {
 },
 
 F4: (sel) => {
-    let svg = new SVG2(sel, {size: [500, 256], lrbt: [-1.5, 1.5]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [500, 256], lrbt: [-1.5, 1.5]});
     let L = 0.7;
     svg.energy_flow({radius: 0.75,
         labels: [

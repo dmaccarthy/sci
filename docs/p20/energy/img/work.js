@@ -1,14 +1,14 @@
 SVG2.cache("p20/energy/img/work.js", {
 
-test_rect: (sel) => {
-    let svg = new SVG2(sel, {scale: 20, grid: 1, lrbt: [-10, 10, -5, 15]});
-    let g = svg.group().config({omega: 10, pivot: [1, 2], animated: true});
-    g = g.group();
-    css(g.rect([3, 5], [[2, 2], [0.75, 0.25]]), "none", "red@3");
-    g.image("media/car.svg", [6, 3], [[0, 0], [1, 1]]);
-    g.ralign([[0, 0], [0.25, 0.25]])
-    svg.play();
-},
+// test_rect: (sel) => {
+//     let svg = new SVG2(sel, {scale: 20, grid: 1, lrbt: [-10, 10, -5, 15]});
+//     let g = svg.group().config({omega: 10, pivot: [1, 2], animated: true});
+//     g = g.group();
+//     css(g.rect([3, 5], [[2, 2], [0.75, 0.25]]), "none", "red@3");
+//     g.image("media/car.svg", [6, 3], [[0, 0], [1, 1]]);
+//     g.ralign([[0, 0], [0.25, 0.25]])
+//     svg.play();
+// },
 
 ex2: (sel) => {
     svg = SVG2.ebg(sel, 10, 1, [
@@ -40,6 +40,8 @@ ramp: (sel) => {
     g.mjax(...F('g', ["37.3", "44.9"], [0.05, -1]));
     g.mjax(...F('f', ["39", "44.9"], [-1.2, 0.15]));
     g.mjax("\\Delta\\vec{\\bf d}", ["48", "35.9"], [1.25, 0.1], "#0065fe");
+    // svg.image("media/car.svg", [1, 0.5], [[0, 0], [1, 1]]);
+    // svg.image("media/amoeba.webp", [1, 1], [2, -1]);
 },
 
 flow2: (sel) => {

@@ -1,0 +1,20 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Test</h2><div class="Collapse Expand">
+
+<p><svg id="S1"></svg></p>
+
+</div></section>
+
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
+    let svg = new SVG2("#S1", {scale: 50, grid: 1, lrbt: [-5, 5, -5, 5]});
+    svg.image("media/car.svg", [6, 3]);
+    svg.image("media/archer.webp", [2, 4], [3, 4]);
+    svg.image(data_images.sim, [3, 3]);
+    svg.save_image("archery.png", 2, "white");
+}
+
+loadFeed.data = {title: "Test"}
+
+</script>

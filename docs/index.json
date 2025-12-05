@@ -6,7 +6,7 @@
 "energy/sys": {"t": "@Non-Isolated Systems", "n": "6.3", "s": "2025.12.3", "a": "2025.12.4", "h": ["1QIOHaWOycmAtmNJqkq3JWxJIXSXhcE-7", ["Ramp Lab", "1Ec6T5oU7C6qNeMeEq5HVjRU96eeKJPis"]]},
 "energy/sys#": {"t": "Lab: Energy Transformation on a Ramp", "s": "2025.12.4"},
 "energy/work": {"t": "@Energy Transformations (Work)", "n": "6.4", "s": "2025.12.5", "a": "2025.12.8", "h": "1QAmjL9mCQyHENQ5CtCtryokR_0doTNGZ"},
-"energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2025.12.8", "a": "2025.12.9", "h": "_"},
+"energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2025.12.8", "a": "2025.12.9", "h": "1x1xMVIZIANj0w-BZFTccz8YAlkmIf1IR"},
 "energy/@": {"hide": 1, "t": "@", "n": "6.", "s": "2025.12.", "a": "2025.12.", "h": "_"},
 "q6/@": {"t": "Quiz: Work & Energy", "s": "2025.12.11", "css": {"font-weight": "bold"}},
 
