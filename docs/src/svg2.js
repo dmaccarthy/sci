@@ -280,16 +280,15 @@ ellipse(r, posn, selector) {
     // return e.attr({rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
 }
 
+static _anchor(posn) {
+    if (posn == null) posn = [0, 0];
+    if (posn.length == 4) return posn;
+    if (posn[0] instanceof Array) return [...posn[0], ...posn[1]];
+    return [...posn, 0.5, 0.5];
+}
+
 rect_xy(size, posn) {
-    let ax = 0.5, ay = 0.5;
-    let x, y;
-    if (posn == null) x = y = 0;
-    else if (posn[0] instanceof Array) {
-        [x, y] = posn[0];
-        [ax, ay] = posn[1];
-    }
-    else [x, y] = posn;
-    // console.log(size, x, y);
+    let [x, y, ax, ay] = SVG2._anchor(posn);
     let svg = this.svg;
     let w = this._px(size[0], 0);
     let h = this._px(size[1], 1);

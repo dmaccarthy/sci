@@ -283,7 +283,7 @@ function img2canvas(img, size) {
     if (!size) size = 1;
     if (!(size instanceof Array)) {
         let j = $(img);
-        size = [Math.round(scale * j.width()), Math.round(scale * j.height())];
+        size = [Math.round(size * j.width()), Math.round(size * j.height())];
     }
     let [w, h] = size;
     if (w * h == 0) throw("Image has a dimension of 0");
