@@ -2,8 +2,8 @@ SVG2.cache("p20/energy/img/sys.js", {
 
 archer: (sel) => {
     let svg = new SVG2(sel, {scale: 64, grid: 0, lrbt: [-1, 7, -0.1, 2.1]});
-    svg.group("black@3", "nofill").line([-2, 0], [12, 0]);
-    let g = svg.group("black@2", "nofill");
+    svg.group("black@3", "none").line([-2, 0], [12, 0]);
+    let g = svg.group("black@2", "none");
     g.stickman(2).align([0, 1]);
     let c = new RArray(6, 0.8);
     g.poly([c.plus([-0.4, -0.8]), c, c.plus([0.4, -0.8])]);
@@ -14,7 +14,6 @@ archer: (sel) => {
     let attr = {tail: "5", shape: 2};
     g.arrow({tail: v, tip: vec2d(L, 20).plus(v)}, attr);
     g.arrow({tail: c.minus(vec2d(L, -25)), tip: c}, attr);
-    // console.log(svg.save());
 },
 
 bar: (sel) => {
@@ -27,13 +26,13 @@ bar: (sel) => {
 },
 
 flow1: (sel, label) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-1, 5]}).css(".NoStyle");
-    svg.circle(1.7, [1, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-1, 5]});
+    css(svg.circle(1.7, [1, 0]), "none", "#0065fe@3");
 
     let g = svg.group("symbol", 28, "#0065fe");
     g.symb(["E", 2], ["g", 6, ["16", "-6"]]).align([0, 0]);
     g.symb(["E", 2], ["k", 6, ["16", "-6"]]).align([2, 0]);
-    svg.group().css("red", {"font-size": "24px"}).ctext(["Waste", [4.3, 0]]);
+    svg.group("red", 24).ctext(["Waste", [4.3, 0]]);
 
     let dx = 0.4;
     g = svg.group("arrow");
@@ -46,10 +45,10 @@ flow1: (sel, label) => {
 },
 
 flow2: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]}).css(".NoStyle");
-    svg.circle(0.8, [2, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
+    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]});
+    css(svg.circle(0.8, [2, 0]), "none", "#0065fe@3");
 
-    let g = svg.group("#0065fe", 28);
+    let g = svg.group("symbol", 28, "#0065fe");
     g.symb(["E", 2], ["k", 6, ["16", "-6"]]).align([2, 0]);
     svg.group("red", 24).ctext(["Waste", [0, -1.8]], ["Food"]);
 
@@ -60,10 +59,10 @@ flow2: (sel) => {
 },
 
 flow3: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle");
-    svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]});
+    css(svg.circle(1.8, [-0.9, 0]), "none", "#0065fe@3");
 
-    let g = svg.group("#0065fe", 28);
+    let g = svg.group("symbol", 28, "#0065fe");
     g.symb(["E", 2], ["k", 6, ["16", "-6"]]).align([0.15, 0]);
     g.symb(["E", 2], ["g", 6, ["16", "-6"]]).align([-1.8, 1]);
     g.symb(["E", 2], ["elas", 6, ["24", "-6"]]).align([-1.8, -1]);
@@ -79,10 +78,10 @@ flow3: (sel) => {
 },
 
 flow4: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]}).css(".NoStyle");
-    svg.circle(1.8, [-0.9, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
+    let svg = new SVG2(sel, {size: [400, 256], lrbt: [-2.85, 3.05]});
+    css(svg.circle(1.8, [-0.9, 0]),  "none", "#0065fe@3");
 
-    let g = svg.group("#0065fe", 28);
+    let g = svg.group("symbol", 28, "#0065fe");
     g.symb(["E", 2], ["k", 6, ["16", "-6"]]).align([0.15, 0]);
     g.symb(["E", 2], ["g", 6, ["16", "-6"]]).align([-2, 0]);
     svg.group("red", 24).ctext(["Waste", [2.5, 0]]);

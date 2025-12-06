@@ -7,7 +7,7 @@
 "energy/sys#": {"t": "Lab: Energy Transformation on a Ramp", "s": "2025.12.4"},
 "energy/work": {"t": "@Energy Transformations (Work)", "n": "6.4", "s": "2025.12.5", "a": "2025.12.8", "h": "1QAmjL9mCQyHENQ5CtCtryokR_0doTNGZ"},
 "energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2025.12.8", "a": "2025.12.9", "h": "1x1xMVIZIANj0w-BZFTccz8YAlkmIf1IR"},
-"energy/@": {"hide": 1, "t": "@", "n": "6.", "s": "2025.12.", "a": "2025.12.", "h": "_"},
+"energy/work2d": {"t": "@Work in 2D", "n": "6.6", "s": "2025.12.9", "a": "2025.12.10", "h": "_"},
 "q6/@": {"t": "Quiz: Work & Energy", "s": "2025.12.11", "css": {"font-weight": "bold"}},
 
 "circ/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "5.5", "s": "2025.12.18", "a": "2025.12.19", "h": "_"},
