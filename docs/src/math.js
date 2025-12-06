@@ -87,7 +87,7 @@ dir() {
     return atan2(this[1], this[0]);
 }
 
-get matrix() {return new Matrix([this])}
+// get matrix() {return new Matrix([this])}
 
 tr(p, scale) {
     if (!p) p = 4;
