@@ -746,8 +746,8 @@ function initPage(latex) {
     /* Initialize page */
     if (!latex) latex = "svg";
     renderTeX = {
-        svg: mjax_render,
-        mjax: e => mjax_render(e, true),
+        svg: e => mjax_render(e).then(layoutWidth),
+        mjax: e => mjax_render(e, true).then(layoutWidth),
         katex: katex_render,
         none: e => $(e ? e : ".TeX").css({visibility: "visible"}),
     }[latex];

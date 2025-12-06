@@ -16,7 +16,7 @@ body:not(.Present) .Present {display: none}
     font-family: 'Noto Serif', 'Open Serif', 'Droid Serif', serif; /* KaTeX_Main, "Latin Modern Roman"  */
 }
 
-.TeX {visibility: hidden}
+.TeX, .TeX_Pending {visibility: hidden}
 
 *[data-latex]:not(span) {
     text-align: center;
