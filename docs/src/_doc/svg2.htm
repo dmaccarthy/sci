@@ -1,11 +1,10 @@
 <section class="Post NoPrintIcon" data-icon="slides">   
-<h2 class="Collapse">Creating an <code>SVG2</code> Drawing</h2><div class="Collapse Expand">
+<h2 class="Collapse">Creating an <code>SVG2</code> Drawing</h2><div class="Collapse">
 
 <p>Make sure you have included all required <code>jquery</code> and <code>SVG2</code> scripts in yout HTML5 document.</p>
 <pre class="Code" data-echo="html">&lt;script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="src/util.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="src/math.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="src/matrix.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="src/svg2.js"&gt;&lt;/script&gt;</pre>
 
 <p>Create an <code>&lt;svg&gt;</code> tag somewhere in the body of your document:</p>
@@ -58,21 +57,55 @@
 
 <p>Running the example above will produce the following drawing:</p>
 <p class="Center"><svg id="Drawing1"></svg></p>
+</div></section>
 
-<script type="text/javascript" data-init="draw1">
+<section class="Post NoPrintIcon" data-icon="slides">   
+<h2 class="Collapse">Adding Simple Shapes</h2><div class="Collapse">
 
-loadFeed.draw1 = () => {
-    let svg = new SVG2("#Drawing1", {lrbt: [-5, 5, -5, 5], scale: 32, margin: 2, grid: 1});
-}
+<p>After creating your <code>SVG2</code> instance as in the previous example, you can draw basic shapes by adding lines like the following to your <code>draw</code> function:</p>
 
-</script>
+<pre class="Code" data-echo="js">svg.circle(2, [3, 1]);
+svg.ellipse([1, "25"], [-4, 2]);
+svg.rect([2, "20"], [-3, -2]);
+svg.poly([[0, 0], [-2, 4], [1, 3]]);</pre>
+
+<p>The drawing will now look like this:</p>
+<p class="Center"><svg id="Drawing2"></svg></p>
+
+<p>The <code>circle</code> method draws a circle. The first argument (<code>2</code>) is the radius of the circle and the second argument (<code>[3, 1]</code>) gives the coordinates of the circle’s centre. <span class="Red">We will discuss later how to anchor shapes to points other than their centres.</span></p>
+<p>If the drawing uses a different scale for the <span class="TeX">x</span> and <span class="TeX">y</span> axes, the size of the circle will be based on an average of the scales. For example, a scale of 32 would mean that a radius of 2 units equals 64 pixels. If the other axis has a scale of 20, 2 units would be 40 pixels. <code>SVG2</code> calculates a root mean square average and draws the circle with a radius of about 53 pixels.</p>
+<p>By default, a new <code>&lt;circle&gt;</code> element is appended to the <code>&lt;svg&gt;</code> element, however you can pass as a third argument an existing circle to be resized or recentred. This argument can be an <code>SVGCircleElement</code> instance, or a <code>jquery</code> collection or selector string representing the element.</p>
+<p>The <code>circle</code> method returns a <code>jquery</code> collection containing the <code>&lt;circle&gt;</code> element.</p>
+<p>The <code>ellipse</code> method is similar to the circle method except that the radius is replaced by an array specifying different horizontal and vertical radii.</p>
+
+<p>The <code>rect</code> method draws a rectangle. The first argument gives the dimensions of the rectangle and the second the corrdinates of its centre. Note that the dimensions in the example are given as <code>[2, "20"]</code>. The unquoted value <code>2</code> indicates a width of 2 units in the drawing’s coordinate system. The quoted <code>"20"</code> indicates a height of 20 <em>pixels</em>. <code>SVG2</code> interprets numbers as coordinate system values and strings as pixel values.</p>
+
+<p>The <code>poly</code> method draws either a closed <code>&lt;polygon&gt;</code> or open <code>&lt;polyline&gt;</code>. The first argument is an array of points to connect. The optional second argument is a boolean value specifying whether to draw a closed (<code>True</code>) or open (<code>False</code>, default) shape. Alternatively, the second argument can describe an existing <code>&lt;polygon&gt;</code> or <code>&lt;polyline&gt;</code> element to be modified.</p>
 
 </div></section>
 
 <section class="Post NoPrintIcon" data-icon="slides">   
-<h2 class="Collapse">Adding &amp; Styling Content</h2><div class="Collapse">
+<h2 class="Collapse">Styling the Shapes</h2><div class="Collapse Expand">
 
-<p>1</p>
+<p>Since the <code>circle</code>, <code>ellipse</code>, <code>rect</code>, and <code>poly</code> methods all return <code>jquery</code> collections, you can use <code>jquery.css</code> method to set the <code>fill</code>, <code>stroke</code> and <code>stroke-width</code> style attributes.</p>
+
+<pre class="Code" data-echo="js">svg.circle(2, [3, 1]).css({"fill": "red", "stroke": "black", "stroke-width": "2px"});
+svg.ellipse([1, "25"], [-4, 2]).css({"fill": "#0065fe", "stroke": "none"});
+svg.rect([2, "20"], [-3, -2]).css({"fill": "none", "stroke": "red", "stroke-width": "4px"});
+svg.poly([[0, 0], [-2, 4], [1, 3]]).css({"fill": "none", "stroke": "limegreen", "stroke-width": "1px"});</pre>
+
+<p>The drawing will now look like this:</p>
+<p class="Center"><svg id="Drawing3"></svg></p>
+
+<p><code>SVG2</code> provides a static function <code>style</code> that makes styling more concise. The following code produces the exact same result:</p>
+<pre class="Code" data-echo="js">SVG2.style(svg.circle(2, [3, 1]), "red", "black@2");
+SVG2.style(svg.ellipse([1, "25"], [-4, 2]), "#0065fe", "none@");
+SVG2.style(svg.rect([2, "20"], [-3, -2]), "none", "red@4");
+SVG2.style(svg.poly([[0, 0], [-2, 4], [1, 3]]), "none", "limegreen@1");</pre>
+
+<p>The first argument is the <code>jquery</code> collection to be styled. The remaining arguments are style descriptors. The function interprets a string containing the <code>@</code> symbol as a <code>stroke</code> and <code>stroke-width</code> value; <code>"red@4"</code> is short for <code>{"stroke": "red", "stroke-width": "4px"}</code>. If the string begins or ends with <code>@</code>, it will set only the <code>stroke</code> (e.g. <code>none@</code>) or only the <code>stroke-width</code> (e.g. <code>@2</code>)</p>
+<p>The <code>SVG2.style</code> function returns the <code>jquery</code> collection that was passed as the first argument.</p>
+
 </div></section>
 
 <section class="Post NoPrintIcon" data-icon="slides">   
@@ -140,7 +173,34 @@ loadFeed.draw1 = () => {
 </div>
 </section>
 
-<script type="text/javascript" data-ini="">
+<script type="text/javascript" data-init="draw">
+
+loadFeed.draw1 = () => {
+    let svg = new SVG2("#Drawing1", {lrbt: [-5, 5, -5, 5], scale: 32, margin: 2, grid: 1});
+}
+
+loadFeed.draw2 = () => {
+    let svg = new SVG2("#Drawing2", {lrbt: [-5, 5, -5, 5], scale: 32, margin: 2, grid: 1});
+    svg.circle(2, [3, 1]);
+    svg.ellipse([1, "25"], [-4, 2]);
+    svg.rect([2, "20"], [-3, -2]);
+    svg.poly([[0, 0], [-2, "8"], [1, 3]]);
+}
+
+loadFeed.draw3 = () => {
+    let svg = new SVG2("#Drawing3", {lrbt: [-5, 5, -5, 5], scale: 32, margin: 2, grid: 1});
+    let g = css(svg.circle(2, [3, 1]), "red", "black@2");
+    css(svg.ellipse([1, "25"], [-4, 2]), "#0065fe", "none@");
+    css(svg.rect([2, "20"], [-3, -2]), "none", "red@4");
+    css(svg.poly([[0, 0], [-2, 4], [1, 3]]), "none", "limegreen@1");
+    let t = css(svg.text("Hello, world!"), "text", 32);
+    console.log(t[0].getBBox());
+    svg.circle(1, [0, 0], g);
+}
+
+loadFeed.draw = () => {
+    for (let i=1;i<4;i++) loadFeed[`draw${i}`]();
+}
 
 loadFeed.data = {
     title: `SVG2 Documentation`,

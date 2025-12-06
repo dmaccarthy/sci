@@ -1,3 +1,5 @@
+const css = SVG2.style;
+
 function clearFeed() {
 /** Reset to empty feed **/
     if ($("body").hasClass("Present")) return location.reload();

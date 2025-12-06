@@ -50,7 +50,7 @@ addClass(...args) {
 
 css(...rules) {
 /* Apply CSS rules to <g> */
-    css(this.$, ...rules);
+    SVG2.style(this.$, ...rules);
     return this;
 }
 
@@ -72,10 +72,6 @@ align(xy, x, y) {
     let box = this.element.getBBox();
     let [w, h] = [box.width, box.height];
     if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
-    // if (!this.$.is(":visible")) {
-    //     console.log(this);
-    //     throw("Cannot align hidden elements");
-    // }
     if (typeof(xy) == "number") xy = [xy, xy];
     if (y == null) {
         if (x == null) x = y = 0.5;
@@ -258,25 +254,30 @@ _cs(xy) {
     return new RArray(x, y);
 }
 
-circle(r, center, selector) {
+circle(r, posn, selector) {
 /* Modify or append a <circle> to the <g> element */
-    let e = selector ? $(selector) : this.create_child("circle");
+    let e = selector ? $($(selector)[0]) : this.create_child("circle");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
-    let [x, y] = svg.a2p(...this._cs(center));
-    r = this._px_size(r);
-    return e.attr({r: f(r), cx: f(x), cy: f(y)});
+    r = svg._px_size(r);
+    let d = `${f(2*r)}`;
+    let [w, h, x, y] = this.rect_xy([d, d], posn);
+    return e.attr({r: f(r), cx: f(x + w / 2), cy: f(y + h / 2)});
+    // let [x, y] = svg.a2p(...svg._cs(posn));
+    // return e.attr({r: f(r), cx: f(x), cy: f(y)});
 }
 
-ellipse(r, center, selector) {
+ellipse(r, posn, selector) {
 /* Modify or append an <ellipse> to the <g> element */
-    let e = selector ? $(selector) : this.create_child("ellipse");
+    let e = selector ? $($(selector)[0]) : this.create_child("ellipse");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let rx = this._px(r[0], 0);
     let ry = this._px(r[1], 1);
-    let [x, y] = svg.a2p(...this._cs(center));
-    return e.attr({rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
+    let [w, h, x, y] = this.rect_xy([f(2*rx), f(2*ry)], posn);
+    return e.attr({rx: f(rx), ry: f(ry), cx: f(x + w / 2), cy: f(y + h / 2)});
+    // let [x, y] = svg.a2p(...svg._cs(posn));
+    // return e.attr({rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
 }
 
 rect_xy(size, posn) {
@@ -288,6 +289,7 @@ rect_xy(size, posn) {
         [ax, ay] = posn[1];
     }
     else [x, y] = posn;
+    // console.log(size, x, y);
     let svg = this.svg;
     let w = this._px(size[0], 0);
     let h = this._px(size[1], 1);
@@ -297,7 +299,7 @@ rect_xy(size, posn) {
 
 rect(size, posn, selector) {
 /* Modify or append a <rect> to the <g> element */
-    let e = selector ? $(selector) : this.create_child("rect");
+    let e = selector ? $($(selector)[0]) : this.create_child("rect");
     let f = (x) => x.toFixed(this.svg.decimals);
     let [w, h, x, y] = this.rect_xy(size, posn);
     return e.attr({width: f(w), height: f(h), x: f(x), y: f(y)});
@@ -305,7 +307,7 @@ rect(size, posn, selector) {
 
 image(href, size, posn, selector) {
 /* Modify or append an <image> to the <g> element */
-    let e = selector ? $(selector) : this.create_child("image");
+    let e = selector ? $($(selector)[0]) : this.create_child("image");
     let f = (x) => x.toFixed(this.svg.decimals);
     if (!(size instanceof Array)) size = [size, size];
     let [w, h, x, y] = this.rect_xy(size, posn);
@@ -448,7 +450,7 @@ path(start) {return new SVG2path(this, start)}
 
 line(p1, p2, selector) {
 /* Modify or append a <line> to the <g> element */
-    let e = selector ? $(selector) : this.create_child("line");
+    let e = selector ? $($(selector)[0]) : this.create_child("line");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
     let [x1, y1] = svg.a2p(...this._cs(p1));
@@ -516,24 +518,31 @@ _grid(g, x, y, swap) {
 text(data, xy, selector) {
 /* Add a <text> element to the group */
     let svg = this.svg;
+    let e = selector ? $($(selector)[0]) : this.create_child("text");
     let f = (x) => x.toFixed(svg.decimals);
     let [x, y] = svg.a2p(...this._cs(xy));
-    let e = selector ? $($(selector)[0]) : this.create_child("text");
     return e.attr({x: f(x), y: f(y)}).html(data);
 }
 
-gtext(data, css, xy, ...align) {
+gtext(data, css, posn) {
 /* Create a <g> element with an aligned <text> child */
     if (!(css instanceof Array)) css = [css];
     let g = this.group(...css);
     g.text(data);
-    g.align(xy ? xy : [0, 0], ...align);
-    return g;
+    return g.ralign(posn);
 }
 
+// gtext(data, css, xy, ...align) {
+// /* Create a <g> element with an aligned <text> child */
+//     if (!(css instanceof Array)) css = [css];
+//     let g = this.group(...css);
+//     g.text(data);
+//     g.align(xy ? xy : [0, 0], ...align);
+//     return g;
+// }
+
 symbol(...args) { // Deprecated!
-    let g = this.group();
-    g.css(".Symbol");
+    let g = this.group(".Symbol");
     for (let [s, f, xy, opt] of args) {
         let txt = g.text(s, xy);
         if (f & 4) txt.addClass("Small");
@@ -568,20 +577,14 @@ symb(...args) { // size
 }
 
 ctext(...args) {
-/* Render multiple centred <g> elements with <text> child nodes */
+/* Render multiple aligned <g> elements with <text> child nodes */
     let gs = [];
-    for (let [t, xy, options] of args) {
+    for (let [t, posn, options] of args) {
         if (options == null) options = {};
         if (typeof(options) == "string") options = {css: options};
-        let g = this.group();
+        let g = this.gtext(t, options.css ? options.css : [], posn);
         if (options.config) g.config(options.config);
-        let css = options.css;
-        if (css) {
-            if (!(css instanceof Array)) css = [css];
-            g.css(...css);
-        }
-        g.text(t);
-        gs.push(g.align(xy ? xy : 0));
+        gs.push(g);
     }
     return gs;
 }
@@ -804,7 +807,7 @@ tip_to_tail(vecs, options) {
 
 energy_flow(data) {
 /* Draw an energy flow diagram */
-    css(this.circle(data.radius), "none", "#0065fe@3");
+    SVG2.style(this.circle(data.radius), "none", "#0065fe@3");
     let g = this.group("text", 24);
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
@@ -1205,7 +1208,7 @@ static async cleanup_svg(svg, bg) {
     if (bg) {
         svg.appendTo("body");
         let r = $(document.createElementNS(SVG2.nsURI, "rect")).prependTo(svg);
-        console.log(r);
+        // console.log(r);
         r.attr({x:0, y:0, width: svg.width(), height: svg.height(), style: `fill: ${bg}`});
         svg.remove();
     }
@@ -1363,7 +1366,7 @@ pts_str(pts) {
     let s = "";
     let f = (x) => x.toFixed(this.decimals);
     for (let i=0;i<pts.length;i++) {
-        let [x, y] = this.a2p(...pts[i]);
+        let [x, y] = this.a2p(...this._cs(pts[i]));
         s += (s.length ? " " : "") + `${f(x)},${f(y)}`;
     }
     return s;
@@ -1663,6 +1666,29 @@ static* spring_points(p0, p1, n, dx, dy) {
     yield seg.point(L);
 }
 
+static style(e, ...rules) {
+    let unit = (s) => isNaN(s) ? s : `${s}px`;
+    for (let r of rules) {
+        let s = ["string", "number"].indexOf(typeof(r));
+        if (s == -1) e.css(r);
+        else if (s == 0) {
+            if (r.charAt(0) == ".") e.addClass(r.substring(1));
+            else if (SVG2._style[r]) e.css(SVG2._style[r]);
+            else {
+                r = r.split("@");
+                if (r.length == 1) e.css({fill: r[0]});
+                else {
+                    if (r[0]) e.css({stroke: r[0]});
+                    if (r[1]) e.css({"stroke-width": unit(r[1])});
+                }
+            }
+        }
+        else if (s == 1) e.css({"font-size": unit(r)});
+    }
+    return e;
+};
+
+
 }
 
 
@@ -1693,26 +1719,4 @@ SVG2._style = {
     sans: {"font-family": SVG2.sans},
     serif: {"font-family": SVG2.serif},
     mono: {"font-family": SVG2.mono},
-};
-
-const css = (e, ...rules) => {
-    let unit = (s) => isNaN(s) ? s : `${s}px`;
-    for (let r of rules) {
-        let s = ["string", "number"].indexOf(typeof(r));
-        if (s == 0) {
-            if (r.charAt(0) == ".") e.addClass(r.substring(1));
-            else if (SVG2._style[r]) e.css(SVG2._style[r]);
-            else {
-                r = r.split("@");
-                if (r.length == 1) e.css({fill: r[0]});
-                else {
-                    if (r[0]) e.css({stroke: r[0]});
-                    if (r[1]) e.css({"stroke-width": unit(r[1])});
-                }
-            }
-        }
-        else if (s == 1) e.css({"font-size": unit(r)});
-        else e.css(r);
-    }
-    return e;
 };
