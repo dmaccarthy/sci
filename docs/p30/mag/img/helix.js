@@ -1,7 +1,7 @@
 SVG2.cache("p30/mag/img/helix.js", {
 
 ucm: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 400], grid: 0.10, lrbt: [-1.16, 1.16]});
+    let svg = new SVG2(sel, {size: [400, 400], lrbt: [-1.16, 1.16]});
     let tog = [css(svg.circle(1), "none", "black@1")];
 
     /* Magnetic field */

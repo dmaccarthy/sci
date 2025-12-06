@@ -71,8 +71,8 @@ eqm: (sel) => {
         }
     }
     g = svg.group("text", 20);
-    g.gtext("Stable", {}, [-0.05, -0.05]).css(".Toggle2");
-    g.gtext("Unstable", {}, [-0.1, 1.1]).css(".Toggle1");
+    g.gtext("Stable", ".Toggle2", [-0.05, -0.05]);
+    g.gtext("Unstable", ".Toggle1", [-0.1, 1.1]);
 
     let t = click_cycle.toggle;
     click_cycle(svg.element, 0,

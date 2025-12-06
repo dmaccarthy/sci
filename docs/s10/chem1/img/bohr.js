@@ -52,7 +52,7 @@ dot: (sel, elem, q, val) => {
         let g = svg.group("nofill", `${color}@2`);
         g.poly([[-0.8, 1], [-1, 1], [-1, -1], [-0.8, -1]]);
         g.poly([[0.8, 1], [1, 1], [1, -1], [0.8, -1]]);
-        svg.gtext(q > 0 ? `${q==1 ? "&nbsp;" : q}+` : `${q == -1 ? "&nbsp;" : -q}–`, ["text", color, 18]).align([1.1, 1.1], 0, 0.5);
+        svg.gtext(q > 0 ? `${q==1 ? "&nbsp;" : q}+` : `${q == -1 ? "&nbsp;" : -q}–`, ["text", color, 18], [[1.1, 1.1], [0, 0.5]]);
     }
     else svg = new SVG2(sel, {scale: 36, lrbt: [-1.1, 1.1, -1.1, 1.1]});
     let g = svg.group(color);
@@ -67,7 +67,7 @@ dot: (sel, elem, q, val) => {
         }
         if (!paired || (paired == 1 && (i == 0 || i == 4)) || (paired == 2 && i != 3)) g.circle(0.07, pos);
     }
-    svg.gtext(elem, ["text", color, 24]).align([0, 0]);
+    svg.gtext(elem, ["text", color, 24]);
 },
 
 carbon: (sel) => {

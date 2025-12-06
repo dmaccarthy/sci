@@ -20,7 +20,6 @@ pulley: (sel) => {
     g.symb(["m", 2], ["1", 4, ["18", "-10"]]).align([-3.2, -4]);
     g.symb(["m", 2], ["2", 4, ["18", "-10"]]).align([3.3, -11]);
     svg.gtext("Ideal Pulley", ["text", 20], [4.5, 0]);
-    // svg.save();
 },
 
 bar: (sel) => {

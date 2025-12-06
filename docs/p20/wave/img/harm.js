@@ -67,11 +67,11 @@ longWave: (sel) => {
     g.arrow({tail: [1.75, -2], tip: [5.25, -2]}, {tail: "5", double: 1});
 
     // Compression/Rarefaction lables
-    let blue = svg.group("text", "nostroke", "#0065fe");
+    let blue = svg.group("text", "none@", "#0065fe");
     let x = 1.25;
     blue.gtext("Compression", [], [x, 3.25]);
     orange = blue.group({fill: "orange"});
-    orange.gtext("Rarefaction", [], [x + 1.5 * w, 3.25]).css();
+    orange.gtext("Rarefaction", [], [x + 1.5 * w, 3.25]);
     for (let i=-2;i<4;i++) {
         let x0 = x + i * w;
         blue.arrow({tail: [x0, 2.5], tip: [x0, 1]}, {tail: "4"});

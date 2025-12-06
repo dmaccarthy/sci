@@ -1,11 +1,10 @@
 SVG2.cache("s10/phys1/img/vel.js", {
 
 uam: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 12], grid: 1, margin: [56, 12, 56, 12]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 12], grid: 1, margin: [56, 12, 56, 12]});
 
     /* Label x-axis */
-    let g = svg.group().css("text", 16);
-    // let t = svg.group("text");
+    let g = svg.group("text", 16);
     g.tick_label(0, [...range(0, 8.5, 1)], 0, "-6", "-20");
     g.text("Time / s", [4, "-44"]);
 
@@ -14,9 +13,8 @@ uam: (sel) => {
     g = g.group().config({theta: 90, shift: ["-40", 6]});
     g.text("Position / m");
 
-    /* Plot parabola through 3 points */
-    let f = quad_reg([0,0], [5,11], [8,7]).fn;
-    svg.locus(f, [0, 8]).css("#0065fe@2");
+    /* Plot a parabola */
+    svg.locus(x => (x * (529 - 50 * x)) / 120, [0, 8]).css("#0065fe@2");
 },
     
 });

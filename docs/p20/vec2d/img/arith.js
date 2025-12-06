@@ -91,7 +91,7 @@ Ex2: (sel) => {
 Ex3: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(7.25, 75), vec2d(6.5, -60)], {lrbt: [-1, 6, -1, 8],
         scale: 50, cycle: 1, margin: [12, 12, 6, 16], grid: 1, tick: "-8", label: [1, 0, "-12", "-20"]}).css(".NoStyle");
-    svg.gtext("m/s", "text", [0.1, 8], 0, 0.5);
+    svg.gtext("m/s", "text", [[0.1, 8], [0, 0.5]]);
 
     let [BD, SM_IT] = [1, 6];
     let arr = ["→", 5, [0, "15"]];

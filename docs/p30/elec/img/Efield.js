@@ -12,7 +12,7 @@ fbd1: (sel) => {
     g.circle(0.2, [0, 6]).addClass("Toggle3");
 
     g = svg.group("text", 28, "bold", {fill: "white"});
-    g.gtext("+", {}, [0, 0]);
+    g.gtext("+", {});
     g.gtext("–", {}, [12, "3"]);
     g = svg.group("text", 18, "ital", ".Toggle3");
     g.gtext("θ", {}, [2, 5.55]);
