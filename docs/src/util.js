@@ -169,16 +169,17 @@ async function mjax_render(e, mode) {
     // Render TeX math with MathJax
     // mode = 0 => <svg>
     // mode = 1 => <mjx-container><svg>
-    e = $(e ? e : ".TeX").removeClass("TeX");
+    e = $(e ? e : ".TeX").addClass("TeX_Pending").removeClass("TeX");
     let p = [];
     for (let ei of e) {
         let e$ = $(ei);
         let tex = e$.text();
         e$.attr("data-latex", tex);
         f = mode ? mj => $(mj) : mj => $(mj).find("svg");
-        p.push(MathJax.tex2svgPromise(tex).then(mj => e$.html(f(mj)[0])));
+        p.push(MathJax.tex2svgPromise(tex).then(mj => e$.removeClass("TeX_Pending").html(f(mj)[0])));
     };
     for (let i=0;i<p.length;i++) await p[i];
+    return new Promise(res => res());
 }
 
 async function mjax_wait(t) {
@@ -225,21 +226,134 @@ async function load_img(url) {
     });
 }
 
-// async function img_dataURL(url, format) {
-//     /* Load a URL and convert to data URL */
-//     return load_img(url).then((img) => {
-//         img = $(img).appendTo("body");
-//         let cv = $("<canvas>").attr({width: img.width(), height: img.height()}).appendTo("body");
-//         img.remove();
-//         let cx = cv[0].getContext("2d");
-//         cx.drawImage(img[0], 0, 0);
-//         if (!format) format = "png";
-//         if (format.indexOf("/") == -1) format = "image/" + format;
-//         img = cv[0].toDataURL(format);
-//         cv.remove();
-//         return img;
-//     });
-// }
+
+/*** Convert data to a Blob instance and give it a save method...
+ * 
+ *  blobify("Hello, world!", "text/plain").then(b => b.save("hello.txt"))
+ *  blobify(canvas, "image/jpeg").then(b => b.save("image1.jpg"))
+ *  blobify(img2canvas(img, [512, 288]), "image/png").then(b => b.save("image2.png"))
+ *  blobify(blob).then(b => b.save())
+ ***/
+
+async function blobify(data, ...args) {return new Promise(res => {
+    if (data instanceof Blob) {
+        data.save = blobify._save;
+        res(data);
+    }
+    else if (data.toBlob) data.toBlob(blob => {
+        blob.save = blobify._save;
+        res(blob);
+    }, ...args);
+    else {
+        let blob = new Blob([data], {"type": args.length ? args[0] : "text/plain"});
+        blob.save = blobify._save;
+        res(blob);
+    }
+})}
+
+blobify._save = function(filename) {
+    let url = URL.createObjectURL(this);
+    if (filename) $("<a>").attr({href: url, download: filename})[0].click();
+    else window.open(url);
+    URL.revokeObjectURL(url);
+}
+
+blobify.mime = (f) => {
+    let m = {
+        "html": "text/html",
+        "htm": "text/html",
+        "js": "text/javascript",
+        "css": "text/css",
+        "csv": "text/csv",
+        "py": "text/python",
+        "svg": "image/svg+xml",
+        "png": "image/png",
+        "jpg": "image/jpeg",
+        "webp": "image/webp",
+        "json": "application/json",
+        "xml": "application/xml",
+        "pdf": "application/pdf",
+        "zip": "application/zip",
+    }[f.split(".").pop().toLowerCase()];
+    return m ? m : "text/plain";
+}
+
+function img2canvas(img, size) {
+    /* Scale an image (if requested) and draw it to a new canvas */
+    if (!size) size = 1;
+    if (!(size instanceof Array)) {
+        let j = $(img);
+        size = [Math.round(scale * j.width()), Math.round(scale * j.height())];
+    }
+    let [w, h] = size;
+    if (w * h == 0) throw("Image has a dimension of 0");
+    let cv = $("<canvas>").attr({width: w, height: h})[0];
+    let cx = cv.getContext("2d");
+    cx.drawImage(img, 0, 0, w, h);
+    return cv;
+}
+
+/*** Fetch images or other data as blobs or data URLs... 
+*
+* load_blobs("video.png", "print.svg").then(console.log);
+* load_dataURLs("video.png", "print.svg").then(console.log);  
+*
+***/
+
+async function load_one_blob(url, dataURL) {
+    return new Promise((resolve, reject) => {
+        fetch(url).then(r => r.blob().then(b => {
+            if (!r.ok) reject(b);
+            else {
+                if (dataURL) {
+                    const reader = new FileReader();
+                    reader.onloadend = r => resolve(r.target.result);
+                    reader.readAsDataURL(b);            
+                }
+                else resolve(b);                
+            }
+        }));
+    });  
+}
+
+async function _load_blobs(dataURL, ...args) {
+    let data = {}, promises = {};
+    for (let a of args)
+        promises[a] = load_one_blob(a, dataURL).then(b => data[a] = b, () => data[a] = null);
+    for (let a of args) await promises[a];
+    return new Promise((resolve) => {resolve(data)});
+}
+
+async function load_blobs(...args) {return _load_blobs(0, ...args)}
+async function load_dataURLs(...args) {return _load_blobs(1, ...args)}
+
+function code_echo(e, action) {
+    /** Preview code in browser or copy to clipboard **/
+    let text = e.text();
+    if (!action) navigator.clipboard.writeText(text).then(
+        () => msg("Text copied to clipboard"), () => msg("Unable to copy text"));
+    else {
+        let echo = e.attr("data-echo");
+        let fExt = echo.split('.').pop();
+        if (echo == fExt) echo = random_string(12, 1) + '.' + fExt;
+        if (fExt == "html" || fExt == "htm") {
+            if (text.search("</body>") == -1) text = `<body>\n${text}\n</body>`;
+            if (text.search("</head>") == -1) text = `${code_echo.head}\n${text}\n`;
+            if (text.search("</html>") == -1) text = `${code_echo.html}\n${text}\n</html>`;
+        }
+        blobify(text, blobify.mime(fExt)).then(b => b.save(action == 2 ? echo : null));
+    }
+}
+
+code_echo.html = `<!DOCTYPE html>
+<html lang="en-ca">`;
+
+code_echo.head = `<head>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HTML Document</title>
+<link rel="shortcut icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"/>
+</head>`;
 
 
 /*** HSV Color ***/
@@ -282,37 +396,3 @@ function uHSVtoRGB(h, s, v) {
         b: Math.round(b * 255)
     };
 }
-
-/* Fetch images or other data as blobs or data URLs... 
-
-load_blobs("video.png", "print.svg").then(console.log);
-load_dataURLs("video.png", "print.svg").then(console.log);  
-
-*/
-
-async function load_one_blob(url, dataURL) {
-    return new Promise((resolve, reject) => {
-        fetch(url).then(r => r.blob().then(b => {
-            if (!r.ok) reject(b);
-            else {
-                if (dataURL) {
-                    const reader = new FileReader();
-                    reader.onloadend = r => resolve(r.target.result);
-                    reader.readAsDataURL(b);            
-                }
-                else resolve(b);                
-            }
-        }));
-    });  
-}
-
-async function _load_blobs(dataURL, ...args) {
-    let data = {}, promises = {};
-    for (let a of args)
-        promises[a] = load_one_blob(a, dataURL).then(b => data[a] = b, () => data[a] = null);
-    for (let a of args) await promises[a];
-    return new Promise((resolve) => {resolve(data)});
-}
-
-async function load_blobs(...args) {return _load_blobs(0, ...args)}
-async function load_dataURLs(...args) {return _load_blobs(1, ...args)}

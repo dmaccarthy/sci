@@ -1186,10 +1186,7 @@ get size() {
     return [parseFloat(e.attr("width")), parseFloat(e.attr("height"))];
 }
 
-get bdata() {return new BData(this.element.outerHTML, "svg")}
 get url() {return "data:image/svg+xml;base64," + unicode_to_base64(this.element.outerHTML)}
-open() {return this.bdata.open()}
-save(fn) {return this.bdata.save(fn ? fn : `${random_string(12, 1)}.svg`)}
 
 static async cleanup_svg(svg, bg) {
     // Make new SVGElement without class or style attributes
@@ -1234,51 +1231,33 @@ static async cleanup_svg(svg, bg) {
     });
 }
 
-static async svg_to_data(svg, scale, format) {
-    /* Convert and scale <svg> to PNG/WebP/JPEG data URL */
-    if (!scale) scale = 1;
+static async svg_to_cv(svg, scale) {
+    /* Convert and scale <svg> to <canvas> */
     return load_img("data:image/svg+xml;base64," + unicode_to_base64(svg.outerHTML)).then(img => {
-        let img$ = $(img).appendTo("body");
-        let [w, h] = [Math.round(scale * img$.width()), Math.round(scale * img$.height())];
-        img$.remove();
-        let cv = $("<canvas>").attr({width: w, height: h})[0];
-        let cx = cv.getContext("2d");
-        cx.drawImage(img, 0, 0, w, h);
-        return cv.toDataURL(`image/${format ? format : "png"}`);
+        let j = $(img).appendTo("body");
+        let cv = img2canvas(img, scale);
+        j.remove();
+        return cv;
     });
 }
 
-async image_data(scale, format, bg) {
-    /* Return drawing as scaled PNG data URL */
-    return SVG2.cleanup_svg(this.element.outerHTML, bg).then(svg => SVG2.svg_to_data(svg, scale, format));
+async image_cv(scale, bg) {
+    /* Return scaled drawing as <canvas> */
+    return SVG2.cleanup_svg(this.element.outerHTML, bg).then(svg => SVG2.svg_to_cv(svg, scale));
+}
+
+async save(fn) {
+    /* Save as SVG file */
+    return SVG2.cleanup_svg(this.element.outerHTML).then(svg => blobify(svg.outerHTML, "image/svg+xml")).then(b => b.save(fn));
 }
 
 async save_image(fn, scale, bg) {
     /* Save scaled drawing as PNG/WebP/JPEG file*/
-    if (!fn) fn = `${random_string(12, 1)}.png`;
-    let format = fn.split(".").item(-1).toLowerCase();
+    if (fn == true) fn = `${random_string(12, 1)}.png`;
+    let format = fn ? fn.split(".").item(-1).toLowerCase() : "png";
     if (format == "jpg") format = "jpeg";
-    return this.image_data(scale, format, bg).then(png => {
-        $("<a>").attr({href: png, download: fn})[0].click();
-        return png;
-    });
+    return this.image_cv(scale, bg).then(cv => blobify(cv, "image/" + format)).then(b => b.save(fn));
 }
-
-// async img(scale) {
-//     if (!scale) scale = 1;
-//     let [w, h] = this.size;
-//     return load_img(this.url).then(img => $(img).attr({width: w * scale, height: h * scale})[0]);
-// }
-
-// async png(scale) {
-//     let [w, h] = new RArray(...this.size).times(scale ? scale : 1);
-//     return load_img(this.url).then(img => {
-//         let cv = $("<canvas>").attr({width: w, height: h})[0];
-//         let cx = cv.getContext("2d");
-//         cx.drawImage(img, 0, 0, w, h);
-//         return cv;
-//     });
-// }
 
 get defs() {
     let d = this.$.find("defs");
@@ -1737,5 +1716,3 @@ const css = (e, ...rules) => {
     }
     return e;
 };
-
-// console.log(SVG2._style);

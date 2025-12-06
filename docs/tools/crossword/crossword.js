@@ -158,8 +158,11 @@ class Crossword {
             j.push([wi.word, wi.clue, wi.grid]);
         }
         this.title = $("h2").text();
-        if (this.modified)
-            BData.init({"title": this.title, "words": j, size: this.size}, "crossword.json").save();
+        if (this.modified) {
+            let blob = new Blob([{"title": this.title, "words": j, size: this.size}], {type: "text/json"});  // JSON.stringify???
+            save_dataurl(blob, "crossword.json");
+
+        }
         $("#Crossword").addClass("Final");
         this.grid();
         $("#Icons, #WordList, #Help").remove();
