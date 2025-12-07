@@ -7,8 +7,8 @@ earth: (sel) => {
     let tail = {tail: "6"};
 	let svg = new SVG2(sel, {scale: 300, lrbt: [-0.1, 1.05, -0.1, 1.05], margin: 1}).css(".NoStyle");
     css(svg.circle(1), "none", "#0065fe@2");
-    svg.image("media/sun.svg", [0.16, 0.16], [0, 0]);
-    svg.image("media/earth.svg", [0.075, 0.075], earth);
+    svg.image("media/sun.svg", 0.16);
+    svg.image("media/earth.svg", 0.08, earth);
     let g = svg.group("red", "black@1").config({theta: angle, shift: earth});
     g.arrow({tail: [x1, 0], tip: [x2, 0]}, tail);
     g.arrow({tail: [-x1, 0], tip: [-x2, 0]}, tail);

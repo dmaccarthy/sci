@@ -54,7 +54,7 @@ css(...rules) {
     return this;
 }
 
-ralign(pos) {
+ralign(pos, dim) {
 /* Align the element based on its bounding box */
     let svg = this.svg;
     let x, y;
@@ -62,6 +62,8 @@ ralign(pos) {
     let [w, h] = [box.width, box.height];
     if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
     [w, h, x, y] = this.rect_xy([w.toFixed(2), h.toFixed(2)], pos);
+    if (dim == "x") y = box.y;
+    else if (dim == "y") x = box.x;
     let [dx, dy] = new RArray(x,y).minus([box.x, box.y]);
     this.shift_by([dx / svg.scale[0], dy / svg.scale[1]]);
     return this.update_transform();
@@ -304,56 +306,76 @@ rect(size, posn, selector) {
     return e.attr({width: f(w), height: f(h), x: f(x), y: f(y)});
 }
 
-image(href, size, posn, selector) {
+async image_promise(href, selector) {
 /* Modify or append an <image> to the <g> element */
-    let e = selector ? $($(selector)[0]) : this.create_child("image");
-    let f = (x) => x.toFixed(this.svg.decimals);
-    if (!(size instanceof Array)) size = [size, size];
-    let [w, h, x, y] = this.rect_xy(size, posn);
-    return e.attr({href: new URL(href, location.href).href, width: f(w), height: f(h), x: f(x), y: f(y)});
+    return new Promise(res => {
+        let e = selector ? $($(selector)[0]) : this.create_child("image");
+        e.on("load", ev => res(e));
+        return e.attr({href: new URL(href, location.href).href, x: 0, y: 0});
+    });
 }
 
-mjax(tex, size, xy, color) {
+async image(href, size, posn, selector) {
+    // size must be fully given for SVG images!
+    return this.image_promise(href, selector).then(e => {
+        let b = e[0].getBBox(), w = 0, h = 0;
+        let [sx, sy] = this.svg.scale;
+        let [w0, h0] = [Math.abs(b.width / sx), Math.abs(b.height / sy)];
+        if (size) {
+            if (size.scale) size = [w0 * size.scale, h0 * size.scale];
+            if (typeof(size) == "number") size = [null, size];
+            [w, h] = size;
+            if (!w) w = w0 / h0 * h;
+            else if (!h) h = h0 / w0 * w;
+        }
+        else [w, h] = [w0, h0];
+        let x, y;
+        [w, h, x, y] = this.rect_xy([w, h], posn);
+        let f = (x) => x.toFixed(this.svg.decimals);
+        return e.attr({width: f(w), height: f(h), x: f(x), y: f(y)});
+    });
+}
+
+async mjax(tex, size, posn, color) {
 /* Asynchronously render LaTeX to <image> with MathJax */
     let g = this.group();
     if (color) tex = `\\color{${color}}{${tex}}`;
     if (!(size instanceof Array) && mjax_svg.log != true) mjax_svg.log = tex;
     return mjax_svg(tex).then(svg => {
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
-        g.image(url, size, xy);
-        return g;
+        return g.image(url, size, posn);
     });
 }
 
-mj(key, scale, xy, color) {
+async mj(key, scale, posn, color) {
 /* Call .mjax with mjax_size.map data */
     let [tex, w, h] = mjax_size.map[key];
     let size = w ? mjax_size(w, h, scale) : "32";
-    return this.mjax(tex, size, xy, color);
+    return this.mjax(tex, size, posn, color);
 }
 
-_embed(url, size) {
-/* Embed an SVG file as a nested SVG element */
-    let outer = this.group();  // Container SVG2g instance
-    let mid = outer.group();   // Translate to origin
-    let inner = mid.group().$; // Scale to size
-    return [fetch(url).then((a) => a.text()).then((a => {
-        let svg = outer.svg;
-        inner.html($(a).filter("svg"));
-        let e = inner.find("svg");
-        if (size) {
-            size = [Math.abs(size[0] * svg.scale[0]), Math.abs(size[1] * svg.scale[1])];
-            let [w, h] = [e.attr("width"), e.attr("height")];
-            let [sx, sy] = [size[0] / w, size[1] / h];
-            inner.attr({transform: `scale(${sx} ${sy})`});
-            mid.shift_by(svg.p2a(size[0] / 2, size[1] / 2).neg());
-        }
-        return outer;
-    })), outer];
-}
+// _embed(url, size) {
+// /* Embed an SVG file as a nested SVG element */
+//     let outer = this.group();  // Container SVG2g instance
+//     let mid = outer.group();   // Translate to origin
+//     let inner = mid.group().$; // Scale to size
+//     return [fetch(url).then((a) => a.text()).then((a => {
+//         let svg = outer.svg;
+//         inner.html($(a).filter("svg"));
+//         let e = inner.find("svg");
+//         if (size) {
+//             size = [Math.abs(size[0] * svg.scale[0]), Math.abs(size[1] * svg.scale[1])];
+//             let [w, h] = [e.attr("width"), e.attr("height")];
+//             let [sx, sy] = [size[0] / w, size[1] / h];
+//             inner.attr({transform: `scale(${sx} ${sy})`});
+//             mid.shift_by(svg.p2a(size[0] / 2, size[1] / 2).neg());
+//         }
+//         return outer;
+//     })), outer];
+// }
 
-embed(url, size) {return this._embed(url, size)[1]}
-embed_promise(url, size) {return this._embed(url, size)[0]}
+// embed(url, size) {return this._embed(url, size)[1]}
+// embed_promise(url, size) {return this._embed(url, size)[0]}
 
 plot(points, size, href, theta) {
 /* Plot an array of points as circles, rectangles, or images */
@@ -364,7 +386,11 @@ plot(points, size, href, theta) {
     if (!(points instanceof Array)) points = zip(points.x, points.y);
     for (let pt of points) {
         let e;
-        if (href) e = g.image(href, size, pt);
+        if (href) {
+            e = g.group().config({pivot: pt});
+            e.image(href, size, pt);
+            e = e.$;
+        }
         else if (size instanceof Array) e = g.rect(size, pt);
         else e = g.circle(size, pt);
         if (theta) {
@@ -554,7 +580,7 @@ symbol(...args) { // Deprecated!
     return g;
 }
 
-symb(...args) { // size
+symb(...args) { // Deprecated!!
 /* Render a symbol from a list of text elements */
 //  BOLD = 1, ITAL = 2, SMALL = 4
     let g = this.group(".Symbol");

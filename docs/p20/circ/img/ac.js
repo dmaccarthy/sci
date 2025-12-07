@@ -55,7 +55,7 @@ orbit: (sel) => {
 car: (sel) => {
     let svg = new SVG2(sel, {size: [200, 332], lrbt: [-3, 7, -7]});
     css(svg.line([-4, 0], [8, 0]), "black@2");
-    svg.image("p20/circ/img/car_front.svg", [4, 4], [0, 1.3]);
+    svg.image("p20/circ/img/car_front.svg", [4, 4], [[0, 0], [0.5, 0.85]]);
 
     let g = svg.group("arrow");
     let L = 6;

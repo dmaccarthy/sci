@@ -34,7 +34,7 @@ dir2d: (sel) => {
 hiker: (sel) => {
     let svg = SVG2.vec_diag(sel, [[7, -4]], {lrbt: [-3, 6, -1, 6], scale: 40,
         margin: [8, 8, 8, 12], grid: 0.5, shift: [-2, 5], label: [1, 0, "-6", "-12"]});
-    svg.css(".NoStyle").$.find(".Component").remove();
+    svg.$.find(".Component").remove();
 
     svg.gtext("km", "text", [0.5, 6]);
     let g = svg.group();
@@ -56,7 +56,7 @@ hiker: (sel) => {
 soccer: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(20, 120)], {lrbt: [-12, 2, -2, 20],
         scale: 20, margin: 8, grid: 1, label: [2, 0, "-6", "-12"]});
-    svg.css(".NoStyle").$.find(".Component").remove();
+    svg.$.find(".Component").remove();
     svg.circle(20).css({"stroke-width": "0.5px", stroke: "grey", fill: "none"});
     svg.gtext("m", "text", [1, 20]);
 },
