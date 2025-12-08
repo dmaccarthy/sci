@@ -1,7 +1,7 @@
-SVG2.cache("p20/vec2d/img/mag.js", { // Solutions for Magnitude & Direction assignment
+SVG2.cache("p20/vec2d/img/mag.js", {
 
 dir2d: (sel) => {
-    let svg = new SVG2(sel, {scale: 48, lrbt: [-3.5, 4.5, -2.5, 2.5], grid: 0, margin: [0, 0, 12, 12]}).css(".NoStyle");
+    let svg = new SVG2(sel, {scale: 48, lrbt: [-3.5, 4.5, -2.5, 2.5], grid: 0, margin: [0, 0, 12, 12]});
     let g = svg.group("arrow", {fill: "#202020"});
     let attr = {tail: "4", double: 1};
     g.arrow(4, attr);

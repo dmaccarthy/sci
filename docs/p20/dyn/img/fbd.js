@@ -68,7 +68,7 @@ vec1: (sel) => {
 },
 
 Q1f: (sel) => {
-    let svg = new SVG2(sel, {size: [160, 403], lrbt: [-15, 22, -72.5], margin: 1}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [160, 403], lrbt: [-15, 22, -72.5], margin: 1});
     svg.gradient("gradQ1", "#d0d0ff", "royalblue", 80, 0, 0, 100);
     svg.rect([10, 10]).css({fill: "url(#gradQ1)", stroke: "black"});
     let [BD, arr, sub] = [1, SVG2.arr(), [6, ["12", "-8"]]];

@@ -1,7 +1,7 @@
 SVG2.cache("p20/circ/img/kep.js", {
 
 orbit: (sel) => {
-    let svg = new SVG2(sel, {size: [401, 265], lrbt: [-1.12, 1.12]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [401, 265], lrbt: [-1.12, 1.12]});
 
     let e = 0.7;
     let r = [1, e];

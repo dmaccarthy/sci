@@ -3,7 +3,7 @@ SVG2.cache("p20/shm/img/pend.js", {
 fbd: (sel) => {
     let a = -25;
     let p = vec2d(-3, 90 + a);
-    let svg = new SVG2(sel, {size: [236, 383], lrbt: [-2, 0.5, -4]}).css(".NoStyle", "nofill");
+    let svg = new SVG2(sel, {size: [236, 383], lrbt: [-2, 0.5, -4]}).css("none");
 
     svg.line(p, [0, p[1]]).css({stroke: "red", "stroke-width": "2px"});
     svg.path(p).arc([0, 0], -90).update().css({stroke: "#0065fe", "stroke-width": "2px"});

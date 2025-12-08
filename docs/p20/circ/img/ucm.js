@@ -5,7 +5,7 @@ earth: (sel) => {
     let angle = 45;
     let earth = vec2d(1, angle);
     let tail = {tail: "6"};
-	let svg = new SVG2(sel, {scale: 300, lrbt: [-0.1, 1.05, -0.1, 1.05], margin: 1}).css(".NoStyle");
+	let svg = new SVG2(sel, {scale: 300, lrbt: [-0.1, 1.05, -0.1, 1.05], margin: 1});
     css(svg.circle(1), "none", "#0065fe@2");
     svg.image("media/sun.svg", 0.16);
     svg.image("media/earth.svg", 0.08, earth);

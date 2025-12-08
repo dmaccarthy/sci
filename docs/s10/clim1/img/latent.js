@@ -1,7 +1,7 @@
 SVG2.cache("s10/clim1/img/latent.js", {
 
 water: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 3.25, -50, 125], margin: [64, 4, 12, 12]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 3.25, -50, 125], margin: [64, 4, 12, 12]});
     svg.graph({grid: [0.25, 12.5],
         x: {tick: [0, 3.3, 0.5], dec: 1, tickSize: "-6", title: ["Heat Added / MJ", [1.75, "-44"]], shift: [0, "-20"]},
         y: {tick: [-50, 126, 25], title: ["Temperature / °C", "-44"], shift: ["-10", "-5"]},

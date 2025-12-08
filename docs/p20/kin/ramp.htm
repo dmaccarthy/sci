@@ -58,7 +58,7 @@
 <script type="text/javascript" data-init="sim">
 
 loadFeed.sim = () => {
-    let svg = new SVG2("#Sim", {scale: 256, lrbt: [-2.2, 0.3, -0.2, 2.14]}).css(".NoStyle");
+    let svg = new SVG2("#Sim", {scale: 256, lrbt: [-2.2, 0.3, -0.2, 2.14]});
     let [w, h] = svg.size;
     svg.image("p20/kin/img/class.svg", [1, 1]).then(i => i.attr({x:0, y:0, width:w, height: h}));
 

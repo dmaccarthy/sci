@@ -1,14 +1,14 @@
 SVG2.cache("p20/circ/img/helio.js", {
 
 helio: (sel) => {
-    let svg = new SVG2(sel, {size: [641, 641], margin: 0, lrbt: [-1.7, 1.7]}).css(".NoStyle", "text");
+    let svg = new SVG2(sel, {size: [641, 641], lrbt: [-1.7, 1.7]});
 
     // Draw zodiac background
     svg.gradient("grey1", "black", "#232323", 100, 0, 0, 100);
     svg.rect([3.41, 3.41]).css({fill: "black"});
     let names = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
         "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
-    let zodiac = svg.group().css(".Zodiac", {fill: "grey", "font-size": "16px"});
+    let zodiac = svg.group(".Zodiac", "grey", 16);
 
     for (let i=0;i<12;i++) {
         let g = zodiac.group().config({theta: 30 * i});
@@ -17,12 +17,12 @@ helio: (sel) => {
     }
 
     // Draw animated timer
-    let g = svg.group("text", 36, "bold", "white", {"text-anchor": "end", "font-family": SVG2.mono});
+    let g = svg.group("text", "mono", 36, "bold", "white", "end");
     let years = g.text("", [1.6, 1.5]);
     g.config({animated: true}).beforeupdate = () => years.html(`${svg.time.toFixed(2)} yr`);
 
     // Draw line-of-sight arrow and Sun
-    let sight = svg.arrow(0.4, {tail: "6"}).css("red", {stroke: "none"});
+    let sight = svg.arrow(0.4, {tail: "6"}).css("red", "none@");
     svg.circle("12").css({fill: "yellow"});
 
     // Draw the inner planets

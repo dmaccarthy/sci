@@ -8,7 +8,7 @@ wheel: (sel, h, s, v, tick) => {
 
     // Tick marks
     if (tick) {
-        let g = svg.group().css({stroke: "grey", "stroke-width": "2px"});
+        let g = svg.group("grey@2");
         for (let i=0;i<360;i+=tick) g.line(vec2d(r, i), vec2d(0.999, i))    
     }
 
@@ -24,7 +24,7 @@ wheel: (sel, h, s, v, tick) => {
     }
 
     // Hue/Sat markers
-    let hs = svg.group().addClass("HueSat").css({stroke: "black", "stroke-width": "2px", fill: "none"});
+    let hs = svg.group(".HueSat", "black@2", "none");
 
     svg.set_hs = (h, s) => {
         sat = hs.circle(s / 100, [0, 0], sat);
@@ -32,7 +32,7 @@ wheel: (sel, h, s, v, tick) => {
     }
 
     svg.set_hs(h, s);
-    return svg.addClass("NoStyle");
+    return svg;
 },
 
 colorWheelImg: (r, v) => {
@@ -73,7 +73,8 @@ blue: (sel) => {
     svg.$.children("g.HueSat").remove();
     let v = vec2d, r = 0.6, a = 205, b = 260;
     let p = svg.path(v(r, a)).arc_to(v(r, b), r).line_to(v(1, b)).arc_to(v(1, a), 1, 2).close().update();
-    p.css({fill: "none", stroke: "black", "stroke-width": "3px"});
+    css(p, "none", "black@3"); 
+    // p.css({fill: "none", stroke: "black", "stroke-width": "3px"});
 },
 
 });

@@ -1,17 +1,10 @@
 function calendar_icon() {
-    let svg = SVG2.create({scale: 64, grid: 0, lrbt: [-1, 1, -1, 1]});
-    svg.rect([2, 0.4], [0, 0.8]).css({fill: "#0065fe", stroke: "none"});
-    svg.poly([[-1 , 1], [-1, -1], [1, -1], [1, 1]]).css({fill: "none", stroke: "#0065fe", "stroke-width": "8px"});
-    for (x of [1, -1]) svg.circle("7", [0.48 * x, 0.8]).css({stroke: "none", fill: "white"});
-    svg.group().addClass("Text").text(new Date().getDate(), [0, -0.25]);
-    svg.$.addClass("NoStyle").find("text").css({
-        "dominant-baseline": "middle",
-        "text-anchor": "middle",
-        "font-size": "80px",
-        "font-family": SVG2.sans,
-        "font-weight": "bold",
-        fill: "red",
-    });
+    let css = SVG2.style;
+    let svg = SVG2.create({scale: 64, lrbt: [-1, 1, -1, 1]});
+    css(svg.rect([2, 0.4], [0, 0.8]), "#0065fe", "none@");
+    css(svg.poly([[-1 , 1], [-1, -1], [1, -1], [1, 1]]), "#0065fe@8", "none");
+    for (x of [1, -1]) css(svg.circle("7", [0.48 * x, 0.8]), "white");
+    svg.group("text", 80, "sans", "bold", "red", {"dominant-baseline": "middle"}).text(new Date().getDate(), [0, -0.3]);
     return svg.element.outerHTML;
 }
 
