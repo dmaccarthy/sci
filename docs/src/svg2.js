@@ -340,13 +340,13 @@ async mjax(tex, size, posn, color) {
 /* Asynchronously render LaTeX to <image> with MathJax */
     if (size == null) size = {scale: 1};
     if (size.scale) size = {scale: size.scale / 32};
-    let g = this.group();
     if (color) tex = `\\color{${color}}{${tex}}`;
     return mjax_svg(tex).then(svg => {
         svg.appendTo("body");
         let bbox = svg[0].getBBox();
         svg.remove();
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
+        let g = this.group();
         g.image(url, size, posn, null, bbox);
         return g;
     });

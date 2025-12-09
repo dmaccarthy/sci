@@ -178,8 +178,10 @@ async function mjax_render(e, mode) {
         f = mode ? mj => $(mj) : mj => $(mj).find("svg");
         p.push(MathJax.tex2svgPromise(tex).then(mj => e$.removeClass("TeX_Pending").html(f(mj)[0])));
     };
-    for (let i=0;i<p.length;i++) await p[i];
-    return new Promise(res => res());
+    return new Promise(async res => {
+        for (let i=0;i<p.length;i++) await p[i];
+        res();
+    });
 }
 
 async function mjax_wait(t) {
