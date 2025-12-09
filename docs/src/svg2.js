@@ -311,26 +311,35 @@ async image_promise(href, selector) {
     });
 }
 
+_img_size(size, bbox) {
+    let s = size.scale;
+    let [sx, sy] = this.svg.scale;
+    if (s) size = [Math.abs(s * bbox.width /sx), Math.abs(s * bbox.height / sy)];
+    else if (!(size instanceof Array)) size = [size, size];
+    return size;
+}
+
 async image(href, size, posn, selector, bbox) {
     return this.image_promise(href, selector).then(e => {
         if (!bbox) bbox = e[0].getBBox();
-        let w = 0, h = 0;
-        let [sx, sy] = this.svg.scale;
-        sx = Math.abs(sx);
-        sy = Math.abs(sx);
-        let [w0, h0] = [bbox.width / sx, bbox.height / sy];
-        if (size) {
-            if (size.scale) size = [w0 * size.scale, h0 * size.scale];
-            if (!(size instanceof Array)) size = [size, size];
-            [w, h] = size;
-            if (typeof(w) == "string") w = parseFloat(w) / sx;
-            if (typeof(h) == "string") h = parseFloat(h) / sy;
-            if (!w) w = w0 / h0 * h;
-            else if (!h) h = h0 / w0 * w;
-        }
-        else [w, h] = [w0, h0];
-        let x, y;
-        [w, h, x, y] = this.rect_xy([w, h], posn);
+        size = this._img_size(size, bbox);
+        // let w = 0, h = 0;
+        // let [sx, sy] = this.svg.scale;
+        // sx = Math.abs(sx);
+        // sy = Math.abs(sx);
+        // let [w0, h0] = [bbox.width / sx, bbox.height / sy];
+        // if (size) {
+        //     if (size.scale) size = [w0 * size.scale, h0 * size.scale];
+        //     if (!(size instanceof Array)) size = [size, size];
+        //     [w, h] = size;
+        //     if (typeof(w) == "string") w = parseFloat(w);
+        //     if (typeof(h) == "string") h = parseFloat(h);
+        //     if (!w) w = w0 / h0 * h;
+        //     else if (!h) h = h0 / w0 * w;
+        // }
+        // else [w, h] = [w0, h0];
+        // let x, y;
+        let [w, h, x, y] = this.rect_xy(size, posn);
         let f = (x) => x.toFixed(this.svg.decimals);
         return e.attr({width: f(w), height: f(h), x: f(x), y: f(y)});
     });
@@ -347,6 +356,7 @@ async mjax(tex, size, posn, color) {
         svg.remove();
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
         let g = this.group();
+        console.log(tex);
         g.image(url, size, posn, null, bbox);
         return g;
     });
@@ -836,9 +846,9 @@ energy_flow(data) {
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
         let tex = getTeX(txt);
-        if (tex && txt.charAt(0) != "$") console.log(txt);
+        // if (tex && txt.charAt(0) != "$") console.log(txt, tex);
         if (!color) color = "#0065fe";
-        if (tex) this.mjax(tex, null, pos, color);
+        if (tex) this.mjax(tex, {scale: 1}, pos, color);
         else {
             // g.group(color).ctext([txt, pos]);
             let t = g.group(color);
@@ -1613,14 +1623,14 @@ static ebg(sel, Emax, step, data, options) {
     svg.grid([0, n], [0, Emax, step]).grid([0, 1, 2], [0, Emax]);
 
     let bars = [];
-    let sym = svg.group();
+    let sym = svg.group(".MJax");
     for (let i=0;i<n;i++) {
         let d = data[i];
         let c = d[2] ? d[2] : "#0065fe"
         bars.push(svg.rect([options.width, 1], [i + 0.5, 1]).css({fill: c}));
         let tex = d[0];
         if (SVG2.eq[tex]) tex = SVG2.eq[tex];
-        sym.mjax(tex, null, [[i + 0.5, "-8"], [0.5, 0]], c);
+        sym.mjax(tex, {scale: 1}, [[i + 0.5, "-8"], [0.5, 0]], c);
     }
     svg.config({data: data, options: options});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$);

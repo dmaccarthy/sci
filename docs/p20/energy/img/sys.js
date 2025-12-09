@@ -117,7 +117,7 @@ Q3: (sel) => {
     SVG2.ebg(sel, 10, 1, [
         ["E_k", true],
         ["E_g", (t) => Egi - dEg * t * t],
-        ["E_{elas", (t) => t == 0 ? 8 : 0],
+        ["E_{elas}", (t) => t == 0 ? 8 : 0],
         ["–W", (t) => 3 * t * t, "red"],
     ], {E: Egi + 8, duration: 3, margin: [32, 4, 40, 16], label: [0, "-6"]});
 },
