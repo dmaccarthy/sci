@@ -312,16 +312,19 @@ async image_promise(href, selector) {
 }
 
 async image(href, size, posn, selector, bbox) {
-    // size must be fully given for SVG images!
     return this.image_promise(href, selector).then(e => {
         if (!bbox) bbox = e[0].getBBox();
         let w = 0, h = 0;
         let [sx, sy] = this.svg.scale;
-        let [w0, h0] = [Math.abs(bbox.width / sx), Math.abs(bbox.height / sy)];
+        sx = Math.abs(sx);
+        sy = Math.abs(sx);
+        let [w0, h0] = [bbox.width / sx, bbox.height / sy];
         if (size) {
             if (size.scale) size = [w0 * size.scale, h0 * size.scale];
-            if (typeof(size) == "number") size = [size, size];
+            if (!(size instanceof Array)) size = [size, size];
             [w, h] = size;
+            if (typeof(w) == "string") w = parseFloat(w) / sx;
+            if (typeof(h) == "string") h = parseFloat(h) / sy;
             if (!w) w = w0 / h0 * h;
             else if (!h) h = h0 / w0 * w;
         }
@@ -344,7 +347,8 @@ async mjax(tex, size, posn, color) {
         let bbox = svg[0].getBBox();
         svg.remove();
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
-        return g.image(url, size, posn, null, bbox)[0];
+        g.image(url, size, posn, null, bbox);
+        return g;
     });
 }
 
