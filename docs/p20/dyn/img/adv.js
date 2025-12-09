@@ -57,23 +57,25 @@ fbd3: (sel, a) => {
     incline.line([0, -1], [0, 1]).css({"stroke-dasharray": "8,8"});
     incline.rect([0.25, 0.16], [0, 0.08]).css({fill: "#d0d0ff"});
     css(incline.line([-2, 0], [2, 0]), "black@2");
-    let g = incline.group("symbol", 24, {stroke: "none"});
-    g.symb(["x", 2]).align([0.9, 0.07]);
-    g.symb(["y", 2]).align([0.07, 0.75]);
+
+    let g = incline.group();
+    g.mjax("x", null, [0.9, 0.07]);
+    g.mjax("y", null, [0.07, 0.75]);
 
     g = incline.group("arrow");
     let t6 = {tail: "6"};
-    let arr = SVG2.arr("22");
-    let sub = [6, ["11", "-8"]];
     g.arrow({tail: [0.15, 0.08], tip: [Fa + 0.15, 0.08]}, t6);
     let fric = [g.arrow({tail: [-0.15, dy], tip: [-0.15 - Fn / 5, dy]}, {tail: "4"}).element];
     g.arrow({tail: [0, dy], tip: [0, Fn + dy]}, t6);
-    g = incline.group("symbol", 28, "red", {stroke: "none"});
-    g.symb(["F", 1], arr, ["n", ...sub]).align([-0.15, 0.35]);
-    g.symb(["F", 1], arr, [applied ? "a" : "f", ...sub]).align([0.4, 0.28]);
-    fric.push(g.symb(["F", 1], arr, ["f", ...sub]).align([-0.35, 0.18]).element);
 
-    svg.group("symbol", 28, "red").symb(["F", 1], arr, ["g", ...sub]).align([-0.15, -0.25]);
+    g = incline.group();
+    g.mjax("\\vec{\\bf F}_n", null, [-0.15, 0.35], "red");
+    g.mjax(`\\vec{\\bf F}_${applied ? "a" : "f"}`, null, [0.4, 0.28], "red");
+    g = g.group();
+    fric.push(g.element);
+    g.mjax("\\vec{\\bf F}_f", null, [-0.35, 0.18], "red");
+
+    svg.mjax("\\vec{\\bf F}_g", null, [-0.15, -0.25], "red");
     svg.group("arrow").arrow({tail: [0, -dy], tip: [0, -dy - Fg]}, t6);
 
     if (applied) {

@@ -2,7 +2,7 @@
 <h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
-<h1 id="Title">Work in 2D</h1>
+<h1 id="Title">Power / Work in 2D</h1>
 </section>
 
 <section class="Slide"><h3>Work in 2D</h3>
@@ -73,13 +73,36 @@
     <li>Since the normal force does <em>not</em> balance gravity on an incline, we would need to use Newton’s 2<sup>nd</sup> Law, which requires adding the <span class="TeX">y</span>-components of all forces.</li>
     <li>We would then have a choice whether to use work and energy, or Newton’s 2<sup>nd</sup> Law to solve for the <span class="TeX">x</span>-motion.</li>
 </ul>
+</section>
+
+<section class="Slide"><h3>Power</h3>
+<p>The <em>rate</em> at which a force does work is called <em class="Defn">power</em>.</p>
+<ul>
+	<li>Power is a measure of how quickly an energy-transforming device is able to do work:<p class="TeX">P = {\Delta E\over \Delta t}</p></li>
+	<li>The unit of power is J/s, which is called watts (W).</li>
+	<li>Do not confuse the symbol for the unit W (watts) with the symbol for the variable <i>W</i> (work).</li>
+</ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+    <p data-cue="none" class="Blue">A 2000 kg car accelerates from rest to 20.0 m/s. The engine produces 120 horsepower (1 hp = 746 W). How long does it take the car to reach its final speed if air resistance and friction are ignored?</p>
+    <p>Calculate the work done by the engine as the change in kinetic energy...</p>
+    <p class="TeX">E_{ki} = {1\over 2}mv_i^2 = 0\ {\rm J}</p>
+    <p class="TeX">E_{kf} = {1\over 2}mv_f^2 = \rm{{1\over 2}(2000\ kg) (20.0\ m/s)^2 = 400000\ J}</p>
+    <p class="TeX">W = \Delta E_k = \rm{400000\ J}</p>
+    <p>Use the power equation to solve for time...</p>
+    <p class="TeX">P = {\Delta E \over \Delta t}</p>
+    <p class="TeX">P\Delta t = \Delta E</p>
+    <p class="TeX">\Delta t = {\Delta E\over P} = \rm{{400000\ J\over 89520\ W} = 4.47\ s}</p>
+    <ul><li>Realistically, the engine does not operate at its maximum power all the time, so it would almost certainly take longer than calculated!</li></ul>
+</section>
 
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
-    <li>A 50.0-kilogram load is hauled from rest through a 200-metre displacment up a 15.0° incline.<ol type="a">
+    <li>A 50.0-kilogram load is hauled from rest through a 200-metre displacement up a 15.0° incline.<ol type="a">
         <li>Use the 2D work equation to calculate the work done by gravity.</li>
         <div class="Answer">
             <p>Calculate the force of gravity:</p>
@@ -90,7 +113,7 @@
             <p class="TeX">W_g = F_g\cdot \Delta d\cdot \cos\Delta\theta = \rm 490.5\ N\cdot 200\ m\cdot\cos(105.0^\circ) = -25390\ J = -25.4\ kJ</p>
         </div>
 
-        <li>Calculate the gravitational potential energy using the <span class="TeX">mgh</span> formula. You will need to use trigonometry to find <span class="TeX">h</span> first.</li>
+        <li>Calculate the gravitational potential energy using the <span class="TeX">mgh</span> formula. You will need to use trigonometry to find the height first.</li>
         <div class="Answer">
             <p class="TeX">\sin 8.00^\circ = {\rm \frac{Opp}{Hyp}} = \frac{h_f}{\Delta d}</p>
             <p class="TeX">h_f = \Delta d\sin 15.0^\circ = \rm 200\ m\cdot \sin(15.0^\circ) = 51.764\ m</p>
@@ -109,20 +132,42 @@
             </div>
     </ol></li>
 
-    <li></li>
+    <li>A student pulls a 20.0-kilogram wagon, using an applied force of 18.0 newtons acting at an unknown angle. After 5.00 metres, the kinetic energy of the wagon has increased from 80.0 joules to 160.0 joules. Assuming that the ground is level and neglecting friction and air resistance, calculate the angle at which the force acts.</li>
+    <div class="Answer">
+        <p>Calculate work as the change in kinetic energy:</p>
+        <p class="TeX">W = E_{kf}-E_{ki} = \rm 160.0\ J - 80.0\ J = 80.0\ J</p>
+        <p>Solve for the angle in the 2D work-energy theorem equation:</p>
+        <p class="TeX">W_a = |\vec{\bf F}_a|\cdot|\Delta\vec{\bf d}|\cos(\Delta\theta)</p>
+        <p class="TeX">\cos(\Delta\theta) = \frac{W_a}{|\vec{\bf F}_a|\cdot|\Delta\vec{\bf d} |}</p>
+        <p class="TeX">\cos(\Delta\theta) = \rm \frac{80.0\ J}{18.0\ N\cdot 5.00\ m} = 0.88889</p>
+        <p class="TeX">\Delta\theta = \cos^{-1} 0.8889 = 27.3^\circ</p>
+    </div>
 
-    <li></li>
-    <p class="TeX Answer"></p>
+    <li>Repeat the previous question when there is a friction or air resistance force of 1.00 newton opposite to the direction of motion.</li>
+    <div class="Answer">
+        <p>Calculate work done by friction:</p>
+        <p class="TeX">W_f = \vec{\bf F} \cdot \Delta\vec{\bf d} = \rm -1.00\ N\cdot 5.00\ m = -5.00\ J</p>
+        <p>The <em>total</em> work is still 80.0 J, so the work done by the applied force must be:</p>
+        <p class="TeX">\Sigma W = W_a + W_f</p>
+        <p class="TeX">W_a = \Sigma W - W_f = \rm 80.0\ J - (-5.00\ J) = 85.0\ J</p>
+        <p class="TeX">\cos(\Delta\theta) = \rm \frac{85.0\ J}{18.0\ N\cdot 5.00\ m} = 0.94444</p>
+        <p class="TeX">\Delta\theta = \cos^{-1} 0.94444 = 19.2^\circ</p>
+    </div>
 
-    <li></li>
-    <p class="TeX Answer"></p>
-
+    <li>An 85.0-kilogram satellite is orbiting Earth at a separation of 70000 km and a speed of 2.40 km/s. Calculate the kinetic energy and speed of the satellite after it has moved through a displacement of 1000 km at an angle of 102° to the gravitational force. [The gravitational force will change slightly, but since the displacement is only 1/70<sup>th</sup> of the separation, you can take <span class="TeX">\vec{\bf F}_g</span> to be approximately constant.]</li>
+    <div class="Answer">
+        <p>Calculate the force of gravity:</p>
+        <p class="TeX">F_g = \frac{GM_e m}{r^2} = \rm \frac{6.67\times 10^{-11}\frac{N\cdot m^2}{kg^2}\cdot 5.98\times 10^{24}\ kg\cdot 85.0\ kg}{(7.00\times 10^7\ m)^2} = 6.61\ N</p>
+        <p>Calculate the work:</p>
+        <p class="TeX">W_g = |\vec{\bf F}_g|\cdot|\Delta\vec{\bf d}|\cos(\Delta\theta)</p>
+        <p class="TeX">W_g = |\vec{\bf F}_g|\cdot|\Delta\vec{\bf d}|\cos(\Delta\theta)</p>
+    </div>
 </ol>
 </div></section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "p20/home", prev: "p20/energy/we", //next: "p20/energy/",
+loadFeed.data = {up: "p20/home", prev: "p20/energy/we", next: "p20/energy/rev",
 }
 
 </script>

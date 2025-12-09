@@ -265,8 +265,6 @@ circle(r, posn, selector) {
     let d = `${f(2*r)}`;
     let [w, h, x, y] = this.rect_xy([d, d], posn);
     return e.attr({r: f(r), cx: f(x + w / 2), cy: f(y + h / 2)});
-    // let [x, y] = svg.a2p(...svg._cs(posn));
-    // return e.attr({r: f(r), cx: f(x), cy: f(y)});
 }
 
 ellipse(r, posn, selector) {
@@ -278,8 +276,6 @@ ellipse(r, posn, selector) {
     let ry = this._px(r[1], 1);
     let [w, h, x, y] = this.rect_xy([f(2*rx), f(2*ry)], posn);
     return e.attr({rx: f(rx), ry: f(ry), cx: f(x + w / 2), cy: f(y + h / 2)});
-    // let [x, y] = svg.a2p(...svg._cs(posn));
-    // return e.attr({rx: f(rx), ry: f(ry), cx: f(x), cy: f(y)});
 }
 
 static _anchor(posn) {
@@ -315,15 +311,16 @@ async image_promise(href, selector) {
     });
 }
 
-async image(href, size, posn, selector) {
+async image(href, size, posn, selector, bbox) {
     // size must be fully given for SVG images!
     return this.image_promise(href, selector).then(e => {
-        let b = e[0].getBBox(), w = 0, h = 0;
+        if (!bbox) bbox = e[0].getBBox();
+        let w = 0, h = 0;
         let [sx, sy] = this.svg.scale;
-        let [w0, h0] = [Math.abs(b.width / sx), Math.abs(b.height / sy)];
+        let [w0, h0] = [Math.abs(bbox.width / sx), Math.abs(bbox.height / sy)];
         if (size) {
             if (size.scale) size = [w0 * size.scale, h0 * size.scale];
-            if (typeof(size) == "number") size = [null, size];
+            if (typeof(size) == "number") size = [size, size];
             [w, h] = size;
             if (!w) w = w0 / h0 * h;
             else if (!h) h = h0 / w0 * w;
@@ -338,20 +335,17 @@ async image(href, size, posn, selector) {
 
 async mjax(tex, size, posn, color) {
 /* Asynchronously render LaTeX to <image> with MathJax */
+    if (size == null) size = {scale: 1};
+    if (size.scale) size = {scale: size.scale / 32};
     let g = this.group();
     if (color) tex = `\\color{${color}}{${tex}}`;
-    if (!(size instanceof Array) && mjax_svg.log != true) mjax_svg.log = tex;
     return mjax_svg(tex).then(svg => {
+        svg.appendTo("body");
+        let bbox = svg[0].getBBox();
+        svg.remove();
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
-        return g.image(url, size, posn);
+        return g.image(url, size, posn, null, bbox)[0];
     });
-}
-
-async mj(key, scale, posn, color) {
-/* Call .mjax with mjax_size.map data */
-    let [tex, w, h] = mjax_size.map[key];
-    let size = w ? mjax_size(w, h, scale) : "32";
-    return this.mjax(tex, size, posn, color);
 }
 
 // _embed(url, size) {
@@ -834,11 +828,13 @@ energy_flow(data) {
 /* Draw an energy flow diagram */
     SVG2.style(this.circle(data.radius), "none", "#0065fe@3");
     let g = this.group("text", 24);
+    let getTeX = (t) => t.charAt(0) == '$' ? t.substring(1) : (SVG2.eq[t] ? SVG2.eq[t] : null);
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
+        let tex = getTeX(txt);
+        if (tex && txt.charAt(0) != "$") console.log(txt);
         if (!color) color = "#0065fe";
-        txt = txt.replace("_", "").replace("$", "");
-        if (mjax_size.map[txt])  this.mj(txt, 0.8, pos, color);
+        if (tex) this.mjax(tex, null, pos, color);
         else {
             // g.group(color).ctext([txt, pos]);
             let t = g.group(color);
@@ -1618,7 +1614,9 @@ static ebg(sel, Emax, step, data, options) {
         let d = data[i];
         let c = d[2] ? d[2] : "#0065fe"
         bars.push(svg.rect([options.width, 1], [i + 0.5, 1]).css({fill: c}));
-        sym.mj(d[0].replace("_", ""), 0.9, [[i + 0.5, "-8"], [0.5, 0]], c);
+        let tex = d[0];
+        if (SVG2.eq[tex]) tex = SVG2.eq[tex];
+        sym.mjax(tex, null, [[i + 0.5, "-8"], [0.5, 0]], c);
     }
     svg.config({data: data, options: options});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$);
@@ -1745,3 +1743,5 @@ SVG2._style = {
     serif: {"font-family": SVG2.serif},
     mono: {"font-family": SVG2.mono},
 };
+
+SVG2.eq = {Ek: "E_k", Eg: "E_g"}

@@ -15,14 +15,14 @@ Q2: (sel) => {
     svg = SVG2.ebg(sel, 50, 5, [
         ["E_k", 0],
         ["E_g", Eg],
-        ["E_elas", Ee],
+        ["E_{elas", Ee],
     ], {E: Eg+Ee, label: [0, "-6", 2]});
 },
 
 ToyCar: (sel) => {
     svg = SVG2.ebg(sel, 20, 2, [
         ["E_k", 0],
-        ["E_elas", 16],
+        ["E_{elas}", 16],
     ], {E: 16, unit: "mJ", label: [0, "-6", 2]});
 },
 
@@ -36,7 +36,7 @@ CarHill: (sel) => {
 Pinball: (sel) => {
     svg = SVG2.ebg(sel, 1.5, 0.1, [
         ["E_k", (t) => 1.35 * t * t],
-        ["E_elas", true],
+        ["E_{elas}", true],
     ], {E: 1.35, duration: 0.5, margin: [40, 4, 40, 16], label: [1, "-6", 3]});
 },
 
@@ -47,7 +47,7 @@ Q6: (sel) => {
     svg = SVG2.ebg(sel, 1.2, 0.1, [
         ["E_k", Ek],
         ["E_g", Eg],
-        ["E_rotn", true],
+        ["E_{rotn}", true],
     ], {E: E, duration: 4, margin: [40, 4, 40, 16], label: [1, "-6", 2]});
 },
 
