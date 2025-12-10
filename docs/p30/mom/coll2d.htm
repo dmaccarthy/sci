@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
 
 <section class="Slide Center">
 <h1 id="Title">Collisions in 2D</h1>
@@ -8,94 +7,93 @@
 
 <section class="Slide"><h3>Momentum &amp; Impulse Vectors</h3>
     <p>Momentum and impulse are <em class="Defn">vector</em> quantities.</p>
-    <ul data-cue="+">
+    <ul>
         <li>Momentum will always have the same direction as the velocity:<p class="TeX">{\vec{\bf p}} = m{\vec{\bf v}}</p></li>
-        <li data-cue="+">Impulse will always have the same direction as the force:<p class="TeX">\Delta{\vec{\bf p}} = {\vec{\bf F}}\Delta t</p></li>
+        <li>Impulse will always have the same direction as the force:<p class="TeX">\Delta{\vec{\bf p}} = {\vec{\bf F}}\Delta t</p></li>
     </ul>
-    <div data-cue="+">
+    <div>
         <p>When calculating impulse as the change in momentum...</p>
         <p class="TeX">\Delta{\vec{\bf p}} = {\vec{\bf p}}_f - {\vec{\bf p}}_i</p>
     </div>
-    <div data-cue="+">
+    <div>
         <p>...or calculating the total momentum to use the Law of Momentum Conservation...</p>
         <p class="TeX">\Sigma{\vec{\bf p}}_f = \Sigma{\vec{\bf p}}_i</p>
     </div>
-    <p data-cue="+">...we need to remember that in 2D or 3D situations, vector addition and subtraction is different than adding and subtracting scalar quantities.</p>
+    <p>...we need to remember that in 2D or 3D situations, vector addition and subtraction is different than adding and subtracting scalar quantities.</p>
 </section>
 
 <section class="Slide"><h3>Example 1</h3>
     <p  class="Blue">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [west] collide in an intersection. What is the total momentum of the system? Calculate the final velocity of the cars if they stick together after the collision.</p>
-    <p data-cue="+">First calculate the initial momenta:</p>
-    <p data-cue="+" class="TeX">{\vec{\bf p}}_{iA} = m_A {\vec{\bf v}}_{iA} = {\rm{1500\ kg\cdot 18.0\ m/s\ [north] = 27000\ N\cdot s\ [north]}}</p>
-    <p data-cue="+" class="TeX">{\vec{\bf p}}_{iB} = m_B {\vec{\bf v}}_{iB} = {\rm{1200\ kg\cdot 20.0\ m/s\ [west] = 24000\ N\cdot s\ [west]}}</p>
-    <p data-cue="+">To add the 2D vectors, draw them <em class="Defn">tip-to-tail</em> starting at the origin.</p>
-    <p class="Center" data-cue="+"><svg data-svg2="p30/mom/img/coll2d.js#Ex1" class="s20"></svg></p>
-    <ul data-cue="+">
+    <p>First calculate the initial momenta:</p>
+    <p class="TeX">{\vec{\bf p}}_{iA} = m_A {\vec{\bf v}}_{iA} = {\rm{1500\ kg\cdot 18.0\ m/s\ [north] = 27000\ N\cdot s\ [north]}}</p>
+    <p class="TeX">{\vec{\bf p}}_{iB} = m_B {\vec{\bf v}}_{iB} = {\rm{1200\ kg\cdot 20.0\ m/s\ [west] = 24000\ N\cdot s\ [west]}}</p>
+    <p>To add the 2D vectors, draw them <em class="Defn">tip-to-tail</em> starting at the origin.</p>
+    <p class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex1" class="s20"></svg></p>
+    <ul>
         <li>The resultant vector goes from the origin to the tip of the last vector.</li>
-        <li data-cue="+">Because the triangle contains a right angle, we can solve for the missing sides and/or angles using trigonometry.</li>
+        <li>Because the triangle contains a right angle, we can solve for the missing sides and/or angles using trigonometry.</li>
     </ul>
-    <p data-cue="+" class="TeX">|\Sigma{\vec{\bf p}}| = \sqrt{27000^2 + 24000^2}\ {\rm{N\cdot s}} = {\rm{36125\ N\cdot s}}</p>
-    <p data-cue="+">After the collision, we can treat the two masses as a single 2700-kilogram mass because because they stick together:</p>
-    <p data-cue="+" class="TeX">v_f = \frac{\Sigma\vec{\bf p}}{m_A+m_B} = \rm \frac{36125\ N\cdot s}{2700\ kg} = 13.4\ m/s</p>
-    <p data-cue="+" class="TeX">\theta = \tan^{-1}\left({\rm{24000\ N\cdot s\over 27000\ N\cdot s}}\right) = 41.6^\circ</p>
-    <ul data-cue="+">
+    <p class="TeX">|\Sigma{\vec{\bf p}}| = \sqrt{27000^2 + 24000^2}\ {\rm{N\cdot s}} = {\rm{36125\ N\cdot s}}</p>
+    <p>After the collision, we can treat the two masses as a single 2700-kilogram mass because because they stick together:</p>
+    <p class="TeX">v_f = \frac{\Sigma\vec{\bf p}}{m_A+m_B} = \rm \frac{36125\ N\cdot s}{2700\ kg} = 13.4\ m/s</p>
+    <p class="TeX">\theta = \tan^{-1}\left({\rm{24000\ N\cdot s\over 27000\ N\cdot s}}\right) = 41.6^\circ</p>
+    <ul>
         <li>Note that this is 41.6° west of north, or 131.6° from the <span class="TeX">+x</span>-axis.</li>
     </ul>
 </section>
 
 <section class="Slide"><h3>Example 2</h3>
     <p class="Blue">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [30.0° south of west] collide in an intersection. Calculate the final velocity of the cars if they stick together after the collision.</p>
-    <p data-cue="+" class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex2" class="s20"></svg></p>
-    <p data-cue="+">Because the triangle does <b>not</b> contain a right angle, we must use components to add the vectors.</p>
-    <table class="Normal" data-cue="+">
+    <p class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex2" class="s20"></svg></p>
+    <p>Because the triangle does <b>not</b> contain a right angle, we must use components to add the vectors.</p>
+    <table class="Normal">
         <thead><tr><th></th><th>x</th><th>y</th></tr></thead>
         <tbody>
             <tr class="Blue"><td><p class="TeX">\frac{{\vec{\bf p}}_{iA}}{\rm {N\cdot s}}</p></td><td><p class="TeX">\rm 27000\ \cos(90.0^\circ)</p><p class="TeX">= 0</p></td><td><p class="TeX">\rm 27000\ \sin(90.0^\circ)</p><p class="TeX">= 27000</p></td></tr>
-            <tr data-cue="+" class="Blue"><td><p class="TeX">\frac{{\vec{\bf p}}_{iB}}{\rm {N\cdot s}}</p></td><td><p class="TeX">\rm 24000\ \cos(210.0^\circ)</p><p class="TeX"> = -20785</p></td><td><p class="TeX">\rm 24000\ \sin(210.0^\circ)</p><p class="TeX">= -12000</p></td></tr>
-            <tr data-cue="+" class="Red"><td><p class="TeX">\frac{\Sigma{\vec{\bf p}}}{\rm {N\cdot s}}</p></td><td><p class="TeX">{\rm{-20785}}</p></td><td><p class="TeX">{\rm{15000}}</p></td></tr>
+            <tr class="Blue"><td><p class="TeX">\frac{{\vec{\bf p}}_{iB}}{\rm {N\cdot s}}</p></td><td><p class="TeX">\rm 24000\ \cos(210.0^\circ)</p><p class="TeX"> = -20785</p></td><td><p class="TeX">\rm 24000\ \sin(210.0^\circ)</p><p class="TeX">= -12000</p></td></tr>
+            <tr class="Red"><td><p class="TeX">\frac{\Sigma{\vec{\bf p}}}{\rm {N\cdot s}}</p></td><td><p class="TeX">{\rm{-20785}}</p></td><td><p class="TeX">{\rm{15000}}</p></td></tr>
         </tbody>
     </table>
-    <p data-cue="+" class="TeX">|\Sigma{\vec{\bf p}}| = \sqrt{20785^2 + 15000^2}\ {\rm{N\cdot s}} = {\rm{25632\ N\cdot s}}</p>
-    <p data-cue="+">Alternatively, we could use the Law of Cosines and the Law of Sines to solve the trinagle.</p>
-    <p data-cue="+" class="TeX">v_f = {\rm{25632\ N\cdot s\over 2700\ kg}} = {\rm{9.49\ m/s}}</p>
-    <p data-cue="+" class="TeX">\theta = \tan^{-1}\left({\rm{15000\ N\cdot s\over -20785\ N\cdot s}}\right) + 180^\circ = 144.2^\circ</p>
+    <p class="TeX">|\Sigma{\vec{\bf p}}| = \sqrt{20785^2 + 15000^2}\ {\rm{N\cdot s}} = {\rm{25632\ N\cdot s}}</p>
+    <p>Alternatively, we could use the Law of Cosines and the Law of Sines to solve the trinagle.</p>
+    <p class="TeX">v_f = {\rm{25632\ N\cdot s\over 2700\ kg}} = {\rm{9.49\ m/s}}</p>
+    <p class="TeX">\theta = \tan^{-1}\left({\rm{15000\ N\cdot s\over -20785\ N\cdot s}}\right) + 180^\circ = 144.2^\circ</p>
 </section>
 
 <section class="Slide"><h3>Example 3</h3>
     <p class="Blue">During a billiards game, the 170-gram cue ball moving at 2.50 m/s collides with a stationary ball of mass 150 grams. After the collision, the cue ball moves at an angle of +35.0° to its original direction, while the second ball moves at –55.0°. Find the final speeds of the two billiard balls.</p>
-    <div data-cue="+">
+    <div>
         <p>Since only one ball is initially in motion, its momentum is the total momentum of the system:</p>
         <p class="TeX">\Sigma{\vec{\bf p}} = m_A {\vec{\bf v}}_{iA} = {\rm{0.170\ kg\cdot 2.50\ m/s\ [0^\circ] = 0.425\ N\cdot s\ [0^\circ]}}</p>
     </div>
-    <p data-cue="+" class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex3" class="s20"></svg></p>
-    <ul data-cue="+">
+    <p class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex3" class="s20"></svg></p>
+    <ul>
         <li>Draw the two final momentum vectors tip-to-tail.</li>
-        <li data-cue="+">The resultant vector must equal the initial momentum, since momentum must be conserved.</li>
-        <li data-cue="+">You can solve for the missing sides or angles using trigonometry when the vector diagram is a triangle.</li>
-        <li data-cue="+">Since the two known angles add up to 90°, the third angle must be 90°.</li>
-        <li data-cue="+">Since it is a right-angle triangle, you can use <span class="TeX">\sin</span> or <span class="TeX">\cos</span> to find the missing sides:
+        <li>The resultant vector must equal the initial momentum, since momentum must be conserved.</li>
+        <li>You can solve for the missing sides or angles using trigonometry when the vector diagram is a triangle.</li>
+        <li>Since the two known angles add up to 90°, the third angle must be 90°.</li>
+        <li>Since it is a right-angle triangle, you can use <span class="TeX">\sin</span> or <span class="TeX">\cos</span> to find the missing sides:
             <p class="TeX">p_A = \rm{0.425\ N\cdot s}\times \cos(35.0^\circ) = \rm{0.348\ N\cdot s}</p>
             <p class="TeX">p_B = \rm{0.425\ N\cdot s}\times \sin(35.0^\circ) = \rm{0.244\ N\cdot s}</p>
         </li>
-        <li data-cue="+">Remember to divide the momenta by the masses to get the speeds:
+        <li>Remember to divide the momenta by the masses to get the speeds:
             <p class="TeX">v_A = \frac{p_A}{m_A} = \rm{\frac{0.348\ N\cdot s}{0.170\ kg}} = \rm{2.05\ m/s}</p>
             <p class="TeX">v_B = \frac{p_B}{m_B} = \rm{\frac{0.244\ N\cdot s}{0.150\ kg}} = \rm{1.63\ m/s}</p>
         </li>
-        <li data-cue="+">When the triangle does not have a right angle, you must use the Law of Sines or Law of Cosines.</li>
-        <li data-cue="+">Alternatively, you can write the momentum conservation equation separately for the <span class="TeX">x</span>- and <span class="TeX">y</span>-components:</li>
+        <li>When the triangle does not have a right angle, you must use the Law of Sines or Law of Cosines.</li>
+        <li>Alternatively, you can write the momentum conservation equation separately for the <span class="TeX">x</span>- and <span class="TeX">y</span>-components:</li>
     </ul>
-    <p data-cue="+" class="TeX">\Sigma{\vec{\bf p}}_x = p_A\cos(35.0^\circ) + p_B\cos(-55.0^\circ)= \rm{0.425\ N\cdot s}</p>
-    <p data-cue="+" class="TeX">\Sigma{\vec{\bf p}}_y = p_A\sin(35.0^\circ) + p_B\sin(-55.0^\circ)= \rm{0.00\ N\cdot s}</p>
-    <ul data-cue="+">
+    <p class="TeX">\Sigma{\vec{\bf p}}_x = p_A\cos(35.0^\circ) + p_B\cos(-55.0^\circ)= \rm{0.425\ N\cdot s}</p>
+    <p class="TeX">\Sigma{\vec{\bf p}}_y = p_A\sin(35.0^\circ) + p_B\sin(-55.0^\circ)= \rm{0.00\ N\cdot s}</p>
+    <ul>
         <li>This is more difficult to solve because it is a system of two equations with two unknowns.</li>
     </ul>
 </section>
 
-</div></div></section>
+</div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <p class="Center"><i>Include an accurate vector diagram drawn on graph paper for each collision!</i></p>
 <ol>
     <li>Two Physics 20 students are riding in the bumper cars during the class field trip to Galaxyland. One student is driving her car with a velocity of 2.00 m/s [0.00º]. The combined mass of the student and bumper car is 100 kg. She crashes her car into a classmate whose car has a mass (including driver) of 125 kg and a velocity of 1.40 m/s [+90.0º].
@@ -527,9 +525,9 @@ This is an inelastic collision.
 -->
 
 </ol>
-</div></div></section>
+</div></section>
 
-<section class="Post" data-show="2024.9.12" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
 <div id="Review">
 <ol>

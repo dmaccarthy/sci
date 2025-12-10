@@ -156,12 +156,56 @@
 
     <li>An 85.0-kilogram satellite is orbiting Earth at a separation of 70000 km and a speed of 2.40 km/s. Calculate the kinetic energy and speed of the satellite after it has moved through a displacement of 1000 km at an angle of 102° to the gravitational force. [The gravitational force will change slightly, but since the displacement is only 1/70<sup>th</sup> of the separation, you can take <span class="TeX">\vec{\bf F}_g</span> to be approximately constant.]</li>
     <div class="Answer">
+        <p>Calculate the initial kinetic energy:</p>
+        <p class="TeX">E_{ki} = \frac{1}{2}mv^2 = \rm \frac{1}{2}\cdot 85.0\ kg\cdot (2400\ m/s)^2 = 2.49\times 10^8\ J</p>
         <p>Calculate the force of gravity:</p>
-        <p class="TeX">F_g = \frac{GM_e m}{r^2} = \rm \frac{6.67\times 10^{-11}\frac{N\cdot m^2}{kg^2}\cdot 5.98\times 10^{24}\ kg\cdot 85.0\ kg}{(7.00\times 10^7\ m)^2} = 6.61\ N</p>
+        <p class="TeX">F_g = \frac{GM_e m}{r^2} = \rm \frac{6.67\times 10^{-11}\frac{N\cdot m^2}{kg^2}\cdot 5.98\times 10^{24}\ kg\cdot 85.0\ kg}{(7.00\times 10^7\ m)^2} = 6.91\ N</p>
         <p>Calculate the work:</p>
         <p class="TeX">W_g = |\vec{\bf F}_g|\cdot|\Delta\vec{\bf d}|\cos(\Delta\theta)</p>
-        <p class="TeX">W_g = |\vec{\bf F}_g|\cdot|\Delta\vec{\bf d}|\cos(\Delta\theta)</p>
+        <p class="TeX">W_g = \rm 6.91\ N\cdot 1.00\times 10^6\ m\cdot \cos(102^\circ) = -1.44\times 10^6\ J</p>
+        <p>Calculate the final kinetic energy and speed:</p>
+        <p class="TeX">E_{kf} = E_{ki} + W = \rm 2.43\times 10^8\ J</p>
+        <p class="TeX">v_f = \sqrt{\frac{2E_{kf}}{m}} = \rm 2.39\ km/s</p>
     </div>
+
+    <li>How long will it take for a car engine that develops 75.0 kW of power to do 247 kJ of work in accelerating the car to highway speed?</li>
+    <div class="Answer">
+        <p class="TeX">P = \frac{\Delta E}{\Delta t}</p>
+        <p class="TeX">P\Delta t = \Delta E</p>
+        <p class="TeX">\Delta t = \frac{\Delta E}{P} = \rm{\frac{247000\ J}{75000\ W} = 3.29\ s}</p>
+    </div>
+
+    <li>A 60.0-kilogram sprinter metabolizes 7.00 kilojoules of food energy while accelerating from rest to 8.00 m/s over 2.00 seconds. Calculate:
+    <ol type="a">
+        <li>the efficiency of the energy transformation.</li>
+        <div class="Answer">
+<p class="TeX">\Delta E_{input} = \rm{7000\ J}</p>
+<p class="TeX">\Delta E_{useful} = E_{kf} = \frac{1}{2} mv_f^2 = \rm{\frac{1}{2} (60.0\ kg) (8.00\ m/s)^2 = 1920\ J}</p>
+<p class="TeX">\epsilon  = \frac{\Delta E_{useful}}{\Delta E_{input}} = \rm{\frac{1920\ J}{7000\ J} = 0.274 = 27.4\%}</p>
+        </div>
+    
+        <li>the power developed by the student.</li>
+        <p class="TeX Answer">P = \frac{\Delta E}{\Delta t} = \rm{\frac{1920\ J}{2.00\ s} = 960 W}</p>
+    
+        <li>the amount of thermal and sound (“waste”) energy produced by the student.</li>
+        <p class="TeX Answer">\Delta E_{waste} = \Delta E_{input} - \Delta E_{useful} = \rm{7000\ J - 1920\ J = 5080\ J}</p>
+
+        <li>Draw an energy flow diagram.</li>
+        <p class="Center Answer"><svg class="s20" data-svg2="p20/energy/img/power.js#sprint"></svg></p>
+    
+    </ol></li>
+    <li><ol type="a">
+        <li>Define power.</li>
+        <p class="Answer">The <em>rate</em> at which energy is transformed.</p>
+        <li>What is the standard SI unit of power?</li>
+        <p class="Answer">W = J/s; joules per second, also known as watts.</p>
+        <li>How do we convert horsepower to standard units?</li>
+        <p class="Answer">1 hp = 746 W</p>
+    </ol></li>
+
+   <li>How does power relate to work? For example, can a car with a more powerful engine always do more work than a car with a less powerful engine?</li>
+    <p class="Answer">The amount of work an engine can do depends on how much fuel is available. The power indicates how quickly that work can be done. A car with a full gas tank and an underpowered engine can do more total work than a more powerful engine with an empty gas tank.</p>
+
 </ol>
 </div></section>
 

@@ -10,9 +10,9 @@ sprint: (sel) => {
     let g = svg.group("red", "black@1");
     let text = {stroke: "none"}
     let a = g.arrow({tail: [0.5, 0], tip: [1.7, 0]}, {tail: "6"});
-    a.label("1.92 kJ", ["-20", "-24"]).css(text);
+    a.label("1.92 kJ", ["-20", "-18"]).css(text);
     a = g.arrow({tail: [0, -0.3], tip: [1.2, -0.3]}, {tail: "6"}, "tail").config({theta: -90});
-    a.label("5.08 kJ", ["-6", "12"]).css(text);
+    a.label("5.08 kJ", ["-6", "18"]).css(text);
 },
 
 });
