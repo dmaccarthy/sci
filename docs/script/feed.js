@@ -762,7 +762,7 @@ function initPage(latex) {
 $(async () => {
     /* Load index.json and then initialize page */
     await mjax_wait();
-    fetch("index.json", {cache: "reload"}).then((a) => a.json()).then((a) => {
+    fetch("index.json", {cache: "reload"}).then(a => (a.ok ? a.json() : {})).then((a) => {
         let index = loadFeed.index = {};
         for (let crs in a) {
             let data = a[crs];
@@ -779,7 +779,6 @@ $(async () => {
                 }
             }
         }
-        // console.log(MathJax.tex2svg);
         initPage();
     });
 });

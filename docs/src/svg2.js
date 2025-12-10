@@ -304,11 +304,14 @@ rect(size, posn, selector) {
 
 async image_promise(href, selector) {
 /* Modify or append an <image> to the <g> element */
-    return new Promise(res => {
-        let e = selector ? $($(selector)[0]) : this.create_child("image");
-        e.on("load", ev => res(e));
-        return e.attr({href: new URL(href, location.href).href, x: 0, y: 0});
-    });
+    href = new URL(href, location.href).href;
+    let e = selector ? $($(selector)[0]) : this.create_child("image");
+    return load_img(href).then(img => {
+        let img$ = $(img).appendTo("body");
+        let bbox = {width: img$.width(), height: img$.height()};
+        img$.remove();
+        return [e.attr({href: href, x: 0, y: 0}), bbox];
+    })
 }
 
 _img_size(size, bbox) {
@@ -323,27 +326,11 @@ _img_size(size, bbox) {
     return size;
 }
 
-async image(href, size, posn, selector, bbox) {
+async image(href, size, posn, selector) {
     return this.image_promise(href, selector).then(e => {
-        if (!bbox) bbox = e[0].getBBox();
+        let bbox = e[1];
+        e = e[0];
         size = this._img_size(size, bbox);
-        // console.log(size);
-        // let w = 0, h = 0;
-        // let [sx, sy] = this.svg.scale;
-        // sx = Math.abs(sx);
-        // sy = Math.abs(sx);
-        // let [w0, h0] = [bbox.width / sx, bbox.height / sy];
-        // if (size) {
-        //     if (size.scale) size = [w0 * size.scale, h0 * size.scale];
-        //     if (!(size instanceof Array)) size = [size, size];
-        //     [w, h] = size;
-        //     if (typeof(w) == "string") w = parseFloat(w);
-        //     if (typeof(h) == "string") h = parseFloat(h);
-        //     if (!w) w = w0 / h0 * h;
-        //     else if (!h) h = h0 / w0 * w;
-        // }
-        // else [w, h] = [w0, h0];
-        // let x, y;
         let [w, h, x, y] = this.rect_xy(size, posn);
         let f = (x) => x.toFixed(this.svg.decimals);
         return e.attr({width: f(w), height: f(h), x: f(x), y: f(y)});
@@ -353,6 +340,7 @@ async image(href, size, posn, selector, bbox) {
 async mjax(tex, size, posn, color) {
 /* Asynchronously render LaTeX to <image> with MathJax */
     let g = this.group();
+    let img = g.create_child("image");
     if (size == null) size = {scale: 1};
     if (size.scale) size = {scale: size.scale / 32};
     if (color) tex = `\\color{${color}}{${tex}}`;
@@ -360,8 +348,11 @@ async mjax(tex, size, posn, color) {
         svg.appendTo("body");
         let bbox = svg[0].getBBox();
         svg.remove();
+        size = this._img_size(size, bbox);
+        let [w, h, x, y] = this.rect_xy(size, posn);
+        let f = (x) => x.toFixed(this.svg.decimals);
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
-        g.image(url, size, posn, null, bbox);
+        img.attr({href: url, width: f(w), height: f(h), x: f(x), y: f(y)});
         return g;
     });
 }
