@@ -41,17 +41,12 @@ fbd1: (sel) => {
 ex1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, 12.486], vec2d(1.4983, -26.565)], {lrbt: [-4, 4, -2, 14],
         scale: 30, margin: 8, grid: 1, cycle: 1, label: [2, 0, "-12", "-12"]});
-    svg.text("kN/C", [-3, 13]);
-
-    let [BD, SM] = [1, 4];
+    svg.gtext("kN/C", ["text", 15], [4, 14, 1, 0.5]);
     let g = svg.group();
-    let arr = ["→", SM + BD, [0, "20"]];
-    let sub = ["14", "-8"];
-    g.symbol(["E", BD], arr, ["1", SM, sub]).config({shift: [-1.5, 6]});
-    g.symbol(["E", BD], arr, ["2", SM, sub]).config({shift: [1, 13]});
-    E = g.symbol(["E", BD], arr).config({shift: [1.75, 7]});
-    g.$.find("g.Symbol").addClass("Large").find("text").css({fill: "red"});
-    E.$.find("text").css({fill: "#0065fe"});
+    let s = {scale: 1};
+    g.mjax("\\vec{\\bf E}_1", s, [-1, 7], "red");
+    g.mjax("\\vec{\\bf E}_2", s, [1.5, 13.2], "red");
+    g.mjax("\\vec{\\bf E}", s, [1.8, 7], "#0065fe");
 },
 
 });

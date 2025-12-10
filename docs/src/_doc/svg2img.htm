@@ -4,8 +4,10 @@
 </div></section>
 
 <section class="Post NoPrintIcon" data-icon="html5">   
-<h2 class="Collapse">Images</h2><div class="Collapse">
+<h2 class="Collapse">Images</h2><div class="Collapse Expand">
 <p>Under Construction</p>
+<p class="Center"><svg id="Drawing1"></svg></p>
+
 </div></section>
 
 <section class="Post NoPrintIcon" data-icon="html5">   
@@ -38,11 +40,22 @@ svg.mjax("V = \\frac{4\\pi}{3} r^3", {scale: 2}, [0, 0], "#0065fe");</pre>
 
 </div></section>
 
-<script type="text/javascript" data-init="draw1">
+<script type="text/javascript" data-init="draw">
 
-loadFeed.draw1 = () => {
+loadFeed.draw = () => {
+    for (let i=0;i<2;i++) loadFeed[`draw${i}`]();
+}
+
+loadFeed.draw0 = () => {
     let svg = new SVG2("#Sphere", {lrbt: [-2, 2, -1, 1], scale: 80});
     svg.mjax("V = \\frac{4\\pi}{3} r^3", {scale: 2}, [0, 0], "#0065fe");
+}
+
+loadFeed.draw1 = () => {
+    let svg = new SVG2("#Drawing1", {lrbt: [-5, 5, -5, 5], scale: 32, grid: 0, margin: 2});
+    // svg.image("media/xray.svg", "192", [0, 0]);
+    css(svg.circle(5), "none", "black@2");
+    svg.save("circle.svg");
 }
 
 

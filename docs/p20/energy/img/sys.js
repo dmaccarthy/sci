@@ -39,8 +39,8 @@ flow1: (sel, label) => {
     let a1 = g.arrow({tail: [dx, 0], tip: [2-dx, 0]}, {tail: "6"}).css("#0065fe");
     let a2 = g.arrow({tail: [2+dx, 0], tip: [4-dx, 0]}, {tail: "6"});
     if (label) {
-        a1.label("9.81 J", ["-4", "-32"]);
-        a2.label("3.56 J", ["4", "-32"]);
+        a1.label("9.81 J", ["-8", "-24"]);
+        a2.label("3.56 J", ["2", "-24"]);
     }
 },
 
@@ -54,7 +54,7 @@ flow2: (sel) => {
 
     g = svg.group("arrow");
     let a = g.arrow({tail: [0.5, 0], tip: [1.7, 0]}, {tail: "6"});
-    a.label("59.6 J", ["-20", "-24"]);
+    a.label("59.6 J", ["-20", "-16"]);
     g.arrow({tail: [0, -0.3], tip: [0, -1.5]}, {tail: "6"});
 },
 
@@ -69,12 +69,12 @@ flow3: (sel) => {
     svg.group("red", 24).ctext(["Waste", [2.5, 0]]);
 
     let a = svg.group("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
-    a.label("3.00 J", ["6", "-30"]);
+    a.label("3.00 J", ["6", "-20"]);
     g = svg.group("arrow", "#0065fe");
     a = g.group().config({theta: -30, shift: [-0.8, 0.55]}).arrow(1.4, {tail: "6"});
-    a.label("0.26 J", ["-8", "-24"]);
+    a.label("0.26 J", ["-8", "-16"]);
     a = g.group().config({theta: 30, shift: [-0.8, -0.55]}).arrow(1.4, {tail: "6"});
-    a.label("8.00 J", ["-8", "-24"]);
+    a.label("8.00 J", ["-8", "-16"]);
 },
 
 flow4: (sel) => {
@@ -87,11 +87,11 @@ flow4: (sel) => {
     svg.group("red", 24).ctext(["Waste", [2.5, 0]]);
 
     let a = svg.group("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
-    a.label("1.68 J", ["6", "-30"]);
+    a.label("1.68 J", ["6", "-18"]);
 
     g = svg.group("arrow", "#0065fe");
     a = g.group().config({theta: 0, shift: [-1, 0]}).arrow(-1.4, {tail: "6"});
-    a.label("6.13 J", ["8", "-30"]);
+    a.label("6.13 J", ["8", "-18"]);
 },
 
 Q1: (sel) => {

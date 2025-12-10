@@ -15,7 +15,7 @@ Q2: (sel) => {
     svg = SVG2.ebg(sel, 50, 5, [
         ["E_k", 0],
         ["E_g", Eg],
-        ["E_{elas", Ee],
+        ["E_{elas}", Ee],
     ], {E: Eg+Ee, label: [0, "-6", 2]});
 },
 

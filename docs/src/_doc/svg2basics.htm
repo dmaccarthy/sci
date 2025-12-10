@@ -110,8 +110,9 @@ SVG2.style(svg.poly([[0, 0], [-2, 4], [1, 3]]), "none", "limegreen@1");</pre>
 </div></section>
 
 <section class="Post NoPrintIcon" data-icon="html5">   
-<h2 class="Collapse">Anchoring</h2><div class="Collapse">
+<h2 class="Collapse">Anchoring</h2><div class="Collapse Expand">
 <p>Under Construction</p>
+<p class="Center"><svg id="Drawing6"></svg></p>
 </div></section>
 
 <section class="Post NoPrintIcon" data-icon="html5">   
@@ -138,6 +139,15 @@ SVG2.style(svg.poly([[0, 0], [-2, 4], [1, 3]]), "none", "red@2");</pre>
 </div></section>
 
 <script type="text/javascript" data-init="draw">
+
+loadFeed.draw = () => {
+    for (let i=1;i<7;i++) loadFeed[`draw${i}`]();
+}
+
+loadFeed.draw6 = () => {
+    let svg = new SVG2("#Drawing6", {lrbt: [-5, 5, -5, 5], scale: 32, margin: 2, grid: 1});
+    svg.gtext("Hello, world!", ["text", 28], [0, 0]);
+}
 
 loadFeed.draw1 = () => {
     let svg = new SVG2("#Drawing1", {lrbt: [-5, 5, -5, 5], scale: 32, margin: 2, grid: 1});
@@ -175,10 +185,6 @@ loadFeed.draw4 = (n) => {
 loadFeed.draw5 = () => {
     let blue = loadFeed.draw4(5);
     blue.config({theta: 45, pivot: [3, 1], shift: [-1, 1]});
-}
-
-loadFeed.draw = () => {
-    for (let i=1;i<6;i++) loadFeed[`draw${i}`]();
 }
 
 loadFeed.data = {

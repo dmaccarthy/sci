@@ -312,9 +312,13 @@ async image_promise(href, selector) {
 }
 
 _img_size(size, bbox) {
+    if (!size) size = {scale: 1};
     let s = size.scale;
-    let [sx, sy] = this.svg.scale;
-    if (s) size = [Math.abs(s * bbox.width /sx), Math.abs(s * bbox.height / sy)];
+    if (s) {
+        let [w, h] = [bbox.width, bbox.height];
+        if (!(w && h)) console.warn("Sizing image with a dimension of 0")
+        size = [(s * w).toFixed(2), (s * h).toFixed(2)];
+    }
     else if (!(size instanceof Array)) size = [size, size];
     return size;
 }
@@ -323,6 +327,7 @@ async image(href, size, posn, selector, bbox) {
     return this.image_promise(href, selector).then(e => {
         if (!bbox) bbox = e[0].getBBox();
         size = this._img_size(size, bbox);
+        // console.log(size);
         // let w = 0, h = 0;
         // let [sx, sy] = this.svg.scale;
         // sx = Math.abs(sx);
@@ -347,6 +352,7 @@ async image(href, size, posn, selector, bbox) {
 
 async mjax(tex, size, posn, color) {
 /* Asynchronously render LaTeX to <image> with MathJax */
+    let g = this.group();
     if (size == null) size = {scale: 1};
     if (size.scale) size = {scale: size.scale / 32};
     if (color) tex = `\\color{${color}}{${tex}}`;
@@ -355,35 +361,10 @@ async mjax(tex, size, posn, color) {
         let bbox = svg[0].getBBox();
         svg.remove();
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
-        let g = this.group();
-        console.log(tex);
         g.image(url, size, posn, null, bbox);
         return g;
     });
 }
-
-// _embed(url, size) {
-// /* Embed an SVG file as a nested SVG element */
-//     let outer = this.group();  // Container SVG2g instance
-//     let mid = outer.group();   // Translate to origin
-//     let inner = mid.group().$; // Scale to size
-//     return [fetch(url).then((a) => a.text()).then((a => {
-//         let svg = outer.svg;
-//         inner.html($(a).filter("svg"));
-//         let e = inner.find("svg");
-//         if (size) {
-//             size = [Math.abs(size[0] * svg.scale[0]), Math.abs(size[1] * svg.scale[1])];
-//             let [w, h] = [e.attr("width"), e.attr("height")];
-//             let [sx, sy] = [size[0] / w, size[1] / h];
-//             inner.attr({transform: `scale(${sx} ${sy})`});
-//             mid.shift_by(svg.p2a(size[0] / 2, size[1] / 2).neg());
-//         }
-//         return outer;
-//     })), outer];
-// }
-
-// embed(url, size) {return this._embed(url, size)[1]}
-// embed_promise(url, size) {return this._embed(url, size)[0]}
 
 plot(points, size, href, theta) {
 /* Plot an array of points as circles, rectangles, or images */
@@ -441,6 +422,8 @@ label(fn, x, y) {
         else {
             let txt = g.text(fn(x0, y0, i), [xc, yc]);
             if (parseFloat(txt.html()) == 0) txt.addClass("Zero");
+            // let txt = g.gtext(fn(x0, y0, i), [], [xc, yc]);
+            // if (parseFloat(txt.$.children("text").html()) == 0) txt.addClass("Zero");
         }
     }
     if (tick) g.css("black@1").$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`);
@@ -565,28 +548,19 @@ gtext(data, css, posn) {
     return g.ralign(posn);
 }
 
-// gtext(data, css, xy, ...align) {
-// /* Create a <g> element with an aligned <text> child */
-//     if (!(css instanceof Array)) css = [css];
-//     let g = this.group(...css);
-//     g.text(data);
-//     g.align(xy ? xy : [0, 0], ...align);
+// symbol(...args) { // Deprecated!
+//     let g = this.group(".Symbol");
+//     for (let [s, f, xy, opt] of args) {
+//         let txt = g.text(s, xy);
+//         if (f & 4) txt.addClass("Small");
+//         if (f & 2) txt.css(SVG2._style.ital);
+//         if (f & 1) txt.css(SVG2._style.bold);
+//         if (opt) {
+//             if (opt.size) txt.css({"font-size": `${opt.size}px`});
+//         }
+//     }
 //     return g;
 // }
-
-symbol(...args) { // Deprecated!
-    let g = this.group(".Symbol");
-    for (let [s, f, xy, opt] of args) {
-        let txt = g.text(s, xy);
-        if (f & 4) txt.addClass("Small");
-        if (f & 2) txt.css(SVG2._style.ital);
-        if (f & 1) txt.css(SVG2._style.bold);
-        if (opt) {
-            if (opt.size) txt.css({"font-size": `${opt.size}px`});
-        }
-    }
-    return g;
-}
 
 symb(...args) { // Deprecated!!
 /* Render a symbol from a list of text elements */
@@ -622,40 +596,40 @@ ctext(...args) {
     return gs;
 }
 
-multiline(text, space) {
-/* Render multiple lines of text */
-    if (!space) space = "20";
-	let g = this.group();
-	let y = 0;
-	if (typeof(space) == "string") space = parseFloat(space) / Math.abs(this.svg.scale[1]);
-	for (let t of text.split("\n")) {
-		g.text(t, [0, y]);
-		y -= space;
-	}
-	return g;
-}
+// multiline(text, space) {
+// /* Render multiple lines of text */
+//     if (!space) space = "20";
+// 	let g = this.group();
+// 	let y = 0;
+// 	if (typeof(space) == "string") space = parseFloat(space) / Math.abs(this.svg.scale[1]);
+// 	for (let t of text.split("\n")) {
+// 		g.text(t, [0, y]);
+// 		y -= space;
+// 	}
+// 	return g;
+// }
 
-flow(text, shape, options) {
-/* Render a flow chart element */
-	let g = this.group();
-	if (shape == "d") {
-		let [sx, sy] = this.svg.scale;
-		let w = this._cs([options.width, 0])[0] / Math.sqrt(2);
-		g.group().config({theta: 45}).rect([w, w * Math.abs(sx/sy)]);
-	}
-	else {
-		let wh = new RArray(...this._cs(options.size));
-		if (shape == "r") g.rect(wh);
-		else if (shape == "e") g.ellipse(wh.times(0.5));
-		else if (shape == "p") {
-			let [x, y] = wh.times(0.5);
-			let d = (options.slant ? options.slant : 0.15) * x;
-			g.poly([[d-x, y], [x+d, y], [x-d, -y], [-x-d, -y]], 1);
-		}
-	}
-	g.multiline(text, options.space).align([0, 0]);
-	return g;
-}
+// flow(text, shape, options) {
+// /* Render a flow chart element */
+// 	let g = this.group();
+// 	if (shape == "d") {
+// 		let [sx, sy] = this.svg.scale;
+// 		let w = this._cs([options.width, 0])[0] / Math.sqrt(2);
+// 		g.group().config({theta: 45}).rect([w, w * Math.abs(sx/sy)]);
+// 	}
+// 	else {
+// 		let wh = new RArray(...this._cs(options.size));
+// 		if (shape == "r") g.rect(wh);
+// 		else if (shape == "e") g.ellipse(wh.times(0.5));
+// 		else if (shape == "p") {
+// 			let [x, y] = wh.times(0.5);
+// 			let d = (options.slant ? options.slant : 0.15) * x;
+// 			g.poly([[d-x, y], [x+d, y], [x-d, -y], [-x-d, -y]], 1);
+// 		}
+// 	}
+// 	g.multiline(text, options.space).align([0, 0]);
+// 	return g;
+// }
 
 ruler(n, tick, opt) { //width, big, offset, tickSmall, tickBig) {
 /* Draw a ruler */
@@ -846,15 +820,10 @@ energy_flow(data) {
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
         let tex = getTeX(txt);
-        // if (tex && txt.charAt(0) != "$") console.log(txt, tex);
+        if (tex && txt.charAt(0) != "$") console.log(txt, tex);
         if (!color) color = "#0065fe";
         if (tex) this.mjax(tex, {scale: 1}, pos, color);
-        else {
-            // g.group(color).ctext([txt, pos]);
-            let t = g.group(color);
-            t.text(txt);
-            t.ralign(pos);
-        }
+        else g.gtext(txt, color, pos);
     }
     g = this.group("arrow");
     for (let item of data.arrows) {
@@ -989,7 +958,7 @@ reshape(info, options, anchor) {
 
 label(text, shift) {
 /* Add text relative to arrow midpoint */
-    return this.css("text", "none@").text(text, this.seg.midpoint.plus(this._cs(shift)));
+    return this.gtext(text, ["text", "none@"], this.seg.midpoint.plus(this._cs(shift)));
 }
 
 }

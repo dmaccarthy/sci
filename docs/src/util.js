@@ -192,14 +192,7 @@ async function mjax_wait(t) {
 
 async function mjax_svg(tex) {
     // Use MathJax to render LaTeX as SVG; return jquery object containing <svg>
-    return MathJax.tex2svgPromise(tex).then(a => {
-        let svg = $($(a).find("svg")[0]);
-        // if (mjax_svg.log == true || mjax_svg.log == tex) {
-        //     let [w, h] = [parseFloat(svg.attr("width")), parseFloat(svg.attr("height"))];
-        //     console.log(tex,  [14.4 * w, 14.4 * h]);
-        // }
-        return svg;
-    })
+    return MathJax.tex2svgPromise(tex).then(a => $($(a).find("svg")[0]));
 }
 
 async function mjax_url(tex) {
@@ -211,7 +204,6 @@ function mjax_img(tex) {
     // Use MathJax to render LaTeX as SVG; return jquery object containing <img>
     return mjax_url(tex).then(u => $("<img>").attr({src: u}));
 }
-
 
 renderTeX = mjax_render;
 

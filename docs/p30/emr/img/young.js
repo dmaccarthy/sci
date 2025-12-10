@@ -19,38 +19,33 @@ laser: (sel) => {
 },
 
 geom: (sel) => {
-    let svg = new SVG2(sel, {lrbt: [-2, 3, -0.75, 4.25], margin: 4, scale: 60});
-    svg.$.addClass("SVG2");
-    svg.line([-2, 0], [2, 0]);
+    let svg = new SVG2(sel, {lrbt: [-2, 3, -0.75, 4.25], margin: 4, grid: 0, scale: 60});
+    css(svg.line([-2, 0], [2, 0]), "black@1");
     let pts = [[-1, 0], new RArray(2, 4), [1, 0]];
-    svg.line(pts[0], [-1, 0.6]).css({stroke: "lightgrey"}).addClass("Toggle4").hide();
+    css(svg.line(pts[0], [-1, 0.6]), ".Toggle4", "lightgrey@1").hide();
 
     let r = new Segment(...pts[1], ...pts[2]).length;
     let a = new Segment(...pts[0], ...pts[1]).deg;
     let p3 = pts[1].plus(vec2d(r, a + 180));
-    svg.line(pts[2], p3).addClass("Toggle1"); // QS2
-    svg.poly(pts).addClass("Toggle0"); // PS1 & PS2
-    svg.circle("5", pts[0]); // S1
-    svg.circle("5", pts[2]); // S2
+    css(svg.line(pts[2], p3), ".Toggle1", "black@1");
+    css(svg.poly(pts), ".Toggle0", "none", "#0065fe@2");
+    let g = svg.group("black@1", "#0054fe");
+    g.circle("5", pts[0]); // S1
+    g.circle("5", pts[2]); // S2
+    g = g.group("red");
+    css(g.circle("5", pts[1]), ".Toggle0");
+    css(g.circle("5", p3), ".Toggle1");
 
-    let sub = ["15", "-10"];
-    svg.symbol(["S", 0], ["1", 4, sub]).config({shift: [-1, -0.5]}).$.addClass("Resultant");
-    svg.symbol(["S", 0], ["2", 4, sub]).config({shift: [1, -0.5]}).$.addClass("Resultant");
-    svg.$.find("circle, text").css({fill: "#0065fe"});
+    let s = {scale: 0.9};
+    let [d, align] = [new RArray(0, -0.2), [0.5, 0]];
+    svg.mjax("d", s, [d, align]);
+    svg.mjax("\\rm S_1", s, [d.minus([1, 0]), align], "#0065fe");
+    svg.mjax("\\rm S_2", s, [d.plus([1, 0]), align], "#0065fe");
 
-    let g = svg.group();
-    g.circle("5", pts[1]).addClass("Toggle0"); // P
-    g.circle("5", p3).addClass("Toggle1"); // Q
-    g.symbol(["P", 0]).config({shift: [2.5, 4]}).$.addClass("Toggle0");
-    g.symbol(["Q", 0]).config({shift: [-0.8, 1]}).$.addClass("Toggle1");
-    g.$.find("text, circle").css({fill: "red"});
-    svg.$.find("g.Symbol").addClass("Large");
-
-    g = svg.group().css(".Symbol", ".Large", "ital");
-    g.text("nλ", [-1.05, 0.4]).addClass("Toggle2");
-    g.text("d", [0, -0.3]);
-    g.text("θ", [0.35, 0.1]).addClass("Small Toggle3");
-    g.text("θ", [-0.85, 0.375]).addClass("Small Toggle4").hide();
+    s = {scale: 0.7};
+    svg.mjax("n\\lambda", s, [-1, 0.5]).then(g => g.css(".Toggle2"));
+    svg.mjax("\\theta", s, [0.4, 0.13]).then(g => g.css(".Toggle3"));
+    svg.mjax("\\theta", s, [-0.85, 0.4]).then(g => g.css(".Toggle4").$.hide());
 
     let t = click_cycle.toggle;
     click_cycle(svg.element, 4,

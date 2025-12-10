@@ -23,18 +23,22 @@ v_t: (sel, n, click) => {
     svg.graph({grid: [0.25, 0.25],
         data: [{locus: [(x) => Math.sin(twoPi * (x + xva.n / 4))]}]
     });
-    svg.animate(svg.series[0].find("polyline"));
-    let arr = ["→", 5, [0, "14"]];
-    let g = svg.group("symbol", 24);
-    g.symb(["t", 2]).align([1.9, "-14"]);
-    let sym = g.symb(["x", 1], arr).align(["-14", 1.125]);
-    sym.css({fill: "#0065fe"});
+    let poly = svg.series[0].find("polyline").config({animated: true});
+
+    let ylabel = svg.group(); 
+    ylabel.mjax("\\vec{\\bf x}", {scale: 0.8}, ["-14", 1.125], "#0065fe");
+    ylabel.mjax("\\vec{\\bf v}", {scale: 0.8}, ["-14", 1.125], "red");
+    ylabel.mjax("\\vec{\\bf a}", {scale: 0.8}, ["-14", 1.125], "purple");
+    svg.mjax("t", {scale: 0.8}, [1.9, "-14"]);
 
     let next_graph = (n) => {
         let a = xva.n = n == null ? (xva.n + 1) % 3 : n;
-        let c = ["#0065fe", "red", "purple"][a];
-        $(sym.$.css({fill: c}).find("text")[0]).html(["x", "v", "a"][a]);
-        svg.$.find("polyline").css({stroke: c});
+        let g = ylabel.$.children("g");
+        for (let i=0;i<3;i++) {
+            if (i == a) $(g[i]).show();
+            else $(g[i]).hide();
+        }
+        poly.css(["#0065fe@", "red@", "purple@"][a]);
         svg.update(0);
     }
     next_graph();
@@ -44,11 +48,10 @@ v_t: (sel, n, click) => {
 
 x_t: (sel) => {
     let svg = SVG2.cache_run("p20/shm/img/shm.js", "v_t", sel);
-    svg.arrow({tail: [0.25, 1.05], tip: [1.25, 1.05]}, {tail: "3", double: 1}).addClass("Toggle1");
-    svg.arrow({tail: [1.25, 0], tip: [1.25, 1]}, {tail: "3", double: 1}).addClass("Toggle0");
-    svg.symbol(["T", 2]).addClass("Toggle1").config({shift: [0.75, 0.875]});
-    svg.symbol(["A", 2]).addClass("Toggle0").config({shift: [1.31, 0.5]});
-    svg.$.find(".Toggle0, .Toggle1").css({fill: "grey"});
+    svg.arrow({tail: [0.25, 1.05], tip: [1.25, 1.05]}, {tail: "3", double: 1}).css(".Toggle1", "grey");
+    svg.arrow({tail: [1.25, 0], tip: [1.25, 1]}, {tail: "3", double: 1}).css(".Toggle0", "grey");
+    svg.mjax("A", {scale: 0.8}, [1.33, 0.5], "grey").then(g => g.css(".Toggle0"));
+    svg.mjax("T", {scale: 0.8}, [0.75, 0.9], "grey").then(g => g.css(".Toggle1"));
     svg.click_toggle(2);
 },
 
