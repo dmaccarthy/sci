@@ -1,4 +1,4 @@
-SVG2.cache("_test/clock.js", {
+SVG2.cache("tools/clock.js", {
 
 clock: (sel) => {
 	let svg = new SVG2(sel, {size: [480, 480], lrbt: [-1, 1], margin: 2});
