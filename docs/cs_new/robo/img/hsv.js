@@ -47,7 +47,7 @@ colorWheelImg: (r, v) => {
             let s = Math.sqrt(x * x + y * y) / r;
             let h = Math.atan2(-y, x) / twoPi;
             if (s <= 1) {
-                let rgb = uHSVtoRGB(h < 0 ? h + 1 : h, s, v);
+                let rgb = HSV.uHSVtoRGB(h < 0 ? h + 1 : h, s, v);
                 data[i] = rgb.r;
                 data[i + 1] = rgb.g;
                 data[i + 2] = rgb.b;
@@ -74,7 +74,6 @@ blue: (sel) => {
     let v = vec2d, r = 0.6, a = 205, b = 260;
     let p = svg.path(v(r, a)).arc_to(v(r, b), r).line_to(v(1, b)).arc_to(v(1, a), 1, 2).close().update();
     css(p, "none", "black@3"); 
-    // p.css({fill: "none", stroke: "black", "stroke-width": "3px"});
 },
 
 });

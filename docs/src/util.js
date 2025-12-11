@@ -1,7 +1,5 @@
 Array.prototype.item = function(i) {return this[i < 0 ? i + this.length : i]}
 
-const sleep = async(t) => await new Promise(r => setTimeout(r, t));
-
 function jeval(a) {return JSON.parse(`{"a": ${a}}`).a}
 
 function jeval_frac(s) {
@@ -34,7 +32,7 @@ click_cycle.toggle = (items, show, ...n) => {
     }
 }
 
-function* range(x0, x1, dx) {
+const range = function*(x0, x1, dx) {
     // Generate a sequence like Python's range function
     if (x1 == null) {x1 = x0; x0 = 0}
     if (!dx) dx = x0 < x1 ? 1 : -1;
@@ -42,13 +40,6 @@ function* range(x0, x1, dx) {
         yield x0;
         x0 += dx;
     }
-}
-
-function file_ext(url) {
-    url = new URL(url, location.href);
-    let path = url.pathname.split("/");
-    path = path.item(-1).split(".");
-    return path.item(-1).toLowerCase();
 }
 
 function qs_args(key, str) {
@@ -79,20 +70,8 @@ function aspect(w) {
     for (let i=0;i<e.length;i++) item_aspect(e[i], w)
 }
 
-function is_after(due, date) {
-    // Check whether a date (today) is after the specified due date
-    if (due == null) return true;
-    else if (due == false) return false;
-    if (date == null) date = new Date();
-    if (!(due instanceof Date)) {
-        due = due.split(".");
-        if (due.length > 1) due[1] = parseInt(due[1]) - 1;
-        due = new Date(...due);
-    }
-    return date >= due;
-}
 
-function random_string(n, allowNum) {
+const random_string = (n, allowNum) => {
 // allowNum = 1: numerals are allowed
 // allowNum = 2: allowed except for first character
     let s = "";
@@ -104,17 +83,6 @@ function random_string(n, allowNum) {
         let i = Math.floor((allowNum ? 62 : 52) * Math.random());
         i = (i < 26 ? 65 : (i < 52 ? 97 : 48)) + i % 26;
         s += String.fromCharCode(i);
-    }
-    return s;
-}
-
-function random_color(digits) {
-    // Create a random RGB hex code
-    let s = "#";
-    if (!digits) digits = 6;
-    for (let i=0;i<digits;i++) {
-        let r = Math.floor(15.9999 * Math.random());
-        s += "0123456789abcdef".charAt(r);
     }
     return s;
 }
@@ -186,8 +154,8 @@ async function mjax_render(e, mode) {
 
 async function mjax_wait(t) {
     // Wait until MathJax.typesetPromise is available
-    while (!MathJax.typesetPromise) await sleep(t ? t : 50);
-    return new Promise((res) => res(0));
+    while (!MathJax.typesetPromise) await SVG2.sleep(t ? t : 50);
+    return new Promise(res => res());
 }
 
 async function mjax_svg(tex) {
@@ -344,45 +312,3 @@ code_echo.head = `<head>
 <title>HTML Document</title>
 <link rel="shortcut icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"/>
 </head>`;
-
-
-/*** HSV Color ***/
-
-function RGBtoHSV(r, g, b) {
-    let max = Math.max(r, g, b), min = Math.min(r, g, b);
-    let v = max / 2.55, h;
-    let d = max - min;
-    let s = (max === 0 ? 0 : 100 * d / max);
-    switch (max) {
-        case min: h = 0; break;
-        case r: h = (g - b) + d * (g < b ? 6: 0); h /= 6 * d; break;
-        case g: h = (b - r) + d * 2; h /= 6 * d; break;
-        case b: h = (r - g) + d * 4; h /= 6 * d; break;
-    }
-    return {h: 360 * h, s: s, v: v};
-}
-
-function HSVtoRGB(h, s, v) {return uHSVtoRGB(h/360, s/100, v/100)}
-
-function uHSVtoRGB(h, s, v) {
-// https://stackoverflow.com/questions/17242144/javascript-convert-hsb-hsv-color-to-rgb-accurately#17243070
-    let r, g, b, i, f, p, q, t;
-    i = Math.floor(h * 6);
-    f = h * 6 - i;
-    p = v * (1 - s);
-    q = v * (1 - f * s);
-    t = v * (1 - (1 - f) * s);
-    switch (i % 6) {
-        case 0: r = v, g = t, b = p; break;
-        case 1: r = q, g = v, b = p; break;
-        case 2: r = p, g = v, b = t; break;
-        case 3: r = p, g = q, b = v; break;
-        case 4: r = t, g = p, b = v; break;
-        case 5: r = v, g = p, b = q; break;
-    }
-    return {
-        r: Math.round(r * 255),
-        g: Math.round(g * 255),
-        b: Math.round(b * 255)
-    };
-}

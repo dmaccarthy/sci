@@ -1177,6 +1177,8 @@ constructor(selector, options) {
     this.time = 0;
 }
 
+static async sleep(t) {await new Promise(r => setTimeout(r, t))}
+
 static arr(dy) {return ["→", 5, [0, dy == null ? "20" : dy]]}
 
 get size() {

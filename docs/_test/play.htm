@@ -1,0 +1,69 @@
+<section class="Post NoPrintIcon"><h2>Local Time</h2>
+<p class="Center"><svg id="Draw"></svg></p>
+</section>
+
+<script type="text/javascript" data-init="ucm">
+
+loadFeed.ucm = async() => {
+    let svg = new SVG2("#Draw", {lrbt: [-8, 8, -12, 1], margin: 2, grid: 0, scale: 24});
+    let rx = 0.6;
+
+    // Grey lines
+    let g = svg.group("grey@1");
+    g.line([-8, -1], [8, -1]);
+    g.line([2.5, -4], [0.3, -3.6]);
+
+    // Apparatus
+    let all = svg.group("black@1");
+    let rope = all.group("none", "@2");
+    let c = new RArray(7, -1), r = new RArray(0, -10);
+    g = all.cylinder([rx, 0.2], 3).css("lightgrey");
+    css(g.$.find("ellipse"), "grey");
+
+    // Rope
+    rope.line(r, [0, 0]);
+    rope.line(c, [rx, 0.1]);
+    css(svg.line([rx, 0.1], [rx/4, -0.18]), "black@2");
+
+    // Masses & Tape
+    css(all.circle(0.5, c), "black@1", "#0065fe");
+    css(all.rect([1.5, 3], r), "magenta");
+    css(svg.rect(["4", 0.5], [0, -3.5]), "none", "tan");
+
+    // Labels
+    g = svg.group("text");
+    g.gtext("Plane of Motion", [], [-5, -1, 0.5, 1]);
+    g.gtext("Tube", [], [-1.2, -3, 1, 0.5]);
+    g.gtext("String", [], [-0.3, -6.5, 1, 0.5]);
+    g.gtext("Tape Mark", [], [3, -4, 0, 0.5]);
+
+    // Symbols
+    let p = [];
+    p.push(svg.mjax("r", null, [3.5, -1.6]));
+    p.push(svg.mjax("m", null, c.plus([0, 1.2]), "#0065fe"));
+    p.push(svg.mjax("M", null, r.plus([1.7, 0]), "magenta"));
+
+    // Save
+    // for (let i=0;i<p.length;i++) await p[i];
+    // svg.save_image("ucm.png", 3);
+}
+
+loadFeed.svg = () => {
+    let r = 0.2;
+    let w = 0.28;
+    let x = r + 1;
+    let svg = new SVG2("#Logo", {lrbt: [-x, x, -x, x], margin: 4, scale: 160});
+    let g = svg.group("#ffb758", "none@");
+    for (let i=0;i<4;i++) {
+        let a = 45 * i;
+        g.group().config({theta: a}).rect([w, 2]);
+        let p1 = vec2d(1, a);
+        g.circle(r, p1.neg());
+        g.circle(r, p1);
+    }
+    // svg.save("svg_logo.svg");
+}
+
+loadFeed.data = {title: "Logo", up: "home"}
+
+</script>

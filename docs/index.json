@@ -1,7 +1,7 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
-"circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2025.12.12", "a": "2025.12.16", "h": "1fqMM5ic06x89f7JBMBXIacbQq8YcBof3"},
+"circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2025.12.12", "a": "2025.12.16", "h": ["1fqMM5ic06x89f7JBMBXIacbQq8YcBof3", ["Lab Handout", "1-jnHSM_u6Id-91RZKC7DWkwdgOvFyw5p"]]},
 "circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2025.12.15"},
 "circ/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "5.5", "s": "2025.12.18", "a": "2025.12.19", "h": "_"},
 "q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2026.1.6", "css": {"font-weight": "bold"}},

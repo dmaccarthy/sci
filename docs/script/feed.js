@@ -10,18 +10,6 @@ function clearFeed() {
     return $("#Main").html("");
 }
 
-function chapRev() {
-    let f = loadFeed.referer;
-    return f ? ["rev", "home"].indexOf(f.split("/").item(-1)) > -1 : false;
-}
-
-function assign() {
-    $(".Answer, hr, nav, #Copy").remove();
-    $("section:not([data-answers])").remove();
-    $("span.Action, img.Icon, img.Chevron").remove();
-    $("div.Collapse").addClass("Expand").show();
-}
-
 function loadFeed(feed, noHist) {
 /** Load feed via AJAX request or from cache **/
     clearTimeout(loadFeed.refresh);
@@ -64,13 +52,6 @@ loadFeed.error = (e, feed) => {
     </section>`;
 }
 
-// loadFeed.error = (feed, e) => {
-//     console.log(feed);
-//     console.log(e);
-//     msg();
-//     if ($("#Main").html() == "") setTimeout(() => {loadFeed("home")}, 1500);
-// }
-
 loadFeed.cache = {};
 loadFeed._inits = [];
 
@@ -99,97 +80,16 @@ function mediaURL(key) {
     return url ? url : `./media/${key}` + (dot ? "" : ".png");
 }
 
-mediaURL.urls = {
-    python: "https://www.python.org/static/favicon.ico",
-    thonny: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Thonny_logo.png/120px-Thonny_logo.png",
-    replit: "https://replit.com/public/images/about/logo.png",
-    amoeba: "media/amoeba.webp",
-    crash: "media/crash.webp",
-    sc8pr: "media/sc8pr.svg",
-    ide: "media/vscode.svg",
-    sal: "media/sal.webp",
-    bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
-    ps: "https://powerschool.eips.ca/favicon-196x196.png",
-    desmos: "https://www.desmos.com/favicon.ico",
-    phet: "https://phet.colorado.edu/favicon.ico",
-    print: data_images.print,
-    html5: data_images.html,
-    xml: data_images.xml,
-    simulation: data_images.sim,
-    help: "media/help.svg",
-    gdrv: data_images.gdrv,
-    gdoc: "https://www.gstatic.com/images/branding/product/1x/docs_2020q4_48dp.png",
-    gsheet: "https://ssl.gstatic.com/docs/spreadsheets/spreadsheets_2023q4.ico",
-    slides: data_images.slides,
-    video: "media/video.svg",
-    correct: data_images.correct,
-}
+mediaURL.urls = {};
 
-function calendar(cal) {
-/** Draw the course calendar **/
-    if (!cal) return;
-    let today = new Date();
-    let isToday = (d) => {
-        d = new Date(d).toString();
-        let t = new Date(today).toString();
-        return d.substring(0, 15) == t.substring(0, 15);
-    }
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let tb = $("table.Calendar");
-    for (let ev of cal) {
-        let [date, text, attr, css] = ev;
-        if (text.charAt(0) == "@") text = "Lesson: " + text.substring(1);
-        let tr = $("<tr>").appendTo(tb);
-        if (is_after(date) && !isToday(date)) tr.hide().addClass("PastDue");
-        let [w, m, d] = date.split(".");
-        m = months[parseInt(m) - 1];
-        w = days[new Date(date).getDay()];
-        $("<td>").html(`${w}, ${m} ${d}`).appendTo(tr);
-        if (attr) {
-            text = $("<a>").html(text).attr(attr);
-            // if (attr.href) {}
-        }
-        $("<td>").html(text).css(css ? css : {}).appendTo(tr);
-    }
-    $("#ShowOld").on("change", (ev) => {
-        let tr = $("table.Calendar tr.PastDue");
-        if (ev.currentTarget.checked) tr.show();
-        else tr.hide();
-    })[0].checked = false;
-}
 
 function apply(e, f) {
 /** Apply a function to all matched elements **/
     $.each($(e), (i, ei) => {f($(ei))});
 }
 
-function handouts(data) {
-/** Generate handouts post **/
-    if (data) {
-        if (typeof(data) == "string") data = [data];
-        let s = $("#Main section.Handouts");
-        if (s.length == 0) s = $("<section>").appendTo("#Main");
-        s.removeClass("Handouts").addClass("Post NoPrintIcon").attr({"data-show": "1", "data-icon": "gdrv"});
-        let h2 = $("<h2>").addClass("Collapse").html("Handouts / Links").appendTo(s);
-        let div = $("<div>").addClass("Collapse").appendTo(s);
-        let html = $("<p>").html(siteData.handouts).appendTo(div);
-        let p = $("<p>").addClass("BtnGrid").appendTo(div);
-        for (let item of data) {
-            let [title, info] = typeof(item) == "string" ? ["Assignment", {gdrv: item}] : item;
-            if (typeof(info) == "string") info = {gdrv: info};
-            if (title) {
-                let btn = $("<button>").html(title).appendTo(p);
-                if (info.gdrv) btn.attr({"data-icon": "gdrv"});
-                for (let k in info) btn.attr(`data-${k}`, info[k]);
-            }
-            else {
-                if (info.title) h2.html(info.title);
-                if (info.html) html.html(info.html);
-            }
-        }
-    }
-}
+let teacher = () => {}
+teacher.mode = false;
 
 function onFeedLoaded(feed, e, noHist) {
 /** Render page once the feed has been loaded **/
@@ -223,9 +123,13 @@ function onFeedLoaded(feed, e, noHist) {
     let a, title, i;
     $("#Main").css("visibility", "hidden");
     clearFeed().prepend(e);
-    loadFeed.data = process_loadData(feed);
-    handouts(loadFeed.data.handouts);
-    calendar(loadFeed.data.cal);
+    try {loadFeed.data = process_loadData(feed)}
+    catch(err) {loadFeed.data = Object.assign({up: "home"}, loadFeed.data)}
+    try {
+        handouts(loadFeed.data.handouts);
+        calendar(loadFeed.data.cal);
+    }
+    catch(err) {}
     if (!teacher.mode) {
         apply("[data-answers]", (ei) => {
             let d = ei.attr("data-answers");
@@ -258,7 +162,8 @@ function onFeedLoaded(feed, e, noHist) {
     });
 
     // Embed videos
-    apply("[data-yt], [data-video]", video);
+    try {apply("[data-yt], [data-video]", video)}
+    catch(err) {}
 
     // Enable collapsible posts
     let h2 = $("section.Post").find(".Collapse:not(div)");
@@ -286,7 +191,8 @@ function onFeedLoaded(feed, e, noHist) {
     });
 
     // Display active buttons
-    let btn = ["today", "prev", "next"];
+    let btn = ["prev", "next"];
+    if (window.calendar) btn.splice(0, 0, "today");
     let j = -1;
     a = $("#Buttons > a").removeClass("Last");
     for (i=0;i<btn.length;i++) {
@@ -476,33 +382,6 @@ function goUp(ev) {
     if (feed) loadFeed(feed);        
 }
 
-function video(s) {
-/** Embed a <video> or YouTube <iframe> **/
-    s = $(s);
-    let opt = s.attr("data-opt");
-    opt = opt ? JSON.parse(opt.replaceAll("'", '"')) : {};
-    let border = opt.border? opt.border : 0;
-
-    let w = opt.width;
-    let r = opt.aspect;
-    if (!r) r = 16 / 9;
-    let ar = typeof(r) == "number" ? r : jeval_frac(r);
-    if (!w) w = 405 * ar;
-    let id = s.attr("data-yt"), v;
-    if (id) {
-        let c = id.charAt(0);
-        if (c == "#") id = "videoseries?list=" + id.slice(1);
-        v = $("<iframe>").attr({frameborder: border, allowfullscreen:1,
-            src:"https://www.youtube.com/embed/" + id});
-    }
-    else {
-        id = s.attr("data-video");
-        v = $("<video>").attr({controls: 1, src: id});
-    }
-    v.attr({width: w, "data-aspect": r});
-    $("<p>").addClass("Center Collapse").html(v).appendTo(s);
-}
-
 function layoutWidth() {
 /** Adjust page metrics when body width or content changes **/
     let body = $("body");
@@ -547,22 +426,7 @@ function collapse(e) {
 
 collapse.toggled = {};
 
-function teacher(t, init) {
-/** Set/get teacher mode **/
-    teacher.mode = false;
-    if (t != null) localStorage.setItem("teacher_mode", t);
-    if (parseInt(localStorage.getItem("teacher_mode")))
-        if (btoa(localStorage.getItem("teacher_code")) == teacher.access)
-            teacher.mode = true;
-    console.log("Teacher", teacher.mode);
-    if (teacher.mode) if (location.hostname == "dmaccarthy.github.io")
-            serverUTC().then(a => a.json()).then(console.log);
-    if (!init) loadFeed();
-}
-
-teacher.access = "Qnpya1I0cDd3bFFITThIbA==";
-
-let siteData = {lesson: "", email: "david.maccarthy@eips.ca"};
+let siteData = {};
 
 function msg(html, time) {
 /** Display a message to the user **/
@@ -579,206 +443,7 @@ function msg(html, time) {
 }
 
 
-function serverUTC() {return fetch(serverUTC.url)}
-serverUTC.url = "https://dmaccarthy.vercel.app/utc.json";
-
-
-// Printing 
-
-function beforePrint() {
-    let b = $("body");
-    if (!b.hasClass("Present")) {
-        beforePrint.hide = $("#Top, .NoPrint:visible").hide();
-        b.prepend($("<h1>").attr({id: "PrintTitle"}).html(document.title));    
-    }
-}
-
-window.addEventListener("beforeprint", beforePrint);
-
-window.addEventListener("afterprint", () => {
-    if (!$("body").hasClass("Present")) {
-        try {
-            $("#PrintTitle").remove();
-            beforePrint.hide.show();
-            loadFeed();
-        }
-        catch(err) {}    
-    }
-});
-
-
-// Slideshow functions
-
-function showOnly(sel) {
-    sel = $($(sel)[0]);
-    for (let e of $("body *")) {
-        e = $(e);
-        let d = e.closest(sel).length > 0;
-        let a = sel.closest(e).length > 0;
-        if (!d && !a) e.hide();
-    }
-}
-
-function slideShow(sel) {
-    $("body").addClass("Present");
-    let e = sel = $($(sel)[0]).addClass("TopLevel");
-    e.find(".NoPresent").remove();
-    showOnly(sel);
-    slideShow.sections = e.children(".Slide");
-    if (slideShow.sections.length == 0) slideShow.sections = sel;
-    while (e[0].tagName.toUpperCase() != "BODY") e = e.parent().show();
-    goSlide();
-    layoutWidth();
-    $(window).on("keydown", (ev) => {
-        let a = ["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp"].indexOf(ev.key);
-        if (a >= 0) {
-            let t = ["INPUT", "TEXTAREA"].indexOf(ev.target.tagName.toUpperCase());
-            let n = ev.ctrlKey ? 10 : 1;
-            if (t == -1) {
-                if (a < 2) {
-                    while (n--) (a ? prevCue : nextCue)();
-                }
-                else if (a == 2) goSlide();
-                else if (a == 3) goPrev();
-                layoutWidth();
-                scrollToBottom(t);
-            }
-        }
-    })
-}
-
-function goSlide(n) {
-    if (n == null) n = goSlide.n == null ? 0 : goSlide.n + 1;
-    if (n > slideShow.sections.length) n = slideShow.sections.length;
-    goSlide.n = n;
-    slideShow.sections.hide();
-    let s = $(slideShow.sections[n]).fadeIn();
-    let c = s.find("div, p, ol, ul, li, h1, h2, h3, table, *[data-cue]");
-    goSlide.cues = [];
-    for (let e of c) {
-        e = $(e);
-        let cue = e.attr("data-cue");
-        if (cue == "prev")
-            goSlide.cues[goSlide.cues.length-1].push(e.hide()[0]);
-        else if (cue == "wait" || !e.is(":first-child") && cue != "none")
-            goSlide.cues.push([e.hide()[0]]);
-        else e.show();
-    }
-    goSlide.cueNum = -1;
-}
-
-function goPrev() {goSlide(goSlide.n ? goSlide.n - 1 : 0)}
-
-function nextCue() {
-    let cues = goSlide.cues;
-    let n = ++goSlide.cueNum;
-    if (n >= cues.length) goSlide();
-    else $(cues[n]).fadeIn();
-}
-
-function prevCue() {
-    let cues = goSlide.cues;
-    let n = goSlide.cueNum--;
-    if (n >= 0) $(cues[n]).fadeOut();
-    else {
-        goPrev();
-        let cues = goSlide.cues;
-        let n = cues.length;
-        for (let i=0;i<n;i++) $(cues[i]).show();
-        goSlide.cueNum = n - 1;    
-    }
-}
-
-function scrollToBottom(t) {
-    let h = $("html");
-    let y = h[0].scrollHeight - $(window).height();
-    h.animate({scrollTop: y < 0 ? 0 : y}, t ? t : 500);
-}
-
 
 // Other event handlers
 
 $(window).on("resize", layoutWidth).on("popstate", loadHash);
-
-$(window).on("keydown", (ev) => {
-    if (ev.ctrlKey && ev.altKey) {
-        let k = ev.key.toLowerCase();
-        if (k == "n") window.open(location.href);
-        else if (k == "t") teacher(teacher.mode ? 0 : 2);
-        else if (k == "p" && teacher.mode) assign();
-    }
-});
-
-function process_loadData(feed) {
-    /* Add titles and due date from index.json */
-    let data = Object.assign({up: "home"}, loadFeed.index[feed]);
-    if (data.title) {
-        if (data.title.charAt(0) == "@") data.title = data.title.substring(1);
-        if (data.num) data.title = `${data.num} — ${data.title}`;
-    }
-    return Object.assign(data, loadFeed.data);
-}
-
-function make_cal(crs) {
-    /* Generate course calendar */
-    let cal = [];
-    for (let feed in loadFeed.index) {
-        let feedArray = feed.split("/")
-        if (feedArray[0] == crs) {
-            let data = loadFeed.index[feed];
-            if (!data.hide && data.title && data.showDate && data.showDate.split(".").length > 2) {
-                let attr = feedArray[feedArray.length - 1] == "@" ? {} : {"data-feed": feed.split("#")[0]};
-                if (data.attr) attr = Object.assign(attr, data.attr);
-                cal.push([data.showDate, data.title, attr, data.css]);
-            }
-        }
-    }
-    return cal.toSorted((a, b) => {
-        f = (x) => {
-            x = x.split(".");
-            if (x.length > 1) x[1] = parseInt(x[1]) - 1;
-            return new Date(...x);
-        }
-        [a, b] = [f(a[0]), f(b[0])];
-        return a > b ? 1 : (a < b ? -1 : 0);
-    });
-}
-
-function initPage(latex) {
-    /* Initialize page */
-    if (!latex) latex = "svg";
-    renderTeX = {
-        svg: e => mjax_render(e).then(layoutWidth),
-        mjax: e => mjax_render(e, true).then(layoutWidth),
-        katex: katex_render,
-        none: e => $(e ? e : ".TeX").css({visibility: "visible"}),
-    }[latex];
-    console.log(`latex-renderer = ${latex}`);
-    teacher(null, true);
-    loadHash(true);
-    document.getElementById("TopTitle").addEventListener("click", goUp);
-}
-
-$(async () => {
-    /* Load index.json and then initialize page */
-    await mjax_wait();
-    fetch("index.json", {cache: "reload"}).then(a => (a.ok ? a.json() : {})).then((a) => {
-        let index = loadFeed.index = {};
-        for (let crs in a) {
-            let data = a[crs];
-            for (let k in data)
-                index[`${crs}/${k}`] = data[k];
-        }
-        let keys = {t: "title", s: "showDate", a: "answerDate", n: "num", h: "handouts"}
-        for (let i in index) {
-            let x = index[i];
-            for (let k in keys) {
-                if (x[k]) {
-                    x[keys[k]] = x[k];
-                    delete x[k];
-                }
-            }
-        }
-        initPage();
-    });
-});

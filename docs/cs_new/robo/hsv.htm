@@ -98,7 +98,7 @@ Arena.run(brain, pattern=quilt)</pre>
 <p>The RGB color model is useful because it is how computer hardware actually represents and produces
     color, but it is not especially suited to how humans perceive color.</p>
 <p> This <em class="Defn">color wheel</em> illustrates a continuum of colors:</p>
-<p class="Center"><svg id="HSV" data-svg2="cs_new/robo/img/hsv.js#wheel#[210,88,100]"></svg></p>
+<p class="Center"><svg id="HSV_Wheel" data-svg2="cs_new/robo/img/hsv.js#wheel#[210,88,100]"></svg></p>
 <table id="HSV_Controls" class="Center">
     <tr>
         <td><input id="HSV_H" type="range" min="0" max="360" value="210"/></td>
@@ -202,6 +202,50 @@ Arena.run(brain, pattern=quilt)</pre></li>
 
 <script type="text/javascript" data-init="sim">
 
+let HSV = {
+
+RGBtoHSV: (r, g, b) => {
+    let max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let v = max / 2.55, h;
+    let d = max - min;
+    let s = (max === 0 ? 0 : 100 * d / max);
+    switch (max) {
+        case min: h = 0; break;
+        case r: h = (g - b) + d * (g < b ? 6: 0); h /= 6 * d; break;
+        case g: h = (b - r) + d * 2; h /= 6 * d; break;
+        case b: h = (r - g) + d * 4; h /= 6 * d; break;
+    }
+    return {h: 360 * h, s: s, v: v};
+},
+
+uHSVtoRGB: (h, s, v) => {
+// https://stackoverflow.com/questions/17242144/javascript-convert-hsb-hsv-color-to-rgb-accurately#17243070
+    let r, g, b, i, f, p, q, t;
+    i = Math.floor(h * 6);
+    f = h * 6 - i;
+    p = v * (1 - s);
+    q = v * (1 - f * s);
+    t = v * (1 - (1 - f) * s);
+    switch (i % 6) {
+        case 0: r = v, g = t, b = p; break;
+        case 1: r = q, g = v, b = p; break;
+        case 2: r = p, g = v, b = t; break;
+        case 3: r = p, g = q, b = v; break;
+        case 4: r = t, g = p, b = v; break;
+        case 5: r = v, g = p, b = q; break;
+    }
+    return {
+        r: Math.round(r * 255),
+        g: Math.round(g * 255),
+        b: Math.round(b * 255)
+    };
+},
+
+HSVtoRGB: (h, s, v) => HSV.uHSVtoRGB(h/360, s/100, v/100),
+
+};
+
+
 loadFeed.data = {
     title: "Colors & Sensors",
     up: `cs_new/robo/home`,
@@ -213,7 +257,7 @@ loadFeed.sim = () => {
     loadFeed.sim.redraw(1);
     $("#RGB_Controls input").on("change", () => loadFeed.sim.redraw());
     $("#HSV_Controls input").on("change", () => loadFeed.sim.redraw(1));
-    $("#HSV").on("click", (e) => {
+    $("#HSV_Wheel").on("click", (e) => {
         let svg = e.currentTarget.graphic;
         let pt = svg.event_coords(e).coords;
         let h = pt.dir();
@@ -229,7 +273,7 @@ loadFeed.sim.redraw = (hsv) => {
         let h = parseFloat($("#HSV_H").val());
         let s = parseFloat($("#HSV_S").val());
         let v = parseFloat($("#HSV_V").val());
-        let rgb = HSVtoRGB(h, s, v);
+        let rgb = HSV.HSVtoRGB(h, s, v);
         $("#RGB_R").val(rgb.r);
         $("#RGB_G").val(rgb.g);
         $("#RGB_B").val(rgb.b);
@@ -238,7 +282,7 @@ loadFeed.sim.redraw = (hsv) => {
         let r = parseFloat($("#RGB_R").val());
         let g = parseFloat($("#RGB_G").val());
         let b = parseFloat($("#RGB_B").val());
-        hsv = RGBtoHSV(r, g, b);
+        hsv = HSV.RGBtoHSV(r, g, b);
         $("#HSV_H").val(hsv.h);
         $("#HSV_S").val(hsv.s);
         $("#HSV_V").val(hsv.v);
@@ -251,11 +295,11 @@ loadFeed.sim.hsv = () => {
     let h = parseFloat($("#HSV_H").val());
     let s = parseFloat($("#HSV_S").val());
     let v = parseFloat($("#HSV_V").val());
-    $("#HSV g.HueSat").css({stroke: v < 80 ? "white" : "black"});
+    $("#HSV_Wheel g.HueSat").css({stroke: v < 80 ? "white" : "black"});
     $("#HSV_Hval").html(h.toFixed(0));
     $("#HSV_Sval").html(s.toFixed(0));
     $("#HSV_Vval").html(v.toFixed(0));
-    let svg = $("#HSV")[0].graphic;
+    let svg = $("#HSV_Wheel")[0].graphic;
     svg.set_v(v);
     svg.set_hs(h, s);
 }

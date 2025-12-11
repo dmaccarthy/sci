@@ -132,15 +132,6 @@ function shuffle(a) { // Re-order array randomly, in-place
     }
 }
 
-function number_HTML(p, latex) {
-    let s = this.toPrecision(p).toLowerCase().split("e");
-    let n = s[1];
-    n = s[0] + (s.length > 1 ?
-        (latex ? `\times 10^{${n}}` : ` × 10<sup>${n}</sup>`) : "");
-    if (!latex) n = n.replace("-", "–"); // hyphen -> endash
-    return n;
-}
-
 function arrow_points(L, opt) {
     /* Calculate the vertices of an arrow. See: www.desmos.com/calculator/kr61ws62tm
        opt = {tail, head, angle, shape, double} */
