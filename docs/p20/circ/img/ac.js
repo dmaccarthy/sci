@@ -5,14 +5,11 @@ delta_v: (sel) => {
     let svg = SVG2.vec_diag(sel, v, {lrbt: [-3, 1, -1, 4], scale: 64, margin: 1, grid: 0.5});
     svg.$.find("g.Component").remove();
 
-    let [BD, IT, SM] = [1, 2, 4];
-    let arr = ["→", SM + BD, [0, "14"]];
-    let sub = ["12", "-8"];
-    let g = svg.group("symbol", 28, "red");
-    g.symb(["θ", IT]).align([-1.75, 2.5]);
-    g.symb(["v", BD], arr, ["2", SM, sub]).align([-0.6, 2]);
-    g.symb(["–", 0, ["-18", "-2"]], ["v", BD], arr, ["1", SM, sub]).align([-2.6, 1.75]);
-    g.group("#0065fe").symb(["v", BD], arr, ["Δ", 0, ["-18", 0]]).align([-0.9, -0.6]);
+    let s = {scale: 1};
+    svg.mjax("\\Delta\\vec{\\bf v}", s, [-0.9, -0.6], "#0065fe");
+    svg.mjax("-\\vec{\\bf v}_1", s, [-2.6, 1.75], "red");
+    svg.mjax("\\vec{\\bf v}_2", s, [-0.6, 2], "red");
+    svg.mjax("\\theta", s, [-1.75, 2.5], "red");
 },
 
 orbit: (sel) => {
@@ -27,25 +24,21 @@ orbit: (sel) => {
     g.circle("3", p);
     g.circle("3", [10, 0]);
 
-    let [BD, IT, SM] = [1, 2, 4];
-    let arr = ["→", SM + BD, [0, "14"]];
-    let sub = ["12", "-8"];
-    g = svg.group("symbol", "#0065fe", 24);
-    g.symb(["r", IT]).align(p.times(0.5).plus([0, 1]));
-    g.symb(["r", IT]).align([5, -0.7]);
-    g.symb(["s", IT]).align([8.5, 2]);
-    g.symb(["θ", IT]).align([1.5, 0.6]);
-    g.symb(["C"]).align([-0.6, 0.6]);
-    g.symb(["P"], ["1", SM, sub]).align([11, 0]);
-    g.symb(["P"], ["2", SM, sub]).align(p.times(1.1));
-    g = g.group("red");
-    g.symb(["v", BD], arr, ["1", SM, sub]).align([11.2, 2]);
-    g.symb(["v", BD], arr, ["2", SM, sub]).align(vec2d(11.3, a + 10));
-    g.symb(["v", BD], arr, ["Δ", 0, ["-16", 0]]).css(".Toggle0").align([7, 4.5]);
+    let c = "#0075fe", s;
+    svg.mjax("\\rm C", s, [-0.6, 0.6], c);
+    svg.mjax("\\rm P_1", s, [11, 0], c);
+    svg.mjax("\\rm P_2", s, p.times(1.1), c);
+    svg.mjax("\\theta", s, [1.5, 0.6], c);
+    svg.mjax("r", s, p.times(0.5).plus([0, 1]), c);
+    svg.mjax("r", s, [5, -0.7], c);
+    svg.mjax("s", s, vec2d(8.5, a/2), c);
+    c = "red";
+    svg.mjax("\\vec{\\bf v}_1", s, [11.2, 2], c);
+    svg.mjax("\\vec{\\bf v}_2", s, vec2d(11.3, a + 10), c);
 
     L = root(32 * (1 - cos(a)))
     g = svg.group("arrow");
-    g.arrow(L, {tail: "6"}, {anchor: "tail"}).config({theta: 180 + a / 2, shift: vec2d(8.3, a/2)}).css(".Toggle0");
+    g.arrow(L, {tail: "6"}, {anchor: "tail"}).config({theta: 180 + a / 2, shift: vec2d(8.3, a/2)}).css(".Toggle0", "#0065fe");
     g.arrow(4, {tail: "6"}, {anchor: "tail"}).config({theta: 90, shift: [10, 2.2]});
     g = g.group().config({theta: a});
     g.arrow(4, {tail: "6"}, {anchor: "tail"}).config({theta: 90, shift: [10, 2.2]});
@@ -63,13 +56,9 @@ car: (sel) => {
     g.arrow({tail: [0, 3], tip: [0, 3 + L]}, {tail: "7"});
     g.arrow({tail: [2.5, 0.5], tip: [2.5 + L / 2, 0.5]}, {tail: "7"});
 
-    let [BD, SM, SM_IT] = [1, 4, 6];
-    let arr = ["→", SM + BD, [0, "20"]];
-    let sub = ["12", "-8"];
-    g = svg.group("symbol", 28, "red");
-    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([-1.5, -3]);
-    g.symb(["F", BD], arr, ["n", SM_IT, sub]).align([-1.5, 5.5]);
-    g.symb(["F", BD], arr, ["f", SM_IT, sub]).align([4, 3]);
+    svg.mjax("\\vec{\\bf F}_g", null, [-1.5, -3], "red");
+    svg.mjax("\\vec{\\bf F}_n", null, [-1.5, 5.5], "red");
+    svg.mjax("\\vec{\\bf F}_f", null, [4, 3], "red");
 },
 
 merry: (sel) => {
@@ -80,8 +69,11 @@ merry: (sel) => {
     g.rect([18, 0.6], [0, 1]);
     svg.stickman(2.7).align([-8, 1.3], "bottom");
     g = svg.group("text");
-    g.ctext(["Axis", [1.7, 6]], ["Icy Platform", [5, 2]], ["Bungee Cord", [-4, 3.3]]);
+    g.gtext("Icy Platform", [], [5, 2]);
+    g.gtext("Bungee Cord", [], [-4, 3.3]);
+    g.gtext("Axis", [], [1.7, 6]);
     css(svg.line([-10, 0], [10, 0]), "black@2");
+    // svg.save("merry.svg");
 },
 
 ucm: (sel) => {
@@ -91,7 +83,7 @@ ucm: (sel) => {
     g.line([-1, 0], [1, 0]);
     css(svg.circle(1), "none", "black@3");
 
-    let circ = svg.group("black@1", "#0065fe").config({omega: 60});
+    let circ = svg.group("black@1", "#0065fe").config({animated: true, omega: 60});
     let vert = g.line([1, 0], [1, 0]);
     circ.line([0, 0], [1, 0]);
     circ.circle(0.05, [1, 0]);
@@ -110,7 +102,7 @@ ucm: (sel) => {
     };
 
     svg.$.on("click", () => svg.toggle());
-    return svg.animate(circ).play();
+    return svg.play();
 },
 
 });

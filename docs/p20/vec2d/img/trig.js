@@ -1,27 +1,34 @@
 SVG2.cache("p20/vec2d/img/trig.js", {
 
 pretest: (sel) => {
-    let svg = new SVG2(sel, {scale: 37, lrbt: [-1, 15, -1, 5], grid: 1}).css(".NoStyle", "nofill");
+    let svg = new SVG2(sel, {scale: 37, lrbt: [-1, 15, -1, 5], grid: 1});
     svg.$.find("g.Grid line.Axis").css({stroke: "lightgrey", "stroke-width": "0.5px"});
-    let text = svg.group("text");
+    let text = svg.group("text", "#0065fe");
 
     // PQR
     let r = vec2d(7, 35);
     let q = new RArray(r[0], 0);
     let l = 0.38;
-    let blue = svg.group().css("#0065fe@2");
+    let blue = svg.group("none", "#0065fe@2");
     blue.poly([[0, 0], q, r], 1);
     blue.poly([q.plus([0, l]), q.plus([-l, l]), q.plus([-l, 0])]);
-    text.group().css("#0065fe", {stroke: "none"}).ctext(["P", [-0.5, 0]], ["Q", [6.1, 0]], ["R", [6.1, 4]]);
-    text.group().css({fill: "black"}).ctext(["7.00", [2.5, 2.5]], ["35.0°", [1.5, 0.3]]);
+    text.gtext("P", [], [-0.5, 0]);
+    text.gtext("Q", [], [6.1, 0]);
+    text.gtext("R", [], [6.1, 4]);
+    text.gtext("7.00", ["black"], [2.5, 2.5]);
+    text.gtext("35.0°", ["black"], [1.5, 0.3]);
 
     // ABC
     let g = text.group().config({shift: [9, 4]});
-    blue = g.group().css("#0065fe@2");
+    blue = g.group("none", "#0065fe@2");
     blue.poly([[0, 0], [5, 0], [0, -4]], 1);
     blue.poly([[0, -l], [l, -l], [l, 0]]);
-    g.group().css("#0065fe", {stroke: "none"}).ctext(["A", [-0.5, -4]], ["B", [5.6, 0]], ["C", [-0.5, 0]]);
-    g.group().css({fill: "black"}).ctext(["4.00", [-0.7, -2]], ["5.00", [2.5, 0.3]]);
+    text = g.group("text", "#0065fe");
+    text.gtext("A", [], [-0.5, -4]);
+    text.gtext("B", [], [5.6, 0]);
+    text.gtext("C", [], [-0.5, 0]);
+    text.gtext("4.00", ["black"], [-0.7, -2]);
+    text.gtext("5.00", ["black"], [2.5, 0.3]);
 },
 
 similar: (sel) => {
@@ -79,7 +86,7 @@ ball8: (sel) => {
 }, 
 
 star: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 240], grid: 0, lrbt: [-1.5, 4.5, -0.25, 1.1]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [480, 240], grid: 0, lrbt: [-1.5, 4.5, -0.25, 1.1]});
     let g = svg.group("nofill", "#0065fe@1");
     g.poly([[0, 0], [4, 1], [-1, 0], [1, 0]]);
     g.poly([[1, 0], [4, 0], [4, 1]]);

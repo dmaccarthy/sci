@@ -29,13 +29,12 @@ pend: (sel, a) => {
     let t7 = {tail: "7"};
     g.arrow({tail: [0, -1.8], tip: [0, -1]}, t7);
     g.group().config({pivot: [0, -2], theta: a}).arrow({tail: [0, -2.2], tip: [0, -3]}, t7);
-    g = pend.group("symbol", 28, "red");
-    let arr = SVG2.arr("20");
-    let sub = [6, ["12", "-8"]];
-    g.symb(["F", 1], arr, ["t", ...sub]).align([0.2, -1.5]);
-    g = svg.group("symbol", 28, "red").symb(["F", 1], arr, ["g", ...sub]);
-    let pt = transform({angle: -a, deg: true}, [0, -2])[0].plus([0.2, -0.5])
-    g.align(pt);
+
+    let s = {scale: 1};
+    let pt = transform({angle: -a, deg: true}, [0, -2])[0].plus([0.2, -0.5]);
+    svg.mjax("\\vec{\\bf F}_g", s, pt, "red");
+    pt = vec2d(1.5, -a - 90).plus([0.2, 0]);
+    svg.mjax("\\vec{\\bf F}_t", s, pt, "red");
 },
 
 eqm: (sel) => {

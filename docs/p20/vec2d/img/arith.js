@@ -1,7 +1,7 @@
 SVG2.cache("p20/vec2d/img/arith.js", {
 
 ship: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 300], lrbt: [-0.06, 1.04, -0.06], margin: 4}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [400, 300], lrbt: [-0.06, 1.04, -0.06], margin: 4});
     let pt = vec2d(sin(60) / sin(70), 50);
     let g = svg.group("black@1", "#0065fe");
     g.circle(0.05);
@@ -38,7 +38,7 @@ ship: (sel) => {
 
 Ex1_init: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(50, 60), vec2d(40, 340)], {lrbt: [-10, 70, -10, 50], scale: 5,
-        margin: 8, grid: 5, tick: "-8", label: [10, 0, "-12", "-20"]}).css(".NoStyle");
+        margin: 8, grid: 5, tick: "-8", label: [10, 0, "-12", "-20"]});
     svg.gtext("m", "text", [3, 50]);
 
     let [BD, SM] = [1, 4];
@@ -75,7 +75,7 @@ trig: (sel) => {
 Ex2: (sel) => {
     let Fg = 98.1, Fn = Fg * cos(10);
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 80), vec2d(8, 170)], {lrbt: [-30, 30, -105, 10],
-        scale: 4, cycle: 1, margin: [12, 12, 6, 16], grid: 5, tick: "-8", label: [10, 0, "-12", "-20"]}).css(".NoStyle");
+        scale: 4, cycle: 1, margin: [12, 12, 6, 16], grid: 5, tick: "-8", label: [10, 0, "-12", "-20"]});
     svg.gtext("N", "text", [25, -100]);
 
     let [BD, SM_IT] = [1, 6];
@@ -90,7 +90,7 @@ Ex2: (sel) => {
 
 Ex3: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(7.25, 75), vec2d(6.5, -60)], {lrbt: [-1, 6, -1, 8],
-        scale: 50, cycle: 1, margin: [12, 12, 6, 16], grid: 1, tick: "-8", label: [1, 0, "-12", "-20"]}).css(".NoStyle");
+        scale: 50, cycle: 1, margin: [12, 12, 6, 16], grid: 1, tick: "-8", label: [1, 0, "-12", "-20"]});
     svg.gtext("m/s", "text", [[0.1, 8], [0, 0.5]]);
 
     let [BD, SM_IT] = [1, 6];
@@ -103,7 +103,7 @@ Ex3: (sel) => {
 },
 
 tri: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 348], lrbt: [-14, 14, -1.5]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [400, 348], lrbt: [-14, 14, -1.5]});
 
     // Calculate point locations
     let h = 25 * cos(30), hA = 12.5 * tan(30);
@@ -124,31 +124,36 @@ tri: (sel) => {
     g.circle("3", [0, h - 10]).css({fill: "black"});
 
     // Labels
-    g = svg.group().css("text");
-    g.ctext(["A", [1, hA]], ["B", [-1, h - 10]], ["θ", [10.5, 0.8], "ital"],
-        ["12.5 km", [6.25, 1]], ["12.5 km", [-5, 1]]);
-    let wrap = (cfg, txt, xy) => g.group().config(cfg).ctext([txt, xy]);
+    g = svg.group("text");
+    g.gtext("A", [], [1, hA]);
+    g.gtext("B", [], [-1, h - 10]);
+    g.gtext("12.5 km", [], [2, 0, 0, 1.1]);
+    g.gtext("12.5 km", [], [-2, 0, 1, 1.1]);
+    svg.mjax("\\theta", {scale: 0.8}, [10.5, 0.8]);
+
+    let wrap = (cfg, txt, xy) => g.group().config(cfg).gtext(txt, [], xy);
     wrap({theta: 90}, "10.0 km", [h - 6, 1]);
-    wrap({theta: 60, pivot: [-12.5, 0]}, "25.0 km", [0, 1]);
-    wrap({theta: -60, pivot: [12.5, 0]}, "25.0 km", [0, 1]);
+    wrap({theta: 60, pivot: [-12.5, 0]}, "25.0 km", [0, 0, 0.5, 1.1]);
+    wrap({theta: -60, pivot: [12.5, 0]}, "25.0 km", [0, 0, 0.5, 1.1]);
     wrap({theta: 15, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: 45, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: -75, pivot: [0, h]}, "30°", [3.5, h]);
-    g = g.group("symbol", 28);
-    g.symb(["r", 2], ["A", 6, ["10", "-10"]]).align([-6, 6]);
-    g.symb(["r", 2], ["B", 6, ["10", "-10"]]).align([4.5, 6]);
-    g.symb(["y", 2]).align([1, hA / 2]);
+
+    let s = {scale: 1};
+    svg.mjax("r_{\\scriptsize A}", s, [-5, 6]);
+    svg.mjax("r_{\\scriptsize B}", s, [4, 6]);
+    svg.mjax("y", s, [1, hA / 2]);
 
     // Forces at point A
     g = svg.group().css("black@1", {"fill-opacity": 0.6}).addClass("Toggle0");
     g.$.hide();
-    let arr = (p, l, a, c) => g.arrow({tail: p, tip: p.plus([0, l])}, {tail: "6"}, "tail").config({theta: a}).css({fill: c});
+    let arr = (p, l, a, c) => g.arrow({tail: p, tip: p.plus([0, l])}, {tail: "6"}, "tail").config({theta: a}).css(c);
     arr(pA, 4, 0, "#0065fe");
     arr(pA, 4, 120, "red");
     arr(pA, 4, -120, "green");
 
     // Forces at point B
-    g = svg.group().css("black@1", {"fill-opacity": 0.6}).addClass("Toggle1");
+    g = svg.group(".Toggle1", "black@1", {"fill-opacity": 0.6});
     g.$.hide();
     let l = 4 * sq(2 * hA / rb);
     arr(pB, 4 * sq(hA / 5), 0, "#0065fe");

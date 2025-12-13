@@ -54,7 +54,7 @@ vec1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 90-a), vec2d(Ff, 180-a)], {lrbt: [-16, 32, -64, 8],
         scale: 6, margin: 8, grid: 4, label: [8, 0, "-4", "-12"]});
     svg.$.find(".Component").remove();
-    svg.ctext(["N", [28, -60], {css: 18}]);
+    svg.gtext("N", 18, [28, -60]);
 
     let [BD, SM, SM_IT] = [1, 4, 6];
     let arr = ["→", SM + BD, [0, "20"]];

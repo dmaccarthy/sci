@@ -1,13 +1,15 @@
 SVG2.cache("p30/atom/img/crt.js", {
 
 _crt: (sel) => {
-    let svg = new SVG2(sel, {size: [512, 300], lrbt: [-1.1, 11], margin: [4, 4, 6, 0]}).css(".NoStyle", "text");
+    let svg = new SVG2(sel, {size: [512, 300], lrbt: [-1.1, 11], margin: [4, 4, 6, 0]});
 
     // Label cathode and anode
     let g = svg.group().css({stroke: "black"});
     g.line([0, 0.5], [-0.5, 1.3]);
     g.line([1, 0.5], [2, 1.3]);
-    svg.ctext(["Cathode", [-0.25, 1.6]], ["Anode", [2, 1.6]]);
+    g = svg.group("text");
+    g.gtext("Cathode", [], [-0.25, 1.6]);
+    g.gtext("Anode", [], [2, 1.6]);
 
     // Electron beam
     let beam = svg.group().css({fill: "none", stroke: "black", "stroke-dasharray": "2 6"});
@@ -32,8 +34,8 @@ _crt: (sel) => {
 
     // Label electrode wires
     g = svg.group(28);
-    let pm = g.ctext(["+", [1.6, -2.4]], ["–", [-.6, -2.4]], ["+", [x, -3.5]], ["–", [x, 3.3]]);
-    for (let i=2; i<4; i++) pm[i].css(".Toggle0");
+    let pm = [[1.6, -2.4], [-0.6, -2.4], [x, -3.5], [x, 3.3]];
+    for (let i=0; i<4; i++) g.gtext(i % 2 ? "–": "+", i > 1 ? ".Toggle0" : [], pm[i]);
 
     // Cathode ray tube
     let tube = svg.path([6, 1]).hor(0).arc_to([0, -1], 1).hor(6).arc_to([6, 1], 2.6, 1);
@@ -41,11 +43,9 @@ _crt: (sel) => {
 
     // Label magnetic field
     let mag = svg.group(".Toggle4").config({shift: [x, -0.5]});
-    let [BD, SM_BD] = [1, 5];
-    let arr = [0, "20"];
-    css(mag.circle(0.3), "nofill", "green@1");
-    css(mag.circle(0.05), "green", "nostroke");
-    mag.group("green", 28).symb(["B", BD], ["→", SM_BD, arr]).align([0.75, 0]);
+    css(mag.circle(0.3), "none", "green@1");
+    css(mag.circle(0.05), "green", "none@");
+    mag.mjax("\\vec{\\bf B}", {scale: 1}, [0.75, 0], "green");
     mag.$.hide();
 
     return svg;

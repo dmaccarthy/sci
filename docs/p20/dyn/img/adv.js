@@ -113,9 +113,9 @@ sign_vec: (sel) => {
     g.symb(["F", BD], arr, ["1", SM, sub]).align([150, -400]);
     g.symb(["F", BD], arr, ["2", SM, sub]).align([150, -100]);
     g = svg.group("text", "red");
-    g.group().gtext("90.0°", {}, [180, -240]);
-    g.group().config({theta: -67.5}).gtext("45.0°", {}, [75, 0]);
-    g.group().config({theta: 67.5, pivot: [0, -Fg]}).gtext("45.0°", {}, [75, -Fg]);
+    g.gtext("45.0°", [], [30, -70], -67.5);
+    g.gtext("90.0°", [], [180, -240]);
+    g.gtext("45.0°", [], [30, 70 - Fg], 67.5);
 },
 
 sign_uneven: (sel) => {

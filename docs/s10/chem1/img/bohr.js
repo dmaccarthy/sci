@@ -23,22 +23,22 @@ bohr: (sel, A, M, Q) => {
     if (econfig.length == 0) econfig = [0];
     valence = econfig.length;
 
-    let svg = new SVG2(sel, {grid: 0, margin:2, scale: 40, lrbt: [-1, 1, -1.6, valence + 1]}).css(".NoStyle");
+    let svg = new SVG2(sel, {grid: 0, margin:2, scale: 40, lrbt: [-1, 1, -1.6, valence + 1]});
     let color = svg.$.closest(".Answer").length ? "red" : "black";
     let g = svg.group(`${color}@2`, "nofill");
     let text = svg.group("symbol", 20, color);
     g.circle(1, [0, -0.6]);
+    let s = {scale: 0.75};
     for (let y=1;y<=valence;y++) {
         g.line([-1, y], [1, y]);
         let e = econfig[y - 1];
-        if (e) {
-            e = `${e} e`;
-            text.symb([e, 2], ["–", 0, ["20", "8"]]).align([0, y + 0.1], 0.5, 1);
-        }
+        if (e) svg.mjax(`{\\rm ${e}}\\,e^{-}`, s, [0, y + 0.1, 0.5, 1], color);
     }
-    let p = `${A} p`;
-    text.symb([p, 2], ["+", 0, [(10 + 4 * p.length).toFixed(0), "8"]]).align([0, -0.2]);
-    text.symb([`${M-A} n`, 2]).align([0, -1]);
+    svg.mjax(`{\\rm ${A}}\\,p^{+}`, s, [0, -0.2], color);
+    svg.mjax(`{\\rm ${M-A}}\\,n`, s, [0, -1], color);
+    // let p = `${A} p`;
+    // text.symb([p, 2], ["+", 0, [(10 + 4 * p.length).toFixed(0), "8"]]).align([0, -0.2]);
+    // text.symb([`${M-A} n`, 2]).align([0, -1]);
 },
 
 dot: (sel, elem, q, val) => {

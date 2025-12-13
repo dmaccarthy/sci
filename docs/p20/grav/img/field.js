@@ -13,14 +13,18 @@ binstar: (sel) => {
     svg.circle(2.5, [80, 0]).css({fill: "red", stroke: "black"});
     svg.image("media/rocket.svg", [12, 12], ship);
 
-    g = svg.group().css("text");
-    g.ctext(["10", [74, -3]], ["70", [35, -3]], ["20", [66, 10]]);
-    g = g.group().css("symbol", "ital");
-    g.symb(["α"]).align([13, 2]);
-    g.symb(["β"]).align([76, 2]);
-    g = g.group().css(28);
-    g.symb(["r"], ["P", 4, ["8", "-8"]]).align([34, 14]);
-    g.symb(["r"], ["S", 4, ["8", "-8"]]).align([79, 10]);
+    g = svg.group("text");
+    for (let [t, p] of [
+        ["10", [74, -3]], ["70", [35, -3]], ["20", [66, 10]]
+    ]) g.gtext(t, [], p);
+
+    g = svg.group();
+    let s = {scale: 0.8};
+    g.mjax("\\alpha", s, [13, 2]);
+    g.mjax("\\beta", s, [76, 2]);
+    s.scale = 1;
+    g.mjax("r_{\\scriptsize P}", s, [34, 14]);
+    g.mjax("r_{\\scriptsize S}", s, [79, 10]);
 },
 
 quiz_wr: (sel) => {

@@ -14,20 +14,20 @@ work: (sel) => {
     let g = shade.group().addClass("Toggle0");
     g.poly([[0, 0], [5, 400], [5, 0]], 1);
     g.line([5, 400], [5, 0]);
-    g.ctext(["1000 J", [3, 75]]);
+    g.gtext("1000 J", [], [3, 75]);
 
     g = shade.group().addClass("Toggle1");
     g.rect([5, 400], [7.5, 200]);
     g.line([10, 400], [10, 0]);
-    g.ctext(["2000 J", [7.5, 200]]);
+    g.gtext("2000 J", [], [7.5, 200]);
 
     g = shade.group().addClass("Toggle2");
     g.poly([[10, 400], [10, 0], [15, 0]], 1);
-    g.ctext(["1000 J", [12, 75]]);
+    g.gtext("1000 J", [], [12, 75]);
 
     g = shade.group().addClass("Toggle3");
     g.poly([[20, -400], [20, 0], [15, 0]], 1);
-    g.ctext(["–1000 J", [18, -75]]);
+    g.gtext("–1000 J", [], [18, -75]);
 
     g = shade.$.insertBefore("g.Series").css({fill: "#0065fe", "fill-opacity": 0.2, stroke: "none"});
     g.find("line").css({stroke: "#0065fe"});

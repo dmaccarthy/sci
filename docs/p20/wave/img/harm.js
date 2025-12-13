@@ -138,8 +138,10 @@ Q6: (sel) => {
     });
     svg.$.find("g.LabelX text.Zero").remove();
 
-    let g = svg.group().css({"font-family": SVG2.sans, "font-size": "18px", fill: "#0065FE", "font-weight": "bold"});
-    g.ctext(["A", [0.4, 3.2]], ["B", [2.8, 1.5]], ["C", [4.4, -0.5]]);
+    let g = svg.group("text", "#0065fe", "bold");
+    for (let [t, p] of [
+        ["A", [0.4, 3.2]], ["B", [2.8, 1.5]], ["C", [4.45, -0.5]]
+    ]) g.gtext(t, [], p);
 
     let loci = svg.series;
 

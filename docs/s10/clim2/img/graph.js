@@ -21,11 +21,11 @@ london: (sel) => {
     for (let i=1;i<12;i++) $(g[i]).addClass(i == 1 ? "Toggle6" : "Toggle7");
 
     // Right-side axis
-    $(svg.$.find("g.Grid line")[12]).addClass("Axis").css({stroke: "black", "stroke-width": "1px"});
+    // $(svg.$.find("g.Grid line")[12]).addClass("Axis").css({stroke: "black", "stroke-width": "1px"});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$.find("g.Grid"));
     g = svg.tick_label((x, y) => (y/5).toFixed(0), 12, [...range(0, 91, 10)], "6", 12.3).$.find("g.LabelY")[1].graphic;
     g.config({shift: [0, "-5"]}).css(".Toggle4", "start");
-    svg.group().css(".Toggle4").config({theta: 90, shift: [13.4, 45]}).ctext(["Temperature / °C"]);
+    svg.gtext("Temperature / °C", [".Toggle4", "text"], [13.4, 45], 90)
 
     // Draw precipitation bars and month labels
     let months = "JFMAMJJASOND";

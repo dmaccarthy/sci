@@ -32,7 +32,7 @@ flow1: (sel, label) => {
     let g = svg.group("symbol", 28, "#0065fe");
     g.symb(["E", 2], ["g", 6, ["16", "-6"]]).align([0, 0]);
     g.symb(["E", 2], ["k", 6, ["16", "-6"]]).align([2, 0]);
-    svg.group("red", 24).ctext(["Waste", [4.3, 0]]);
+    svg.gtext("Waste", ["red", 24], [4.3, 0]);
 
     let dx = 0.4;
     g = svg.group("arrow");
@@ -50,7 +50,9 @@ flow2: (sel) => {
 
     let g = svg.group("symbol", 28, "#0065fe");
     g.symb(["E", 2], ["k", 6, ["16", "-6"]]).align([2, 0]);
-    svg.group("red", 24).ctext(["Waste", [0, -1.8]], ["Food"]);
+    g = svg.group("red", 24);
+    g.gtext("Food");
+    g.gtext("Waste", [], [0, -1.8]);
 
     g = svg.group("arrow");
     let a = g.arrow({tail: [0.5, 0], tip: [1.7, 0]}, {tail: "6"});
@@ -66,7 +68,7 @@ flow3: (sel) => {
     g.symb(["E", 2], ["k", 6, ["16", "-6"]]).align([0.15, 0]);
     g.symb(["E", 2], ["g", 6, ["16", "-6"]]).align([-1.8, 1]);
     g.symb(["E", 2], ["elas", 6, ["24", "-6"]]).align([-1.8, -1]);
-    svg.group("red", 24).ctext(["Waste", [2.5, 0]]);
+    svg.gtext("Waste", ["red", 24], [2.5, 0]);
 
     let a = svg.group("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
     a.label("3.00 J", ["6", "-20"]);
@@ -84,7 +86,7 @@ flow4: (sel) => {
     let g = svg.group("symbol", 28, "#0065fe");
     g.symb(["E", 2], ["k", 6, ["16", "-6"]]).align([0.15, 0]);
     g.symb(["E", 2], ["g", 6, ["16", "-6"]]).align([-2, 0]);
-    svg.group("red", 24).ctext(["Waste", [2.5, 0]]);
+    svg.gtext("Waste", ["red", 24], [2.5, 0]);
 
     let a = svg.group("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
     a.label("1.68 J", ["6", "-18"]);

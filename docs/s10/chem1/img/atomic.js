@@ -12,7 +12,7 @@ bun: (sel) => {
     svg.line(pts[0], [0.85, 0.78]).css({stroke: "green"});
     let g = svg.group("text");
     for (let i=0;i<pts.length;i++) g.circle(0.04, pts[i]).css(attr);
-    g.ctext(["Electron", [0.87, 0.9]]);
+    g.gtext("Electron", [], [0.87, 0.9]);
     g.$.find("text, circle").css({fill: "green"});
 },
 

@@ -4,10 +4,12 @@ sprint: (sel) => {
     let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]}).css(".NoStyle", "text");
     svg.circle(0.8, [2, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
-    svg.group("#0065fe", 28).symb(["E", 2], ["k", 6, ["16", "-6"]]).align([2, 0]).css();
-    svg.group("red", 24).ctext(["Waste", [0, -1.8]], ["Food", null]);
+    svg.mjax("E_k", {scale: 1}, [2, 0], "#0065fe");
+    let g = svg.group("red", 24);
+    g.gtext("Waste", [], [0, -1.8]);
+    g.gtext("Food");
 
-    let g = svg.group("red", "black@1");
+    g = svg.group("red", "black@1");
     let text = {stroke: "none"}
     let a = g.arrow({tail: [0.5, 0], tip: [1.7, 0]}, {tail: "6"});
     a.label("1.92 kJ", ["-20", "-18"]).css(text);

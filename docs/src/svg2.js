@@ -337,18 +337,27 @@ async image(href, size, posn, selector) {
     });
 }
 
+static mjax_actual_size(svg) {
+    let s = 12.5;
+    let w = svg.attr("width");
+    let h = svg.attr("height");
+    if (w.indexOf("ex") == -1 || h.indexOf("ex") == -1) throw("Expecting 'ex' units in MathJax SVG");
+    return {width: s * parseFloat(w), height: s * parseFloat(h)};
+}
+
 async mjax(tex, size, posn, color) {
 /* Asynchronously render LaTeX to <image> with MathJax */
     let g = this.group();
     let img = g.create_child("image");
     if (size == null) size = {scale: 1};
-    if (size.scale) size = {scale: size.scale / 32};
+    // if (size.scale) size = {scale: 12.5 * size.scale};
     if (color) tex = `\\color{${color}}{${tex}}`;
     return mjax_svg(tex).then(svg => {
-        svg.appendTo("body");
-        let bbox = svg[0].getBBox();
-        svg.remove();
-        size = this._img_size(size, bbox);
+        // svg.appendTo("body");
+        // let bbox = svg[0].getBBox();
+        // svg.remove();
+        // let bbox = {width: parseFloat(svg.attr("width")), height: parseFloat(svg.attr("height"))};
+        size = this._img_size(size, SVG2.mjax_actual_size(svg));
         let [w, h, x, y] = this.rect_xy(size, posn);
         let f = (x) => x.toFixed(this.svg.decimals);
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
@@ -531,26 +540,29 @@ text(data, xy, selector) {
     return e.attr({x: f(x), y: f(y)}).html(data);
 }
 
-gtext(data, css, posn) {
-/* Create a <g> element with an aligned <text> child */
-    if (!(css instanceof Array)) css = [css];
-    let g = this.group(...css);
-    g.text(data);
-    return g.ralign(posn);
+gtext(data, css, posn, theta) {
+/* Create a <g> element with aligned and possible rotated <text> */
+    if (css == null) css = [];
+    else if (!(css instanceof Array)) css = [css];
+    let outer = this.group(...css);
+    let inner = outer;
+    if (theta != null) {
+        let xy = (posn[0] instanceof Array) ? posn[0] : [posn[0], posn[1]];
+        outer.config({pivot: xy, theta: theta ? theta : 0});
+        inner = outer.group();
+    }
+    outer.content = inner.create_child("text").html(data);
+    inner.ralign(posn);
+    if (inner != outer) delete inner.element.graphic;
+    return outer;
 }
 
-// symbol(...args) { // Deprecated!
-//     let g = this.group(".Symbol");
-//     for (let [s, f, xy, opt] of args) {
-//         let txt = g.text(s, xy);
-//         if (f & 4) txt.addClass("Small");
-//         if (f & 2) txt.css(SVG2._style.ital);
-//         if (f & 1) txt.css(SVG2._style.bold);
-//         if (opt) {
-//             if (opt.size) txt.css({"font-size": `${opt.size}px`});
-//         }
-//     }
-//     return g;
+// gtext(data, css, posn) {
+// /* Create a <g> element with an aligned <text> child */
+//     if (!(css instanceof Array)) css = [css];
+//     let g = this.group(...css);
+//     g.text(data);
+//     return g.ralign(posn);
 // }
 
 symb(...args) { // Deprecated!!
@@ -574,18 +586,18 @@ symb(...args) { // Deprecated!!
     return g;
 }
 
-ctext(...args) {
-/* Render multiple aligned <g> elements with <text> child nodes */
-    let gs = [];
-    for (let [t, posn, options] of args) {
-        if (options == null) options = {};
-        if (typeof(options) == "string") options = {css: options};
-        let g = this.gtext(t, options.css ? options.css : [], posn);
-        if (options.config) g.config(options.config);
-        gs.push(g);
-    }
-    return gs;
-}
+// ctext(...args) {
+// /* Render multiple aligned <g> elements with <text> child nodes */
+//     let gs = [];
+//     for (let [t, posn, options] of args) {
+//         if (options == null) options = {};
+//         if (typeof(options) == "string") options = {css: options};
+//         let g = this.gtext(t, options.css ? options.css : [], posn);
+//         if (options.config) g.config(options.config);
+//         gs.push(g);
+//     }
+//     return gs;
+// }
 
 // multiline(text, space) {
 // /* Render multiple lines of text */
@@ -1695,13 +1707,13 @@ SVG2.nsURI = "http://www.w3.org/2000/svg";
 SVG2._cache = {};
 SVG2.load.pending = [];
 
-SVG2.url = location.origin;
-if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
+SVG2.url = location.href.split("#")[0];
+console.log(SVG2.url);
+// if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
 
 SVG2.sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
-SVG2.mono = "Inconsolata, 'Droid Sans Mono', monospace";
+SVG2.mono = "'Noto Sans Mono', Inconsolata, 'Droid Sans Mono', monospace";
 SVG2.symbol = SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
-// SVG2.symbol = "KaTeX_Main, 'Latin Modern Roman', 'Droid Serif', 'Noto Serif', serif";
 
 SVG2._style = {
     grid: {stroke: "lightgrey", "stroke-width": "0.5px"},
