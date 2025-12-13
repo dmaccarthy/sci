@@ -52,7 +52,7 @@ fbd3: (sel, a) => {
     if (!a) a = 8;
     let p = new RArray(1, tan(a)), Fg = 0.6, Fn = Fg * cos(a), dy = 0.02;
     let Fa = Fg * (applied ? 5/9.81 : sin(a));
-    css(svg.poly([p, [1, -p[1]], p.times(-1)]), "nofill", "black@1");
+    css(svg.poly([p, [1, -p[1]], p.times(-1)]), "none", "black@1");
     let incline = svg.group("black@1").config({theta: a});
     incline.line([0, -1], [0, 1]).css({"stroke-dasharray": "8,8"});
     incline.rect([0.25, 0.16], [0, 0.08]).css({fill: "#d0d0ff"});
@@ -150,7 +150,7 @@ pulley: (sel, fbd) => {
     svg.line([0, 0], [0, -10]).css(black3);
     svg.line([-12, -10], [5, -10]).css(black2);
 
-    let g = svg.group("black@1", "nofill").config({theta: a});
+    let g = svg.group("black@1", "none").config({theta: a});
     g.circle(0.5, c).css({fill: "#d0d0ff"});
     g.line([-7, 1], [1, 1]);
     g.line([0, 0], c).css(black2);

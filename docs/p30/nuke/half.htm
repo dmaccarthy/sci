@@ -105,7 +105,7 @@ loadFeed.sim = () => {
     let f = loadFeed.sim;
     let n = f.grid = 50;
     svg = new SVG2("#Sample", {scale: 11, lrbt: [0, n-1, 0, n-1], margin: 6}).config({decimals: 0});
-    svg.nuke = svg.group({fill: "#b0b0ff"}, "nostroke");
+    svg.nuke = svg.group("#b0b0ff", "none@");
     f.ages = [];
     let halflife = 60 * uniform(6, 18);
     if (f.exportData) console.log(`Halflife = ${(halflife/60).toFixed(1)} min`);

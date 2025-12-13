@@ -9,13 +9,13 @@ orbit: (sel) => {
     let pt = (a) => new RArray(r[0] * cos(a), r[1] * sin(a));
 
     let planet = pt(100);
-    let g = svg.group("nostroke", "#0065fe", {"fill-opacity": 0.3});
+    let g = svg.group("none@", "#0065fe", {"fill-opacity": 0.3});
     g.path(f).line_to(pt(30)).arc_to(pt(45), r).update();
     g.path(f).line_to(planet).arc_to(pt(130), r).update();
     g.path(f).line_to(pt(185)).arc_to(pt(230), r).update();
     let sector = g.$;
 
-    svg.group("nofill", "black@2").ellipse(r);
+    svg.group("none", "black@2").ellipse(r);
     g = svg.group({stroke: "grey"});
     g.line([-1, 0], [1, 0]);
     g.line([0, -e], [0, e]);

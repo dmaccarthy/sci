@@ -35,7 +35,7 @@ similar: (sel) => {
     let p = root(75);
     let dx = 0.5;
     let svg = new SVG2(sel, {grid: 1, scale: 28, lrbt: [-1, 11, -1, 6]});
-    let g = svg.group("nofill", "#0065fe@2");
+    let g = svg.group("none", "#0065fe@2");
     g.poly([[0, 0], [p, 0], [p, 5]], 1);
     g.poly([[p - dx, 0], [p  - dx, dx], [p, dx]]).css({"stroke-width": "1px"});
     g = svg.group("text", "#0065fe");
@@ -43,7 +43,7 @@ similar: (sel) => {
     g.gtext("8.66", {}, [5, -0.5]);
     g.gtext("10", {}, [5, 3.6]);
     p /= 2;
-    g = svg.group("nofill", "red@2");
+    g = svg.group("none", "red@2");
     g.poly([[0, 0], [p, 0], [p, 2.5]], 1);
     g.poly([[p - dx, 0], [p  - dx, dx], [p, dx]]).css({"stroke-width": "1px"});
     g = svg.group("text", "red");
@@ -60,7 +60,7 @@ ramp: (sel) => {
     let x = root(2.25 - 1/16);
     let dx = 0.06;
     let svg = new SVG2(sel, {grid: 0.25, scale: 180, lrbt: [-0.25, 2, -0.25, 0.5]});
-    let g = svg.group("nofill", "#0065fe@2");
+    let g = svg.group("none", "#0065fe@2");
     g.poly([[0, 0], [x, 0], [x, 0.25]], 1);
     g.poly([[x, dx], [x  - dx, dx], [x - dx, 0]]).css({"stroke-width": "1px"});
     g = svg.group("text", "black");
@@ -75,7 +75,7 @@ ball8: (sel) => {
     let g = svg.group({fill: "grey"});
     g.label(0, 35, [...range(40, 71, 10)]);
     g.label(0, [...range(40, 81, 10)], 35);
-    css(svg.poly([[80, 65], [80, 50], [40, 50]]), "nofill", "red@2");
+    css(svg.poly([[80, 65], [80, 50], [40, 50]]), "none", "red@2");
     svg.arrow({tail: [80, 65], tip: [40, 50]}, {tail: "4"}).css("arrow", "#0065fe");
     g = svg.group("text", "#0065fe", 24);
     g.gtext("I", {}, [82, 65]);
@@ -87,7 +87,7 @@ ball8: (sel) => {
 
 star: (sel) => {
     let svg = new SVG2(sel, {size: [480, 240], grid: 0, lrbt: [-1.5, 4.5, -0.25, 1.1]});
-    let g = svg.group("nofill", "#0065fe@1");
+    let g = svg.group("none", "#0065fe@1");
     g.poly([[0, 0], [4, 1], [-1, 0], [1, 0]]);
     g.poly([[1, 0], [4, 0], [4, 1]]);
     css(svg.line([-1, 0.1], [-0.7, 0.03]), "black@1");

@@ -25,7 +25,7 @@ bohr: (sel, A, M, Q) => {
 
     let svg = new SVG2(sel, {grid: 0, margin:2, scale: 40, lrbt: [-1, 1, -1.6, valence + 1]});
     let color = svg.$.closest(".Answer").length ? "red" : "black";
-    let g = svg.group(`${color}@2`, "nofill");
+    let g = svg.group(`${color}@2`, "none");
     let text = svg.group("symbol", 20, color);
     g.circle(1, [0, -0.6]);
     let s = {scale: 0.75};
@@ -49,7 +49,7 @@ dot: (sel, elem, q, val) => {
     let color = $(sel).closest(".Answer").length ? "red" : "black";
     if (q) {
         svg = new SVG2(sel, {scale: 36, lrbt: [-1.1, 1.6, -1.1, 1.4]}).css(".NoStyle");
-        let g = svg.group("nofill", `${color}@2`);
+        let g = svg.group("none", `${color}@2`);
         g.poly([[-0.8, 1], [-1, 1], [-1, -1], [-0.8, -1]]);
         g.poly([[0.8, 1], [1, 1], [1, -1], [0.8, -1]]);
         svg.gtext(q > 0 ? `${q==1 ? "&nbsp;" : q}+` : `${q == -1 ? "&nbsp;" : -q}–`, ["text", color, 18], [[1.1, 1.1], [0, 0.5]]);
@@ -75,7 +75,7 @@ carbon: (sel) => {
     let b = 0.04;
 
     // Electrons
-    let g = svg.group("nofill", "green@1");
+    let g = svg.group("none", "green@1");
     for (let [r, n] of [[0.35, 2], [0.62, 4], [0.95, 0]]) {
         g.circle(r, [0, 0]);
         let angle = 360 * Math.random();

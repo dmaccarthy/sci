@@ -69,27 +69,6 @@ ralign(pos, dim) {
     return this.update_transform();
 }
 
-align(xy, x, y) {
-/* Align the element based on its bounding box */
-    let box = this.element.getBBox();
-    let [w, h] = [box.width, box.height];
-    if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
-    if (typeof(xy) == "number") xy = [xy, xy];
-    if (y == null) {
-        if (x == null) x = y = 0.5;
-        else if (typeof(x) == "string")
-            [x, y] = {top: [0.5, 0], bottom: [0.5, 1], left: [0, 0.5], right: [1, 0.5]}[x];
-    }
-    let nx = x == null;
-    let ny = y == null;
-    let dxy = this.svg.p2a(box.x + (nx ? 0 : x) * w, box.y + (ny ? 0 : y) * h).plus(this._shift);
-    dxy = this._cs(xy).minus(dxy);
-    if (nx) dxy[0] = 0;
-    if (ny) dxy[1] = 0;
-    this._shift = this._shift.plus(dxy);
-    return this.update_transform();
-}
-
 
 /** Kinematics getters and setters **/
 
@@ -302,23 +281,11 @@ rect(size, posn, selector) {
     return e.attr({width: f(w), height: f(h), x: f(x), y: f(y)});
 }
 
-async image_promise(href, selector) {
-/* Modify or append an <image> to the <g> element */
-    href = new URL(href, location.href).href;
-    let e = selector ? $($(selector)[0]) : this.create_child("image");
-    return load_img(href).then(img => {
-        let img$ = $(img).appendTo("body");
-        let bbox = {width: img$.width(), height: img$.height()};
-        img$.remove();
-        return [e.attr({href: href, x: 0, y: 0}), bbox];
-    })
-}
-
-_img_size(size, bbox) {
+_img_size(size, wh) {
     if (!size) size = {scale: 1};
     let s = size.scale;
     if (s) {
-        let [w, h] = [bbox.width, bbox.height];
+        let [w, h] = [wh.width, wh.height];
         if (!(w && h)) console.warn("Sizing image with a dimension of 0")
         size = [(s * w).toFixed(2), (s * h).toFixed(2)];
     }
@@ -327,18 +294,20 @@ _img_size(size, bbox) {
 }
 
 async image(href, size, posn, selector) {
-    return this.image_promise(href, selector).then(e => {
-        let bbox = e[1];
-        e = e[0];
-        size = this._img_size(size, bbox);
+/* Draw a scaled and aligned image */
+    href = new URL(href, location.href).href;
+    let e = selector ? $($(selector)[0]) : this.create_child("image");
+    return load_img(href).then(img => {
+        size = this._img_size(size, {width: img.naturalWidth, height: img.naturalHeight});
         let [w, h, x, y] = this.rect_xy(size, posn);
         let f = (x) => x.toFixed(this.svg.decimals);
-        return e.attr({width: f(w), height: f(h), x: f(x), y: f(y)});
+        return e.attr({href: href, width: f(w), height: f(h), x: f(x), y: f(y)});
     });
 }
 
-static mjax_actual_size(svg) {
-    let s = 12.5;
+static mjax_natural_size(svg) {
+/* Get size of MathJax <svg> based on {scale: 1} equal to 30px font */
+    let s = 14;
     let w = svg.attr("width");
     let h = svg.attr("height");
     if (w.indexOf("ex") == -1 || h.indexOf("ex") == -1) throw("Expecting 'ex' units in MathJax SVG");
@@ -350,14 +319,9 @@ async mjax(tex, size, posn, color) {
     let g = this.group();
     let img = g.create_child("image");
     if (size == null) size = {scale: 1};
-    // if (size.scale) size = {scale: 12.5 * size.scale};
     if (color) tex = `\\color{${color}}{${tex}}`;
     return mjax_svg(tex).then(svg => {
-        // svg.appendTo("body");
-        // let bbox = svg[0].getBBox();
-        // svg.remove();
-        // let bbox = {width: parseFloat(svg.attr("width")), height: parseFloat(svg.attr("height"))};
-        size = this._img_size(size, SVG2.mjax_actual_size(svg));
+        size = this._img_size(size, SVG2.mjax_natural_size(svg));
         let [w, h, x, y] = this.rect_xy(size, posn);
         let f = (x) => x.toFixed(this.svg.decimals);
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
@@ -365,6 +329,54 @@ async mjax(tex, size, posn, color) {
         return g;
     });
 }
+
+ticks(opt) { /*
+    x, y: Specify coordinates of ticks and labels
+    size: Tick extent below and above
+    label: Function or decimal places for labels
+    css: Styling for labels
+    anchor, shift: Adjust location of labels
+    theta: orientation of labels
+*/
+    let p0, p1, gt, gl;
+    let svg = this.svg;
+    let [x, y, size, label] = [opt.x, opt.y, opt.size, opt.label];
+    let swap = y instanceof Array;
+    let g = this.group(swap ? ".TicksY" : ".TicksX");
+    if (swap) [x, y] = [y, x];
+    if (!y) y = 0;
+    let [x0, x1, dx] = x;
+    if (size) {
+        gt = g.group(".Ticks", "black@1");
+        p0 = svg._cs(swap ? [size[0], 0] : [0, size[0]]);
+        p1 = svg._cs(swap ? [size[1], 0] : [0, size[1]]);
+    }
+    if (label != null) {
+        gl = g.group(".Labels", "text");
+        let [css, shift] = [opt.css, opt.shift];
+        if (css) {
+            if (!(css instanceof Array)) css = [css];
+            gl.css(...css);
+        }
+        if (shift) {
+            if (!(shift instanceof Array)) shift = swap ? [shift, 0] : [0, shift];
+            gl.shift_by(shift);
+        }
+    }
+    let f = isNaN(label) ? label : x => x.toFixed(label);
+    let anchor = opt.anchor ? opt.anchor : (swap ? [1, 0.5] : [0.5, 0]);
+    for (let xi = x0; xi < x1; xi += dx) {
+        let dp = swap ? [y, xi] : [xi, y];
+        if (size) gt.line(p0.plus(dp), p1.plus(dp));
+        if (label != null) {
+            let text = f(xi);
+            let t = gl.gtext(text, [], [dp, anchor], opt.theta);
+            if (parseFloat(text) == 0) t.$.addClass("Zero");
+        }
+    }
+    return g;
+}
+
 
 plot(points, size, href, theta) {
 /* Plot an array of points as circles, rectangles, or images */
@@ -388,61 +400,6 @@ plot(points, size, href, theta) {
         }
     }
     return g;
-}
-
-label(fn, x, y) {
-/** Add a <g> containing <text> labels or tick marks as <line>, Usage:
- .label(["-5", "3"], [...range(-15, 31, 5)], 1); // Draw ticks from 5 pixels below x=1 to 3 pixels above
- .label(1, [...range(-15, 31, 5)], 2);           // Label x-axis to 1 decimal place at y=2
- .label(0, 0, [...range(-5, 5, 1)]);             // Label y-axis to 0 decimal places at x=0
- .label(f, 0, [...range(-5, 5, 1)]);             // Label y-axis at x=0 with function f generating text
-**/
-    let g = this.group();
-    let xa = x instanceof Array;
-    let ya = y instanceof Array;
-    let tm, tp;
-    if (fn instanceof Array) {
-        [tm, tp] = fn;
-        [tm, tp] = xa ? [this._cs([0, tm])[1], this._cs([0, tp])[1]] : [this._cs([tm, 0])[0], this._cs([tp, 0])[0]];
-    }
-    else if (typeof(fn) == "number") {
-        let dec = fn;
-        fn = xa ? (x) => x.toFixed(dec) : (x, y) => y.toFixed(dec);
-    }
-    let tick = tm || tp;
-    let n = xa ? x.length : y.length;
-    for (let i=0;i<n;i++) {
-        let x0 = xa ? x[i] : x;
-        let y0 = ya ? y[i] : y;
-        let [xc, yc] = this._cs([x0, y0]);
-        if (tick) {
-            if (!ya) g.line([xc, yc + tm], [xc, yc + tp]);
-            else if (!xa) g.line([xc + tm, yc], [xc + tp, yc]);
-        }
-        else {
-            let txt = g.text(fn(x0, y0, i), [xc, yc]);
-            if (parseFloat(txt.html()) == 0) txt.addClass("Zero");
-            // let txt = g.gtext(fn(x0, y0, i), [], [xc, yc]);
-            // if (parseFloat(txt.$.children("text").html()) == 0) txt.addClass("Zero");
-        }
-    }
-    if (tick) g.css("black@1").$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`);
-    else {
-        g.css("text", 15).$.addClass(`Labels Label${ya ? 'Y' : 'X'}`);
-        if (ya) g.css({"text-anchor": "end"});
-    }
-    return g;
-}
-
-tick_label(fn, x, y, tick, offset) {
-/* Draw and label tick marks along axis */
-    let t = ["number", "string"].indexOf(typeof(tick)) >= 0;
-    let xa = x instanceof Array;
-    if (tick) this.label(t ? [0, tick] : tick, x, y);
-    if (offset == null) offset = 0;
-    if (xa) this.label(fn, x, offset);
-    else this.label(fn, offset, y);
-    return this;
 }
 
 poly(points, closed) {
@@ -531,15 +488,6 @@ _grid(g, x, y, swap) {
     }
 }
 
-text(data, xy, selector) {
-/* Add a <text> element to the group */
-    let svg = this.svg;
-    let e = selector ? $($(selector)[0]) : this.create_child("text");
-    let f = (x) => x.toFixed(svg.decimals);
-    let [x, y] = svg.a2p(...this._cs(xy));
-    return e.attr({x: f(x), y: f(y)}).html(data);
-}
-
 gtext(data, css, posn, theta) {
 /* Create a <g> element with aligned and possible rotated <text> */
     if (css == null) css = [];
@@ -556,83 +504,6 @@ gtext(data, css, posn, theta) {
     if (inner != outer) delete inner.element.graphic;
     return outer;
 }
-
-// gtext(data, css, posn) {
-// /* Create a <g> element with an aligned <text> child */
-//     if (!(css instanceof Array)) css = [css];
-//     let g = this.group(...css);
-//     g.text(data);
-//     return g.ralign(posn);
-// }
-
-symb(...args) { // Deprecated!!
-/* Render a symbol from a list of text elements */
-//  BOLD = 1, ITAL = 2, SMALL = 4
-    let g = this.group(".Symbol");
-    let szStr = (s) => typeof(s) == "number" ? `${size}px` : s;
-    // if (size) g.css("symbol", {"font-size": szStr(size)});
-    for (let [s, opt, pos] of args) {
-        let f = 0;
-        if (typeof(opt) == "number") [f, opt] = [opt, null];
-        let txt = g.text(s, pos);
-        if (f & 4) txt.css({"font-size": "60%"});
-        if (f & 1) txt.css(SVG2._style.bold);
-        if (f & 2) txt.css(SVG2._style.ital);
-        if (opt) {
-            if (opt.size) txt.css({"font-size": szStr(opt.size)});
-            if (opt.css) txt.css(opt.css);
-        }
-    }
-    return g;
-}
-
-// ctext(...args) {
-// /* Render multiple aligned <g> elements with <text> child nodes */
-//     let gs = [];
-//     for (let [t, posn, options] of args) {
-//         if (options == null) options = {};
-//         if (typeof(options) == "string") options = {css: options};
-//         let g = this.gtext(t, options.css ? options.css : [], posn);
-//         if (options.config) g.config(options.config);
-//         gs.push(g);
-//     }
-//     return gs;
-// }
-
-// multiline(text, space) {
-// /* Render multiple lines of text */
-//     if (!space) space = "20";
-// 	let g = this.group();
-// 	let y = 0;
-// 	if (typeof(space) == "string") space = parseFloat(space) / Math.abs(this.svg.scale[1]);
-// 	for (let t of text.split("\n")) {
-// 		g.text(t, [0, y]);
-// 		y -= space;
-// 	}
-// 	return g;
-// }
-
-// flow(text, shape, options) {
-// /* Render a flow chart element */
-// 	let g = this.group();
-// 	if (shape == "d") {
-// 		let [sx, sy] = this.svg.scale;
-// 		let w = this._cs([options.width, 0])[0] / Math.sqrt(2);
-// 		g.group().config({theta: 45}).rect([w, w * Math.abs(sx/sy)]);
-// 	}
-// 	else {
-// 		let wh = new RArray(...this._cs(options.size));
-// 		if (shape == "r") g.rect(wh);
-// 		else if (shape == "e") g.ellipse(wh.times(0.5));
-// 		else if (shape == "p") {
-// 			let [x, y] = wh.times(0.5);
-// 			let d = (options.slant ? options.slant : 0.15) * x;
-// 			g.poly([[d-x, y], [x+d, y], [x-d, -y], [-x-d, -y]], 1);
-// 		}
-// 	}
-// 	g.multiline(text, options.space).align([0, 0]);
-// 	return g;
-// }
 
 ruler(n, tick, opt) { //width, big, offset, tickSmall, tickBig) {
 /* Draw a ruler */
@@ -702,68 +573,6 @@ edot(n, r) {
     let g = this.group({stroke: "none"});
     for (let i=0;i<n;i++) g.circle(0.125 * r, pts[i]);
     return g;
-}
-
-graph(options) {
-/* Add common scatter plot / line graph elements */
-    let svg = this.svg;
-    let x = options.x, y = options.y;
-    if (options.grid) {
-        let [dx, dy] = options.grid;
-        let [l, r, b, t] = svg.lrbt;
-        l = dx * Math.round(l / dx);
-        r = dx * Math.round(r / dx);
-        b = dy * Math.round(b / dy);
-        t = dy * Math.round(t / dy);
-        this.grid([l, r, dx], [b, t, dy], options.appendAxes);
-    }
-
-    if (x || y) {
-        let txt = this.group(".AxisTitle", "text");
-        let xy = (i) => {
-            let pos = (i ? y : x).title[1];
-            if (!(pos instanceof Array)) pos = i ? [pos, svg.center[1]] : [svg.center[0], pos];
-            return pos;
-        }
-        if (x) {
-            let dy = [0, x.y ? x.y : 0];
-            if (x.tick) {
-                this.tick_label(x.dec ? x.dec : 0, [...range(...x.tick)], 0, x.tickSize ? x.tickSize : "-6");
-                this.find("g.LabelX").config({shift: x.shift}).shift_by(dy);
-                this.find("g.TickX").shift_by(dy);
-            }
-            if (x.title) txt.group().shift_by(dy).text(x.title[0], xy(0));
-        }
-        if (y) {
-            let dx = [y.x ? y.x : 0, 0];
-            if (y.tick) {
-                this.tick_label(y.dec ? y.dec : 0, 0, [...range(...y.tick)], y.tickSize ? y.tickSize : "-6");
-                this.find("g.LabelY").config({shift: y.shift}).shift_by(dx);
-                this.find("g.TickY").shift_by(dx);
-            }
-            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).shift_by(dx).text(y.title[0]);  
-        }  
-    }
-
-    let data = options.data;
-    if (data) {
-        let g = this.group(".Series"), s = [];
-        for (let series of data) {
-            if (series.plot) s.push(g.plot(...series.plot));
-            else {
-                let gs = g.group(".Locus", "#0065fe@2", "none");
-                s.push(gs);
-                if (series.connect) {
-                    let pts = series.connect;
-                    if (!(pts instanceof Array)) pts = zip(pts.x, pts.y);
-                    gs.poly(pts);
-                }
-                else if (series.locus) gs.locus(...series.locus);
-            }
-        }
-        this.series = s;
-    }
-    return this;
 }
 
 error_bar_y(x, y0, y1, dx, _swap) {
@@ -1594,7 +1403,7 @@ static ebg(sel, Emax, step, data, options) {
     options = Object.assign({size: [512, 384], width: 0.5, duration: 0, unit: "J", margin: [32, 4, 44, 16]}, options);
     let n = data.length;
     let svg = new SVG2(sel, {size: options.size, lrbt: [0, n, 0, Emax], margin: options.margin});
-    svg.grid([0, n], [0, Emax, step]).grid([0, 1, 2], [0, Emax]);
+    svg.grid([0, n], [0, Emax + step / 2, step]).grid([0, 1, 2], [0, Emax]);
 
     let bars = [];
     let sym = svg.group(".MJax");
@@ -1604,20 +1413,21 @@ static ebg(sel, Emax, step, data, options) {
         bars.push(svg.rect([options.width, 1], [i + 0.5, 1]).css({fill: c}));
         let tex = d[0];
         if (SVG2.eq[tex]) tex = SVG2.eq[tex];
-        sym.mjax(tex, {scale: 1}, [[i + 0.5, "-8"], [0.5, 0]], c);
+        sym.mjax(tex, null, [[i + 0.5, "-8"], [0.5, 0]], c);
     }
     svg.config({data: data, options: options});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$);
 
-    if (options.E) svg.line([0, options.E], [n, options.E]).addClass("TotalEnergy").css({stroke: "black", "stroke-width": "2px"});
+    if (options.E) css(svg.line([0, options.E], [n, options.E]), ".TotalEnergy", "black@2");
     if (options.label) {
+        let css = ["text", 16];
         let [dec, x, skip] = options.label;
-        let g = svg.label(dec, x, [...range(0, Emax + step, skip ? skip * step : step)]);
-        let dy = options.yShift;
-        g.shift_by([0, dy != null ? dy : "-6"]);
-        if (options.unit) g.text(options.unit, ["6", Emax]).css({"text-anchor" : "start"});
-        g.$.find(".Zero").removeClass("Zero");
-        g.$.find("text").css({"font-size": "16px"});
+        svg.ticks({x: x, y: [0, Emax + step/2, skip ? skip * step : step], label: dec, css: css});
+        // let g = svg.label(dec, x, [...range(0, Emax + step, skip ? skip * step : step)]);
+        // let dy = options.yShift;
+        // g.shift_by([0, dy != null ? dy : "-6"]);
+        // g.$.find("text").css({"font-size": "16px"});
+        if (options.unit) svg.gtext(options.unit, css, ["6", Emax, 0, 0.5]);
     }
 
     svg.beforeupdate = function() {
@@ -1708,7 +1518,7 @@ SVG2._cache = {};
 SVG2.load.pending = [];
 
 SVG2.url = location.href.split("#")[0];
-console.log(SVG2.url);
+// console.log(SVG2.url);
 // if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
 
 SVG2.sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
@@ -1717,19 +1527,22 @@ SVG2.symbol = SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
 
 SVG2._style = {
     grid: {stroke: "lightgrey", "stroke-width": "0.5px"},
-    text: {"font-family": SVG2.sans, "font-size": "18px", "text-anchor": "middle"},
-    start: {"text-anchor": "start"},
-    middle: {"text-anchor": "middle"},
-    end: {"text-anchor": "end"},
-    symbol: {"font-family": SVG2.symbol, "font-size": "18px", "text-anchor": "middle"},
     arrow: {fill: "red", stroke: "black", "stroke-width": "0.5px", "fill-opacity": 0.8},
     ital: {"font-style": "italic"},
     bold: {"font-weight": "bold"},
-    nostroke: {stroke: "none"},
-    nofill: {fill: "none"},
     sans: {"font-family": SVG2.sans},
     serif: {"font-family": SVG2.serif},
     mono: {"font-family": SVG2.mono},
+
+    // Deprecated!
+    text: {"font-family": SVG2.sans, "font-size": "18px", "text-anchor": "middle"},
+    symbol: {"font-family": SVG2.symbol, "font-size": "18px", "text-anchor": "middle"},
+
+    // start: {"text-anchor": "start"},
+    // middle: {"text-anchor": "middle"},
+    // end: {"text-anchor": "end"},
+    // nostroke: {stroke: "none"},
+    // nofill: {fill: "none"},
 };
 
 SVG2.eq = {Ek: "E_k", Eg: "E_g"}

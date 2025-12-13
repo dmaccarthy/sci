@@ -2,7 +2,15 @@
 <p class="Center"><svg id="Draw"></svg></p>
 </section>
 
-<script type="text/javascript" data-init="ucm">
+<script type="text/javascript" data-init="gr">
+
+loadFeed.gr = () => {
+    let svg = new SVG2("#Draw", {lrbt: [-2, 10, -2, 10], margin: 2, grid: 1, scale: 24});
+    let opt = {size: ["-4", "10"], label: 0, css: ["text", "mono", 15], shift: "-8"};
+    svg.ticks({x: [0, 11, 2], ...opt});
+    svg.ticks({y: [0, 11, 3], ...opt});
+    svg.plot({x: [1, 2, 3], y: [1, 4, 9]}, ["24", "24"], "media/car.svg", 30).css("red");
+}
 
 loadFeed.ucm = async() => {
     let svg = new SVG2("#Draw", {lrbt: [-8, 8, -12, 1], margin: 2, grid: 0, scale: 24});

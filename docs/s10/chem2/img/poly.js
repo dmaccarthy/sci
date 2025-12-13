@@ -39,7 +39,7 @@ OH: (sel) => {
     H.edot(1).config({theta: 180}).$.find("circle").addClass("Toggle0");
     H.gtext("H", text);
     css(svg.line([-0.5, 0], [0.5, 0]).hide(), ".Toggle1", "black@2");
-    let g = svg.group(".Toggle2", "nofill", "black@2");
+    let g = svg.group(".Toggle2", "none", "black@2");
     g.$.hide();
     let [x, dx, y] = [-2.1, 0.3, 1.2];
     g.poly([[3-dx, y], [3, y], [3, -y], [3-dx, -y]]);

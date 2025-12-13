@@ -40,7 +40,7 @@ pend: (sel, a) => {
 eqm: (sel) => {
     let svg = new SVG2(sel, {size: [480, 384], lrbt: [-1.1, 0.9, -0.25]});
     let land = (x) => sq(sin(-100 * (x - 0.3)));
-    svg.locus(land, [-1.1, 0.9]).css("nofill", "black@1");
+    svg.locus(land, [-1.1, 0.9]).css("none", "black@1");
 
     let r = 0.03, i = 0;
     let balls = [
@@ -50,23 +50,21 @@ eqm: (sel) => {
         [50, [0.6, r + land(0.6) + 0.024]]];
     let g = svg.group("#0065fe", "black@1");
     let a = svg.group("arrow");
-    let s = svg.group("symbol", 28, "red");
     let p0 = new RArray(0, -0.05);
     let p1 = new RArray(0, -0.2);
-    let arr = SVG2.arr("20");
-    let sub = [6, ["12", "-8"]];
     for (let b of balls) {
-        let toggle = `Toggle${[0, 0, 1, 2][i++]}`;
+        let toggle = `.Toggle${[0, 0, 1, 2][i++]}`;
         let c = new RArray(...b[1]);
-        g.circle(r, c).addClass(toggle);
+        css(g.circle(r, c), toggle);
         for (let f of [1, -1]) {
-            let vec = a.arrow({tail: p0.times(f).plus(c), tip: p1.times(f).plus(c)}, {tail: "4"}).css("."+toggle);
-            let sym = s.group().css("."+toggle);
-            sym.symb(["F", 1], arr, [f == -1 ? "n" : "g", ...sub]).align(c.plus([0.12, -0.12 * f]));
+            let vec = a.arrow({tail: p0.times(f).plus(c), tip: p1.times(f).plus(c)}, {tail: "4"}).css(toggle);
+            let cb = () => {};
             if (b[0] && f == -1) {
                 vec.config({pivot: c, theta: b[0]});
-                sym.shift_by([-0.15, 0.1]);
+                cb = g => g.shift_by([-0.15, 0.1]);
             }
+            let tex = `\\vec{\\bf F}_${f == -1 ? "n" : "g"}`;
+            svg.group(toggle).mjax(tex, {scale: 0.9}, c.plus([0.12, -0.12 * f]), "red").then(cb);
         }
     }
     g = svg.group("text", 20);

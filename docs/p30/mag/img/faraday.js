@@ -14,7 +14,7 @@ lenz_law: (sel) => {
     svg.gtext("N", ["text", 24], [x, 0]);
 
     // Coil
-    let coil = svg.coil([2, 4], 11, 0, 0, "3").css("nofill", {stroke: "#b87333"});
+    let coil = svg.coil([2, 4], 11, 0, 0, "3").css("none", {stroke: "#b87333"});
     let c$ = coil.$.on("click", function(ev) {
         ev.stopPropagation();
         let svg = coil.svg;

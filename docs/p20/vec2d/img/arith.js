@@ -113,7 +113,7 @@ tri: (sel) => {
     let pB = new RArray(0, h - 10);
 
     // Segments and circles
-    let g = svg.group().css("nofill", "black@1");
+    let g = svg.group().css("none", "black@1");
     g.poly([[0, h], [-12.5, 0], [12.5, 0], [0, h], [0, 0]]);
     g.line([0, hA], [-12.5, 0]);
     g.line([0, h - 10], [12.5, 0]);

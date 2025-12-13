@@ -71,7 +71,7 @@ loadFeed.sim = () => {
     let svg = new SVG2("#OilDropSim", {scale: 80, grid: 0, lrbt: [-1.5, 1.5, 0, 6]});
 
     // Draw and label the ruler
-    let g = svg.group("#0065fe@1", "nofill");
+    let g = svg.group("#0065fe@1", "none");
     g.rect([1.6, 6], [0, 3]).css({fill: "#f4f4ff"});
     let t = svg.group("text", 20, "#0065fe");
     for (let i=1; i<30; i++) {

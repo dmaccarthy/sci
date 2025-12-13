@@ -1,7 +1,7 @@
 SVG2.cache("p20/circ/img/helio.js", {
 
 helio: (sel) => {
-    let svg = new SVG2(sel, {size: [641, 641], lrbt: [-1.7, 1.7]});
+    let svg = new SVG2(sel, {scale: 192, lrbt: [-1.7, 1.7, -1.7, 1.7]});
 
     // Draw zodiac background
     svg.gradient("grey1", "black", "#232323", 100, 0, 0, 100);
@@ -13,12 +13,12 @@ helio: (sel) => {
     for (let i=0;i<12;i++) {
         let g = zodiac.group().config({theta: 30 * i});
         if (i % 2 == 0) g.poly([[0, 0], vec2d(2.5, 75), vec2d(2.5, 105)], 1).css({fill: "url(#grey1)", stroke: "none"});
-        g.text(names[i], [0, 1.3]);
+        g.gtext(names[i], [], [0, 1.3]);
     }
 
     // Draw animated timer
-    let g = svg.group("text", "mono", 36, "bold", "white", "end");
-    let years = g.text("", [1.6, 1.5]);
+    let g = svg.gtext("yr", ["text", "mono", 36, "bold", "white", {"text-anchor": "end"}], [1.6, 1.5, 1, 0.5]);
+    let years = g.content;
     g.config({animated: true}).beforeupdate = () => years.html(`${svg.time.toFixed(2)} yr`);
 
     // Draw line-of-sight arrow and Sun
