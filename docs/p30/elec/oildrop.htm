@@ -73,14 +73,14 @@ loadFeed.sim = () => {
     // Draw and label the ruler
     let g = svg.group("#0065fe@1", "none");
     g.rect([1.6, 6], [0, 3]).css({fill: "#f4f4ff"});
-    let t = svg.group("text", 20, "#0065fe");
+    let t = svg.group("sans", 20, "#0065fe");
     for (let i=1; i<30; i++) {
         let y = i / 5;
         let mm = i % 5 == 0;
         g.line([0.8, y], [0.8 - (mm ? 1 : 0.7), y]);
-        if (mm) t.gtext(y, [], [-0.5, y, "l"]);
+        if (mm) t.text1(y, [-0.55, y, "top"], 90);
     }
-    t.gtext("mm", [], [-0.5, 0.1]);
+    t.text1("mm", [-0.5, 0.1]);
 
     // Randomize terminal speed coefficient
     let c = loadFeed.sim.coeff = uniform(2.5, 3.5);
