@@ -116,7 +116,7 @@ shift_by(xy) {
 clip_path(id, clone) {
 /* Clone or move the <g> content to a <clip_path> */
     let e = this.$;
-    let cp = $(document.createElementNS(SVG2.nsURI, "clip_path")).attr({id: id});
+    let cp = $(document.createElementNS(SVG2.nsURI, "clipPath")).attr({id: id});
     cp.appendTo(this.svg.defs[0]);
     if (clone) cp.html(e.html());
     else e.children().appendTo(cp);
@@ -328,7 +328,7 @@ static mjax_natural_size(svg) {
     return {width: s * parseFloat(w), height: s * parseFloat(h)};
 }
 
-async mjax(tex, size, posn, color) {
+async mjax(tex, size, posn, color, theta) {
 /* Asynchronously render LaTeX to <image> with MathJax */
     let g = this.group();
     let img = g.create_child("image");
@@ -341,6 +341,10 @@ async mjax(tex, size, posn, color) {
         let f = (x) => x.toFixed(this.svg.decimals);
         let url = "data:image/svg+xml;base64," + unicode_to_base64(svg[0].outerHTML);
         img.attr({href: url, width: f(w), height: f(h), x: f(x), y: f(y)});
+        if (theta) {
+            let xy = posn[2] instanceof Array ? posn[1] : [posn[0], posn[1]];
+            g.config({theta: theta, pivot: xy});
+        }
         return g;
     });
 }
@@ -367,7 +371,7 @@ ticks(opt) { /*
         p1 = svg._cs(swap ? [size[1], 0] : [0, size[1]]);
     }
     if (label != null) {
-        gl = g.group(".Labels", "sans");
+        gl = g.group(".Labels");
         let [css, shift] = [opt.css, opt.shift];
         if (css) {
             if (!(css instanceof Array)) css = [css];
@@ -385,7 +389,7 @@ ticks(opt) { /*
         if (size) gt.line(p0.plus(dp), p1.plus(dp));
         if (label != null) {
             let text = f(xi);
-            let t = gl.gtext(text, [], [...dp, anchor], opt.theta);
+            let t = gl.text1(text, [...dp, anchor], opt.theta);
             if (parseFloat(text) == 0) t.$.addClass("Zero");
         }
     }
