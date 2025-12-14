@@ -10,8 +10,8 @@ depth: (sel, n, x1, x2) => {
     let text = svg.group(...font);
     svg.ray_data = [x1, x2];
     css(svg.line([-1.2, 0], [1.2, 0]), "black@2");
-    text.text1("Air", [-0.9, 0.1]);
-    text.text1("Water", [-0.9, -0.1]);
+    text.text("Air", [-0.9, 0.1]);
+    text.text("Water", [-0.9, -0.1]);
 
     // Incident rays
     let g = svg.group();
@@ -19,7 +19,7 @@ depth: (sel, n, x1, x2) => {
     g.ray(obj, [0, 0], null, 0.8);
     g.ray(obj, p1);
     g.ray(obj, p2);
-    text.text1("Object", [0.07, -1, "l"]);
+    text.text("Object", [0.07, -1, "l"]);
     g.circle("4", obj);
     g.$.find("circle, polygon").css({fill: "#0065fe"});
     g.$.find("line, polyline").css({stroke: "#0065fe"});
@@ -80,8 +80,8 @@ concave: (sel) => {
     let g = svg.group();
     g.circle("4");
     g.circle("4", c);
-    g.text1("Vertex", [0.55, 0.3]);
-    g.text1("Center", c.plus([0, 0.3]));
+    g.text("Vertex", [0.55, 0.3]);
+    g.text("Center", c.plus([0, 0.3]));
     g.$.find("text, circle").css({fill: "red"});
 
     let seg = new Segment(...vec2d(6, 165).plus(c), ...c);
@@ -99,8 +99,8 @@ convex: (sel) => {
     let g = svg.group();
     g.circle("4");
     g.circle("4", c);
-    g.text1("Vertex", [0.55, 0.3]);
-    g.text1("Center", c.plus([0, 0.3]));
+    g.text("Vertex", [0.55, 0.3]);
+    g.text("Center", c.plus([0, 0.3]));
     g.$.find("text, circle").css({fill: "red"});
 
     let seg = new Segment(...vec2d(6, 22).plus(c), ...c);
@@ -120,9 +120,9 @@ fish: (sel) => {
     svg.tick_label(0, [...range(-4, 8.1, 2)], 0, "-6", "-16");
     svg.tick_label(0, 0, [...range(-12, 6.1, 2)], "-6", "-10");
     svg.circle("5", [0, -10]).css({fill: "red"});
-    svg.text1("Coin", [1, -10.5]).css({fill: "red"});
-    svg.text1("Air", [-7, 0.6]);
-    svg.text1("Water", [-7, -0.6]);
+    svg.text("Coin", [1, -10.5]).css({fill: "red"});
+    svg.text("Air", [-7, 0.6]);
+    svg.text("Water", [-7, -0.6]);
 },
 
 });

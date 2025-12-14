@@ -14,7 +14,7 @@ earth: (sel) => {
     g.arrow({tail: [-x1, 0], tip: [-x2, 0]}, tail);
     g.arrow({tail: [0, x1], tip: [0, x2]}, tail);
     g.arrow({tail: [0, -x1], tip: [0, -x2]}, tail);
-    g = svg.group("text");
+    g = svg.group("sans");
     for (let [t, p] of [
         ["Centre", [0.1, 0, "l"]],
         ["Radial", [0.93, 0.99]],

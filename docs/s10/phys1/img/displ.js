@@ -6,14 +6,14 @@ student: (sel, arrow) => {
     svg.label(["-8", "0"], [...range(-15, 31, 1)], 0);
     svg.label(0, [...range(-15, 31, 5)], -2.5);
 
-    let text = svg.group("text", 15);
+    let text = svg.group("sans", 15);
     let disp = svg.group("arrow");
     let i = 0;
     let traj = [-10, 2, -3, 15, 30];
     while (i < traj.length) {
         x = traj[i++];
         svg.stickman(4).config({shift: [x, 0]});
-        text.text1(i, [x, 5]);
+        text.text(i, [x, 5]);
         if (arrow && i < traj.length) {
             let y = (i - 2);
             disp.arrow({tail: [x, y], tip: [traj[i], y]}, {tail: "7"});
@@ -38,11 +38,11 @@ patrol: (sel, x0) => {
 
     let cities = {500: "Swift Current", 0: "Calgary", 275: "Medicine Hat", 750: "Regina", 1325: "Winnipeg"};
     let lines = svg.group("black@1");
-    let names = svg.group("text", 14);
+    let names = svg.group("sans", 14);
     for (let i in cities) {
         let y = i == 500 ? 4.5 : 3;
         x = x0 + parseFloat(i);
-        names.text1(cities[i], [x, y+0.9]);
+        names.text(cities[i], [x, y+0.9]);
         lines.line([x, 0], [x, y]);
     }
 },

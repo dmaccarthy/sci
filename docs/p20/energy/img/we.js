@@ -10,7 +10,7 @@ work: (sel) => {
         ]
     });
     svg.$.find("g.LabelX text.Zero").remove();
-    let shade = svg.group("text", 18);
+    let shade = svg.group("sans", 18);
     let g = shade.group().addClass("Toggle0");
     g.poly([[0, 0], [5, 400], [5, 0]], 1);
     g.line([5, 400], [5, 0]);

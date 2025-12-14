@@ -59,7 +59,7 @@ longWave: (sel) => {
     particles[12].css("red");
 
     // Velocities
-    let text = svg.group("text", 18, "black");
+    let text = svg.group("sans", 18, "black");
     text.gtext("Phase Velocity", [], [18, -3]);
     svg.arrow({tail: [16.25, -2], tip: [19.75, -2]}, {tail: "5"});
     let g = text.group("red");
@@ -67,7 +67,7 @@ longWave: (sel) => {
     g.arrow({tail: [1.75, -2], tip: [5.25, -2]}, {tail: "5", double: 1});
 
     // Compression/Rarefaction lables
-    let blue = svg.group("text", "none@", "#0065fe");
+    let blue = svg.group("sans", "none@", "#0065fe");
     let x = 1.25;
     blue.gtext("Compression", [], [x, 3.25]);
     orange = blue.group({fill: "orange"});
@@ -96,7 +96,7 @@ trWave: (sel) => {
     let svg = new SVG2(sel, {scale: [160, 80], lrbt: [0, 3, -2.5, 1.8], margin: [0, 0, 4, 4]});
     let travelingingWave = (x, t) => Math.sin(twoPi * (x - t / 2));
 
-    let g = svg.group("arrow", "text", 18, {stroke: "none"});
+    let g = svg.group("arrow", "sans", 18, {stroke: "none"});
     let blue = g.group("#0065fe");
     let orange = g.group({fill: "orange"});
     blue.gtext("Crest", [], [0.25, 1.7]);
@@ -115,7 +115,7 @@ trWave: (sel) => {
         red.config({shift: [0.6, travelingingWave(0.6, t)]});
     }
 
-    let text = svg.group("text", 18, "black");
+    let text = svg.group("sans", 18, "black");
     text.gtext("Phase Velocity", [], [2.25, -2.4]);
     svg.arrow({tail: [2, -2.05], tip: [2.5, -2.05]}, {tail: "5"});
     let rot = text.group("red").shift_by([0.2, 0]).config({theta: 90});
@@ -138,7 +138,7 @@ Q6: (sel) => {
     });
     svg.$.find("g.LabelX text.Zero").remove();
 
-    let g = svg.group("text", "#0065fe", "bold");
+    let g = svg.group("sans", "#0065fe", "bold");
     for (let [t, p] of [
         ["A", [0.4, 3.2]], ["B", [2.8, 1.5]], ["C", [4.45, -0.5]]
     ]) g.gtext(t, [], p);

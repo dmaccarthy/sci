@@ -6,7 +6,7 @@ xpdq: (sel) => {
     svg.$.find("g.Grid").css({"stroke-width": "1"});
     let g = svg.group().css("black@1", "red");
     g.circle(0.1, [-1, 1.1]);
-    g = svg.group("text");
+    g = svg.group("sans");
     g.gtext("X", {}, [-1.2, 1.1]);
     g.gtext("P", {}, [-0.45, 0.6]);
     g.gtext("D", {}, [0.5, 0.1]);
@@ -64,7 +64,7 @@ vt3: (sel) => {
         data: [{connect: [[0, 0], [6, -6], [8, -6], [10, 0], [17, 5], [20, 3], [22, 0]]}],
     });
     svg.$.find("g.LabelX .Zero").remove();
-    let g = svg.group("text", "#0065fe");
+    let g = svg.group("sans", "#0065fe");
     for (let [t, x, y] of [["A", 3.5, -2], ["B", 7, -7], ["C", 10, -3.5], ["D", 13.5, 3.5], ["E", 19, 4.8], ["F", 21.5, 2]])
         g.gtext(t, {}, [x, y]);
 },
@@ -74,7 +74,7 @@ earth: (sel) => {
     svg.graph({grid: [0.25, 0.25],
         x: {tick: [8, 19, 2], shift: [0, "-22"]},
     });
-    let g = svg.group().css("text");
+    let g = svg.group().css("sans");
     g.symb(["× 10"], ["m", 0, ["40", 0]], ["6", 4, ["22", "8"]]).align([19, "16"]);
     svg.circle(6.37).css({fill: "#0065fe", "fill-opacity": 0.3, stroke: "black"});
 },

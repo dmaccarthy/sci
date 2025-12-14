@@ -11,7 +11,7 @@ lenz_law: (sel) => {
     magnet = magnet.line_to([x - 1.3, 2.5]).close().update();
     magnet.css({stroke: "black", fill: "lightgrey"});
     x -= 0.4;
-    svg.gtext("N", ["text", 24], [x, 0]);
+    svg.gtext("N", ["sans", 24], [x, 0]);
 
     // Coil
     let coil = svg.coil([2, 4], 11, 0, 0, "3").css("none", {stroke: "#b87333"});
@@ -29,7 +29,7 @@ lenz_law: (sel) => {
     c$.find("circle").css({"stroke-width": "0.5px", stroke: "black", fill: "silver"});
 
     // Poles
-    let g = coil.group("text", 24, "#0065fe", {stroke: "none"}, ".Toggle1");
+    let g = coil.group("sans", 24, "#0065fe", {stroke: "none"}, ".Toggle1");
     let pole = 1.65;
     g.gtext("N", {}, [0, -pole]);
     g.gtext("S", {}, [0, pole]);

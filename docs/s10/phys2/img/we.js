@@ -7,7 +7,7 @@ pend: (sel) => { // Illustration for Pendulum Lab handout
     let r = 20;
     let pts = [vec2d(r, -120), vec2d(r, -105), [0, -r], vec2d(r, -75), vec2d(r, -60)];
     let g1 = svg.group("black@1");
-    let g2 = svg.group("text", 18, "bold");
+    let g2 = svg.group("sans", 18, "bold");
     let c = 0;
     for (let pt of pts) {
         let [x, y] = pt;

@@ -1,7 +1,7 @@
 SVG2.cache("p20/energy/img/power.js", {
 
 sprint: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]}).css(".NoStyle", "text");
+    let svg = new SVG2(sel, {size: [400, 330], lrbt: [-0.5, 2.9, -1.92]}).css("sans");
     svg.circle(0.8, [2, 0]).css({fill: "none", stroke: "#0065FE", "stroke-width": 3});
 
     svg.mjax("E_k", {scale: 1}, [2, 0], "#0065fe");

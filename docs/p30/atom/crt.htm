@@ -136,7 +136,7 @@ loadFeed.init = () => {
 loadFeed.sim = () => {
     let svg = new SVG2("#CRTSim", {scale: 60, grid: 1, margin: [64, 64, 20, 20], lrbt: [0, 10, -3, 3]}).css(".NoStyle");
     svg.$.find("line.Axis").removeAttr("style");
-    svg.conics = svg.group("text", 20);
+    svg.conics = svg.group("sans", 20);
 
     let g = svg.group("black@1", {fill: "silver"});
     g.rect([10, 0.2], [5, 3.1]);

@@ -39,7 +39,7 @@ loopy: (sel) => {
     let svg = new SVG2(sel, {size: [300, 420], lrbt: [-1, 1, -1.45], grid: 0, margin: 2});
     svg.group("none", "black@1").circle(1);
     svg.group("black").circle("3");
-    svg.gtext("C", ["text", 24], [0.08, 0, "l"]);
+    svg.gtext("C", ["sans", 24], [0.08, 0, "l"]);
     let red = svg.group("arrow");
     let g = svg.group("none", "black@2");
     for (let y of [-1, 1]) {
@@ -118,7 +118,7 @@ rope: (sel) => {
     svg.mjax("\\vec{\\bf F}_g", null, [0.35, -0.3], "red");
     svg.mjax("\\vec{\\bf F}_t", null, [0.7, 0.5], "red");
 
-    g = svg.group("text", 24);
+    g = svg.group("sans", 24);
     g.gtext("Top", [], [-0.5, 1.15]);
     g.gtext("Bottom", [], [0.5, 1.15]);
 },

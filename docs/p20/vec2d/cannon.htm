@@ -37,9 +37,10 @@ loadFeed.sim = () => {
     let svg = loadFeed.sim.svg = new SVG2("#Sim", {scale: 3.6, margin: [24, 2, 12, 0], grid: 5, lrbt: [0, 195, 0, 105]});
     svg.label([0, "6"], [...range(0, 195, 10)], 0);
     svg.label([0, "6"], 0, [...range(0, 105, 10)]);
-    svg.label(0, [...range(50, 195, 50)], 3);
-    let g = svg.label(0, 2, [...range(50, 105, 50)]).css({"text-anchor": "start"}).shift_by([0, -1.5]);
-    $(g.$.find("sans")[1]).html("100 m");
+    svg.label(0, [...range(50, 195, 50)], 4);
+    let g = svg.group("sans", 15);
+    g.text("50", [3, 50, "left"]);
+    g.text("100 m", [3, 100, "left"]);
 
     let size = new RArray(534.16, 408.55).times(0.042);
     let castle = svg.castle = svg.group(".Castle");

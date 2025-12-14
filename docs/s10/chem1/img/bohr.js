@@ -26,7 +26,6 @@ bohr: (sel, A, M, Q) => {
     let svg = new SVG2(sel, {grid: 0, margin:2, scale: 40, lrbt: [-1, 1, -1.6, valence + 1]});
     let color = svg.$.closest(".Answer").length ? "red" : "black";
     let g = svg.group(`${color}@2`, "none");
-    let text = svg.group("symbol", 20, color);
     g.circle(1, [0, -0.6]);
     let s = {scale: 0.75};
     for (let y=1;y<=valence;y++) {

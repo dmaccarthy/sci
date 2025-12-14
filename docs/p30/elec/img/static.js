@@ -20,7 +20,7 @@ induct: (sel) => {
     let plus = svg.pm(2.4, 1).css("black@3", "black").config({shift: [-7, 0]});
     plus.rect([4, 4]).css({fill: "none"});
     let red = svg.group("red", ".Toggle0");
-    red.gtext("Electron Flow", ["text", 22, "none@"], [4.25, 5]);
+    red.gtext("Electron Flow", ["sans", 22, "none@"], [4.25, 5]);
     let g = svg.group("black@1").config({shift: [1, 0]});
     g.line([2.5, 0], [4.5, 0]);
     let circ = g.group("black@3", "none");
@@ -41,7 +41,7 @@ pole: (sel) => {
     let g = svg.group().config({shift: [5, 0]});
     let circ = g.group("black@3", "none");
     circ.circle(2.5);
-    let chg = g.group("text", 20, "black", "none@");
+    let chg = g.group("sans", 20, "black", "none@");
     let t = 2;
     for (let a=-1; a<2; a++) {
         chg.gtext("+", [], vec2d(t, 30 * a));

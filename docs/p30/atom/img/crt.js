@@ -7,7 +7,7 @@ _crt: (sel) => {
     let g = svg.group().css({stroke: "black"});
     g.line([0, 0.5], [-0.5, 1.3]);
     g.line([1, 0.5], [2, 1.3]);
-    g = svg.group("text");
+    g = svg.group("sans");
     g.gtext("Cathode", [], [-0.25, 1.6]);
     g.gtext("Anode", [], [2, 1.6]);
 

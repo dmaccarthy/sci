@@ -8,7 +8,7 @@ Q1: (sel) => {
         y: {tick: [0, 15, 2], shift: ["-20", 0]},
         data: [{locus: [(t) => [8*t, 12.5 - 9.81/2 * t * t], [0, land]]}]
     });
-    svg.gtext("m", "text", [13, 13]);
+    svg.gtext("m", "sans", [13, 13]);
     svg.rect([2, 12.5], [-1, 6.25]).css({fill: "tan", stroke: "black"}).prependTo(svg.$);
 
     let p2 = new RArray(8 * land, 0);

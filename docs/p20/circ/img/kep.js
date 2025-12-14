@@ -20,7 +20,7 @@ orbit: (sel) => {
     g.line([-1, 0], [1, 0]);
     g.line([0, -e], [0, e]);
 
-    g = svg.group("text", "grey");
+    g = svg.group("sans", "grey");
     g.gtext("Major Axis", [], [0.5, 0.05, "b"]);
     g.gtext("Minor Axis", [], [-0.05, -0.35, "b"], 90);
 
@@ -28,7 +28,7 @@ orbit: (sel) => {
     g.circle("5", planet).css({fill: "#0065fe"});
     g.circle("5", f).css({fill: "orange"});
 
-    g = svg.group("text");
+    g = svg.group("sans");
     for (let [t, p] of [
         ["A", [1.04, 0, "l"]],
         ["C", [0.04, 0, "tl"]],

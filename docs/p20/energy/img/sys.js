@@ -65,12 +65,11 @@ flow3: (sel) => {
     svg.mjax("E_k", null, [0.15, 0], "#0065fe");
     svg.mjax("E_g", null, [-1.8, 1], "#0065fe");
     svg.mjax("E_{↡ elas}", null, [-1.8, -1], "#0065fe");
-    let g = svg.group("symbol", 28, "#0065fe");
     svg.gtext("Waste", ["red", 24], [2.5, 0]);
 
     let a = svg.group("arrow").config({shift: [1.2, 0]}).arrow(1.4, {tail: "6"});
     a.label("3.00 J", ["6", "-20"]);
-    g = svg.group("arrow", "#0065fe");
+    let g = svg.group("arrow", "#0065fe");
     a = g.group().config({theta: -30, shift: [-0.8, 0.55]}).arrow(1.4, {tail: "6"});
     a.label("0.26 J", ["-8", "-16"]);
     a = g.group().config({theta: 30, shift: [-0.8, -0.55]}).arrow(1.4, {tail: "6"});

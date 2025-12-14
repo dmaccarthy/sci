@@ -12,7 +12,7 @@ bun: (sel) => {
     svg.line(pts[0], [0.85, 0.78]).css({stroke: "green"});
     let g = svg.group("sans");
     for (let i=0;i<pts.length;i++) g.circle(0.04, pts[i]).css(attr);
-    g.text1("Electron", [0.87, 0.9]);
+    g.text("Electron", [0.87, 0.9]);
     g.$.find("text, circle").css({fill: "green"});
 },
 
@@ -38,11 +38,11 @@ rutherford: (sel) => {
         gp.circle(b, p[i]);
     }
     gn.circle(b, n[3]);
-    hide.text1("Electron", [0.65, 0.75]).css({fill: "green"});
+    hide.text("Electron", [0.65, 0.75]).css({fill: "green"});
     gp.line(vec2d(b, -60).plus(p[1]), [0.6, -0.7]).css({stroke: "red"});
     gn.line(n[2], [-0.6, 0.7]).css({stroke: "#0065FE"});
-    gn.text1("Neutron", [-0.75, 0.8]);
-    gp.text1("Proton", [0.65, -0.8]);
+    gn.text("Neutron", [-0.75, 0.8]);
+    gp.text("Proton", [0.65, -0.8]);
     gn.$.find("circle, text").css({fill: "#0065fe"});
     gp.$.find("circle, text").css({fill: "red"});
 

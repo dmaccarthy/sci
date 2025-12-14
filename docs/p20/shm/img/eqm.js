@@ -67,7 +67,7 @@ eqm: (sel) => {
             svg.group(toggle).mjax(tex, {scale: 0.9}, c.plus([0.12, -0.12 * f]), "red").then(cb);
         }
     }
-    g = svg.group("text", 20);
+    g = svg.group("sans", 20);
     g.gtext("Stable", ".Toggle2", [-0.05, -0.05]);
     g.gtext("Unstable", ".Toggle1", [-0.1, 1.1]);
 

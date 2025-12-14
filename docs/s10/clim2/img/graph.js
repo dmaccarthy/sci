@@ -32,7 +32,7 @@ london: (sel) => {
     let gm = svg.group().addClass("Text");
     let gp = svg.group().addClass("Toggle1").css({fill: "#0065fe", stroke: "black", "fill-opacity": 0.4});
     for (let i=0;i<12;i++) {
-        gm.text1(months.charAt(i), [i + 0.5, "-20"]);
+        gm.text(months.charAt(i), [i + 0.5, "-20"]);
         let p = prec[i];
         p = gp.rect([1, p], [i + 0.5, p/2]);
         if (i) p.addClass(i == 1 ? "Toggle2" : "Toggle3");

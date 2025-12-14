@@ -224,10 +224,12 @@ set animated(a) {SVG2.set_animated(this, a)}
 
 /** Create child elements within <svg> or <g> element **/
 
-create_child(tag, attr) {
+create_child(tag, attr, html) {
 /* Create a child element of the <g> element */
     let c = $(document.createElementNS(SVG2.nsURI, tag));
-    return c.attr(attr ? attr : {}).appendTo(this.element);
+    c.attr(attr ? attr : {});
+    if (html) c.html(html);
+    return c.appendTo(this.element);
 }
 
 group(...css) {
@@ -384,12 +386,12 @@ ticks(opt) { /*
     }
     let f = isNaN(label) ? label : x => x.toFixed(label);
     let anchor = opt.anchor ? opt.anchor : (swap ? "r" : "t");
-    for (let xi = x0; xi < x1; xi += dx) {
+    for (let xi = x0; xi <= x1; xi += dx) {
         let dp = swap ? [y, xi] : [xi, y];
         if (size) gt.line(p0.plus(dp), p1.plus(dp));
         if (label != null) {
             let text = f(xi);
-            let t = gl.text1(text, [...dp, anchor], opt.theta);
+            let t = gl.text(text, [...dp, anchor], opt.theta);
             if (parseFloat(text) == 0) t.$.addClass("Zero");
         }
     }
@@ -436,7 +438,7 @@ star(n, far, near) {
     return this.poly(pts, 1);
 }
 
-text1(text, posn, theta, css) {return new SVG2text(this, text, posn, theta, css)}
+text(text, posn, theta, css) {return new SVG2text(this, text, posn, theta, css)}
 gtext(text, css, posn, theta) {return new SVG2text(this, text, posn, theta, css)}
 arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
 locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
@@ -507,33 +509,6 @@ _grid(g, x, y, swap) {
         }
     }
 }
-
-_text0(data, xy, anchor, selector) {
-    let e = selector ? $($(selector)[0]) : this.create_child("text");
-    let has = (c) => anchor.indexOf(c) > -1;
-    e.html(data).css({"dominant-baseline": (has("t") ? "hanging" : (has("b") ? "auto" : "middle")),
-        "text-anchor": has("l") ? "start" : (has("r") ? "end" : "middle")});
-    let [x, y] = xy == null ? [0, 0] : this.svg.a2p(...xy);
-    let f = (x) => x.toFixed(this.svg.decimals);
-    return e.attr({x: f(x), y: f(y)});
-}
-
-// gtext(data, css, posn, theta) {
-// /* Create a <g> element with aligned and possible rotated <text> */
-//     if (css == null) css = [];
-//     else if (!(css instanceof Array)) css = [css];
-//     let outer = this.group(...css);
-//     let inner = outer;
-//     if (theta != null) {
-//         let xy = (posn[0] instanceof Array) ? posn[0] : [posn[0], posn[1]];
-//         outer.config({pivot: xy, theta: theta ? theta : 0});
-//         inner = outer.group();
-//     }
-//     outer.content = inner.create_child("text").html(data);
-//     inner.ralign(posn);
-//     if (inner != outer) delete inner.element.graphic;
-//     return outer;
-// }
 
 ruler(n, tick, opt) { //width, big, offset, tickSmall, tickBig) {
 /* Draw a ruler */
@@ -657,7 +632,7 @@ tip_to_tail(vecs, options) {
 energy_flow(data) {
 /* Draw an energy flow diagram */
     SVG2.style(this.circle(data.radius), "none", "#0065fe@3");
-    let g = this.group("text", 24);
+    let g = this.group("sans", 24);
     let getTeX = (t) => t.charAt(0) == '$' ? t.substring(1) : (SVG2.eq[t] ? SVG2.eq[t] : null);
     for (let item of data.labels) {
         let [txt, pos, color, shift] = item;
@@ -844,7 +819,7 @@ reshape(info, options, anchor) {
 
 label(text, shift) {
 /* Add text relative to arrow midpoint */
-    return this.gtext(text, ["text", "none@"], this.seg.midpoint.plus(this._cs(shift)));
+    return this.gtext(text, ["sans", "none@"], this.seg.midpoint.plus(this._cs(shift)));
 }
 
 }
@@ -1492,7 +1467,7 @@ static ebg(sel, Emax, step, data, options) {
 
     if (options.E) css(svg.line([0, options.E], [n, options.E]), ".TotalEnergy", "black@2");
     if (options.label) {
-        let css = ["text", 16];
+        let css = ["sans", 16];
         let [dec, x, skip] = options.label;
         svg.ticks({x: x, y: [0, Emax + step/2, skip ? skip * step : step], label: dec, css: css});
         if (options.unit) svg.gtext(options.unit, css, ["6", Emax, "l"]);
@@ -1598,14 +1573,7 @@ SVG2._style = {
     mono: {"font-family": SVG2.mono, "font-size": "18px"},
 
     // Deprecated!
-    text: {"font-family": SVG2.sans, "font-size": "18px", "text-anchor": "middle"},
-    symbol: {"font-family": SVG2.symbol, "font-size": "18px", "text-anchor": "middle"},
-
-    // start: {"text-anchor": "start"},
-    // middle: {"text-anchor": "middle"},
-    // end: {"text-anchor": "end"},
-    // nostroke: {stroke: "none"},
-    // nofill: {fill: "none"},
+    // text: {"font-family": SVG2.sans, "font-size": "18px", "text-anchor": "middle"},
 };
 
 SVG2.eq = {Ek: "E_k", Eg: "E_g"}

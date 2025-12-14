@@ -31,7 +31,7 @@ _ = loadFeed.grid = (w, h, minors, opt) => {
     let svg = new SVG2($("#Grid").html(""), {scale: scale * minors, margin: margin, grid: 1 / minors,
         lrbt: [x0, x1, y0, y1], appendAxes: 0
     });
-    let g = svg.css(".NoStyle", "text").$.removeAttr("data-aspect").find("g.Grid");
+    let g = svg.css("sans").$.removeAttr("data-aspect").find("g.Grid");
 
     if (opt.interval) {
         let dx = opt.interval;

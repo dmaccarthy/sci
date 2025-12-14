@@ -28,6 +28,33 @@
 //     return this.update_transform();
 // }
 
+// _text0(data, xy, anchor, selector) {
+//     let e = selector ? $($(selector)[0]) : this.create_child("text");
+//     let has = (c) => anchor.indexOf(c) > -1;
+//     e.html(data).css({"dominant-baseline": (has("t") ? "hanging" : (has("b") ? "auto" : "middle")),
+//         "text-anchor": has("l") ? "start" : (has("r") ? "end" : "middle")});
+//     let [x, y] = xy == null ? [0, 0] : this.svg.a2p(...xy);
+//     let f = (x) => x.toFixed(this.svg.decimals);
+//     return e.attr({x: f(x), y: f(y)});
+// }
+
+// gtext(data, css, posn, theta) {
+// /* Create a <g> element with aligned and possible rotated <text> */
+//     if (css == null) css = [];
+//     else if (!(css instanceof Array)) css = [css];
+//     let outer = this.group(...css);
+//     let inner = outer;
+//     if (theta != null) {
+//         let xy = (posn[0] instanceof Array) ? posn[0] : [posn[0], posn[1]];
+//         outer.config({pivot: xy, theta: theta ? theta : 0});
+//         inner = outer.group();
+//     }
+//     outer.content = inner.create_child("text").html(data);
+//     inner.ralign(posn);
+//     if (inner != outer) delete inner.element.graphic;
+//     return outer;
+// }
+
 SVG2g.prototype.label = function(fn, x, y) {
 /** Add a <g> containing <text> labels or tick marks as <line>, Usage:
  .label(["-5", "3"], [...range(-15, 31, 5)], 1); // Draw ticks from 5 pixels below x=1 to 3 pixels above
@@ -58,7 +85,7 @@ SVG2g.prototype.label = function(fn, x, y) {
             else if (!xa) g.line([xc + tm, yc], [xc + tp, yc]);
         }
         else {
-            let txt = g.text1(fn(x0, y0, i), [xc, yc]);
+            let txt = g.text(fn(x0, y0, i), [xc, yc]);
             if (parseFloat(txt.text) == 0) txt.addClass("Zero");
         }
     }
@@ -109,7 +136,7 @@ SVG2g.prototype.graph = function(options) {
                 this.find("g.LabelX").config({shift: x.shift}).shift_by(dy);
                 this.find("g.TickX").shift_by(dy);
             }
-            if (x.title) txt.group().shift_by(dy).text1(x.title[0], xy(0));
+            if (x.title) txt.group().shift_by(dy).text(x.title[0], xy(0));
         }
         if (y) {
             let dx = [y.x ? y.x : 0, 0];
@@ -118,7 +145,7 @@ SVG2g.prototype.graph = function(options) {
                 this.find("g.LabelY").config({shift: y.shift}).shift_by(dx);
                 this.find("g.TickY").shift_by(dx);
             }
-            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).shift_by(dx).text1(y.title[0]);  
+            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).shift_by(dx).text(y.title[0]);  
         }  
     }
 

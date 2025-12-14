@@ -1,8 +1,8 @@
 SVG2.cache("p20/kin/img/bike.js", {
 
 bike: (sel) => {
-	let svg = new SVG2(sel, {scale: 32, lrbt: [-7, 10, -1.7, 4.2]});
-    svg.$.prepend(`<filter id="gray"><feColorMatrix type="saturate" values="0.2"/></filter>`);
+	let svg = new SVG2(sel, {scale: 32, grid: 0, lrbt: [-7, 10, -1.7, 4.2]}).css("mono", 16);
+    svg.create_child("filter", {id: "gray"}, '<feColorMatrix type="saturate" values="0.2"/>');
     svg.rect([20, 0.6], [1, 0.3]).css({fill: "#c4b6a6"});
     let bike = "p20/kin/img/bike.svg";
     svg.image("p20/kin/img/tree2.svg", [2, 4], [0, 2.4]);
@@ -11,13 +11,10 @@ bike: (sel) => {
             if (x < 6) b.attr({filter: "url(#gray)"});
         });
     }
-    svg.label(0, [...range(-6, 9, 2)], -1);
-    let font = ["mono", 18];
-    svg.gtext("m", font, [8.7, -0.9, "t"]);
-    svg.label(["-2", "-18"], [...range(-6, 9, 1)], 0);
-    svg.group("arrow").arrow({tail: [-5, "-10"], tip: [7, "-10"]}, {tail: "8"});
-    let g = svg.find("g.Labels");
-    g.css(...font).ralign([0, -0.9, 0, 0], "y");
+    svg.ticks({x: [-6, 8.1, 1], y: -1, size: [0.3, 0.8]});
+    svg.ticks({x: [-6, 8.1, 2], y: -1, label: 0});
+    svg.group("arrow").arrow({tail: [-5, -0.45], tip: [7, -0.45]}, {tail: "8"});
+    svg.text("m", [8.7, -1, "top"]);
 },
 
 soccer: (sel) => {
