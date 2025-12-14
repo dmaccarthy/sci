@@ -27,10 +27,10 @@ spring: (sel) => {
 
     let mass = svg.group();
     css(mass.rect([0.4, 0.4], [3, 0.2]), "#0065fe", "black@1");
-    svg.gtext("Eqm", ["text", 20, "#0065fe"], [3, -0.6]);
+    svg.gtext("Eqm", ["sans", 20, "#0065fe"], [3, -0.6]);
     svg.arrow({tail: [3, -0.4], tip: [3, 0]}, {tail: "4"}).css("arrow", "#0065fe");
 
-    svg.mjax("\\vec{\\bf F}_{\\scriptsize elas}", null, [4.5, 1.1, 0, 0.6], "red");
+    svg.mjax("\\vec{\\bf F}_{↡ elas}", null, [4.5, 1.1, 0, 0.6], "red");
     svg.mjax("x", null, [4.5, 0.6, 0, 0.6], "#0065fe");
 
     g = svg.group("arrow");

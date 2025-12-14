@@ -18,8 +18,8 @@ tank: (sel) => {
     g = svg.group("text", "black", "none@");
     g.gtext("Air", 36, vec2d(0.5, 135));
     g.gtext("Tank", 36, vec2d(0.5, -135));
-    g.gtext("Boundary", [], [0.45, 0, 0.5, 1.1]);
-    g.gtext("Normal", [], [0, 0.45, 0.5, 1.1], 90);
+    g.gtext("Boundary", [], [0.45, 0.02, "b"]);
+    g.gtext("Normal", [], [0.02, 0.45, "t"], 90);
 },
 
 });

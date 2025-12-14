@@ -4,47 +4,33 @@ p2d: (sel) => {
     let F1 = vec2d(20, 15), F2 = vec2d(30, 75);
     let svg = SVG2.vec_diag(sel, [F1, F2], {lrbt: [-3, 30, -3, 38], scale: 14,
         margin: 0, grid: 2, tick: "-8", label: [4, 0, "-12", "-20"], cycle: -1});
-    svg.gtext("N·s", "text", [2, 36]);
-
-    let [BD, SM] = [1, 4];
-    let arr = ["→", SM + BD, [0, "16"]];
-    let sub = ["14", "-10"];
-    let g = svg.group("symbol", "red", 32);
-    g.symb(["p", BD], arr, ["1", SM, sub]).align([14, 1.75]);
-    g.symb(["p", BD], arr, ["2", SM, sub]).align([25, 17]);
-    g.symb(["p", BD], arr, ["Σ", 0, ["-24", 0]]).align([11, 19]).css("#0065fe");
+    svg.gtext("N·s", "sans", [2, 36]);
+    svg.mjax("\\vec{\\bf p}_1", null, [14, 1.75], "red");
+    svg.mjax("\\vec{\\bf p}_2", null, [25, 17], "red");
+    svg.mjax("\\Sigma\\vec{\\bf p}", null, [11, 19], "#0065fe");
 },
 
 F: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(8, 30)], {lrbt: [-1, 8, -1.5, 5], scale: 40,
         margin: 8, grid: 0.5, label: [1, 0, "-6", "-12"]});
-    svg.gtext("N", ["text", 15], [0.4, 5]);
-
-    let [BD, SM, SM_IT] = [1, 4, 6];
-    let arr = ["→", SM + BD, [0, "20"]];
-    let sub = ["12", "-8"];
-    let g = svg.group("symbol", "red", 24);
-    g.symb(["F", BD], arr).align([3.25, 2.75]).css(".Resultant");
-    g.symb(["F", BD], arr, ["x", SM_IT, sub]).align([3.5, -1]);
-    g.symb(["F", BD], arr, ["y", SM_IT, sub]).align([7.75, 2]);
+    svg.gtext("N", ["sans", 15], [0.4, 5]);
+    let g = svg.group();
+    g.mjax("\\vec{\\bf F}_x", null, [3.5, -1], "red");
+    g.mjax("\\vec{\\bf F}_y", null, [7.75, 2], "red");
+    g.group(".Resultant").mjax("\\vec{\\bf F}", null, [3.25, 2.75], "red");
 
     svg.$.on("click", () => {
         svg.$.find("g.TipToTail2D > g.Component").fadeToggle();
-        g.$.find("g.Symbol:not(.Resultant)").fadeToggle();
+        g.$.children("g:not(.Resultant)").fadeToggle();
     });
 },
 
 boat: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(20, 120), vec2d(5, 200)], {lrbt: [-16, 4, -2, 20], scale: 20, margin: [12, 8, 8, 8], grid: 2, cycle: 1, label: [2, 0, "-6", "-12"]});
-    svg.gtext("m/s", ["text", 15], [1, 20]);
-
-    let [BD, SM] = [1, 4];
-    let arr = ["→", SM + BD, [0, "16"]];
-    let sub = ["14", "-10"];
-    let g = svg.group("symbol", "red", 32);
-    g.symb(["v", BD], arr, ["1", SM, sub]).align([-4, 10]);
-    g.symb(["v", BD], arr, ["2", SM, sub]).align([-12.5, 18.5]);
-    g.symb(["v", BD], arr).align([-10, 8]).css("#0065fe");
+    svg.gtext("m/s", ["sans", 15], [1, 20]);
+    svg.mjax("\\vec{\\bf v}_1", null, [-4, 10], "red");
+    svg.mjax("\\vec{\\bf v}_2", null, [-12.5, 18.5], "red");
+    svg.mjax("\\vec{\\bf v}", null, [-10, 8], "#0065fe");
 },
 
 });

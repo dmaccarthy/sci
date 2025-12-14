@@ -39,7 +39,7 @@ loadFeed.sim = () => {
     svg.label([0, "6"], 0, [...range(0, 105, 10)]);
     svg.label(0, [...range(50, 195, 50)], 3);
     let g = svg.label(0, 2, [...range(50, 105, 50)]).css({"text-anchor": "start"}).shift_by([0, -1.5]);
-    $(g.$.find("text")[1]).html("100 m");
+    $(g.$.find("sans")[1]).html("100 m");
 
     let size = new RArray(534.16, 408.55).times(0.042);
     let castle = svg.castle = svg.group(".Castle");
@@ -47,7 +47,7 @@ loadFeed.sim = () => {
 
     svg.gradient("Platform", "lightgrey", "grey", 100, 40, 0, 60);
     svg.platform = svg.group("black@1", {fill: "url(#Platform)"});
-    svg.clock = svg.group("text", 24).config({shift: [175, 95]}).text("");
+    svg.clock = svg.gtext("0.00 sec", ["mono", 24], [185, 95, "r"]);
 
     svg.vi = uniform(37, 42);
     svg.ball = svg.group("red", "black@1");
@@ -56,8 +56,8 @@ loadFeed.sim = () => {
     size = new RArray(336.6, 66.4).times(0.03);
     svg.cannon = g = svg.group("none");
     g.image("p20/vec2d/img/cannon.svg", size);
-    css(g.circle(2.5), ".Wheel", "brown@2"); //.css({stroke: "brown", "stroke-width": "2px"}).addClass("Wheel");
-    g.align([0, 0], 0.5, 1);
+    css(g.circle(2.5), ".Wheel", "brown@2");
+    g.ralign([0, 0, 0.5, 1]);
 
     loadFeed.sim.elevate();
 
@@ -71,8 +71,8 @@ loadFeed.sim = () => {
             svg.done = true;
             svg.pause();
         }
-        b.align(y < 0 ? [b.landing, 0] : [x, y]);
-        svg.clock.html(`${t.toFixed(2)} sec`);
+        b.ralign([y < 0 ? [b.landing, 0] : [x, y], [0.5, 0.5]]);
+        svg.clock.text = `${t.toFixed(2)} sec`
     };
 
     svg.$.on("click", () => {
@@ -80,6 +80,8 @@ loadFeed.sim = () => {
         else svg.toggle();  
     });
 
+    // svg.realign_text(400);
+    // setTimeout(() => svg.realign_text(false), 12000);
 }
 
 loadFeed.sim.elevate = () => {
@@ -105,8 +107,8 @@ loadFeed.sim.launchAngle = () => {
     let v = svg.ball.initVel = vec2d(svg.vi, a);
     let vf = -root(v[1] * v[1] + 2 * y * 9.81);
     let t = (v[1] - vf) / 9.81;
-    svg.ball.align([0, y]).config({hang: t, landing: v[0] * t});
-    svg.cannon.align([0, y], 0.5, 0.5);
+    svg.ball.ralign([0, y], 0.5, 0.5).config({hang: t, landing: v[0] * t});
+    svg.cannon.ralign([0, y], 0.5, 0.5);
 
     let p = svg.parab;
     if (p) p.config({animated: false}).$.remove();
@@ -120,7 +122,7 @@ loadFeed.sim.launchAngle = () => {
         this.param[1] = t ? Math.min(t, t1) : t1;
     }
 
-    svg.clock.html("");
+    svg.clock.config({text: "0.00 sec"});
     svg.config({time: 0, done: false});
 };
 

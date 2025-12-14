@@ -15,11 +15,11 @@ pulley: (sel) => {
     g.rect([1.5, 3], [-1.5, -4]);    // m1
     g.rect([1.5, 2], [1.5, -11]);    // m2
 
-    g = svg.group("symbol", 28);
-    g.symb(["h", 2]).align([-4, -9]);
-    g.symb(["m", 2], ["1", 4, ["18", "-10"]]).align([-3.2, -4]);
-    g.symb(["m", 2], ["2", 4, ["18", "-10"]]).align([3.3, -11]);
-    svg.gtext("Ideal Pulley", ["text", 20], [4.5, 0]);
+    svg.mjax("h", null, [-4, -9]);
+    let s = {"scale": 0.9};
+    svg.mjax("m_1", s, [-3.2, -4]);
+    svg.mjax("m_2", s, [3.3, -11]);
+    svg.gtext("Ideal Pulley", ["sans", 20], [4.5, 0]);
 },
 
 bar: (sel) => {

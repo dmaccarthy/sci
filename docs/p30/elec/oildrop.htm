@@ -78,9 +78,9 @@ loadFeed.sim = () => {
         let y = i / 5;
         let mm = i % 5 == 0;
         g.line([0.8, y], [0.8 - (mm ? 1 : 0.7), y]);
-        if (mm) t.text(y, [-0.5, y]);
+        if (mm) t.gtext(y, [], [-0.5, y, "l"]);
     }
-    t.text("mm", [-0.5, 0.1]);
+    t.gtext("mm", [], [-0.5, 0.1]);
 
     // Randomize terminal speed coefficient
     let c = loadFeed.sim.coeff = uniform(2.5, 3.5);

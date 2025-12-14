@@ -67,13 +67,12 @@ merry: (sel) => {
     let g = svg.group("silver");
     g.rect([1, 8], [0, 4]);
     g.rect([18, 0.6], [0, 1]);
-    svg.stickman(2.7).align([-8, 1.3], "bottom");
+    svg.stickman(2.7).ralign([-8, 1.3, 0.5, 1]);
     g = svg.group("text");
     g.gtext("Icy Platform", [], [5, 2]);
     g.gtext("Bungee Cord", [], [-4, 3.3]);
     g.gtext("Axis", [], [1.7, 6]);
     css(svg.line([-10, 0], [10, 0]), "black@2");
-    // svg.save("merry.svg");
 },
 
 ucm: (sel) => {

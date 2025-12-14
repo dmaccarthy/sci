@@ -2,7 +2,15 @@
 <p class="Center"><svg id="Draw"></svg></p>
 </section>
 
-<script type="text/javascript" data-init="gr">
+<script type="text/javascript" data-init="x1">
+
+loadFeed.x1 = () => {
+    let font = ["mono", 24, "red"];
+    let svg = new SVG2("#Draw", {lrbt: [-2, 10, -2, 10], margin: 2, grid: 1, scale: [24, 18]});
+    let g = svg.gtext("Testing world!", font, [3, 3, "left"], 45);
+    font[2] = "#0065fe";
+    g = svg.text1("Testing world!", [2, 2, "topright"], -45, font);
+}
 
 loadFeed.gr = () => {
     let svg = new SVG2("#Draw", {lrbt: [-2, 10, -2, 10], margin: 2, grid: 1, scale: 24});

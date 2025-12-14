@@ -19,16 +19,12 @@ fbd: (sel) => {
     g.circle("12", [0, -3]).css({fill: "white"});
     g.arrow(0.9 * cos(a), {tail: "7"}).config({theta: 90, shift: [0, -2.35]}).css(css);
 
-    let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
-    let arr = ["→", SM + BD, [0, "20"]];
-    let sub = ["12", "-8"];
-    g = svg.group().css("symbol", 28, "red");
-    g.symb(["θ", IT]).align([-0.12, -0.55]);
-    g.symb(["L", IT]).align([-0.8, -1.2]);
-    g.symb(["x", IT], ["H", SM_IT, sub]).align([-0.6, -2.5]);
-    g.symb(["x", IT]).align([-0.65, -3.1]).css("#0065fe");
-    g.symb(["F", BD], arr, ["t", SM_IT, sub]).align([-1.4, -2.1]);
-    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([-1.7, -3.3]);
+    svg.mjax("x", null, [-0.65, -3.1], "#0065fe");
+    svg.mjax("\\theta", null, [-0.12, -0.55], "red");
+    svg.mjax("L", null, [-0.8, -1.2], "red");
+    svg.mjax("x_{↡ H}", null, [-0.5, -2.55], "red");
+    svg.mjax("\\vec{\\bf F}_g", null, [-1.7, -3.3], "red");
+    svg.mjax("\\vec{\\bf F}_t", null, [-1.4, -2.1], "red");
 },
 
 vec: (sel) => {
@@ -36,15 +32,10 @@ vec: (sel) => {
     let svg = SVG2.vec_diag(sel, v, {lrbt: [-1, 2, -3.5, 0.5], scale: 95, margin: 1, grid: 0.25});
     svg.$.find("g.Component").remove();
 
-    let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
-    let arr = ["→", SM + BD, [0, "20"]];
-    let sub = ["12", "-8"];
-    let g = svg.group().css("symbol", 28, "red");
-    g.symb(["F", BD], arr, ["t", SM_IT, sub]).align([0.9, -1.9]);
-    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([-0.35, -1.5]);
-    sub[0] = "16";
-    g.symb(["F", BD], arr, ["net", SM_IT, sub]).align([0.65, 0.07]).css("#0065fe");
-    g.symb(["θ", IT]).align([0.15, -2.3]);
+    svg.mjax("\\theta", null, [0.15, -2.3], "red");
+    svg.mjax("\\vec{\\bf F}_g", null, [-0.35, -1.5], "red");
+    svg.mjax("\\vec{\\bf F}_t", null, [0.9, -1.9], "red");
+    svg.mjax("\\vec{\\bf F}_{net}", null, [0.65, 0.07], "#0065fe");
 },
 
 });

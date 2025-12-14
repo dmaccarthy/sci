@@ -3,8 +3,8 @@ SVG2.cache("p20/shm/img/eqm.js", {
 mass: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 3, -0.2, 0.5], margin: [62, 16, 12, 12]});
     svg.graph({grid: [0.25, 0.05],
-        x: {tick: [0, 3.1, 0.5], dec: 1, title: ["Time / s", [2.25, "-44"]], shift: [0, "-20"]},
-        y: {tick: [-0.2, 0.51, 0.1], dec: 1, title: ["Position / cm", "-44"], shift: ["-10", "-5"]},
+        x: {tick: [0, 3.1, 0.5], dec: 1, title: ["Time / s", [2.25, "-44"]], shift: [0, "-18"]},
+        y: {tick: [-0.2, 0.51, 0.1], dec: 1, title: ["Position / cm", "-44"], shift: ["-20", 0]},
         data: [{locus: [(x) => 0.3 * sin(240 * x - 60) + 0.15, [0, 3]]}]
     });
     svg.$.find("g.LabelX text.Zero").remove();

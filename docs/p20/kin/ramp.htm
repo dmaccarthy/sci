@@ -68,11 +68,11 @@ loadFeed.sim = () => {
 
     // Draw ramp
     ramp.ruler(60, 0.05, {width: 0.16, big: 5, tickSmall: 0.21, tickBig: 0.42}).css({fill: "lightgrey", "fill-opacity": 0.8}, "#0065fe@1").config({pivot: [-1, -0.08], shift: [1, 0.08], theta: 180});
-    let g = ramp.group("text", "#0065fe", 16);
-    for (let x = -225; x < 55; x += 25) g.text(Math.abs(200 + x), [x / 100, -0.13]);
+    let g = ramp.group("sans", "#0065fe", 16);
+    for (let x = -225; x < 55; x += 25) g.gtext(Math.abs(200 + x), [], [x / 100, -0.13]);
 
     // Draw timer
-    svg.timer = svg.gtext("0.000 s", ["text", 36, {"font-family": SVG2.mono}]);
+    svg.timer = svg.gtext("0.000 s", ["mono", 36]);
 
     // Draw photogate
     gate.rect([0.08, 0.14]).css({fill: "lightgrey"});
@@ -88,7 +88,7 @@ loadFeed.sim = () => {
         if (i == 0) ball.image("media/ball.svg", [2 * r, 2 * r]);
         else if (i == 1) {
             let c8 = [-r/10, r/10];
-            ball.config("text", "black").circle(r);
+            ball.config("sans", "black").circle(r);
             ball.circle(0.5 * r, c8).css({fill: "white"});
             ball.gtext("8", [12], c8);
         }
@@ -128,7 +128,8 @@ loadFeed.sim = () => {
             done = d > 0.45;
         }
         if (done) this.pause().config({done: true});
-        this.timer.$.find("text").html(`${Math.min(t, balls.tmax).toFixed(3)} s`);
+        this.timer.text = `${Math.min(t, balls.tmax).toFixed(3)} s`;
+        // this.timer.$.find("text").html(`${Math.min(t, balls.tmax).toFixed(3)} s`);
     }
 
     loadFeed.sim.svg = svg;

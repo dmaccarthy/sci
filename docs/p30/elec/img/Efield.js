@@ -11,10 +11,10 @@ fbd1: (sel) => {
     g.circle(0.2, [6, 0]).addClass("Toggle0");
     g.circle(0.2, [0, 6]).addClass("Toggle3");
 
-    g = svg.group("text", 28, "bold", {fill: "white"});
+    g = svg.group("sans", 28, "bold", {fill: "white"});
     g.gtext("+", {});
     g.gtext("–", {}, [12, "3"]);
-    g = svg.group("text", 18, "ital", ".Toggle3");
+    g = svg.group("sans", 18, "ital", ".Toggle3");
     g.gtext("θ", {}, [2, 5.55]);
     g.gtext("θ", {}, [10, 0.4]);
 
@@ -41,7 +41,7 @@ fbd1: (sel) => {
 ex1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, 12.486], vec2d(1.4983, -26.565)], {lrbt: [-4, 4, -2, 14],
         scale: 30, margin: 8, grid: 1, cycle: 1, label: [2, 0, "-12", "-12"]});
-    svg.gtext("kN/C", ["text", 15], [4, 14, 1, 0.5]);
+    svg.gtext("kN/C", ["sans", 15], [4, 14, "r"]);
     let g = svg.group();
     let s = {scale: 1};
     g.mjax("\\vec{\\bf E}_1", s, [-1, 7], "red");

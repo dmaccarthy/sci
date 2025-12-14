@@ -6,12 +6,12 @@ uam: (sel) => {
     /* Label x-axis */
     let g = svg.group("text", 16);
     g.tick_label(0, [...range(0, 8.5, 1)], 0, "-6", "-20");
-    g.text("Time / s", [4, "-44"]);
+    g.text1("Time / s", [4, "-44"]);
 
     /* Label y-axis */
     g.tick_label(0, 0, [...range(0, 13, 2)], "-6", "-16");
     g = g.group().config({theta: 90, shift: ["-40", 6]});
-    g.text("Position / m");
+    g.text1("Position / m");
 
     /* Plot a parabola */
     svg.locus(x => (x * (529 - 50 * x)) / 120, [0, 8]).css("#0065fe@2");

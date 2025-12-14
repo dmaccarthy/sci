@@ -4,8 +4,8 @@ bike: (sel) => {
     let pts = [[0, -5], [1, -2], [2, 1], [3, 4], [4, 7]];
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -6, 8], margin: [54, 10, 10, 10]});
     svg.graph({grid: [0.5, 1],
-        x: {tick: [0, 4.1, 1], title: ["Time / s", [3.5, "12"]], shift: [0, "-24"]},
-        y: {tick: [-6, 8.1, 2], title: ["Position / m", "-36"], shift: ["-10", "-5"]},
+        x: {tick: [0, 4.1, 1], title: ["Time / s", [3.5, "12"]], shift: [0, "-20"]},
+        y: {tick: [-6, 8.1, 2], title: ["Position / m", "-36"], shift: ["-20", 0]},
         data: [
             {connect: [pts[0], pts[4]]},
             {plot: [pts, "5"]},
@@ -51,8 +51,8 @@ dt: (sel) => {
 vt: (sel) => { // Motion of an skydiver v-t graph
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 28], margin: [56, 10, 26, 12]});
     svg.graph({grid: [0.5, 2],
-        x: {tick: [0, 8.1, 1], title: ["Time / s", [7, "10"]], shift: [0, "-22"]},
-        y: {tick: [0, 29, 4], title: ["Velocity / (m/s)", "-40"], shift: ["-10", "-4"]},
+        x: {tick: [0, 8.1, 1], title: ["Time / s", [7, "10"]], shift: [0, "-18"]},
+        y: {tick: [0, 29, 4], title: ["Velocity / (m/s)", "-40"], shift: ["-20", 0]},
         data: [{connect: [[0, 8], [4, 24], [8, 24]]}],
     });
     svg.$.find("g.LabelX text.Zero").remove();
@@ -84,7 +84,7 @@ elevator: (sel) => { // Motion of an elevator d-t graph
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 50], margin: [56, 10, 28, 12]});
     svg.graph({grid: [1, 5],
         x: {tick: [0, 11, 2], title: ["Time / s", [9, "12"]], shift: [0, "-22"]},
-        y: {tick: [0, 51, 10], title: ["Position / m", "-40"], shift: ["-10", "-4"]},
+        y: {tick: [0, 51, 10], title: ["Position / m", "-40"], shift: ["-20", 0]},
         data: [
             {locus: [(x) => x <= 5 ? x * x : 50 - (10 - x) * (10 - x), [0, 10]]},
             {locus: [(x) => 10 * x - 25, [2.5, 7.5]]}
@@ -102,7 +102,7 @@ skydive: (sel) => { // Motion of an skydiver v-t graph
     let pts = zip(t, [...fn_eval(v, t)]);
     svg.graph({grid: [1, 5],
         x: {tick: [0, 16, 3], title: ["Time / s", [13.5, "12"]], shift: [0, "-22"]},
-        y: {tick: [-50, 1, 10], title: ["Velocity / (m/s)", "-44"], shift: ["-10", "-4"]},
+        y: {tick: [-50, 1, 10], title: ["Velocity / (m/s)", "-44"], shift: ["-20", 0]},
         data: [{locus: [v, [0, 15]]}, {plot: [pts, "4"]}],
     });
     svg.series[1].$.hide();

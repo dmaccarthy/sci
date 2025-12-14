@@ -1,7 +1,7 @@
 SVG2.cache("p30/elec/img/static.js", {
 
 escope: (sel) => {
-    let svg = new SVG2(sel, {scale: 24, grid: 0, margin: 4, lrbt: [-5, 5, 0, 14.25]}).css(".NoStyle");
+    let svg = new SVG2(sel, {scale: 24, grid: 0, margin: 4, lrbt: [-5, 5, 0, 14.25]});
     let g = svg.group("none", "black@2");
     let neck = svg.group("none@", "brown");
     g.rect([10, 10], [0, 5]);
@@ -16,7 +16,7 @@ escope: (sel) => {
 },
 
 induct: (sel) => {
-    let svg = new SVG2(sel, {scale: 24, margin: 4, lrbt: [-9, 11, -3, 5.5]}).css(".NoStyle");
+    let svg = new SVG2(sel, {scale: 24, margin: 4, lrbt: [-9, 11, -3, 5.5]});
     let plus = svg.pm(2.4, 1).css("black@3", "black").config({shift: [-7, 0]});
     plus.rect([4, 4]).css({fill: "none"});
     let red = svg.group("red", ".Toggle0");
@@ -35,7 +35,7 @@ induct: (sel) => {
 },
 
 pole: (sel) => {
-    let svg = new SVG2(sel, {scale: 24, margin: 4, lrbt: [-9, 11, -3, 3]}).css(".NoStyle");
+    let svg = new SVG2(sel, {scale: 24, margin: 4, lrbt: [-9, 11, -3, 3]});
     let plus = svg.pm(2.4, 1).css("black@3", "black").config({shift: [-7, 0]});
     plus.rect([4, 4]).css({fill: "none"});
     let g = svg.group().config({shift: [5, 0]});
@@ -44,10 +44,9 @@ pole: (sel) => {
     let chg = g.group("text", 20, "black", "none@");
     let t = 2;
     for (let a=-1; a<2; a++) {
-        chg.text("+", vec2d(t, 30 * a));
-        chg.text("–", vec2d(t, 30 * a+180));
+        chg.gtext("+", [], vec2d(t, 30 * a));
+        chg.gtext("–", [], vec2d(t, 30 * a+180));
     }
-    chg.align([0, 0]);
     g = g.group("arrow");
     g.arrow({tail: [-3, 0], tip: [-8, 0]}, {tail: "8"});
     g.arrow({tail: [3, 0], tip: [6, 0]}, {tail: "8"});

@@ -11,7 +11,7 @@ london: (sel) => {
     // Draw graph; add 'Toggle' classes
     let svg = new SVG2(sel, {size: [521, 360], lrbt: [0, 12, 0, 90], margin: [62, 62, 28, 12]});
     svg.graph({grid: [1, 5], css: true,
-        y: {tick: [0, 91, 10], title: ["Precipitation / mm", "-44"], shift: ["-10", "-5"]},
+        y: {tick: [0, 91, 10], title: ["Precipitation / mm", "-44"], shift: ["-20", 0]},
         data: [{connect: temp}, {plot: [temp, "4"]}],
     });
     svg.$.find("g.Text, g.LabelY").addClass("Toggle0");
@@ -23,16 +23,16 @@ london: (sel) => {
     // Right-side axis
     // $(svg.$.find("g.Grid line")[12]).addClass("Axis").css({stroke: "black", "stroke-width": "1px"});
     svg.$.find("g.Grid line.Axis").appendTo(svg.$.find("g.Grid"));
-    g = svg.tick_label((x, y) => (y/5).toFixed(0), 12, [...range(0, 91, 10)], "6", 12.3).$.find("g.LabelY")[1].graphic;
-    g.config({shift: [0, "-5"]}).css(".Toggle4", {"text-anchor": "start"});
-    svg.gtext("Temperature / °C", [".Toggle4", "text"], [13.4, 45], 90)
+    g = svg.tick_label((x, y) => (y/5).toFixed(0), 12, [...range(0, 91, 10)], "6", 12.5).$.find("g.LabelY")[1].graphic;
+    g.config({shift: [0, 0]}).css(".Toggle4", {"text-anchor": "start"});
+    svg.gtext("Temperature / °C", [".Toggle4", "sans"], [13.4, 45], 90)
 
     // Draw precipitation bars and month labels
     let months = "JFMAMJJASOND";
     let gm = svg.group().addClass("Text");
     let gp = svg.group().addClass("Toggle1").css({fill: "#0065fe", stroke: "black", "fill-opacity": 0.4});
     for (let i=0;i<12;i++) {
-        gm.text(months.charAt(i), [i + 0.5, "-20"]);
+        gm.text1(months.charAt(i), [i + 0.5, "-20"]);
         let p = prec[i];
         p = gp.rect([1, p], [i + 0.5, p/2]);
         if (i) p.addClass(i == 1 ? "Toggle2" : "Toggle3");

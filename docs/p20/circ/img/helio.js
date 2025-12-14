@@ -17,9 +17,10 @@ helio: (sel) => {
     }
 
     // Draw animated timer
-    let g = svg.gtext("yr", ["text", "mono", 36, "bold", "white", {"text-anchor": "end"}], [1.6, 1.5, 1, 0.5]);
-    let years = g.content;
-    g.config({animated: true}).beforeupdate = () => years.html(`${svg.time.toFixed(2)} yr`);
+    let years = svg.gtext("yr", ["mono", 36, "bold", "white"], [1.6, 1.5, "r"]);
+    // let years = g.content;
+    // g.config({animated: true}).beforeupdate = () => years.html(`${svg.time.toFixed(2)} yr`);
+    years.config({animated: true}).beforeupdate = () => {years.text = `${svg.time.toFixed(2)} yr`};
 
     // Draw line-of-sight arrow and Sun
     let sight = svg.arrow(0.4, {tail: "6"}).css("red", "none@");

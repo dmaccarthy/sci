@@ -66,7 +66,7 @@ ramp: (sel) => {
     g = svg.group("text", "black");
     g.gtext("1.50 m", {}, [x/2, 0.23]);
     g.gtext("0.250 m", {}, [1.7, 0.12]);
-    g.gtext("θ", [15, {"font-style": "italic"}], [0.48, 0.04]);
+    g.gtext("θ", [15, "ital"], [0.48, 0.04]);
     css(svg.$.find("line.Axis"), "grid");
 },
 
@@ -96,11 +96,11 @@ star: (sel) => {
     g.circle("5");
     g.circle("7", [4, 1]).css({fill: "orange"});
     g = svg.group("text", 18, "#0065fe");
-    g.text("M", [-1, -0.14]);
-    g.text("S", [0, -0.14]);
+    g.gtext("M", [], [-1, -0.14]);
+    g.gtext("S", [], [0, -0.14]);
     g = svg.group("text", 18, "black");
-    g.gtext("18.00000°", {}, [[-1, 0.1], [0.5, 1]]);
-    g.gtext("18.00020°", {}, [[0.45, 0.005], [0, 1]]);
+    g.gtext("18.00000°", {}, [-1, 0.1, "b"]);
+    g.gtext("18.00020°", {}, [0.45, 0.005, "b"]);
     g = g.group("serif", {"font-style": "italic"});
     g.gtext("d", {}, [-0.5, -0.09]);
     g = g.group();
@@ -116,9 +116,9 @@ Q2: (sel) => {
         scale: 40, margin: 8, grid: 0.5, tick: "-8", label: [1, 0, "-12", "-20"]});
     svg.$.find(".Component").remove();
     let g = svg.group("text", 18);
-    g.gtext("km", {}, [[-2, "2"], [0, 1]]);
+    g.gtext("km", {}, [-2, "2", "bl"]);
     g = g.group(20, "bold");
-    g.gtext("A", {}, [[0.35, "2"], [0.5, 1]]);
+    g.gtext("A", {}, [0.35, 0.35]);
     g.gtext("B", {}, [5.35, 0.35]);
     g.gtext("C", {}, [0.4, 8.25]);
 },

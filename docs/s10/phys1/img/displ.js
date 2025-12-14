@@ -13,7 +13,7 @@ student: (sel, arrow) => {
     while (i < traj.length) {
         x = traj[i++];
         svg.stickman(4).config({shift: [x, 0]});
-        text.text(i, [x, 5]);
+        text.text1(i, [x, 5]);
         if (arrow && i < traj.length) {
             let y = (i - 2);
             disp.arrow({tail: [x, y], tip: [traj[i], y]}, {tail: "7"});
@@ -42,7 +42,7 @@ patrol: (sel, x0) => {
     for (let i in cities) {
         let y = i == 500 ? 4.5 : 3;
         x = x0 + parseFloat(i);
-        names.text(cities[i], [x, y+0.9]);
+        names.text1(cities[i], [x, y+0.9]);
         lines.line([x, 0], [x, y]);
     }
 },

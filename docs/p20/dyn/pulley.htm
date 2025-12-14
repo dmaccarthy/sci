@@ -63,9 +63,9 @@ loadFeed.run = () => {
     pulley.circle("2", [0, 0]);
 
     // Create/update the timer
-    let timer = svg.gtext("??", ["text", 32], [-1.125, -1.4]);
+    let timer = svg.gtext("??", ["sans", 32], [-1.125, -1.4]);
     timer.beforeupdate = function() {
-        this.$.find("text").html(`${this.svg.time.toFixed(3)} s`);
+        timer.text = `${this.svg.time.toFixed(3)} s`;
     };
 
     // Move the masses and strings, assuming uniform accelerated motion

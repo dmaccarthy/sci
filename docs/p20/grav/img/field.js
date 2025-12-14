@@ -13,7 +13,7 @@ binstar: (sel) => {
     svg.circle(2.5, [80, 0]).css({fill: "red", stroke: "black"});
     svg.image("media/rocket.svg", [12, 12], ship);
 
-    g = svg.group("text");
+    g = svg.group("sans");
     for (let [t, p] of [
         ["10", [74, -3]], ["70", [35, -3]], ["20", [66, 10]]
     ]) g.gtext(t, [], p);
@@ -22,9 +22,8 @@ binstar: (sel) => {
     let s = {scale: 0.8};
     g.mjax("\\alpha", s, [13, 2]);
     g.mjax("\\beta", s, [76, 2]);
-    s.scale = 1;
-    g.mjax("r_{\\scriptsize P}", s, [34, 14]);
-    g.mjax("r_{\\scriptsize S}", s, [79, 10]);
+    g.mjax("r_{↡ P}", null, [34, 14]);
+    g.mjax("r_{↡ S}", null, [79, 10]);
 },
 
 quiz_wr: (sel) => {
@@ -36,7 +35,7 @@ quiz_wr: (sel) => {
     g.circle(0.3, [0, 3]).css({fill: "#0065fe"});
     g.circle(0.6, [8, 0]).css({fill: "orange"});
     svg.group("arrow").arrow({tail: vec2d(0.5, 20), tip: vec2d(3.5, 20)}, {tail: "8"});
-    svg.gtext("S", ["text", 24]);
+    svg.gtext("S", ["sans", 24]);
 }
 
 });

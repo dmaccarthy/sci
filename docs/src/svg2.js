@@ -54,19 +54,33 @@ css(...rules) {
     return this;
 }
 
-ralign(pos, dim) {
+ralign(posn, dim) {
 /* Align the element based on its bounding box */
+    if (posn == null) {
+        posn = this._aligned_posn;
+        if (posn == null) return this;
+        [posn, dim] = posn;
+    }
     let svg = this.svg;
     let x, y;
     let box = this.element.getBBox();
     let [w, h] = [box.width, box.height];
     if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
-    [w, h, x, y] = this.rect_xy([w.toFixed(2), h.toFixed(2)], pos);
+    [w, h, x, y] = this.rect_xy([w.toFixed(2), h.toFixed(2)], posn);
     if (dim == "x") y = box.y;
     else if (dim == "y") x = box.x;
     let [dx, dy] = new RArray(x,y).minus([box.x, box.y]);
-    this.shift_by([dx / svg.scale[0], dy / svg.scale[1]]);
+    this.config({_aligned_posn: [posn, dim], shift: [dx / svg.scale[0], dy / svg.scale[1]]});
     return this.update_transform();
+}
+
+realign_text(t, n) {
+    clearTimeout(this.realign_text_timeout);
+    if (n == null) n = 10;
+    if (t !== false) for (let g of this.find_all("g")) {
+        if (g._aligned_posn && g.$.find("text").length) console.log(g.ralign());
+    }
+    if (t && n > 1) this.realign_text_timeout = setTimeout(() => this.realign_text(t, n-1), t);
 }
 
 
@@ -319,6 +333,7 @@ async mjax(tex, size, posn, color) {
     let g = this.group();
     let img = g.create_child("image");
     if (size == null) size = {scale: 1};
+    tex = tex.replace('↡', "\\scriptsize");
     if (color) tex = `\\color{${color}}{${tex}}`;
     return mjax_svg(tex).then(svg => {
         size = this._img_size(size, SVG2.mjax_natural_size(svg));
@@ -352,7 +367,7 @@ ticks(opt) { /*
         p1 = svg._cs(swap ? [size[1], 0] : [0, size[1]]);
     }
     if (label != null) {
-        gl = g.group(".Labels", "text");
+        gl = g.group(".Labels", "sans");
         let [css, shift] = [opt.css, opt.shift];
         if (css) {
             if (!(css instanceof Array)) css = [css];
@@ -364,13 +379,13 @@ ticks(opt) { /*
         }
     }
     let f = isNaN(label) ? label : x => x.toFixed(label);
-    let anchor = opt.anchor ? opt.anchor : (swap ? [1, 0.5] : [0.5, 0]);
+    let anchor = opt.anchor ? opt.anchor : (swap ? "r" : "t");
     for (let xi = x0; xi < x1; xi += dx) {
         let dp = swap ? [y, xi] : [xi, y];
         if (size) gt.line(p0.plus(dp), p1.plus(dp));
         if (label != null) {
             let text = f(xi);
-            let t = gl.gtext(text, [], [dp, anchor], opt.theta);
+            let t = gl.gtext(text, [], [...dp, anchor], opt.theta);
             if (parseFloat(text) == 0) t.$.addClass("Zero");
         }
     }
@@ -417,6 +432,8 @@ star(n, far, near) {
     return this.poly(pts, 1);
 }
 
+text1(text, posn, theta, css) {return new SVG2text(this, text, posn, theta, css)}
+gtext(text, css, posn, theta) {return new SVG2text(this, text, posn, theta, css)}
 arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
 locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
 path(start) {return new SVG2path(this, start)}
@@ -447,8 +464,7 @@ chevron(xy, dir, size) {
 
 ray(p1, p2, size, ...pos) {
 /* Draw a directed segment */
-    let g = this.group();
-    g.$.addClass("Ray");
+    let g = this.group(".Ray");
     g.line(p1, p2);
     let seg = g.seg = new Segment(...p1, ...p2);
     let svg = this.svg;
@@ -488,22 +504,32 @@ _grid(g, x, y, swap) {
     }
 }
 
-gtext(data, css, posn, theta) {
-/* Create a <g> element with aligned and possible rotated <text> */
-    if (css == null) css = [];
-    else if (!(css instanceof Array)) css = [css];
-    let outer = this.group(...css);
-    let inner = outer;
-    if (theta != null) {
-        let xy = (posn[0] instanceof Array) ? posn[0] : [posn[0], posn[1]];
-        outer.config({pivot: xy, theta: theta ? theta : 0});
-        inner = outer.group();
-    }
-    outer.content = inner.create_child("text").html(data);
-    inner.ralign(posn);
-    if (inner != outer) delete inner.element.graphic;
-    return outer;
+_text0(data, xy, anchor, selector) {
+    let e = selector ? $($(selector)[0]) : this.create_child("text");
+    let has = (c) => anchor.indexOf(c) > -1;
+    e.html(data).css({"dominant-baseline": (has("t") ? "hanging" : (has("b") ? "auto" : "middle")),
+        "text-anchor": has("l") ? "start" : (has("r") ? "end" : "middle")});
+    let [x, y] = xy == null ? [0, 0] : this.svg.a2p(...xy);
+    let f = (x) => x.toFixed(this.svg.decimals);
+    return e.attr({x: f(x), y: f(y)});
 }
+
+// gtext(data, css, posn, theta) {
+// /* Create a <g> element with aligned and possible rotated <text> */
+//     if (css == null) css = [];
+//     else if (!(css instanceof Array)) css = [css];
+//     let outer = this.group(...css);
+//     let inner = outer;
+//     if (theta != null) {
+//         let xy = (posn[0] instanceof Array) ? posn[0] : [posn[0], posn[1]];
+//         outer.config({pivot: xy, theta: theta ? theta : 0});
+//         inner = outer.group();
+//     }
+//     outer.content = inner.create_child("text").html(data);
+//     inner.ralign(posn);
+//     if (inner != outer) delete inner.element.graphic;
+//     return outer;
+// }
 
 ruler(n, tick, opt) { //width, big, offset, tickSmall, tickBig) {
 /* Draw a ruler */
@@ -634,7 +660,7 @@ energy_flow(data) {
         let tex = getTeX(txt);
         if (tex && txt.charAt(0) != "$") console.log(txt, tex);
         if (!color) color = "#0065fe";
-        if (tex) this.mjax(tex, {scale: 1}, pos, color);
+        if (tex) this.mjax(tex, null, pos, color);
         else g.gtext(txt, color, pos);
     }
     g = this.group("arrow");
@@ -719,6 +745,50 @@ coord_from_parent(xy) {
 }
 
 }
+
+class SVG2text extends SVG2g {
+
+static _align(s) {
+    s = SVG2text._alignmap[s.trim().toLowerCase()];
+    return {"text-anchor": ["middle", "start", "end"][s & 3], "dominant-baseline": ["middle", "hanging", "auto"][(s & 12) / 4]};
+}
+
+static _make_map = () => {
+    let [h, v] = [["left", "right"], ["top", "bottom"]];
+    let map = {};
+    for (let i=0;i<2;i++) for (let j=0;j<2;j++) {
+        let h1 = h[i], v1 = v[j], h0 = h1.charAt(0), v0 = v1.charAt(0);
+        map[h0] = map[h1] = i + 1;
+        map[v0] = map[v1] = 4 * (j + 1);
+        map[h0+v0] = map[h0+v1] = map[h1+v1] = map[h1+v0] =
+        map[v0+h0] = map[v1+h0] = map[v1+h1] = map[v0+h1]
+            = (i + 1) + 4 * (j + 1);
+    }
+    SVG2text._alignmap = map;
+}
+
+constructor(g, text, posn, theta, css) {
+    super(g);
+    let xy = posn == null ? [0, 0] : [posn[0], posn[1]];
+    this.config({shift: xy, theta: theta});
+    if (css instanceof Array) this.css(...css);
+    else if (css) this.css(css);
+    let svg = this.svg;
+    let e = this._text$ = this.create_child("text");
+    let anchor = posn && posn.length > 2 ? posn[2] : "";
+    e.html(text).css(SVG2text._align(anchor));
+    let [x, y] = svg.a2p(0, 0);
+    let f = (x) => x.toFixed(svg.decimals);
+    e.attr({x: f(x), y: f(y)});
+    return;
+}
+
+get text() {return this._text$.html()}
+set text(t) {this._text$.html(t)}
+
+}
+
+SVG2text._make_map();
 
 
 class SVG2arrow extends SVG2g {
@@ -999,8 +1069,6 @@ constructor(selector, options) {
 }
 
 static async sleep(t) {await new Promise(r => setTimeout(r, t))}
-
-static arr(dy) {return ["→", 5, [0, dy == null ? "20" : dy]]}
 
 get size() {
     let e = this.$;
@@ -1423,11 +1491,7 @@ static ebg(sel, Emax, step, data, options) {
         let css = ["text", 16];
         let [dec, x, skip] = options.label;
         svg.ticks({x: x, y: [0, Emax + step/2, skip ? skip * step : step], label: dec, css: css});
-        // let g = svg.label(dec, x, [...range(0, Emax + step, skip ? skip * step : step)]);
-        // let dy = options.yShift;
-        // g.shift_by([0, dy != null ? dy : "-6"]);
-        // g.$.find("text").css({"font-size": "16px"});
-        if (options.unit) svg.gtext(options.unit, css, ["6", Emax, 0, 0.5]);
+        if (options.unit) svg.gtext(options.unit, css, ["6", Emax, "l"]);
     }
 
     svg.beforeupdate = function() {
@@ -1509,18 +1573,13 @@ static style(e, ...rules) {
     return e;
 };
 
-
 }
 
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";
 SVG2._cache = {};
 SVG2.load.pending = [];
-
 SVG2.url = location.href.split("#")[0];
-// console.log(SVG2.url);
-// if (SVG2.url.substring(0, 16) != "http://localhost") SVG2.url += "/sci/";
-
 SVG2.sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
 SVG2.mono = "'Noto Sans Mono', Inconsolata, 'Droid Sans Mono', monospace";
 SVG2.symbol = SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
@@ -1530,9 +1589,9 @@ SVG2._style = {
     arrow: {fill: "red", stroke: "black", "stroke-width": "0.5px", "fill-opacity": 0.8},
     ital: {"font-style": "italic"},
     bold: {"font-weight": "bold"},
-    sans: {"font-family": SVG2.sans},
-    serif: {"font-family": SVG2.serif},
-    mono: {"font-family": SVG2.mono},
+    sans: {"font-family": SVG2.sans, "font-size": "18px"},
+    serif: {"font-family": SVG2.serif, "font-size": "18px"},
+    mono: {"font-family": SVG2.mono, "font-size": "18px"},
 
     // Deprecated!
     text: {"font-family": SVG2.sans, "font-size": "18px", "text-anchor": "middle"},

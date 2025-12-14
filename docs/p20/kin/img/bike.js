@@ -13,7 +13,7 @@ bike: (sel) => {
     }
     svg.label(0, [...range(-6, 9, 2)], -1);
     let font = ["mono", 18];
-    svg.gtext("m",font, [8.7, -0.9, 0.5, 0]);
+    svg.gtext("m", font, [8.7, -0.9, "t"]);
     svg.label(["-2", "-18"], [...range(-6, 9, 1)], 0);
     svg.group("arrow").arrow({tail: [-5, "-10"], tip: [7, "-10"]}, {tail: "8"});
     let g = svg.find("g.Labels");

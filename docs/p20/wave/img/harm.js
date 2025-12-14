@@ -6,8 +6,8 @@ wave: (sel, t, y, wave) => {
     let [ux, uy, v] = wave;
     let svg = new SVG2(sel, {size: [512, 360], lrbt: [-dt, 9*dt, -5*dy, 5*dy], margin: [36, 16, 12, 12]});
     svg.graph({grid: [dt, dy],
-        x: {tick: [dt, 9.1*dt, dt], dec: dec_t, title: [`Position / ${ux}`, [7.5*dt, "8"]], shift: [0, "-22"]},
-        y: {tick: [-5*dy, 5.1*dy, dy], dec: dec_y, title: [`Displacement / ${uy}`, "-60"], shift: ["-10", "-4"]},
+        x: {tick: [dt, 9.1*dt, dt], dec: dec_t, title: [`Position / ${ux}`, [7.5*dt, "8"]], shift: [0, "-18"]},
+        y: {tick: [-5*dy, 5.1*dy, dy], dec: dec_y, title: [`Displacement / ${uy}`, "-60"], shift: ["-20", 0]},
         data: [{locus: [(x, t, v) => ymax * sin(360 / T * (x - v * t)), null, v]}]
     });
     svg.$.find("text.Zero").remove();
@@ -119,7 +119,7 @@ trWave: (sel) => {
     text.gtext("Phase Velocity", [], [2.25, -2.4]);
     svg.arrow({tail: [2, -2.05], tip: [2.5, -2.05]}, {tail: "5"});
     let rot = text.group("red").shift_by([0.2, 0]).config({theta: 90});
-    rot.gtext("Particle Velocity", []);
+    rot.gtext("Particle Velocity");
     rot.arrow({tail: [-0.25, -0.35], tip: [0.25, -0.35]}, {tail: "5", double: 1});
 
     svg.$.on("click", () => svg.toggle());
@@ -129,8 +129,8 @@ trWave: (sel) => {
 Q6: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 6, -5, 5], margin: [60, 12, 10, 12]});
     svg.graph({grid: [0.2, 0.5],
-        x: {tick: [0, 6.1, 1], title: ["Position / m", [5.2, "8"]], shift: [0, "-22"]},
-        y: {tick: [-5, 5.1, 1], title: ["Displacement / cm", "-40"], shift: ["-10", "-4"]},
+        x: {tick: [0, 6.1, 1], title: ["Position / m", [5.2, "8"]], shift: [0, "-18"]},
+        y: {tick: [-5, 5.1, 1], title: ["Displacement / cm", "-40"], shift: ["-20", 0]},
         data: [
             {locus: [(x) => 3 * sin(360 * x / 2.8), [0, 6]]},
             {locus: [(x, t) => 3 * sin(360 * (x - t / 4) / 2.8), [0, 6]]},

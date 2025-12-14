@@ -10,10 +10,8 @@ scale: (sel) => {
     g.arrow({tail: [-0.1, 1.5], tip: [-0.1, -1]}, {tail: "6"});
     g.arrow({tail: [-0.6, 0.1], tip: [-0.6, 3.1]}, {tail: "6"});
 
-    let [BD, SM_IT, arr, sub] = [1, 6, SVG2.arr(), ["12", "-8"]];
-    g = svg.group("symbol", "red", 28);
-    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([0.3, -0.7]);
-    g.symb(["F", BD], arr, ["n", SM_IT, sub]).align([-1.1, 1.6]);
+    svg.mjax("\\vec{\\bf F}_g", null, [0.3, -0.7], "red");
+    svg.mjax("\\vec{\\bf F}_n", null, [-1.1, 1.6], "red");
 },
 
 skydive: (sel) => {
@@ -22,11 +20,8 @@ skydive: (sel) => {
     let g = svg.group("arrow");
     g.arrow({tail: [0, 0], tip: [0, -1.3]}, {tail: "6"});
     g.arrow({tail: [0, 1.9], tip: [0, 2.5]}, {tail: "6"});
-
-    let [BD, SM_IT, arr, sub] = [1, 6, SVG2.arr(), ["12", "-8"]];
-    g = svg.group("symbol", "red", 28);
-    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([0.3, -0.6]);
-    g.symb(["F", BD], arr, ["f", SM_IT, sub]).align([0.3, 2.1]);
+    svg.mjax("\\vec{\\bf F}_g", null, [0.3, -0.6], "red");
+    svg.mjax("\\vec{\\bf F}_f", null, [0.3, 2.1], "red");
 },
 
 });

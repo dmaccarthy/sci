@@ -23,8 +23,8 @@ pend: (sel) => { // Illustration for Pendulum Lab handout
 tennis: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 40], margin: [58, 12, 54, 12]});
     svg.graph({grid: [1, 5],
-        x: {tick: [0, 11, 1], title: ["Position / cm", [5, "-44"]], shift: [0, "-22"]},
-        y: {tick: [0, 41, 5], title: ["Force / N", "-40"], shift: ["-10", "-4"]},
+        x: {tick: [0, 11, 1], title: ["Position / cm", [5, "-44"]], shift: [0, "-18"]},
+        y: {tick: [0, 41, 5], title: ["Force / N", "-40"], shift: ["-20", 0]},
         data: [{connect: [[0, 0], [5, 35], [7, 35], [10, 0]]}],
     });
 
@@ -39,8 +39,8 @@ tennis: (sel) => {
 truck: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 80], margin: [58, 12, 54, 12]});
     svg.graph({grid: [1, 5],
-        x: {tick: [0, 11, 1], title: ["Position / m", [5, "-44"]], shift: [0, "-22"]},
-        y: {tick: [0, 81, 10], title: ["Force / N", "-40"], shift: ["-10", "-4"]},
+        x: {tick: [0, 11, 1], title: ["Position / m", [5, "-44"]], shift: [0, "-18"]},
+        y: {tick: [0, 81, 10], title: ["Force / N", "-40"], shift: ["-20", 0]},
         data: [{connect: [[0, 0], [5, 70], [10, 30]]}],
     });
 
@@ -52,8 +52,8 @@ truck: (sel) => {
 bump: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 0.4, 0, 380], margin: [68, 16, 54, 4]});
     svg.graph({grid: [0.02, 20],
-        x: {tick: [0, 0.41, 0.1], dec:1, title: ["Position / m", [0.2, "-44"]], shift: [0, "-22"]},
-        y: {tick: [0, 361, 40], title: ["Force / N", "-48"], shift: ["-10", "-4"]},
+        x: {tick: [0, 0.41, 0.1], dec:1, title: ["Position / m", [0.2, "-44"]], shift: [0, "-18"]},
+        y: {tick: [0, 361, 40], title: ["Force / N", "-48"], shift: ["-20", 0]},
         data: [{connect: [[0, 0], [0.3, 360], [0.4, 0]]}],
     });
 },

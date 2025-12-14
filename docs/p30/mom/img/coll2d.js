@@ -6,7 +6,7 @@ Ex1: (sel) => {
     svg.$.find(".Component").remove();
     let g = svg.$.find("g.TipToTail2D > g.Arrow");
     for (let i=0;i<2;i++) $(g[i+1]).addClass(`Toggle${i}`);
-    svg.gtext("kN·s", ["text", 15], [-24, 2]);
+    svg.gtext("kN·s", ["sans", 15], [-24, 2]);
 
     let s = {scale: 1.1};
     svg.mjax("\\vec{\\bf p}_{iA}", s, [4, 14], "red");
@@ -21,7 +21,7 @@ Ex2: (sel) => {
     svg.$.find(".Component").remove();
     let g = svg.$.find("g.TipToTail2D > g.Arrow");
     for (let i=0;i<2;i++) $(g[i+1]).addClass(`Toggle${i}`);
-    svg.gtext("kN·s", ["text", 15], [-24, 2]);
+    svg.gtext("kN·s", ["sans", 15], [-24, 2]);
 
     let s = {scale: 1.1};
     svg.mjax("\\vec{\\bf p}_{iA}", s, [4, 14], "red");
@@ -37,7 +37,7 @@ Ex3: (sel) => {
     svg.$.find(".Component").remove();
     let g = svg.$.find("g.TipToTail2D > g.Arrow");
     for (let i=0;i<2;i++) $(g[i]).addClass(`Toggle${i}`);
-    svg.gtext("N·s", ["text", 15], [0.025, 0.2]);
+    svg.gtext("N·s", ["sans", 15], [0.025, 0.2]);
 
     let s = {scale: 1.1};
     svg.group(".Toggle0").mjax("\\vec{\\bf p}_{iA}", s, [0.1, 0.125], "red");

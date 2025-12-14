@@ -4,12 +4,14 @@ depth: (sel, n, x1, x2) => {
     if (!n) n = 1.4;
     if (!x1) x1 = -0.5;
     if (!x2) x2 = -x1;
+    let font = ["sans", 24];
 
-    let svg = new SVG2(sel, {size: [400, 400], lrbt: [-1.1, 1.1], margin: 0});
+    let svg = new SVG2(sel, {scale: 200, lrbt: [-1.1, 1.1, -1.1, 1.1], margin: 0});
+    let text = svg.group(...font);
     svg.ray_data = [x1, x2];
-    svg.line([-1.2, 0], [1.2, 0]);
-    svg.text("Air", [-0.95, 0.08]);
-    svg.text("Water", [-0.95, -0.08]);
+    css(svg.line([-1.2, 0], [1.2, 0]), "black@2");
+    text.text1("Air", [-0.9, 0.1]);
+    text.text1("Water", [-0.9, -0.1]);
 
     // Incident rays
     let g = svg.group();
@@ -17,9 +19,9 @@ depth: (sel, n, x1, x2) => {
     g.ray(obj, [0, 0], null, 0.8);
     g.ray(obj, p1);
     g.ray(obj, p2);
-    g.text("Object", [0.07, -1]).css({"text-anchor": "start"});
+    text.text1("Object", [0.07, -1, "l"]);
     g.circle("4", obj);
-    g.$.find("text, circle, polygon").css({fill: "#0065fe"});
+    g.$.find("circle, polygon").css({fill: "#0065fe"});
     g.$.find("line, polyline").css({stroke: "#0065fe"});
 
     // Refracted rays
@@ -59,17 +61,16 @@ depth: (sel, n, x1, x2) => {
         }
         let img = !img1 ? img2 : (!img2 ? img1 : new Segment(...img1, ...img2).midpoint);
         gimg.circle("4", img);
-        gimg.text("Image", img.plus([0.07, 0])).css({"text-anchor": "start"});
+        gimg.gtext("Image", font, [...img.plus([0.07, 0]), "l"]);
         gimg.$.find("text, circle").css({fill: "grey"});    
         gimg.$.find("line").css({stroke: "grey", "stroke-dasharray": "8,8"});
     }
 
-    svg.$.addClass("SVG2").find("line, polyline").css({"stroke-width": "2px"});
+    svg.$.find("line, polyline").css({"stroke-width": "2px", fill: "none"});
 },
 
 concave: (sel) => {
     svg = new SVG2(sel, {scale: 60, lrbt: [-1, 12, -4, 4], margin: 10, grid: 0.5});
-    svg.$.addClass("SVG2");
     svg.tick_label(0, [...range(-1, 12.1, 1)], 0, "-6", "-16");
     svg.tick_label(0, 0, [...range(-4, 4.1, 1)], "-6", "-10");
 
@@ -79,8 +80,8 @@ concave: (sel) => {
     let g = svg.group();
     g.circle("4");
     g.circle("4", c);
-    g.text("Vertex", [0.55, 0.3]);
-    g.text("Center", c.plus([0, 0.3]));
+    g.text1("Vertex", [0.55, 0.3]);
+    g.text1("Center", c.plus([0, 0.3]));
     g.$.find("text, circle").css({fill: "red"});
 
     let seg = new Segment(...vec2d(6, 165).plus(c), ...c);
@@ -89,7 +90,6 @@ concave: (sel) => {
 
 convex: (sel) => {
     svg = new SVG2(sel, {scale: 60, lrbt: [-7, 5, -4, 4], margin: 10, grid: 0.5});
-    svg.$.addClass("SVG2");
     svg.tick_label(0, 0, [...range(-4, 4.1, 1)], "-6", "-10");
 
     let c = vec(-6, 0), a = asin(4/6);
@@ -99,8 +99,8 @@ convex: (sel) => {
     let g = svg.group();
     g.circle("4");
     g.circle("4", c);
-    g.text("Vertex", [0.55, 0.3]);
-    g.text("Center", c.plus([0, 0.3]));
+    g.text1("Vertex", [0.55, 0.3]);
+    g.text1("Center", c.plus([0, 0.3]));
     g.$.find("text, circle").css({fill: "red"});
 
     let seg = new Segment(...vec2d(6, 22).plus(c), ...c);
@@ -109,20 +109,20 @@ convex: (sel) => {
 
 plane: (sel) => {
     svg = new SVG2(sel, {scale: 30, lrbt: [-12, 12, -8, 8], margin: 10, grid: 1});
-    $(svg.$.addClass("SVG2").find("g.Grid line.Axis")[0]).css({"stroke-width": "3px"});
+    $(svg.$.find("g.Grid line.Axis")[0]).css({"stroke-width": "3px"});
     svg.tick_label(0, [...range(-12, 12.1, 2)], 0, "-6", "-16");
     svg.arrow({tail: [10,0], tip: [10,2]}, {tail: "5"}).$.find("polygon").css({fill: "#0065fe"});
 },
 
 fish: (sel) => {
     svg = new SVG2(sel, {scale: 30, lrbt: [-8, 8, -12, 6], margin: 10, grid: 1});
-    $(svg.$.addClass("SVG2").find("g.Grid line.Axis")[1]).css({"stroke-width": "3px"});
+    $(svg.$.find("g.Grid line.Axis")[1]).css({"stroke-width": "3px"});
     svg.tick_label(0, [...range(-4, 8.1, 2)], 0, "-6", "-16");
     svg.tick_label(0, 0, [...range(-12, 6.1, 2)], "-6", "-10");
     svg.circle("5", [0, -10]).css({fill: "red"});
-    svg.text("Coin", [1, -10.5]).css({fill: "red"});
-    svg.text("Air", [-7, 0.6]);
-    svg.text("Water", [-7, -0.6]);
+    svg.text1("Coin", [1, -10.5]).css({fill: "red"});
+    svg.text1("Air", [-7, 0.6]);
+    svg.text1("Water", [-7, -0.6]);
 },
 
 });

@@ -21,8 +21,8 @@ orbit: (sel) => {
     g.line([0, -e], [0, e]);
 
     g = svg.group("text", "grey");
-    g.gtext("Major Axis", [], [0.7, 0, 0.5, 1]);
-    g.gtext("Minor Axis", [], [0, -0.4, 0.5, 1], 90);
+    g.gtext("Major Axis", [], [0.5, 0.05, "b"]);
+    g.gtext("Minor Axis", [], [-0.05, -0.35, "b"], 90);
 
     g = svg.group("black@1");
     g.circle("5", planet).css({fill: "#0065fe"});
@@ -30,10 +30,10 @@ orbit: (sel) => {
 
     g = svg.group("text");
     for (let [t, p] of [
-        ["A", [1.04, 0, 0, 0.5]],
-        ["C", [0.04, 0, 0, 0]],
-        ["F", [f[0] + 0.04, 0, 0, 0]],
-        ["P", [-1.04, 0, 1, 0.5]]
+        ["A", [1.04, 0, "l"]],
+        ["C", [0.04, 0, "tl"]],
+        ["F", [f[0] + 0.04, 0, "tl"]],
+        ["P", [-1.04, 0, "r"]]
     ]) g.gtext(t, [], p)
 
     svg.$.on("click", () => sector.fadeToggle());

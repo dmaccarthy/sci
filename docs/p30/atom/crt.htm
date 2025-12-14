@@ -148,8 +148,7 @@ loadFeed.sim = () => {
 
     let css = {stroke: "red", "stroke-width": "1px", fill: "none"};
     svg.parab = svg.conics.locus((x, t, a) => a * x * x, [-2, 12], -1, 0).css(css);
-    svg.measure = g = svg.conics.group("red", {"text-anchor":"start"});
-    g.text("");
+    svg.measure = g = svg.conics.gtext("", ["red"], [0, 0, "l"]);
     svg.conics.$.children("*").hide();
 
     svg.$.on("click", (ev) => {
@@ -164,7 +163,7 @@ loadFeed.sim = () => {
                 let a = p.args = y / (x * x);
                 let c = svg.measure;
                 if (a < -0.03) c.$.fadeOut();
-                else c.config({shift: [6, -2]}).$.fadeIn().find("text").html(`θ = ${atan(-20 * a).toFixed(1)}°`);
+                else c.config({shift: [6, -2], text: `θ = ${atan(-20 * a).toFixed(1)}°`}).$.fadeIn();
                 p.update(0).$.hide().fadeIn();
             }
             else if (y > 0) {
@@ -172,7 +171,7 @@ loadFeed.sim = () => {
                 let r = (x * x + y * y) / (2 * y);
                 let c = svg.circ = svg.conics.circle(r, [0, r]).css(css).hide().fadeIn();
                 c = svg.measure.config({shift: [-0.4, r > 2 || r < 0.8 ? 2 : r]});
-                c.$.hide().fadeIn().find("text").html(`r = ${r.toPrecision(3)} cm`);
+                c.config({text: `r = ${r.toPrecision(3)} cm`}).$.hide().fadeIn();
             }
         }
         else {

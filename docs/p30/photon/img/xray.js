@@ -23,12 +23,12 @@ brem: (sel) => {
     g.arrow({tail: [0.3, 0.25], tip: [0.34, 0.36]}, opt);
     g.arrow({tail: [0.35, 0.76], tip: [0.29, 0.69]}, opt);
     g.arrow({tail: [0.43, 0.76], tip: [0.43, 0.62]}, opt);
-    g = svg.group("text", "red");
+    g = svg.group("sans", "red");
     g.gtext("Bremsstrahlung", [], [0.3, 0.2]);
     g.gtext("Characteristic X-Rays", [], [0.42, 0.8]);
     svg.gtext("Wavelength", [], [0.3, "-16"]);
     let pt = ["-16", 0.45]
-    svg.gtext("Intensity", ["text"]).config({theta: 90, shift: pt, zpivot: pt});
+    svg.gtext("Intensity", ["sans"]).config({theta: 90, shift: pt, zpivot: pt});
 },
 
 

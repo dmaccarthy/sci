@@ -7,27 +7,25 @@ dir2d: (sel) => {
     g.arrow(4, attr);
     g.arrow(4, attr).config({theta: 90});
     g.arrow({tip: vec2d(4, -14)}, {tail: "6"}).css("arrow", ".Toggle5");
-    g = svg.group("text", 20);
+    g = svg.group("sans", 20);
     let i = 1;
-    for (let [t, x, y, ax, ay] of [
-        ["0° or ±360°", 2.2, 0, 0, 0.5],
-        ["+90° or –270°", 0, 2.2, 0.5, 1],
-        ["±180°", -2.2, 0, 1, 0.5],
-        ["+270° or –90°", 0, -2.2, 0.5, 0],
-        ["–14° or +346°", 3.2, -1.5],
+    for (let [t, x, y, a] of [
+        ["0° or ±360°", 2.2, 0, "l"],
+        ["+90° or –270°", 0, 2.2, "b"],
+        ["±180°", -2.2, 0, "r"],
+        ["+270° or –90°", 0, -2.2, "t"],
+        ["–14° or +346°", 3.2, -1.5, ""],
     ]) {
         let text = g.group(`.Toggle${i < 5 ? i : 6}`);
-        text.text(t);
-        text.align([x, y], ax, ay);
+        text.gtext(t, [], [x, y, a]);
         i++;
     }
-    $(g.$.find("g")[4]).css({fill: "red"});
-    g = g.group("#0065fe", {"font-weight": "bold"}, ".Toggle0");
-    g.text("Q1", [1, 1]);
-    g.text("Q2", [-1, 1]);
-    g.text("Q3", [-1, -1]);
-    g.text("Q4", [1, -1]);
-    g.align([0, 0]);
+    g.$.find("g.Toggle6").css({fill: "red"});
+    g = g.group("#0065fe", "bold", ".Toggle0");
+    g.gtext("Q1", [], [1, 1]);
+    g.gtext("Q2", [], [-1, 1]);
+    g.gtext("Q3", [], [-1, -1]);
+    g.gtext("Q4", [], [1, -1]);
     svg.click_toggle(7);
 },
 
@@ -36,29 +34,24 @@ hiker: (sel) => {
         margin: [8, 8, 8, 12], grid: 0.5, shift: [-2, 5], label: [1, 0, "-6", "-12"]});
     svg.$.find(".Component").remove();
 
-    svg.gtext("km", "text", [0.5, 6]);
+    svg.gtext("km", "sans", [0.5, 6]);
     let g = svg.group();
     g.$.insertBefore(svg.$.find(".TipToTail2D"));
-    g.line([1, 5], [-2, 5]).css({stroke: "black", "stroke-width": 2});
-    g.plot([[5, 1], [-2, 5]], "5").$.css({"fill-opacity": 0.7});
+    css(g.line([1, 5], [-2, 5]), "black@2", "#0065fe"); //.css({stroke: "black", "stroke-width": 2});
+    g.plot([[5, 1], [-2, 5]], "5").css({"fill-opacity": 0.7});
 
-    let [BD, IT, SM, SM_IT] = [1, 2, 4, 6];
-    let arr = ["→", SM + BD, [0, "22"]];
-    let sub = ["12", "-8"];
-    g = svg.group("symbol", 28, "#0065fe");
-    g.symb(["d", BD], arr, ["i", SM_IT, sub]).align([-2.7, 5.75]);
-    g.symb(["d", BD], arr, ["f", SM_IT, sub]).align([5.5, 1.5]);
-    g.symb(["d", BD], arr, ["Δ", 0, ["-20", 0]]).align([2.5, 3.5]).css("red");
-    g.symb(["θ", IT]).align([-0.8, 4.8]).css("black", 18);
-
+    svg.mjax("\\theta", {scale: 0.8}, [-0.8, 4.8]);
+    svg.mjax("\\vec{\\bf d}_i", null, [-2.7, 5.75], "#0065fe");
+    svg.mjax("\\vec{\\bf d}_f", null, [5.5, 1.5], "#0065fe");
+    svg.mjax("\\Delta\\vec{\\bf d}", null, [2.5, 3.5], "red");
 },
 
 soccer: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(20, 120)], {lrbt: [-12, 2, -2, 20],
         scale: 20, margin: 8, grid: 1, label: [2, 0, "-6", "-12"]});
     svg.$.find(".Component").remove();
-    svg.circle(20).css({"stroke-width": "0.5px", stroke: "grey", fill: "none"});
-    svg.gtext("m", "text", [1, 20]);
+    css(svg.circle(20), "none", "grey@0.5");
+    svg.gtext("m", "sans", [1, 20]);
 },
  
 });

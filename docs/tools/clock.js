@@ -9,11 +9,7 @@ clock: (sel) => {
 		let g = tick.group().config({theta: i});
 		g.line([0, 1], [0, 0.95]);
 	}
-	for (let i=1;i<13;i++) {
-		let g = text.group();
-		g.text(`${i}`);
-		g.align(vec2d(0.86, 30 * (3 - i)));
-	}
+	for (let i=1;i<13;i++) text.gtext(`${i}`, [], vec2d(0.86, 30 * (3 - i)));
 	let hr = svg.group();
 	let min = svg.group();
 	let sec = svg.group();

@@ -6,8 +6,8 @@ wtLoss: (sel) => {
     let eq = lin_reg_xy(x, y).fn;
     let svg = new SVG2(sel, {size: [640, 400], lrbt: [0, 30, 77, 82], margin: [64, 10, 54, 10]});
     svg.graph({grid: [1, 0.25],
-        x: {tick: [3, 31, 3], y: 77, title: ["Time / days", [15, "-48"]], shift: [0, "-24"]},
-        y: {tick: [77, 82.1, 1], title: ["Mass / kg", "-44"], shift: ["-10", "-5"]},
+        x: {tick: [3, 31, 3], y: 77, title: ["Time / days", [15, "-48"]], shift: [0, "-20"]},
+        y: {tick: [77, 82.1, 1], title: ["Mass / kg", "-44"], shift: ["-20", 0]},
         data: [
             {connect: [[0, eq(0)], [30, eq(30)]]},
             {plot: [{x: x, y: y}, "6"]},

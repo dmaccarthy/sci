@@ -10,22 +10,22 @@ bun: (sel) => {
     let pts = [[0.4243, 0.4243], [-0.28, 0.65], [-0.51, -0.07],
         [-0.15, -0.55], [0.1707, -0.1062], [0.5, -0.3]];
     svg.line(pts[0], [0.85, 0.78]).css({stroke: "green"});
-    let g = svg.group("text");
+    let g = svg.group("sans");
     for (let i=0;i<pts.length;i++) g.circle(0.04, pts[i]).css(attr);
-    g.gtext("Electron", [], [0.87, 0.9]);
+    g.text1("Electron", [0.87, 0.9]);
     g.$.find("text, circle").css({fill: "green"});
 },
 
 rutherford: (sel) => {
-    let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], margin: 2});
-    svg.config({electron: 140}).$.addClass("NoStyle");
+    let svg = new SVG2(sel, {size: [300, 256], lrbt: [-1.2, 1.2], grid: 1, margin: 2});
+    svg.css("sans").config({electron: 140});
     let a = 0.35, b = 0.04;
     let elec = (x) => [a * sin(x), cos(x)];
     let n = [[0.0374, 0.019], [-0.0383, -0.0237], [-0.0558, 0.0394], [0.0516, -0.0361]];
     let p = [[-0.0138, 0.0375], [-0.0025, -0.0422], [0.0521, 0.0135]];
-    let hide = svg.group("text");
-    let gn = hide.group("text");
-    let gp = hide.group("text");
+    let hide = svg.group("sans");
+    let gn = hide.group("sans");
+    let gp = hide.group("sans");
     let elecs = [];
     for (let i=0;i<3;i++) {
         let g = svg.group();
@@ -38,11 +38,11 @@ rutherford: (sel) => {
         gp.circle(b, p[i]);
     }
     gn.circle(b, n[3]);
-    hide.text("Electron", [0.35, 0.7]).css({fill: "green"});
+    hide.text1("Electron", [0.65, 0.75]).css({fill: "green"});
     gp.line(vec2d(b, -60).plus(p[1]), [0.6, -0.7]).css({stroke: "red"});
     gn.line(n[2], [-0.6, 0.7]).css({stroke: "#0065FE"});
-    gn.text("Neutron", [-0.9, 0.75]);
-    gp.text("Proton", [0.5, -0.85]);
+    gn.text1("Neutron", [-0.75, 0.8]);
+    gp.text1("Proton", [0.65, -0.8]);
     gn.$.find("circle, text").css({fill: "#0065fe"});
     gp.$.find("circle, text").css({fill: "red"});
 

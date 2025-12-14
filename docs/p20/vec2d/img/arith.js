@@ -7,7 +7,7 @@ ship: (sel) => {
     g.circle(0.05);
     g.circle(0.03, [1, 0]);
     g.circle("3", pt).css({fill: "red"});
-    g = svg.group("text", 24, "#0065fe");
+    g = svg.group("sans", 24, "#0065fe");
     g.gtext("P", {}, [0, 0.1]);
     g.gtext("M", {}, [1, 0.1]);
     g.gtext("S", "red", pt.plus([0.07, 0.03]));
@@ -26,29 +26,19 @@ ship: (sel) => {
         a = a.plus(vec2d(...f));
     }
     arrow(-a[1], -90).css("#0065fe");
-
-    let [BD, SM] = [1, 4];
-    let arr = ["→", 5, [0, "14"]];
-    let sub = ["15", "-10"];
-    g = svg.group("symbol", 28, "red");
-    g.symb(["g", BD], arr, ["P", SM, sub]).align([0.4, 0.65]);
-    g.symb(["g", BD], arr, ["M", SM, sub]).align([0.77, 0.6]);
-    g.symb(["a", BD], arr).align([0.52, 0.4]).css("#0065fe");
+    svg.mjax("\\vec{\\bf g}_{↡ P}", null, [0.4, 0.65], "red");
+    svg.mjax("\\vec{\\bf g}_{↡ M}", null, [0.77, 0.6], "red");
+    svg.mjax("\\vec{\\bf a}", null, [0.52, 0.4], "#0065fe");
 },
 
 Ex1_init: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(50, 60), vec2d(40, 340)], {lrbt: [-10, 70, -10, 50], scale: 5,
         margin: 8, grid: 5, tick: "-8", label: [10, 0, "-12", "-20"]});
-    svg.gtext("m", "text", [3, 50]);
-
-    let [BD, SM] = [1, 4];
-    let arr = ["→", 5, [0, "22"]];
-    let sub = ["15", "-10"];
-    let delta = ["Δ", 0, ["-20", 0]];
-    let g = svg.group("symbol", 28, "red");
-    g.symb(["d", BD], arr, delta).align([35, 10]).css("#0065fe");
-    g.symb(["d", BD], arr, delta, ["1", SM, sub]).align([6, 27]);
-    g.symb(["d", BD], arr, delta, ["2", SM, sub]).align([42, 30]);
+    svg.gtext("m", "sans", [3, 50]);
+    let sym = svg.group(".MJax");
+    sym.mjax("\\Delta\\vec{\\bf d}_1", null, [6, 27], "red");
+    sym.mjax("\\Delta\\vec{\\bf d}_2", null, [42, 30], "red");
+    sym.mjax("\\Delta\\vec{\\bf d}", null, [35, 10], "#0065fe");
     return svg;
 },
 
@@ -60,10 +50,10 @@ Ex1: (sel) => {
 
 trig: (sel) => {
     let svg = SVG2.cache_run("p20/vec2d/img/arith.js", "Ex1_init", sel);
-    svg.$.find(".Component, .Symbol").remove();
+    svg.$.find(".Component, .MJax").remove();
     let [x, y] = vec2d(50, 60);
     svg.line([x-15, y], [x+15, y]).css({stroke: "black"});
-    let g = svg.group("text");
+    let g = svg.group("sans");
     g.gtext("60°", {}, [17, 40]);
     g.gtext("20°", {}, [40, 41]);
     g.gtext("100°", {}, [28, 36]);
@@ -76,30 +66,20 @@ Ex2: (sel) => {
     let Fg = 98.1, Fn = Fg * cos(10);
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 80), vec2d(8, 170)], {lrbt: [-30, 30, -105, 10],
         scale: 4, cycle: 1, margin: [12, 12, 6, 16], grid: 5, tick: "-8", label: [10, 0, "-12", "-20"]});
-    svg.gtext("N", "text", [25, -100]);
-
-    let [BD, SM_IT] = [1, 6];
-    let arr = ["→", 5, [0, "22"]];
-    let sub = ["10", "-10"];
-    let g = svg.group("symbol", 28, "red");
-    g.symb(["F", BD], arr, ["net", SM_IT, ["16", "-10"]]).css("#0065fe").align([5, 9]);
-    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([-15, -45]);
-    g.symb(["F", BD], arr, ["n", SM_IT, sub]).align([20, -50]);
-    g.symb(["F", BD], arr, ["f", SM_IT, sub]).align([20, 5]);
+    svg.gtext("N", "sans", [25, -100]);
+    svg.mjax("\\vec{\\bf F}_g", null, [-15, -45], "red");
+    svg.mjax("\\vec{\\bf F}_n", null, [20, -50], "red");
+    svg.mjax("\\vec{\\bf F}_f", null, [20, 5], "red");
+    svg.mjax("\\vec{\\bf F}_{net}", null, [5, 9], "red");
 },
 
 Ex3: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(7.25, 75), vec2d(6.5, -60)], {lrbt: [-1, 6, -1, 8],
         scale: 50, cycle: 1, margin: [12, 12, 6, 16], grid: 1, tick: "-8", label: [1, 0, "-12", "-20"]});
-    svg.gtext("m/s", "text", [[0.1, 8], [0, 0.5]]);
-
-    let [BD, SM_IT] = [1, 6];
-    let arr = ["→", 5, [0, "15"]];
-    let g = svg.group("symbol", 28, "red");
-    g.symb(["v", BD], arr, ["Δ", 0, ["-18", 0]]).css("#0065fe").align([2.7, 1.4]);
-    g.symb(["v", BD], arr, ["f", SM_IT, ["10", "-10"]]).align([0.5, 4.2]);
-    arr[2][0] = "8";
-    g.symb(["–v", BD], arr, ["i", SM_IT, ["16", "-10"]]).align([4, 4.5]);
+    svg.gtext("m/s", "sans", [0.1, 8, "l"]);
+    svg.mjax("-\\vec{\\bf v}_i", null, [4.2, 4.5], "red");
+    svg.mjax("\\vec{\\bf v}_f", null, [0.5, 4.2], "red");
+    svg.mjax("\\Delta\\vec{\\bf v}", null, [2.7, 1.4], "#0065fe");
 },
 
 tri: (sel) => {
@@ -124,11 +104,11 @@ tri: (sel) => {
     g.circle("3", [0, h - 10]).css({fill: "black"});
 
     // Labels
-    g = svg.group("text");
+    g = svg.group("sans");
     g.gtext("A", [], [1, hA]);
     g.gtext("B", [], [-1, h - 10]);
-    g.gtext("12.5 km", [], [2, 0, 0, 1.1]);
-    g.gtext("12.5 km", [], [-2, 0, 1, 1.1]);
+    g.gtext("12.5 km", [], [2, 0, "bl"]);
+    g.gtext("12.5 km", [], [-2, 0, "br"]);
     svg.mjax("\\theta", {scale: 0.8}, [10.5, 0.8]);
 
     let wrap = (cfg, txt, xy) => g.group().config(cfg).gtext(txt, [], xy);
@@ -140,8 +120,8 @@ tri: (sel) => {
     wrap({theta: -75, pivot: [0, h]}, "30°", [3.5, h]);
 
     let s = {scale: 1};
-    svg.mjax("r_{\\scriptsize A}", s, [-5, 6]);
-    svg.mjax("r_{\\scriptsize B}", s, [4, 6]);
+    svg.mjax("r_{↡ A}", s, [-5, 6]);
+    svg.mjax("r_{↡ B}", s, [4, 6]);
     svg.mjax("y", s, [1, hA / 2]);
 
     // Forces at point A

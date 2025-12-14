@@ -1,32 +1,32 @@
-SVG2g.prototype.text = function(data, xy, selector) {
-/* Add a <text> element to the group */
-    let svg = this.svg;
-    let e = selector ? $($(selector)[0]) : this.create_child("text");
-    let f = (x) => x.toFixed(svg.decimals);
-    let [x, y] = svg.a2p(...this._cs(xy));
-    return e.attr({x: f(x), y: f(y)}).html(data);
-}
+// SVG2g.prototype.text = function(data, xy, selector) {
+// /* Add a <text> element to the group */
+//     let svg = this.svg;
+//     let e = selector ? $($(selector)[0]) : this.create_child("text");
+//     let f = (x) => x.toFixed(svg.decimals);
+//     let [x, y] = svg.a2p(...this._cs(xy));
+//     return e.attr({x: f(x), y: f(y)}).html(data);
+// }
 
-SVG2g.prototype.align = function(xy, x, y) {
-/* Align the element based on its bounding box */
-    let box = this.element.getBBox();
-    let [w, h] = [box.width, box.height];
-    if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
-    if (typeof(xy) == "number") xy = [xy, xy];
-    if (y == null) {
-        if (x == null) x = y = 0.5;
-        else if (typeof(x) == "string")
-            [x, y] = {top: [0.5, 0], bottom: [0.5, 1], left: [0, 0.5], right: [1, 0.5]}[x];
-    }
-    let nx = x == null;
-    let ny = y == null;
-    let dxy = this.svg.p2a(box.x + (nx ? 0 : x) * w, box.y + (ny ? 0 : y) * h).plus(this._shift);
-    dxy = this._cs(xy).minus(dxy);
-    if (nx) dxy[0] = 0;
-    if (ny) dxy[1] = 0;
-    this._shift = this._shift.plus(dxy);
-    return this.update_transform();
-}
+// SVG2g.prototype.align = function(xy, x, y) {
+// /* Align the element based on its bounding box */
+//     let box = this.element.getBBox();
+//     let [w, h] = [box.width, box.height];
+//     if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
+//     if (typeof(xy) == "number") xy = [xy, xy];
+//     if (y == null) {
+//         if (x == null) x = y = 0.5;
+//         else if (typeof(x) == "string")
+//             [x, y] = {top: [0.5, 0], bottom: [0.5, 1], left: [0, 0.5], right: [1, 0.5]}[x];
+//     }
+//     let nx = x == null;
+//     let ny = y == null;
+//     let dxy = this.svg.p2a(box.x + (nx ? 0 : x) * w, box.y + (ny ? 0 : y) * h).plus(this._shift);
+//     dxy = this._cs(xy).minus(dxy);
+//     if (nx) dxy[0] = 0;
+//     if (ny) dxy[1] = 0;
+//     this._shift = this._shift.plus(dxy);
+//     return this.update_transform();
+// }
 
 SVG2g.prototype.label = function(fn, x, y) {
 /** Add a <g> containing <text> labels or tick marks as <line>, Usage:
@@ -58,10 +58,8 @@ SVG2g.prototype.label = function(fn, x, y) {
             else if (!xa) g.line([xc + tm, yc], [xc + tp, yc]);
         }
         else {
-            let txt = g.text(fn(x0, y0, i), [xc, yc]);
-            if (parseFloat(txt.html()) == 0) txt.addClass("Zero");
-            // let txt = g.gtext(fn(x0, y0, i), [], [xc, yc]);
-            // if (parseFloat(txt.$.children("text").html()) == 0) txt.addClass("Zero");
+            let txt = g.text1(fn(x0, y0, i), [xc, yc]);
+            if (parseFloat(txt.text) == 0) txt.addClass("Zero");
         }
     }
     if (tick) g.css("black@1").$.addClass(`Ticks Tick${ya ? 'Y' : 'X'}`);
@@ -111,7 +109,7 @@ SVG2g.prototype.graph = function(options) {
                 this.find("g.LabelX").config({shift: x.shift}).shift_by(dy);
                 this.find("g.TickX").shift_by(dy);
             }
-            if (x.title) txt.group().shift_by(dy).text(x.title[0], xy(0));
+            if (x.title) txt.group().shift_by(dy).text1(x.title[0], xy(0));
         }
         if (y) {
             let dx = [y.x ? y.x : 0, 0];
@@ -120,7 +118,7 @@ SVG2g.prototype.graph = function(options) {
                 this.find("g.LabelY").config({shift: y.shift}).shift_by(dx);
                 this.find("g.TickY").shift_by(dx);
             }
-            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).shift_by(dx).text(y.title[0]);  
+            if (y.title) txt.group().config({theta: 90, shift: xy(1)}).shift_by(dx).text1(y.title[0]);  
         }  
     }
 
@@ -153,26 +151,28 @@ SVG2g.prototype.graph = function(options) {
 //     return g.ralign(posn);
 // }
 
-SVG2g.prototype.symb = function(...args) {
-/* Render a symbol from a list of text elements */
-//  BOLD = 1, ITAL = 2, SMALL = 4
-    let g = this.group(".Symbol");
-    let szStr = (s) => typeof(s) == "number" ? `${size}px` : s;
-    // if (size) g.css("symbol", {"font-size": szStr(size)});
-    for (let [s, opt, pos] of args) {
-        let f = 0;
-        if (typeof(opt) == "number") [f, opt] = [opt, null];
-        let txt = g.text(s, pos);
-        if (f & 4) txt.css({"font-size": "60%"});
-        if (f & 1) txt.css(SVG2._style.bold);
-        if (f & 2) txt.css(SVG2._style.ital);
-        if (opt) {
-            if (opt.size) txt.css({"font-size": szStr(opt.size)});
-            if (opt.css) txt.css(opt.css);
-        }
-    }
-    return g;
-}
+// static arr(dy) {return ["→", 5, [0, dy == null ? "20" : dy]]}
+
+// SVG2g.prototype.symb = function(...args) {
+// /* Render a symbol from a list of text elements */
+// //  BOLD = 1, ITAL = 2, SMALL = 4
+//     let g = this.group(".Symbol");
+//     let szStr = (s) => typeof(s) == "number" ? `${size}px` : s;
+//     // if (size) g.css("symbol", {"font-size": szStr(size)});
+//     for (let [s, opt, pos] of args) {
+//         let f = 0;
+//         if (typeof(opt) == "number") [f, opt] = [opt, null];
+//         let txt = g.text(s, pos);
+//         if (f & 4) txt.css({"font-size": "60%"});
+//         if (f & 1) txt.css(SVG2._style.bold);
+//         if (f & 2) txt.css(SVG2._style.ital);
+//         if (opt) {
+//             if (opt.size) txt.css({"font-size": szStr(opt.size)});
+//             if (opt.css) txt.css(opt.css);
+//         }
+//     }
+//     return g;
+// }
 
 // ctext(...args) {
 // /* Render multiple aligned <g> elements with <text> child nodes */

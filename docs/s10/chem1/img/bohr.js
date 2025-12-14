@@ -36,9 +36,6 @@ bohr: (sel, A, M, Q) => {
     }
     svg.mjax(`{\\rm ${A}}\\,p^{+}`, s, [0, -0.2], color);
     svg.mjax(`{\\rm ${M-A}}\\,n`, s, [0, -1], color);
-    // let p = `${A} p`;
-    // text.symb([p, 2], ["+", 0, [(10 + 4 * p.length).toFixed(0), "8"]]).align([0, -0.2]);
-    // text.symb([`${M-A} n`, 2]).align([0, -1]);
 },
 
 dot: (sel, elem, q, val) => {
@@ -52,7 +49,7 @@ dot: (sel, elem, q, val) => {
         let g = svg.group("none", `${color}@2`);
         g.poly([[-0.8, 1], [-1, 1], [-1, -1], [-0.8, -1]]);
         g.poly([[0.8, 1], [1, 1], [1, -1], [0.8, -1]]);
-        svg.gtext(q > 0 ? `${q==1 ? "&nbsp;" : q}+` : `${q == -1 ? "&nbsp;" : -q}–`, ["text", color, 18], [[1.1, 1.1], [0, 0.5]]);
+        svg.gtext(q > 0 ? `${q==1 ? "&nbsp;" : q}+` : `${q == -1 ? "&nbsp;" : -q}–`, ["sans", color, 18], [1.1, 1.1, "l"]);
     }
     else svg = new SVG2(sel, {scale: 36, lrbt: [-1.1, 1.1, -1.1, 1.1]});
     let g = svg.group(color);
@@ -67,7 +64,7 @@ dot: (sel, elem, q, val) => {
         }
         if (!paired || (paired == 1 && (i == 0 || i == 4)) || (paired == 2 && i != 3)) g.circle(0.07, pos);
     }
-    svg.gtext(elem, ["text", color, 24]);
+    svg.gtext(elem, ["sans", color, 24]);
 },
 
 carbon: (sel) => {

@@ -2,7 +2,7 @@ SVG2.cache("s10/chem2/img/poly.js", {
 
 H2O: (sel) => {
     let svg = new SVG2(sel, {scale: 34, lrbt: [-2.25, 3.6, -3.5, 1.5]}).css(".NoStyle");
-    let text = ["symbol", 36];
+    let text = ["serif", 36];
     let O = svg.group("black").shift_by([1.5, 0]);
     let elec = O.edot(6).config({theta: -90}).$.find("circle");
     for (let i of [2, 3]) $(elec[i]).addClass(`Toggle${3-i}`);
@@ -29,7 +29,7 @@ H2O: (sel) => {
 
 OH: (sel) => {
     let svg = new SVG2(sel, {scale: 34, lrbt: [-2.25, 3.6, -1.4, 1.4]}).css(".NoStyle");
-    let text = ["symbol", 36];
+    let text = ["serif", 36];
     let O = svg.group("black").shift_by([1.5, 0]);
     let elec = O.edot(7).config({theta: -90}).$.find("circle");
     $(elec[3]).addClass("Toggle0");
@@ -44,7 +44,7 @@ OH: (sel) => {
     let [x, dx, y] = [-2.1, 0.3, 1.2];
     g.poly([[3-dx, y], [3, y], [3, -y], [3-dx, -y]]);
     g.poly([[x+dx, y], [x, y], [x, -y], [x+dx, -y]]);
-    svg.gtext("–", ["text", ".Toggle2"], [3.4, 1.2]).$.hide();
+    svg.gtext("–", ["sans", ".Toggle2"], [3.4, 1.2]).$.hide();
 
     let t = click_cycle.toggle;
     click_cycle(svg.element, 0,

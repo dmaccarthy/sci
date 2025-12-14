@@ -3,13 +3,13 @@ SVG2.cache("p30/emr/img/young.js", {
 laser: (sel) => {
     let svg = new SVG2(sel, {size: [400, 400], lrbt: [-3.3, 3.3, -10, 2]});
     let [r, d, y] = [0.2, 0.75, -8.7];
-    svg.text("Whiteboard", [0, 1.1]);
-    svg.text("Laser", [-0.8, y]);
-    svg.text("Diffraction Grating", [1.6, -7]);
+    svg.text1("Whiteboard", [0, 1.1]);
+    svg.text1("Laser", [-0.8, y]);
+    svg.text1("Diffraction Grating", [1.6, -7]);
     let g = svg.group().css({stroke: "red"});
     for (let i=-3; i<=3; i++) {
         g.line([0, i ? -7 : y], [i, 0]);
-        svg.text(i < 0 ? -i : (i ? i : "C"), [i, 0.4]);        
+        svg.text1(i < 0 ? -i : (i ? i : "C"), [i, 0.4]);        
     }
     svg.line([-4, 0], [4, 0]).css({stroke: "black", "stroke-width": "3px"});
     svg.line([-r, -7], [r, -7]).css({stroke: "black", "stroke-width": "2px"});
@@ -70,7 +70,7 @@ single: (sel) => {
     g.$.addClass("Toggle0");
     for (let i=1;i<5;i++)
         g.path([i, 0]).arc([0, 0], 180, 0).update().css({stroke: (i % 2 ? "red" : "#0065fe")});
-    svg.text("Barrier", [-4, -0.5]);
+    svg.text1("Barrier", [-4, -0.5]);
     let tail = {tail: "8"};
     let opt = {double: 1, tail: "8"};
     g = svg.group();

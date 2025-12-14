@@ -4,7 +4,7 @@ function calendar_icon() {
     css(svg.rect([2, 0.4], [0, 0.8]), "#0065fe", "none@");
     css(svg.poly([[-1 , 1], [-1, -1], [1, -1], [1, 1]]), "#0065fe@8", "none");
     for (x of [1, -1]) css(svg.circle("7", [0.48 * x, 0.8]), "white");
-    svg.group("text", 80, "sans", "bold", "red", {"dominant-baseline": "middle"}).text(new Date().getDate(), [0, -0.3]);
+    svg.gtext(new Date().getDate(), ["sans", 80, "bold", "red"], [0, -0.3]);
     return svg.element.outerHTML;
 }
 

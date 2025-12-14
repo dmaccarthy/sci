@@ -7,7 +7,7 @@ roller: (sel) => {
         let wheels = g.group("black@2", {fill: "white"});
         wheels.circle(size / 8, [-0.3 * size, -size / 4]);
         wheels.circle(size / 8, [0.3 * size, -size / 4]);
-        return g.align(pos, 0.5, 1);
+        return g.ralign([...pos, 0.5, 1]);
     }
 
     let svg = new SVG2(sel, {size: [480, 300], lrbt: [-9, 11, -3]}).css(".RollerCoaster");
@@ -39,7 +39,7 @@ loopy: (sel) => {
     let svg = new SVG2(sel, {size: [300, 420], lrbt: [-1, 1, -1.45], grid: 0, margin: 2});
     svg.group("none", "black@1").circle(1);
     svg.group("black").circle("3");
-    svg.gtext("C", ["text", 24], [0, 0, -0.75, 0.5]);
+    svg.gtext("C", ["text", 24], [0.08, 0, "l"]);
     let red = svg.group("arrow");
     let g = svg.group("none", "black@2");
     for (let y of [-1, 1]) {
@@ -62,7 +62,7 @@ car: (sel) => {
 
 stick: (sel) => {
     let svg = new SVG2(sel, {size: [390, 400], lrbt: [-2, 2, -1.6]});
-    svg.stickman(1).align([0, 0], 0.5, 1);
+    svg.stickman(1).ralign([0, 0, 0.5, 1]);
     let c = [0, -4];
     svg.path(vec2d(4, 45).plus(c)).arc(c, 135).update().css({fill: "none", stroke: "black"});
     let g = svg.group().css("arrow");
@@ -75,7 +75,7 @@ stick: (sel) => {
 
 astro: (sel) => {
     let svg = new SVG2(sel, {size: [390, 330], lrbt: [-2, 2, -1.6]});
-    svg.stickman(1).align([0, 0], 0.5, 1);
+    svg.stickman(1).ralign([0, 0, 0.5, 1]);
     let c = [0, -4];
     svg.path(vec2d(4, 45).plus(c)).arc(c, 135).update().css({fill: "none", stroke: "black"});
     let g = svg.group().css("arrow");
@@ -130,7 +130,7 @@ book: (sel) => {
     let books = svg.group().config({theta: a}).css("black@1", {fill: "#32cd32"});
     books.rect(["20", "5"], [0, -1]);
     books.rect(["20", "5"], [0, -0.25]);
-    books.align([0, -0.99], 0.5, 1);
+    books.ralign([0, -0.99, 0.5, 1]);
 
     let g = svg.group().css("none", "black@3");
     g.circle(0.25);

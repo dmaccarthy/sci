@@ -16,7 +16,7 @@ earth: (sel) => {
     g.arrow({tail: [0, -x1], tip: [0, -x2]}, tail);
     g = svg.group("text");
     for (let [t, p] of [
-        ["Centre", [0.1, 0, 0, 0.5]],
+        ["Centre", [0.1, 0, "l"]],
         ["Radial", [0.93, 0.99]],
         ["Centripetal", [0.5, 0.43]],
         ["Tangential", [0.9, 0.43]],

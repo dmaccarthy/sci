@@ -1,7 +1,7 @@
 SVG2.cache("p20/dyn/img/adv.js", {
 
 fbd1: (sel) => {
-    let svg = new SVG2(sel, {size: [400, 240], lrbt: [-1.3, 1.7, -0.9]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [400, 240], lrbt: [-1.3, 1.7, -0.9]});
     let g = svg.group("black@2");
     let w = 0.15;
     g.line([-1.3, -w], [1.7, -w]);
@@ -13,16 +13,13 @@ fbd1: (sel) => {
     g.arrow({tip: [0, -v[1]]}, {tail: "7"});
     g.arrow({tip: v}, {tail: "7"});
 
-    g = svg.group("symbol", 28, "red");
-    let F = [["F", 1], SVG2.arr("20")];
-    let sub = [4, ["11", "-8"]];
-    g.symb(...F, ["1", ...sub]).align([0.6, -0.6]);
-    g.symb(...F, ["2", ...sub]).align([-0.3, 0.5]);
+    svg.mjax("\\vec{\\bf F}_1", null, [0.6, -0.6], "red");
+    svg.mjax("\\vec{\\bf F}_2", null, [-0.3, 0.5], "red");
 
 },
 
 fbd2: (sel) => {
-    let svg = new SVG2(sel, {size: [225, 300], lrbt: [-2.5, 72.5, 0, 100], margin: [0, 0, 2, 6]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [225, 300], lrbt: [-2.5, 72.5, 0, 100], margin: [0, 0, 2, 6]});
     let g = svg.group("black@1");
     g.line([20, 100], [70, 75]);
     g.rect([20, 100], [10, 50]).css({fill: "tan"});
@@ -36,18 +33,16 @@ fbd2: (sel) => {
     let i = 0;
     for (let [tail, tip] of data) g.arrow({tail: tail, tip: tip}, attr).css(`.Toggle${i++}`);
 
-    let [BD, SM, SM_IT] = [1, 4, 6];
-    g = svg.group("symbol", 28, "red");
     data = [["g", [55, 38]], ["t", [56, 95]], ["n", [27, 52]], ["f", [10, 75]]];
     i = 0;
     for (let [c, xy] of data)
-        g.symb(["F", BD], ["→", SM + BD, [0, "20"]], [c, SM_IT, ["10", "-6"]]).align(xy).css(`.Toggle${i++}`);
+        svg.group(`.Toggle${i++}`).mjax(`\\vec{\\bf F}_${c}`, null, xy, "red");
 
     svg.click_toggle(4);
 },
 
 fbd3: (sel, a) => {
-    let svg = new SVG2(sel, {size: [400, 300], lrbt: [-1, 1, -0.7], margin: 1}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [400, 300], lrbt: [-1, 1, -0.7], margin: 1});
     let applied = a == null;
     if (!a) a = 8;
     let p = new RArray(1, tan(a)), Fg = 0.6, Fn = Fg * cos(a), dy = 0.02;
@@ -87,12 +82,12 @@ fbd3: (sel, a) => {
 },
 
 sign: (sel) => {
-    let svg = new SVG2(sel, {size: [360, 180], lrbt: [-2, 2, -0.5, 1.5], margin: 1}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [360, 180], lrbt: [-2, 2, -0.5, 1.5], margin: 1});
     let g = svg.group({stroke: "black", "stroke-width": 4});
     g.line([-0.5, 0], [-2, 1.5]);
     g.line([0.5, 0], [2, 1.5]);
     svg.rect([2, 1], [0, 0]).css({fill: "#E0E0E0", stroke: "black", "stroke-width": 2});
-    g = svg.group("text", "#0065fe", {"font-weight": "bold"});
+    g = svg.group("sans", "#0065fe", {"font-weight": "bold"});
     g.gtext("Mr. Mac’s", {}, [0, 0.12]);
     g.gtext("House of Physics", {}, [0, -0.12]);
    
@@ -101,18 +96,13 @@ sign: (sel) => {
 sign_vec: (sel) => {
     let Fg = 491, F = Fg / root(2);
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(F, 45), vec2d(F, 135)], {lrbt: [-120, 300, -540, 30],
-        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]}).css(".NoStyle");
+        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]});
     svg.$.find(".Component, .Resultant").remove();
-    svg.gtext("N", "text", [270, -510]);
-
-    let [BD, SM, SM_IT] = [1, 4, 6];
-    let arr = ["→", SM + BD, [0, "20"]];
-    let sub = ["14", "-8"];
-    let g = svg.group("symbol", 28, "red");
-    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([30, -240]);
-    g.symb(["F", BD], arr, ["1", SM, sub]).align([150, -400]);
-    g.symb(["F", BD], arr, ["2", SM, sub]).align([150, -100]);
-    g = svg.group("text", "red");
+    svg.gtext("N", "sans", [270, -510]);
+    svg.mjax("\\vec{\\bf F}_g", null, [40, -240], "red");
+    svg.mjax("\\vec{\\bf F}_1", null, [150, -400], "red");
+    svg.mjax("\\vec{\\bf F}_2", null, [160, -100], "red");
+    let g = svg.group("sans", "red");
     g.gtext("45.0°", [], [30, -70], -67.5);
     g.gtext("90.0°", [], [180, -240]);
     g.gtext("45.0°", [], [30, 70 - Fg], 67.5);
@@ -123,17 +113,13 @@ sign_uneven: (sel) => {
     let F1 = Fg / sin(105) * sin(45);
     let F2 = Fg / sin(105) * sin(30);
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(F1, 60), vec2d(F2, 135)], {lrbt: [-120, 300, -540, 30],
-        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]}).css(".NoStyle");
+        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]});
     svg.$.find(".Component, .Resultant").remove();
-    svg.gtext("N", "text", [270, -510]);
-    let [BD, SM, SM_IT] = [1, 4, 6];
-    let arr = ["→", SM + BD, [0, "20"]];
-    let sub = ["14", "-8"];
-    let g = svg.group("symbol", 28, "red");
-    g.symb(["F", BD], arr, ["g", SM_IT, sub]).align([30, -240]);
-    g.symb(["F", BD], arr, ["1", SM, sub]).align([135, -330]);
-    g.symb(["F", BD], arr, ["2", SM, sub]).align([140, -80]);
-    g = svg.group("text", "red");
+    svg.gtext("N", "sans", [270, -510]);
+    svg.mjax("\\vec{\\bf F}_g", null, [40, -240], "red");
+    svg.mjax("\\vec{\\bf F}_1", null, [135, -330], "red");
+    svg.mjax("\\vec{\\bf F}_2", null, [140, -80], "red");
+    let g = svg.group("sans", "red");
     g.group().gtext("105.0°", {}, [120, -180]);
     g.group().config({theta: -67.5}).gtext("45.0°", {}, [75, 0]);
     g.group().config({theta: 75, pivot: [0, -Fg]}).gtext("30.0°", {}, [85, 1 - Fg]);
@@ -141,21 +127,23 @@ sign_uneven: (sel) => {
     
 pulley: (sel, fbd) => {
     let h = fbd ? 420 : 276;
-    let svg = new SVG2(sel, {size: [400, h], lrbt: [-12, 4, -10], margin: [0, 18, 1, 0]}).css(".NoStyle");
+    let svg = new SVG2(sel, {size: [400, h], grid: 0, lrbt: [-12, 4, -10], margin: [0, 18, 1, 0]});
 
     let c = [1, 0.5];
     let a = 10;
-    let black2 = {stroke: "black", "stroke-width": 2};
-    let black3 = {stroke: "black", "stroke-width": 3};
-    svg.line([0, 0], [0, -10]).css(black3);
-    svg.line([-12, -10], [5, -10]).css(black2);
+    css(svg.line([0, 0], [0, -10]), "black@3");
+    css(svg.line([-12, -10], [5, -10]), "black@2");
 
     let g = svg.group("black@1", "none").config({theta: a});
     g.circle(0.5, c).css({fill: "#d0d0ff"});
     g.line([-7, 1], [1, 1]);
-    g.line([0, 0], c).css(black2);
-    g.rect([4, 2], [-8, 1]).css({fill: "lightgrey"});
-    g.line([0, 0], [-12, 0]).css(black3);
+    css(g.line([0, 0], c), "black@2");
+    css(g.rect([4, 2], [-8, 1]), "lightgrey");
+    css(g.line([0, 0], [-12, 0]), "black@3");
+
+    c = transform({angle: a, deg:true}, c)[0].plus([0.5, 0]);
+    let x = c[0];
+    let y = c[1] - 3;
 
     let tail = {tail: "6"};
     if (fbd) {
@@ -164,42 +152,26 @@ pulley: (sel, fbd) => {
         v.arrow({tail: [-8, 2.2], length: 6*cos(10)}, tail, "tail").config({theta: 90});
         v.arrow({tail: [-10.2, 0.2], length: 1.5}, tail, "tail").config({theta: 180});
         v.arrow({tail: [-5.8, 1], length: 2}, tail, "tail");
+        svg.mjax("\\vec{\\bf F}_n", null, [-7.5, 5], "red");
+        svg.mjax("\\vec{\\bf F}_f", null, [-11, 0], "red");
+        svg.mjax("\\vec{\\bf F}_t", null, [-5, 2], "red");
     }
 
-    let [BD, IT, SM] = [1, 2, 4];
-    let sub = ["15", "-6"];
-    let subv = ["12", "-6"];
-    let arr = ["→", SM+BD, [0, "22"]];
-    g = g.group("symbol", 24, "black", {stroke: "none"});
-    g.symb(["y", IT]).align([-7.5, 8.5]);
-    g.symb(["m", IT], ["1", SM, sub]).align([-8, 1]);
-    if (fbd) {
-        g = g.group(28, "red");
-        g.symb(["F", BD], arr, ["n", SM+IT, subv]).align([-9, 5]);
-        g.symb(["F", BD], arr, ["f", SM+IT, subv]).align([-11, 2]);
-        g.symb(["F", BD], arr, ["t", SM+IT, subv]).align([-5, 2.7]);
-    }
-    
-    c = transform({angle: a, deg:true}, c)[0].plus([0.5, 0]);
-    let x = c[0];
-    let y = c[1] - 3;
+    let small = {scale: 0.75};
+    g.mjax("m_1", small, [-8, 1]);
+    svg.mjax("y", null, [-7.5, 8.5]);
+    svg.mjax("h", null, [4, (y - 11.5)/ 2]);
 
     g = svg.group("black@1");
     g.line(c, [x, y]);
-    g.rect([1.5, 3], [x, y]).css({fill: "lightgrey"});
+    css(g.rect([1.5, 3], [x, y]), "lightgrey");
     g.line([3, y - 1.5], [3, -10]);
-
-    g = svg.group("symbol", 24);
-    g.symb(["h", IT]).align([4, (y - 11.5)/ 2]);
-    g.symb(["m", IT], ["2", SM, sub]).align([x, y]);
-    if (fbd) {
-        g = g.group(28, "red");
-        g.symb(["F", BD], arr, ["g", SM+IT, subv]).align([-9, -4]);
-        g.symb(["F", BD], arr, ["g", SM+IT, subv]).align([2, -8]);
-        g.symb(["F", BD], arr, ["t", SM+IT, subv]).align([2, 2]);
-    }
+    svg.mjax("m_2", small, [x, y]);
 
     if (fbd) {
+        svg.mjax("\\vec{\\bf F}_g", null, [-9, -4], "red");
+        svg.mjax("\\vec{\\bf F}_g", null, [2, -8], "red");
+        svg.mjax("\\vec{\\bf F}_t", null, [3, 1.5], "red");
         g = svg.group("arrow");
         g.arrow({tail: [-8, -1.6], length: 6}, tail, "tail").config({theta: -90});
         g.arrow({tail: [x, -4], length: 3}, tail, "tail").config({theta: -90});

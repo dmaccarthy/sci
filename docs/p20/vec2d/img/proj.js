@@ -4,8 +4,8 @@ Q1: (sel) => {
     let land = root(25 / 9.81);
     let svg = new SVG2(sel, {size: [400, 400], lrbt: [0, 14, 0], margin: [40, 10, 28, 10]});
     svg.graph({grid: [1, 1],
-        x: {tick: [0, 15, 2], shift: [0, "-20"]},
-        y: {tick: [0, 15, 2], shift: ["-10", "-5"]},
+        x: {tick: [0, 15, 2], shift: [0, "-18"]},
+        y: {tick: [0, 15, 2], shift: ["-20", 0]},
         data: [{locus: [(t) => [8*t, 12.5 - 9.81/2 * t * t], [0, land]]}]
     });
     svg.gtext("m", "text", [13, 13]);

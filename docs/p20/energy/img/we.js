@@ -3,8 +3,8 @@ SVG2.cache("p20/energy/img/we.js", {
 work: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 20, -400, 400], margin: [68, 12, 12, 12]});
     svg.graph({grid: [1, 50],
-        x: {tick: [0, 21, 5], title: ["Position / m", [17, 25]], shift: [0, "-22"]},
-        y: {tick: [-400, 401, 100], title: ["Force / N", "-50"], shift: ["-10", "-4"]},
+        x: {tick: [0, 21, 5], title: ["Position / m", [17, 25]], shift: [0, "-18"]},
+        y: {tick: [-400, 401, 100], title: ["Force / N", "-50"], shift: ["-24", 0]},
         data: [
             {connect: [[0, 0], [5, 400], [10, 400], [20, -400]]},
         ]
@@ -47,8 +47,8 @@ work: (sel) => {
 tennis: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 80, 0, 90], margin: [58, 12, 54, 12]});
     svg.graph({grid: [5, 5],
-        x: {tick: [0, 81, 10], title: ["Position / cm", [40, "-44"]], shift: [0, "-22"]},
-        y: {tick: [0, 91, 10], title: ["Force / N", "-40"], shift: ["-10", "-4"]},
+        x: {tick: [0, 81, 10], title: ["Position / cm", [40, "-44"]], shift: [0, "-18"]},
+        y: {tick: [0, 91, 10], title: ["Force / N", "-40"], shift: ["-20", 0]},
         data: [{connect: [[0, 0], [40, 80], [50, 80], [75, 0]]}],
     });
 },

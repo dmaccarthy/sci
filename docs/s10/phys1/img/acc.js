@@ -7,12 +7,12 @@ vt: (sel) => {
     /* Label x-axis */
     let g = svg.group();
     g.tick_label(1, [...range(0, 2.1, 0.5)], 0, "-6", "-16");
-    g.text("Time / s", [1.75, "20"]);
+    g.text1("Time / s", [1.75, "20"]);
 
     /* Label y-axis */
     g.tick_label(0, 0, [...range(-21, -1, 3)], "-6", "-10");
     g = g.group().config({theta: 90, shift: ["-44", -10.5]});
-    g.text("Velocity / (m/s)");
+    g.text1("Velocity / (m/s)");
 
     /* Plot data */
     let a = -9.75;

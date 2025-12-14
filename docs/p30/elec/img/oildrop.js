@@ -2,16 +2,8 @@ SVG2.cache("p30/elec/img/oildrop.js", {
 
 distr: (sel) => {
     let svg = new SVG2(sel, {size: [512, 160], lrbt: [0, 20, 0, 2], grid: 2, margin: [8, 16, 60, 8]});
-    svg.css(".NoStyle", "text");
-    svg.tick_label(0, [...range(0, 21, 2)], 0, "-6", "-20");
-    $(svg.$.find("g.Grid line.Axis")[0]).removeClass("Axis");
-
-    let txt = svg.group().addClass("Text");
-    // txt.text("Charge / 10^-19 C", [10, "-44"]);
-    txt.text("Charge / 10");
-    txt.text("–19", ["62", "12"]).addClass("Small");
-    txt.text("C", ["84", 0]);
-    txt.align([10, "-44"]);
+    svg.ticks({x: [0, 21, 2], size: ["-6", 0], label: 0, css: ["mono", 15], shift: "-8"});
+    svg.mjax("\\rm Charge / (10^{-19}\\ C)", {scale: 0.7}, [10, "-44"]);
 
     let makeData = () => {
         let err = makeData.err;
