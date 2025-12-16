@@ -276,7 +276,11 @@ ellipse(r, posn, selector) {
 static _anchor(posn) {
     if (posn == null) posn = [0, 0];
     if (posn.length == 4) return posn;
-    if (posn[0] instanceof Array) return [...posn[0], ...posn[1]];
+    if (posn.length == 3) return [posn[0], posn[1], ...SVG2.parse_anchor(posn[2])];
+    if (posn[0] instanceof Array) {
+        let a = typeof(posn[1]) == "string" ? SVG2.parse_anchor(posn[1]) : posn[1];
+        return [...posn[0], ...a];
+    }
     return [...posn, 0.5, 0.5];
 }
 
@@ -727,25 +731,6 @@ coord_from_parent(xy) {
 
 class SVG2text extends SVG2g {
 
-static _align(s) {
-    s = SVG2text._alignmap[s.trim().toLowerCase()];
-    return {"text-anchor": ["middle", "start", "end"][s & 3], "dominant-baseline": ["middle", "hanging", "auto"][(s & 12) / 4]};
-}
-
-static _make_map = () => {
-    let [h, v] = [["left", "right"], ["top", "bottom"]];
-    let map = {};
-    for (let i=0;i<2;i++) for (let j=0;j<2;j++) {
-        let h1 = h[i], v1 = v[j], h0 = h1.charAt(0), v0 = v1.charAt(0);
-        map[h0] = map[h1] = i + 1;
-        map[v0] = map[v1] = 4 * (j + 1);
-        map[h0+v0] = map[h0+v1] = map[h1+v1] = map[h1+v0] =
-        map[v0+h0] = map[v1+h0] = map[v1+h1] = map[v0+h1]
-            = (i + 1) + 4 * (j + 1);
-    }
-    SVG2text._alignmap = map;
-}
-
 constructor(g, text, posn, theta, css) {
     super(g);
     let xy = posn == null ? [0, 0] : [posn[0], posn[1]];
@@ -754,8 +739,8 @@ constructor(g, text, posn, theta, css) {
     else if (css) this.css(css);
     let svg = this.svg;
     let e = this._text$ = this.create_child("text");
-    let anchor = posn && posn.length > 2 ? posn[2] : "";
-    e.html(text).css(SVG2text._align(anchor));
+    let anchor = SVG2.parse_anchor(posn && posn.length > 2 ? posn[2] : "", 1);
+    e.html(text).css(anchor);
     let [x, y] = svg.a2p(0, 0);
     let f = (x) => x.toFixed(svg.decimals);
     e.attr({x: f(x), y: f(y)});
@@ -767,7 +752,7 @@ set text(t) {this._text$.html(t)}
 
 }
 
-SVG2text._make_map();
+// SVG2text._make_map();
 
 
 class SVG2arrow extends SVG2g {
@@ -1048,6 +1033,33 @@ constructor(selector, options) {
 }
 
 static async sleep(t) {await new Promise(r => setTimeout(r, t))}
+
+static parse_anchor(s, obj) {
+    let x = 0;
+    [x, s] = SVG2._parse_anchor(s);
+    if (s.length) x += SVG2._parse_anchor(s)[0];
+    let [h, v] = [x & 3, (x & 12) / 4];
+    if (obj) {
+        let obj = {};
+        obj["text-anchor"] = ["middle", "start", "end"][h];
+        obj["dominant-baseline"] = ["middle", "auto", "hanging"][v];
+        return obj;
+    }
+    return [h == 1 ? 0 : (h == 2 ? 1 : 0.5), v == 1 ? 1 : (v == 2 ? 0 : 0.5)];
+}
+
+static _parse_anchor(s) {
+    let a = ["left", "right", "bottom", "top"];
+    let v = 1;
+    s = s.trim().toLowerCase();
+    for (let i=0;i<a.length;i++) {
+        let ai = a[i];
+        if (s.substring(0, ai.length) == ai) return [v, s.substring(ai.length)];
+        if (s.charAt(0) == ai.charAt(0)) return [v, s.substring(1)];
+        v *= 2;
+    }
+    return [0, s];
+}
 
 get size() {
     let e = this.$;

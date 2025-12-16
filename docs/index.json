@@ -4,6 +4,7 @@
 "circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2025.12.12", "a": "2025.12.16", "h": ["1fqMM5ic06x89f7JBMBXIacbQq8YcBof3", ["Lab Handout", "1-jnHSM_u6Id-91RZKC7DWkwdgOvFyw5p"]]},
 "circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2025.12.15"},
 "circ/ac": {"t": "@Centripetal Acceleration", "n": "5.2", "s": "2025.12.16", "a": "2025.12.17", "h": "1tmxkh7RP9_0NDxKb4Yc-SMVUhVnZEkYx"},
+"circ/appWt": {"t": "@Apparent Weight", "n": "5.3", "s": "2025.12.17", "a": "2025.12.18", "h": "1BynMTR5Fill11MkxeQzhGfkj_kxWe-hl"},
 "circ/@": {"t": "@", "n": "5.", "s": "2025.12", "a": "2025.12", "h": "_"},
 "circ/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "5.5", "s": "2025.12.18", "a": "2025.12.19", "h": "_"},
 "q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2026.1.6", "css": {"font-weight": "bold"}},
@@ -93,6 +94,8 @@
     ["Cell Analogy", {"gdrv": "_", "show": "2027"}]
 ]},
 "bio1/org#": {"t": "Lab: Observing the Cell", "s": "2025.12.15"},
+"bio2/memb": {"t": "@Biological Membranes", "n": "B04", "s": "2025.12.16", "a": "2025.12.17", "h": "1anNxutnQaWIwAKV-hJ9G-LZI0GhUfZOz"},
+"bio2/pass": {"t": "@Passive Transport", "n": "B05", "s": "2025.12.17", "a": "2025.12.18", "h": "1jLcEIERl0Csh54aYx3sHH1HDHU0itiXt"},
 "bio2/@": {"t": "@", "n": "B0", "s": "2025.12", "a": "2025.12", "h": "_"},
 "qb1/@": {"t": "Quiz: Cells & Transport (Chapters 7 & 8)", "s": "2026.1.6", "css": {"font-weight": "bold"}},
 "qb2/@": {"t": "Quiz: Plant Systems (Chapters 9)", "s": "2026.1.12", "css": {"font-weight": "bold"}},

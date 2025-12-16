@@ -44,29 +44,31 @@ body.Present #delta_v {
 </section>
 
 <section class="Slide"><h3 class="Blue">Example 1</h3>
-<p data-cue="none" class="Blue">A satellite orbiting at a radius of 7000 km experiences a centripetal acceleration of 8.14 m/s<sup>2</sup>. Calculate the orbital speed and period of the satellite.</p>
+<p data-cue="none" class="Blue">A satellite orbiting at a radius of 7000 km experiences a centripetal acceleration of 8.13 m/s<sup>2</sup>. Calculate the orbital speed and period of the satellite.</p>
 <p class="TeX">a_c = \frac{v^2}{r}</p>
 <p class="TeX">a_c r = v^2</p>
 <p class="TeX">v = \sqrt{a_c r}</p>
-<p class="TeX">v = \rm{\sqrt{8.14\ m/s^2\cdot 7.00\times 10^6\ m}}</p>
-<p class="TeX">v = \rm{7.55\times 10^3\ m/s}</p>
+<p class="TeX">v = \rm{\sqrt{8.13\ m/s^2\cdot 7.00\times 10^6\ m}}</p>
+<p class="TeX">v = \rm{7.54\times 10^3\ m/s}</p>
 <p class="TeX">v = {2\pi r\over T}</p>
 <p class="TeX">vT = 2\pi r</p>
 <p class="TeX">T = {2\pi r\over v}</p>
-<p class="TeX">T = \rm{{2\pi\cdot 7.00\times 10^6\ m\over 7.55\times 10^3\ m/s}}</p>
-<p class="TeX">T = \rm{5827\ s = 1.62\ h}</p>
+<p class="TeX">T = \rm{{2\pi\cdot 7.00\times 10^6\ m\over 7.54\times 10^3\ m/s}}</p>
+<p class="TeX">T = \rm{5830\ s = 1.62\ h}</p>
 </section>
 
 <section class="Slide"><h3 class="Blue">Example 2</h3>
 <p data-cue="none" class="Blue">A curve on the highway has a radius of 250 metres. After an ice storm, the road is slippery and the coefficient of friction is 0.100. Assuming the road is unbanked (horizontal), what is the fastest safe speed for a car to move through the curve?</p>
 <p>Because the road is unbanked, the normal and gravity forces balance:</p>
-<p class="TeX">F_n = F_g = mg</p>
+<p data-cue="prev" class="TeX">F_n = F_g = mg</p>
 <p>The only unbalanced force is friction:</p>
-<p class="TeX">F_f = ma = \mu F_n = \mu mg</p>
+<p data-cue="prev" class="TeX">F_f = ma</p>
+<p class="TeX">\mu F_n = ma</p>
+<p class="TeX">\mu mg = ma</p>
 <p>Divide by <span class="TeX">m</span>:</p>
-<p class="TeX">a = \mu g = \rm 0.100\cdot 9.81\ m/s^2 = 0.981\ m/s^2</p>
+<p data-cue="prev" class="TeX">a = \mu g = \rm 0.100\cdot 9.81\ m/s^2 = 0.981\ m/s^2</p>
 <p>The equation for centripetal acceleration is:</p>
-<p class="TeX">a_c = \frac{v^2}{r}</p>
+<p data-cue="prev" class="TeX">a_c = \frac{v^2}{r}</p>
 <p class="TeX">a_c r = v^2</p>
 <p class="TeX">v = \sqrt{a_c r} = \rm \sqrt{0.981\ m/s^2\cdot 250\ m} </p>
 <p class="TeX">v = \rm 15.7\ m/s = 56.4\ km/h</p>
@@ -75,14 +77,14 @@ body.Present #delta_v {
 <section class="Slide"><h3 class="Blue">Example 3</h3>
 <p data-cue="none" class="Blue">What would happen to a car that tried to take the curve at 25.0 m/s?</p>
 <p>Solve for the radius:</p>
-<p class="TeX">a_c = \frac{v^2}{r}</p>
+<p data-cue="prev" class="TeX">a_c = \frac{v^2}{r}</p>
 <p class="TeX">a_c r = v^2</p>
 <p class="TeX">r = \frac{v^2}{a_c} = \rm \frac{(25.0\ m/s)^2}{0.981\ m/s^2} = 637\ m</p>
 <p>Since the radius of the car’s motion is much larger than the radius of the road, the car will slide to the outside and end up in the ditch!</p>
 </section>    
 
 <section class="Slide"><h3>Connection to SHM</h3>
-<p data-cue="none">The equations for UCM are similar to the equations for SHM:</p>
+<p data-cue="none">The equations for UCM are similar to the equations for Simple Harmonic Motion:</p>
 <p class="TeX" data-cue="none">v = \frac{2\pi r}{T}</p>
 <p class="TeX" data-cue="none">a_c = \frac{v^2}{r} = \frac{4\pi^2 r}{T^2}</p>
 <p>The reason is that when an object is moving in a circle with constant speed, its <span class="TeX">x</span> and <span class="TeX">y</span> coordinates, viewed individually, will appear like SHM, and can be described by <span class="TeX">\sin</span> or <span class="TeX">\cos</span> functions...</p>
@@ -235,7 +237,7 @@ body.Present #delta_v {
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "p20/home", prev: "p20/circ/ucm", //next: "p20/circ/appWt",
+loadFeed.data = {up: "p20/home", prev: "p20/circ/ucm", next: "p20/circ/appWt",
 }
 
 </script>
