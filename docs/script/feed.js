@@ -299,10 +299,18 @@ function initFeed() {
     }
 
     // Restore collapsed/expanded state
-    $("section.Post div.Collapse:not(.Expand)").hide();
-    let div = $("div.Collapse");
-    let toggle = collapse.toggled[loadFeed.current];
-    for (let i of toggle) $(div[i]).toggle();
+    let posts = $("section.Post");
+    let div = posts.find("div.Collapse");
+    let s = qs_args("section");
+    if (s) {
+        div.hide();
+        $(posts[parseInt(s)]).find("div.Collapse").show();
+    }
+    else {
+        div.filter(":not(.Expand)").hide();
+        let toggle = collapse.toggled[loadFeed.current];
+        for (let i of toggle) $(div[i]).toggle();
+    }
 
     // Finalize layout
     $("#Main").css("visibility", "visible");
