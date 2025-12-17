@@ -6,7 +6,7 @@
 "circ/ac": {"t": "@Centripetal Acceleration", "n": "5.2", "s": "2025.12.16", "a": "2025.12.17", "h": "1tmxkh7RP9_0NDxKb4Yc-SMVUhVnZEkYx"},
 "circ/appWt": {"t": "@Apparent Weight", "n": "5.3", "s": "2025.12.17", "a": "2025.12.18", "h": "1BynMTR5Fill11MkxeQzhGfkj_kxWe-hl"},
 "circ/kep": {"t": "@Planetary Motion (Kepler’s Laws)", "n": "5.4", "s": "2025.12.18", "a": "2025.12.19", "h": "19gbWFSF_t6JuXRnOtJaC5km_jHWsBiQ9"},
-"circ/orbit": {"hide": 1, "t": "@Circular Orbital Motion", "n": "5.5", "s": "2025.12.19", "a": "2025.12.22", "h": "_"},
+"circ/orbit": {"t": "@Circular Orbital Motion", "n": "5.5", "s": "2025.12.19", "a": "2025.12.22", "h": "17kz0ZZpXtGTPGYb9vHXf7PJzJYxlGT-8"},
 "q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2026.1.8", "css": {"font-weight": "bold"}},
 "uC/@": {"t": "Unit C Exam", "s": "2026.1.12", "css": {"font-weight": "bold"}},
 

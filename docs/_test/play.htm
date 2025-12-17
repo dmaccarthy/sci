@@ -8,16 +8,18 @@ loadFeed.x1 = () => {
     let font = ["mono", 14, "red"];
     let svg = new SVG2("#Draw", {lrbt: [-2, 10, -2, 10], margin: 2, grid: 1, scale: [24, 18]});
     let g1 = svg.group();
-    let g = g1.group().config({pivot: [3, 3], theta: 0, shift: [2, -2]});
+    let g = g1.group().config({pivot: [3, 3], omega: 10, shift: [2, -2], animated: true});
     g.text("Testing world!", [0, 1, "left"], 0, font);
-    SVG2.sleep(2000).then(() => {
+    SVG2.sleep(100).then(() => {
         // g.align([5, 1]);
-        g.draw_bbox(0, 3);
+        g.draw_bbox(1).css("#0065fe");
+        g.draw_bbox(0, 0).css("red");
     });
     // let db = (n) => g.draw_bbox(n, 3).css(n ? "#0065fe" : "red", "none@");
     // setTimeout(() => {db(1); db(0)}, 2000);
     // font[2] = "#0065fe";
     // g = svg.text("Testing world!", [2, 2, "topright"], -45, font);
+    svg.play();
 }
 
 loadFeed.graph = () => {

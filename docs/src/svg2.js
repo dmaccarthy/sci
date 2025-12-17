@@ -69,8 +69,13 @@ get bbox_cs() {
 
 draw_bbox(orig, draw) {
 /* Draw the transformed or original bounding rectangle and pivot point*/
-    let b = this.bbox_cs;
     let g = (orig ? this.svg : this).group();
+    if (!draw) {
+        css(g.circle("3", this.pivot));
+        draw = 1;
+    }
+    // else draw = 3;
+    let b = this.bbox_cs;
     if (draw & 1) css(g.rect([b.width, b.height], [b.x, b.y, "tl"]), {"fill-opacity": 0.2});
     if (draw & 2) css(g.circle("3", this.pivot));
     return g.css({"fill-opacity": 0.7});
@@ -1324,9 +1329,9 @@ update(dt) {
     if (this.beforeupdate) this.beforeupdate.call(this);
     for (let item of this.items) {
         try {
-            if (item.beforeupdate) item.beforeupdate(item);
+            if (item.beforeupdate) item.beforeupdate(); // item
             item.update(dt);
-            if (item.afterupdate) item.afterupdate(item);
+            if (item.afterupdate) item.afterupdate(); // item
         } catch(err) {console.warn(err)}
     }
     this.time += dt;

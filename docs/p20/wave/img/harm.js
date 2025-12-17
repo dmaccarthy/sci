@@ -27,7 +27,7 @@ ray: (sel) => {
         w.circle(2*i);
     }
 
-    svg.beforeupdate = function(a) {
+    svg.beforeupdate = function() {
         let t = w.svg.time;
         let waves = w.$.find("circle");
         for (let c of waves) {
