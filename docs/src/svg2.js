@@ -54,31 +54,69 @@ css(...rules) {
     return this;
 }
 
-ralign(posn, dim) {
-/* Align the element based on its bounding box */
+get bbox_px() {return this.element.getBBox()}
+
+get bbox_cs() {
+/* Get bounding box prior to rotation or shift */
+    let svg = this.svg;
+    let b = this.element.getBBox();
+    let xy0 = new RArray(b.x, b.y);
+    let xy1 = xy0.plus([b.width, b.height]);
+    xy0 = svg.p2a(...xy0);
+    xy1 = svg.p2a(...xy1);
+    return {x: xy0[0], y: xy0[1], width: Math.abs(xy1[0] - xy0[0]), height: Math.abs(xy1[1] - xy0[1])};
+}
+
+draw_bbox(orig, draw) {
+/* Draw the transformed or original bounding rectangle and pivot point*/
+    let b = this.bbox_cs;
+    let g = (orig ? this.svg : this).group();
+    if (draw & 1) css(g.rect([b.width, b.height], [b.x, b.y, "tl"]), {"fill-opacity": 0.2});
+    if (draw & 2) css(g.circle("3", this.pivot));
+    return g.css({"fill-opacity": 0.7});
+}
+
+align(posn, dim) {
+/* Align the group based on its bounding box */
     if (posn == null) {
         posn = this._aligned_posn;
         if (posn == null) return this;
         [posn, dim] = posn;
     }
-    let svg = this.svg;
-    let x, y;
-    let box = this.element.getBBox();
-    let [w, h] = [box.width, box.height];
-    if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
-    [w, h, x, y] = this.rect_xy([w.toFixed(2), h.toFixed(2)], posn);
-    if (dim == "x") y = box.y;
-    else if (dim == "y") x = box.x;
-    let [dx, dy] = new RArray(x,y).minus([box.x, box.y]);
-    this.config({_aligned_posn: [posn, dim], shift: [dx / svg.scale[0], dy / svg.scale[1]]});
-    return this.update_transform();
+    let [x, y, ax, ay] = SVG2._anchor(posn);
+    let [sx, sy] = this.svg.scale;
+    let b = this.bbox_cs;
+    if (dim) dim = dim.trim().toLowerCase();
+    if (dim != "y") x -= ax * b.width * (sx < 0 ? -1 : 1);
+    if (dim != "x") y -= ay * b.height * (sy < 0 ? -1 : 1);
+    return this.config({_aligned_posn: [posn, dim], shift: [x - b.x, y - b.y]}); //.shift_by();
 }
+
+// ralign(posn, dim) {
+// /* Align the element based on its bounding box */
+//     if (posn == null) {
+//         posn = this._aligned_posn;
+//         if (posn == null) return this;
+//         [posn, dim] = posn;
+//     }
+//     let svg = this.svg;
+//     let x, y;
+//     let box = this.element.getBBox();
+//     let [w, h] = [box.width, box.height];
+//     if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
+//     [w, h, x, y] = this.rect_xy([w.toFixed(2), h.toFixed(2)], posn);
+//     if (dim == "x") y = box.y;
+//     else if (dim == "y") x = box.x;
+//     let [dx, dy] = new RArray(x,y).minus([box.x, box.y]);
+//     this.config({_aligned_posn: [posn, dim], shift: [dx / svg.scale[0], dy / svg.scale[1]]});
+//     return this.update_transform();
+// }
 
 realign_text(t, n) {
     clearTimeout(this.realign_text_timeout);
     if (n == null) n = 10;
     if (t !== false) for (let g of this.find_all("g")) {
-        if (g._aligned_posn && g.$.find("text").length) console.log(g.ralign());
+        if (g._aligned_posn && g.$.find("text").length) console.log(g.align());
     }
     if (t && n > 1) this.realign_text_timeout = setTimeout(() => this.realign_text(t, n-1), t);
 }
@@ -285,6 +323,7 @@ static _anchor(posn) {
 }
 
 rect_xy(size, posn) {
+/* Get bounding rectangle in pixel coordinates */
     let [x, y, ax, ay] = SVG2._anchor(posn);
     let svg = this.svg;
     let w = this._px(size[0], 0);
