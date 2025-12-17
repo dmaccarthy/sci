@@ -44,7 +44,7 @@ loadFeed.sim = () => {
 
     let size = new RArray(534.16, 408.55).times(0.042);
     let castle = svg.castle = svg.group(".Castle");
-    castle.image("p20/vec2d/img/castle.svg", size).then(() => castle.ralign([175, 0, 0.5, 0.7]));
+    castle.image("p20/vec2d/img/castle.svg", size).then(() => castle.align([175, 0, 0.5, 0.7]));
 
     svg.gradient("Platform", "lightgrey", "grey", 100, 40, 0, 60);
     svg.platform = svg.group("black@1", {fill: "url(#Platform)"});
@@ -58,7 +58,7 @@ loadFeed.sim = () => {
     svg.cannon = g = svg.group("none");
     g.image("p20/vec2d/img/cannon.svg", size);
     css(g.circle(2.5), ".Wheel", "brown@2");
-    g.ralign([0, 0, 0.5, 1]);
+    g.align([0, 0, 0.5, 1]);
 
     loadFeed.sim.elevate();
 
@@ -72,7 +72,7 @@ loadFeed.sim = () => {
             svg.done = true;
             svg.pause();
         }
-        b.ralign([y < 0 ? [b.landing, 0] : [x, y], [0.5, 0.5]]);
+        b.align([y < 0 ? [b.landing, 0] : [x, y], [0.5, 0.5]]);
         svg.clock.text = `${t.toFixed(2)} sec`
     };
 
@@ -108,8 +108,8 @@ loadFeed.sim.launchAngle = () => {
     let v = svg.ball.initVel = vec2d(svg.vi, a);
     let vf = -root(v[1] * v[1] + 2 * y * 9.81);
     let t = (v[1] - vf) / 9.81;
-    svg.ball.ralign([0, y], 0.5, 0.5).config({hang: t, landing: v[0] * t});
-    svg.cannon.ralign([0, y], 0.5, 0.5);
+    svg.ball.align([0, y], 0.5, 0.5).config({hang: t, landing: v[0] * t});
+    svg.cannon.align([0, y], 0.5, 0.5);
 
     let p = svg.parab;
     if (p) p.config({animated: false}).$.remove();

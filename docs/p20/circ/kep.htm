@@ -4,7 +4,7 @@
 </section>
 
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Planetary Motion (Kepler’s Laws)</h1>
@@ -78,19 +78,36 @@
     <p class="TeX">r_2 = \rm \left(\frac{0.250\ {\bcancel d}}{12.0\ {\bcancel d}}\right)^{2/3} 8.00\times 10^8\ m = 6.06 \times 10^7\ m</p>
 </section>    
 
-
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Planetary Motion (Kepler’s Laws)</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
 </div></section>
 
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Data Analysis</h2><div class="Collapse">
+<ol><li>The data table below, from <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/" target="NASA">NASA</a>, shows the orbital radius and period of the six innermost planets. The radius of Earth’s orbit is defined as one <em class=Defn">astronomical unit</em> (au) and the orbits of the other planets are given in au as well.
+
+<table class="Three Center TD6 Top Bottom">
+    <tr><th>Planet</th><th>Orbital Radius<br/><span class="TeX">r\ /\ \rm au</span></th><th>Orbital Period<br/><span class="TeX">T\ /\ \rm yr</span></th></tr>
+    <tr><td>Mercury</td><td>0.387</td><td>0.242</td></tr>
+    <tr><td>Venus</td><td>0.723</td><td>0.617</td></tr>
+    <tr><td>Earth</td><td>1.00</td><td>1.00</td></tr>
+    <tr><td>Mars</td><td>1.52</td><td>1.89</td></tr>
+    <tr><td>Jupiter</td><td>5.20</td><td>11.9</td></tr>
+    <tr><td>Saturn</td><td>9.58</td><td>29.5</td></tr>
+</table>
+
+<ol type="a">
+    <li>Enter the data into your graphing calculator and use a <em>power regression</em> to determine an equation that models the data.</li>
+    <li>Use the exponent from your regression equation (round to three significant digits) to transform the data.</li>
+    <li>Graph the transformed data and add a best-fit line.</li>
+    <li>Calculate the slope of your best-fit line and write the model equation. Include units!</li>
+    <li>Square both sides of your equation to make all exponents into whole numbers.</li>
+</ol>
+</li></ol>
 </div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
-    <li>An unidentified object, possibly a comet or dwarf planet, orbits our Sun with a mean orbital radius of 8.32 × 10<sup>12</sup> m. Calculate the object’s orbital period. [Hint: Express the mean orbital radius in au first.]</li>
+    <li>An unidentified object, possibly a comet or dwarf planet, orbits our Sun with a mean orbital radius of 8.32 × 10<sup>12</sup> m. Use Kepler’s 3<sup>rd</sup> Law to calculate the object’s orbital period. [Hint: Express the mean orbital radius in au first.]</li>
     <div class="Answer">
         <p class="TeX">r = \rm \frac{8.32\times 10^{12}\ m}{1.496\times 10^{11}\ m/au} = 55.6\ au</p>
         <p class="TeX">T = \sqrt{kr^3} = \rm \sqrt{1.00\ \frac{yr^2}{au^3}\cdot (55.6\ au)^3} = 415\ yr</p>
@@ -112,7 +129,7 @@
 
     <li>An interstellar spacecraft discovers a planet orbiting a nearby star with an orbital radius of 7.21 × 10<sup>11</sup> m and a period of 206 days.
     <ol type="a">
-        <li>What is the “Kepler coefficient” for this star?</li>
+        <li>What is the “Kepler coefficient” (<span class="TeX">k</span>) for this star?</li>
         <div class="Answer">
             <p class="TeX">T^2 = kr^3</p>
             <p class="TeX">k = \frac{T^2}{r^3} = \rm \frac{(206\ d)^2}{(7.21\times 10^{11}\ m)^3} = 1.13\times 10^{-31}\ d^2/m^3</p>
@@ -162,35 +179,70 @@
             <p class="TeX">r_2 = \rm 1.82\times 10^6\ m \left(\frac{24.0\ h}{1.93\ h}\right)^{2/3} = 9.77\times 10^6\ m</p>
         </div>
     </ol></li>
-</ol>
+<!-- </ol>
 </div></div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
     <li>Explain the difference between geocentric and heliocentric models of the solar system, and why Copernicus believed the heliocentric model is correct.</li>
+    <p class="Answer">Geocentric models have a stationary Earth at the centre. Heliocentric models have the Sun at the centre with Earth orbiting like the other planets do. The retrogradem otion of Mars, when observed from Earth, is one of the main reasons Copernicus favoured a heliocentric model.</p>
 
     <li>Define:<ol type="a">
         <li>Ellipse</li>
+        <p class="Answer">A circle that has been stretched in one dimension.</p>
+
         <li>Major and Semi-major Axis</li>
+        <p class="Answer">The longest axis of the ellipse is called the major axis. The semi-major axis is <em>half</em> of the major axis, i.e. from the centre to one endpoint.</p>
+
         <li>Minor and Semi-minor Axis	</li>
-        <li>Focus</li>
+        <p class="Answer">The smaller diameter, perpendicular to the major axis, is called the minor axis. Half of the minor axis is the semi-minor axis.</p>
+
         <li>Eccentricity</li>
+        <p class="Answer">The “stretchiness” of an ellipse; the eccentricity gets larger as the ratio of the major to minor axes increases.</p>
+
+        <li>Focus</li>
+        <p class="Answer">A specific point on the major axis that gets more off-centre as the eccentricity increases.</p>
+
         <li>Perihelion (Perigee, Periapsis)</li>
+        <p class="Answer">The point where the major axis intersects the ellipse that is closest to the focus where the central mass (e.g. the Sun) is located.</p>
+
         <li>Aphelion (Apogee, Apoapsis)	</li>
+        <p class="Answer">The point where the major axis intersects the ellipse that is farthest from the focus where the central mass (e.g. the Sun) is located.</p>
+
         <li>Astronomical Unit</li>
+        <p class="Answer">A unit of distance equal to the mean orbit radius (and semi-major axis) of Earth’s orbit.</p>
+    
+        <!-- <li>Geosynchronous</li>
+        <p class="Answer">An orbit around Earth with a period that matches one Earth day (24 hours).</p>
+
+        <li>Geostationary</li>
+        <p class="Answer">A geosynchronous orbit directly above the equator will have the effect that the satellite remains stationary relative to the ground.</p> -->
+
     </ol></li>
 
     <li><ol type="a">
         <li>Explain Kepler’s 1st, 2nd, and 3rd Laws of Planetary Motion. Include a diagram to illustrate.</li>
-        <li>Explain the terminology mean orbital radius.</li>
+        <p class="Answer">See notes.</p>
+    
+        <li>Explain the terminology <em class="Defn">mean orbital radius</em>.</li>
+        <p class="Answer">The separation of the orbiting planet from the Sun changes, being smallest at perihelion and largest at aphelion. The average of these distances equals the semi-major axis.</p>
+    
         <li>State two different forms for writing the equation for Kepler’s 3rd Law. What are the advantages of each form?</li>
-        <li>What are the assumptions of Kepler’s Laws? Under what circumstances do Kepler’s Laws not apply? </li>
+        <div class="Answer">
+            <p class="TeX">T^2=kr^3</p>
+            <p>This is most useful for our own solar system when the value of <span class="TeX">k</span> is exactly 1 when using au and years as the units of distance and time.</p>
+            <p class="TeX">\left(\frac{T_2}{T_1}\right)^2 = \left(\frac{r_2}{r_1}\right)^3</p>
+            <p>This is useful for any two objects orbiting the same star or planet. We can use any units we want (as long as we use the same for both objects) because all units will cancel.</p>
+        </div>
+    
+        <li>What are the assumptions of Kepler’s Laws? Under what circumstances do Kepler’s Laws not apply?</li>
+        <p class="Answer">There must be one central object that contains nearly all the mass of the system, and the central object’s gravity must be the only force acting on the orbiting objects. Kepler’s Laws would not apply to systems with double stars, or to objects experiencing an applied force (rocket thrust) or air resistance (moving inside an atmosphere).</p>
     </ol></li>
 </ol>
-</div></section>
+</section>
 
-<section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
+<!-- <section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
     <h2 class="Collapse">Links &amp; Handouts</h2><div class="Collapse">
     <p class="Var">handouts</p>
     <p class="BtnGrid">
@@ -199,18 +251,11 @@
         <button data-icon="https://d3ufh70wg9uzo4.cloudfront.net/favicon.ico" data-open="https://stellarium-web.org/">Stellarium</button>
         <button data-icon="gdrv" data-gdrv="1RKU3L4bG_5mQrDuAhXK2uv0DGSttWO8u">Assignment</button>
     </p>
-</div></section>
+</div></section> -->
 
 <script type="text/javascript">
 
-loadFeed.data = {
-    title: `${siteData.lesson}5.4 — Planetary Motion (Kepler’s Laws)`,
-    showDate: "2025.5.7",
-    answerDate: "2025.5.9",
-    num: "5.4",
-    up: "p20/home",
-    prev: "p20/circ/appWt",
-    next: "p20/circ/rev",
+loadFeed.data = {up: "p20/home", prev: "p20/circ/appWt", next: "p20/circ/orbit",
 }
 
 </script>

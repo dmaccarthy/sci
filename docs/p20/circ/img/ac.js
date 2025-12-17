@@ -67,7 +67,7 @@ merry: (sel) => {
     let g = svg.group("silver");
     g.rect([1, 8], [0, 4]);
     g.rect([18, 0.6], [0, 1]);
-    svg.stickman(2.7).ralign([-8, 1.3, 0.5, 1]);
+    svg.stickman(2.7).align([-8, 1.3, 0.5, 1]);
     g = svg.group("sans");
     g.gtext("Icy Platform", [], [5, 2]);
     g.gtext("Bungee Cord", [], [-4, 3.3]);

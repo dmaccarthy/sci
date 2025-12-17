@@ -4,7 +4,7 @@ archer: (sel) => {
     let svg = new SVG2(sel, {scale: 64, grid: 0, lrbt: [-1, 7, -0.1, 2.1]});
     svg.group("black@3", "none").line([-2, 0], [12, 0]);
     let g = svg.group("black@2", "none");
-    g.stickman(2).ralign([0, 0, 0.5, 1]);
+    g.stickman(2).align([0, 0, 0.5, 1]);
     let c = new RArray(6, 0.8);
     g.poly([c.plus([-0.4, -0.8]), c, c.plus([0.4, -0.8])]);
     g.circle(0.4, c).css({fill: "#a0a0ff"});

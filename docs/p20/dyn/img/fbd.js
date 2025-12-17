@@ -97,7 +97,7 @@ Q3: (sel) => {
 Q7: (sel) => {
     let svg = new SVG2(sel, {size: [360, 250], lrbt: [-4, 5, -2.8]});
     css(svg.line([-4.1, 0], [5.1, 0]), "black@3");
-    svg.cylinder([1, 0.2], 0.5).css("grey", "black@1").ralign([0, 0.25]);
+    svg.cylinder([1, 0.2], 0.5).css("grey", "black@1").align([0, 0.25]);
     let g = svg.group("arrow");
     let t7 = {tail: "7"};
     g.arrow({tail: [0, 1], tip: [0, 3]}, t7);

@@ -3,7 +3,7 @@ SVG2.cache("p20/wave/img/dopp.js", {
 Q1: (sel) => {
     let svg = new SVG2(sel, {size: [480, 120], lrbt: [-2.6, 2.4, -0.2]});
     svg.line([-2.6, 0], [2.4, 0]).css({stroke: "black"});
-    svg.stickman(0.6).ralign([2, 0, 0.5, 1]);
+    svg.stickman(0.6).align([2, 0, 0.5, 1]);
     svg.rect([0.9, 0.4], [-2, 0.3]).css({fill: "red", stroke: "black"});
     let g = svg.group({fill: "black", stroke: "none"});
     g.circle(0.1, [-2.25, 0.1]);
@@ -22,7 +22,7 @@ Q1: (sel) => {
 Q2: (sel) => {
     let svg = new SVG2(sel, {size: [480, 120], lrbt: [-2.2, 2.6, -0.3]});
     css(svg.line([-2.2, 0], [2.6, 0]), "black@2");
-    svg.stickman(0.6).ralign([1.35, 0, 0.5, 1]);
+    svg.stickman(0.6).align([1.35, 0, 0.5, 1]);
     svg.image("p20/wave/img/guitar.svg", [1, 0.42], [-1.5, 0.3]);
     let g = svg.group("arrow");
     let t6 = {tail: "6"};
@@ -35,8 +35,8 @@ Q2: (sel) => {
 Q3: (sel) => {
     let svg = new SVG2(sel, {size: [480, 144], lrbt: [-2.6, 2.4, -0.25]});
     css(svg.line([-2.6, 0], [2.4, 0]), "black@2");
-    svg.stickman(0.8).ralign([2, 0, 0.5, 1]);
-    svg.stickman(0.8).ralign([-1.9, 0, 0.5, 1]);
+    svg.stickman(0.8).align([2, 0, 0.5, 1]);
+    svg.stickman(0.8).align([-1.9, 0, 0.5, 1]);
     css(svg.line([-1.75, 0.1], [-1.75, 0.94]), "black@1");
     let g = svg.group("black@1", {fill: "skyblue"});
     g.circle("6", [-1.75, 0.1]);
