@@ -1,4 +1,4 @@
-// SVG2g.prototype.text = function(data, xy, selector) {
+// SVG2group.prototype.text = function(data, xy, selector) {
 // /* Add a <text> element to the group */
 //     let svg = this.svg;
 //     let e = selector ? $($(selector)[0]) : this.create_child("text");
@@ -7,7 +7,7 @@
 //     return e.attr({x: f(x), y: f(y)}).html(data);
 // }
 
-// SVG2g.prototype.align = function(xy, x, y) {
+// SVG2group.prototype.align = function(xy, x, y) {
 // /* Align the element based on its bounding box */
 //     let box = this.element.getBBox();
 //     let [w, h] = [box.width, box.height];
@@ -55,7 +55,7 @@
 //     return outer;
 // }
 
-SVG2g.prototype.label = function(fn, x, y) {
+SVG2group.prototype.label = function(fn, x, y) {
 /** Add a <g> containing <text> labels or tick marks as <line>, Usage:
  .label(["-5", "3"], [...range(-15, 31, 5)], 1); // Draw ticks from 5 pixels below x=1 to 3 pixels above
  .label(1, [...range(-15, 31, 5)], 2);           // Label x-axis to 1 decimal place at y=2
@@ -97,7 +97,7 @@ SVG2g.prototype.label = function(fn, x, y) {
     return g;
 }
 
-SVG2g.prototype.tick_label = function(fn, x, y, tick, offset) {
+SVG2group.prototype.tick_label = function(fn, x, y, tick, offset) {
 /* Draw and label tick marks along axis */
     let t = ["number", "string"].indexOf(typeof(tick)) >= 0;
     let xa = x instanceof Array;
@@ -108,7 +108,7 @@ SVG2g.prototype.tick_label = function(fn, x, y, tick, offset) {
     return this;
 }
 
-SVG2g.prototype.graph = function(options) {
+SVG2group.prototype.graph = function(options) {
 /* Add common scatter plot / line graph elements */
     let svg = this.svg;
     let x = options.x, y = options.y;
@@ -180,7 +180,7 @@ SVG2g.prototype.graph = function(options) {
 
 // static arr(dy) {return ["→", 5, [0, dy == null ? "20" : dy]]}
 
-// SVG2g.prototype.symb = function(...args) {
+// SVG2group.prototype.symb = function(...args) {
 // /* Render a symbol from a list of text elements */
 // //  BOLD = 1, ITAL = 2, SMALL = 4
 //     let g = this.group(".Symbol");

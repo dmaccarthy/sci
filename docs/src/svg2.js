@@ -4,7 +4,7 @@ Simple JavaScript animations rendered in an <svg> element
 **/
 
 
-class SVG2g {
+class SVG2group {
 
 constructor(parent, g) {
     if (parent) {
@@ -32,7 +32,7 @@ find(sel, n) {
 find_all(selector) {
     let g = [];
     for (let e of this.$.find(selector))
-        if (e.graphic instanceof SVG2g) g.push(e.graphic);
+        if (e.graphic instanceof SVG2group) g.push(e.graphic);
     return g;
 }
 
@@ -276,7 +276,7 @@ create_child(tag, attr, html) {
 }
 
 group(...css) {
-    let g = new SVG2g(this.svg, this.create_child("g"));
+    let g = new SVG2group(this.svg, this.create_child("g"));
     if (css) g.css(...css);
     return g;
 }
@@ -595,7 +595,7 @@ pm(s, plus, xy) {
 }
 
 stickman(h) {
-/* Add a stick man as an SVG2g instance */
+/* Add a stick man as an SVG2group instance */
     let g = this.group(".Stickman", "none", "black@3");
     let r = h / 8;
     g.circle(r, [0, 7 * r]);
@@ -742,7 +742,7 @@ _turn(w, r, circ) {
 }
 
 
-class SVG2scaled extends SVG2g {
+class SVG2scaled extends SVG2group {
 
 constructor(parent, g, scale) {
     super(parent, g);
@@ -773,7 +773,7 @@ coord_from_parent(xy) {
 
 }
 
-class SVG2text extends SVG2g {
+class SVG2text extends SVG2group {
 
 constructor(g, text, posn, theta, css) {
     super(g);
@@ -799,7 +799,7 @@ set text(t) {this._text$.html(t)}
 // SVG2text._make_map();
 
 
-class SVG2arrow extends SVG2g {
+class SVG2arrow extends SVG2group {
 
 constructor(g, info, options, anchor) {
     super(g);
@@ -869,7 +869,7 @@ constructor(g, eq, param, args) {
     this.update();
 }
 
-css = SVG2g.prototype.css;
+css = SVG2group.prototype.css;
 
 config(attr) {
 /* Encapsulate multiple attributes */
@@ -1020,7 +1020,7 @@ update() {return this.$.attr({d: this.d.trim()})}
 }
 
 
-class SVG2 extends SVG2g {
+class SVG2 extends SVG2group {
 
 constructor(selector, options) {
     super();
@@ -1277,7 +1277,7 @@ adjust_angle(a, invert) {
 }
 
 group(...css) {
-    let g = new SVG2g(this);
+    let g = new SVG2group(this);
     if (css) g.css(...css);
     return g;
 }
@@ -1305,7 +1305,7 @@ static set_animated(g, a) {
 }
 
 animate(...args) {
-/* Append an array of animated SVG2g instances */
+/* Append an array of animated SVG2group instances */
     for (let arg of args) {
         if (!arg.update) arg = $(arg)[0].graphic;
         if (this.items.indexOf(arg) == -1) this.items.push(arg);
