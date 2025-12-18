@@ -16,8 +16,8 @@ brem: (sel) => {
     let comb = (w) => spectrum(w, [[0.281, 0.4, 0.00015], [0.43, 0.3, 0.0002]])
     css(svg.line([wMin, 0], [wMin, "-10"]), "black@1");
     svg.mjax("\\lambda_{min}", {scale: 0.7}, [0.065, -0.06]);
-    svg.locus(brem, [wMin, 0.6, 600], 0).css("lightgrey@1");
-    svg.locus(comb, [wMin, 0.6, 600], 0).css("#0065fe@2");
+    svg.locus2(brem, [wMin, 0.6, 600], 0).css("none", "lightgrey@1");
+    svg.locus2(comb, [wMin, 0.6, 600], 0).css("none", "#0065fe@2");
     let g = svg.group("arrow");
     let opt = {tail: "5"};
     g.arrow({tail: [0.3, 0.25], tip: [0.34, 0.36]}, opt);

@@ -1,3 +1,49 @@
+// class SVG2locus {
+
+// constructor(g, eq, param, args) {
+//     let svg = this.svg = g.svg;
+//     this.eq = eq;
+//     if (!param) param = [svg.lrbt[0], svg.lrbt[1]];
+//     this.param = param.length > 2 ? param : param.concat([svg.$.width() / 3]);
+//     this.args = args;
+//     this.$ = g.create_child("polyline", {}).addClass("Locus");
+//     this.css("none");
+//     this.element = this.$[0];
+//     this.element.graphic = this;
+//     this.update();
+// }
+
+// css = SVG2group.prototype.css;
+
+// config(attr) {
+// /* Encapsulate multiple attributes */
+//     for (let k in attr) this[k] = attr[k];
+//     return this;
+// }
+
+// update() {
+//     let svg = this.svg;
+//     let t = svg.time;
+//     let [eq, args] = [this.eq, this.args];
+//     let [x0, x1, dx] = this.param;
+//     dx = (x1 - x0) / Math.round(dx);
+//     x1 += dx / 2;
+//     let pts = [];
+//     while (x0 <= x1) {
+//         let y = eq(x0, t, args);
+//         if (y === false) return;
+//         pts.push(typeof(y) == "number" ? [x0, y] : y);
+//         x0 += dx;
+//     }
+//     this.$.attr({points: svg.pts_str(pts)});
+//     return this;
+// }
+
+// get animated() {return this.svg.items.indexOf(this) > -1}
+// set animated(a) {SVG2.set_animated(this, a)}
+
+// }
+
 // SVG2group.prototype.text = function(data, xy, selector) {
 // /* Add a <text> element to the group */
 //     let svg = this.svg;
@@ -162,7 +208,7 @@ SVG2group.prototype.graph = function(options) {
                     if (!(pts instanceof Array)) pts = zip(pts.x, pts.y);
                     gs.poly(pts);
                 }
-                else if (series.locus) gs.locus(...series.locus);
+                else if (series.locus) gs.locus2(...series.locus);
             }
         }
         this.series = s;

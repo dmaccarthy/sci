@@ -108,13 +108,13 @@ loadFeed.sim.launchAngle = () => {
     let v = svg.ball.initVel = vec2d(svg.vi, a);
     let vf = -root(v[1] * v[1] + 2 * y * 9.81);
     let t = (v[1] - vf) / 9.81;
-    svg.ball.align([0, y], 0.5, 0.5).config({hang: t, landing: v[0] * t});
-    svg.cannon.align([0, y], 0.5, 0.5);
+    svg.ball.align([0, y, 0.5, 0.5]).config({hang: t, landing: v[0] * t});
+    svg.cannon.align([0, y, 0.5, 0.5]);
 
     let p = svg.parab;
     if (p) p.config({animated: false}).$.remove();
-    svg.parab = p = svg.locus((t) => [v[0] * t, y + t * (v[1] - 9.81 / 2 * t)], [0, svg.ball.hang]);
-    p.config({animated: true}).$.insertBefore(svg.castle.$).css({stroke: "lightgrey"});
+    svg.parab = p = svg.locus2((t) => [v[0] * t, y + t * (v[1] - 9.81 / 2 * t)], [0, svg.ball.hang]);
+    p.css("none", "lightgrey@1").config({animated: true}).$.insertBefore(svg.castle.$);
 
     p.beforeupdate = function() {
         let svg = this.svg;

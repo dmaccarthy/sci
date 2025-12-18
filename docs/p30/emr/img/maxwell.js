@@ -2,13 +2,12 @@ SVG2.cache("p30/emr/img/maxwell.js", {
 
 wave: (sel) => {
     let svg = new SVG2(sel, {lrbt: [-2, 10, -2, 2], margin: 4, scale: 60});
-    svg.$.addClass("SVG2");
-    svg.line([-3, 0], [11, 0]);
+    css(svg.line([-3, 0], [11, 0]), "black@2");
     svg.status = 3;
 
     // Wave locus
     let wave = (x, t) =>  {return 2 * cos(47 * (x - 2 * t))};
-    svg.animate(svg.locus(wave, [-2, 10])).play();
+    svg.locus2(wave, [-2, 10]).config({animated: true}).css("none", "#0065fe@2");
 
     // E and B field arrows and sensors
     let gE = svg.group();
@@ -32,7 +31,7 @@ wave: (sel) => {
         }
     }
 
-    svg.$.on("click", () => {
+    svg.play().$.on("click", () => {
         let s = ++svg.status;
         if (s == 1) svg.$.find("polyline").fadeIn();
         else if (s == 2) svg.play();

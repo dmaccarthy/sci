@@ -14,7 +14,7 @@ uam: (sel) => {
     g.text("Position / m");
 
     /* Plot a parabola */
-    svg.locus(x => (x * (529 - 50 * x)) / 120, [0, 8]).css("#0065fe@2");
+    svg.locus2(x => (x * (529 - 50 * x)) / 120, [0, 8]).css("none", "#0065fe@2");
 },
     
 });

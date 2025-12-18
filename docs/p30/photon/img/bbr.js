@@ -11,7 +11,7 @@ planck: (sel, T0, ...args) => {
     if (opt.grid === true) opt.grid = [opt.wMax / 15, opt.iMax / 15];
 
     // Create diagram and store scale temperature
-    let svg = new SVG2(sel, {size: [512, 384], lrbt: [0, opt.wMax, 0, opt.iMax], grid: opt.grid, margin: [28, 16, 28, 1]}).config({T0: T0});
+    let svg = new SVG2(sel, {size: [512, 384], lrbt: [0, opt.wMax, 0, opt.iMax], grid: opt.grid, margin: [28, 16, 36, 1]}).config({T0: T0});
     svg.css("sans", 18);
 
     // Locate peak and create scaled Planck Law function
@@ -22,7 +22,7 @@ planck: (sel, T0, ...args) => {
     // Draw loci and peaks for specified temperatures
     if (args == null || args.length < 1) args = [T0];
     let colors = ["#0065fe", "red", "green", "gold", "violet", "cyan"];
-    let txt = svg.group().addClass("Text Sans");
+    let txt = svg.group(".Text", "sans");
     let plot = svg.group().addClass("Plot");
     let loci = plot.group().addClass("Locus");
     for (let i=0;i<args.length;i++) {
@@ -32,7 +32,7 @@ planck: (sel, T0, ...args) => {
             let I = planck(w, T) / I0;
             let w1 = w / w0;
             let c = colors[i % colors.length];
-            loci.locus(f, [0, opt.wMax], T).$.css({stroke: c});
+            loci.locus2(f, [0, opt.wMax], T).css("none", `${c}@1`);
             plot.circle("4", [w1, I]).css({stroke: c, fill: "white"}).addClass("Peak");
             txt.text(`${(1e9 * w).toFixed(0)} nm`, [w1, I + 0.04]).css({fill: c}).addClass("Peak");
         }
@@ -60,7 +60,7 @@ r_j: (sel) => {
     let w = 100 * w0;
     let rj_law = (w, T) => T / Math.pow(w, 4);
     let b = planck(w, T) / rj_law(w, T);
-    let rj = svg.locus((x) => b * rj_law(x * w0, T) / I0, [2, wMax]);
+    let rj = svg.locus2(x => b * rj_law(x * w0, T) / I0, [2, wMax]);
     rj.$.css({stroke: "red", "stroke-width": "1px", fill: "none"});
     svg.$.find("text.Peak, g.Visible").remove();
     svg.$.find("g.Text")[0].graphic.text("Rayleigh-Jeans Law", [3.5, 1]).css({fill: "red"});

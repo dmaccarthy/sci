@@ -490,6 +490,7 @@ text(text, posn, theta, css) {return new SVG2text(this, text, posn, theta, css)}
 gtext(text, css, posn, theta) {return new SVG2text(this, text, posn, theta, css)}
 arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
 locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
+locus2(eq, param, args) {return new SVG2locus2(this, eq, param, args)}
 path(start) {return new SVG2path(this, start)}
 
 line(p1, p2, selector) {
@@ -796,9 +797,6 @@ set text(t) {this._text$.html(t)}
 
 }
 
-// SVG2text._make_map();
-
-
 class SVG2arrow extends SVG2group {
 
 constructor(g, info, options, anchor) {
@@ -854,30 +852,21 @@ label(text, shift) {
 }
 
 
-class SVG2locus {
+class SVG2locus2 extends SVG2group {
 
 constructor(g, eq, param, args) {
+    super(g);
     let svg = this.svg = g.svg;
     this.eq = eq;
     if (!param) param = [svg.lrbt[0], svg.lrbt[1]];
     this.param = param.length > 2 ? param : param.concat([svg.$.width() / 3]);
     this.args = args;
-    this.$ = g.create_child("polyline", {}).addClass("Locus");
-    this.css("none");
-    this.element = this.$[0];
-    this.element.graphic = this;
+    this._poly = $(this.css(".Locus").create_child("polyline"));
     this.update();
 }
 
-css = SVG2group.prototype.css;
-
-config(attr) {
-/* Encapsulate multiple attributes */
-    for (let k in attr) this[k] = attr[k];
-    return this;
-}
-
 update() {
+    SVG2group.prototype.update.call(this);
     let svg = this.svg;
     let t = svg.time;
     let [eq, args] = [this.eq, this.args];
@@ -891,12 +880,9 @@ update() {
         pts.push(typeof(y) == "number" ? [x0, y] : y);
         x0 += dx;
     }
-    this.$.attr({points: svg.pts_str(pts)});
+    this._poly.attr({points: svg.pts_str(pts)});
     return this;
 }
-
-get animated() {return this.svg.items.indexOf(this) > -1}
-set animated(a) {SVG2.set_animated(this, a)}
 
 }
 
