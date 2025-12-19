@@ -1,3 +1,14 @@
+// _px(x, i) {return Math.abs(typeof(x) == "string" ? parseFloat(x) : x * this.svg.scale[i])}
+
+// SVG2group.prototype._cs = function(xy) {
+//     let [x, y] = xy == null ? [0, 0] : xy;
+//     let svg = this.svg;
+//     let [sx, sy] = svg.scale;
+//     if (typeof(x) == "string") x = parseFloat(x) / Math.abs(sx);
+//     if (typeof(y) == "string") y = parseFloat(y) / Math.abs(sy);
+//     return new RArray(x, y);
+// }
+
 // class SVG2locus {
 
 // constructor(g, eq, param, args) {
@@ -108,13 +119,13 @@ SVG2group.prototype.label = function(fn, x, y) {
  .label(0, 0, [...range(-5, 5, 1)]);             // Label y-axis to 0 decimal places at x=0
  .label(f, 0, [...range(-5, 5, 1)]);             // Label y-axis at x=0 with function f generating text
 **/
-    let g = this.group();
+    let g = this.group({"text-anchor": "middle", "dominant-baseline": "middle"});
     let xa = x instanceof Array;
     let ya = y instanceof Array;
     let tm, tp;
     if (fn instanceof Array) {
         [tm, tp] = fn;
-        [tm, tp] = xa ? [this._cs([0, tm])[1], this._cs([0, tp])[1]] : [this._cs([tm, 0])[0], this._cs([tp, 0])[0]];
+        [tm, tp] = xa ? [this.cs_size([0, tm])[1], this.cs_size([0, tp])[1]] : [this.cs_size([tm, 0])[0], this.cs_size([tp, 0])[0]];
     }
     else if (typeof(fn) == "number") {
         let dec = fn;
@@ -125,7 +136,7 @@ SVG2group.prototype.label = function(fn, x, y) {
     for (let i=0;i<n;i++) {
         let x0 = xa ? x[i] : x;
         let y0 = ya ? y[i] : y;
-        let [xc, yc] = this._cs([x0, y0]);
+        let [xc, yc] = this.cs_size([x0, y0]);
         if (tick) {
             if (!ya) g.line([xc, yc + tm], [xc, yc + tp]);
             else if (!xa) g.line([xc + tm, yc], [xc + tp, yc]);
@@ -169,7 +180,7 @@ SVG2group.prototype.graph = function(options) {
     }
 
     if (x || y) {
-        let txt = this.group(".AxisTitle", "text");
+        let txt = this.group(".AxisTitle", "sans", {"text-anchor": "middle", "dominant-baseline": "auto"});
         let xy = (i) => {
             let pos = (i ? y : x).title[1];
             if (!(pos instanceof Array)) pos = i ? [pos, svg.center[1]] : [svg.center[0], pos];

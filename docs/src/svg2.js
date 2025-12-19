@@ -135,10 +135,10 @@ get vel() {return this._vel}
 get acc() {return this._acc}
 get theta() {return this._theta}
 
-set pivot(xy) {this._pivot = new RArray(...this._cs(xy))}
-set shift(xy) {this._shift = new RArray(...this._cs(xy))}
-set vel(xy) {this._vel = new RArray(...this._cs(xy))}
-set acc(xy) {this._acc = new RArray(...this._cs(xy))}
+set pivot(xy) {this._pivot = new RArray(...this.cs_size(xy))}
+set shift(xy) {this._shift = new RArray(...this.cs_size(xy))}
+set vel(xy) {this._vel = new RArray(...this.cs_size(xy))}
+set acc(xy) {this._acc = new RArray(...this.cs_size(xy))}
 
 set theta(a) {
     if (this.thetaMode) {
@@ -149,7 +149,7 @@ set theta(a) {
 }
 
 shift_by(xy) {
-    this._shift = this._shift.plus(this._cs(xy));
+    this._shift = this._shift.plus(this.cs_size(xy));
     return this.update_transform();
 }
 
@@ -283,23 +283,12 @@ group(...css) {
 
 scaled(s) {return new SVG2scaled(this.svg, this.create_child("g"), s)}
 
-_px(x, i) {return Math.abs(typeof(x) == "string" ? parseFloat(x) : x * this.svg.scale[i])}
-
-_cs(xy) {
-    let [x, y] = xy == null ? [0, 0] : xy;
-    let svg = this.svg;
-    let [sx, sy] = svg.scale;
-    if (typeof(x) == "string") x = parseFloat(x) / Math.abs(sx);
-    if (typeof(y) == "string") y = parseFloat(y) / Math.abs(sy);
-    return new RArray(x, y);
-}
-
 circle(r, posn, selector) {
 /* Modify or append a <circle> to the <g> element */
     let e = selector ? $($(selector)[0]) : this.create_child("circle");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
-    r = svg._px_size(r);
+    r = svg.px_radius(r);
     let d = `${f(2*r)}`;
     let [w, h, x, y] = this.rect_xy([d, d], posn);
     return e.attr({r: f(r), cx: f(x + w / 2), cy: f(y + h / 2)});
@@ -310,8 +299,7 @@ ellipse(r, posn, selector) {
     let e = selector ? $($(selector)[0]) : this.create_child("ellipse");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
-    let rx = this._px(r[0], 0);
-    let ry = this._px(r[1], 1);
+    let [rx, ry] = svg.px_size(r);
     let [w, h, x, y] = this.rect_xy([f(2*rx), f(2*ry)], posn);
     return e.attr({rx: f(rx), ry: f(ry), cx: f(x + w / 2), cy: f(y + h / 2)});
 }
@@ -331,9 +319,8 @@ rect_xy(size, posn) {
 /* Get bounding rectangle in pixel coordinates */
     let [x, y, ax, ay] = SVG2._anchor(posn);
     let svg = this.svg;
-    let w = this._px(size[0], 0);
-    let h = this._px(size[1], 1);
-    [x, y] = svg.a2p(...this._cs([x, y]));
+    let [w, h] = this.px_size(size);
+    [x, y] = svg.a2p(...this.cs_size([x, y]));
     return [w, h, x - ax * w, y - ay * h];
 }
 
@@ -409,7 +396,7 @@ ticks(opt) { /*
 */
     let p0, p1, gt, gl;
     let svg = this.svg;
-    let [x, y, size, label] = [opt.x, opt.y, opt.size, opt.label];
+    let [x, y, size, label, skip] = [opt.x, opt.y, opt.size, opt.label, opt.skip];
     let swap = y instanceof Array;
     let g = this.group(swap ? ".TicksY" : ".TicksX");
     if (swap) [x, y] = [y, x];
@@ -417,11 +404,12 @@ ticks(opt) { /*
     let [x0, x1, dx] = x;
     if (size) {
         gt = g.group(".Ticks", "black@1");
-        p0 = svg._cs(swap ? [size[0], 0] : [0, size[0]]);
-        p1 = svg._cs(swap ? [size[1], 0] : [0, size[1]]);
+        p0 = svg.cs_size(swap ? [size[0], 0] : [0, size[0]]);
+        p1 = svg.cs_size(swap ? [size[1], 0] : [0, size[1]]);
     }
     if (label != null) {
-        gl = g.group(".Labels");
+        let anchor = opt.anchor ? opt.anchor : (swap ? "r" : "t");
+        gl = g.group(".Labels", SVG2.parse_anchor(anchor, 1));
         let [css, shift] = [opt.css, opt.shift];
         if (css) {
             if (!(css instanceof Array)) css = [css];
@@ -433,40 +421,30 @@ ticks(opt) { /*
         }
     }
     let f = isNaN(label) ? label : x => x.toFixed(label);
-    let anchor = opt.anchor ? opt.anchor : (swap ? "r" : "t");
+    let i = 0;
+    if (!skip) skip = 1;
     for (let xi = x0; xi <= x1; xi += dx) {
         let dp = swap ? [y, xi] : [xi, y];
         if (size) gt.line(p0.plus(dp), p1.plus(dp));
-        if (label != null) {
+        if (label != null && (i++) % skip == 0) {
             let text = f(xi);
-            let t = gl.text(text, [...dp, anchor], opt.theta);
+            let t = gl.text(text, [...dp, false], opt.theta); // anchor
             if (parseFloat(text) == 0) t.$.addClass("Zero");
         }
     }
     return g;
 }
 
-
 plot(points, size, href, theta) {
-/* Plot an array of points as circles, rectangles, or images */
+/* Plot a sequence of points as circles, rectangles, images or custom markers */
     let g = this.group(".Plot", "black@1", "#0065fe");
-    let svg = this.svg;
-    let f = (x) => x.toFixed(svg.decimals);
-    if (theta) theta *= svg.angleDir;
     if (!(points instanceof Array)) points = zip(points.x, points.y);
     for (let pt of points) {
-        let e;
-        if (href) {
-            e = g.group().config({pivot: pt});
-            e.image(href, size, pt);
-            e = e.$;
-        }
-        else if (size instanceof Array) e = g.rect(size, pt);
-        else e = g.circle(size, pt);
-        if (theta) {
-            let [x, y] = svg.a2p(...pt);
-            e.attr({transform: `rotate(${f(theta)} ${f(x)},${f(y)})`});
-        }
+        let gi = g.group().config({theta: theta, shift: pt});
+        if (size instanceof Function) size(gi, href);
+        else if (href) gi.image(href, size);
+        else if (size instanceof Array) gi.rect(size);
+        else gi.circle(size);
     }
     return g;
 }
@@ -478,18 +456,38 @@ poly(points, closed) {
         this.create_child(closed ? "polygon" : "polyline", attr);
 }
 
-_cs_size(r) {return typeof(r) == "string" ? parseFloat(r) / this.svg.unit : r}
-_px_size(r) {return typeof(r) == "string" ? parseFloat(r) : r * this.svg.unit}
+cs_radius(r) {return typeof(r) == "string" ? parseFloat(r) / this.svg.unit : r}
+px_radius(r) {return typeof(r) == "string" ? parseFloat(r) : r * this.svg.unit}
+
+px_size(sz) {
+/* Convert [w, h] to pixel units */
+    if (sz == null) sz = [0, 0];
+    let [w, h] = sz;
+    let [sx, sy] = this.svg.scale;
+    w = typeof(w) == "string" ? parseFloat(w) : Math.abs(w * sx);
+    h = typeof(h) == "string" ? parseFloat(h) : Math.abs(h * sy);
+    return new RArray(w, h);
+}
+
+cs_size(sz) {
+/* Convert [w, h] to coordinate system units */
+    if (sz == null) sz = [0, 0];
+    let [w, h] = sz;
+    let [sx, sy] = this.svg.scale;
+    if (typeof(w) == "string") w = parseFloat(w) / Math.abs(sx);
+    if (typeof(h) == "string") h = parseFloat(h) / Math.abs(sy);
+    return new RArray(w, h);
+}
 
 star(n, far, near) {
-    let pts = star_points(n, this._cs_size(far), near == null ? null : this._cs_size(near));
+    let pts = star_points(n, this.cs_radius(far), near == null ? null : this.cs_radius(near));
     return this.poly(pts, 1);
 }
 
 text(text, posn, theta, css) {return new SVG2text(this, text, posn, theta, css)}
 gtext(text, css, posn, theta) {return new SVG2text(this, text, posn, theta, css)}
 arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
-locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
+// locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
 locus2(eq, param, args) {return new SVG2locus2(this, eq, param, args)}
 path(start) {return new SVG2path(this, start)}
 
@@ -498,8 +496,8 @@ line(p1, p2, selector) {
     let e = selector ? $($(selector)[0]) : this.create_child("line");
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);
-    let [x1, y1] = svg.a2p(...this._cs(p1));
-    let [x2, y2] = svg.a2p(...this._cs(p2));
+    let [x1, y1] = svg.a2p(...this.cs_size(p1));
+    let [x2, y2] = svg.a2p(...this.cs_size(p2));
     return e.attr({x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2)});
 }
 
@@ -510,7 +508,7 @@ chevron(xy, dir, size) {
     else size = size.size;
     let svg = this.svg;
     let s = svg.scale;
-    size = this._px_size(size);
+    size = this.px_radius(size);
     let dx = -size / s[0], dy = ratio * size / s[1];
     let g = this.group();
     g.poly([[dx, dy], [0, 0], [dx, -dy]]);
@@ -578,6 +576,8 @@ ruler(n, tick, opt) { //width, big, offset, tickSmall, tickBig) {
 
 cylinder(r, L) {
 /* Draw a cylinder; pivot is center of the elliptical "top" */
+    r = this.cs_size(r);
+    if (typeof(L) == "string") L = Math.abs(parseFloat(L) / this.svg.scale[1]);
     let g = this.group(".Cylinder");
     let p1 = new RArray(r[0], 0);
     let p2 = p1.neg().minus([0, L]);
@@ -587,17 +587,25 @@ cylinder(r, L) {
     return g;
 }
 
-pm(s, plus, xy) {
+plusminus(s, plus, thick) {
 /* Draw a plus or minus */
+    let svg = this.svg;
     let g = this.group();
-    if (plus) g.rect([s/6, s], xy);
-    g.rect([s, s/6], xy);
+    if (!thick) thick = 0.17;
+    s = svg.cs_radius(s);
+    let [x, y] = svg.cs_size([s, s]).times(0.5);
+    let [dx, dy] = [x * thick, y * thick];
+    let pts = plus ? [[dx, y], [dx, dy], [x, dy], [x, -dy], [dx, -dy], [dx, -y],
+        [-dx, -y], [-dx, -dy], [-x, -dy], [-x, dy], [-dx, dy], [-dx, y]] :
+        [[x, dy], [x, -dy], [-x, -dy], [-x, dy]];
+    g.poly(pts, 1);
     return g;
 }
 
 stickman(h) {
 /* Add a stick man as an SVG2group instance */
     let g = this.group(".Stickman", "none", "black@3");
+    if (typeof(h) == "string") h = Math.abs(parseFloat(h) / this.svg.scale[1]);
     let r = h / 8;
     g.circle(r, [0, 7 * r]);
     g.line([0, 6 * r], [0, 3 * r]);
@@ -631,7 +639,7 @@ edot(n, r) {
 
 error_bar_y(x, y0, y1, dx, _swap) {
     /* Draw x or y error bars */
-    dx = this._cs_size(dx);
+    dx = this.cs_radius(dx);
     let g = this.group().addClass("ErrorBar");
     if (_swap) {
         g.line([y0, x], [y1, x]);
@@ -779,21 +787,21 @@ class SVG2text extends SVG2group {
 constructor(g, text, posn, theta, css) {
     super(g);
     let xy = posn == null ? [0, 0] : [posn[0], posn[1]];
-    this.config({shift: xy, theta: theta});
+    let anchor = SVG2.parse_anchor(posn && posn.length > 2 ? posn[2] : "", 1);
+    this.config({shift: xy, theta: theta}).css(anchor);
     if (css instanceof Array) this.css(...css);
     else if (css) this.css(css);
     let svg = this.svg;
-    let e = this._text$ = this.create_child("text");
-    let anchor = SVG2.parse_anchor(posn && posn.length > 2 ? posn[2] : "", 1);
-    e.html(text).css(anchor);
+    let e = this.text$ = this.create_child("text");
+    e.html(text); //.css(anchor);
     let [x, y] = svg.a2p(0, 0);
     let f = (x) => x.toFixed(svg.decimals);
     e.attr({x: f(x), y: f(y)});
     return;
 }
 
-get text() {return this._text$.html()}
-set text(t) {this._text$.html(t)}
+get text() {return this.text$.html()}
+set text(t) {this.text$.html(t)}
 
 }
 
@@ -802,7 +810,7 @@ class SVG2arrow extends SVG2group {
 constructor(g, info, options, anchor) {
     super(g);
     this.$.addClass("Arrow");
-    this._poly = this.poly([], 1);
+    this.poly$ = this.poly([], 1);
     this.reshape(info, options, anchor);
 }
 
@@ -823,8 +831,8 @@ reshape(info, options, anchor) {
 
     let svg = this.svg;
     let [tail, tip] = tail_and_tip(info);
-    tail = svg._cs(tail);
-    tip = svg._cs(tip);
+    tail = svg.cs_size(tail);
+    tip = svg.cs_size(tip);
     let seg = this.seg = new Segment(...tail, ...tip);
     if (!anchor) anchor = 0;
     else if (typeof(anchor) == "string") anchor = ["tail", "center", "tip"].indexOf(anchor) - 1;
@@ -840,13 +848,13 @@ reshape(info, options, anchor) {
     let pts = arrow_points(seg.length, opt);
     pts = transform({angle: seg.deg, deg: true, shift: seg.midpoint}, ...pts);
     for (let i=0;i<pts.length;i++) pts[i] = svg.p2a(...pts[i]);
-    this.poly(pts, this._poly);
+    this.poly(pts, this.poly$);
     return this;
 }
 
 label(text, shift) {
 /* Add text relative to arrow midpoint */
-    return this.gtext(text, ["sans", "none@"], this.seg.midpoint.plus(this._cs(shift)));
+    return this.gtext(text, ["sans", "none@"], this.seg.midpoint.plus(this.cs_size(shift)));
 }
 
 }
@@ -861,7 +869,7 @@ constructor(g, eq, param, args) {
     if (!param) param = [svg.lrbt[0], svg.lrbt[1]];
     this.param = param.length > 2 ? param : param.concat([svg.$.width() / 3]);
     this.args = args;
-    this._poly = $(this.css(".Locus").create_child("polyline"));
+    this.poly$ = $(this.css(".Locus").create_child("polyline"));
     this.update();
 }
 
@@ -880,7 +888,7 @@ update() {
         pts.push(typeof(y) == "number" ? [x0, y] : y);
         x0 += dx;
     }
-    this._poly.attr({points: svg.pts_str(pts)});
+    this.poly$.attr({points: svg.pts_str(pts)});
     return this;
 }
 
@@ -940,8 +948,7 @@ arc_to(xy, r, choice, rotn) { // Draw a circular or elliptical arc to the specif
     let rx, ry;
     if (r instanceof Array) [rx, ry] = r;
     else rx = ry = r;
-    rx = svg._px(rx, 0);
-    ry = svg._px(ry, 1);
+    [rx, ry] = svg.px_size([rx, ry]);
     rotn = rotn ? f(rotn * svg.angleDir) : "0";
     let [x, y] = xy;        
     this.x = x;
@@ -1065,6 +1072,7 @@ constructor(selector, options) {
 static async sleep(t) {await new Promise(r => setTimeout(r, t))}
 
 static parse_anchor(s, obj) {
+    if (s === false) return obj ? {} : null;
     let x = 0;
     [x, s] = SVG2._parse_anchor(s);
     if (s.length) x += SVG2._parse_anchor(s)[0];
@@ -1183,7 +1191,8 @@ get center() {
 clip_rect(xy, id) {
 /* Create a clip path that excludes the margin */
     if (xy == null) xy = 0;
-    xy = this._cs(xy instanceof Array ? xy : [xy, xy]).times(2);
+    xy = (xy instanceof Array ? this.cs_size(xy) : this.cs_size([xy, xy])).times(2);
+    // xy = this._cs(xy instanceof Array ? xy : [xy, xy]).times(2);
     let clip = this.group();
     let [l, r, b, t] = this.lrbt;
     clip.rect([Math.abs(r - l) + xy[0], Math.abs(t - b) + xy[1]], this.center);
@@ -1273,7 +1282,7 @@ pts_str(pts) {
     let s = "";
     let f = (x) => x.toFixed(this.decimals);
     for (let i=0;i<pts.length;i++) {
-        let [x, y] = this.a2p(...this._cs(pts[i]));
+        let [x, y] = this.a2p(...this.cs_size(pts[i]));
         s += (s.length ? " " : "") + `${f(x)},${f(y)}`;
     }
     return s;
