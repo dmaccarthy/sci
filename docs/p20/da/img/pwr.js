@@ -1,35 +1,36 @@
 SVG2.cache("p20/da/img/pwr.js", {
 
 lightbulb: (sel, linear) => {
-    let x = [...range(0.75, 3.01, 0.25)];
+    let x1 = linear ? 2 : 3;
+    let svg = new SVG2(sel, {size: [512, 384], lrbt: [0, x1, 0, 2], grid: [0.25, 0.25], margin: [68, 14, 64, 14]});
+
+    // Data
+    let x = [...range(0.75, 3.1, 0.25)];
+    if (linear) x = [...fn_eval(x => Math.pow(x, -2), x)];
     let y = [1.6, 0.846, 0.585, 0.395, 0.28, 0.217, 0.17, 0.134, 0.111, 0.098];
-    let data, lrbt;
+
+    // Axes
+    let opt = {size: ["-6", "6"], label: 1, shift: "-9", css: 15};
+    svg.ticks({x: [0, x1 + 0.1, 0.5], ...opt});
+    svg.ticks({y: [0, 2.1, 0.5], ...opt});
+    let s = {scale: 0.7};
+    let tex = "Separation / m";
+    if (linear) tex = `(${tex})^{-2}`;
+    svg.mjax("\\rm " + tex, s, [x1 / 2, "-32", "t"]);
+    svg.mjax("\\rm Intensity / (W/m^2)", s, ["-36", 1, "b"], null, 90);
+
+    // Plot data and model equation
     if (linear) {
-        for (let i=0;i<x.length;i++) x[i] = Math.pow(x[i], -2);
         let lin = lin_reg_xy(x, y).fn;
-        data = {connect: [[0, lin(0)], [2, lin(2)]]};
-        lrbt = [0, 2, 0, 2];
+        css(svg.line([0, lin(0)], [2, lin(2)]), ".Toggle0", "#0065fe@2");
     }
     else {
         let pwr = pwr_reg_xy(x, y);
         let x0 = Math.pow(2 / pwr.a, 1 / pwr.n);
-        data = {locus: [pwr.fn, [x0, 3]]};
-        lrbt = [0, 3, 0, 2];
+        css(svg.locus2(pwr.fn, [x0, 3]), ".Toggle0", "none", "#0065fe@2");
     }
+    svg.plot({x:x, y:y}, "5");
 
-    let xLabel = "Separation / m";
-    if (linear) xLabel = `(${xLabel}) &nbsp;`;
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: lrbt, margin: [64, 10, 56, 12]});
-    svg.graph({grid: [0.25, 0.25],
-        x: {tick: [0, lrbt[1] + 0.1, 0.5], dec: 1, title: [xLabel, "-44"], shift: [0, "-22"]},
-        y: {tick: [0, 2.1, 0.5], dec: 1, title: ["Intensity / (W/m &nbsp; )", "-40"], shift: ["-20", "0"]},
-        data: [data, {plot: [zip(x, y), "5"]}],
-    });
-    let x0 = linear ? -0.25 : -0.4;
-    svg.gtext("2", 14, [x0, 1.45], 90);
-    if (linear) svg.gtext("–2", 14, [1.36, -0.2]);
-
-    svg.$.find("g.Locus").addClass("Toggle0"); //.hide();
     svg.click_toggle(1, 1);
 },
     

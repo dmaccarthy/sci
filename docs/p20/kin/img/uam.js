@@ -4,7 +4,7 @@ vt: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 5, 0, 24], margin: [56, 10, 28, 12]});
     svg.graph({grid: [0.5, 2],
         x: {tick: [0, 5.1, 1], title: ["Time / s", [4.5, "10"]], shift: [0, "-20"]},
-        y: {tick: [0, 25, 4], title: ["Velocity / (m/s)", ["-36", 12]], shift: ["-20", 0]},
+        y: {tick: [0, 25, 4], title: ["Velocity / (m/s)", ["-36", 12]], shift: ["-18", 0]},
         data: [{connect: [[0, 12], [5, 20]]}]
     });
     svg.poly([[0, 0], [0, 12], [5, 20], [5,0]]).css({fill: "#0065fe", "fill-opacity": 0.2}).insertAfter(svg.$.find("g.Grid"));

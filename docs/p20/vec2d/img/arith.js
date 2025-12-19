@@ -105,16 +105,16 @@ tri: (sel) => {
 
     // Labels
     g = svg.group("sans");
-    g.gtext("A", [], [1, hA]);
-    g.gtext("B", [], [-1, h - 10]);
-    g.gtext("12.5 km", [], [2, 0, "bl"]);
-    g.gtext("12.5 km", [], [-2, 0, "br"]);
+    g.text("A", [1, hA]);
+    g.text("B", [-1, h - 10]);
+    g.text("12.5 km", [2, 0.4, "bl"]);
+    g.text("12.5 km", [-2, 0.4, "br"]);
     svg.mjax("\\theta", {scale: 0.8}, [10.5, 0.8]);
 
-    let wrap = (cfg, txt, xy) => g.group().config(cfg).gtext(txt, [], xy);
-    wrap({theta: 90}, "10.0 km", [h - 6, 1]);
-    wrap({theta: 60, pivot: [-12.5, 0]}, "25.0 km", [0, 0, 0.5, 1.1]);
-    wrap({theta: -60, pivot: [12.5, 0]}, "25.0 km", [0, 0, 0.5, 1.1]);
+    let wrap = (cfg, txt, xy) => g.group().config(cfg).text(txt, xy);
+    wrap({theta: 90}, "10.0 km", [h - 6, 0.4, "b"]);
+    wrap({theta: 60, pivot: [-12.5, 0]}, "25.0 km", [0, 0.4, "b"]);
+    wrap({theta: -60, pivot: [12.5, 0]}, "25.0 km", [0, 0.4, "b"]);
     wrap({theta: 15, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: 45, pivot: [-12.5, 0]}, "30°", [-9, 0]);
     wrap({theta: -75, pivot: [0, h]}, "30°", [3.5, h]);

@@ -23,7 +23,8 @@ v_t: (sel, n, click) => {
     svg.graph({grid: [0.25, 0.25],
         data: [{locus: [(x) => Math.sin(twoPi * (x + xva.n / 4))]}]
     });
-    let poly = svg.series[0].find("polyline").config({animated: true});
+
+    let poly = svg.series[0].find("g.Locus").config({animated: true});
 
     let ylabel = svg.group(); 
     ylabel.mjax("\\vec{\\bf x}", {scale: 0.8}, ["-14", 1.125], "#0065fe");

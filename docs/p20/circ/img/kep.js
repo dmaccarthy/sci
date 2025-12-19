@@ -21,8 +21,8 @@ orbit: (sel) => {
     g.line([0, -e], [0, e]);
 
     g = svg.group("sans", "grey");
-    g.gtext("Major Axis", [], [0.5, 0.05, "b"]);
-    g.gtext("Minor Axis", [], [-0.05, -0.35, "b"], 90);
+    g.text("Major Axis", [0.5, 0.05, "b"]);
+    g.text("Minor Axis", [-0.05, -0.35, "b"], 90);
 
     g = svg.group("black@1");
     g.circle("5", planet).css({fill: "#0065fe"});
@@ -34,7 +34,7 @@ orbit: (sel) => {
         ["C", [0.04, 0, "tl"]],
         ["F", [f[0] + 0.04, 0, "tl"]],
         ["P", [-1.04, 0, "r"]]
-    ]) g.gtext(t, [], p)
+    ]) g.text(t, p);
 
     svg.$.on("click", () => sector.fadeToggle());
 },
