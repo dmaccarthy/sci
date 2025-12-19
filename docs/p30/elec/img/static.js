@@ -17,7 +17,7 @@ escope: (sel) => {
 
 induct: (sel) => {
     let svg = new SVG2(sel, {scale: 24, margin: 4, lrbt: [-9, 11, -3, 5.5]});
-    let plus = svg.pm(2.4, 1).css("black@3", "black").config({shift: [-7, 0]});
+    let plus = svg.plusminus(2.4, 1).css("black@3", "black").config({shift: [-7, 0]});
     plus.rect([4, 4]).css({fill: "none"});
     let red = svg.group("red", ".Toggle0");
     red.gtext("Electron Flow", ["sans", 22, "none@"], [4.25, 5]);
@@ -27,8 +27,8 @@ induct: (sel) => {
     circ.circle(2.5);
     circ.circle(2.5, [7, 0]);
     let chg = g.group("black", ".Toggle1");
-    chg.pm(1.5).css("black")
-    chg.pm(1.5, 1, [7, 0]).css("black")
+    chg.plusminus(1.5).css("black");
+    chg.plusminus(1.5, 1).css("black").config({shift: [7, 0]});
     g = red.group("arrow");
     g.arrow({tail: [6, 3.5], tip: [1, 3.5]}, {tail: "8"});
     svg.click_toggle(2);
@@ -36,7 +36,7 @@ induct: (sel) => {
 
 pole: (sel) => {
     let svg = new SVG2(sel, {scale: 24, margin: 4, lrbt: [-9, 11, -3, 3]});
-    let plus = svg.pm(2.4, 1).css("black@3", "black").config({shift: [-7, 0]});
+    let plus = svg.plusminus(2.4, 1).css("black@3", "black").config({shift: [-7, 0]});
     plus.rect([4, 4]).css({fill: "none"});
     let g = svg.group().config({shift: [5, 0]});
     let circ = g.group("black@3", "none");
