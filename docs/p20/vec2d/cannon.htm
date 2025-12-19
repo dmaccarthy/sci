@@ -113,7 +113,7 @@ loadFeed.sim.launchAngle = () => {
 
     let p = svg.parab;
     if (p) p.config({animated: false}).$.remove();
-    svg.parab = p = svg.locus2((t) => [v[0] * t, y + t * (v[1] - 9.81 / 2 * t)], [0, svg.ball.hang]);
+    svg.parab = p = svg.locus((t) => [v[0] * t, y + t * (v[1] - 9.81 / 2 * t)], [0, svg.ball.hang]);
     p.css("none", "lightgrey@1").config({animated: true}).$.insertBefore(svg.castle.$);
 
     p.beforeupdate = function() {

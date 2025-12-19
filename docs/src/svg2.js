@@ -487,8 +487,7 @@ star(n, far, near) {
 text(text, posn, theta, css) {return new SVG2text(this, text, posn, theta, css)}
 gtext(text, css, posn, theta) {return new SVG2text(this, text, posn, theta, css)}
 arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
-// locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
-locus2(eq, param, args) {return new SVG2locus2(this, eq, param, args)}
+locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
 path(start) {return new SVG2path(this, start)}
 
 line(p1, p2, selector) {
@@ -860,7 +859,7 @@ label(text, shift) {
 }
 
 
-class SVG2locus2 extends SVG2group {
+class SVG2locus extends SVG2group {
 
 constructor(g, eq, param, args) {
     super(g);

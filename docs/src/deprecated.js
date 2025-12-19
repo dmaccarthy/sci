@@ -219,7 +219,7 @@ SVG2group.prototype.graph = function(options) {
                     if (!(pts instanceof Array)) pts = zip(pts.x, pts.y);
                     gs.poly(pts);
                 }
-                else if (series.locus) gs.locus2(...series.locus);
+                else if (series.locus) gs.locus(...series.locus);
             }
         }
         this.series = s;

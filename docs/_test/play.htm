@@ -11,8 +11,8 @@ function wave(x, t, args) {
 
 loadFeed.x1 = () => {
     let svg = new SVG2("#Draw", {lrbt: [-2, 10, -2, 10], margin: 2, grid: 1, scale: [24, 18]});
-    let g = svg.locus2(wave, [0, 10], {A: 3, v: 1, wavelength: 5});
-    g.locus2(wave, [0, 10], {A:1, v:2, wavelength:10}).css("red@1").config({animated: true});
+    let g = svg.locus(wave, [0, 10], {A: 3, v: 1, wavelength: 5});
+    g.locus(wave, [0, 10], {A:1, v:2, wavelength:10}).css("red@1").config({animated: true});
     g.css("none", "#0065fe@2").config({animated: true, theta: 20});
     g.circle("15");
     g.draw_bbox().css("red");
@@ -38,7 +38,7 @@ loadFeed.graph = () => {
 
     // Plot an equation (locus) inside the clipping region
     let clip = g.group().clip("lrbt");
-    clip.locus2(x => x*x/8, [0, 10]).css("none", "#0065fe@3");
+    clip.locus(x => x*x/8, [0, 10]).css("none", "#0065fe@3");
 
     let mark = g => g.stickman("12").align([0, 0]).css("black@1");
 

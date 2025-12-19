@@ -7,7 +7,7 @@ wave: (sel) => {
 
     // Wave locus
     let wave = (x, t) =>  {return 2 * cos(47 * (x - 2 * t))};
-    svg.locus2(wave, [-2, 10]).config({animated: true}).css("none", "#0065fe@2");
+    svg.locus(wave, [-2, 10]).config({animated: true}).css("none", "#0065fe@2");
 
     // E and B field arrows and sensors
     let gE = svg.group();

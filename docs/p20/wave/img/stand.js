@@ -5,7 +5,7 @@ stand: (sel, n, closed) => {
     let c = closed ? 2 : 1;
     let svg = new SVG2(sel, {size: [480, 240], lrbt: [0, 1, -1, 1], margin: [5, 5, 2, 2]});
     css(svg.line([0, 0], [1, 0]), "black@2");
-    let wave = svg.locus2((x, t) => Math.cos(t * n / 2) * Math.sin(pi / c * x * n), [0, 1]);
+    let wave = svg.locus((x, t) => Math.cos(t * n / 2) * Math.sin(pi / c * x * n), [0, 1]);
     wave.config({animated: true}).css("none", "#0065fe@3");
 
     //  Nodes and anti-nodes

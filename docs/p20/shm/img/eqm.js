@@ -40,7 +40,7 @@ pend: (sel, a) => {
 eqm: (sel) => {
     let svg = new SVG2(sel, {size: [480, 384], lrbt: [-1.1, 0.9, -0.25]});
     let land = (x) => sq(sin(-100 * (x - 0.3)));
-    svg.locus2(land, [-1.1, 0.9]).css("none", "black@1");
+    svg.locus(land, [-1.1, 0.9]).css("none", "black@1");
 
     let r = 0.03, i = 0;
     let balls = [

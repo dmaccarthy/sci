@@ -27,7 +27,7 @@ lightbulb: (sel, linear) => {
     else {
         let pwr = pwr_reg_xy(x, y);
         let x0 = Math.pow(2 / pwr.a, 1 / pwr.n);
-        css(svg.locus2(pwr.fn, [x0, 3]), ".Toggle0", "none", "#0065fe@2");
+        css(svg.locus(pwr.fn, [x0, 3]), ".Toggle0", "none", "#0065fe@2");
     }
     svg.plot({x:x, y:y}, "5");
 

@@ -105,7 +105,7 @@ trWave: (sel) => {
         blue.arrow({tip: [x, 1.1], tail: [x, 1.5]}, {tail: "4"});
         orange.arrow({tip: [x + 0.5, -1.1], tail: [x + 0.5, -1.5]}, {tail: "4"});
     }
-    svg.locus2(travelingingWave, [0, 3]).css("none", "#0065fe@3").config({animated: true});
+    svg.locus(travelingingWave, [0, 3]).css("none", "#0065fe@3").config({animated: true});
     let red = svg.group("red", "black@1");
     red.circle("5");
 
@@ -166,13 +166,13 @@ Q6: (sel) => {
 
 Q1: (sel) => {
     let svg = SVG2.cache_run("p20/wave/img/harm.js", "wave", sel, [5, 1, 1], [2, 0.5, 1], ["cm", "cm", 1]);
-    let g = svg.locus2(x => 2 * sin(360 / 5 * x)).css("none", "black@1");
+    let g = svg.locus(x => 2 * sin(360 / 5 * x)).css("none", "black@1");
     g.$.prependTo(svg.$.find("g.Series"));
 },
 
 Q7: (sel) => {
     let svg = SVG2.cache_run("p20/wave/img/harm.js", "wave", sel, [0.75, 0.2, 1], [6, 1.5, 1], ["m", "cm", 0.15]);
-    let g = svg.locus2(x => 6 * sin(360 / 0.75 * x)).css("none", "black@1");
+    let g = svg.locus(x => 6 * sin(360 / 0.75 * x)).css("none", "black@1");
     g.$.prependTo(svg.$.find("g.Series"));
 },
 
