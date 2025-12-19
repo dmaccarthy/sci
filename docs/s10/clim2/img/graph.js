@@ -1,5 +1,18 @@
 SVG2.cache("s10/clim2/img/graph.js", {
 
+london_uk: (sel) => {
+    let svg = new SVG2(sel, {size: [521, 360], lrbt: [0, 12, 0, 90], grid: [1, 5], margin: [62, 62, 28, 12]});
+
+    // Draw and label axes
+    css(svg.find("g.Grid").line([12, 0], [12, 90]), "black@1");
+    let opt = {size: ["-6", "6"], label: 0, shift: "-9", css: 15};
+    svg.ticks({x: [0, 12.1, 1], css: 15, label: x => "JFMAMJJASOND".charAt(x), shift: [0.5, "-6"]});
+    svg.ticks({y: [0, 91, 10], ...opt});
+    let g = svg.ticks({x: 12, y: [0, 91, 10], ...opt, label: x => (x/5).toFixed(0), shift: "9"});
+    g.find("g.Labels").css({"text-anchor": "start"});
+
+},
+
 london: (sel) => {
     // Precipitation and temperature data
     let prec = [59, 50, 47, 54, 57, 60, 59, 65, 51, 60, 67, 61];
@@ -25,7 +38,7 @@ london: (sel) => {
     svg.$.find("g.Grid line.Axis").appendTo(svg.$.find("g.Grid"));
     g = svg.tick_label((x, y) => (y/5).toFixed(0), 12, [...range(0, 91, 10)], "6", 12.5).$.find("g.LabelY")[1].graphic;
     g.config({shift: [0, 0]}).css(".Toggle4", {"text-anchor": "start"});
-    svg.gtext("Temperature / °C", [".Toggle4", "sans"], [13.4, 45], 90)
+    svg.text("Temperature / °C", [13.2, 45, "t"], 90, [".Toggle4", "sans"])
 
     // Draw precipitation bars and month labels
     let months = "JFMAMJJASOND";

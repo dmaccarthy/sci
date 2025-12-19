@@ -87,6 +87,8 @@
 
 "bio3/photo": {"t": "@Photosynthesis & Cellular Respiration", "n": "B07", "s": "2025.12.18", "a": "2025.12.19", "h": ["1uPyssG6Gnd6Oy3spITaFfZjj-Wxwzyd7", ["Lab Handout", "19l3DmLa-dqsrFFuCZedQFfQIWG0LAnc6"]]},
 "bio3/photo#": {"t": "Lab: Aquatic Plants", "s": "2025.12.18"},
+"bio3/spec": {"t": "@Cell Specialization", "n": "B08", "s": "2026", "a": "2026", "h": ["_", ["Lab Handout", "1rzaq2rTHw51vlnTl6-9e7htxUYA1xFGW"]]},
+"bio3/spec#": {"t": "Lab: Cell Specialization in the Leaf", "s": "2025.12.19"},
 "bio3/@": {"t": "@", "n": "B0", "s": "2025.12", "a": "2025.12", "h": "_"},
 
 "bio1/micro": {"t": "@Microscopes", "n": "B01", "s": "2025.12.10", "a": "2025.12.10.15", "h": ["1NaoR9DwGmrW9MR5VXZoJDBB_PV_Q5DjQ", ["Lab Handout", "1gy9Zz3__GK3EZtWQL05_a9MpZdFQnY8b"]]},
