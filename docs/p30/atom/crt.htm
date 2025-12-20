@@ -128,7 +128,7 @@ loadFeed.init = () => {
     loadFeed.sim();
 
     $("#SimControls input").on("change", () => {
-        let svg = $("#CRTSim")[0].graphic;
+        let svg = $("#CRTSim")[0].svg2;
         svg.poly([...loadFeed.sim.ray()], svg.beam);
     });
 }

@@ -21,41 +21,48 @@ pend: (sel) => { // Illustration for Pendulum Lab handout
 },
 
 tennis: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 40], margin: [58, 12, 54, 12]});
-    svg.graph({grid: [1, 5],
-        x: {tick: [0, 11, 1], title: ["Position / cm", [5, "-44"]], shift: [0, "-18"]},
-        y: {tick: [0, 41, 5], title: ["Force / N", "-40"], shift: ["-20", 0]},
-        data: [{connect: [[0, 0], [5, 35], [7, 35], [10, 0]]}],
-    });
-
-    let g = svg.group({"fill-opacity": 0.2});
-    g.$.insertBefore(svg.$.find("g.Series"));
-    css(g.poly([[0, 0], [5, 35], [5, 0]], 1), "#0065fe", ".Toggle0");
-    css(g.poly([[5, 0], [5, 35], [7, 35], [7, 0]], 1), "red", ".Toggle1");
-    css(g.poly([[7, 0], [7, 35], [10, 0]], 1), "yellow", ".Toggle2");
-    svg.click_toggle(3, 1, 3);
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 40], grid: [1, 5], margin: [58, 12, 54, 12]});
+    let opt = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [0, 11, 1], ...opt});
+    svg.ticks({y: [0, 41, 5], ...opt});
+    let g = svg.group("sans", 18);
+    g.text("Position / cm", [5, "-24", "t"]);
+    g.text("Force / N", ["-36", 20, "b"], 90);
+    let poly = [[0,0], [5, 35], [7, 35], [10, 0]];
+    let color = ["#0065fe", "red", "yellow"];
+    g = svg.group("none@", {"fill-opacity": 0.2});
+    css(svg.poly(poly), "none", "#0065fe@2");
+    for (let i=0;i<3;i++) {
+        let p0 = poly[i];
+        let p1 = poly[i + 1];
+        let pts = [p0, p1, [p1[0], 0]];
+        if (p0[1]) pts.push([p0[0], 0]);
+        css(g.poly(pts, 1), color[i], `.Toggle${i}`);
+    }
+    svg.click_toggle(3, 1);
 },
 
-truck: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 80], margin: [58, 12, 54, 12]});
-    svg.graph({grid: [1, 5],
-        x: {tick: [0, 11, 1], title: ["Position / m", [5, "-44"]], shift: [0, "-18"]},
-        y: {tick: [0, 81, 10], title: ["Force / N", "-40"], shift: ["-20", 0]},
-        data: [{connect: [[0, 0], [5, 70], [10, 30]]}],
-    });
+// truck: (sel) => {
+//     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 80], margin: [58, 12, 54, 12]});
+//     svg.graph({grid: [1, 5],
+//         x: {tick: [0, 11, 1], title: ["Position / m", [5, "-44"]], shift: [0, "-18"]},
+//         y: {tick: [0, 81, 10], title: ["Force / N", "-40"], shift: ["-20", 0]},
+//         data: [{connect: [[0, 0], [5, 70], [10, 30]]}],
+//     });
 
-    let g = svg.group({"fill-opacity": 0.2});
-    g.$.insertBefore(svg.$.find("g.Series"));
-    // svg.save();
-},
+//     let g = svg.group({"fill-opacity": 0.2});
+//     g.$.insertBefore(svg.$.find("g.Series"));
+// },
 
 bump: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 0.4, 0, 380], margin: [68, 16, 54, 4]});
-    svg.graph({grid: [0.02, 20],
-        x: {tick: [0, 0.41, 0.1], dec:1, title: ["Position / m", [0.2, "-44"]], shift: [0, "-18"]},
-        y: {tick: [0, 361, 40], title: ["Force / N", "-48"], shift: ["-20", 0]},
-        data: [{connect: [[0, 0], [0.3, 360], [0.4, 0]]}],
-    });
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 0.4, 0, 400], grid: [0.02, 20], margin: [64, 16, 50, 12]});
+    let opt = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [0, 0.41, 0.1], ...opt, label: 1});
+    svg.ticks({y: [0, 401, 40], ...opt});
+    let g = svg.group("sans", 18);
+    g.text("Position / m", [0.2, "-26", "t"]);
+    g.text("Force / N", ["-44", 180, "b"], 90);
+    css(svg.poly([[0, 0], [0.3, 360], [0.4, 0]]), "none", "#0065fe@2");
 },
 
 });

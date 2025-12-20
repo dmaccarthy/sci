@@ -1,17 +1,18 @@
 SVG2.cache("p20/energy/img/we.js", {
 
 work: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 20, -400, 400], margin: [68, 12, 12, 12]});
-    svg.graph({grid: [1, 50],
-        x: {tick: [0, 21, 5], title: ["Position / m", [17, 25]], shift: [0, "-18"]},
-        y: {tick: [-400, 401, 100], title: ["Force / N", "-50"], shift: ["-24", 0]},
-        data: [
-            {connect: [[0, 0], [5, 400], [10, 400], [20, -400]]},
-        ]
-    });
-    svg.$.find("g.LabelX text.Zero").remove();
-    let shade = svg.group("sans", 18);
-    let g = shade.group().addClass("Toggle0");
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 20, -400, 400], grid: [1, 50], margin: [68, 12, 12, 12]});
+
+    let opt = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [5, 21, 5], ...opt});
+    svg.ticks({y: [-400, 401, 100], ...opt});
+    css(svg.poly([[0, 0], [5, 400], [10, 400], [20, -400]]), "none", "#0065fe@2");
+    let g = svg.group("sans", 18);
+    g.text("Position / m", [20, "8", "br"]);
+    g.text("Force / N", ["-44", 0, "b"], 90);
+
+    let shade = svg.group("sans", 18, "none@", "#0065fe");
+    g = shade.group().addClass("Toggle0");
     g.poly([[0, 0], [5, 400], [5, 0]], 1);
     g.line([5, 400], [5, 0]);
     g.gtext("1000 J", [], [3, 75]);
@@ -29,28 +30,20 @@ work: (sel) => {
     g.poly([[20, -400], [20, 0], [15, 0]], 1);
     g.gtext("–1000 J", [], [18, -75]);
 
-    g = shade.$.insertBefore("g.Series").css({fill: "#0065fe", "fill-opacity": 0.2, stroke: "none"});
-    g.find("line").css({stroke: "#0065fe"});
-    g.find("text").css({"fill-opacity": 1});
-
-    let t = click_cycle.toggle;
-    click_cycle(svg.element, -1,
-        () => {t(svg, false, 0, 1, 2, 3)},
-        () => {t(svg, true, 0)},
-        () => {t(svg, true, 1)},
-        () => {t(svg, true, 2)},
-        () => {t(svg, true, 3)},
-    );
-
+    shade.$.find("polygon, rect").css({"fill-opacity": 0.2});
+    css(shade.$.find("line"), "#0065fe@1");
+    svg.click_toggle(4);
 },
 
 tennis: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 80, 0, 90], margin: [58, 12, 54, 12]});
-    svg.graph({grid: [5, 5],
-        x: {tick: [0, 81, 10], title: ["Position / cm", [40, "-44"]], shift: [0, "-18"]},
-        y: {tick: [0, 91, 10], title: ["Force / N", "-40"], shift: ["-20", 0]},
-        data: [{connect: [[0, 0], [40, 80], [50, 80], [75, 0]]}],
-    });
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 80, 0, 90], grid: [5, 5], margin: [58, 12, 52, 12]});
+    let opt = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [0, 81, 10], ...opt});
+    svg.ticks({y: [0, 91, 10], ...opt});
+    css(svg.poly([[0, 0], [40, 80], [50, 80], [75, 0]]), "none", "#0065fe@2");
+    let g = svg.group("sans", 18);
+    g.text("Position / m", [40, "-28", "t"]);
+    g.text("Force / N", ["-40", 45, "b"], 90);
 },
 
 

@@ -1,20 +1,27 @@
 SVG2.cache("p20/shm/img/eqm.js", {
 
 mass: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 3, -0.2, 0.5], margin: [62, 16, 12, 12]});
-    svg.graph({grid: [0.25, 0.05],
-        x: {tick: [0, 3.1, 0.5], dec: 1, title: ["Time / s", [2.25, "-44"]], shift: [0, "-18"]},
-        y: {tick: [-0.2, 0.51, 0.1], dec: 1, title: ["Position / cm", "-44"], shift: ["-20", 0]},
-        data: [{locus: [(x) => 0.3 * sin(240 * x - 60) + 0.15, [0, 3]]}]
-    });
-    svg.$.find("g.LabelX text.Zero").remove();
-    svg.$.find("g.Locus").css({stroke: "red"});
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 3, -0.2, 0.5], grid: [0.25, 0.05], margin: [62, 16, 12, 12]});
+
+    // Tick marks and labels
+    let g = svg.group("sans", 18);
+    let opt = {size: ["-6", 0], label: 1, shift: "-8", css: 15};
+    g.ticks({x: [0, 3.1, 0.5], ...opt});
+    g.ticks({y: [-0.2, 0.51, 0.1], ...opt});
+    g.text("Time / s", [2.25, -0.1, "b"]);
+    g.text("Position / cm", ["-36", 0.15, "b"], 90);
+    g.$.find("g.TicksX g.Zero").remove();
+
+    // Data
+    svg.locus(x => 0.3 * sin(240 * x - 60) + 0.15, [0, 3]).css("none", "red@2");
+
+    // Equilibrium and tangent
+    g = svg.group(".Toggle", "black@1");
     let v = pi / 2.5;
-    let g = svg.group().css("black@2");
-    g.line([0, 0.15], [3, 0.15]);
-    g.line([1.75 + 0.35 / v, 0.5], [1.75 - 0.4 / v, -0.25]).css({stroke: "#0065fe"});
-    g.circle("5", [1.75, 0.15]).css({fill: "#0065fe", "stroke-width": "1px"});
-    g.$.hide().addClass("Toggle");
+    css(g.line([0, 0.15], [3, 0.15]), "@2");
+    css(g.line([1.75 + 0.35 / v, 0.5], [1.75 - 0.4 / v, -0.25]), "#0065fe@2");
+    css(g.circle("5", [1.75, 0.15]), "#0065fe");
+    g.$.hide();
 },
 
 pend: (sel, a) => {

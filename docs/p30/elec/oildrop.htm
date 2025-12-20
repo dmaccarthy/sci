@@ -131,7 +131,7 @@ loadFeed.sim.drop = (g) => {
 loadFeed.sim.drawE = (V) => {
     if (V != null) $("#Voltage").val(V);
     let E = $("#Voltage").val() / 800;
-    let svg = $("#OilDropSim")[0].graphic;
+    let svg = $("#OilDropSim")[0].svg2;
     let g = svg.efield.$;
     if (E > 0) g.fadeIn();
     else g.hide();

@@ -1,69 +1,60 @@
 SVG2.cache("p20/kin/img/graph.js", {
 
 bike: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -6, 8], grid: [0.5, 1], margin: [54, 10, 10, 10]});
+
+    let opt = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [0, 4.1, 1], ...opt});
+    svg.ticks({y: [-6, 9, 2], ...opt});
+    let g = svg.group("sans", 18);
+    g.text("Time / s", [4, "8", "br"]);
+    g.text("Position / m", ["-32", 1, "b"], 90);
+
     let pts = [[0, -5], [1, -2], [2, 1], [3, 4], [4, 7]];
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -6, 8], margin: [54, 10, 10, 10]});
-    svg.graph({grid: [0.5, 1],
-        x: {tick: [0, 4.1, 1], title: ["Time / s", [3.5, "12"]], shift: [0, "-20"]},
-        y: {tick: [-6, 8.1, 2], title: ["Position / m", "-36"], shift: ["-20", 0]},
-        data: [
-            {connect: [pts[0], pts[4]]},
-            {plot: [pts, "5"]},
-        ]
-    });
-    svg.$.find("g.LabelX text.Zero").remove();
+    css(svg.line(pts[0], pts.item(-1)), "#0065fe@2");
+    svg.plot(pts, "5");
+    svg.$.find("g.TicksX g.Zero").remove();
 },
 
 dt: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 50], margin: [32, 2, 2, 2]});
-    svg.graph({grid: [1, 5],
-        x: {tick: [0, -1, 2], title: ["Time / s", [9, "12"]]},
-        y: {tick: [0, -1, 2], title: ["Position / m", "-16"]},
-        data: [
-            {connect: [[0, 5], [10, 20]]},
-            {connect: [[0, 10], [10, 50]]},
-            {connect: [[0, 40], [10, 5]]},
-            {connect: [[0, 28], [10, 28]]},
-            {locus: [(x) => x * (2 + x / 2), [0, Math.sqrt(104) - 2]]},
-            {locus: [(x) => 10 + x * (8 - x / 2), [0, 10]]},
-        ]
-    });
-    svg.$.find("g.LabelX text.Zero, g.Ticks").remove();
-    let lines = svg.$.find("g.Series g.Locus").css({"stroke-width": "3px"});
-    let color = ["#0065fe", "red", "green", "cyan", "gold", "violet"];
-    for (let i=0;i<lines.length;i++) {
-        $(lines[i]).addClass(`Toggle${i}`).css({stroke: color[i]});
-    }
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 50], grid: [1, 5], margin: [32, 2, 2, 2]});
+    let g = svg.group("sans", 18);
+    g.text("Time / s", [10, "8", "br"]);
+    g.text("Position / m", ["-12", 25, "b"], 90);
 
-    let t = click_cycle.toggle;
-    click_cycle(svg.element, 0,
-        () => {t(svg, true, 0, 1, 2, 3, 4, 5)},
-        () => {t(svg, false, 1, 2, 3, 4, 5)},
-        () => {t(svg, false, 0); t(svg, true, 1)},
-        () => {t(svg, false, 1); t(svg, true, 2)},
-        () => {t(svg, false, 2); t(svg, true, 3)},
-        () => {t(svg, false, 3); t(svg, true, 4)},
-        () => {t(svg, false, 4); t(svg, true, 5)},
-    );
+    g = svg.group("none", "#0065fe@2");
+    css(g.line([0, 5], [10, 20]), ".Toggle0");
+    css(g.line([0, 10], [10, 50]), ".Toggle1", "red@");
+    css(g.line([0, 40], [10, 5]), ".Toggle2", "green@");
+    css(g.line([0, 28], [10, 28]), ".Toggle3", "cyan@");
+    g.locus(x => x * (2 + x / 2), [0, Math.sqrt(104) - 2]).css(".Toggle4", "gold@");
+    g.locus(x => 10 + x * (8 - x / 2), [0, 10]).css(".Toggle5", "violet@");
 
+    svg.click_toggle(6, 1, null, 1, true);
 },
 
-vt: (sel) => { // Motion of an skydiver v-t graph
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 28], margin: [56, 10, 26, 12]});
-    svg.graph({grid: [0.5, 2],
-        x: {tick: [0, 8.1, 1], title: ["Time / s", [7, "10"]], shift: [0, "-18"]},
-        y: {tick: [0, 29, 4], title: ["Velocity / (m/s)", "-40"], shift: ["-20", 0]},
-        data: [{connect: [[0, 8], [4, 24], [8, 24]]}],
-    });
-    svg.$.find("g.LabelX text.Zero").remove();
-    let g = svg.group().css({stroke: "none", fill: "#0065fe", "fill-opacity": 0.3});
-    g.$.insertBefore(svg.$.find("g.Grid line.Axis")[0]);
-    g.poly([[0, 8], [1, 12], [1, 0], [0, 0]], 1).addClass("Toggle0");
-    g.poly([[2, 16], [1, 12], [1, 0], [2, 0]], 1).addClass("Toggle1");
-    g.poly([[2, 16], [3, 20], [3, 0], [2, 0]], 1).addClass("Toggle2");
-    g.poly([[4, 24], [3, 20], [3, 0], [4, 0]], 1).addClass("Toggle3");
-    g.rect([1, 24], [4.5, 12]).addClass("Toggle4");
-    g.rect([3, 24], [6.5, 12]).addClass("Toggle5");
+vt: (sel) => {
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 8, 0, 28], grid: [0.5, 2], margin: [56, 10, 26, 12]});
+
+    let opt = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [0, 8.1, 1], ...opt});
+    svg.ticks({y: [0, 29, 4], ...opt});
+    let g = svg.group("sans", 18);
+    g.text("Time / s", [8, "8", "br"]);
+    g.text("Velocity / (m/s)", ["-34", 14, "b"], 90);
+
+    let v = t => t > 4 ? 24 : 8 + 4 * t;
+    svg.locus(v, [0, 8, 8]).css("none", "#0065fe@2");
+
+    g = svg.group("#0065fe", {"fill-opacity": 0.3}, "none@");
+    g.$.insertBefore(svg.$.find("g.Locus"));
+    let poly = [1, 1, 1, 1, 1, 3];
+    let t0 = 0;
+    for (let i=0;i<poly.length;i++) {
+        let t1 = t0 + poly[i];
+        g.poly([[t0, v(t0)], [t1, v(t1)], [t1, 0], [t0, 0]]).addClass(`Toggle${i}`);
+        t0 = t1;
+    }
     g.$.find("*").hide();
 
     let t = click_cycle.toggle;
@@ -81,38 +72,35 @@ vt: (sel) => { // Motion of an skydiver v-t graph
 },
 
 elevator: (sel) => { // Motion of an elevator d-t graph
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 50], margin: [56, 10, 28, 12]});
-    svg.graph({grid: [1, 5],
-        x: {tick: [0, 11, 2], title: ["Time / s", [9, "12"]], shift: [0, "-22"]},
-        y: {tick: [0, 51, 10], title: ["Position / m", "-40"], shift: ["-20", 0]},
-        data: [
-            {locus: [(x) => x <= 5 ? x * x : 50 - (10 - x) * (10 - x), [0, 10]]},
-            {locus: [(x) => 10 * x - 25, [2.5, 7.5]]}
-        ],
-    });
-    let g = svg.series[1].css("red@1").$.hide();
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 10, 0, 50], grid: [1, 5], margin: [56, 10, 28, 12]});
+    let opt = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [0, 11, 2], ...opt});
+    svg.ticks({y: [0, 51, 10], ...opt});
+    let g = svg.group("sans", 18);
+    g.text("Time / s", [10, "8", "br"]);
+    g.text("Position / m", ["-32", 25, "b"], 90);
+    svg.locus(t => t <= 5 ? t * t : 50 - (10 - t) * (10 - t), [0, 10]).css("none", "#0065fe@2");
+    g = css(svg.line([2.5, 0], [7.5, 50]), "red@1").hide();
     svg.$.on("click", () => g.fadeToggle());
-    // console.log();
 },
 
 skydive: (sel) => { // Motion of an skydiver v-t graph
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 15, -50, 0], margin: [60, 12, 10, 32]});
-    let v = (x) => 50 * (Math.exp(-9.81 * x / 50) - 1);
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 15, -50, 0], grid: [1, 5], margin: [60, 12, 10, 32]});
+    let opt = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [3, 16, 3], ...opt});
+    svg.ticks({y: [-50, 1, 10], ...opt});
+    let g = svg.group("sans", 18);
+    g.text("Time / s", [15, "8", "br"]);
+    g.text("Velocity / (m/s)", ["-36", -25, "b"], 90);
+
+    let v = t => 50 * (Math.exp(-9.81 * t / 50) - 1);
     let t = [...range(3, 16, 3)];
-    let pts = zip(t, [...fn_eval(v, t)]);
-    svg.graph({grid: [1, 5],
-        x: {tick: [0, 16, 3], title: ["Time / s", [13.5, "12"]], shift: [0, "-22"]},
-        y: {tick: [-50, 1, 10], title: ["Velocity / (m/s)", "-44"], shift: ["-20", 0]},
-        data: [{locus: [v, [0, 15]]}, {plot: [pts, "4"]}],
-    });
-    svg.series[1].$.hide();
-    let g = svg.group("#0065fe@1");
-    for (let [x, y] of pts) g.line([x, y], [x, 0]);
-    g.$.insertAfter(svg.$.find("g.Grid")).hide();
-    svg.$.on("click", () => {
-        svg.series[1].$.fadeToggle();
-        g.$.fadeToggle();
-    }).find("g.LabelX text.Zero").remove();
+    svg.locus(v, [0, 15]).css("none", "#0065fe@2");
+    g = svg.group("#0065fe@1");
+    for (let ti of t) g.line([ti, v(ti)], [ti, 0]);
+    g.plot({x: t, y: v}, "5").css("#0065fe", "black@1");
+    g = g.$.hide();
+    svg.$.on("click", () => g.fadeToggle());
 },
 
 });

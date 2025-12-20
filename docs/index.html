@@ -63,12 +63,12 @@ let tmp, _;
     
 let svgTrack = () => {
     let svg = $("svg").on("mousemove", (ev) => {
-        if (ev.ctrlKey) console.log(ev.currentTarget.graphic.event_coords(ev).coords);
+        if (ev.ctrlKey) console.log(ev.currentTarget.svg2.event_coords(ev).coords);
     });
-    return svg[0].graphic;
+    return svg[0].svg2;
 }
 
-let svgn = (n) => $("svg[data-svg2x]")[n].graphic;
+let svgn = (n) => $("svg[data-svg2x]")[n].svg2;
 
 </script>
 </head>
@@ -81,7 +81,7 @@ let svgn = (n) => $("svg[data-svg2x]")[n].graphic;
     <a data-id="next" title="Click to go to the next lesson"><img src="media/next.svg"/></a>
 </span>
 </nav>
-<article id="Main"></article>
+<main id="Main"></main>
 <p class="Center" id="Copy">© 2022-2025 by <a href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
 </body>
 </html>

@@ -42,7 +42,7 @@ _ = loadFeed.grid = (w, h, minors, opt) => {
         svg.tick_label(lbl[1], 0, [...range(y0, y1 + 0.1, dx[1])], "-6", "-10");
         svg.$.find(".Zero").removeClass("Zero");
         svg.$.find(".Labels").addClass("Mono");
-        svg.$.find(".LabelY")[0].graphic.config({shift: [0, "-4"]});
+        svg.find(svg.$.find(".LabelY")[0]).config({shift: ["-10", 0]});
     }
     else g.find("line.Axis").removeClass("Axis");
 

@@ -1,28 +1,33 @@
 SVG2.cache("p20/vec2d/img/proj.js", {
 
 Q1: (sel) => {
+    let svg = new SVG2(sel, {size: [400, 400], lrbt: [0, 14, 0, 14], grid: 1, margin: [40, 10, 28, 10]});
+
+    let opt = {size: ["-6", 0], label: 0, shift: "-8", css: 15};
+    svg.ticks({x: [0, 15, 2], ...opt});
+    svg.ticks({y: [0, 15, 2], ...opt});
+    svg.text("m", [0.2, 14, "l"], 0, 15);
+    css(svg.rect([2, 12.5], [0, 0, "br"]).prependTo(svg.$), "tan", "black@1");
     let land = root(25 / 9.81);
-    let svg = new SVG2(sel, {size: [400, 400], lrbt: [0, 14, 0], margin: [40, 10, 28, 10]});
-    svg.graph({grid: [1, 1],
-        x: {tick: [0, 15, 2], shift: [0, "-18"]},
-        y: {tick: [0, 15, 2], shift: ["-20", 0]},
-        data: [{locus: [(t) => [8*t, 12.5 - 9.81/2 * t * t], [0, land]]}]
-    });
-    svg.gtext("m", "sans", [13, 13]);
-    svg.rect([2, 12.5], [-1, 6.25]).css({fill: "tan", stroke: "black"}).prependTo(svg.$);
+    svg.locus(t => [8*t, 12.5 - 9.81/2 * t * t], [0, land]).css("none", "black@2");
 
     let p2 = new RArray(8 * land, 0);
     let p1 = p2.plus([-4, 9.81 * land / 2]);
-    let g = svg.group().css({"fill-opacity": 0.4, fill: "red", stroke: "black"});
-    let tail = {tail: "8"};
-    g.arrow({tail: [0, 12.5], tip: [4, 12.5]}, tail).addClass("Toggle0");
-    g.arrow({tail: [13, 11], tip: [13, 7]}, tail).css({fill: "#0065fe"}).addClass("Toggle1");
-    g.arrow({tail: [0, 12.5], tip: p2}, tail).css({fill: "lime"}).addClass("Toggle2");
-    g.arrow({tail: p1, tip: p2}, tail).addClass("Toggle3");
+    let g = svg.group("arrow", {"fill-opacity": 0.4});
+    let ar = (t, p, i) => g.arrow({tail: t, tip: p}, {tail: "8"}).css(`.Toggle${i}`);
+    ar([0, 12.5], [4, 12.5], 0);
+    ar([13, 11], [13, 7], 1).css("#0065fe");
+    ar([0, 12.5], p2, 2).css("lime");
+    ar(p1, p2, 3);
 
-    svg.$.find(".LabelY .Zero").remove();
-    svg.$.find("g.Series g.Locus").css({stroke: "black"});
+    let mj = (tex, posn, color, i) => svg.mjax(tex, null, posn, color).then(g => g.css(`.Toggle${i}`));
+    mj("\\vec{\\bf v}_i", [1.8, 13, "b"], "red", 0);
+    mj("\\vec{\\bf a}", [12, 9.5], "#0065fe", 1);
+    mj("\\Delta\\vec{\\bf d}", [5, 5], "lime", 2);
+    mj("\\vec{\\bf v}_f", [11.5, 5], "red", 3);
+
     svg.click_toggle(4);
 },
+
 
 });

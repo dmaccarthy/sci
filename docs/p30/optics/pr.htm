@@ -20,7 +20,7 @@
 
 </style>
 <h2 class="Collapse">Principal Ray Diagram
-    <span class="Action"><img alt="Download" title="Download diagram as SVG" data-src="$download" onclick="$('#RayApplet')[0].graphic.save()"/></span></h2>
+    <span class="Action"><img alt="Download" title="Download diagram as SVG" data-src="$download" onclick="$('#RayApplet')[0].svg2.save()"/></span></h2>
 <div class="Collapse Expand">
     <p class="Center"><svg id="RayApplet" data-svg2="p30/optics/img/pr.js#diag"></svg></p>
     <table id="SimControls" class="Center Bottom">
@@ -72,7 +72,7 @@ loadFeed.sim = () => {
     copy();
 
     let t = click_cycle.toggle;
-    let svg = () => $("#RayApplet")[0].graphic;
+    let svg = () => $("#RayApplet")[0].svg2;
     click_cycle($("#RayApplet")[0], -1,
         () => {t(svg(), false, 0, 1, 2, 3, 4)},
         () => {t(svg(), true, 0)},

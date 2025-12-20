@@ -144,7 +144,7 @@ loadFeed.sim.startSim = () => {
     f.start = new Date().getTime();
     f._t = 0;
     f.update();
-    $("#Sample")[0].graphic.play();
+    $("#Sample")[0].svg2.play();
 }
 
 loadFeed.sim.update = () => {
@@ -154,7 +154,7 @@ loadFeed.sim.update = () => {
         console.log(t, f.count);
         f._t = t;
     }
-    let svg = $("#Sample")[0].graphic;
+    let svg = $("#Sample")[0].svg2;
     let nuclei = svg.nuke.$.find("circle");
     let ages = f.ages;
     let n = f.grid;

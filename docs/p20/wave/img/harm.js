@@ -4,15 +4,15 @@ wave: (sel, t, y, wave) => {
     let [T, dt, dec_t] = t ? t : [1, 0.2, 1];
     let [ymax, dy, dec_y] = y ? y : [4, 1, 0];
     let [ux, uy, v] = wave;
-    let svg = new SVG2(sel, {size: [512, 360], lrbt: [-dt, 9*dt, -5*dy, 5*dy], margin: [36, 16, 12, 12]});
-    svg.graph({grid: [dt, dy],
-        x: {tick: [dt, 9.1*dt, dt], dec: dec_t, title: [`Position / ${ux}`, [7.5*dt, "8"]], shift: [0, "-18"]},
-        y: {tick: [-5*dy, 5.1*dy, dy], dec: dec_y, title: [`Displacement / ${uy}`, "-60"], shift: ["-20", 0]},
-        data: [{locus: [(x, t, v) => ymax * sin(360 / T * (x - v * t)), null, v]}]
-    });
-    svg.$.find("text.Zero").remove();
-    svg.animate(svg.series[0].find(".Locus"));
-    svg.$.on("click", () => svg.toggle());
+    let svg = new SVG2(sel, {size: [512, 360], lrbt: [-dt, 9*dt, -5*dy, 5*dy], grid: [dt, dy], margin: [36, 16, 12, 12]});
+    let opt = {size: ["-6", 0], css: 15, shift: "-8"};
+    svg.ticks({x: [dt, 9.1*dt, dt], label: dec_t, ...opt});
+    svg.ticks({y: [-5*dy, 5.1*dy, dy], label: dec_y, ...opt});
+    let g = svg.group(".AxisTitles", "sans", 18);
+    g.text(`Position / ${ux}`, [8.9 * dt, "8", "br"], 0);
+    g.text(`Displacement / ${uy}`, ["-44", 4.9 * dy, "br"], 90);
+    svg.locus((x, t) => ymax * sin(360 / T * (x - v * t))).config({animated: true}).css("none", "#0065fe@3");
+    svg.$.on("click", () => svg.toggle()).find("g.Zero").remove();
     return svg;
 },
 
@@ -127,23 +127,17 @@ trWave: (sel) => {
 },
 
 Q6: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 6, -5, 5], margin: [60, 12, 10, 12]});
-    svg.graph({grid: [0.2, 0.5],
-        x: {tick: [0, 6.1, 1], title: ["Position / m", [5.2, "8"]], shift: [0, "-18"]},
-        y: {tick: [-5, 5.1, 1], title: ["Displacement / cm", "-40"], shift: ["-20", 0]},
-        data: [
-            {locus: [(x) => 3 * sin(360 * x / 2.8), [0, 6]]},
-            {locus: [(x, t) => 3 * sin(360 * (x - t / 4) / 2.8), [0, 6]]},
-        ]
-    });
-    svg.$.find("g.LabelX text.Zero").remove();
-
-    let g = svg.group("sans", "#0065fe", "bold");
-    for (let [t, p] of [
-        ["A", [0.4, 3.2]], ["B", [2.8, 1.5]], ["C", [4.45, -0.5]]
-    ]) g.gtext(t, [], p);
-
-    let loci = svg.series;
+    let svg = SVG2.cache_run("p20/wave/img/harm.js", "wave", sel, [2.8, 0.8, 1], [3, 1, 0], ["m", "cm", 0.2]);
+    svg.find(".AxisTitles > g", 1).shift_by(["14", 0]);
+    let eq = x => 3 * sin(360 / 2.8 * x);
+    let g = svg.locus(eq).css("none", "black@1");
+    g.$.insertBefore(svg.$.find("g.Locus"));
+    g = svg.group("red", "black@1");
+    for (let x of [0.5, 3.1, 4.3]) g.circle("4", [x, eq(x)]);
+    g = svg.group("sans", 24, "bold", "red");
+    g.text("A", [0.2, 2.8]);
+    g.text("B", [2.8, 1.8]);
+    g.text("C", [4.6, -0.8]);
 
     svg.afterupdate = function() {
         if (svg.time >= 1.6) {
@@ -151,29 +145,18 @@ Q6: (sel) => {
             svg.time = 1.6;
         }
     }
-
-    svg.animate(loci[1].find(".Locus")).$.on("click", () => {
-        if (svg.time >= 1.6) {
-            svg.time = 0;
-            svg.update(0);
-        }
-        else svg.toggle();
-    });
-
-    loci[0].$.find("polyline").css({stroke: "black", "stroke-width": "1px"});
-    loci[1].$.find("polyline").css({"stroke-width": "3px"});
 },
 
 Q1: (sel) => {
     let svg = SVG2.cache_run("p20/wave/img/harm.js", "wave", sel, [5, 1, 1], [2, 0.5, 1], ["cm", "cm", 1]);
     let g = svg.locus(x => 2 * sin(360 / 5 * x)).css("none", "black@1");
-    g.$.prependTo(svg.$.find("g.Series"));
+    g.$.insertBefore(svg.$.find("g.Locus"));
 },
 
 Q7: (sel) => {
     let svg = SVG2.cache_run("p20/wave/img/harm.js", "wave", sel, [0.75, 0.2, 1], [6, 1.5, 1], ["m", "cm", 0.15]);
     let g = svg.locus(x => 6 * sin(360 / 0.75 * x)).css("none", "black@1");
-    g.$.prependTo(svg.$.find("g.Series"));
+    g.$.insertBefore(svg.$.find("g.Locus"));
 },
 
 });

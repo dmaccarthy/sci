@@ -2,16 +2,18 @@ SVG2.cache("p20/kin/img/acc.js", {
 
 vt: (sel) => {
     let pt = [2.5, -9.81 * 2.5];
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -45, 0], margin: [62, 12, 12, 28]});
-    let p = svg.group().css(".Plot", "black@1");
-    svg.graph({grid: [0.5, 5],
-        x: {tick: [0, 4.1, 1], tickSize: "6", title: ["Time / s", [3.5, "-20"]], shift: [0, "12"]},
-        y: {tick: [-45, 0, 5], title: ["Velocity / (m/s)", "-44"], shift: ["-20", 0]},
-        data: [{connect: [[0, 0], [4, -9.81 * 4]]}]
-    });
-    p.poly([[0, 0], pt, [2.5, 0]]).css({stroke: "none", fill: "#0065fe", "fill-opacity": 0.2});
-    p.circle("5", pt).css({fill: "#0065fe"});
-    svg.$.on("click", () => p.$.fadeToggle()).append(p.$.hide());
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -45, 0], grid: [0.5, 5], margin: [62, 12, 12, 28]});
+    let tick = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [1, 4.2, 1], ...tick});
+    svg.ticks({y: [-45, -1, 5], ...tick});
+    let g = svg.group("sans", 18);
+    g.text("Time / s", [3.8, "8", "br"]);
+    g.text("Velocity / (m/s)", ["-40", -22.5, "b"], 90);
+    g = svg.group("#0065fe", "black@1", ".Toggle0");
+    css(g.poly([[0, 0], pt, [pt[0], 0]], 1), "none@", {"fill-opacity": 0.2});
+    g.circle("5", pt);
+    css(svg.line([0, 0], [4, -9.81 * 4]), "#0065fe@2");
+    svg.click_toggle(1, 1);
 },
 
 dt: (sel) => {

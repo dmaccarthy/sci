@@ -258,7 +258,7 @@ loadFeed.sim = () => {
     $("#RGB_Controls input").on("change", () => loadFeed.sim.redraw());
     $("#HSV_Controls input").on("change", () => loadFeed.sim.redraw(1));
     $("#HSV_Wheel").on("click", (e) => {
-        let svg = e.currentTarget.graphic;
+        let svg = e.currentTarget.svg2;
         let pt = svg.event_coords(e).coords;
         let h = pt.dir();
         $("#HSV_H").val(h < 0 ? h + 360 : h);
@@ -299,7 +299,7 @@ loadFeed.sim.hsv = () => {
     $("#HSV_Hval").html(h.toFixed(0));
     $("#HSV_Sval").html(s.toFixed(0));
     $("#HSV_Vval").html(v.toFixed(0));
-    let svg = $("#HSV_Wheel")[0].graphic;
+    let svg = $("#HSV_Wheel")[0].svg2;
     svg.set_v(v);
     svg.set_hs(h, s);
 }

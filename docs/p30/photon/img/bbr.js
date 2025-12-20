@@ -22,9 +22,9 @@ planck: (sel, T0, ...args) => {
     // Draw loci and peaks for specified temperatures
     if (args == null || args.length < 1) args = [T0];
     let colors = ["#0065fe", "red", "green", "gold", "violet", "cyan"];
-    let txt = svg.group(".Text", "sans");
-    let plot = svg.group().addClass("Plot");
-    let loci = plot.group().addClass("Locus");
+    let txt = svg.group("sans").config({key: "text"});
+    let plot = svg.group(); //.addClass("Plot");
+    let loci = plot.group(); //.addClass("Locus");
     for (let i=0;i<args.length;i++) {
         let T = args[i];
         if (T > 0) {
@@ -63,7 +63,7 @@ r_j: (sel) => {
     let rj = svg.locus(x => b * rj_law(x * w0, T) / I0, [2, wMax]);
     rj.$.css({stroke: "red", "stroke-width": "1px", fill: "none"});
     svg.$.find("text.Peak, g.Visible").remove();
-    svg.$.find("g.Text")[0].graphic.text("Rayleigh-Jeans Law", [3.5, 1]).css({fill: "red"});
+    svg.find("text").text("Rayleigh-Jeans Law", [3.5, 1]).css({fill: "red"});
 },
 
 });

@@ -66,7 +66,7 @@
 
 loadFeed.init = () => {
     let data = $("#BBR_Temp").find("input").addClass("Center").css({padding: 0, width: "5em", "font-size": "0.9em"});
-    data.on("change", () => loadFeed.redraw(data, $("#BBR_Graph")[0].graphic.T0));
+    data.on("change", () => loadFeed.redraw(data, $("#BBR_Graph")[0].svg2.T0));
 }
 
 loadFeed.rescale = () => {

@@ -22,7 +22,7 @@ loadFeed.x1 = () => {
 loadFeed.graph = () => {
     // Create graph and set text style
     svg = new SVG2("#Draw", {lrbt: [0, 10, 0, 10], margin: 56, grid: 1, scale: 32}).clip_rect();
-    let g = svg.group("sans", 18);
+    let g = svg.group("sans", 18).config({key: "sans"});
 
     // Tick marks and labels
     let opt = {size: ["-6", "6"], label: 0, shift: "-8", css: 15};

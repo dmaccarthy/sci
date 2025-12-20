@@ -104,6 +104,7 @@ loadFeed.sim = () => {
                 ball.circle("3", v).css({fill: "#ffc0c0"});
             }
         }
+        balls.choices = b;
     }
 
     svg.beforeupdate = function() {
@@ -113,7 +114,7 @@ loadFeed.sim = () => {
         let info = loadFeed.sim.ballInfo[i];
         let r = info[0];
         let balls = this.balls; 
-        let ball = balls.$.children("g")[i].graphic;
+        let ball = balls.choices[i];
         let vertical = balls.acc[0] == 9.81;
         let d = balls.shift[0];
         let d0 = 0.205 - r;

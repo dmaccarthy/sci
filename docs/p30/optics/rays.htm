@@ -17,7 +17,7 @@
 <script type="text/javascript" data-init="redraw">
 
 loadFeed.click = (x) => {
-    let svg = $("#Depth")[0].graphic;
+    let svg = $("#Depth")[0].svg2;
     svg.$.html("");
     let [x1, x2] = svg.ray_data;
     if (x) {
@@ -30,8 +30,8 @@ loadFeed.click = (x) => {
 
 loadFeed.redraw = () => {
     $("#RefractIndex").val(1.4).on("change", () => loadFeed.click());
-    $("#Depth")[0].graphic.$.on("click", (ev) => {
-        let svg = $("#Depth")[0].graphic;
+    $("#Depth")[0].svg2.$.on("click", (ev) => {
+        let svg = $("#Depth")[0].svg2;
         let v = svg.event_coords(ev).coords;
         if (Math.abs(v[1]) < 0.1) loadFeed.click(v[0]);
     })
