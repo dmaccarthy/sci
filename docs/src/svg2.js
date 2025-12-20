@@ -9,7 +9,7 @@ class SVG2group {
 constructor(parent, g) {
     if (parent) {
         this.element = g ? $(g)[0] : document.createElementNS(SVG2.nsURI, "g");
-        this.element.graphic = this;
+        this.element._gr = this;
         this.$ = $(this.element);
         this.$.appendTo(g ? g.$ : parent.$);
         this.svg = parent.svg;
@@ -24,15 +24,37 @@ constructor(parent, g) {
     }
 }
 
-find(sel, n) {
-    let e = this.$.find(sel)[n ? n : 0];
-    return e ? e.graphic : null;
+get key() {return this._key}
+
+set key(k) {
+    let svg = this.svg;
+    if (k) {
+        if (svg._key_map[k]) throw(`Key '${k}' already exists`);
+        svg._key_map[k] = this;
+    }
+    else delete this._key;
 }
+
+find(k, n) {
+    if (k instanceof $) k = k[0];
+    if (k instanceof SVGElement) return k._gr;
+    let g = this.svg._key_map[k];
+    if (!g) {
+        g = this.$.find(k)[n ? n : 0];
+        g = g ? g._gr : null;
+    }
+    return g;
+}
+
+// find(sel, n) {
+//     let e = this.$.find(sel)[n ? n : 0];
+//     return e ? e._gr : null;
+// }
 
 find_all(selector) {
     let g = [];
     for (let e of this.$.find(selector))
-        if (e.graphic instanceof SVG2group) g.push(e.graphic);
+        if (e._gr instanceof SVG2group) g.push(e._gr);
     return g;
 }
 
@@ -179,7 +201,7 @@ clip(id) {
 
 get parent() {
     let p = this.$.parent().closest("g, svg");
-    return p.length ? p[0].graphic : null;
+    return p.length ? p[0]._gr : null;
 }
 
 gpath() {
@@ -438,7 +460,13 @@ ticks(opt) { /*
 plot(points, size, href, theta) {
 /* Plot a sequence of points as circles, rectangles, images or custom markers */
     let g = this.group(".Plot", "black@1", "#0065fe");
-    if (!(points instanceof Array)) points = zip(points.x, points.y);
+    if (!(points instanceof Array)) {
+        let [x, y] = [points.x, points.y];
+        if (!(x instanceof Array)) x = [...x];
+        if (y instanceof Function) y = [...fn_eval(y, x)];
+        else if (!(y instanceof Array)) y = [...y];
+        points = zip(x, y);
+    }
     for (let pt of points) {
         let gi = g.group().config({theta: theta, shift: pt});
         if (size instanceof Function) size(gi, href);
@@ -1019,8 +1047,10 @@ constructor(selector, options) {
     this.svg = this;
     this.element = $(selector).filter("svg")[0];
     selector = this.$ = $(this.element).attr("xmlns", SVG2.nsURI);
-    this.element.graphic = this;
+    // this.element._gr = this;
+    this.element.svg2 = this;
     this.items = [];
+    this._key_map = {};
     this.decimals = 2;
 
     /* <svg> element size */
@@ -1301,7 +1331,7 @@ static set_animated(g, a) {
 animate(...args) {
 /* Append an array of animated SVG2group instances */
     for (let arg of args) {
-        if (!arg.update) arg = $(arg)[0].graphic;
+        if (!arg.update) arg = $(arg)[0]._gr;
         if (this.items.indexOf(arg) == -1) this.items.push(arg);
     }
     return this;
@@ -1365,9 +1395,19 @@ pause() {
 
 toggle() {return this.playing ? this.pause() : this.play()}
 
-click_toggle(n, click, init) {
-    let a = [() => click_cycle.toggle(this, false, ...range(n))];
-    for (let i=0;i<n;i++) a.push(() => click_cycle.toggle(this, true, i));
+click_toggle(n, click, init, solo, ...a) {
+    if (!a) a = [];
+    a.push(false);
+    for (let i=0;i<n;i++) a.push(() => {
+        let j = i - 1;
+        if (solo && i) click_cycle.toggle(this, false, j);
+        click_cycle.toggle(this, true, i);
+    });
+    for (let i=0;i<a.length;i++) {
+        let ai = a[i];
+        if (ai === true || ai === false)
+            a[i] = () => click_cycle.toggle(this, ai, ...range(n));
+    }
     click_cycle(this.element, init == null ? -1 : init, ...a);
     if (click) for (let i=0;i<click;i++)
         this.$.trigger("click");
