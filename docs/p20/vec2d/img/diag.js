@@ -2,7 +2,7 @@ SVG2.cache("p20/vec2d/img/diag.js", {
 
 Ex1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[5, -4]], {shift: [-3, 2],
-        lrbt: [-4, 3, -3, 3], scale: 50, margin: 8, grid: 0.5, tick: "-8", label: [1, 0, "-12", "-20"]});
+        lrbt: [-4, 3, -3, 3], scale: 50, margin: 8, grid: 0.5, label: [1, 0]});
     let g = svg.group("#0065fe");
     g.$.insertBefore(svg.$.find(".TipToTail2D"));
     g.circle("5", [-3, 2]);
@@ -17,7 +17,7 @@ Ex1: (sel) => {
 
 Ex2: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(35, 125)], {lrbt: [-25, 5, -5, 32.5],
-        scale: 12, margin: 8, grid: 2.5, tick: "-8", label: [5, 0, "-12", "-20"]});
+        scale: 12, margin: 8, grid: 2.5, label: [5, 0]});
     svg.$.find(".Component").remove();
     svg.gtext("m", "sans", [2.5, 30]);
 },
@@ -25,7 +25,7 @@ Ex2: (sel) => {
 Ex3: (sel) => {
     let F1 = vec2d(25, 62), F2 = vec2d(30, -70);
     let svg = SVG2.vec_diag(sel, [F1, F2], {lrbt: [-3, 24, -9, 24],
-        scale: 12, margin: 8, grid: 1.5, tick: "-8", label: [3, 0, "-12", "-20"]});
+        scale: 12, margin: 8, grid: 1.5, label: [3, 0]});
     css(svg.line(F1, F1.plus([4, 0])), ".Toggle1", "black@1");
     svg.$.find(".Component").remove();
     svg.gtext("N", "sans", [1.5, 24]);
@@ -36,7 +36,7 @@ Ex3: (sel) => {
 
 Q1: (sel, comp) => {
     let svg = SVG2.vec_diag(sel, [[-2, 4]], {shift: [3, -2], lrbt: [0, 4.5, -3.5, 3.5],
-        scale: 50, margin: [32, 10, 2, 2], grid: 0.5, tick: "-8", label: [1, 0, "-12", "-20"]});
+        scale: 50, margin: [32, 10, 2, 2], grid: 0.5, label: [1, 0]});
     svg.$.find("g.LabelY text.Zero").removeClass("Zero");
     svg.gtext("m", "sans", [0.1, -3, "l"]);
     let diag = svg.$.find(".TipToTail2D");
@@ -58,7 +58,7 @@ Q1: (sel, comp) => {
 
 Q2: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(80, 148)], {lrbt: [-80, 0, -10, 50],
-        scale: 5, margin: 8, grid: 5, tick: "-8", label: [10, 0, "-12", "-20"]});
+        scale: 5, margin: 8, grid: 5, label: [10, 0]});
     svg.$.find(".Component").remove();
     svg.gtext("km/h", "sans", [-75, -10]);
     svg.gtext("32.0°", "sans", [-15, 3]);
@@ -66,7 +66,7 @@ Q2: (sel) => {
 
 Q3: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(15, -65)], {lrbt: [-2, 10, -15, 2],
-        scale: 24, margin: 8, grid: 1, tick: "-8", label: [2, 0, "-12", "-20"]});
+        scale: 24, margin: 8, grid: 1, label: [2, 0]});
     svg.$.find(".Component").remove();
     svg.gtext("kN", "sans", [9, 1]);
     svg.gtext("65.0°", "sans", [2.5, -1.75]);
@@ -74,7 +74,7 @@ Q3: (sel) => {
 
 Q4: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(25, 45), vec2d(35, 192)], {lrbt: [-18, 20, -6, 24],
-        scale: 10, margin: 8, grid: 2, tick: "-8", label: [4, 0, "-12", "-20"]});
+        scale: 10, margin: 8, grid: 2, label: [4, 0]});
     svg.$.find(".Component").remove();
     svg.gtext("m", "sans", [2, 24]);
     svg.mjax("\\Delta\\vec{\\bf d}_1", null, [11, 6], "red");
@@ -88,7 +88,7 @@ Q5: (sel, mu) => {
     let vecs = [[0, -Fg], vec2d(Fn, 76)];
     if (mu) vecs.push(vec2d(mu * Fn, 166));
     let svg = SVG2.vec_diag(sel, vecs, {lrbt: [-1, 1.5, -4, 0.5],
-        scale: 90, margin: 8, grid: 0.25, tick: "-8", label: [1, 0, "-12", "-20"]});
+        scale: 90, margin: 8, grid: 0.25, label: [1, 0]});
     svg.$.find(".Component").remove();
     svg.gtext("N", "sans", [1.25, -3.75]);
     svg.mjax("\\vec{\\bf F}_g", null, [-0.5, -1.5], "red");

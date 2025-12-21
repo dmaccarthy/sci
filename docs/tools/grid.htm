@@ -38,11 +38,8 @@ _ = loadFeed.grid = (w, h, minors, opt) => {
         let lbl = opt.label ? opt.label : 0;
         if (!(dx instanceof Array)) dx = [dx, dx];
         if (!(lbl instanceof Array)) lbl = [lbl, lbl];
-        svg.tick_label(lbl[0], [...range(x0, x1 + 0.1, dx[0])], 0, "-6", "-20");
-        svg.tick_label(lbl[1], 0, [...range(y0, y1 + 0.1, dx[1])], "-6", "-10");
-        svg.$.find(".Zero").removeClass("Zero");
-        svg.$.find(".Labels").addClass("Mono");
-        svg.find(svg.$.find(".LabelY")[0]).config({shift: ["-10", 0]});
+        svg.ticks({x: [x0, x1 + 0.1, dx[0]], label: lbl[0]}, true);
+        svg.ticks({y: [y0, y1 + 0.1, dx[1]], label: lbl[1]}, true);
     }
     else g.find("line.Axis").removeClass("Axis");
 

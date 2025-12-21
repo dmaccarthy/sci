@@ -96,7 +96,7 @@ sign: (sel) => {
 sign_vec: (sel) => {
     let Fg = 491, F = Fg / root(2);
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(F, 45), vec2d(F, 135)], {lrbt: [-120, 300, -540, 30],
-        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]});
+        scale: 0.75, margin: 12, grid: 30, label: [60, 0]});
     svg.$.find(".Component, .Resultant").remove();
     svg.gtext("N", "sans", [270, -510]);
     svg.mjax("\\vec{\\bf F}_g", null, [40, -240], "red");
@@ -113,7 +113,7 @@ sign_uneven: (sel) => {
     let F1 = Fg / sin(105) * sin(45);
     let F2 = Fg / sin(105) * sin(30);
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(F1, 60), vec2d(F2, 135)], {lrbt: [-120, 300, -540, 30],
-        scale: 0.75, margin: 12, grid: 30, tick: "-8", label: [60, 0, "-12", "-20"]});
+        scale: 0.75, margin: 12, grid: 30, label: [60, 0]});
     svg.$.find(".Component, .Resultant").remove();
     svg.gtext("N", "sans", [270, -510]);
     svg.mjax("\\vec{\\bf F}_g", null, [40, -240], "red");

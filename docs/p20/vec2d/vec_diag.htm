@@ -96,9 +96,9 @@ loadFeed.init.redraw = (vecs) => {
 
     // Draw the vector diagram and print the units
     svg = SVG2.vec_diag(svg, shift ? vecs.slice(1) : vecs, {lrbt: vp.lrbt, scale: 30 / vp.grid, margin: 16,
-        grid: vp.grid, cycle: 1, shift: shift, tick: "-8", label: [2 * vp.grid, vp.dig, "-12", "-20"]}
+        grid: vp.grid, cycle: 1, shift: shift, label: [2 * vp.grid, vp.dig]}
     );
-    $(svg.$.find("g.Labels")[0]).find("text").css({"text-anchor": "end"});
+    // $(svg.$.find("g.Labels")[0]).find("text").css({"text-anchor": "end"});
     svg.vecs = vecs;
     svg.resultant = RArray.add(...svg.vecs);
     $("#Units").html(`${n ? `10<sup>${n}</sup> ` : ""}${loadFeed.init.units}`);

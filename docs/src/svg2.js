@@ -408,7 +408,7 @@ async mjax(tex, size, posn, color, theta) {
     });
 }
 
-ticks(opt) { /*
+ticks(opt, useDefault) { /*
     x, y: Specify coordinates of ticks and labels
     size: Tick extent below and above
     label: Function or decimal places for labels
@@ -416,6 +416,10 @@ ticks(opt) { /*
     anchor, shift: Adjust location of labels
     theta: orientation of labels
 */
+    if (useDefault) {
+        let def = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+        opt = opt ? Object.assign(def, opt) : def;
+    }
     let p0, p1, gt, gl;
     let svg = this.svg;
     let [x, y, size, label, skip] = [opt.x, opt.y, opt.size, opt.label, opt.skip];
@@ -1475,21 +1479,24 @@ static vec_diag(sel, vecs, opt) {
         let [l, r, b, t] = svg.lrbt;
         l = space * Math.ceil(l / space);
         b = space * Math.ceil(b / space);
-        let tick = opt.tick;
-        if (tick) {
-            svg.tick_label(n, 0, [...range(b, t + space / 10, space)], tick, x);
-            svg.tick_label(n, [...range(l, r + space / 10, space)], 0, tick, y);
-        }
-        else {
-            svg.label(n, x, [...range(b, t + space / 10, space)]);
-            svg.label(n, [...range(l, r + space / 10, space)], y);
-        }
+        let tick = {size: ["-6", 0], css: ["mono", 14], label: n, shift: "-8"};
+        if (opt.tick) tick = Object.assign(tick, opt.tick);
+        svg.ticks({x: [l, r + space / 10, space], ...tick}).shift_by([0, y ? y : 0]);
+        svg.ticks({y: [b, t + space / 10, space], ...tick}).shift_by([x ? x : 0, 0]);
+        // if (tick) {
+        //     svg.tick_label(n, 0, [...range(b, t + space / 10, space)], tick, x);
+        //     svg.tick_label(n, [...range(l, r + space / 10, space)], 0, tick, y);
+        // }
+        // else {
+        //     svg.label(n, x, [...range(b, t + space / 10, space)]);
+        //     svg.label(n, [...range(l, r + space / 10, space)], y);
+        // }
     }
     g.$.appendTo(svg.$);
-    for (let s of "XY") {
-        let e = svg.find(`g.Label${s}`);
-        if (e) e.shift_by([0, "-5"]);
-    }
+    // for (let s of "XY") {
+    //     let e = svg.find(`g.Label${s}`);
+    //     if (e) e.shift_by([0, "-5"]);
+    // }
     svg.$.find(".Zero").hide();
     if (opt.cycle == -1) g.$.find(".Component").hide();
     else if (opt.cycle) svg.vec_cycle(g.$, vecs.length > 1);
@@ -1661,9 +1668,6 @@ SVG2._style = {
     sans: {"font-family": SVG2.sans, "font-size": "18px"},
     serif: {"font-family": SVG2.serif, "font-size": "18px"},
     mono: {"font-family": SVG2.mono, "font-size": "18px"},
-
-    // Deprecated!
-    // text: {"font-family": SVG2.sans, "font-size": "18px", "text-anchor": "middle"},
 };
 
 SVG2.eq = {Ek: "E_k", Eg: "E_g"}

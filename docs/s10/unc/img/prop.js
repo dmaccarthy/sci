@@ -1,18 +1,19 @@
 SVG2.cache("s10/unc/img/prop.js", {
 
 ebar: (sel) => {
-    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 90, 0, 70], margin: [64, 12, 56, 12]});
+    let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 90, 0, 70], grid: [5, 5], margin: [64, 12, 56, 12]});
     let x = [...range(10, 81, 10)];
     let y = [62.6, 51.2, 43.8, 37.4, 33, 23.6, 18.2, 6.8]; // [...fn_eval((x) => randint(66, 70) - 0.74 * x, x)]
     let f = lin_reg_xy(x, y).fn;
-    svg.graph({grid: [5, 5],
-        x: {tick: [0, 91, 10], title: ["Mass / g", [45, "-44"]], shift: [0, "-18"]},
-        y: {tick: [0, 71, 10], title: ["Final Temperature / °C", "-44"], shift: ["-20", 0]},
-        data: [
-            {connect: [[0, f(0)], [90, f(90)]]},
-            {plot: [zip(x, y), "4"]}
-        ]
-    });
+
+    let tick = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    svg.ticks({x: [0, 91, 10], ...tick});
+    svg.ticks({y: [0, 71, 10], ...tick});
+    let g = svg.group("sans", 18);
+    g.text("Mass / g", [60, "8", "b"]);
+    g.text("Final Temperature / °C", ["-40", 35, "b"], 90);
+    svg.plot({x: x, y: y}, "4").css("#0065fe", "black@1");
+    css(svg.line([0, f(0)], [90, f(90)]), "#0065fe@2");
 
     // Min-max lines
     let minmax = svg.group().addClass("Toggle1").css({stroke: "red"});

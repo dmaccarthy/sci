@@ -47,7 +47,7 @@ fbd1: (sel) => {
 vec1: (sel) => {
     let a = 25, Fg = 60, Fn = Fg * cos(a), Ff = Fg * sin(a) / 2;
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 90-a), vec2d(Ff, 180-a)], {lrbt: [-16, 32, -64, 8],
-        scale: 6, margin: 8, grid: 4, label: [8, 0, "-4", "-12"]});
+        scale: 6, margin: 8, grid: 4, label: [8, 0]});
     svg.$.find(".Component").remove();
     svg.gtext("N", 18, [28, -60]);
     svg.mjax("\\vec{\\bf F}_g", null, [-8, -29], "red");
@@ -71,11 +71,10 @@ Q1f: (sel) => {
 
 Q1v: (sel) => {
     let svg = SVG2.vec_diag(sel, [[-3, 0], [0, -63.8], [3, 0], [0, 12.5]], {shift: [1.5, 0],
-        lrbt: [-15, 15, -75, 5], scale: 5, margin: 1, grid: 5, tick: "-8", label: [10, 0, "-14", "-18"]});
+        lrbt: [-15, 15, -75, 5], scale: 5, margin: 1, grid: 5, label: [10, 0]});
     svg.$.find(".Component").remove();
     let a = svg.$.find("g.Arrow").css({"fill-opacity": 0.6});
     $([a[0], a[2]]).remove();
-    css(svg.$.find("g.Labels"), "mono", "grey");
     svg.mjax("\\vec{\\bf F}_g", null, [-10, -30], "red");
     svg.mjax("\\vec{\\bf F}_f", null, [8, -57], "red");
     svg.mjax("\\vec{\\bf F}_{net}", null, [8, -25], "#0065fe");
@@ -84,11 +83,10 @@ Q1v: (sel) => {
 Q3: (sel) => {
     let Fg = -567, Ff = 725;
     let svg = SVG2.vec_diag(sel, [[0, Fg], [30, 0], [0, Ff], [-30, 0]], {shift: [-15, 0],
-        lrbt: [-150, 150, -575, 175], scale: 0.5, margin: 1, grid: 50, tick: "-8", label: [100, 0, "-14", "-18"]});
+        lrbt: [-150, 150, -575, 175], scale: 0.5, margin: 1, grid: 50, label: [100, 0]});
     svg.$.find(".Component").remove();
     let a = svg.$.find("g.Arrow").css({"fill-opacity": 0.6});
     $([a[1], a[3]]).remove();
-    css(svg.$.find("g.Labels"), "mono", "grey");
     svg.mjax("\\vec{\\bf F}_g", null, [-80, -250], "red");
     svg.mjax("\\vec{\\bf F}_f", null, [80, -225], "red");
     svg.mjax("\\vec{\\bf F}_{net}", null, [-90, 50], "#0065fe");

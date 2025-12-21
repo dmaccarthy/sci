@@ -33,7 +33,7 @@ ship: (sel) => {
 
 Ex1_init: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(50, 60), vec2d(40, 340)], {lrbt: [-10, 70, -10, 50], scale: 5,
-        margin: 8, grid: 5, tick: "-8", label: [10, 0, "-12", "-20"]});
+        margin: 8, grid: 5, label: [10, 0]});
     svg.gtext("m", "sans", [3, 50]);
     let sym = svg.group(".MJax");
     sym.mjax("\\Delta\\vec{\\bf d}_1", null, [6, 27], "red");
@@ -65,7 +65,7 @@ trig: (sel) => {
 Ex2: (sel) => {
     let Fg = 98.1, Fn = Fg * cos(10);
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 80), vec2d(8, 170)], {lrbt: [-30, 30, -105, 10],
-        scale: 4, cycle: 1, margin: [12, 12, 6, 16], grid: 5, tick: "-8", label: [10, 0, "-12", "-20"]});
+        scale: 4, cycle: 1, margin: [12, 12, 6, 16], grid: 5, label: [10, 0]});
     svg.gtext("N", "sans", [25, -100]);
     svg.mjax("\\vec{\\bf F}_g", null, [-15, -45], "red");
     svg.mjax("\\vec{\\bf F}_n", null, [20, -50], "red");
@@ -75,7 +75,7 @@ Ex2: (sel) => {
 
 Ex3: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(7.25, 75), vec2d(6.5, -60)], {lrbt: [-1, 6, -1, 8],
-        scale: 50, cycle: 1, margin: [12, 12, 6, 16], grid: 1, tick: "-8", label: [1, 0, "-12", "-20"]});
+        scale: 50, cycle: 1, margin: [12, 12, 6, 16], grid: 1, label: [1, 0]});
     svg.gtext("m/s", "sans", [0.1, 8, "l"]);
     svg.mjax("-\\vec{\\bf v}_i", null, [4.2, 4.5], "red");
     svg.mjax("\\vec{\\bf v}_f", null, [0.5, 4.2], "red");

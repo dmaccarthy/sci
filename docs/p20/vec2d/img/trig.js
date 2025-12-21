@@ -12,11 +12,11 @@ pretest: (sel) => {
     let blue = svg.group("none", "#0065fe@2");
     blue.poly([[0, 0], q, r], 1);
     blue.poly([q.plus([0, l]), q.plus([-l, l]), q.plus([-l, 0])]);
-    text.gtext("P", [], [-0.5, 0]);
-    text.gtext("Q", [], [6.1, 0]);
-    text.gtext("R", [], [6.1, 4]);
-    text.gtext("7.00", ["black"], [2.5, 2.5]);
-    text.gtext("35.0°", ["black"], [1.5, 0.3]);
+    text.text("P", [-0.5, 0]);
+    text.text("Q", [6.1, 0]);
+    text.text("R", [6.1, 4]);
+    text.text("7.00", [2.5, 2.5], 0, "black");
+    text.text("35.0°", [1.5, 0.3], 0, "black");
 
     // ABC
     let g = text.group().config({shift: [9, 4]});
@@ -24,11 +24,11 @@ pretest: (sel) => {
     blue.poly([[0, 0], [5, 0], [0, -4]], 1);
     blue.poly([[0, -l], [l, -l], [l, 0]]);
     text = g.group("sans", "#0065fe");
-    text.gtext("A", [], [-0.5, -4]);
-    text.gtext("B", [], [5.6, 0]);
-    text.gtext("C", [], [-0.5, 0]);
-    text.gtext("4.00", ["black"], [-0.7, -2]);
-    text.gtext("5.00", ["black"], [2.5, 0.3]);
+    text.text("A", [-0.5, -4]);
+    text.text("B", [5.6, 0]);
+    text.text("C", [-0.5, 0]);
+    text.text("4.00", [-0.7, -2], 0, "black");
+    text.text("5.00", [2.5, 0.3], 0, "black");
 },
 
 similar: (sel) => {
@@ -39,21 +39,21 @@ similar: (sel) => {
     g.poly([[0, 0], [p, 0], [p, 5]], 1);
     g.poly([[p - dx, 0], [p  - dx, dx], [p, dx]]).css({"stroke-width": "1px"});
     g = svg.group("sans", "#0065fe");
-    g.gtext("5", {}, [9.3, 2.5]);
-    g.gtext("8.66", {}, [5, -0.5]);
-    g.gtext("10", {}, [5, 3.6]);
+    g.text("5", [9.3, 2.5]);
+    g.text("8.66", [5, -0.5]);
+    g.text("10", [5, 3.6]);
     p /= 2;
     g = svg.group("none", "red@2");
     g.poly([[0, 0], [p, 0], [p, 2.5]], 1);
     g.poly([[p - dx, 0], [p  - dx, dx], [p, dx]]).css({"stroke-width": "1px"});
     g = svg.group("sans", "red");
-    g.gtext("2.5", {}, [5, 1.25]);
-    g.gtext("5", {}, [p/2, 1.9]);
-    g.gtext("4.33", {}, [p/2, -0.5]);
+    g.text("2.5", [5, 1.25]);
+    g.text("5", [p/2, 1.9]);
+    g.text("4.33", [p/2, -0.5]);
     g = svg.group("sans", "black", 15);
-    g.gtext("30°", {}, [1.5, 0.35]);
-    g.gtext("60°", {}, [3.82, 1.7]);
-    g.gtext("60°", {}, [8.15, 4.2]);
+    g.text("30°", [1.5, 0.35]);
+    g.text("60°", [3.82, 1.7]);
+    g.text("60°" [8.15, 4.2]);
 }, 
 
 ramp: (sel) => {
@@ -64,9 +64,9 @@ ramp: (sel) => {
     g.poly([[0, 0], [x, 0], [x, 0.25]], 1);
     g.poly([[x, dx], [x  - dx, dx], [x - dx, 0]]).css({"stroke-width": "1px"});
     g = svg.group("sans", "black");
-    g.gtext("1.50 m", {}, [x/2, 0.23]);
-    g.gtext("0.250 m", {}, [1.7, 0.12]);
-    g.gtext("θ", [15, "ital"], [0.48, 0.04]);
+    g.text("1.50 m", [x/2, 0.23]);
+    g.text("0.250 m", [1.7, 0.12]);
+    g.text("θ", [0.48, 0.01, "b"], 0, [15, "ital"]);
     css(svg.$.find("line.Axis"), "grid");
 },
 
@@ -78,11 +78,11 @@ ball8: (sel) => {
     css(svg.poly([[80, 65], [80, 50], [40, 50]]), "none", "red@2");
     svg.arrow({tail: [80, 65], tip: [40, 50]}, {tail: "4"}).css("arrow", "#0065fe");
     g = svg.group("sans", "#0065fe", 24);
-    g.gtext("I", {}, [82, 65]);
-    g.gtext("F", {}, [40, 53]);
+    g.text("I", [82, 65]);
+    g.text("F", [40, 53]);
     g = svg.group("sans", "red");
-    g.gtext("40.0 cm", {}, [60, 47.5]);
-    g.gtext("15.0 cm", {}, [82.5, 57.5]).config({theta: 90});
+    g.text("40.0 cm", [60, 47.5]);
+    g.text("15.0 cm", [82.5, 57.5]).config({theta: 90});
 }, 
 
 star: (sel) => {
@@ -96,31 +96,31 @@ star: (sel) => {
     g.circle("5");
     g.circle("7", [4, 1]).css({fill: "orange"});
     g = svg.group("sans", 18, "#0065fe");
-    g.gtext("M", [], [-1, -0.14]);
-    g.gtext("S", [], [0, -0.14]);
+    g.text("M", [-1, -0.14]);
+    g.text("S", [0, -0.14]);
     g = svg.group("sans", 18, "black");
-    g.gtext("18.00000°", {}, [-1, 0.1, "b"]);
-    g.gtext("18.00020°", {}, [0.45, 0.005, "b"]);
+    g.text("18.00000°", [-1, 0.1, "b"]);
+    g.text("18.00020°", [0.45, 0.005, "b"]);
     g = g.group("serif", {"font-style": "italic"});
-    g.gtext("d", {}, [-0.5, -0.09]);
+    g.text("d", [-0.5, -0.09]);
     g = g.group();
-    g.gtext("r", {}, [1.9, 0.4]);
-    g.gtext("x", {}, [2, -0.09]);
-    g.gtext("y", {}, [4.2, 0.5]);
+    g.text("r", [1.9, 0.4]);
+    g.text("x", [2, -0.09]);
+    g.text("y", [4.2, 0.5]);
     // g.$.hide();
     svg.$.on("click", () => g.$.fadeToggle());
 },
 
 Q2: (sel) => {
     let svg = SVG2.vec_diag(sel, [[5, 0], [-5, 8]], {lrbt: [-2, 6, -1, 9],
-        scale: 40, margin: 8, grid: 0.5, tick: "-8", label: [1, 0, "-12", "-20"]});
+        scale: 40, margin: 8, grid: 0.5, label: [1, 0]});
     svg.$.find(".Component").remove();
     let g = svg.group("sans", 18);
-    g.gtext("km", {}, [-2, "2", "bl"]);
+    g.text("km", {}, [-2, "2", "bl"]);
     g = g.group(20, "bold");
-    g.gtext("A", {}, [0.35, 0.35]);
-    g.gtext("B", {}, [5.35, 0.35]);
-    g.gtext("C", {}, [0.4, 8.25]);
+    g.text("A", [0.35, 0.35]);
+    g.text("B", [5.35, 0.35]);
+    g.text("C", [0.4, 8.25]);
 },
 
 });

@@ -2,7 +2,7 @@ SVG2.cache("p30/mom/img/coll2d.js", {
 
 Ex1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, 27], [-24, 0]], {lrbt: [-26, 6, -4, 34], scale: 12,
-        margin: 8, grid: 2, tick: "-8", label: [4, 0, "-12", "-20"]});
+        margin: 8, grid: 2, label: [4, 0]});
     svg.$.find(".Component").remove();
     let g = svg.$.find("g.TipToTail2D > g.Arrow");
     for (let i=0;i<2;i++) $(g[i+1]).addClass(`Toggle${i}`);
@@ -17,7 +17,7 @@ Ex1: (sel) => {
 
 Ex2: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, 27], vec2d(24, 210)], {lrbt: [-26, 6, -4, 34], scale: 12,
-        margin: 8, grid: 2, tick: "-8", label: [4, 0, "-12", "-20"]});
+        margin: 8, grid: 2, label: [4, 0]});
     svg.$.find(".Component").remove();
     let g = svg.$.find("g.TipToTail2D > g.Arrow");
     for (let i=0;i<2;i++) $(g[i+1]).addClass(`Toggle${i}`);
@@ -33,7 +33,7 @@ Ex2: (sel) => {
 Ex3: (sel) => {
     let [pa, pb] = vec2d(0.425, 35);
     let svg = SVG2.vec_diag(sel, [vec2d(pa, 35), vec2d(pb, -55)], {lrbt: [-0.05, 0.45, -0.1, 0.25], scale: 800,
-        margin: 8, grid: 0.025, tick: "-8", label: [0.1, 1, "-12", "-20"]});
+        margin: 8, grid: 0.025, label: [0.1, 1]});
     svg.$.find(".Component").remove();
     let g = svg.$.find("g.TipToTail2D > g.Arrow");
     for (let i=0;i<2;i++) $(g[i]).addClass(`Toggle${i}`);
