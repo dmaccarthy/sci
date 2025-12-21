@@ -24,6 +24,32 @@ constructor(parent, g) {
     }
 }
 
+
+/*** Grouping ***/
+
+group(...css) {
+    let g = new SVG2group(this.svg, this.create_child("g"));
+    if (css) g.css(...css);
+    return g;
+}
+
+scaled(s) {return new SVG2scaled(this.svg, this.create_child("g"), s)}
+
+get parent() {
+    let p = this.$.parent().closest("g, svg");
+    return p.length ? p[0]._gr : null;
+}
+
+gpath() {
+/* Return a path array from the <svg> element to the current <g> */
+    let p = this.parent;
+    let a = [this];
+    return p ? p.gpath().concat(a) : a;
+}
+
+
+/*** Searchimg items ***/
+
 get key() {return this._key}
 
 set key(k) {
@@ -46,16 +72,22 @@ find(k, n) {
     return g;
 }
 
-// find(sel, n) {
-//     let e = this.$.find(sel)[n ? n : 0];
-//     return e ? e._gr : null;
-// }
-
 find_all(selector) {
     let g = [];
     for (let e of this.$.find(selector))
         if (e._gr instanceof SVG2group) g.push(e._gr);
     return g;
+}
+
+
+/*** Modifying properties ***/
+
+create_child(tag, attr, html) {
+/* Create a child element of the <g> element */
+    let c = $(document.createElementNS(SVG2.nsURI, tag));
+    c.attr(attr ? attr : {});
+    if (html) c.html(html);
+    return c.appendTo(this.element);
 }
 
 config(attr) {
@@ -76,140 +108,49 @@ css(...rules) {
     return this;
 }
 
-get bbox_px() {return this.element.getBBox()}
-
-get bbox_cs() {
-/* Get bounding box prior to rotation or shift */
+update_transform() {
+/* Calculate and set the transform attribute */
     let svg = this.svg;
-    let b = this.element.getBBox();
-    let xy0 = new RArray(b.x, b.y);
-    let xy1 = xy0.plus([b.width, b.height]);
-    xy0 = svg.p2a(...xy0);
-    xy1 = svg.p2a(...xy1);
-    return {x: xy0[0], y: xy0[1], width: Math.abs(xy1[0] - xy0[0]), height: Math.abs(xy1[1] - xy0[1])};
-}
-
-draw_bbox(orig, draw) {
-/* Draw the transformed or original bounding rectangle and pivot point*/
-    let g = (orig ? this.svg : this).group();
-    if (!draw) {
-        css(g.circle("3", this.pivot));
-        draw = 1;
+    let a = this.theta * svg.angleDir;
+    let [x, y] = svg.scale.times(this.shift);
+    let f = (x) => x.toFixed(svg.decimals);
+    let t = x || y ? `translate(${f(x)} ${f(y)})` : "";
+    if (a) {
+        let [px, py] = svg.a2p(...this.pivot);
+        t += ` rotate(${f(a)} ${f(px)} ${f(py)})`;
     }
-    // else draw = 3;
-    let b = this.bbox_cs;
-    if (draw & 1) css(g.rect([b.width, b.height], [b.x, b.y, "tl"]), {"fill-opacity": 0.2});
-    if (draw & 2) css(g.circle("3", this.pivot));
-    return g.css({"fill-opacity": 0.7});
-}
-
-align(posn, dim) {
-/* Align the group based on its bounding box */
-    if (posn == null) {
-        posn = this._aligned_posn;
-        if (posn == null) return this;
-        [posn, dim] = posn;
-    }
-    let [x, y, ax, ay] = SVG2._anchor(posn);
-    let [sx, sy] = this.svg.scale;
-    let b = this.bbox_cs;
-    if (dim) dim = dim.trim().toLowerCase();
-    if (dim != "y") x -= ax * b.width * (sx < 0 ? -1 : 1);
-    if (dim != "x") y -= ay * b.height * (sy < 0 ? -1 : 1);
-    return this.config({_aligned_posn: [posn, dim], shift: [x - b.x, y - b.y]}); //.shift_by();
-}
-
-// ralign(posn, dim) {
-// /* Align the element based on its bounding box */
-//     if (posn == null) {
-//         posn = this._aligned_posn;
-//         if (posn == null) return this;
-//         [posn, dim] = posn;
-//     }
-//     let svg = this.svg;
-//     let x, y;
-//     let box = this.element.getBBox();
-//     let [w, h] = [box.width, box.height];
-//     if (w * h == 0) console.warn("Aligning group with 0 width or height:", this);
-//     [w, h, x, y] = this.rect_xy([w.toFixed(2), h.toFixed(2)], posn);
-//     if (dim == "x") y = box.y;
-//     else if (dim == "y") x = box.x;
-//     let [dx, dy] = new RArray(x,y).minus([box.x, box.y]);
-//     this.config({_aligned_posn: [posn, dim], shift: [dx / svg.scale[0], dy / svg.scale[1]]});
-//     return this.update_transform();
-// }
-
-realign_text(t, n) {
-    clearTimeout(this.realign_text_timeout);
-    if (n == null) n = 10;
-    if (t !== false) for (let g of this.find_all("g")) {
-        if (g._aligned_posn && g.$.find("text").length) console.log(g.align());
-    }
-    if (t && n > 1) this.realign_text_timeout = setTimeout(() => this.realign_text(t, n-1), t);
-}
-
-
-/** Kinematics getters and setters **/
-
-get pivot() {return this._pivot};
-get shift() {return this._shift};
-get vel() {return this._vel}
-get acc() {return this._acc}
-get theta() {return this._theta}
-
-set pivot(xy) {this._pivot = new RArray(...this.cs_size(xy))}
-set shift(xy) {this._shift = new RArray(...this.cs_size(xy))}
-set vel(xy) {this._vel = new RArray(...this.cs_size(xy))}
-set acc(xy) {this._acc = new RArray(...this.cs_size(xy))}
-
-set theta(a) {
-    if (this.thetaMode) {
-        while (a >= 360) a -= 360;
-        while (a < 0) a += 360;
-    }
-    this._theta = a;
-}
-
-shift_by(xy) {
-    this._shift = this._shift.plus(this.cs_size(xy));
-    return this.update_transform();
-}
-
-
-/** Clipping **/
-
-clip_path(id, clone) {
-/* Clone or move the <g> content to a <clip_path> */
-    let e = this.$;
-    let cp = $(document.createElementNS(SVG2.nsURI, "clipPath")).attr({id: id});
-    cp.appendTo(this.svg.defs[0]);
-    if (clone) cp.html(e.html());
-    else e.children().appendTo(cp);
-    let tr = e.attr("transform");
-    if (tr) cp.children().attr({"transform": tr});
-    return cp;
-}
-
-clip(id) {
-/* Set the clip-path attribute */
-    this.$.attr({"clip-path": `url(#${id})`});
+    t = t.trim();
+    if (t.length) this.$.attr("transform", t);
+    else this.$.removeAttr("transform");
     return this;
 }
 
 
-/** Coordinate transformations **/
+/*** Coordinates and metrics ***/
 
-get parent() {
-    let p = this.$.parent().closest("g, svg");
-    return p.length ? p[0]._gr : null;
+cs_radius(r) {return typeof(r) == "string" ? parseFloat(r) / this.svg.unit : r}
+px_radius(r) {return typeof(r) == "string" ? parseFloat(r) : r * this.svg.unit}
+
+px_size(sz) {
+/* Convert [w, h] to pixel units */
+    if (sz == null) sz = [0, 0];
+    let [w, h] = sz;
+    let [sx, sy] = this.svg.scale;
+    w = typeof(w) == "string" ? parseFloat(w) : Math.abs(w * sx);
+    h = typeof(h) == "string" ? parseFloat(h) : Math.abs(h * sy);
+    return new RArray(w, h);
 }
 
-gpath() {
-/* Return a path array from the <svg> element to the current <g> */
-    let p = this.parent;
-    let a = [this];
-    return p ? p.gpath().concat(a) : a;
+cs_size(sz) {
+/* Convert [w, h] to coordinate system units */
+    if (sz == null) sz = [0, 0];
+    let [w, h] = sz;
+    let [sx, sy] = this.svg.scale;
+    if (typeof(w) == "string") w = parseFloat(w) / Math.abs(sx);
+    if (typeof(h) == "string") h = parseFloat(h) / Math.abs(sy);
+    return new RArray(w, h);
 }
+
 
 coord_from_parent(xy) {
 /* Apply rotation and shift to convert parent <g> coordinates xy relative to child */
@@ -243,24 +184,103 @@ coord_from_svg(xy) {
     return xy;
 }
 
+get bbox_px() {return this.element.getBBox()}
 
-/** Update animated <g> elements **/
-
-update_transform() {
-/* Calculate and set the transform attribute */
+get bbox_cs() {
+/* Get bounding box prior to rotation or shift */
     let svg = this.svg;
-    let a = this.theta * svg.angleDir;
-    let [x, y] = svg.scale.times(this.shift);
-    let f = (x) => x.toFixed(svg.decimals);
-    let t = x || y ? `translate(${f(x)} ${f(y)})` : "";
-    if (a) {
-        let [px, py] = svg.a2p(...this.pivot);
-        t += ` rotate(${f(a)} ${f(px)} ${f(py)})`;
+    let b = this.element.getBBox();
+    let xy0 = new RArray(b.x, b.y);
+    let xy1 = xy0.plus([b.width, b.height]);
+    xy0 = svg.p2a(...xy0);
+    xy1 = svg.p2a(...xy1);
+    return {x: xy0[0], y: xy0[1], width: Math.abs(xy1[0] - xy0[0]), height: Math.abs(xy1[1] - xy0[1])};
+}
+
+draw_bbox(orig, draw) {
+/* Draw the transformed or original bounding rectangle and pivot point*/
+    let g = (orig ? this.svg : this).group();
+    if (!draw) {
+        css(g.circle("3", this.pivot));
+        draw = 1;
     }
-    t = t.trim();
-    if (t.length) this.$.attr("transform", t);
-    else this.$.removeAttr("transform");
-    return this;
+    // else draw = 3;
+    let b = this.bbox_cs;
+    if (draw & 1) css(g.rect([b.width, b.height], [b.x, b.y, "tl"]), {"fill-opacity": 0.2});
+    if (draw & 2) css(g.circle("3", this.pivot));
+    return g.css({"fill-opacity": 0.7});
+}
+
+static _anchor(posn) {
+    if (posn == null) posn = [0, 0];
+    if (posn.length == 4) return posn;
+    if (posn.length == 3) return [posn[0], posn[1], ...SVG2.parse_anchor(posn[2])];
+    if (posn[0] instanceof Array) {
+        let a = typeof(posn[1]) == "string" ? SVG2.parse_anchor(posn[1]) : posn[1];
+        return [...posn[0], ...a];
+    }
+    return [...posn, 0.5, 0.5];
+}
+
+rect_xy(size, posn) {
+/* Get bounding rectangle in pixel coordinates */
+    let [x, y, ax, ay] = SVG2._anchor(posn);
+    let svg = this.svg;
+    let [w, h] = this.px_size(size);
+    [x, y] = svg.a2p(...this.cs_size([x, y]));
+    return [w, h, x - ax * w, y - ay * h];
+}
+
+align(posn, dim) {
+/* Align the group based on its bounding box */
+    if (posn == null) {
+        posn = this._aligned_posn;
+        if (posn == null) return this;
+        [posn, dim] = posn;
+    }
+    let [x, y, ax, ay] = SVG2._anchor(posn);
+    let [sx, sy] = this.svg.scale;
+    let b = this.bbox_cs;
+    if (dim) dim = dim.trim().toLowerCase();
+    if (dim != "y") x -= ax * b.width * (sx < 0 ? -1 : 1);
+    if (dim != "x") y -= ay * b.height * (sy < 0 ? -1 : 1);
+    return this.config({_aligned_posn: [posn, dim], shift: [x - b.x, y - b.y]}); //.shift_by();
+}
+
+realign_text(t, n) {
+    clearTimeout(this.realign_text_timeout);
+    if (n == null) n = 10;
+    if (t !== false) for (let g of this.find_all("g")) {
+        if (g._aligned_posn && g.$.find("text").length) console.log(g.align());
+    }
+    if (t && n > 1) this.realign_text_timeout = setTimeout(() => this.realign_text(t, n-1), t);
+}
+
+
+/*** Kinematics getters and setters ***/
+
+get pivot() {return this._pivot};
+get shift() {return this._shift};
+get vel() {return this._vel}
+get acc() {return this._acc}
+get theta() {return this._theta}
+
+set pivot(xy) {this._pivot = new RArray(...this.cs_size(xy))}
+set shift(xy) {this._shift = new RArray(...this.cs_size(xy))}
+set vel(xy) {this._vel = new RArray(...this.cs_size(xy))}
+set acc(xy) {this._acc = new RArray(...this.cs_size(xy))}
+
+set theta(a) {
+    if (this.thetaMode) {
+        while (a >= 360) a -= 360;
+        while (a < 0) a += 360;
+    }
+    this._theta = a;
+}
+
+shift_by(xy) {
+    this._shift = this._shift.plus(this.cs_size(xy));
+    return this.update_transform();
 }
 
 update(dt) {
@@ -287,23 +307,38 @@ get animated() {return this.svg.items.indexOf(this) > -1}
 set animated(a) {SVG2.set_animated(this, a)}
 
 
-/** Create child elements within <svg> or <g> element **/
+/*** Clipping ***/
 
-create_child(tag, attr, html) {
-/* Create a child element of the <g> element */
-    let c = $(document.createElementNS(SVG2.nsURI, tag));
-    c.attr(attr ? attr : {});
-    if (html) c.html(html);
-    return c.appendTo(this.element);
+clip_path(id, clone) {
+/* Clone or move the <g> content to a <clip_path> */
+    let e = this.$;
+    let cp = $(document.createElementNS(SVG2.nsURI, "clipPath")).attr({id: id});
+    cp.appendTo(this.svg.defs[0]);
+    if (clone) cp.html(e.html());
+    else e.children().appendTo(cp);
+    let tr = e.attr("transform");
+    if (tr) cp.children().attr({"transform": tr});
+    return cp;
 }
 
-group(...css) {
-    let g = new SVG2group(this.svg, this.create_child("g"));
-    if (css) g.css(...css);
-    return g;
+clip(id) {
+/* Set the clip-path attribute */
+    this.$.attr({"clip-path": `url(#${id})`});
+    return this;
 }
 
-scaled(s) {return new SVG2scaled(this.svg, this.create_child("g"), s)}
+
+/*** Basic shapes ***/
+
+line(p1, p2, selector) {
+/* Modify or append a <line> to the <g> element */
+    let e = selector ? $($(selector)[0]) : this.create_child("line");
+    let svg = this.svg;
+    let f = (x) => x.toFixed(svg.decimals);
+    let [x1, y1] = svg.a2p(...this.cs_size(p1));
+    let [x2, y2] = svg.a2p(...this.cs_size(p2));
+    return e.attr({x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2)});
+}
 
 circle(r, posn, selector) {
 /* Modify or append a <circle> to the <g> element */
@@ -326,26 +361,6 @@ ellipse(r, posn, selector) {
     return e.attr({rx: f(rx), ry: f(ry), cx: f(x + w / 2), cy: f(y + h / 2)});
 }
 
-static _anchor(posn) {
-    if (posn == null) posn = [0, 0];
-    if (posn.length == 4) return posn;
-    if (posn.length == 3) return [posn[0], posn[1], ...SVG2.parse_anchor(posn[2])];
-    if (posn[0] instanceof Array) {
-        let a = typeof(posn[1]) == "string" ? SVG2.parse_anchor(posn[1]) : posn[1];
-        return [...posn[0], ...a];
-    }
-    return [...posn, 0.5, 0.5];
-}
-
-rect_xy(size, posn) {
-/* Get bounding rectangle in pixel coordinates */
-    let [x, y, ax, ay] = SVG2._anchor(posn);
-    let svg = this.svg;
-    let [w, h] = this.px_size(size);
-    [x, y] = svg.a2p(...this.cs_size([x, y]));
-    return [w, h, x - ax * w, y - ay * h];
-}
-
 rect(size, posn, selector) {
 /* Modify or append a <rect> to the <g> element */
     let e = selector ? $($(selector)[0]) : this.create_child("rect");
@@ -353,6 +368,16 @@ rect(size, posn, selector) {
     let [w, h, x, y] = this.rect_xy(size, posn);
     return e.attr({width: f(w), height: f(h), x: f(x), y: f(y)});
 }
+
+poly(points, closed) {
+/* Modify or append a <polygon> or <polyline> to the <g> element */
+    let attr = {points: this.svg.pts_str(points)};
+    return $(closed)[0] instanceof SVGElement ? $(closed).attr(attr) :
+        this.create_child(closed ? "polygon" : "polyline", attr);
+}
+
+
+/*** Images ***/
 
 _img_size(size, wh) {
     if (!size) size = {scale: 1};
@@ -406,6 +431,179 @@ async mjax(tex, size, posn, color, theta) {
         }
         return g;
     });
+}
+
+
+/*** More shapes ***/
+
+arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
+locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
+path(start) {return new SVG2path(this, start)}
+
+star(n, far, near) {
+    let pts = star_points(n, this.cs_radius(far), near == null ? null : this.cs_radius(near));
+    return this.poly(pts, 1);
+}
+
+chevron(xy, dir, size) {
+    if (size == null) size = "7";
+    let ratio = size.ratio;
+    if (!ratio) ratio = 1;
+    else size = size.size;
+    let svg = this.svg;
+    let s = svg.scale;
+    size = this.px_radius(size);
+    let dx = -size / s[0], dy = ratio * size / s[1];
+    let g = this.group();
+    g.poly([[dx, dy], [0, 0], [dx, -dy]]);
+    return g.config({shift: xy, theta: dir ? dir : 0});
+}
+
+ray(p1, p2, size, ...pos) {
+/* Draw a directed segment */
+    let g = this.group(".Ray");
+    g.line(p1, p2);
+    let seg = g.seg = new Segment(...p1, ...p2);
+    let svg = this.svg;
+    let L = seg.length;
+    if (pos.length == 0) pos = [0.5];
+    for (let pt of pos) g.chevron(seg.point(pt * L), svg.adjust_angle(seg.deg), size);
+    return g;
+}
+
+ruler(n, tick, opt) { //width, big, offset, tickSmall, tickBig) {
+/* Draw a ruler */
+    if (typeof(tick) == "string") tick = parseFloat(tick) / Math.abs(this.svg.scale[1]);
+    opt = Object.assign({big: 10, offset: 0, tickSmall: 0.25, tickBig: 0.5}, opt);
+    let g = this.group(".Ruler");
+    let length = g.rulerLength = tick * (n + 2 * opt.offset);
+    let width = opt.width ? opt.width : g.rulerLength / 25;
+    g.rect([length, width]);
+    let x = tick * opt.offset - length / 2;
+    width /= 2;
+    for (let i=0;i<=n;i++) {
+        g.line([x, -width], [x, width * (2 * (i % opt.big ? opt.tickSmall : opt.tickBig) - 1)]);
+        x += tick;
+    }
+    return g;
+}
+
+cylinder(r, L) {
+/* Draw a cylinder; pivot is center of the elliptical "top" */
+    r = this.cs_size(r);
+    if (typeof(L) == "string") L = Math.abs(parseFloat(L) / this.svg.scale[1]);
+    let g = this.group(".Cylinder");
+    let p1 = new RArray(r[0], 0);
+    let p2 = p1.neg().minus([0, L]);
+    let c = g.svg.angleDir == -1 ? 2 : 0;
+    g.path(p1).ver(-L).arc_to(p2, r, c).ver(0).arc_to(p1, r).close().update();
+    g.ellipse(r);
+    return g;
+}
+
+plusminus(s, plus, thick) {
+/* Draw a plus or minus */
+    let svg = this.svg;
+    let g = this.group();
+    if (!thick) thick = 0.17;
+    s = svg.cs_radius(s);
+    let [x, y] = svg.cs_size([s, s]).times(0.5);
+    let [dx, dy] = [x * thick, y * thick];
+    let pts = plus ? [[dx, y], [dx, dy], [x, dy], [x, -dy], [dx, -dy], [dx, -y],
+        [-dx, -y], [-dx, -dy], [-x, -dy], [-x, dy], [-dx, dy], [-dx, y]] :
+        [[x, dy], [x, -dy], [-x, -dy], [-x, dy]];
+    g.poly(pts, 1);
+    return g;
+}
+
+stickman(h) {
+/* Add a stick man as an SVG2group instance */
+    let g = this.group(".Stickman", "none", "black@3");
+    if (typeof(h) == "string") h = Math.abs(parseFloat(h) / this.svg.scale[1]);
+    let r = h / 8;
+    g.circle(r, [0, 7 * r]);
+    g.line([0, 6 * r], [0, 3 * r]);
+    let w = 1.2 * r;
+    g.poly([[-w, 0], [0, 3 * r], [w, 0]]);
+    let pt = new RArray(0, 5 * r);
+    r *= 1.5;
+    g.poly([pt.plus(vec2d(r, uniform(150, 210))), pt, pt.plus(vec2d(r, uniform(-30, 30)))]);
+    return g;
+}
+
+coil(size, n, reverse, r, axle) {
+/* Draw a coil frame with turns of wire and axle */
+    let g0 = this.group();
+    g0.$.addClass("Coil");
+    let g = reverse ? g0.scaled([-1, 1]) : g0;
+    let [w, h] = size;
+    if (!n) n = 15;
+    if (!r) r = h / n / 4;
+    g.rect(size);
+    for (let i=0;i<n+0.5;i++) {
+        let y = (h - 6 * r) * (i - n / 2) / n;
+        let path = g._turn(size[0], r, i == n ? 2 : 3).config({shift: [0, y]});
+        path.$.addClass("Wire");
+        if (i == 0 || i == n) {
+            y += r * (i ? 2 : -2);
+            g.line([w / 2, y], [w / 2 + 2 * r, y]).addClass("Wire");
+        }
+    }
+    if (axle == null) axle = 0.7 * r;
+    if (axle) g.circle(axle);
+    return g0;
+}
+
+_turn(w, r, circ) {
+/* Render a turn of wire as a path */
+    let g = this.group();
+    if (circ == null) circ = 0;
+    w /= 2;
+    let p = g.path([w, circ & 1 ? 4 * r : 2 * r]);
+    if (circ & 1) p.arc([w, 3 * r], -90);
+    p.line_to([-w, -2 * r]);
+    if (circ & 2) p. arc([-w, -r], 90, 2);
+    p.update();
+    return g;
+}
+
+
+/*** Text ***/
+
+text(text, posn, theta, css) {return new SVG2text(this, text, posn, theta, css)}
+gtext(text, css, posn, theta) {return new SVG2text(this, text, posn, theta, css)}
+
+
+/*** Plotting ***/
+
+grid(x, y, appendAxes) {
+/* Draw a coordinate grid */
+    let g = this.group("grid");
+    this._grid(g, x, y);
+    this._grid(g, y, x, 1);
+    let e = g.$.addClass("Grid");
+    if (appendAxes == null || appendAxes) // Modified!
+        e.find(".Axis").appendTo(e);
+    return g;
+}
+
+_grid(g, x, y, swap) {
+/* Draw the x (swap=false) OR y (swap=true) portion of the coordinate grid */
+    if (x.length == 3) {
+        let [x0, x1, dx] = x;
+        let [y0, y1] = y;
+        [x0, x1] = [Math.min(x0, x1), Math.max(x0, x1)];
+        [y0, y1] = [Math.min(y0, y1), Math.max(y0, y1)];
+        if (dx < 0) dx = -dx;
+        let ddx = dx / 1000;
+        x1 += ddx;
+        while (x0 <= x1) {
+            let pts = swap ? [[y0, x0], [y1, x0]] : [[x0, y0], [x0, y1]];
+            let line = g.line(...pts);
+            if (Math.abs(x0) < ddx) line.addClass("Axis").css({stroke: "black", "stroke-width": "1px"});
+            x0 += dx;
+        }
+    }
 }
 
 ticks(opt, useDefault) { /*
@@ -481,193 +679,6 @@ plot(points, size, href, theta) {
     return g;
 }
 
-poly(points, closed) {
-/* Modify or append a <polygon> or <polyline> to the <g> element */
-    let attr = {points: this.svg.pts_str(points)};
-    return $(closed)[0] instanceof SVGElement ? $(closed).attr(attr) :
-        this.create_child(closed ? "polygon" : "polyline", attr);
-}
-
-cs_radius(r) {return typeof(r) == "string" ? parseFloat(r) / this.svg.unit : r}
-px_radius(r) {return typeof(r) == "string" ? parseFloat(r) : r * this.svg.unit}
-
-px_size(sz) {
-/* Convert [w, h] to pixel units */
-    if (sz == null) sz = [0, 0];
-    let [w, h] = sz;
-    let [sx, sy] = this.svg.scale;
-    w = typeof(w) == "string" ? parseFloat(w) : Math.abs(w * sx);
-    h = typeof(h) == "string" ? parseFloat(h) : Math.abs(h * sy);
-    return new RArray(w, h);
-}
-
-cs_size(sz) {
-/* Convert [w, h] to coordinate system units */
-    if (sz == null) sz = [0, 0];
-    let [w, h] = sz;
-    let [sx, sy] = this.svg.scale;
-    if (typeof(w) == "string") w = parseFloat(w) / Math.abs(sx);
-    if (typeof(h) == "string") h = parseFloat(h) / Math.abs(sy);
-    return new RArray(w, h);
-}
-
-star(n, far, near) {
-    let pts = star_points(n, this.cs_radius(far), near == null ? null : this.cs_radius(near));
-    return this.poly(pts, 1);
-}
-
-text(text, posn, theta, css) {return new SVG2text(this, text, posn, theta, css)}
-gtext(text, css, posn, theta) {return new SVG2text(this, text, posn, theta, css)}
-arrow(pts, options, anchor) {return new SVG2arrow(this, pts, options, anchor)}
-locus(eq, param, args) {return new SVG2locus(this, eq, param, args)}
-path(start) {return new SVG2path(this, start)}
-
-line(p1, p2, selector) {
-/* Modify or append a <line> to the <g> element */
-    let e = selector ? $($(selector)[0]) : this.create_child("line");
-    let svg = this.svg;
-    let f = (x) => x.toFixed(svg.decimals);
-    let [x1, y1] = svg.a2p(...this.cs_size(p1));
-    let [x2, y2] = svg.a2p(...this.cs_size(p2));
-    return e.attr({x1: f(x1), y1: f(y1), x2: f(x2), y2: f(y2)});
-}
-
-chevron(xy, dir, size) {
-    if (size == null) size = "7";
-    let ratio = size.ratio;
-    if (!ratio) ratio = 1;
-    else size = size.size;
-    let svg = this.svg;
-    let s = svg.scale;
-    size = this.px_radius(size);
-    let dx = -size / s[0], dy = ratio * size / s[1];
-    let g = this.group();
-    g.poly([[dx, dy], [0, 0], [dx, -dy]]);
-    return g.config({shift: xy, theta: dir ? dir : 0});
-}
-
-ray(p1, p2, size, ...pos) {
-/* Draw a directed segment */
-    let g = this.group(".Ray");
-    g.line(p1, p2);
-    let seg = g.seg = new Segment(...p1, ...p2);
-    let svg = this.svg;
-    let L = seg.length;
-    if (pos.length == 0) pos = [0.5];
-    for (let pt of pos) g.chevron(seg.point(pt * L), svg.adjust_angle(seg.deg), size);
-    return g;
-}
-
-grid(x, y, appendAxes) {
-/* Draw a coordinate grid */
-    let g = this.group("grid");
-    this._grid(g, x, y);
-    this._grid(g, y, x, 1);
-    let e = g.$.addClass("Grid");
-    if (appendAxes == null || appendAxes) // Modified!
-        e.find(".Axis").appendTo(e);
-    return g;
-}
-
-_grid(g, x, y, swap) {
-/* Draw the x (swap=false) OR y (swap=true) portion of the coordinate grid */
-    if (x.length == 3) {
-        let [x0, x1, dx] = x;
-        let [y0, y1] = y;
-        [x0, x1] = [Math.min(x0, x1), Math.max(x0, x1)];
-        [y0, y1] = [Math.min(y0, y1), Math.max(y0, y1)];
-        if (dx < 0) dx = -dx;
-        let ddx = dx / 1000;
-        x1 += ddx;
-        while (x0 <= x1) {
-            let pts = swap ? [[y0, x0], [y1, x0]] : [[x0, y0], [x0, y1]];
-            let line = g.line(...pts);
-            if (Math.abs(x0) < ddx) line.addClass("Axis").css({stroke: "black", "stroke-width": "1px"});
-            x0 += dx;
-        }
-    }
-}
-
-ruler(n, tick, opt) { //width, big, offset, tickSmall, tickBig) {
-/* Draw a ruler */
-    if (typeof(tick) == "string") tick = parseFloat(tick) / Math.abs(this.svg.scale[1]);
-    opt = Object.assign({big: 10, offset: 0, tickSmall: 0.25, tickBig: 0.5}, opt);
-    let g = this.group(".Ruler");
-    let length = g.rulerLength = tick * (n + 2 * opt.offset);
-    let width = opt.width ? opt.width : g.rulerLength / 25;
-    g.rect([length, width]);
-    let x = tick * opt.offset - length / 2;
-    width /= 2;
-    for (let i=0;i<=n;i++) {
-        g.line([x, -width], [x, width * (2 * (i % opt.big ? opt.tickSmall : opt.tickBig) - 1)]);
-        x += tick;
-    }
-    return g;
-}
-
-cylinder(r, L) {
-/* Draw a cylinder; pivot is center of the elliptical "top" */
-    r = this.cs_size(r);
-    if (typeof(L) == "string") L = Math.abs(parseFloat(L) / this.svg.scale[1]);
-    let g = this.group(".Cylinder");
-    let p1 = new RArray(r[0], 0);
-    let p2 = p1.neg().minus([0, L]);
-    let c = g.svg.angleDir == -1 ? 2 : 0;
-    g.path(p1).ver(-L).arc_to(p2, r, c).ver(0).arc_to(p1, r).close().update();
-    g.ellipse(r);
-    return g;
-}
-
-plusminus(s, plus, thick) {
-/* Draw a plus or minus */
-    let svg = this.svg;
-    let g = this.group();
-    if (!thick) thick = 0.17;
-    s = svg.cs_radius(s);
-    let [x, y] = svg.cs_size([s, s]).times(0.5);
-    let [dx, dy] = [x * thick, y * thick];
-    let pts = plus ? [[dx, y], [dx, dy], [x, dy], [x, -dy], [dx, -dy], [dx, -y],
-        [-dx, -y], [-dx, -dy], [-x, -dy], [-x, dy], [-dx, dy], [-dx, y]] :
-        [[x, dy], [x, -dy], [-x, -dy], [-x, dy]];
-    g.poly(pts, 1);
-    return g;
-}
-
-stickman(h) {
-/* Add a stick man as an SVG2group instance */
-    let g = this.group(".Stickman", "none", "black@3");
-    if (typeof(h) == "string") h = Math.abs(parseFloat(h) / this.svg.scale[1]);
-    let r = h / 8;
-    g.circle(r, [0, 7 * r]);
-    g.line([0, 6 * r], [0, 3 * r]);
-    let w = 1.2 * r;
-    g.poly([[-w, 0], [0, 3 * r], [w, 0]]);
-    let pt = new RArray(0, 5 * r);
-    r *= 1.5;
-    g.poly([pt.plus(vec2d(r, uniform(150, 210))), pt, pt.plus(vec2d(r, uniform(-30, 30)))]);
-    return g;
-}
-
-edot(n, r) {
-/* Electron dot diagram */
-    if (!r) r = 1;
-    let d = 0.25 * r;
-    let pts = [[-r, d], [-r, -d]];
-    if (n == -1) n = 2;
-    else {
-        pts = [[-r, 0], [0, r], [r, 0], [0, -r], [-r, 0], [0, r], [r, 0], [0, -r]];
-        if (n > 4) {
-            for (let i=0;i<n-4;i++) {
-                pts[i][1 - i % 2] = d;
-                pts[i + 4][1 - i % 2] = -d;
-            }
-        }
-    }
-    let g = this.group({stroke: "none"});
-    for (let i=0;i<n;i++) g.circle(0.125 * r, pts[i]);
-    return g;
-}
-
 error_bar_y(x, y0, y1, dx, _swap) {
     /* Draw x or y error bars */
     dx = this.cs_radius(dx);
@@ -689,6 +700,28 @@ error_bar_y(x, y0, y1, dx, _swap) {
 
 error_bar_x(x0, x1, y, dy) {return this.error_bar_y(y, x0, x1, dy, 1)}
 
+
+/*** Diagrams  ***/
+
+edot(n, r) {
+/* Electron dot diagram */
+    if (!r) r = 1;
+    let d = 0.25 * r;
+    let pts = [[-r, d], [-r, -d]];
+    if (n == -1) n = 2;
+    else {
+        pts = [[-r, 0], [0, r], [r, 0], [0, -r], [-r, 0], [0, r], [r, 0], [0, -r]];
+        if (n > 4) {
+            for (let i=0;i<n-4;i++) {
+                pts[i][1 - i % 2] = d;
+                pts[i + 4][1 - i % 2] = -d;
+            }
+        }
+    }
+    let g = this.group({stroke: "none"});
+    for (let i=0;i<n;i++) g.circle(0.125 * r, pts[i]);
+    return g;
+}
 
 tip_to_tail(vecs, options) {
 /* Draw a 2D "tip-to-tail" vector diagram */
@@ -743,42 +776,6 @@ energy_flow(data) {
     return this;
 }
 
-coil(size, n, reverse, r, axle) {
-/* Draw a coil frame with turns of wire and axle */
-    let g0 = this.group();
-    g0.$.addClass("Coil");
-    let g = reverse ? g0.scaled([-1, 1]) : g0;
-    let [w, h] = size;
-    if (!n) n = 15;
-    if (!r) r = h / n / 4;
-    g.rect(size);
-    for (let i=0;i<n+0.5;i++) {
-        let y = (h - 6 * r) * (i - n / 2) / n;
-        let path = g._turn(size[0], r, i == n ? 2 : 3).config({shift: [0, y]});
-        path.$.addClass("Wire");
-        if (i == 0 || i == n) {
-            y += r * (i ? 2 : -2);
-            g.line([w / 2, y], [w / 2 + 2 * r, y]).addClass("Wire");
-        }
-    }
-    if (axle == null) axle = 0.7 * r;
-    if (axle) g.circle(axle);
-    return g0;
-}
-
-_turn(w, r, circ) {
-/* Render a turn of wire as a path */
-    let g = this.group();
-    if (circ == null) circ = 0;
-    w /= 2;
-    let p = g.path([w, circ & 1 ? 4 * r : 2 * r]);
-    if (circ & 1) p.arc([w, 3 * r], -90);
-    p.line_to([-w, -2 * r]);
-    if (circ & 2) p. arc([-w, -r], 90, 2);
-    p.update();
-    return g;
-}
-
 }
 
 
@@ -813,6 +810,7 @@ coord_from_parent(xy) {
 
 }
 
+
 class SVG2text extends SVG2group {
 
 constructor(g, text, posn, theta, css) {
@@ -835,6 +833,7 @@ get text() {return this.text$.html()}
 set text(t) {this.text$.html(t)}
 
 }
+
 
 class SVG2arrow extends SVG2group {
 
@@ -1102,7 +1101,11 @@ constructor(selector, options) {
     this.time = 0;
 }
 
+
+/*** Static helpers ***/
+
 static async sleep(t) {await new Promise(r => setTimeout(r, t))}
+static make_URL(url) {return new URL(url, SVG2.url).href}
 
 static parse_anchor(s, obj) {
     if (s === false) return obj ? {} : null;
@@ -1132,10 +1135,96 @@ static _parse_anchor(s) {
     return [0, s];
 }
 
+static* spring_points(p0, p1, n, dx, dy) {
+    let seg = new Segment(...p0, ...p1);
+    let L = seg.length;
+    if (!dx) dx = L / 10;
+    if (!dy) dy = L / 10;
+    let dL = (L - 2 * dx) / (2 * n);
+    let norm = seg.normal.times(dy);
+    yield seg.point(0);
+    let x = dx;
+    for (let i=0;i<=n;i++) {
+        yield seg.point(x).plus(norm.times(i ? (i % 2 ? 1 : -1) : 0));
+        x += (i ? 2 : 1) * dL;
+    }
+    yield seg.point(L - dx);
+    yield seg.point(L);
+}
+
+
+/*** Coordinates and metrics ***/
+
+static auto_lrbt(w, h, l, r, b, t) {
+/* Calculate coordinate limits so axes have the same scale */
+    if (t == null) {
+        let dy = (h - 1) * (r - l) / (w - 1);
+        if (b == null) {
+            t = dy / 2;
+            b = -t;
+        }
+        else t = b + dy;
+    }
+    return [l, r, b, t];
+}
+
 get size() {
     let e = this.$;
     return [parseFloat(e.attr("width")), parseFloat(e.attr("height"))];
 }
+
+get center() {
+    let [l, r, b, t] = this.lrbt;
+    return new RArray((l + r) / 2, (b + t) / 2);
+}
+
+coords_by_map(p1, a1, p2, a2) {
+/* Assign an abstract coordinate system to the drawing */
+    let [adx, ady] = new RArray(...a2).minus(a1);
+    let [pdx, pdy] = new RArray(...p2).minus(p1);
+    let sx = pdx / adx;
+    let sy = pdy / ady;
+    let s = this.scale = new RArray(sx, sy);
+    this.unit = Math.sqrt((sx*sx + sy*sy) / 2);
+    this.angleDir = sx * sy < 0 ? -1 : 1;
+    let t = new RArray(-1/sx, -1/sy);
+    p1 = new RArray(...p1).minus(s.times(a1));
+    this.a2p = (x, y) => p1.plus(s.times([x,y]));
+    this.p2a = (x, y) => p1.minus([x,y]).times(t);
+}
+
+event_coords(ev) {
+/* Calculate the coordinates of a mouse event in pixels and using the SVG2 coordinate system */
+    let e = this.$;
+    let dx = parseFloat(e.css("padding-left")) + parseFloat(e.css("border-left-width"));
+    let dy = parseFloat(e.css("padding-top")) + parseFloat(e.css("border-top-width"));
+    let r = this.element.getBoundingClientRect();
+    let px = new RArray(ev.clientX - (r.x + dx), ev.clientY - (r.y + dy));
+    px[0] *= parseFloat(e.attr("width")) / e.width();
+    px[1] *= parseFloat(e.attr("height")) / e.height();
+    return {pixels: px, coords: this.p2a(...px)};
+}
+
+adjust_angle(a, invert) {
+/* Adjust rotation angle when x and y scales differ */
+    let [sx, sy] = this.scale;
+    if (invert) {sx = 1 / sx; sy = 1 / sy}
+    return atan2(sy * this.angleDir * sin(a), sx * cos(a));
+}
+
+clip_rect(xy, id) {
+/* Create a clip path that excludes the margin */
+    if (xy == null) xy = 0;
+    xy = (xy instanceof Array ? this.cs_size(xy) : this.cs_size([xy, xy])).times(2);
+    let clip = this.group();
+    let [l, r, b, t] = this.lrbt;
+    clip.rect([Math.abs(r - l) + xy[0], Math.abs(t - b) + xy[1]], this.center);
+    clip.clip_path(id ? id : "lrbt");
+    return this;
+}
+
+
+/*** Converting and saving ***/
 
 get url() {return "data:image/svg+xml;base64," + unicode_to_base64(this.element.outerHTML)}
 
@@ -1210,27 +1299,13 @@ async save_image(fn, scale, bg) {
     return this.image_cv(scale, bg).then(cv => blobify(cv, "image/" + format)).then(b => b.save(fn));
 }
 
+
+/*** Other ***/
+
 get defs() {
     let d = this.$.find("defs");
     if (d.length == 0) d = this.create_child("defs").prependTo(this.$);
     return d;
-}
-
-get center() {
-    let [l, r, b, t] = this.lrbt;
-    return new RArray((l + r) / 2, (b + t) / 2);
-}
-
-clip_rect(xy, id) {
-/* Create a clip path that excludes the margin */
-    if (xy == null) xy = 0;
-    xy = (xy instanceof Array ? this.cs_size(xy) : this.cs_size([xy, xy])).times(2);
-    // xy = this._cs(xy instanceof Array ? xy : [xy, xy]).times(2);
-    let clip = this.group();
-    let [l, r, b, t] = this.lrbt;
-    clip.rect([Math.abs(r - l) + xy[0], Math.abs(t - b) + xy[1]], this.center);
-    clip.clip_path(id ? id : "lrbt");
-    return this;
 }
 
 gradient(id, c1, c2, x1, x2, y1, y2) {
@@ -1255,54 +1330,7 @@ gradient(id, c1, c2, x1, x2, y1, y2) {
 
 static create(options) {return new SVG2(document.createElementNS(SVG2.nsURI, "svg"), options)}
 
-static auto_lrbt(w, h, l, r, b, t) {
-/* Calculate coordinate limits so axes have the same scale */
-    if (t == null) {
-        let dy = (h - 1) * (r - l) / (w - 1);
-        if (b == null) {
-            t = dy / 2;
-            b = -t;
-        }
-        else t = b + dy;
-    }
-    return [l, r, b, t];
-}
-
 update_transform() {return this}
-
-coords_by_map(p1, a1, p2, a2) {
-/* Assign an abstract coordinate system to the drawing */
-    let [adx, ady] = new RArray(...a2).minus(a1);
-    let [pdx, pdy] = new RArray(...p2).minus(p1);
-    let sx = pdx / adx;
-    let sy = pdy / ady;
-    let s = this.scale = new RArray(sx, sy);
-    this.unit = Math.sqrt((sx*sx + sy*sy) / 2);
-    this.angleDir = sx * sy < 0 ? -1 : 1;
-    let t = new RArray(-1/sx, -1/sy);
-    p1 = new RArray(...p1).minus(s.times(a1));
-    this.a2p = (x, y) => p1.plus(s.times([x,y]));
-    this.p2a = (x, y) => p1.minus([x,y]).times(t);
-}
-
-event_coords(ev) {
-/* Calculate the coordinates of a mouse event in pixels and using the SVG2 coordinate system */
-    let e = this.$;
-    let dx = parseFloat(e.css("padding-left")) + parseFloat(e.css("border-left-width"));
-    let dy = parseFloat(e.css("padding-top")) + parseFloat(e.css("border-top-width"));
-    let r = this.element.getBoundingClientRect();
-    let px = new RArray(ev.clientX - (r.x + dx), ev.clientY - (r.y + dy));
-    px[0] *= parseFloat(e.attr("width")) / e.width();
-    px[1] *= parseFloat(e.attr("height")) / e.height();
-    return {pixels: px, coords: this.p2a(...px)};
-}
-
-adjust_angle(a, invert) {
-/* Adjust rotation angle when x and y scales differ */
-    let [sx, sy] = this.scale;
-    if (invert) {sx = 1 / sx; sy = 1 / sy}
-    return atan2(sy * this.angleDir * sin(a), sx * cos(a));
-}
 
 group(...css) {
     let g = new SVG2group(this);
@@ -1322,7 +1350,32 @@ pts_str(pts) {
 }
 
 
-/** Animation methods **/
+/*** Styling ***/
+
+static style(e, ...rules) {
+    let unit = (s) => isNaN(s) ? s : `${s}px`;
+    for (let r of rules) {
+        let s = ["string", "number"].indexOf(typeof(r));
+        if (s == -1) e.css(r);
+        else if (s == 0) {
+            if (r.charAt(0) == ".") e.addClass(r.substring(1));
+            else if (SVG2._style[r]) e.css(SVG2._style[r]);
+            else {
+                r = r.split("@");
+                if (r.length == 1) e.css({fill: r[0]});
+                else {
+                    if (r[0]) e.css({stroke: r[0]});
+                    if (r[1]) e.css({"stroke-width": unit(r[1])});
+                }
+            }
+        }
+        else if (s == 1) e.css({"font-size": unit(r)});
+    }
+    return e;
+}
+
+
+/*** Animation  ***/
 
 static set_animated(g, a) {
     let svg = g.svg;
@@ -1419,7 +1472,7 @@ click_toggle(n, click, init, solo, ...a) {
 }
 
 
-/** Load and run SVG2 JavaScripts **/
+/*** Load and run SVG2 scripts ***/
 
 static async load(cb) {
 /* Send AJAX requests for SVG2 scripts */
@@ -1462,11 +1515,10 @@ static cache(url, obj) {
     SVG2._cache[new URL(url, SVG2.url).href] = obj;
 }
 
-static make_URL(url) {return new URL(url, SVG2.url).href}
 static cached(url) {return SVG2._cache[new URL(url, SVG2.url).href]}
 
 
-/** Vector diagram helpers **/
+/*** Diagram helpers ***/
 
 static vec_diag(sel, vecs, opt) {
 /* Draw a vector diagram in an <svg> tag */
@@ -1610,55 +1662,20 @@ static ebg(sel, Emax, step, data, options) {
     return svg.update(0);
 }
 
-static* spring_points(p0, p1, n, dx, dy) {
-    let seg = new Segment(...p0, ...p1);
-    let L = seg.length;
-    if (!dx) dx = L / 10;
-    if (!dy) dy = L / 10;
-    let dL = (L - 2 * dx) / (2 * n);
-    let norm = seg.normal.times(dy);
-    yield seg.point(0);
-    let x = dx;
-    for (let i=0;i<=n;i++) {
-        yield seg.point(x).plus(norm.times(i ? (i % 2 ? 1 : -1) : 0));
-        x += (i ? 2 : 1) * dL;
-    }
-    yield seg.point(L - dx);
-    yield seg.point(L);
 }
 
-static style(e, ...rules) {
-    let unit = (s) => isNaN(s) ? s : `${s}px`;
-    for (let r of rules) {
-        let s = ["string", "number"].indexOf(typeof(r));
-        if (s == -1) e.css(r);
-        else if (s == 0) {
-            if (r.charAt(0) == ".") e.addClass(r.substring(1));
-            else if (SVG2._style[r]) e.css(SVG2._style[r]);
-            else {
-                r = r.split("@");
-                if (r.length == 1) e.css({fill: r[0]});
-                else {
-                    if (r[0]) e.css({stroke: r[0]});
-                    if (r[1]) e.css({"stroke-width": unit(r[1])});
-                }
-            }
-        }
-        else if (s == 1) e.css({"font-size": unit(r)});
-    }
-    return e;
-};
 
-}
-
+/*** Data ***/
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";
 SVG2._cache = {};
 SVG2.load.pending = [];
 SVG2.url = location.href.split("#")[0];
+
+SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
 SVG2.sans = "'Noto Sans', 'Open Sans', 'Droid Sans', Oxygen, sans-serif";
 SVG2.mono = "'Noto Sans Mono', Inconsolata, 'Droid Sans Mono', monospace";
-SVG2.symbol = SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
+// SVG2.symbol = SVG2.serif;
 
 SVG2._style = {
     grid: {stroke: "lightgrey", "stroke-width": "0.5px"},
