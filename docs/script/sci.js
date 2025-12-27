@@ -357,3 +357,53 @@ $(async () => {
         });
     });
 });
+
+
+
+/*** Load and run SVG2 scripts ***/
+
+const svg2_load = async function(cb) {
+/* Fetch SVG2 scripts */
+    let svgs = $("svg[data-svg2]");
+    let pending = {};
+    let ts = Date.now();
+    for (let svg of svgs) {
+        let [url, id, args] = $(svg).attr("data-svg2").split("#");
+        url = new URL(url, SVG2.url).href;
+        svg.info = [url, id, args];
+        if (pending[url] == null && svg2_load._cache[url] == null)
+            pending[url] = fetch(`${url}?_=${ts}`).then((a) => a.text()).then(eval);
+    }
+    for (let p in pending) await pending[p];
+    for (let svg of svgs) {
+        let [url, id, args] = svg.info;
+        delete svg.info;
+        let data = `${url}#${id}`;
+        if (args) data += `#${args}`;
+        $(svg).removeAttr("data-svg2").attr("data-svg2x", data);
+        if (args) {
+            try {args = jeval(args)}
+            catch(err) {console.warn(err)}
+            if (!(args instanceof Array)) args = [args];
+        }
+        else args = [];
+        try {svg2_load._cache[url][id](svg, ...args)}
+        catch(err) {console.warn(err)}
+    }
+    return cb ? cb() : null;
+}
+
+svg2_load._cache = {};
+
+SVG2.cache_run = function(url, id, ...arg) {
+    let js = svg2_load._cache[new URL(url, SVG2.url).href];
+    return js[id](...arg);
+}
+
+SVG2.cache = function(url, obj) {
+/* Load SVG2 JavaScript into cache */
+    svg2_load._cache[new URL(url, SVG2.url).href] = obj;
+}
+
+// SVG2.cached = function(url) {return svg2_load._cache[new URL(url, SVG2.url).href]}
+// SVG2.load.pending = [];

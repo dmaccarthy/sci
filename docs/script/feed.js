@@ -254,9 +254,7 @@ function onFeedLoaded(feed, e, noHist) {
 
     // Add event listeners
     $("#Top").remove().appendTo("body").show();
-    $("#Buttons > a").on("click", (e) => {
-        loadFeed(e.currentTarget);
-    });
+    $("#Buttons > a").on("click", e => loadFeed(e.currentTarget));
 
     // Remove unnecessary MathJax elements
     setTimeout(() => $("div:is(.MJX_ToolTip, .MJX_LiveRegion, .MJX_HoverRegion)").remove(), 2000);
@@ -266,7 +264,8 @@ function onFeedLoaded(feed, e, noHist) {
     $("#Main, #Copy").show();
     drawChevrons();
     renderTeX();
-    SVG2.load(initFeed);
+    try {svg2_load(initFeed)}
+    catch(err) {initFeed()}
 }
 
 function printIcons() {

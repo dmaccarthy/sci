@@ -1472,52 +1472,6 @@ click_toggle(n, click, init, solo, ...a) {
 }
 
 
-/*** Load and run SVG2 scripts ***/
-
-static async load(cb) {
-/* Send AJAX requests for SVG2 scripts */
-    let svgs = $("svg[data-svg2]");
-    let pending = {};
-    let ts = Date.now();
-    for (let svg of svgs) {
-        let [url, id, args] = $(svg).attr("data-svg2").split("#");
-        url = new URL(url, SVG2.url).href;
-        svg.info = [url, id, args];
-        if (pending[url] == null && SVG2._cache[url] == null)
-            pending[url] = fetch(`${url}?_=${ts}`).then((a) => a.text()).then(eval);
-    }
-    for (let p in pending) await pending[p];
-    for (let svg of svgs) {
-        let [url, id, args] = svg.info;
-        delete svg.info;
-        let data = `${url}#${id}`;
-        if (args) data += `#${args}`;
-        $(svg).removeAttr("data-svg2").attr("data-svg2x", data);
-        if (args) {
-            try {args = jeval(args)}
-            catch(err) {console.warn(err)}
-            if (!(args instanceof Array)) args = [args];
-        }
-        else args = [];
-        try {SVG2._cache[url][id](svg, ...args)}
-        catch(err) {console.warn(err)}
-    }
-    return cb ? cb() : null;
-}
-
-static cache_run(url, id, ...arg) {
-    let js = SVG2._cache[new URL(url, SVG2.url).href];
-    return js[id](...arg);
-}
-
-static cache(url, obj) {
-/* Load SVG2 JavaScript into cache */
-    SVG2._cache[new URL(url, SVG2.url).href] = obj;
-}
-
-static cached(url) {return SVG2._cache[new URL(url, SVG2.url).href]}
-
-
 /*** Diagram helpers ***/
 
 static vec_diag(sel, vecs, opt) {
@@ -1668,8 +1622,6 @@ static ebg(sel, Emax, step, data, options) {
 /*** Data ***/
 
 SVG2.nsURI = "http://www.w3.org/2000/svg";
-SVG2._cache = {};
-SVG2.load.pending = [];
 SVG2.url = location.href.split("#")[0];
 
 SVG2.serif = "'Noto Serif', 'Open Serif', 'Droid Serif', serif";
