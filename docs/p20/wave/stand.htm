@@ -139,8 +139,8 @@ $("#Harmonic").on("change", (ev) => {
     let n = Math.round(Math.abs(e.val()));
     if (!n || isNaN(n)) n = 1;
     e.val(n);
-    $("#StandingWave").html("").attr("data-svg2", `p20/wave/img/stand.js#stand#${n}`);
-    SVG2.load();
+    e = $("#StandingWave").html("");
+    SVG2.cache_run("p20/wave/img/stand.js", "stand", e, n);
 });
 
 $("#OddHarmonic").on("change", (ev) => {
@@ -148,8 +148,8 @@ $("#OddHarmonic").on("change", (ev) => {
     let n = 1 + 2 * Math.round((Math.abs(e.val()) - 1) / 2);
     if (!n || isNaN(n)) n = 1;
     e.val(n);
-    $("#ClosedAirColumn").html("").attr("data-svg2", `p20/wave/img/stand.js#stand#[${n},1]`);
-    SVG2.load();
+    e = $("#ClosedAirColumn").html("");
+    SVG2.cache_run("p20/wave/img/stand.js", "stand", e, n, 1);
 });
     
 </script> 

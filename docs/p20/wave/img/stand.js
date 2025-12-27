@@ -12,9 +12,9 @@ stand: (sel, n, closed) => {
     let g = svg.group("black@1", "#0065fe");
     let dx = c / n;
     let x = closed && n == 1 ? [0] : new RArray(...range(0, 1 + dx / 2, dx));
-    g.plot({x: x, y: 0}, "4");
+    g.plot({x: x, y: () => 0}, "4");
     x = n == 1 ? [closed ? 1 : 0.5] : new RArray(...range(dx/2, 1 + dx/2, dx));
-    g.plot({x: x, y: 0}, "4").css("red");        
+    g.plot({x: x, y: () => 0}, "4").css("red");        
 
     svg.$.on("click", () => svg.toggle());
 },
