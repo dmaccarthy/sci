@@ -1,16 +1,10 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
-"circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2025.12.12", "a": "2025.12.16", "h": ["1fqMM5ic06x89f7JBMBXIacbQq8YcBof3", ["Lab Handout", "1-jnHSM_u6Id-91RZKC7DWkwdgOvFyw5p"]]},
-"circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2025.12.15"},
-"circ/ac": {"t": "@Centripetal Acceleration", "n": "5.2", "s": "2025.12.16", "a": "2025.12.17", "h": "1tmxkh7RP9_0NDxKb4Yc-SMVUhVnZEkYx"},
-"circ/appWt": {"t": "@Apparent Weight", "n": "5.3", "s": "2025.12.17", "a": "2025.12.18", "h": "1BynMTR5Fill11MkxeQzhGfkj_kxWe-hl"},
-"circ/kep": {"t": "@Planetary Motion (Kepler’s Laws)", "n": "5.4", "s": "2025.12.18", "a": "2025.12.19", "h": ["19gbWFSF_t6JuXRnOtJaC5km_jHWsBiQ9", ["Heliocentric Model", {"icon": "simulation", "feed": "p20/circ/helio"}]]},
-"circ/kep#": {"t": "@Planetary Motion (<i>continued</i>)", "s": "2025.12.19"},
-"circ/orbit": {"t": "@Circular Orbital Motion", "n": "5.5", "s": "2026.1.5", "a": "2026.1.6", "h": "17kz0ZZpXtGTPGYb9vHXf7PJzJYxlGT-8"},
-"q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2026.1.9", "css": {"font-weight": "bold"}},
-"uC/@": {"t": "Unit C Exam", "s": "2026.1.13", "css": {"font-weight": "bold"}},
-
+"shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2026.1.6", "a": "2026.1.7", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
+"shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2026.1.7", "a": "2026.1.8", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
+"shm/shm#": {"t": "Lab: Simple Harmonic Motion", "s": "2026.1.8"},
+"shm/?": {"t": "@", "n": "7.", "s": "2026.1.", "a": "2026.1.", "h": "_"},
 "uD/@": {"t": "Unit D Exam", "s": "2026.1.23", "css": {"font-weight": "bold"}},
 
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2025.8.28", "a": "2025.8.29"},
@@ -81,6 +75,16 @@
 "energy/work2d#": {"t": "Formative Quiz: Energy", "s": "2025.12.10"},
 "q6/@": {"t": "Quiz: Work & Energy", "s": "2025.12.11", "css": {"font-weight": "bold"}},
 
+"circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2025.12.12", "a": "2025.12.16", "h": ["1fqMM5ic06x89f7JBMBXIacbQq8YcBof3", ["Lab Handout", "1-jnHSM_u6Id-91RZKC7DWkwdgOvFyw5p"]]},
+"circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2025.12.15"},
+"circ/ac": {"t": "@Centripetal Acceleration", "n": "5.2", "s": "2025.12.16", "a": "2025.12.17", "h": "1tmxkh7RP9_0NDxKb4Yc-SMVUhVnZEkYx"},
+"circ/appWt": {"t": "@Apparent Weight", "n": "5.3", "s": "2025.12.17", "a": "2025.12.18", "h": "1BynMTR5Fill11MkxeQzhGfkj_kxWe-hl"},
+"circ/kep": {"t": "@Planetary Motion (Kepler’s Laws)", "n": "5.4", "s": "2025.12.18", "a": "2025.12.19", "h": ["19gbWFSF_t6JuXRnOtJaC5km_jHWsBiQ9", ["Heliocentric Model", {"icon": "simulation", "feed": "p20/circ/helio"}]]},
+"circ/kep#": {"t": "@Planetary Motion (<i>continued</i>)", "s": "2025.12.19"},
+"circ/orbit": {"t": "@Circular Orbital Motion", "n": "5.5", "s": "2026.1.5", "a": "2026.1.6", "h": "17kz0ZZpXtGTPGYb9vHXf7PJzJYxlGT-8"},
+"q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2026.1.9", "css": {"font-weight": "bold"}},
+"uC/@": {"t": "Unit C Exam", "s": "2026.1.13", "css": {"font-weight": "bold"}},
+
 "galaxy/@": {"t": "Galaxyland", "s": "2027", "attr": {"href": "https://drive.google.com/file/d/1DfO81FZvQzby3lBU9qp39PLeIkiXuBwd/view?usp=drive_link", "target": "Galaxy"}}
 },
 
@@ -88,9 +92,12 @@
 
 "bio3/photo": {"t": "@Photosynthesis & Cellular Respiration", "n": "B07", "s": "2025.12.18", "a": "2025.12.19", "h": ["1uPyssG6Gnd6Oy3spITaFfZjj-Wxwzyd7", ["Lab Handout", "19l3DmLa-dqsrFFuCZedQFfQIWG0LAnc6"]]},
 "bio3/photo#": {"t": "Lab: Aquatic Plants", "s": "2025.12.18"},
-"bio3/spec": {"t": "@Cell Specialization", "n": "B08", "s": "2026", "a": "2026", "h": ["_", ["Lab Handout", "1rzaq2rTHw51vlnTl6-9e7htxUYA1xFGW"]]},
+"bio3/spec": {"t": "@Cell Specialization", "n": "B08", "s": "2026.1.7", "a": "2026.1.8", "h": ["1i8uu4SMwrVbX1uUBUn6CDIzfdeQVXg_u", ["Lab Handout", "1rzaq2rTHw51vlnTl6-9e7htxUYA1xFGW"]]},
 "bio3/spec#": {"t": "Lab: Cell Specialization in the Leaf", "s": "2025.12.19"},
-"bio3/@": {"t": "@", "n": "B0", "s": "2025.12", "a": "2025.12", "h": "_"},
+"bio3/gas": {"t": "@Gas Exchange", "n": "B09", "s": "2026.1.7", "a": "2026.1.8", "h": "1e7cqEoyiGylXu1kGiqIirve77G5dQ-HY"},
+"bio3/water": {"t": "@Water Transport", "n": "B10", "s": "2026.1.8", "a": "2026.1.9", "h": "1Xmh_PKoNKNLpz9SluyEX2GcxFxZeiIJ3"},
+"bio3/sys": {"t": "@Plant Control Systems", "n": "B11", "s": "2026.1.8", "a": "2026.1.9", "h": "_"},
+"bio3/@": {"t": "@", "n": "B0", "s": "2026.1", "a": "2026.1", "h": "_"},
 
 "bio1/micro": {"t": "@Microscopes", "n": "B01", "s": "2025.12.10", "a": "2025.12.10.15", "h": ["1NaoR9DwGmrW9MR5VXZoJDBB_PV_Q5DjQ", ["Lab Handout", "1gy9Zz3__GK3EZtWQL05_a9MpZdFQnY8b"]]},
 "bio1/micro#": {"t": "Lab: The Letter “e”", "s": "2025.12.11"},

@@ -29,5 +29,4 @@ Q1: (sel) => {
     svg.click_toggle(4);
 },
 
-
 });
