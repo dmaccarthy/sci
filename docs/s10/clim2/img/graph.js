@@ -31,6 +31,4 @@ london_uk: (sel) => {
     svg.click_toggle(9, 0);
 },
 
-
-
 });
