@@ -1245,7 +1245,6 @@ static async cleanup_svg(svg, bg) {
     if (bg) {
         svg.appendTo("body");
         let r = $(document.createElementNS(SVG2.nsURI, "rect")).prependTo(svg);
-        // console.log(r);
         r.attr({x:0, y:0, width: svg.width(), height: svg.height(), style: `fill: ${bg}`});
         svg.remove();
     }
@@ -1281,22 +1280,29 @@ static async svg_to_cv(svg, scale) {
     });
 }
 
-async image_cv(scale, bg) {
-    /* Return scaled drawing as <canvas> */
-    return SVG2.cleanup_svg(this.element.outerHTML, bg).then(svg => SVG2.svg_to_cv(svg, scale));
-}
-
-async save(fn) {
-    /* Save as SVG file */
-    return SVG2.cleanup_svg(this.element.outerHTML).then(svg => blobify(svg.outerHTML, "image/svg+xml")).then(b => b.save(fn));
-}
-
-async save_image(fn, scale, bg) {
-    /* Save scaled drawing as PNG/WebP/JPEG file*/
-    if (fn == true) fn = `${random_string(12, 1)}.png`;
-    let format = fn ? fn.split(".").item(-1).toLowerCase() : "png";
-    if (format == "jpg") format = "jpeg";
-    return this.image_cv(scale, bg).then(cv => blobify(cv, "image/" + format)).then(b => b.save(fn));
+open(options) {
+    /* Open an HTML blob with image as a data URL */
+    if (options == null) options = {};
+    let t = options.sleep;
+    if (t) {
+        options = {...options};
+        delete options.sleep;
+        SVG2.sleep(t).then(() => this.open(options));
+        return;
+    }
+    let type = options.type;
+    SVG2.cleanup_svg(this.element.outerHTML, options.bg).then(svg => {
+        if (type) {
+            if (type.indexOf("/") == -1) type = `image/${type}`;
+            return SVG2.svg_to_cv(svg, options.scale).then(cv => {return cv.toDataURL(type)});
+        }
+        else {
+            return "data:image/svg+xml;base64," + unicode_to_base64(svg.outerHTML);
+        }
+    }).then(u => {
+        let html = `<!DOCTYPE html><html><head><title>SVG2 Drawing</title></head><body><img src="${u}"/></body></html>`
+        blobify(html, "text/html").then(b => b.save());
+    });
 }
 
 

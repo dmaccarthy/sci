@@ -274,14 +274,32 @@ function scrollToBottom(t) {
 
 // Other event handlers
 
-$(window).on("keydown", (ev) => {
+$(window).on("keydown", ev => {
     if (ev.ctrlKey && ev.altKey) {
         let k = ev.key.toLowerCase();
         if (k == "n") window.open(location.href);
         else if (k == "t") teacher(teacher.mode ? 0 : 2);
         else if (k == "p" && teacher.mode) assign();
     }
-});
+}).on("click", open_on_click);
+
+function open_on_click(ev) {
+    /* Create and open an HTML blob displaying the image */
+    let k = (ev.ctrlKey ? 1 : 0) + (ev.altKey ? 2 : 0);
+    if (k) {
+        let svg = $(ev.target).closest("svg:not(.NoOpen)");
+        if (svg.length) {
+            let opt = k & 2 ? {type: "png"} : {};
+            if (k == 3) {
+                let s = parseFloat(prompt("Scale factor?", 2));
+                if (!isNaN(s)) opt.scale = s;
+            }
+            svg = svg[0].svg2;
+            if (svg) svg.open(opt);
+            // else console.log("Cannot open:", svg);
+        }
+    }
+}
 
 function process_loadData(feed) {
     /* Add titles and due date from index.json */
@@ -407,3 +425,7 @@ SVG2.cache = function(url, obj) {
 
 // SVG2.cached = function(url) {return svg2_load._cache[new URL(url, SVG2.url).href]}
 // SVG2.load.pending = [];
+
+
+// svgn(0).submit_img({action: "http://localhost:8002", method: "POST", target: "_blank"}, {scale: 2, bg: "yellow"});
+

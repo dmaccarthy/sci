@@ -12,7 +12,7 @@ loadFeed.init = () => {
     svg.image("media/car.svg", [6, 3]);
     svg.image("media/archer.webp", [2, 4], [3, 4]);
     svg.image(data_images.sim, [3, 3]);
-    svg.save_image("archery.png", 2, "white");
+    svg.open({sleep: 3000, scale: 2, bg: "white", type: "webp"});
 }
 
 loadFeed.data = {title: "Test"}

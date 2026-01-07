@@ -8,16 +8,16 @@ helio: (sel) => {
     svg.rect([3.41, 3.41]).css({fill: "black"});
     let names = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
         "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
-    let zodiac = svg.group(".Zodiac", "grey", 16);
+    let zodiac = svg.group(".Zodiac", "sans", "grey", 16);
 
     for (let i=0;i<12;i++) {
         let g = zodiac.group().config({theta: 30 * i});
         if (i % 2 == 0) g.poly([[0, 0], vec2d(2.5, 75), vec2d(2.5, 105)], 1).css({fill: "url(#grey1)", stroke: "none"});
-        g.gtext(names[i], [], [0, 1.3]);
+        g.text(names[i], [0, 1.3]);
     }
 
     // Draw animated timer
-    let years = svg.gtext("yr", ["mono", 36, "bold", "white"], [1.6, 1.5, "r"]);
+    let years = svg.text("yr", [1.6, 1.5, "r"], 0, ["mono", 36, "bold", "white"]);
     // let years = g.content;
     // g.config({animated: true}).beforeupdate = () => years.html(`${svg.time.toFixed(2)} yr`);
     years.config({animated: true}).beforeupdate = () => {years.text = `${svg.time.toFixed(2)} yr`};

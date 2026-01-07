@@ -151,7 +151,8 @@ loadFeed.sim = () => {
     svg.measure = g = svg.conics.gtext("", ["red"], [0, 0, "l"]);
     svg.conics.$.children("*").hide();
 
-    svg.$.on("click", (ev) => {
+    svg.$.on("click", ev => {
+        if (ev.altKey || ev.ctrlKey) return;
         let [x, y] = svg.event_coords(ev).coords;
         if (svg.circ) {
             svg.circ.remove();

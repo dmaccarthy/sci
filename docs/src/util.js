@@ -9,8 +9,9 @@ function jeval_frac(s) {
 
 function click_cycle(e, n, ...f) {
     e.cycleStatus = n;
-    $(e).click((ev) => {
-        let back = ev.ctrlKey;
+    $(e).click(ev => {
+        if (ev.altKey || ev.ctrlKey) return;
+        let back = ev.shiftKey;
         let n = f.length;
         e.cycleStatus += back ? -1 : 1;
         if (e.cycleStatus < 0) e.cycleStatus = n - 1;
@@ -25,7 +26,6 @@ click_cycle.toggle = (items, show, ...n) => {
     try {svg = items instanceof SVG2 ? items : null}
     catch(err) {}
     for (let i of n) {
-        // console.log(i, show);
         let e = svg ? svg.$.find(`.Toggle${i}`) : $(items[i]);
         if (show) e.fadeIn();
         else if (show == null) e.fadeToggle();
