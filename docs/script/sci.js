@@ -294,9 +294,7 @@ function open_on_click(ev) {
                 let s = parseFloat(prompt("Scale factor?", 2));
                 if (!isNaN(s)) opt.scale = s;
             }
-            svg = svg[0].svg2;
-            if (svg) svg.open(opt);
-            // else console.log("Cannot open:", svg);
+            SVG2.open(svg[0], opt).then(console.log);
         }
     }
 }

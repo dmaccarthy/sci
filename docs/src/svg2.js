@@ -1280,30 +1280,35 @@ static async svg_to_cv(svg, scale) {
     });
 }
 
-open(options) {
-    /* Open an HTML blob with image as a data URL */
+static async open(svg, options) {
+    /* Open an HTML blob with the SVG image as a data URL (svg+xml/png/jpeg/webp) */
     if (options == null) options = {};
-    let t = options.sleep;
-    if (t) {
-        options = {...options};
-        delete options.sleep;
-        SVG2.sleep(t).then(() => this.open(options));
-        return;
-    }
-    let type = options.type;
-    SVG2.cleanup_svg(this.element.outerHTML, options.bg).then(svg => {
+    return SVG2.cleanup_svg($(svg)[0].outerHTML, options.bg).then(svg => {
+        let type = options.type;
         if (type) {
             if (type.indexOf("/") == -1) type = `image/${type}`;
-            return SVG2.svg_to_cv(svg, options.scale).then(cv => {return cv.toDataURL(type)});
+            return SVG2.svg_to_cv(svg, options.scale).then(cv => cv.toDataURL(type));
         }
         else {
             return "data:image/svg+xml;base64," + unicode_to_base64(svg.outerHTML);
         }
     }).then(u => {
-        let html = `<!DOCTYPE html><html><head><title>SVG2 Drawing</title></head><body><img src="${u}"/></body></html>`
-        blobify(html, "text/html").then(b => b.save());
+        let html = `<!DOCTYPE html><html><head><title>SVG2 Drawing</title></head><body><img src="${u}"/></body></html>`;
+        return blobify(html, "text/html").then(b => {
+            b.save(options.filename);
+            return b;
+        });
     });
 }
+
+static async save(svg, options) {
+    if (options == null) options = {};
+    return SVG2.cleanup_svg($(svg)[0].outerHTML, options.bg).then(svg => {
+        return blobify(svg.outerHTML, "image/svg+xml");
+    }).then(b => b.save(options.filename));
+}
+
+save(fn) {SVG2.save(this.element, {filename: fn})}
 
 
 /*** Other ***/
