@@ -4,6 +4,9 @@
 "shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2026.1.6", "a": "2026.1.7", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
 "shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2026.1.7", "a": "2026.1.8", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
 "shm/shm#": {"t": "Lab: Simple Harmonic Motion", "s": "2026.1.8"},
+"shm/T": {"t": "@Period of SHM", "n": "7.3", "s": "2026.1.12", "a": "2026.1.13", "h": "1vXy1OAuyVKjbA7keUdNGsdEeziXTtbfZ"},
+"shm/pend": {"t": "@Simple Pendulum", "n": "7.4", "s": "2026.1.13", "a": "2026.1.15", "h": ["_", ["Lab Handout", "_"]]},
+"shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2026.1.14"},
 "shm/?": {"t": "@", "n": "7.", "s": "2026.1.", "a": "2026.1.", "h": "_"},
 "uD/@": {"t": "Unit D Exam", "s": "2026.1.23", "css": {"font-weight": "bold"}},
 
@@ -83,7 +86,7 @@
 "circ/kep#": {"t": "@Planetary Motion (<i>continued</i>)", "s": "2025.12.19"},
 "circ/orbit": {"t": "@Circular Orbital Motion", "n": "5.5", "s": "2026.1.5", "a": "2026.1.6", "h": "17kz0ZZpXtGTPGYb9vHXf7PJzJYxlGT-8"},
 "q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2026.1.9", "css": {"font-weight": "bold"}},
-"uC/@": {"t": "Unit C Exam", "s": "2026.1.13", "css": {"font-weight": "bold"}},
+"uC/@": {"t": "Unit C Exam", "s": "2026.1.15", "css": {"font-weight": "bold"}},
 
 "galaxy/@": {"t": "Galaxyland", "s": "2027", "attr": {"href": "https://drive.google.com/file/d/1DfO81FZvQzby3lBU9qp39PLeIkiXuBwd/view?usp=drive_link", "target": "Galaxy"}}
 },
@@ -94,9 +97,9 @@
 "bio3/photo#": {"t": "Lab: Aquatic Plants", "s": "2025.12.18"},
 "bio3/spec": {"t": "@Cell Specialization", "n": "B08", "s": "2026.1.7", "a": "2026.1.8", "h": ["1i8uu4SMwrVbX1uUBUn6CDIzfdeQVXg_u", ["Lab Handout", "1rzaq2rTHw51vlnTl6-9e7htxUYA1xFGW"]]},
 "bio3/spec#": {"t": "Lab: Cell Specialization in the Leaf", "s": "2025.12.19"},
-"bio3/gas": {"t": "@Gas Exchange", "n": "B09", "s": "2026.1.7", "a": "2026.1.8", "h": "1e7cqEoyiGylXu1kGiqIirve77G5dQ-HY"},
+"bio3/gas": {"t": "@Gas Exchange", "n": "B09", "s": "2026.1.8", "a": "2026.1.9", "h": "1e7cqEoyiGylXu1kGiqIirve77G5dQ-HY"},
 "bio3/water": {"t": "@Water Transport", "n": "B10", "s": "2026.1.8", "a": "2026.1.9", "h": "1Xmh_PKoNKNLpz9SluyEX2GcxFxZeiIJ3"},
-"bio3/sys": {"t": "@Plant Control Systems", "n": "B11", "s": "2026.1.8", "a": "2026.1.9", "h": "1a_1OkqFUIRiwcGDw_3zrsiC9xqqJEWgm"},
+"bio3/sys": {"t": "@Plant Control Systems", "n": "B11", "s": "2026.1.9", "a": "2026.1.10", "h": "1a_1OkqFUIRiwcGDw_3zrsiC9xqqJEWgm"},
 "unitC#": {"t": "Biology Unit Review", "s": "2026.1.9"},
 "bio3/@": {"t": "@", "n": "B0", "s": "2026.1", "a": "2026.1", "h": "_"},
 "qb3/@": {"t": "Quiz: Plant Systems (Chapter 9)", "s": "2026.1.12", "css": {"font-weight": "bold"}},
