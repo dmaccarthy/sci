@@ -10,7 +10,7 @@ shm: (sel, n, t, y) => {
     let c = ["#0065fe", "red", "purple"][n];
  
     let svg = new SVG2(sel, {size: [512, 360], lrbt: [-dt, 9*dt, -5*dy, 5*dy], grid: [dt, dy], margin: [36, 16, 12, 12]});
-    let opt = {size: ["-6", 0], css: 15, shift: "-8"};
+    let opt = {size: ["-6", 0], css: ["sans", 15], shift: "-8"};
     svg.ticks({x: [dt, 9.1*dt, dt], label: dec_t, ...opt});
     svg.ticks({y: [-5*dy, 5.1*dy, dy], label: dec_y, ...opt});
     svg.mjax(`\\rm ${unit}`, {scale: 0.65}, ["-28", 0, "b"], c, 90);
