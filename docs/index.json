@@ -117,7 +117,7 @@
 "bio2/pass": {"t": "@Passive Transport", "n": "B05", "s": "2025.12.17", "a": "2025.12.18", "h": "1jLcEIERl0Csh54aYx3sHH1HDHU0itiXt"},
 "bio2/act": {"t": "@Active Transport", "n": "B06", "s": "2026.1.5", "a": "2026.1.6", "h": "1vXDI4HhK43A6bXy-cRXjj-hXzb7Eq-Ig"},
 "qb2/@": {"t": "Quiz: Cells & Transport (Chapters 7 & 8)", "s": "2026.1.6", "css": {"font-weight": "bold"}},
-"uC/@": {"t": "Biology Unit Exam", "s": "2026.1.14", "css": {"font-weight": "bold"}},
+"uC/@": {"t": "Biology Unit Exam", "s": "2026.1.15", "css": {"font-weight": "bold"}},
 
 "chem1/whmis": {"t": "@WHMIS / Lab Safety", "n": "C01", "s": "2025.8.28", "a": "2025.8.29"},
 "chem1/whmis#": {"t": "Lab Safety <i>(continued)</i>", "s": "2025.8.29"},
@@ -173,6 +173,13 @@
 "unitB": {"t": "Physics Unit Review", "s": "2025.12.8", "h": ["1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2025.12.8.15.20"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18", "show": "2026.1.19"}]]},
 "qp2/@": {"t": "Quiz: Energy / Heat", "s": "2025.12.5", "css": {"font-weight": "bold"}},
 "uB/@": {"t": "Physics Unit Exam", "s": "2025.12.9", "css": {"font-weight": "bold"}}
+},
+
+"p30": {"home": {"t": "@Physics 30"},
+
+"mom/energy": {"t": "@Work & Energy Review", "n": "9.1", "s": "2026.1.29", "a": "2026.1.30"},
+"mom/mom": {"t": "@Momentum", "n": "9.2", "s": "2026.1.30", "a": "2026.2.2"},
+"uD/@": {"t": "Unit A Exam", "s": "2027", "css": {"font-weight": "bold"}}
 }
 
 }
