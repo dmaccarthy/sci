@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Energy of SHM</h1>
@@ -60,11 +60,6 @@
 <p data-cue="prev" class="TeX">v = \rm{\sqrt{2\cdot 0.00675\ J \over 0.0600\ kg} = 0.474\ m/s}</p>
 <p>There is no alternative solution this time, because the <span class="TeX">v_{max}</span> equation can only tell us the speed at equilibrium, not at any other point.</p>
 </section>
-
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Energy of SHM</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
-</div></section>
 
 </div></section>
 
@@ -223,7 +218,7 @@ This is the negative of the work done in moving the object from +0.0300 cm back 
 
     </ol></li>
 
-    <li><b>Challenge!</b> Show that for a simple pendulum with a small amplitude, the equation for potential energy of SHM gives <em>approximately</em> the same result as the gravitational potential energy equation <span class="NoWrap">(<span class="TeX">E_g=mgh</span>)</span> when <span class="TeX">h</span> is measured relative to equilibrium. While it is difficult to prove this in general, it is easier to show for a specific length, angle, and mass; assume <span class="TeX">L</span> = 1.00 m, <span class="TeX">\theta</span> = 15.0°, and <span class="TeX">m</span> = 1.00 kg. You will need to draw a diagram!</li>
+    <li>😥 Show that for a simple pendulum with a small amplitude, the equation for potential energy of SHM gives <em>approximately</em> the same result as the gravitational potential energy equation <span class="NoWrap">(<span class="TeX">E_g=mgh</span>)</span> when <span class="TeX">h</span> is measured relative to equilibrium. While it is difficult to prove this in general, it is easier to show for a specific length, angle, and mass; assume <span class="TeX">L</span> = 1.00 m, <span class="TeX">\theta</span> = 15.0°, and <span class="TeX">m</span> = 1.00 kg. You will need to draw a diagram!</li>
     <div class="Answer">
 <p class="Center"><svg class="s16" data-svg2="p20/shm/img/E.js#pend"></svg></p>
 <p>Use trig to calculate the height at 15.0°. The vertical side of the diagram consists of two segments — the adjacent side of the triangle (<span class="TeX">L\cos\theta</span>) and the height relative to equilibrium <span class="NoWrap">(<span class="TeX">h</span>)</span> — which together equal the length of the pendulum.</p>
@@ -250,41 +245,30 @@ This is the negative of the work done in moving the object from +0.0300 cm back 
 <p>The potential energy that we calculate using the SHM formula is close to, but slightly higher (0.336 J) or lower (0.329 J) than the true energy (0.334 J) depending on how we measure <span class="TeX">x</span>. This is because the motion of a simple pendulum is only <em>approximately</em> SHM.</p>
     </div>
 
-</ol>
+<!-- </ol>
 
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
     <li><ol type="a">
         <li>Derive an expression for the potential energy of an object under SHM.</li>
+        <p class="Answer">See lesson notes.</p>
         <li>Where is the origin or “reference level” for this equation? Why is this a convenient choice for calculating potential energy?</li>
+        <p class="Answer">The equilibrium position is taken as the origin; this is where the potential energy is least and the kinetic energy is at its maximum.</p>
         <li>Does it matter if this potential energy is gravitational, elastic, or a combination of the two types of potential energy? Explain.</li>
+        <p class="Answer">No! Since the condition for SHM, <span class="TeX">\vec{\bf F}_{net} = -k\vec{\bf x}</span>, concerns only the <em>net</em> force, it does not matter what <em>type</em> of force it is.</p>
     </ol></li>
 
     <li>Explain how we can use energy conservation to calculate the speed of an object at any point in the motion. (Recall that <span class="TeX">v_{max}</span> only tells us the speed at equilibrium.)</li>
+    <p class="Answer">If we know the total energy of the system (which we can calculate from <span class="TeX">v_{max}</span> or <span class="TeX">A</span>), we can calculate the kinetic energy at any point by subtracting the potential energy <span class="NoWrap">(<span class="TeX">E_p = \frac{1}{2}kx^2</span>)</span> from the total energy. Once we have the kinetic energy, we can solve for the speed.</p>
 </ol>
-</div></section>
-
-<section class="Post" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1mZ6gG-LOM9ZQbTgGcOqj2BXbzbajP85L">Assignment</button>
-    </p>
 </div></section>
 
 <script type="text/javascript">
 
-loadFeed.data = {
-    title: `${siteData.lesson}7.7 — Energy of SHM`,
-    showDate: "2025.4.14",
-    answerDate: "2025.4.16",
-    num: "7.7",
-    up: "p20/home",
-    prev: "p20/shm/pend",
-    next: "p20/shm/res",
+loadFeed.data = {up: "p20/home", prev: "p20/shm/pend", next: "p20/shm/rev", // res
 }
 
 </script>

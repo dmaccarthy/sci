@@ -1,13 +1,16 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
+"shm/res": {"t": "@Mechanical Resonance", "n": "7.6", "s": "9999", "a": "9999"},
+"wave/harm": {"t": "@Harmonic Waves", "n": "8.1", "s": "2026.1.19", "a": "2026.1.20", "h": "_"},
+
 "shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2026.1.6", "a": "2026.1.7", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
 "shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2026.1.7", "a": "2026.1.8", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
 "shm/shm#": {"t": "Lab: Simple Harmonic Motion", "s": "2026.1.8"},
 "shm/T": {"t": "@Period of SHM", "n": "7.3", "s": "2026.1.12", "a": "2026.1.13", "h": "1vXy1OAuyVKjbA7keUdNGsdEeziXTtbfZ"},
-"shm/pend": {"t": "@Simple Pendulum", "n": "7.4", "s": "2026.1.13", "a": "2026.1.15", "h": ["_", ["Lab Handout", "_"]]},
+"shm/pend": {"t": "@Simple Pendulum", "n": "7.4", "s": "2026.1.13", "a": "2026.1.15", "h": ["1MK2kinnt7LqC6oNuexuG8I-pLO3a9Vn_", ["Lab Handout", "1lzT9ZH7uAndjdccNUGfVP-pZgWaXFwoL"]]},
 "shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2026.1.14"},
-"shm/?": {"t": "@", "n": "7.", "s": "2026.1.", "a": "2026.1.", "h": "_"},
+"shm/E": {"t": "@Energy of SHM", "n": "7.5", "s": "2026.1.16", "a": "2026.1.19", "h": "1XSPOdyignakoikoijuwV4Q28Bsj_0vWW"},
 "uD/@": {"t": "Unit D Exam", "s": "2026.1.23", "css": {"font-weight": "bold"}},
 
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2025.8.28", "a": "2025.8.29"},
@@ -101,7 +104,6 @@
 "bio3/water": {"t": "@Water Transport", "n": "B10", "s": "2026.1.8", "a": "2026.1.9", "h": "1Xmh_PKoNKNLpz9SluyEX2GcxFxZeiIJ3"},
 "bio3/sys": {"t": "@Plant Control Systems", "n": "B11", "s": "2026.1.9", "a": "2026.1.10", "h": "1a_1OkqFUIRiwcGDw_3zrsiC9xqqJEWgm"},
 "unitC#": {"t": "Biology Unit Review", "s": "2026.1.9"},
-"bio3/@": {"t": "@", "n": "B0", "s": "2026.1", "a": "2026.1", "h": "_"},
 "qb3/@": {"t": "Quiz: Plant Systems (Chapter 9)", "s": "2026.1.12", "css": {"font-weight": "bold"}},
 
 "bio1/micro": {"t": "@Microscopes", "n": "B01", "s": "2025.12.10", "a": "2025.12.10.15", "h": ["1NaoR9DwGmrW9MR5VXZoJDBB_PV_Q5DjQ", ["Lab Handout", "1gy9Zz3__GK3EZtWQL05_a9MpZdFQnY8b"]]},
@@ -148,7 +150,9 @@
 "chem3/scinot": {"t": "@Scientific Notation", "n": "C18", "s": "2025.10.29", "a": "2025.10.30"},
 "chem3/mole": {"t": "@Molar Mass", "n": "C19", "s": "2025.10.30", "a": "2025.10.31"},
 "qc3/@": {"t": "Quiz: Reactions (Chapter 3)", "s": "2025.10.31", "css": {"font-weight": "bold"}},
-"unitA#": {"t": "Project: Antacids", "s": "2026"},
+"unitA#1": {"t": "Project: Antacids (Planning)", "s": "2026.1.13"},
+"unitA#": {"t": "Chemistry Unit Review", "s": "2026.1.14"},
+"unitA#2": {"t": "Project: Antacids", "s": "2026.1.16"},
 "uA/@": {"t": "Chemistry Unit Exam", "s": "2025.11.4", "css": {"font-weight": "bold"}},
 
 "phys1/si": {"t": "@SI Units", "n": "P01", "s": "2025.11.3", "a": "2025.11.5"},

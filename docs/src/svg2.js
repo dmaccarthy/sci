@@ -615,7 +615,7 @@ ticks(opt, useDefault) { /*
     theta: orientation of labels
 */
     if (useDefault) {
-        let def = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+        let def = {size: ["-6", 0], css: ["sans", 15], label: 0, shift: "-8"};
         opt = opt ? Object.assign(def, opt) : def;
     }
     let p0, p1, gt, gl;

@@ -5,7 +5,7 @@ wave: (sel, t, y, wave) => {
     let [ymax, dy, dec_y] = y ? y : [4, 1, 0];
     let [ux, uy, v] = wave;
     let svg = new SVG2(sel, {size: [512, 360], lrbt: [-dt, 9*dt, -5*dy, 5*dy], grid: [dt, dy], margin: [36, 16, 12, 12]});
-    let opt = {size: ["-6", 0], css: 15, shift: "-8"};
+    let opt = {size: ["-6", 0], css: ["sans", 15], shift: "-8"};
     svg.ticks({x: [dt, 9.1*dt, dt], label: dec_t, ...opt});
     svg.ticks({y: [-5*dy, 5.1*dy, dy], label: dec_y, ...opt});
     let g = svg.group(".AxisTitles", "sans", 18);
