@@ -32,7 +32,15 @@
     </ul>
 </div></section>
 
-<script type="text/javascript">
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
+    let h = $("section.Post");
+    if (h.length == 3) {
+        h = $(h[h.length - 1]).find("h2");
+        setTimeout(() => h.click(), 250);        
+    }
+}
 
 loadFeed.data = {title: `Unit B — Physics`, folder: "s10/",
     up: "s10/home", prev: "s10/unitA", next: "s10/unitC",
