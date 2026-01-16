@@ -79,12 +79,14 @@
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Physics of Atoms Review`,
     num: "15.x",
     up: "p30/units/D",
-    prev: ["p30/atom/bohr", "p30/photon/rev"][clickLink.course],
-    next: ["p30/nuke/iso", "p30/nuke/rev"][clickLink.course],
+    prev: ["p30/atom/bohr", "p30/photon/rev"][tmp],
+    next: ["p30/nuke/iso", "p30/nuke/rev"][tmp],
 }
 
 </script>

@@ -61,12 +61,14 @@
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Photons Review`,
     num: "14.x",
     up: "p30/units/C",
-    prev: ["p30/photon/compton", "p30/optics/rev"][clickLink.course],
-    next: ["p30/atom/crt", "p30/atom/rev"][clickLink.course],
+    prev: ["p30/photon/compton", "p30/optics/rev"][tmp],
+    next: ["p30/atom/crt", "p30/atom/rev"][tmp],
 }
 
 </script>

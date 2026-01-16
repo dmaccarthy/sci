@@ -128,12 +128,15 @@ table.Narrow td, table.Narrow th {width:5em}
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Nuclear Physics Review`,
     num: "16-17.x",
     up: "p30/units/D",
-    prev: ["p30/nuke/quark", "p30/atom/rev"][clickLink.course],
-    // next: ["p30/nuke/iso", "p30/nuke/rev"][clickLink.course],
+    prev: ["p30/nuke/quark", "p30/atom/rev"][tmp],
+    // next: ["p30/nuke/iso", "p30/nuke/rev"][tmp],
+    next: "p30/home",
 }
 
 </script>

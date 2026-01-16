@@ -61,12 +61,14 @@
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}Electric Fields Review`,
     num: "11.x",
     up: "p30/units/B",
-    prev: ["p30/elec/oildrop", "p30/mom/rev"][clickLink.course],
-    next: ["p30/mag/em", "p30/mag/rev"][clickLink.course],
+    prev: ["p30/elec/oildrop", "p30/mom/rev"][tmp],
+    next: ["p30/mag/em", "p30/mag/rev"][tmp],
 }
 
 </script>

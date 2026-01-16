@@ -61,12 +61,14 @@
 
 <script type="text/javascript">
 
+tmp = chapRev() ? 1 : 0;
+
 loadFeed.data = {
     title: `${siteData.lesson}EM Waves Review`,
     num: "13.x",
     up: "p30/units/C",
-    prev: ["p30/emr/refr", "p30/mag/rev"][clickLink.course],
-    next: ["p30/optics/rays", "p30/optics/rev"][clickLink.course],
+    prev: ["p30/emr/refr", "p30/mag/rev"][tmp],
+    next: ["p30/optics/rays", "p30/optics/rev"][tmp],
 }
 
 </script>

@@ -1,6 +1,14 @@
 SVG2.cache("p30/mom/img/energy.js", {
 
-Q7: (sel) => {
+ball: (sel) => {
+    let E = 0.2 * 25 * 9.81;
+    SVG2.ebg(sel, 60, 5, [
+        ["E_k", (t) => E / 2 * t * t],
+        ["E_g", true],
+    ], {E: E, unit: "J", duration: 2, margin: [40, 4, 40, 16], label: [0, "-6", 2]});
+},
+
+ramp: (sel) => {
     let Fg = 12.5 * 9.81;
     let E = 12.5 / 2 * 6.25;
     let hf = E / (Fg + 5 / sin(10))
@@ -13,7 +21,7 @@ Q7: (sel) => {
     ], {E: E, unit: "J", duration: 4, margin: [40, 4, 40, 16], label: [0, "-6", 2]});
 },
 
-F1: (sel) => {
+pulley: (sel) => {
     let E = 12 * 1.5 * 9.81;
     let Ek = E / 3;
     SVG2.ebg(sel, 200, 20, [

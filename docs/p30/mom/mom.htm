@@ -1,8 +1,39 @@
+<section class="Post" data-show="9999" data-icon="correct">
+<h2 class="Collapse">Formative</h2><div class="Collapse">
+<ol><li>In the pulley system illustrated below, <span class="TeX">m_1</span> = 12.0 kg, <span class="TeX">m_2</span> = 8.00 kg, and <span class="TeX">h</span> = 1.50 m.
+    Assuming the system is released from rest and there is no friction or air resistance, determine the speed of the system just before <span class="TeX">m_1</span> contacts the ground.
+    <p class="Center"><svg data-svg2="p20/energy/img/cons.js#pulley" class="s12"></svg></p>
+</li></ol>
+<div class="Answer">
+    <p>The initial energy of the system is the gravitational potential energy of <span class="TeX">m_1</span>...</p>
+    <p class="TeX">E_i = m_1gh = \rm{12.0\ kg\cdot 9.81\ m/s^2\cdot 1.50\ m = 177\ J}</p>
+    <p>When <span class="TeX">m_1</span> reaches the ground, <span class="TeX">m_2</span> now has gravitational potential energy...</p>
+    <p class="TeX">E_{g2} = m_2gh = \rm{8.00\ kg\cdot 9.81\ m/s^2\cdot 1.50\ m = 118\ J}</p>
+    <p>The difference between the initial and final potential energies has been transformed into kinetic energy...</p>
+    <p class="TeX">E_k = E_i - E_{g2} = \rm{177\ J - 117\ J = 58.9\ J}</p>
+    <p class="Center"><svg class="s20" data-svg2="p30/mom/img/energy.js#pulley"></svg></p>
+    <p>This is the combined kinetic energy of both masses!</p>
+    <p class="TeX">E_k = \frac{1}{2} m_1v^2 + \frac{1}{2} m_2v^2</p>
+    <p>Since the masses are attached, they have the same speed, so you can factor out the <span class="TeX">v^2</span>...</p>
+    <p class="TeX">E_k = \frac{1}{2} (m_1 + m_2)v^2</p>
+    <p class="TeX">v^2 = \frac{2E_k}{m_1 + m_2}</p>
+    <p class="TeX">v = \sqrt{\frac{2E_k}{m_1 + m_2}}
+        = \rm{\sqrt{\frac{2\cdot 58.9\ J}{12.0\ kg + 8.00\ kg}} = 2.43\ m/s}</p>
+    <p>Now we can calculate the kinetic energies of the masses separately...</p>
+    <p class="TeX">E_{k1} = \frac{1}{2} m_1v^2 = \rm{\frac{1}{2} (12.0\ kg)(2.43\ m/s)^2 = 35.3\ J}</p>
+    <p class="TeX">E_{k2} = \frac{1}{2} m_2v^2 = \rm{\frac{1}{2} (8.00\ kg)(2.43\ m/s)^2 = 23.5\ J}</p>
+</div>
+</div></section>
+
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Momentum</h1>
+</section>
+
+<section class="Slide Present Blue Center">
+    <p>Complete the <em>Work &amp; Energy</em> Formative Assignment</p>
 </section>
 
 <section class="Slide"><h3>Momentum</h3>
@@ -17,17 +48,22 @@
     </ul>
 </section>
 
+<section class="Slide Present Blue">
+    <p><i>Momentum</i>:</p>
+    <ul data-cue="none"><li><i>Practice #1-2</i></li></ul>
+</section>
+
 <section class="Slide"><h3>Kinetic Energy vs. Momentum</h3>
-<table class="Center Two Bottom" style="width:32em">
+<table class="Center Two Bottom" style="width:96%">
     <tr class="Blue"><th><span class="TeX">E_k = {1\over 2}mv^2</span></th><th><span class="TeX">{\vec {\bf p}} = m{\vec {\bf v}}</span></th></tr>
-    <tr><td colspan="2">Measures “amount of motion”</td></tr>
-    <tr><td colspan="2">Proportional to <span class="TeX">m</span></td></tr>
-    <tr><td><span class="TeX">\propto v^2</span></td><td><span class="TeX">\propto {\vec {\bf v}}</span></td></tr>
-    <tr><td>Scalar</td><td class="Vector">Vector!</td></tr>
-    <tr><td colspan="2">Requires a force to change</td></tr>
-    <tr><td><span class="TeX">\rm{kg\cdot m^2/s^2 = N\cdot m}</span></td><td><span class="TeX">\rm{kg\cdot m/s = N\cdot s}</span></td></tr>
-    <tr><td>= J (joule)</td><td>No unit name</td></tr>
-    <tr><td>Can be converted to other energy forms</td>
+    <tr data-cue="next"><td colspan="2">Measures “amount of motion”</td></tr>
+    <tr data-cue="next"><td colspan="2">Proportional to <span class="TeX">m</span></td></tr>
+    <tr data-cue="next"><td><span class="TeX">\propto v^2</span></td><td><span class="TeX">\propto {\vec {\bf v}}</span></td></tr>
+    <tr data-cue="next"><td>Scalar</td><td class="Vector">Vector!</td></tr>
+    <tr data-cue="next"><td colspan="2">Requires a force to change</td></tr>
+    <tr data-cue="next"><td><span class="TeX">\rm{kg\cdot m^2/s^2 = N\cdot m}</span></td><td><span class="TeX">\rm{kg\cdot m/s = N\cdot s}</span></td></tr>
+    <tr data-cue="next"><td>= J (joule)</td><td>No unit name</td></tr>
+    <tr data-cue="next"><td>Can be converted to other energy forms</td>
         <td class="Vector">There is only one form of momentum</td></tr>
 </table>
 </section>
@@ -41,7 +77,7 @@
     <p>Calculate the total momentum of the system.</p>
     </div>
     <div>
-        <p class="Center"><svg class="s14" data-svg2="p30/mom/img/vec2d.js#p2d"></svg></p>
+        <p class="Center"><svg class="s12" data-svg2="p30/mom/img/vec2d.js#p2d"></svg></p>
         <ul>
             <li>Use a vector diagram (“tip-to-tail”) when adding two or more momentum vectors.</li>
             <li>Perform calculations on the <span class="TeX">{\vec {\bf p}}_x</span> and <span class="TeX">{\vec {\bf p}}_y</span> components separately.</li>
@@ -49,13 +85,35 @@
     </div>
 </section>
 
+<section class="Slide Present Blue">
+    <p><i>Momentum</i>:</p>
+    <ul data-cue="none"><li><i>Practice #3-5</i></li></ul>
+</section>
+
 </div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<h2 class="Collapse">Summary</h2><div class="Collapse">
 <ol>
-    
+    <li>Define <em class="Defn">momentum</em>.</li>
+    <div class="Answer">
+        <p>Momentum is a vector measure of the “quantity of motion” a mass has defined by the equation:</p>
+        <p class="TeX">\vec{\bf p} = m\vec{\bf v}</p>
+    </div>
+
+    <li>Compare and contrast the concept of momentum to kinetic energy.</li>
+    <p class="Answer">See the “Kinetic Energy vs. Momentum” section of the Lesson Notes above.</p>
+
+    <li>Explain why calculating the <em>total</em> momentum of a system containing more than object is more difficult when the objects are moving in 2D or 3D compared to 1D motion.</li>
+    <p class="Answer">Because momentum is a <em>vector</em>, the <span class="TeX">x</span>-, <span class="TeX">y</span>-, and <span class="TeX">z</span>-<em>components</em> of the momentum vector must be added separately. Two masses that each have 1.0 kg·m/s of momentum will <b>not</b> have a combined momentum of 2.0 kg·m/s when the directions of the vectors are not the same!
+    </p>
+
+</ol>
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
     <li>Evelyn has a mass of 36.0 kg. While playing soccer, she runs down the field with a velocity of 4.20 m/s [south]. Calculate Evelyn’s kinetic energy and her momentum.</li>
     <div class="Answer">
         <p>Calculate kinetic energy; the direction of the velocity does not matter:</p>
@@ -82,6 +140,25 @@
         <p>Calculate the momentum:</p>
         <p class="TeX">p = mv = \rm (0.667\ kg)(15.0\ m/s) = 10.0\ kg\cdot m/s</p>
     </div>
+
+    <li><ol type="a">
+        <li>James drives a bumper car at 3.00 m/s [east]. The combined mass of James and his bumper car is 185 kg. Shannon, who is driving a second bumper car with a total mass of 160 kg, chases after James with a velocity of 4.25 m/s [east]. Calculate the total momentum and the total mechanical energy of the system.</li>
+        <div class="Answer">
+            <p class="TeX">\vec{\bf p}_J = m_J\vec{\bf v}_J = \rm (185\ kg) (+3.00\ m/s) = +555\ kg\cdot m/s</p>
+            <p class="TeX">\vec{\bf p}_S = m_S\vec{\bf v}_S = \rm (160\ kg) (+4.25\ m/s) = +680\ kg\cdot m/s</p>
+            <p class="TeX">\Sigma\vec{\bf p} = \vec{\bf p}_J + \vec{\bf p}_S = \rm +555\ kg\cdot m/s + 680\ kg\cdot m/s = 1235\ kg\cdot m/s</p>
+            <p class="TeX">E_{kJ} = \frac{1}{2} m_J{v_J}^2 = \rm \frac{1}{2} (185\ kg) (3.00\ m/s)^2 = 833\ J</p>
+            <p class="TeX">E_{kS} = \frac{1}{2} m_S{v_S}^2 = \rm \frac{1}{2} (160\ kg) (4.25\ m/s)^2 = 1445\ J</p>
+            <p class="TeX">\Sigma E_k = E_{kJ} + E_{kS} = \rm 833\ J + 1445\ J = 2278\ J</p>
+        </div>
+
+        <li>Repeat your calculations for a head-on collision in which Shannon’s bumper car is traveling west, but all other information remains unchanged.</li>
+        <div class="Answer">
+            <p>All of the calculations are the same as above, except that Shannon’s momentum is <span class="TeX">\rm -680\ kg\cdot m/s</span>. This makes the total momentum:</p>
+            <p class="TeX">\Sigma\vec{\bf p} = \vec{\bf p}_J + \vec{\bf p}_S = \rm +555\ kg\cdot m/s + (-680\ kg\cdot m/s) = -125\ kg\cdot m/s</p>
+            <p>Because kinetic energy is a scalar, the direction does not matter and the answers are identical to (a).</p>
+        </div>
+    </ol></li>
 
     <li><ol type="a">
         <li>Two objects have the same amount of momentum, but object “A” has a mass <span class="TeX">m</span> while object “B” has a mass <span class="TeX">2m</span>. Which object has more kinetic energy? By what factor?</li>
@@ -113,47 +190,7 @@
         </div>
     </ol></li>
 </ol>
-</div></div></section>
-
-<section class="Post" data-show="2024.9.4" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
-<div id="Review">
-<ol>
-    <li>Define <em ckass="Defn">momentum</em>.</li>
-    <div class="Answer">
-        <p>Momentum is a vector measure of the “quantity of motion” a mass has defined by the equation:</p>
-        <p class="TeX">\vec{\bf p} = m\vec{\bf v}</p>
-    </div>
-
-    <li>Compare and contrast the concept of momentum to kinetic energy.</li>
-    <div class="Answer">See the “Kinetic Energy vs. Momentum” section of the Lesson Notes above.</div>
-
-    <li>Explain why calculating the <em>total</em> momentum of a system containing more than object is more difficult when the objects are moving in 2D or 3D compared to 1D motion.</li>
-    <div class="Answer">Because momentum is a <em>vector</em>, the <span class="TeX">x</span>-, <span class="TeX">y</span>-, and <span class="TeX">z</span>-<em>components</em> of the momentum vector must be added separately.
-        Two masses that each have 1.0 kg·m/s of momentum will <b>not</b> have a combined momentum of 2.0 kg·m/s when the directions of the vectors are not the same!
-    </div>
-
-    <li><ol type="a">
-        <li>James drives a bumper car at 3.00 m/s [east]. The combined mass of James and his bumper car is 185 kg. Shannon, who is driving a second bumper car with a total mass of 160 kg, chases after James with a velocity of 4.25 m/s [east]. Calculate the total momentum and the total mechanical energy of the system.</li>
-        <div class="Answer">
-            <p class="TeX">\vec{\bf p}_J = m_J\vec{\bf v}_J = \rm (185\ kg) (+3.00\ m/s) = +555\ kg\cdot m/s</p>
-            <p class="TeX">\vec{\bf p}_S = m_S\vec{\bf v}_S = \rm (160\ kg) (+4.25\ m/s) = +680\ kg\cdot m/s</p>
-            <p class="TeX">\Sigma\vec{\bf p} = \vec{\bf p}_J + \vec{\bf p}_S = \rm +555\ kg\cdot m/s + 680\ kg\cdot m/s = 1235\ kg\cdot m/s</p>
-            <p class="TeX">E_{kJ} = \frac{1}{2} m_J{v_J}^2 = \rm \frac{1}{2} (185\ kg) (3.00\ m/s)^2 = 833\ J</p>
-            <p class="TeX">E_{kS} = \frac{1}{2} m_S{v_S}^2 = \rm \frac{1}{2} (160\ kg) (4.25\ m/s)^2 = 1445\ J</p>
-            <p class="TeX">\Sigma E_k = E_{kJ} + E_{kS} = \rm 833\ J + 1445\ J = 2278\ J</p>
-        </div>
-
-        <li>Repeat your calculations for a head-on collision in which Shannon’s bumper car is traveling west, but all other information remains unchanged.</li>
-        <div class="Answer">
-            <p>All of the calculations are the same as above, except that Shannon’s momentum is <span class="TeX">\rm -680\ kg\cdot m/s</span>. This makes the total momentum:</p>
-            <p class="TeX">\Sigma\vec{\bf p} = \vec{\bf p}_J + \vec{\bf p}_S = \rm +555\ kg\cdot m/s + (-680\ kg\cdot m/s) = -125\ kg\cdot m/s</p>
-            <p>Because kinetic energy is a scalar, the direction does not matter and the answers are identical to (a).</p>
-        </div>
-    </ol></li>
-
-</ol>
-</div></div></section>
+</div></section>
 
 <script type="text/javascript">
 

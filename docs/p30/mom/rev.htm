@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Notes<span data-print="LessonNotes"></span></h2><div class="Collapse Expand">
-<div id="LessonNotes">
+<h2 class="Collapse">Notes</h2><div class="Collapse Expand">
 
 <section class="Slide">
     <p><em class="Defn">Momentum</em> (<span class="TeX">\vec{\bf p}</span>) is the vector analog of kinetic energy:</p>
@@ -40,17 +39,19 @@
     </ul>
 </section>
 
-</div></div>
+</div>
 </section>
 
 <script type="text/javascript">
+
+tmp = chapRev() ? 1 : 0;
 
 loadFeed.data = {
     title: `${siteData.lesson}Momentum & Impulse Review`,
     num: "9.8",
     up: "p30/units/A",
-    prev: ["p30/mom/coll2d", null][clickLink.course],
-    next: ["p30/elec/static", "p30/elec/rev"][clickLink.course],
+    prev: ["p30/mom/coll2d", "p30/home"][tmp],
+    next: ["p30/elec/static", "p30/elec/rev"][tmp],
 }
 
 </script>

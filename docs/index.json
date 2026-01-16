@@ -2,6 +2,10 @@
 "p20": {"home": {"t": "@Physics 20"},
 
 "wave/harm": {"t": "@Harmonic Waves", "n": "8.1", "s": "2026.1.19", "a": "2026.1.20", "h": "16XKv7sKPI89XB5raKSgIhSCc8sSLnjwg"},
+"wave/dopp": {"t": "@Doppler Effect", "n": "8.2", "s": "2026.1.20", "a": "2026.1.21", "h": "1vO-QttkvOGe2cleueAxyyAM5e9sOBz9-"},
+"wave/beat": {"t": "@Interference & Beats", "n": "8.3", "s": "2026.1.21", "a": "2026.1.22", "h": "1ycVlE7Pq1HFEMdunjhJd3woTh9-uppZc"},
+"wave/stand": {"t": "@Standing Waves", "n": "8.4", "s": "2026.1.22", "a": "2026.1.22", "h": ["1ngjzdLy8Pegrdn2IU12owSOVA2HCxUBv", ["Lab Activity", "1_OlSoCLxi6_ddDAshuRUUisyfzUIhldJ"], ["Data", {"show": "2026.1.27", "open": "https://docs.google.com/spreadsheets/d/1bV80m6ndeMj_t2hH1E-6Dcc6RAegW-uyDC4rISfLHPQ/edit?usp=sharing", "icon": "gsheet"}]]},
+"uD/@": {"t": "Unit D Exam", "s": "2026.1.23", "css": {"font-weight": "bold"}},
 
 "shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2026.1.6", "a": "2026.1.7", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
 "shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2026.1.7", "a": "2026.1.8", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
@@ -11,7 +15,6 @@
 "shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2026.1.14"},
 "shm/E": {"t": "@Energy of SHM", "n": "7.5", "s": "2026.1.16", "a": "2026.1.19", "h": "1XSPOdyignakoikoijuwV4Q28Bsj_0vWW"},
 "shm/res": {"t": "@Mechanical Resonance", "n": "7.6", "s": "9999", "a": "9999"},
-"uD/@": {"t": "Unit D Exam", "s": "2026.1.23", "css": {"font-weight": "bold"}},
 
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2025.8.28", "a": "2025.8.29"},
 "skill/expDes#": {"t": "Lab: Self-Designed Experiment", "s": "2025.8.29"},
@@ -183,6 +186,7 @@
 
 "mom/energy": {"t": "@Work & Energy Review", "n": "9.1", "s": "2026.1.29", "a": "2026.1.30"},
 "mom/mom": {"t": "@Momentum", "n": "9.2", "s": "2026.1.30", "a": "2026.2.2"},
+"mom/impulse": {"t": "@Impulse", "n": "9.3", "s": "2026.2.2", "a": "2026.2.3"},
 "uD/@": {"t": "Unit A Exam", "s": "2027", "css": {"font-weight": "bold"}}
 }
 

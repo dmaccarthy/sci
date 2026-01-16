@@ -1,6 +1,10 @@
 function chapRev() {
     let f = loadFeed.referer;
-    return f ? ["rev", "home"].indexOf(f.split("/").item(-1)) > -1 : false;
+    if (f) {
+        f = f.split("/");
+        if (["rev", "home"].indexOf(f.item(-1)) > -1 || f.item(-2) == "units") return true;
+    }
+    return false;
 }
 
 function assign() {
@@ -229,7 +233,7 @@ function goSlide(n) {
     goSlide.n = n;
     slideShow.sections.hide();
     let s = $(slideShow.sections[n]).fadeIn();
-    let c = s.find("div, p, ol, ul, li, h1, h2, h3, table, *[data-cue]");
+    let c = s.find("div, p, ol, ul, li, h1, h2, h3, h4, table, *[data-cue]");
     goSlide.cues = [];
     for (let e of c) {
         e = $(e);
