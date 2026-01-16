@@ -1,5 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse Expand">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 <style type="text/css">
 
 #Harmonic, #OddHarmonic {
@@ -127,37 +127,10 @@
 <p class="Center" data-yt="fr3gWpxuJxE"></p>
 </section>
 
-<section class="Slide Present"><div class="Assign">
-    <p>Individually, complete the <i>Practice</i> and <i>Review</i> sections from the <i>Standing Waves</i> handout.</p>
-    <ul data-cue="none" class="Var">assign</ul>
-</div></section>
-
-<script type="text/javascript">
-
-$("#Harmonic").on("change", (ev) => {
-    let e = $(ev.currentTarget);
-    let n = Math.round(Math.abs(e.val()));
-    if (!n || isNaN(n)) n = 1;
-    e.val(n);
-    e = $("#StandingWave").html("");
-    SVG2.cache_run("p20/wave/img/stand.js", "stand", e, n);
-});
-
-$("#OddHarmonic").on("change", (ev) => {
-    let e = $(ev.currentTarget);
-    let n = 1 + 2 * Math.round((Math.abs(e.val()) - 1) / 2);
-    if (!n || isNaN(n)) n = 1;
-    e.val(n);
-    e = $("#ClosedAirColumn").html("");
-    SVG2.cache_run("p20/wave/img/stand.js", "stand", e, n, 1);
-});
-    
-</script> 
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
     <li><ol type="a">
         <li>An open air column has a third harmonic of 900 Hz. What is the length of the air column? </li>
@@ -224,7 +197,7 @@ For <span class="TeX">n</span> = 3...
     <li>An air column that is 21.0 cm long produces a resonance with sound waves at 1.21 kHz. Students adjust the frequency of the waves and find the next resonance at 2.01 kHz.
     <ol type="a">
         <li>Is the air column open or closed? [Hint: Are the resonant frequencies exact multiple of the difference between them?] </li>    
-        <li>Identify the harmonics (i.e. the values of n) that these two frequencies represent. [Hint: First determine what the fundamental frequency must be.]</li>
+        <li>Identify the harmonics (i.e. the values of <span class="TeX">n</span>) that these two frequencies represent. [Hint: First determine what the fundamental frequency must be.]</li>
         <div class="Answer">
 The difference between the frequencies is 0.80 kHz. If the air column was open (<span class="TeX">n</span> = 1, 2, 3...) this would be the fundamental frequency, but 1.21 and 2.01 kHz are not multiples of 0.80 kHz.
 The air column must be closed (<span class="TeX">n</span> = 1, 3, 5...) so that the difference is <em>twice</em> the fundamental frequency. I.e. <span class="TeX">f_1</span> = 0.40 kHz so that <span class="TeX">f_3</span> = 1.21 kHz and <span class="TeX">f_5</span> = 2.01 kHz.
@@ -237,12 +210,12 @@ The air column must be closed (<span class="TeX">n</span> = 1, 3, 5...) so that 
 <p class="TeX">v = \frac{4Lf_n}{n} = \rm{\frac{4\cdot 0.210\ m\cdot 2010\ Hz}{5} = 338\ m/s}</p>
         </div>
     </ol></li>
-</ol>
-</div></div></section>
+<!-- </ol>
+</div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
+<ol> -->
     <li>Describe what happens to a wave when it reaches the end of the medium through which it is moving.</li>
 
     <li><ol type="a">
@@ -258,35 +231,36 @@ The air column must be closed (<span class="TeX">n</span> = 1, 3, 5...) so that 
 </ol>
 </div></section>
 
-<section class="Post" data-icon="video">
+<section class="Post" data-icon="video" data-show="1">
     <h2 class="Collapse">Lab Video</h2><div class="Collapse">
         <p class="Collapse" data-yt="VRPE_GQq2vE" data-opt="{'width': 640, 'aspect': '640/368', 'border': '1'}"></p>
 </div></section>
 
-<section class="Post" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="139-ZwQqRQ-f1yWW7SL6cmx2tnvqvt6vr">Assignment</button>
-        <button data-icon="gdrv" data-gdrv="1QE0APEQz4uGg3zUlTfZYj3i5UjShwBBX">Speed of Sound Lab</button>
-        <button data-show="2025.4.29" data-icon="gsheet" data-open="https://docs.google.com/spreadsheets/d/1bV80m6ndeMj_t2hH1E-6Dcc6RAegW-uyDC4rISfLHPQ/edit?usp=sharing">Data</button>
-    </p>
-</div></section>
-
 <script type="text/javascript" data-init="init">
 
+$("#Harmonic").on("change", (ev) => {
+    let e = $(ev.currentTarget);
+    let n = Math.round(Math.abs(e.val()));
+    if (!n || isNaN(n)) n = 1;
+    e.val(n);
+    e = $("#StandingWave").html("");
+    SVG2.cache_run("p20/wave/img/stand.js", "stand", e, n);
+});
+
+$("#OddHarmonic").on("change", (ev) => {
+    let e = $(ev.currentTarget);
+    let n = 1 + 2 * Math.round((Math.abs(e.val()) - 1) / 2);
+    if (!n || isNaN(n)) n = 1;
+    e.val(n);
+    e = $("#ClosedAirColumn").html("");
+    SVG2.cache_run("p20/wave/img/stand.js", "stand", e, n, 1);
+});
+    
 loadFeed.init = () => {
     $("iframe").addClass("s24");
 }
 
-loadFeed.data = {
-    title: `${siteData.lesson}8.4 — Standing Waves`,
-    showDate: "2025.4.25",
-    answerDate: "2025.4.28",
-    num: "8.4",
-    up: "p20/home",
-    prev: "p20/wave/beat",
-    next: "p20/wave/rev",
+loadFeed.data = {up: "p20/home", prev: "p20/wave/beat", next: "p20/wave/rev",
 }
 
 </script>
