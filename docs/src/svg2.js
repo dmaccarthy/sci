@@ -1,6 +1,6 @@
 /**
 Simple JavaScript animations rendered in an <svg> element
-(c) 2023-2025 by D.G. MacCarthy <sc8pr.py@gmail.com>
+(c) 2023-2026 by D.G. MacCarthy <sc8pr.py@gmail.com>
 **/
 
 
@@ -1050,7 +1050,6 @@ constructor(selector, options) {
     this.svg = this;
     this.element = $(selector).filter("svg")[0];
     selector = this.$ = $(this.element).attr("xmlns", SVG2.nsURI);
-    // this.element._gr = this;
     this.element.svg2 = this;
     this.items = [];
     this._key_map = {};
@@ -1292,7 +1291,7 @@ static async open(svg, options) {
         else {
             return "data:image/svg+xml;base64," + unicode_to_base64(svg.outerHTML);
         }
-    }).then(u => {
+    }).then(async (u) => {
         let html = `<!DOCTYPE html><html><head><title>SVG2 Drawing</title></head><body><img src="${u}"/></body></html>`;
         return blobify(html, "text/html").then(b => {
             b.save(options.filename);
