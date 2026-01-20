@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-language" content="en">
+<title>LaTeX.js Viewer</title>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<base href="https://cdn.jsdelivr.net/npm/latex.js/dist/"/>
+<script type="text/javascript" src="latex.js"></script>
+<script type="text/javascript">
+
+// https://latex.js.org/playground.html
+
+function latex_compile(tex) {
+    var generator = new latexjs.HtmlGenerator({ hyphenate: false })
+    generator = latexjs.parse(tex, { generator: generator })
+    document.head.appendChild(generator.stylesAndScripts(""))
+    document.body.appendChild(generator.domFragment())
+}
+
+function load_file(e) {
+    let b = $("body").html("");
+    let reader = new FileReader();
+    reader.addEventListener("loadend", () => {
+        latex_compile(reader.result);
+        b.find("div.body").css("grid-column", "auto");
+    });
+    reader.readAsText(e.files[0]);
+}
+
+</script>
+
+</head>
+
+<body>
+    <p><input type="file" onchange="load_file(this)"/></p>
+</body>
+
+</html>

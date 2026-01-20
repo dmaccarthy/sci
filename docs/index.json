@@ -6,6 +6,7 @@
 "wave/beat": {"t": "@Interference & Beats", "n": "8.3", "s": "2026.1.21", "a": "2026.1.22", "h": "1ycVlE7Pq1HFEMdunjhJd3woTh9-uppZc"},
 "wave/stand": {"t": "@Standing Waves", "n": "8.4", "s": "2026.1.22", "a": "2026.1.22", "h": ["1ngjzdLy8Pegrdn2IU12owSOVA2HCxUBv", ["Lab Activity", "1_OlSoCLxi6_ddDAshuRUUisyfzUIhldJ"], ["Data", {"show": "2026.1.27", "open": "https://docs.google.com/spreadsheets/d/1bV80m6ndeMj_t2hH1E-6Dcc6RAegW-uyDC4rISfLHPQ/edit?usp=sharing", "icon": "gsheet"}]]},
 "uD/@": {"t": "Unit D Exam", "s": "2026.1.23", "css": {"font-weight": "bold"}},
+"rewrite/@": {"t": "Rewrite", "s": "2026.1.26", "css": {"font-weight": "bold"}},
 
 "shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2026.1.6", "a": "2026.1.7", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
 "shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2026.1.7", "a": "2026.1.8", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
@@ -99,6 +100,8 @@
 
 "s10": {"home": {"t": "@Science 10"},
 
+"rewrite/@": {"t": "Rewrite", "s": "2026.1.26", "css": {"font-weight": "bold"}},
+
 "bio1/micro": {"t": "@Microscopes", "n": "B01", "s": "2025.12.10", "a": "2025.12.10.15", "h": ["1NaoR9DwGmrW9MR5VXZoJDBB_PV_Q5DjQ", ["Lab Handout", "1gy9Zz3__GK3EZtWQL05_a9MpZdFQnY8b"]]},
 "bio1/micro#": {"t": "Lab: The Letter “e”", "s": "2025.12.11"},
 "bio1/cell": {"t": "@Cell Theory", "n": "B02", "s": "2025.12.10", "a": "2025.12.12", "h": "1xgr3RG4CHsieMq77-260aBaimYoIo-Y8"},
@@ -177,7 +180,11 @@
 "clim1/heatcap#": {"t": "Lab: Food Energy", "s": "2025.12.3"},
 "clim1/latent": {"t": "@Latent Heat", "n": "P12", "s": "2025.12.2", "a": "2025.12.4", "h": "1fGbBR64XxX1RjLBMfHqfB-NHm5hmSLxG"},
 "phys2/transfer25": {"t": "@Heat Transfer & Climate", "n": "P13", "s": "2025.12.4", "a": "2025.12.5", "h": "1eijWuyZIHMPHgA0iEyL2N-TpGEN6qFRg"},
-"unitB": {"t": "Project: Energy Transforming Device", "s": "2026.1.19", "h": [["1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", {"show": 2027}], ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2027"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18", "show": "2026.1.19"}]]},
+"unitB": {"t": "Project: Energy Transforming Device (Planning)", "s": "2026.1.19", "h": [["Assignment", {"gdrv": "1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", "show": 2027}], ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2027"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18", "show": "2026.1.19"}]]},
+"unitB#1": {"t": "Project: Energy Transforming Device (Planning)", "s": "2026.1.20"},
+"unitB#2": {"t": "Project: Energy Transforming Device (Building)", "s": "2026.1.21"},
+"unitB#3": {"t": "Project: Energy Transforming Device (Testing)", "s": "2026.1.22"},
+
 "qp2/@": {"t": "Quiz: Energy / Heat", "s": "2025.12.5", "css": {"font-weight": "bold"}},
 "uB/@": {"t": "Physics Unit Exam", "s": "2025.12.9", "css": {"font-weight": "bold"}}
 },
