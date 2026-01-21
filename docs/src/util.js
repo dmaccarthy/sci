@@ -153,9 +153,11 @@ async function mjax_render(e, mode) {
     });
 }
 
+async function sleep(t) {await new Promise(r => setTimeout(r, t))}
+
 async function mjax_wait(t) {
     // Wait until MathJax.typesetPromise is available
-    while (!MathJax.typesetPromise) await SVG2.sleep(t ? t : 50);
+    while (!MathJax.typesetPromise) await sleep(t ? t : 50);
     return new Promise(res => res());
 }
 

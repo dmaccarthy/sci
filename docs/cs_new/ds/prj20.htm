@@ -1,0 +1,149 @@
+<section class="Post" data-icon="warn.svg">
+<h2 class="Collapse">Instructions</h2><div class="Collapse Expand">
+<p>Complete each of the programming tasks that your teacher has assigned. Create the program files in the <code>cs20/ds</code> folder of your Computing Science OneDrive folder. Use VS Code to create, edit, and test your programs. <b>All programs are to be completed in class!</b></p>
+<p>All programs should have a docstring and relevant comments, and should use procedural programming techniques. Use descriptive names for variables.</p>
+<p>Use only programming techniques that have been covered in these lessons. Examples that you find on the web often use
+techniques that are considered bad programmming practice that should be avoided.</p>
+</div></section>
+
+<section class="Post" data-show="2026" data-icon="python">
+<h2 class="Collapse">Morse Code</h2><div class="Collapse">
+<p>Morse Code was developed to send messages by telegraph. Each letter and numeral is assigned a sequence of “dots” and “dashes” as shown in the table below. Morse code is case insensitive.</p>
+<p class="Center"><img alt="Morse Code Table" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/International_Morse_Code.svg" data-aspect="414/530" class="w20"/></p>
+<p>Write a Python program that uses procedural programing techniques (functions, local variables, error handling) and data structures (lists, tuples, dictionaries, etc.) that can encode and decode messages to and from Morse Code. Save your program in your OneDrive folder as <code>ds/morse.py</code>.</p>
+<p>Use a space character to mark the space between letters in the same word, and the slash character to mark the space between words. When encoding text, ignore punctuation marks and any other characters not shown in the illustration above.</p>
+<p>Below is an example of the expected program behaviour, with user input shown in blue and program output in black.</p>
+<pre class="IO" data-echo="io">Encode or Decode? [e/d] <span class="Blue">d</span>
+Enter Code: <span class="Blue">.... . .-.. .-.. ---</span>
+Message: HELLO
+
+Encode or Decode? [e/d] <span class="Blue">e</span>
+Enter Messsage: <span class="Blue">I'm here</span>
+Code: .. --/.... . .-. .</pre>
+
+<p>When decoding, if a sequence of dots and dashes does not match any of the characters, your program should output a question mark in place of the invalid character.</p>
+</div></section>
+
+<section class="Post" data-show="2026" data-icon="python">
+<h2 class="Collapse">Histograms &amp; <span class="TeX">\pi</span></h2><div class="Collapse">
+<p>A histogram is a graph that illustrates the frequency of a particular survey response or measurement result. Download the Python file shown here into your <code>ds</code> OneDrive folder and complete the function <code>histogram</code>.</p>
+
+<pre data-echo="histo1.py" data-title="1" class="Code">def histogram(title, data):
+    <span class="Comment">"Complete this function"</span>
+
+data = [["Blue", 180], ["Brown", 497], ["Green", 72], ["Other", 53], ["No Response", 120]]
+histogram("Eye Color", data)</pre>
+
+<p>When the program is run, it should produce the following output.</p>
+
+<pre class="IO" data-echo="io">Eye Colour...
+
+       Blue | *******
+      Brown | ********************
+      Green | ***
+      Other | **
+No Response | *****
+
+Each * represents 25 occurences.</pre>
+
+<p>The number of occurences represented by each <code>'*'</code> must be calculated by the <code>histogram</code> function, to make the largest “bar” have 20 stars. (Due to rounding, 19 or 21 stars will be acceptable.)</p>
+
+<p>Once your histogram function is working correctly, copy the program to <code>histo2.py</code>. Instead of the <em>Eye Colour</em> data, modify your program to generate its own data as follows:</p>
+<ul>
+    <li>Generate two random floats (<code>x</code> and <code>y</code>) between 0 and 10.</li>
+    <li>Use the Pythagoras formula to calculate how far the point <span class="TeX">(x, y)</span> is from the origin.</li>
+    <li>Repeat the above calculation with different random values 1000000 times.</li>
+    <li>Use a data structure to keep track of how many times the calculated distance is less than 1, how many times it is between 1 and 2, betweeen 2 and 3, etc. The distance will never be more than 15.</li>
+    <li>Use your <code>histogram</code> function to graph the data.</li>
+    <li>Have your program count how many times the distance was less than 10. Do this <em>after</em> the data has been collected into an appropriate data structure, not <em>while</em> generating the data. Divide this value by one-quarter of the total number of trials. Print the result. If your random values are truly random, this calculation should equal <span class="TeX">\pi</span>!</li>
+</ul>
+</div></section>
+
+<section class="Post" data-show="2026.1.22.13.53" data-icon="python">
+<h2 class="Collapse">Rolling Dice</h2><div class="Collapse Expand">
+<ol>
+
+<li>
+<p>Download this program into your <code>cs20/ds</code> OneDrive folder. Complete the <code>roll_dice</code> function as a <em>generator</em> that creates a sequence of rolls of two six-sided dice. The argument specifies how many times to roll. The output of the completed program will be ten numbers between 2 and 12 representing ten separate rolls of the dice. If no argument is passed to <code>roll_dice</code>, it should generate and <em>infinite</em> number of rolls.</p>
+
+<pre data-echo="dice1.py" data-title="1" class="Code">def roll_dice(n=None):
+    <span class="Comment"># Generate a sequence of dice rolls</span>
+    pass
+
+for roll in roll_dice(10):
+    print(roll)</pre>
+</li>
+
+<li>
+<p>Copy your program as <code>cs20/ds/dice2.py</code>. Modify the program by adding a function called <code>make_data</code> that uses <code>roll_dice</code> to generate one million dice rolls. As it does so, it should keep count of how many times each outcome occurs using an approriate data structure. Finally, add a <code>main</code> program to display the results in a neatly-aligned table like the following:</p>
+<pre data-echo="io" class="Code">
+Outcome  Number  Percentage
+   2      27778     2.8%
+   3      55556     5.6%
+   4      83334     8.3%
+   5     111112    11.1%
+   6     138890    13.9%
+   7     166668    16.7%
+   8     138890    13.9%
+   9     111112    11.1%
+  10      83334     8.3%
+  11      55556     5.6%
+  12      27778     2.8%</pre>
+</li>
+
+<li>
+<p>Download this program into your <code>cs20/ds</code> OneDrive folder and copy your completed <code>roll_dice</code> function into the program. The program uses Python’s <code>next</code> function to roll the dice each time it draws one animation frame. Modify the program so that, rather than printing out a frequency table like <code>dice2.py</code>, it uses <code>sc8pr</code> to draw a bar graph of the percentages. The program should not just draw the graph after all one million dice rolls have occured, but should make a <em>live</em> graph, updating the results <em>each</em> animation frame.</p>
+<pre data-echo="dice3.py" data-title="1" class="Code">from sc8pr import Sketch
+
+def setup(sk):
+    sk.roller = roll_dice()
+    sk.bind(ondraw)
+
+def ondraw(sk, ev=None):
+    roll = <span class="Blue">next</span>(sk.roller)
+    print(sk.frameCount, roll)
+
+
+Sketch().play()</pre>
+
+<p>You can use <code>sc8pr</code>’s <code>Canvas</code> function to draw the bars. The line below will draw a red rectangle that is 40 pixels wide and 200 pixels tall, with its bottom centred at coordinates (40, 250).</p>
+<pre data-echo="py" class="Code">sk["bar7"] = Canvas((40, 200), "red").config(pos=(40, 250), anchor=BOTTOM)</pre>
+</li>
+</ol>
+
+</div></section>
+
+<section class="Post" data-show="9999" data-icon="python">
+<h2 class="Collapse">BINGO</h2><div class="Collapse">
+
+</div></section>
+
+<section class="Post" data-show="9999" data-icon="python">
+<h2 class="Collapse">Tic-Tac-Toe</h2><div class="Collapse">
+
+</div></section>
+
+<section class="Post" data-show="9999" data-icon="python">
+<h2 class="Collapse">Fruit Salad</h2><div class="Collapse">
+
+</div></section>
+
+<section class="Post" data-show="9999" data-icon="python">
+<h2 class="Collapse">Spreading Spores</h2><div class="Collapse">
+
+</div></section>
+                                                             
+<section class="Post" data-show="9999" data-icon="python">
+<h2 class="Collapse">Word Search Maker</h2><div class="Collapse">
+
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    // showDate: "2025.9.29.14",
+    title: "Python Assessments",
+    up: "cs_new/sp1/home",
+}
+
+</script>

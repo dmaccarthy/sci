@@ -1103,7 +1103,7 @@ constructor(selector, options) {
 
 /*** Static helpers ***/
 
-static async sleep(t) {await new Promise(r => setTimeout(r, t))}
+// static async sleep(t) {await new Promise(r => setTimeout(r, t))}
 static make_URL(url) {return new URL(url, SVG2.url).href}
 
 static parse_anchor(s, obj) {
