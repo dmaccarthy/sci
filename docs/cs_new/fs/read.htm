@@ -1,7 +1,7 @@
 <section class="Post" data-icon="python">
 <h2 class="Collapse">“Reading” a Text File</h2><div class="Collapse Expand">
     <p>A <em class="Defn">text file</em> is a file containing data encoded using a text encoding scheme such as ASCII or UTF-8. That is, the sequence of binary data (0’s and 1’s) contained in the file represents a sequence of characters.  Python provides a built-in function named <code>open</code> that you can use to access text files...</p>
-    <pre data-echo="f02_ex1.py" data-title="1" class="Code">text = open("myData.txt", encoding="UTF-8")
+    <pre data-echo="f02_ex1.py" data-title="1" class="Code">text = open("puzzles.txt", encoding="UTF-8")
 for line in text:
     print(line.rstrip())
 text.close()</pre>
@@ -14,7 +14,7 @@ text.close()</pre>
 <section class="Post" data-icon="python">
 <h2 class="Collapse">Python’s <code>with-as</code> Statement</h2><div class="Collapse Expand">
     <p>Python provides a special <code>with-as</code> statement for objects (like files) that have a “clean-up” procedure.  In the case of file instances, the clean-up procedure is to close the file.</p>
-    <pre data-echo="f02_ex2.py" data-title="1" class="Code">with open("myData.txt", encoding="UTF-8") as text:
+    <pre data-echo="f02_ex2.py" data-title="1" class="Code">with open("puzzles.txt", encoding="UTF-8") as text:
     for line in text:
         print(line.rstrip())</pre>
     <p>As in the previous example, the file instance is created with the <code>open</code> function and assigned a name (<code>text</code>). However, rather than using a normal assignment statement, the <code>with-as</code> statement is used instead. When Python reaches the end of the indented block following the <code>with-as</code> statement it runs the instance’s clean-up procedure (i.e. close the file) automatically.</p>
@@ -24,7 +24,7 @@ text.close()</pre>
 <section class="Post" data-icon="ide">
 <h2 class="Collapse">Assignment</h2><div class="Collapse Expand">
 <p>A word guessing game like Hangman requires a collection of clues and answers for the player to guess. These puzzles could be stored in a text file like this...</p>
-<pre class="IO" data-echo="myData.txt" data-title="1">80's Movie#Raiders of the Lost Ark
+<pre class="IO" data-echo="puzzles.txt" data-title="1">80's Movie#Raiders of the Lost Ark
 Sports Team#Toronto Raptors
 Canadian City#Halifax, Nova Scotia</pre>
 <p>The program would need to read the file contents, separate each line into a (clue, answer) tuple or list, and return a list. The text file above should result in the list...</p>

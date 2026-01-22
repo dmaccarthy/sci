@@ -7,6 +7,7 @@
 "wave/stand": {"t": "@Standing Waves", "n": "8.4", "s": "2026.1.22", "a": "2026.1.22", "h": ["1ngjzdLy8Pegrdn2IU12owSOVA2HCxUBv", ["Lab Activity", "1_OlSoCLxi6_ddDAshuRUUisyfzUIhldJ"], ["Data", {"show": "2026.1.27", "open": "https://docs.google.com/spreadsheets/d/1bV80m6ndeMj_t2hH1E-6Dcc6RAegW-uyDC4rISfLHPQ/edit?usp=sharing", "icon": "gsheet"}]]},
 "uD/@": {"t": "Unit D Exam", "s": "2026.1.23", "css": {"font-weight": "bold"}},
 "rewrite/@": {"t": "Rewrite", "s": "2026.1.26", "css": {"font-weight": "bold"}},
+"wave/stand#": {"t": "Lab: Air Column Resonance", "s": "2026.1.27"},
 
 "shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2026.1.6", "a": "2026.1.7", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
 "shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2026.1.7", "a": "2026.1.8", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
