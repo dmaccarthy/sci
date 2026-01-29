@@ -194,7 +194,7 @@
 "mom/energy": {"t": "@Work & Energy Review", "n": "9.1", "s": "2026.1.29", "a": "2026.1.30"},
 "mom/mom": {"t": "@Momentum", "n": "9.2", "s": "2026.1.30", "a": "2026.2.2"},
 "mom/impulse": {"t": "@Impulse", "n": "9.3", "s": "2026.2.2", "a": "2026.2.3"},
-"mom/cons#": {"t": "Lab: Air Track Collisions", "s": "2027.2.3"},
+"mom/cons#": {"t": "Lab: Air Track Collisions", "s": "2026.2.3"},
 "mom/cons": {"t": "@Momentum Conservation", "n": "9.4", "s": "2026.2.4", "a": "2026.2.5"},
 "uD/@": {"t": "Unit A Exam", "s": "2027", "css": {"font-weight": "bold"}}
 }
