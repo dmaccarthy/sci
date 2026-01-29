@@ -1,6 +1,114 @@
+<section class="Post" data-show="9999" data-icon="correct">
+<h2 class="Collapse">Formative</h2><div class="Collapse">
+<ol>
+<li></li>
+</ol></div></section>
+
+<!-- Formative
+
+   <li><ol type="a">
+        <li>A moving train collides with a stationary rail car and they couple together (the car attaches to the other cars of the train). Discuss all energy and momentum transfers / transformations.</li>
+        <p class="Answer">The two cars exert equal and opposite forces on each other for the same amount of time. Since <span class="TeX">\Delta\vec{\bf p} = \vec{\bf F}\Delta t</span>, the momentum gained by one car is balanced by the momentum lost by the other car. Since the cars are moving at different velocities, they do not undergo the same displacement while the force is acting, thus the amounts of work done on the cars, <span class="TeX">\Delta E_k = \vec{\bf F}\cdot\Delta\vec{\bf d}</span>, are not equal and opposite. Mechanical energy is not conserved since some of this energy is transformed into sound and thermal energy.</p>
+
+        <li>When attempting to numerically solve a collision problem such as this, would it be more appropriate to use the law of momentum conservation or the law of energy conservation? Explain.</li>
+        <p class="Answer">Based on the above discussion, energy conservation cannot be used to solve the collision when the amount of sound and thermal energy produced is unknown. Therefore, it is usually appropriate to use conservation of momentum for collision problems.</p>
+    </ol></li>
+
+    <li>A 2500 kg rail car moving at +20.0 km/h collides with a stationary 3000 kg rail car. The collision causes the cars to couple together.
+    <ol type="a">
+        <li>What is the final velocity of the two attached rail cars?</li>
+        <div class="Answer">
+            <p>Calculate the total momentum of the system, remembering to convert km/h to m/s:</p>
+            <p class="TeX">\Sigma\vec{\bf p} = m_A\vec{\bf v}_{iA} = \rm 2500 kg\cdot (+5.56\ m/s) = +13889\ kg\cdot m/s</p>
+            <p>After the collision, the rail cars stick together and behave as a single mass:</p>
+            <p class="TeX">m = m_A + m_B = \rm (2500 + 3000)\ kg = 5500\ kg</p>
+            <p>Since momentum is conserved, the velocity is:</p>
+            <p class="TeX">\vec{\bf v}_f = \frac{\Sigma\vec{\bf p}}{m} = \rm \frac{+13889\ kg\cdot m/s}{5500\ kg} = +2.53\ m/s = +9.09\ km/h</p>
+        </div>
+        <li>How much mechanical energy was lost as a result of the collision? To which form(s) was this energy transformed?</li>
+        <div class="Answer">
+            <p>The system’s energy before the collision is:</p>
+            <p class="TeX">\Sigma E_i = \frac{1}{2} m_A{v_{iA}}^2 = \rm \frac{1}{2} (2500\ kg) (5.56\ m/s)^2 = 38580\ J</p>
+            <p>The system’s energy after the collision is:</p>
+            <p class="TeX">\Sigma E_f = \frac{1}{2} m{v_f}^2 = \rm \frac{1}{2} (5500\ kg)\cdot (2.53\ m/s)^2 = 17536\ J</p>
+            <p>The change is:</p>
+            <p class="TeX">\Delta E = E_f - E_i = \rm 17536\ J - 38580\ J = -21044\ J = -2.10\times 10^3\ J</p>
+        </div>
+        <li>What impulse did each rail car experience?</li>
+        <div class="Answer">
+            <p>Calculate the impulse (change in momentum) of the <em>first</em> car:</p>
+            <p class="TeX">\Delta\vec{\bf p}_A = m_A\Delta\vec{\bf v}_A = \rm 2500\ kg\cdot (+2.53 - (+5.56))\ m/s = -7576\ kg\cdot m/s</p>
+            <p>According to Newtons 3<sup>rd</sup> Law, the impulse experienced by the <em>second</em> car must be <span class="TeX">\rm +7576\ kg\cdot m/s</span>.</p>
+        </div>
+        <li>If the collision lasted 0.600 s, what average force did each car experience?</li>
+        <div class="Answer">
+            <p>For the first car:</p>
+            <p class="TeX">\vec{\bf F}_A = \frac{\Delta\vec{\bf p}_A}{\Delta t} = \rm \frac{-7576\ kg\cdot m/s}{0.600\ s} = -1.26\times 10^4\ N</p>
+            <p>The average force experienced by the second car is <span class="TeX">\rm +1.26\times 10^4\ N</span>.</p>
+        </div>
+    </ol></li>
+
+<li>A train with a mass of 20.0 t is moving along the track at 4.00 m/s. The train collides with a railcar that has a mass of 5.00 t and is at rest. The cars couple together as a result of the collision.
+<ol type="a">
+    <li>Calculate the final velocity of the coupled train.</li>
+    <div class="Answer">
+<p>Calculate the initial and total momentum of the trains.</p>
+<p class="TeX">{\vec{\bf p}_{Ai}} = \rm{(20.0\times 10^3\ kg)\ (+4.00\ m/s) = +8.00\times 10^{4}\ N\cdot s= +80.0\ kN\cdot s}</p>
+<table class="Center Three">
+<tr>
+    <td>kN·s</td>
+    <td>Initial</td>
+    <td>Final</td>
+</tr>
+<tr>
+    <td><span class="TeX">\vec{\bf p}_A</span></td>
+    <td>+80.0</td>
+    <td class="Reveal"><span>+64.0</span></td>
+</tr>
+<tr>
+    <td><span class="TeX">\vec{\bf p}_B</span></td>
+    <td>0.00</td>
+    <td class="Reveal"><span>+16.0</span></td>
+</tr>
+<tr>
+    <td><span class="TeX">\Sigma\vec{\bf p}</span></td>
+    <td colspan="2" class="Reveal"><span>+80.0</span></td>
+</tr>
+</table>
+
+<p>Create an equation that represents the fact that total momentum is conserved:</p>
+<p class="TeX">\Sigma{\vec {\bf p}} = m_A {\vec {\bf v}_f} + m_B {\vec {\bf v}_f}</p>
+<p>Factor out the common factor; <span class="TeX">\vec{\bf v}_f</span> is the same for both masses when they are stuck together:</p>
+<p class="TeX">\Sigma{\vec {\bf p}} = (m_A + m_B) {\vec {\bf v}_f}</p>
+<p>Solve for the final velocity:</p>
+<p class="TeX">{\vec {\bf v}_f} = {\Sigma{\vec {\bf p}} \over m_A + m_B} = {\rm{{+80000\ N\cdot s \over 25000\ kg} = +3.20\ m/s}}</p>
+    </div>
+
+    <li>Calculate the impulse that each car experienced.</li>
+    <div class="Answer">
+<p>Calculate the final momentum of car “B”.</p>
+<p class="TeX">\vec{\bf p}_{fB} = m_B\vec{\bf v}_{fB} = \rm 5000\ kg\cdot(+3.20\ m/s) = +16000\ kg\cdot m/s</p>
+<p>Since “B” was initially at rest, its impulse is +16.0 kN·s and the impulse experienced by “A” is –16.0 kN·s according to Newton’s 3<sup>rd</sup> Law.</p>
+    </div>
+
+	<li>Calculate the change in mechanical energy due to the collision. Where did the missing energy go?</li>
+    <div class="Answer">
+<p>Calculate the initial energy of the system...</p>
+<p class="TeX">\Sigma E_i = \frac{1}{2}m_A v_{Ai}^2 = \frac{1}{2}\rm{(20.0\times 10^3\ kg) (4.00\ m/s)^2 = 160\ kJ}</p>
+<p>Calculate the final energy of the system...</p>
+<p class="TeX">E_{Af} = \frac{1}{2}m_A v_f^2 = \frac{1}{2}\rm{(20.0\times 10^3\ kg) (3.20\ m/s)^2 = 102.4\ kJ}</p>
+<p class="TeX">E_{Bf} = \frac{1}{2}m_B v_f^2 = \frac{1}{2}\rm{(5.00\times 10^3\ kg) (3.20\ m/s)^2 = 25.6\ kJ}</p>
+<p class="TeX">\Sigma E_f = \rm{(102.4 + 25.6)\ kJ = 128\ kJ}</p>
+<p>Calculate the change in energy...</p>
+<p class="TeX">\Delta E = \Sigma E_f - \Sigma E_i = \rm{(128 - 160)\ kJ = -32.0\ kJ}</p>
+<p>This 32.0 kilojoules represents the sound and thermal energy generated by the collision.</p>
+    </div>
+</ol></li>
+
+-->
+
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes<span data-print="LessonNotes"></span></h2><div class="Collapse">
-<div id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Elastic &amp; Inelatic Collisions</h1>
@@ -29,15 +137,22 @@
     </ul>
     </section>
 
-</div></div></section>
+</div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
+<h2 class="Collapse">Summary</h2><div class="Collapse">
 <ol>
-    <li>Classify the collisions in Practice #2, 3, and 5 and Review #3 of the <a href="#p30/mom/cons">Momentum Conservation</a> assignment as elastic, partly or completely inelastic, or superelastic.</li>
-    <div class="Answer"><p>Practice #2 is partly inelastic because the final energy is less than the initial energy, but the objects do not stick together. Practice #3 and Review #3 are completely inelastic because the objects stick together after the collision. Practice #5 is superelastic because Randy adds energy to the system by doing work on Sandy.</p></div>
+    <li>Define <em class="Defn">elastic</em> and <em class="Defn">inelastic</em> collisions.</li>
+    <div class="Answer">Elastic means that mechanical energy as well as momentum is conserved. Inelastic means that only momentum is conserved as some of the mechanical energy is transformed into non-mechanical forms such as sound or thermal energy.</div>
 
+    <li>What does it mean to say that a collision in which the objects remain attached after the collision is “completely” inelastic.</li>
+    <div class="Answer">The loss of mechanical energy is greatest (while momentum is conserved) when the two masses stick together.</div>
+</ol>
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
     <li>Physicists use a particle accelerator to produce a 1D collision between a proton <span class="NoWrap">(<span class="TeX">m_p</span></span> = 1.67 × 10<sup>–27</sup> <span class="NoWrap">kg)</span> initially at rest and a particle of unknown mass moving at +6.00 × 10<sup>7</sup> m/s. As a result of the collision, the unknown particle is slowed to a velocity of +3.59 × 10<sup>7</sup> m/s while the proton is accelerated to a velocity of +9.59 × 10<sup>7</sup> m/s.
     <ol type="a">
         <li>What is the mass of the unknown particle?</li>
@@ -69,7 +184,6 @@
             <p>The collision appears to be elastic because the mechanical energy does not change.</p>
         </div>
     </ol></li>
-
 
     <li>In a game of billiards, a 350-gram ball moving with a velocity of +2.25 m/s collides with a 300-gram ball moving in the exact opposite direction with a velocity of –0.400 m/s. After the collision, the heavier ball’s velocity is +0.900 m/s.
     <ol type="a">
@@ -104,19 +218,6 @@
     </ol>
     </li>
 
-</ol>
-</div></div></section>
-
-<section class="Post" data-show="2024.9.10" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
-<div id="Review">
-<ol>
-    <li>Define <em class="Defn">elastic</em> and <em class="Defn">inelastic</em> collisions.</li>
-    <div class="Answer">Elastic means that mechanical energy as well as momentum is conserved. Inelastic means that only momentum is conserved as some of the mechanical energy is transformed into non-mechanical forms such as sound or thermal energy.</div>
-
-    <li>What does it mean to say that a collision in which the objects remain attached after the collision is “completely” inelastic.</li>
-    <div class="Answer">The loss of mechanical energy is greatest (while momentum is conserved) when the two masses stick together.</div>
-
     <li>A toy train set includes a locomotive of mass of 750 grams and a passenger car of mass 400 grams. The locomotive has an initial velocity of –20.0 cm/s as it backs into the passenger car which is initially at rest. The locomotive and the passenger car do not join together successfully, and the passenger car moves off with a final velocity of –15.0 cm/s. Calculate:<ol type="a">
         <li>the final velocity of the locomotive.</li>
         <div class="Answer">
@@ -144,18 +245,23 @@
         <li>Classify the collisions as elastic, partly or completely inelastic, or superelastic.</li>
         <div class="Answer"><p>Since there is a loss of mechanical energy but the masses do not join together, the collision was partly inelastic.</p></div>
     </ol></li>
+
+    <li>Classify the collisions in questions 2 through 5 of the <a href="#p30/mom/cons">Momentum Conservation</a> assignment as elastic, partly or completely inelastic, or superelastic.</li>
+    <div class="Answer">
+        <p>Question 2 is partly inelastic because the final energy is less than the initial energy, but the objects do not stick together. Question 3 is completely inelastic because the objects stick together after the collision. Question 5 is superelastic because Randy adds energy to the system by doing work on Sandy.</p>
+        <p>Question 4 is not a collision, and momentum conservation does not apply because there are unbalanced external forces acting on the system.</p>
+    </div>
 </ol>
-</div></div></section>
+</div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
     title: `${siteData.lesson}9.5 — Elastic & Inelatic Collisions`,
-    answerDate: "2024.9.10.10",
+    showDate: "2027.1.1",
+    answerDate: "2027.1.1",
     num: "9.5",
-    up: "p30/units/A",
-    prev: "p30/mom/cons",
-    next: "p30/mom/vec2d",
+    up: "p30/units/A", prev: "p30/mom/cons", next: "p30/mom/vec2d",
 }
 
 </script>

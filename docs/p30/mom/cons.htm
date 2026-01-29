@@ -116,57 +116,21 @@
 <section class="Post" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Summary</h2><div class="Collapse">
 <ol>
-    <li>As a ball falls, it gains kinetic energy and loses momentum (i.e. it gains momentum in the negative direction). What causes these changes? Where does the lost momentum go? Where did the kinetic energy come from?</li>
-    <p class="Answer">The gravity force causes the changes in energy and momentum. The ball gains kinetic energy as it loses gravitational potential energy. The ball’s change in momentum is balanced by an opposite impulse experienced by the Earth.</p>
-
-    <li><ol type="a">
-        <li>A moving train collides with a stationary rail car and they couple together (the car attaches to the other cars of the train). Discuss all energy and momentum transfers / transformations.</li>
-        <p class="Answer">The two cars exert equal and opposite forces on each other for the same amount of time. Since <span class="TeX">\Delta\vec{\bf p} = \vec{\bf F}\Delta t</span>, the momentum gained by one car is balanced by the momentum lost by the other car. Since the cars are moving at different velocities, they do not undergo the same displacement while the force is acting, thus the amounts of work done on the cars, <span class="TeX">\Delta E_k = \vec{\bf F}\cdot\Delta\vec{\bf d}</span>, are not equal and opposite. Mechanical energy is not conserved since some of this energy is transformed into sound and thermal energy.</p>
-
-        <li>When attempting to numerically solve a collision problem such as this, would it be more appropriate to use the law of momentum conservation or the law of energy conservation? Explain.</li>
-        <p class="Answer">Based on the above discussion, energy conservation cannot be used to solve the collision when the amount of sound and thermal energy produced is unknown. Therefore, it is usually appropriate to use conservation of momentum for collision problems.</p>
-    </ol></li>
-
-    <li>A 2500 kg rail car moving at +20.0 km/h collides with a stationary 3000 kg rail car. The collision causes the cars to couple together.
-    <ol type="a">
-        <li>What is the final velocity of the two attached rail cars?</li>
-        <div class="Answer">
-            <p>Calculate the total momentum of the system, remembering to convert km/h to m/s:</p>
-            <p class="TeX">\Sigma\vec{\bf p} = m_A\vec{\bf v}_{iA} = \rm 2500 kg\cdot (+5.56\ m/s) = +13889\ kg\cdot m/s</p>
-            <p>After the collision, the rail cars stick together and behave as a single mass:</p>
-            <p class="TeX">m = m_A + m_B = \rm (2500 + 3000)\ kg = 5500\ kg</p>
-            <p>Since momentum is conserved, the velocity is:</p>
-            <p class="TeX">\vec{\bf v}_f = \frac{\Sigma\vec{\bf p}}{m} = \rm \frac{+13889\ kg\cdot m/s}{5500\ kg} = +2.53\ m/s = +9.09\ km/h</p>
-        </div>
-        <li>How much mechanical energy was lost as a result of the collision? To which form(s) was this energy transformed?</li>
-        <div class="Answer">
-            <p>The system’s energy before the collision is:</p>
-            <p class="TeX">\Sigma E_i = \frac{1}{2} m_A{v_{iA}}^2 = \rm \frac{1}{2} (2500\ kg) (5.56\ m/s)^2 = 38580\ J</p>
-            <p>The system’s energy after the collision is:</p>
-            <p class="TeX">\Sigma E_f = \frac{1}{2} m{v_f}^2 = \rm \frac{1}{2} (5500\ kg)\cdot (2.53\ m/s)^2 = 17536\ J</p>
-            <p>The change is:</p>
-            <p class="TeX">\Delta E = E_f - E_i = \rm 17536\ J - 38580\ J = -21044\ J = -2.10\times 10^3\ J</p>
-        </div>
-        <li>What impulse did each rail car experience?</li>
-        <div class="Answer">
-            <p>Calculate the impulse (change in momentum) of the <em>first</em> car:</p>
-            <p class="TeX">\Delta\vec{\bf p}_A = m_A\Delta\vec{\bf v}_A = \rm 2500\ kg\cdot (+2.53 - (+5.56))\ m/s = -7576\ kg\cdot m/s</p>
-            <p>According to Newtons 3<sup>rd</sup> Law, the impulse experienced by the <em>second</em> car must be <span class="TeX">\rm +7576\ kg\cdot m/s</span>.</p>
-        </div>
-        <li>If the collision lasted 0.600 s, what average force did each car experience?</li>
-        <div class="Answer">
-            <p>For the first car:</p>
-            <p class="TeX">\vec{\bf F}_A = \frac{\Delta\vec{\bf p}_A}{\Delta t} = \rm \frac{-7576\ kg\cdot m/s}{0.600\ s} = -1.26\times 10^4\ N</p>
-            <p>The average force experienced by the second car is <span class="TeX">\rm +1.26\times 10^4\ N</span>.</p>
-        </div>
-    </ol></li>
-
+    <li>Explain the <em class="Defn">Law of Momentum Conservation</em> and how it relates to Newton’s Laws of Motion.</li>
 </ol>
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
+<li><ol type="a">
+    <li>As a book slides across the floor, it loses both momentum and kinetic energy. What causes these losses? Where does the lost momentum and the lost kinetic energy go?</li>
+    <p class="Answer">The friction force causes the changes in energy and momentum. The book’s kinetic energy is transformed into sound and thermal energy, while the momentum is transferred to the Earth.</p>
+    
+    <li>As a ball falls, it gains kinetic energy and loses momentum (i.e. it gains momentum in the negative direction). What causes these changes? Where does the lost momentum go? Where did the kinetic energy come from?</li>
+    <p class="Answer">The gravity force causes the changes in energy and momentum. The ball gains kinetic energy as it loses gravitational potential energy. The ball’s change in momentum is balanced by an opposite impulse experienced by the Earth.</p>
+</ol></li>
+
 <li>A 1160 kg car moving at 60.0 km/h collides with a 1480 kg car at rest. If the collision brings the first car to a stop, with what velocity will the second car be pushed forward? What assumptions are you making in solving this problem?</li>
 <div class="Answer">
     <p>We are assuming that the system’s momentum remains constant, which will only be true if friction and air resistance are absent, and the collision occurs on flat ground so the gravity and normal forces balance.</p>
@@ -176,63 +140,6 @@
     <p class="TeX">\Sigma\vec{\bf p} = m_B\vec{\bf v}_{fB}</p>
     <p class="TeX">\vec{\bf v}_{fB} = \frac{\Sigma\vec{\bf p}}{m_B} = \rm \frac{+19333\ kg\cdot m/s}{1480\ kg} = +13.1\ m/s = +47.0\ km/h</p>
 </div>
-
-<li>A train with a mass of 20.0 t is moving along the track at 4.00 m/s. The train collides with a railcar that has a mass of 5.00 t and is at rest. The cars couple together as a result of the collision.
-<ol type="a">
-    <li>Calculate the final velocity of the coupled train.</li>
-    <div class="Answer">
-<p>Calculate the initial and total momentum of the trains.</p>
-<p class="TeX">{\vec{\bf p}_{Ai}} = \rm{(20.0\times 10^3\ kg)\ (+4.00\ m/s) = +8.00\times 10^{4}\ N\cdot s= +80.0\ kN\cdot s}</p>
-<table class="Center Three">
-<tr>
-    <td>kN·s</td>
-    <td>Initial</td>
-    <td>Final</td>
-</tr>
-<tr>
-    <td><span class="TeX">\vec{\bf p}_A</span></td>
-    <td>+80.0</td>
-    <td class="Reveal"><span>+64.0</span></td>
-</tr>
-<tr>
-    <td><span class="TeX">\vec{\bf p}_B</span></td>
-    <td>0.00</td>
-    <td class="Reveal"><span>+16.0</span></td>
-</tr>
-<tr>
-    <td><span class="TeX">\Sigma\vec{\bf p}</span></td>
-    <td colspan="2" class="Reveal"><span>+80.0</span></td>
-</tr>
-</table>
-
-<p>Create an equation that represents the fact that total momentum is conserved:</p>
-<p class="TeX">\Sigma{\vec {\bf p}} = m_A {\vec {\bf v}_f} + m_B {\vec {\bf v}_f}</p>
-<p>Factor out the common factor; <span class="TeX">\vec{\bf v}_f</span> is the same for both masses when they are stuck together:</p>
-<p class="TeX">\Sigma{\vec {\bf p}} = (m_A + m_B) {\vec {\bf v}_f}</p>
-<p>Solve for the final velocity:</p>
-<p class="TeX">{\vec {\bf v}_f} = {\Sigma{\vec {\bf p}} \over m_A + m_B} = {\rm{{+80000\ N\cdot s \over 25000\ kg} = +3.20\ m/s}}</p>
-    </div>
-
-    <li>Calculate the impulse that each car experienced.</li>
-    <div class="Answer">
-<p>Calculate the final momentum of car “B”.</p>
-<p class="TeX">\vec{\bf p}_{fB} = m_B\vec{\bf v}_{fB} = \rm 5000\ kg\cdot(+3.20\ m/s) = +16000\ kg\cdot m/s</p>
-<p>Since “B” was initially at rest, its impulse is +16.0 kN·s and the impulse experienced by “A” is –16.0 kN·s according to Newton’s 3<sup>rd</sup> Law.</p>
-    </div>
-
-	<li>Calculate the change in mechanical energy due to the collision. Where did the missing energy go?</li>
-    <div class="Answer">
-<p>Calculate the initial energy of the system...</p>
-<p class="TeX">\Sigma E_i = \frac{1}{2}m_A v_{Ai}^2 = \frac{1}{2}\rm{(20.0\times 10^3\ kg) (4.00\ m/s)^2 = 160\ kJ}</p>
-<p>Calculate the final energy of the system...</p>
-<p class="TeX">E_{Af} = \frac{1}{2}m_A v_f^2 = \frac{1}{2}\rm{(20.0\times 10^3\ kg) (3.20\ m/s)^2 = 102.4\ kJ}</p>
-<p class="TeX">E_{Bf} = \frac{1}{2}m_B v_f^2 = \frac{1}{2}\rm{(5.00\times 10^3\ kg) (3.20\ m/s)^2 = 25.6\ kJ}</p>
-<p class="TeX">\Sigma E_f = \rm{(102.4 + 25.6)\ kJ = 128\ kJ}</p>
-<p>Calculate the change in energy...</p>
-<p class="TeX">\Delta E = \Sigma E_f - \Sigma E_i = \rm{(128 - 160)\ kJ = -32.0\ kJ}</p>
-<p>This 32.0 kilojoules represents the sound and thermal energy generated by the collision.</p>
-    </div>
-</ol></li>
 
 <li>An asteroid with a mass of 8.92 × 10<sup>8</sup> kg moving at 8.50 km/s collides head-on with a second asteroid of mass 3.15 × 10<sup>8</sup> kg with a speed of 9.26 km/s in the opposite direction.
 <ol type="a">
@@ -312,8 +219,6 @@
     <p class="TeX">\vec{\bf v}_{fS} = \frac{\vec{\bf p}_{fS}}{m_S} = \rm {\frac{+582\ kg\cdot m/s}{48.0\ kg}} = \rm {+12.1\ m/s}</p>
 </div>
 
-<li>As a book slides across the floor, it loses both momentum and kinetic energy. What causes these losses? Where does the lost momentum and the lost kinetic energy go?</li>
-<p class="Answer">The friction force causes the changes in energy and momentum. The book’s kinetic energy is transformed into sound and thermal energy, while the momentum is transferred to the Earth.</p>
 </ol>
 </div></section>
 
