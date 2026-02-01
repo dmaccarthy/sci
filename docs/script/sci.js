@@ -199,13 +199,23 @@ function showOnly(sel) {
     }
 }
 
-function slideShow(sel) {
+function embed(e) {
+    /* Move problems from other sections into slideshow */
+    let divs = e.find("[data-embed]");
+    for (let div of divs) {
+        div = $(div);
+        div.replaceWith($("#" + div.attr("data-embed")));
+    }
+}
+
+function slideShow(e) {
     $("body").addClass("Present");
-    let e = sel = $($(sel)[0]).addClass("TopLevel");
+    e = $($(e)[0]).addClass("TopLevel");
     e.find(".NoPresent").remove();
-    showOnly(sel);
+    embed(e);
+    showOnly(e);
     slideShow.sections = e.children(".Slide");
-    if (slideShow.sections.length == 0) slideShow.sections = sel;
+    if (slideShow.sections.length == 0) slideShow.sections = e;
     while (e[0].tagName.toUpperCase() != "BODY") e = e.parent().show();
     goSlide();
     layoutWidth();
