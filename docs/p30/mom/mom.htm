@@ -1,11 +1,10 @@
 <!-- Reorder practice questions to match handout! -->
 
-
 <section class="Post" data-show="9999" data-icon="correct">
 <h2 class="Collapse">Formative</h2><div class="Collapse">
-<ol><li>In the pulley system illustrated below, <span class="TeX">m_1</span> = 12.0 kg, <span class="TeX">m_2</span> = 8.00 kg, and <span class="TeX">h</span> = 1.50 m. Assuming the system is released from rest and there is no friction or air resistance, determine the speed of the system just before <span class="TeX">m_1</span> contacts the ground. <em>Show all work and include “Initial” and “Final” energy bar charts.</em>
+<ol id="F1"><li>In the pulley system illustrated below, <span class="TeX">m_1</span> = 12.0 kg, <span class="TeX">m_2</span> = 8.00 kg, and <span class="TeX">h</span> = 1.50 m. Assuming the system is released from rest and there is no friction or air resistance, determine the speed of the system just before <span class="TeX">m_1</span> contacts the ground. <em>Show all work and include “Initial” and “Final” energy bar charts.</em>
     <p class="Center"><svg data-svg2="p20/energy/img/cons.js#pulley" class="s12"></svg></p>
-</li></ol>
+</li>
 <div class="Answer">
     <p>The initial energy of the system is the gravitational potential energy of <span class="TeX">m_1</span>...</p>
     <p class="TeX">E_i = m_1gh = \rm{12.0\ kg\cdot 9.81\ m/s^2\cdot 1.50\ m = 177\ J}</p>
@@ -24,7 +23,7 @@
     <p>Now we can calculate the kinetic energies of the masses separately...</p>
     <p class="TeX">E_{k1} = \frac{1}{2} m_1v^2 = \rm{\frac{1}{2} (12.0\ kg)(2.43\ m/s)^2 = 35.3\ J}</p>
     <p class="TeX">E_{k2} = \frac{1}{2} m_2v^2 = \rm{\frac{1}{2} (8.00\ kg)(2.43\ m/s)^2 = 23.5\ J}</p>
-</div>
+</div></ol>
 </div></section>
 
 <section class="Post" data-icon="slides">
@@ -34,8 +33,9 @@
 <h1 id="Title">Momentum</h1>
 </section>
 
-<section class="Slide Present Blue Center">
-    <p>Complete the <em>Work &amp; Energy</em> Formative Assignment</p>
+<section class="Slide Present">
+    <ul class="Blue"><li>Complete the <em>Work &amp; Energy</em> Formative Assignment</li></ul>
+    <ol><div data-embed="F1"></div></ol>
 </section>
 
 <section class="Slide"><h3>Momentum</h3>
@@ -50,9 +50,9 @@
     </ul>
 </section>
 
-<section class="Slide Present Blue">
-    <p><i>Momentum</i>:</p>
-    <ul data-cue="none"><li><i>Practice #1-2</i></li></ul>
+<section class="Slide Present">
+    <ul class="Blue"><li><i>Momentum #1-2</i></li></ul>
+    <ol><div data-embed="P1_2"></div></ol>
 </section>
 
 <section class="Slide"><h3>Kinetic Energy vs. Momentum</h3>
@@ -87,9 +87,9 @@
     </div>
 </section>
 
-<section class="Slide Present Blue">
-    <p><i>Momentum</i>:</p>
-    <ul data-cue="none"><li><i>Practice #3-5</i></li></ul>
+<section class="Slide Present">
+    <ul class="Blue"><li><i>Momentum #3-5</i></li></ul>
+    <ol start="3"><div data-embed="P3_5"></div></ol>
 </section>
 
 </div></section>
@@ -116,6 +116,7 @@
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
+    <div id="P1_2">
     <li>Evelyn has a mass of 36.0 kg. While playing soccer, she runs down the field with a velocity of 4.20 m/s [south]. Calculate Evelyn’s kinetic energy and her momentum.</li>
     <div class="Answer">
         <p>Calculate kinetic energy; the direction of the velocity does not matter:</p>
@@ -132,7 +133,9 @@
         <p>Use the velocity to calculate the kinetic energy:</p>
         <p class="TeX">E_k = \frac{1}{2}mv^2 = \rm \frac{1}{2}\ (25.0\ kg) (14.8\ m/s)^2 = 2.74\times 10^3\ J</p>
     </div>
+    </div>
 
+    <div id="P3_5">
     <li>A lacrosse ball has 75.0 J of kinetic energy and is moving with a speed of 15.0 m/s. Determine (i) the ball’s mass and (ii) the magnitude of its momentum.</li>
     <div class="Answer">
         <p>Use the kinetic energy to calculate the mass:</p>
@@ -153,6 +156,7 @@
             <p class="TeX">E_{kA} = \frac{1}{2}m_A{v_A}^2 = \frac{1}{2}m{\left(\frac{p}{m}\right)}^2 = \frac{mp^2}{2m^2} = \frac{p^2}{2m}</p>
             <p class="TeX">E_{kB} = \frac{1}{2}m_B{v_B}^2 = \frac{1}{\bcancel 2} ({\bcancel 2}m) {\left(\frac{p}{2m}\right)}^2 = \frac{mp^2}{4m^2} = \frac{p^2}{4m}</p>
             <p>Mass B, the larger one, has only half as much kinetic energy.</p>
+            <p>Alternatively, since the actual values of <span class="TeX">m</span> and <span class="TeX">p</span> do not matter, you can make up any values you want, for example <span class="TeX">m_A</span> = 1.00 kg, <span class="TeX">m_B</span> = 2.00 kg and <span class="TeX">p</span> = 1.00 N·s for both, and then use these values to calculate the speeds and knietic energies.</p>
         </div>
 
         <li>Two objects have the same amount of kinetic energy, but object “A” has a mass <span class="TeX">m</span> while object “B” has a mass <span class="TeX">2m</span>. Which object has more momentum? By what factor?</li>
@@ -191,6 +195,7 @@
             <p>Because kinetic energy is a scalar, the direction does not matter and the answers are identical to (a).</p>
         </div>
     </ol></li>
+    </div>
 
 </ol>
 </div></section>
