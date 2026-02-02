@@ -103,7 +103,7 @@
 
 "chem1/whmis": {"t": "@WHMIS / Lab Safety", "n": "C01", "s": "2026.1.29", "a": "2026.1.31", "h": "1TRd2vNgQvuczfoBTDJRQdNXt2OcfKBNP"},
 "chem1/whmis#": {"t": "Lab Safety <i>(continued)</i>", "s": "2026.1.30"},
-"chem1/expDes": {"t": "@Experiment Design", "n": "C02", "s": "2026.2.2", "a": "2026.2.3"},
+"chem1/expDes": {"t": "@Experiment Design", "n": "C02", "s": "2026.2.2", "a": "2026.2.2"},
 "chem1/classify": {"t": "@Classifying Matter", "n": "C03", "s": "2026.2.3", "a": "2026.2.4"},
 "chem1/atomic": {"t": "@Atomic Models", "n": "C04", "s": "2026.2.4", "a": "2026.2.9"},
 "chem1/atomic#": {"t": "Lab: Metals & Non-Metals", "s": "2026.2.9"},
