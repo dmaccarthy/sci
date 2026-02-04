@@ -34,6 +34,7 @@ mediaURL.urls = {
     help: "media/help.svg",
     gdrv: data_images.gdrv,
     svg: data_images.svg,
+    today: data_images.today,
     gdoc: "https://www.gstatic.com/images/branding/product/1x/docs_2020q4_48dp.png",
     gsheet: "https://ssl.gstatic.com/docs/spreadsheets/spreadsheets_2023q4.ico",
     slides: data_images.slides,
@@ -331,7 +332,10 @@ function make_cal(crs) {
         if (feedArray[0] == crs) {
             let data = loadFeed.index[feed];
             if (!data.hide && data.title && data.showDate && data.showDate.split(".").length > 2) {
-                let attr = feedArray[feedArray.length - 1] == "@" ? {} : {"data-feed": feed.split("#")[0]};
+                let href = feed.split("#")[0];
+                if (["cs10", "cs20", "cs30"].indexOf(href.split("/")[0]) > -1)
+                    href = `cs_new/${href.substring(5)}`;
+                let attr = feedArray[feedArray.length - 1] == "@" ? {} : {"data-feed": href};
                 if (data.attr) attr = Object.assign(attr, data.attr);
                 cal.push([data.showDate, data.title, attr, data.css]);
             }

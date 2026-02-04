@@ -1,0 +1,15 @@
+<section class="Post" data-icon="$today">
+<h2>Class Calendar</h2>
+<table class="Calendar">
+    <thead><tr><th>Date</th><th>Activity</th></tr></thead>
+    <tbody id="Cal"></tbody>
+</table>
+<p class="Center"><input id="ShowOld" type="checkbox"/> <label for="ShowOld">Show Past Events</label></p>
+</section>
+
+<script type="text/javascript">
+
+loadFeed.data = {title: "Computing Science 20", up: "cs_new/home"}
+loadFeed.data.cal = make_cal("cs20");
+
+</script>
