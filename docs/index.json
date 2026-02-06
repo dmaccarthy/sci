@@ -208,13 +208,20 @@
 
 "p30": {"home": {"t": "@Physics 30"},
 
+"elec/static": {"t": "@Electrostatics", "n": "10.1", "s": "2026.2.20", "a": "2026.2.20"},
+"elec/static#": {"t": "Activity: Electrostatics", "s": "2026.2.18"},
+
 "mom/energy": {"t": "@Work & Energy Review", "n": "9.1", "s": "2026.1.29", "a": "2026.1.30"},
 "mom/mom": {"t": "@Momentum", "n": "9.2", "s": "2026.1.30", "a": "2026.2.2"},
 "mom/impulse": {"t": "@Impulse", "n": "9.3", "s": "2026.2.2", "a": "2026.2.3"},
 "mom/cons": {"t": "@Momentum Conservation", "n": "9.4", "s": "2026.2.3", "a": "2026.2.9"},
 "mom/cons#contd": {"t": "@Momentum Conservation <em>(continued)</em>", "s": "2026.2.4"},
 "mom/cons#lab": {"t": "Lab: Air Track Collisions", "s": "2026.2.9"},
-"mom/@": {"t": "Quiz: Momentum & Impulse (1D)", "s": "2026.2.11", "css": {"font-weight": "bold"}},
+"mom/coll1d": {"t": "@Elastic & Inelastic Collisions", "n": "9.5", "s": "2026.2.10", "a": "2026.2.11"},
+"mom/vec2d": {"t": "@2D Vectors Review", "n": "9.6", "s": "2026.2.11", "a": "2026.2.12"},
+"mom/@": {"t": "Quiz: Momentum & Impulse (1D)", "s": "2026.2.12", "css": {"font-weight": "bold"}},
+"mom/coll2d": {"t": "@2D Collisions", "n": "9.7", "s": "2026.2.13", "a": "2026.2.18.15.20"},
+"mom/coll2d#": {"t": "@2D Collisions <em>(continued)</em>", "s": "2026.2.17"},
 "uD/@": {"t": "Unit A Exam", "s": "2026.2.19", "css": {"font-weight": "bold"}}
 }
 
