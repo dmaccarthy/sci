@@ -501,6 +501,22 @@ cylinder(r, L) {
     return g;
 }
 
+bullet(r, L, f, b) {
+/* Draw a bullet */
+    if (!L) L = 7 * r;
+    if (!b) b = 0.02;
+    let g = this.group();
+    let p = g.path([(b - 1) * L, -r]);
+    let x = -L * (f ? f : 0.35);
+    p.hor(x);
+    p.quad_to([x, r], [-x, 0])
+    p.line_to([(b - 1) * L, r]);
+    p.update();
+    b *= 2;
+    g.rect([b * L, 2 * (1 + b) * r], [-L, 0]);
+    return g;
+}
+
 plusminus(s, plus, thick) {
 /* Draw a plus or minus */
     let svg = this.svg;
