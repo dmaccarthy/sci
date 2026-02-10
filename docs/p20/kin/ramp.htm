@@ -1,4 +1,4 @@
-<!-- © 2023-2025 by D.G. MacCarthy <sc8pr.py@gmail.com> -->
+<!-- © 2023-2026 by D.G. MacCarthy <sc8pr.py@gmail.com> -->
 
 <style type="text/css">
 
@@ -122,7 +122,7 @@ loadFeed.sim = () => {
         if (vertical) {
             if (d > d0) {
                 balls.config({shift: [d0, 0], vel: [-balls.vel[0] * balls.elas, 0]});
-                done = balls.vel[0] > -0.2;
+                done = balls.vel[0] > -2.1 * 9.81 / svg.frameRate;
             }
         } else {
             ball.config({theta: -d / r * RAD});
@@ -130,12 +130,10 @@ loadFeed.sim = () => {
         }
         if (done) this.pause().config({done: true});
         this.timer.text = `${Math.min(t, balls.tmax).toFixed(3)} s`;
-        // this.timer.$.find("text").html(`${Math.min(t, balls.tmax).toFixed(3)} s`);
     }
 
     loadFeed.sim.svg = svg;
     loadFeed.sim.init();
-    // console.log(svg);
 }
 
 // Object size, moment of inertia, elasticity
@@ -172,7 +170,7 @@ loadFeed.sim.click = () => {
 
 loadFeed.data = {
     title: "Motion Along a Ramp",
-    up: "p20/kin/graph",
+    up: "p20/kin/displ",
 }
 
 </script>
