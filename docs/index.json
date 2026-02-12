@@ -112,14 +112,14 @@
 "chem1/dot": {"t": "@Periodic Table & Dot Diagrams", "n": "C07", "s": "2026.2.12", "a": "2026.2.13"},
 "qc1/@": {"t": "Quiz: Matter (Chapter 1)", "s": "2026.2.17", "css": {"font-weight": "bold"}},
 
-"chem2/ionic#": {"t": "Lab: Ionic & Molecular Substances", "s": "2027.2"},
-"chem2/ionic": {"t": "@Binary Ionic Compounds", "n": "C08", "s": "2027.9", "a": "2027.9"},
-"chem2/molec": {"t": "@Molecular Compounds", "n": "C09", "s": "2027.9", "a": "2027.9"},
+"chem2/ionic#": {"t": "Lab: Ionic & Molecular Substances", "s": "2026.2.13"},
+"chem2/ionic": {"t": "@Binary Ionic Compounds", "n": "C08", "s": "2026.2.18", "a": "2026.2.19"},
+"chem2/molec": {"t": "@Molecular Compounds", "n": "C09", "s": "2026.2.19", "a": "2026.2.20"},
 "chem2/poly": {"t": "@Polyatomic Ionic Compounds / Solubility", "n": "C10", "s": "2027.9", "a": "2027.9"},
 "chem2/acid": {"t": "@Acids & Bases", "n": "C11", "s": "2027.9", "a": "2027.9"},
 "chem2/acid#": {"t": "Lab: Acids & Bases", "s": "2027.9"},
 "chem2/water": {"t": "@Properties of Water", "n": "C12", "s": "2027.9", "a": "2027.9"},
-"qc2/@": {"t": "Quiz: Compounds (Chapter 2)", "s": "2027.9", "css": {"font-weight": "bold"}},
+"qc2/@": {"t": "Quiz: Compounds (Chapter 2)", "s": "2026.2.26", "css": {"font-weight": "bold"}},
 
 "chem3/rxn": {"t": "@Chemical Reactions / Conservation Laws", "n": "C13", "s": "2027.9", "a": "2027.9"},
 "chem2/rxn#": {"t": "Lab: Evidence of Chemical Reactions", "s": "2027.9"},
@@ -191,9 +191,10 @@
 
 "cs10": {"home": {"folder": "cs_new", "t": "@Computring Science 10"},
 
-"sp2/prj3#1": {"t": "Python Assessment #1", "s": "2026.2.17", "css": {"font-weight": "bold"}},
-"sp2/prj3#2/@": {"t": "Python Assessment #2", "s": "2026.2.26", "css": {"font-weight": "bold"}},
-"sp2/prj3#3/@": {"t": "Python Assessment #3", "s": "2026.3.9", "css": {"font-weight": "bold"}}
+"sp2/prj3#1": {"t": "Python Project #1", "s": "2026.2.17", "css": {"font-weight": "bold"}},
+"sp2/prj3#2/@": {"t": "Python Project #2", "s": "2026.2.26", "css": {"font-weight": "bold"}},
+"sp2/prj3#3/@": {"t": "Structured Programming Quiz", "s": "2026.3.9", "css": {"font-weight": "bold"}},
+"sp2/prj3#4/@": {"t": "Python Project #3", "s": "2026.3.17", "css": {"font-weight": "bold"}}
 },
 
 "cs20": {"home": {"folder": "cs_new", "t": "@Computring Science 20"},

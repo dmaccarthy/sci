@@ -24,7 +24,7 @@ pt: (sel, diatomic) => {
     let main = svg.group("sans", 15, centred, "none@");
     for (let i=1;i<=data.length;i++) {
         let [sym, code] = data[i-1];
-        if (!code) code = i < 92 ? 0 : (i < 109 ? 3 : 15);
+        if (!code) code = i < 93 ? 0 : (i < 109 ? 3 : 15);
         let g = main.group();
         elements.push(g);
         let color = c > 1 && c < 12 & code < 12 ? "#b0b0ff" : ["#d0cfff", "yellow", "#a0ff9f", "lightgrey"][(code & 28) / 4];
@@ -65,7 +65,6 @@ pt: (sel, diatomic) => {
         stairs.push([c++, r]);
     }
     css(svg.poly(stairs), "none", "red@3");
-    // svg.save("pt.svg");
 }
 
 });
