@@ -115,6 +115,29 @@ function unicode_to_base64(utext) {
     return btoa(String.fromCharCode(...data));
 }
 
+function hide_cell(tbl, r, c, hide) {
+    // Hide the contents of a table cell
+    let tr = $(tbl).find("tr")[r];
+    let td = tr ? $(tr).find("td, th")[c] : null;
+    return hide_content(td, hide);
+}
+
+function hide_content(td, hide) {
+    // Hide the contents of an element, wrapping in a <span> id necessary
+    td = $(td);
+    let c = td.children();
+    let s = $(c[0]);
+    let h = td.html();
+    if (c.length != 1 || c[0].outerHTML != h) {
+        s = $("<span>").html(h);
+        td.html(s);
+    }
+    if (hide) s.fadeOut();
+    else if (hide == null) s.fadeToggle();
+    else s.fadeIn();
+    return td;
+}
+
 
 /*** Math rendering with MathJax or KaTeX ***/
 

@@ -648,9 +648,13 @@ ticks(opt, useDefault) { /*
         p1 = svg.cs_size(swap ? [size[1], 0] : [0, size[1]]);
     }
     if (label != null) {
-        let anchor = opt.anchor ? opt.anchor : (swap ? "r" : "t");
-        gl = g.group(".Labels", SVG2.parse_anchor(anchor, 1));
         let [css, shift] = [opt.css, opt.shift];
+        let anchor = opt.anchor ? opt.anchor : (swap ? "r" : "t");
+        if (anchor === true) { // Avoid dominant-baseline for MS-Word!!
+            anchor = swap ? "br" : "b";
+            if (!shift) shift = swap ? ["-11", "-5"] : "-23";
+        }
+        gl = g.group(".Labels", SVG2.parse_anchor(anchor, 1));
         if (css) {
             if (!(css instanceof Array)) css = [css];
             gl.css(...css);
@@ -664,12 +668,17 @@ ticks(opt, useDefault) { /*
     let i = 0;
     if (!skip) skip = 1;
     for (let xi = x0; xi <= x1; xi += dx) {
+        let t, zero = Math.abs(xi / dx) < 0.001;
         let dp = swap ? [y, xi] : [xi, y];
-        if (size) gt.line(p0.plus(dp), p1.plus(dp));
+        if (size) {
+            t = gt.line(p0.plus(dp), p1.plus(dp));
+            if (zero) t.addClass("Zero");
+        }
         if (label != null && (i++) % skip == 0) {
             let text = f(xi);
-            let t = gl.text(text, [...dp, false], opt.theta); // anchor
-            if (parseFloat(text) == 0) t.$.addClass("Zero");
+            t = gl.text(text, [...dp, false], opt.theta); // anchor
+            // if (parseFloat(text) == 0)
+            if (zero) t.$.addClass("Zero");
         }
     }
     return g;
