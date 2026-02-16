@@ -1,0 +1,127 @@
+
+:root{
+    --w: 1280px;
+    --pad: 4px;
+    --h: calc(9 * var(--w) / 16);
+    --blue: #0065fe;
+    --grey1: #f4f4f4;
+    --grey2: #d0d0d0;
+    --icon: 80px;
+    --w1: calc(var(--w) - var(--icon));
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20pt;
+    background-color: var(--grey1);
+    cursor: none;
+}
+
+main {
+    font-size: 150%;
+    z-index: -1;
+    padding: var(--pad);
+    width: calc(var(--w) - 2 * var(--pad));
+    height: calc(var(--h) - 2 * var(--pad));
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    overflow: auto;
+}
+
+#Mouse {
+    position: fixed;
+    left: -3em;
+    top: -3em;
+    fill: red;
+    stroke-width: 2px;
+    stroke: black;
+}
+
+#Icons {
+    width: 64px;
+    padding: 12px 6px 12px 6px;
+    height: 100%;
+    position: fixed;
+    left: var(--w1);
+    top: 0;
+    overflow: hidden;
+}
+
+#Title {
+    text-align: center;
+    color: var(--blue);
+}
+
+.Icon {
+    width: 64px;
+    height: 64px;
+    border: 2px solid red;
+    border-radius: 6px;
+}
+
+.PopUp {
+    position: fixed;
+    border: 3px solid red;
+    border-radius: 6px;
+    background-color: white;
+    max-width: var(--w1);
+    width: calc(0.455 * var(--w1));
+    /* width: auto; */
+    height: auto;
+    top: 12px;
+    left: calc(0.03 * var(--w1));
+    overflow: auto;
+    font-size: 16pt;
+}
+
+.PopUp.RightSide {
+    left: calc(0.515 * var(--w1));
+}
+
+.PopUp.Wide {
+    width: calc(0.94 * var(--w1));
+}
+
+.PopUp > .Caption {
+    font-family: Inconsolata, monospace;
+    font-weight: bold;
+    font-size: 16pt;
+    text-align: center;
+    color: white;
+    background-color: red;
+    padding: 2px;
+    margin: 0;
+}
+
+.PopUp > .Content {margin: 4px}
+
+div.Calc {
+    max-width: calc(0.3 * var(--w1));
+    margin: 0.5em auto;
+    border: 1px solid var(--blue);
+    color: var(--blue);
+}
+
+div.Calc > *:is(p, h2) {
+    margin: 0;
+    padding: 4px;
+    font-size: 20pt;
+}
+
+div.Calc > p:first-child > img {
+    width: 24pt;
+    height: 24pt;
+}
+
+.Mono, div.Calc {
+    font-family: Inconsolata, monospace;
+}
+
+.Center {text-align: center}
+.Right {text-align: right}
+.Tall {height: calc(var(--h) - 30px)}
+
+body.Highlight .Highlight, .UnHighlight:hover {background-color: yellow}

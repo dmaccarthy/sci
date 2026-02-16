@@ -1,0 +1,82 @@
+<style type="text/css">
+
+:root{
+    --icon: 0px;
+}
+
+#VDiag > svg {margin: 4px}
+#VDiag {top: 76px}
+#Picture {top: 44px}
+
+</style>
+
+<section id="Title">
+    <h1>2D Collisions</h1>
+    <p>Physics 30</p>
+</section>
+
+<section>
+    <p>Hi!</p>
+    <p class="TeX">C=2\pi r</p>
+</section>
+
+<section id="Question" class="PopUp" data-color="#0065fe" data-icon="../../media/question.svg">
+    <h2 class="Caption">Problem</h2>
+    <div class="Content">
+        <p>A <span class="UnHighlight">1250 kg</span> car moving at <span class="UnHighlight">75.0 km/h [south]</span> collides with a <span class="UnHighlight">1000 kg</span> car at <span class="UnHighlight">55.0 km/h [west]</span>. The cars become entangled and remain attached after the collision.</p>
+        <ol type="a">
+            <li>Determine the final velocity of the cars.</li>
+            <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
+        </ol>
+</div>
+</section>
+
+<section id="Alg" class="PopUp RightSide Tall" data-color="black" data-icon="../../media/calc.svg">
+    <h2 class="Caption">Calculations</h2>
+    <div class="Content"></div>
+</section>
+
+<section id="Picture" class="PopUp" data-color="limegreen">
+    <h2 class="Caption">Illustrations</h2>
+    <div class="Content">
+        &nbsp;
+    </div>
+</section>
+
+<section id="VDiag" class="PopUp Center">
+    <h2 class="Caption">Vector Diagram</h2>
+    <div class="Content"><svg></svg></div>
+</section>
+
+<script type="text/javascript">
+
+cues = [
+
+() => {cues.calc = draw_calc("#Alg > div.Content", "10*sin(45) → A", "7.07106781")},
+() => {draw_calc(cues.calc, "10*sin(30) → B", "5")},
+
+() => {
+    hide("main > section", 0).then(() => show("#Title", 3000, 2000));
+},
+
+() => {hide("#Title", 3000).then(() => show("#VDiag"))},
+() => {show("#Question")},
+() => {$("body").addClass("Highlight")},
+() => {console.log(1, next_cue.n)},
+
+];
+
+cues.init = () => {
+    // border_color("#VDiag", "red");
+    let svg = new SVG2("#VDiag svg", {scale: 25, grid: 1, margin: 1, lrbt: [-11, 11, -11, 11]});
+    let grid = [-10, 11, 2], opt = {css: ["mono", 14], size: ["-4", 0]};
+    svg.ticks({...opt, x: grid}, 1);
+    svg.ticks({...opt, y: grid}, 1);
+    svg.$.find("g.Labels g.Zero").remove();
+    svg.group("arrow").tip_to_tail([vec2d(9, 62), [-8, 2]]);
+    svg.text("N·s", [0.3, 10, "l"], 0, opt.css);
+    style_vecs(svg);
+    console.log(svg);
+}
+
+</script>

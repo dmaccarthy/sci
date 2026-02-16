@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Video Recorder</title>
+<script type="text/javascript">
+
+window.MathJax = { // MathJax configuration
+    startup: {typeset: false},
+    loader: {load: ['[tex]/color', '[tex]/cancel']},
+    tex: {packages: {'[+]': ['color', 'cancel']}}
+};
+
+let cues = [];
+
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@4.1/tex-svg.js"></script>
+<link rel="shortcut icon" type="image/svg+xml" href="../../../media/rocket.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="script/rec.css" rel="stylesheet">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../../src/util.js"></script>
+<script type="text/javascript" src="../../src/math.js"></script>
+<script type="text/javascript" src="../../script/phys.js"></script>
+<script type="text/javascript" src="../../src/svg2.js"></script>
+<script type="text/javascript" src="script/rec.js"></script>
+<script type="text/javascript">
+
+$(() => {
+    let svg = new SVG2("#Mouse", {scale: 24, grid: 0, margin: 2, lrbt: [0, 1.8, -3.4, 0]});
+    let t = 17;
+    let g = svg.group().config({theta: t});
+    let pt = vec2d(3, -90 - t);
+    pt = [pt, [-0.2, 0.2 + pt[1]], [-0.2, pt[1] - 0.5]];
+    g.poly([[0, 0], ...pt, ...fn_eval(p => [-p[0], p[1]], pt.toReversed())], 1);
+});
+
+</script>
+</head>
+<body>
+<main>
+    <nav id="Icons"></nav>
+    <article></article>
+</main>
+<svg id="Mouse"></svg>
+</body>
+</html>
