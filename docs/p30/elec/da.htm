@@ -1,33 +1,55 @@
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Remember?<span data-print="PreTest"></span></h2><div class="Collapse">
-<div id="PreTest">
-<ol><li>Physics 20 students conducted an experiment where they manipulated the length of a simple pendulum to see how the period would be affected. The other variables (mass, amplitude, gravity) were controlled. They collected the following data.
-<p class="Caption">Simple Pendulum Motion</p>
-<table class="Two Center TD6 Bottom">
-    <tr><th>Length<br/><span class="TeX">L\ /\ \rm{m}</span></th><th>Period<br/><span class="TeX">T\ /\ \rm s</span></th></tr>
-    <tr><td>0.250</td><td>1.01</td></tr>
-    <tr><td>0.500</td><td>1.43</td></tr>
-    <tr><td>0.750</td><td>1.74</td></tr>
-    <tr><td>1.000</td><td>2.01</td></tr>
-    <tr><td>1.250</td><td>2.24</td></tr>
-    <tr><td>1.500</td><td>2.45</td></tr>
-    <tr><td>1.750</td><td>2.65</td></tr>
-    <tr><td>2.000</td><td>2.85</td></tr>
-    <tr><td>2.250</td><td>3.01</td></tr>
+<section class="Post" data-show="9999" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Formative</h2><div class="Collapse">
+<ol><li>A newly discovered planet has six known moons. Astronomers determined the strength of the planet’s gravity by observing the motion of the moons. They summarized their calculations in the table below, where <span class="TeX">r</span> is the radius of each moon’s orbit and <span class="TeX">g</span> is each moon’s acceleration as caused by the planet’s gravity.
+<table class="Center Two TD6 Top Bottom">
+    <tr><td><span class="TeX">r</span> /<br>10<sup>8</sup> m</td><td><span class="TeX">g</span> /<br>10<sup>–3</sup> m/s<sup>2</sup></td></tr>
+    <tr><td>3.09</td><td>5.73</td></tr>
+    <tr><td>4.25</td><td>3.03</td></tr>
+    <tr><td>7.02</td><td>1.11</td></tr>
+    <tr><td>7.38</td><td>1.00</td></tr>
+    <tr><td>11.82</td><td>0.391</td></tr>
+    <tr><td>14.65</td><td>0.255</td></tr>
 </table>
 <ol type="a">
-    <li>Draw a scatter plot of the data on graph paper.</li>
-    <li>Add a best-fit line to the graph. Ignore the fact that the line is slightly curved, for now.</li>
-    <li>Calculate the slope of your best-fit line.</li>
-    <li>Record or calculate the <i>y</i>-intercept of the best-fit line.</li>
-    <li>Write the equation of the best-fit line in the form <span class="TeX">y=kx+b</span>, but use the correct symbols for the variables, <span class="TeX">L</span> and <span class="TeX">T</span>, instead of <span class="TeX">x</span> and <span class="TeX">y</span>.</li>
+    <li>Using the Physics 20 formula below, transform the data to make it linear. Be sure to include the 10<sup>8</sup> m and 10<sup>–3</sup> m/s<sup>2</sup> as part of the data for <span class="TeX">r</span> and <span class="TeX">g</span>.
+        <p class="TeX">g=\frac{GM}{r^2}</p>
+    </li>
+    <table class="Answer Center Two TD6 Top Bottom">
+        <tr><td><span class="TeX">r^{-2}</span> /<br>10<sup>–19</sup> m<sup>–2</sup></td><td><span class="TeX">g</span> /<br>10<sup>–3</sup> m/s<sup>2</sup></td></tr>
+        <tr><td>105</td><td>5.73</td></tr>
+        <tr><td>55.4</td><td>3.03</td></tr>
+        <tr><td>20.3</td><td>1.11</td></tr>
+        <tr><td>18.4</td><td>1.00</td></tr>
+        <tr><td>7.16</td><td>0.391</td></tr>
+        <tr><td>4.66</td><td>0.255</td></tr>
+    </table>
+    
+    <li>Graph the linearized data on graph paper and add a best-fit line.</li>
+    <div class="Answer">
+        <a target="Desmos" href="https://www.desmos.com/calculator/cbbnl59xwc">Graph</a>
+    </div>
+
+    <li>Calculate the slope and <i>y</i>-intercept of the best-fit line. Write the equation of the best-fit line in the form:<p class="TeX">y=kx+b</p></li>
+    <div class="Answer">
+        The best-fit line passes through <span class="TeX">(0,\ 0)</span> and <span class="TeX">\rm (105\times 10^{-19}\ m^{-2},\ 5.73\times 10^{-3}\ m/s^2)</span>.
+        This gives an intercept of zero and a slope of <span class="TeX">\rm 5.46\times 10^{14}\ m^3/s^2</span>. The model equation is:
+        <p class="TeX">g = ({\rm 5.46\times 10^{14}\ m^3/s^2})\ r^{-2}</p>
+    </div>
+
+    <li>Use your equation and the gravity formula above to determine the mass, <span class="NoWrap"><span class="TeX">M</span>,</span> of the planet.</li>
+    <div class="Answer">
+        Substitute the predicted formula for <span class="TeX">g</span> into the model equation:
+        <p class="TeX">\frac{GM}{r^2} = ({\rm 5.46\times 10^{14}\ m^3/s^2})\ r^{-2}</p>
+        <p>Cancel the <span class="TeX">r^{-2}</span> as it appears on both sides:</p>
+        <p class="TeX">GM = {\rm 5.46\times 10^{14}\ m^3/s^2}</p>
+        <p class="TeX">M = \frac{\rm 5.46\times 10^{14}\ m^3/s^2}{G} = \rm 8.19\times 10^{24}\ kg</p>
+    </div>
 </ol>
-</li></ol></div>
+</li></ol>
 </div></section>
 
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2>
-<div class="Collapse" id="LessonNotes">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Data Analysis Review</h1>
@@ -150,62 +172,33 @@
 </div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
-<div id="Practice">
-<ol>
-    <li>A newly discovered planet has six known moons. Astronomers determined the strength of the planet’s gravity by observing the motion of the moons. They summarized their calculations in the table below, where <span class="TeX">r</span> is the radius of each moon’s orbit and <span class="TeX">g</span> is each moon’s acceleration as caused by the planet’s gravity.
-        <table class="Center Two TD6 Top Bottom">
-            <tr><td><span class="TeX">r</span> /<br>10<sup>8</sup> m</td><td><span class="TeX">g</span> /<br>10<sup>–3</sup> m/s<sup>2</sup></td></tr>
-            <tr><td>3.09</td><td>5.73</td></tr>
-            <tr><td>4.25</td><td>3.03</td></tr>
-            <tr><td>7.02</td><td>1.11</td></tr>
-            <tr><td>7.38</td><td>1.00</td></tr>
-            <tr><td>11.82</td><td>0.391</td></tr>
-            <tr><td>14.65</td><td>0.255</td></tr>
-        </table>
-        <ol type="a">
-            <li>Using the Physics 20 formula below, transform the data to make it linear. Be sure to include the 10<sup>8</sup> m and 10<sup>–3</sup> m/s<sup>2</sup> as part of the data for <span class="TeX">r</span> and <span class="TeX">g</span>.
-                <p class="TeX">g=\frac{GM}{r^2}</p>
-            </li>
-            <table class="Answer Center Two TD6 Top Bottom">
-                <tr><td><span class="TeX">r^{-2}</span> /<br>10<sup>–19</sup> m<sup>–2</sup></td><td><span class="TeX">g</span> /<br>10<sup>–3</sup> m/s<sup>2</sup></td></tr>
-                <tr><td>105</td><td>5.73</td></tr>
-                <tr><td>55.4</td><td>3.03</td></tr>
-                <tr><td>20.3</td><td>1.11</td></tr>
-                <tr><td>18.4</td><td>1.00</td></tr>
-                <tr><td>7.16</td><td>0.391</td></tr>
-                <tr><td>4.66</td><td>0.255</td></tr>
-            </table>
-            
-            <li>Graph the linearized data on graph paper and add a best-fit line.</li>
-            <div class="Answer">
-                <a target="Desmos" href="https://www.desmos.com/calculator/cbbnl59xwc">Graph</a>
-            </div>
-
-            <li>Calculate the slope and <i>y</i>-intercept of the best-fit line. Write the equation of the best-fit line in the form:<p class="TeX">y=kx+b</p></li>
-            <div class="Answer">
-                The best-fit line passes through <span class="TeX">(0,\ 0)</span> and <span class="TeX">\rm (105\times 10^{-19}\ m^{-2},\ 5.73\times 10^{-3}\ m/s^2)</span>.
-                This gives an intercept of zero and a slope of <span class="TeX">\rm 5.46\times 10^{14}\ m^3/s^2</span>. The model equation is:
-                <p class="TeX">g = ({\rm 5.46\times 10^{14}\ m^3/s^2})\ r^{-2}</p>
-            </div>
-
-            <li>Use your equation and the gravity formula above to determine the mass, <span class="NoWrap"><span class="TeX">M</span>,</span> of the planet.</li>
-            <div class="Answer">
-                Substitute the predicted formula for <span class="TeX">g</span> into the model equation:
-                <p class="TeX">\frac{GM}{r^2} = ({\rm 5.46\times 10^{14}\ m^3/s^2})\ r^{-2}</p>
-                <p>Cancel the <span class="TeX">r^{-2}</span> as it appears on both sides:</p>
-                <p class="TeX">GM = {\rm 5.46\times 10^{14}\ m^3/s^2}</p>
-                <p class="TeX">M = \frac{\rm 5.46\times 10^{14}\ m^3/s^2}{G} = \rm 8.19\times 10^{24}\ kg</p>
-            </div>
-        </ol>
-    </li>
-
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol><li>Physics 20 students conducted an experiment where they manipulated the length of a simple pendulum to see how the period would be affected. The other variables (mass, amplitude, gravity) were controlled. They collected the following data.
+<p class="Caption">Simple Pendulum Motion</p>
+<table class="Two Center TD6 Bottom">
+    <tr><th>Length<br/><span class="TeX">L\ /\ \rm{m}</span></th><th>Period<br/><span class="TeX">T\ /\ \rm s</span></th></tr>
+    <tr><td>0.250</td><td>1.01</td></tr>
+    <tr><td>0.500</td><td>1.43</td></tr>
+    <tr><td>0.750</td><td>1.74</td></tr>
+    <tr><td>1.000</td><td>2.01</td></tr>
+    <tr><td>1.250</td><td>2.24</td></tr>
+    <tr><td>1.500</td><td>2.45</td></tr>
+    <tr><td>1.750</td><td>2.65</td></tr>
+    <tr><td>2.000</td><td>2.85</td></tr>
+    <tr><td>2.250</td><td>3.01</td></tr>
+</table>
+<ol type="a">
+    <li>Draw a scatter plot of the data on graph paper.</li>
+    <li>Add a best-fit line to the graph. Ignore the fact that the line is slightly curved, for now.</li>
+    <li>Calculate the slope of your best-fit line.</li>
+    <li>Record or calculate the <i>y</i>-intercept of the best-fit line.</li>
+    <li>Write the equation of the best-fit line in the form <span class="TeX">y=kx+b</span>, but use the correct symbols for the variables, <span class="TeX">L</span> and <span class="TeX">T</span>, instead of <span class="TeX">x</span> and <span class="TeX">y</span>.</li>
 </ol>
-</div></div></section>
+</li></ol>
+</div></section>
 
 <section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review<span data-print="Review"></h2><div class="Collapse">
-<div id="Review">
+<h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li><ol type="a">
         <li>Explain how to draw a good <em class="Defn">best-fit line</em>.</li>
@@ -253,7 +246,7 @@
     </div>
 
 </ol>
-</div></div></section>
+</div></section>
 
 <script type="text/javascript">
 

@@ -158,67 +158,68 @@
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<h2 class="Collapse">Practice</h2><div class="Collapse Expand">
 <p class="Center"><i>Include an accurate vector diagram drawn on graph paper for each collision!</i></p>
 <ol>
-
     <li>A 1250 kg car moving at 75.0 km/h [south] collides with a 1000 kg car at 55.0 km/h [west]. The cars become entangled and remain attached after the collision.
     <ol type="a">
-        <li>Determine the final velocity of the cars.</li>
-        <div class="Answer">
-            <p>First calculate the initial momentum of each car, remembering to convert km/h to m/s:</p>
-            <p class="TeX">\begin{align}
-                \vec{\bf p}_{iA} &= m_A\vec{\bf p}_{iA} = \rm 1250\ kg\cdot 20.8\ m/s\ [-90.0^\circ]
-                \\[8pt] &= \rm {26042\ N\cdot s\ [-90.0^\circ]}
-                \\[8pt] &= \rm {(0.00, -26042) \ N\cdot s}
-            \end{align}</p>
-            <p class="TeX">\begin{align}
-                \vec{\bf p}_{iB} &= m_B\vec{\bf p}_{iB} = \rm 1000\ kg\cdot 15.3\ m/s\ [180.0^\circ]
-                \\[8pt] &= \rm {15278\ N\cdot s\ [180.0^\circ]}
-                \\[8pt] &= \rm {(-15278, 0.00) \ N\cdot s}
-            \end{align}</p>
-            <p><a target="Q2" href="./?{%22v%22:%22@(26.042,-90),@(15.278,180)%22,%22unit%22:%22kN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
-            <p>Now calculate the total momentum and convert to Cartesian form:</p>
-            <p class="TeX">\begin{align}
-                \Sigma\vec{\bf p} &= \vec{\bf p}_{iA} + \vec{\bf p}_{iB}
-                \\[8pt] &= \rm {(0.00, -26042) \ N\cdot s + (-15278, 0.00) \ N\cdot s}
-                \\[8pt] &= \rm {(-15278, -26042) \ N\cdot s}
-            \end{align}</p>
-            <p class="TeX">\begin{align}
-                \left|\Sigma\vec{\bf p}\right| &= \sqrt{(\Sigma\vec{\bf p}_x)^2 + (\Sigma\vec{\bf p}_y)^2}
-                \\[8pt] &= \rm \sqrt{15278^2 + 26042^2}\ N\cdot s
-                \\[8pt] & = \rm {30192\ N\cdot s}
-            \end{align}</p>
-            <p class="TeX">\begin{align}
-                \theta &= \tan^{-1}\frac{\Sigma\vec{\bf p}_y}{\Sigma\vec{\bf p}_x}
-                \\[10pt] &= \rm {\tan^{-1}\frac{-26042 \ N\cdot s}{-15278 \ N\cdot s} + 180^\circ}
-                \\[10pt] &= \rm {+239.6^\circ}
-            \end{align}</p>
-            <p>We can treat the cars as a single mass after they become entangled:</p>
-            <p class="TeX">m = m_A + m_B = \rm (1250 + 1000)\ kg = 2250\ kg</p>
-            <p class="TeX">\vec{\bf v}_f = \frac{\Sigma\vec{\bf p}}{m}
-                = \rm {\frac{30192\ N\cdot s\ [+239.6^\circ]}{2250\ kg}}
-                = \rm {13.4\ m/s\ [+239.6^\circ]}
-            </p>
-        </div>
+    <li>Determine the final velocity of the cars.</li>
+    <div class="Answer">
+        <p>First calculate the initial momentum of each car, remembering to convert km/h to m/s. Because it is a 2D collision, express all momentum vectors in Cartesian form (i.e. as <span class="TeX">x</span> and <span class="TeX">y</span> components):</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf p}_{iA} &= m_A\vec{\bf p}_{iA} = \rm 1250\ kg\cdot 20.8\ m/s\ [-90.0^\circ]
+            \\[8pt] &= \rm {26042\ N\cdot s\ [-90.0^\circ]}
+            \\[8pt] &= \rm {(0.00, -26042) \ N\cdot s}
+        \end{align}</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf p}_{iB} &= m_B\vec{\bf p}_{iB} = \rm 1000\ kg\cdot 15.3\ m/s\ [180.0^\circ]
+            \\[8pt] &= \rm {15278\ N\cdot s\ [180.0^\circ]}
+            \\[8pt] &= \rm {(-15278, 0.00) \ N\cdot s}
+        \end{align}</p>
+        <p><a target="Q2" href="./?{%22v%22:%22@(26.042,-90),@(15.278,180)%22,%22unit%22:%22kN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+        <p>Now calculate the total momentum by adding all of the <span class="TeX">x</span> components and then all of the <span class="TeX">y</span> components independently:</p>
+        <p class="TeX">\begin{align}
+            \Sigma\vec{\bf p} &= \vec{\bf p}_{iA} + \vec{\bf p}_{iB}
+            \\[8pt] &= \rm {(0.00, -26042) \ N\cdot s + (-15278, 0.00) \ N\cdot s}
+            \\[8pt] &= \rm {(-15278, -26042) \ N\cdot s}
+        \end{align}</p>
+        <p>Now convert the total momentum from Cartesian to polar (magnitude and direction) form:</p>
+        <p class="TeX">\begin{align}
+            \left|\Sigma\vec{\bf p}\right| &= \sqrt{(\Sigma\vec{\bf p}_x)^2 + (\Sigma\vec{\bf p}_y)^2}
+            \\[8pt] &= \rm \sqrt{15278^2 + 26042^2}\ N\cdot s
+            \\[8pt] & = \rm {30192\ N\cdot s}
+        \end{align}</p>
+        <p>Note that because the components are both negative, the total momentum vector points into the <em>third</em> quadrant. Using <span class="TeX">\tan^{-1}</span> on a calculator will give an answer in the first quadrant, so we must add 180°:</p>
+        <p class="TeX">\begin{align}
+            \theta &= \tan^{-1}\frac{\Sigma\vec{\bf p}_y}{\Sigma\vec{\bf p}_x} + 180^\circ
+            \\[10pt] &= \rm {\tan^{-1}\frac{-26042 \ N\cdot s}{-15278 \ N\cdot s} + 180^\circ}
+            \\[10pt] &= \rm {+239.6^\circ}
+        \end{align}</p>
+        <p>To calculatethe final velocity, we can treat the cars as a single mass after they become entangled:</p>
+        <p class="TeX">m = m_A + m_B = \rm (1250 + 1000)\ kg = 2250\ kg</p>
+        <p class="TeX">\vec{\bf v}_f = \frac{\Sigma\vec{\bf p}}{m}
+            = \rm {\frac{30192\ N\cdot s\ [+239.6^\circ]}{2250\ kg}}
+            = \rm {13.4\ m/s\ [+239.6^\circ]}
+        </p>
+    </div>
 
-        <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
-        <div class="Answer">
-            <p>Calculate the initial mechanical energy:</p>
-            <p class="TeX">\begin{align}
-                E_i &= \frac{1}{2}m_{iA}{v_{iA}}^2 + \frac{1}{2}m_{iB}{v_{iB}}^2
-                \\[10pt] &= \rm {\frac{1}{2} (1250\ kg) (20.8\ m/s)^2 + \frac{1}{2} (1000\ kg) (15.3\ m/s)^2}
-                \\[10pt] &= \rm {3.88\times 10^5\ J}
-            \end{align}</p>
-            <p>Calculate the final mechanical energy:</p>
-            <p class="TeX">\begin{align}
-                E_i &= \frac{1}{2}m{v_f}^2
-                \\[10pt] &= \rm {\frac{1}{2} (2250\ kg) (13.4\ m/s)^2}
-                \\[10pt] &= \rm {2.03\times 10^5\ J}
-            \end{align}</p>
-            <p>The collision is inelastic because there is a loss of mechanical energy.</p>
-        </div>
-        </ol></li>
+    <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
+    <div class="Answer">
+        <p>Calculate the initial mechanical energy:</p>
+        <p class="TeX">\begin{align}
+            E_i &= \frac{1}{2}m_A{v_{iA}}^2 + \frac{1}{2}m_B{v_{iB}}^2
+            \\[10pt] &= \rm {\frac{1}{2} (1250\ kg) (20.8\ m/s)^2 + \frac{1}{2} (1000\ kg) (15.3\ m/s)^2}
+            \\[10pt] &= \rm {3.88\times 10^5\ J}
+        \end{align}</p>
+        <p>Calculate the final mechanical energy:</p>
+        <p class="TeX">\begin{align}
+            E_i &= \frac{1}{2}m{v_f}^2
+            \\[10pt] &= \rm {\frac{1}{2} (2250\ kg) (13.4\ m/s)^2}
+            \\[10pt] &= \rm {2.03\times 10^5\ J}
+        \end{align}</p>
+        <p>The collision is inelastic because there is a loss of mechanical energy.</p>
+    </div>
+    </ol></li>
 
     <li>At a construction site, workers have decided to use explosives to remove a 2.00 × 10<sup>3</sup> kg boulder. After the explosion, the boulder has been blown into three pieces: fragment “A” has a mass of 860 kg and moves west at 26.0 m/s and fragment “B” has a mass of 534 kg and moves south at 32.0 m/s. Determine the final velocity of the third fragment, “C”. Include a labelled vector diagram. [Hint: The boulder was not moving before the explosion! What does this tell you about the total momentum of the system?]</li>
     <div class="Answer">
@@ -245,14 +246,17 @@
         <p><a target="Q3" href="./?{%22v%22:%22@(22.36,180),@(17.088,-90),@(28.14195,37.3879)%22,%22unit%22:%22kN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
     </div>
 
-    <p class="Center"><i>The vector diagrams in the remaining problems will not contain a right angle.<br/>Proceed with caution!</i></p>
-
     <li>Two spacecraft are planning to “dock”. The first spacecraft (<span class="TeX">m_A</span> = 5.00 × 10<sup>3</sup> kg) has an initial velocity of 5.60 km/s in the +<span class="TeX">x</span>-direction. The second spacecraft (<span class="TeX">m_B</span> = 6.80 × 10<sup>3</sup> kg) has an initial velocity of 4.85 km/s. The second spacecraft is approaching from the bottom right (i.e. the velocity is directed up and left) at a bearing of 114°.
     <ol type="a">
         <li>Draw and label a vector diagram showing the conservation of momentum.</li>
         <li>Calculate the total momentum of the system.</li>
         <div class="Answer">
-            <p><a target="Q4" href="./?{%22v%22:%22@(28,0),@(32.98,114)%22,%22unit%22:%22MN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+            <p>Calculate the initial momenta of each spacecraft:</p>
+            <p class="TeX">\vec{\bf p}_{iA} = m_A\vec{\bf v}_{iA} = \rm 5.00\times 10^3\ kg\cdot 5.60\times 10^3\ m/s\ [0.00^\circ]</p>
+            <p class="TeX">\vec{\bf p}_{iA} = \rm 2.80\times 10^7\ N\cdot s\ [0.00^\circ]</p>
+            <p class="TeX">\vec{\bf p}_{iB} = m_B\vec{\bf v}_{iB} = \rm 6.80\times 10^3\ kg\cdot 4.85\times 10^3\ m/s\ [114^\circ]</p>
+            <p class="TeX">\vec{\bf p}_{iB} = \rm 3.30\times 10^7\ N\cdot s\ [114^\circ]</p>
+            <p>Convert these vectors to Cartesian form and then add them: <a target="Q4" href="./?{%22v%22:%22@(28,0),@(32.98,114)%22,%22symbol%22:%22p%22,%22unit%22:%22MN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram &amp; Calculations</a></p>
         </div>
 
 <!--
@@ -293,7 +297,7 @@ sin θ  = pB sin 66.0° / Σp
 
         <li>Determine the velocity of the attached spacecraft after the docking maneuver is complete.</li>
         <div class="Answer">
-            <p>Treat the spacecraft as a single mass now that they are attached:</p>
+            <p>Because momentum is conserved, the final momentum of the docked spacecraft must equal the total momentum before docking.Treat the spacecraft as a single mass now that they are attached.</p>
             <p class="TeX">\begin{align}
                 \vec{\bf v}_f &= \frac{\Sigma\vec{\bf p}}{m_A+m_B}
                 \\[10pt] &= \rm{\frac{3.35\times 10^7\ N\cdot s\ [64.2^\circ]}{(5.00+6.80)\times 10^3\ kg}}
@@ -303,38 +307,6 @@ sin θ  = pB sin 66.0° / Σp
 
     </ol></li>
 
-    <li>Physicists use a particle accelerator to produce a 2D collision between a proton initially at rest and a particle with three times the mass of a proton moving at 6.00 × 10<sup>7</sup> m/s [0.00°]. As a result of the collision, the heavier particle’s velocity changes to 1.32 × 10<sup>7</sup> m/s [+32.0°]. Calculate the velocity of the proton after the collision. [Hint: Before attempting to calculate the proton’s velocity, determine its momentum.]</li>
-    <div class="Answer">
-        <p>The initial momentum is just the heavy particle since the proton is at rest:</p>
-        <p class="TeX">\begin{align}
-            \Sigma\vec{\bf p} &= m_H\vec{\bf v}_{iH}
-            \\[6pt] &= \rm {5.01\times 10^{-27}\ kg\cdot 6.00\times 10^7\ m/s\ [0.00^\circ]}
-            \\[6pt] &= \rm {3.006\times 10^{-19}\ N\cdot s\ [0.00^\circ]}
-            \\[6pt] &= \rm {(+3.0060, 0.00) \times 10^{-19}\ N\cdot s}
-        \end{align}</p>
-        <p>After the collision, the heavier particle momentum is:</p>
-        <p class="TeX">\begin{align}
-            \vec{\bf p}_{fH} &= m_H\vec{\bf v}_{fH}
-            \\[6pt] &= \rm {5.01\times 10^{-27}\ kg\cdot 1.32\times 10^7\ m/s\ [+32.0^\circ]}
-            \\[6pt] &= \rm {6.6132\times 10^{-20}\ N\cdot s\ [+32.0^\circ]}
-            \\[6pt] &= \rm {(+5.6083, +3.5045) \times 10^{-20}\ N\cdot s}
-        \end{align}</p>
-        <p>To find the proton’s momentum, subtract the heavier particle’s from the total:</p>
-        <p class="TeX">\begin{align}
-            \vec{\bf p}_{fP} &= \Sigma\vec{\bf p} - \vec{\bf p}_{fH}
-            \\[6pt] &= \rm {(+30.060 - 5.6083, 0.00 - 3.5045)\times 10^{-20}\ }N\cdot s
-            \\[6pt] &= \rm {(+24.4517, -3.5045) \times 10^{-20}\ N\cdot s}
-            \\[6pt] &= \rm {2.47\times 10^{-19}\ N\cdot s\ [-8.20^\circ]}
-        \end{align}</p>
-        <p><a target="Q5" href="./?{%22v%22:%22@(2.47015e-19,-8.1562),@(6.6132e-20,32)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
-        <p>To get the velocity, divide the proton’s momentum by its mass:</p>
-        <p class="TeX">\begin{align}
-            \vec{\bf v}_{fP} &= \frac{\vec{\bf p}_{fP}}{m_P}
-            \\[10pt] &= \rm{\frac{2.47\times 10^{-19}\ N\cdot s\ [-8.20^\circ]}{1.67\times 10^{-27}\ kg}}
-            \\[10pt] &= \rm{1.48\times 10^8\ m/s\ [-8.20^\circ]}
-        \end{align}</p>
-    </div>
-
     <li>Two billiard balls have masses <span class="TeX">m_A</span> = 172 g and <span class="TeX">m_B</span> = 143 g and initial velocities of <span class="TeX">\vec{\bf v}_{iA}</span> = 3.40 m/s [east] and <span class="TeX">\vec{\bf v}_{iB}</span> = 2.40 m/s [southwest]. After the collision, billiard ball “A” continues to move with <span class="TeX">\vec{\bf v}_{fA}</span> = 2.90 m/s [30.0° south of east]. Determine the final velocity of the other ball. Include an appropriate vector diagram(s).</li>
     <div class="Answer">
         <p><a target="Q6i" href="./?{%22v%22:%22@(0.5848,0),@(0.3432,225)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Before Collision</a> &
@@ -342,7 +314,6 @@ sin θ  = pB sin 66.0° / Σp
 
 <!--
 
-7. 	
 Equations:
 p = mv	[Momentum]
 Σpi = Σpf	[Conservation of Momentum]
@@ -388,180 +359,43 @@ vBf = pBf / mB
 
     </div>
 
-    <li>In a game of billiards, a 350 g ball moving with a velocity of 2.25 m/s [0.00°] collides with a 300 g ball at rest. After the collision, the heavier ball moves with a direction of +24.0° while the lighter ball’s direction is –42.0°.
-    <ol type="a">
-        <li>Find the final speeds (i.e. the magnitudes of the velocity vectors) of the two billiard balls. [Hint: Before attempting to calculate the speeds, determine the momenta of the billiard balls.]</li>
-        <div class="Answer">
-            <p><a target="Q7" href="./?{%22v%22:%22@(0.57681,24),@(0.35062,-42)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
-        </div>
-    
-        <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
-        <div class="Answer">
-
-        </div>
-    
-    </ol></li>
-    
-    <li>Two small asteroids collide in space. Before the collision, asteroid “A” (<span class="TeX">m_A</span> = 2.50 × 10<sup>11</sup> kg) has a velocity of 687 m/s and asteroid “B” (<span class="TeX">m_B</span> = 8.50 × 10<sup>10</sup> kg) is at rest. After the collision, asteroid A moves at an angle of –14.0° from its original direction and asteroid B moves at an angle of +23.2°.
-    <ol type="a">
-        <li>Calculate the initial momentum of the moving asteroid and draw a labelled vector diagram to illustrate the conservation of momentum.</li>
-        <div class="Answer">
-            <p><a target="Q8" href="./?{%22v%22:%22@(1.1191e14,-14),@(6.8723e13,23.2)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
-        </div>
-
-        <li>Determine the final speeds of the two asteroids.</li>
-        <div class="Answer">
-
-        </div>
-
-        <li>Calculate the percent change in kinetic energy as a result of the collision. Classify the collision as elastic, inelastic or superelastic.</li>
-        <div class="Answer">
-
-        </div>
-
-    </ol></li>
-
-<!--
-
-8. 	
-a) 
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-mA = 0.350 kg
-mAB = 0.300 kg
-vAi = 2.25 m/s [0.00°]
-vBi = 0.00 m/s
-vAf = ? [+24.0°]
-vBf = ? [–42.0°]
-Solution:
-Calculate the initial momentum…
-Σp = pAi + pBi
-= 0.350 kg · 2.25 m/s [0.00º] + 0.00 N·s
-= 0.788 N·s [0.00º]
-Sketch the vector diagram. The total momentum is blue and the momenta of A and B after the collision are red. The top angle is 180º – (24.0º + 42.0º) = 114º…
-
-The missing sides are most easily found using the sine law...
-pAf = 0.788 N·s / sin(114º) · sin(42.0º) = 0.577 N·s [24.0º]
-pBf = 0.788 N·s / sin(114º) · sin(24.0º) = 0.351 N·s [–42.0º]
-We could also solve for the unknowns by writing the momentum conservation equation separately for the x- and y-components…
-Σpx = pAf cos 24.0º + pBf cos (–42.0º) = 0.788 N·s
-Σpy = pAf sin 24.0º + pBf sin (–42.0º) = 0.00 N·s
-This produces a system of 2 equations in 2 unknowns, which is more difficult to solve!
-We can now draw a more accurate vector diagram.
-The final velocities are…
-vAf = pAf / mA = 0.577 N·s [24.0º] / 0.350 kg = 1.65 m/s [24.0º]
-vBf = pBf / mB = 0.351 N·s [42.0º] / 0.300 kg = 1.17 m/s [–42.0º]
-
-b) 
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-Variables:
-mA = 0.350 kg
-mAB = 0.300 kg
-vAi = 2.25 m/s
-vBi = 0.00 m/s
-vAf = 1.65 m/s
-vBf = 1.17 m/s
-Solution:
-Evaluate the initial mechanical energy…
-Ei = ½ mAvAi2 + ½ mBvABi2
-= ½ (0.350 kg) (2.25 m/s)2 + ½ (0.300 kg) (0.00 m/s)2
-= 0.886 J
-Evaluate the final mechanical energy…
-Ef = ½ mAvAf2 + ½ mBvABf2
-= ½ (0.350 kg) (1.65 m/s)2 + ½ (0.300 kg) (1.17 m/s)2
-= 0.682 J
-Calculate the change in mechanical energy…
-ΔE = Ef – Ei
-= 0.682 J – 0.886 J
-= –0.204 J
-This is an inelastic collision.
-
---><!--
-
-9. 	
-a) 
-Equations:
-p = mv	[Momentum]
-Σpi = Σpf	[Conservation of Momentum]
-Variables:
-mA = 2.50 × 1011 kg
-mAB = 8.50 × 1010 kg
-vAi = 687 m/s [0.00°]
-vBi = 0.00 m/s
-vAf = ? [–14.0°]
-vBf = ? [+23.2°]
-Solution:
-Σp = pAi + pBi
- = mAvAi + mBvBi
-= 2.50 × 1011 kg · 687 m/s [0.00º] + 0.00 N·s
-= 1.72 × 1014 N·s [0.00º]
-Sketch the vector diagram. The total momentum is blue and the momenta of A and B after the collision are red. The bottom angle is 180º – (14.0º + 23.2º) = 142.8º…
-
-b) 
-The missing sides are most easily found using the sine law...
-pAf = 1.72 × 1014 N·s / sin(142.8º) · sin(23.2º)
-=  1.12 × 1014 N·s [–14.0º]
-pBf = 1.72 × 1014 N·s / sin(142.8º) · sin(14.0º)
-=  6.88 × 1013 N·s [23.2º]
-We can now draw a more accurate vector diagram.
-The final velocities are…
-vAf = pAf / mA
-= 1.12 × 1014 N·s [–14.0º] / 2.50 × 1011 kg
-= 446 m/s [–14.0º]
-vBf = pBf / mB
-= 6.88 × 1013 N·s [23.2º] / 8.50 × 1010 kg
-= 812 m/s [23.2º]
-
-c) 
-Equations:
-Ek = ½ mv2	[Kinetic Energy]
-Variables:
-mA = 2.50 × 1011 kg
-mAB = 8.50 × 1010 kg
-vAi = 687 m/s
-vBi = 0.00 m/s
-vAf = 446 m/s
-vBf = 812 m/s
-Solution:
-Evaluate the initial mechanical energy…
-Ei = ½ mAvAi2 + ½ mBvABi2
-= ½ (2.50 × 1011 kg) (687 m/s)2 + ½ (8.50 × 1010 kg) (0.00 m/s)2
-= 5.90 × 1016 J
-Evaluate the final mechanical energy…
-Ef = ½ mAvAf2 + ½ mBvABf2
-= ½ (2.50 × 1011 kg) (446 m/s)2 + ½ (8.50 × 1010 kg) (812 m/s)2
-= 5.28 × 1016 J
-Calculate the change in mechanical energy…
-ΔE = Ef – Ei
-= 5.28 × 1016 J – 5.90 × 1016 J
-= –6.17 × 1015 J
-Express the change as a percentage…
-ΔE / Ei × 100%
-= –6.17 × 1015 J / 5.90 × 1016 J × 100%
-= –10.5%
-This is an inelastic collision.
-
--->
-
-</ol>
-</div></section>
-
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
-<ol>
-    <li>Explain how to show the addition of two or more momentum vectors using a vector diagram.</li>
-    <li>Explain how to add (or subtract) momentum vectors using components.</li>
-
     <li>A 1490 kg car (“A”) moving south at 80.0 km/h crashes into a 1260 kg vehicle (“B”) at rest. Immediately after the collision, vehicle B has a velocity of 25.0 km/h southeast.
-        <ol type="a">
-            <li>Determine the final velocity of car “A”. Include a labelled vector diagram.</li>
-            <div class="Answer">
-                <p><a target="Rev" href="./?{%22v%22:%22@(8.75,-45),@(27.6257,-102.94)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
-            </div>
-
+    <ol type="a">
+        <li>Determine the final velocity of car “A”. Include a labelled vector diagram.</li>
+        <div class="Answer">
+            <p>First find the initial momentum of “A”, which is the total momentum of the system because “B” is at rest:</p>
+            <p class="TeX">\Sigma\vec{\bf p} = m_A\vec{\bf v}_{iA} = \rm 1490\ kg\cdot 22.2\ m/s\ [270°] = (0, -33.1)\ kN\cdot s</p>
+            <p>Now find the momentum of “B” after the collision:</p>
+            <p class="TeX">\vec{\bf p}_{fB} = m_B\vec{\bf v}_{fB} = \rm 1260\ kg\cdot 6.94\ m/s\ [-45.0°]</p>
+            <p class="TeX">\vec{\bf p}_{fB} = \rm 8.75\ kN\cdot s\ [-45.0°] = (6.19, -6.19)\ kN\cdot s</p>
+            <p>Because momentum is conserved, the final momentum of “A” is the total momentum minus the final momentum of “B”:</p>
+            <p class="TeX">\vec{\bf p}_{fA} = \Sigma\vec{\bf p} - \vec{\bf p}_{fB} = \rm (0, -33.1)\ kN\cdot s - (6.19, -6.19)\ kN\cdot s</p>
+            <p class="TeX">\vec{\bf p}_{fA} = \rm (-6.19, -26.9)\ kN\cdot s</p>
+            <p>We can express this momentum vector in polar form by using the Pythagoras and <span class="TeX">\tan^{-1}</span> equations:</p>
+            <p class="TeX">\vec{\bf p}_{fA} = \rm 27.6\ kN\cdot s\ [257^\circ]</p>
+            <p><a target="Rev" href="./?{%22v%22:%22@(8.75,-45),@(27.6257,-102.94)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+            <p>Now that we know the momentum of “A” after the collison, we can calculate its velocity:</p>
+            <p class="TeX">\vec{\bf v}_{fA} = \frac{\vec{\bf p}_{fA}}{m_A} = \rm \frac{2.76\times 10^4\ N\cdot s\ [257^\circ]}{1490\ kg} = 18.5\ m/s\ [257^\circ]</p>
+        </div>
+        <li>Calculate the initial, final, and change in mechanical energy. Classify the collision.</li>
+        <div class="Answer">
+            <p>Calculate the initial mechanical energy:</p>
+            <p class="TeX">\begin{align}
+                E_i &= \frac{1}{2}m_A{v_{iA}}^2 + \frac{1}{2}m_B{v_{iB}}^2
+                \\[10pt] &= \rm {\frac{1}{2} (1490\ kg) (22.2\ m/s)^2 + \frac{1}{2} (1260\ kg) (0.00\ m/s)^2}
+                \\[10pt] &= \rm {3.68\times 10^5\ J}
+            \end{align}</p>
+            <p>Calculate the final mechanical energy:</p>
+            <p class="TeX">\begin{align}
+                E_f &= \frac{1}{2}m_A{v_{fA}}^2 + \frac{1}{2}m_B{v_{fB}}^2
+                \\[10pt] &= \rm {\frac{1}{2} (1490\ kg) (18.5\ m/s)^2 + \frac{1}{2} (1260\ kg) (6.94\ m/s)^2}
+                \\[10pt] &= \rm {2.87\times 10^5\ J}
+            \end{align}</p>
+            <p>The change in mechanical energy is:</p>
+            <p class="TeX">\Delta E = \rm (2.85 - 3.68) \times 10^5\ J = -8.1\times 10^4\ J</p>
+            <p>The collision is inelastic because there is a loss of mechanical energy.</p>
+        </div>
+    </ol></li>
             
 <!--
 
@@ -593,30 +427,125 @@ vAi = 22.2 m/s
 vBi = 0.00 m/s
 vAf = 18.5 m/s
 vBf = 6.94 m/s
-Solution:
-Evaluate the initial mechanical energy…
-Ei = ½ mAvAi2 + ½ mBvABi2
-= ½ (1490 kg) (22.2 m/s)2 + ½ (1260 kg) (0.00 m/s)2
-= 3.68 × 105 J
-Evaluate the final mechanical energy…
-Ef = ½ mAvAf2 + ½ mBvABf2
-= ½ (1490 kg) (18.5 m/s) + ½ (1260 kg) (6.94 m/s)2
-= 2.85 × 105 J
-Calculate the change in mechanical energy…
-ΔE = Ef – Ei
-= 2.85 × 105 J – 3.68 × 105 J
-= –8.1 × 104 J
-This is an inelastic collision.
 
 -->
-    
-            <li>Calculate the initial, final, and change in mechanical energy. Classify the collision.</li>
-            <div class="Answer">
-    
-            </div>
-    
-        </ol></li>
 
+    <li>Physicists use a particle accelerator to produce a 2D collision between a proton initially at rest and a particle with three times the mass of a proton moving at 6.00 × 10<sup>7</sup> m/s [0.00°]. As a result of the collision, the heavier particle’s velocity changes to 1.32 × 10<sup>7</sup> m/s [+32.0°]. Calculate the velocity of the proton after the collision. [Hint: Before attempting to calculate the proton’s velocity, determine its momentum.]</li>
+    <div class="Answer">
+        <p>The initial momentum is just the heavy particle since the proton is at rest:</p>
+        <p class="TeX">\begin{align}
+            \Sigma\vec{\bf p} &= m_H\vec{\bf v}_{iH}
+            \\[6pt] &= \rm {5.01\times 10^{-27}\ kg\cdot 6.00\times 10^7\ m/s\ [0.00^\circ]}
+            \\[6pt] &= \rm {3.006\times 10^{-19}\ N\cdot s\ [0.00^\circ]}
+            \\[6pt] &= \rm {(+3.0060, 0.00) \times 10^{-19}\ N\cdot s}
+        \end{align}</p>
+        <p>After the collision, the heavier particle momentum is:</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf p}_{fH} &= m_H\vec{\bf v}_{fH}
+            \\[6pt] &= \rm {5.01\times 10^{-27}\ kg\cdot 1.32\times 10^7\ m/s\ [+32.0^\circ]}
+            \\[6pt] &= \rm {6.6132\times 10^{-20}\ N\cdot s\ [+32.0^\circ]}
+            \\[6pt] &= \rm {(+5.6083, +3.5045) \times 10^{-20}\ N\cdot s}
+        \end{align}</p>
+        <p>To find the proton’s momentum, subtract the heavier particle’s from the total:</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf p}_{fP} &= \Sigma\vec{\bf p} - \vec{\bf p}_{fH}
+            \\[6pt] &= \rm {(+30.060 - 5.6083, 0.00 - 3.5045)\times 10^{-20}\ }N\cdot s
+            \\[6pt] &= \rm {(+24.4517, -3.5045) \times 10^{-20}\ N\cdot s}
+            \\[6pt] &= \rm {2.47\times 10^{-19}\ N\cdot s\ [-8.20^\circ]}
+        \end{align}</p>
+        <p><a target="Q5" href="./?{%22v%22:%22@(2.47015e-19,-8.1562),@(6.6132e-20,32)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+        <p>To get the velocity, divide the proton’s momentum by its mass:</p>
+        <p class="TeX">\begin{align}
+            \vec{\bf v}_{fP} &= \frac{\vec{\bf p}_{fP}}{m_P}
+            \\[10pt] &= \rm{\frac{2.47\times 10^{-19}\ N\cdot s\ [-8.20^\circ]}{1.67\times 10^{-27}\ kg}}
+            \\[10pt] &= \rm{1.48\times 10^8\ m/s\ [-8.20^\circ]}
+        \end{align}</p>
+    </div>
+
+    <li>In a game of billiards, a 350 g ball moving with a velocity of 2.25 m/s [0.00°] collides with a 300 g ball at rest. After the collision, the heavier ball moves with a direction of +24.0° while the lighter ball’s direction is –42.0°.
+    <ol type="a">
+        <li>Find the final speeds (i.e. the magnitudes of the velocity vectors) of the two billiard balls. [Hint: Before attempting to calculate the speeds, determine the momenta of the billiard balls.]</li>
+        <div class="Answer">
+            <p><a target="Q7" href="./?{%22v%22:%22@(0.57681,24),@(0.35062,-42)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+            <p>Divide the final momenta by each mass to find the velocities. We do not need to calculate the directions because these are given in the question:</p>
+            <p class="TeX">v_{fA} = \frac{p_{fA}}{m_A} = \rm \frac{0.577 \ N\cdot s}{0.350\ kg} = 1.65\ m/s</p>
+            <p class="TeX">v_{fB} = \frac{p_{fB}}{m_B} = \rm \frac{0.351 \ N\cdot s}{0.300\ kg} = 1.17\ m/s</p>
+        </div>
+    
+        <li>Calculate the change (if any) in mechanical energy and classify the collision as elastic, inelastic, or superelastic.</li>
+        <div class="Answer">
+            <p>Calculate the initial mechanical energy:</p>
+            <p class="TeX">\begin{align}
+                E_i &= \frac{1}{2}m_A{v_{iA}}^2 + \frac{1}{2}m_B{v_{iB}}^2
+                \\[10pt] &= \rm {\frac{1}{2} (0.350\ kg) (2.25\ m/s)^2 + \frac{1}{2} (0.300\ kg) (0.00\ m/s)^2}
+                \\[10pt] &= \rm {0.886\ J}
+            \end{align}</p>
+            <p>Calculate the final mechanical energy:</p>
+            <p class="TeX">\begin{align}
+                E_f &= \frac{1}{2}m_A{v_{fA}}^2 + \frac{1}{2}m_B{v_{fB}}^2
+                \\[10pt] &= \rm {\frac{1}{2} (0.350\ kg) (1.65\ m/s)^2 + \frac{1}{2} (0.300\ kg) (1.17\ m/s)^2}
+                \\[10pt] &= \rm {0.680\ J}
+            \end{align}</p>
+            <p>The change in mechanical energy is:</p>
+            <p class="TeX">\Delta E = \rm (0.680 - 0.866) \ J = -0.206\ J</p>
+            <p>The collision is inelastic because there is a loss of mechanical energy.</p>
+
+        </div>
+    
+    </ol></li>
+    
+    <li>Two small asteroids collide in space. Before the collision, asteroid “A” (<span class="TeX">m_A</span> = 2.50 × 10<sup>11</sup> kg) has a velocity of 687 m/s and asteroid “B” (<span class="TeX">m_B</span> = 8.50 × 10<sup>10</sup> kg) is at rest. After the collision, asteroid A moves at an angle of –14.0° from its original direction and asteroid B moves at an angle of +23.2°.
+    <ol type="a">
+        <li>Calculate the initial momentum of the moving asteroid and draw a labelled vector diagram to illustrate the conservation of momentum.</li>
+        <div class="Answer">
+            <p class="TeX">\vec{\bf p}_{iA} = m_A \vec{\bf v}_{iA} = \rm 2.50\times 10^{11}\ kg\cdot 687\ m/s\ [0.00^\circ] = 1.72\times 10^{14}\ N\cdot s\ [0.00^\circ]</p>
+            <p><a target="Q8" href="./?{%22v%22:%22@(1.1191e14,-14),@(6.8723e13,23.2)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+        </div>
+
+        <li>Determine the final speeds of the two asteroids.</li>
+        <div class="Answer">
+            <p>The easiest way to find both final momenta is to solve the triangle using the Law of Sines! We could also write the momentum conservation equations for both <span class="TeX">x</span> and <span class="TeX">y</span> components, but this would require us to solve a <em>system</em> because both unknowns appear in both equations.</p>
+            <p>The third (and largest!) angle in the triangle is:</p>
+            <p class="TeX">180^\circ - (14.0^\circ + 23.2^\circ) = 142.8^\circ</p>
+            <p>The Law of Sines tells us:</p>
+            <p class="TeX">p_{fA} = p_{iA}\cdot\frac{\sin(23.2^\circ)}{\sin(142.8^\circ)} = \rm 1.12\times 10^{14}\ N\cdot s</p>
+            <p class="TeX">p_{fB} = p_{iA}\cdot\frac{\sin(14.0^\circ)}{\sin(142.8^\circ)} = \rm 6.88\times 10^{13}\ N\cdot s</p>
+            <p>Now we can divide by the masses to find the speeds. The directions are already known!</p>
+            <p class="TeX">v_{fA} = \frac{p_{fA}}{m_A} = \rm \frac{1.12\times 10^{14}\ N\cdot s}{2.50\times 10^{11}\ kg} = 446\ m/s</p>
+            <p class="TeX">v_{fA} = \frac{p_{fA}}{m_A} = \rm \frac{6.88\times 10^{13}\ N\cdot s}{8.50\times 10^{10}\ kg} = 812\ m/s</p>
+        </div>
+
+        <li>Calculate the percent change in kinetic energy as a result of the collision. Classify the collision as elastic, inelastic or superelastic.</li>
+        <div class="Answer">
+            <p>Calculate the initial mechanical energy:</p>
+            <p class="TeX">\begin{align}
+                E_i &= \frac{1}{2}m_A{v_{iA}}^2 + \frac{1}{2}m_B{v_{iB}}^2
+                \\[10pt] &= \rm {\frac{1}{2} (2.50\times 10^{11}\ kg) (687\ m/s)^2 + \frac{1}{2} (8.50\times 10^{10}\ kg) (0.00\ m/s)^2}
+                \\[10pt] &= \rm {5.90\times 10^{16}\ J}
+            \end{align}</p>
+            <p>Calculate the final mechanical energy:</p>
+            <p class="TeX">\begin{align}
+                E_f &= \frac{1}{2}m_A{v_{fA}}^2 + \frac{1}{2}m_B{v_{fB}}^2
+                \\[10pt] &= \rm {\frac{1}{2} (2.50\times 10^{11}\ kg) (446\ m/s)^2 + \frac{1}{2} (8.50\times 10^{10}\ kg) (812\ m/s)^2}
+                \\[10pt] &= \rm {5.28\times 10^{16}\ J}
+            \end{align}</p>
+            <p>The change in mechanical energy is:</p>
+            <p class="TeX">\Delta E = \rm (5.28 - 5.90) \times 10^{16}\ J = -6.17\times 10^{15}\ J</p>
+            <p class="TeX">\frac{\Delta E}{E_i} = \rm \frac{-6.17\times 10^{15}\ J}{5.90\times 10^{16}\ J} = -10.5\%</p>
+            <p>The collision is inelastic because there is a loss of mechanical energy.</p>
+
+        </div>
+
+    </ol></li>
+
+</ol>
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li>Explain how to show the addition of two or more momentum vectors using a vector diagram.</li>
+    <li>Explain how to add (or subtract) momentum vectors using components.</li>
 </ol>
 </div></section>
 
