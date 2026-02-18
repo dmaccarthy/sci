@@ -101,6 +101,15 @@
 
 "s10": {"home": {"t": "@Science 10"},
 
+"chem2/ionic#": {"t": "Lab: Ionic & Molecular Substances", "s": "2026.2.13"},
+"chem2/ionic": {"t": "@Binary Ionic Compounds", "n": "C08", "s": "2026.2.18", "a": "2026.2.19"},
+"chem2/molec": {"t": "@Molecular Compounds", "n": "C09", "s": "2026.2.19", "a": "2026.2.20"},
+"chem2/poly": {"t": "@Polyatomic Ionic Compounds / Solubility", "n": "C10", "s": "2026.2.20", "a": "2026.2.21"},
+"chem2/acid": {"t": "@Acids & Bases", "n": "C11", "s": "2026.2.24", "a": "2026.2.25"},
+"chem2/acid#": {"t": "Lab: Acids & Bases", "s": "2026.2.23"},
+"chem2/water": {"t": "@Properties of Water", "n": "C12", "s": "2026.2.25", "a": "2026.2.25.15"},
+"qc2/@": {"t": "Quiz: Compounds (Chapter 2)", "s": "2026.2.26", "css": {"font-weight": "bold"}},
+
 "chem1/whmis": {"t": "@WHMIS / Lab Safety", "n": "C01", "s": "2026.1.29", "a": "2026.1.31", "h": "1TRd2vNgQvuczfoBTDJRQdNXt2OcfKBNP"},
 "chem1/whmis#": {"t": "Lab Safety <i>(continued)</i>", "s": "2026.1.30"},
 "chem1/expDes": {"t": "@Experiment Design", "n": "C02", "s": "2026.2.2", "a": "2026.2.2"},
@@ -112,16 +121,7 @@
 "chem1/dot": {"t": "@Periodic Table & Dot Diagrams", "n": "C07", "s": "2026.2.12", "a": "2026.2.13"},
 "qc1/@": {"t": "Quiz: Matter (Chapter 1)", "s": "2026.2.17", "css": {"font-weight": "bold"}},
 
-"chem2/ionic#": {"t": "Lab: Ionic & Molecular Substances", "s": "2026.2.13"},
-"chem2/ionic": {"t": "@Binary Ionic Compounds", "n": "C08", "s": "2026.2.18", "a": "2026.2.19"},
-"chem2/molec": {"t": "@Molecular Compounds", "n": "C09", "s": "2026.2.19", "a": "2026.2.20"},
-"chem2/poly": {"t": "@Polyatomic Ionic Compounds / Solubility", "n": "C10", "s": "2027.9", "a": "2027.9"},
-"chem2/acid": {"t": "@Acids & Bases", "n": "C11", "s": "2027.9", "a": "2027.9"},
-"chem2/acid#": {"t": "Lab: Acids & Bases", "s": "2027.9"},
-"chem2/water": {"t": "@Properties of Water", "n": "C12", "s": "2027.9", "a": "2027.9"},
-"qc2/@": {"t": "Quiz: Compounds (Chapter 2)", "s": "2026.2.26", "css": {"font-weight": "bold"}},
-
-"chem3/rxn": {"t": "@Chemical Reactions / Conservation Laws", "n": "C13", "s": "2027.9", "a": "2027.9"},
+"chem3/rxn": {"t": "@Chemical Reactions / Conservation Laws", "n": "C13", "s": "2026.2.25", "a": "2026.2.27"},
 "chem2/rxn#": {"t": "Lab: Evidence of Chemical Reactions", "s": "2027.9"},
 "chem3/rxn_fd": {"t": "@Formation & Decomposition", "n": "C14", "s": "2027.9", "a": "2027.9"},
 "chem3/rxn_c": {"t": "@Combustion", "n": "C15", "s": "2027.99", "a": "2027.10"},
