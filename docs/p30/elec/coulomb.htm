@@ -4,7 +4,7 @@
 </section> -->
 
 <section class="Post" data-icon="simulation">
-<h2 class="Collapse">Simulation</h2><div class="Collapse Expand">
+<h2 class="Collapse">Simulation</h2><div class="Collapse">
     <p class="Center"><svg id="CoulombSim"></svg></p>
     <p class="Center">Calibration: <span id="mN_per_deg"></span> mN/°</p>
     <p class="Center"><a href="javascript:loadFeed.verify()">Experiment Code</a>: <span id="ExpCode"></span></p>
@@ -62,13 +62,13 @@
 </ul>
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
 <p class="Blue">Calculate the electric force between a +5.00 μC charge and a −2.00 μC charge that are 20.0 cm apart.</p>
 <p class="TeX">F_e = \rm \frac{(8.99\times 10^9\ \frac{N\cdot m^2}{C^2}) (5.00\times 10^{-6}\ C) (2.00\times 10^{-6}\ C)}{(0.200\ m)^2} = 2.25\ N</p>
 <p>This force is <em>attractive</em>.</p>
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
+<section class="Slide"><h3 class="Blue">Example 2</h3>
 <p class="Blue">Calculate the separation between two 75.0 nC charges that repel each other with a force of 1.50 newtons.</p>
 <p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
 <p class="TeX">F_e r^2 = |kq_1q_2|</p>
@@ -83,7 +83,7 @@
 </ul>
 </section>
 
-<section class="Slide"><h3>Example 3</h3>
+<section class="Slide"><h3 class="Blue">Example 3</h3>
 <p class="Blue">Two charges, <span class="TeX">q_1</span> and <span class="TeX">q_2</span>, exert an electric force <span class="TeX">F_1</span> on each other when separated by a distance <span class="TeX">r</span>. If one of the charges is doubled and the separation is tripled, the electric force becomes <span class="TeX">F_2</span>. Calculate the ratio <span class="TeX">F_2:F_1</span>.</p>
 <p class="TeX">F_1 = \left|{kq_1 q_2\over r^2}\right|</p>
 <p class="TeX">F_2 = \left|{k(2q_1)q_2\over(3r)^2}\right| = {2\over 9}\left|{kq_1 q_2\over r^2}\right|</p>
@@ -93,18 +93,108 @@
 
 </div></section>
 
-<section class="Post" data-show="2024.9.21" data-icon="gdrv">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse Expand">
+<ol>
+    <li>Determine the electric force between charges of +6.00 microcoulombs and –6.00 μC that are separated by 32.0 cm. Is the force attractive or repulsive?</li>
+    <div class="Answer">
+        <p class="TeX">F_e = \frac{k|q_1 q_2|}{r^2}</p>
+        <p class="TeX">F_e = \rm \frac{8.99\times 10^9\ N\cdot m^2/C^2\ (6.00\times 10^{-6}\ C)^2}{(0.320\ m)^2}</p>
+        <p class="TeX">F_e = \rm 3.16\ N</p>
+        <p>The force is attractive because the charges have opposite signs.</p>
+    </div>
+
+    <li>Two charges of +2.50 μC exert forces of 65.0 N on each other. What is the separation between the two charges? Is the force attractive or repulsive?</li>
+    <div class="Answer">
+        <p class="TeX">F_e = \frac{k|q_1 q_2|}{r^2}</p>
+        <p class="TeX">F_e r^2 = k|q_1 q_2|</p>
+        <p class="TeX">r^2 = \frac{k|q_1 q_2|}{F_e}</p>
+        <p class="TeX">r = \sqrt{\frac{k|q_1 q_2|}{F_e}}</p>
+        <p class="TeX">r = \rm \sqrt{\frac{8.99\times 10^9\ N\cdot m^2/C^2\cdot (2.50\times 10^{-6}\ C)^2}{65.0\ N}}</p>
+        <p class="TeX">r = \rm 0.0294\ m</p>
+        <p>The force is repulsive since the charges are both positive.</p>
+    </div>
+
+    <li>When charges <span class="TeX">q_1</span> and <span class="TeX">q_2</span> are placed a distance <span class="TeX">r</span> apart, the magnitude of the electrical force they experience is <span class="TeX">F_1</span>. When charges <span class="TeX">2.00 q_1</span> and <span class="TeX">3.00 q_2</span> are placed a distance <span class="TeX">2.00 r</span> apart, the magnitude of the force is <span class="TeX">F_2</span>. Determine the ratio <span class="TeX">F_2</span> : <span class="TeX">F_1</span>.</li>
+    <div class="Answer">
+        <p class="TeX">F_1 = \frac{k|q_1 q_2|}{r^2}</p>
+        <p class="TeX">F_2 = \frac{k|(2.00q_1) (3.00q_2)|}{(2.00r)^2}</p>
+        <p class="TeX">F_2 = \frac{6.00 k|q_1 q_2|}{4.00r^2} = 1.50 \frac{k|q_1 q_2|}{r^2}</p>
+        <p>When we divide the forces, all of the variables cancel!</p>
+        <p class="TeX">\frac{F_2}{F_1} = 1.50</p>
+    </div>
+
+    <li><p>An electron has a charge of –1.60 × 10<sup>–19</sup> C and a proton has a charge of +1.60 × 10<sup>–19</sup> C. In a hydrogen atom, the electron orbits the proton at a radius of about 5.29 × 10<sup>–11</sup> m.</p>
+    <ol type="a">
+        <li>Determine the electric force experienced by the electron.</li>
+        <p class="Answer"></p>
+
+        <li>The mass of an electron is 9.11 × 10<sup>–31</sup> kg. Determine the electron’s acceleration.</li>
+        <p class="Answer"></p>
+
+        <li>Calculate the electron’s speed. Assume uniform circular motion.</li>
+        <p class="Answer"></p>
+
+        <li>How many times larger is the electric force between the proton and electron compared to the gravitational attraction? The proton’s mass is 1.67 × 10<sup>–27</sup> kg.</li>
+        <p class="Answer"></p>
+    </ol></li>
+
+    <li><p>Two charges, +8.00 μC and –2.00 μC are placed 20.0 cm apart as illustrated.</p>
+    <ol type="a">
+        <li>A third charge is positioned so that it experiences no net force. Should the third charge be positioned between the charges, to the left of the + charge, or to the right of the – charge? Explain.</li>
+        <p class="Answer"></p>
+
+        <li>Determine the exact location (i.e. how many centimetres from the + or – charge) of the third charge.</li>
+        <p class="Answer"></p>
+    </ol></li>
+
+    <li><p>A charge, <span class="TeX">q_A</span> = +6.25 × 10<sup>–7</sup> C, experiences electrostatic forces due to two nearby charges. Charge <span class="TeX">q_B</span> = –2.50 × 10<sup>–6</sup> C is located 12.0 cm to the left of charge “A” and charge <span class="TeX">q_C</span> = +1.85 × 10<sup>–6</sup> C is located 7.50 cm below “A”.</p>
+    <ol type="a">
+        <li>Use Coulomb’s Law to calculate the magnitude of the electrostatic force that “B” exerts on “A”. Is the force attractive or repulsive? Write the force vector as an ordered pair (2D Cartesian vector).</li>
+        <p class="Answer"></p>
+
+        <li>Use Coulomb’s Law to calculate the magnitude of the electrostatic force that “C” exerts on “A”. Is the force attractive or repulsive? Write the force vector in Cartesian form.</li>
+        <p class="Answer"></p>
+
+        <li>Calculate the net force that “A” experiences due to the combined effects of “B” and “C”. Express the answer in polar form.</li>
+        <p class="Answer"></p>
+
+        <li>Charge “A” has a mass of 75.0 g. Neglecting gravity, what will its acceleration be? Is it reasonable to neglect gravity? Explain.</li>
+        <p class="Answer"></p>
+    </ol></li>
+
+    <li><p>A van de Graff generator is used to give two metal spheres identical charges of –5.00 μC. The metal spheres are then placed far away from the van de Graff, 18.0 cm apart as illustrated below. A charged, cork ball of mass 2.25 g, placed 6.00 cm directly above one of the spheres as illustrated, is observed to accelerate at 690 m/s2 [95.25°]. (The force of gravity can be neglected.)</p>
+    <ol type="a">
+        <li>Is the cork ball positive or negative? Explain.</li>
+        <p class="Answer"></p>
+
+        <li>Using the cork ball’s mass and acceleration, determine the net force it experiences.</li>
+        <p class="Answer"></p>
+
+        <li>Use trigonometry to find the distance and angle between the cork ball and the farther sphere.</li>
+        <p class="Answer"></p>
+
+        <li>Draw a vector diagram showing the addition of the two electrostatic forces and the net force.</li>
+        <p class="Answer"></p>
+
+        <li>Determine the net charge of the cork ball. [Hint: Use the sine law to solve for either one of the two electrostatic forces. Then use Coulomb’s Law to find the charge.]</li>
+        <p class="Answer"></p>
+    </ol></li>
+
+</ol></div></section>
+
+<!-- <section class="Post" data-show="1" data-icon="gdrv">
     <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
     <p class="BtnGrid">
         <button data-icon="gdrv" data-gdrv="1uY1-f-DxC1GJlf4iLhX6-STY1mIas0fl9JkEOTsbXXc">Answer Key</button>
     </p>
-</div></section>
+</div></section> -->
 
 <script type="text/javascript" data-init="sim">
 
 loadFeed.sim = () => {
     let R = 44;
-    let svg = new SVG2("#CoulombSim", {scale: 7, lrbt: [-R, R, -R, R]});
+    let svg = loadFeed.final = new SVG2("#CoulombSim", {scale: 7, lrbt: [-R, R, -R, R]});
 
     // Set charge and force calibration
     svg.charge = 1e-6 * uniform(2, 6);
@@ -169,13 +259,7 @@ loadFeed.verify = (a) => {
     }
 }
 
-loadFeed.data = {
-    title: `${siteData.lesson}10.3 — Coulomb’s Law`,
-    // answerDate: "2025.2.20.10",
-    num: "10.3",
-    up: "p30/units/B",
-    prev: "p30/elec/da",
-    next: "p30/elec/Efield",
+loadFeed.data = {up: "p30/units/B", prev: "p30/elec/da", //next: "p30/elec/Efield",
 }
 
 </script>

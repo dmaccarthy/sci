@@ -34,14 +34,15 @@ induct: (sel) => {
     svg.click_toggle(2);
 },
 
-pole: (sel) => {
+pole: (sel, reverse) => {
     let svg = new SVG2(sel, {scale: 24, margin: 4, lrbt: [-9, 11, -3, 3]});
-    let plus = svg.plusminus(2.4, 1).css("black@3", "black").config({shift: [-7, 0]});
+    let plus = svg.plusminus(2.4, !reverse).css("black@3", "black").config({shift: [-7, 0]});
     plus.rect([4, 4]).css({fill: "none"});
     let g = svg.group().config({shift: [5, 0]});
     let circ = g.group("black@3", "none");
     circ.circle(2.5);
     let chg = g.group("sans", 20, "black", "none@");
+    if (reverse) chg.config({theta: 180});
     let t = 2;
     for (let a=-1; a<2; a++) {
         chg.gtext("+", [], vec2d(t, 30 * a));
@@ -51,5 +52,20 @@ pole: (sel) => {
     g.arrow({tail: [-3, 0], tip: [-8, 0]}, {tail: "8"});
     g.arrow({tail: [3, 0], tip: [6, 0]}, {tail: "8"});
 },
+
+balloon: (sel) => {
+    let svg = new SVG2(sel, {scale: 28, margin: 2, grid: 10, lrbt: [-4, 4, -5, 5]});
+    css(svg.circle(1), "lightgrey", "black@1");
+    let g = svg.group("arrow");
+    let arr = {tail: "6"};
+    g.arrow({tail: [0, 1.5], tip: [0, 1.5 + 3.5 / cos(25)]}).config({pivot: [0, 0], theta: -25});
+    g.arrow({tail: [0, -1.5], tip: [0, -5]}, arr);
+    g.arrow({tail: [-1.5, 0], tip: [-1.5 - 3.5 * tan(25), 0]}, arr);
+    svg.mjax("\\vec{\\bf F}_g", null, [0.8, -3, "l"], "red");
+    svg.mjax("\\vec{\\bf F}_e", null, [-2, 1, "b"], "red");
+    svg.mjax("\\vec{\\bf F}_t", null, [2, 2.5, "l"], "red");
+    // css(svg.line([1.5, 0], [3.5, 0]), "black@1");
+    svg.text("65°", [1.5, 0.75]);
+}
 
 });

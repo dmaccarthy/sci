@@ -65,10 +65,10 @@
 </div></section>
 
 
-<script type="text/javascript" data-init="sim">
+<script type="text/javascript" data-init="sim" >
 
 loadFeed.sim = () => {
-    let svg = new SVG2("#OilDropSim", {scale: 80, grid: 0, lrbt: [-1.5, 1.5, 0, 6]});
+    let svg = loadFeed.final = new SVG2("#OilDropSim", {scale: 80, grid: 0, lrbt: [-1.5, 1.5, 0, 6]});
 
     // Draw and label the ruler
     let g = svg.group("#0065fe@1", "none");

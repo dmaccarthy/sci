@@ -2,10 +2,15 @@ const css = SVG2.style;
 
 function clearFeed() {
 /** Reset to empty feed **/
+    if (loadFeed.final) {
+        if (loadFeed.final instanceof SVG2) loadFeed.final.pause();
+        else loadFeed.final();
+        delete loadFeed.final;
+    }
     if ($("body").hasClass("Present")) return location.reload();
     loadFeed.data = {};
-    for (let name of loadFeed._inits) delete loadFeed[name];
-    loadFeed._inits = [];
+    // for (let name of loadFeed._inits) delete loadFeed[name];
+    // loadFeed._inits = [];
     $("div.Message").remove();
     return $("#Main").html("");
 }
@@ -53,7 +58,7 @@ loadFeed.error = (e, feed) => {
 }
 
 loadFeed.cache = {};
-loadFeed._inits = [];
+// loadFeed._inits = [];
 
 function feedURL(feed, qs) {
 /** Compose a URL for a specific feed **/
@@ -289,15 +294,7 @@ function printIcons() {
 }
 
 function initFeed() {
-    // Run scripts
-    $("._Present").removeClass("_Present").addClass("Present");
-    for (let s of $("script[data-init]")) {
-        let name = $(s).attr("data-init");
-        try {loadFeed[name]()} catch(err) {console.error(err)};
-        loadFeed._inits.push(name);
-    }
-
-    // Restore collapsed/expanded state
+    // Restore collapsed/expanded state (moved from after scripts)
     let posts = $("section.Post");
     let div = posts.find("div.Collapse");
     let s = qs_args("section");
@@ -309,6 +306,14 @@ function initFeed() {
         div.filter(":not(.Expand)").hide();
         let toggle = collapse.toggled[loadFeed.current];
         for (let i of toggle) $(div[i]).toggle();
+    }
+
+    // Run scripts
+    $("._Present").removeClass("_Present").addClass("Present");
+    for (let s of $("script[data-init]")) {
+        let name = $(s).attr("data-init");
+        try {loadFeed[name]()} catch(err) {console.error(err)};
+        // loadFeed._inits.push(name);
     }
 
     // Finalize layout

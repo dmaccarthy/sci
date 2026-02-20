@@ -95,7 +95,7 @@ function handouts(data) {
         if (typeof(data) == "string") data = [data];
         let s = $("#Main section.Handouts");
         if (s.length == 0) s = $("<section>").appendTo("#Main");
-        s.removeClass("Handouts").addClass("Post NoPrintIcon").attr({"data-show": "1", "data-icon": "gdrv"});
+        s.addClass("Post NoPrintIcon Handouts").attr({"data-show": "1", "data-icon": "gdrv"}); // .removeClass("Handouts")
         let h2 = $("<h2>").addClass("Collapse").html("Handouts / Links").appendTo(s);
         let div = $("<div>").addClass("Collapse").appendTo(s);
         let html = $("<p>").html(siteData.handouts).appendTo(div);

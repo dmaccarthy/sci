@@ -25,20 +25,17 @@
     </table>
     
     <li>Graph the linearized data on graph paper and add a best-fit line.</li>
-    <div class="Answer">
-        <a target="Desmos" href="https://www.desmos.com/calculator/cbbnl59xwc">Graph</a>
-    </div>
+    <p class="Answer"><a target="Desmos1" href="https://www.desmos.com/calculator/cbbnl59xwc">Desmos Graph</a></p>
 
     <li>Calculate the slope and <i>y</i>-intercept of the best-fit line. Write the equation of the best-fit line in the form:<p class="TeX">y=kx+b</p></li>
     <div class="Answer">
-        The best-fit line passes through <span class="TeX">(0,\ 0)</span> and <span class="TeX">\rm (105\times 10^{-19}\ m^{-2},\ 5.73\times 10^{-3}\ m/s^2)</span>.
-        This gives an intercept of zero and a slope of <span class="TeX">\rm 5.46\times 10^{14}\ m^3/s^2</span>. The model equation is:
+        <p>The best-fit line passes through the largest data point, <span class="NoWrap">(105 × 10<sup>–19</sup> m<sup>–2</sup>,</span> <span class="NoWrap">5.73 × 10<sup>–3</sup> m/s<sup>2</sup></span>) and also through the origin. This gives an intercept of zero and a slope of <span class="NoWrap">5.46 × 10<sup>14</sup> m<sup>3</sup>/s<sup>2</sup></span>. The model equation is:</p>
         <p class="TeX">g = ({\rm 5.46\times 10^{14}\ m^3/s^2})\ r^{-2}</p>
     </div>
 
     <li>Use your equation and the gravity formula above to determine the mass, <span class="NoWrap"><span class="TeX">M</span>,</span> of the planet.</li>
     <div class="Answer">
-        Substitute the predicted formula for <span class="TeX">g</span> into the model equation:
+        <p>Substitute the predicted formula for <span class="TeX">g</span> into the model equation:</p>
         <p class="TeX">\frac{GM}{r^2} = ({\rm 5.46\times 10^{14}\ m^3/s^2})\ r^{-2}</p>
         <p>Cancel the <span class="TeX">r^{-2}</span> as it appears on both sides:</p>
         <p class="TeX">GM = {\rm 5.46\times 10^{14}\ m^3/s^2}</p>
@@ -143,7 +140,7 @@
 </ul>
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
+<section class="Slide"><h3 class="Blue">Example 1</h3>
 <p class="Blue">Students conducted an experiment on sound waves to test the equation <span class="TeX">v=f\lambda</span>. They manipulated the frequency of the waves <span class="TeX">(f)</span> and controlled the speed <span class="TeX">(v)</span>. The wavelength <span class="TeX">(\lambda)</span> was the responding variable. How should they transform the data?</p>
 <div>
     <p>Isolate the responding variable:</p>
@@ -156,7 +153,7 @@
 <p>Transform the data by calculating <span class="TeX">f^{-1}</span> for each data point.</p>
 </section>
 
-<section class="Slide"><h3>Example 2</h3>
+<section class="Slide"><h3 class="Blue">Example 2</h3>
 <div class="Blue">
     <p>Students conducted an experiment where the measured the repulsion force between two negatively charged objects as they manipulated the separation (distance) between the objects. Their Physics 30 Data Booklet contains a formula for electric force that is similar to Newton’s Law of Universal Gravitation that you studied in Physics 20:</p>
     <p class="TeX" data-cue="prev">F_e = \frac{kq_1 q_2}{r^2}</p>
@@ -171,7 +168,7 @@
 
 </div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol><li>Physics 20 students conducted an experiment where they manipulated the length of a simple pendulum to see how the period would be affected. The other variables (mass, amplitude, gravity) were controlled. They collected the following data.
 <p class="Caption">Simple Pendulum Motion</p>
@@ -188,16 +185,44 @@
     <tr><td>2.250</td><td>3.01</td></tr>
 </table>
 <ol type="a">
+
     <li>Draw a scatter plot of the data on graph paper.</li>
     <li>Add a best-fit line to the graph. Ignore the fact that the line is slightly curved, for now.</li>
-    <li>Calculate the slope of your best-fit line.</li>
-    <li>Record or calculate the <i>y</i>-intercept of the best-fit line.</li>
-    <li>Write the equation of the best-fit line in the form <span class="TeX">y=kx+b</span>, but use the correct symbols for the variables, <span class="TeX">L</span> and <span class="TeX">T</span>, instead of <span class="TeX">x</span> and <span class="TeX">y</span>.</li>
-</ol>
+    <p class="Answer"><a target="DesmosRaw" href="https://www.desmos.com/calculator/j8wcluucdi">Desmos Graph</a></p>
+    <li>Based on the Physics 20 equation below, transform the data to make it linear and record your calculations in a new table:
+        <p class="TeX">T=2\pi\sqrt{\frac{L}{g}}</p>
+    </li>
+    <table class="Answer Two Center TD6 Top Bottom">
+        <tr><th><span class="TeX">\left(L\ /\ \rm{m}\right)^{0.5}</span></th><th>Period<br/><span class="TeX">T\ /\ \rm s</span></th></tr>
+        <tr><td>0.500</td><td>1.01</td></tr>
+        <tr><td>0.707</td><td>1.43</td></tr>
+        <tr><td>0.866</td><td>1.74</td></tr>
+        <tr><td>1.00</td><td>2.01</td></tr>
+        <tr><td>1.19</td><td>2.24</td></tr>
+        <tr><td>1.22</td><td>2.45</td></tr>
+        <tr><td>1.32</td><td>2.65</td></tr>
+        <tr><td>1.41</td><td>2.85</td></tr>
+        <tr><td>1.50</td><td>3.01</td></tr>
+    </table>
+    <li>Graph the transformed data, add a best-fit line, and determine its equation. Use the correct symbols for the variables, <span class="TeX">L</span> and <span class="TeX">T</span>, instead of <span class="TeX">x</span> and <span class="TeX">y</span>.</li>
+    <div class="Answer">
+        <p><a target="DesmosLin" href="https://www.desmos.com/calculator/lvuh5sfxpe">Desmos Graph</a></p>
+        <p class="TeX">b = 0</p>
+        <p class="TeX">k = \rm \frac{(3.01 - 0)\ s}{(1.50 - 0)\ m^{0.5}} = 2.01\ s/m^{0.5}</p>
+        <p class="TeX">T = {\rm (2.01\ s/m^{0.5})} L^{0.5}</p>
+    </div>
+    <li>Substitute your “model equation” into the Physics 20 formula above and solve for <span class="TeX">g</span>.</li>
+    <div class="Answer">
+        <p class="TeX">2\pi\sqrt{\frac{L}{g}} = {\rm (2.01\ s/m^{0.5})} L^{0.5}</p>
+        <p>Cancel the <span class="TeX">L^{0.5}</span> and then square both sides...</p>
+        <p class="TeX">\frac{4\pi^2}{g} = \rm (2.01\ s/m^{0.5})^2 = 4.03\ s/m^2</p>
+        <p class="TeX">4\pi^2 = {\rm (4.03\ s/m^2)}\ g</p>
+        <p class="TeX">g = \frac{4\pi^2}{\rm 4.03\ s/m^2} = \rm 9.80\ m/s^2</p>
+    </div>
 </li></ol>
 </div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
 <ol>
     <li><ol type="a">
@@ -250,13 +275,7 @@
 
 <script type="text/javascript">
 
-loadFeed.data = {
-    title: `${siteData.lesson}10.2 — Data Analysis Review`,
-    answerDate: "2024.9.18.10",
-    num: "10.2",
-    up: "p30/units/B",
-    prev: "p30/elec/static",
-    next: "p30/elec/coulomb",
+loadFeed.data = {up: "p30/units/B", prev: "p30/elec/static", next: "p30/elec/coulomb",
 }
 
 </script>

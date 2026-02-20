@@ -1,0 +1,65 @@
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Test</h2><div class="Collapse Expand">
+
+<p>Hello, world!</p>
+<p class="Center"><svg id="Test"></svg></p>
+
+</div></section>
+
+<script type="text/javascript" data-init="pm">
+
+loadFeed.tri = () => {
+    let svg = new SVG2("#Test", {scale: 24, grid: 1, margin: [28, 10, 28, 10], lrbt: [0, 10, 0, 10]});
+    let tick = {size: ["-8", 0], css: ["sans", 14], label: 0, anchor: true};
+    svg.ticks({x: [2, 11, 2], ...tick});
+    svg.ticks({y: [2, 11, 2], ...tick});
+    let pts = [[0, 0], [10, 0], vec2d(10, 60)];
+    css(svg.poly(pts, 1), "none", "black@1");
+    let g = svg.group("#0065fe", "black@1");
+    for (let pt of pts) g.circle("7", pt);
+}
+
+loadFeed.proj = () => {
+    let a = -0.370406, b = tan(70.2);
+    let svg = new SVG2("#Test", {scale: 16, grid: 2, margin: [28, 28, 32, 12], lrbt: [0, 20, 0, 12]});
+    let tick = {size: ["-8", 0], css: ["sans", 14], label: 0, anchor: true};
+    svg.ticks({x: [0, 11, 2], ...tick, size: ["-14", 0], shift: "-29"});
+    svg.ticks({y: [0, 7, 2], ...tick});
+    let f = x => 6 + x * (b + a * x);
+    css(svg.locus(f, [0, 9.25]), "none", "#0065fe@2");
+    let g = svg.group("black@1", "silver");
+    g.rect([20, "8"], [10, "-4"]);
+    g.rect([20, "8"], [10, 12]);
+    g = svg.group("none@", "black");
+    svg.plusminus(1).shift_by([21, "-4"]);
+    svg.plusminus(1, 1).shift_by([21, 12]);
+    css(svg.circle("4", [0, 6]), "black@1", "#0065fe");
+}
+
+loadFeed.cork = () => {
+    let svg = new SVG2("#Test", {scale: 18, grid: 2, margin: 1, lrbt: [-2, 22, -2, 10]});
+    let tick = {size: ["-8", 0], css: ["sans", 14], label: 0, anchor: true};
+    svg.ticks({x: [2, 21, 2], ...tick});
+    svg.ticks({y: [2, 9, 2], ...tick});
+    let g = svg.group("#0065fe", "black@1");
+    g.circle("8", [18, 0]);
+    g.circle("8");
+    g.circle("4", [0, 6]);
+    svg.text("Cork", [0.5, 6.2, "bl"], 0, ["sans", 16, "#0065fe"]);
+}
+
+loadFeed.pm = () => {
+    let svg = new SVG2("#Test", {scale: 24, grid: 0, lrbt: [-4, 14, -1.5, 1.5]});
+    css(svg.line([-4, 0], [14, 0]), "black@2");
+    let g = svg.group("white", "black@2");
+    g.circle(1);
+    g.circle(1, [10, 0]);
+    svg.plusminus(1, 1);
+    svg.plusminus(1).shift_by([10, 0]);
+}
+
+
+loadFeed.data = {title: "Test", //up: "p20/home", prev: "p20/da/regr", next: "p20/grav/cav",
+}
+
+</script>

@@ -2,6 +2,7 @@ SVG2.cache("p30/mag/img/faraday.js", {
 
 lenz_law: (sel) => {
     let svg = new SVG2(sel, {scale: 36, lrbt: [-4, 3, -3, 3]});
+    loadFeed.final = svg;
 
     // Magnet
     let x = -2.65;

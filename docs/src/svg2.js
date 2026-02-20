@@ -1111,8 +1111,8 @@ constructor(selector, options) {
     let grid = options.grid;
     if (grid) {
         let [gx, gy] = typeof(grid) == "number" ? [grid, grid] : grid;
-        let x0 = gx * Math.round(lrbt[0] / gx);
-        let y0 = gy * Math.round(lrbt[2] / gy);
+        let x0 = gx * Math.floor(lrbt[0] / gx); // Changed from Math.round
+        let y0 = gy * Math.floor(lrbt[2] / gy);
         let g = this.grid([x0, lrbt[1], gx], [y0, lrbt[3], gy], options.appendAxes);
         if (options.noAxes) g.$.find(".Axis").removeClass("Axis").css(SVG2._style.grid);
     }
@@ -1460,7 +1460,11 @@ update(dt) {
     else this._nextFrame += dt;
     if (anim) this.frameCount++;
     if (this.afterupdate) this.afterupdate.call(this);
-    if (this.playing) this._animate = setTimeout(() => {this.update()}, ft);
+    if (this.playing) {
+        this._animate = setTimeout(() => {this.update()}, ft);
+        if (this.frameCount % (15 * this.frameRate) == 0 && !this.$.is(":visible"))
+            console.warn("Still running...", this);
+    }
     return this;
 }
 

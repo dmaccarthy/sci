@@ -3,8 +3,8 @@
     <p>In these chapters we will learn about the electrostatic force that acts between charged objects, and we will use the concept of an <em>electric field</em> to understand electric interactions.</p>
     <ul>
         <li><a data-feed="$elec/static">Lesson 10.1: Electrostatics</a></li>
-        <li data-show="9999"><a data-feed="$elec/da">Lesson 10.2: Data Analysis Review</a></li>
-        <li data-show="9999"><a data-feed="$elec/coulomb">Lesson 10.3: Coulomb’s Law</a></li>
+        <li><a data-feed="$elec/da">Lesson 10.2: Data Analysis Review</a></li>
+        <li><a data-feed="$elec/coulomb">Lesson 10.3: Coulomb’s Law</a></li>
         <li data-show="9999"><a data-feed="$elec/Efield">Lesson 11.1: Electric Fields</a></li>
         <li data-show="9999"><a data-feed="$elec/motion">Lesson 11.2: Motion in a Uniform Electric Field</a></li>
         <li data-show="9999"><a data-feed="$elec/volt">Lesson 11.3: Electric Potential Difference</a></li>
@@ -34,11 +34,16 @@
     </div>
 </section>
 
-<script type="text/javascript">
+<script type="text/javascript" data-init="init">
 
 loadFeed.data = {title: `Unit B — Electric & Magnetic Fields`,
     folder: "p30/", up: "p30/home", prev: "p30/units/A", //next: "p30/units/C",
-    handouts: [["‘Electric’ Organizer", {"gdrv": "_", "show": "2026.2.20"}], ["‘Magnetic’ Organizer", {"gdrv": "_", "show": "9999"}], ["Lab Manual", "1KQMIjgo8cUDWiMNvPyETEjeXi55XMQl4"]],
+    handouts: [["‘Electric’ Organizer", {"gdrv": "1Bnuokpm1P3L2ia0JSHoAVrLzHaNQHOY_"}], ["‘Magnetic’ Organizer", {"gdrv": "_", "show": "9999"}], ["Lab Manual", "1KQMIjgo8cUDWiMNvPyETEjeXi55XMQl4"]],
+}
+
+loadFeed.init = () => {
+    let h2 = $("#Main section.Post.Handouts").children("h2").click();
+
 }
 
 </script>
