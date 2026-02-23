@@ -71,10 +71,12 @@ ramp: (sel) => {
 },
 
 ball8: (sel) => {
-    let svg = new SVG2(sel, {grid: 5, scale: 7, lrbt: [30, 90, 30, 75]});
+    let svg = new SVG2(sel, {grid: 5, scale: 7, lrbt: [30, 90, 35, 75]});
     let g = svg.group({fill: "grey"});
-    g.label(0, 35, [...range(40, 71, 10)]);
-    g.label(0, [...range(40, 81, 10)], 35);
+    let opt = {label: 0, css: ["sans", 14]};
+    g.ticks({x: [40, 81, 10], shift: 39.5, ...opt});
+    g.ticks({y: [40, 71, 10], shift: 39.5, ...opt});
+    g.text("cm", [40.5, 70, "l"]);
     css(svg.poly([[80, 65], [80, 50], [40, 50]]), "none", "red@2");
     svg.arrow({tail: [80, 65], tip: [40, 50]}, {tail: "4"}).css("arrow", "#0065fe");
     g = svg.group("sans", "#0065fe", 24);
@@ -99,8 +101,8 @@ star: (sel) => {
     g.text("M", [-1, -0.14]);
     g.text("S", [0, -0.14]);
     g = svg.group("sans", 18, "black");
-    g.text("18.00000°", [-1, 0.1, "b"]);
-    g.text("18.00020°", [0.45, 0.005, "b"]);
+    g.text("18.00000°", [-1, 0.12, "b"]);
+    g.text("18.00020°", [0.45, "4", "bl"]);
     g = g.group("serif", {"font-style": "italic"});
     g.text("d", [-0.5, -0.09]);
     g = g.group();
@@ -116,7 +118,7 @@ Q2: (sel) => {
         scale: 40, margin: 8, grid: 0.5, label: [1, 0]});
     svg.$.find(".Component").remove();
     let g = svg.group("sans", 18);
-    g.text("km", {}, [-2, "2", "bl"]);
+    g.text("km", [-2, "4", "bl"]);
     g = g.group(20, "bold");
     g.text("A", [0.35, 0.35]);
     g.text("B", [5.35, 0.35]);

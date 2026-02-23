@@ -4,6 +4,11 @@
     --grey2: #d0d0d0;
 }
 
+/* @font-face {
+  font-family: tiFont;
+  src: url(TICELarge.woff);
+} */
+
 body:not(.Present) .Present {display: none}
 .Center {text-align: center}
 .Left {text-align: left}
@@ -35,7 +40,7 @@ a[href], .Blue {color: var(--blue);}
 .NoWrap {white-space: nowrap}
 
 .Code, .CodeScroll, code {
-    font-family: Inconsolata, monospace;
+    font-family: "Noto Sans Mono", monospace;
     font-weight:bold;
 }
 
