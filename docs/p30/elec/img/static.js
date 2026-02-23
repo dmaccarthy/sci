@@ -64,8 +64,7 @@ balloon: (sel) => {
     svg.mjax("\\vec{\\bf F}_g", null, [0.8, -3, "l"], "red");
     svg.mjax("\\vec{\\bf F}_e", null, [-2, 1, "b"], "red");
     svg.mjax("\\vec{\\bf F}_t", null, [2, 2.5, "l"], "red");
-    // css(svg.line([1.5, 0], [3.5, 0]), "black@1");
-    svg.text("65°", [1.5, 0.75]);
+    svg.text("65°", [1.5, 0.75], 0, ["sans", 20]);
 }
 
 });
