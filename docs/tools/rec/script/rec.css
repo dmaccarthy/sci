@@ -10,6 +10,11 @@
     --w1: calc(var(--w) - var(--icon));
 }
 
+@font-face {
+  font-family: tiFont;
+  src: url(TICELarge.woff);
+}
+
 body {
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
@@ -86,7 +91,7 @@ main {
 }
 
 .PopUp > .Caption {
-    font-family: Inconsolata, monospace;
+    font-family: "Noto Sans Mono", monospace;
     font-weight: bold;
     font-size: 16pt;
     text-align: center;
@@ -99,6 +104,8 @@ main {
 .PopUp > .Content {margin: 4px}
 
 div.Calc {
+    font-family: "Noto Sans Mono", monospace;
+    font-size: 18pt;
     max-width: calc(0.3 * var(--w1));
     margin: 0.5em auto;
     border: 1px solid var(--blue);
@@ -116,8 +123,8 @@ div.Calc > p:first-child > img {
     height: 24pt;
 }
 
-.Mono, div.Calc {
-    font-family: Inconsolata, monospace;
+.Mono {
+    font-family: "Noto Sans Mono", monospace;
 }
 
 .Center {text-align: center}
