@@ -91,6 +91,7 @@
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2026.1.29", "a": "2026.1.30", "h": ["18p-OXXK3JAQa5ZGEWJf-n7DzfDvUgrl4", ["Lab Activity", "1Qw9-sMCtUa5jgGg6QfbgUp7NmCxxaOeP"]]},
 "skill/expDes#": {"t": "Lab: Self-Designed Experiment", "s": "2026.1.30"},
 "skill/scatter": {"t": "@Scatter Plots & Slope", "n": "0.2", "s": "2026.2.2", "a": "2026.2.3", "h" : "17zcHFBR8lomZvcNFIdtCXl8frUdgJnPY"},
+"skill/scatter2026": {"t": "@Scatter Plots & Slope", "n": "0.2", "s": "2026.2.2", "a": "2026.2.3", "h" : "17zcHFBR8lomZvcNFIdtCXl8frUdgJnPY"},
 "skill/algebra": {"t": "@Algebra", "n": "0.3", "s": "2026.2.3", "a": "2026.2.4", "h" : "1MwCqEsPofP4X5nse4yf-RFlkSdC1TztK"},
 "skill/sciNot": {"t": "@Significant Digits & Scientific Notation", "n": "0.4", "s": "2026.2.4", "a": "2026.2.5", "h": "1Y0ez9I0gnD0aRUY_Q4ym9TiwEQrRnnw2"},
 "skill/si": {"t": "@SI Units", "n": "0.5", "s": "2026.2.9", "a": "2026.2.10", "h": "1OIm9J1U1nZVlG4GOcgVtZ_4fzlN7wRz9"},

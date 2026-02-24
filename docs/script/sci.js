@@ -163,6 +163,25 @@ siteData = {lesson: "", email: "david.maccarthy@eips.ca"};
 function serverUTC() {return fetch(serverUTC.url)}
 serverUTC.url = "https://dmaccarthy.vercel.app/utc.json";
 
+// 2026 Compatibility
+
+function page_info(info) {
+    let keys = {u: "up", p: "prev", n: "next", s: "showDate", a: "answerDate"};
+    for (let key in info) {
+        let k = keys[key]
+        loadFeed.data[k ? k : key] = info[key];
+    }
+    console.log(loadFeed.data);
+}
+
+function page_svg2(...args) {
+    for (let [id, url, f, a] of args) {
+        let data = `${url}.js#${f}`;
+        if (a) data += "#" + a;
+        $(id).attr("data-svg2", data);
+    }
+}
+
 
 // Printing 
 
