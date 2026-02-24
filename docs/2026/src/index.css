@@ -1,19 +1,13 @@
 :root {
     --blue: #0065fe;
+    --lightblue: #e8e8ff;
 }
 
 body {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 14pt;
+    font-size: 16px;
     margin-top: calc(1.25em + 32px);
     margin-bottom: 3em;
-}
-
-body:not(.Present) {
-
-.Present {display: none} 
-section.Post *:is(h2, h3) {font-size: 14pt}
-
 }
 
 .WideScroll, .AutoScroll {
@@ -37,7 +31,7 @@ section.Post *:is(h2, h3) {font-size: 14pt}
 }
 
 .BtnGrid button {
-    font-size: 75%;
+    font-size: 85%;
     background-color: white;
     color: var(--blue);
     border: 1px solid white;;
@@ -49,27 +43,24 @@ section.Post *:is(h2, h3) {font-size: 14pt}
 .BtnGrid button:hover {
     cursor: pointer;
     border: 1px solid var(--blue);
-    background-color: #d0d0ff;
+    background-color: var(--lightblue);
 }
 
 .BtnGrid button *:is(img, svg) {
-    width: 3em;
-    height: 3em;
+    width: 3.5em;
+    height: 3.5em;
 }
-
-body.NavOverflow #Top span.Title {display: none}
-body:not(.NavOverflow) h2.Title {display: none}
 
 #Top {
     width: calc(100vw - 12px);
-    height: 1.5em;
+    height: 1.8em;
     padding: 6px;
     position: fixed;
     top: 0;
     left: 0;
     overflow: auto;
     background-color: white;
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid var(--blue);
     text-align: center;
     color: var(--blue);
 }
@@ -82,10 +73,15 @@ body:not(.NavOverflow) h2.Title {display: none}
 #Top span[data-action] {
     padding: 1px;
     border: 1px solid white;
+    border-radius: 5px;
     font-variation-settings: 'wght' 300;
 }
 
-#Top span[data-action]:not(.Inactive, .Selected):hover {background-color: lightgrey}
+#Top span[data-action]:not(.Inactive, .Selected):hover {
+    background-color: lightgrey;
+    border-color: lightgrey;
+}
+
 #Top span[data-action]:not(.Inactive) {cursor: pointer}
 #Top span.Left {float: left}
 
@@ -97,34 +93,34 @@ body:not(.NavOverflow) h2.Title {display: none}
 
 #Top span.Left span.Inactive {color: lightgrey}
 #Top span.Right span.Inactive {display: none}
-#Top span.Right span.Selected {border-bottom-color: var(--blue)}
 
-#Top span.Title {
-    font-weight: bold;
-    color: black;
+#Top span.Right span.Selected {
+    background-color: var(--lightblue);
+    border-color: var(--blue);
 }
 
 h2.Title {
     text-align: center;
-    font-size: 18pt;
+    font-size: 24px;
 }
 
+.Defn {text-decoration: underline;}
+.NoBold {font-weight: normal}
 .Center, p[data-latex] {text-align: center}
 .Blue, a, .Link {color: var(--blue)}
-
 .Small, #Copy {font-size: 80%}
 
 #Copy {
     width: 100vw;
-    height: 24px;
+    height: 26px;
     position: fixed;
     bottom: 0;
     left: 0;
     background-color: white;
-    border-top: 1px solid lightgrey;
+    border-top: 1px solid var(--blue);
     text-align: center;
     margin: 0;
-    padding: 3px 0 3px 0;
+    padding: 8px 0 4px 0;
 }
 
 table {
@@ -132,20 +128,20 @@ table {
     border-collapse: collapse;
 }
 
-table.Two td, table.Two th {width: 50%}
-table.Three td {width: 33.33%}
-table.Four td {width: 25%}
-table.Five td {width: 20%}
-table.Six td {width: 16.667%}
+table.Two *:is(td, th) {width: 50%}
+table.Three *:is(td, th) {width: 33.33%}
+table.Four *:is(td, th) {width: 25%}
+table.Five *:is(td, th) {width: 20%}
+table.Six *:is(td, th) {width: 16.667%}
 
-table td, table th {
+table *:is(td, th) {
     min-width: 4em;
     border: 1px solid black;
     padding: 0.2em;
 }
 
-table.TD6 td {min-width: 6em}
-table.TD8 td {min-width: 8em}
+table.TD6 *:is(td, th) {min-width: 6em}
+table.TD8 *:is(td, th) {min-width: 8em}
 /* .Bottom {margin-bottom: 1em}
 .Top {margin-top: 1em} */
 .NoBottom {margin-bottom: 0}
@@ -153,7 +149,17 @@ table.TD8 td {min-width: 8em}
 .Answer, .Red {color: red}
 /* div.Answer {margin-bottom: 0.75em} */
 
-.Answer:is(p, div, ol, ul) {
+li {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+p[data-latex] {
+    margin-top: 0.75em;
+    margin-bottom: 1em;
+}
+
+.Answer:is(p, div, ol, ul), div.Answer > p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
@@ -164,12 +170,49 @@ p.Caption {
     margin-bottom: 0.5em;
 }
 
+body:not(.Present) {
+
+.Present {display: none} 
+section.Post *:is(h2, h3) {font-size: 14pt}
+
+}
+
+
+body.Present {
+
+font-size: 250%;
+width: calc(100vw - 1em);
+margin: 0.5em;
+
+*:is(#Top, #Copy, h2.Title) {display: none}
+
+.s4 {width: 4em}
+.s5 {width: 5em}
+.s6 {width: 6em}
+.dot {width: 7.35em}
+.s8 {width: 8em}
+.s10 {width: 10em}
+.s11 {width: 11em}
+.s12 {width: 12em}
+.s14 {width: 14em}
+.s16 {width: 16em}
+.s18 {width: 18em}
+.s20 {width: 20em}
+.s22 {width: 22em}
+.s24 {width: 24em}
+.s28 {width: 28em}
+.s30 {width: 30em}
+.s32 {width: 32em}
+.s36 {width: 36em}
+
+}
+
 
 @media (min-width: 1080px) {
 
-body {
-    max-width: 80%;
-    margin-left: 10%;
+body:not(.Present), #Top, #Copy {
+    max-width: 960px;
+    margin-left: calc(50vw - 480px);
 }
 
 }

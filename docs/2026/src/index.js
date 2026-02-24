@@ -1,19 +1,6 @@
 let _;
 const home_folder = ".";
 
-function nav_overflow(t) {
-    // Add 'NavOverflow' class to <body> if content overflows #Top <nav>
-    clearTimeout(nav_overflow.timer);
-    if (!t) t = 5;
-    let nav = $("#Top");
-    let b = $("body").removeClass("NavOverflow");
-    if (nav[0].scrollHeight > nav.height() + 12) b.addClass("NavOverflow");
-    if (t < 5000) {
-        t *= 2;
-        nav_overflow.timer = setTimeout(() => nav_overflow(t), t);
-    }
-}
-
 function page_info(info) {
     Object.assign(page_info.data, info);
 }
@@ -136,7 +123,18 @@ function load_page(id, pop) {
         if (!teacher()) h = unpublish(h, info);
         if (!fetch_page.cache[id]) fetch_page.cache[id] = h;
         $("main").html(h);
-        $("#Top span.Right").css({visibility: "visible"})
+        $("#Top span.Right").css({visibility: "visible"});
+    
+        // Compatability with previous site
+        let posts = $("main section.Post");
+        posts.find("h2.Collapse").remove();
+        posts.find(".Questions").children("li").addClass("SlideBreak");
+        let compat = {slides: "notes", correct: "assign"};
+        for (let post of posts) {
+            post = $(post);
+            let id = post.attr("data-icon");
+            if (compat[id]) post.attr("data-icon", compat[id]);
+        }
 
         // Update history
         load_page.current = id;
@@ -149,8 +147,7 @@ function load_page(id, pop) {
         // Set title
         let title = info.t ? info.t : "Mr. Mac’s Website";
         if (title.charAt(0) == "@") title = title.substring(1);
-        $(".Title").html(title);
-        document.title = $("h2.Title").text();
+        document.title = $("h2.Title").html(title).text();
 
         // Run scripts
         if (info.scripts) scripts(info.scripts).then(svg_aspect);
@@ -162,7 +159,6 @@ function load_page(id, pop) {
         load_images();
         $("._Present").removeClass("_Present").addClass("Present");
         nav_icons(show_section(0));
-        nav_overflow();
         mjax_wait().then(mjax_render).then(scroll_mjax);
     }));
 }
@@ -211,6 +207,80 @@ scripts.cache = {};
 function page_svg2(...args) {page_info.data.scripts = args}
 function page_run(...args) {page_info.data.run = args}
 
+function slideshow() {
+    $("body").addClass("Present");   
+    let id = $("#Top span.Right span.Selected").attr("data-action");
+    let post = $(`main section.Post[data-icon=${id}]`);
+    let all_cues = slideshow.cues = [];
+    let cues = post.find(slideshow.select);
+    cues.hide();
+    for (let c of cues) {
+        if ($(c).attr("data-cue") == "prev") all_cues[all_cues.length - 1].push(c);
+        else all_cues.push([c]);
+    }
+    let sections = slideshow.sections = [-1];
+    for (let i=0;i<all_cues.length;i++) {
+        let e = all_cues[i][0];
+        if (e.tagName == "SECTION" || $(e).hasClass("SlideBreak")) sections.push(i);
+    }
+    sections.push(all_cues.length);
+    slideshow.next_cue = 0;
+}
+
+slideshow.select = "[data-cue=true], *:is(p, h2, h3, table, ol, ul, li, div, section):not([data-cue=none], :first-child)";
+
+slideshow.scroll = (s) => {
+    svg_aspect();
+    scroll_mjax();
+    if (s) scroll_bottom();
+}
+
+slideshow.next = (prev, t) => {
+    if (t == null) t = 500;
+    let i = slideshow.next_cue;
+    let scroll = true;
+    if (prev && i > 0) {
+        let cues = slideshow.cues[--slideshow.next_cue];
+        for (let c of cues) $(c).fadeOut(t);
+    }
+    else if (!prev && i < slideshow.cues.length) {
+        let cues = slideshow.cues[slideshow.next_cue++];
+        for (let c of cues) $(c).fadeIn(t);
+    }
+    else scroll = false;
+    if (t) slideshow.scroll(scroll);
+    console.log(`Cue: ${slideshow.next_cue - 1}`);
+}
+
+slideshow.goto = (n) => {
+    n = Math.min(Math.max(0, n), slideshow.cues.length - 1);
+    while (slideshow.next_cue > n+1) slideshow.next(1, 0);
+    while (slideshow.next_cue <= n) slideshow.next(0, 0);
+    slideshow.scroll(1);
+}
+
+slideshow.key = (key, mod, t) => {
+    if (mod == 0) {
+        let n = ["ArrowDown", "ArrowUp"].indexOf(key);
+        let sections = slideshow.sections;
+        if (n > -1) {
+            let i = slideshow.next_cue - 1;
+            let s = 0;
+            while (s < sections.length && i >= sections[s]) s++;
+            slideshow.goto(sections[n ? s - 1 : s]);
+        }
+        else if (key == "ArrowRight") slideshow.next();
+        else if (key == "ArrowLeft") slideshow.next(1);
+    }
+}
+
+function scroll_bottom(t) {
+    let h = $("html");
+    let y = h[0].scrollHeight - $(window).height();
+    h.animate({scrollTop: y < 0 ? 0 : y}, t ? t : 500);
+}
+
+
 let css = SVG2.style;
 
 function key_mod(ev) {
@@ -236,7 +306,6 @@ $(() => {
     $(window).on("popstate", () => {
         load_page(location.hash.substring(1), true);
     }).on("resize", () => {
-        nav_overflow();
         svg_aspect();
         scroll_mjax();
     }).on("click", ev => {
@@ -246,25 +315,28 @@ $(() => {
         }
     }).on("keydown", ev => {
         let mod = key_mod(ev);
-        if (mod && 6) { // Ctrl + Alt
-            let key = ev.originalEvent.key;
+        let orig = ev.originalEvent;
+        if ($("body").hasClass("Present")) {
+            slideshow.key(orig.code, mod);
+        }
+        else if (mod && 6) { // Ctrl + Alt
+            let key = orig.key;
             if (key == "t") {
                 let t = localStorage.getItem("disable_teacher");
                 if (t) localStorage.removeItem("disable_teacher");
                 else localStorage.setItem("disable_teacher", 1);
                 location.reload();
             }
+            else if (key == "p") slideshow();
         }
     });
 
     let page = location.hash.substring(1);
     load_page(page ? page : "home");
-    nav_overflow();
 });
 
 window.onbeforeprint = () => {
     $("#Top, #Copy").hide();
-    $("h2.Title").show();
 }
 
 window.onafterprint = () => location.reload();
