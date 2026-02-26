@@ -73,12 +73,13 @@ ramp: (sel) => {
 ball8: (sel) => {
     let svg = new SVG2(sel, {grid: 5, scale: 7, lrbt: [30, 90, 35, 75]});
     let g = svg.group({fill: "grey"});
-    let opt = {label: 0, css: ["sans", 14]};
+    let font = ["sans", 14];
+    let opt = {label: 0, css: font};
     g.ticks({x: [40, 81, 10], shift: 39.5, ...opt});
     g.ticks({y: [40, 71, 10], shift: 39.5, ...opt});
-    g.text("cm", [40.5, 70, "l"]);
     css(svg.poly([[80, 65], [80, 50], [40, 50]]), "none", "red@2");
     svg.arrow({tail: [80, 65], tip: [40, 50]}, {tail: "4"}).css("arrow", "#0065fe");
+    g.text("cm", [40.5, 70, "l"], 0, font);
     g = svg.group("sans", "#0065fe", 24);
     g.text("I", [82, 65]);
     g.text("F", [40, 53]);
