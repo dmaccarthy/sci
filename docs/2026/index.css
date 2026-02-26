@@ -28,22 +28,23 @@ body {
     text-align: center;
     margin: auto;
     margin-bottom: 1em;
-}
 
-.BtnGrid button {
-    font-size: 85%;
-    background-color: white;
-    color: var(--blue);
-    border: 1px solid white;;
-    border-radius: 6px;
-    padding: 6px; 
-    margin: 0.25em 1em 
-}
+    button {
+        font-size: 85%;
+        background-color: white;
+        color: var(--blue);
+        border: 1px solid white;;
+        border-radius: 6px;
+        padding: 6px; 
+        margin: 0.25em 1em 
+    }
 
-.BtnGrid button:hover {
-    cursor: pointer;
-    border: 1px solid var(--blue);
-    background-color: var(--lightblue);
+    button:hover {
+        cursor: pointer;
+        border: 1px solid var(--blue);
+        background-color: var(--lightblue);
+    }
+
 }
 
 .BtnGrid button *:is(img, svg), table.Icons *:is(img, svg) {
@@ -63,6 +64,8 @@ body {
     border-bottom: 1px solid var(--blue);
     text-align: center;
     color: var(--blue);
+
+
 }
 
 #Top span {
@@ -82,7 +85,7 @@ body {
     border-color: lightgrey;
 }
 
-#Top span[data-action]:not(.Inactive), .Link {cursor: pointer}
+#Top span[data-action]:not(.Inactive), .Point {cursor: pointer}
 #Top span.Left {float: left}
 
 #Top span.Right {
@@ -104,24 +107,32 @@ h2.Title {
     font-size: 24px;
 }
 
+a, .Link {
+    color: var(--blue);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .Defn {text-decoration: underline;}
 .NoBold {font-weight: normal}
 .Center, p[data-latex] {text-align: center}
-.Blue, a, .Link {color: var(--blue)}
+.Blue {color: var(--blue)}
 .Small, #Copy {font-size: 80%}
+#Copy {margin-top: 3em}
 
-#Copy {
-    margin-top: 3em;
-    /* width: 100vw;
-    height: 26px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    border-top: 1px solid var(--blue);
+div.Message {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0.6em;
+    border-radius: 6px;
+    background-color: #a0a0a0;
+    color: white;
     text-align: center;
-    margin: 0;
-    padding: 8px 0 4px 0; */
+    min-width: 20em;
+    max-width: 80vw;
+    position: fixed;
+    top: 25vh;
+    display: none;
 }
 
 table {
@@ -144,31 +155,52 @@ table *:is(td, th) {
 table.TD6 *:is(td, th) {min-width: 6em}
 table.TD8 *:is(td, th) {min-width: 8em}
 
-table.Icons {
+table.Icons, table.Calendar {
     min-width: 12em;
-    width: 90%;
-    max-width: 90%;
+    max-width: calc(100% - 4px);
+
+    tbody tr:nth-child(odd) {background-color: var(--lightblue)}
+    td:first-child {text-align: center}
 }
 
-table.Icons td > h3 {color: var(--blue)}
-table.Icons tr:nth-child(odd) {background-color: var(--lightblue)}
-table.Icons td {border: none; padding: 6px}
-table.Icons * {vertical-align: top}
-table.Icons *:is(p, h3) {margin: 0.25em}
-table.Icons *:is(p, h3):first-child {margin-top: 0}
-table.Icons [data-feed]:hover {background-color: #e0c0ff; cursor: pointer}
+table.Icons {
+    /* width: 90%; */
 
-table.Icons td:first-child {
-    width: 3.5em;
-    text-align: center;
+    td > h3 {color: var(--blue); font-size: 16px}
+    td {border: none; padding: 6px}
+    * {vertical-align: top}
+    *:is(p, h3) {margin: 0.25em}
+    *:is(p, h3):first-child {margin-top: 0}
+    [data-feed]:hover {background-color: lightgrey; cursor: pointer}
+
+    td:first-child {
+        width: 3.5em;
+
+        img {margin-top: 0.4em}
+    }
 }
 
-/* .Bottom {margin-bottom: 1em}
-.Top {margin-top: 1em} */
+
+table.Calendar {
+    width: 40em;
+
+    th {
+        color: white;
+        background-color: var(--blue);
+    }
+
+    td:first-child {width: 8em}
+}
+
+
+#Help table.Icons {width: 44em}
 .NoBottom {margin-bottom: 0}
 .NoTop {margin-top: 0}
 .Answer, .Red {color: red}
-/* div.Answer {margin-bottom: 0.75em} */
+
+/* .Bottom {margin-bottom: 1em}
+.Top {margin-top: 1em}
+div.Answer {margin-bottom: 0.75em} */
 
 li {
     margin-top: 0.25em;
@@ -194,7 +226,8 @@ p.Caption {
 body:not(.Present) {
 
 .Present {display: none} 
-section.Post *:is(h2, h3) {font-size: 14pt}
+section.Post h2 {font-size: 20px}
+section.Post h3 {font-size: 18px}
 
 }
 
@@ -205,7 +238,7 @@ font-size: 250%;
 width: calc(100vw - 1em);
 margin: 0.5em;
 
-*:is(#Top, #Copy, h2.Title) {display: none}
+*:is(#Top, #Copy, #Help, h2.Title) {display: none}
 
 .s4 {width: 4em}
 .s5 {width: 5em}
@@ -225,6 +258,16 @@ margin: 0.5em;
 .s30 {width: 30em}
 .s32 {width: 32em}
 .s36 {width: 36em}
+
+}
+
+
+@media (max-width: 1079px) {
+
+body:not(.Present), #Top {
+    margin-left: 2px;
+    margin-right: 2px;
+}
 
 }
 

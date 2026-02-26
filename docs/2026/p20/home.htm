@@ -1,6 +1,6 @@
 <section class="Post" data-icon="list">
-<table class="Icons">
-    <tr data-feed="p20/skill/scatter"><td data-img="calc"></td><td>
+<table class="Icons" data-accordion="tr;p">
+    <tr data-feed="p20/skill/home"><td data-img="calc"></td><td>
         <h3>Physics &amp; Math Skills</h3>
         <p>A review of relevant topics from Science 10 and Math 10-C.</p>
     </td></tr>
@@ -10,7 +10,7 @@
     </td></tr>
     <tr><td data-img="soccer"></td><td>
         <h3>Chapter 2: Two-Dimensional Motion</h3>
-        <p>In this chapter, you will learn how to describe describe 2D vectors in polar and Cartesian form, how to perform arithmetic and algebra on 2D vectors, and how to solve projectile motion problems.</p>
+        <p>In this chapter, you will learn how to describe 2D vectors in polar and Cartesian form, how to perform arithmetic and algebra on 2D vectors, and how to solve projectile motion problems.</p>
     </td></tr>
     <tr><td data-img="rocket"></td><td>
         <h3>Chapter 3: Newton’s Laws</h3>
@@ -40,8 +40,7 @@
 
 </section>
 
-<section class="Post" data-icon="cal">
-</section>
+<section class="Post" data-cal="p20"></section>
 
 <section class="Post" data-icon="link">
 <p class="BtnGrid">
@@ -60,51 +59,8 @@
 
 <script type="text/javascript">
 
-function calendar(crs) {
-    let info = page_info.index[crs];
-    let cal = [];
-    for (let key in info) {
-        let s = info[key].s;
-        if (s && true) {
-            s = s.split(".");
-            if (s.length > 1) s[1] = parseInt(s[1]) - 1;
-            s = new Date(...s);
-            cal.push([s, key]);
-        }
-    }
-    cal.sort((a,b) => {
-        a = a[0]; b = b[0];
-        return a == b ? 0 : (a > b ? 1 : -1);
-    });
-    let tbl = $("<table>").addClass("Calendar").appendTo("main section.Post[data-icon=cal]");
-    let tr = $("<tr>").appendTo($("<thead>").appendTo(tbl));
-    tr.append($("<th>").html("Date"));
-    tr.append($("<th>").html("Activity"));
-    tbl = $("<tbody>").appendTo(tbl);
-    let title = (i, k) => {
-        let t = i.t;
-        if (t.charAt(0) == '@') t = "Lesson: " + t.substring(1);
-        if (k.charAt(k.length-1) != "@") {
-            t = $("<span>").html(t).addClass("Link").attr("data-feed", crs + "/" + k.split("#")[0]);
-            if (i.css) t.css(i.css);
-        }
-        return t;
-    }
-    let date = d => {
-        let day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][d.getDay()];
-        let mon = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
-        return `${day}, ${mon} ${d.getDate()}`;
-    }
-    for (let [d, key] of cal) {
-        let i = info[key];
-        tr = $("<tr>").appendTo(tbl);
-        tr.append($("<td>").html(date(d)));
-        tr.append($("<td>").html(title(i, key)));
-    }
-}
-
 page_info({u: "home"});
 
-page_run(() => calendar("p20"));
+// page_run(() => {toggle("section.Post[data-icon=list] table.Icons p", $("#ChapDetails")[0].checked)});
 
 </script>

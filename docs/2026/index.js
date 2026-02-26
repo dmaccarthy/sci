@@ -1,5 +1,26 @@
-let _;
+let _, css = SVG2.style;
 const home_folder = "./2026";
+
+
+/*** Fetch HTML and JSON data ***/
+
+async function fetch_index(key) {
+    // Load course index into page_info.index object
+    if (page_info.index[key] == null) {
+        console.log(`Fetching: ${home_folder}/${key}/index.json`);
+        await fetch(`${home_folder}/${key}/index.json?_${new Date().getTime()}`).then(r => r.ok ? r.json() : {}).then(j => page_info.index[key] = j);
+    }
+}
+
+async function fetch_page(id) {
+    // Get HTML for requested page
+    let h = fetch_page.cache[id];
+    if (h) return h;
+    console.log(`Fetching: ${home_folder}/${id}.htm`);
+    return fetch(`${home_folder}/${id}.htm?_${new Date().getTime()}`).then(r => r.ok ? r.text() : null);
+}
+
+fetch_page.cache = {};
 
 function page_info(info) {
     Object.assign(page_info.data, info);
@@ -7,9 +28,48 @@ function page_info(info) {
 
 page_info.index = {};
 
+
+/*** Image library ***/
+
+function load_images() {
+    // Add @src to <img> elements
+    let imgs = $("[data-img]");
+    for (let img of imgs) {
+        img = $(img);
+        let tag = img[0].tagName;
+        let src = img.attr("data-img");
+        img.removeAttr("data-img");
+        if (tag != "IMG") {
+            if (tag == "BUTTON") img.prepend("<br/>")
+            img = $("<img>").attr({alt: src}).prependTo(img);
+        }
+        img.attr({src: get_image(src)})
+    }
+}
+
+function get_image(key) {
+    // Get image URL from @key
+    let img = data_images[key];
+    if (!img) img = get_image.map[key];
+    if (!img) {
+        img = `./media/${key}`;
+        if (key.indexOf(".") == -1) img += ".svg";
+    }
+    return img;
+}
+
+get_image.map = {
+    sal: "media/sal.webp",
+    bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
+    ps: "https://powerschool.eips.ca/favicon-196x196.png",
+};
+
+
+/*** (Re)drawing the page ***/
+
 function clear_page() {
     let hide = {visibility: "hidden"};
-    $("#Help").appendTo("body");
+    $("#Help").hide().appendTo("body");
     $("main").css(hide).html("");
     $("#Copy").css(hide);
     page_info.data = {};
@@ -40,67 +100,11 @@ function nav_icons(posts) {
     }
     let right = $("#Top span.Right");
     spans = right.find("span[data-action]").addClass("Inactive");
-    for (let span of spans) {
-        span = $(span);
-        let action = span.attr("data-action");
-        if (posts.filter(`[data-icon="${action}"]`).length)
-            span.removeClass("Inactive").appendTo(right);
+    for (let post of posts) {
+        let a = $(post).attr("data-icon");
+        spans.filter(`[data-action=${a}]`).removeClass("Inactive").appendTo(right);
     }
-}
 
-async function fetch_index(key) {
-    // Load course index into page_info.index object
-    if (page_info.index[key] == null) {
-        console.log(`Fetching: ${home_folder}/${key}/index.json`);
-        await fetch(`${home_folder}/${key}/index.json`).then(r => r.ok ? r.json() : {}).then(j => page_info.index[key] = j);
-    }
-}
-
-async function fetch_page(id) {
-    // Get HTML for requested page
-    let h = fetch_page.cache[id];
-    if (h) return h;
-    console.log(`Fetching: ${home_folder}/${id}.htm`);
-    return fetch(`${home_folder}/${id}.htm`).then(r => r.ok ? r.text() : null);
-}
-
-fetch_page.cache = {};
-
-function load_images() {
-    // Add @src to <img> elements
-    let imgs = $("[data-img]");
-    for (let img of imgs) {
-        img = $(img);
-        let src = img.attr("data-img");
-        img.removeAttr("data-img");
-        if (img[0].tagName != "IMG")
-            img = $("<img>").attr({alt: src}).prependTo(img.prepend("<br/>"));
-        img.attr({src: get_image(src)})
-    }
-}
-
-function get_image(key) {
-    // Get image URL from @key
-    let img = data_images[key];
-    if (!img) img = get_image.map[key];
-    if (!img) {
-        img = `./media/${key}`;
-        if (key.indexOf(".") == -1) img += ".svg";
-    }
-    return img;
-}
-
-get_image.map = {
-    sal: "media/sal.webp",
-    bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
-    ps: "https://powerschool.eips.ca/favicon-196x196.png",
-};
-
-function teacher() {
-    // Check for teacher mode
-    let c = localStorage.getItem("disable_teacher") ? false : localStorage.getItem("teacher_code") == atob("Qnpya1I0cDd3bFFITThIbA==");
-    console.log(`Teacher: ${c}`);
-    return c;
 }
 
 function unpublish(h, info) {
@@ -120,13 +124,14 @@ function unpublish(h, info) {
 }
 
 function load_page(id, pop) {
-    clear_page();
     let key = id.split("/")[0];
     fetch_index(key).then(() => fetch_page(id).then(h => {
         if (h == null) {
+            msg("Unable to load page:<br/>" + id);
             if (!load_page.current) load_page("home");
             return;
         }
+        clear_page();
 
         // Get page info
         let info = page_info.index[key][id.substring(key.length + 1)];
@@ -141,7 +146,7 @@ function load_page(id, pop) {
     
         // Append help page
         if (main.find("[data-icon=help]").length == 0)
-            main.append($("#Help"));
+            main.append($("#Help").hide());
 
         // Compatability with previous site
         let posts = $("main section.Post");
@@ -168,6 +173,10 @@ function load_page(id, pop) {
         load_page.title = title;
         document.title = $("h2.Title").html(title).text();
 
+        // Make calendar
+        let cal = posts.filter("[data-cal]").attr("data-icon", "cal");
+        if (cal.length) calendar(cal.attr("data-cal"));
+
         // Run scripts
         if (info.scripts) scripts(info.scripts).then(svg_aspect);
         if (info.run) {
@@ -180,6 +189,26 @@ function load_page(id, pop) {
         nav_icons(show_section(0));
         mjax_wait().then(mjax_render).then(scroll_mjax);
     }));
+}
+
+
+/*** Miscellaneous functions  ***/
+
+function key_mod(ev) {
+    return (ev.shiftKey ? 1 : 0) + (ev.ctrlKey ? 2 : 0) + (ev.alttKey ? 4 : 0);
+}
+
+function teacher() {
+    // Check for teacher mode
+    let c = localStorage.getItem("disable_teacher") ? false : localStorage.getItem("teacher_code") == atob("Qnpya1I0cDd3bFFITThIbA==");
+    console.log(`Teacher: ${c}`);
+    return c;
+}
+
+function scroll_bottom(t) {
+    let h = $("html");
+    let y = h[0].scrollHeight - $(window).height();
+    h.animate({scrollTop: y < 0 ? 0 : y}, t ? t : 500);
 }
 
 function scroll_mjax() {
@@ -196,26 +225,31 @@ function svg_aspect() {
     }
 }
 
-function is_after(due, date) {
-    // Check whether a date (today) is after the specified due date
-    if (due == null) return true;
-    else if (due == false) return false;
-    if (date == null) date = new Date();
-    if (!(due instanceof Date)) {
-        due = due.split(".");
-        if (due.length > 1) due[1] = parseInt(due[1]) - 1;
-        due = new Date(...due);
-    }
-    return date >= due;
+function msg(html, time) {
+    //Display a message to the user
+    if (!html) html = "Unable to load page."
+    let b = $("body"), w = $(window);
+    let e = $("<div>").addClass("Message").html(html).appendTo(b);
+    let x = (w.width() - e.outerWidth()) / 2;
+    e.css({left: `${x}px`});
+    e.fadeIn(500);
+    setTimeout(() => {
+        e.fadeOut(1500);
+        setTimeout(() => {e.remove()}, 1600);
+    }, time ? time : 2500);
 }
+
+
+/*** Page scripts ***/
 
 async function scripts(args) {
     let p = [];
+    let url = x => `${home_folder}/${a}.js?_${new Date().getTime()}`;
     for (let a of args) if (!scripts.cache[a[1]]) {
         a = a[1];
         scripts.cache[a] = true;
         console.log(`Fetching: ${home_folder}/${a}.js`);
-        p.push(fetch(`${home_folder}/${a}.js`).then(r => r.ok ? r.text() : null).then(t => t ? eval(t) : null));
+        p.push(fetch(url(a)).then(r => r.ok ? r.text() : null).then(t => t ? eval(t) : null));
     }
     for (let a of p) await a;
     for (let [s, js, key, a] of args) scripts.cache[js][key](s, a);
@@ -225,6 +259,9 @@ scripts.cache = {};
 
 function page_svg2(...args) {page_info.data.scripts = args}
 function page_run(...args) {page_info.data.run = args}
+
+
+/*** Slideshow functions ***/
 
 function slideshow() {
     $("body").addClass("Present");   
@@ -293,18 +330,109 @@ slideshow.key = (key, mod, t) => {
     }
 }
 
-function scroll_bottom(t) {
-    let h = $("html");
-    let y = h[0].scrollHeight - $(window).height();
-    h.animate({scrollTop: y < 0 ? 0 : y}, t ? t : 500);
+
+/*** Calendar functions ***/
+
+function calendar(crs) {
+    // Create events lists
+    let info = page_info.index[crs];
+    let cal = [];
+    let now = calendar.today();
+    for (let key in info) {
+        let s = info[key].s;
+        if (s) {
+            s = s.split(".");
+            if (s.length > 2) {
+                s[1] = parseInt(s[1]) - 1;
+                if (parseInt(s[0]) < 9000) {
+                    s = new Date(...s);
+                    cal.push([s, key, is_after(s, now)]);
+                }
+            }
+        }
+    }
+
+    // Sort by date
+    cal.sort((a,b) => {
+        a = a[0]; b = b[0];
+        return a == b ? 0 : (a > b ? 1 : -1);
+    });
+
+    // Functions for generating title and date HTML
+    let title = (i, k) => {
+        let t = i.t;
+        if (t.charAt(0) == '@') t = "Lesson: " + t.substring(1);
+        if (k.charAt(k.length-1) != "@") {
+            t = $("<span>").html(t).addClass("Link").attr("data-feed", crs + "/" + k.split("#")[0]);
+            if (i.css) t.css(i.css);
+        }
+        return t;
+    }
+
+    let date = d => {
+        let day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][d.getDay()];
+        let mon = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
+        return `${day}, ${mon} ${d.getDate()}`;
+    }
+
+    // Create calendar table
+    let post = $("main section.Post[data-icon=cal]");
+    let tbl = $("<table>").addClass("Calendar").prependTo(post);
+    let tr = $("<tr>").appendTo($("<thead>").appendTo(tbl));
+    tr.append($("<th>").html("Date"));
+    tr.append($("<th>").html("Activity"));
+    tbl = $("<tbody>").appendTo(tbl);
+    for (let [d, key, a] of cal) {
+        let i = info[key];
+        tr = $("<tr>").appendTo(tbl);
+        if (a) tr.addClass("Old");
+        tr.append($("<td>").html(date(d)));
+        tr.append($("<td>").html(title(i, key)));
+    }
+
+    // Hide past events
+    let p = $("<p>").addClass("Center").appendTo(post);
+    p.append($("<label>").html("&nbsp; Show Past Events").attr({for: "ShowPast"})).addClass("ShowPast");
+    let check = $("<input>").attr({type: "checkbox", id: "ShowPast"}).prependTo(p);
+    check[0].checked = false;
+    calendar.old();
+}
+
+calendar.old = () => {
+    let old = $("section.Post[data-icon=cal] tr.Old");
+    if ($("#ShowPast")[0].checked) old.fadeIn();
+    else old.fadeOut();
+}
+
+calendar.today = () => {
+    let t = new Date();
+    return new Date(1900 + t.getYear(), t.getMonth(), t.getDate());
+}
+
+function is_after(due, date) {
+    // Check whether a date (today) is after the specified due date
+    if (due == null) return true;
+    else if (due == false) return false;
+    if (date == null) date = new Date();
+    if (!(due instanceof Date)) {
+        due = due.split(".");
+        if (due.length > 1) due[1] = parseInt(due[1]) - 1;
+        due = new Date(...due);
+    }
+    return date > due;
 }
 
 
-let css = SVG2.style;
+/*** Printing ***/
 
-function key_mod(ev) {
-    return (ev.shiftKey ? 1 : 0) + (ev.ctrlKey ? 2 : 0) + (ev.alttKey ? 4 : 0);
+window.onbeforeprint = () => {
+    $("#Top, #Copy").hide();
 }
+
+window.onafterprint = () => location.reload();
+
+
+/*** Event handlers ***/
 
 function click_link(ev) {
     let e = $(ev.target);
@@ -323,6 +451,44 @@ click_link.actions = {
     gdoc: a => window.open(`https://docs.google.com/document/d/${a}/`),
 };
 
+$(window).on("popstate", () => {
+    load_page(location.hash.substring(1), true);
+}).on("resize", () => {
+    svg_aspect();
+    scroll_mjax();
+}).on("click", ev => {
+    let e = $(ev.target);
+    let acc = e.closest("[data-accordion]");
+    if (acc.length) {
+        let [link, hide] = acc.attr("data-accordion").split(";");
+        for (let item of acc.find(link)) {
+            let h = $(item).find(hide);
+            if (item == e.closest(link)[0]) h.fadeIn();
+            else h.fadeOut();
+        }
+    }
+    if (e.is("#ShowPast, .ShowPast")) calendar.old();
+    else if (e.closest("div.Message").length) $("div.Message").remove();
+    else click_link(ev);
+}).on("keydown", ev => {
+    let mod = key_mod(ev);
+    let orig = ev.originalEvent;
+    if ($("body").hasClass("Present")) slideshow.key(orig.code, mod);
+    else if (mod && 6) { // Ctrl + Alt
+        let key = orig.key;
+        if (key == "t") {
+            let t = localStorage.getItem("disable_teacher");
+            if (t) localStorage.removeItem("disable_teacher");
+            else localStorage.setItem("disable_teacher", 1);
+            location.reload();
+        }
+        else if (key == "p") slideshow();
+    }
+});
+
+
+/*** Initialize page ***/
+
 $(() => {
     $("#Top").on("click", ev => {
         let e = $(ev.target);
@@ -338,34 +504,6 @@ $(() => {
             }
         }
     });
-
-    $(window).on("popstate", () => {
-        load_page(location.hash.substring(1), true);
-    }).on("resize", () => {
-        svg_aspect();
-        scroll_mjax();
-    }).on("click", click_link).on("keydown", ev => {
-        let mod = key_mod(ev);
-        let orig = ev.originalEvent;
-        if ($("body").hasClass("Present")) slideshow.key(orig.code, mod);
-        else if (mod && 6) { // Ctrl + Alt
-            let key = orig.key;
-            if (key == "t") {
-                let t = localStorage.getItem("disable_teacher");
-                if (t) localStorage.removeItem("disable_teacher");
-                else localStorage.setItem("disable_teacher", 1);
-                location.reload();
-            }
-            else if (key == "p") slideshow();
-        }
-    });
-
     let page = location.hash.substring(1);
     load_page(page ? page : "home");
 });
-
-window.onbeforeprint = () => {
-    $("#Top, #Copy").hide();
-}
-
-window.onafterprint = () => location.reload();
