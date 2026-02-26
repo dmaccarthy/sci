@@ -213,9 +213,10 @@
 "elec/static": {"t": "@Electrostatics", "n": "10.1", "s": "2026.2.20", "a": "2026.2.20"},
 "elec/static#": {"t": "Activity: Electrostatics", "s": "2026.2.18"},
 "elec/da": {"t": "@Data Analysis Review", "n": "10.2", "s": "2026.2.23", "a": "2026.2.24"},
+"elec/coulomb#s": {"t": "Lab: Coulomb’s Law", "s": "2026.2.24"},
 "elec/coulomb": {"t": "@Coulomb’s Law", "n": "10.3", "s": "2026.2.25", "a": "2026.2.26"},
-"elec/coulomb#": {"t": "Lab: Coulomb’s Law", "s": "2026.2.24"},
-"elec/Efield": {"t": "@Electric Fields", "n": "11.1", "s": "2026.2.26", "a": "2026.2.27"},
+"elec/coulomb#c": {"t": "@Coulomb’s Law <em>(continued)</em>", "n": "10.3", "s": "2026.2.26"},
+"elec/Efield": {"t": "@Electric Fields", "n": "11.1", "s": "2026.2.27", "a": "2026.3.27"},
 
 "mom/energy": {"t": "@Work & Energy Review", "n": "9.1", "s": "2026.1.29", "a": "2026.1.30"},
 "mom/mom": {"t": "@Momentum", "n": "9.2", "s": "2026.1.30", "a": "2026.2.2"},
