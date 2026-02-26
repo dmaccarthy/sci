@@ -7,7 +7,7 @@ body {
     font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     margin-top: calc(1.25em + 32px);
-    margin-bottom: 3em;
+    margin-bottom: 1em;
 }
 
 .WideScroll, .AutoScroll {
@@ -46,7 +46,7 @@ body {
     background-color: var(--lightblue);
 }
 
-.BtnGrid button *:is(img, svg) {
+.BtnGrid button *:is(img, svg), table.Icons *:is(img, svg) {
     width: 3.5em;
     height: 3.5em;
 }
@@ -82,7 +82,7 @@ body {
     border-color: lightgrey;
 }
 
-#Top span[data-action]:not(.Inactive) {cursor: pointer}
+#Top span[data-action]:not(.Inactive), .Link {cursor: pointer}
 #Top span.Left {float: left}
 
 #Top span.Right {
@@ -111,7 +111,8 @@ h2.Title {
 .Small, #Copy {font-size: 80%}
 
 #Copy {
-    width: 100vw;
+    margin-top: 3em;
+    /* width: 100vw;
     height: 26px;
     position: fixed;
     bottom: 0;
@@ -120,7 +121,7 @@ h2.Title {
     border-top: 1px solid var(--blue);
     text-align: center;
     margin: 0;
-    padding: 8px 0 4px 0;
+    padding: 8px 0 4px 0; */
 }
 
 table {
@@ -142,6 +143,26 @@ table *:is(td, th) {
 
 table.TD6 *:is(td, th) {min-width: 6em}
 table.TD8 *:is(td, th) {min-width: 8em}
+
+table.Icons {
+    min-width: 12em;
+    width: 90%;
+    max-width: 90%;
+}
+
+table.Icons td > h3 {color: var(--blue)}
+table.Icons tr:nth-child(odd) {background-color: var(--lightblue)}
+table.Icons td {border: none; padding: 6px}
+table.Icons * {vertical-align: top}
+table.Icons *:is(p, h3) {margin: 0.25em}
+table.Icons *:is(p, h3):first-child {margin-top: 0}
+table.Icons [data-feed]:hover {background-color: #e0c0ff; cursor: pointer}
+
+table.Icons td:first-child {
+    width: 3.5em;
+    text-align: center;
+}
+
 /* .Bottom {margin-bottom: 1em}
 .Top {margin-top: 1em} */
 .NoBottom {margin-bottom: 0}
@@ -210,7 +231,7 @@ margin: 0.5em;
 
 @media (min-width: 1080px) {
 
-body:not(.Present), #Top, #Copy {
+body:not(.Present), #Top {
     max-width: 960px;
     margin-left: calc(50vw - 480px);
 }

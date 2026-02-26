@@ -1,5 +1,5 @@
 let _;
-const home_folder = ".";
+const home_folder = "./2026";
 
 function page_info(info) {
     Object.assign(page_info.data, info);
@@ -9,6 +9,7 @@ page_info.index = {};
 
 function clear_page() {
     let hide = {visibility: "hidden"};
+    $("#Help").appendTo("body");
     $("main").css(hide).html("");
     $("#Copy").css(hide);
     page_info.data = {};
@@ -22,8 +23,11 @@ function show_section(id) {
     icons.filter(`[data-action=${id}]`).addClass("Selected");
 
     $("main, #Copy").css({visibility: "visible"});
-    posts.filter(`[data-icon="${id}"]`).fadeIn();
+    let post = posts.filter(`[data-icon="${id}"]`).fadeIn();
+    let title = post.attr("data-title");
+    $("h2.Title").html(title ? title : load_page.title);
     scroll_mjax();
+    $(window).scrollTop(0);
     return posts;
 }
 
@@ -34,11 +38,13 @@ function nav_icons(posts) {
     for (let k of ["up", "prev", "next"]) {
         if (info[k.charAt(0)]) spans.filter(`[data-action="${k}"]`).removeClass("Inactive");
     }
-    spans = $("#Top span.Right span[data-action]").addClass("Inactive");
+    let right = $("#Top span.Right");
+    spans = right.find("span[data-action]").addClass("Inactive");
     for (let span of spans) {
         span = $(span);
         let action = span.attr("data-action");
-        if (posts.filter(`[data-icon="${action}"]`).length) span.removeClass("Inactive");
+        if (posts.filter(`[data-icon="${action}"]`).length)
+            span.removeClass("Inactive").appendTo(right);
     }
 }
 
@@ -67,7 +73,8 @@ function load_images() {
         img = $(img);
         let src = img.attr("data-img");
         img.removeAttr("data-img");
-        if (img[0].tagName != "IMG") img = $("<img>").attr({alt: src}).appendTo(img);
+        if (img[0].tagName != "IMG")
+            img = $("<img>").attr({alt: src}).prependTo(img.prepend("<br/>"));
         img.attr({src: get_image(src)})
     }
 }
@@ -75,12 +82,19 @@ function load_images() {
 function get_image(key) {
     // Get image URL from @key
     let img = data_images[key];
+    if (!img) img = get_image.map[key];
     if (!img) {
         img = `../media/${key}`;
         if (key.indexOf(".") == -1) img += ".svg";
     }
     return img;
 }
+
+get_image.map = {
+    sal: "media/sal.webp",
+    bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
+    ps: "https://powerschool.eips.ca/favicon-196x196.png",
+};
 
 function teacher() {
     // Check for teacher mode
@@ -122,9 +136,13 @@ function load_page(id, pop) {
         // Display page
         if (!teacher()) h = unpublish(h, info);
         if (!fetch_page.cache[id]) fetch_page.cache[id] = h;
-        $("main").html(h);
+        let main = $("main").html(h);
         $("#Top span.Right").css({visibility: "visible"});
     
+        // Append help page
+        if (main.find("[data-icon=help]").length == 0)
+            main.append($("#Help"));
+
         // Compatability with previous site
         let posts = $("main section.Post");
         posts.find("h2.Collapse").remove();
@@ -147,6 +165,7 @@ function load_page(id, pop) {
         // Set title
         let title = info.t ? info.t : "Mr. Mac’s Website";
         if (title.charAt(0) == "@") title = title.substring(1);
+        load_page.title = title;
         document.title = $("h2.Title").html(title).text();
 
         // Run scripts
@@ -287,6 +306,23 @@ function key_mod(ev) {
     return (ev.shiftKey ? 1 : 0) + (ev.ctrlKey ? 2 : 0) + (ev.alttKey ? 4 : 0);
 }
 
+function click_link(ev) {
+    let e = $(ev.target);
+    let actions = click_link.actions;
+    for (let a in actions) {
+        let attr = `data-${a}`;
+        let elem = e.closest(`[${attr}]`);
+        if (elem.length) actions[a](elem.attr(attr));
+    }
+}
+
+click_link.actions = {
+    feed: load_page,
+    open: a => window.open(a),
+    gdrv: a => window.open(`https://drive.google.com/file/d/${a}/`),
+    gdoc: a => window.open(`https://docs.google.com/document/d/${a}/`),
+};
+
 $(() => {
     $("#Top").on("click", ev => {
         let e = $(ev.target);
@@ -308,17 +344,10 @@ $(() => {
     }).on("resize", () => {
         svg_aspect();
         scroll_mjax();
-    }).on("click", ev => {
-        let feed = $(ev.target).closest("[data-feed]");
-        if (feed.length) {
-            load_page(feed.attr("data-feed"));
-        }
-    }).on("keydown", ev => {
+    }).on("click", click_link).on("keydown", ev => {
         let mod = key_mod(ev);
         let orig = ev.originalEvent;
-        if ($("body").hasClass("Present")) {
-            slideshow.key(orig.code, mod);
-        }
+        if ($("body").hasClass("Present")) slideshow.key(orig.code, mod);
         else if (mod && 6) { // Ctrl + Alt
             let key = orig.key;
             if (key == "t") {

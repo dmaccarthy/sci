@@ -1,0 +1,110 @@
+<section class="Post" data-icon="list">
+<table class="Icons">
+    <tr data-feed="p20/skill/scatter"><td data-img="calc"></td><td>
+        <h3>Physics &amp; Math Skills</h3>
+        <p>A review of relevant topics from Science 10 and Math 10-C.</p>
+    </td></tr>
+    <tr><td data-img="train"></td><td>
+        <h3>Chapter 1: One-Dimensional Motion</h3>
+        <p>In this chapter, you will learn how to describe motion using concepts like displacement, velocity, and acceleration, and how to solve problems involving uniform accelerated motion.</p>
+    </td></tr>
+    <tr><td data-img="soccer"></td><td>
+        <h3>Chapter 2: Two-Dimensional Motion</h3>
+        <p>In this chapter, you will learn how to describe describe 2D vectors in polar and Cartesian form, how to perform arithmetic and algebra on 2D vectors, and how to solve projectile motion problems.</p>
+    </td></tr>
+    <tr><td data-img="rocket"></td><td>
+        <h3>Chapter 3: Newton’s Laws</h3>
+        <p>In this chapter you will learn how forces affect the motion of an object according to Newton’s Laws, and you will learn about several types of forces including gravitational, normal, and friction forces.</p>
+    </td></tr>
+    <tr><td data-img="earth"></td><td>
+        <h3>Chapter 4: Universal Gravitation</h3>
+        <p>In this chapter you will learn that gravity is a universal force that acts between all masses and over long distances. You will also learn how to analyze non-linear data that follows a power relationship.</p>
+    </td></tr>
+    <tr><td data-img="archer.webp"></td><td>
+        <h3>Chapter 6: Energy &amp; Work</h3>
+        <p>This chapter introduces the Law of Energy Conservation and the Work-Energy Theorem as additional methods for solving motion problems.</p>
+    </td></tr>
+    <tr><td data-img="midway"></td><td>
+        <h3>Chapter 5: Circular &amp; Planetary Motion</h3>
+        <p>In this chapter you will learn about motion in a circle as well as about Kepler’s Law of Planetary Motion.</p>
+    </td></tr>
+    <tr><td data-img="crane"></td><td>
+        <h3>Chapter 7: Simple Harmonic Motion</h3>
+        <p>In this chapter, you will learn about oscillatory (“back and forth”) motion such as a simple pendulum. Before you begin with SHM, you will learn how to analyze experimental data when it is non-linear.</p>
+    </td></tr>
+    <tr><td data-img="speaker"></td><td>
+        <h3>Chapter 8: Mechanical Waves</h3>
+        <p>In this chapter, you will learn about the behaviour of waves such as sound, surface waves on water, and waves in some musical instruments.</p>
+    </td></tr>
+</table>
+
+</section>
+
+<section class="Post" data-icon="cal">
+</section>
+
+<section class="Post" data-icon="link">
+<p class="BtnGrid">
+    <button data-img="gdrv" data-gdrv="1W1GLdlJP6u0ivIPomSkc_ZqimbXxW0xa">Data Sheet</button>
+    <button data-img="gdrv" data-gdrv="1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE">Graph Paper</button>
+    <button data-img="bs" data-open="https://eips.brightspace.com/d2l/home/152928">Brightspace</button>
+    <button data-img="link" data-open="https://www.physicsclassroom.com/calcpad/energy/problems">Physics Classroom</button>
+    <button data-img="ps" data-open="https://powerschool.eips.ca/public/">PowerSchool</button>
+    <button data-img="gdoc" data-gdoc="1mws9vDw-VcDDDkICEgX4mVaJTUG215EUq-WEJMbxwP4">Course Outline</button>
+    <button data-img="sal" data-open="https://salcomp.ca">Salisbury Composite</button>
+    <button data-img="pdf" data-open="https://www.alberta.ca/system/files/custom_downloaded_images/edc-calculator-information-and-rules.pdf">Approved Calculators</button>
+    <button data-img="link" data-open="https://curriculum.learnalberta.ca/curriculum/en/pos/SCIPHY_20_30">Program of Studies</button>
+    <!-- Diploma Exam Info: https://www.alberta.ca/writing-diploma-exams -->
+</p>
+</section>
+
+<script type="text/javascript">
+
+function calendar(crs) {
+    let info = page_info.index[crs];
+    let cal = [];
+    for (let key in info) {
+        let s = info[key].s;
+        if (s && true) {
+            s = s.split(".");
+            if (s.length > 1) s[1] = parseInt(s[1]) - 1;
+            s = new Date(...s);
+            cal.push([s, key]);
+        }
+    }
+    cal.sort((a,b) => {
+        a = a[0]; b = b[0];
+        return a == b ? 0 : (a > b ? 1 : -1);
+    });
+    let tbl = $("<table>").addClass("Calendar").appendTo("main section.Post[data-icon=cal]");
+    let tr = $("<tr>").appendTo($("<thead>").appendTo(tbl));
+    tr.append($("<th>").html("Date"));
+    tr.append($("<th>").html("Activity"));
+    tbl = $("<tbody>").appendTo(tbl);
+    let title = (i, k) => {
+        let t = i.t;
+        if (t.charAt(0) == '@') t = "Lesson: " + t.substring(1);
+        if (k.charAt(k.length-1) != "@") {
+            t = $("<span>").html(t).addClass("Link").attr("data-feed", crs + "/" + k.split("#")[0]);
+            if (i.css) t.css(i.css);
+        }
+        return t;
+    }
+    let date = d => {
+        let day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][d.getDay()];
+        let mon = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
+        return `${day}, ${mon} ${d.getDate()}`;
+    }
+    for (let [d, key] of cal) {
+        let i = info[key];
+        tr = $("<tr>").appendTo(tbl);
+        tr.append($("<td>").html(date(d)));
+        tr.append($("<td>").html(title(i, key)));
+    }
+}
+
+page_info({u: "home"});
+
+page_run(() => calendar("p20"));
+
+</script>
