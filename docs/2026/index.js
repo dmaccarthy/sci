@@ -84,7 +84,7 @@ function get_image(key) {
     let img = data_images[key];
     if (!img) img = get_image.map[key];
     if (!img) {
-        img = `../media/${key}`;
+        img = `./media/${key}`;
         if (key.indexOf(".") == -1) img += ".svg";
     }
     return img;
