@@ -244,7 +244,7 @@ function msg(html, time) {
 
 async function scripts(args) {
     let p = [];
-    let url = x => `${home_folder}/${a}.js?_${new Date().getTime()}`;
+    let url = x => `${home_folder}/${x}.js?_${new Date().getTime()}`;
     for (let a of args) if (!scripts.cache[a[1]]) {
         a = a[1];
         scripts.cache[a] = true;
@@ -451,6 +451,20 @@ click_link.actions = {
     gdoc: a => window.open(`https://docs.google.com/document/d/${a}/`),
 };
 
+function accordion(e) {
+    if (e.closest(".NoCollapseLink").length) return;
+    show = e.closest(".Collapsable");
+    if (show.length) {
+        let acc = show.closest(".Accordion");
+        let items = acc.find(".Collapsable");
+        for (let item of items.find(".Collapse26")) {
+            item = $(item);
+            if (item.closest(".Collapsable")[0] == show[0]) item.slideDown();
+            else item.slideUp();
+        }
+    }
+}
+
 $(window).on("popstate", () => {
     load_page(location.hash.substring(1), true);
 }).on("resize", () => {
@@ -458,15 +472,7 @@ $(window).on("popstate", () => {
     scroll_mjax();
 }).on("click", ev => {
     let e = $(ev.target);
-    let acc = e.closest("[data-accordion]");
-    if (acc.length) {
-        let [link, hide] = acc.attr("data-accordion").split(";");
-        for (let item of acc.find(link)) {
-            let h = $(item).find(hide);
-            if (item == e.closest(link)[0]) h.fadeIn();
-            else h.fadeOut();
-        }
-    }
+    accordion(e);
     if (e.is("#ShowPast, .ShowPast")) calendar.old();
     else if (e.closest("div.Message").length) $("div.Message").remove();
     else click_link(ev);

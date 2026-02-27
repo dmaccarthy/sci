@@ -54,7 +54,7 @@ body {
 
 #Top {
     width: calc(100vw - 12px);
-    height: 1.8em;
+    height: 28px;
     padding: 6px;
     position: fixed;
     top: 0;
@@ -107,7 +107,7 @@ h2.Title {
     font-size: 24px;
 }
 
-a, .Link {
+a, .Link, .Links span {
     color: var(--blue);
     text-decoration: underline;
     cursor: pointer;
@@ -225,7 +225,7 @@ p.Caption {
 
 body:not(.Present) {
 
-.Present {display: none} 
+.Present, .Collapse26 {display: none} 
 section.Post h2 {font-size: 20px}
 section.Post h3 {font-size: 18px}
 
@@ -271,6 +271,9 @@ body:not(.Present), #Top {
 
 }
 
+@media (max-width: 799px) {
+    body {font-size: 80%}
+}
 
 @media (min-width: 1080px) {
 
