@@ -216,7 +216,10 @@
 "elec/coulomb#s": {"t": "Lab: Coulomb’s Law", "s": "2026.2.24"},
 "elec/coulomb": {"t": "@Coulomb’s Law", "n": "10.3", "s": "2026.2.25", "a": "2026.2.26"},
 "elec/coulomb#c": {"t": "@Coulomb’s Law <em>(continued)</em>", "n": "10.3", "s": "2026.2.26"},
-"elec/Efield": {"t": "@Electric Fields", "n": "11.1", "s": "2026.2.27", "a": "2026.3.27"},
+"elec/Efield": {"t": "@Electric Fields", "n": "11.1", "s": "2026.2.27", "a": "2026.3.2"},
+"elec/motion": {"t": "@Motion in a Uniform Electric Field", "n": "11.2", "s": "2026.3."},
+"elec/volt": {"t": "@Electric Potential Difference", "n": "11.3", "s": "2026.3."},
+"elec/lightning": {"t": "@Applications of Electric Fields", "n": "11.4", "s": "2026.3.4"},
 
 "mom/energy": {"t": "@Work & Energy Review", "n": "9.1", "s": "2026.1.29", "a": "2026.1.30"},
 "mom/mom": {"t": "@Momentum", "n": "9.2", "s": "2026.1.30", "a": "2026.2.2"},

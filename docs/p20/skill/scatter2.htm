@@ -62,7 +62,7 @@
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Review</h2><div class="Collapse">
-<ol class="Questions">
+<ol>
 
 <li>A student started a weight loss program and decided to record their progress.
     <p class="Center"><b>Weight Loss</b><br/>Mass vs. Time</p>
@@ -144,7 +144,7 @@
 
 <li>Science 10 students conducted measurements of heat capacity by measuring the temperature of a beaker of water as heat was added. Their data is recorded in the table.
     <p class="Center"><b>Heat Capacity</b><br/>Temperature vs. Heat</p>
-    <table data-cue="none" class="TD6 Two Center">
+    <table class="TD6 Two Center">
         <tr>
             <th>Heat Added<br/><span class="NoBold"><span class="TeX">Q</span> / J</span></th>
             <th>Temperature<br/><span class="NoBold"><span class="TeX">T</span> / °C</span></th>
@@ -182,7 +182,7 @@
 
 <li>Students wanted to see if there was a relationship between the number of absences a student has in a class and the student’s grade in the class. They recorded data for 12 students in a Physics 20 class.
 <p class="Center"><b>Physics 20 Grades</b>:<br/>Grade vs. Absences</p>
-<table data-cue="none" class="TD6 Two Center">
+<table class="TD6 Two Center">
     <tr><th>Absences</th><th>Grade / %</th></tr>
     <tr><td>20</td><td>46</td></tr>
     <tr><td>19</td><td>52</td></tr>
@@ -199,7 +199,7 @@
 </table>
 <ol type="a">
     <li>Create a scatter plot of the data on graph paper.</li>
-    <li data-cue="prev">Add a best-fit line.</li>
+    <li>Add a best-fit line.</li>
     <p class="Answer">Graph at <a target="des3" href="https://www.desmos.com/calculator/gc3awsdzuf">desmos.com</a></p>
     <li>Calculate the slope of the best-fit line.</li>
     <div class="Answer">
@@ -219,7 +219,7 @@
 
 <li>Students at a diving school used a pressure gauge to measure the water pressure at various depths in a lake. They recorded the following data.
 <p class="Center"><b>Pressure Under Water:</b><br/>Pressure vs. Depth</p>
-<table data-cue="prev" class="TD6 Two Center">
+<table class="TD6 Two Center">
     <tr><th>Depth<br/><span class="NoBold"><span class="TeX">h</span> / m</span></th>
     <th>Pressure<br/><span class="NoBold"><span class="TeX">P</span> / kPa</span></th></tr>
     <tr><td>0.00</td><td>94.2</td></tr>
@@ -259,8 +259,9 @@
 </ol>
 </div></section>
 
-<div data-page-info="1">{"u": "p20/home", "p": "p20/skill/expDes", "n": "p20/skill/algebra"}</div>
 <script type="text/javascript">
+
+page_info({u: "p20/home", p: "p20/skill/expDes", n: "p20/skill/algebra"});
 
 page_svg2(
     ["#WtLoss0", "p20/skill/img/scatter", "wtLoss"],
