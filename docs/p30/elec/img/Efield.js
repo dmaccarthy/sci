@@ -49,4 +49,21 @@ ex1: (sel) => {
     g.mjax("\\vec{\\bf E}", s, [1.8, 7], "#0065fe");
 },
 
+proj: (sel) => {
+    let a = -0.370406, b = tan(70.2);
+    let svg = new SVG2(sel, {scale: 16, grid: 2, margin: [28, 28, 32, 12], lrbt: [0, 20, 0, 12]});
+    let tick = {size: ["-8", 0], css: ["sans", 14], label: 0, anchor: true};
+    svg.ticks({x: [0, 11, 2], ...tick, size: ["-14", 0], shift: "-29"});
+    svg.ticks({y: [0, 7, 2], ...tick});
+    let f = x => 6 + x * (b + a * x);
+    css(svg.locus(f, [0, 9.25]), "none", "#0065fe@2");
+    let g = svg.group("black@1", "silver");
+    g.rect([20, "8"], [10, "-4"]);
+    g.rect([20, "8"], [10, 12]);
+    g = svg.group("none@", "black");
+    svg.plusminus(1).shift_by([21, "-4"]);
+    svg.plusminus(1, 1).shift_by([21, 12]);
+    css(svg.circle("4", [0, 6]), "black@1", "#0065fe");
+},
+
 });
