@@ -4,7 +4,7 @@
 "vec2d/trig": {"t": "@Trigonometry Review", "n": "2.1", "s": "2026.2.25", "a": "2026.2.26", "h": "1dbeWmeTW-5YhaXQN7aZ2-6ZTevsGuHXo"},
 "vec2d/mag": {"t": "@Magnitude & Direction", "n": "2.2", "s": "2026.2.26", "a": "2026.2.27", "h": "1t5LyU0AQIoG8S9u_T5XgPn0pAh1toKG4"},
 "vec2d/diag": {"t": "@Vector Diagrams", "n": "2.3", "s": "2026.2.27", "a": "2026.3.2", "h": "1lWMY9AtotI-IHQx9dYBJU3Z0t3YYYDDR"},
-"vec2d/polar": {"t": "@Polar & Cartesian Form", "n": "2.4", "s": "2027.9", "a": "2027.9.26"},
+"vec2d/polar": {"t": "@Polar & Cartesian Form", "n": "2.4", "s": "2026.3.2", "a": "2026.3.3", "h": "16np_VV6WY4iIZrH6zEuT_XKQsfavEqXh"},
 "vec2d/arith": {"t": "@Vector Arithmetic", "n": "2.5", "s": "2027.9", "a": "2027.9.29"},
 "vec2d/proj": {"t": "@Projectile Motion", "n": "2.6", "s": "2027.9", "a": "2027.10.2"},
 "vec2d/proj#1": {"t": "@Projectile Motion <i>(continued)</i>", "s": "2027.10"},
@@ -104,7 +104,7 @@
 
 "chem3/rxn": {"t": "@Chemical Reactions / Conservation Laws", "n": "C13", "s": "2026.2.26", "a": "2026.2.27", "h": ["1MJnS_8iguRwVLvtPRBjtUdJtm01C00eC", ["Evidence of Chemical Reactions Lab", "19QXj_YnYYiPU6sGgBWSWO9h-C-FaTN3f"]]},
 "chem2/rxn#": {"t": "Lab: Evidence of Chemical Reactions", "s": "2026.2.26"},
-"chem3/rxn_fd": {"t": "@Formation & Decomposition", "n": "C14", "s": "2027.9", "a": "2027.9"},
+"chem3/rxn_fd": {"t": "@Formation & Decomposition", "n": "C14", "s": "2026.3.2", "a": "2026.3.3", "h": "1_KcvYGD1jQm6h-7BvizNDwTw1o_aldc_"},
 "chem3/rxn_c": {"t": "@Combustion", "n": "C15", "s": "2027.99", "a": "2027.10"},
 "chem3/rxn_sr": {"t": "@Single Replacement", "n": "C16", "s": "2027.10", "a": "2027.10"},
 "chem3/rxn_dr": {"t": "@Double Replacement", "n": "C17", "s": "2027.10", "a": "2027.10"},
@@ -217,8 +217,8 @@
 "elec/coulomb": {"t": "@Coulomb’s Law", "n": "10.3", "s": "2026.2.25", "a": "2026.2.26"},
 "elec/coulomb#c": {"t": "@Coulomb’s Law <em>(continued)</em>", "n": "10.3", "s": "2026.2.26"},
 "elec/Efield": {"t": "@Electric Fields", "n": "11.1", "s": "2026.2.27", "a": "2026.3.2"},
-"elec/motion": {"t": "@Motion in a Uniform Electric Field", "n": "11.2", "s": "2026.3."},
-"elec/volt": {"t": "@Electric Potential Difference", "n": "11.3", "s": "2026.3."},
+"elec/motion": {"t": "@Motion in a Uniform Electric Field", "n": "11.2", "s": "2026.3.2"},
+"elec/volt": {"t": "@Electric Potential Difference", "n": "11.3", "s": "2026.3.3"},
 "elec/lightning": {"t": "@Applications of Electric Fields", "n": "11.4", "s": "2026.3.4"},
 
 "mom/energy": {"t": "@Work & Energy Review", "n": "9.1", "s": "2026.1.29", "a": "2026.1.30"},
