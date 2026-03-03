@@ -49,7 +49,7 @@ vec1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 90-a), vec2d(Ff, 180-a)], {lrbt: [-16, 32, -64, 8],
         scale: 6, margin: 8, grid: 4, label: [8, 0]});
     svg.$.find(".Component").remove();
-    svg.gtext("N", 18, [28, -60]);
+    svg.text("N", [1, -64, "l"], 0, 14);
     svg.mjax("\\vec{\\bf F}_g", null, [-8, -29], "red");
     svg.mjax("\\vec{\\bf F}_n", null, [16, -38], "red");
     svg.mjax("\\vec{\\bf F}_f", null, [21, -4], "red");

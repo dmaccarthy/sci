@@ -50,7 +50,7 @@ loadFeed.sim = () => {
 
     svg.gradient("Platform", "lightgrey", "grey", 100, 40, 0, 60);
     svg.platform = svg.group("black@1", {fill: "url(#Platform)"});
-    svg.clock = svg.gtext("0.00 sec", ["mono", 24], [185, 95, "r"]);
+    svg.clock = svg.text("0.00 sec", [185, 95, "r"], 0, ["mono", 24]);
 
     svg.vi = uniform(37, 42);
     svg.ball = svg.group("red", "black@1");

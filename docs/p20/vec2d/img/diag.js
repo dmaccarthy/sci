@@ -82,20 +82,22 @@ Q4: (sel) => {
     svg.mjax("\\Delta\\vec{\\bf d}", null, [-11, 3], "#0065fe");
 },
 
-Q5: (sel, mu) => {
-    let Fg = 0.347 * 9.81;
-    let Fn = Fg * cos(14);
-    let vecs = [[0, -Fg], vec2d(Fn, 76)];
-    if (mu) vecs.push(vec2d(mu * Fn, 166));
-    let svg = SVG2.vec_diag(sel, vecs, {lrbt: [-1, 1.5, -4, 0.5],
-        scale: 90, margin: 8, grid: 0.25, label: [1, 0]});
-    svg.$.find(".Component").remove();
-    svg.gtext("N", "sans", [1.25, -3.75]);
+Q5: (sel, Fg, a, mu) => {
+    let svg = new SVG2(sel, {lrbt: [-1, 1.5, -4, 0.5], scale: 92, margin: [10, 6, 10, 10], grid: 0.25});
+    svg.ticks_xy([-1, 1.5, 1], [-4, 0.5, 1], 2);
+    let Fn = Fg * cos(a);
+    let vecs = [[0, -Fg], vec2d(Fn, 90-a)];
+    if (mu) {
+        vecs.push(vec2d(mu * Fn, 180-a));
+        svg.mjax("\\vec{\\bf F}_f", null, [0.7, 0.2, "l"], "red");
+    }
+    let tip = svg.tip_to_tail(vecs).$;
+    tip.find(".Component").remove();
+    svg.text("N", [0.1, -4], 0, ["sans", 15]);
     svg.mjax("\\vec{\\bf F}_g", null, [-0.5, -1.5], "red");
     svg.mjax("\\vec{\\bf F}_n", null, [0.75, -2], "red");
-    if (mu) svg.mjax("\\vec{\\bf F}_f", null, [0.8, 0.3], "red");
-    svg.mjax("\\vec{\\bf F}_{net}", null, [0.2, 0.4], "#0065fe");
-    css(svg.line([-1, tan(14)], [1.5, -1.5*tan(14)]), "lightgrey@1").insertBefore(svg.$.find(".TipToTail2D")[0]);
+    svg.mjax("\\vec{\\bf F}_{net}", null, [0.5, 0.4, "r"], "#0065fe");
+    css(svg.line([-1, tan(a)], [1.5, -1.5*tan(a)]), "lightgrey@1").insertBefore(tip);
 },
 
 });

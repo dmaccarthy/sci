@@ -39,7 +39,7 @@ loopy: (sel) => {
     let svg = new SVG2(sel, {size: [300, 420], lrbt: [-1, 1, -1.45], grid: 0, margin: 2});
     svg.group("none", "black@1").circle(1);
     svg.group("black").circle("3");
-    svg.gtext("C", ["sans", 24], [0.08, 0, "l"]);
+    svg.text("C", [0.08, 0, "l"], 0, ["sans", 24]);
     let red = svg.group("arrow");
     let g = svg.group("none", "black@2");
     for (let y of [-1, 1]) {

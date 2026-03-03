@@ -63,7 +63,7 @@ loadFeed.run = () => {
     pulley.circle("2", [0, 0]);
 
     // Create/update the timer
-    let timer = svg.gtext("??", ["sans", 32], [-1.125, -1.4]);
+    let timer = svg.text("??", [-1.125, -1.4], 0, ["sans", 32]);
     timer.beforeupdate = function() {
         timer.text = `${this.svg.time.toFixed(3)} s`;
     };

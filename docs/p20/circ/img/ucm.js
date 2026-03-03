@@ -21,7 +21,7 @@ earth: (sel) => {
         ["Centripetal", [0.5, 0.43]],
         ["Tangential", [0.9, 0.43]],
         ["Tangential", [0.5, 0.99]]
-    ]) g.gtext(t, [], p);
+    ]) g.text(t, p);
 },
 
 });
