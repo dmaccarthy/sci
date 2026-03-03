@@ -684,6 +684,20 @@ ticks(opt, useDefault) { /*
     return g;
 }
 
+ticks_xy(x, y, mode, opt) {
+    // @mode & 1 => Append @opt to default
+    // @mode & 2 => Remove zero
+    let defOpt = {anchor: true, size: ["-6", 0], label: 0, css: ["sans", 15]};
+    if (opt == null) opt = defOpt;
+    else if (mode & 1) opt = {...defOpt, ...opt};
+    let gx = this.ticks({x: x, ...opt});
+    let gy = this.ticks({y: y, ...opt});
+    if (mode & 2) for (let g of [gx, gy]) {
+        g.$.find(".Zero").remove();
+    }
+    return this;
+}
+
 plot(points, size, href, theta) {
 /* Plot a sequence of points as circles, rectangles, images or custom markers */
     let g = this.group(".Plot", "black@1", "#0065fe");
@@ -772,6 +786,9 @@ tip_to_tail(vecs, options) {
         }
         g.arrow({tail: [0, 0], tip: pt}, opt).$.addClass("Resultant");    
     }
+    g.$.find(".Arrow").css(SVG2._style.arrow);
+    g.$.find(".Resultant").css({fill: "#0065fe"});
+    g.$.find(".Component").css({fill: "yellow"});
     return g;
 }
 
@@ -786,7 +803,7 @@ energy_flow(data) {
         if (tex && txt.charAt(0) != "$") console.log(txt, tex);
         if (!color) color = "#0065fe";
         if (tex) this.mjax(tex, null, pos, color);
-        else g.gtext(txt, color, pos);
+        else g.text(txt, pos, 0, color);
     }
     g = this.group("arrow");
     for (let item of data.arrows) {
@@ -909,7 +926,7 @@ reshape(info, options, anchor) {
 
 label(text, shift) {
 /* Add text relative to arrow midpoint */
-    return this.gtext(text, ["sans", "none@"], this.seg.midpoint.plus(this.cs_size(shift)));
+    return this.text(text, this.seg.midpoint.plus(this.cs_size(shift)), 0, ["sans", "none@"]);
 }
 
 }
@@ -1545,9 +1562,9 @@ static vec_diag(sel, vecs, opt) {
     svg.$.find(".Zero").hide();
     if (opt.cycle == -1) g.$.find(".Component").hide();
     else if (opt.cycle) svg.vec_cycle(g.$, vecs.length > 1);
-    g.$.find(".Arrow").css(SVG2._style.arrow);
-    g.$.find(".Resultant").css({fill: "#0065fe"});
-    g.$.find(".Component").css({fill: "yellow"});
+    // g.$.find(".Arrow").css(SVG2._style.arrow);
+    // g.$.find(".Resultant").css({fill: "#0065fe"});
+    // g.$.find(".Component").css({fill: "yellow"});
     return svg;
 }
 
@@ -1612,7 +1629,7 @@ static ebg(sel, Emax, step, data, options) {
         let css = ["sans", 16];
         let [dec, x, skip] = options.label;
         svg.ticks({x: x, y: [0, Emax + step/2, skip ? skip * step : step], label: dec, css: css});
-        if (options.unit) svg.gtext(options.unit, css, ["6", Emax, "l"]);
+        if (options.unit) svg.text(options.unit, ["6", Emax, "l"], 0, css);
     }
 
     svg.beforeupdate = function() {
