@@ -1,5 +1,5 @@
 <section class="Post" data-icon="simulation">
-<h2 class="Collapse">Simulation</h2><div class="Collapse Expand">
+<h2 class="Collapse">Simulation</h2><div class="Collapse">
     <p class="Center"><span class="TeX">m</span> / kg = <span id="CalcMass"></span> × 10<sup>–9</sup> [<span class="TeX">v</span> / (m/s)]<sup>1.5</sup></p>
     <p class="Center"><svg id="OilDropSim"></svg></p>
     <p class="Center"><span id="Volts"></span> V ⌚ <span id="Timer">0.00</span> s</p>
@@ -57,12 +57,12 @@
 
 </div></section>
 
-<section class="Post" data-show="2024.10.2.10" data-icon="gdrv">
+<!-- <section class="Post" data-show="2024.10.2.10" data-icon="gdrv">
     <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
     <p class="BtnGrid">
         <button data-icon="gdrv" data-gdrv="1uiVgxx_ngPf_slS0y93JhK4ggYRYaKYY2htwYEAtXrU">Answer Key</button>
     </p>
-</div></section>
+</div></section> -->
 
 
 <script type="text/javascript" data-init="sim" >
@@ -141,13 +141,7 @@ loadFeed.sim.drawE = (V) => {
     svg.time = 0;
 }
 
-loadFeed.data = {
-    title: `${siteData.lesson}11.4 — Millikan’s Oil Drop Experiment`,
-    answerDate: "2024.10.1.10",
-    num: "11.4",
-    up: "p30/units/B",
-    prev: "p30/elec/volt",
-    next: "p30/elec/rev",
+loadFeed.data = {up: "p30/units/B", prev: "p30/elec/lightning", next: "p30/elec/rev",
 }
 
 </script>

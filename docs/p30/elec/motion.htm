@@ -34,7 +34,7 @@
 <tbody>
     <tr>
         <td><span class="TeX">\vec{\bf a}</span></td>
-        <td><span class="TeX">{\rm{m/s^2}}</span></td><td>0.00</td><td>–9.81</td></tr>
+        <td><span class="TeX">{\rm{m/s^2}}</span></td><td>0.00</td><td>–12.5</td></tr>
     <tr>
         <td><span class="TeX">{\vec{\bf v}}_i</span></td>
         <td><span class="TeX">{\rm{m/s}}</span></td>
@@ -48,13 +48,13 @@
     <tr>
         <td><span class="TeX">\Delta\vec{\bf d}</span></td>
         <td><span class="TeX">{\rm{m}}</span></td>
-        <td class="Reveal"><span>128</span></td>
+        <td class="Reveal"><span>101</span></td>
         <td>0.00</td>
     </tr>
     <tr>
         <td><span class="TeX">\Delta t</span></td>
         <td><span class="TeX">{\rm{s}}</span></td>
-        <td class=Reveal colspan="2"><span>5.78</span></td></tr>
+        <td class=Reveal colspan="2"><span>4.54</span></td></tr>
 </tbody>
 </table>
 
@@ -79,8 +79,8 @@
 </ul>
 </section>
 
-<section class="Slide"><h3>Example</h3>
-<p class="Blue">An electron moves through a uniform electric field. The initial velocity of the electron is 3.00 × 10<sup>6</sup> m/s perpendicular to the field and the electron is initially 5.00 cm above the positive plate. When the electron strikes the positive plate, it has move 12.0 cm parallel to the plate (perpendicular to the field). Calcuate the strength of the electric field.</p>
+<section class="Slide"><h3 class="Blue">Example</h3>
+<p data-cue="none" class="Blue">An electron moves through a uniform electric field. The initial velocity of the electron is 3.00 × 10<sup>6</sup> m/s perpendicular to the field and the electron is initially 5.00 cm above the positive plate. When the electron strikes the positive plate, it has move 12.0 cm parallel to the plate (perpendicular to the field). Calcuate the strength of the electric field.</p>
 <table class="Center TD6">
     <thead>
         <tr><i><th colspan="2"></th><th class="xy"><span class="TeX">x</span></th><th class="xy"><span class="TeX">y</span></th></i></tr>
@@ -182,13 +182,24 @@ loadFeed.notes = () => {
     <ol type="a">
         <li>Calculate the electron’s acceleration.</li>
         <div class="Answer">
-            <p class="TeX"></p>
+            <p>Taking the top plate to be positive so that the displacement and acceleration are positive and the electric field is negative...</p>
+            <p class="TeX">\vec{\bf F}_e = q\vec{\bf E} = \rm -1.60\times 10^{-19}\ C\cdot (-4000\ N/C) = +6.40\times 10^{-16}\ N</p>
+            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf F}}{m} = \rm \frac{+6.40\times 10^{-16}\ N}{9.11\times 10^{-31}\ kg} = +7.03\times 10^{14}\ m/s^2</p>
             <p></p>
         </div>
 
         <li>Calculate the velocity with which the electron hits the positive plate, and the time it takes to move from the negative to the positive plate.</li>
         <div class="Answer">
-            <p class="TeX"></p>
+            <p>For motion with constant acceleration...</p>
+            <p class="TeX">v_f^2 = v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}</p>
+            <p class="TeX">v_f = \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}</p>
+            <p class="TeX">v_f = \rm \sqrt{(0.00\ m/s)^2 + 2\cdot(+7.03\times 10^{14}\ m/s^2)\cdot(+0.100\ m)}</p>
+            <p class="TeX">v_f = \rm +1.19\times 10^7\ m/s</p>
+            <p>Now solve for the time...</p>
+            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
+            <p class="TeX">\vec{\bf a}\Delta t = \vec{\bf v}_f - \vec{\bf v}_i</p>
+            <p class="TeX">\Delta t = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\vec{\bf a}}</p>
+            <p class="TeX">\Delta t = \rm \frac{+1.19\times 10^7\ m/s - 0.00\ m/s}{+7.03\times 10^{14}\ m/s^2} = 1.69\times 10^{-8}\ s</p>
             <p></p>
         </div>
     </ol>
@@ -199,40 +210,109 @@ loadFeed.notes = () => {
     <p>The point of injection is 6.00 cm above the negative plate and the object is seen to hit the negative plate at a distance of 9.25 cm from the left side of the plate. The initial velocity of the object is 5.31 m/s [70.2º].</p>
     <ol type="a">
         <li>Use trigonometry (“SOH CAH TOA”) to calculate the <span class="TeX">x</span>- and <span class="TeX">y</span>-components of the initial velocity. A vector diagram of <span class="TeX">\vec{\bf v}_i</span> will be useful.</li>
+        <div class="Answer">
+            <p class="TeX">\vec{\bf v}_x = \rm 5.30\ m/s\cdot\cos 70.2^\circ = +1.80\ m/s</p>
+            <p class="TeX">\vec{\bf v}_y = \rm 5.30\ m/s\cdot\sin 70.2^\circ = +5.00\ m/s</p>
+        </div>
+
         <li>Calculate the time it took for the projectile to strike the negative plate by solving the <span class="TeX">x</span>-motion.</li>
+        <p class="Answer TeX">\Delta t = \frac{\Delta\vec{\bf d}_x}{\vec{\bf v}_x} = \rm \frac{+0.0925\ m}{+1.80\ m/s} = 0.0514\ s</p>
+
         <li>Solve the <span class="TeX">y</span>-motion to calculate the <span class="TeX">y</span>-components of the final velocity and acceleration.</li>
+        <div class="Answer">
+            <p class="TeX">\Delta\vec{\bf d}_y = \frac{\vec{\bf v}_{iy} + \vec{\bf v}_{fy}}{2} \Delta t</p>
+            <p class="TeX">\frac{2\Delta\vec{\bf d}_y}{\Delta t} = \vec{\bf v}_{iy} + \vec{\bf v}_{fy}</p>
+            <p class="TeX">\frac{2\Delta\vec{\bf d}_y}{\Delta t} - \vec{\bf v}_{iy} = \vec{\bf v}_{fy}</p>
+            <p class="TeX">\vec{\bf v}_{fy} = \rm \frac{2(-0.0600\ m)}{0.0514\ s} - (+5.00\ m/s) = -7.33\ m/s</p>
+            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
+            <p class="TeX">\vec{\bf a} = \rm \frac{-7.33\ m/s - (+5.00\ m/s)}{0.0514\ s} = -240\ m/s^2</p>
+        </div>
+
         <li>Calculate the object’s charge.</li>
+        <div class="Answer">
+            <p>Find the net, gravitational, and electric forces; all have only <span class="TeX">y</span>-components...</p>
+            <p class="TeX">\vec{\bf F}_{net} = m\vec{\bf a} = \rm 0.0200\ kg\cdot (-240\ m/s^2) = -4.79\ N</p>
+            <p class="TeX">\vec{\bf F}_g = m\vec{\bf g} = \rm 0.0200\ kg\cdot (-9.81\ m/s^2) = -0.196\ N</p>
+            <p class="TeX">\vec{\bf F}_e = \vec{\bf F}_{net} - \vec{\bf F}_g = \rm -4.79\ N - (-0.196\ N) = -4.60\ N</p>
+            <p>Now calculate <span class="TeX">q</span> from the electric force. The direction of <span class="TeX">\vec{\bf E}</span> is – since the field points from the top (+) to the bottom (–) plate.</p>
+            <p class="TeX">q = \frac{\vec{\bf F}_e}{\vec{\bf E}} = \rm \frac{-4.60\ N}{-1.08\times 10^6\ N/C} = +4.26\times 10^{-6}\ C</p>
+        </div>
     </ol></li>
 
 <li>An object with a charge of +2.00 μC and a mass of 35.0 g moves through a uniform electric field of 2.50 × 10<sup>6</sup> N/C directed vertically down.
     <ol type="a">
         <li>Determine the acceleration of the object. Note that this object is much larger than a single proton, so it cannot be assumed that gravity is negligible.</li>
+        <div class="Answer">
+            <p>Use Newton’s 2<sup>nd</sup> Law...</p>
+            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf F}_e + \vec{\bf F}_g}{m} = \frac{q\vec{\bf E} + m\vec{\bf g}}{m}</p>
+            <p class="TeX">\vec{\bf a} = \frac{q\vec{\bf E}}{m} + \vec{\bf g}</p>
+            <p class="TeX">\vec{\bf a} = \rm \frac{+2.00\times 10^{-6}\ C\cdot(-2.50\times 10^6\ N/C)}{0.0350\ kg} + (-9.81\ m/s^2)</p>
+            <p class="TeX">\vec{\bf a} = \rm -153\ m/s^2</p>
+        </div>
+
         <li>If the object’s initial velocity was 8.50 m/s directed horizontally, what will its final velocity (magnitude and direction) be after it has traveled through a horizontal displacement of 12.0 cm?</li>
+        <div class="Answer">
+            <p>This is a 2D problem (projectile motion) since the initial velocity is in the <span class="TeX">x</span>-direction and the acceleration is in the <span class="TeX">-y</span>-direction...</p>
+            <table class="Center Three TD6">
+                <tr><th></th><th class="TeX">x</th><th class="TeX">y</th></tr>
+                <tr><td><span class="TeX">\vec{\bf a}</span> / (m/s<sup>2</sup>)</td><td>0.00</td><td>-153</td></tr>
+                <tr><td><span class="TeX">\vec{\bf v}_i</span> / (m/s)</td><td rowspan="2">+8.50</td><td>0.00</td></tr>
+                <tr><td><span class="TeX">\vec{\bf v}_f</span> / (m/s)</td><td></td></tr>
+                <tr><td><span class="TeX">\Delta\vec{\bf d}</span> / m</td><td>+0.120</td><td></td></tr>
+                <tr><td><span class="TeX">\Delta t</span> / s</td><td colspan="2"></td></tr>
+            </table>
+            <p>Find the time by solving the <span class="TeX">x</span>-motion...</p>
+            <p class="TeX">\Delta t = \frac{\Delta\vec{\bf d}_x}{\vec{\bf v}_x} = \rm \frac{+0.120\ m}{+8.50\ m/s} = 0.0141\ s</p>
+            <p>Solve for the final <span class="TeX">y</span>-velocity...</p>
+            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
+            <p class="TeX">\vec{\bf a}\Delta t = \vec{\bf v}_f - \vec{\bf v}_i</p>
+            <p class="TeX">\vec{\bf v}_f = \vec{\bf a}\Delta t + \vec{\bf v}_i</p>
+            <p class="TeX">\vec{\bf v}_f = \rm (-153\ m/s^2) (0.0141\ s) + 0.00\ m/s = -2.16\ m/s</p>
+            <p>Convert to polar form...</p>
+            <p class="TeX">v_f = \rm \sqrt{(8.50)^2 + (2.16)^2}\ m/s = 8.77\ m/s</p>
+            <p class="TeX">\theta = \rm \tan^{-1}\frac{-2.16}{8.50} = -14.3^\circ</p>
+        </div>
     </ol>
 </li>
 
 <li>A charged particle with a velocity of 3.25 × 10<sup>5</sup> m/s (take this as the <span class="TeX">x</span>-direction) is injected into a perpendicular (i.e. <span class="TeX">y</span>-direction) uniform electric field of 5.80 × 10<sup>4</sup> N/C. After moving through an <span class="TeX">x</span>-displacement of 8.00 cm, the particle’s direction has changed by 46.6º.
     <ol type="a">
         <li>Calculate the particle’s charge-to-mass <em>ratio</em>, <span class="TeX">q/m</span>.</li>
+        <div class="Answer">
+            <p>Because the final velocity direction is 46.6º and the <span class="TeX">x</span>-velocity remains constant, we can use trigonometry to find the final <span class="TeX">y</span>-velocity...</p>
+            <p class="TeX">\vec{\bf v}_{fy} = \vec{\bf v}_x\cdot\tan 46.6^\circ = \rm 3.25\times 10^5\ m/s\cdot\tan 46.6^\circ = 3.44\times 10^5\ m/s</p>
+            <table class="Center Three TD6 Top">
+                <tr><th></th><th class="TeX">x</th><th class="TeX">y</th></tr>
+                <tr><td><span class="TeX">\vec{\bf a}</span> / (m/s<sup>2</sup>)</td><td>0.00</td><td></td></tr>
+                <tr><td><span class="TeX">\vec{\bf v}_i</span> / (10<sup>5</sup> m/s)</td><td rowspan="2">+3.25</td><td>0.00</td></tr>
+                <tr><td><span class="TeX">\vec{\bf v}_f</span> / (10<sup>5</sup> m/s)</td><td>+3.44</td></tr>
+                <tr><td><span class="TeX">\Delta\vec{\bf d}</span> / m</td><td>+0.0800</td><td></td></tr>
+                <tr><td><span class="TeX">\Delta t</span> / s</td><td colspan="2"></td></tr>
+            </table>
+            <p>Find the time by solving the <span class="TeX">x</span>-motion...</p>
+            <p class="TeX">\Delta t = \frac{\Delta\vec{\bf d}_x}{\vec{\bf v}_x} = \rm \frac{+0.0800\ m}{+3.25\times 10^5\ m/s} = 2.46\times 10^{-7}\ s</p>
+            <p>Calculate the acceleration...</p>
+            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
+            <p class="TeX">\vec{\bf a} = \rm \frac{+3.44\times 10^5\ m/s - 0.00\ m/s}{2.46\times 10^{-7}\ s} = +1.40\times 10^{12}\ m/s^2</p>
+            <p>Calculate <span class="TeX">q/m</span>...</p>
+            <p class="TeX">\vec{\bf F}_{net} = q\vec{\bf E} = m\vec{\bf a}</p>
+            <p class="TeX">\frac{q}{m} = \frac{\vec{\bf a}}{\vec{\bf E}} = \rm \frac{1.40\times 10^{12}\ m/s^2}{5.80\times 10^4\ N/C} = 2.41\times 10^7\ C/kg</p>
+        </div>
+
         <li>Assuming that the charge of the particle is exactly one elementary charge unit, what is the particle’s mass?</li>
+        <div class="Answer">
+            <p class="TeX">\frac{q}{m} = \rm 2.41\times 10^7\ C/kg</p>
+            <p class="TeX">m = \rm \frac{1.60\times 10^{-19}\ C}{2.41\times 10^7\ C/kg} = 6.64\times 10^{-27}\ kg</p>
+        </div>
     </ol>
 </li>
 
 </ol>
 </div></section>
 
-<!-- <section class="Post" data-show="2024.9.25.10" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="187EL4mH70qJ14-cCA1S7vhvh2GDdakVw7B0Kh29XM8I">Answer Key</button>
-    </p>
-</div></section> -->
-
-
-
 <script type="text/javascript">
 
-loadFeed.data = { up: "p30/units/B", prev: "p30/elec/Efield", //next: "p30/elec/volt",
+loadFeed.data = { up: "p30/units/B", prev: "p30/elec/Efield", next: "p30/elec/volt",
 }
 
 </script>

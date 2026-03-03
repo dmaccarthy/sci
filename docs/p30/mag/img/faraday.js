@@ -12,7 +12,7 @@ lenz_law: (sel) => {
     magnet = magnet.line_to([x - 1.3, 2.5]).close().update();
     magnet.css({stroke: "black", fill: "lightgrey"});
     x -= 0.4;
-    svg.gtext("N", ["sans", 24], [x, 0]);
+    svg.text("N", [x, 0], 0, ["sans", 24]);
 
     // Coil
     let coil = svg.coil([2, 4], 11, 0, 0, "3").css("none", {stroke: "#b87333"});
@@ -32,11 +32,11 @@ lenz_law: (sel) => {
     // Poles
     let g = coil.group("sans", 24, "#0065fe", {stroke: "none"}, ".Toggle1");
     let pole = 1.65;
-    g.gtext("N", {}, [0, -pole]);
-    g.gtext("S", {}, [0, pole]);
+    g.text("N", [0, -pole]);
+    g.text("S", [0, pole]);
     g = g.group(".Toggle2");
-    g.gtext("+", {}, [1.45, -1.95]);
-    g.gtext("–", {}, [1.45, 1.95]);
+    g.text("+", [1.45, -1.95]);
+    g.text("–", [1.45, 1.95]);
 
     // Magnetic force vectors
     g = svg.group("arrow", ".Toggle0");

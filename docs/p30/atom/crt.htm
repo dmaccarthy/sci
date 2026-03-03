@@ -148,7 +148,7 @@ loadFeed.sim = () => {
 
     let css = {stroke: "red", "stroke-width": "1px", fill: "none"};
     svg.parab = svg.conics.locus((x, t, a) => a * x * x, [-2, 12], -1, 0).css(css);
-    svg.measure = g = svg.conics.gtext("", ["red"], [0, 0, "l"]);
+    svg.measure = g = svg.conics.text("", [0, 0, "l"], 0, "red");
     svg.conics.$.children("*").hide();
 
     svg.$.on("click", ev => {
