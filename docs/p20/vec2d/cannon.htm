@@ -62,6 +62,11 @@ loadFeed.sim = () => {
     css(g.circle(2.5), ".Wheel", "brown@2");
     g.align([0, 0, 0.5, 1]);
 
+    svg.bird = svg.group();
+    svg.bird.image("p20/vec2d/img/bird.svg", [10, 10]);
+    svg.dog = svg.group();
+    svg.dog.image("p20/vec2d/img//dog.svg", [10, 10]);
+
     loadFeed.sim.elevate();
 
     svg.beforeupdate = function() {
@@ -75,7 +80,9 @@ loadFeed.sim = () => {
             svg.pause();
         }
         b.align([y < 0 ? [b.landing, 0] : [x, y], [0.5, 0.5]]);
-        svg.clock.text = `${t.toFixed(2)} sec`
+        svg.clock.text = `${t.toFixed(2)} sec`;
+        svg.bird.config({shift: [0, y]});
+        svg.dog.config({shift: [x, 0]});
     };
 
     svg.$.on("click", () => {

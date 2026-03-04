@@ -6,11 +6,11 @@
 "vec2d/diag": {"t": "@Vector Diagrams", "n": "2.3", "s": "2026.2.27", "a": "2026.3.2", "h": "1lWMY9AtotI-IHQx9dYBJU3Z0t3YYYDDR"},
 "vec2d/polar": {"t": "@Polar & Cartesian Form", "n": "2.4", "s": "2026.3.2", "a": "2026.3.3", "h": "16np_VV6WY4iIZrH6zEuT_XKQsfavEqXh"},
 "vec2d/arith": {"t": "@Vector Arithmetic", "n": "2.5", "s": "2026.3.3", "a": "2026.3.4", "h": "14BWvo1DqgCYIFTCTi5GE7aF-P2CHbi1z"},
-"vec2d/proj": {"t": "@Projectile Motion", "n": "2.6", "s": "2026.3.4", "a": "2026.3.5", "h": ["1UY2qRFE2DQnsf1nKlA2rWCkQVlwPrCG_",
+"vec2d/arith#1": {"t": "@Vector Arithmetic <i>(continued)</i>", "s": "2026.3.4"},
+"vec2d/proj": {"t": "@Projectile Motion", "n": "2.6", "s": "2026.3.5", "a": "2026.3.9", "h": ["1UY2qRFE2DQnsf1nKlA2rWCkQVlwPrCG_",
     ["Simulation Handout", "1d3_mbBKtEDsiGmlQjumU_fHZfE_sSlJU"], ["Simulation", {"icon": "simulation", "open": "./#p20/vec2d/cannon"}], ["Desmos", {"icon": "desmos", "open": "https://www.desmos.com/calculator/c981c0076b"}]
 ]},
-"vec2d/proj#1": {"t": "@Projectile Motion <i>(continued)</i>", "s": "2027.10"},
-"vec2d/proj#2": {"t": "Simulation: Cannonball!", "s": "2027"},
+"vec2d/proj#1": {"t": "Simulation: Cannonball!", "s": "2026.3.9"},
 "vec2d/rev": {"t": "@2D Motion Review", "s": "2027.10", "a": "2027.10.30"},
 "q2/@": {"t": "Quiz: Two-Dimensional Motion", "s": "2026.3.10", "css": {"font-weight": "bold"}},
 "uA/@": {"t": "Unit A Exam", "s": "2026.3.13", "css": {"font-weight": "bold"}},
@@ -196,13 +196,14 @@
 
 "sp2/prj3#1": {"t": "Python Project #1", "s": "2026.2.17", "css": {"font-weight": "bold"}},
 "sp2/prj3#2": {"t": "Python Project #2", "s": "2026.2.26", "css": {"font-weight": "bold"}},
-"sp2/prj3#3/@": {"t": "Structured Programming Quiz", "s": "2026.3.9", "css": {"font-weight": "bold"}},
-"sp2/prj3#4/@": {"t": "Python Project #3", "s": "2026.3.17", "css": {"font-weight": "bold"}}
+"sp2/prj3#3/@": {"t": "Structured Programming Quiz", "s": "2026.3.13", "css": {"font-weight": "bold"}},
+"sp2/prj3#4": {"t": "Python Project #3", "s": "2026.3.17", "css": {"font-weight": "bold"}}
 },
 
 "cs20": {"home": {"folder": "cs_new", "t": "@Computring Science 20"},
 
-"@": {"t": "Nothing Scheduled Yet!", "s": "2026.6.11", "css": {"font-weight": "bold"}}
+"ds/@": {"t": "Quiz: Procedural Programming / Data Structures", "s": "2026.3.13", "css": {"font-weight": "bold"}},
+"ds/prj20/@": {"t": "Summative Projects", "s": "2026.3.17", "css": {"font-weight": "bold"}}
 },
 
 "cs30": {"home": {"folder": "cs_new", "t": "@Computring Science 30"},
