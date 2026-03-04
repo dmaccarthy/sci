@@ -66,4 +66,51 @@ proj: (sel) => {
     css(svg.circle("4", [0, 6]), "black@1", "#0065fe");
 },
 
+shield: (sel) => {
+    let svg = new SVG2(sel, {scale: 16, margin: 12, lrbt: [0, 20, 0, 12]});
+    let g = svg.group("black@1", "silver");
+    g.rect([20, "8"], [10, "-4"]);
+    g.rect([20, "8"], [10, 12]);
+    g = svg.group("none@", "black");
+    let ray = svg.group("none", "red@1");
+    for (let x=0;x<20.1;x+=1.25) {
+        g.plusminus(0.4).shift_by([x, 0.4]);
+        g.plusminus(0.4, 1).shift_by([x, 11.3]);
+        ray.ray([x, 10.8], [x, 0.8], "5", 0.1, 0.5, 0.9);
+    }
+    g = svg.group("black", "none@");
+    css(g.rect([6, 5], [10, 6]), "silver", "black@2");
+    for (let x=7.5;x<13;x+=1.25) {
+        g.plusminus(0.4).shift_by([x, 8]);
+        g.plusminus(0.4, 1).shift_by([x, 4]);
+    }
+    svg.$.on("click", () => g.$.fadeToggle());
+},
+
+discharge: (sel) => {
+    let svg = new SVG2(sel, {scale: 16, margin: 12, lrbt: [0, 20, 0, 12]});
+    let g = svg.group("black@1", "silver");
+    g.rect([20, "8"], [10, "-4"]);
+    g.rect([20, "8"], [10, 12]);
+    g = svg.group("none@", "black");
+    for (let x=0;x<20.1;x+=1.25) {
+        svg.plusminus(0.4).shift_by([x, 0.4]);
+        svg.plusminus(0.4, 1).shift_by([x, 11.3]);
+    }
+    g = svg.group("sans", 24).shift_by([10, 5]);
+    g.text("O", [-1.5, 0]);
+    g.text("O", [1.5, 0]);
+    g= g.group("black@2", "none");
+    let x = 0.7, y = 0.4;
+    g.line([-x, y], [x, y]);
+    y = -0.2;
+    g.line([-x, y], [x, y]);
+
+    let tail = {tail: "6"};
+    g = svg.group("arrow");
+    g.arrow({tail: [10, 6], tip: [10, 10]}, tail);
+    g.arrow({tail: [8.5, 4], tip: [8.5, 2]}, tail);
+    g.arrow({tail: [11.5, 4], tip: [11.5, 2]}, tail);
+},
+
 });
