@@ -572,6 +572,7 @@ coil(size, n, reverse, r, axle) {
 
 _turn(w, r, circ) {
 /* Render a turn of wire as a path */
+    // console.log(w, r, circ);
     let g = this.group();
     if (circ == null) circ = 0;
     w /= 2;
@@ -580,6 +581,17 @@ _turn(w, r, circ) {
     p.line_to([-w, -2 * r]);
     if (circ & 2) p. arc([-w, -r], 90, 2);
     p.update();
+    return g;
+}
+
+vec_in_out(r, into, color) {
+/* Symbol for vector into or out of the page */
+    if (!color) color = "black@2";
+    let g = this.group("none");
+    r = this.cs_radius(r);
+    css(g.circle(r), color);
+    let p = into ? g.plusminus(1.2 * r, into).config({theta: 45}) : g.circle(r / 4);
+    css(p, "none@", color.split("@")[0]);
     return g;
 }
 
