@@ -213,6 +213,13 @@
 
 "p30": {"home": {"t": "@Physics 30"},
 
+"mag/em": {"t": "@Electromagnetism", "n": "12.1", "s": "2026.3.11", "a": "2026.3.13"},
+"mag/B": {"t": "@Magnetic Fields", "n": "12.2", "s": "2026.3.13", "a": "2026.3.16"},
+"mag/Fm": {"t": "@Magnetic Force", "n": "12.3", "s": "2026.3.16", "a": "2026.3.17"},
+"mag/helix": {"t": "@Motion in a Uniform Magnetic Field", "n": "12.4", "s": "2026.3.18", "a": "2026.3.19"},
+"mag/motor": {"t": "@Motor Principle", "n": "12.5", "s": "2026.3.19", "a": "2026.3.20"},
+"mag/faraday": {"t": "@Electromagnetic Induction", "n": "12.6", "s": "2026.3.30", "a": "2026.3.31"},
+
 "elec/static": {"t": "@Electrostatics", "n": "10.1", "s": "2026.2.20", "a": "2026.2.20"},
 "elec/static#": {"t": "Activity: Electrostatics", "s": "2026.2.18"},
 "elec/da": {"t": "@Data Analysis Review", "n": "10.2", "s": "2026.2.23", "a": "2026.2.24"},

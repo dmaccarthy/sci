@@ -108,6 +108,7 @@ table.TD8 td {min-width: 8em}
 .Top {margin-top: 1em}
 .NoBottom {margin-bottom: 0}
 .NoTop {margin-top: 0}
+.NoBorder, table.NoBorder *:is(td, th) {border: none}
 div.Answer {margin-bottom: 0.75em}
 
 p.Answer {

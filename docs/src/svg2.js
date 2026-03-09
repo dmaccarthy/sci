@@ -488,7 +488,7 @@ ruler(n, tick, opt) { //width, big, offset, tickSmall, tickBig) {
     return g;
 }
 
-cylinder(r, L) {
+cylinder(r, L, ellipse_first) {
 /* Draw a cylinder; pivot is center of the elliptical "top" */
     r = this.cs_size(r);
     if (typeof(L) == "string") L = Math.abs(parseFloat(L) / this.svg.scale[1]);
@@ -496,8 +496,9 @@ cylinder(r, L) {
     let p1 = new RArray(r[0], 0);
     let p2 = p1.neg().minus([0, L]);
     let c = g.svg.angleDir == -1 ? 2 : 0;
+    if (ellipse_first) g.ellipse(r);
     g.path(p1).ver(-L).arc_to(p2, r, c).ver(0).arc_to(p1, r).close().update();
-    g.ellipse(r);
+    if (!ellipse_first) g.ellipse(r);
     return g;
 }
 
@@ -592,6 +593,33 @@ vec_in_out(r, into, color) {
     css(g.circle(r), color);
     let p = into ? g.plusminus(1.2 * r, into).config({theta: 45}) : g.circle(r / 4);
     css(p, "none@", color.split("@")[0]);
+    return g;
+}
+
+mag_compass(r) {
+    let g = this.group("white", "black@1");
+    let x = r / 5;
+    g.circle(r);
+    css(g.poly([[-x, 0], [x, 0], [x, 3*x], [0, 4*x], [-x, 3*x]], 1), "red");
+    x *= -1;
+    css(g.poly([[-x, 0], [x, 0], [x, 3*x], [0, 4*x], [-x, 3*x]], 1), "black");
+    return g;
+}
+
+photogate_side(size, m) {
+    let g = this.group();
+    if (!m) m = -1.75;
+    if (m > 0) m = -m;
+    let x = 3.8;
+    let pts = [[-1/m - x, -1], [-1/m, -1], [-2/m, -2], [-2/m - 5, -2], [3/m - 5, 3], [3/m, 3], [2/m, 2], [2/m - x, 2]];
+    x = size / 6;
+    let d = new RArray(0, -x);
+    for (let i=0;i<pts.length;i++) pts[i] = new RArray(...pts[i]).times(size/6);
+    g.poly([pts[7], pts[6], d.plus(pts[6]), d.plus(pts[7]).plus([-x/m, 0])], 1);
+    g.poly(pts, 1);
+    g.poly([pts[3], pts[2], d.plus(pts[2]), d.plus(pts[3])], 1);
+    g.poly([pts[4], pts[3], d.plus(pts[3]), d.plus(pts[4])], 1);
+    g.circle(x/8, pts[6].minus([x/2, x/2]));
     return g;
 }
 
