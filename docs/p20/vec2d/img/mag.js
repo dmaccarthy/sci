@@ -41,9 +41,9 @@ hiker: (sel) => {
     g.plot([[5, 1], [-2, 5]], "5").css({"fill-opacity": 0.7});
 
     svg.mjax("\\theta", {scale: 0.8}, [-0.8, 4.8]);
-    svg.mjax("\\vec{\\bf d}_i", null, [-2.7, 5.75], "#0065fe");
-    svg.mjax("\\vec{\\bf d}_f", null, [5.5, 1.5], "#0065fe");
-    svg.mjax("\\Delta\\vec{\\bf d}", null, [2.5, 3.5], "red");
+    svg.mjax("\\va{d}_i", null, [-2.7, 5.75], "#0065fe");
+    svg.mjax("\\va{d}_f", null, [5.5, 1.5], "#0065fe");
+    svg.mjax("\\Delta\\va{d}", null, [2.5, 3.5], "red");
 },
 
 soccer: (sel) => {

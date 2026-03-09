@@ -129,7 +129,7 @@ ramp : (sel) => {
 
     let g = svg.group().config({theta: 8});
     let s = {scale: 0.8};
-    g.mjax("\\Delta\\vec{\\bf d} = \\rm +2.00\\ m", s, [1, 0.08], "red");
+    g.mjax("\\Delta\\va{d} = \\rm +2.00\\ m", s, [1, 0.08], "red");
     svg.mjax("h_f", s, [2, 0.15, -0.1, 0.5], "red");
     svg.mjax("\\rm 8.00^\\circ", s, [0.2, 0.1], "red");
 },

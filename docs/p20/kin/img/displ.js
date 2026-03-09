@@ -5,9 +5,9 @@ Q1a: (sel) => {
         lrbt: [-5, 5, -1, 1], scale: 50, margin: 8, grid: 0.5, label: [1, 0]});
     svg.$.find(".Component, .LabelY, .TickY").remove();
     svg.gtext("km", 18, [4.5, -0.85]);
-    svg.mjax("\\vec{\\bf d}_i", null, [-4, 0.55], "red");
-    svg.mjax("\\vec{\\bf d}_f", null, [3.2, 0.55], "red");
-    svg.mjax("\\Delta\\vec{\\bf d}", null, [-0.5, 0.55], "red");
+    svg.mjax("\\va{d}_i", null, [-4, 0.55], "red");
+    svg.mjax("\\va{d}_f", null, [3.2, 0.55], "red");
+    svg.mjax("\\Delta\\va{d}", null, [-0.5, 0.55], "red");
 },
 
 Q1b: (sel) => {
@@ -17,7 +17,7 @@ Q1b: (sel) => {
     let g = svg.$.find("g.Arrow");
     $([g[0], g[2]]).remove();
     svg.gtext("km", 18, [4.5, -0.85]);
-    svg.mjax("\\Delta\\vec{\\bf d}", null, [-1.5, 0.8], "#0065fe");
+    svg.mjax("\\Delta\\va{d}", null, [-1.5, 0.8], "#0065fe");
 
 },
 

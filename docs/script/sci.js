@@ -382,12 +382,12 @@ function make_cal(crs) {
     });
 }
 
-function initPage(latex) {
+function initPage(latex, bbox) {
     /* Initialize page */
     if (!latex) latex = "svg";
     renderTeX = {
-        svg: e => mjax_render(e).then(layoutWidth),
-        mjax: e => mjax_render(e, true).then(layoutWidth),
+        svg: e => mjax_render(e, 0, bbox).then(layoutWidth),
+        mjax: e => mjax_render(e, true, bbox).then(layoutWidth),
         katex: katex_render,
         none: e => $(e ? e : ".TeX").css({visibility: "visible"}),
     }[latex];
@@ -417,7 +417,7 @@ $(async () => {
                 }
             }
         }
-        initPage();
+        initPage("svg", "1px");
         });
     });
 });

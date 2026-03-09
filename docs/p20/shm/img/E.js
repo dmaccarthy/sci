@@ -30,7 +30,7 @@ spring: (sel) => {
     svg.gtext("Eqm", ["sans", 20, "#0065fe"], [3, -0.6]);
     svg.arrow({tail: [3, -0.4], tip: [3, 0]}, {tail: "4"}).css("arrow", "#0065fe");
 
-    svg.mjax("\\vec{\\bf F}_{↡ elas}", null, [4.5, 1.1, 0, 0.6], "red");
+    svg.mjax("\\va{F}_{↡ elas}", null, [4.5, 1.1, 0, 0.6], "red");
     svg.mjax("x", null, [4.5, 0.6, 0, 0.6], "#0065fe");
 
     g = svg.group("arrow");

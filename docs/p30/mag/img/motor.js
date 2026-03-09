@@ -47,7 +47,7 @@ coil_rotate: (sel) => {
 
     g = svg.group("arrow", "forestgreen");
     g.arrow({tail: [-1.5, 5], tip: [1.5, 5]}, {tail: "5"});
-    svg.mjax("\\vec{\\bf B}", null, [0, 5.75, "b"], "forestgreen");
+    svg.mjax("\\va{B}", null, [0, 5.75, "b"], "forestgreen");
 },
 
 });

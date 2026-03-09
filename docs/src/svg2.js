@@ -662,26 +662,26 @@ _grid(g, x, y, swap) {
     }
 }
 
-ticks(opt, useDefault) { /*
+ticks(opt) { /*
     x, y: Specify coordinates of ticks and labels
     size: Tick extent below and above
     label: Function or decimal places for labels
-    css: Styling for labels
+    skip: Labeling interval
+    major: Factor by which to increase major tick size
     anchor, shift: Adjust location of labels
-    theta: orientation of labels
+    theta: Orientation of labels
+    css: Styling for labels
 */
-    if (useDefault) {
-        let def = {size: ["-6", 0], css: ["sans", 15], label: 0, shift: "-8"};
-        opt = opt ? Object.assign(def, opt) : def;
-    }
-    let p0, p1, gt, gl;
-    let svg = this.svg;
-    let [x, y, size, label, skip] = [opt.x, opt.y, opt.size, opt.label, opt.skip];
+    let p0, p1, gt, gl, svg = this.svg;
+    if (opt.default) opt = {size: true, anchor: true, label: 0, css: ["sans", 15], ...opt};
+    let [x, y, size, label, skip, major] = [opt.x, opt.y, opt.size, opt.label, opt.skip, opt.major];
+    if (!major) major = 1;
+    if (size === true) size = ["-6", 0];
     let swap = y instanceof Array;
-    let g = this.group(swap ? ".TicksY" : ".TicksX");
     if (swap) [x, y] = [y, x];
     if (!y) y = 0;
     let [x0, x1, dx] = x;
+    let g = this.group(swap ? ".TicksY" : ".TicksX");
     if (size) {
         gt = g.group(".Ticks", "black@1");
         p0 = svg.cs_size(swap ? [size[0], 0] : [0, size[0]]);
@@ -708,33 +708,29 @@ ticks(opt, useDefault) { /*
     let i = 0;
     if (!skip) skip = 1;
     for (let xi = x0; xi <= x1; xi += dx) {
+        let is_major = (i++) % skip == 0;
+        let mult = is_major ? major : 1;
         let t, zero = Math.abs(xi / dx) < 0.001;
         let dp = swap ? [y, xi] : [xi, y];
         if (size) {
-            t = gt.line(p0.plus(dp), p1.plus(dp));
+            t = gt.line(p0.times(mult).plus(dp), p1.times(mult).plus(dp));
             if (zero) t.addClass("Zero");
         }
-        if (label != null && (i++) % skip == 0) {
+        if (label != null && is_major) {
             let text = f(xi);
             t = gl.text(text, [...dp, false], opt.theta); // anchor
-            // if (parseFloat(text) == 0)
             if (zero) t.$.addClass("Zero");
         }
     }
     return g;
 }
 
-ticks_xy(x, y, mode, opt) {
-    // @mode & 1 => Append @opt to default
-    // @mode & 2 => Remove zero
-    let defOpt = {anchor: true, size: ["-6", 0], label: 0, css: ["sans", 15]};
-    if (opt == null) opt = defOpt;
-    else if (mode & 1) opt = {...defOpt, ...opt};
+ticks_xy(x, y, opt) {
+/* Draw ticks/labels on both axes */
     let gx = this.ticks({x: x, ...opt});
     let gy = this.ticks({y: y, ...opt});
-    if (mode & 2) for (let g of [gx, gy]) {
+    if (opt.removeZero) for (let g of [gx, gy])
         g.$.find(".Zero").remove();
-    }
     return this;
 }
 
@@ -1626,7 +1622,7 @@ static vec_diag_table(sym, vecs, prec, scale) {
     let tbl = $("<table>").addClass("VectorTable");
     let thead = $("<thead>").appendTo(tbl);
     let tr = $("<tr>").appendTo(thead);
-    let v = sym.charAt(0) == "Δ" ? `\\Delta\\vec{\\bf ${sym.substring(1)}}` : `\\vec{\\bf ${sym}}`;
+    let v = sym.charAt(0) == "Δ" ? `\\Delta\\va{${sym.substring(1)}}` : `\\va{${sym}}`;
     for (let x of [`|${v}|`, `\\theta`, `${v}_x`, `${v}_y`])
         tr.append($("<th>").addClass("TeX").html(x));
     tr = $("<tr>").appendTo(thead);

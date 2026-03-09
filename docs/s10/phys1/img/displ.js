@@ -3,8 +3,10 @@ SVG2.cache("s10/phys1/img/displ.js", {
 student: (sel, arrow) => {
     let svg = new SVG2(sel, {scale: 10, lrbt: [-15, 30, -3, 6], margin: [14, 14, 2, 6]}).css(".NoStyle");
     svg.line([-17, 0], [32, 0]).css({stroke: "black"});
-    svg.label(["-8", "0"], [...range(-15, 31, 1)], 0);
-    svg.label(0, [...range(-15, 31, 5)], -2.5);
+
+    let opt = {anchor: true, css: ["sans", 15]}
+    svg.ticks({x: [-15, 31, 1], ...opt, size: ["-6", 0]});
+    svg.ticks({x: [-15, 31, 5], ...opt, label: 0});
 
     let text = svg.group("sans", 15);
     let disp = svg.group("arrow");
@@ -22,19 +24,13 @@ student: (sel, arrow) => {
 },
 
 patrol: (sel, x0) => {
-    let shift = x0 ? true : false;
     let x1 = x0 + 1400;
-    let svg = new SVG2(sel, {size: [480, 100], lrbt: [x0, x1, -3, 6], margin: [30, 18, 6, 12]}).css(".NoStyle");
-    svg.line([x0-25, 0], [x1+25, 0]).css({stroke: "black"});
-    let ticks = svg.label(["-4", "0"], [...range(x0, x1+1, 50)], 0).$.find("line");
-    let i = shift ? 3 : 0;
-    while (i < ticks.length) {
-        $(ticks[i]).remove();
-        i += 4;
-    }
-    let x = 200 * Math.ceil(x0 / 200);
-    svg.label(["-8", "0"], [...range(x, x+1401, 200)], 0);
-    svg.label(0, [...range(x, x+1401, 200)], -2.75);
+    let svg = new SVG2(sel, {size: [480, 100], lrbt: [x0-50, x1, -3, 6], margin: [30, 18, 6, 12]}).css(".NoStyle");
+    svg.line([x0-50, 0], [x1+25, 0]).css({stroke: "black"});
+    let start = 200 * Math.floor(x0 / 200);
+
+    let opt = {anchor: true, size: ["-6", 0], label: 0, skip: 4, major: 1.8, shift: "-27", css: ["sans", 15]}
+    svg.ticks({x: [start, x1+1, 50], ...opt});
 
     let cities = {500: "Swift Current", 0: "Calgary", 275: "Medicine Hat", 750: "Regina", 1325: "Winnipeg"};
     let lines = svg.group("black@1");

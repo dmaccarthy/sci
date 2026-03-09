@@ -14,9 +14,9 @@ Q1: (sel) => {
     g.arrow({tail: [-1.4, 0.25], tip: [-0.4, 0.25]}, t6);
     g.arrow({tail: [1.7, 0.25], tip: [1, 0.25]}, t6);
     g.arrow({tail: [-0.1, 0.8], tip: [0.9, 0.8]}, t6).css("#0065fe");
-    svg.mjax("\\vec{\\bf v}_s", null, [-1, 0.6], "red");
-    svg.mjax("\\vec{\\bf v}_o", null, [1.45, 0.6], "red");
-    svg.mjax("\\vec{\\bf v}", null, [0.4, 0.55], "#0065fe");
+    svg.mjax("\\va{v}_s", null, [-1, 0.6], "red");
+    svg.mjax("\\va{v}_o", null, [1.45, 0.6], "red");
+    svg.mjax("\\va{v}", null, [0.4, 0.55], "#0065fe");
 },
 
 Q2: (sel) => {
@@ -28,8 +28,8 @@ Q2: (sel) => {
     let t6 = {tail: "6"};
     g.arrow({tail: [1.6, 0.3], length: 0.8}, t6);
     g.arrow({tail: [-0.6, 0.3], length: 1.2}, t6).css("#0065fe");
-    svg.mjax("\\vec{\\bf v}_o", null, [1.9, 0.8, 0.5, 0], "red");
-    svg.mjax("\\vec{\\bf v}", null, [0, 0.8, 0.5, 0], "#0065fe");
+    svg.mjax("\\va{v}_o", null, [1.9, 0.8, 0.5, 0], "red");
+    svg.mjax("\\va{v}", null, [0, 0.8, 0.5, 0], "#0065fe");
 },
 
 Q3: (sel) => {
@@ -46,8 +46,8 @@ Q3: (sel) => {
     g.arrow({tail: [-1.6, 0.1], length: 0.5}, t6);
     g.arrow({tail: [-1.9, 0.94], length: -0.5}, t6);
     g.arrow({tail: [0, 0.3], length: 1}, t6).css("#0065fe");
-    svg.mjax("\\vec{\\bf v}_s", null, [-1.6, 0.8, 0, 0], "red");
-    svg.mjax("\\vec{\\bf v}", null, [0.5, 0.8, 0.5, 0], "#0065fe");
+    svg.mjax("\\va{v}_s", null, [-1.6, 0.8, 0, 0], "red");
+    svg.mjax("\\va{v}", null, [0.5, 0.8, 0.5, 0], "#0065fe");
 },
 
 });

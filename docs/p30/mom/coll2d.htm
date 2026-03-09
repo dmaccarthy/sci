@@ -6,12 +6,12 @@
         <li>Express both momentum vectors in Cartesian form.</li>
         <div class="Answer">
             <p class="TeX">\begin{align}
-                \vec{\bf p}_{iA} &= m_A\vec{\bf p}_{iA} = \rm 100\ kg\cdot 2.00\ m/s\ [0.00^\circ]
+                \va{p}_{iA} &= m_A\va{p}_{iA} = \rm 100\ kg\cdot 2.00\ m/s\ [0.00^\circ]
                 \\[8pt] &= \rm {200\ N\cdot s\ [0.00^\circ]}
                 \\[8pt] &= \rm {(+200, 0.00) \ N\cdot s}
             \end{align}</p>
             <p class="TeX">\begin{align}
-                \vec{\bf p}_{iB} &= m_B\vec{\bf p}_{iB} = \rm 125\ kg\cdot 1.40\ m/s\ [+90.0^\circ]
+                \va{p}_{iB} &= m_B\va{p}_{iB} = \rm 125\ kg\cdot 1.40\ m/s\ [+90.0^\circ]
                 \\[8pt] &= \rm {175\ N\cdot s\ [+90.0^\circ]}
                 \\[8pt] &= \rm {(0.00, +175) \ N\cdot s}
             \end{align}</p>
@@ -19,7 +19,7 @@
         <li>Calculate the total momentum of the system (i.e. the combined momentum of the two cars) using the component method.</li>
         <div class="Answer">
             <p class="TeX">\begin{align}
-                \Sigma\vec{\bf p} &= \vec{\bf p}_{iA} + \vec{\bf p}_{iB}
+                \Sigma\va{p} &= \va{p}_{iA} + \va{p}_{iB}
                 \\[8pt] &= \rm {(+200, 0.00) \ N\cdot s + (0.00, +175) \ N\cdot s}
                 \\[8pt] &= \rm {(+200, +175) \ N\cdot s}
             \end{align}</p>
@@ -30,12 +30,12 @@
             <p><a target="Q1" href="./?{%22v%22:%22[200,0],[0,175]%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
             <p>If we want to express the total momentum in polar form:</p>
             <p class="TeX">\begin{align}
-                \left|\Sigma\vec{\bf p}\right| &= \sqrt{(\Sigma\vec{\bf p}_x)^2 + (\Sigma\vec{\bf p}_y)^2}
+                \left|\Sigma\va{p}\right| &= \sqrt{(\Sigma\va{p}_x)^2 + (\Sigma\va{p}_y)^2}
                 \\[8pt] &= \rm \sqrt{200^2 + 175^2}\ N\cdot s
                 \\[8pt] & = \rm {266\ N\cdot s}
             \end{align}</p>
             <p class="TeX">\begin{align}
-                \theta &= \tan^{-1}\frac{\Sigma\vec{\bf p}_y}{\Sigma\vec{\bf p}_x}
+                \theta &= \tan^{-1}\frac{\Sigma\va{p}_y}{\Sigma\va{p}_x}
                 \\[10pt] &= \rm {\tan^{-1}\frac{+175 \ N\cdot s}{+200 \ N\cdot s}}
                 \\[10pt] &= \rm {+41.2^\circ}
             \end{align}</p>
@@ -45,7 +45,7 @@
         <div class="Answer">
             <p>Because the two cars stick together, we can treat them as a single mass:</p>
             <p class="TeX">m = m_A + m_B = \rm (100 + 125)\ kg = 225\ kg</p>
-            <p class="TeX">\vec{\bf v}_f = \frac{\Sigma\vec{\bf p}}{m}
+            <p class="TeX">\va{v}_f = \frac{\Sigma\va{p}}{m}
                 = \rm {\frac{266\ N\cdot s\ [+41.2^\circ]}{225\ kg}}
                 = \rm {1.18\ m/s\ [+41.2^\circ]}
             </p>
@@ -73,16 +73,16 @@
 <section class="Slide"><h3>Momentum &amp; Impulse Vectors</h3>
     <p>Momentum and impulse are <em class="Defn">vector</em> quantities.</p>
     <ul>
-        <li>Momentum will always have the same direction as the velocity:<p class="TeX">{\vec{\bf p}} = m{\vec{\bf v}}</p></li>
-        <li>Impulse will always have the same direction as the force:<p class="TeX">\Delta{\vec{\bf p}} = {\vec{\bf F}}\Delta t</p></li>
+        <li>Momentum will always have the same direction as the velocity:<p class="TeX">{\va{p}} = m{\va{v}}</p></li>
+        <li>Impulse will always have the same direction as the force:<p class="TeX">\Delta{\va{p}} = {\va{F}}\Delta t</p></li>
     </ul>
     <div>
         <p>When calculating impulse as the change in momentum...</p>
-        <p class="TeX">\Delta{\vec{\bf p}} = {\vec{\bf p}}_f - {\vec{\bf p}}_i</p>
+        <p class="TeX">\Delta{\va{p}} = {\va{p}}_f - {\va{p}}_i</p>
     </div>
     <div>
         <p>...or calculating the total momentum to use the Law of Momentum Conservation...</p>
-        <p class="TeX">\Sigma{\vec{\bf p}}_f = \Sigma{\vec{\bf p}}_i</p>
+        <p class="TeX">\Sigma{\va{p}}_f = \Sigma{\va{p}}_i</p>
     </div>
     <p>...we need to remember that in 2D or 3D situations, vector addition and subtraction is different than adding and subtracting scalar quantities.</p>
 </section>
@@ -90,17 +90,17 @@
 <section class="Slide"><h3>Example 1</h3>
     <p  class="Blue">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [west] collide in an intersection. What is the total momentum of the system? Calculate the final velocity of the cars if they stick together after the collision.</p>
     <p>First calculate the initial momenta:</p>
-    <p class="TeX">{\vec{\bf p}}_{iA} = m_A {\vec{\bf v}}_{iA} = {\rm{1500\ kg\cdot 18.0\ m/s\ [north] = 27000\ N\cdot s\ [north]}}</p>
-    <p class="TeX">{\vec{\bf p}}_{iB} = m_B {\vec{\bf v}}_{iB} = {\rm{1200\ kg\cdot 20.0\ m/s\ [west] = 24000\ N\cdot s\ [west]}}</p>
+    <p class="TeX">{\va{p}}_{iA} = m_A {\va{v}}_{iA} = {\rm{1500\ kg\cdot 18.0\ m/s\ [north] = 27000\ N\cdot s\ [north]}}</p>
+    <p class="TeX">{\va{p}}_{iB} = m_B {\va{v}}_{iB} = {\rm{1200\ kg\cdot 20.0\ m/s\ [west] = 24000\ N\cdot s\ [west]}}</p>
     <p>To add the 2D vectors, draw them <em class="Defn">tip-to-tail</em> starting at the origin.</p>
     <p class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex1" class="s20"></svg></p>
     <ul>
         <li>The resultant vector goes from the origin to the tip of the last vector.</li>
         <li>Because the triangle contains a right angle, we can solve for the missing sides and/or angles using trigonometry.</li>
     </ul>
-    <p class="TeX">|\Sigma{\vec{\bf p}}| = \sqrt{27000^2 + 24000^2}\ {\rm{N\cdot s}} = {\rm{36125\ N\cdot s}}</p>
+    <p class="TeX">|\Sigma{\va{p}}| = \sqrt{27000^2 + 24000^2}\ {\rm{N\cdot s}} = {\rm{36125\ N\cdot s}}</p>
     <p>After the collision, we can treat the two masses as a single 2700-kilogram mass because because they stick together:</p>
-    <p class="TeX">v_f = \frac{\Sigma\vec{\bf p}}{m_A+m_B} = \rm \frac{36125\ N\cdot s}{2700\ kg} = 13.4\ m/s</p>
+    <p class="TeX">v_f = \frac{\Sigma\va{p}}{m_A+m_B} = \rm \frac{36125\ N\cdot s}{2700\ kg} = 13.4\ m/s</p>
     <p class="TeX">\theta = \tan^{-1}\left({\rm{24000\ N\cdot s\over 27000\ N\cdot s}}\right) = 41.6^\circ</p>
     <ul>
         <li>Note that this is 41.6° west of north, or 131.6° from the <span class="TeX">+x</span>-axis.</li>
@@ -114,12 +114,12 @@
     <table class="Normal">
         <thead><tr><th></th><th>x</th><th>y</th></tr></thead>
         <tbody>
-            <tr class="Blue"><td><p class="TeX">\frac{{\vec{\bf p}}_{iA}}{\rm {N\cdot s}}</p></td><td><p class="TeX">\rm 27000\ \cos(90.0^\circ)</p><p class="TeX">= 0</p></td><td><p class="TeX">\rm 27000\ \sin(90.0^\circ)</p><p class="TeX">= 27000</p></td></tr>
-            <tr class="Blue"><td><p class="TeX">\frac{{\vec{\bf p}}_{iB}}{\rm {N\cdot s}}</p></td><td><p class="TeX">\rm 24000\ \cos(210.0^\circ)</p><p class="TeX"> = -20785</p></td><td><p class="TeX">\rm 24000\ \sin(210.0^\circ)</p><p class="TeX">= -12000</p></td></tr>
-            <tr class="Red"><td><p class="TeX">\frac{\Sigma{\vec{\bf p}}}{\rm {N\cdot s}}</p></td><td><p class="TeX">{\rm{-20785}}</p></td><td><p class="TeX">{\rm{15000}}</p></td></tr>
+            <tr class="Blue"><td><p class="TeX">\frac{{\va{p}}_{iA}}{\rm {N\cdot s}}</p></td><td><p class="TeX">\rm 27000\ \cos(90.0^\circ)</p><p class="TeX">= 0</p></td><td><p class="TeX">\rm 27000\ \sin(90.0^\circ)</p><p class="TeX">= 27000</p></td></tr>
+            <tr class="Blue"><td><p class="TeX">\frac{{\va{p}}_{iB}}{\rm {N\cdot s}}</p></td><td><p class="TeX">\rm 24000\ \cos(210.0^\circ)</p><p class="TeX"> = -20785</p></td><td><p class="TeX">\rm 24000\ \sin(210.0^\circ)</p><p class="TeX">= -12000</p></td></tr>
+            <tr class="Red"><td><p class="TeX">\frac{\Sigma{\va{p}}}{\rm {N\cdot s}}</p></td><td><p class="TeX">{\rm{-20785}}</p></td><td><p class="TeX">{\rm{15000}}</p></td></tr>
         </tbody>
     </table>
-    <p class="TeX">|\Sigma{\vec{\bf p}}| = \sqrt{20785^2 + 15000^2}\ {\rm{N\cdot s}} = {\rm{25632\ N\cdot s}}</p>
+    <p class="TeX">|\Sigma{\va{p}}| = \sqrt{20785^2 + 15000^2}\ {\rm{N\cdot s}} = {\rm{25632\ N\cdot s}}</p>
     <p>Alternatively, we could use the Law of Cosines and the Law of Sines to solve the trinagle.</p>
     <p class="TeX">v_f = {\rm{25632\ N\cdot s\over 2700\ kg}} = {\rm{9.49\ m/s}}</p>
     <p class="TeX">\theta = \tan^{-1}\left({\rm{15000\ N\cdot s\over -20785\ N\cdot s}}\right) + 180^\circ = 144.2^\circ</p>
@@ -129,7 +129,7 @@
     <p class="Blue">During a billiards game, the 170-gram cue ball moving at 2.50 m/s collides with a stationary ball of mass 150 grams. After the collision, the cue ball moves at an angle of +35.0° to its original direction, while the second ball moves at –55.0°. Find the final speeds of the two billiard balls.</p>
     <div>
         <p>Since only one ball is initially in motion, its momentum is the total momentum of the system:</p>
-        <p class="TeX">\Sigma{\vec{\bf p}} = m_A {\vec{\bf v}}_{iA} = {\rm{0.170\ kg\cdot 2.50\ m/s\ [0^\circ] = 0.425\ N\cdot s\ [0^\circ]}}</p>
+        <p class="TeX">\Sigma{\va{p}} = m_A {\va{v}}_{iA} = {\rm{0.170\ kg\cdot 2.50\ m/s\ [0^\circ] = 0.425\ N\cdot s\ [0^\circ]}}</p>
     </div>
     <p class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex3" class="s20"></svg></p>
     <ul>
@@ -148,8 +148,8 @@
         <li>When the triangle does not have a right angle, you must use the Law of Sines or Law of Cosines.</li>
         <li>Alternatively, you can write the momentum conservation equation separately for the <span class="TeX">x</span>- and <span class="TeX">y</span>-components:</li>
     </ul>
-    <p class="TeX">\Sigma{\vec{\bf p}}_x = p_A\cos(35.0^\circ) + p_B\cos(-55.0^\circ)= \rm{0.425\ N\cdot s}</p>
-    <p class="TeX">\Sigma{\vec{\bf p}}_y = p_A\sin(35.0^\circ) + p_B\sin(-55.0^\circ)= \rm{0.00\ N\cdot s}</p>
+    <p class="TeX">\Sigma{\va{p}}_x = p_A\cos(35.0^\circ) + p_B\cos(-55.0^\circ)= \rm{0.425\ N\cdot s}</p>
+    <p class="TeX">\Sigma{\va{p}}_y = p_A\sin(35.0^\circ) + p_B\sin(-55.0^\circ)= \rm{0.00\ N\cdot s}</p>
     <ul>
         <li>This is more difficult to solve because it is a system of two equations with two unknowns.</li>
     </ul>
@@ -167,37 +167,37 @@
     <div class="Answer">
         <p>First calculate the initial momentum of each car, remembering to convert km/h to m/s. Because it is a 2D collision, express all momentum vectors in Cartesian form (i.e. as <span class="TeX">x</span> and <span class="TeX">y</span> components):</p>
         <p class="TeX">\begin{align}
-            \vec{\bf p}_{iA} &= m_A\vec{\bf p}_{iA} = \rm 1250\ kg\cdot 20.8\ m/s\ [-90.0^\circ]
+            \va{p}_{iA} &= m_A\va{p}_{iA} = \rm 1250\ kg\cdot 20.8\ m/s\ [-90.0^\circ]
             \\[8pt] &= \rm {26042\ N\cdot s\ [-90.0^\circ]}
             \\[8pt] &= \rm {(0.00, -26042) \ N\cdot s}
         \end{align}</p>
         <p class="TeX">\begin{align}
-            \vec{\bf p}_{iB} &= m_B\vec{\bf p}_{iB} = \rm 1000\ kg\cdot 15.3\ m/s\ [180.0^\circ]
+            \va{p}_{iB} &= m_B\va{p}_{iB} = \rm 1000\ kg\cdot 15.3\ m/s\ [180.0^\circ]
             \\[8pt] &= \rm {15278\ N\cdot s\ [180.0^\circ]}
             \\[8pt] &= \rm {(-15278, 0.00) \ N\cdot s}
         \end{align}</p>
         <p><a target="Q2" href="./?{%22v%22:%22@(26.042,-90),@(15.278,180)%22,%22unit%22:%22kN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
         <p>Now calculate the total momentum by adding all of the <span class="TeX">x</span> components and then all of the <span class="TeX">y</span> components independently:</p>
         <p class="TeX">\begin{align}
-            \Sigma\vec{\bf p} &= \vec{\bf p}_{iA} + \vec{\bf p}_{iB}
+            \Sigma\va{p} &= \va{p}_{iA} + \va{p}_{iB}
             \\[8pt] &= \rm {(0.00, -26042) \ N\cdot s + (-15278, 0.00) \ N\cdot s}
             \\[8pt] &= \rm {(-15278, -26042) \ N\cdot s}
         \end{align}</p>
         <p>Now convert the total momentum from Cartesian to polar (magnitude and direction) form:</p>
         <p class="TeX">\begin{align}
-            \left|\Sigma\vec{\bf p}\right| &= \sqrt{(\Sigma\vec{\bf p}_x)^2 + (\Sigma\vec{\bf p}_y)^2}
+            \left|\Sigma\va{p}\right| &= \sqrt{(\Sigma\va{p}_x)^2 + (\Sigma\va{p}_y)^2}
             \\[8pt] &= \rm \sqrt{15278^2 + 26042^2}\ N\cdot s
             \\[8pt] & = \rm {30192\ N\cdot s}
         \end{align}</p>
         <p>Note that because the components are both negative, the total momentum vector points into the <em>third</em> quadrant. Using <span class="TeX">\tan^{-1}</span> on a calculator will give an answer in the first quadrant, so we must add 180°:</p>
         <p class="TeX">\begin{align}
-            \theta &= \tan^{-1}\frac{\Sigma\vec{\bf p}_y}{\Sigma\vec{\bf p}_x} + 180^\circ
+            \theta &= \tan^{-1}\frac{\Sigma\va{p}_y}{\Sigma\va{p}_x} + 180^\circ
             \\[10pt] &= \rm {\tan^{-1}\frac{-26042 \ N\cdot s}{-15278 \ N\cdot s} + 180^\circ}
             \\[10pt] &= \rm {+239.6^\circ}
         \end{align}</p>
         <p>To calculatethe final velocity, we can treat the cars as a single mass after they become entangled:</p>
         <p class="TeX">m = m_A + m_B = \rm (1250 + 1000)\ kg = 2250\ kg</p>
-        <p class="TeX">\vec{\bf v}_f = \frac{\Sigma\vec{\bf p}}{m}
+        <p class="TeX">\va{v}_f = \frac{\Sigma\va{p}}{m}
             = \rm {\frac{30192\ N\cdot s\ [+239.6^\circ]}{2250\ kg}}
             = \rm {13.4\ m/s\ [+239.6^\circ]}
         </p>
@@ -226,20 +226,20 @@
         <p>Since the boulder is initially at rest, the total momentum of the system is zero.</p>
         <p>Calculate the final momentum of the two pieces for which the velocity is given and convert to Cartesian form:</p>
         <p class="TeX">\begin{align}
-            \vec{\bf p}_{fA} &= m_A\vec{\bf v}_{fA}
+            \va{p}_{fA} &= m_A\va{v}_{fA}
             \\[8pt] &= \rm {860\ kg\cdot 26.0\ m/s\ [180^\circ]}
             \\[8pt] &= \rm {22360\ N\cdot s\ [180^\circ]}
             \\[8pt] &= \rm {(-22360, 0.00)\ N\cdot s}
         \end{align}</p>
         <p class="TeX">\begin{align}
-            \vec{\bf p}_{fB} &= m_B\vec{\bf v}_{fB}
+            \va{p}_{fB} &= m_B\va{v}_{fB}
             \\[8pt] &= \rm {534\ kg\cdot 32.0\ m/s\ [-90.0^\circ]}
             \\[8pt] &= \rm {17088\ N\cdot s\ [-90.0^\circ]}
             \\[8pt] &= \rm {(0.00, -17088)\ N\cdot s}
         \end{align}</p>
         <p>The third piece must have the opposite momentum to the first two so that the total is zero:</p>
-        <p class="TeX">\vec{\bf p}_{fC} = \rm (+22360, +17088)\ N\cdot s
-        <p class="TeX">|\vec{\bf p}_{fC}| = \rm \sqrt{22360^2 + 17088^2}\ N\cdot s = 28142\ N\cdot s</p>
+        <p class="TeX">\va{p}_{fC} = \rm (+22360, +17088)\ N\cdot s
+        <p class="TeX">|\va{p}_{fC}| = \rm \sqrt{22360^2 + 17088^2}\ N\cdot s = 28142\ N\cdot s</p>
         <p class="TeX">\theta = \rm \tan^{-1}\left(\frac{+17088\ N\cdot s}{+22360\ N\cdot s}\right) = 37.4^\circ</p>
         <p class="TeX">v_{fC} = \frac{p_{fC}}{m_C} = \rm \frac{28142\ N\cdot s}{606\ kg} = 46.4\ m/s</p>
 
@@ -252,10 +252,10 @@
         <li>Calculate the total momentum of the system.</li>
         <div class="Answer">
             <p>Calculate the initial momenta of each spacecraft:</p>
-            <p class="TeX">\vec{\bf p}_{iA} = m_A\vec{\bf v}_{iA} = \rm 5.00\times 10^3\ kg\cdot 5.60\times 10^3\ m/s\ [0.00^\circ]</p>
-            <p class="TeX">\vec{\bf p}_{iA} = \rm 2.80\times 10^7\ N\cdot s\ [0.00^\circ]</p>
-            <p class="TeX">\vec{\bf p}_{iB} = m_B\vec{\bf v}_{iB} = \rm 6.80\times 10^3\ kg\cdot 4.85\times 10^3\ m/s\ [114^\circ]</p>
-            <p class="TeX">\vec{\bf p}_{iB} = \rm 3.30\times 10^7\ N\cdot s\ [114^\circ]</p>
+            <p class="TeX">\va{p}_{iA} = m_A\va{v}_{iA} = \rm 5.00\times 10^3\ kg\cdot 5.60\times 10^3\ m/s\ [0.00^\circ]</p>
+            <p class="TeX">\va{p}_{iA} = \rm 2.80\times 10^7\ N\cdot s\ [0.00^\circ]</p>
+            <p class="TeX">\va{p}_{iB} = m_B\va{v}_{iB} = \rm 6.80\times 10^3\ kg\cdot 4.85\times 10^3\ m/s\ [114^\circ]</p>
+            <p class="TeX">\va{p}_{iB} = \rm 3.30\times 10^7\ N\cdot s\ [114^\circ]</p>
             <p>Convert these vectors to Cartesian form and then add them: <a target="Q4" href="./?{%22v%22:%22@(28,0),@(32.98,114)%22,%22symbol%22:%22p%22,%22unit%22:%22MN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram &amp; Calculations</a></p>
         </div>
 
@@ -299,7 +299,7 @@ sin θ  = pB sin 66.0° / Σp
         <div class="Answer">
             <p>Because momentum is conserved, the final momentum of the docked spacecraft must equal the total momentum before docking.Treat the spacecraft as a single mass now that they are attached.</p>
             <p class="TeX">\begin{align}
-                \vec{\bf v}_f &= \frac{\Sigma\vec{\bf p}}{m_A+m_B}
+                \va{v}_f &= \frac{\Sigma\va{p}}{m_A+m_B}
                 \\[10pt] &= \rm{\frac{3.35\times 10^7\ N\cdot s\ [64.2^\circ]}{(5.00+6.80)\times 10^3\ kg}}
                 \\[10pt] &= \rm{2.84\times 10^3\ m/s\ [64.2^\circ]}
             \end{align}</p>
@@ -307,7 +307,7 @@ sin θ  = pB sin 66.0° / Σp
 
     </ol></li>
 
-    <li>Two billiard balls have masses <span class="TeX">m_A</span> = 172 g and <span class="TeX">m_B</span> = 143 g and initial velocities of <span class="TeX">\vec{\bf v}_{iA}</span> = 3.40 m/s [east] and <span class="TeX">\vec{\bf v}_{iB}</span> = 2.40 m/s [southwest]. After the collision, billiard ball “A” continues to move with <span class="TeX">\vec{\bf v}_{fA}</span> = 2.90 m/s [30.0° south of east]. Determine the final velocity of the other ball. Include an appropriate vector diagram(s).</li>
+    <li>Two billiard balls have masses <span class="TeX">m_A</span> = 172 g and <span class="TeX">m_B</span> = 143 g and initial velocities of <span class="TeX">\va{v}_{iA}</span> = 3.40 m/s [east] and <span class="TeX">\va{v}_{iB}</span> = 2.40 m/s [southwest]. After the collision, billiard ball “A” continues to move with <span class="TeX">\va{v}_{fA}</span> = 2.90 m/s [30.0° south of east]. Determine the final velocity of the other ball. Include an appropriate vector diagram(s).</li>
     <div class="Answer">
         <p><a target="Q6i" href="./?{%22v%22:%22@(0.5848,0),@(0.3432,225)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Before Collision</a> &
         <a target="Q6f" href="./?{%22v%22:%22@(0.4988,-30),@(0.090104,175.72)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">After Collision</a></p>
@@ -364,18 +364,18 @@ vBf = pBf / mB
         <li>Determine the final velocity of car “A”. Include a labelled vector diagram.</li>
         <div class="Answer">
             <p>First find the initial momentum of “A”, which is the total momentum of the system because “B” is at rest:</p>
-            <p class="TeX">\Sigma\vec{\bf p} = m_A\vec{\bf v}_{iA} = \rm 1490\ kg\cdot 22.2\ m/s\ [270°] = (0, -33.1)\ kN\cdot s</p>
+            <p class="TeX">\Sigma\va{p} = m_A\va{v}_{iA} = \rm 1490\ kg\cdot 22.2\ m/s\ [270°] = (0, -33.1)\ kN\cdot s</p>
             <p>Now find the momentum of “B” after the collision:</p>
-            <p class="TeX">\vec{\bf p}_{fB} = m_B\vec{\bf v}_{fB} = \rm 1260\ kg\cdot 6.94\ m/s\ [-45.0°]</p>
-            <p class="TeX">\vec{\bf p}_{fB} = \rm 8.75\ kN\cdot s\ [-45.0°] = (6.19, -6.19)\ kN\cdot s</p>
+            <p class="TeX">\va{p}_{fB} = m_B\va{v}_{fB} = \rm 1260\ kg\cdot 6.94\ m/s\ [-45.0°]</p>
+            <p class="TeX">\va{p}_{fB} = \rm 8.75\ kN\cdot s\ [-45.0°] = (6.19, -6.19)\ kN\cdot s</p>
             <p>Because momentum is conserved, the final momentum of “A” is the total momentum minus the final momentum of “B”:</p>
-            <p class="TeX">\vec{\bf p}_{fA} = \Sigma\vec{\bf p} - \vec{\bf p}_{fB} = \rm (0, -33.1)\ kN\cdot s - (6.19, -6.19)\ kN\cdot s</p>
-            <p class="TeX">\vec{\bf p}_{fA} = \rm (-6.19, -26.9)\ kN\cdot s</p>
+            <p class="TeX">\va{p}_{fA} = \Sigma\va{p} - \va{p}_{fB} = \rm (0, -33.1)\ kN\cdot s - (6.19, -6.19)\ kN\cdot s</p>
+            <p class="TeX">\va{p}_{fA} = \rm (-6.19, -26.9)\ kN\cdot s</p>
             <p>We can express this momentum vector in polar form by using the Pythagoras and <span class="TeX">\tan^{-1}</span> equations:</p>
-            <p class="TeX">\vec{\bf p}_{fA} = \rm 27.6\ kN\cdot s\ [257^\circ]</p>
+            <p class="TeX">\va{p}_{fA} = \rm 27.6\ kN\cdot s\ [257^\circ]</p>
             <p><a target="Rev" href="./?{%22v%22:%22@(8.75,-45),@(27.6257,-102.94)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
             <p>Now that we know the momentum of “A” after the collison, we can calculate its velocity:</p>
-            <p class="TeX">\vec{\bf v}_{fA} = \frac{\vec{\bf p}_{fA}}{m_A} = \rm \frac{2.76\times 10^4\ N\cdot s\ [257^\circ]}{1490\ kg} = 18.5\ m/s\ [257^\circ]</p>
+            <p class="TeX">\va{v}_{fA} = \frac{\va{p}_{fA}}{m_A} = \rm \frac{2.76\times 10^4\ N\cdot s\ [257^\circ]}{1490\ kg} = 18.5\ m/s\ [257^\circ]</p>
         </div>
         <li>Calculate the initial, final, and change in mechanical energy. Classify the collision.</li>
         <div class="Answer">
@@ -434,21 +434,21 @@ vBf = 6.94 m/s
     <div class="Answer">
         <p>The initial momentum is just the heavy particle since the proton is at rest:</p>
         <p class="TeX">\begin{align}
-            \Sigma\vec{\bf p} &= m_H\vec{\bf v}_{iH}
+            \Sigma\va{p} &= m_H\va{v}_{iH}
             \\[6pt] &= \rm {5.01\times 10^{-27}\ kg\cdot 6.00\times 10^7\ m/s\ [0.00^\circ]}
             \\[6pt] &= \rm {3.006\times 10^{-19}\ N\cdot s\ [0.00^\circ]}
             \\[6pt] &= \rm {(+3.0060, 0.00) \times 10^{-19}\ N\cdot s}
         \end{align}</p>
         <p>After the collision, the heavier particle momentum is:</p>
         <p class="TeX">\begin{align}
-            \vec{\bf p}_{fH} &= m_H\vec{\bf v}_{fH}
+            \va{p}_{fH} &= m_H\va{v}_{fH}
             \\[6pt] &= \rm {5.01\times 10^{-27}\ kg\cdot 1.32\times 10^7\ m/s\ [+32.0^\circ]}
             \\[6pt] &= \rm {6.6132\times 10^{-20}\ N\cdot s\ [+32.0^\circ]}
             \\[6pt] &= \rm {(+5.6083, +3.5045) \times 10^{-20}\ N\cdot s}
         \end{align}</p>
         <p>To find the proton’s momentum, subtract the heavier particle’s from the total:</p>
         <p class="TeX">\begin{align}
-            \vec{\bf p}_{fP} &= \Sigma\vec{\bf p} - \vec{\bf p}_{fH}
+            \va{p}_{fP} &= \Sigma\va{p} - \va{p}_{fH}
             \\[6pt] &= \rm {(+30.060 - 5.6083, 0.00 - 3.5045)\times 10^{-20}\ }N\cdot s
             \\[6pt] &= \rm {(+24.4517, -3.5045) \times 10^{-20}\ N\cdot s}
             \\[6pt] &= \rm {2.47\times 10^{-19}\ N\cdot s\ [-8.20^\circ]}
@@ -456,7 +456,7 @@ vBf = 6.94 m/s
         <p><a target="Q5" href="./?{%22v%22:%22@(2.47015e-19,-8.1562),@(6.6132e-20,32)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
         <p>To get the velocity, divide the proton’s momentum by its mass:</p>
         <p class="TeX">\begin{align}
-            \vec{\bf v}_{fP} &= \frac{\vec{\bf p}_{fP}}{m_P}
+            \va{v}_{fP} &= \frac{\va{p}_{fP}}{m_P}
             \\[10pt] &= \rm{\frac{2.47\times 10^{-19}\ N\cdot s\ [-8.20^\circ]}{1.67\times 10^{-27}\ kg}}
             \\[10pt] &= \rm{1.48\times 10^8\ m/s\ [-8.20^\circ]}
         \end{align}</p>
@@ -498,7 +498,7 @@ vBf = 6.94 m/s
     <ol type="a">
         <li>Calculate the initial momentum of the moving asteroid and draw a labelled vector diagram to illustrate the conservation of momentum.</li>
         <div class="Answer">
-            <p class="TeX">\vec{\bf p}_{iA} = m_A \vec{\bf v}_{iA} = \rm 2.50\times 10^{11}\ kg\cdot 687\ m/s\ [0.00^\circ] = 1.72\times 10^{14}\ N\cdot s\ [0.00^\circ]</p>
+            <p class="TeX">\va{p}_{iA} = m_A \va{v}_{iA} = \rm 2.50\times 10^{11}\ kg\cdot 687\ m/s\ [0.00^\circ] = 1.72\times 10^{14}\ N\cdot s\ [0.00^\circ]</p>
             <p><a target="Q8" href="./?{%22v%22:%22@(1.1191e14,-14),@(6.8723e13,23.2)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
         </div>
 

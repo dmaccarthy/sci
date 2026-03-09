@@ -16,15 +16,15 @@
 <p><em class="Defn">Projectile motion</em> is a type of 2D motion where the force (and therefore acceleration) remains constant.</p>
 <ul>
     <li>We studied projectile motion in Physics 20, where the constant acceleration is caused by gravity.</li>
-    <li>The motion in the <span class="TeX">y</span>-direction (<span class="TeX">{\vec{\bf a}}_y = \vec{\bf g}</span>) is <em>uniform accelerated motion</em>.</li>
-    <li>The motion in the <span class="TeX">x</span>-direction (<span class="TeX">{\vec{\bf a}}_x = 0</span>) is <em>uniform motion</em>.</li>
+    <li>The motion in the <span class="TeX">y</span>-direction (<span class="TeX">{\va{a}}_y = \va{g}</span>) is <em>uniform accelerated motion</em>.</li>
+    <li>The motion in the <span class="TeX">x</span>-direction (<span class="TeX">{\va{a}}_x = 0</span>) is <em>uniform motion</em>.</li>
 </ul>
 <div>
     <p>The equations for uniform accelerated motion / projectile motion are...</p>
-    <p class="TeX">{\vec{\bf a}} = {{{\vec{\bf v}}_f - {\vec{\bf v}}_i}\over\Delta t}</p>
-    <p class="TeX">\Delta{\vec{\bf d}} = {{{\vec{\bf v}}_i + {\vec{\bf v}}_f}\over 2}\Delta t</p>
-    <p class="TeX">{v_f}^2 = {v_i}^2 + 2{\vec{\bf a}}\cdot{\Delta\vec{\bf d}}</p>
-    <p class="TeX">{\Delta\vec{\bf d}} = {\vec{\bf v}}_i\Delta t + {1\over 2}{\vec{\bf a}}\left(\Delta t\right)^2</p>
+    <p class="TeX">{\va{a}} = {{{\va{v}}_f - {\va{v}}_i}\over\Delta t}</p>
+    <p class="TeX">\Delta{\va{d}} = {{{\va{v}}_i + {\va{v}}_f}\over 2}\Delta t</p>
+    <p class="TeX">{v_f}^2 = {v_i}^2 + 2{\va{a}}\cdot{\Delta\va{d}}</p>
+    <p class="TeX">{\Delta\va{d}} = {\va{v}}_i\Delta t + {1\over 2}{\va{a}}\left(\Delta t\right)^2</p>
 </div>
 <ul><li>The shape of the trajectory is a <em class="Defn">parabola</em> because when the acceleration is constant, the relationship between position and time is <em>quadratic</em>, as shown by the last equation above.</li></ul>
 <table class="Center TD6">
@@ -33,20 +33,20 @@
 </thead>
 <tbody>
     <tr>
-        <td><span class="TeX">\vec{\bf a}</span></td>
+        <td><span class="TeX">\va{a}</span></td>
         <td><span class="TeX">{\rm{m/s^2}}</span></td><td>0.00</td><td>–12.5</td></tr>
     <tr>
-        <td><span class="TeX">{\vec{\bf v}}_i</span></td>
+        <td><span class="TeX">{\va{v}}_i</span></td>
         <td><span class="TeX">{\rm{m/s}}</span></td>
         <td rowspan="2"><span class="TeX">36.0\ \cos(52.0°)\\=22.2</span></td><td><span class="TeX">36.0\ \sin(52.0°)\\=28.4</span></td>
     </tr>
     <tr>
-        <td><span class="TeX">{\vec{\bf v}}_f</span></td>
+        <td><span class="TeX">{\va{v}}_f</span></td>
         <td><span class="TeX">{\rm{m/s}}</span></td>
         <td class="Reveal"><span>–28.4</span></td>
     </tr>
     <tr>
-        <td><span class="TeX">\Delta\vec{\bf d}</span></td>
+        <td><span class="TeX">\Delta\va{d}</span></td>
         <td><span class="TeX">{\rm{m}}</span></td>
         <td class="Reveal"><span>101</span></td>
         <td>0.00</td>
@@ -61,20 +61,20 @@
 <ul>
     <li>Because there is no <span class="TeX">x</span>-acceleration, the initial and final <span class="TeX">x</span>-velocities are the same.</li>
     <li>Time is a <em>scalar</em>; it does not have separate <span class="TeX">x</span>- and <span class="TeX">y</span>-components.</li>
-    <li>Choose one of the kinematics equations to find <span class="TeX">{\vec{\bf v}}_{fy}</span>:
-        <p class="TeX">{v_f}^2 = {v_i}^2 + 2{\vec{\bf a}}\cdot{\Delta\vec{\bf d}}</p></li>
+    <li>Choose one of the kinematics equations to find <span class="TeX">{\va{v}}_{fy}</span>:
+        <p class="TeX">{v_f}^2 = {v_i}^2 + 2{\va{a}}\cdot{\Delta\va{d}}</p></li>
     <li>Choose a different equation to find <span class="TeX">\Delta t</span>:
-        <p class="TeX">{\vec{\bf a}} = {{{\vec{\bf v}}_f - {\vec{\bf v}}_i}\over\Delta t}</p></li>
-    <li>Finally, find <span class="TeX">\Delta{\vec{\bf d}}_x</span>:
-        <p class="TeX">\Delta\vec{\bf d} = \vec{\bf v}_{avg}\Delta t</p></li>
+        <p class="TeX">{\va{a}} = {{{\va{v}}_f - {\va{v}}_i}\over\Delta t}</p></li>
+    <li>Finally, find <span class="TeX">\Delta{\va{d}}_x</span>:
+        <p class="TeX">\Delta\va{d} = \va{v}_{avg}\Delta t</p></li>
 </ul>
 </section>
 
 <section class="Slide"><h3>Motion in a Uniform Electric Field</h3>
 <p>If the electric field is uniform, a charge movingthrough the field will experience a <em>constant acceleration</em>, so its motion will be parabolic just like for projectile motion.</p>
 <ul>
-    <li>The constant acceleration is calculated using Newton’s 2<sup>nd</sup> Law:<p class="TeX">\vec{\bf a} = {{\vec{\bf F}}_e + {\vec{\bf F}}_g \over m} = {q{\vec{\bf E}} + m{\vec{\bf g}}\over m}</p>
-    <li>Typically, we would set up an experiment so that the electric and gravitational fields are both in the <i>y</i>-direction, so that <span class="TeX">{\vec{\bf a}}_x = 0</span>.</li>
+    <li>The constant acceleration is calculated using Newton’s 2<sup>nd</sup> Law:<p class="TeX">\va{a} = {{\va{F}}_e + {\va{F}}_g \over m} = {q{\va{E}} + m{\va{g}}\over m}</p>
+    <li>Typically, we would set up an experiment so that the electric and gravitational fields are both in the <i>y</i>-direction, so that <span class="TeX">{\va{a}}_x = 0</span>.</li>
     <li>Often (but not always) the electric force is so strong that the gravity term has no effect on the answer to the precision of our calculations.</li>
 </ul>
 </section>
@@ -87,20 +87,20 @@
     </thead>
     <tbody>
         <tr>
-            <td><span class="TeX">\vec{\bf a}</span></td>
+            <td><span class="TeX">\va{a}</span></td>
             <td><span class="TeX">{\rm{m/s^2}}</span></td><td>0.00</td><td class="Reveal"><span>–6.25 × 10<sup>13</sup></span></td></tr>
         <tr>
-            <td><span class="TeX">{\vec{\bf v}}_i</span></td>
+            <td><span class="TeX">{\va{v}}_i</span></td>
             <td><span class="TeX">{\rm{m/s}}</span></td>
             <td rowspan="2">3.00 × 10<sup>6</sup></td><td>0.00</td>
         </tr>
         <tr>
-            <td><span class="TeX">{\vec{\bf v}}_f</span></td>
+            <td><span class="TeX">{\va{v}}_f</span></td>
             <td><span class="TeX">{\rm{m/s}}</span></td>
             <td class="Reveal"><span>–2.50 × 10<sup>6</sup></span></td>
         </tr>
         <tr>
-            <td><span class="TeX">\Delta\vec{\bf d}</span></td>
+            <td><span class="TeX">\Delta\va{d}</span></td>
             <td><span class="TeX">{\rm{m}}</span></td>
             <td>0.120</td>
             <td>–0.0500</td>
@@ -111,9 +111,9 @@
             <td class=Reveal colspan="2"><span>4.00 × 10<sup>–8</sup></span></td></tr>
     </tbody>
     </table>
-    <p class="TeX">\vec{\bf E} = \frac{\vec{\bf F}_e}{q} = \frac{m\vec{\bf a} - m\vec{\bf g}}{q} = \frac{m(\vec{\bf a} - \vec{\bf g})}{q}</p>
-    <p class="TeX">\vec{\bf E} = \rm {\frac{9.11\times 10^{-31}\ kg\cdot (-6.25\times 10^{13}\ m/s^2)}{-1.60\times 10^{-19}\ C}}
-    <p class="TeX">\vec{\bf E} = \rm {+356\ N/C}</p>
+    <p class="TeX">\va{E} = \frac{\va{F}_e}{q} = \frac{m\va{a} - m\va{g}}{q} = \frac{m(\va{a} - \va{g})}{q}</p>
+    <p class="TeX">\va{E} = \rm {\frac{9.11\times 10^{-31}\ kg\cdot (-6.25\times 10^{13}\ m/s^2)}{-1.60\times 10^{-19}\ C}}
+    <p class="TeX">\va{E} = \rm {+356\ N/C}</p>
 </section>
 
 <script type="text/javascript" data-init="notes">
@@ -136,30 +136,30 @@ loadFeed.notes = () => {
         <li>Calculate the cork’s acceleration and the net force.</li>
         <div class="Answer">
             <p>For uniform accelerated motion...</p>
-            <p class="TeX">\Delta\vec{\bf d} = \vec{\bf v}_i\Delta t + \frac{1}{2}\vec{\bf a} (\Delta t)^2</p>
+            <p class="TeX">\Delta\va{d} = \va{v}_i\Delta t + \frac{1}{2}\va{a} (\Delta t)^2</p>
             <p>Since the sphere is initially at rest, we can ignore the first term on the right and the solve for acceleration...</p>
-            <p class="TeX">\Delta\vec{\bf d} = \frac{1}{2}\vec{\bf a} (\Delta t)^2</p>
-            <p class="TeX">\frac{2\Delta\vec{\bf d}}{(\Delta t)^2} = \vec{\bf a}</p>
-            <p class="TeX">\vec{\bf a} = \rm \frac{2\ (+0.120\ m)}{(0.400\ s)^2} = +1.50\ m/s^2</p>
+            <p class="TeX">\Delta\va{d} = \frac{1}{2}\va{a} (\Delta t)^2</p>
+            <p class="TeX">\frac{2\Delta\va{d}}{(\Delta t)^2} = \va{a}</p>
+            <p class="TeX">\va{a} = \rm \frac{2\ (+0.120\ m)}{(0.400\ s)^2} = +1.50\ m/s^2</p>
             <p>Now use Newton’s 2<sup>nd</sup> Law to find the net force...</p>
-            <p class="TeX">\vec{\bf F}_{net} = m\vec{\bf a} = \rm 1.50\times 10^{-3}\ kg\cdot (+1.50\ m/s^2)</p>
-            <p class="TeX">\vec{\bf F}_{net} = \rm +2.25\times 10^{-3}\ N</p>
+            <p class="TeX">\va{F}_{net} = m\va{a} = \rm 1.50\times 10^{-3}\ kg\cdot (+1.50\ m/s^2)</p>
+            <p class="TeX">\va{F}_{net} = \rm +2.25\times 10^{-3}\ N</p>
         </div>
 
         <li>Calculate the weight (force of gravity) of the cork and then determine the electric force that the parallel plates’ field exerts on the cork.</li>
         <div class="Answer">
             <p>First calculate the gravity force...</p>
-            <p class="TeX">\vec{\bf F}_g = m\vec{\bf g} = \rm 1.50\times 10^{-3}\ kg\cdot (-9.81\ m/s^2)</p>
-            <p class="TeX">\vec{\bf F}_g = \rm -1.47\times 10^{-2}\ N</p>
+            <p class="TeX">\va{F}_g = m\va{g} = \rm 1.50\times 10^{-3}\ kg\cdot (-9.81\ m/s^2)</p>
+            <p class="TeX">\va{F}_g = \rm -1.47\times 10^{-2}\ N</p>
             <p>Then use the net force to determine the electric force...</p>
-            <p class="TeX">\vec{\bf F}_e = \vec{\bf F}_{net} - \vec{\bf F}_g</p>
-            <p class="TeX">\vec{\bf F}_e = \rm (+2.25\times 10^{-3} - (-1.47\times 10^{-2}))\ N</p>
-            <p class="TeX">\vec{\bf F}_e = \rm +1.70\times 10^{-2}\ N</p>
+            <p class="TeX">\va{F}_e = \va{F}_{net} - \va{F}_g</p>
+            <p class="TeX">\va{F}_e = \rm (+2.25\times 10^{-3} - (-1.47\times 10^{-2}))\ N</p>
+            <p class="TeX">\va{F}_e = \rm +1.70\times 10^{-2}\ N</p>
         </div>
 
         <li>Calculate the electric field strength.</li>
         <div class="Answer">
-            <p class="TeX">\vec{\bf E} = \frac{\vec{\bf F}_e}{q} = \rm \frac{+1.70\times 10^ {-2}\ N}{-5.25\times 10^{-6}\ C} = -3.23\times 10^3\ N/C
+            <p class="TeX">\va{E} = \frac{\va{F}_e}{q} = \rm \frac{+1.70\times 10^ {-2}\ N}{-5.25\times 10^{-6}\ C} = -3.23\times 10^3\ N/C
             </p>
             <p></p>
         </div>
@@ -171,7 +171,7 @@ loadFeed.notes = () => {
     <p>For a proton, the gravitational force on Earth is...</p>
     <p class="TeX">F_g = mg = \rm 1.67\times 10^{-27}\ kg\cdot 9.81\ m/s^2 = 1.64\times 10^{-26}\ N</p>
     <p>The electric force is...</p>
-    <p class="TeX">F_e = q|\vec{\bf E}| = \rm 1.60\times 10^{-19}\ C\cdot 1.00\ N/C = 1.60\times 10^{-19}\ N</p>
+    <p class="TeX">F_e = q|\va{E}| = \rm 1.60\times 10^{-19}\ C\cdot 1.00\ N/C = 1.60\times 10^{-19}\ N</p>
     <p>The ratio of the forces is...</p>
     <p class="TeX">\frac{F_e}{F_g} = \rm \frac{1.60\times 10^{-19}\ N}{1.64\times 10^{-26}\ N} = 9.77\times 10^6</p>
     <p>This means that a field of 1.00 N/C exerts nearly 10 <em>million</em> times as much force on the proton as Earth’s surface gravity.</p>
@@ -183,22 +183,22 @@ loadFeed.notes = () => {
         <li>Calculate the electron’s acceleration.</li>
         <div class="Answer">
             <p>Taking the top plate to be positive so that the displacement and acceleration are positive and the electric field is negative...</p>
-            <p class="TeX">\vec{\bf F}_e = q\vec{\bf E} = \rm -1.60\times 10^{-19}\ C\cdot (-4000\ N/C) = +6.40\times 10^{-16}\ N</p>
-            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf F}}{m} = \rm \frac{+6.40\times 10^{-16}\ N}{9.11\times 10^{-31}\ kg} = +7.03\times 10^{14}\ m/s^2</p>
+            <p class="TeX">\va{F}_e = q\va{E} = \rm -1.60\times 10^{-19}\ C\cdot (-4000\ N/C) = +6.40\times 10^{-16}\ N</p>
+            <p class="TeX">\va{a} = \frac{\va{F}}{m} = \rm \frac{+6.40\times 10^{-16}\ N}{9.11\times 10^{-31}\ kg} = +7.03\times 10^{14}\ m/s^2</p>
             <p></p>
         </div>
 
         <li>Calculate the velocity with which the electron hits the positive plate, and the time it takes to move from the negative to the positive plate.</li>
         <div class="Answer">
             <p>For motion with constant acceleration...</p>
-            <p class="TeX">v_f^2 = v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}</p>
-            <p class="TeX">v_f = \sqrt{v_i^2 + 2\vec{\bf a}\cdot\Delta\vec{\bf d}}</p>
+            <p class="TeX">v_f^2 = v_i^2 + 2\va{a}\cdot\Delta\va{d}</p>
+            <p class="TeX">v_f = \sqrt{v_i^2 + 2\va{a}\cdot\Delta\va{d}}</p>
             <p class="TeX">v_f = \rm \sqrt{(0.00\ m/s)^2 + 2\cdot(+7.03\times 10^{14}\ m/s^2)\cdot(+0.100\ m)}</p>
             <p class="TeX">v_f = \rm +1.19\times 10^7\ m/s</p>
             <p>Now solve for the time...</p>
-            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
-            <p class="TeX">\vec{\bf a}\Delta t = \vec{\bf v}_f - \vec{\bf v}_i</p>
-            <p class="TeX">\Delta t = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\vec{\bf a}}</p>
+            <p class="TeX">\va{a} = \frac{\va{v}_f - \va{v}_i}{\Delta t}</p>
+            <p class="TeX">\va{a}\Delta t = \va{v}_f - \va{v}_i</p>
+            <p class="TeX">\Delta t = \frac{\va{v}_f - \va{v}_i}{\va{a}}</p>
             <p class="TeX">\Delta t = \rm \frac{+1.19\times 10^7\ m/s - 0.00\ m/s}{+7.03\times 10^{14}\ m/s^2} = 1.69\times 10^{-8}\ s</p>
             <p></p>
         </div>
@@ -209,33 +209,33 @@ loadFeed.notes = () => {
     <p class="Center"><svg class="s16" data-svg2="p30/elec/img/Efield.js#proj"></svg></p>
     <p>The point of injection is 6.00 cm above the negative plate and the object is seen to hit the negative plate at a distance of 9.25 cm from the left side of the plate. The initial velocity of the object is 5.31 m/s [70.2º].</p>
     <ol type="a">
-        <li>Use trigonometry (“SOH CAH TOA”) to calculate the <span class="TeX">x</span>- and <span class="TeX">y</span>-components of the initial velocity. A vector diagram of <span class="TeX">\vec{\bf v}_i</span> will be useful.</li>
+        <li>Use trigonometry (“SOH CAH TOA”) to calculate the <span class="TeX">x</span>- and <span class="TeX">y</span>-components of the initial velocity. A vector diagram of <span class="TeX">\va{v}_i</span> will be useful.</li>
         <div class="Answer">
-            <p class="TeX">\vec{\bf v}_x = \rm 5.30\ m/s\cdot\cos 70.2^\circ = +1.80\ m/s</p>
-            <p class="TeX">\vec{\bf v}_y = \rm 5.30\ m/s\cdot\sin 70.2^\circ = +5.00\ m/s</p>
+            <p class="TeX">\va{v}_x = \rm 5.30\ m/s\cdot\cos 70.2^\circ = +1.80\ m/s</p>
+            <p class="TeX">\va{v}_y = \rm 5.30\ m/s\cdot\sin 70.2^\circ = +5.00\ m/s</p>
         </div>
 
         <li>Calculate the time it took for the projectile to strike the negative plate by solving the <span class="TeX">x</span>-motion.</li>
-        <p class="Answer TeX">\Delta t = \frac{\Delta\vec{\bf d}_x}{\vec{\bf v}_x} = \rm \frac{+0.0925\ m}{+1.80\ m/s} = 0.0514\ s</p>
+        <p class="Answer TeX">\Delta t = \frac{\Delta\va{d}_x}{\va{v}_x} = \rm \frac{+0.0925\ m}{+1.80\ m/s} = 0.0514\ s</p>
 
         <li>Solve the <span class="TeX">y</span>-motion to calculate the <span class="TeX">y</span>-components of the final velocity and acceleration.</li>
         <div class="Answer">
-            <p class="TeX">\Delta\vec{\bf d}_y = \frac{\vec{\bf v}_{iy} + \vec{\bf v}_{fy}}{2} \Delta t</p>
-            <p class="TeX">\frac{2\Delta\vec{\bf d}_y}{\Delta t} = \vec{\bf v}_{iy} + \vec{\bf v}_{fy}</p>
-            <p class="TeX">\frac{2\Delta\vec{\bf d}_y}{\Delta t} - \vec{\bf v}_{iy} = \vec{\bf v}_{fy}</p>
-            <p class="TeX">\vec{\bf v}_{fy} = \rm \frac{2(-0.0600\ m)}{0.0514\ s} - (+5.00\ m/s) = -7.33\ m/s</p>
-            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
-            <p class="TeX">\vec{\bf a} = \rm \frac{-7.33\ m/s - (+5.00\ m/s)}{0.0514\ s} = -240\ m/s^2</p>
+            <p class="TeX">\Delta\va{d}_y = \frac{\va{v}_{iy} + \va{v}_{fy}}{2} \Delta t</p>
+            <p class="TeX">\frac{2\Delta\va{d}_y}{\Delta t} = \va{v}_{iy} + \va{v}_{fy}</p>
+            <p class="TeX">\frac{2\Delta\va{d}_y}{\Delta t} - \va{v}_{iy} = \va{v}_{fy}</p>
+            <p class="TeX">\va{v}_{fy} = \rm \frac{2(-0.0600\ m)}{0.0514\ s} - (+5.00\ m/s) = -7.33\ m/s</p>
+            <p class="TeX">\va{a} = \frac{\va{v}_f - \va{v}_i}{\Delta t}</p>
+            <p class="TeX">\va{a} = \rm \frac{-7.33\ m/s - (+5.00\ m/s)}{0.0514\ s} = -240\ m/s^2</p>
         </div>
 
         <li>Calculate the object’s charge.</li>
         <div class="Answer">
             <p>Find the net, gravitational, and electric forces; all have only <span class="TeX">y</span>-components...</p>
-            <p class="TeX">\vec{\bf F}_{net} = m\vec{\bf a} = \rm 0.0200\ kg\cdot (-240\ m/s^2) = -4.79\ N</p>
-            <p class="TeX">\vec{\bf F}_g = m\vec{\bf g} = \rm 0.0200\ kg\cdot (-9.81\ m/s^2) = -0.196\ N</p>
-            <p class="TeX">\vec{\bf F}_e = \vec{\bf F}_{net} - \vec{\bf F}_g = \rm -4.79\ N - (-0.196\ N) = -4.60\ N</p>
-            <p>Now calculate <span class="TeX">q</span> from the electric force. The direction of <span class="TeX">\vec{\bf E}</span> is – since the field points from the top (+) to the bottom (–) plate.</p>
-            <p class="TeX">q = \frac{\vec{\bf F}_e}{\vec{\bf E}} = \rm \frac{-4.60\ N}{-1.08\times 10^6\ N/C} = +4.26\times 10^{-6}\ C</p>
+            <p class="TeX">\va{F}_{net} = m\va{a} = \rm 0.0200\ kg\cdot (-240\ m/s^2) = -4.79\ N</p>
+            <p class="TeX">\va{F}_g = m\va{g} = \rm 0.0200\ kg\cdot (-9.81\ m/s^2) = -0.196\ N</p>
+            <p class="TeX">\va{F}_e = \va{F}_{net} - \va{F}_g = \rm -4.79\ N - (-0.196\ N) = -4.60\ N</p>
+            <p>Now calculate <span class="TeX">q</span> from the electric force. The direction of <span class="TeX">\va{E}</span> is – since the field points from the top (+) to the bottom (–) plate.</p>
+            <p class="TeX">q = \frac{\va{F}_e}{\va{E}} = \rm \frac{-4.60\ N}{-1.08\times 10^6\ N/C} = +4.26\times 10^{-6}\ C</p>
         </div>
     </ol></li>
 
@@ -244,10 +244,10 @@ loadFeed.notes = () => {
         <li>Determine the acceleration of the object. Note that this object is much larger than a single proton, so it cannot be assumed that gravity is negligible.</li>
         <div class="Answer">
             <p>Use Newton’s 2<sup>nd</sup> Law...</p>
-            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf F}_e + \vec{\bf F}_g}{m} = \frac{q\vec{\bf E} + m\vec{\bf g}}{m}</p>
-            <p class="TeX">\vec{\bf a} = \frac{q\vec{\bf E}}{m} + \vec{\bf g}</p>
-            <p class="TeX">\vec{\bf a} = \rm \frac{+2.00\times 10^{-6}\ C\cdot(-2.50\times 10^6\ N/C)}{0.0350\ kg} + (-9.81\ m/s^2)</p>
-            <p class="TeX">\vec{\bf a} = \rm -153\ m/s^2</p>
+            <p class="TeX">\va{a} = \frac{\va{F}_e + \va{F}_g}{m} = \frac{q\va{E} + m\va{g}}{m}</p>
+            <p class="TeX">\va{a} = \frac{q\va{E}}{m} + \va{g}</p>
+            <p class="TeX">\va{a} = \rm \frac{+2.00\times 10^{-6}\ C\cdot(-2.50\times 10^6\ N/C)}{0.0350\ kg} + (-9.81\ m/s^2)</p>
+            <p class="TeX">\va{a} = \rm -153\ m/s^2</p>
         </div>
 
         <li>If the object’s initial velocity was 8.50 m/s directed horizontally, what will its final velocity (magnitude and direction) be after it has traveled through a horizontal displacement of 12.0 cm?</li>
@@ -255,19 +255,19 @@ loadFeed.notes = () => {
             <p>This is a 2D problem (projectile motion) since the initial velocity is in the <span class="TeX">x</span>-direction and the acceleration is in the <span class="TeX">-y</span>-direction...</p>
             <table class="Center Three TD6">
                 <tr><th></th><th class="TeX">x</th><th class="TeX">y</th></tr>
-                <tr><td><span class="TeX">\vec{\bf a}</span> / (m/s<sup>2</sup>)</td><td>0.00</td><td>-153</td></tr>
-                <tr><td><span class="TeX">\vec{\bf v}_i</span> / (m/s)</td><td rowspan="2">+8.50</td><td>0.00</td></tr>
-                <tr><td><span class="TeX">\vec{\bf v}_f</span> / (m/s)</td><td></td></tr>
-                <tr><td><span class="TeX">\Delta\vec{\bf d}</span> / m</td><td>+0.120</td><td></td></tr>
+                <tr><td><span class="TeX">\va{a}</span> / (m/s<sup>2</sup>)</td><td>0.00</td><td>-153</td></tr>
+                <tr><td><span class="TeX">\va{v}_i</span> / (m/s)</td><td rowspan="2">+8.50</td><td>0.00</td></tr>
+                <tr><td><span class="TeX">\va{v}_f</span> / (m/s)</td><td></td></tr>
+                <tr><td><span class="TeX">\Delta\va{d}</span> / m</td><td>+0.120</td><td></td></tr>
                 <tr><td><span class="TeX">\Delta t</span> / s</td><td colspan="2"></td></tr>
             </table>
             <p>Find the time by solving the <span class="TeX">x</span>-motion...</p>
-            <p class="TeX">\Delta t = \frac{\Delta\vec{\bf d}_x}{\vec{\bf v}_x} = \rm \frac{+0.120\ m}{+8.50\ m/s} = 0.0141\ s</p>
+            <p class="TeX">\Delta t = \frac{\Delta\va{d}_x}{\va{v}_x} = \rm \frac{+0.120\ m}{+8.50\ m/s} = 0.0141\ s</p>
             <p>Solve for the final <span class="TeX">y</span>-velocity...</p>
-            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
-            <p class="TeX">\vec{\bf a}\Delta t = \vec{\bf v}_f - \vec{\bf v}_i</p>
-            <p class="TeX">\vec{\bf v}_f = \vec{\bf a}\Delta t + \vec{\bf v}_i</p>
-            <p class="TeX">\vec{\bf v}_f = \rm (-153\ m/s^2) (0.0141\ s) + 0.00\ m/s = -2.16\ m/s</p>
+            <p class="TeX">\va{a} = \frac{\va{v}_f - \va{v}_i}{\Delta t}</p>
+            <p class="TeX">\va{a}\Delta t = \va{v}_f - \va{v}_i</p>
+            <p class="TeX">\va{v}_f = \va{a}\Delta t + \va{v}_i</p>
+            <p class="TeX">\va{v}_f = \rm (-153\ m/s^2) (0.0141\ s) + 0.00\ m/s = -2.16\ m/s</p>
             <p>Convert to polar form...</p>
             <p class="TeX">v_f = \rm \sqrt{(8.50)^2 + (2.16)^2}\ m/s = 8.77\ m/s</p>
             <p class="TeX">\theta = \rm \tan^{-1}\frac{-2.16}{8.50} = -14.3^\circ</p>
@@ -280,23 +280,23 @@ loadFeed.notes = () => {
         <li>Calculate the particle’s charge-to-mass <em>ratio</em>, <span class="TeX">q/m</span>.</li>
         <div class="Answer">
             <p>Because the final velocity direction is 46.6º and the <span class="TeX">x</span>-velocity remains constant, we can use trigonometry to find the final <span class="TeX">y</span>-velocity...</p>
-            <p class="TeX">\vec{\bf v}_{fy} = \vec{\bf v}_x\cdot\tan 46.6^\circ = \rm 3.25\times 10^5\ m/s\cdot\tan 46.6^\circ = 3.44\times 10^5\ m/s</p>
+            <p class="TeX">\va{v}_{fy} = \va{v}_x\cdot\tan 46.6^\circ = \rm 3.25\times 10^5\ m/s\cdot\tan 46.6^\circ = 3.44\times 10^5\ m/s</p>
             <table class="Center Three TD6 Top">
                 <tr><th></th><th class="TeX">x</th><th class="TeX">y</th></tr>
-                <tr><td><span class="TeX">\vec{\bf a}</span> / (m/s<sup>2</sup>)</td><td>0.00</td><td></td></tr>
-                <tr><td><span class="TeX">\vec{\bf v}_i</span> / (10<sup>5</sup> m/s)</td><td rowspan="2">+3.25</td><td>0.00</td></tr>
-                <tr><td><span class="TeX">\vec{\bf v}_f</span> / (10<sup>5</sup> m/s)</td><td>+3.44</td></tr>
-                <tr><td><span class="TeX">\Delta\vec{\bf d}</span> / m</td><td>+0.0800</td><td></td></tr>
+                <tr><td><span class="TeX">\va{a}</span> / (m/s<sup>2</sup>)</td><td>0.00</td><td></td></tr>
+                <tr><td><span class="TeX">\va{v}_i</span> / (10<sup>5</sup> m/s)</td><td rowspan="2">+3.25</td><td>0.00</td></tr>
+                <tr><td><span class="TeX">\va{v}_f</span> / (10<sup>5</sup> m/s)</td><td>+3.44</td></tr>
+                <tr><td><span class="TeX">\Delta\va{d}</span> / m</td><td>+0.0800</td><td></td></tr>
                 <tr><td><span class="TeX">\Delta t</span> / s</td><td colspan="2"></td></tr>
             </table>
             <p>Find the time by solving the <span class="TeX">x</span>-motion...</p>
-            <p class="TeX">\Delta t = \frac{\Delta\vec{\bf d}_x}{\vec{\bf v}_x} = \rm \frac{+0.0800\ m}{+3.25\times 10^5\ m/s} = 2.46\times 10^{-7}\ s</p>
+            <p class="TeX">\Delta t = \frac{\Delta\va{d}_x}{\va{v}_x} = \rm \frac{+0.0800\ m}{+3.25\times 10^5\ m/s} = 2.46\times 10^{-7}\ s</p>
             <p>Calculate the acceleration...</p>
-            <p class="TeX">\vec{\bf a} = \frac{\vec{\bf v}_f - \vec{\bf v}_i}{\Delta t}</p>
-            <p class="TeX">\vec{\bf a} = \rm \frac{+3.44\times 10^5\ m/s - 0.00\ m/s}{2.46\times 10^{-7}\ s} = +1.40\times 10^{12}\ m/s^2</p>
+            <p class="TeX">\va{a} = \frac{\va{v}_f - \va{v}_i}{\Delta t}</p>
+            <p class="TeX">\va{a} = \rm \frac{+3.44\times 10^5\ m/s - 0.00\ m/s}{2.46\times 10^{-7}\ s} = +1.40\times 10^{12}\ m/s^2</p>
             <p>Calculate <span class="TeX">q/m</span>...</p>
-            <p class="TeX">\vec{\bf F}_{net} = q\vec{\bf E} = m\vec{\bf a}</p>
-            <p class="TeX">\frac{q}{m} = \frac{\vec{\bf a}}{\vec{\bf E}} = \rm \frac{1.40\times 10^{12}\ m/s^2}{5.80\times 10^4\ N/C} = 2.41\times 10^7\ C/kg</p>
+            <p class="TeX">\va{F}_{net} = q\va{E} = m\va{a}</p>
+            <p class="TeX">\frac{q}{m} = \frac{\va{a}}{\va{E}} = \rm \frac{1.40\times 10^{12}\ m/s^2}{5.80\times 10^4\ N/C} = 2.41\times 10^7\ C/kg</p>
         </div>
 
         <li>Assuming that the charge of the particle is exactly one elementary charge unit, what is the particle’s mass?</li>

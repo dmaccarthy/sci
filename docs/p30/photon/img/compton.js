@@ -7,9 +7,9 @@ pCons: (sel) => {
     svg.$.find(".Component").remove();
 
     let s = {scale: 1.1};
-    svg.mjax("\\vec{\\bf p}_i", s, [5, -0.7], "#0065fe");
-    svg.mjax("\\vec{\\bf p}_e", s, [10, 3], "red");
-    svg.mjax("\\vec{\\bf p}_s", s, [3.5, 3], "red");
+    svg.mjax("\\va{p}_i", s, [5, -0.7], "#0065fe");
+    svg.mjax("\\va{p}_e", s, [10, 3], "red");
+    svg.mjax("\\va{p}_s", s, [3.5, 3], "red");
     svg.mjax("\\theta", s, [2, 0.6]);
 },
 

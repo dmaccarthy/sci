@@ -25,9 +25,9 @@ v_t: (sel, n, click) => {
     let poly = svg.locus(x => Math.sin(twoPi * (x + xva.n / 4))).css("none", "@2").config({animated: true});
 
     let ylabel = svg.group(); 
-    ylabel.mjax("\\vec{\\bf x}", {scale: 0.8}, ["-14", 1.125], "#0065fe");
-    ylabel.mjax("\\vec{\\bf v}", {scale: 0.8}, ["-14", 1.125], "red");
-    ylabel.mjax("\\vec{\\bf a}", {scale: 0.8}, ["-14", 1.125], "purple");
+    ylabel.mjax("\\va{x}", {scale: 0.8}, ["-14", 1.125], "#0065fe");
+    ylabel.mjax("\\va{v}", {scale: 0.8}, ["-14", 1.125], "red");
+    ylabel.mjax("\\va{a}", {scale: 0.8}, ["-14", 1.125], "purple");
     svg.mjax("t", {scale: 0.8}, [1.9, "-14"]);
 
     let next_graph = (n) => {

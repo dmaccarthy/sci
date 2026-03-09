@@ -8,16 +8,16 @@
     <li>To illustrate the addition of two or more vectors, the vectors are drawn in a <em>tip-to-tail</em> fashion.</li>
 </ul>
 <p class="Center"><svg class="s14" data-svg2="p20/vec2d/img/diag.js#Q4" id="Q4"></svg></p>
-<p><em class="Defn">Cartesian Form</em> means that a 2D vector is described as separate <span class="TeX">x</span>- and <span class="TeX">y</span>-<em class="Defn">components</em>; <span class="TeX NoWrap">\Delta \vec{\mathbf d} = \mathrm{(-16.6, 10.4)\ m}</span>.</p>
-<p><em class="Defn">Polar Form</em> describes a vector by its <em class="Defn">magnitude</em> and its <em class="Defn">direction</em>; <span class="TeX NoWrap">\Delta \vec{\mathbf d}_1 = \mathrm{19.6\ m\ [148°]}</span>.</p>
+<p><em class="Defn">Cartesian Form</em> means that a 2D vector is described as separate <span class="TeX">x</span>- and <span class="TeX">y</span>-<em class="Defn">components</em>; <span class="TeX NoWrap">\Delta \vec{\bf d} = \mathrm{(-16.6, 10.4)\ m}</span>.</p>
+<p><em class="Defn">Polar Form</em> describes a vector by its <em class="Defn">magnitude</em> and its <em class="Defn">direction</em>; <span class="TeX NoWrap">\Delta \vec{\bf d}_1 = \mathrm{19.6\ m\ [148°]}</span>.</p>
 <ul>
     <li>The direction is an angle measured <em>counter-clockwise</em> from the <span class="NoWrap"><span class="TeX">+x</span>-direction</span>.</li>
     <li>We can convert a vector from polar to Cartesian form:
-        <p class="TeX">{\vec{\mathbf{v}}}_x=\left|\vec{\mathbf{v}}\right|\cos{\theta}</p>
-        <p class="TeX">{\vec{\mathbf{v}}}_y=\left|\vec{\mathbf{v}}\right|\sin{\theta}</p></li>
+        <p class="TeX">{\va{v}}_x=\left|\va{v}\right|\cos{\theta}</p>
+        <p class="TeX">{\va{v}}_y=\left|\va{v}\right|\sin{\theta}</p></li>
     <li>We can also convert a vector from Cartesian to polar form:
-        <p class="TeX">\left|\vec{\mathbf{v}}\right|=\sqrt{v_x^2+v_y^2}</p>
-        <p class="TeX">\tan{\theta}=\frac{{\vec{\mathbf{v}}}_y}{{\vec{\mathbf{v}}}_x}</p></li>
+        <p class="TeX">\left|\va{v}\right|=\sqrt{v_x^2+v_y^2}</p>
+        <p class="TeX">\tan{\theta}=\frac{{\va{v}}_y}{{\va{v}}_x}</p></li>
     <li>To isolate <span class="TeX">\theta</span>, you need to apply <span class="TeX">\tan^{-1}</span> to the last equation; this will give only one of two possible answers.</li>
     <li>If the <span class="NoWrap"><span class="TeX">x</span>-component</span> of a vector is negative (if the vector points into the second or third quadrant), you will need to add 180° to find the second (correct) solution for <span class="TeX">\theta</span>.</li>
     <li>When performing arithmetic or algebra involving vector quantities, treat the <span class="TeX">x</span>- and <span class="TeX">y</span>-components independently;
@@ -43,8 +43,9 @@
 tmp = chapRev() ? 1 : 0;
 
 loadFeed.data = {
+    up: "p20/home",
     prev: ["p20/vec2d/proj", "p20/kin/rev"][tmp],
-    // next: ["p20/dyn/n2", "p20/dyn/rev"][tmp],
+    next: ["p20/dyn/n2", "p20/dyn/rev"][tmp],
     // handouts: [["Assignment", {gdrv: "1kb_4eSt2FFF3ZbeyU--nvrQO3KnxgWAT"}]],
 }
 

@@ -13,8 +13,8 @@ fbd1: (sel) => {
     g.arrow({tip: [0, -v[1]]}, {tail: "7"});
     g.arrow({tip: v}, {tail: "7"});
 
-    svg.mjax("\\vec{\\bf F}_1", null, [0.6, -0.6], "red");
-    svg.mjax("\\vec{\\bf F}_2", null, [-0.3, 0.5], "red");
+    svg.mjax("\\va{F}_1", null, [0.6, -0.6], "red");
+    svg.mjax("\\va{F}_2", null, [-0.3, 0.5], "red");
 
 },
 
@@ -36,7 +36,7 @@ fbd2: (sel) => {
     data = [["g", [55, 38]], ["t", [56, 95]], ["n", [27, 52]], ["f", [10, 75]]];
     i = 0;
     for (let [c, xy] of data)
-        svg.group(`.Toggle${i++}`).mjax(`\\vec{\\bf F}_${c}`, null, xy, "red");
+        svg.group(`.Toggle${i++}`).mjax(`\\va{F}_${c}`, null, xy, "red");
 
     svg.click_toggle(4);
 },
@@ -64,13 +64,13 @@ fbd3: (sel, a) => {
     g.arrow({tail: [0, dy], tip: [0, Fn + dy]}, t6);
 
     g = incline.group();
-    g.mjax("\\vec{\\bf F}_n", null, [-0.15, 0.35], "red");
-    g.mjax(`\\vec{\\bf F}_${applied ? "a" : "f"}`, null, [0.4, 0.28], "red");
+    g.mjax("\\va{F}_n", null, [-0.15, 0.35], "red");
+    g.mjax(`\\va{F}_${applied ? "a" : "f"}`, null, [0.4, 0.28], "red");
     g = g.group();
     fric.push(g.element);
-    g.mjax("\\vec{\\bf F}_f", null, [-0.35, 0.18], "red");
+    g.mjax("\\va{F}_f", null, [-0.35, 0.18], "red");
 
-    svg.mjax("\\vec{\\bf F}_g", null, [-0.15, -0.25], "red");
+    svg.mjax("\\va{F}_g", null, [-0.15, -0.25], "red");
     svg.group("arrow").arrow({tail: [0, -dy], tip: [0, -dy - Fg]}, t6);
 
     if (applied) {
@@ -99,9 +99,9 @@ sign_vec: (sel) => {
         scale: 0.75, margin: 12, grid: 30, label: [60, 0]});
     svg.$.find(".Component, .Resultant").remove();
     svg.gtext("N", "sans", [270, -510]);
-    svg.mjax("\\vec{\\bf F}_g", null, [40, -240], "red");
-    svg.mjax("\\vec{\\bf F}_1", null, [150, -400], "red");
-    svg.mjax("\\vec{\\bf F}_2", null, [160, -100], "red");
+    svg.mjax("\\va{F}_g", null, [40, -240], "red");
+    svg.mjax("\\va{F}_1", null, [150, -400], "red");
+    svg.mjax("\\va{F}_2", null, [160, -100], "red");
     let g = svg.group("sans", "red");
     g.gtext("45.0°", [], [30, -70], -67.5);
     g.gtext("90.0°", [], [180, -240]);
@@ -116,9 +116,9 @@ sign_uneven: (sel) => {
         scale: 0.75, margin: 12, grid: 30, label: [60, 0]});
     svg.$.find(".Component, .Resultant").remove();
     svg.gtext("N", "sans", [270, -510]);
-    svg.mjax("\\vec{\\bf F}_g", null, [40, -240], "red");
-    svg.mjax("\\vec{\\bf F}_1", null, [135, -330], "red");
-    svg.mjax("\\vec{\\bf F}_2", null, [140, -80], "red");
+    svg.mjax("\\va{F}_g", null, [40, -240], "red");
+    svg.mjax("\\va{F}_1", null, [135, -330], "red");
+    svg.mjax("\\va{F}_2", null, [140, -80], "red");
     let g = svg.group("sans", "red");
     g.group().gtext("105.0°", {}, [120, -180]);
     g.group().config({theta: -67.5}).gtext("45.0°", {}, [75, 0]);
@@ -152,9 +152,9 @@ pulley: (sel, fbd) => {
         v.arrow({tail: [-8, 2.2], length: 6*cos(10)}, tail, "tail").config({theta: 90});
         v.arrow({tail: [-10.2, 0.2], length: 1.5}, tail, "tail").config({theta: 180});
         v.arrow({tail: [-5.8, 1], length: 2}, tail, "tail");
-        svg.mjax("\\vec{\\bf F}_n", null, [-7.5, 5], "red");
-        svg.mjax("\\vec{\\bf F}_f", null, [-11, 0], "red");
-        svg.mjax("\\vec{\\bf F}_t", null, [-5, 2], "red");
+        svg.mjax("\\va{F}_n", null, [-7.5, 5], "red");
+        svg.mjax("\\va{F}_f", null, [-11, 0], "red");
+        svg.mjax("\\va{F}_t", null, [-5, 2], "red");
     }
 
     let small = {scale: 0.75};
@@ -169,9 +169,9 @@ pulley: (sel, fbd) => {
     svg.mjax("m_2", small, [x, y]);
 
     if (fbd) {
-        svg.mjax("\\vec{\\bf F}_g", null, [-9, -4], "red");
-        svg.mjax("\\vec{\\bf F}_g", null, [2, -8], "red");
-        svg.mjax("\\vec{\\bf F}_t", null, [3, 1.5], "red");
+        svg.mjax("\\va{F}_g", null, [-9, -4], "red");
+        svg.mjax("\\va{F}_g", null, [2, -8], "red");
+        svg.mjax("\\va{F}_t", null, [3, 1.5], "red");
         g = svg.group("arrow");
         g.arrow({tail: [-8, -1.6], length: 6}, tail, "tail").config({theta: -90});
         g.arrow({tail: [x, -4], length: 3}, tail, "tail").config({theta: -90});

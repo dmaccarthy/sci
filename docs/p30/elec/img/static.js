@@ -61,9 +61,9 @@ balloon: (sel) => {
     g.arrow({tail: [0, 1.5], tip: [0, 1.5 + 3.5 / cos(25)]}).config({pivot: [0, 0], theta: -25});
     g.arrow({tail: [0, -1.5], tip: [0, -5]}, arr);
     g.arrow({tail: [-1.5, 0], tip: [-1.5 - 3.5 * tan(25), 0]}, arr);
-    svg.mjax("\\vec{\\bf F}_g", null, [0.8, -3, "l"], "red");
-    svg.mjax("\\vec{\\bf F}_e", null, [-2, 1, "b"], "red");
-    svg.mjax("\\vec{\\bf F}_t", null, [2, 2.5, "l"], "red");
+    svg.mjax("\\va{F}_g", null, [0.8, -3, "l"], "red");
+    svg.mjax("\\va{F}_e", null, [-2, 1, "b"], "red");
+    svg.mjax("\\va{F}_t", null, [2, 2.5, "l"], "red");
     svg.text("65°", [1.5, 0.75], 0, ["sans", 20]);
 }
 

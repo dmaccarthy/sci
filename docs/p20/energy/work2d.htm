@@ -7,7 +7,7 @@
 
 <section class="Slide"><h3>Work in 2D</h3>
     <p>In 1D, the work done by a force is calculated by multiplying the force by the displacement:</p>
-    <p data-cue="prev" class="TeX">W = \vec{\bf F}\cdot\Delta\vec{\bf d}</p>
+    <p data-cue="prev" class="TeX">W = \va{F}\cdot\Delta\va{d}</p>
     <ul>
         <li>When the force is in the <em>same</em> direction as the motion, the work is positive and the object gains kinetic energy.</li>
         <li>When the force is in the <em>opposite</em> direction as the motion, the work is negative and the object loses kinetic energy.</li>
@@ -15,8 +15,8 @@
         <li>Since a perpendicular force is neither forward nor backwards, the kinetic energy does not change and the work is zero.</li>
     </ul>
     <p>When the force acts at an <em>angle</em> to the displacement (rather than directly forward or backward) it has vector <em>components</em> in <em>both</em> the parallel and perpendicular directions:</p>
-    <p data-cue="prev" class="TeX">\vec{\bf F}_\parallel = |\vec{\bf F}| \cos\Delta\theta</p>
-    <p data-cue="prev" class="TeX">\vec{\bf F}_\perp = |\vec{\bf F}| \sin\Delta\theta</p>
+    <p data-cue="prev" class="TeX">\va{F}_\parallel = |\va{F}| \cos\Delta\theta</p>
+    <p data-cue="prev" class="TeX">\va{F}_\perp = |\va{F}| \sin\Delta\theta</p>
     <ul>
         <li>In these equations, <span class="TeX">\Delta\theta</span> is the angle between the force and displacement vectors.</li>
         <li>The perpendicular component is responsible for changing the <em>direction</em> of the velocity and does zero work!</li>
@@ -25,7 +25,7 @@
         <li>When <span class="TeX">\Delta\theta</span> is between 90° and 180°, the work is negative because the force is (partly) backward.</li>
     </ul>
     <p>If we use only the parallel component as the force in the 1D equation, we get:</p>
-    <p data-cue="prev" class="TeX">W = |\vec{\bf F}|\cdot|\Delta\vec{\bf d}|\cos(\Delta\theta)</p>
+    <p data-cue="prev" class="TeX">W = |\va{F}|\cdot|\Delta\va{d}|\cos(\Delta\theta)</p>
     <ul>
         <li>The absolute value symbols mean that we do not include directions with the force and displacment vectors when using this equation.</li>
         <li>The cosine function will give us the correct sign for the work!</li>
@@ -37,14 +37,14 @@
 <p class="Center"><svg data-svg2="p20/dyn/img/adv.js#fbd1" class="s20"></svg></p>
 
 <p>We solved this problem previously using Newton’s 2<sup>nd</sup> Law. We could have use work and energy instead.</p>
-<p>The gravity and normal forces are balanced so they do not affect the motion. The force of the tracks, <span class="TeX">\vec{\bf F}_2</span>, is perpendicular to the motion so it does no work. Only the tension in the cable, <span class="TeX">\vec{\bf F}_1</span>, does work.</p>
+<p>The gravity and normal forces are balanced so they do not affect the motion. The force of the tracks, <span class="TeX">\va{F}_2</span>, is perpendicular to the motion so it does no work. Only the tension in the cable, <span class="TeX">\va{F}_1</span>, does work.</p>
 <p>Because the acceleration will be constant as long as the forces remain constant, we can use any displacement and initial velocity we want; let’s say 1.00 metre and 0.00 m/s.</p>
 <p>The work done by the tension force is:</p>
-<p class="TeX">W = |\vec{\bf F}_1| \cdot |\Delta\vec{\bf d}| \cos(30.0^\circ) = \rm 1500\ N\cdot 1.00\ m\cos(30.0^\circ) = 1299.0\ J</p>
+<p class="TeX">W = |\va{F}_1| \cdot |\Delta\va{d}| \cos(30.0^\circ) = \rm 1500\ N\cdot 1.00\ m\cos(30.0^\circ) = 1299.0\ J</p>
 <p>Since we took the car to be initially at rest, the work is the final kinetic energy. The final speed is:</p>
 <p class="TeX">v_f = \sqrt{\frac{2E_k}{m}} = \rm \sqrt{\frac{2\cdot 1299.0\ J}{2000\ kg}} = 1.1398\ m/s</p>
 <p>Now we can use the uniform accelerated motion equations to find the acceleration:</p>
-<p class="TeX">\vec{\bf a} = \frac{v_f^2 - v_i^2}{2\Delta\vec{\bf d}} = \rm{{(1.1398\ m/s)^2 \over 2\cdot 1.00\ m} = +0.650\ m/s^2}</p>
+<p class="TeX">\va{a} = \frac{v_f^2 - v_i^2}{2\Delta\va{d}} = \rm{{(1.1398\ m/s)^2 \over 2\cdot 1.00\ m} = +0.650\ m/s^2}</p>
 </section>
 
 <section class="Slide"><h3 class="Blue">Example 2</h3>
@@ -54,10 +54,10 @@
 <p>We solved this problem previously using Newton’s 2<sup>nd</sup> Law. It is easier to use work and energy!</p>
 
 <p>Calculate the work done by the applied force:</p>
-<p class="TeX">W_a = \vec{\bf F}_a \cdot \Delta\vec{\bf d} = \rm{10.0\ N\cdot 2.00\ m = 20.0\ J}</p>
+<p class="TeX">W_a = \va{F}_a \cdot \Delta\va{d} = \rm{10.0\ N\cdot 2.00\ m = 20.0\ J}</p>
 <p>Next calculate the work done by gravity:</p>
 <p class="TeX">F_g = mg = \rm 2.00\ kg\cdot 9.81\ m/s^2 = 19.62\ N</p>
-<p class="TeX">W_g = |\vec{\bf F}_g| \cdot |\Delta\vec{\bf d}| \cos(98.0^\circ) = \rm 19.62\ N\cdot 2.00\ m\cos(98.0^\circ) = -5.4612\ J</p>
+<p class="TeX">W_g = |\va{F}_g| \cdot |\Delta\va{d}| \cos(98.0^\circ) = \rm 19.62\ N\cdot 2.00\ m\cos(98.0^\circ) = -5.4612\ J</p>
 <p>Alternatively, we could calculate the gravitational potential energy <em>gained</em>, which is just the negative of the work done by gravity:</p>
 <p class="TeX">h = \rm{2.00\ m\cdot\sin(8.00^\circ) = 0.27835\ m}</p>
 <p class="TeX">\begin{align}E_{gf} &= mgh \\[8pt]&= \rm{2.00\ kg\cdot 9.81\ m/s^2 \cdot 0.27835\ m}\\[8pt]&= \rm{5.4612\ J}\end{align}</p>
@@ -66,7 +66,7 @@
 <p class="TeX">E_{kf} = \Sigma W = \rm 20.0\ J -5.4612\ J = 14.539\ J</p>
 <p class="TeX">v_f = \sqrt{2E_k\over m} = \rm{\sqrt{2(14.539\ J)\over 2.00\ kg} = 3.81\ m/s}</p>
 <p>Now we can use the uniform accelerated motion equations to find the acceleration:</p>
-<p class="TeX">\vec{\bf a} = \frac{v_f^2 - v_i^2}{2\Delta\vec{\bf d}} = \rm{{(3.81\ m/s)^2 \over 2\cdot 2.00\ m} = 3.64\ m/s^2}</p>
+<p class="TeX">\va{a} = \frac{v_f^2 - v_i^2}{2\Delta\va{d}} = \rm{{(3.81\ m/s)^2 \over 2\cdot 2.00\ m} = 3.64\ m/s^2}</p>
 <ul>
     <li>If there had been friction, we would need to account for the negative work done by friction.</li>
     <li>If given the coefficient of friction, we would need to know the normal force before we could calculate the force of friction.</li>
@@ -137,8 +137,8 @@
         <p>Calculate work as the change in kinetic energy:</p>
         <p class="TeX">W = E_{kf}-E_{ki} = \rm 160.0\ J - 80.0\ J = 80.0\ J</p>
         <p>Solve for the angle in the 2D work-energy theorem equation:</p>
-        <p class="TeX">W_a = |\vec{\bf F}_a|\cdot|\Delta\vec{\bf d}|\cos(\Delta\theta)</p>
-        <p class="TeX">\cos(\Delta\theta) = \frac{W_a}{|\vec{\bf F}_a|\cdot|\Delta\vec{\bf d} |}</p>
+        <p class="TeX">W_a = |\va{F}_a|\cdot|\Delta\va{d}|\cos(\Delta\theta)</p>
+        <p class="TeX">\cos(\Delta\theta) = \frac{W_a}{|\va{F}_a|\cdot|\Delta\va{d} |}</p>
         <p class="TeX">\cos(\Delta\theta) = \rm \frac{80.0\ J}{18.0\ N\cdot 5.00\ m} = 0.88889</p>
         <p class="TeX">\Delta\theta = \cos^{-1} 0.8889 = 27.3^\circ</p>
     </div>
@@ -146,7 +146,7 @@
     <li>Repeat the previous question when there is a friction or air resistance force of 1.00 newton opposite to the direction of motion.</li>
     <div class="Answer">
         <p>Calculate work done by friction:</p>
-        <p class="TeX">W_f = \vec{\bf F} \cdot \Delta\vec{\bf d} = \rm -1.00\ N\cdot 5.00\ m = -5.00\ J</p>
+        <p class="TeX">W_f = \va{F} \cdot \Delta\va{d} = \rm -1.00\ N\cdot 5.00\ m = -5.00\ J</p>
         <p>The <em>total</em> work is still 80.0 J, so the work done by the applied force must be:</p>
         <p class="TeX">\Sigma W = W_a + W_f</p>
         <p class="TeX">W_a = \Sigma W - W_f = \rm 80.0\ J - (-5.00\ J) = 85.0\ J</p>
@@ -154,14 +154,14 @@
         <p class="TeX">\Delta\theta = \cos^{-1} 0.94444 = 19.2^\circ</p>
     </div>
 
-    <li>An 85.0-kilogram satellite is orbiting Earth at a separation of 70000 km and a speed of 2.40 km/s. Calculate the kinetic energy and speed of the satellite after it has moved through a displacement of 1000 km at an angle of 102° to the gravitational force. [The gravitational force will change slightly, but since the displacement is only 1/70<sup>th</sup> of the separation, you can take <span class="TeX">\vec{\bf F}_g</span> to be approximately constant.]</li>
+    <li>An 85.0-kilogram satellite is orbiting Earth at a separation of 70000 km and a speed of 2.40 km/s. Calculate the kinetic energy and speed of the satellite after it has moved through a displacement of 1000 km at an angle of 102° to the gravitational force. [The gravitational force will change slightly, but since the displacement is only 1/70<sup>th</sup> of the separation, you can take <span class="TeX">\va{F}_g</span> to be approximately constant.]</li>
     <div class="Answer">
         <p>Calculate the initial kinetic energy:</p>
         <p class="TeX">E_{ki} = \frac{1}{2}mv^2 = \rm \frac{1}{2}\cdot 85.0\ kg\cdot (2400\ m/s)^2 = 2.49\times 10^8\ J</p>
         <p>Calculate the force of gravity:</p>
         <p class="TeX">F_g = \frac{GM_e m}{r^2} = \rm \frac{6.67\times 10^{-11}\frac{N\cdot m^2}{kg^2}\cdot 5.98\times 10^{24}\ kg\cdot 85.0\ kg}{(7.00\times 10^7\ m)^2} = 6.91\ N</p>
         <p>Calculate the work:</p>
-        <p class="TeX">W_g = |\vec{\bf F}_g|\cdot|\Delta\vec{\bf d}|\cos(\Delta\theta)</p>
+        <p class="TeX">W_g = |\va{F}_g|\cdot|\Delta\va{d}|\cos(\Delta\theta)</p>
         <p class="TeX">W_g = \rm 6.91\ N\cdot 1.00\times 10^6\ m\cdot \cos(102^\circ) = -1.44\times 10^6\ J</p>
         <p>Calculate the final kinetic energy and speed:</p>
         <p class="TeX">E_{kf} = E_{ki} + W = \rm 2.43\times 10^8\ J</p>

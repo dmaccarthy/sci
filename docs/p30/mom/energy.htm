@@ -39,7 +39,7 @@
     <li><span class="TeX">g</span> is the strength of gravity in m/s<sup>2</sup>.</li>
     <li>Near the surface of Earth, <span class="TeX">g = 9.81\ \mathrm{m/s^2}</span>.</li>
     <li>Because energy is a scalar, do <em>not</em> include a direction with <span class="TeX">g</span>.</li>
-    <li><em>Do</em> include a negative sign when using <span class="TeX">\vec{\bf g}</span> as an acceleration.</li>
+    <li><em>Do</em> include a negative sign when using <span class="TeX">\va{g}</span> as an acceleration.</li>
 </ul>
 
 <h4>Elastic Potential Energy</h4>
@@ -86,7 +86,7 @@
 <p>Mechanical energy transformations are caused by <em class="Defn">forces</em> (measured in newtons).</p>
 <ul>
     <li>The <em>amount</em> of energy that a force transforms is called the <em class="Defn">work</em>.
-    <p class="TeX">W = \vec{\mathbf F}_\parallel \cdot \Delta\vec{\mathbf d}</p></li>
+    <p class="TeX">W = \vec{\bf F}_\parallel \cdot \Delta\vec{\bf d}</p></li>
     <li>When more than one force does work on an object, the change in kinetic energy is equal to the <em>total</em> work done by all forces.
         <p class="TeX">\Delta E_k = \Sigma W</p></li>
     <li><em class="Defn">Power</em> (measured in watts) is the <em>rate</em> at which a force does work.
@@ -191,7 +191,7 @@
 <ol type="a">
     <li>How much work does the friction force do while the curling rock moves 5.00 metres?</li>
     <div class="Answer">
-        <p class="TeX">W_f=\vec{\bf F}_f\cdot\Delta\vec{\bf d} = \rm -1.20\ N\cdot 5.00\ m = -6.00\ J</p>
+        <p class="TeX">W_f=\va{F}_f\cdot\Delta\va{d} = \rm -1.20\ N\cdot 5.00\ m = -6.00\ J</p>
     </div>
 
     <li>What will the rock’s kinetic energy be at the end of the 5.00-metre motion?</li>
@@ -264,19 +264,19 @@
     <p>Friction does <em>work</em>, causing some of the energy to be removed from the system...</p>
     <p class="TeX">E_{pf} = E_i + W_f</p>
     <p class="TeX">E_{pf} - W_f = E_i</p>
-    <p class="TeX">mgh_f - \vec{\bf F_f}\cdot\Delta\vec{\bf d} = E_i</p>
+    <p class="TeX">mgh_f - \va{F_f}\cdot\Delta\va{d} = E_i</p>
     <p>Because the height (opposite side) and displacement (hypotenuse) are related by trigonometry, we can substitute...</p>
-    <p class="TeX">\Delta\vec{\bf d} = \frac{h_f}{\sin 10.0^\circ}</p>
+    <p class="TeX">\Delta\va{d} = \frac{h_f}{\sin 10.0^\circ}</p>
     <p>...to get...</p>
-    <p class="TeX">mgh_f - \vec{\bf F_f}\cdot \frac{h_f}{\sin 10.0^\circ} = E_i</p>
-    <p class="TeX">h_f \left(mg - \frac{\vec{\bf F_f}}{\sin 10.0^\circ}\right) = E_i</p>
-    <p class="TeX">h_f = \frac{E_i}{mg - \frac{\vec{\bf F_f}}{\sin 10.0^\circ}}</p>
+    <p class="TeX">mgh_f - \va{F_f}\cdot \frac{h_f}{\sin 10.0^\circ} = E_i</p>
+    <p class="TeX">h_f \left(mg - \frac{\va{F_f}}{\sin 10.0^\circ}\right) = E_i</p>
+    <p class="TeX">h_f = \frac{E_i}{mg - \frac{\va{F_f}}{\sin 10.0^\circ}}</p>
     <p class="TeX">h_f = \rm \frac{39.1\ J}{12.5\ kg\cdot 9.81\ m/s^2 - \frac{-5.00\ N}{\sin 10.0^\circ}} = 0.258\ m</p>
     <p>Note that the force of friction is negative because it acts in the opposite direction to the displacement. If you use a positive friction force the final height would be greater than it was with no friction, which would violate energy conservation.</p>
     <p>We can check our answer by calculating...</p>
     <p class="TeX">E_{pf} = mgh_f = \rm 12.5\ kg\cdot 9.81\ m/s^2\cdot 0.258\ m = 31.6\ J</p>
-    <p class="TeX">\Delta\vec{\bf d} = \frac{h_f}{\sin 10.0^\circ} = \rm \frac{0.258\ m}{\sin 10.0^\circ} = 1.49\ m</p>
-    <p class="TeX">W_f = \vec{\bf F_f}\cdot\Delta\vec{\bf d} = \rm -5.00\ N\cdot 1.49\ m = -7.43\ J</p>
+    <p class="TeX">\Delta\va{d} = \frac{h_f}{\sin 10.0^\circ} = \rm \frac{0.258\ m}{\sin 10.0^\circ} = 1.49\ m</p>
+    <p class="TeX">W_f = \va{F_f}\cdot\Delta\va{d} = \rm -5.00\ N\cdot 1.49\ m = -7.43\ J</p>
     <p>We can verify that the work done by friction is equal to change in energy. Note that there may be a small error if you use the answers rounded to three significant digits.</p>
     <p class="TeX">\Delta E = E_f - E_i = \rm 31.63\ J - 39.06\ J = -7.43\ J</p>
     <!-- <p class="TeX"></p>
@@ -301,9 +301,9 @@
     <li>Why is an elastic cord used for “bungee jumping” rather than a regular rope? Justify your answer by referring to the work-energy theorem.</li>
     <div class="Answer">
         <p>The work-energy theorem energy states that...</p>
-        <p class="TeX">\Delta E_k = \vec{\bf F}\cdot\Delta\vec{\bf d}</p>
+        <p class="TeX">\Delta E_k = \va{F}\cdot\Delta\va{d}</p>
         <p>This means the force is...</p>
-        <p class="TeX">\vec{\bf F} = \frac{\Delta E_k}{\Delta\vec{\bf d}}</p>
+        <p class="TeX">\va{F} = \frac{\Delta E_k}{\Delta\va{d}}</p>
         <p>Less force is exerted when the work is done over a larger displacement. Since a standard rope stretches through a very small displacement, the force would be very large and would likely cause injuries. A bungee extends the work over a much larger displacement, resulting in a much smaller force.</p>
     </div>
 </ol></li>

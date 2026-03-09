@@ -21,10 +21,10 @@ Q1: (sel) => {
     ar(p1, p2, 3);
 
     let mj = (tex, posn, color, i) => svg.mjax(tex, null, posn, color).then(g => g.css(`.Toggle${i}`));
-    mj("\\vec{\\bf v}_i", [1.8, 13, "b"], "red", 0);
-    mj("\\vec{\\bf a}", [12, 9.5], "#0065fe", 1);
-    mj("\\Delta\\vec{\\bf d}", [5, 5], "lime", 2);
-    mj("\\vec{\\bf v}_f", [11.5, 5], "red", 3);
+    mj("\\va{v}_i", [1.8, 13, "b"], "red", 0);
+    mj("\\va{a}", [12, 9.5], "#0065fe", 1);
+    mj("\\Delta\\va{d}", [5, 5], "lime", 2);
+    mj("\\va{v}_f", [11.5, 5], "red", 3);
 
     svg.click_toggle(4);
 },

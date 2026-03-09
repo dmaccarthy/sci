@@ -9,9 +9,9 @@ Ex1: (sel) => {
     svg.gtext("kN·s", ["sans", 15], [-24, 2]);
 
     let s = {scale: 1.1};
-    svg.mjax("\\vec{\\bf p}_{iA}", s, [4, 14], "red");
-    svg.group(".Toggle0").mjax("\\vec{\\bf p}_{iB}", s, [-11, 30], "red");
-    svg.group(".Toggle1").group(".Resultant").mjax("\\Sigma\\vec{\\bf p}", s, [-15, 12], "#0065fe");
+    svg.mjax("\\va{p}_{iA}", s, [4, 14], "red");
+    svg.group(".Toggle0").mjax("\\va{p}_{iB}", s, [-11, 30], "red");
+    svg.group(".Toggle1").group(".Resultant").mjax("\\Sigma\\va{p}", s, [-15, 12], "#0065fe");
     svg.click_toggle(2);
 },
 
@@ -24,9 +24,9 @@ Ex2: (sel) => {
     svg.gtext("kN·s", ["sans", 15], [-24, 2]);
 
     let s = {scale: 1.1};
-    svg.mjax("\\vec{\\bf p}_{iA}", s, [4, 14], "red");
-    svg.group(".Toggle0").mjax("\\vec{\\bf p}_{iB}", s, [-12, 24], "red");
-    svg.group(".Toggle1").group(".Resultant").mjax("\\Sigma\\vec{\\bf p}", s, [-12, 5], "#0065fe");
+    svg.mjax("\\va{p}_{iA}", s, [4, 14], "red");
+    svg.group(".Toggle0").mjax("\\va{p}_{iB}", s, [-12, 24], "red");
+    svg.group(".Toggle1").group(".Resultant").mjax("\\Sigma\\va{p}", s, [-12, 5], "#0065fe");
     svg.click_toggle(2);
 },
 
@@ -40,9 +40,9 @@ Ex3: (sel) => {
     svg.gtext("N·s", ["sans", 15], [0.025, 0.2]);
 
     let s = {scale: 1.1};
-    svg.group(".Toggle0").mjax("\\vec{\\bf p}_{iA}", s, [0.1, 0.125], "red");
-    svg.group(".Toggle1").mjax("\\vec{\\bf p}_{iB}", s, [0.38, 0.15], "red");
-    svg.mjax("\\Sigma\\vec{\\bf p}", s, [0.23, -0.06], "#0065fe");
+    svg.group(".Toggle0").mjax("\\va{p}_{iA}", s, [0.1, 0.125], "red");
+    svg.group(".Toggle1").mjax("\\va{p}_{iB}", s, [0.38, 0.15], "red");
+    svg.mjax("\\Sigma\\va{p}", s, [0.23, -0.06], "#0065fe");
     svg.click_toggle(2);
 
 }

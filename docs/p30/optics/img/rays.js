@@ -71,8 +71,8 @@ depth: (sel, n, x1, x2) => {
 
 concave: (sel) => {
     svg = new SVG2(sel, {scale: 60, lrbt: [-1, 12, -4, 4], margin: 10, grid: 0.5});
-    svg.ticks({x: [-1, 12.1, 1]}, true);
-    svg.ticks({y: [-4, 4.1, 1]}, true);
+    svg.ticks({x: [-1, 12.1, 1], default: true});
+    svg.ticks({y: [-4, 4.1, 1], default: true});
     svg.$.find("g.Labels g.Zero").remove();
 
     let c = vec(6, 0), a = asin(4/6);
@@ -91,8 +91,8 @@ concave: (sel) => {
 
 convex: (sel) => {
     svg = new SVG2(sel, {scale: 60, lrbt: [-7, 5, -4, 4], margin: 10, grid: 0.5});
-    svg.ticks({x: [-7, 5.1, 1]}, true);
-    svg.ticks({y: [-4, 4.1, 1]}, true);
+    svg.ticks({x: [-7, 5.1, 1], default: true});
+    svg.ticks({y: [-4, 4.1, 1], default: true});
     svg.$.find("g.Labels g.Zero").remove();
 
     let c = vec(-6, 0), a = asin(4/6);
@@ -112,8 +112,8 @@ convex: (sel) => {
 plane: (sel) => {
     svg = new SVG2(sel, {scale: 30, lrbt: [-12, 12, -8, 8], margin: 10, grid: 1});
     $(svg.$.find("g.Grid line.Axis")[0]).css({"stroke-width": "3px"});
-    svg.ticks({x: [-12, 12.1, 2]}, true);
-    svg.ticks({y: [-8, 8.1, 2]}, true);
+    svg.ticks({x: [-12, 12.1, 2], default: true});
+    svg.ticks({y: [-8, 8.1, 2], default: true});
     svg.$.find("g.Labels g.Zero").remove();
     svg.arrow({tail: [10,0], tip: [10,2]}, {tail: "5"}).$.find("polygon").css({fill: "#0065fe"});
 },
@@ -121,8 +121,8 @@ plane: (sel) => {
 fish: (sel) => {
     svg = new SVG2(sel, {scale: 30, lrbt: [-8, 8, -12, 6], margin: 10, grid: 1});
     $(svg.$.find("g.Grid line.Axis")[1]).css({"stroke-width": "3px"});
-    svg.ticks({x: [-4, 8.1, 2]}, true);
-    svg.ticks({y: [-12, 6.1, 2]}, true);
+    svg.ticks({x: [-4, 8.1, 2], default: true});
+    svg.ticks({y: [-12, 6.1, 2], default: true});
     svg.$.find("g.Labels g.Zero").remove();
     svg.circle("5", [0, -10]).css({fill: "red"});
     svg.text("Coin", [1, -10.5]).css({fill: "red"});

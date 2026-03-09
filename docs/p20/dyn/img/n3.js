@@ -7,8 +7,8 @@ n3: (sel) => {
     let g = svg.group("arrow");
     g.arrow(-3.4, {tail: "6"}).config({shift: [-2, 0.2]}).css("#0065fe");
     g.arrow(3.4, {tail: "6"}).config({shift: [2, 0.2]}).css("red");
-    svg.mjax("\\vec{\\bf F}_f", null, [2.5, 0.4, 0.5, 1], "red");
-    svg.mjax("\\vec{\\bf F}_f", null, [-2, 0.4, 0.5, 1], "#0065fe");
+    svg.mjax("\\va{F}_f", null, [2.5, 0.4, 0.5, 1], "red");
+    svg.mjax("\\va{F}_f", null, [-2, 0.4, 0.5, 1], "#0065fe");
 },
 
 pool: (sel) => {
@@ -29,9 +29,9 @@ pool: (sel) => {
     g.arrow({tail: [3.2, 1.5], tip: [5, 1.5]}, {tail: "6"}).css("#0065fe");
     g.arrow({tail: [-1.2, 1.5], tip: [-3, 1.5]}, {tail: "6"}).css("red");
     g.arrow({tail: [-1.3, 5.5], tip: [0.3, 5.5]}, {tail: "6"}).css("limegreen");
-    svg.mjax("\\vec{\\bf v}_i", null, [-0.5, 5.7, 0.5, 1], "limegreen");
-    svg.mjax("\\vec{\\bf F}_a", null, [-2.1, 1.7, 0.5, 1], "red");
-    svg.mjax("\\vec{\\bf F}_a", null, [4.1, 1.7, 0.5, 1], "#0065fe");
+    svg.mjax("\\va{v}_i", null, [-0.5, 5.7, 0.5, 1], "limegreen");
+    svg.mjax("\\va{F}_a", null, [-2.1, 1.7, 0.5, 1], "red");
+    svg.mjax("\\va{F}_a", null, [4.1, 1.7, 0.5, 1], "#0065fe");
 },
 
 rocket: (sel) => {
@@ -40,8 +40,8 @@ rocket: (sel) => {
     let g = svg.group("arrow");
     g.arrow({tail: [0, 3], tip: [0, 5]}, {tail: "6"});
     g.arrow({tail: [0, -1.5], tip: [0, -3.5]}, {tail: "6"}).css("#0065fe");
-    svg.mjax("\\vec{\\bf F}_a", null, [-0.25, 3.8, 1, 0.5], "red");
-    svg.mjax("\\vec{\\bf F}_a", null, [0.4, -2.3, 0, 0.5], "#0065fe");
+    svg.mjax("\\va{F}_a", null, [-0.25, 3.8, 1, 0.5], "red");
+    svg.mjax("\\va{F}_a", null, [0.4, -2.3, 0, 0.5], "#0065fe");
 },
     
 });

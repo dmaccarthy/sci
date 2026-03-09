@@ -26,9 +26,9 @@ ship: (sel) => {
         a = a.plus(vec2d(...f));
     }
     arrow(-a[1], -90).css("#0065fe");
-    svg.mjax("\\vec{\\bf g}_{↡ P}", null, [0.4, 0.65], "red");
-    svg.mjax("\\vec{\\bf g}_{↡ M}", null, [0.77, 0.6], "red");
-    svg.mjax("\\vec{\\bf a}", null, [0.52, 0.4], "#0065fe");
+    svg.mjax("\\va{g}_{↡ P}", null, [0.4, 0.65], "red");
+    svg.mjax("\\va{g}_{↡ M}", null, [0.77, 0.6], "red");
+    svg.mjax("\\va{a}", null, [0.52, 0.4], "#0065fe");
 },
 
 Ex1_init: (sel) => {
@@ -36,9 +36,9 @@ Ex1_init: (sel) => {
         margin: 8, grid: 5, label: [10, 0]});
     svg.gtext("m", "sans", [3, 50]);
     let sym = svg.group(".MJax");
-    sym.mjax("\\Delta\\vec{\\bf d}_1", null, [6, 27], "red");
-    sym.mjax("\\Delta\\vec{\\bf d}_2", null, [42, 30], "red");
-    sym.mjax("\\Delta\\vec{\\bf d}", null, [35, 10], "#0065fe");
+    sym.mjax("\\Delta\\va{d}_1", null, [6, 27], "red");
+    sym.mjax("\\Delta\\va{d}_2", null, [42, 30], "red");
+    sym.mjax("\\Delta\\va{d}", null, [35, 10], "#0065fe");
     return svg;
 },
 
@@ -67,19 +67,19 @@ Ex2: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, -Fg], vec2d(Fn, 80), vec2d(8, 170)], {lrbt: [-30, 30, -105, 10],
         scale: 4, cycle: 1, margin: [12, 12, 6, 16], grid: 5, label: [10, 0]});
     svg.gtext("N", "sans", [25, -100]);
-    svg.mjax("\\vec{\\bf F}_g", null, [-15, -45], "red");
-    svg.mjax("\\vec{\\bf F}_n", null, [20, -50], "red");
-    svg.mjax("\\vec{\\bf F}_f", null, [20, 5], "red");
-    svg.mjax("\\vec{\\bf F}_{net}", null, [5, 9], "red");
+    svg.mjax("\\va{F}_g", null, [-15, -45], "red");
+    svg.mjax("\\va{F}_n", null, [20, -50], "red");
+    svg.mjax("\\va{F}_f", null, [20, 5], "red");
+    svg.mjax("\\va{F}_{net}", null, [5, 9], "red");
 },
 
 Ex3: (sel) => {
     let svg = SVG2.vec_diag(sel, [vec2d(7.25, 75), vec2d(6.5, -60)], {lrbt: [-1, 6, -1, 8],
         scale: 50, cycle: 1, margin: [12, 12, 6, 16], grid: 1, label: [1, 0]});
     svg.gtext("m/s", "sans", [0.1, 8, "l"]);
-    svg.mjax("-\\vec{\\bf v}_i", null, [4.2, 4.5], "red");
-    svg.mjax("\\vec{\\bf v}_f", null, [0.5, 4.2], "red");
-    svg.mjax("\\Delta\\vec{\\bf v}", null, [2.7, 1.4], "#0065fe");
+    svg.mjax("-\\va{v}_i", null, [4.2, 4.5], "red");
+    svg.mjax("\\va{v}_f", null, [0.5, 4.2], "red");
+    svg.mjax("\\Delta\\va{v}", null, [2.7, 1.4], "#0065fe");
 },
 
 tri: (sel) => {

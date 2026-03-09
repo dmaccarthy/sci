@@ -5,7 +5,7 @@ HR1: (sel) => {
     let size = {size: 0.5, ratio: 0.5};
     let green = ["none", "forestgreen@1", ".Toggle3"];
     let g = svg.group(...green);
-    g.mjax("\\vec{\\bf B}", null, [-1, 5.8], "forestgreen");
+    g.mjax("\\va{B}", null, [-1, 5.8], "forestgreen");
     svg.vec_in_out(0.5, 1, "black@2").$.find("polygon").addClass("Toggle1");
     for (let r of [0.7, 1, 1.6, 2.5, 4.2, 7]) {
         let g1 = r == 4.2 ? g.group(".Toggle2", ...green) : g;

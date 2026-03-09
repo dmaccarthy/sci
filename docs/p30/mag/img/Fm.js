@@ -25,8 +25,8 @@ parallel_r: (sel) => {
         g.chevron(vec2d(8, a).plus([-4, 0]), a-90, {size: "10", ratio: 0.6});
     svg.group("arrow", green).arrow({tail: [4, -1], tip: [4, -4]}, {tail: "6"});
     svg.group("arrow", "#0065fe").arrow({tail: [5, 0], tip: [9, 0]}, {tail: "6"});
-    svg.mjax("\\vec{\\bf B}", {scale: 0.8}, [2, -2], green);
-    svg.mjax("\\vec{\\bf F}_m", {scale: 0.8}, [6, 1, "b"], "#0065fe");
+    svg.mjax("\\va{B}", {scale: 0.8}, [2, -2], green);
+    svg.mjax("\\va{F}_m", {scale: 0.8}, [6, 1, "b"], "#0065fe");
 },
 
 parallel_l: (sel) => {
@@ -40,8 +40,8 @@ parallel_l: (sel) => {
         g.chevron(vec2d(8, a).plus([4, 0]), a+90, {size: "10", ratio: 0.6});
     svg.group("arrow", green).arrow({tail: [-4, -1], tip: [-4, -4]}, {tail: "6"});
     svg.group("arrow", "#0065fe").arrow({tail: [-5, 0], tip: [-9, 0]}, {tail: "6"});
-    svg.mjax("\\vec{\\bf B}", {scale: 0.8}, [-2, -2], green);
-    svg.mjax("\\vec{\\bf F}_m", {scale: 0.8}, [-6, 1, "b"], "#0065fe");
+    svg.mjax("\\va{B}", {scale: 0.8}, [-2, -2], green);
+    svg.mjax("\\va{F}_m", {scale: 0.8}, [-6, 1, "b"], "#0065fe");
 },
 
 parallel: (sel) => {

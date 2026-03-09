@@ -7,7 +7,7 @@ ucm: (sel) => {
 
     /* Magnetic field */
     svg.text("⨂", null, 0, ["green", 32]);
-    svg.mjax("\\vec{\\bf B}", mj_size, [-0.2, 0], "green");
+    svg.mjax("\\va{B}", mj_size, [-0.2, 0], "green");
 
     let q = svg.group().config({omega: 20, animated: true});
 
@@ -21,12 +21,12 @@ ucm: (sel) => {
     /* Velocity */
     let cfg = {omega: -20, animated: true, pivot: [0.8, 0.27]};
     let v = q.group().config(cfg);
-    v.mjax("\\vec{\\bf v}", mj_size, cfg.pivot, "red");
+    v.mjax("\\va{v}", mj_size, cfg.pivot, "red");
 
     // /* Force */
     cfg.pivot = [0.8, -0.2];
     let F = q.group().config(cfg);
-    F.mjax("\\vec{\\bf F}_m", mj_size, cfg.pivot, "#0065fe"); 
+    F.mjax("\\va{F}_m", mj_size, cfg.pivot, "#0065fe"); 
     tog.push(F.$);
 
     click_cycle(svg.element, 3,
@@ -43,7 +43,7 @@ cyclo: (sel) => {
     let svg = new SVG2(sel, {scale: 192, grid: 0, lrbt: [-1.2, 1.5, -1.2, 1.2], margin: 1});
     css(svg.circle(1.02), "#f0f0f0", "none@");
     svg.text("⨂", [0.4, 0.45, "r"], 0, ["green", 32]);
-    svg.mjax("\\vec{\\bf B}", {scale: 1}, [0.5, 0.5], "green");
+    svg.mjax("\\va{B}", {scale: 1}, [0.5, 0.5], "green");
     let proton_init = {shift: [0, 0], vel: [0, 1e-2], upper_D: true};
     let proton = svg.group("#0065fe", "black@1").config({animated: true, ...proton_init});
     proton.circle("4");

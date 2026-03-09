@@ -2,10 +2,10 @@ SVG2.cache("p30/elec/img/eq.js", {
 
 eq: (sel) => {
     let svg = new SVG2(sel, {size: [400, 240], margin: [24, 24, 16, 16], lrbt: [-1, 1]});
-    svg.mjax("\\vec{\\bf a}", null, [-1, 0.5]);
-    svg.mjax("\\vec{\\bf F}_e", null, [0, 0.5, 0.5, 0.55]);
-    svg.mjax("\\vec{\\bf E}", null, [1, 0.5]);
-    svg.mjax("\\vec{\\bf v}", null, [-1, -0.5]);
+    svg.mjax("\\va{a}", null, [-1, 0.5]);
+    svg.mjax("\\va{F}_e", null, [0, 0.5, 0.5, 0.55]);
+    svg.mjax("\\va{E}", null, [1, 0.5]);
+    svg.mjax("\\va{v}", null, [-1, -0.5]);
     svg.mjax("W", null, [0, -0.5]);
     svg.mjax("\\Delta V", null, [1, -0.5]);
 

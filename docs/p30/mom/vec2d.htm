@@ -25,19 +25,19 @@
 
     <li>Determine the velocity of the cart and person after the person steps onto the cart. If you were unable to answer #2, use 6.00 m/s for the velocity of the cart immediately before contact with the person.</li>
     <div class="Answer">
-        <p class="TeX">\Sigma\vec{\bf p}_i = m_C\vec{\bf v}_i = \rm 25.0\ kg\cdot (+5.94\ m/s) = +149\ N\cdot s</p>
-        <p class="TeX">\Sigma\vec{\bf p}_f = (m_C+m_B)\vec{\bf v}_f</p>
-        <p class="TeX">\vec{\bf v}_f = \frac{\Sigma\vec{\bf p}_f}{m_C+m_B} = \rm \frac{+149\ N\cdot s}{65.0\ kg} = +2.29\ m/s</p>
+        <p class="TeX">\Sigma\va{p}_i = m_C\va{v}_i = \rm 25.0\ kg\cdot (+5.94\ m/s) = +149\ N\cdot s</p>
+        <p class="TeX">\Sigma\va{p}_f = (m_C+m_B)\va{v}_f</p>
+        <p class="TeX">\va{v}_f = \frac{\Sigma\va{p}_f}{m_C+m_B} = \rm \frac{+149\ N\cdot s}{65.0\ kg} = +2.29\ m/s</p>
     </div>
 
     <li><ol type="a">
         <li>The “collision” between the cart and person lasted 0.250 seconds. Calculate the impulse and the average force that the person experienced. If you were unable to answer #3, use 4.00 m/s for the velocity of the cart and person after the collision. </li>
         <div class="Answer">
             <p>For the bystander...</p>
-            <p class="TeX">\vec{\bf p}_{fB} = m_B\vec{\bf v}_f = \rm 40.0\ kg\cdot (+2.29\ m/s) = +91.4\ N\cdot s</p>
+            <p class="TeX">\va{p}_{fB} = m_B\va{v}_f = \rm 40.0\ kg\cdot (+2.29\ m/s) = +91.4\ N\cdot s</p>
             <p>Because the bystander was initially at rest, their initial momentum was zero and the impulse is the same as the final momentum. Use this to find the force...</p>
-            <p class="TeX">\Delta\vec{\bf p}_B = \vec{\bf F}_B\Delta t</p>
-            <p class="TeX">\vec{\bf F}_B = \frac{\Delta\vec{\bf p}_B}{\Delta t} = \rm \frac{+91.4\ N\cdot s}{0.250\ s} = +366\ N</p>
+            <p class="TeX">\Delta\va{p}_B = \va{F}_B\Delta t</p>
+            <p class="TeX">\va{F}_B = \frac{\Delta\va{p}_B}{\Delta t} = \rm \frac{+91.4\ N\cdot s}{0.250\ s} = +366\ N</p>
         </div>
 
         <li>How much force did the person exert on the cart? Explain.</li>
@@ -68,7 +68,7 @@
 <p><em class="Defn">Vectors</em> are quantities that involve a direction, such as displacement, velocity, acceleration, and force.</p>
 <ul>
     <li>We can illustrate vectors using a <em class="Defn">vector diagram</em>, in which each vector is drawn as an arrow illustrating the direction and the magnitude (size) of the vector.</li>
-    <li>A vector described by its magnitude and direction is said to be in <em class="Defn">polar form</em>:<p class="TeX">\vec{\bf F} = \rm{8.0\ N\ [30°]}</p></li>
+    <li>A vector described by its magnitude and direction is said to be in <em class="Defn">polar form</em>:<p class="TeX">\va{F} = \rm{8.0\ N\ [30°]}</p></li>
 </ul>
 <p class="Center"><svg data-svg2="p30/mom/img/vec2d.js#F" class="s20"></svg></p>
 <ul>
@@ -76,12 +76,12 @@
     <li>Negative angles indicate clockwise from the <span class="TeX">+x</span>-axis.</li>
     <li>The <em class="Defn">components</em> of a vector describe “how much” of the vector is in each of the <span class="TeX">x</span> and <span class="TeX">y</span> directions.</li>
     <li>We can use trigonometry to calculate the components of a vector from its magnitude and direction:
-        <p class="TeX">{\vec{\bf{F}}}_x=\left|\vec{\bf{F}}\right|\cos{\theta}</p>
-        <p class="TeX">{\vec{\bf{F}}}_y=\left|\vec{\bf{F}}\right|\sin{\theta}</p></li>
-    <li>Describing a vector by its components is called the <em class="Defn">Cartesian</em> form of the vector:<p class="TeX">\vec{\bf F} = \rm{(6.9, 4.0)\ N}</p></li>
+        <p class="TeX">{\va{F}}_x=\left|\va{F}\right|\cos{\theta}</p>
+        <p class="TeX">{\va{F}}_y=\left|\va{F}\right|\sin{\theta}</p></li>
+    <li>Describing a vector by its components is called the <em class="Defn">Cartesian</em> form of the vector:<p class="TeX">\va{F} = \rm{(6.9, 4.0)\ N}</p></li>
     <li>We can also use trigonometry to convert a vector from Cartesian to polar form:
-        <p class="TeX">\left|\vec{\bf{F}}\right|=\sqrt{F_x^2+F_y^2}</p>
-        <p class="TeX">\tan{\theta}=\frac{{\vec{\bf{F}}}_y}{{\vec{\bf{F}}}_x}</p></li>
+        <p class="TeX">\left|\va{F}\right|=\sqrt{F_x^2+F_y^2}</p>
+        <p class="TeX">\tan{\theta}=\frac{{\va{F}}_y}{{\va{F}}_x}</p></li>
     <li>When solving for <span class="TeX">\theta</span> using <span class="TeX">\tan^{-1}</span>, you will get only one of two possible solutions; when the <span class="TeX">x</span>-component is negative, you will have to add 180° to get the correct answer.</li>
     <li>Compass directions should be converted to conventional angles...</li>
 </ul>
@@ -103,13 +103,13 @@
 <section class="Slide"><h3>Vector Arithmetic</h3>
 <p data-cue="none" class="Center _Present"><svg data-svg2="p30/mom/img/vec2d.js#boat" class="s16"></svg></p>
 <p>To add or subtract vectors more precisely than is possible with a diagram, convert all vectors to Cartesian form...</p>
-<p class="TeX">\vec{\bf v}_{1x} = |\vec{\bf v}_1| \cos\theta_1 = \rm{20.0\ m/s\cdot\cos 120° = -10.0\ m/s}</p>
-<p class="TeX">\vec{\bf v}_{1y} = |\vec{\bf v}_1| \sin\theta_1 = \rm{20.0\ m/s\cdot\sin 120° = +17.3\ m/s}</p>
-<p class="TeX">\vec{\bf v}_{2x} = |\vec{\bf v}_2| \cos\theta_2 = \rm{5.00\ m/s\cdot\cos 200° = -4.70\ m/s}</p>
-<p class="TeX">\vec{\bf v}_{2y} = |\vec{\bf v}_2| \sin\theta_2 = \rm{5.00\ m/s\cdot\sin 200° = -1.71\ m/s}</p>
+<p class="TeX">\va{v}_{1x} = |\va{v}_1| \cos\theta_1 = \rm{20.0\ m/s\cdot\cos 120° = -10.0\ m/s}</p>
+<p class="TeX">\va{v}_{1y} = |\va{v}_1| \sin\theta_1 = \rm{20.0\ m/s\cdot\sin 120° = +17.3\ m/s}</p>
+<p class="TeX">\va{v}_{2x} = |\va{v}_2| \cos\theta_2 = \rm{5.00\ m/s\cdot\cos 200° = -4.70\ m/s}</p>
+<p class="TeX">\va{v}_{2y} = |\va{v}_2| \sin\theta_2 = \rm{5.00\ m/s\cdot\sin 200° = -1.71\ m/s}</p>
 <p>Then perform the calculations separately on the <span class="TeX">x</span>- and <span class="TeX">y</span>-components...</p>
-<p class="TeX">\vec{\bf v}_x = \vec{\bf v}_{1x} + \vec{\bf v}_{2x}= \rm{(-10.0 + (-4.70))\ m/s = -14.7\ m/s}</p>
-<p class="TeX">\vec{\bf v}_y = \vec{\bf v}_{1y} + \vec{\bf v}_{2y}= \rm{(+17.3 + (-1.71))\ m/s = +15.6\ m/s}</p>
+<p class="TeX">\va{v}_x = \va{v}_{1x} + \va{v}_{2x}= \rm{(-10.0 + (-4.70))\ m/s = -14.7\ m/s}</p>
+<p class="TeX">\va{v}_y = \va{v}_{1y} + \va{v}_{2y}= \rm{(+17.3 + (-1.71))\ m/s = +15.6\ m/s}</p>
 <ul><li>If the resultant vector needs to be in polar form, just convert it using the Pythagoras and <span class="TeX">\tan^{-1}</span> formulas.</li></ul>
 </section>
 
@@ -126,8 +126,8 @@
 
     <li>Define <em class="Defn">polar</em> and <em class="Defn">Cartesian</em> form for 2D vectors and explain how to convert between the two forms.</li>
     <div class="Answer">
-        <p>The <em>polar</em> form describes a 2D vector as a magnitude and direction. For example, <span class="TeX">\vec{\bf F}</span> = <span class="NoWrap">25.0 N [+60.0°]</span> means a force that is 25.0-newtons strong directed 60.0° counter-clockwise from the direction parallel to the positive <span class="TeX">x</span>-axis.</p>
-        <p>The <em>Cartesian</em> form decribes the vector as separate <span class="TeX">x</span>- and <span class="TeX">y</span> -components. For example, <span class="TeX">\vec{\bf F}</span> = <span class="NoWrap">(+12.5, +21.7) N</span> means a force that pulls with 12.5 newtons parallel to the <span class="TeX">x</span>-axis and simultaneously with 21.7 newtons parallel to the <span class="TeX">y</span>-axis.</p>
+        <p>The <em>polar</em> form describes a 2D vector as a magnitude and direction. For example, <span class="TeX">\va{F}</span> = <span class="NoWrap">25.0 N [+60.0°]</span> means a force that is 25.0-newtons strong directed 60.0° counter-clockwise from the direction parallel to the positive <span class="TeX">x</span>-axis.</p>
+        <p>The <em>Cartesian</em> form decribes the vector as separate <span class="TeX">x</span>- and <span class="TeX">y</span> -components. For example, <span class="TeX">\va{F}</span> = <span class="NoWrap">(+12.5, +21.7) N</span> means a force that pulls with 12.5 newtons parallel to the <span class="TeX">x</span>-axis and simultaneously with 21.7 newtons parallel to the <span class="TeX">y</span>-axis.</p>
         <p>Because any 2D vector and its components form a right-angle triangle, you can use the trigonometry relations</p>
     </div>
 
@@ -135,7 +135,7 @@
 
     <li>Calculate the total momentum of a system containing three masses as shown in the table below. Calculate the momentum of each mass individually first, and then add the three momentum vectors together. Show all calculations and include a “tip-to-tail” vector diagram.</li>
     <table class="Center TD6">
-        <tr><th>Mass</th><th>Velocity</th><th style="width:10em">Momentum<br/>(Polar)</th><th class="TeX">\vec{\bf p}_x</th><th class="TeX">\vec{\bf p}_y</th></tr>
+        <tr><th>Mass</th><th>Velocity</th><th style="width:10em">Momentum<br/>(Polar)</th><th class="TeX">\va{p}_x</th><th class="TeX">\va{p}_y</th></tr>
         <tr><td>250 g</td><td>3.00 m/s [30.0°]</td><td></td><td></td><td></td></tr>
         <tr><td>350 g</td><td>1.00 m/s [60.0°]</td><td></td><td></td><td></td></tr>
         <tr><td>300 g</td><td>2.00 m/s [45.0°]</td><td></td><td></td><td></td></tr>
@@ -167,7 +167,7 @@
 
     <li>Calculate the total momentum of a system containing three masses as shown in the table below. Calculate the momentum of each mass individually first and then add the three momentum vectors together. Show all calculations and include a “tip-to-tail” vector diagram. Summarize your calculations in a table like this:
 <table class="TD6 Center Five Top Bottom">
-    <tr class="NoBold"><th class="Bold">Mass <span class="NoBold">/ g</span></th><th><span class="TeX">|\vec{\bf v}|</span> / (m/s)</th><th><span class="TeX">|\vec{\bf p}|</span> / (N·s)</th><th><span class="TeX">\vec{\bf p}_x</span> / (N·s)</th><th><span class="TeX">\vec{\bf p}_y</span> / (N·s)</th></tr>
+    <tr class="NoBold"><th class="Bold">Mass <span class="NoBold">/ g</span></th><th><span class="TeX">|\va{v}|</span> / (m/s)</th><th><span class="TeX">|\va{p}|</span> / (N·s)</th><th><span class="TeX">\va{p}_x</span> / (N·s)</th><th><span class="TeX">\va{p}_y</span> / (N·s)</th></tr>
     <tr><td>250</td><td>3.00 [30.0°]</td><td></td><td></td><td></td></tr>
     <tr><td>350</td><td>1.00 [60.0°]</td><td></td><td></td><td></td></tr>
     <tr><td>300</td><td>2.00 [45.0°]</td><td></td><td></td><td></td></tr>
@@ -175,9 +175,9 @@
 </table>
 <div class="Answer">
 <p>Find the three momenta by multiplying each mass by the corresponding velocity:</p>
-<p class="TeX">\vec{\bf p}_1 = m_1 \vec{\bf v}_1 = \rm 0.250\ kg\cdot 3.00\ m/s\ [30.0^\circ] = 0.750\ N\cdot s\ [30.0^\circ]</p>
-<p class="TeX">\vec{\bf p}_2 = m_2 \vec{\bf v}_2 = \rm 0.350\ kg\cdot 1.00\ m/s\ [60.0^\circ] = 0.350\ N\cdot s\ [60.0^\circ]</p>
-<p class="TeX">\vec{\bf p}_3 = m_3 \vec{\bf v}_3 = \rm 0.200\ kg\cdot 3.00\ m/s\ [45.0^\circ] = 0.600\ N\cdot s\ [45.0^\circ]</p>
+<p class="TeX">\va{p}_1 = m_1 \va{v}_1 = \rm 0.250\ kg\cdot 3.00\ m/s\ [30.0^\circ] = 0.750\ N\cdot s\ [30.0^\circ]</p>
+<p class="TeX">\va{p}_2 = m_2 \va{v}_2 = \rm 0.350\ kg\cdot 1.00\ m/s\ [60.0^\circ] = 0.350\ N\cdot s\ [60.0^\circ]</p>
+<p class="TeX">\va{p}_3 = m_3 \va{v}_3 = \rm 0.200\ kg\cdot 3.00\ m/s\ [45.0^\circ] = 0.600\ N\cdot s\ [45.0^\circ]</p>
 <p>Next, use the <span class="TeX">\cos</span> and <span class="TeX">\sin</span> ratios to calculate the components. Then total the three <span class="NoWrap"><span class="TeX">x</span>-components</span> and the three <span class="NoWrap"><span class="TeX">y</span>-components</span>.</p>
 <p>Finally, use Pythagoras and the <span class="TeX">\tan^{-1}</span> function to convert the total from Cartesian to polar form...</p>
 <p class="Answer"><a target="Q1" href="./?{%22v%22:%22@(.75,30),%20@(.35,60),%20@(.6,45)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Solution</a></p>
@@ -186,12 +186,12 @@
 </li>
 		
 
-    <li>A spacecraft moving near the Moon experiences three forces: the thrust of the rocket engines is <span class="TeX">\vec{\bf F}_a</span> = <span class="NoWrap">120.0 N [+85.2º]</span>, the force of the Moon’s gravity is <span class="TeX">\vec{\bf F}_{gM}</span> = <span class="NoWrap">85.0 N [–90.0º]</span>, and the force of Earth’s gravity is <span class="TeX">\vec{\bf F}_{gE}</span> = <span class="NoWrap">25.0 N [+235.0º]</span>. Determine the net force (i.e. the resultant vector obtained by adding these three force vectors) both graphically and by the component method.</li>
+    <li>A spacecraft moving near the Moon experiences three forces: the thrust of the rocket engines is <span class="TeX">\va{F}_a</span> = <span class="NoWrap">120.0 N [+85.2º]</span>, the force of the Moon’s gravity is <span class="TeX">\va{F}_{gM}</span> = <span class="NoWrap">85.0 N [–90.0º]</span>, and the force of Earth’s gravity is <span class="TeX">\va{F}_{gE}</span> = <span class="NoWrap">25.0 N [+235.0º]</span>. Determine the net force (i.e. the resultant vector obtained by adding these three force vectors) both graphically and by the component method.</li>
     <div class="Answer"><p>
         <a target="Q2" href="./?{%22v%22:%22@(120,85.2),@(85,-90),@(25,235)%22,%22unit%22:%22N%22}#p20/vec2d/vec_diag">Solution</a>
     </p></div>
 
-    <li>As an object slides down a ramp, it experiences a force of gravity equal to <span class="TeX">\vec{\bf F}_g</span> = <span class="NoWrap">52.0 N [–90.0º]</span>. Measurements determine that the “contact force” of the ramp pushing on the object (i.e. the normal and friction forces combined) has a magnitude of <span class="TeX">|\vec{\bf F}_{contact}|</span> = 45.0 N and the magnitude of the net (resultant) force is 18.5 N. Determine the direction of the contact force and of the net force. [Hint: You may find the compass from your geometry set useful!]</li>
+    <li>As an object slides down a ramp, it experiences a force of gravity equal to <span class="TeX">\va{F}_g</span> = <span class="NoWrap">52.0 N [–90.0º]</span>. Measurements determine that the “contact force” of the ramp pushing on the object (i.e. the normal and friction forces combined) has a magnitude of <span class="TeX">|\va{F}_{contact}|</span> = 45.0 N and the magnitude of the net (resultant) force is 18.5 N. Determine the direction of the contact force and of the net force. [Hint: You may find the compass from your geometry set useful!]</li>
     <div class="Answer">
         <p>Draw a sketch of the vector diagram first. We know that the two forces and the resultant vector form a triangle. We know all three sides of the triangle (52.0, 45.0, and 18.5 N), so we can use the Law of Cosines to find the direction of the contact force:</p>
         <p class="TeX">c^2 = a^2 + b^2 - 2ab\cos\theta</p>

@@ -45,7 +45,7 @@ _crt: (sel) => {
     let mag = svg.group(".Toggle4").config({shift: [x, -0.5]});
     css(mag.circle(0.3), "none", "green@1");
     css(mag.circle(0.05), "green", "none@");
-    mag.mjax("\\vec{\\bf B}", {scale: 1}, [0.75, 0], "green");
+    mag.mjax("\\va{B}", {scale: 1}, [0.75, 0], "green");
     mag.$.hide();
 
     return svg;

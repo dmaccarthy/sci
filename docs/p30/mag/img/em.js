@@ -12,9 +12,9 @@ hall: (sel) => {
     g = svg.group("arrow");
     g.arrow({tail: [-9, -1], tip: [-5, -1]}, {tail: "6"});
     g.arrow({tail: [-6, 1], tip: [-6, 4]}, {tail: "6"}).css("#0065fe");
-    svg.mjax("\\vec{\\bf v}", null, [-7.5, -2], "red");
-    svg.mjax("\\vec{\\bf F}_m", null, [-8, 2.5], "#0065fe");
-    svg.mjax("\\vec{\\bf B}", null, [6, 4], "forestgreen");
+    svg.mjax("\\va{v}", null, [-7.5, -2], "red");
+    svg.mjax("\\va{F}_m", null, [-8, 2.5], "#0065fe");
+    svg.mjax("\\va{B}", null, [6, 4], "forestgreen");
     svg.vec_in_out("12", 0, "forestgreen@2").shift_by([4.5, 4]);
 },
 

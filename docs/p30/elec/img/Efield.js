@@ -44,9 +44,9 @@ ex1: (sel) => {
     svg.gtext("kN/C", ["sans", 15], [4, 14, "r"]);
     let g = svg.group();
     let s = {scale: 1};
-    g.mjax("\\vec{\\bf E}_1", s, [-1, 7], "red");
-    g.mjax("\\vec{\\bf E}_2", s, [1.5, 13.2], "red");
-    g.mjax("\\vec{\\bf E}", s, [1.8, 7], "#0065fe");
+    g.mjax("\\va{E}_1", s, [-1, 7], "red");
+    g.mjax("\\va{E}_2", s, [1.5, 13.2], "red");
+    g.mjax("\\va{E}", s, [1.8, 7], "#0065fe");
 },
 
 proj: (sel) => {

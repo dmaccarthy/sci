@@ -17,9 +17,9 @@ Ex1: (sel) => {
         margin: 8, grid: 0.5, label: [1, 0]});
     svg.gtext("m/s", "sans", [0.8, -3]);
     svg.mjax("\\theta", {scale: 0.8}, [2.4, -0.36]);
-    svg.mjax("\\vec{\\bf v}_x", null, [4, 0.7], "red");
-    svg.mjax("\\vec{\\bf v}_y", null, [8.6, -1.2], "red");
-    svg.mjax("\\vec{\\bf v}", null, [4, -2], "red");
+    svg.mjax("\\va{v}_x", null, [4, 0.7], "red");
+    svg.mjax("\\va{v}_y", null, [8.6, -1.2], "red");
+    svg.mjax("\\va{v}", null, [4, -2], "red");
 },
 
 Ex2: (sel) => {
@@ -29,9 +29,9 @@ Ex2: (sel) => {
     svg.path([2.5, 0]).arc([0, 0], 160).update().css(arc).insertAfter(svg.$.find("g.Grid"));
     svg.gtext("N", "sans", [2, 20]);
     svg.mjax("\\theta", {scale: 0.8}, [3, 4]);
-    svg.mjax("\\vec{\\bf F}_x", null, [-25, -5], "red");
-    svg.mjax("\\vec{\\bf F}_y", null, [-52, 8], "red");
-    svg.mjax("\\vec{\\bf F}", null, [-23, 13], "red");
+    svg.mjax("\\va{F}_x", null, [-25, -5], "red");
+    svg.mjax("\\va{F}_y", null, [-52, 8], "red");
+    svg.mjax("\\va{F}", null, [-23, 13], "red");
 }
 
 });

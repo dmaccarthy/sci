@@ -6,9 +6,9 @@ delta_v: (sel) => {
     svg.$.find("g.Component").remove();
 
     let s = {scale: 1};
-    svg.mjax("\\Delta\\vec{\\bf v}", s, [-0.9, -0.6], "#0065fe");
-    svg.mjax("-\\vec{\\bf v}_1", s, [-2.6, 1.75], "red");
-    svg.mjax("\\vec{\\bf v}_2", s, [-0.6, 2], "red");
+    svg.mjax("\\Delta\\va{v}", s, [-0.9, -0.6], "#0065fe");
+    svg.mjax("-\\va{v}_1", s, [-2.6, 1.75], "red");
+    svg.mjax("\\va{v}_2", s, [-0.6, 2], "red");
     svg.mjax("\\theta", s, [-1.75, 2.5], "red");
 },
 
@@ -33,8 +33,8 @@ orbit: (sel) => {
     svg.mjax("r", s, [5, -0.7], c);
     svg.mjax("s", s, vec2d(8.5, a/2), c);
     c = "red";
-    svg.mjax("\\vec{\\bf v}_1", s, [11.2, 2], c);
-    svg.mjax("\\vec{\\bf v}_2", s, vec2d(11.3, a + 10), c);
+    svg.mjax("\\va{v}_1", s, [11.2, 2], c);
+    svg.mjax("\\va{v}_2", s, vec2d(11.3, a + 10), c);
 
     L = root(32 * (1 - cos(a)))
     g = svg.group("arrow");
@@ -56,9 +56,9 @@ car: (sel) => {
     g.arrow({tail: [0, 3], tip: [0, 3 + L]}, {tail: "7"});
     g.arrow({tail: [2.5, 0.5], tip: [2.5 + L / 2, 0.5]}, {tail: "7"});
 
-    svg.mjax("\\vec{\\bf F}_g", null, [-1.5, -3], "red");
-    svg.mjax("\\vec{\\bf F}_n", null, [-1.5, 5.5], "red");
-    svg.mjax("\\vec{\\bf F}_f", null, [4, 3], "red");
+    svg.mjax("\\va{F}_g", null, [-1.5, -3], "red");
+    svg.mjax("\\va{F}_n", null, [-1.5, 5.5], "red");
+    svg.mjax("\\va{F}_f", null, [4, 3], "red");
 },
 
 merry: (sel) => {

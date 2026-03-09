@@ -31,7 +31,7 @@ ccw: (sel) => {
     svg.text("A", [2.5, 0], 0, ["sans", 20]);
 
     svg.group("arrow", "forestgreen").arrow({tail: [-1, 4], tip: [2, 4]}, {tail: "6"});
-    svg.mjax("\\vec{\\bf B}", null, [0.25, 5.5], "forestgreen");
+    svg.mjax("\\va{B}", null, [0.25, 5.5], "forestgreen");
 },
 
 plunge: (sel) => {
@@ -54,7 +54,7 @@ plunge: (sel) => {
     g.text("S", [0, -1]);
     g = bar.group("arrow");
     g.arrow({tail: [0, -1.7], tip: [0, -4]}, {tail: "6"});
-    bar.mjax("\\vec{\\bf v}", null, [1, -2.2], "red");
+    bar.mjax("\\va{v}", null, [1, -2.2], "red");
 },
 
 loop: (sel) => {
@@ -63,14 +63,14 @@ loop: (sel) => {
     let g = svg.group("none", "forestgreen@2");
     let size = {size: "16", ratio: 0.5};
     for (let x of [6, 5.5, 5, 4.5, 3.5, 2, 0, -3]) g.ray([x, 4], [x, -3], size, 0.4);
-    svg.mjax("\\vec{\\bf B}", null, [-1.5, 2.5], "forestgreen");
+    svg.mjax("\\va{B}", null, [-1.5, 2.5], "forestgreen");
 
     let coil = svg.group().shift_by([-3, -0.5]);
     g = coil.group("none", "black@4");
     g.ellipse([2.5, 0.5]);
     g = coil.group("arrow");
     g.arrow({tail: [2.7, 0], tip: [5, 0]}, {tail: "6"});
-    coil.mjax("\\vec{\\bf v}", null, [4, 1], "red");
+    coil.mjax("\\va{v}", null, [4, 1], "red");
 },
 
 moveable: (sel) => {
@@ -82,11 +82,11 @@ moveable: (sel) => {
     css(svg.rect([1, 2], [-4, 0]), "black@1", "silver");
 
     svg.vec_in_out("16", 1, "forestgreen@1");
-    svg.mjax("\\vec{\\bf B}", null, [-1.3, 0.2], "forestgreen");
+    svg.mjax("\\va{B}", null, [-1.3, 0.2], "forestgreen");
 
     g = svg.group("arrow");
     g.arrow({tail: [3.2, 0], tip: [6, 0]}, {tail: "6"});
-    svg.mjax("\\vec{\\bf v}", null, [4.5, 1], "red");
+    svg.mjax("\\va{v}", null, [4.5, 1], "red");
 
     g = svg.group("sans", 20);
     g.text("Moveable Side", [1.5, 3, "br"]);

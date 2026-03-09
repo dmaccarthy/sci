@@ -22,15 +22,15 @@ roller: (sel) => {
         let c = cart(svg, 1.5, [x, y]);
         let x1 = x == 0 ? 0.3 : x;
         g.arrow(3, {tail: "6"}).config({theta: -90, shift: [x1, y - 1.5]});
-        svg.mjax("\\vec{\\bf F}_g", null, [x1 + 1.3, y - 1.5], "red");
+        svg.mjax("\\va{F}_g", null, [x1 + 1.3, y - 1.5], "red");
         if (x == 0) {
             c.config({theta: 180});
             g.arrow(2, {tail: "6"}).config({theta: -90, shift: [-0.3, y - 1]});
-            svg.mjax("\\vec{\\bf F}_n", null, [-1.75, y - 0.6], "red");
+            svg.mjax("\\va{F}_n", null, [-1.75, y - 0.6], "red");
         }
         else {
             g.arrow(2, {tail: "6"}).config({theta: 90, shift: [x, y + 2.25]});
-            svg.mjax("\\vec{\\bf F}_n", null, [x + 1.3, y + 2], "red");
+            svg.mjax("\\va{F}_n", null, [x + 1.3, y + 2], "red");
         }
     }
 },
@@ -46,8 +46,8 @@ loopy: (sel) => {
         g.stickman(0.3).css({"stroke-opacity": 0.6}).config({shift: [0, y]});
         red.arrow({tail: [0, y - 0.02], tip: [0, y - 0.4]}, {tail: "5"});
         red.arrow({tail: [0, y + 0.02], tip: [0, y + (y < 0 ? 0.6: 0.2)]}, {tail: "5"});
-        svg.mjax("\\vec{\\bf F}_g", null, [0.25, y - 0.19], "red");
-        svg.mjax("\\vec{\\bf F}_n", null, [0.25, y + (y < 0 ? 0.24 : 0.14)], "red");
+        svg.mjax("\\va{F}_g", null, [0.25, y - 0.19], "red");
+        svg.mjax("\\va{F}_n", null, [0.25, y + (y < 0 ? 0.24 : 0.14)], "red");
     }
 },
 
@@ -56,7 +56,7 @@ car: (sel) => {
     let r = 3;
     svg.group("none", "black@2").circle(r, [0, -r]);
     svg.image("media/car.svg", {scale: 0.25}, [0.05, -0.01, 0.5, 1]);
-    svg.mjax("\\vec{\\bf F}_g", null, [0.15, -0.25], "red");
+    svg.mjax("\\va{F}_g", null, [0.15, -0.25], "red");
     svg.arrow({tail: [0, -0.01], tip: [0, -0.5]}, {tail: "7"}).css("arrow");
 },
 
@@ -69,8 +69,8 @@ stick: (sel) => {
     g.arrow({tail: [0, 0], tip: [0, -1.5]}, {tail: "8"});
     g.arrow({tail: [0, 1.2], tip: [0, 1.2 + 1.5 * 504/638]}, {tail: "8"});
 
-    svg.mjax("\\vec{\\bf F}_g", null, [0.3, -0.75], "red");
-    svg.mjax("\\vec{\\bf F}_n", null, [0.3, 1.6], "red");
+    svg.mjax("\\va{F}_g", null, [0.3, -0.75], "red");
+    svg.mjax("\\va{F}_n", null, [0.3, 1.6], "red");
 },
 
 astro: (sel) => {
@@ -81,8 +81,8 @@ astro: (sel) => {
     let g = svg.group().css("arrow");
     g.arrow({tail: [0, 0], tip: [0, -1.5]}, {tail: "8"});
     g.arrow({tail: [0, 1.2], tip: [0, 1.2 + 1.5 * 200/736]}, {tail: "8"});
-    svg.mjax("\\vec{\\bf F}_g", null, [0.4, -0.75], "red");
-    svg.mjax("\\vec{\\bf F}_n", null, [0.4, 1.3], "red");
+    svg.mjax("\\va{F}_g", null, [0.4, -0.75], "red");
+    svg.mjax("\\va{F}_n", null, [0.4, 1.3], "red");
 },
 
 loop: (sel) => {
@@ -94,8 +94,8 @@ loop: (sel) => {
     g.arrow({tail: [0.1, 0], tip: [0.1, -1.5]}, {tail: "8"});
     g.arrow({tail: [-0.1, 0], tip: [-0.1, -0.8]}, {tail: "8"});
 
-    svg.mjax("\\vec{\\bf F}_g", null, [-0.5, -0.4], "red");
-    svg.mjax("\\vec{\\bf F}_n", null, [0.4, -0.75], "red");
+    svg.mjax("\\va{F}_g", null, [-0.5, -0.4], "red");
+    svg.mjax("\\va{F}_n", null, [0.4, -0.75], "red");
 },
 
 rope: (sel) => {
@@ -113,10 +113,10 @@ rope: (sel) => {
     g.arrow({tail: [0.5, -0.2], tip: [0.5, -0.6]}, t8);
     g.arrow({tail: [0.55, 0.05], tip: [0.55, 1.05]}, t8);
 
-    svg.mjax("\\vec{\\bf F}_g", null, [-0.3, 0.7], "red");
-    svg.mjax("\\vec{\\bf F}_t", null, [-0.75, 0.85], "red");
-    svg.mjax("\\vec{\\bf F}_g", null, [0.35, -0.3], "red");
-    svg.mjax("\\vec{\\bf F}_t", null, [0.7, 0.5], "red");
+    svg.mjax("\\va{F}_g", null, [-0.3, 0.7], "red");
+    svg.mjax("\\va{F}_t", null, [-0.75, 0.85], "red");
+    svg.mjax("\\va{F}_g", null, [0.35, -0.3], "red");
+    svg.mjax("\\va{F}_t", null, [0.7, 0.5], "red");
 
     g = svg.group("sans", 24);
     g.gtext("Top", [], [-0.5, 1.15]);
@@ -140,7 +140,7 @@ book: (sel) => {
 
     let Fn = svg.group().config({theta: a}).css("arrow", "red");
     Fn.arrow({tail: [0, -0.90], tip: [0, -0.4]}, {tail: "8"});
-    Fn.mjax("\\vec{\\bf F}_n", null, [0.2, -0.75], "red");
+    Fn.mjax("\\va{F}_n", null, [0.2, -0.75], "red");
 },
 
 

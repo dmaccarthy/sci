@@ -2,8 +2,9 @@ SVG2.cache("p30/elec/img/da.js", {
 
 pend: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 2.5, 0, 3.5], grid: [0.25, 0.5], margin: [64, 20, 54, 12]});
-    svg.ticks({x: [0, 2.6, 0.5], label: 1}, true);
-    svg.ticks({y: [0, 3.6, 0.5], label: 1}, true);
+    let opt = {default: true, label: 1}
+    svg.ticks({x: [0, 2.6, 0.5], ...opt});
+    svg.ticks({y: [0, 3.6, 0.5], ...opt});
 
     let s = {scale: 0.7};
     let pt = ["-48", 1.75];
@@ -28,8 +29,9 @@ pend: (sel) => {
 
 pend_lin: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 1.75, 0, 3.5], grid: [0.25, 0.5], margin: [64, 20, 62, 12]});
-    svg.ticks({x: [0, 1.8, 0.25], label: 2}, true);
-    svg.ticks({y: [0, 3.6, 0.5], label: 1}, true);
+    let opt = {default: true, label: 1}
+    svg.ticks({x: [0, 1.8, 0.25], ...opt, label: 2});
+    svg.ticks({y: [0, 3.6, 0.5], ...opt});
 
     let s = {scale: 0.7};
     let pt = ["-48", 1.75];

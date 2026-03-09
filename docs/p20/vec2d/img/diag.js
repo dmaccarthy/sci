@@ -43,9 +43,9 @@ Q1: (sel, comp) => {
     let yellow = diag.find(".Component");
     if (!comp) yellow.remove();
 
-    svg.mjax("\\vec{\\bf d}_i", null, [3.2, -2.7], "#0065fe");
-    svg.mjax("\\vec{\\bf d}_f", null, [1, 2.6], "#0065fe");
-    svg.mjax("\\Delta\\vec{\\bf d}", null, [2.7, 0.5], "red");
+    svg.mjax("\\va{d}_i", null, [3.2, -2.7], "#0065fe");
+    svg.mjax("\\va{d}_f", null, [1, 2.6], "#0065fe");
+    svg.mjax("\\Delta\\va{d}", null, [2.7, 0.5], "red");
     svg.mjax("\\theta", {scale: 0.9}, [3.3, -1.7]);
 
     let g = svg.group();
@@ -77,26 +77,26 @@ Q4: (sel) => {
         scale: 10, margin: 8, grid: 2, label: [4, 0]});
     svg.$.find(".Component").remove();
     svg.gtext("m", "sans", [2, 24]);
-    svg.mjax("\\Delta\\vec{\\bf d}_1", null, [11, 6], "red");
-    svg.mjax("\\Delta\\vec{\\bf d}_2", null, [2, 18], "red");
-    svg.mjax("\\Delta\\vec{\\bf d}", null, [-11, 3], "#0065fe");
+    svg.mjax("\\Delta\\va{d}_1", null, [11, 6], "red");
+    svg.mjax("\\Delta\\va{d}_2", null, [2, 18], "red");
+    svg.mjax("\\Delta\\va{d}", null, [-11, 3], "#0065fe");
 },
 
 Q5: (sel, Fg, a, mu) => {
     let svg = new SVG2(sel, {lrbt: [-1, 1.5, -4, 0.5], scale: 92, margin: [10, 6, 10, 10], grid: 0.25});
-    svg.ticks_xy([-1, 1.5, 1], [-4, 0.5, 1], 2);
+    svg.ticks_xy([-1, 1.5, 1], [-4, 0.5, 1], {default: true, removeZero: true});
     let Fn = Fg * cos(a);
     let vecs = [[0, -Fg], vec2d(Fn, 90-a)];
     if (mu) {
         vecs.push(vec2d(mu * Fn, 180-a));
-        svg.mjax("\\vec{\\bf F}_f", null, [0.7, 0.2, "l"], "red");
+        svg.mjax("\\va{F}_f", null, [0.7, 0.2, "l"], "red");
     }
     let tip = svg.tip_to_tail(vecs).$;
     tip.find(".Component").remove();
     svg.text("N", [0.1, -4], 0, ["sans", 15]);
-    svg.mjax("\\vec{\\bf F}_g", null, [-0.5, -1.5], "red");
-    svg.mjax("\\vec{\\bf F}_n", null, [0.75, -2], "red");
-    svg.mjax("\\vec{\\bf F}_{net}", null, [0.5, 0.4, "r"], "#0065fe");
+    svg.mjax("\\va{F}_g", null, [-0.5, -1.5], "red");
+    svg.mjax("\\va{F}_n", null, [0.75, -2], "red");
+    svg.mjax("\\va{F}_{net}", null, [0.5, 0.4, "r"], "#0065fe");
     css(svg.line([-1, tan(a)], [1.5, -1.5*tan(a)]), "lightgrey@1").insertBefore(tip);
 },
 

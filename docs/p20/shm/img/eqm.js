@@ -39,9 +39,9 @@ pend: (sel, a) => {
 
     let s = {scale: 1};
     let pt = transform({angle: -a, deg: true}, [0, -2])[0].plus([0.2, -0.5]);
-    svg.mjax("\\vec{\\bf F}_g", s, pt, "red");
+    svg.mjax("\\va{F}_g", s, pt, "red");
     pt = vec2d(1.5, -a - 90).plus([0.2, 0]);
-    svg.mjax("\\vec{\\bf F}_t", s, pt, "red");
+    svg.mjax("\\va{F}_t", s, pt, "red");
 },
 
 eqm: (sel) => {
@@ -70,7 +70,7 @@ eqm: (sel) => {
                 vec.config({pivot: c, theta: b[0]});
                 cb = g => g.shift_by([-0.15, 0.1]);
             }
-            let tex = `\\vec{\\bf F}_${f == -1 ? "n" : "g"}`;
+            let tex = `\\va{F}_${f == -1 ? "n" : "g"}`;
             svg.group(toggle).mjax(tex, {scale: 0.9}, c.plus([0.12, -0.12 * f]), "red").then(cb);
         }
     }

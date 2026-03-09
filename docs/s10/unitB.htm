@@ -1,12 +1,13 @@
 <section class="Post" data-icon="train.svg">
-<h2 class="Collapse">Part 1: Motion</h2><div class="Collapse">
-    <p>In this chapter you will learn about how scientists describe motion, using concepts like displacement, velocity, and acceleration.</p>
+<h2 class="Collapse">Part 1: Motion</h2><div class="Collapse Expand">
+    <p>In this part of the unit, you will learn about how scientists describe motion, using concepts like displacement, velocity, and acceleration.</p>
     <ul>
         <li><a data-feed="$phys1/si">Lesson 1: SI Units</a></li>
         <li><a data-feed="$phys1/graph">Lesson 2: Graphing Data</a></li>
         <li><a data-feed="$phys1/displ">Lesson 3: Position &amp; Displacement</a></li>
         <li><a data-feed="$phys1/vel">Lesson 4: Velocity &amp; Speed</a></li>
-        <li><a data-feed="$phys1/acc">Lesson 5: Acceleration</a></li>
+        <li data-show="2028"><a data-feed="$phys1/acc">Lesson 5: Acceleration</a></li>
+        <li>(Additional lessons coming soon)</li>
         <!-- <li><a data-feed="$phys1/rev">Chapter Review</a></li> -->
     </ul>
     <!-- <div data-show="9999">
@@ -15,7 +16,7 @@
     </div> -->
 </div></section>
 
-<section class="Post" data-icon="soccer.svg">
+<section data-show="2028" class="Post" data-icon="soccer.svg">
 <h2 class="Collapse">Part 2: Energy / Heat</h2><div class="Collapse">
     <p>In this chapter you will learn about various forms of energy and how energy relates to motion.</p>
     <ul>
@@ -27,7 +28,6 @@
         <li><a data-feed="$clim1/heatcap">Lesson 11: Heat Capacity</a></li>
         <li><a data-feed="$clim1/latent">Lesson 12: Latent Heat</a></li>
         <li><a data-feed="$phys2/transfer25">Lesson 13: Heat Transfer &amp; Climate</a></li>
-        <!-- <li>(Additional lessons coming soon)</li> -->
         <!-- <li><a data-feed="$phys2/rev">Chapter Review</a></li> -->
     </ul>
 </div></section>
@@ -43,7 +43,7 @@ loadFeed.init = () => {
 }
 
 loadFeed.data = {title: `Unit B — Physics`, folder: "s10/",
-    up: "s10/home", prev: "s10/unitA", next: "s10/unitC",
+    up: "s10/home", prev: "s10/unitA", //next: "s10/unitC",
 }
 
 </script>

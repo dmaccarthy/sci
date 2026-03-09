@@ -157,7 +157,7 @@ function katex_render(e, opt) {
 
 katex_render.hideEqNum = true;
 
-async function mjax_render(e, mode) {
+async function mjax_render(e, mode, bbox) {
     // Render TeX math with MathJax
     // mode = 0 => <svg>
     // mode = 1 => <mjx-container><svg>
@@ -167,6 +167,7 @@ async function mjax_render(e, mode) {
         let e$ = $(ei);
         let tex = e$.text();
         e$.attr("data-latex", tex);
+        if (bbox) tex = `\\bbox[${bbox}]{${tex}}`;
         f = mode ? mj => $(mj) : mj => $(mj).find("svg");
         p.push(MathJax.tex2svgPromise(tex).then(mj => e$.removeClass("TeX_Pending").html(f(mj)[0])));
     };
@@ -200,7 +201,6 @@ function mjax_img(tex) {
 }
 
 renderTeX = mjax_render;
-
 
 async function load_img(url) {
     return new Promise(res => {

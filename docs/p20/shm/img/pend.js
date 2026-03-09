@@ -22,8 +22,8 @@ fbd: (sel) => {
     svg.mjax("\\theta", null, [-0.12, -0.55], "red");
     svg.mjax("L", null, [-0.8, -1.2], "red");
     svg.mjax("x_{↡ H}", null, [-0.5, -2.55], "red");
-    svg.mjax("\\vec{\\bf F}_g", null, [-1.7, -3.3], "red");
-    svg.mjax("\\vec{\\bf F}_t", null, [-1.4, -2.1], "red");
+    svg.mjax("\\va{F}_g", null, [-1.7, -3.3], "red");
+    svg.mjax("\\va{F}_t", null, [-1.4, -2.1], "red");
 },
 
 vec: (sel) => {
@@ -32,9 +32,9 @@ vec: (sel) => {
     svg.$.find("g.Component").remove();
 
     svg.mjax("\\theta", null, [0.15, -2.3], "red");
-    svg.mjax("\\vec{\\bf F}_g", null, [-0.35, -1.5], "red");
-    svg.mjax("\\vec{\\bf F}_t", null, [0.9, -1.9], "red");
-    svg.mjax("\\vec{\\bf F}_{net}", null, [0.65, 0.07], "#0065fe");
+    svg.mjax("\\va{F}_g", null, [-0.35, -1.5], "red");
+    svg.mjax("\\va{F}_t", null, [0.9, -1.9], "red");
+    svg.mjax("\\va{F}_{net}", null, [0.65, 0.07], "#0065fe");
 },
 
 });

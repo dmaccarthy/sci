@@ -24,12 +24,12 @@ ramp: (sel) => {
     f.arrow(2, tail).config({shift: [1, "-20"]}).css("#0065fe");
 
     g = svg.group();
-    let F = (s, xy) => [`\\vec{\\bf F}_${s}`, null, xy, "red"];
+    let F = (s, xy) => [`\\va{F}_${s}`, null, xy, "red"];
     g.mjax(...F('a', [0.5, 1.4]));
     g.mjax(...F('n', [-0.45, 1.5]));
     g.mjax(...F('g', [0.05, -1]));
     g.mjax(...F('f', [-1.2, 0.15]));
-    g.mjax("\\Delta\\vec{\\bf d}", null, [1.25, 0.1], "#0065fe");
+    g.mjax("\\Delta\\va{d}", null, [1.25, 0.1], "#0065fe");
 },
 
 flow2: (sel) => {
