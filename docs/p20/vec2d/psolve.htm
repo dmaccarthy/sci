@@ -3,11 +3,11 @@
 
 <table id="Projectile" class="Center TD6 Bottom">
     <tr><th></th><th class="TeX">x</th><th class="TeX">y</th></tr>
-    <tr><td><span class="TeX">\va{a}</span> / (m/s<sup>2</sup>)</td><td>0.00</td><td><input id="ay" type="number" value="-9.81"/></td></tr>
-    <tr><td><span class="TeX">\va{v}_i</span> / (m/s)</td><td rowspan="2"><input id="vx" type="number" value="10.0"/></td><td><input id="viy" type="number" value="10.0"/></td></tr>
-    <tr><td><span class="TeX">\va{v}_f</span> / (m/s)</td><td><input id="vfy" type="number" value="0.00"/></td></tr>
-    <tr><td><span class="TeX">\Delta\va{d}</span> / m</td><td><input id="dx" type="number"/></td><td><input id="dy" type="number"/></td></tr>
-    <tr><td><span class="TeX">\Delta t</span> / s</td><td colspan="2"><input id="txy" type="number"/></td></tr>
+    <tr><td><span class="TeX">\va{a}</span> / (m/s<sup>2</sup>)</td><td class="Bold">0.00</td><td id="ay" contenteditable="true"/>-9.81</td></tr>
+    <tr><td><span class="TeX">\va{v}_i</span> / (m/s)</td><td id="vx" rowspan="2" contenteditable="true">10.0</td><td id="viy" contenteditable="true">10.0</td></tr>
+    <tr><td><span class="TeX">\va{v}_f</span> / (m/s)</td><td id="vfy" contenteditable="true"></td></tr>
+    <tr><td><span class="TeX">\Delta\va{d}</span> / m</td><td id="dx" contenteditable="true"></td><td id="dy" contenteditable="true">0.00</td></tr>
+    <tr><td><span class="TeX">\Delta t</span> / s</td><td id="txy" contenteditable="true" colspan="2"></td></tr>
 </table>
 <p class="Center"><button onclick="loadFeed.solve()">Solve</button></p>
 
@@ -16,14 +16,61 @@
 <script type="text/javascript" data-init="init">
 
 loadFeed.init = () => {
-    $("#Projectile td input").css({width: "6em", "text-align": "center"}).on("click", (ev) => {
-        $(ev.currentTarget).val("");
-    });
+    let data = $("#Projectile td[contenteditable]");
+    data.on("blur", ev => {
+        let e = $(ev.currentTarget);
+        let x = parseFloat(e.text());
+        e.html(isNaN(x) ? "" : x.toPrecision(5));
+    })
 }
 
 loadFeed.solve = () => {
+    let data = {}, prj = $("#Projectile");
+    for (let k of ['ay', 'viy', 'vfy', 'dy', 'txy', 'vx', 'dx']) {
+        let x = parseFloat($('#' + k).text());
+        if (!isNaN(x)) data[k] = x;
+    }
+
+    let count = (keys) => {
+        let i = 0;
+        for (let k of keys) if (data[k] != null) i++
+        return i;
+    }
+
+    let solvex = (d) => {
+        if (d.txy == null) {
+            d.txy = d.dx / d.vx;
+            $('#txy').html(d.txy.toPrecision(5));
+        }
+        else if (d.vx == null) {
+            d.vx = d.dx / d.txy;
+            $('#vx').html(d.vx.toPrecision(5));
+        }
+        else {
+            d.dx = d.vx * d.txy;
+            $('#dx').html(d.dx.toPrecision(5));
+        }
+    }
+
+    let solvey = (d) => {
+        let x = {a: d.ay, vi: d.viy, vf: d.vfy, d: d.dy, t: d.txy};
+        let soln = uam();
+        console.log(soln);
+    }
+
+    let [nx, ny, txy] = [count(['vx', 'dx']), count(['ay', 'viy', 'vfy', 'dy']), count(['txy'])];
+    if (nx + ny + txy != 4) console.log("Bad data!");
+    else if (nx + txy == 2) {
+        solvex(data);
+        solvey(data);
+    }
+    else {
+        solvey(data);
+        solvex(data);
+    }
+
+    return;
     let data_in = $("#Projectile td input");
-    let data = {};
     for (let e of data_in) {
         let v = $(e).val();
         if (v) data[e.id] = parseFloat(v);
