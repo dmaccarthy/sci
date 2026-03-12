@@ -17,6 +17,12 @@ loadFeed.tri = () => {
     css(svg.poly(pts, 1), "none", "black@1");
     let g = svg.group("#0065fe", "black@1");
     for (let pt of pts) g.circle("7", pt);
+
+    g = svg.group("none", "red@2").config({animated: true, vel: [0.1, 0.1], omega: 5, shift: [2, -1]});
+    g.rect([3, 2], [2, 2]);
+    g.circle("3");
+    console.log(g, g.shift);
+    svg.play().$.on("click", () => svg.toggle());
 }
 
 loadFeed.proj = () => {
