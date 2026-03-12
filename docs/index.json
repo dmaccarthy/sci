@@ -214,7 +214,8 @@
 
 "p30": {"home": {"t": "@Physics 30"},
 
-"mag/em": {"t": "@Electromagnetism", "n": "12.1", "s": "2026.3.11", "a": "2026.3.13"},
+"mag/em": {"t": "@Electromagnetism", "n": "12.1", "s": "2026.3.11", "a": "2026.3.12"},
+"mag/em#": {"t": "Lab: Electromagnetism", "s": "2026.3.12"},
 "mag/B": {"t": "@Magnetic Fields", "n": "12.2", "s": "2026.3.13", "a": "2026.3.16"},
 "mag/Fm": {"t": "@Magnetic Force", "n": "12.3", "s": "2026.3.16", "a": "2026.3.17"},
 "mag/helix": {"t": "@Motion in a Uniform Magnetic Field", "n": "12.4", "s": "2026.3.18", "a": "2026.3.19"},

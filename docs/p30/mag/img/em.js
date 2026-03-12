@@ -18,5 +18,26 @@ hall: (sel) => {
     svg.vec_in_out("12", 0, "forestgreen@2").shift_by([4.5, 4]);
 },
 
+oersted: (sel) => {
+    let svg = new SVG2(sel, {scale: 24, grid: 0, margin: 8, lrbt: [-1, 8.5, -1, 7]});
+    svg.vec_in_out(0.5, 1, "black@2").$.find("polygon").addClass("Toggle1");
+    let north = svg.group();
+    let ccw = svg.group(".Toggle1");
+    let a = 70;
+    north.mag_compass(0.6).shift_by(vec2d(4.2, a));
+    ccw.mag_compass(0.6).config({theta: a}).shift_by(vec2d(4.2, a));
+    let g = svg.group("none", "black@1", ".Toggle0");
+    g.line(vec2d(0.5, 10), vec2d(6.4, 25));
+    g.line(vec2d(4.2, 70).plus(vec2d(0.6, 45)), [3.7, 6.2]);
+    g = g.group("sans", 20, "none@", "black");
+    g.text("Compass", [4, 6, "bl"]);
+    g.text("Wire", [6.2, 2.5, "bl"]);
+
+    let t = click_cycle.toggle;
+    click_cycle(svg.element, -1,
+        () => {t(svg, false, 1), t(svg, true, 0)},
+        () => {t(svg, true, 1), t(svg, false, 0)},
+    );
+},
 
 });

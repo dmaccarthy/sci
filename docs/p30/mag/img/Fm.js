@@ -1,5 +1,25 @@
 SVG2.cache("p30/mag/img/Fm.js", {
 
+hr3: (sel) => {
+    let svg = new SVG2(sel, {scale: 24, lrbt: [-6.8, 7.1, -4.5, 2]});
+    let g = svg.group("silver", "black@1").shift_by([-4, 0]);
+    g.rect([5, 2]);
+    css(g.rect([2.5, 2], [1.25, 0]), "red");
+    g = g.group("none@", "black", "sans", 20, "bold");
+    g.text("S", [-1.9, -0.25, "b"]);
+    g.text("N", [1.9, -0.25, "b"], 0, "white");
+    svg.vec_in_out(0.6);
+    svg.group("arrow", "#0065fe").arrow({tail: [0, -1], tip: [0, -4]}, {tail: "6"});
+    svg.group("arrow", "forestgreen").arrow({tail: [1, 0], tip: [5, 0]}, {tail: "6"});
+    svg.mjax("\\va{F}_m", {scale: 0.8}, [0.8, -3, "bl"], "#0065fe");
+    svg.mjax("\\va{B}", {scale: 0.8}, [5.2, -1.8, "b"], "forestgreen");
+    svg.mag_compass(1).config({theta: -90}).shift_by([2.75, 0]);
+    g = svg.group("sans", 15);
+    g.text("Magnet", [-4, 1.3, "b"]);
+    g.text("Wire", [0, 1.3, "b"]);
+    g.text("Compass", [2.75, 1.3, "b"]);
+},
+
 cap: (sel) => {
     let svg = new SVG2(sel, {scale: 32, margin: 4, lrbt: [-6, 5, -3, 3]});
     let g = svg.group("black@1", "silver");
