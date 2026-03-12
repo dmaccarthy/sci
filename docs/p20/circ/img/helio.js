@@ -48,6 +48,7 @@ helio: (sel) => {
 
     // Run the animation
     svg.play().$.on("click", () => svg.toggle());
+    console.log(svg);
 },
 
 });

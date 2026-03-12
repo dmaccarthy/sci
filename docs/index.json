@@ -1,16 +1,33 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
+"grav/ugrav": {"t": "@Universal Gravitation", "n": "4.1", "s": "2027.11", "a": "2027.11.21", "h": "19ypn6fFlrR_ToP6RXWpKN9tzUmfi2ekm"},
+"da/regr": {"t": "@Regression Analysis", "n": "4.2", "s": "2027.11", "a": "2027.11.24", "h": "1NLkp40NhPtv3cygebVZZIWa4nQ9vW4-L"},
+"da/pwr": {"t": "@Transforming Power Data", "n": "4.3", "s": "2027.11", "a": "2027.11.25", "h": "1jP3UvycUlhF_IN_ZBc-mLP86trg8Rcv0"},
+"grav/cav": {"t": "@Cavendish Experiment", "n": "4.4", "s": "2027.11", "a": "2027.11.26", "h": "163ABwJIWUfE9tzNjMzmS66bqW3DDiMpb"},
+"grav/field": {"t": "@Gravitational Fields", "n": "4.5", "s": "2027.11", "a": "2027.11.26.16", "h": [
+    "1JC8-YIlbmrrkY2vw1jKl9JAoZGhDXNRB",
+    ["Falstad Applet", {"open": "https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&amp;fc=Floor%3A%20field%20magnitude&amp;fl=Overlay%3A%20equipotentials&amp;d=partsvel&amp;m=Mouse%20%3D%20Adjust%20Angle&amp;st=1&amp;pc=500&amp;hs=40&amp;ft=true&amp;rx=63&amp;ry=0&amp;rz=0&amp;zm=1.2", "icon": "html5", "show": 9999}],
+    ["PhET Applet", {"open": "https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html", "icon": "phet","show": 9999}],
+    ["Desmos Applet", {"open": "https://www.desmos.com/calculator/br0ig8pci1", "icon": "desmos", "show": 9999}]
+]},
+"grav/field#1": {"t": "Activity: Visualizing Gravity", "s": "2027", "hs": [
+    ["Visualizing Gravity", ""]
+]},
+"grav/field#2": {"t": "Activity: Visualizing Gravity <i>(continued)</i>", "s": "2027"},
+"q4/@": {"t": "Quiz: Universal Gravitation", "s": "2027.11", "css": {"font-weight": "bold"}},
+"uB/@": {"t": "Unit B Exam", "s": "2027.12", "css": {"font-weight": "bold"}},
+
 "dyn/n2": {"t": "@Force & Inertia", "n": "3.1", "s": "2026.3.11", "a": "2026.3.12", "h": "1rDC2wDHfaKBAgrhhDnt7mcO__FLTCmby"},
-"dyn/n3": {"t": "@Newton’s 3<sup>rd</sup> Law", "n": "3.2", "s": "2026.3.12", "a": "2026.3.16", "h": "1vKCsIYFqmVAdA7kc5kC5CrTcIG6-ppR7"},
-"dyn/weight": {"t": "@Mass & Weight", "n": "3.3", "s": "2027.11", "a": "2027.11.6", "h": "1QdHaFj17j4elf7Vxdlhc9BrJ4Z7Hwr3G"},
-"dyn/fric": {"t": "@Contact Forces", "n": "3.4", "s": "2027.11", "a": "2027.11.6.19", "h": [
+"dyn/n3": {"t": "@Newton’s 3<sup>rd</sup> Law", "n": "3.2", "s": "2026.3.16", "a": "2026.3.17", "h": "1vKCsIYFqmVAdA7kc5kC5CrTcIG6-ppR7"},
+"dyn/weight": {"t": "@Mass & Weight", "n": "3.3", "s": "2026.3.17", "a": "2026.3.18", "h": ["1QdHaFj17j4elf7Vxdlhc9BrJ4Z7Hwr3G", ["Lab Activity", "1PIt9DLbgBxOIMjcPG9Z1NMEpfWTL1H41"]]},
+"dyn/fric": {"t": "@Contact Forces", "n": "3.4", "s": "2026.3.18", "a": "2026.3.20", "h": [
     "1U6MQeUYeEa9hk1IecZZpfhq1ePPXEoWc", ["Lab Activity", "1pNmvZ-LTWTewWdRlATgNFlX8RGK6usZT"],
     ["Pulley Simulation", {"icon": "simulation", "feed": "p20/dyn/pulley"}]]},
-"dyn/fric#": {"t": "Lab: Friction", "s": "2027.11"},
-"dyn/adv": {"t": "@Dynamics in 2D", "n": "3.5", "s": "2027.11", "a": "2027.11.18.11", "h": "1T13oAkEMHhkv3OjsA7CV-CyaGxy7LhR8"},
-"dyn/adv#": {"t": "@Dynamics in 2D <i>(continued)</i>", "s": "2027.11"},
-"q3/@": {"t": "Quiz: Newton’s Laws", "s": "2026.3.31", "css": {"font-weight": "bold"}},
+"dyn/fric#": {"t": "Lab: Friction", "s": "2026.3.19"},
+"dyn/adv": {"t": "@Dynamics in 2D", "n": "3.5", "s": "2026.3.20", "a": "2026.3.31", "h": "1T13oAkEMHhkv3OjsA7CV-CyaGxy7LhR8"},
+"dyn/adv#": {"t": "@Dynamics in 2D <i>(continued)</i>", "s": "2026.3.30"},
+"q3/@": {"t": "Quiz: Newton’s Laws", "s": "2026.4.1", "css": {"font-weight": "bold"}},
 
 "vec2d/trig": {"t": "@Trigonometry Review", "n": "2.1", "s": "2026.2.25", "a": "2026.2.26", "h": "1dbeWmeTW-5YhaXQN7aZ2-6ZTevsGuHXo"},
 "vec2d/mag": {"t": "@Magnitude & Direction", "n": "2.2", "s": "2026.2.26", "a": "2026.2.27", "h": "1t5LyU0AQIoG8S9u_T5XgPn0pAh1toKG4"},
@@ -42,23 +59,6 @@
 "shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2028.1"},
 "shm/E": {"t": "@Energy of SHM", "n": "7.5", "s": "2028.1", "a": "2028.1.19", "h": "1XSPOdyignakoikoijuwV4Q28Bsj_0vWW"},
 "shm/res": {"t": "@Mechanical Resonance", "n": "7.6", "s": "9999", "a": "9999"},
-
-"grav/ugrav": {"t": "@Universal Gravitation", "n": "4.1", "s": "2027.11", "a": "2027.11.21", "h": "19ypn6fFlrR_ToP6RXWpKN9tzUmfi2ekm"},
-"da/regr": {"t": "@Regression Analysis", "n": "4.2", "s": "2027.11", "a": "2027.11.24", "h": "1NLkp40NhPtv3cygebVZZIWa4nQ9vW4-L"},
-"da/pwr": {"t": "@Transforming Power Data", "n": "4.3", "s": "2027.11", "a": "2027.11.25", "h": "1jP3UvycUlhF_IN_ZBc-mLP86trg8Rcv0"},
-"grav/cav": {"t": "@Cavendish Experiment", "n": "4.4", "s": "2027.11", "a": "2027.11.26", "h": "163ABwJIWUfE9tzNjMzmS66bqW3DDiMpb"},
-"grav/field": {"t": "@Gravitational Fields", "n": "4.5", "s": "2027.11", "a": "2027.11.26.16", "h": [
-    "1JC8-YIlbmrrkY2vw1jKl9JAoZGhDXNRB",
-    ["Falstad Applet", {"open": "https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&amp;fc=Floor%3A%20field%20magnitude&amp;fl=Overlay%3A%20equipotentials&amp;d=partsvel&amp;m=Mouse%20%3D%20Adjust%20Angle&amp;st=1&amp;pc=500&amp;hs=40&amp;ft=true&amp;rx=63&amp;ry=0&amp;rz=0&amp;zm=1.2", "icon": "html5", "show": 9999}],
-    ["PhET Applet", {"open": "https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html", "icon": "phet","show": 9999}],
-    ["Desmos Applet", {"open": "https://www.desmos.com/calculator/br0ig8pci1", "icon": "desmos", "show": 9999}]
-]},
-"grav/field#1": {"t": "Activity: Visualizing Gravity", "s": "2027", "hs": [
-    ["Visualizing Gravity", ""]
-]},
-"grav/field#2": {"t": "Activity: Visualizing Gravity <i>(continued)</i>", "s": "2027"},
-"q4/@": {"t": "Quiz: Universal Gravitation", "s": "2027.11", "css": {"font-weight": "bold"}},
-"uB/@": {"t": "Unit B Exam", "s": "2027.12", "css": {"font-weight": "bold"}},
 
 "energy/mech": {"t": "@Mechanical Energy", "n": "6.1", "s": "2027.11", "a": "2027.12.1", "h": "1LVUnS8TD59eJ1KucQDPeSTs4rVVCnZaB"},
 "energy/cons": {"t": "@Energy Conservation", "n": "6.2", "s": "2027.12", "a": "2027.12.3", "h": "16feEBDiNXsq72QjX9LBa08Y028osNyAT"},

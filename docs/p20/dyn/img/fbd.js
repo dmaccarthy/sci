@@ -23,7 +23,7 @@ fbd: (sel) => {
 },
 
 fbd1: (sel) => {
-    let svg = new SVG2(sel, {size: [275, 400], grid: 0.1, lrbt: [-5/8, 5/8, -1.07]});
+    let svg = new SVG2(sel, {size: [275, 400], grid: 0, lrbt: [-5/8, 5/8, -1.07]});
     svg.gradient("gradFBD1", "#d0d0ff", "royalblue", 80, 0, 0, 100);
 
     let a = 25;
