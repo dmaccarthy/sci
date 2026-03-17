@@ -102,4 +102,15 @@ coil2: (sel) => {
     svg.text("P", [0, -0.25, "b"], 0, ["sans", 20]);
 },
 
+FQ: (sel) => {
+    let svg = new SVG2(sel, {scale: 24, lrbt: [-4, 4, -4, 1.5]});
+    let coil = svg.coil([2, 6], 15, 0, 0, 0).css("none", {stroke: "#b87333"}).config({theta: -90});
+    css(coil.$.find("rect"), "#f0f0f0", "black@1");
+    css(coil.$.find("circle"), "silver", "black@1");
+    let g = svg.group("none@", "black");
+    g.plusminus(0.5, 1).shift_by([-3, -1.5]);
+    g.plusminus(0.5).shift_by([3, -1.5]);
+    svg.vec_in_out(0.5, 0, "black@2").shift_by([0, -3]);
+},
+
 });

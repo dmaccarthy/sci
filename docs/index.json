@@ -29,20 +29,6 @@
 "dyn/adv#": {"t": "@Dynamics in 2D <i>(continued)</i>", "s": "2026.3.30"},
 "q3/@": {"t": "Quiz: Newton’s Laws", "s": "2026.4.1", "css": {"font-weight": "bold"}},
 
-"vec2d/trig": {"t": "@Trigonometry Review", "n": "2.1", "s": "2026.2.25", "a": "2026.2.26", "h": "1dbeWmeTW-5YhaXQN7aZ2-6ZTevsGuHXo"},
-"vec2d/mag": {"t": "@Magnitude & Direction", "n": "2.2", "s": "2026.2.26", "a": "2026.2.27", "h": "1t5LyU0AQIoG8S9u_T5XgPn0pAh1toKG4"},
-"vec2d/diag": {"t": "@Vector Diagrams", "n": "2.3", "s": "2026.2.27", "a": "2026.3.2", "h": "1lWMY9AtotI-IHQx9dYBJU3Z0t3YYYDDR"},
-"vec2d/polar": {"t": "@Polar & Cartesian Form", "n": "2.4", "s": "2026.3.2", "a": "2026.3.3", "h": "16np_VV6WY4iIZrH6zEuT_XKQsfavEqXh"},
-"vec2d/arith": {"t": "@Vector Arithmetic", "n": "2.5", "s": "2026.3.3", "a": "2026.3.4", "h": "14BWvo1DqgCYIFTCTi5GE7aF-P2CHbi1z"},
-"vec2d/arith#1": {"t": "@Vector Arithmetic <i>(continued)</i>", "s": "2026.3.4"},
-"vec2d/proj": {"t": "@Projectile Motion", "n": "2.6", "s": "2026.3.5", "a": "2026.3.9", "h": ["1UY2qRFE2DQnsf1nKlA2rWCkQVlwPrCG_",
-    ["Simulation Handout", "1d3_mbBKtEDsiGmlQjumU_fHZfE_sSlJU"], ["Simulation", {"icon": "simulation", "open": "./#p20/vec2d/cannon"}], ["Desmos", {"icon": "desmos", "open": "https://www.desmos.com/calculator/c981c0076b"}]
-]},
-"vec2d/proj#1": {"t": "Simulation: Cannonball!", "s": "2026.3.9"},
-"vec2d/rev": {"t": "@2D Motion Review", "s": "2027.10", "a": "2027.10.30"},
-"q2/@": {"t": "Quiz: Two-Dimensional Motion", "s": "2026.3.10", "css": {"font-weight": "bold"}},
-"uA/@": {"t": "Unit A Exam", "s": "2026.3.13", "css": {"font-weight": "bold"}},
-
 "wave/harm": {"t": "@Harmonic Waves", "n": "8.1", "s": "2028.1", "a": "2028.1.20", "h": "16XKv7sKPI89XB5raKSgIhSCc8sSLnjwg"},
 "wave/dopp": {"t": "@Doppler Effect", "n": "8.2", "s": "2028.1", "a": "2028.1.21", "h": "1vO-QttkvOGe2cleueAxyyAM5e9sOBz9-"},
 "wave/beat": {"t": "@Interference & Beats", "n": "8.3", "s": "2028.1", "a": "2028.1.22", "h": "1ycVlE7Pq1HFEMdunjhJd3woTh9-uppZc"},
@@ -99,6 +85,20 @@
 "kin/uam#": {"t": "@Uniform Accelerated Motion <i>(continued)</i>", "s": "2026.2.23"},
 "q1/@": {"t": "Quiz: One-Dimensional Motion", "s": "2026.2.24", "css": {"font-weight": "bold"}},
 
+"vec2d/trig": {"t": "@Trigonometry Review", "n": "2.1", "s": "2026.2.25", "a": "2026.2.26", "h": "1dbeWmeTW-5YhaXQN7aZ2-6ZTevsGuHXo"},
+"vec2d/mag": {"t": "@Magnitude & Direction", "n": "2.2", "s": "2026.2.26", "a": "2026.2.27", "h": "1t5LyU0AQIoG8S9u_T5XgPn0pAh1toKG4"},
+"vec2d/diag": {"t": "@Vector Diagrams", "n": "2.3", "s": "2026.2.27", "a": "2026.3.2", "h": "1lWMY9AtotI-IHQx9dYBJU3Z0t3YYYDDR"},
+"vec2d/polar": {"t": "@Polar & Cartesian Form", "n": "2.4", "s": "2026.3.2", "a": "2026.3.3", "h": "16np_VV6WY4iIZrH6zEuT_XKQsfavEqXh"},
+"vec2d/arith": {"t": "@Vector Arithmetic", "n": "2.5", "s": "2026.3.3", "a": "2026.3.4", "h": "14BWvo1DqgCYIFTCTi5GE7aF-P2CHbi1z"},
+"vec2d/arith#1": {"t": "@Vector Arithmetic <i>(continued)</i>", "s": "2026.3.4"},
+"vec2d/proj": {"t": "@Projectile Motion", "n": "2.6", "s": "2026.3.5", "a": "2026.3.9", "h": ["1UY2qRFE2DQnsf1nKlA2rWCkQVlwPrCG_",
+    ["Simulation Handout", "1d3_mbBKtEDsiGmlQjumU_fHZfE_sSlJU"], ["Simulation", {"icon": "simulation", "open": "./#p20/vec2d/cannon"}], ["Desmos", {"icon": "desmos", "open": "https://www.desmos.com/calculator/c981c0076b"}]
+]},
+"vec2d/proj#1": {"t": "Simulation: Cannonball!", "s": "2026.3.9"},
+"vec2d/rev": {"t": "@2D Motion Review", "s": "2027.10", "a": "2027.10.30"},
+"q2/@": {"t": "Quiz: Two-Dimensional Motion", "s": "2026.3.10", "css": {"font-weight": "bold"}},
+"uA/@": {"t": "Unit A Exam", "s": "2026.3.13", "css": {"font-weight": "bold"}},
+
 "galaxy/@": {"t": "Galaxyland", "s": "2027", "attr": {"href": "https://drive.google.com/file/d/1DfO81FZvQzby3lBU9qp39PLeIkiXuBwd/view?usp=drive_link", "target": "Galaxy"}}
 },
 
@@ -109,8 +109,8 @@
 "phys1/displ": {"t": "@Position & Displacement", "n": "P03", "s": "2026.3.19", "a": "2026.3.20"},
 "phys1/displ#": {"t": "Lab: Motion of a Cart", "s": "2026.3.20"},
 "phys1/vel": {"t": "@Velocity & Speed", "n": "P04", "s": "2026.3.30", "a": "2026.3.31"},
-"phys1/acc": {"t": "@Acceleration", "n": "P05", "s": "2027.11", "a": "2027.11", "h": "1-q3l3L-ojj8wOwddwa6nlSNBaffhvkmX"},
-"qp1/@": {"t": "Quiz: Motion", "s": "2026.4.8", "css": {"font-weight": "bold"}},
+"phys1/acc": {"t": "@Acceleration", "n": "P05", "s": "2026.3.31", "a": "2026.4.1", "h": "1-q3l3L-ojj8wOwddwa6nlSNBaffhvkmX"},
+"qp1/@": {"t": "Quiz: Motion", "s": "2026.4.2", "css": {"font-weight": "bold"}},
 
 "phys2/mech": {"t": "@Mechanical Energy", "n": "P06", "s": "2027.11", "a": "2027.11", "h": "1BZGFdtlT_JnXd_LoTfxyq21bB00IqOg_"},
 "phys2/work": {"t": "@Energy Transformations", "n": "P07", "s": "2027.11", "a": "2027.11", "h": ["147isR3tlcLknZVhiawQprJ37F6TAjiMY", ["Pendulum Lab", "1NI_gCl094XeqjnK3DZcA4fc30LpH-Wt5"]]},
@@ -123,10 +123,9 @@
 "clim1/heatcap#": {"t": "Lab: Food Energy", "s": "2027.12"},
 "clim1/latent": {"t": "@Latent Heat", "n": "P12", "s": "2027.12", "a": "2027.12", "h": "1fGbBR64XxX1RjLBMfHqfB-NHm5hmSLxG"},
 "phys2/transfer25": {"t": "@Heat Transfer & Climate", "n": "P13", "s": "2027.12", "a": "2027.12", "h": "1eijWuyZIHMPHgA0iEyL2N-TpGEN6qFRg"},
-"unitB": {"t": "Project: Energy Transforming Device (Planning)", "s": "2028.1", "h": [["Assignment", {"gdrv": "1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", "show": 2027}], ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2027"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18", "show": "2028.1"}]]},
-"unitB#1": {"t": "Project: Energy Transforming Device (Planning)", "s": "2028.1"},
-"unitB#2": {"t": "Project: Energy Transforming Device (Building)", "s": "2028.1"},
-"unitB#3": {"t": "Project: Energy Transforming Device (Testing)", "s": "2028.1"},
+"unitB": {"t": "Project: Energy Transforming Device (Planning)", "s": "4.20", "h": [["Assignment", {"gdrv": "1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", "show": 2027}], ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2027"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"}]]},
+"unitB#1": {"t": "Project: Energy Transforming Device (Building)", "s": "4.21"},
+"unitB#2": {"t": "Project: Energy Transforming Device (Testing)", "s": "4.22"},
 
 "rewrite/@": {"t": "Rewrite", "s": "2028.1", "css": {"font-weight": "bold"}},
 "qp2/@": {"t": "Quiz: Energy / Heat", "s": "2027.12", "css": {"font-weight": "bold"}},
@@ -218,6 +217,7 @@
 "mag/em#": {"t": "Lab: Electromagnetism", "s": "2026.3.12"},
 "mag/B": {"t": "@Magnetic Fields", "n": "12.2", "s": "2026.3.13", "a": "2026.3.16"},
 "mag/Fm": {"t": "@Magnetic Force", "n": "12.3", "s": "2026.3.16", "a": "2026.3.17"},
+"mag/Fm#1": {"t": "Lab: Magnetic Force", "s": "2026.3.17"},
 "mag/helix": {"t": "@Motion in a Uniform Magnetic Field", "n": "12.4", "s": "2026.3.18", "a": "2026.3.19"},
 "mag/motor": {"t": "@Motor Principle", "n": "12.5", "s": "2026.3.19", "a": "2026.3.20"},
 "mag/faraday": {"t": "@Electromagnetic Induction", "n": "12.6", "s": "2026.3.30", "a": "2026.3.31"},
