@@ -20,14 +20,15 @@
 
 "dyn/n2": {"t": "@Force & Inertia", "n": "3.1", "s": "2026.3.11", "a": "2026.3.12", "h": "1rDC2wDHfaKBAgrhhDnt7mcO__FLTCmby"},
 "dyn/n3": {"t": "@Newton’s 3<sup>rd</sup> Law", "n": "3.2", "s": "2026.3.16", "a": "2026.3.17", "h": "1vKCsIYFqmVAdA7kc5kC5CrTcIG6-ppR7"},
-"dyn/weight": {"t": "@Mass & Weight", "n": "3.3", "s": "2026.3.17", "a": "2026.3.18", "h": ["1QdHaFj17j4elf7Vxdlhc9BrJ4Z7Hwr3G", ["Lab Activity", "1PIt9DLbgBxOIMjcPG9Z1NMEpfWTL1H41"]]},
-"dyn/fric": {"t": "@Contact Forces", "n": "3.4", "s": "2026.3.18", "a": "2026.3.20", "h": [
+"dyn/weight": {"t": "@Mass & Weight", "n": "3.3", "s": "2026.3.18", "a": "2026.3.19", "h": ["1QdHaFj17j4elf7Vxdlhc9BrJ4Z7Hwr3G", ["Lab Activity", "1PIt9DLbgBxOIMjcPG9Z1NMEpfWTL1H41"]]},
+"dyn/weight#": {"t": "Lab: Acceleration of Gravity", "s": "2026.3.17"},
+"dyn/fric": {"t": "@Contact Forces", "n": "3.4", "s": "2026.3.20", "a": "2026.3.30", "h": [
     "1U6MQeUYeEa9hk1IecZZpfhq1ePPXEoWc", ["Lab Activity", "1pNmvZ-LTWTewWdRlATgNFlX8RGK6usZT"],
     ["Pulley Simulation", {"icon": "simulation", "feed": "p20/dyn/pulley"}]]},
 "dyn/fric#": {"t": "Lab: Friction", "s": "2026.3.19"},
-"dyn/adv": {"t": "@Dynamics in 2D", "n": "3.5", "s": "2026.3.20", "a": "2026.3.31", "h": "1T13oAkEMHhkv3OjsA7CV-CyaGxy7LhR8"},
-"dyn/adv#": {"t": "@Dynamics in 2D <i>(continued)</i>", "s": "2026.3.30"},
-"q3/@": {"t": "Quiz: Newton’s Laws", "s": "2026.4.1", "css": {"font-weight": "bold"}},
+"dyn/adv": {"t": "@Dynamics in 2D", "n": "3.5", "s": "2026.3.30", "a": "2026.4.1", "h": "1T13oAkEMHhkv3OjsA7CV-CyaGxy7LhR8"},
+"dyn/adv#": {"t": "@Dynamics in 2D <i>(continued)</i>", "s": "2026.3.31"},
+"q3/@": {"t": "Quiz: Newton’s Laws", "s": "2026.4.2", "css": {"font-weight": "bold"}},
 
 "wave/harm": {"t": "@Harmonic Waves", "n": "8.1", "s": "2028.1", "a": "2028.1.20", "h": "16XKv7sKPI89XB5raKSgIhSCc8sSLnjwg"},
 "wave/dopp": {"t": "@Doppler Effect", "n": "8.2", "s": "2028.1", "a": "2028.1.21", "h": "1vO-QttkvOGe2cleueAxyyAM5e9sOBz9-"},
@@ -192,7 +193,7 @@
 
 },
 
-"cs10": {"home": {"folder": "cs_new", "t": "@Computring Science 10"},
+"cs10": {"home": {"folder": "cs_new", "t": "@Computing Science 10"},
 
 "sp2/prj3#1": {"t": "Python Project #1", "s": "2026.2.17", "css": {"font-weight": "bold"}},
 "sp2/prj3#2": {"t": "Python Project #2", "s": "2026.2.26", "css": {"font-weight": "bold"}},
@@ -200,18 +201,20 @@
 "sp2/prj3#4": {"t": "Python Project #3", "s": "2026.3.17", "css": {"font-weight": "bold"}}
 },
 
-"cs20": {"home": {"folder": "cs_new", "t": "@Computring Science 20"},
+"cs20": {"home": {"folder": "cs_new", "t": "@Computing Science 20"},
 
 "ds/@": {"t": "Quiz: Procedural Programming / Data Structures", "s": "2026.3.13", "css": {"font-weight": "bold"}},
-"ds/prj20/@": {"t": "Summative Projects", "s": "2026.3.17", "css": {"font-weight": "bold"}}
+"ds/prj20": {"t": "Summative Projects", "s": "2026.3.17", "css": {"font-weight": "bold"}}
 },
 
-"cs30": {"home": {"folder": "cs_new", "t": "@Computring Science 30"},
+"cs30": {"home": {"folder": "cs_new", "t": "@Computing Science 30"},
 
 "@": {"t": "Nothing Scheduled Yet!", "s": "2026.6.11", "css": {"font-weight": "bold"}}
 },
 
 "p30": {"home": {"t": "@Physics 30"},
+
+"emr/c": {"t": "@Speed of Light", "n": "13.1", "s": "2026.3.31", "a": "2026.4.1"},
 
 "mag/em": {"t": "@Electromagnetism", "n": "12.1", "s": "2026.3.11", "a": "2026.3.12"},
 "mag/em#": {"t": "Lab: Electromagnetism", "s": "2026.3.12"},
@@ -221,6 +224,7 @@
 "mag/helix": {"t": "@Motion in a Uniform Magnetic Field", "n": "12.4", "s": "2026.3.18", "a": "2026.3.19"},
 "mag/motor": {"t": "@Motor Principle", "n": "12.5", "s": "2026.3.19", "a": "2026.3.20"},
 "mag/faraday": {"t": "@Electromagnetic Induction", "n": "12.6", "s": "2026.3.30", "a": "2026.3.31"},
+"qB2/@": {"t": "Quiz: Magnetic Force & Fields", "s": "2026.4.2", "css": {"font-weight": "bold"}},
 
 "elec/static": {"t": "@Electrostatics", "n": "10.1", "s": "2026.2.20", "a": "2026.2.20"},
 "elec/static#": {"t": "Activity: Electrostatics", "s": "2026.2.18"},
@@ -234,7 +238,7 @@
 "elec/lightning": {"t": "@Applications of Electric Fields", "n": "11.4", "s": "2026.3.4", "a": "2026.3.5"},
 "elec/oildrop": {"t": "@Millikan’s Oil Drop Experiment", "n": "11.5", "s": "2026.3.5", "a": "2026.3.9"},
 "elec/oildrop#": {"t": "Simulation: Millikan’s Experiment", "s": "2026.3.9"},
-"qB2/@": {"t": "Quiz: Electric Force & Fields", "s": "2026.3.10", "css": {"font-weight": "bold"}},
+"qB1/@": {"t": "Quiz: Electric Force & Fields", "s": "2026.3.10", "css": {"font-weight": "bold"}},
 
 "mom/energy": {"t": "@Work & Energy Review", "n": "9.1", "s": "2026.1.29", "a": "2026.1.30"},
 "mom/mom": {"t": "@Momentum", "n": "9.2", "s": "2026.1.30", "a": "2026.2.2"},
@@ -247,7 +251,7 @@
 "mom/@": {"t": "Quiz: Momentum & Impulse (1D)", "s": "2026.2.12", "css": {"font-weight": "bold"}},
 "mom/coll2d": {"t": "@2D Collisions", "n": "9.7", "s": "2026.2.13", "a": "2026.2.17.13"},
 "mom/coll2d#": {"t": "@2D Collisions <em>(continued)</em>", "s": "2026.2.17"},
-"uD/@": {"t": "Unit A Exam", "s": "2026.2.19", "css": {"font-weight": "bold"}}
+"uA/@": {"t": "Unit A Exam", "s": "2026.2.19", "css": {"font-weight": "bold"}}
 }
 
 }
