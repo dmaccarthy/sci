@@ -1,5 +1,29 @@
 SVG2.cache("p20/dyn/img/n3.js", {
 
+bus: (sel) => {
+    let svg = new SVG2(sel, {scale: 30, grid: 1, lrbt: [-10, 10, -5, 5]});
+    svg.image("media/car_.svg", [3, 1], [6, 0, "b"]);
+    console.log(svg);
+},
+
+lamppost: (sel) => {
+    let svg = new SVG2(sel, {scale: 32, lrbt: [-5, 4, -5, 6]});
+    css(svg.rect([0.2, 5], [0, 2.5]), "black@1", "lightgrey");
+    css(svg.line([-5, 0], [4, 0]), "black@3");
+    css(svg.circle(0.6, [0, 5]), "black@1", "yellow");
+    svg.stickman(3).shift_by([-1, 0]);
+    let g = svg.group("arrow", "red");
+    let t = {tail: "6"};
+    g.arrow({tail: [-1, -0.2], tip: [-1, -4]}, t);
+    g.arrow({tail: [-1, 0.2], tip: [-1, 4]}, t);
+    g.arrow(-2.5, t).shift_by([-3, 2]);
+    g.arrow(2.5, t).shift_by([1.8, 2]).css("#0065fe");
+    svg.mjax("\\va{F}_g", null, [-2, -2], "red");
+    svg.mjax("\\va{F}_n", null, [-2.2, 4], "red");
+    svg.mjax("\\va{F}_a", null, [-2.5, 1], "red");
+    svg.mjax("\\va{F}_a", null, [2, 1], "#0065fe");
+},
+
 n3: (sel) => {
     let svg = new SVG2(sel, {size: [400, 172], lrbt: [-4, 4, -0.2]});
     svg.line([-4, 0], [4, 0]).css({stroke: "black", "stroke-width": 3});
