@@ -61,18 +61,29 @@
 <ol>
     <li>For each situation, decide whether there will be an induced EMF. If there is, (i) state whether it is due to a change in area, magnetic field strength, or angle; and (ii) determine the direction of the induced current.
     <ol type="a">
-        <li>This circuit has three fixed sides and one moveable side, which is slid in the direction indicated. There is a uniform magnetic field directed into the page.
+        <li>This circuit has three fixed sides and one moveable side, which is slid in the direction indicated. There is a uniform magnetic field directed into the page.</li>
         <p class="Center"><svg class="s16" data-svg2="p30/mag/img/faraday.js#moveable"></svg></p>
-        </li>
-        <li>A loop of conducting wire is moved from a region of weak magnetic field to strong as illustrated.
+        <div class="Answer">
+            <p>There is an induced voltage (“EMF”) because the area of the circuit is increasing. There are two ways to determine the direction of the electron flow...</p>
+            <p>Method 1: Using the 3<sup>rd</sup> Left Hand Rule, we can see that since there is a velocity to the right, and a magnetic field into the page, there must be a magnetic force acting on the electrons in the wire pushing them to the bottom of the moving side. This will result in a clockwise electron flow through the circuit.</p>
+            <p>Method 2: According to Lenz’s Law, since the moving wire is moving to the right, there must be a magnetic force acting to the left. Since <span class="TeX">\va{B}</span> is into the page, the 3<sup>rd</sup> Left Hand Rule says the electron current in the moving side is toward the bottom of the page. Therefore, the electrons flow clockwise around the circuit.</p>
+            <p>Note that Method 1 focuses on the gain in electric energy (i.e. current in the circuit) resulting from the generator effect. Method 2 focuses on the loss of mechanical energy experienced by the moving wire. Both methods must give the same answer for the direction of the current.</p>
+        </div>
+
+        <li>A loop of conducting wire is moved from a region of weak magnetic field to strong as illustrated.</li>
         <p class="Center"><svg class="s16" data-svg2="p30/mag/img/faraday.js#loop"></svg></p>
-        </li>
+        <p class="Answer">There is an induced voltage (“EMF”) because the magnetic field strength (as experienced by the coil) is increasing. Since <span class="TeX">\va{v}</span> is to the right, there must be a magnetic force acting to the left. This means that the magnet (located to the right, where the field lines are closer together) is repelling the coil. Thus the top of the coil is its north pole and the direction of the current is given by the 2<sup>nd</sup> Hand Rule.</p>
+
         <li>A bar magnet is plunged into a solenoid as shown in the diagram below<!--, on the left-->.</li>
         <p class="Center"><svg class="s10" data-svg2="p30/mag/img/faraday.js#plunge"></svg></p>
+        <p class="Answer">There is an induced voltage (“EMF”) because the magnetic field strength (as experienced by the coil) is increasing. Since <span class="TeX">\va{v}</span> is down, there must be a magnetic force acting up; the coil repels the bar magnet so the top of the coil is its south pole. Based on the 2<sup>nd</sup> Left Hand Rule the electrons flow up through the coil and then down through the ammeter.</p>
+    
         <li>The solenoid/ammeter circuit is rotated counterclockwise through a uniform magnetic field in the direction shown <!--above, on the right--> below.</li>
         <p class="Center"><svg class="s10" data-svg2="p30/mag/img/faraday.js#ccw"></svg></p>
-        <li>Repeat (d) for a magnetic field directed out of the page instead of to the right.
-        </li>
+        <p class="Answer">There is an induced voltage (“EMF”) because the angle between the coil and the magnetic field is changing. Since the rotation is counterclockwise, the magnetic forces must act clockwise on the coil; the top of the coil is the north pole. Based on the 2<sup>nd</sup> Left Hand Rule the electrons flow down through the coil and then up through the ammeter.</p>
+
+        <li>Repeat (d) for a magnetic field directed out of the page instead of to the right.</li>
+        <p class="Answer">The angle between the coil and the magnetic field remains constant at 90°. According to Faraday’s Law, no EMF is induced.</p>
     </ol></li>
 
     <li>A “slider” is dropped through a 1.00 m long tube as illustrated. A “photogate” is placed at the bottom of the tube to determine the speed of the slider as it emerges.
@@ -81,6 +92,18 @@
     <p>Students were surprised to discover that three of the four measurements resulted in the same speed <span class="NoWrap">(<span class="TeX">v_i</span></span> = 4.38 m/s), while one of the measurements produced a significantly different result <span class="NoWrap">(<span class="TeX">v_f</span></span> = 1.86 m/s).</p>
     <p>Which of the results was the different one? Explain why the behaviour was different. Also, calculate the acceleration of the slider for each case.</p>
     </li>
+    <div class="Answer">
+        <p>The combination of a magnetic slider and an aluminum (conductor) tube acts as a generator. The falling magnet means the aluminum tube below the magnet’s position experiences an increasing magnetic field strength and produces an induced current that repels the slider, while the aluminum tube above the magnet’s position experiences a decreasing magnetic field strength and produces an induced current that attracts the slider. These magnetic forces slow the falling slider as the mechanical energy is transformed into electrical energy. This effect cannot occur for a non-magnetic slider or for a non-conducting tube.</p>
+        <p>Use uniform acclerated motion to find the acceleration...</p>
+        <p class="TeX">\va{a} = \frac{v_f^2 - v_i^2}{2\Delta\va{d}}</p>
+        <p>We can ignore the initial velocity because it is zero...</p>
+        <p class="TeX">\va{a} = \frac{v_f^2}{2\Delta\va{d}}</p>
+        <p>Using <span class="TeX">v_f</span> = 4.38 m/s...</p>
+        <p class="TeX">\va{a} = \rm \frac{(4.38\ m/s)^2}{2\cdot 1.00\ m} = 9.59\ m/s^2</p>
+        <p>Using <span class="TeX">v_f</span> = 1.86 m/s...</p>
+        <p class="TeX">\va{a} = \rm \frac{(1.86\ m/s)^2}{2\cdot 1.00\ m} = 1.73\ m/s^2</p>
+        <p>The accleration was only slightly less than <span class="TeX">g</span>, probably because of air resistance, when EM induction did <em>not</em> occur. When induction <em>did</em> occur, the acceleration of only 1.73 m/s<sup>2</sup> indicates a magnetic force nearly as strong as gravity. The mechanical energy lost by the falling slider was converted to electrical energy, and ultimately to heat as the moving electrons in the aluminum collided with nuclei.</p>
+    </div>
 
 </ol></div></section>
 

@@ -1,9 +1,10 @@
 SVG2.cache("p30/mag/img/motor.js", {
 
-ring: (sel) => {
-    let svg = new SVG2(sel, {scale: 24, lrbt: [-4, 4, -2, 2]});
+ring: (sel, brush) => {
+    let [w, h] = brush ? [3, 4] : [4, 2];
+    let svg = new SVG2(sel, {scale: 24, grid: 0, lrbt: [-w, w, -h, h]});
     let wire = ["none", "#b87333@1"];
-    let coil = svg.coil([2, 6], 8, 0, 0).css(...wire).config({theta: 90});
+    let coil = svg.coil([2, 6], 8, 0, 0).css(...wire).config({theta: (brush ? 0 : 90)});
     css(coil.$.find("rect"), "#f0f0f0", "black@1");
     css(coil.$.find("circle"), "silver", "black@1");
     coil.$.find("line.Wire").remove();
@@ -11,7 +12,7 @@ ring: (sel) => {
     for (let i=3;i<6;i++) $(x[i]).remove();
 
     let r = 0.1875;
-    let w = 0.4;
+    w = 0.4;
     let g = coil.group(...wire).shift_by([0, 3 * r]);
     let p = g.path([1, 4 * r]);
     p.arc([1, 3 * r], -90);
@@ -34,6 +35,22 @@ ring: (sel) => {
     p.arc([0, 0], -172);
     p.update();
 
+    if (brush) {
+        g = svg.group("brown", "black@1");
+        let r = [1.5, 0.12];
+        let p = new RArray(0.8, 0);
+        let b1 = g.group().config({shift: p});
+        b1.rect(r, p);
+        p = p.neg();
+        let b2 = g.group().config({shift: p});
+        b2.rect(r, p);
+        svg.$.on("click", () => {
+            let t = b1.theta;
+            t = t < 10 ? 25 : (t < 40 ? 45 : 0);
+            b1.config({theta: t});
+            b2.config({theta: t});
+        });
+    }
 },
 
 coil_rotate: (sel) => {
