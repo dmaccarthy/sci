@@ -1,9 +1,9 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
-"grav/ugrav": {"t": "@Universal Gravitation", "n": "4.1", "s": "2027.11", "a": "2027.11.21", "h": "19ypn6fFlrR_ToP6RXWpKN9tzUmfi2ekm"},
-"da/regr": {"t": "@Regression Analysis", "n": "4.2", "s": "2027.11", "a": "2027.11.24", "h": "1NLkp40NhPtv3cygebVZZIWa4nQ9vW4-L"},
-"da/pwr": {"t": "@Transforming Power Data", "n": "4.3", "s": "2027.11", "a": "2027.11.25", "h": "1jP3UvycUlhF_IN_ZBc-mLP86trg8Rcv0"},
+"da/regr": {"t": "@Regression Analysis", "n": "4.1", "s": "2026.4.1", "a": "2026.4.7", "h": "1NLkp40NhPtv3cygebVZZIWa4nQ9vW4-L"},
+"da/pwr": {"t": "@Transforming Power Data", "n": "4.2", "s": "2026.4.7", "a": "2026.4.8", "h": "1jP3UvycUlhF_IN_ZBc-mLP86trg8Rcv0"},
+"grav/ugrav": {"t": "@Universal Gravitation", "n": "4.3", "s": "2027.11", "a": "2027.11.21", "h": "19ypn6fFlrR_ToP6RXWpKN9tzUmfi2ekm"},
 "grav/cav": {"t": "@Cavendish Experiment", "n": "4.4", "s": "2027.11", "a": "2027.11.26", "h": "163ABwJIWUfE9tzNjMzmS66bqW3DDiMpb"},
 "grav/field": {"t": "@Gravitational Fields", "n": "4.5", "s": "2027.11", "a": "2027.11.26.16", "h": [
     "1JC8-YIlbmrrkY2vw1jKl9JAoZGhDXNRB",
@@ -32,7 +32,7 @@
 
 "wave/harm": {"t": "@Harmonic Waves", "n": "8.1", "s": "2028.1", "a": "2028.1.20", "h": "16XKv7sKPI89XB5raKSgIhSCc8sSLnjwg"},
 "wave/dopp": {"t": "@Doppler Effect", "n": "8.2", "s": "2028.1", "a": "2028.1.21", "h": "1vO-QttkvOGe2cleueAxyyAM5e9sOBz9-"},
-"wave/beat": {"t": "@Interference & Beats", "n": "8.3", "s": "2028.1", "a": "2028.1.22", "h": "1ycVlE7Pq1HFEMdunjhJd3woTh9-uppZc"},
+"wave/beat": {"t": "@Interference & Beats", "n": "8.3", "s": "20281", "a": "2028.1.22", "h": "1ycVlE7Pq1HFEMdunjhJd3woTh9-uppZc"},
 "wave/stand": {"t": "@Standing Waves", "n": "8.4", "s": "2028.1", "a": "2028.1.22", "h": ["1ngjzdLy8Pegrdn2IU12owSOVA2HCxUBv", ["Lab Activity", "1_OlSoCLxi6_ddDAshuRUUisyfzUIhldJ"], ["Data", {"show": "2028.1", "open": "https://docs.google.com/spreadsheets/d/1bV80m6ndeMj_t2hH1E-6Dcc6RAegW-uyDC4rISfLHPQ/edit?usp=sharing", "icon": "gsheet"}]]},
 "uD/@": {"t": "Unit D Exam", "s": "2028.1", "css": {"font-weight": "bold"}},
 "rewrite/@": {"t": "Rewrite", "s": "2028.1", "css": {"font-weight": "bold"}},
@@ -100,20 +100,20 @@
 "q2/@": {"t": "Quiz: Two-Dimensional Motion", "s": "2026.3.10", "css": {"font-weight": "bold"}},
 "uA/@": {"t": "Unit A Exam", "s": "2026.3.13", "css": {"font-weight": "bold"}},
 
-"galaxy/@": {"t": "Galaxyland", "s": "2027", "attr": {"href": "https://drive.google.com/file/d/1DfO81FZvQzby3lBU9qp39PLeIkiXuBwd/view?usp=drive_link", "target": "Galaxy"}}
+"galaxy/@": {"t": "Galaxyland", "s": "2027", "attr": {"href": "1DfO81FZvQzby3lBU9qp39PLeIkiXuBwd", "target": "Galaxy"}}
 },
 
 "s10": {"home": {"t": "@Science 10"},
 
-"phys1/si": {"t": "@SI Units", "n": "P01", "s": "2026.3.17", "a": "2027.18"},
-"phys1/graph": {"t": "@Graphing Data", "n": "P02", "s": "2026.3.18", "a": "2026.3.19"},
-"phys1/displ": {"t": "@Position & Displacement", "n": "P03", "s": "2026.3.19", "a": "2026.3.20"},
-"phys1/displ#": {"t": "Lab: Motion of a Cart", "s": "2026.3.20"},
-"phys1/vel": {"t": "@Velocity & Speed", "n": "P04", "s": "2026.3.30", "a": "2026.3.31"},
+"phys1/si": {"t": "@SI Units", "n": "P01", "s": "2026.3.17", "a": "2027.18", "h": "1JkToLXFv0ob2Nwt_L_4VvWhamASq77Uo"},
+"phys1/graph": {"t": "@Graphing Data", "n": "P02", "s": "2026.3.18", "a": "2026.3.19", "h": "1wy4XYLAlKtb3f3c-Q7TtDJpulSgl0Bd8"},
+"phys1/displ": {"t": "@Position & Displacement", "n": "P03", "s": "2026.3.19", "a": "2026.3.20", "h": ["1PKzEE3fVbazkaJ9cOD50Z7TJItYM7Qpk", ["Motion Lab", "1Q6TUSuBJD23PO3aIVV54X7rs0UoXegjG"]]},
+"phys1/displ#": {"t": "Lab: Motion of a Cart", "s": "2026.3.20", "h": "_"},
+"phys1/vel": {"t": "@Velocity & Speed", "n": "P04", "s": "2026.3.30", "a": "2026.3.31", "h": "1CgtGlCy3EiJUUvVK93HzOlkgTZSEOwFf"},
 "phys1/acc": {"t": "@Acceleration", "n": "P05", "s": "2026.3.31", "a": "2026.4.1", "h": "1-q3l3L-ojj8wOwddwa6nlSNBaffhvkmX"},
 "qp1/@": {"t": "Quiz: Motion", "s": "2026.4.2", "css": {"font-weight": "bold"}},
 
-"phys2/mech": {"t": "@Mechanical Energy", "n": "P06", "s": "2027.11", "a": "2027.11", "h": "1BZGFdtlT_JnXd_LoTfxyq21bB00IqOg_"},
+"phys2/mech": {"t": "@Mechanical Energy", "n": "P06", "s": "2026.4.1", "a": "2026.4.3", "h": "1BZGFdtlT_JnXd_LoTfxyq21bB00IqOg_"},
 "phys2/work": {"t": "@Energy Transformations", "n": "P07", "s": "2027.11", "a": "2027.11", "h": ["147isR3tlcLknZVhiawQprJ37F6TAjiMY", ["Pendulum Lab", "1NI_gCl094XeqjnK3DZcA4fc30LpH-Wt5"]]},
 "phys2/work#": {"t": "Lab: Energy of a Pendulum", "s": "2027.11"},
 "phys2/we": {"t": "@Work-Energy Theorem", "n": "P08", "s": "2027.11", "a": "2027.11", "h": "1PmBbcbdMUEWtSK-8EuBOAZBEGH4Z8fL5"},
@@ -124,9 +124,9 @@
 "clim1/heatcap#": {"t": "Lab: Food Energy", "s": "2027.12"},
 "clim1/latent": {"t": "@Latent Heat", "n": "P12", "s": "2027.12", "a": "2027.12", "h": "1fGbBR64XxX1RjLBMfHqfB-NHm5hmSLxG"},
 "phys2/transfer25": {"t": "@Heat Transfer & Climate", "n": "P13", "s": "2027.12", "a": "2027.12", "h": "1eijWuyZIHMPHgA0iEyL2N-TpGEN6qFRg"},
-"unitB": {"t": "Project: Energy Transforming Device (Planning)", "s": "4.20", "h": [["Assignment", {"gdrv": "1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", "show": 2027}], ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2027"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"}]]},
-"unitB#1": {"t": "Project: Energy Transforming Device (Building)", "s": "4.21"},
-"unitB#2": {"t": "Project: Energy Transforming Device (Testing)", "s": "4.22"},
+"unitB": {"t": "Project: Energy Transforming Device (Planning)", "s": "2026.4.20", "h": [["Assignment", {"gdrv": "1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", "show": 2027}], ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2027"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"}]]},
+"unitB#1": {"t": "Project: Energy Transforming Device (Building)", "s": "2026.4.21"},
+"unitB#2": {"t": "Project: Energy Transforming Device (Testing)", "s": "2026.4.22"},
 
 "rewrite/@": {"t": "Rewrite", "s": "2028.1", "css": {"font-weight": "bold"}},
 "qp2/@": {"t": "Quiz: Energy / Heat", "s": "2027.12", "css": {"font-weight": "bold"}},
@@ -215,6 +215,8 @@
 "p30": {"home": {"t": "@Physics 30"},
 
 "emr/c": {"t": "@Speed of Light", "n": "13.1", "s": "2026.3.31", "a": "2026.4.1"},
+"emr/young": {"t": "@Young’s Experiment", "n": "13.2", "s": "2026.4.7", "a": "2026.4.8"},
+"emr/young#": {"t": "Lab: Young’s Experiment", "s": "2026.4.1"},
 
 "mag/em": {"t": "@Electromagnetism", "n": "12.1", "s": "2026.3.11", "a": "2026.3.12"},
 "mag/em#": {"t": "Lab: Electromagnetism", "s": "2026.3.12"},

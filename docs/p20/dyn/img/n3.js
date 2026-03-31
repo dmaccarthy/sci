@@ -2,7 +2,7 @@ SVG2.cache("p20/dyn/img/n3.js", {
 
 bus: (sel) => {
     let svg = new SVG2(sel, {scale: 30, grid: 1, lrbt: [-10, 10, -5, 5]});
-    svg.image("media/car_.svg", [3, 1], [6, 0, "b"]);
+    svg.image("media/car_left.svg", [3, 1], [6, 0, "b"]);
     console.log(svg);
 },
 

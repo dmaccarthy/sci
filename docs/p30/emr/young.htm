@@ -4,8 +4,7 @@
 </section>
 
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2>
-<div id="LessonNotes" class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Young’s Experiment</h1>
@@ -133,22 +132,100 @@
 
 </div></section>
 
-<section class="Post NoPrintIcon" data-show="2024.10.26" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1hVUQY3gGIuwno6Pgy_Hv_WuJ29EpPJx4Ctx7Udlud6U">Answer Key</button>
-    </p>
-</div></section>
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse Expand">
+<ol>
+
+<li>Green light is observed through a diffraction grating with 500 lines per mm. The second-order interference maximum is observed at 30.0°.
+<ol type="a">
+    <li>Calculate the wavelength and frequency of the green light wave.</li>
+    <div class="Answer">
+        <p class="TeX">d = \rm \frac{1}{500} \ mm = 2.00\times 10^{-6}\ m</p>
+        <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.00\times 10^{-6}\ m\cdot \sin 30.0^\circ}{2} = 5.00\times 10^{-7}\ m = 500\ nm</p>
+        <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{5.00\times 10^{-7}\ m} = 6.00\times 10^{14}\ Hz</p>
+    </div>
+
+    <li>Predict the locations of the first- and third-order maxima.</li>
+    <div class="Answer">
+        <p class="TeX">d\sin\theta = n\lambda</p>
+        <p class="TeX">\sin\theta = \frac{n\lambda}{d}</p>
+        <p class="TeX">\theta = \sin^{-1}\frac{n\lambda}{d}</p>
+        <p class="TeX">\theta_1 = \rm \sin^{-1}\left(\frac{1\cdot 5.00\times 10^{-7}\ m}{2.00\times 10^{-6}\ m}\right) = 14.5^\circ</p>
+        <p class="TeX">\theta_3 = \rm \sin^{-1}\left(\frac{3\cdot 5.00\times 10^{-7}\ m}{2.00\times 10^{-6}\ m}\right) = 48.6^\circ</p>
+    </div>
+
+</ol>
+</li>
+
+<li>Determine the angle of the first- and second-order maxima for light with <span class="TeX">\lambda</span> = 492 nm passing through a diffraction grating with 700 lines per mm.</li>
+<div class="Answer">
+    <p class="TeX">d = \rm \frac{1}{700} \ mm = 1.43\times 10^{-6}\ m</p>
+    <p>The algebra is the same as the previous question...</p>
+    <p class="TeX">\theta = \sin^{-1}\frac{n\lambda}{d}</p>
+    <p class="TeX">\theta_1 = \rm \sin^{-1}\left(\frac{1\cdot 4.92\times 10^{-7}\ m}{1.43\times 10^{-6}\ m}\right) = 20.1^\circ</p>
+    <p class="TeX">\theta_2 = \rm \sin^{-1}\left(\frac{2\cdot 4.92\times 10^{-7}\ m}{1.43\times 10^{-6}\ m}\right) = 43.5^\circ</p>
+</div>
+
+<li>Light passes through a green filter and then through a diffraction grating with 250 lines per mm. A first-order maximum is observed at an angle of 7.24°.
+<ol type="a">
+    <li>Calculate the wavelength of the green light.</li>
+    <div class="Answer">
+        <p class="TeX">d = \rm \frac{1}{250} \ mm = 4.00\times 10^{-6}\ m</p>
+        <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{4.00\times 10^{-6}\ m\cdot \sin 7.24^\circ}{1} = 5.04\times 10^{-7}\ m = 504\ nm</p>
+    </div>
+
+    <li>Predict the angle at which the second-order maximum will be located.</li>
+    <div class="Answer">
+        <p class="TeX">\theta = \sin^{-1}\frac{n\lambda}{d}</p>
+        <p class="TeX">\theta_2 = \rm \sin^{-1}\left(\frac{2\cdot 5.04\times 10^{-7}\ m}{4.00\times 10^{-6}\ m}\right) = 14.6^\circ</p>
+    </div>
+
+    <li>[Attempt to...] Calculate the angle at which the 8<sup>th</sup>-order maximum will be located. Can you explain your result? [Hint: Can the path difference ever by more than <span class="NoWrap"><span class="TeX">d</span>?</span> Compare <span class="TeX">8\lambda</span> to <span class="NoWrap"><span class="TeX">d</span>.]</span></li>
+    <div class="Answer">
+        <p class="TeX">\theta_8 = \rm \sin^{-1}\left(\frac{8\cdot 5.04\times 10^{-7}\ m}{4.00\times 10^{-6}\ m}\right) = \sin^{-1}(1.008) = Undefined!</p>
+        <p>The <span class="TeX">\sin^{-1}</span> function does not have a solution when the argument exceeds 1; there is only a solution when:</p>
+        <p class="TeX">n\lambda &lt; d</p>
+        <p class="TeX">n &lt; \frac{d}{\lambda}</p>
+    </div>
+</ol>
+</li>
+
+<li>Light with <span class="TeX">\lambda</span> = 650 nm produces a first-order maximum at an angle of 12.6°. What is the slit spacing of the diffraction grating used?</li>
+<div class="Answer">
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n}</p>
+    <p class="TeX">d = \frac{n\lambda}{\sin\theta} = \rm \frac{1\cdot 6.50\times 10^{-7}\ m}{\sin 12.6^\circ} = 2.98\times 10^{-6}\ m</p>
+</div>
+
+<li>A spectroscope is a device that uses a diffraction grating to separate light into different wavelengths. When light from a hydrogen gas discharge tube passes through a spectroscope, different colours of light are observed to produce first-order maxima at angles of 9.2°, 9.5°, 10.0°, 11.2° and 15.2°. The spectroscope uses a grating with 400 lines per mm. Calculate the wavelengths and frequencies of these five observed colours of light.</li>
+<div class="Answer">
+    <p class="TeX"></p>
+</div>
+
+<!--
+d = (1 / 400) mm = 2.50 × 10–6 m
+For 9.2°…
+λ = d sin θ / n = 2.50 × 10–6 m sin 9.2° / 1 = 3.98 × 10–7 m = 398 nm
+f = c / λ = 3.00 × 108 m/s / (3.98 × 10–7 m) = 7.51 × 1014 Hz
+For 9.5°…
+λ = d sin θ / n = 2.50 × 10–6 m sin 9.5° / 1 = 4.13 × 10–7 m = 413 nm
+f = c / λ = 3.00 × 108 m/s / (4.13 × 10–7 m) = 7.27 × 1014 Hz
+For 10.0°…
+λ = d sin θ / n = 2.50 × 10–6 m sin 10.0° / 1 = 4.34 × 10–7 m = 434 nm
+f = c / λ = 3.00 × 108 m/s / (4.34 × 10–7 m) = 6.91 × 1014 Hz
+For 11.2°…
+λ = d sin θ / n = 2.50 × 10–6 m sin 11.2° / 1 = 4.86 × 10–7 m = 486 nm
+f = c / λ = 3.00 × 108 m/s / (4.86 × 10–7 m) = 6.18 × 1014 Hz
+For 15.2°…
+λ = d sin θ / n = 2.50 × 10–6 m sin 15.2° / 1 = 6.55 × 10–7 m = 655 nm
+f = c / λ = 3.00 × 108 m/s / (6.55 × 10–7 m) = 4.58 × 1014 Hz
+-->
+
+</ol></div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
-    title: `${siteData.lesson}13.2 — Young’s Experiment`,
-    answerDate: "2024.10.26",
-    num: "13.2",
-    up: "p30/units/C",
-    prev: "p30/emr/c",
-    next: "p30/emr/maxwell",
+    up: "p30/units/C", prev: "p30/emr/c", //next: "p30/emr/maxwell",
 }
 
 </script>

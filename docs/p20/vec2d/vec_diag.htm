@@ -137,7 +137,10 @@ loadFeed.init.hist = (init) => {
 
 loadFeed.init.draw = (init) => {
 /* Draw the diagram from <textarea> data */
-    let vecs = eval(`[${$("textarea").val().replaceAll("@", "vec2d")}]`);
+    let vecs = `[${$("textarea").val().replaceAll("@", "vec2d")}]`;
+    let f = new Function("return" + vecs);
+    vecs = f();
+    // let vecs = eval(`[${$("textarea").val().replaceAll("@", "vec2d")}]`);
     loadFeed.init.viewport.n = 0;
     loadFeed.init.viewport(vecs);
     loadFeed.init.redraw(vecs);
