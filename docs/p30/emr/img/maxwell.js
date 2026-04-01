@@ -2,6 +2,7 @@ SVG2.cache("p30/emr/img/maxwell.js", {
 
 wave: (sel) => {
     let svg = new SVG2(sel, {lrbt: [-2, 10, -2, 2], margin: 4, scale: 60});
+    try {loadFeed.final = svg} catch(err) {}
     css(svg.line([-3, 0], [11, 0]), "black@2");
     svg.status = 3;
 

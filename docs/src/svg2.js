@@ -502,6 +502,32 @@ cylinder(r, L, ellipse_first) {
     return g;
 }
 
+flame(r) {
+/* Draw a flame-shaped path */
+    let g = this.group();
+    let pts = [[20, 9],
+        [-30, 18], [0, -12],
+        [-26, 80], [-50, 50],
+        [-4, 120], [-10, 100],
+        [-10, 142], [0, 130],
+        [12, 120], [4, 140],
+        [14, 100], [16, 110],
+        [20, 73], [12, 80],
+        [20, 9], [48, 40],
+    ];
+    r /= 144 * (8875 / 9000);
+    for (let i=0;i<pts.length;i++) 
+        pts[i] = new RArray(...pts[i]).times(r);
+    let i = 0;
+    let p = g.path(pts[i++]);
+    while (i < pts.length) {
+        p.quad_to(pts[i], pts[i+1]);
+        i += 2;
+    }
+    p.update();
+    return g;
+}
+
 bullet(r, L, f, b) {
 /* Draw a bullet */
     if (!L) L = 7 * r;

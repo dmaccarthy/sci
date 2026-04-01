@@ -113,24 +113,28 @@
 "phys1/acc": {"t": "@Acceleration", "n": "P05", "s": "2026.3.31", "a": "2026.4.1", "h": "1-q3l3L-ojj8wOwddwa6nlSNBaffhvkmX"},
 "qp1/@": {"t": "Quiz: Motion", "s": "2026.4.2", "css": {"font-weight": "bold"}},
 
-"phys2/mech": {"t": "@Mechanical Energy", "n": "P06", "s": "2026.4.1", "a": "2026.4.3", "h": "1BZGFdtlT_JnXd_LoTfxyq21bB00IqOg_"},
-"phys2/work": {"t": "@Energy Transformations", "n": "P07", "s": "2027.11", "a": "2027.11", "h": ["147isR3tlcLknZVhiawQprJ37F6TAjiMY", ["Pendulum Lab", "1NI_gCl094XeqjnK3DZcA4fc30LpH-Wt5"]]},
-"phys2/work#": {"t": "Lab: Energy of a Pendulum", "s": "2027.11"},
-"phys2/we": {"t": "@Work-Energy Theorem", "n": "P08", "s": "2027.11", "a": "2027.11", "h": "1PmBbcbdMUEWtSK-8EuBOAZBEGH4Z8fL5"},
-"phys2/eff": {"t": "@Efficiency", "n": "P09", "s": "2027.11", "a": "2027.11", "h": "1m1Wa_BsXrw_W4Sz2ItL_mbansF2EABwY"},
-"phys2/eff#": {"t": "Activity: Energy Transforming Technologies", "s": "2027.11"},
+"phys2/mech": {"t": "@Mechanical Energy", "n": "P06", "s": "2026.4.7", "a": "2026.4.8", "h": "1BZGFdtlT_JnXd_LoTfxyq21bB00IqOg_"},
+"phys2/work": {"t": "@Energy Transformations", "n": "P07", "s": "2026.4.8", "a": "2026.4.9", "h": ["147isR3tlcLknZVhiawQprJ37F6TAjiMY", ["Pendulum Lab", "1NI_gCl094XeqjnK3DZcA4fc30LpH-Wt5"]]},
+"phys2/work#": {"t": "Lab: Energy of a Pendulum", "s": "2026.4.14"},
+"phys2/we": {"t": "@Work-Energy Theorem", "n": "P08", "s": "2026.4.9", "a": "2026.4.13", "h": "1PmBbcbdMUEWtSK-8EuBOAZBEGH4Z8fL5"},
+"phys2/eff": {"t": "@Efficiency", "n": "P09", "s": "2026.4.13", "a": "2026.4.14", "h": ["1m1Wa_BsXrw_W4Sz2ItL_mbansF2EABwY", ["Activity", {"icon": "gdoc", "gdoc": "1VBkr1xC2tYfZoCNJcltIgcqU_tZ2au9uyy7W6qPDWtw"}]]},
+"phys2/eff#": {"t": "Activity: Energy Transforming Technologies", "s": "2026.4.10"},
 "phys2/heat": {"t": "@Theories of Heat", "n": "P10", "s": "2027.11", "a": "2027.12", "h": "1H6gXLWijZEnUKec6wOO2gz_go4G6XOHp"},
+
+"qp2/@": {"t": "Quiz: Energy / Heat", "s": "2026.4.17", "css": {"font-weight": "bold"}},
+"uB/@": {"t": "Physics Unit Exam", "s": "2026.4.21", "css": {"font-weight": "bold"}},
+
+
+"phys2/transfer25": {"t": "@Heat Transfer & Climate", "n": "P13", "s": "2027.12", "a": "2027.12", "h": "1eijWuyZIHMPHgA0iEyL2N-TpGEN6qFRg"},
+"unitB": {"t": "Project: Energy Transforming Device (Planning)", "s": "2026.4.20", "h": [["Assignment", {"gdrv": "1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", "show": 2027}], ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2027"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"}]]},
+"unitB#1": {"t": "Project: Energy Transforming Device (Building)", "s": "2026.4.22"},
+"unitB#2": {"t": "Project: Energy Transforming Device (Testing)", "s": "2026.4.23"},
+
 "clim1/heatcap": {"t": "@Heat Capacity", "n": "P11", "s": "2027.12", "a": "2027.12", "h": ["1muqgYeE_5_XQG5tT_dc_gUJw1DaApbnQ", ["Lab Activity", {"gdrv": "1lEE1UBJpp3t5kXDBswuWKSb_xa39G0Nf", "show": "2027.11"}]]},
 "clim1/heatcap#": {"t": "Lab: Food Energy", "s": "2027.12"},
 "clim1/latent": {"t": "@Latent Heat", "n": "P12", "s": "2027.12", "a": "2027.12", "h": "1fGbBR64XxX1RjLBMfHqfB-NHm5hmSLxG"},
-"phys2/transfer25": {"t": "@Heat Transfer & Climate", "n": "P13", "s": "2027.12", "a": "2027.12", "h": "1eijWuyZIHMPHgA0iEyL2N-TpGEN6qFRg"},
-"unitB": {"t": "Project: Energy Transforming Device (Planning)", "s": "2026.4.20", "h": [["Assignment", {"gdrv": "1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", "show": 2027}], ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2027"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"}]]},
-"unitB#1": {"t": "Project: Energy Transforming Device (Building)", "s": "2026.4.21"},
-"unitB#2": {"t": "Project: Energy Transforming Device (Testing)", "s": "2026.4.22"},
 
 "rewrite/@": {"t": "Rewrite", "s": "2028.1", "css": {"font-weight": "bold"}},
-"qp2/@": {"t": "Quiz: Energy / Heat", "s": "2027.12", "css": {"font-weight": "bold"}},
-"uB/@": {"t": "Physics Unit Exam", "s": "2027.12", "css": {"font-weight": "bold"}},
 
 "chem3/rxn": {"t": "@Chemical Reactions / Conservation Laws", "n": "C13", "s": "2026.2.26", "a": "2026.2.27", "h": ["1MJnS_8iguRwVLvtPRBjtUdJtm01C00eC", ["Evidence of Chemical Reactions Lab", "19QXj_YnYYiPU6sGgBWSWO9h-C-FaTN3f"]]},
 "chem3/rxn#": {"t": "Lab: Evidence of Chemical Reactions", "s": "2026.2.26"},
@@ -221,6 +225,11 @@
 "emr/diff": {"t": "@Diffraction", "n": "13.4", "s": "2026.4.9", "a": "2026.4.11"},
 "emr/refr": {"t": "@Refraction", "n": "13.4", "s": "2026.4.14", "a": "2026.4.15"},
 "emr/refr#": {"t": "Lab: Refraction", "s": "2026.4.13"},
+
+"optics/rays": {"t": "@Ray Diagrams", "n": "13.6", "s": "2028.4", "a": "2028.4"},
+"optics/pr": {"t": "@Principal Rays", "n": "13.7", "s": "2028.4", "a": "2028.4"},
+"optics/mirror": {"t": "@Mirror Equation", "n": "13.8", "s": "2028.4", "a": "2028.4"},
+"optics/lens": {"t": "@Lenses", "n": "13.9", "s": "2028.4", "a": "2028.4"},
 
 "mag/em": {"t": "@Electromagnetism", "n": "12.1", "s": "2026.3.11", "a": "2026.3.12"},
 "mag/em#": {"t": "Lab: Electromagnetism", "s": "2026.3.12"},

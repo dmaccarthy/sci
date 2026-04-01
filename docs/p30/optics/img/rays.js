@@ -125,9 +125,10 @@ fish: (sel) => {
     svg.ticks({y: [-12, 6.1, 2], default: true});
     svg.$.find("g.Labels g.Zero").remove();
     svg.circle("5", [0, -10]).css({fill: "red"});
-    svg.text("Coin", [1, -10.5]).css({fill: "red"});
-    svg.text("Air", [-7, 0.6]);
-    svg.text("Water", [-7, -0.6]);
+    let g = svg.group("sans", 18);
+    g.text("Coin", [1, -10.2, "b"]).css({fill: "red"});
+    g.text("Air", [-7, 0.4, "b"]);
+    g.text("Water", [-7, -0.8, "b"]);
 },
 
 });

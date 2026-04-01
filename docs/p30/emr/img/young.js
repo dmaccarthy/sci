@@ -33,12 +33,14 @@ geom: (sel) => {
     g.circle("5", pts[0]); // S1
     g.circle("5", pts[2]); // S2
     g = g.group("red");
-    css(g.circle("5", pts[1]), ".Toggle0");
-    css(g.circle("5", p3), ".Toggle1");
+    css(g.circle("5", pts[1]), ".Toggle0"); // P
+    css(g.circle("5", p3), ".Toggle1");     // Q
 
     let s = {scale: 0.8};
     let [d, align] = [new RArray(0, -0.2), [0.5, 0]];
     svg.mjax("d", s, [d, align]);
+    svg.mjax("P", s, [2.2, 4, "l"], "#0065fe").then(g => g.css(".Toggle0"));
+    svg.mjax("Q", s, [-0.6, 0.9, "b"], "#0065fe").then(g => g.css(".Toggle1"));
     svg.mjax("S_1", s, [d.minus([1, 0]), align], "#0065fe");
     svg.mjax("S_2", s, [d.plus([1, 0]), align], "#0065fe");
 
