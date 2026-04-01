@@ -217,6 +217,10 @@
 "emr/c": {"t": "@Speed of Light", "n": "13.1", "s": "2026.3.31", "a": "2026.4.1"},
 "emr/young": {"t": "@Young’s Experiment", "n": "13.2", "s": "2026.4.7", "a": "2026.4.8"},
 "emr/young#": {"t": "Lab: Young’s Experiment", "s": "2026.4.1"},
+"emr/maxwell": {"t": "@EM Waves (Maxwell’s Theory)", "n": "13.3", "s": "2026.4.8", "a": "2026.4.9"},
+"emr/diff": {"t": "@Diffraction", "n": "13.4", "s": "2026.4.9", "a": "2026.4.11"},
+"emr/refr": {"t": "@Refraction", "n": "13.4", "s": "2026.4.14", "a": "2026.4.15"},
+"emr/refr#": {"t": "Lab: Refraction", "s": "2026.4.13"},
 
 "mag/em": {"t": "@Electromagnetism", "n": "12.1", "s": "2026.3.11", "a": "2026.3.12"},
 "mag/em#": {"t": "Lab: Electromagnetism", "s": "2026.3.12"},
@@ -227,6 +231,7 @@
 "mag/motor": {"t": "@Motor Principle", "n": "12.5", "s": "2026.3.19", "a": "2026.3.20"},
 "mag/faraday": {"t": "@Electromagnetic Induction", "n": "12.6", "s": "2026.3.30", "a": "2026.3.31"},
 "qB2/@": {"t": "Quiz: Magnetic Force & Fields", "s": "2026.4.2", "css": {"font-weight": "bold"}},
+"uB/@": {"t": "Unit B Exam", "s": "2026.4.10", "css": {"font-weight": "bold"}},
 
 "elec/static": {"t": "@Electrostatics", "n": "10.1", "s": "2026.2.20", "a": "2026.2.20"},
 "elec/static#": {"t": "Activity: Electrostatics", "s": "2026.2.18"},

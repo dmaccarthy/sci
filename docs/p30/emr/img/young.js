@@ -36,13 +36,13 @@ geom: (sel) => {
     css(g.circle("5", pts[1]), ".Toggle0");
     css(g.circle("5", p3), ".Toggle1");
 
-    let s = {scale: 0.9};
+    let s = {scale: 0.8};
     let [d, align] = [new RArray(0, -0.2), [0.5, 0]];
     svg.mjax("d", s, [d, align]);
-    svg.mjax("\\rm S_1", s, [d.minus([1, 0]), align], "#0065fe");
-    svg.mjax("\\rm S_2", s, [d.plus([1, 0]), align], "#0065fe");
+    svg.mjax("S_1", s, [d.minus([1, 0]), align], "#0065fe");
+    svg.mjax("S_2", s, [d.plus([1, 0]), align], "#0065fe");
 
-    s = {scale: 0.7};
+    s = {scale: 0.65};
     svg.mjax("n\\lambda", s, [-1, 0.5]).then(g => g.css(".Toggle2"));
     svg.mjax("\\theta", s, [0.4, 0.13]).then(g => g.css(".Toggle3"));
     svg.mjax("\\theta", s, [-0.85, 0.4]).then(g => g.css(".Toggle4").$.hide());
@@ -61,25 +61,23 @@ geom: (sel) => {
 
 single: (sel) => {
     let svg = new SVG2(sel, {lrbt: [-5, 5, -4, 4], margin: 1, scale: 40});
-    svg.$.addClass("SVG2");
-    svg.line([-5, 0], [-0.1, 0]).css({"stroke-width": "3px"});
-    svg.line([0.1, 0], [5, 0]).css({"stroke-width": "3px"});
     for (let i=-4;i<0;i++)
         svg.line([-4, i], [4, i]).css({stroke: (i % 2 ? "red" : "#0065fe")});
-    let g = svg.group();
-    g.$.addClass("Toggle0");
+    let g = svg.group(".Toggle0", "none");
     for (let i=1;i<5;i++)
-        g.path([i, 0]).arc([0, 0], 180, 0).update().css({stroke: (i % 2 ? "red" : "#0065fe")});
-    svg.text("Barrier", [-4, -0.5]);
+        css(g.path([i, 0]).arc([0, 0], 180, 0).update(), i % 2 ? "red@1" : "#0065fe@1");
+    svg.text("Barrier", [-4, -0.5], 0, ["sans", 18]);
     let tail = {tail: "8"};
     let opt = {double: 1, tail: "8"};
-    g = svg.group();
-    g.$.addClass("Toggle1");
+    g = svg.group(".Toggle1");
     for (let i=-1;i<2;i++)
         g.arrow({tail: [3*i, -3.5], tip: [3*i, -0.5]}, i ? opt : tail);
     for (let i=1;i<4;i++)
         svg.arrow(3, tail).config({theta: 45*i, shift: vec2d(2, 45*i)}).$.addClass("Toggle2");
     svg.$.find("g.Arrow polygon").css({fill: "lightgrey"});
+    g = svg.group("black@3");
+    g.line([-5, 0], [-0.1, 0]);
+    g.line([0.1, 0], [5, 0]);
 
     let t = click_cycle.toggle;
     click_cycle(svg.element, 2,

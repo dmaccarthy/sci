@@ -288,8 +288,6 @@ function SSA(a, b, A, ambig) {
         return [root(a*a + b*b - 2*a*b*cos(C)), C, B];
 }
 
-function quad_form(a, b, c) {return [(-b + root(b*b-4*a*c))/(2*a), (-b - root(b*b-4*a*c))/(2*a)]}
-
 const transform = (opt, ...pts) => { // 2D transformation
 /* 
     opt.angle = rotation angle
@@ -380,4 +378,41 @@ function gcf(a, b) {
 
 function lcm(a, b) {
     return Math.round(a / gcf(a, b) * b);
+}
+
+const quad = function(p2, p1, p0) {
+    // Quadratic function through three points
+    p0 = p0 == null ? new RArray(0, 0) : new RArray(...p0);
+    let [x1, y1] = new RArray(...p1).minus(p0);
+    let [x2, y2] = new RArray(...p2).minus(p0);
+    let a = (x2 * y1 - x1 * y2) / (x2 * sq(x1) - x1 * sq(x2));
+    return quad.vp(p0.plus(quad.vertex(a, y1 / x1 - a * x1, 0)), p0);
+}
+
+quad.zero = (a, b, c) => {
+    // Zeroes of the quadratic function
+    let d = b * b - 4 * a *c;
+    a *= 2;
+    return d < 0 ? [] : (d > 0 ? [(-b - root(d)) / a, (-b + root(d)) / a] : [-b / a]);
+}
+
+quad.vertex = (a, b, c) => {
+    // Vertex of the quadratic function
+    let x0 = -b / (2 * a);
+    return new RArray(x0, (a * x0 + b) * x0 + c);
+},
+
+quad.abc = (a, b, c) => {
+    // Quadratic function from three coefficients
+    return {a: a, b: b, c: c, vertex: quad.vertex(a, b, c), zero: quad.zero(a, b, c), fn: x => (a * x + b) * x + c};
+}
+
+quad.vp = (v, p) => {
+    // Quadratic function from a vertex and one other point
+    let dp = new RArray(...p).minus(v);
+    let a = dp[1] / sq(dp[0]);
+    let [x0, y0] = v;
+    let b = -2 * a * x0;
+    let c = a * sq(x0) + y0;
+    return {a: a, b: b, c: c, vertex: new RArray(...v), zero: quad.zero(a, b, c), fn: x => a * sq(x - x0) + y0};
 }

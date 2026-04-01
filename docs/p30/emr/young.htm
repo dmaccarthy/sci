@@ -22,7 +22,7 @@
     <li>When waves overlap to produce a smaller wave (crest+trough) we call this <em class="Defn">destructive interference</em>.</li>
     <li>The simplest example of Huygens’ Principle is a wave (e.g. water waves) passing through a very narrow opening in a barrier.</li>
     <li>The opening can be treated as a single point source: the waves should spread out in a semi-circular pattern on the other side of the barrier.
-        <p class="Center"><svg class="w24" data-svg2="p30/emr/img/young.js#single"></svg></p>
+        <p class="Center"><svg class="s18" data-svg2="p30/emr/img/young.js#single"></svg></p>
     </li>
     <li>The grey arrows represent the direction of energy flow.</li>
 </ul>
@@ -30,7 +30,7 @@
 
 <section class="Slide"><h3>Two-Source Interference</h3>
 <p>When there are <em>two</em> narrow openings in the barrier, the wavelets from one opening will overlap and interfere with the wavelets from the other opening.</p>
-<p class="Center"><iframe class="w24" src="https://www.desmos.com/calculator/owrap8ifzh?embed" width="640" height="480" data-aspect="4/3" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+<p class="Center"><iframe class="s20" src="https://www.desmos.com/calculator/21caae048a?embed" width="640" height="480" data-aspect="4/3" style="border: 1px solid #ccc" frameborder=0></iframe></p>
 <ul>
     <li>Constructive interference will occur wherever two crests (blue) or two troughs (red) overlap.</li>
     <li>Locations of maximum constructive interference are called <em class="Defn">interference maxima</em> or <em class="Defn">anti-nodes</em>.</li>
@@ -47,7 +47,7 @@
     <li>Destructive interference will occur at points that are one-half of a wavelength closer to one source than the other, because one wave will be exactly <span class="TeX">\frac{1}{2}\lambda</span> ahead of the other.</li>
     <li>When the <em class="Defn">path difference</em> is exactly <span class="TeX">\lambda</span> or an exact <em>multiple</em> (<span class="TeX">n\lambda</span>, if <span class="TeX">n</span> is a whole number) another maximum will occur.</li>
     <li>We can derive an equation for the locations of the maxima and minima from the diagram below.
-        <p class="Center"><svg class="w20" data-svg2="p30/emr/img/young.js#geom"></svg></p>
+        <p class="Center"><svg class="s16" data-svg2="p30/emr/img/young.js#geom"></svg></p>
     </li>
 </ul>
 <ul>
@@ -61,8 +61,8 @@
 </ul>
 </section>
 
-<section class="Slide"><h3>Example 1</h3>
-<p class="Blue">Water waves with a wavelength of 2.00 metres pass through two openings separated by 5.00 metres. Find the locations of all the maxima.</p>
+<section class="Slide"><h3 class="Blue">Example</h3>
+<p data-cue="none" class="Blue">Water waves with a wavelength of 2.00 metres pass through two openings separated by 5.00 metres. Find the locations of all the maxima.</p>
 <p class="TeX">\theta = \sin^{-1}\left(\frac{n\lambda}{d}\right)</p>
 <p>The <em>central maximum</em> (<span class="TeX">n=0</span>) is always located at <span class="TeX">\theta = 0^\circ</span>.</p>
 <div>
@@ -198,34 +198,30 @@
 
 <li>A spectroscope is a device that uses a diffraction grating to separate light into different wavelengths. When light from a hydrogen gas discharge tube passes through a spectroscope, different colours of light are observed to produce first-order maxima at angles of 9.2°, 9.5°, 10.0°, 11.2° and 15.2°. The spectroscope uses a grating with 400 lines per mm. Calculate the wavelengths and frequencies of these five observed colours of light.</li>
 <div class="Answer">
-    <p class="TeX"></p>
+    <p class="TeX">d = \rm \frac{1}{400} \ mm = 2.50\times 10^{-6}\ m</p>
+    <p>For 9.2°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 9.2^\circ}{1} = 4.0\times 10^{-7}\ m</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{4.0\times 10^{-7}\ m} = 7.5\times 10^{14}\ Hz</p>
+    <p>For 9.5°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 9.5^\circ}{1} = 4.1\times 10^{-7}\ m</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{4.1\times 10^{-7}\ m} = 7.3\times 10^{14}\ Hz</p>
+    <p>For 10.0°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 10.0^\circ}{1} = 434\ nm</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{4.34\times 10^{-7}\ m} = 6.91\times 10^{14}\ Hz</p>
+    <p>For 11.2°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 11.2^\circ}{1} = 486\ nm</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{4.86\times 10^{-7}\ m} = 6.18\times 10^{14}\ Hz</p>
+    <p>For 15.2°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 15.2^\circ}{1} = 655\ nm</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{6.55\times 10^{-7}\ m} = 4.58\times 10^{14}\ Hz</p>
 </div>
-
-<!--
-d = (1 / 400) mm = 2.50 × 10–6 m
-For 9.2°…
-λ = d sin θ / n = 2.50 × 10–6 m sin 9.2° / 1 = 3.98 × 10–7 m = 398 nm
-f = c / λ = 3.00 × 108 m/s / (3.98 × 10–7 m) = 7.51 × 1014 Hz
-For 9.5°…
-λ = d sin θ / n = 2.50 × 10–6 m sin 9.5° / 1 = 4.13 × 10–7 m = 413 nm
-f = c / λ = 3.00 × 108 m/s / (4.13 × 10–7 m) = 7.27 × 1014 Hz
-For 10.0°…
-λ = d sin θ / n = 2.50 × 10–6 m sin 10.0° / 1 = 4.34 × 10–7 m = 434 nm
-f = c / λ = 3.00 × 108 m/s / (4.34 × 10–7 m) = 6.91 × 1014 Hz
-For 11.2°…
-λ = d sin θ / n = 2.50 × 10–6 m sin 11.2° / 1 = 4.86 × 10–7 m = 486 nm
-f = c / λ = 3.00 × 108 m/s / (4.86 × 10–7 m) = 6.18 × 1014 Hz
-For 15.2°…
-λ = d sin θ / n = 2.50 × 10–6 m sin 15.2° / 1 = 6.55 × 10–7 m = 655 nm
-f = c / λ = 3.00 × 108 m/s / (6.55 × 10–7 m) = 4.58 × 1014 Hz
--->
 
 </ol></div></section>
 
 <script type="text/javascript">
 
 loadFeed.data = {
-    up: "p30/units/C", prev: "p30/emr/c", //next: "p30/emr/maxwell",
+    up: "p30/units/C", prev: "p30/emr/c", next: "p30/emr/maxwell",
 }
 
 </script>
