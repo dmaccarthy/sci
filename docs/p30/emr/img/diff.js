@@ -1,7 +1,27 @@
 SVG2.cache("p30/emr/img/diff.js", {
 
+car: (sel) => {
+    svg = new SVG2(sel, {scale: 24, lrbt: [-5, 1.5, -17, 1], margin: 1});
+    let g = svg.group("none", "black@2");
+    g.line([0, 0], [0, -14]);
+    g.line([-4, 0], [-0.5, -14]);
+
+    css(svg.rect([6, 1.5], [-2, 0]), "none", "black@2");
+    g = svg.group("red", "black@1");
+    g.circle(0.5);
+    g.circle(0.5, [-4, 0]);
+
+    let sz = {scale: 0.8};
+    svg.mjax("L", sz, [-3, -7]);
+    svg.mjax("L", sz, [0.75, -7]);
+    svg.mjax("\\theta", sz, [-0.5, -12]);
+
+    svg.text("1.75 m", [-2, -0.3, "b"], 0, ["sans", 18]);
+    svg.stickman(2).shift_by([-0.2, -16.5]);
+},
+
 huygens: (sel) => {
-    svg = new SVG2(sel, {size: [500, 300], lrbt: [-0.8, 0.8, -0.35], grid: 0, margin: 4});
+    svg = new SVG2(sel, {size: [500, 300], lrbt: [-0.8, 0.8, -0.35], margin: 4});
 
     // Barrier
     let d = 0.2, w = 0.03;

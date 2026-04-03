@@ -122,37 +122,78 @@
 
 <li><ol type="a">
     <li> A wave has a wavelength of 1.20 m while traveling along a string with a wave velocity of 820 m/s. What is the frequency of the wave?</li>
+    <p class="Answer TeX">f = \frac{v}{\lambda} = \rm \frac{820\ m/s}{1.20\ m} = 683\ Hz</p>
+
     <li>The wave passes into a thicker string in which the wave speed is only 575 m/s. Determine the wave’s frequency and wavelength in this string.</li>
+    <div class="Answer">
+        <p>According to Huygens’ Principle, the frequency remains unchanged at 683 Hz...</p>
+        <p class="TeX">\lambda = \frac{v}{f} = \rm \frac{575\ m/s}{683\ Hz} = 0.841\ m</p>
+    </div>
 </ol></li>
 
-<li>A light wave with wavelength 520 nm travels from air into water with n = 1.30. The angle of incidence is 42.0°. Calculate the speed, wavelength, and angle of refraction for the light wave transmitted into the water.</li>
+<li>A light wave with wavelength 520 nm travels from air into water with <span class="TeX">n</span> = 1.30. The angle of incidence is 42.0°. Calculate the speed, wavelength, and angle of refraction for the light wave transmitted into the water.</li>
+<div class="Answer">
+    <p class="TeX">v_2 = \frac{c}{n_2} = \rm \frac{3.00\times 10^8\ m/s}{1.30} = 2.31\times 10^8\ m/s</p>
+    <p class="TeX">\frac{\lambda_2}{\lambda_1} = \frac{n_1}{n_2}</p>
+    <p class="TeX">\lambda_2 = \lambda_1\cdot \frac{n_1}{n_2} = \rm 520\ nm\cdot \frac{1.00}{1.30} = 400\ nm</p>
+    <p class="TeX">\frac{\sin\theta_2}{\sin\theta_1} = \frac{n_1}{n_2}</p>
+    <p class="TeX">\sin\theta_2 = \sin\theta_1\cdot \frac{n_1}{n_2}</p>
+    <p class="TeX">\theta_2 = \sin^{-1}\left(\sin\theta_1\cdot \frac{n_1}{n_2}\right) = \rm \sin^{-1}\left(\sin 42.0^\circ\cdot \frac{1.00}{1.30}\right) = 31.0^\circ</p>
+</div>
 
 <li>Surface waves on a region of deep water travel at 3.00 m/s. When the waves approach shallow water, the speed becomes 2.35 m/s. Calculate the angle of incidence needed to produce a refraction angle of 45.0°.</li>
+<div class="Answer">
+    <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2}</p>
+    <p class="TeX">\sin\theta_1 = \sin\theta_2\cdot \frac{v_1}{v_2}</p>
+    <p class="TeX">\theta_1 = \sin^{-1}\left(\sin\theta_2\cdot \frac{v_1}{v_2}\right) = \rm \sin^{-1}\left(\sin 45.0^\circ\cdot \frac{3.00\ m/s}{2.35\ m/s}\right) = 64.5^\circ</p>
+</div>
 
-<li>A laser beam with \lambda = 628 nm in air passes into water. The angle of incidence is observed to be 27.4° and the refraction angle is 21.4°. Calculate the index of refraction and speed of light for the water.</li>
+<li>A laser beam with <span class="TeX">\lambda</span> = 628 nm in air passes into water. The angle of incidence is observed to be 27.4° and the refraction angle is 21.4°. Calculate the index of refraction and speed of light for the water.</li>
+<div class="Answer">
+    <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{n_2}{n_1}</p>
+    <p class="TeX">n_2 = n_1\cdot\frac{\sin\theta_1}{\sin\theta_2} = \rm 1.00\cdot\frac{\sin 27.4^\circ}{\sin 21.4^\circ} = 1.26</p>
+    <p class="TeX">v_2 = \frac{c}{n_2} = \rm \frac{3.00\times 10^8\ m/s}{1.26} = 2.38\times 10^8\ m/s</p>
+</div>
 
-<li>Light with wavelength 630 nm travels through a fibre optic cable (n = 1.60).
+<li>Light with wavelength 630 nm travels through a fibre optic cable (<span class="TeX">n</span> = 1.60).
 <ol type="a">
     <li>At a bend in the cable, the light strikes the surface of the cable with an incident angle of 32.0°. With what refraction angle does the light enter the air?</li>
+    <div class="Answer">
+        <p class="TeX">\theta_2 = \sin^{-1}\left(\sin\theta_1\cdot \frac{n_1}{n_2}\right) = \rm \sin^{-1}\left(\sin 32.0^\circ\cdot \frac{1.60}{1.00}\right) = 58.0^\circ</p>
+    </div>
+
     <li>What is the maximum angle of incidence for which an angle of refraction exists? What happens if the angle of incidence exceeds this angle?</li>
+    <div class="Answer">
+        <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{n_2}{n_1}</p>
+        <p class="TeX">\sin\theta_1 = \sin\theta_2\cdot \frac{n_2}{n_1}</p>
+        <p>Use the maximum possible angle of refraction, <span class="TeX">\theta_2</span> = 90.0°...</p>
+        <p class="TeX">\theta_1 = \sin^{-1} \left(\sin\theta_2\cdot \frac{n_2}{n_1}\right) = \rm \sin^{-1} \left(\sin 90.0^\circ\cdot \frac{1.00}{1.60}\right) = 38.7^\circ</p>
+        <p>If the incident angle exceeds the critical angle of 38.7°, total internal reflection occurs; there is no refracted wave.</p>
+    </div>
 </ol></li>
 
 <li>Earthquakes produce waves that travel through rock in the Earth’s crust. The wave speed depends on the type of rock. If a wave refracts from an angle of 18.5° to 24.1° when it passes through a boundary between different rock types, calculate the wave speed in the incident medium if the speed in the refraction medium is 8.21 km/s.</li>
+<div class="Answer">
+    <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2}</p>
+    <p class="TeX">v_1 = v_2\cdot\frac{\sin\theta_1}{\sin\theta_2} = \rm 8.21\ km/s\cdot\frac{\sin 18.5^\circ}{\sin 24.1^\circ} = 6.38\ km/s</p>
+</div>
 
 <li><ol type="a">
-    <li>Sometimes, different wavelengths of a wave will travel at different speeds. In a particular glass prism, red light has an index of refraction of 1.52 while violet light has n = 1.60. Calculate the speeds of red and of violet light in this type of glass.</li>
+    <li>Sometimes, different wavelengths of a wave will travel at different speeds. In a particular glass prism, red light has an index of refraction of 1.52 while violet light has <span class="TeX">n</span> = 1.60. Calculate the speeds of red and of violet light in this type of glass.</li>
+    <div class="Answer">
+        <p class="TeX">v_{red} = \frac{c}{n_{red}} = \rm \frac{3.00\times 10^8\ m/s}{1.52} = 1.97\times 10^8\ m/s</p>
+        <p class="TeX">v_{violet} = \frac{c}{n_{violet}} = \rm \frac{3.00\times 10^8\ m/s}{1.60} = 1.88\times 10^8\ m/s</p>
+    </div>
+
     <li>If a mixture of light containing both red and violet strikes the prism (from air) with an incidence angle of 64.1°, what will the refraction angle be for the red light? What will it be for the violet light?</li>
+    <div class="Answer">
+        <p class="TeX">\theta_{red} = \sin^{-1}\left(\sin\theta_1\cdot \frac{n_1}{n_{red}}\right) = \rm \sin^{-1}\left(\sin 64.1^\circ\cdot \frac{1.00}{1.52}\right) = 36.3^\circ</p>
+        <p class="TeX">\theta_{violet} = \sin^{-1}\left(\sin\theta_1\cdot \frac{n_1}{n_{violet}}\right) = \rm \sin^{-1}\left(\sin 64.1^\circ\cdot \frac{1.00}{1.60}\right) = 34.2^\circ</p>
+    </div>
 </ol></li>
 
 </ol>
 </div></section>
-
-<!-- <section class="Post NoPrintIcon" data-show="2024.11.1.10" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1JKho7wFm4qJ6147lu3jc-8d3T1I3UdF5fPxM8RwkT_k">Answer Key</button>
-    </p>
-</div></section> -->
 
 <script type="text/javascript">
 

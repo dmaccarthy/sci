@@ -3,18 +3,16 @@
 
 "da/regr": {"t": "@Regression Analysis", "n": "4.1", "s": "2026.4.1", "a": "2026.4.7", "h": "1NLkp40NhPtv3cygebVZZIWa4nQ9vW4-L"},
 "da/pwr": {"t": "@Transforming Power Data", "n": "4.2", "s": "2026.4.7", "a": "2026.4.8", "h": "1jP3UvycUlhF_IN_ZBc-mLP86trg8Rcv0"},
-"grav/ugrav": {"t": "@Universal Gravitation", "n": "4.3", "s": "2027.11", "a": "2027.11.21", "h": "19ypn6fFlrR_ToP6RXWpKN9tzUmfi2ekm"},
-"grav/cav": {"t": "@Cavendish Experiment", "n": "4.4", "s": "2027.11", "a": "2027.11.26", "h": "163ABwJIWUfE9tzNjMzmS66bqW3DDiMpb"},
-"grav/field": {"t": "@Gravitational Fields", "n": "4.5", "s": "2027.11", "a": "2027.11.26.16", "h": [
-    "1JC8-YIlbmrrkY2vw1jKl9JAoZGhDXNRB",
-    ["Falstad Applet", {"open": "https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&amp;fc=Floor%3A%20field%20magnitude&amp;fl=Overlay%3A%20equipotentials&amp;d=partsvel&amp;m=Mouse%20%3D%20Adjust%20Angle&amp;st=1&amp;pc=500&amp;hs=40&amp;ft=true&amp;rx=63&amp;ry=0&amp;rz=0&amp;zm=1.2", "icon": "html5", "show": 9999}],
-    ["PhET Applet", {"open": "https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html", "icon": "phet","show": 9999}],
-    ["Desmos Applet", {"open": "https://www.desmos.com/calculator/br0ig8pci1", "icon": "desmos", "show": 9999}]
+"grav/ugrav": {"t": "@Universal Gravitation", "n": "4.3", "s": "2026.4.8", "a": "2026.4.9", "h": ["19ypn6fFlrR_ToP6RXWpKN9tzUmfi2ekm",
+    ["Visualizing Gravity", "18gNA3GHzAe-e0PQA19IJkwnTma6t46x5"],
+    ["Falstad Applet", {"open": "https://falstad.com/vector2de/vector2de.html?f=InverseSquaredRadial&amp;fc=Floor%3A%20field%20magnitude&amp;fl=Overlay%3A%20equipotentials&amp;d=partsvel&amp;m=Mouse%20%3D%20Adjust%20Angle&amp;st=1&amp;pc=500&amp;hs=40&amp;ft=true&amp;rx=63&amp;ry=0&amp;rz=0&amp;zm=1.2", "icon": "html5"}],
+    ["PhET Applet", {"open": "https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html", "icon": "phet"}],
+    ["Desmos Applet", {"open": "https://www.desmos.com/calculator/br0ig8pci1", "icon": "desmos"}]
 ]},
-"grav/field#1": {"t": "Activity: Visualizing Gravity", "s": "2027", "hs": [
-    ["Visualizing Gravity", ""]
-]},
-"grav/field#2": {"t": "Activity: Visualizing Gravity <i>(continued)</i>", "s": "2027"},
+"grav/ugrav#1": {"t": "Activity: Visualizing Gravity", "s": "2026.4.9"},
+"grav/ugrav#2": {"t": "Activity: Visualizing Gravity <i>(continued)</i>", "s": "2026.4.10"},
+"grav/cav": {"t": "@Cavendish Experiment", "n": "4.4", "s": "2026.4.13", "a": "2026.4.14", "h": "163ABwJIWUfE9tzNjMzmS66bqW3DDiMpb"},
+"grav/field": {"t": "@Gravitational Fields", "n": "4.5", "s": "2027.11", "a": "2027.11", "h": "1JC8-YIlbmrrkY2vw1jKl9JAoZGhDXNRB"},
 "q4/@": {"t": "Quiz: Universal Gravitation", "s": "2027.11", "css": {"font-weight": "bold"}},
 "uB/@": {"t": "Unit B Exam", "s": "2027.12", "css": {"font-weight": "bold"}},
 
@@ -223,7 +221,7 @@
 "emr/young#": {"t": "Lab: Young’s Experiment", "s": "2026.4.1"},
 "emr/maxwell": {"t": "@EM Waves (Maxwell’s Theory)", "n": "13.3", "s": "2026.4.8", "a": "2026.4.9"},
 "emr/diff": {"t": "@Diffraction", "n": "13.4", "s": "2026.4.9", "a": "2026.4.11"},
-"emr/refr": {"t": "@Refraction", "n": "13.4", "s": "2026.4.14", "a": "2026.4.15"},
+"emr/refr": {"t": "@Refraction", "n": "13.5", "s": "2026.4.14", "a": "2026.4.15"},
 "emr/refr#": {"t": "Lab: Refraction", "s": "2026.4.13"},
 
 "optics/rays": {"t": "@Ray Diagrams", "n": "13.6", "s": "2028.4", "a": "2028.4"},

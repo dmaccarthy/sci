@@ -69,7 +69,7 @@ depth: (sel, n, x1, x2) => {
     svg.$.find("line, polyline").css({"stroke-width": "2px", fill: "none"});
 },
 
-concave: (sel) => {
+concave: (sel, soln) => {
     svg = new SVG2(sel, {scale: 60, lrbt: [-1, 12, -4, 4], margin: 10, grid: 0.5});
     svg.ticks({x: [-1, 12.1, 1], default: true});
     svg.ticks({y: [-4, 4.1, 1], default: true});
@@ -86,7 +86,28 @@ concave: (sel) => {
     g.$.find("text, circle").css({fill: "red"});
 
     let seg = new Segment(...vec2d(6, 165).plus(c), ...c);
-    svg.line(seg.point1, seg.point(1.5)).css({"stroke-dasharray": "6,10"});
+    let p1 = seg.point1;
+    let dash = ["black@1", {"stroke-dasharray": "6,10"}];
+    svg.group(...dash).line(p1, seg.point(1.5));
+
+    if (soln) {
+        let g = svg.group(".Toggle");
+        g = g.group("none", "#0065fe@1");
+        g.ray([4, 2], p1);
+        g.ray([4, 2], [0, 0]);
+        let da = atan(new Segment(...p1, 4, 2).slope);
+        g.group().config({pivot: p1, theta: -2 * (15 + da)}).ray(p1, [8.5, p1[1]]).css("red@");
+        g.ray([0, 0], [8, -4], null, 0.4).css("red@");
+
+        seg = new Segment(...vec2d(6, 205).plus(c), ...c);
+        p1 = seg.point1;
+        da = acos(seg.normal.dot(new Segment(...p1, 4, 2).normal));
+        svg.group(...dash).line(p1, seg.point(1.5));
+        g.ray([4, 2], p1);
+        g.group().config({pivot: p1, theta: 25 - da}).ray(p1, [8.5, p1[1]], null, 0.4).css("red@");
+
+        svg.$.on("click", ev => $(ev.currentTarget).children("g.Toggle").fadeToggle());
+    }
 },
 
 convex: (sel) => {
@@ -106,16 +127,28 @@ convex: (sel) => {
     g.$.find("text, circle").css({fill: "red"});
 
     let seg = new Segment(...vec2d(6, 22).plus(c), ...c);
-    svg.line(seg.point1, seg.point(-1.5)).css({"stroke-dasharray": "6,10"});
+    svg.group("black@1", {"stroke-dasharray": "6,10"}).line(seg.point1, seg.point(1.5));
 },
 
-plane: (sel) => {
+plane: (sel, soln) => {
     svg = new SVG2(sel, {scale: 30, lrbt: [-12, 12, -8, 8], margin: 10, grid: 1});
     $(svg.$.find("g.Grid line.Axis")[0]).css({"stroke-width": "3px"});
     svg.ticks({x: [-12, 12.1, 2], default: true});
     svg.ticks({y: [-8, 8.1, 2], default: true});
     svg.$.find("g.Labels g.Zero").remove();
-    svg.arrow({tail: [10,0], tip: [10,2]}, {tail: "5"}).$.find("polygon").css({fill: "#0065fe"});
+    svg.group("#0065fe").arrow({tail: [10, 0], tip: [10, 2]}, {tail: "5"});
+    if (soln) {
+        let g = svg.group(".Toggle");
+        g.group("lightgrey").arrow({tail: [-10, 0], tip: [-10, 2]}, {tail: "5"});
+        let dash = {"stroke-dasharray": "8, 8"};
+        g = g.group("none", "#0065fe@1");
+        for (let [p1, p2, p3] of [[4, 6.4, 1.6], [0, -2.4, 2.4], [-3, -8, 3]]) {
+            g.ray([10, 2], [0, p1]);
+            g.ray([0, p1], [12, p2]).css("red@");
+            css(g.line([0, p1], [-12, p3]), "grey@", dash);
+        }
+        svg.$.on("click", ev => $(ev.currentTarget).children("g.Toggle").fadeToggle());
+    }
 },
 
 fish: (sel) => {

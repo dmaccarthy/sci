@@ -48,7 +48,7 @@
 </ul>
 </section>
 
-<section class="Slide"><h3>Example</h3>
+<section class="Slide"><h3 class="Blue">Example</h3>
 <p class="Blue">Estimate how much the following waves “spread out” as they pass through an 80.0 cm wide door...</p>
 <p class="Blue">A “treble” sound wave with <span class="TeX">\lambda = 20.0\ \mathrm{cm}</span></p>
 <p>Calculate the location of the first minimum at <span class="TeX">n</span> = 1...</p>
@@ -96,21 +96,60 @@
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
-<li>For a slit with a width of 1.00 μm, determine the angle of the first-order diffraction minimum for violet light (\lambda = 410 nm), red light (\lambda = 650 nm) and near infrared radiation (\lambda = 980 nm).</li>
+<li>For a slit with a width of 1.00 μm, determine the angle of the first-order diffraction minimum for violet light (<span class="TeX">\lambda</span> = 410 nm), red light (<span class="TeX">\lambda</span> = 650 nm) and near infrared radiation (<span class="TeX">\lambda</span> = 980 nm).</li>
+<div class="Answer">
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\lambda}{d}\right) = \rm \sin^{-1}\left(\frac{4.10\times 10^{-7}\ m}{1.00\times 10^{-6}\ m}\right) = 24.2^\circ</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\lambda}{d}\right) = \rm \sin^{-1}\left(\frac{6.50\times 10^{-7}\ m}{1.00\times 10^{-6}\ m}\right) = 40.5^\circ</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\lambda}{d}\right) = \rm \sin^{-1}\left(\frac{9.80\times 10^{-7}\ m}{1.00\times 10^{-6}\ m}\right) = 78.5^\circ</p>
+</div>
 
 <li>A 420 Hz sound wave travels through air at 341 m/s.
-<ol>
+<ol type="a">
     <li>Calculate the wavelength of the sound wave.</li>
+    <p class="Answer TeX">\lambda = \frac{v}{f} = \rm \frac{341\ m/s}{420\ Hz} = 0.812\ m</p>
+
     <li> When the sound wave travels through an 80.0 cm wide, open doorway, determine the angle at which the first diffraction minimum occurs.</li>
+    <p class="Answer">Since <span class="TeX">\lambda</span> &gt; <span class="TeX">d</span>, there is no solution; the wave spreads out completely with no interference minima.</p>
+
     <li>Repeat (a) and (b) for a sound wave at 8400 Hz and an ultrasound wave at 33.6 kHz.</li>
+    <div class="Answer">
+        <p class="TeX">\lambda_1 = \frac{v}{f_1} = \rm \frac{341\ m/s}{8400\ Hz} = 0.0406\ m</p>
+        <p class="TeX">\theta = \sin^{-1}\left(\frac{\lambda_1}{d}\right) = \rm \sin^{-1}\left(\frac{0.0406\ m}{0.800\ m}\right) = 2.91^\circ</p>
+        <p class="TeX">\lambda_2 = \frac{v}{f_2} = \rm \frac{341\ m/s}{33600\ Hz} = 0.0101\ m</p>
+        <p class="TeX">\theta = \sin^{-1}\left(\frac{\lambda_2}{d}\right) = \rm \sin^{-1}\left(\frac{0.0101\ m}{0.800\ m}\right) = 0.723^\circ</p>
+    </div>
+
     <li>Repeat (b) for light waves at 632 nm (red), 3.00 cm (microwave), and 2.00 m (radio).</li>
+    <div class="Answer">
+        <p>For the red light...</p>
+        <p class="TeX">\theta = \sin^{-1}\left(\frac{\lambda}{d}\right) = \rm \sin^{-1}\left(\frac{6.32\times 10^{-7}\ m}{0.800\ m}\right) = (4.53\times 10^{-5})^\circ</p>
+        <p>For the microwave...</p>
+        <p class="TeX">\theta = \sin^{-1}\left(\frac{\lambda}{d}\right) = \rm \sin^{-1}\left(\frac{0.0300\ m}{0.800\ m}\right) = 2.15^\circ</p>
+        <p>For the radio wave there is no solution because <span class="TeX">\lambda</span> &gt; <span class="TeX">d</span>; the wave spreads out completely with no interference minima.</p>
+    </div>
+
     <li>Compare your results.</li>
+    <p class="Answer">Wavelengths much shorter than the opening width essentially travel in a straight line (ray) without spreading out. Larger wavelengths diffract more.</p>
 </ol>
 </li>
 
 <li>A light wave with wavelength 580 nm passes through a small slit. The first diffraction minimum occurs at an angle of 32.0°. What was the width of the slit?</li>
+<p class="Answer TeX">d = \frac{\lambda}{\sin\theta} = \rm \frac{580\ nm}{\sin 32.0^\circ} = 1090\ nm</p>
 
 <li>Suppose that the two headlights of an oncoming car are 1.75 metres apart, and that your pupils have a diameter of 4.00 mm. At what distance will you be able to distinguish the two headlights as separate sources of light?</li>
+<div class="Answer">
+    <p>The diameter of the pupil (the opening that causes the diffraction) is <span class="TeX">d</span> = 4.00 mm = 4.00 × 10<sup>–3</sup> m. For the wavelength, use the longest wavelength of visible light, <span class="TeX">\lambda</span> = 7.50 × 10<sup>–7</sup> m, because longer wavelengths diffract more and are harder to resolve.</p>
+    <p>Using the generic diffraction equation (which treats the pupil as one dimensional)...</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\lambda}{d}\right) = \rm \sin^{-1}\left(\frac{7.50\times 10^{-7}\ m}{4.00\times 10^{-3}\ m}\right) = 0.0107^\circ</p>
+    <p>Now use trigonometry to find the distance between the car and eye.</p>
+    <p class="Center"><svg class="s7" data-svg2="p30/emr/img/diff.js#car"></svg></p>
+    <p>The distance between the headlights is the Opposite side and the distance to the car is the Adjacent or Hypotenuse (the car is so far away that there would be a negligible difference). You can use either <span class="TeX">\sin</span> or <span class="TeX">\tan</span>...</p>
+    <p class="TeX">\sin\theta = {\rm \frac{Opp}{Hyp}} = \frac{\rm 1.75\ m}{L}</p>
+    <p class="TeX">L = \frac{\rm 1.75\ m}{\sin\theta} = \rm \frac{1.75\ m}{\sin 0.0107^\circ} = 9.33\ km</p>
+    <p>If you were to use the “Rayleigh criterion” (which you are not responsible for knowing but can find on the web), you would get a slightly different answer...</p>
+    <p class="TeX">\theta = \frac{1.22\lambda}{d} \cdot \frac{180^\circ}{\pi} = \rm \frac{1.22\cdot 7.50\times 10^{-7}\ m}{4.00\times 10^{-3}\ m} \cdot \frac{180^\circ}{\pi} = 0.0131^\circ</p>
+    <p class="TeX">L = \rm \frac{1.75\ m}{\sin 0.0131^\circ} = 7.65\ km</p>
+</div>
 
 </ol>
 </div></section>
