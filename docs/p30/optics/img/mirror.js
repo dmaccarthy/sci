@@ -17,16 +17,8 @@ candle: (sel) => {
         [[-10, -0.75], [-5.7, -0.75]],
     ]) g.line(p1, p2);
 
-    let candle = (g, f) => {
-        g = g.group("black@1", "yellow");
-        g.cylinder([f/4, f/10], f/2).css("lightgrey");
-        g.line([0, 0], [0, f/4]);
-        g.flame(f/2).shift_by([0, f/6]);
-        return g;
-    }
-
-    candle(svg, 1).shift_by([-5, 0.5]);
-    candle(svg, 2).config({theta: 180}).shift_by([-0.1, -1]);
+    svg.candle(1).shift_by([-5, 0.5]);
+    svg.candle(2).config({theta: 180}).shift_by([-0.1, -1]);
 
     g = svg.group("sans", 18);
     g.text("Screen", [-0.3, 2.5, "b"], 90);

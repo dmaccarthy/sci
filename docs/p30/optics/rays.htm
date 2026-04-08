@@ -29,7 +29,7 @@ loadFeed.click = (x) => {
 }
 
 loadFeed.redraw = () => {
-    $("#RefractIndex").val(1.4).on("change", () => loadFeed.click());
+    $("#RefractIndex").val(1.5).on("change", () => loadFeed.click());
     $("#Depth")[0].svg2.$.on("click", (ev) => {
         let svg = $("#Depth")[0].svg2;
         let v = svg.event_coords(ev).coords;
@@ -40,8 +40,8 @@ loadFeed.redraw = () => {
 </script>
 <p>The point where the reflected/refracted light <em>appears</em> to originate is the <em class="Defn">image</em> of the object where the light actually originates.</p>
 <div class="Center">
-    <p><svg id="Depth" class="w20" data-svg2="p30/optics/img/rays.js#depth"></svg></p>
-    <p><input id="RefractIndex" class="s20" title="Index of Refraction" type="range" min="1" max="1.75" step="0.01"/></p>
+    <p><svg id="Depth" class="s16" data-svg2="p30/optics/img/rays.js#depth"></svg></p>
+    <p><span class="TeX">n</span> = <input id="RefractIndex" class="s20" title="Index of Refraction" type="number" min="1" max="2.5" step="0.01"/></p>
 </div>
 <ul>
     <li>This ray diagram shows refraction of light from a submerged object at the surface of the pond.</li>
@@ -90,6 +90,10 @@ loadFeed.redraw = () => {
     <li>An object is placed in front of a <em>convex</em>, spherical mirror of radius 6.0 cm as illustrated. The top of the object is located at coordinates (2.0, 2.0) cm, using the mirror’s vertex as the origin. Draw an accurate ray diagram to locate the <em>image</em> of the object’s top. For your convenience, the normal has been drawn as a dashed line at an arbitrary point on the mirror. Is the image real or virtual? Is it “sharp” or “fuzzy”? Explain.
         <p class="Center"><svg data-svg2="p30/optics/img/rays.js#convex"></svg></p>
     </li>
+    <div class="Answer">
+        <p>There is a virtual, fuzzy image located behind the mirror.</p>
+        <p class="Center"><svg data-svg2="p30/optics/img/rays.js#convex#1"></svg></p>
+    </div>
 
     <li>Are there any incident rays that you could have drawn in the preceding ray diagrams for which you would not need a protractor to draw the reflected ray?</li>
     <p class="Answer">If the incident ray passes through C, it will strike the mirror at normal incidence (<span class="TeX">\theta_1</span> = 0) so it will reflect straight back through the centre. If the incident ray strikes the mirror at V, the reflected ray will pass through a point directly below the object and the same distance from the principal axis.</p>
@@ -97,6 +101,10 @@ loadFeed.redraw = () => {
     <li>A coin lies at the bottom of a 10.0 cm deep fish tank. The water has a refractive index of <span class="TeX">n</span> = 1.33. Draw an accurate ray diagram to locate the image of the coin produced by refraction from the water-air boundary, represented by the <span class="noWrap"><span class="TeX">x</span>-axis</span>. Use three arbitrary rays for your ray diagram. Show your calculation of the refraction angle for each of the three incident rays.
         <p class="Center"><svg data-svg2="p30/optics/img/rays.js#fish"></svg></p>
     </li>
+    <div class="Answer">
+        <p>The image of the coin appears at a depth of 7.5 cm when using rays that are close to vertical. As the rays become more horizontal, the apparent depth decreases.</p>
+        <p class="Center"><svg data-svg2="p30/optics/img/rays.js#fish#1"></svg></p>
+    </div>
 </ol>
 </div></section>    
 

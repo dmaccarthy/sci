@@ -502,6 +502,27 @@ cylinder(r, L, ellipse_first) {
     return g;
 }
 
+lens(diam, depth, ends, n) {
+/* Draw a symmetrical converging or diverging lens with parabolic sides */
+    if (!ends) ends = 0;
+    if (!n) n = 30;
+    let g = this.group("black@1", "lightgrey");
+    let fn = function*() {
+        let a = depth / (diam * diam);
+        let q = x => a * x * x - depth + ends;
+        for (let i=-n;i<=n;i++) {
+            let x = diam * i / n;
+            yield [q(x), x];
+        }
+        for (let i=n;i>=-n;i--) {
+            let x = diam * i / n;
+            yield [-q(x), x];
+        }
+    }
+    g.poly([...fn()], 1);
+    return g;
+}
+
 flame(r) {
 /* Draw a flame-shaped path */
     let g = this.group();
@@ -525,6 +546,16 @@ flame(r) {
         i += 2;
     }
     p.update();
+    return g;
+}
+
+candle(f, r, L) {
+/* Draw a lit candle */
+    if (!r) r = f / 6;
+    let g = this.group("black@1", "yellow");
+    g.cylinder([r, r/3], L ? L : 3 * r).css("lightgrey");
+    g.line([0, 0], [0, f/4]);
+    g.flame(f/2).shift_by([0, f/12]);
     return g;
 }
 
