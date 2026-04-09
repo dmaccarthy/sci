@@ -523,6 +523,22 @@ lens(diam, depth, ends, n) {
     return g;
 }
 
+poly_arrow(l, w, ...pts) {
+/* Draw a polyline with a triangular arrow at the end */
+    let g = this.group();
+    let n = pts.length;
+    let seg = new Segment(...pts[n-2], ...pts[n-1]);
+    pts = [...pts];
+    let d = seg.normal.times((w ? w : 0.75 * l) / 2);
+    let p0 = pts[n - 1];
+    let p2 = pts[n - 1] = seg.point(seg.length - l);
+    let p1 = p2.plus(d);
+    let p3 = p2.minus(d);
+    css(g.poly(pts), "none");
+    g.poly([p0, p1, p2, p3], 1);
+    return g;
+}
+
 flame(r) {
 /* Draw a flame-shaped path */
     let g = this.group();

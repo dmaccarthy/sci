@@ -199,8 +199,10 @@
 
 "sp2/prj3#1": {"t": "Python Project #1", "s": "2026.2.17", "css": {"font-weight": "bold"}},
 "sp2/prj3#2": {"t": "Python Project #2", "s": "2026.2.26", "css": {"font-weight": "bold"}},
-"sp2/prj3#3/@": {"t": "Structured Programming Quiz", "s": "2026.3.13", "css": {"font-weight": "bold"}},
-"sp2/prj3#4": {"t": "Python Project #3", "s": "2026.3.17", "css": {"font-weight": "bold"}}
+"sp2/@": {"t": "Structured Programming Quiz", "s": "2026.3.13", "css": {"font-weight": "bold"}},
+"sp2/prj3#4": {"t": "Python Project #3", "s": "2026.3.17", "css": {"font-weight": "bold"}},
+
+"web1/home/@": {"t": "XML Assessment", "s": "2026.4.20", "css": {"font-weight": "bold"}}
 },
 
 "cs20": {"home": {"folder": "cs_new", "t": "@Computing Science 20"},
@@ -222,15 +224,16 @@
 "emr/c": {"t": "@Speed of Light", "n": "13.1", "s": "2026.3.31", "a": "2026.4.1"},
 "emr/young": {"t": "@Young’s Experiment", "n": "13.2", "s": "2026.4.7", "a": "2026.4.8"},
 "emr/young#": {"t": "Lab: Young’s Experiment", "s": "2026.4.1"},
-"emr/maxwell": {"t": "@EM Waves (Maxwell’s Theory)", "n": "13.3", "s": "2026.4.8", "a": "2026.4.9"},
-"emr/diff": {"t": "@Diffraction", "n": "13.4", "s": "2026.4.9", "a": "2026.4.11"},
+"emr/maxwell": {"t": "@EM Waves (Maxwell’s Theory)", "n": "13.3", "s": "2026.4.9", "a": "2026.4.10"},
+"emr/diff": {"t": "@Diffraction", "n": "13.4", "s": "2026.4.13", "a": "2026.4.14"},
 "emr/refr": {"t": "@Refraction", "n": "13.5", "s": "2026.4.14", "a": "2026.4.15"},
-"emr/refr#": {"t": "Lab: Refraction", "s": "2026.4.13"},
+"emr/refr#": {"t": "Lab: Refraction", "s": "2026.4.15"},
 
-"optics/rays": {"t": "@Ray Diagrams", "n": "13.6", "s": "2028.4", "a": "2028.4"},
-"optics/pr": {"t": "@Principal Rays", "n": "13.7", "s": "2028.4", "a": "2028.4"},
-"optics/mirror": {"t": "@Mirror Equation", "n": "13.8", "s": "2028.4", "a": "2028.4"},
-"optics/lens": {"t": "@Lenses", "n": "13.9", "s": "2028.4", "a": "2028.4"},
+"optics/rays": {"t": "@Ray Diagrams", "n": "13.6", "s": "2026.4.16", "a": "2026.4.17"},
+"optics/pr": {"t": "@Principal Rays", "n": "13.7", "s": "2026.4.20", "a": "2026.4.21"},
+"optics/mirror": {"t": "@Mirror Equation", "n": "13.8", "s": "2026.4.22", "a": "2026.4.23"},
+"optics/lens": {"t": "@Lenses", "n": "13.9", "s": "2026.4.23", "a": "2026.4.24"},
+"optics/lens#": {"t": "Lab: Converging Lens", "s": "2026.4.21"},
 
 "mag/em": {"t": "@Electromagnetism", "n": "12.1", "s": "2026.3.11", "a": "2026.3.12"},
 "mag/em#": {"t": "Lab: Electromagnetism", "s": "2026.3.12"},
