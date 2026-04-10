@@ -115,7 +115,7 @@
 "phys2/work": {"t": "@Energy Transformations", "n": "P07", "s": "2026.4.8", "a": "2026.4.9", "h": ["147isR3tlcLknZVhiawQprJ37F6TAjiMY", ["Pendulum Lab", "1NI_gCl094XeqjnK3DZcA4fc30LpH-Wt5"]]},
 "phys2/work#": {"t": "Lab: Energy of a Pendulum", "s": "2026.4.14"},
 "phys2/we": {"t": "@Work-Energy Theorem", "n": "P08", "s": "2026.4.9", "a": "2026.4.13", "h": "1PmBbcbdMUEWtSK-8EuBOAZBEGH4Z8fL5"},
-"phys2/eff": {"t": "@Efficiency", "n": "P09", "s": "2026.4.13", "a": "2026.4.14", "h": ["1m1Wa_BsXrw_W4Sz2ItL_mbansF2EABwY", ["Activity", {"icon": "gdoc", "gdoc": "1VBkr1xC2tYfZoCNJcltIgcqU_tZ2au9uyy7W6qPDWtw"}]]},
+"phys2/eff": {"t": "@Efficiency", "n": "P09", "s": "2026.4.10", "a": "2026.4.14", "h": ["1m1Wa_BsXrw_W4Sz2ItL_mbansF2EABwY", ["Activity", {"icon": "gdoc", "gdoc": "1VBkr1xC2tYfZoCNJcltIgcqU_tZ2au9uyy7W6qPDWtw"}]]},
 "phys2/eff#": {"t": "Activity: Energy Transforming Technologies", "s": "2026.4.10"},
 "phys2/heat": {"t": "@Theories of Heat", "n": "P10", "s": "2027.11", "a": "2027.12", "h": "1H6gXLWijZEnUKec6wOO2gz_go4G6XOHp"},
 
