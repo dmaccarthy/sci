@@ -539,6 +539,22 @@ poly_arrow(l, w, ...pts) {
     return g;
 }
 
+make_node(size, y0, y1, dy, style) {
+/* Compose a closure function to genenerate data tree nodes */
+    return (tag, ...lines) => {
+        let g = this.group();
+        css(g.rect(size), ...style.rect);
+        let t = g.group(...style.text);
+        t.text(tag, [0, y0, "b"], 0, style.tag);
+        let y = y1;
+        for (let line of lines) {
+            t.text(line, [0, y, "b"]);
+            y -= dy;
+        }
+        return g;
+    };
+}
+
 flame(r) {
 /* Draw a flame-shaped path */
     let g = this.group();

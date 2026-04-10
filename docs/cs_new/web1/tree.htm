@@ -1,8 +1,6 @@
 <section class="Post" data-icon="xml">
 <h2 class="Collapse">Nodes</h2><div class="Collapse Expand">
 
-<!-- <p class="Center"><svg id="NHL"></svg></p> -->
-
 <p>Data that can be represented in the form of a tree is called <em class="Defn">hierarchical data</em>.
 	One example could be a database of Canadian government jurisdictions. Only a small portion of the data tree
 	is shown below as the complete database would be huge!</p>
@@ -42,32 +40,40 @@
 <p class="Center"><code>cs10/web/w02_tree.docx</code></p>
 </div></section>
 
-<script type="text/javascript" data-init="init">
+<script type="text/javascript" data-init="canada">
 
-loadFeed.init = () => {
-    loadFeed.canada(); 
-    // loadFeed.nhl();
-}
+// loadFeed.init = () => {
+//     loadFeed.canada(); 
+//     loadFeed.nhl();
+// }
 
-SVG2group.prototype.make_node = function(size, y0, y1, dy, style) {
-/* Compose a function to genenerate data tree nodes */
-    return (tag, ...lines) => {
-        let g = this.group();
-        css(g.rect(size), ...style.rect);
-        let t = g.group(...style.text);
-        t.text(tag, [0, y0, "b"], 0, style.tag);
-        let y = y1;
-        for (let line of lines) {
-            t.text(line, [0, y, "b"]);
-            y -= dy;
-        }
-        return g;
-    };
-}
+// loadFeed.nhl = () => {
+//     let svg = new SVG2("#NHL", {scale: [180, 160], grid: 0, lrbt: [-0.5, 3.5, -0.3, 3.3]});
 
-loadFeed.nhl = () => {
-    let svg = new SVG2("#NHL", {scale: [180, 160], grid: 0.25, lrbt: [-1.5, 1.5, -1.3, 2.3]});
-}
+//     // Draw arrows
+//     let g = svg.group("black@1", "black");
+//     let arrow = (...pts) => g.poly_arrow(0.09, 0, ...pts);
+//     arrow([2, 2.75], [2, 2.5], [1, 2.5], [1, 2.25]);
+//     arrow([2, 2.5], [3, 2.5], [3, 2.25]);
+//     arrow([1, 1.75], [1, 1.5], [0.5, 1.5], [0.5, 1.25]);
+//     arrow([1, 1.5], [1.5, 1.5], [1.5, 1.25]);
+//     arrow([0.5, 0.75], [0.5, 0.5], [0, 0.5], [0, 0.25]);
+//     arrow([0.5, 0.5], [1, 0.5], [1, 0.25]);
+
+//     // Draw nodes
+
+//     let node = svg.make_node([0.8, 0.5], 0.1, -0.06, 0.14, {
+//         rect: ["white", "black@1"], text: ["sans", 14], tag: ["bold", 20]
+//     });
+
+//     node("Team", 'city = "Edmonton"', 'name = "Oilers"');
+//     node("Team", 'city = "Vancouver"', 'name = "Canucks"').shift_by([1, 0]);
+//     node("Division", 'name = "Pacific"').shift_by([0.5, 1]);
+//     node("Division", 'name = "Central"').shift_by([1.5, 1]);
+//     node("Conference", 'name = "Western"').shift_by([1, 2]);
+//     node("Conference", 'name = "Eastern"').shift_by([3, 2]);
+//     node("League", 'sport = "Ice Hockey"', 'name = "NHL"').shift_by([2, 3]);
+// }
 
 loadFeed.canada = () => {
     let svg = new SVG2("#CanadaTree", {scale: [180, 160], lrbt: [-1.5, 1.5, -1.3, 2.3]});
