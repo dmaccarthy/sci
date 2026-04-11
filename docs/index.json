@@ -1,6 +1,16 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
+"energy/mech": {"t": "@Mechanical Energy", "n": "6.1", "s": "2026.4.15", "a": "2026.4.16", "h": "1LVUnS8TD59eJ1KucQDPeSTs4rVVCnZaB"},
+"energy/cons": {"t": "@Energy Conservation", "n": "6.2", "s": "2027.12", "a": "2027.12.3", "h": "16feEBDiNXsq72QjX9LBa08Y028osNyAT"},
+"energy/sys": {"t": "@Non-Isolated Systems", "n": "6.3", "s": "2027.12", "a": "2027.12.4", "h": ["1QIOHaWOycmAtmNJqkq3JWxJIXSXhcE-7", ["Ramp Lab", "1Ec6T5oU7C6qNeMeEq5HVjRU96eeKJPis"]]},
+"energy/sys#": {"t": "Lab: Energy Transformation on a Ramp", "s": "2027.12"},
+"energy/work": {"t": "@Energy Transformations (Work)", "n": "6.4", "s": "2027.12", "a": "2027.12.8", "h": "1QAmjL9mCQyHENQ5CtCtryokR_0doTNGZ"},
+"energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2027.12", "a": "2027.12.9", "h": "1x1xMVIZIANj0w-BZFTccz8YAlkmIf1IR"},
+"energy/work2d": {"t": "@Power / Work in 2D", "n": "6.6", "s": "2027.12", "a": "2027.12.10", "h": "1j2BjlCr0goo7iZLdMJwDxCdjqASt_hAT"},
+"energy/work2d#": {"t": "Formative Quiz: Energy", "s": "2027.12"},
+"q6/@": {"t": "Quiz: Work & Energy", "s": "2027.12", "css": {"font-weight": "bold"}},
+
 "da/regr": {"t": "@Regression Analysis", "n": "4.1", "s": "2026.4.1", "a": "2026.4.7", "h": "1NLkp40NhPtv3cygebVZZIWa4nQ9vW4-L"},
 "da/pwr": {"t": "@Transforming Power Data", "n": "4.2", "s": "2026.4.7", "a": "2026.4.8", "h": "1jP3UvycUlhF_IN_ZBc-mLP86trg8Rcv0"},
 "grav/ugrav": {"t": "@Universal Gravitation", "n": "4.3", "s": "2026.4.8", "a": "2026.4.9", "h": ["19ypn6fFlrR_ToP6RXWpKN9tzUmfi2ekm",
@@ -12,9 +22,9 @@
 "grav/ugrav#1": {"t": "Activity: Visualizing Gravity", "s": "2026.4.9"},
 "grav/ugrav#2": {"t": "Activity: Visualizing Gravity <i>(continued)</i>", "s": "2026.4.10"},
 "grav/cav": {"t": "@Cavendish Experiment", "n": "4.4", "s": "2026.4.13", "a": "2026.4.14", "h": "163ABwJIWUfE9tzNjMzmS66bqW3DDiMpb"},
-"grav/field": {"t": "@Gravitational Fields", "n": "4.5", "s": "2027.11", "a": "2027.11", "h": "1JC8-YIlbmrrkY2vw1jKl9JAoZGhDXNRB"},
-"q4/@": {"t": "Quiz: Universal Gravitation", "s": "2027.11", "css": {"font-weight": "bold"}},
-"uB/@": {"t": "Unit B Exam", "s": "2027.12", "css": {"font-weight": "bold"}},
+"grav/field": {"t": "@Gravitational Fields", "n": "4.5", "s": "2026.4.14", "a": "2026.4.15", "h": "1JC8-YIlbmrrkY2vw1jKl9JAoZGhDXNRB"},
+"q4/@": {"t": "Quiz: Universal Gravitation", "s": "2026.4.16", "css": {"font-weight": "bold"}},
+"uB/@": {"t": "Unit B Exam", "s": "2026.4.20", "css": {"font-weight": "bold"}},
 
 "dyn/n2": {"t": "@Force & Inertia", "n": "3.1", "s": "2026.3.11", "a": "2026.3.12", "h": "1rDC2wDHfaKBAgrhhDnt7mcO__FLTCmby"},
 "dyn/n3": {"t": "@Newton’s 3<sup>rd</sup> Law", "n": "3.2", "s": "2026.3.16", "a": "2026.3.17", "h": "1vKCsIYFqmVAdA7kc5kC5CrTcIG6-ppR7"},
@@ -44,16 +54,6 @@
 "shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2028.1"},
 "shm/E": {"t": "@Energy of SHM", "n": "7.5", "s": "2028.1", "a": "2028.1.19", "h": "1XSPOdyignakoikoijuwV4Q28Bsj_0vWW"},
 "shm/res": {"t": "@Mechanical Resonance", "n": "7.6", "s": "9999", "a": "9999"},
-
-"energy/mech": {"t": "@Mechanical Energy", "n": "6.1", "s": "2027.11", "a": "2027.12.1", "h": "1LVUnS8TD59eJ1KucQDPeSTs4rVVCnZaB"},
-"energy/cons": {"t": "@Energy Conservation", "n": "6.2", "s": "2027.12", "a": "2027.12.3", "h": "16feEBDiNXsq72QjX9LBa08Y028osNyAT"},
-"energy/sys": {"t": "@Non-Isolated Systems", "n": "6.3", "s": "2027.12", "a": "2027.12.4", "h": ["1QIOHaWOycmAtmNJqkq3JWxJIXSXhcE-7", ["Ramp Lab", "1Ec6T5oU7C6qNeMeEq5HVjRU96eeKJPis"]]},
-"energy/sys#": {"t": "Lab: Energy Transformation on a Ramp", "s": "2027.12"},
-"energy/work": {"t": "@Energy Transformations (Work)", "n": "6.4", "s": "2027.12", "a": "2027.12.8", "h": "1QAmjL9mCQyHENQ5CtCtryokR_0doTNGZ"},
-"energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2027.12", "a": "2027.12.9", "h": "1x1xMVIZIANj0w-BZFTccz8YAlkmIf1IR"},
-"energy/work2d": {"t": "@Power / Work in 2D", "n": "6.6", "s": "2027.12", "a": "2027.12.10", "h": "1j2BjlCr0goo7iZLdMJwDxCdjqASt_hAT"},
-"energy/work2d#": {"t": "Formative Quiz: Energy", "s": "2027.12"},
-"q6/@": {"t": "Quiz: Work & Energy", "s": "2027.12", "css": {"font-weight": "bold"}},
 
 "circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2027.12", "a": "2027.12.16", "h": ["1fqMM5ic06x89f7JBMBXIacbQq8YcBof3", ["Lab Handout", "1-jnHSM_u6Id-91RZKC7DWkwdgOvFyw5p"]]},
 "circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2027.12"},
@@ -115,13 +115,12 @@
 "phys2/work": {"t": "@Energy Transformations", "n": "P07", "s": "2026.4.8", "a": "2026.4.9", "h": ["147isR3tlcLknZVhiawQprJ37F6TAjiMY", ["Pendulum Lab", "1NI_gCl094XeqjnK3DZcA4fc30LpH-Wt5"]]},
 "phys2/work#": {"t": "Lab: Energy of a Pendulum", "s": "2026.4.14"},
 "phys2/we": {"t": "@Work-Energy Theorem", "n": "P08", "s": "2026.4.9", "a": "2026.4.13", "h": "1PmBbcbdMUEWtSK-8EuBOAZBEGH4Z8fL5"},
-"phys2/eff": {"t": "@Efficiency", "n": "P09", "s": "2026.4.10", "a": "2026.4.14", "h": ["1m1Wa_BsXrw_W4Sz2ItL_mbansF2EABwY", ["Activity", {"icon": "gdoc", "gdoc": "1VBkr1xC2tYfZoCNJcltIgcqU_tZ2au9uyy7W6qPDWtw"}]]},
+"phys2/eff": {"t": "@Efficiency", "n": "P09", "cal": "2026.4.13", "s": "2026.4.10", "a": "2026.4.14", "h": ["1m1Wa_BsXrw_W4Sz2ItL_mbansF2EABwY", ["Activity", {"icon": "gdoc", "gdoc": "1VBkr1xC2tYfZoCNJcltIgcqU_tZ2au9uyy7W6qPDWtw"}]]},
 "phys2/eff#": {"t": "Activity: Energy Transforming Technologies", "s": "2026.4.10"},
 "phys2/heat": {"t": "@Theories of Heat", "n": "P10", "s": "2027.11", "a": "2027.12", "h": "1H6gXLWijZEnUKec6wOO2gz_go4G6XOHp"},
 
 "qp2/@": {"t": "Quiz: Energy / Heat", "s": "2026.4.17", "css": {"font-weight": "bold"}},
 "uB/@": {"t": "Physics Unit Exam", "s": "2026.4.21", "css": {"font-weight": "bold"}},
-
 
 "phys2/transfer25": {"t": "@Heat Transfer & Climate", "n": "P13", "s": "2027.12", "a": "2027.12", "h": "1eijWuyZIHMPHgA0iEyL2N-TpGEN6qFRg"},
 "unitB": {"t": "Project: Energy Transforming Device (Planning)", "s": "2026.4.20", "h": [["Assignment", {"gdrv": "1sW_0M6HozB6fB1FIFQWk8kN1BTXaO64i", "show": 2027}], ["Answer Key", {"gdrv": "1IjzARdbPgoCzgC_DDM5pfC95PKm-U6To", "show": "2027"}], ["Unit Project", {"icon": "gdoc", "gdoc": "1Tzg2GicMO0712rPXkqi_1t_XOtFkVlLXMaNU86dIb18"}]]},

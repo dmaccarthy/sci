@@ -361,13 +361,14 @@ function make_cal(crs) {
         let feedArray = feed.split("/")
         if (feedArray[0] == crs) {
             let data = loadFeed.index[feed];
-            if (!data.hide && data.title && data.showDate && data.showDate.split(".").length > 2) {
+            let show = data.cal ? data.cal : data.showDate;
+            if (!data.hide && data.title && show && show.split(".").length > 2) {
                 let href = feed.split("#")[0];
                 if (["cs10", "cs20", "cs30"].indexOf(href.split("/")[0]) > -1)
                     href = `cs_new/${href.substring(5)}`;
                 let attr = feedArray[feedArray.length - 1] == "@" ? {} : {"data-feed": href};
                 if (data.attr) attr = Object.assign(attr, data.attr);
-                cal.push([data.showDate, data.title, attr, data.css]);
+                cal.push([show, data.title, attr, data.css]);
             }
         }
     }
