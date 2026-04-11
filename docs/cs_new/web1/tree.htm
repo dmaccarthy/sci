@@ -1,10 +1,12 @@
 <section class="Post" data-icon="xml">
 <h2 class="Collapse">Nodes</h2><div class="Collapse Expand">
 
+<!-- <svg data-svg2="cs_new/web1/img/tree.js#nhl"></svg> -->
+
 <p>Data that can be represented in the form of a tree is called <em class="Defn">hierarchical data</em>.
 	One example could be a database of Canadian government jurisdictions. Only a small portion of the data tree
 	is shown below as the complete database would be huge!</p>
-<p class="Center"><svg id="CanadaTree"></svg></p>
+<p class="Center"><svg data-svg2="cs_new/web1/img/tree.js#canada"></svg></p>
 
 <p>As the example shows, the country consists of several provinces (or territories), each of which may be
 	divided into numerous cities, counties, towns, and districts. These municipalities may each contain several
@@ -22,8 +24,8 @@
 <li>Nodes that have the same parent are <em class="Defn">siblings</em>. For example, the <code>Municipality</code>
 	nodes for Edmonton and Strathcona County are siblings because they both have the Alberta <code>Province</code>
 	node as their parent.</li>
-<li>The node representing London, Ontario is not a sibling to Edmonton or Strathcona County since it has a
-	different parent. (Although London would be siblings with other municipalities in Ontario, like Toronto or
+<li>The node representing Grimsby, Ontario is not a sibling to Edmonton or Strathcona County since it has a
+	different parent. (Although Grimsby would be siblings with other municipalities in Ontario, like Toronto or
 	Niagara Falls.)</li>
 <li>The node names (<code>Country</code>, <code>Province</code>, <code>Municipality</code>,
 	<code>Community</code>) are general descriptions of the type of information they represent.</li>
@@ -40,76 +42,10 @@
 <p class="Center"><code>cs10/web/w02_tree.docx</code></p>
 </div></section>
 
-<script type="text/javascript" data-init="canada">
-
-// loadFeed.init = () => {
-//     loadFeed.canada(); 
-//     loadFeed.nhl();
-// }
-
-// loadFeed.nhl = () => {
-//     let svg = new SVG2("#NHL", {scale: [180, 160], grid: 0, lrbt: [-0.5, 3.5, -0.3, 3.3]});
-
-//     // Draw arrows
-//     let g = svg.group("black@1", "black");
-//     let arrow = (...pts) => g.poly_arrow(0.09, 0, ...pts);
-//     arrow([2, 2.75], [2, 2.5], [1, 2.5], [1, 2.25]);
-//     arrow([2, 2.5], [3, 2.5], [3, 2.25]);
-//     arrow([1, 1.75], [1, 1.5], [0.5, 1.5], [0.5, 1.25]);
-//     arrow([1, 1.5], [1.5, 1.5], [1.5, 1.25]);
-//     arrow([0.5, 0.75], [0.5, 0.5], [0, 0.5], [0, 0.25]);
-//     arrow([0.5, 0.5], [1, 0.5], [1, 0.25]);
-
-//     // Draw nodes
-
-//     let node = svg.make_node([0.8, 0.5], 0.1, -0.06, 0.14, {
-//         rect: ["white", "black@1"], text: ["sans", 14], tag: ["bold", 20]
-//     });
-
-//     node("Team", 'city = "Edmonton"', 'name = "Oilers"');
-//     node("Team", 'city = "Vancouver"', 'name = "Canucks"').shift_by([1, 0]);
-//     node("Division", 'name = "Pacific"').shift_by([0.5, 1]);
-//     node("Division", 'name = "Central"').shift_by([1.5, 1]);
-//     node("Conference", 'name = "Western"').shift_by([1, 2]);
-//     node("Conference", 'name = "Eastern"').shift_by([3, 2]);
-//     node("League", 'sport = "Ice Hockey"', 'name = "NHL"').shift_by([2, 3]);
-// }
-
-loadFeed.canada = () => {
-    let svg = new SVG2("#CanadaTree", {scale: [180, 160], lrbt: [-1.5, 1.5, -1.3, 2.3]});
-
-    // Draw arrows
-    let g = svg.group("black@1", "black");
-    let arrow = (...pts) => g.poly_arrow(0.09, 0, ...pts);
-    arrow([0.25, 1.75], [0.25, 1.5], [-0.5, 1.5], [-0.5, 1.25]);
-    arrow([0.25, 1.5], [1, 1.5], [1, 1.25]);
-    arrow([1, 0.75], [1, 0.25]);
-    arrow([-0.5, 0.75], [-0.5, 0.5], [-1, 0.5], [-1, 0.25]);
-    arrow([-0.5, 0.5], [0, 0.5], [0, 0.25]);
-    arrow([0, -0.25], [0, -0.5], [-0.5, -0.5], [-0.5, -0.75]);
-    arrow([0, -0.5], [0.5, -0.5], [0.5, -0.75]);
-
-    // Draw nodes
-
-    let node = svg.make_node([0.8, 0.5], 0.1, -0.06, 0.14, {
-        rect: ["white", "black@1"], text: ["sans", 14], tag: ["bold", 20]
-    });
-
-    node("Country", 'name = "Canada"', 'capital = "Ottawa"').shift_by([0.25, 2]);
-    node("Province", 'name = "Alberta"', 'capital = "Edmonton"').shift_by([-0.5, 1]);
-    node("Province", 'name = "Ontario"', 'capital = "Toronto"').shift_by([1, 1]);
-    node("Municipality", 'type = "County"', 'name = "Strathcona"');
-    node("Municipality", 'type = "City"', 'name = "Edmonton"').shift_by([-1, 0]);
-    node("Municipality", 'type = "City"', 'name = "London"').shift_by([1, 0]);
-    node("Community", 'name =', '"Sherwood Heights"').shift_by([-0.5, -1]);
-    node("Community", 'name =', '"Lakeland Ridge"').shift_by([0.5, -1]);
-}
+<script type="text/javascript">
 
 loadFeed.data = {
-    title: "Data Trees",
-    up: "cs_new/web1/home",
-    prev: "cs_new/web1/www",
-    next: "cs_new/web1/xml",
+    title: "Data Trees", up: "cs_new/web1/home", prev: "cs_new/web1/www", next: "cs_new/web1/xml",
 }
   
 </script>

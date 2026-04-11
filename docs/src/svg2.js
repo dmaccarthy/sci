@@ -539,20 +539,41 @@ poly_arrow(l, w, ...pts) {
     return g;
 }
 
-make_node(size, y0, y1, dy, style) {
-/* Compose a closure function to genenerate data tree nodes */
-    return (tag, ...lines) => {
+make_node(opt) {
+/* Compose a closure function to genenerate flow chart nodes */
+    if (opt == null) opt = {};
+    opt = {shape: [0.8, 0.5], titleY: 0.1, textY: -0.06, space: 0.12, titleStyle: ["bold", 20], ...opt};
+    let shape = opt.shape instanceof Function ? opt.shape : g => css(g.rect(opt.shape), "white", "black@1");
+    return (title, lines, data) => {
         let g = this.group();
-        css(g.rect(size), ...style.rect);
-        let t = g.group(...style.text);
-        t.text(tag, [0, y0, "b"], 0, style.tag);
-        let y = y1;
-        for (let line of lines) {
-            t.text(line, [0, y, "b"]);
-            y -= dy;
+        shape(g, data);
+        if (title) g.text(title, [0, opt.titleY, "b"], 0, opt.titleStyle);
+        let y = this.cs_size([0, opt.textY])[1];
+        for (let line of lines.split("\\n")) {
+            g.text(line, [0, y, "b"]);
+            y -= opt.space;
         }
         return g;
     };
+}
+
+static node_shape(g, data) {
+    if (data == null) data = {};
+    let shape = data.shape ? data.shape : 0;
+    let size = data.size;
+    if (!size) size = [0.8, 0.5];
+    let g1 = data.theta ? g.group().config({theta: data.theta}) : g;
+    let s;
+    let [x, y] = new RArray(...size).times(0.5);
+    switch(shape) {
+        case 0: s = g1.rect(size); break;
+        case 1: s = g1.ellipse([x, y]); break;
+        case 2: // Trapezoid
+            let slant = data.slant ? data.slant : 0.15;
+            s = g1.poly([[(1 + slant) * x, y], [(1 - slant) * x, -y], [-(1 + slant) * x, -y], [-(1 - slant) * x, y]], 1);
+            break;
+    }
+    css(s, "white", "black@1");
 }
 
 flame(r) {
@@ -1670,26 +1691,11 @@ static vec_diag(sel, vecs, opt) {
         if (opt.tick) tick = Object.assign(tick, opt.tick);
         svg.ticks({x: [l, r + space / 10, space], ...tick}).shift_by([0, y ? y : 0]);
         svg.ticks({y: [b, t + space / 10, space], ...tick}).shift_by([x ? x : 0, 0]);
-        // if (tick) {
-        //     svg.tick_label(n, 0, [...range(b, t + space / 10, space)], tick, x);
-        //     svg.tick_label(n, [...range(l, r + space / 10, space)], 0, tick, y);
-        // }
-        // else {
-        //     svg.label(n, x, [...range(b, t + space / 10, space)]);
-        //     svg.label(n, [...range(l, r + space / 10, space)], y);
-        // }
     }
     g.$.appendTo(svg.$);
-    // for (let s of "XY") {
-    //     let e = svg.find(`g.Label${s}`);
-    //     if (e) e.shift_by([0, "-5"]);
-    // }
     svg.$.find(".Zero").hide();
     if (opt.cycle == -1) g.$.find(".Component").hide();
     else if (opt.cycle) svg.vec_cycle(g.$, vecs.length > 1);
-    // g.$.find(".Arrow").css(SVG2._style.arrow);
-    // g.$.find(".Resultant").css({fill: "#0065fe"});
-    // g.$.find(".Component").css({fill: "yellow"});
     return svg;
 }
 
