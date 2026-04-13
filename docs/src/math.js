@@ -1,6 +1,11 @@
 const pi = Math.PI, DEG = pi / 180, RAD = 180 / pi;
 const twoPi = 2 * pi, halfPi = pi / 2, quarterPi = pi / 4;
 
+const round = (x, n) => {
+    let p = Math.pow(10, n);
+    return Math.round(x * p) / p;
+}
+
 
 class RArray extends Array {
 
