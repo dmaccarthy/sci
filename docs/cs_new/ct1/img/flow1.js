@@ -33,7 +33,7 @@ factor: (sel) => {
 
     node2(0, '<tspan>num</tspan> % <tspan>factor</tspan>\\nhas a remainder?', rhombus).shift_by([1.5, -1.5]); 
     node1(0, "PRINT <tspan>factor</tspan>", trap).shift_by([1.5, -2.5]); 
-    node2(0, "SET <tspan>num</tspan> =\\n<tspan>num</tspan> ÷ <tspan>factor</tspan> + 1", rect).shift_by([1.5, -3.25]);
+    node2(0, "SET <tspan>num</tspan> =\\n<tspan>num</tspan> ÷ <tspan>factor</tspan>", rect).shift_by([1.5, -3.25]);
 
     node2(0, "SET <tspan>factor</tspan> =\\n<tspan>factor</tspan> + 1", rect).shift_by([3, -1.5]);
     css(g.$.find("tspan"), "red", "bold");
