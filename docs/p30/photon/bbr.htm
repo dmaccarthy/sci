@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2>
-<div id="LessonNotes" class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Thermal (Blackbody) Radiation</h1>
@@ -55,10 +54,10 @@
     <li>For example, objects at room temperature radiate in the infrared.</li>
     <li>If an object is heated enough, it will begin to emit visible light, first in the red part of the spectrum, then orange, yellow, etc.</li>
     <li><em class="Defn">Stefan-Boltzmann Law</em>: As the temperature of a blackbody increases, the total amount of EMR increases drastically.
-        <p class="TeX">\frac{P}{A} = \epsilon\sigma T^4</p></li>
+        <p class="TeX">\frac{P}{A} = \varepsilon\sigma T^4</p></li>
     <li>The constant <span class="TeX">\sigma = 5.67 \times 10^{-8}\ \mathrm{\frac{W}{m^2\cdot K^4}}</span> is called the Stefan-Boltzmann constant.</li>
-    <li>The symbol <span class="TeX">\epsilon</span> is called the <em class="Defn">emissivity</em>. It measures how closely an object resembles a blackbody.</li>
-    <li>For an ideal blackbody <span class="TeX">\epsilon=1</span>, whereas a perfectly reflective object has <span class="TeX">\epsilon=0</span>.</li>
+    <li>The symbol <span class="TeX">\varepsilon</span> is called the <em class="Defn">emissivity</em>. It measures how closely an object resembles a blackbody.</li>
+    <li>For an ideal blackbody <span class="TeX">\varepsilon=1</span>, whereas a perfectly reflective object has <span class="TeX">\varepsilon=0</span>.</li>
 </ul>
 </section>
 
@@ -86,22 +85,110 @@ loadFeed.redraw = (data, T0) => {
 
 </div></section>
 
-<section class="Post NoPrintIcon" data-show="2024.11.19.12" data-icon="gdrv">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+
+    <li>Compare and contrast the thermal EMR spectrum of a blackbody at room temperature (about 300 K) to that of a blackbody at 1200 K.</li>
+    <p class="Answer">The two spectra have the same shape, but the 1200 K spectrum (as a function of <span class="TeX">\lambda</span>) is narrower (the peak occurs at one-quarter of the wavelength) and taller by a factor of 1024 (4<sup>5</sup>). The total area of the graph (which represents the total power radiated) is 256 times larger (4<sup>4</sup>) for the higher temperature.</p>
+
+    <li>A Physics student argued that since an object at 25000 K has its peak intensity in the ultraviolet, while a 6000 K object peaks in the visible, the 25000 K object emits less visible EMR than the same object at 6000 K. Evaluate this argument.</li>
+    <p class="Answer">With higher temperature, the graph gets narrower but it also gets taller. For the 25000 K object, the visible portion of the spectrum is farther from the peak (less visible EMR is emitted as a percentage of the total) but the graph is so much taller that the visible EMR emitted in total is larger.</p>
+
+    <li>As it’s heated, an object will glow red, then orange, yellow, white, and blue. Why does an incandescent object never appear green?</li>
+    <p class="Answer">When the peak of the spectrum is green, there is only slightly less intensity at red and violet. Thus the EMR is a mixture of all colours in nearly equal proportions, which appears to the eye as white.</p>
+
+    <li>The Sun has an “effective temperature” of 5772 K and its EM spectrum peaks at about 502 nm. Use this information to determine the value of the constant b in the Wien’s Law equation. Use the result to calculate the wavelength of peak intensity for a blackbody at:
+    <ol type="a">
+        <li>room temperature (20° C or 293 K)</li>
+        <div class="Answer">
+            <p class="TeX">\lambda_{peak} = \frac{b}{T}</p>
+            <p class="TeX">b = \lambda_{peak}T = \rm 5.02\times 10^{-7}\ m\cdot 5772\ K = 2.90\times 10^{-3}\ K\cdot m</p>
+            <p class="TeX">\lambda_{peak} = \frac{b}{T} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{293\ K} = 9.89\ \mu m</p>
+        </div>
+
+        <li>body temperature (37° C or 310 K)</li>
+        <p class="Answer TeX">\lambda_{peak} = \frac{b}{T} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{310\ K} = 9.35\ \mu m</p>
+
+        <li>10000 K (e.g. a hot star)</li>
+        <p class="Answer TeX">\lambda_{peak} = \frac{b}{T} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{10000\ K} = 290\ nm</p>
+
+        <li>2.7 K (e.g. intergalactic space)</li>
+        <p class="Answer TeX">\lambda_{peak} = \frac{b}{T} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{2.7\ K} = 1.1\ mm</p>
+
+        <li>10<sup>7</sup> K (e.g. near a black hole)</li>
+        <p class="Answer TeX">\lambda_{peak} = \frac{b}{T} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{10^7\ K} = 0.290\ nm</p>
+    </ol></li>
+
+    <li>Determine the temperature of an object that emits thermal EMR most intensely at:
+    <ol type="a">
+        <li>300 nm</li>
+        <div class="Answer">
+            <p class="TeX">\lambda_{peak} = \frac{b}{T}</p>
+            <p class="TeX">T = \frac{b}{\lambda_{peak}} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{3.00\times 10^{-7}\ m} = 9.66\times 10^3\ K</p>
+        </div>
+
+        <li>21.0 cm</li>
+        <p class="Answer TeX">T = \frac{b}{\lambda_{peak}} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{0.210\ m} = 0.0138\ K</p>
+
+        <li>620 nm</li>
+        <p class="Answer TeX">T = \frac{b}{\lambda_{peak}} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{6.20\times 10^{-7}\ m} = 4.67\times 10^3\ K</p>
+
+        <li>3.50 μm</li>
+        <p class="Answer TeX">T = \frac{b}{\lambda_{peak}} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{3.50\times 10^{-6}\ m} = 828\ K</p>
+
+        <li>1.00 m</li>
+        <p class="Answer TeX">T = \frac{b}{\lambda_{peak}} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{1.00\ m} = 2.90\times 10^{-3}\ K</p>
+
+        <li>1.00 km</li>
+        <p class="Answer TeX">T = \frac{b}{\lambda_{peak}} = \rm \frac{2.90\times 10^{-3}\ K\cdot m}{1000\ m} = 2.90\times 10^{-6}\ K</p>
+
+    </ol></li>
+
+    <li>Determine the temperature at which a sphere with a 12.5 cm diameter would emit 1500 W of EMR. Assume the sphere radiates with 65.0% of the efficiency of an ideal blackbody.</li>
+    <div class="Answer">
+        <p>Calculate the surface area...</p>
+        <p class="TeX">A = 4\pi r^2 = \rm 4\pi (0.0625\ m)^2 = 0.0491\ m^2</p>
+        <p>Solve for <span class="TeX">T</span> in the Stefan-Boltzmann Law...</p>
+        <p class="TeX">\frac{P}{A} = \varepsilon\sigma T^4</p>
+        <p class="TeX">\frac{P}{A\varepsilon\sigma} = T^4</p>
+        <p class="TeX">T = \left(\frac{P}{A\varepsilon\sigma}\right)^{1/4} = \rm \left(\frac{1500\ W}{0.0491\ m^2\cdot 0.650\cdot 5.67\times 10^{-8}\ W/(m^2\cdot K^4)}\right)^{1/4} = 954\ K</p>
+    </div>
+
+    <li>Treating the Earth and the Sun both as blackbodies, calculate the Earth’s “equilibrium temperature”: the temperature at which the radiation received from the Sun just balances the radiation that Earth emits. Take the Sun’s temperature to be 5772 K and its radius to be 6.96 × 10<sup>8</sup> m. The Earth’s radius is 6370 km and it orbits the Sun with a radius of 1.50 × 10<sup>11</sup> m.</li>
+    <div class="Answer">
+        <p>Calculate the surface area of the Sun...</p>
+        <p class="TeX">A_{Sun} = 4\pi R_{Sun}^2 = \rm 4\pi (6.96\times 10^8\ m)^2 = 6.09\times 10^{18}\ m^2</p>
+        <p>Calculate the total power radiated by the Sun...</p>
+        <p class="TeX">P = \sigma T_{Sun}^4 A_{Sun} = \rm 5.67\times 10^{-8}\ W/(m^2\cdot K^4) \cdot (5772\ K)^4\cdot 6.09\times 10^{18}\ m^2 = 3.83\times 10^{26}\ W</p>
+        <p>Only a tiny fraction of this radiation actually reaches Earth. We divide the total power by the surface area over which the radiation spreads, and then multiply by Earth’s cross-sectional area...</p>
+        <p class="TeX">P_{received} = P\frac{{\cancel\pi} R_{Earth}^2}{4{\cancel\pi} r^2} = \rm 3.83\times 10^{26}\ W\cdot \frac{(6.37\times 10^7\ m)^2}{4(1.50\times 10^{11}\ m)^2} = 1.73\times 10^{17}\ W</p>
+        <p>Calculate the surface area of the Earth...</p>
+        <p class="TeX">A_{Earth} = 4\pi R_{Earth}^2 = \rm 4\pi (6.37\times 10^7\ m)^2 = 5.10\times 10^{14}\ m^2</p>
+        <p>Solve for <span class="TeX">T</span> in the Stefan-Boltzmann Law, assuming that Earth radiates the same power it receives. We have already done the algebra in question 6...</p>
+        <p class="TeX">T_{Earth} = \left(\frac{P_{received}}{A_{Earth}\sigma}\right)^{1/4} = \rm \left(\frac{1.73\times 10^{17}\ W}{5.10\times 10^{14}\ m^2\cdot 5.67\times 10^{-8}\ W/(m^2\cdot K^4)}\right)^{1/4} = 278\ K</p>
+    </div>
+
+    <li>How can astronomers determine the temperature of a start just by observing the light that the star emits?</li>
+    <p class="Answer">Measure the wavelength at which the spectrum peaks, and then use Wien’s Law to calculate the temperature!</p>
+
+    <li>Use a text or Internet source to find out how “night vision goggles” work.</li>
+    <p class="Answer">The goggles take a “photo” in the infrared part of the spectrum and redraw the image using visible colors. Objects that are hotter or colder than room temperature will show in a different color since they emit different wavelengths according to Wien’s Law.</p>
+
+</ol>
+</div></section>
+
+<!-- <section class="Post NoPrintIcon" data-show="2024.11.19.12" data-icon="gdrv">
     <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
     <p class="BtnGrid">
         <button data-icon="gdrv" data-gdrv="1oDMgwW_ED78nLgwPtdJglNS9k3c7RV-c7Al7l9nwTiQ">Answer Key</button>
     </p>
-</div></section>
+</div></section> -->
 
 <script type="text/javascript">
 
 loadFeed.data = {
-    title: `${siteData.lesson}14.1 — Thermal (Blackbody) Radiation`,
-    answerDate: "2024.11.19.12",
-    num: "14.1",
-    up: "p30/units/C",
-    prev: "p30/optics/rev",
-    next: "p30/photon/photon",
+    up: "p30/units/C", prev: "p30/optics/rev", next: "p30/photon/photon",
 }
 
 </script>
