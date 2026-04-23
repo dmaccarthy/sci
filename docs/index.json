@@ -6,8 +6,9 @@
 "energy/sys": {"t": "@Non-Isolated Systems", "n": "6.3", "s": "2026.4.22", "a": "2026.4.24", "h": ["1QIOHaWOycmAtmNJqkq3JWxJIXSXhcE-7", ["Ramp Lab", "1Ec6T5oU7C6qNeMeEq5HVjRU96eeKJPis"]]},
 "energy/sys#": {"t": "Lab: Energy Transformation on a Ramp", "s": "2026.4.23"},
 "energy/work": {"t": "@Energy Transformations (Work)", "n": "6.4", "s": "2026.4.24", "a": "2026.4.27", "h": "1QAmjL9mCQyHENQ5CtCtryokR_0doTNGZ"},
-"energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2027.12", "a": "2027.12.9", "h": "1x1xMVIZIANj0w-BZFTccz8YAlkmIf1IR"},
-"energy/work2d": {"t": "@Power / Work in 2D", "n": "6.6", "s": "2027.12", "a": "2027.12.10", "h": "1j2BjlCr0goo7iZLdMJwDxCdjqASt_hAT"},
+"energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2026.4.27", "a": "2026.4.28", "h": "1x1xMVIZIANj0w-BZFTccz8YAlkmIf1IR"},
+"energy/work2d": {"t": "@Work in 2D", "n": "6.6", "s": "2027.12", "a": "2027.12.10", "h": "1j2BjlCr0goo7iZLdMJwDxCdjqASt_hAT"},
+"energy/power": {"t": "@Power", "n": "6.7", "s": "2027.12", "a": "2027.12.10", "h": "_"},
 "energy/work2d#": {"t": "Formative Quiz: Energy", "s": "2027.12"},
 "q6/@": {"t": "Quiz: Work & Energy", "s": "2026.4.30", "css": {"font-weight": "bold"}},
 
@@ -106,13 +107,13 @@
 
 "bio1/micro": {"t": "@Microscopes", "n": "B01", "s": "2026.4.24", "a": "2026.4.25", "h": ["1NaoR9DwGmrW9MR5VXZoJDBB_PV_Q5DjQ", ["Lab Handout", "1gy9Zz3__GK3EZtWQL05_a9MpZdFQnY8b"]]},
 "bio1/micro#": {"t": "Lab: The Letter “e”", "s": "2026.4.24"},
-"bio1/cell": {"t": "@Cell Theory", "n": "B02", "s": "2027.12", "a": "2027.12", "h": "1xgr3RG4CHsieMq77-260aBaimYoIo-Y8"},
-"bio1/org": {"t": "@Organelles", "n": "B03", "s": "2027.12", "a": "2027.12", "h": ["1XNulD_ZUD7sPPgtoxOIZ-2Q9T7kYnEOb",
+"bio1/cell": {"t": "@Cell Theory", "n": "B02", "s": "2026.4.27", "a": "2026.4.28", "h": "1xgr3RG4CHsieMq77-260aBaimYoIo-Y8"},
+"bio1/org": {"t": "@Organelles", "n": "B03", "s": "2026.4.28", "a": "2026.4.29", "h": ["1sR1DOW-249BlzzoM5OSaPmqnqgOQIz4x",
     ["Answer Key", {"gdrv": "1pwp0J9E3nOAll4J2TvUZbCduMVmu5_xb", "show": "2027.12"}],
-    ["Lab Handout", {"gdrv": "1Q2R1QGp8eHJ06-ArqA5IXbRjASEK7KO9", "show": "2027.12"}],
-    ["Cell Analogy", {"gdrv": "_", "show": "2027"}]
+    ["Lab Handout", "1Q2R1QGp8eHJ06-ArqA5IXbRjASEK7KO9"],
+    ["Cell Analogy", "1vPZKTaVDNrbF3a-FW_wqnBL4Y8nly4tQ"]
 ]},
-"bio1/org#": {"t": "Lab: Observing the Cell", "s": "2027.12"},
+"bio1/org#": {"t": "Lab: Observing the Cell", "s": "2026.4.29"},
 "bio2/memb": {"t": "@Biological Membranes", "n": "B04", "s": "2027.12", "a": "2027.12", "h": "1anNxutnQaWIwAKV-hJ9G-LZI0GhUfZOz"},
 "bio2/pass": {"t": "@Passive Transport", "n": "B05", "s": "2027.12", "a": "2027.12", "h": "1jLcEIERl0Csh54aYx3sHH1HDHU0itiXt"},
 "bio2/act": {"t": "@Active Transport", "n": "B06", "s": "2028.1", "a": "2028.1", "h": "1vXDI4HhK43A6bXy-cRXjj-hXzb7Eq-Ig"},

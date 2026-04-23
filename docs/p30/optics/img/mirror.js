@@ -39,7 +39,7 @@ deriv: (sel) => {
     g.line([-0.2, 0], [3.2, 0]);
     g.line([0, -2.2], [0, 1.2]);
     let f = [1, 0], d = [1.5, 1], di = [3, -2];
-    let b = svg.group(), r = svg.group();
+    let b = svg.group("none"), r = svg.group("none");
     let ray = (g, p1, p2) => {g.ray(p1, p2, {size: "8", ratio: 0.6})}
 
     b.arrow({tail: [1.5, 0], tip: d}, {tail: "3"});
