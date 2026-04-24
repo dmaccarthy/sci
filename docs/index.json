@@ -218,7 +218,7 @@
 
 "p30": {"home": {"t": "@Physics 30"},
 
-"photon/bbr": {"t": "@Thermal (Blackbody) Radiation", "n": "14.1", "s": "2028.4", "a": "2028.4"},
+"photon/bbr": {"t": "@Thermal (Blackbody) Radiation", "n": "14.1", "s": "2026.4.27", "a": "2026.4"},
 "photon/photon": {"t": "@Photons", "n": "14.2", "s": "2028.4", "a": "2028.4"},
 "photon/pe": {"t": "@Photoelectric Effect", "n": "14.3", "s": "2028.4", "a": "2028.4"},
 "photon/xray": {"t": "@X-Rays", "n": "14.4", "s": "2028.4", "a": "2028.4"},
@@ -229,8 +229,7 @@
 "optics/mirror": {"t": "@Mirror Equation", "n": "13.8", "s": "2026.4.22", "a": "2026.4.23"},
 "optics/lens": {"t": "@Lenses", "n": "13.9", "s": "2026.4.23", "a": "2026.4.24"},
 "optics/lens#": {"t": "Lab: Converging Lens", "s": "2026.4.24"},
-"uBmc/@": {"t": "Unit B Exam (Multiple Choice)", "s": "2026.4.10", "css": {"font-weight": "bold"}},
-"uBwr/@": {"t": "Unit B Exam (Numerical / Written)", "s": "2026.4.13", "css": {"font-weight": "bold"}},
+"qC1/@": {"t": "Quiz: EM Waves & Optics", "s": "2026.4.28", "css": {"font-weight": "bold"}},
 
 "emr/c": {"t": "@Speed of Light", "n": "13.1", "s": "2026.3.31", "a": "2026.4.1"},
 "emr/young": {"t": "@Young’s Experiment", "n": "13.2", "s": "2026.4.7", "a": "2026.4.8"},
@@ -250,6 +249,8 @@
 "mag/motor": {"t": "@Motor Principle", "n": "12.5", "s": "2026.3.19", "a": "2026.3.20"},
 "mag/faraday": {"t": "@Electromagnetic Induction", "n": "12.6", "s": "2026.3.30", "a": "2026.3.31"},
 "qB2/@": {"t": "Quiz: Magnetic Force & Fields", "s": "2026.4.2", "css": {"font-weight": "bold"}},
+"uBmc/@": {"t": "Unit B Exam (Multiple Choice)", "s": "2026.4.10", "css": {"font-weight": "bold"}},
+"uBwr/@": {"t": "Unit B Exam (Numerical / Written)", "s": "2026.4.13", "css": {"font-weight": "bold"}},
 
 "elec/static": {"t": "@Electrostatics", "n": "10.1", "s": "2026.2.20", "a": "2026.2.20"},
 "elec/static#": {"t": "Activity: Electrostatics", "s": "2026.2.18"},
