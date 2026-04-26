@@ -130,6 +130,17 @@ margin: auto;
 li {margin: 0.4em 0}
 p, ol, ul {margin: 1em 0}
 
+table.Calendar {
+    width: 40em;
+    min-width: 12em;
+    max-width: calc(100% - 4px);
+
+    tbody > tr:nth-child(even) {background-color: var(--lightblue)}
+    td:nth-child(1) {text-align: center; width: 8em}
+    th {text-align: center; color: white; background-color: var(--blue)}
+
+}
+
 }
 
 td.Reveal span {color: red}

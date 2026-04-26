@@ -25,9 +25,10 @@ scripts.cache = {};
 
 /*** Miscellaneous functions ***/
 
-// function msg(t) {
-//     console.log(t);
-// }
+function go_current() {
+    let feed = $($("section.Post[data-action='cal'] tr[data-feed]:not(.Old)")[0]).attr("data-feed");
+    if (feed) page.load(feed);
+}
 
 function font_size(s) {
     let b = $("body");
@@ -203,7 +204,7 @@ let courses = ["s10", "p20", "p30", "cs"];
 $(() => {
     let w = $(window).on("resize", metrics).on("click", click);
     w.on("popstate", ev => page.load(location.hash.substring(1)));
-    w.on("touchstart", swipe.event).on("touchend", swipe.event);
+    // w.on("touchstart", swipe.event).on("touchend", swipe.event);
     w.on("keydown", ev => {
         ev = ev.originalEvent;
         let [key, code] = [ev.key, ev.code];
@@ -241,22 +242,22 @@ $(() => {
 
 /***  Swipe handler ***/
 
-function swipe(x, y) {
-    if (x * x > 20000 && Math.abs(x) > 2 * Math.abs(y)) page.jump(x > 0 ? -1 : 1);
-}
+// function swipe(x, y) {
+//     if (x * x > 20000 && Math.abs(x) > 2 * Math.abs(y)) page.jump(x > 0 ? -1 : 1);
+// }
 
-swipe.event = ev => {
-    let coords = e => {
-        e = e.changedTouches[0];
-        return new RArray(e.screenX, e.screenY);
-    }
-    if (ev.type == "touchstart") swipe.xy = coords(ev);
-    else if (ev.type == "touchend") {
-        let delta = coords(ev).minus(swipe.xy);
-        swipe(...delta);
-        delete swipe.xy;
-    }
-}
+// swipe.event = ev => {
+//     let coords = e => {
+//         e = e.changedTouches[0];
+//         return new RArray(e.screenX, e.screenY);
+//     }
+//     if (ev.type == "touchstart") swipe.xy = coords(ev);
+//     else if (ev.type == "touchend") {
+//         let delta = coords(ev).minus(swipe.xy);
+//         swipe(...delta);
+//         delete swipe.xy;
+//     }
+// }
 
 
 /*** Printing ***/

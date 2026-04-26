@@ -27,16 +27,25 @@ page.cal.make = () => {
     let [c, data] = page._data._cal;
     let e = $("main > article > section.Post[data-action='cal']");
     let tbl = $("<table>").addClass("Calendar").appendTo(e);
+    let tr = $("<tr>").appendTo($("<thead>").appendTo(tbl));
+    tr.append($("<th>").html("Date"));
+    tr.append($("<th>").html("Description"));
+
     tbl = $("<tbody>").appendTo(tbl);
 
     for (let item of data) if (show(item)) {
-        let tr = $("<tr>").appendTo(tbl);
-        if (item.f) tr.attr("data-feed", c + "/" + item.f);
+        tr = $("<tr>").appendTo(tbl);
+        if (old(item)) tr.addClass("Old").hide();
+        let link = item.f != null;
+        if (link) tr.attr("data-feed", c + "/" + item.f);
         $("<td>").html(date(new Date(item.s))).appendTo(tr);
         let t = item.t;
         if (t.charAt(0) == '@') t = "Lesson: " + t.substring(1);
+        if (link) t = $("<a>").addClass("Link").html(t);
         $("<td>").html(t).appendTo(tr);
         if (item.class) tr.addClass(item.class);
         if (item.css) tr.css(item.css);
     }
+    let a = $("<a>").addClass("Link").html("Show / Hide Past Events").on("click", () => tbl.find("tr.Old").toggle());
+    $("<p>").addClass("Center").append(a).appendTo(e);
 }
