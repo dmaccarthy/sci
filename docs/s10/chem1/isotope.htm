@@ -152,7 +152,8 @@ table.H3 td {
     width: 13%;
 }
 
-table.H3 td.MathSerif {
+table.H3 td:nth-child(2) {
+    font-family: 'Noto Serif', 'Open Serif', 'Droid Serif', serif;
     font-size: 120%;
 }
     
@@ -241,14 +242,7 @@ table.H3 td.MathSerif {
     </table>
     <p>*For the symbol, just write the element symbol and charge. You can omit the atomic number and mass number.</p>
 </li>
-</ol>  
-<script type="text/javascript" data-init="serifize">
-
-loadFeed.serifize = () => {
-    $($("table.H3")[1]).find("td:nth-child(2)").addClass("MathSerif");
-}
-
-</script>
+</ol>
 </div></section>
 
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
