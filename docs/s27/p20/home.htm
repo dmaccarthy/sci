@@ -1,0 +1,31 @@
+<section class="Post" data-action="slides">
+<h2 class="Collapse">Hi</h2>
+<p>Hello.</p>
+<p class="TeX">\va{a} = \frac{\va{v}_f - \va{v}_i}{\Delta t}</p>
+</section>
+
+<section class="Post" data-action="correct">
+<h2 class="Collapse">Bye</h2>
+<p>Goodbye.</p>
+<p class="TeX">C=2\pi r</p>
+<p class="Center"><svg id="fbd3"></svg></p>
+</section>
+
+<section class="Post" data-action="cal"></section>
+
+<script type="text/javascript">
+
+page({title: "Physics 20", svg2: [
+    ["#fbd3", "p20/dyn/img/adv", "fbd3", 15],
+]});
+
+// page.run(() => alert("Hello, world!"));
+
+page.cal("p20", [
+    {"t": "@Scatter Plots & Slope", "s": "2026.4.15", "f": "skill/scatter"},
+    {"t": "Quiz: Skills", "s": "2026.4.21", "class": "Bold"},
+    {"t": "@Energy Conservation", "s": "2025.4.16", "f": "energy/cons"},
+]);
+
+
+</script>

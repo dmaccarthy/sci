@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Loading...</title>
+<script type="text/javascript">
+
+// MathJax configuration
+
+window.MathJax = {
+    startup: {typeset: false},
+    loader: {load: ['[tex]/bbox', '[tex]/color', '[tex]/cancel', '[tex]/physics']},
+    tex: {packages: {'[+]': ['bbox', 'color', 'cancel', 'physics']}}
+};
+
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+<link rel="shortcut icon" type="image/svg+xml" href="../media/rocket.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/index.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/14.8.1/math.min.js"></script> -->
+<script type="text/javascript" src="../src/svg2.js?_v=35"></script>
+<script type="text/javascript" src="../src/util.js?_v=23"></script>
+<script type="text/javascript" src="../src/math.js?_v=6"></script>
+<script type="text/javascript" src="../script/phys.js?_v=2"></script>
+<script type="text/javascript" src="src/tree.js"></script>
+<script type="text/javascript" src="src/index.js"></script>
+<script type="text/javascript" src="src/cal.js"></script>
+</head>
+<body>
+<nav id="Left">
+    <ul class="TreeTop"><li data-feed="home"><a>Home</a><ul></ul></li></ul>
+</nav>
+
+<nav id="Top"><p class="BtnGrid">
+    <button data-action="tree"><img src="../media/tree.svg"/></button>
+    <button data-action="home"><img src="../media/home.svg"/> <span>Home</span></button>
+    <button data-action="slides"><img src="../media/slides.svg"/> <span>Notes</span></button>
+    <button data-action="correct"><img src="../media/assign.svg"/> <span>Assignment</span></button>
+    <button data-action="links"><img src="../media/link.svg"/> <span>Links</span></button>
+    <button data-action="help"><img src="../media/help.svg"/> <span>Help</span></button>
+    <button data-action="cal"> <span>Calendar</span></button>
+</p></nav>
+
+<main>
+<h2 id="MainTitle"></h2>
+<article></article>
+</main>
+</body>
+</html>
