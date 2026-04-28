@@ -9,7 +9,9 @@ constructor(sel, keys) {
 async load(...args) {
     let req = [], data = {};
     for (let a of args) {
-        req.push(fetch(a + ".htm").then(r => r.text()).then(t => {data[a] = t}));
+        console.log("Fetching tree:", a);
+        let url = `${a}.htm?_${new Date().getTime()}`;
+        req.push(fetch(url).then(r => r.text()).then(t => {data[a] = t}));
     }
     for (let r of req) await r;
     for (let a of args) this.home$.append(data[a]);
@@ -97,6 +99,7 @@ function arrange(sel) {
 
 function metrics(force) {
     /* Adjust margins, image sizes, etc. */
+    if ($("body").hasClass("Present")) return;
     let fixed = wide();
     let left = $("#Left");
     let top = $("#Top");

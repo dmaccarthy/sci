@@ -17,18 +17,43 @@ async function scripts(args) {
         p.push(fetch(url(a)).then(r => r.ok ? r.text() : null).then(t => t ? _eval(t) : null));
     }
     for (let a of p) await a;
-    for (let [s, js, key, a] of args) scripts.cache[js][key](s, a);
+    for (let [s, js, key, a] of args) {
+        try {scripts.cache[js][key](s, a)}
+        catch(err) {console.warn(err)}
+    }
 }
 
 scripts.cache = {};
 
 
+/*** Image library ***/
+
+function get_image(key, element) {
+    // Get image URL from @key
+    if (key == "today") return calendar_icon.url();
+    img = get_image.map[key];
+    if (!img) {
+        img = `../../media/${key}`;
+        if (key.indexOf(".") == -1) img += ".svg";
+    }
+    if (element && img) img = $("<img>").attr({src: img, alt: key});
+    return img;
+}
+
+get_image.map = {
+    sal: "../../media/sal.webp",
+    bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
+    ps: "https://powerschool.eips.ca/favicon-196x196.png",
+    python: "https://www.python.org/static/favicon.ico",
+};
+
+
 /*** Miscellaneous functions ***/
 
-function go_current() {
-    let feed = $($("section.Post[data-action='cal'] tr[data-feed]:not(.Old)")[0]).attr("data-feed");
-    if (feed) page.load(feed);
-}
+// function go_current() {
+//     let feed = $($("section.Post[data-action='cal'] tr[data-feed]:not(.Old)")[0]).attr("data-feed");
+//     if (feed) page.load(feed);
+// }
 
 function font_size(s) {
     let b = $("body");
@@ -38,7 +63,7 @@ function font_size(s) {
 }
 
 function msg(html, time) {
-    //Display a message to the user
+    /* Display a message to the user */
     if (!html) html = "Unable to load page."
     let b = $("body"), w = $(window);
     let e = $("<div>").addClass("Message").html(html).appendTo(b);
@@ -86,7 +111,7 @@ page.jump = n => {
 page.load = (feed) => {
     if (page._cache[feed]) return page.onload(feed);
     console.log("Fetching page:", feed);
-    fetch(feed + ".htm").then(r => {
+    fetch(feed + ".htm?_" + (new Date().getTime())).then(r => {
         if (r.ok) r.text().then(t => {
             page._cache[feed] = t;
             page.onload(feed);
@@ -95,12 +120,15 @@ page.load = (feed) => {
 }
 
 page.onload = (feed) => {
-    let top = $("#Left ul.TreeTop > li > ul > li").removeClass("Hidden");
     page.clear();
-    page._feed = feed;
+
+    // Update navigation tree
+    let top = $("#Left ul.TreeTop > li > ul > li").removeClass("Hidden");
     page._tree.select(feed);
     if (feed.split("/").length > 1) top.filter(".Collapsed").addClass("Hidden");
 
+    // Update browser history
+    page._feed = feed;
     let hash = location.hash.substring(1);
     if (hash != feed) {
         let url = "./#" + feed;
@@ -108,26 +136,90 @@ page.onload = (feed) => {
         else history.replaceState({}, "", url);
     }
 
+    // Add page content to DOM and set page title
     let art = $("main > article").html(page._cache[feed]);
     let data = page._data;
     let title = data.title;
     document.title = $("#MainTitle").html(title ? title : "Page").text();
-    video("main > article [data-yt]");
 
-    let after = () => {
+    // Append handouts section and remove teacher-only preview
+    page.handouts(data);
+    if (!teacher()) page.unpublish(art, data);
+
+    // Embed YouTube videos
+    page.video("main > article [data-yt]");
+
+    // Draw icons
+    for (let e of art.find("[data-icon]")) {
+        e = $(e);
+        e.prepend("<br/>").prepend(get_image(e.attr("data-icon"), 1));
+    }
+
+    let after = () => { // Actions to perform after SVG2 scripts have run
+
+        // Run page scripts
         for (let f of page._run) f();
+
+        // Render TeX using MathJax, then fix page metrics
         mjax_render(art.find(".TeX"), 0, "2px").then(() => {
             metrics(1);
             setTimeout(() => $("body, main").css({visibility: "visible"}), 10);
         });
     }
 
+    // Load SVG2 animations
     if (data.svg2) scripts(data.svg2).then(after);
     else after();
 }
 
+page.unpublish = (art, data) => {
+    /* Remove teacher-only content */
 
-function video(s) {
+    // Midnight this morning
+    let due, today = new Date();
+    today = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+    // Remove [data-show]
+    if (data.s) art.find("[data-show='1']").attr("data-show", data.s);
+    for (let e of art.find("[data-show]"))  {
+        e = $(e);
+        let due = new Date(e.attr("data-show"));
+        if (due > today) e.remove();
+    }
+    // Remove [data-answers]
+    if (data.a) {
+        if (typeof(data.a) == "number") {
+            let [y, m, d] = [today.getFullYear(), today.getMonth(), today.getDate()];
+            data.a = `${y}.${m + 1}.${d + data.a}`;
+        }
+        art.find("[data-answers='1']").attr("data-answers", data.a);
+    }
+    for (let e of art.find("[data-answers]"))  {
+        e = $(e);
+        due = new Date(e.attr("data-answers"));
+        if (due > today) e.find(".Answer").remove();
+    }
+}
+
+page.handouts = data => {
+    let [h, tab] = [data.handout, data.htab];
+    if (!h) return;
+    if (!(h instanceof Array)) h = [h];
+    let p = $("<section>").addClass("Post").attr("data-action", tab ? tab : "links").appendTo("main > article");
+    if (data.s || data.hshow) p.attr("data-show", data.hshow ? data.hshow : data.s);
+    p = $("<p>").addClass("BtnGrid BtnLink").appendTo(p);
+    let icons = {gdrv: 1, gdoc: 1, open: "link"};
+    for (let item of h) {
+        let [title, action] = item instanceof Array ? item : ["Assignment", item];
+        if (typeof(action) == "string") action = {gdrv: action};
+        if (!action.icon) for (let a in icons) if (action[a])
+            action.icon = icons[a] == 1 ? a : icons[a];
+        let btn = $("<button>").html(title).appendTo(p);
+        for (let a in action) btn.attr("data-" + a, action[a]);
+    }
+}
+
+page.video = s => {
 /** Embed a <video> or YouTube <iframe> **/
     for (s of $(s)) {
         s = $(s);
@@ -185,10 +277,10 @@ page.run = (...args) => {for (let a of args) page._run.push(a)}
 
 /*** Initialize page and event handlers ***/
 
-function click(ev) {
+page.click = ev => {
     let e = $(ev.target);
     if (e.closest("nav").length || !page._feed) return;
-    let keys = ["feed", "open", "grdv"], actions = {};
+    let keys = ["feed", "open", "gdrv"], actions = {};
     for (let k of keys) {
         let a = "data-" + k;
         a = e.closest(`[${a}]`).attr(a);
@@ -196,13 +288,15 @@ function click(ev) {
     }
     if (actions.feed) page.load(actions.feed);
     if (actions.open) window.open(actions.open);
+    if (actions.gdrv) window.open("https://drive.google.com/file/d/" + actions.gdrv);
 }
 
 
 let courses = ["s10", "p20", "p30", "cs"];
 
 $(() => {
-    let w = $(window).on("resize", metrics).on("click", click);
+    console.log("Teacher:", teacher());
+    let w = $(window).on("resize", metrics).on("click", page.click);
     w.on("popstate", ev => page.load(location.hash.substring(1)));
     // w.on("touchstart", swipe.event).on("touchend", swipe.event);
     w.on("keydown", ev => {
@@ -214,6 +308,11 @@ $(() => {
             if (ev.altKey) {
                 if (key == 'n') window.open(location.href);
                 else if (key == 'p') slideshow();
+                else if (key == 't') {
+                    let mode = 2 - parseInt(localStorage.getItem("teacher_mode"));
+                    localStorage.setItem("teacher_mode", mode);
+                    location.reload();
+                };
             }
             else {
                 if (code == "BracketLeft") page.jump(-1);
@@ -236,6 +335,7 @@ $(() => {
         btns.removeClass("Selected");
         $(ev.currentTarget).addClass("Selected");
         arrange();
+        metrics(1);
     });
 });
 

@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<svg
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    id="Layer_1"
+    xml:space="preserve"
+    viewBox="110 30 420 420"
+    y="0px"
+    version="1.1"
+    enable-background="new 0 0 640 480"
+    x="0px"
+  >
+		<rect
+      x="40"
+      height="480"
+      width="560"
+      fill="none"
+  />
+			<path
+      d="m108.11 250.08c-6.12-73.5 24.4-166.61 165.55-203.75 136.69-35.96 231.01 32.56 251.5 123.11 20.167 89.14 12.653 215.43-168.74 254.67-142.19 30.76-233.99-61.38-248.31-174.03z"
+      fill="#fff"
+  />
+					<linearGradient
+      id="SVGID_1_"
+      y2="72.58"
+      gradientUnits="userSpaceOnUse"
+      x2="-202.6"
+      gradientTransform="matrix(6.6667 0 0 6.6667 1671.2 -226.23)"
+      y1="40.583"
+      x1="-207.61"
+    >
+					<stop
+        stop-color="#FFE48D"
+        offset="0"
+    />
+					<stop
+        stop-color="#F0C47A"
+        offset="1"
+    />
+				</linearGradient
+  >
+				<path
+      d="m456.72 250.81c-50.066 67.793-155.69 99.82-235.93 71.526-80.24-28.26-104.71-106.12-54.64-173.93 50.04-67.75 155.66-99.764 235.91-71.51 80.25 28.28 104.7 106.13 54.66 173.91z"
+      fill="url(#SVGID_1_)"
+  />
+				<path
+      d="m179.93 178.66c50.054-67.767 155.68-99.78 235.91-71.527 28.96 10.207 50.6 26.887 64.14 47.187-8.227-34.22-35.153-63.413-77.927-78.486-80.246-28.247-185.87 3.753-235.91 71.513-31.993 43.354-33.5 90.773-9.493 126.76-7.2-29.98-0.08-63.8 23.28-95.45z"
+      fill="#BA8643"
+  />
+				<polygon
+      points="386.39 138.41 288.17 219.01 262.23 313.53 353.95 238.47"
+      fill="#B36914"
+  />
+					<polygon
+      points="304.15 192.49 245.67 296.31 335.21 221.95"
+      fill="#AC000B"
+  />
+					<polygon
+      points="371.42 113.59 279.73 198.25 304.15 192.49"
+      fill="#F02A11"
+  />
+					<polygon
+      points="279.73 198.25 245.67 296.31 304.15 192.49"
+      fill="#C61A11"
+  />
+					<polygon
+      points="371.34 114.37 304.15 192.49 335.21 221.95"
+      fill="#C61A11"
+  />
+				<g
+      fill="#A41000"
+    >
+					<path
+        d="m454.73 267.65l-25.52-8.181c-0.261 0.354-0.48 0.693-0.727 1.047-2.527 3.414-5.313 6.707-8.141 9.94l25.74 8.24c2.58-3.06 5.08-6.147 7.446-9.36 0.42-0.55 0.79-1.13 1.2-1.69z"
+    />
+					<path
+        d="m212.33 189.95l-25.52-8.173c-2.58 3.847-4.894 7.687-7.047 11.593l25.64 8.207c2.09-3.9 4.38-7.78 6.93-11.63z"
+    />
+					<path
+        d="m387.51 134.05c2.5 0.873 4.92 1.8 7.293 2.787l14.946-21.467c-2.159-0.84-4.347-1.707-6.586-2.5-2.087-0.72-4.193-1.387-6.301-2.06l-14.999 21.54c1.88 0.59 3.81 1.05 5.65 1.7z"
+    />
+					<path
+        d="m255.25 313.97l-14.973 21.46c4.373 1.467 8.8 2.773 13.333 3.933l14.974-21.473c-4.52-1.12-8.96-2.47-13.33-3.92z"
+    />
+					<path
+        d="m293.55 133.76l-7.55-20.97c-4.193 1.32-8.36 2.747-12.527 4.253l7.607 20.98c4.13-1.52 8.28-2.95 12.47-4.26z"
+    />
+					<path
+        d="m345.07 315.31l7.58 21.04c4.24-1.227 8.447-2.54 12.587-3.96l-7.62-21.09c-4.15 1.46-8.31 2.81-12.55 4.01z"
+    />
+					<path
+        d="m198.01 257.51l-29.027 7.826c1.16 4.247 2.593 8.427 4.26 12.527l29.22-7.9c-1.77-4.06-3.25-8.2-4.45-12.46z"
+    />
+					<path
+        d="m446.65 204.13l29.247-7.893c-0.467-4.414-1.227-8.76-2.214-13.073l-29.06 7.847c0.98 4.29 1.63 8.65 2.02 13.11z"
+    />
+				</g
+  >
+					<linearGradient
+      id="SVGID_2_"
+      y2="84.701"
+      gradientUnits="userSpaceOnUse"
+      x2="-221.22"
+      gradientTransform="matrix(6.6667 0 0 6.6667 1671.2 -226.23)"
+      y1="72.128"
+      x1="-178.38"
+    >
+					<stop
+        stop-color="#BA8643"
+        offset="0"
+    />
+					<stop
+        stop-color="#B36914"
+        offset=".5337"
+    />
+					<stop
+        stop-color="#833400"
+        offset="1"
+    />
+				</linearGradient
+  >
+				<path
+      d="m123.62 246.97c4.026 53.986 64.307 212.85 256.53 150.21 194.29-63.326 120.03-242.95 120.03-242.95 5.479 56.14-27.268 141.94-140.97 178.7-113.73 36.76-215.76-13.83-235.59-85.96z"
+      fill="url(#SVGID_2_)"
+  />
+					<path
+      d="m412.23 62.907c-89.141-31.394-206.51 4.153-262.11 79.467-55.627 75.32-28.44 161.81 60.727 193.23 89.14 31.434 206.49-4.14 262.12-79.453 55.61-75.33 28.42-161.84-60.74-193.24zm44.6 187.53c-50.08 67.801-155.7 99.808-235.91 71.527-80.253-28.254-104.73-106.12-54.68-173.92 50.06-67.767 155.67-99.78 235.92-71.514 80.25 28.294 104.7 106.14 54.67 173.9z"
+      fill="#E2AA52"
+  />
+<metadata
+    ><rdf:RDF
+      ><cc:Work
+        ><dc:format
+          >image/svg+xml</dc:format
+        ><dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        /><cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        /><dc:publisher
+          ><cc:Agent
+              rdf:about="http://openclipart.org/"
+            ><dc:title
+              >Openclipart</dc:title
+            ></cc:Agent
+          ></dc:publisher
+        ><dc:title
+          >compass</dc:title
+        ><dc:date
+          >2013-07-08T13:14:43</dc:date
+        ><dc:description
+          >compass</dc:description
+        ><dc:source
+          >https://openclipart.org/detail/180092/compass-by-arnelsx-180092</dc:source
+        ><dc:creator
+          ><cc:Agent
+            ><dc:title
+              >arnelsx</dc:title
+            ></cc:Agent
+          ></dc:creator
+        ><dc:subject
+          ><rdf:Bag
+            ><rdf:li
+              >compass</rdf:li
+            ></rdf:Bag
+          ></dc:subject
+        ></cc:Work
+      ><cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        ><cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        /><cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        /><cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        /></cc:License
+      ></rdf:RDF
+    ></metadata
+  ></svg
+>

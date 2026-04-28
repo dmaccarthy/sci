@@ -143,12 +143,7 @@ SVG2.cache( -> scripts.cache[] =
     <p class="Answer">Make predictions about the data by <em>assuming</em> that the best-fit line trend continues beyond the range of data points.</p>
 </ol></li>
 
-<!-- </ol>
-</div></section>
-
-<section class="Post" data-show="1" data-answers="1" data-action="assign">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
-<ol> -->
+<!-- -->
 
 <li>Science 10 students conducted measurements of heat capacity by measuring the temperature of a beaker of water as heat was added. Their data is recorded in the table.
     <p class="Center"><b>Heat Capacity</b><br/>Temperature vs. Heat</p>
@@ -269,10 +264,17 @@ SVG2.cache( -> scripts.cache[] =
 
 <script type="text/javascript">
 
-page({title: "Scatter Plots & Slope", svg2: [
-    ["#WtLoss0", "p20/skill/img/scatter", "wtLoss"],
-    ["#WtLoss1", "p20/skill/img/scatter", "wtLoss", 1],
-    ["#WtLoss2", "p20/skill/img/scatter", "wtLoss"],
-]});
+page({title: "Scatter Plots & Slope",
+    s: "2027.1.1", // Default publish date
+    a: 1,          // Default answers delay in days
+    handout: "17zcHFBR8lomZvcNFIdtCXl8frUdgJnPY",
+    // hshow: "2026.1.1", // Alternate publish date for handouts section
+    // htab: "handout",   // Alternate tab to show handouts in
+    svg2: [
+        ["#WtLoss0", "p20/skill/img/scatter", "wtLoss"],
+        ["#WtLoss1", "p20/skill/img/scatter", "wtLoss", 1],
+        ["#WtLoss2", "p20/skill/img/scatter", "wtLoss"],
+    ],
+});
 
 </script>

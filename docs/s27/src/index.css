@@ -83,8 +83,6 @@ button {
     margin: 1em;
 }
 
-button.m1, .m1 > button {margin: 1em}
-
 button > *:is(img, svg) {
     width: var(--btn);
     height: var(--btn);
@@ -99,6 +97,7 @@ p.BtnGrid {
     text-align: center;
 }
 
+p.BtnGrid > button {margin: 1em}
 
 @media (min-width: 840px) {
 
@@ -151,7 +150,7 @@ td.Reveal span {color: red}
 .Left {text-align: left}
 .Right {text-align: right}
 .Defn {text-decoration: underline}
-a[href], .Blue, .Link, #Title {color: var(--blue)}
+a[href], .Blue, .Link, .BtnLink > button, #Title {color: var(--blue)}
 .Answer, .Red {color: red}
 .Comment {color: #999999}
 .DocString {color: green}
@@ -167,7 +166,8 @@ a[href], .Blue, .Link, #Title {color: var(--blue)}
 .NoTop {margin-top: 0}
 .NoBorder, table.NoBorder *:is(td, th) {border: none}
 
-*:is(a[href], .Link):hover {
+*:is(a[href], .Link, .BtnLink > button):hover {
+    color: var(--blue);
     cursor: pointer;
     text-decoration: underline;
 }

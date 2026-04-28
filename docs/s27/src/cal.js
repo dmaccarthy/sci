@@ -1,6 +1,6 @@
 function teacher() {
-    return parseInt(localStorage.getItem("teacher_mode")) &&
-        btoa(localStorage.getItem("teacher_code")) == teacher.code;
+    return btoa(localStorage.getItem("teacher_code")) == teacher.code &&
+        parseInt(localStorage.getItem("teacher_mode")) > 0;
 }
 
 teacher.code = 'Qnpya1I0cDd3bFFITThIbA==';

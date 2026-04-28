@@ -1,15 +1,25 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
+"circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2026.5.4", "a": "2026.5.5", "h": ["1fqMM5ic06x89f7JBMBXIacbQq8YcBof3", ["Lab Handout", "1-jnHSM_u6Id-91RZKC7DWkwdgOvFyw5p"]]},
+"circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2027.12"},
+"circ/ac": {"t": "@Centripetal Acceleration", "n": "5.2", "s": "2027.12", "a": "2027.12.17", "h": "1tmxkh7RP9_0NDxKb4Yc-SMVUhVnZEkYx"},
+"circ/appWt": {"t": "@Apparent Weight", "n": "5.3", "s": "2027.12", "a": "2027.12.18", "h": "1BynMTR5Fill11MkxeQzhGfkj_kxWe-hl"},
+"circ/kep": {"t": "@Planetary Motion (Kepler’s Laws)", "n": "5.4", "s": "2027.12", "a": "2027.12.19", "h": ["19gbWFSF_t6JuXRnOtJaC5km_jHWsBiQ9", ["Heliocentric Model", {"icon": "simulation", "feed": "p20/circ/helio"}]]},
+"circ/kep#": {"t": "@Planetary Motion (<i>continued</i>)", "s": "2027.12"},
+"circ/orbit": {"t": "@Circular Orbital Motion", "n": "5.5", "s": "2028.1", "a": "2028.1.6", "h": "17kz0ZZpXtGTPGYb9vHXf7PJzJYxlGT-8"},
+"q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2026.5.13", "css": {"font-weight": "bold"}},
+"uC/@": {"t": "Unit C Exam", "s": "2026.5.15", "css": {"font-weight": "bold"}},
+
 "energy/mech": {"t": "@Mechanical Energy", "n": "6.1", "s": "2026.4.15", "a": "2026.4.16", "h": "1LVUnS8TD59eJ1KucQDPeSTs4rVVCnZaB"},
 "energy/cons": {"t": "@Energy Conservation", "n": "6.2", "s": "2026.4.16", "a": "2026.4.20", "h": "16feEBDiNXsq72QjX9LBa08Y028osNyAT"},
 "energy/sys": {"t": "@Non-Isolated Systems", "n": "6.3", "s": "2026.4.22", "a": "2026.4.24", "h": ["1QIOHaWOycmAtmNJqkq3JWxJIXSXhcE-7", ["Ramp Lab", "1Ec6T5oU7C6qNeMeEq5HVjRU96eeKJPis"]]},
 "energy/sys#": {"t": "Lab: Energy Transformation on a Ramp", "s": "2026.4.24"},
 "energy/work": {"t": "@Energy Transformations (Work)", "n": "6.4", "s": "2026.4.23", "a": "2026.4.27", "h": "1QAmjL9mCQyHENQ5CtCtryokR_0doTNGZ"},
 "energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2026.4.27", "a": "2026.4.28", "h": "1x1xMVIZIANj0w-BZFTccz8YAlkmIf1IR"},
-"energy/work2d": {"t": "@Work in 2D", "n": "6.6", "s": "2027.12", "a": "2027.12.10", "h": "1j2BjlCr0goo7iZLdMJwDxCdjqASt_hAT"},
-"energy/power": {"t": "@Power", "n": "6.7", "s": "2027.12", "a": "2027.12.10", "h": "_"},
-"energy/work2d#": {"t": "Formative Quiz: Energy", "s": "2027.12"},
+"energy/work2d": {"t": "@Work in 2D", "n": "6.6", "s": "2026.4.28", "a": "2026.4.29", "h": "1j2BjlCr0goo7iZLdMJwDxCdjqASt_hAT"},
+"energy/power": {"t": "@Power", "n": "6.7", "s": "2026.4.29", "a": "2026.4.30", "h": "1qXdiV0kQgk3jeWpnnBN4t4MUhh3X44Ht"},
+"energy/work2d#": {"t": "Formative Quiz: Energy", "s": "9999.12"},
 "q6/@": {"t": "Quiz: Work & Energy", "s": "2026.4.30", "css": {"font-weight": "bold"}},
 
 "da/regr": {"t": "@Regression Analysis", "n": "4.1", "s": "2026.4.1", "a": "2026.4.7", "h": "1NLkp40NhPtv3cygebVZZIWa4nQ9vW4-L"},
@@ -56,16 +66,6 @@
 "shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2028.1"},
 "shm/E": {"t": "@Energy of SHM", "n": "7.5", "s": "2028.1", "a": "2028.1.19", "h": "1XSPOdyignakoikoijuwV4Q28Bsj_0vWW"},
 "shm/res": {"t": "@Mechanical Resonance", "n": "7.6", "s": "9999", "a": "9999"},
-
-"circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2027.12", "a": "2027.12.16", "h": ["1fqMM5ic06x89f7JBMBXIacbQq8YcBof3", ["Lab Handout", "1-jnHSM_u6Id-91RZKC7DWkwdgOvFyw5p"]]},
-"circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2027.12"},
-"circ/ac": {"t": "@Centripetal Acceleration", "n": "5.2", "s": "2027.12", "a": "2027.12.17", "h": "1tmxkh7RP9_0NDxKb4Yc-SMVUhVnZEkYx"},
-"circ/appWt": {"t": "@Apparent Weight", "n": "5.3", "s": "2027.12", "a": "2027.12.18", "h": "1BynMTR5Fill11MkxeQzhGfkj_kxWe-hl"},
-"circ/kep": {"t": "@Planetary Motion (Kepler’s Laws)", "n": "5.4", "s": "2027.12", "a": "2027.12.19", "h": ["19gbWFSF_t6JuXRnOtJaC5km_jHWsBiQ9", ["Heliocentric Model", {"icon": "simulation", "feed": "p20/circ/helio"}]]},
-"circ/kep#": {"t": "@Planetary Motion (<i>continued</i>)", "s": "2027.12"},
-"circ/orbit": {"t": "@Circular Orbital Motion", "n": "5.5", "s": "2028.1", "a": "2028.1.6", "h": "17kz0ZZpXtGTPGYb9vHXf7PJzJYxlGT-8"},
-"q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2028.1", "css": {"font-weight": "bold"}},
-"uC/@": {"t": "Unit C Exam", "s": "2028.1", "css": {"font-weight": "bold"}},
 
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2026.1.29", "a": "2026.1.30", "h": ["18p-OXXK3JAQa5ZGEWJf-n7DzfDvUgrl4", ["Lab Activity", "1Qw9-sMCtUa5jgGg6QfbgUp7NmCxxaOeP"]]},
 "skill/expDes#": {"t": "Lab: Self-Designed Experiment", "s": "2026.1.30"},
@@ -201,8 +201,9 @@
 "sp2/prj3#2": {"t": "Python Project #2", "s": "2026.2.26", "css": {"font-weight": "bold"}},
 "sp2/@": {"t": "Structured Programming Quiz", "s": "2026.3.13", "css": {"font-weight": "bold"}},
 "sp2/prj3#4": {"t": "Python Project #3", "s": "2026.3.17", "css": {"font-weight": "bold"}},
-
-"web1/home/@": {"t": "XML Assessment", "s": "2026.4.20", "css": {"font-weight": "bold"}}
+"web1/home/@": {"t": "XML Assessment", "s": "2026.4.20", "css": {"font-weight": "bold"}},
+"web2/prj03/@": {"t": "HTML Assessment", "s": "2026.5.14", "css": {"font-weight": "bold"}},
+"ct1/@": {"t": "Computer Science 1 Assessment", "s": "2026.6.3", "css": {"font-weight": "bold"}}
 },
 
 "cs20": {"home": {"folder": "cs_new", "t": "@Computing Science 20"},
@@ -218,11 +219,13 @@
 
 "p30": {"home": {"t": "@Physics 30"},
 
-"photon/bbr": {"t": "@Thermal (Blackbody) Radiation", "n": "14.1", "s": "2026.4.27", "a": "2026.4"},
-"photon/photon": {"t": "@Photons", "n": "14.2", "s": "2028.4", "a": "2028.4"},
-"photon/pe": {"t": "@Photoelectric Effect", "n": "14.3", "s": "2028.4", "a": "2028.4"},
-"photon/xray": {"t": "@X-Rays", "n": "14.4", "s": "2028.4", "a": "2028.4"},
-"photon/compton": {"t": "@Compton Scattering", "n": "14.5", "s": "2028.4", "a": "2028.4"},
+"photon/bbr": {"t": "@Thermal (Blackbody) Radiation", "n": "14.1", "s": "2026.4.27", "a": "2026.4.29"},
+"photon/photon": {"t": "@Photons", "n": "14.2", "s": "2026.4.29", "a": "2026.4.30"},
+"photon/pe#": {"t": "Simulation: Photoelectric Effect", "s": "2026.4.30"},
+"photon/pe": {"t": "@Photoelectric Effect", "n": "14.3", "s": "2026.5.4", "a": "2026.5.5"},
+"photon/xray": {"t": "@X-Rays", "n": "14.4", "s": "2026.5.5", "a": "2026.5.6"},
+"photon/compton": {"t": "@Compton Scattering", "n": "14.5", "s": "2026.5.6", "a": "2026.5.7"},
+"qC2/@": {"t": "Quiz: Photons", "s": "2026.5.8", "css": {"font-weight": "bold"}},
 
 "optics/rays": {"t": "@Ray Diagrams", "n": "13.6", "s": "2026.4.20", "a": "2026.4.21"},
 "optics/pr": {"t": "@Principal Rays", "n": "13.7", "s": "2026.4.21", "a": "2026.4.22"},
@@ -230,6 +233,7 @@
 "optics/lens": {"t": "@Lenses", "n": "13.9", "s": "2026.4.23", "a": "2026.4.24"},
 "optics/lens#": {"t": "Lab: Converging Lens", "s": "2026.4.24"},
 "qC1/@": {"t": "Quiz: EM Waves & Optics", "s": "2026.4.28", "css": {"font-weight": "bold"}},
+"uC/@": {"t": "Unit C Exam", "s": "2026.5.12", "css": {"font-weight": "bold"}},
 
 "emr/c": {"t": "@Speed of Light", "n": "13.1", "s": "2026.3.31", "a": "2026.4.1"},
 "emr/young": {"t": "@Young’s Experiment", "n": "13.2", "s": "2026.4.7", "a": "2026.4.8"},
