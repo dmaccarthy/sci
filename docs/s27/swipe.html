@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Swipe...</title>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+function fix(x) {return x.toFixed(1)}
+
+function swipe(x, y) {
+    if (x * x > 20000 && Math.abs(x) > 2 * Math.abs(y))
+        $("<p>").html(`${fix(x)}, ${fix(y)}`).appendTo("body");
+}
+
+swipe.event = ev => {
+    let p = $("<p>").appendTo("body");
+    let coords = e => {
+        e = e.changedTouches[0];
+        return [e.clientX, e.clientY];
+    }
+    if (ev.type == "touchstart") {
+        [swipe.x, swipe.y] = coords(ev);
+        p.html(`Start: [${fix(swipe.x)}, ${fix(swipe.y)}]`);
+    }
+    else if (ev.type == "touchend") {
+        let [x, y] = coords(ev);
+        p.html(`End: [${fix(x)}, ${fix(y)}]`);
+        swipe(x - swipe.x, y - swipe.y);
+        delete swipe.x;
+        delete swipe.y;
+    }
+}
+
+$(window).on("touchstart", swipe.event).on("touchend", swipe.event);
+
+</script>
+</head>
+<body>
+</body>
+</html>
