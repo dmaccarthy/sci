@@ -346,14 +346,14 @@ $(() => {
 
 /*** Swipe handlers ***/
 
-console.warn("Swipe active!!");
+// console.warn("Swipe active!!");
 
 function swipe(delta) {
     /* Go to next or previous page on horizontal swipe */
     let r = delta.mag(), a = delta.dir(), w = $(window).width();
-    if (r > Math.min(150, 0.6 * w) && sin(a) < 0.5) {
+    if (r > Math.min(150, 0.6 * w) && Math.abs(sin(a)) < 0.5) {
         let left = Math.abs(a) > 90;
-        $("main article").append(left ? "Next" : "Prev");
+        // $("main article").append(left ? "Next" : "Prev");
         page.jump(left ? 1 : -1);
     }
 }
