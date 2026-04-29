@@ -1,0 +1,245 @@
+<section class="Post" data-action="slides">
+
+<section class="Slide Center Present">
+<h1 id="Title">Significant Digits &amp; Scientific Notation</h1>
+</section>
+
+<section class="Slide"><h3>Significant Digits</h3>
+    <p>Many of the values we use in Science are the result of a <em class="Defn">measurement</em>...</p>
+    <ul>
+        <li>The temperature of a solution.</li>
+        <li>The time it takes a pendulum to swing.</li>
+        <li>The height a baseball rises to before it starts to fall.</li>
+    </ul>
+    <p>Measurements are rarely exact; there is usually a <em class="Defn">measurement uncertainty</em> due to limitations in the measuring procedure.</p>
+    <ul>
+        <li>The number of digits we record indicates how accurate we believe a measurement to be.</li>
+        <li>Recording a distance as 21.53 metres indicates we believe our <em>uncertainty</em> to be up to a few hundredths of a metre (the last digit we recorded).</li>
+        <li>This measurement has four <em class="Defn">significant digits</em>.</li>
+        <li>Recording a distance as 22 metres indicates we believe our <em>uncertainty</em> to be up to a few metres.</li>
+        <li>This measurement has two significant digits.</li>
+        <li>All digits are counted as significant except for <em>leading zeroes</em>.</li>
+        <li>A measurement of 0.002050 metres has <em>four</em> significant digits.</li>
+    </ul>
+    <p>When performimg calculations, our answer cannot contain more significant digits than <em>any</em> of the measurements used to perform the calculation.</p>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+    <p data-cue="none" class="Blue">Calculate the volume of a sphere whose diamter is measured to be 2.31 cm, using the formula:</p>
+    <p data-cue="none" class="TeX Blue">V = \frac{4\pi}{3}r^3</p>
+    <p>First calculate the radius by dividing the diameter by 2:</p>
+    <p class="TeX">r=\frac{d}{2} = \rm\frac{2.31\ cm}{2} = 1.155\ cm</p>
+    <ul>
+        <li>If this was our “final answer”, we would round it to 1.16 cm (three significant digits).</li>
+        <li>We do not use the 2 in the denominator for significant digits because it is an exact value, not a measurement.</li>
+        <li>Do not round yet, because we will be using this value to make another calculation.</li>
+    </ul>
+    <p>Now evaluate the volume:</p>
+    <p data-cue="prev" class="TeX">V = \rm\frac{4\pi}{3}(1.155\ cm)^3 = 6.454083235\ cm^3 \approx 6.45\ cm^3</p>
+    <ul>
+        <li>The final answer is rounded to three significant digits because the diameter was given to three digits.</li>
+        <li>The <span class="TeX">4\pi/3</span> that appears in the formula does not affect the significant digits becaue it is not a measurement.</li>
+        <li>Make sure you use <span class="TeX">\pi</span> as accurately as your calculator can; if you round the value of <span class="TeX">\pi</span> then this <em>will</em> affect the accuracy of your answer.</li>
+    </ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+    <p data-cue="none" class="Blue">Calculate the <em>change in</em> the temperature of a solution that is initially at 15.0 °C and is then heated to 17.2 °C.</p>
+    <p class="TeX">\Delta T = T_f - T_i = \rm (17.2 - 15.0)\ ^\circ C = 2.2\ ^\circ C</p>
+    <ul>
+        <li>Should we record the result as 2.20 °C (three sig digs)?</li>
+        <li>The answer cannot be more precise than any of the measurements!</li>
+        <li>For addition and substraction, round based on the precision of the <em>last</em> digit rather than the <em>total</em> number of digits.</li>
+    </ul>
+</section>
+
+<section class="Slide"><h3>Big Numbers</h3>
+    <p data-cue="none">The radius of Earth’s orbit around the Sun is about:</p>
+    <p data-cue="none" class="Center"><svg class="s11" id="au"></svg></p>
+    <ul class="NoTop NoBottom">
+        <li>We can avoid writing the zeroes by using powers of 10.</li>
+        <li>Each time we multiply (or divide) by 10, we move the decimal point in the number.</li>
+    </ul>
+    <ul class="NoTop"><li>Count the number of places the decimal point is moved...</li></ul>
+    <p class="TeX">\rm{1.496\times 10^{11}\ m}</p>
+    <ul>
+        <li>The exponent tells us that the decimal place has been moved by 11 positions.</li>
+        <li>In <em class="Defn">scientific notation</em>, the decimal point is always placed after the first non-zero digit.</li>
+        <li>The normal way of writing numbers (without powers of 10) is called <em class="Defn">decimal notation</em>.</li>
+        <li>For significant digits, we use the coefficient only; 1.496 × 10<sup>11</sup> m has <em>four</em> significant digits.</li>
+        <li>Because the number is so large, there is no way to write the number in decimal notation with fewer than 12 significant digits.</li>
+        <li>You may <em>have to</em> write your answer in scientific notation to make the number of significant digits correct.</li>
+    </ul>
+</section>
+
+<section class="Slide"><h3>Small Numbers</h3>
+    <p data-cue="none">The electric charge of an electron is:</p>
+    <p data-cue="none" class="Center"><svg class="s22" id="qe"></svg></p>
+    <ul class="NoTop">
+        <li>Because the number is very small, we have to move the decimal point in the opposite direction.</li>
+        <li>For small numbers, the power will have a <em>negative</em> exponent in scientific notation.</li>
+    </ul>
+    <p class="TeX">\rm{1.602\times 10^{-19}\ C}</p>
+</section>
+
+<section class="Slide"><h3>Calculator Arithmetic</h3>
+    <p data-cue="none">When using a scientific calculator or computer to perform arithmetic on numbers in scientific notation, there is an abbreviation usually represented by a button labelled <code>EE</code>.</p>
+    <p class="Center"><span class="TeX">1.496\times 10^{11}</span> → <span class="TeX">1.496{\small\rm E}11</span></p>
+    <ul>
+        <li>Using the abbreviated notation can prevent “order of operations” mistakes.</li>
+        <li>If typing the power out in full, you will often need brackets for the correct order of operations.</li>
+        <li>Always use full scientific notation in written work.</li>
+    </ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+    <p data-cue="none" class="TeX Blue">\rm\frac{3.00\times 10^8}{6.33\times 10^{-7}}</p>
+    <p class="Center"><img data-aspect="385/603" class="w16 s10" src="p20/skill/img/ti.webp" alt="TI-83+"/></p>
+    <p class="TeX">\rm\frac{3.00\times 10^8}{6.33\times 10^{-7}} \approx 4.74\times 10^{14}</p>
+    <p>The final answer is rounded to three significant digits.</p>
+</section>
+
+</section>
+
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h2 class="Collapse">Review</h2><div class="Collapse">
+<ol>
+    <li>Convert the following measurements to scientific notation:<ol type="a">
+        <li>299 800 000 m/s</li>
+        <p class="Answer">2.998 × 10<sup>8</sup> m/s</p>
+        <li>0.000 000 007 53 m</li>
+        <p class="Answer">7.53 × 10<sup>–9</sup> metres</p>
+
+    </ol></li>
+    <li>Convert the following measurements to decimal notation:<ol type="a">
+        <li>4.56 × 10<sup>6</sup> joules</li>
+        <p class="Answer">4 560 000 J</p>
+        <li>9.03 × 10<sup>–4</sup> amperes</li>
+        <p class="Answer">0.000 903 A</p>
+
+    </ol></li>
+    <li>Evaluate the following expressions. Show steps (order or operations) where appropriate.<ol type="a">
+        <li class="TeX Display">10^{-5}\times (10^4)^2</li>
+        <p class="TeX Answer">= 10^{-5}\times 10^8 =10^3</p>
+        <li class="TeX Display">\frac{10^4}{(10^{-3})^2}</li>
+        <p class="TeX Answer">= \frac{10^4}{10^{-6}} =10^{10}</p>
+        <li class="TeX Display">\rm \frac{2.50\times 10^4\ km}{3.56\times 10^2\ h}</li>
+        <p class="Answer">7.02 × 10<sup>1</sup> km/h or 70.2 km/h</p>
+    </ol></li>
+</ol>
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+
+<li>Calculate the result of each expression and round each answer to the correct number of significant digits.<ol type="a">
+    <li>2.5 m × 11.7 m</li>
+    <p class="Answer">29 m<sup>2</sup></p>
+
+    <li>36.25 N / 1.72 m<sup>2</sup></li>
+    <p class="Answer">21.1 N/m<sup>2</sup></p>
+
+    <li>8.260 cm – 7.4 cm</li>
+    <p class="Answer">0.9 cm</p>
+
+    <li><span class="TeX">A=\pi r^2</span> where <span class="TeX">r</span> = 14.2 cm</li>
+    <p class="Answer">633 cm<sup>2</sup></p>
+
+    <li><span class="TeX">E_k=\frac{1}{2}mv^2</span> where <span class="TeX">m</span> = 1.5 kg and <span class="TeX">v</span> = 25.2 m/s</li>
+    <p class="Answer">4.8 × 10<sup>2</sup> J</p>
+
+    <li><span class="TeX">F_g=mg</span> where <span class="TeX">m</span> = 1.2500 kg and <span class="TeX">g</span> = 9.81 m/s<sup>2</sup></li>
+    <p class="Answer">12.3 N</p>
+
+</ol></li>
+
+<li>Convert these measurements from scientific to decimal notation. Do not change units.
+<ol type="a">
+    <li>1.65 × 10<sup>8</sup> watts</li>
+    <p class="Answer">165 000 000 W</p>
+    <li>7.850 × 10<sup>–5</sup> seconds</li>
+    <p class="Answer">0.000 0785 0 s</p>
+    <li>5.29 × 10<sup>–11</sup> metres</li>
+    <p class="Answer">0.000 000 000 052 9 m</p>
+    <li>9.467 × 10<sup>14</sup> joules</li>
+    <p class="Answer">946 700 000 000 000 J</p>
+</ol></li>
+
+<li>Convert these measurements from decimal to scientific notation. Do not change units.
+<ol type="a">
+    <li>0.0702 amperes</li>
+    <p class="Answer">7.02 × 10<sup>–2</sup> A</p>
+    <li>28 100 000 seconds</li>
+    <p class="Answer">2.81 × 10<sup>7</sup> s</p>
+    <li>0.000501 metres</li>
+    <p class="Answer">5.01 × 10<sup>–4</sup> m</p>
+    <li>105 kg</li>
+    <p class="Answer">1.05 × 10<sup>2</sup> kg</p>
+</ol></li>
+
+<li>In geometry, the volume and surface area of a sphere are calculated using the formulas:
+<p data-cue="none" class="TeX">V=\frac{4\pi}{3}r^3</p>
+<p data-cue="none" class="TeX">A=4\pi r^2</p>
+<p data-cue="none">In these formulas, <span class="TeX">r</span> is the radius of the sphere.
+    Earth is approximately a sphere with a radius of 6.37 × 10<sup>6</sup> m.</p>
+    <ol type="a">
+        <li>Calculate the Earth’s volume and surface area. Use the <span class="TeX">\pi</span> button on your calculator (rather than typing in the value of <span class="TeX">\pi</span>) to avoid unnecessary rounding errors. Express the answers using standard SI units and scientific notation.</li>
+        <div class="Answer">
+            <p class="TeX">V=\frac{4\pi}{3}\rm{(6.37\times 10^6\ m)^3 = 1.08\times 10^{21}\ m^3}</p>
+            <p class="TeX">A=4\pi \rm{(6.37\times 10^6\ m)^2 = 5.10\times 10^{14}\ m^2}</p>
+        </div>
+
+        <li>Earth’s population is about 8.24 × 10<sup>9</sup> people. How much surface area does Earth have <em>per person?</em></li>
+        <p class="TeX Answer">\rm \frac{5.10\times 10^{14}\ m^2}{8.24\times 10^9} = 6.19\times 10^4\ m^2</p>
+    </ol>
+</li>
+
+<li>The strength of Earth’s gravity can be calculated using the equation:
+    <p class="TeX">g=\frac{GM}{r^2}</p>
+    In this equation, <span class="NoWrap"><span class=" TeX">M</span> = 5.97 × 10<sup>24</sup> kg</span> is the mass of Earth,
+    <span class="TeX">G</span> = <span class="NoWrap">6.67 × 10<sup>–11</sup> N·m<sup>2</sup>/kg<sup>2</sup></span> is a constant, and <span class="TeX">r</span>
+    is the distance from the centre of the Earth to the location where gravity is being measured. When we are standing on the ground,
+    <span class="NoWrap TeX">r</span> is the radius of Earth itself which was given in the previous question and on your data sheet.
+    <ol type="a">
+        <li>Use the equation to calculate Earth’s gravity for objects on the ground.</li>
+        <p class="Answer">9.81 m/s<sup>2</sup></p>
+
+        <li>A spacecraft orbits several hundred kilometres above the ground, so that <span class="NoWrap"><span class="TeX">r</span> = 7.00 × 10<sup>6</sup> m</span>.
+            Calculate the strength of Earth’s gravity at the spacecraft’s location.</li>
+        <p class="Answer">8.13 m/s<sup>2</sup></p>
+    </ol>    
+</li>
+
+<li>Define <em class="Defn">decimal notation</em> and <em class="Defn">scientific notation</em>.</li>
+<div class="Answer">
+    <p>Decimal notation is the “normal” way of writing numbers: 0.00050.</p>
+    <p>Scientific notation writes numbers as a coefficient multiplied by a power of 10:</p>
+    <p data-cue="prev" class="Center">5.0 × 10<sup>–4</sup></p>
+    <p>The decimal point always follows immediately after the first non-zero digit. The exponent indicates how many places the decimal has been moved, with positive exponents for “big” numbers (&gt; 10) and negative exponents for “small” numbers (&lt; 1).</p>
+</div>
+
+<li>Explain how to convert between decimal and scientific notation.</li>
+<p class="Answer">Simply move the decimal point by the number of places indicated by the exponent in the power of 10. Positive exponents correspond to “big” numbers (> 10) and negative exponents to “small”  numbers (< 1).</p>
+
+<li>Explain how to enter numbers in scientific notation on a graphing calculator, a spreadsheet, or similar computer program.</li>
+<p class="Answer">Many calculators and computer programs use the letter “E”, or a button labelled “EE” to abbreviate scientific notation. You can enter the number 5.0 × 10<sup>–4</sup> as <code>5.0E-4</code>.</p>
+</ol></div>
+
+</div></section>
+
+<section class="Post" data-action="video">
+    <h2 class="Collapse">Video</h2>
+    <div class="Collapse" data-yt="trdbaV4TaAo"></div>
+</section>
+
+<script type="text/javascript">
+
+page({title: "Scientific Notation", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        ["#au", "p20/skill/img/sciNot", "au"],
+        ["#qe", "p20/skill/img/sciNot", "qe"]
+    ],
+});
+
+</script>

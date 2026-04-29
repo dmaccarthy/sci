@@ -1829,12 +1829,14 @@ SVG2._style = {
 SVG2.eq = {Ek: "E_k", Eg: "E_g"}
 
 
-function calendar_icon() {
+function calendar_icon(n, bg) {
+    if (!n) n = new Date().getDate();
     let css = SVG2.style;
     let svg = SVG2.create({scale: 64, lrbt: [-1, 1, -1, 1]});
+    if (bg) css(svg.rect([2, 2]), bg);
     css(svg.rect([2, 0.4], [0, 0.8]), "#0065fe", "none@");
     css(svg.poly([[-1 , 1], [-1, -1], [1, -1], [1, 1]]), "#0065fe@8", "none");
     for (x of [1, -1]) css(svg.circle("7", [0.48 * x, 0.8]), "white");
-    svg.text(new Date().getDate(), [0, -0.3], 0, ["sans", 80, "bold", "red"]);
+    svg.text(n, [0, -0.3], 0, ["sans", 80, "bold", "red"]);
     return svg.element.outerHTML;
 }

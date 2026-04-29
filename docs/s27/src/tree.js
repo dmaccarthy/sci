@@ -116,6 +116,7 @@ function metrics(force) {
     $("body").css({"margin-left": (w + 8) + "px", "margin-top" : (top.outerHeight() + 20) + "px"});
     svg_aspect();
     scroll_mjax();
+    $(window).scrollTop(0);
 }
 
 function svg_aspect() {
@@ -128,8 +129,10 @@ function svg_aspect() {
 }
 
 function scroll_mjax() {
-    for (let e of $("section.Post:visible p[data-latex]:visible").removeClass("AutoScroll"))
+    for (let e of $("section.Post:visible p[data-latex]:visible").removeClass("AutoScroll")) {
+        // console.log(e, e.scrollWidth, e.clientWidth);
         if (e.scrollWidth > e.clientWidth) $(e).addClass("AutoScroll");        
+    }
 }
 
 function scroll_bottom(t) {

@@ -18,7 +18,7 @@
 "energy/work": {"t": "@Energy Transformations (Work)", "n": "6.4", "s": "2026.4.23", "a": "2026.4.27", "h": "1QAmjL9mCQyHENQ5CtCtryokR_0doTNGZ"},
 "energy/we": {"t": "@Work-Energy Theorem", "n": "6.5", "s": "2026.4.27", "a": "2026.4.28", "h": "1x1xMVIZIANj0w-BZFTccz8YAlkmIf1IR"},
 "energy/work2d": {"t": "@Work in 2D", "n": "6.6", "s": "2026.4.28", "a": "2026.4.29", "h": "1j2BjlCr0goo7iZLdMJwDxCdjqASt_hAT"},
-"energy/power": {"t": "@Power", "n": "6.7", "s": "2026.4.29", "a": "2026.4.30", "h": "1qXdiV0kQgk3jeWpnnBN4t4MUhh3X44Ht"},
+"energy/power": {"t": "@Power", "n": "6.7", "s": "2026.4.29", "a": "2026.4.29.14", "h": "1qXdiV0kQgk3jeWpnnBN4t4MUhh3X44Ht"},
 "energy/work2d#": {"t": "Formative Quiz: Energy", "s": "9999.12"},
 "q6/@": {"t": "Quiz: Work & Energy", "s": "2026.4.30", "css": {"font-weight": "bold"}},
 
@@ -114,8 +114,8 @@
     ["Cell Analogy", "1vPZKTaVDNrbF3a-FW_wqnBL4Y8nly4tQ"]
 ]},
 "bio1/org#": {"t": "Lab: Observing the Cell", "s": "2026.4.29"},
-"bio2/memb": {"t": "@Biological Membranes", "n": "B04", "s": "2027.12", "a": "2027.12", "h": "1anNxutnQaWIwAKV-hJ9G-LZI0GhUfZOz"},
-"bio2/pass": {"t": "@Passive Transport", "n": "B05", "s": "2027.12", "a": "2027.12", "h": "1jLcEIERl0Csh54aYx3sHH1HDHU0itiXt"},
+"bio2/memb": {"t": "@Biological Membranes", "n": "B04", "s": "2026.4.30", "a": "2026.5.1", "h": "1anNxutnQaWIwAKV-hJ9G-LZI0GhUfZOz"},
+"bio2/pass": {"t": "@Passive Transport", "n": "B05", "s": "2026.5.4", "a": "2026.5.5", "h": "1jLcEIERl0Csh54aYx3sHH1HDHU0itiXt"},
 "bio2/act": {"t": "@Active Transport", "n": "B06", "s": "2028.1", "a": "2028.1", "h": "1vXDI4HhK43A6bXy-cRXjj-hXzb7Eq-Ig"},
 "qb2/@": {"t": "Quiz: Cells & Transport (Chapters 7 & 8)", "s": "2026.5.6", "css": {"font-weight": "bold"}},
 

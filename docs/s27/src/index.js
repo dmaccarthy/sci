@@ -30,10 +30,10 @@ scripts.cache = {};
 
 function get_image(key, element) {
     // Get image URL from @key
-    if (key == "today") return calendar_icon.url();
+    // if (key == "today") return calendar_icon.url();
     img = get_image.map[key];
     if (!img) {
-        img = `../../media/${key}`;
+        img = `../media/${key}`;
         if (key.indexOf(".") == -1) img += ".svg";
     }
     if (element && img) img = $("<img>").attr({src: img, alt: key});
@@ -41,7 +41,7 @@ function get_image(key, element) {
 }
 
 get_image.map = {
-    sal: "../../media/sal.webp",
+    sal: "../media/sal.webp",
     bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
     ps: "https://powerschool.eips.ca/favicon-196x196.png",
     python: "https://www.python.org/static/favicon.ico",
@@ -68,8 +68,7 @@ function msg(html, time) {
     let b = $("body"), w = $(window);
     let e = $("<div>").addClass("Message").html(html).appendTo(b);
     let x = (w.width() - e.outerWidth()) / 2;
-    e.css({left: `${x}px`});
-    e.fadeIn(500);
+    e.css({left: `${x}px`}).on("click", () => e.remove()).fadeIn(500);
     setTimeout(() => {
         e.fadeOut(1500);
         setTimeout(() => {e.remove()}, 1600);
@@ -96,6 +95,7 @@ function page(data) {Object.assign(page._data, data)}
 page._cache = {}
 
 page.clear = () => {
+    $("div.Message").remove();
     page._data = {};
     page._run = [];
     $("#Top button").removeClass("Selected");
@@ -116,6 +116,7 @@ page.load = (feed) => {
             page._cache[feed] = t;
             page.onload(feed);
         });
+        else msg(`Unable to load page:<br/>${feed}`);
     });
 }
 
@@ -289,16 +290,18 @@ page.click = ev => {
     if (actions.feed) page.load(actions.feed);
     if (actions.open) window.open(actions.open);
     if (actions.gdrv) window.open("https://drive.google.com/file/d/" + actions.gdrv);
+    return true;
 }
 
 
 let courses = ["s10", "p20", "p30", "cs"];
 
+
 $(() => {
     console.log("Teacher:", teacher());
     let w = $(window).on("resize", metrics).on("click", page.click);
     w.on("popstate", ev => page.load(location.hash.substring(1)));
-    // w.on("touchstart", swipe.event).on("touchend", swipe.event);
+    w.on("touchstart", swipe.event).on("touchend", swipe.event);
     w.on("keydown", ev => {
         ev = ev.originalEvent;
         let [key, code] = [ev.key, ev.code];
@@ -322,6 +325,7 @@ $(() => {
     });
 
     $("#Top button[data-action='cal']").prepend(calendar_icon());
+    $("#Top button[data-action='review']").prepend(calendar_icon("←"));
     page.clear();
     let trees = [...fn_eval(x => x + "/tree", courses)];
     page._tree = new CourseTree("#Left > ul.TreeTop ul");
@@ -340,24 +344,33 @@ $(() => {
 });
 
 
-/***  Swipe handler ***/
+/*** Swipe handlers ***/
 
-// function swipe(x, y) {
-//     if (x * x > 20000 && Math.abs(x) > 2 * Math.abs(y)) page.jump(x > 0 ? -1 : 1);
-// }
+console.warn("Swipe active!!");
 
-// swipe.event = ev => {
-//     let coords = e => {
-//         e = e.changedTouches[0];
-//         return new RArray(e.screenX, e.screenY);
-//     }
-//     if (ev.type == "touchstart") swipe.xy = coords(ev);
-//     else if (ev.type == "touchend") {
-//         let delta = coords(ev).minus(swipe.xy);
-//         swipe(...delta);
-//         delete swipe.xy;
-//     }
-// }
+function swipe(delta) {
+    /* Go to next or previous page on horizontal swipe */
+    let r = delta.mag(), a = delta.dir(), w = $(window).width();
+    if (r > Math.min(150, 0.6 * w) && sin(a) < 0.5) {
+        let left = Math.abs(a) > 90;
+        $("main article").append(left ? "Next" : "Prev");
+        page.jump(left ? 1 : -1);
+    }
+}
+
+swipe.event = ev => {
+    /* Record touchstart and dispatch touchend events */
+    let coords = e => {
+        e = e.changedTouches[0];
+        return new RArray(e.clientX, e.clientY);
+    }
+    if (ev.type == "touchstart") swipe.xy = coords(ev);
+    else if (ev.type == "touchend") {
+        let [x, y] = coords(ev);
+        swipe(coords(ev).minus(swipe.xy));
+        delete swipe.xy;
+    }
+}
 
 
 /*** Printing ***/

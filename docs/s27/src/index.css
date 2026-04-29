@@ -1,5 +1,5 @@
 :root {
-    --icon: 1.75em;
+    --icon: 2em;
     --btn: 4em;
     --grey1: #f4f4f4;
     --grey2: #d0d0d0;
@@ -219,7 +219,8 @@ div.Message {
     background-color: #a0a0a0;
     color: white;
     text-align: center;
-    min-width: 20em;
+    min-width: 12rem;
+    width: 20rem;
     max-width: 80vw;
     position: fixed;
     top: 25vh;

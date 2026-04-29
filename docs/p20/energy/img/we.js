@@ -37,12 +37,12 @@ work: (sel) => {
 
 tennis: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 80, 0, 90], grid: [5, 5], margin: [58, 12, 52, 12]});
-    let opt = {size: ["-6", 0], css: 15, label: 0, shift: "-8"};
+    let opt = {default: true}; //{size: ["-6", 0], css: 15, label: 0, shift: "-8"};
     svg.ticks({x: [0, 81, 10], ...opt});
     svg.ticks({y: [0, 91, 10], ...opt});
     css(svg.poly([[0, 0], [40, 80], [50, 80], [75, 0]]), "none", "#0065fe@2");
     let g = svg.group("sans", 18);
-    g.text("Position / m", [40, "-28", "t"]);
+    g.text("Position / cm", [40, "-28", "t"]);
     g.text("Force / N", ["-40", 45, "b"], 90);
 },
 
