@@ -2,12 +2,12 @@
 "p20": {"home": {"t": "@Physics 20"},
 
 "circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2026.5.4", "a": "2026.5.5", "h": ["1fqMM5ic06x89f7JBMBXIacbQq8YcBof3", ["Lab Handout", "1-jnHSM_u6Id-91RZKC7DWkwdgOvFyw5p"]]},
-"circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2027.12"},
-"circ/ac": {"t": "@Centripetal Acceleration", "n": "5.2", "s": "2027.12", "a": "2027.12.17", "h": "1tmxkh7RP9_0NDxKb4Yc-SMVUhVnZEkYx"},
-"circ/appWt": {"t": "@Apparent Weight", "n": "5.3", "s": "2027.12", "a": "2027.12.18", "h": "1BynMTR5Fill11MkxeQzhGfkj_kxWe-hl"},
-"circ/kep": {"t": "@Planetary Motion (Kepler’s Laws)", "n": "5.4", "s": "2027.12", "a": "2027.12.19", "h": ["19gbWFSF_t6JuXRnOtJaC5km_jHWsBiQ9", ["Heliocentric Model", {"icon": "simulation", "feed": "p20/circ/helio"}]]},
-"circ/kep#": {"t": "@Planetary Motion (<i>continued</i>)", "s": "2027.12"},
-"circ/orbit": {"t": "@Circular Orbital Motion", "n": "5.5", "s": "2028.1", "a": "2028.1.6", "h": "17kz0ZZpXtGTPGYb9vHXf7PJzJYxlGT-8"},
+"circ/ac": {"t": "@Centripetal Acceleration", "n": "5.2", "s": "2026.5.5", "a": "2026.5.6", "h": "1tmxkh7RP9_0NDxKb4Yc-SMVUhVnZEkYx"},
+"circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2026.5.6"},
+"circ/appWt": {"t": "@Apparent Weight", "n": "5.3", "s": "2026.5.7", "a": "2026.5.8", "h": "1BynMTR5Fill11MkxeQzhGfkj_kxWe-hl"},
+"circ/kep": {"t": "@Planetary Motion (Kepler’s Laws)", "n": "5.4", "s": "2026.5.8", "a": "2026.5.12", "h": ["19gbWFSF_t6JuXRnOtJaC5km_jHWsBiQ9", ["Heliocentric Model", {"icon": "simulation", "feed": "p20/circ/helio"}]]},
+"circ/kep#": {"t": "@Planetary Motion (<i>continued</i>)", "s": "2026.5.11"},
+"circ/orbit": {"t": "@Circular Orbital Motion", "n": "5.5", "s": "2026.5.12", "a": "2026.5.12.15", "h": "17kz0ZZpXtGTPGYb9vHXf7PJzJYxlGT-8"},
 "q5/@": {"t": "Quiz: Circular & Planetary Motion", "s": "2026.5.13", "css": {"font-weight": "bold"}},
 "uC/@": {"t": "Unit C Exam", "s": "2026.5.15", "css": {"font-weight": "bold"}},
 
