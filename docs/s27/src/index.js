@@ -75,6 +75,36 @@ function msg(html, time) {
     }, time ? time : 2500);
 }
 
+function copy_or_open(ei) {
+    // Enable copy/open operation on [data-echo] elements
+    let echo = ei.attr("data-echo");
+    let p = $("<p>").addClass("EchoControl").insertBefore(ei);
+    let title  = ei.attr("data-title");
+    if (title == "1") title = echo;
+    echo = echo.split(".");
+    echo = echo[echo.length - 1];
+    if (!title) title = {
+        html: "HTML Code",
+        htm: "HTML Code",
+        xml: "XML Code",
+        py: "Python Code",
+        text: "Plain Text",
+        css: "CSS Code",
+        js: "Javascript Code",
+        json: "JSON Data",
+        svg: "SVG Code",
+        csv: "CSV Data",
+        io: "Program Output",
+    }[echo];
+    if (!title) title = "Plain Text";
+    p.html($("<span>").html(title).addClass("CodeTitle"));
+
+    let span = $("<span>").addClass("Buttons").appendTo(p);
+    for (let b of ["copy", "new_tab", "download"]) {
+        $("<img>").attr({"data-echo": b, alt: b, src: `../media/${b}.svg`}).appendTo(span);
+    }
+}
+
 
 /*** Navigation tree ***/
 
@@ -142,6 +172,11 @@ page.onload = (feed) => {
     let data = page._data;
     let title = data.title;
     document.title = $("#MainTitle").html(title ? title : "Page").text();
+
+    // Enable copy/open operation on .Code elements
+    $(".IO").removeClass("IO").addClass("Code");
+    $("pre.Code, pre.CodeScroll").attr({spellcheck: false});
+    for (let e of $("[data-echo]")) copy_or_open($(e));
 
     // Append handouts section and remove teacher-only preview
     page.handouts(data);
@@ -260,13 +295,6 @@ page.video = s => {
     });
 
 
-    // Enable copy/open operation on .Code elements
-    $(".IO").removeClass("IO").addClass("Code");
-    $("pre.Code, pre.CodeScroll").attr({spellcheck: false});
-    $("[data-echo=copy]").attr("data-echo", "text");
-    apply("[data-echo]", copy_or_open);
-
-
 */
 
 
@@ -290,6 +318,10 @@ page.click = ev => {
     if (actions.feed) page.load(actions.feed);
     if (actions.open) window.open(actions.open);
     if (actions.gdrv) window.open("https://drive.google.com/file/d/" + actions.gdrv);
+    let echo = e.closest("data-echo").attr("data-echo");
+    if (echo) {
+        console.log(echo, e);
+    }
     return true;
 }
 

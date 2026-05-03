@@ -172,6 +172,25 @@ a[href], .Blue, .Link, .BtnLink > button, #Title {color: var(--blue)}
     text-decoration: underline;
 }
 
+p.EchoControl {
+    width: calc(100% - 1em);
+    height: 2em;
+    padding: 0.25em 0.5em;
+    margin-bottom: 0;
+    padding-bottom: 0em;
+    background-color: var(--grey1);
+    border-bottom: 1px solid black;
+    color: var(--blue);
+}
+
+p.EchoControl > span.Buttons {float: right}
+
+p.EchoControl > span.CodeTitle {
+    color: black;
+    font-style: italic;
+    vertical-align: middle;
+}
+
 .Code, .CodeScroll, code {
     font-family: "Noto Sans Mono", monospace;
     font-weight:bold;

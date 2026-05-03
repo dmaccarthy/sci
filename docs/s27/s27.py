@@ -1,7 +1,7 @@
 import os
 
-fldr = "p20/skill/"
-files = ["expDes", "algebra"]
+fldr = "cs_new/sp1/"
+files = ["ide"]
 
 def svg_line(line, n):
     line = line.split("=")[1].split(">")[0].split("#")
