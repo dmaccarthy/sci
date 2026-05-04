@@ -31,7 +31,7 @@ scripts.cache = {};
 function get_image(key, element) {
     // Get image URL from @key
     // if (key == "today") return calendar_icon.url();
-    img = get_image.map[key];
+    img = key.indexOf("://") == -1 ? get_image.map[key] : key;
     if (!img) {
         img = `../media/${key}`;
         if (key.indexOf(".") == -1) img += ".svg";
@@ -56,9 +56,13 @@ get_image.map = {
 // }
 
 function font_size(s) {
-    let b = $("body");
-    let f = round(s * parseFloat(b.css("font-size")), 1)
-    b.css("font-size", Math.min(64, Math.max(7, f)));
+    /* Adjust the font size */
+    let f, b = $("body");
+    if (s === true) f = parseFloat(localStorage.getItem("font-size"));
+    if (f == null) f = round(s * parseFloat(b.css("font-size")), 1);
+    f = Math.min(64, Math.max(7, f));
+    b.css("font-size", f + "px");
+    localStorage.setItem("font-size", f);
     metrics(1);
 }
 
@@ -100,8 +104,9 @@ function copy_or_open(ei) {
     p.html($("<span>").html(title).addClass("CodeTitle"));
 
     let span = $("<span>").addClass("Buttons").appendTo(p);
+    title = {copy: "Copy to clipboard", new_tab: "Open in new browser tab", download: "Download"};
     for (let b of ["copy", "new_tab", "download"]) {
-        $("<img>").attr({"data-echo": b, alt: b, src: `../media/${b}.svg`}).appendTo(span);
+        $("<img>").attr({"data-echo": b, alt: b, title: title[b], src: `../media/${b}.svg`}).appendTo(span);
     }
 }
 
@@ -138,19 +143,23 @@ page.jump = n => {
     if (i >= 0 && i < feeds.length) page.load(feeds[i]);
 }
 
-page.load = (feed) => {
+page.load = (feed, args) => {
+    if (args == null) {
+        [feed, args] = feed.split("@");
+        if (args) args = qs_args(null, args);
+    }
     if (page._cache[feed]) return page.onload(feed);
     console.log("Fetching page:", feed);
     fetch(feed + ".htm?_" + (new Date().getTime())).then(r => {
         if (r.ok) r.text().then(t => {
             page._cache[feed] = t;
-            page.onload(feed);
+            page.onload(feed, args);
         });
         else msg(`Unable to load page:<br/>${feed}`);
     });
 }
 
-page.onload = (feed) => {
+page.onload = (feed, args) => {
     page.clear();
 
     // Update navigation tree
@@ -170,8 +179,6 @@ page.onload = (feed) => {
     // Add page content to DOM and set page title
     let art = $("main > article").html(page._cache[feed]);
     let data = page._data;
-    let title = data.title;
-    document.title = $("#MainTitle").html(title ? title : "Page").text();
 
     // Enable copy/open operation on .Code elements
     $(".IO").removeClass("IO").addClass("Code");
@@ -195,17 +202,30 @@ page.onload = (feed) => {
 
         // Run page scripts
         for (let f of page._run) f();
+        page.vars();
 
         // Render TeX using MathJax, then fix page metrics
         mjax_render(art.find(".TeX"), 0, "2px").then(() => {
-            metrics(1);
-            setTimeout(() => $("body, main").css({visibility: "visible"}), 10);
+            metrics(1, args ? args.action : null);
+            setTimeout(() => {
+                $("body, main").css({visibility: "visible"});
+                metrics(1);
+            }, 10);
         });
     }
 
     // Load SVG2 animations
     if (data.svg2) scripts(data.svg2).then(after);
     else after();
+}
+
+page.tab = () => $("#Top button.Selected").attr("data-action");
+page.post = () => $("main article > section.Post").filter(`[data-action='${page.tab()}']`);
+
+page.set_title = () => {
+    let title = page.post().attr("data-title");
+    if (!title) title = page._data.title;
+    document.title = $("#MainTitle").html(title ? title : "Page").text();
 }
 
 page.unpublish = (art, data) => {
@@ -285,18 +305,17 @@ page.video = s => {
     aspect();
 }
 
-/*
+page.vars = () => {
+    for (let e of $(".Var")) {
+        e = $(e);
+        e.html(page.vars.map[e.html()]);
+    }
+}
 
-    // Page and site variables
-    apply(".Var", (ei) => {
-        let html = ei.html();
-        html = data[html] ? data[html] : siteData[html];
-        ei.html(html);
-    });
-
-
-*/
-
+page.vars.map = {
+    email: "david.maccarthy@eips.ca",
+    currentYear: (new Date().getFullYear()),
+}
 
 
 /*** Page scripts ***/
@@ -318,10 +337,11 @@ page.click = ev => {
     if (actions.feed) page.load(actions.feed);
     if (actions.open) window.open(actions.open);
     if (actions.gdrv) window.open("https://drive.google.com/file/d/" + actions.gdrv);
-    let echo = e.closest("data-echo").attr("data-echo");
-    if (echo) {
-        console.log(echo, e);
-    }
+    let echo = e.closest("[data-echo]");
+    if (echo.length) code_echo(
+        e.closest("p.EchoControl").next("pre[data-echo]"),
+        ["copy", "new_tab", "download"].indexOf(echo.attr("data-echo"))
+    );
     return true;
 }
 
@@ -363,17 +383,91 @@ $(() => {
     page._tree = new CourseTree("#Left > ul.TreeTop ul");
     page._tree.load(...trees).then(t => {
         let feed = location.hash.substring(1);
-        if (!feed) feed = "home";
-        t.select(feed);
-        mjax_wait().then(() => page.load(feed));
+        if (feed) feed = feed.replace("cs_new/", "cs/");
+        else feed = "home";
+        t.select(feed.split('@')[0]);
+        mjax_wait().then(() => {
+            font_size(true);
+            page.load(feed);
+        });
     });
     let btns = $("#Top > p.BtnGrid > button").on("click", ev => {
         btns.removeClass("Selected");
-        $(ev.currentTarget).addClass("Selected");
-        arrange();
-        metrics(1);
+        metrics(1, $(ev.currentTarget).attr("data-action"));
     });
 });
+
+
+/*** Appearance ***/
+
+function wide() {return $("#Left").css("position") == "fixed"}
+
+function arrange(sel) {
+    let posts = $("main > article > section.Post").hide();
+    let top = $("#Top > p.BtnGrid");
+    let btns = top.children("button").hide();
+    if (!sel) sel = btns.filter(".Selected").attr("data-action");
+    for (let p of posts) {
+        let a = $(p).attr("data-action");
+        btns.filter(`[data-action='${a}']`).appendTo(top).show();
+    }
+    let noleft = !wide();
+    if (!sel) sel = $(top.children("button").filter(":visible")[0]).attr("data-action");
+    if (noleft) btns.filter(`[data-action='tree']`).prependTo(top).show();
+    btns.removeClass(".Selected");
+    btns.filter(`[data-action='${sel}']`).addClass("Selected");
+    posts.filter(`[data-action='${sel}']`).show();
+    let e = $("#Left");
+    if (noleft && sel != "tree") e.hide();
+    else e.show();
+    e = $("#MainTitle");
+    if (noleft && sel == "tree") e.hide();
+    else e.show();
+}
+
+function metrics(force, sel) {
+    /* Adjust margins, image sizes, etc. */
+    if ($("body").hasClass("Present")) return;
+    let fixed = wide();
+    let left = $("#Left");
+    let top = $("#Top");
+    let w = fixed ? left.outerWidth() : 0;
+    let wTop = $(window).width() - w;
+    top.css({"margin-left": w, width: wTop + "px"});
+    if (fixed != metrics.wide) {
+        if (fixed && page._tree.find(page._feed).children("ul").length)
+            $("#Top button[data-action='tree']").removeClass("Selected");
+        metrics.wide = fixed;
+        arrange(sel);
+    }
+    else if (force) arrange(sel);
+    page.set_title();
+    $("body").css({"margin-left": (w + 8) + "px", "margin-top" : (top.outerHeight() + 20) + "px"});
+    svg_aspect();
+    scroll_mjax();
+    $(window).scrollTop(0);
+}
+
+function svg_aspect() {
+    let svg = $("svg[data-aspect]");
+    for (let e of svg) {
+        e = $(e);
+        let h = Math.round(parseFloat(e.css("width")) / jeval_frac(e.attr("data-aspect")));
+        if (h) e.css({height: `${Math.round(h)}px`});
+    }
+}
+
+function scroll_mjax() {
+    for (let e of $("section.Post:visible p[data-latex]:visible").removeClass("AutoScroll")) {
+        if (e.scrollWidth > e.clientWidth) $(e).addClass("AutoScroll");        
+    }
+}
+
+function scroll_bottom(t) {
+    let h = $("html");
+    let y = h[0].scrollHeight - $(window).height();
+    h.animate({scrollTop: y < 0 ? 0 : y}, t ? t : 500);
+}
 
 
 /*** Swipe handlers ***/

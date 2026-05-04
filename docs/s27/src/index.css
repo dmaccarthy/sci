@@ -77,7 +77,7 @@ body:not(.Present) *:is(.Present, ._Present), .Hidden {display: none}
 body:is(.Present, .Slides) td.Reveal span {display: none}
 
 button {
-    font-size: 90%; /*14px;*/
+    font-size: 90%;
     background-color: #fff0;
     border: none;
     margin: 1em;
@@ -97,7 +97,6 @@ p.BtnGrid {
     text-align: center;
 }
 
-p.BtnGrid > button {margin: 1em}
 
 @media (min-width: 840px) {
 
@@ -107,7 +106,7 @@ body {font-size: 16px}
 #Left {
     background: linear-gradient(90deg, rgba(220, 220, 248, 1) 0%, rgba(255, 255, 255, 1) 100%);
     max-width: 30%;
-    width: 348px; /*24em;*/
+    width: 320px; /*24em;*/
     height: 100vh;
     overflow: auto;
     position: fixed;
@@ -123,11 +122,24 @@ body {font-size: 16px}
 
 main {
 
-max-width: 1080px;
+max-width: 960px;
 margin: auto;
 
 li {margin: 0.4em 0}
 p, ol, ul {margin: 1em 0}
+
+p.BtnGrid > button {
+    min-width: calc(var(--btn) + 3.5em);
+    min-height: calc(var(--btn) + 1em);
+}
+
+img[data-echo] {
+    vertical-align: middle;
+    width: 1.25em;
+    height: 1.25em;
+    padding: 3px 8px;
+    cursor: pointer;
+}
 
 table.Calendar {
     width: 40em;
@@ -150,7 +162,6 @@ td.Reveal span {color: red}
 .Left {text-align: left}
 .Right {text-align: right}
 .Defn {text-decoration: underline}
-a[href], .Blue, .Link, .BtnLink > button, #Title {color: var(--blue)}
 .Answer, .Red {color: red}
 .Comment {color: #999999}
 .DocString {color: green}
@@ -166,29 +177,33 @@ a[href], .Blue, .Link, .BtnLink > button, #Title {color: var(--blue)}
 .NoTop {margin-top: 0}
 .NoBorder, table.NoBorder *:is(td, th) {border: none}
 
-*:is(a[href], .Link, .BtnLink > button):hover {
+a, .Blue, .Link, .BtnLink > button, #Title {
     color: var(--blue);
+    text-decoration: none;
+}
+
+
+*:is(a, .Link, .BtnLink > button):hover {
     cursor: pointer;
     text-decoration: underline;
 }
 
 p.EchoControl {
     width: calc(100% - 1em);
-    height: 2em;
-    padding: 0.25em 0.5em;
+    padding: 0.35em 0.5em;
     margin-bottom: 0;
-    padding-bottom: 0em;
     background-color: var(--grey1);
     border-bottom: 1px solid black;
     color: var(--blue);
 }
+
+p.EchoControl * {vertical-align: middle}
 
 p.EchoControl > span.Buttons {float: right}
 
 p.EchoControl > span.CodeTitle {
     color: black;
     font-style: italic;
-    vertical-align: middle;
 }
 
 .Code, .CodeScroll, code {

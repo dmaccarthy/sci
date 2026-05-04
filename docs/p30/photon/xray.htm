@@ -60,19 +60,75 @@
     <li>An electron is accelerated from rest by a potential difference of 20.0 kV.
     <ol type="a">
         <li>Calculate the final speed of the electron.</li>
+        <div class="Answer">
+            <p>Since the electron starts from rest (<span class="TeX">E_{ki}</span> = 0 J), the final kinetic energy is equal to the work done by the accelerating electric field...</p>
+            <p class="TeX">\frac{1}{2}mv^2 = q\Delta V</p>
+            <p class="TeX">v^2 = \frac{2q\Delta V}{m}</p>
+            <p class="TeX">v = \sqrt{\frac{2q\Delta V}{m}} = \rm \sqrt{\frac{2\cdot 1.60\times 10^{-19}\ C\cdot 2.00\times 10^4\ V}{9.11\times 10^{-31}\ kg}} = 8.38\times 10^7\ m/s</p>
+        </div>
+
         <li>If the electron then collides with a massive particle (e.g. a nucleus) and all of the electron’s energy is radiated as a single photon, what would the photon’s frequency and wavelength be?</li>
+        <div class="Answer">
+            <p>The electron’s energy, which is used to produce the photon, is...</p>
+            <p class="TeX">E_k = q\Delta V = 1e\cdot \rm 2.00\times 10^4\ V = 2.00\times 10^4\ eV = 3.20\times 10^{-15}\ J</p>
+            <p>The photon frequency and wavelength are..</p>
+            <p class="TeX">f = \frac{E}{h} = \rm \frac{2.00\times 10^4\ eV}{4.14\times 10^{-15}\ eV\cdot s} = 4.83\times 10^{18}\ Hz</p>
+            <p class="TeX">\lambda = \frac{c}{f} = \rm \frac{3.00\times 10^8\ m/s}{4.83\times 10^{18}\ Hz} = 6.22\times 10^{-11}\ m</p>
+        </div>
+
         <li>Compare the original momentum of the electron to the momentum of the photon emitted. Are these results consistent with the law of momentum conservation? Explain.</li>
+        <div class="Answer">
+            <p>Calculate the photon momentum...</p>
+            <p class="TeX">p = \frac{E}{c} = \rm \frac{3.20\times 10^{-15}\ J}{3.00\times 10^8\ m/s} = 1.07\times 10^{-23}\ N\cdot s</p>
+            <p>Calculate the electron momentum...</p>
+            <p class="TeX">p = mv = \rm 9.11\times 10^{-31}\ kg\cdot 8.38\times 10^7\ m/s\ = 7.63\times 10^{-23}\ N\cdot s</p>
+            <p>Most of the electron’s momentum is actually transferred to the nucleus that the electron collides with. Because of its very large mass, the nucleus acquires a very small velocity, and therefore a negligible amount of kinetic energy.</p>
+        </div>
+
         <li>If the colliding electron produced several photons, would the photons have a higher, lower, or the same frequency as in (b)? Explain.</li>
+        <p class="Answer">Because total energy must be conserved, the energy of each photon must be less than the total. Thus the photons would all have frequencies lower than 4.83 × 10<sup>18</sup> Hz.</p>
     </ol></li>
 
     <li><ol type="a">
         <li>What is the shortest wavelength EMR that could be emitted during a collision by an electron moving with an initial speed of 2.35 × 10<sup>6</sup> m/s? [Hint: Calculate the electron’s kinetic energy first.]</li>
+        <div class="Answer">
+            <p>The total energy available is...</p>
+            <p class="TeX">E = \frac{1}{2}mv^2 = \rm \frac{1}{2}(9.11\times 10^{-31}\ kg)(2.35\times 10^6\ m/s)^2 = 2.52\times 10^{-18}\ J</p>
+            <p>Assuming that the photon acquires all of this energy, the photon wavelength is...</p>
+            <p class="TeX">\lambda = \frac{hc}{E} = \rm \frac{(6.63\times 10^{-34}\ J\cdot s) (3.00\times 10^8\ m/s)}{2.52\times 10^{-18}\ J} = 7.91\times 10^{-8}\ m</p>
+        </div>
+
         <li>Calculate and compare the electron’s initial momentum to the photon’s final momentum. Where did the “lost” momentum go?</li>
+        <div class="Answer">
+            <p>Calculate the photon momentum...</p>
+            <p class="TeX">p = \frac{E}{c} = \rm \frac{2.52\times 10^{-18}\ J}{3.00\times 10^8\ m/s} = 8.38\times 10^{-27}\ N\cdot s</p>
+            <p>Calculate the electron momentum...</p>
+            <p class="TeX">p = mv = \rm 9.11\times 10^{-31}\ kg\cdot 2.35\times 10^6\ m/s\ = 2.14\times 10^{-24}\ N\cdot s</p>
+            <p>Most of the electron’s momentum is actually transferred to the object that the electron collides with. Because the object is likely much more massive than the electron, it acquires a very small velocity, and therefore a negligible amount of kinetic energy.</p>
+        </div>
     </ol></li>
 
     <li><ol type="a">
         <li>An x-ray machine used for medical imaging produces x-rays with a maximum frequency of 3.29 × 10<sup>19</sup> Hz. These x-rays are emitted when high-speed electrons collide with a stationary target. What is the speed of the electrons, and what accelerating voltage does this x-ray machine apply to the electrons?</li>
+        <div class="Answer">
+            <p>Calculate the maximum photon energy, which is equal to the electron kinetic energy...</p>
+            <p class="TeX">E = hf = \rm (6.63\times 10^{-34}\ J\cdot s) (3.29\times 10^{19}\ Hz) = 2.18\times 10^{-14}\ J</p>
+            <p>Since this energy comes from an electron, the electron speed is...</p>
+            <p class="TeX">v = \sqrt{\frac{2E_k}{m}} = \rm \sqrt{\frac{2\cdot 2.18\times 10^{-14}\ J}{9.11\times 10^{-31}\ kg}} = 2.19\times 10^8\ m/s</p>
+            <p>Note that this speed is only approximate; since it is more than 2/3 of the speed of light, the Newtonian kinetic energy formula <span class="NoWrap">(<span class="TeX">\frac{1}{2}mv^2</span>)</span> is no longer valid.</p>
+        </div>
+
         <li>How much momentum does each photon have?</li>
+        <div class="Answer">
+            <p>Calculate the photon momentum...</p>
+            <p class="TeX">p = \frac{E}{c} = \rm \frac{2.18\times 10^{-14}\ J}{3.00\times 10^8\ m/s} = 7.27\times 10^{-23}\ N\cdot s</p>
+        </div>
+<!--
+
+p = E / c = 2.18 × 10–14 J / (3.00 × 108 m/s) = 7.27 × 10–23 N·s
+
+-->
+
     </ol></li>
 
 </ol>
