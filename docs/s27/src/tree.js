@@ -44,7 +44,10 @@ path(id) {
 
 select(id) {
     this.top$.find("li").addClass("Collapsed").removeClass("Selected");
+    this.top$.find("ul").removeClass("LeftBorder");
     let e = this.find(id).addClass("Selected");
+    if (e.children("ul").addClass("LeftBorder").length == 0)
+        e.closest("ul").addClass("LeftBorder");
     for (e of this.path(e)) e.removeClass("Collapsed");
 }
 
@@ -68,5 +71,3 @@ feed_list() {
 }
 
 }
-
-

@@ -50,11 +50,6 @@ get_image.map = {
 
 /*** Miscellaneous functions ***/
 
-// function go_current() {
-//     let feed = $($("section.Post[data-action='cal'] tr[data-feed]:not(.Old)")[0]).attr("data-feed");
-//     if (feed) page.load(feed);
-// }
-
 function font_size(s) {
     /* Adjust the font size */
     let f, b = $("body");
@@ -198,6 +193,7 @@ page.onload = (feed, args) => {
         e.prepend("<br/>").prepend(get_image(e.attr("data-icon"), 1));
     }
 
+    args = args ? args.action : null;
     let after = () => { // Actions to perform after SVG2 scripts have run
 
         // Run page scripts
@@ -206,10 +202,10 @@ page.onload = (feed, args) => {
 
         // Render TeX using MathJax, then fix page metrics
         mjax_render(art.find(".TeX"), 0, "2px").then(() => {
-            metrics(1, args ? args.action : null);
+            metrics(1, args);
             setTimeout(() => {
                 $("body, main").css({visibility: "visible"});
-                metrics(1);
+                metrics(1, args);
             }, 10);
         });
     }

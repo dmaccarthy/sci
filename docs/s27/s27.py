@@ -1,7 +1,7 @@
 import os
 
-fldr = "cs_new/sp1/"
-files = ["ide"]
+fldr = "cs_new/pp/"
+files = ["func", "scope", "top", "except", "pre"]
 
 def svg_line(line, n):
     line = line.split("=")[1].split(">")[0].split("#")
@@ -14,6 +14,9 @@ def svg_line(line, n):
 def fix_one_file(src):
     with open("../" + src, encoding="utf8") as inFile:
         data = inFile.read()
+    data = data.replace('data-icon="python"', 'data-action="slides"')
+    data = data.replace('<h2 class="Collapse">', '<h3>')
+    data = data.replace('</h2>', '</h3>')
     data = data.replace('data-icon=', 'data-action=')
     data = data.replace('<ol class="Questions">', '<ol>')
 

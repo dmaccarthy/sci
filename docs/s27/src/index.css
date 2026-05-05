@@ -14,10 +14,13 @@ list-style-type: none;
 color: var(--blue);
 padding-left: 0;
 
+li.XX.Selected > ul, .LeftBorder {border-left:1px solid #0065fe}
+
 ul {
     list-style-type: none;
     color: var(--blue);
-    padding-left: 1.5em;
+    margin-left: 0.75em;
+    padding-left: 0.75em;
 }
 
 li {padding: 2px 0 2px 0}
@@ -189,9 +192,9 @@ a, .Blue, .Link, .BtnLink > button, #Title {
 }
 
 p.EchoControl {
-    width: calc(100% - 1em);
+    width: calc(100% - 2em);
     padding: 0.35em 0.5em;
-    margin-bottom: 0;
+    margin: 1em auto 0 auto;
     background-color: var(--grey1);
     border-bottom: 1px solid black;
     color: var(--blue);
@@ -212,8 +215,9 @@ p.EchoControl > span.CodeTitle {
 }
 
 pre.Code, pre.CodeScroll {
+    width: calc(100% - 2em);
     background-color: var(--grey1);
-    margin-top: 0;
+    margin: 0 auto 1em auto;
     padding: 0.5em;
     color: black;
     overflow: auto;

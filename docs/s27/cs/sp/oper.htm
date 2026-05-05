@@ -1,0 +1,94 @@
+<section class="Post" data-action="slides">
+<h3>Operators</h3>
+
+<p><em class="Defn">Operators</em> are symbols that Python uses to represent operations that can be performed on
+	your program’s data. For example, we can use the <code>+</code> symbol to represent addition in a more concise
+	and readable way than using a function. The two expressions below both produce 8 as a result, but the first
+	line (using the <code>+</code>  operator) is easier to understand than using the <code>sum</code> function.</p>
+
+<pre data-echo="s09_ex1.py" data-title="1" class="Code">x = 2 + 6         <span class="Comment"># Good!</span>
+y = sum([2, 6])   <span class="Comment"># Not so good</span>
+print(x, y)</pre>
+
+<h3>Order of Operations</h3>
+
+<p>Just like in Math, Python follows an order of operations when evaluating expressions that use operators.</p>
+
+<pre data-echo="s09_ex2.py" data-title="1" class="Code">print(5 + 3 * 2)      <span class="Comment"># 11 (Multiplication has precedence)</span>
+print((5 + 3) * 2)    <span class="Comment"># 16 (Brackets have precedence)</span></pre>
+
+<p>As the two statements above demonstrate, multiplication has a higher precedence than addition, and therefore
+	the multiplication is performed first. Parentheses can be used to alter the order of operations; operations
+	within the parentheses are always performed before those outside the brackets. When there are multiple pairs
+	of brackets, Python evaluates the innermost ones first and then works outwards.</p>
+
+<pre data-echo="s09_ex3.py" data-title="1" class="Code">print((6 - (5 + 3)) * 2)  <span class="Comment"># -4</span></pre>
+
+<p>The order of precedence for Python operators, from highest precedence to lowest, is shown below. We will
+	learn about categories 3 and 4 in the next lesson.</p>
+<ol>
+	<li>Parentheses</li>
+	<li>Arithmetic<ol style="list-style-type:lower-alpha">
+		<li>Exponents (<code>**</code>)</li>
+		<li>Unary Positive & Negative (<code>+</code>, <code>-</code>)</li>
+		<li>Multiplication, Division, Remainder (<code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>)</li>
+		<li>Addition, Subtraction (<code>+</code>, <code>-</code>)</li>
+	</ol></li>
+	<li>Comparison & Membership (<code>==</code>, <code>!=</code>, <code>&lt;=</code>, <code>&gt;=</code>,
+		<code>&lt;</code>, <code>&gt;</code>, <code>is</code>, <code>is not</code>, <code>in</code>,
+		<code>not in</code>)</li>
+	<li>Boolean</code><ol style="list-style-type:lower-alpha">
+		<li><code>not</code></li>
+		<li><code>and</code></li>
+		<li><code>or</code></li>
+	</ol></li>
+</ol>
+
+<h3>Division</h3>
+
+<p>Python provides two separate division operators. The “true division” operator is a single slash character.
+	True division produces a result that is a <code>float</code>. The “floor division” operator is a double slash.
+	Floor division is used when you want the result to be an integer. If the result of the division is not an
+	exact integer, Python rounds the answer <em>down</em> to the next lowest integer; if you want to round to the
+	<em>closest</em> integer, you should use the <code>round</code> built-in function instead.</p>
+
+<pre data-echo="s09_ex4.py" data-title="1" class="Code">print(7 / 4)         <span class="Comment"># 1.75</span>
+print(7 // 4)        <span class="Comment"># 1</span>
+print(round(7 / 4))  <span class="Comment"># 2</span></pre>
+
+<p>The “modulo” operator (<code>%</code>) calculates remainders. When you first learned about division in
+	elementary school, your teacher probably talked about “grouping”. We can think of 7 ÷ 4 as meaning “arrange 7
+	donuts into groups of 4”. We only have enough donuts to make 1 complete group, but we have 3 donuts left over.
+	The number of complete groups is called the <em class="Defn">quotient</em> (1) and the number left over is
+	called the <em class="Defn">remainder</em> (3). The floor division and modulo operators perform these
+	calculations.</p>
+
+<pre data-echo="s09_ex5.py" data-title="1" class="Code">print(7 // 4)   <span class="Comment"># Quotient = 1</span>
+print(7 % 4)    <span class="Comment"># Remainder = 3</span></pre>
+
+<p>One important use of the modulo operator is to check if one number is a multiple of another. The remainder
+	will always be zero when you divide a number by one of its factors.</p>
+
+<pre data-echo="s09_ex6.py" data-title="1" class="Code">print(7 % 4)    <span class="Comment"># 3 ... 7 is NOT a multiple of 4</span>
+print(8 % 4)    <span class="Comment"># 0 ... 8 IS a multiple of 4</span></pre>
+
+<p>If you attempt to use these operators on floating point numbers, the answers will also be floats.</p>
+
+<pre data-echo="s09_ex7.py" data-title="1" class="Code">print(7.2 // 4)   <span class="Comment"># 1.0</span>
+print(7.2 % 4.0)  <span class="Comment"># 3.2</span></pre>
+
+</section>
+
+<section class="Post" data-action="correct">
+<h3>Assignment</h3>
+    <p>Locate this Word document in your OneDrive Computing Science folder:</p>
+    <p class="Center"><code>cs10/python/s09_operators.docx</code></p>
+	<p>Open and complete the assignment in Microsoft Word.</p>
+	<p>Use the program <code>s09_test.py</code> to test/check your answers to all questions.</p>
+</section>
+
+<script type="text/javascript">
+
+page({title: "Operators"});
+
+</script>

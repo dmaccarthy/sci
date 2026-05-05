@@ -90,41 +90,87 @@ https://docs.google.com/document/d/1Mpe6KLtiwrwvo_Ir_y2LdkgkfOw4RtF5ZI7DssYNbnY/
 
 <ol>
     <li>Calculate the work function of a metal that has a threshold frequency of <span class="NoWrap">2.65 × 10<sup>14</sup></span> Hz. What part of the spectrum is this EMR in?</li>
+    <div class="Answer">
+        <p class="TeX">W = hf_0 = \rm (6.63\times 10^{-34}\ J\cdot s) (2.65\times 10^{14}\ Hz) = 1.76\times 10^{-19}\ J = 1.10\ eV</p>
+        <p class="TeX">\lambda_0 = \frac{c}{f_0} = \rm \frac{3.00\times 10^8\ m/s}{2.65\times 10^{14}\ Hz} = 1.13\ \mu m</p>
+        <p>Infrared</p>
+    </div>
 
     <li>Calculate the threshold frequency of a metal that has a work function of 3.06 eV. What part of the spectrum is this EMR in?</li>
+    <div class="Answer">
+        <p class="TeX">f_0 = \frac{W}{h} = \rm \frac{3.06\ eV}{4.14\times 10^{-15}\ eV\cdot s} = 7.39\times 10^{14}\ Hz</p>
+        <p class="TeX">\lambda_0 = \frac{c}{f_0} = \rm \frac{3.00\times 10^8\ m/s}{7.39\times 10^{14}\ Hz} = 403\ nm</p>
+        <p>Visible</p>
+    </div>
 
     <li><ol type="a">
         <li>Calculate the threshold frequency of a metal that has a work function of <span class="NoWrap">2.52 × 10<sup>–19</sup></span> J.</li>
+        <p class="Answer TeX">f_0 = \frac{W}{h} = \rm \frac{2.52\times 10^{-19}\ J}{6.63\times 10^{-34}\ J\cdot s} = 3.80\times 10^{14}\ Hz</p>
+
         <li>Determine the maximum kinetic energy of photoelectrons when this metal is exposed to light at (i) 538 nm, (ii) 425 nm.</li>
+        <div class="Answer">
+            <p class="TeX">E_{k1} = \frac{hc}{\lambda_1} - W</p>
+            <p class="TeX">= \rm \frac{(6.63\times 10^{-34}\ J\cdot s) (3.00\times 10^8\ m/s)}{5.38\times 10^{-7}\ m} - 2.52\times 10^{-19}\ J</p>
+            <p class="TeX">= \rm 1.18\times 10^{-19}\ J = 0.738\ eV</p>
+            <p class="TeX">E_{k2} = \frac{hc}{\lambda_2} - W</p>
+            <p class="TeX">= \rm \frac{(6.63\times 10^{-34}\ J\cdot s) (3.00\times 10^8\ m/s)}{4.25\times 10^{-7}\ m} - 2.52\times 10^{-19}\ J</p>
+            <p class="TeX">= \rm 2.16\times 10^{-19}\ J = 1.35\ eV</p>
+        </div>
     </ol></li>
 
     <li>If a photoelectrode has a threshold frequency of <span class="NoWrap">3.85 × 10<sup>14</sup></span> Hz, what minimum frequency of EMR must be used to produce photoelectrons with a minimum speed of <span class="NoWrap">4.20 × 10<sup>5</sup></span> m/s?</li>
+    <div class="Answer">
+        <p class="TeX">E_k^{max} = \frac{1}{2}mv_{max}^2 = \rm \frac{1}{2} 9.11\times 10^{-31}\ kg\cdot (4.20\times 10^5\ m/s)^2 = 8.04\times 10^{-20}\ J</p>
+        <p>Using energy conservation...</p>
+        <p class="TeX">hf = E_k^{max} + W = E_k^{max} + hf_0</p>
+        <p class="TeX">f = \frac{E_k^{max}}{h} + f_0</p>
+        <p class="TeX">= \rm \frac{8.04\times 10^{-20}\ J}{6.63\times 10^{-34}\ J\cdot s} + 3.85\times 10^{14}\ Hz</p>
+        <p class="TeX">= \rm 5.06\times 10^{14}\ Hz</p>
+    </div>
 
     <li><ol type="a">
         <li>Determine the work function and threshold frequency for a metal if the stopping voltage is 2.83 V when the metal is exposed to UV radiation at 265 nm.</li>
+        <div class="Answer">
+            <p class="TeX">\frac{hc}{\lambda} = E_k^{max} + W</p>
+            <p class="TeX">W = \frac{hc}{\lambda} - E_k^{max}</p>
+            <p class="TeX">= \rm \frac{(4.14\times 10^{-15}\ eV\cdot s) (3.00\times 10^8\ m/s)}{2.65\times 10^{-7}\ m} - 2.83\ eV</p>
+            <p class="TeX">= \rm 1.86\ eV</p>
+            <p class="Answer TeX">f_0 = \frac{W}{h} = \rm \frac{1.86\ eV}{4.14\times 10^{-15}\ eV\cdot s} = 4.49\times 10^{14}\ Hz</p>
+        </div>
+
         <li>If the metal is exposed to red laser light at 632 nm, what will the maximum kinetic energy and speed of the photoelectrons be?</li>
+        <div class="Answer">
+            <p class="TeX">E_k^{max} = \frac{hc}{\lambda} - W</p>
+            <p class="TeX">= \rm \frac{(4.14\times 10^{-15}\ eV\cdot s) (3.00\times 10^8\ m/s)}{6.32\times 10^{-7}\ m} - 1.86\ eV</p>
+            <p class="TeX">= \rm 0.108\ eV = 1.73\times 10^{-20}\ J</p>
+        </div>
     </ol></li>
 
     <li>If the maximum photoelectron kinetic energy for a photoelectrode is 0.650 eV when exposed to light at 680 nm, what will be the maximum photoelectron kinetic energy when it is exposed to 410 nm light?</li>
- 
+    <div class="Answer">
+        <p>For the 680 nm light...</p>
+        <p class="TeX">W = \frac{hc}{\lambda} - E_k^{max}</p>
+        <p class="TeX">= \rm \frac{(4.14\times 10^{-15}\ eV\cdot s) (3.00\times 10^8\ m/s)}{6.80\times 10^{-7}\ m} - 0.650\ eV</p>
+        <p class="TeX">= \rm 1.15\ eV</p>
+        <p>For the 410 nm light...</p>
+        <p class="TeX">E_k^{max} = \frac{hc}{\lambda} - W</p>
+        <p class="TeX">= \rm \frac{(4.14\times 10^{-15}\ eV\cdot s) (3.00\times 10^8\ m/s)}{4.10\times 10^{-7}\ m} - 1.15\ eV</p>
+        <p class="TeX">= \rm 1.88\ eV = 3.01\times 10^{-19}\ J</p>
+    </div>
+
     <li>One of the data sets graphed below is real data. The other two are made up. Determine which data set is real and explain how you know the other data were not obtained from a real experiment.
     <div class="Center">
         <p class="Bold">Photoelectric Effect Data</p>
         <p data-cue="none"><svg class="w32 s18" data-svg2="p30/photon/img/pe.js#metal"></svg></p>
     </div>
     </li>
-    <p class="Answer">Metal “A” is the real data because the slope is <span class="NoWrap">4.14 × 10<sup>–15</sup></span> V·s, which is the correct value of <span class="TeX">h/e</span>. Metal “B” has a slope that is too large while metal “C” has a slope that is too small.</p>
-
-
+    <div class="Answer">
+        <p>For metal “A”, the slope of the best-fit line is...</p>
+        <p class="TeX">\rm slope = \frac{(2.9 - 0.0)\ V}{(10.0 - 3.0) \times 10^{14}\ Hz} = 4.14\times 10^{-15}\ V\cdot s</p>
+        <p>This is the correct value of <span class="TeX">h/e</span>, so this is the real data. Metal “B” has a slope that is too large while metal “C” has a slope that is too small.</p>
+    </div>
 </ol>
 </div></section>
-
-<!-- <section class="Post NoPrintIcon" data-show="2024.11.22.10" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1Mpe6KLtiwrwvo_Ir_y2LdkgkfOw4RtF5ZI7DssYNbnY">Answer Key</button>
-    </p>
-</div></section> -->
 
 <script type="text/javascript">
 

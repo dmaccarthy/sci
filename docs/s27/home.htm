@@ -23,7 +23,11 @@
 page({title: "Mr. Mac’s Website", svg2: [
 ]});
 
-// page.run(() => $("#Left ul.TreeTop > li > ul > li.Collapsed").removeClass("Hidden"));
-
+page.run(() => {
+    if (page.help) {
+        metrics(1, "help");
+        delete page.help;
+    }
+});
 
 </script>

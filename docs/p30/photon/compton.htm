@@ -83,27 +83,67 @@
 
 </div></section>
 
-<!-- <section class="Post NoPrintIcon" data-show="2024.11.26.10" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="19X-WhiOUKLSeMVpgySX9tHcMBQbsSSKR2xaDS-3sxzs">Answer Key</button>
-    </p>
-</div></section> -->
-
 <section class="Post" data-show="1" data-answers="1" data-icon="correct">
 <h2 class="Collapse">Practice</h2><div class="Collapse">
 <ol>
     <li>An x-ray photon with <span class="TeX">f_i</span> = 1.00 × 10<sup>19</sup> Hz collides with an electron at rest. The photon is scattered to an angle of 30.0° from its original direction.
     <ol type="a">
         <li>Calculate the wavelength, energy, and momentum of the incident photon.</li>
+        <div class="Answer">
+            <p class="TeX">\lambda_i = \frac{c}{f_i} = \rm \frac{3.00\times 10^8\ m/s}{1.00\times 10^{19}\ Hz} = 3.00\times 10^{-11}\ m</p>
+            <p class="TeX">E_i = hf_i = \rm (6.63\times 10^{-34}\ J\cdot s) (1.00\times 10^{19}\ Hz) = 6.63\times 10^{-15}\ J</p>
+            <p class="TeX">p_i = \frac{E_i}{c} = \rm \frac{6.63\times 10^{-15}\ J}{3.00\times 10^8\ m/s} = 2.21\times 10^{-23}\ N\cdot s</p>
+        </div>
+
         <li>Determine the wavelength of the scattered photon. Use the result to determine its energy and momentum.</li>
+        <div class="Answer">
+            <p class="TeX">\Delta\lambda = \frac{h}{mc}\left(1 - \cos\theta\right)</p>
+            <p class="TeX">\Delta\lambda = \rm \frac{6.63\times 10^{-34}\ J\cdot s}{9.11\times 10^{-31}\ kg\cdot 3.00\times 10^8\ m/s}\left(1 - \cos(30.0^\circ)\right) = 3.25\times 10^{-13}\ m</p>
+            <p class="TeX">\lambda_s = \lambda_i + \Delta\lambda = \rm 3.00\times 10^{-11}\ m + 3.25\times 10^{-13}\ m = 3.03\times 10^{-11}\ m</p>
+            <p class="TeX">E_s = \frac{hc}{\lambda_s} = \rm \frac{(6.63\times 10^{-34}\ J\cdot s) (3.00\times 10^8\ m/s)}{3.03\times 10^{-11}\ m} = 6.56\times 10^{-15}\ J</p>
+            <p class="TeX">p_s = \frac{E_s}{c} = \rm \frac{6.56\times 10^{-15}\ J}{3.00\times 10^8\ m/s} = 2.19\times 10^{-23}\ N\cdot s</p>
+        </div>
+
         <li>Using energy conservation, calculate the electron’s kinetic energy, speed, and momentum.</li>
+        <div class="Answer">
+            <p class="TeX">E_e = E_i - E_s = \rm (6.6300 - 6.5589) \times 10^{-15}\ J = 7.11\times 10^{-17}\ J</p>
+            <p class="TeX">v_e = \sqrt{\frac{2E_e}{m}} = \rm \sqrt{\frac{2\cdot 7.11\times 10^{-17}\ J}{9.11\times 10^{-31}\ kg}} = 1.25\times 10^7\ m/s</p>
+            <p class="TeX">p_e = mv_e = \rm 9.11\times 10^{-31}\ kg\cdot 1.25\times 10^7\ m/s = 1.14\times 10^{-23}\ N\cdot s</p>
+        </div>
+
         <li>Calculate the electron’s momentum using the law of momentum conservation. Does your answer agree with (c)?</li>
+        <div class="Answer">
+            <p class="Center"><svg class="s20" data-svg2="p30/photon/img/compton.js#pCons"></svg></p>
+            <p>Use the Law of Cosines...</p>
+            <p class="TeX">p_e = \sqrt{p_i^2 + p_s^2 - 2p_ip_s\cos\theta}</p>
+            <p class="TeX">= \rm \sqrt{2.21^2 + 2.19^2 - 2(2.21)(2.19)\cos 30.0^\circ} \times 10^{-23}\ N\cdot s</p>
+            <p class="TeX">= \rm 1.14\times 10^{-23}\ N\cdot s</p>
+            <p>Alternatively, you can substract the scattered photon momentum from the incident photon momentum using the <a target="Q1d" href="./?{%22v%22:%22[2.21,%200],%20@(2.186314,%20210)%20%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">component method</a>.</p>
+        </div>
+
         <li>Determine the direction of the electron relative to the direction of the incident and scattered photons.</li>
+        <div class="Answer">
+            <p>Use the Law of Sines...</p>
+            <p class="TeX">\frac{\sin\theta_e}{p_s} = \frac{\sin\theta}{p_e}</p>
+            <p class="TeX">\sin\theta_e = \frac{p_s\sin\theta}{p_e} = \rm \frac{2.19\cdot\sin 30.0^\circ}{1.14} = 0.961</p>
+            <p>We have omitted the momentum units, <span class="TeX">\rm 10^{-23}\ N\cdot s</span>, since they are the same for the numerator and denominator, and therefore cancel!</p>
+            <p class="TeX">\theta_e = \rm \sin^{-1} 0.961 = 73.9^\circ</p>
+            <p>If you used the component method to find the electron momentum...</p>
+            <p class="TeX">\theta_e = \rm \tan^{-1} \frac{-1.09}{0.317} = 73.9^\circ</p>
+        </div>
     </ol>
     </li>
 
     <li>X-rays of frequency 1.25 × 10<sup>19</sup> Hz were Compton scattered from free electrons. Detectors were set up at scattering angles of 15.0º, 30.0º, 45.0º, 60.0º, 75.0º, and 90.0º. Calculate the frequency of the scattered x-rays and the recoil speed of the electron for each of the observed angles.</li>
+    <div class="Answer">
+        <p>For the incident photon...</p>
+        <p class="TeX">\lambda_i = \frac{c}{f_i} = \rm \frac{3.00\times 10^8\ m/s}{1.25\times 10^{19}\ Hz} = 2.40\times 10^{-11}\ m</p>
+        <p class="TeX">E_i = hf_i = \rm (6.63\times 10^{-34}\ J\cdot s) (1.25\times 10^{19}\ Hz) = 8.29\times 10^{-15}\ J</p>
+        <p class="TeX">p_i = \frac{E_i}{c} = \rm \frac{8.29\times 10^{-15}\ J}{3.00\times 10^8\ m/s} = 2.76\times 10^{-23}\ N\cdot s</p>
+        <p>For the scattered photon...</p>
+        <p>For the electron...</p>
+    </div>
+
 
 </ol>
 </div></section>
