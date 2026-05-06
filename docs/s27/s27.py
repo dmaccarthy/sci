@@ -1,7 +1,7 @@
 import os
 
-fldr = "cs_new/pp/"
-files = ["func", "scope", "top", "except", "pre"]
+fldr = "p20/circ/"
+files = ["ucm", "ac", "appWt", "kep", "orbit"]
 
 def svg_line(line, n):
     line = line.split("=")[1].split(">")[0].split("#")

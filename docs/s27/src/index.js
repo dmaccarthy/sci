@@ -125,9 +125,11 @@ function page(data) {Object.assign(page._data, data)}
 page._cache = {}
 
 page.clear = () => {
+    if (page._final) for (let f of page._final) f();
     $("div.Message").remove();
     page._data = {};
     page._run = [];
+    page._final = [];
     $("#Top button").removeClass("Selected");
     $("main").css({visibility: "hidden"});
 }
@@ -317,6 +319,7 @@ page.vars.map = {
 /*** Page scripts ***/
 
 page.run = (...args) => {for (let a of args) page._run.push(a)}
+page.final = (...args) => {for (let a of args) page._final.push(a)}
 
 
 /*** Initialize page and event handlers ***/
@@ -510,7 +513,7 @@ $(window).on("beforeprint", () => {
 
 function slideshow() {
     $("#Top, #Left, #MainTitle, section.Post:not(:visible)").remove();
-    $("body").addClass("Present").css({margin: "8px"});
+    $("body").addClass("Present").css({margin: "8px", "font-size": ""});
     let all_cues = slideshow.cues = [];
     let cues = $("main").css({"max-width": "100%"}).find("section.Post:visible").find(slideshow.select).hide();
     for (let c of cues) {
@@ -524,6 +527,7 @@ function slideshow() {
     }
     sections.push(all_cues.length);
     slideshow.next_cue = 0;
+    svg_aspect();
 }
 
 slideshow.select = "[data-cue=true], *:is(p, h2, h3, table, ol, ul, li, div, section):not([data-cue=none], :first-child)";

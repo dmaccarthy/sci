@@ -8,8 +8,8 @@ _crt: (sel) => {
     g.line([0, 0.5], [-0.5, 1.3]);
     g.line([1, 0.5], [2, 1.3]);
     g = svg.group("sans");
-    g.gtext("Cathode", [], [-0.25, 1.6]);
-    g.gtext("Anode", [], [2, 1.6]);
+    g.text("Cathode", [-0.25, 1.4, "b"]);
+    g.text("Anode", [2, 1.4, "b"]);
 
     // Electron beam
     let beam = svg.group().css({fill: "none", stroke: "black", "stroke-dasharray": "2 6"});
@@ -34,8 +34,8 @@ _crt: (sel) => {
 
     // Label electrode wires
     g = svg.group(28);
-    let pm = [[1.6, -2.4], [-0.6, -2.4], [x, -3.5], [x, 3.3]];
-    for (let i=0; i<4; i++) g.gtext(i % 2 ? "–": "+", i > 1 ? ".Toggle0" : [], pm[i]);
+    let pm = [[1.6, -2.55], [-0.6, -2.5], [x, -3.6], [x, 3.1]];
+    for (let i=0; i<4; i++) g.text(i % 2 ? "–": "+", [...pm[i], "b"], 0, i > 1 ? ".Toggle0" : []);
 
     // Cathode ray tube
     let tube = svg.path([6, 1]).hor(0).arc_to([0, -1], 1).hor(6).arc_to([6, 1], 2.6, 1);

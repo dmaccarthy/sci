@@ -219,6 +219,9 @@
 
 "p30": {"home": {"t": "@Physics 30"},
 
+"atom/crt#": {"t": "Lab: Thomson’s CRT Experiment", "s": "2026.5.11"},
+"atom/crt": {"t": "@Thomson’s CRT Experiment", "n": "15.1", "cal": "2026.5.13", "s": "2026.5.11", "a": "2026.5.14"},
+
 "photon/bbr": {"t": "@Thermal (Blackbody) Radiation", "n": "14.1", "s": "2026.4.27", "a": "2026.4.29"},
 "photon/photon": {"t": "@Photons", "n": "14.2", "s": "2026.4.29", "a": "2026.4.30"},
 "photon/pe#": {"t": "Simulation: Photoelectric Effect", "s": "2026.5.5"},
