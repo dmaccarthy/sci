@@ -76,7 +76,7 @@
 </section>    
 </section>
 
-<section class="Post Center" data-show="1" data-answers="1" data-title="Heliocentric Model" data-action="sim">
+<section class="Post Center" data-title="Heliocentric Model" data-action="anim">
 <p><svg id="Helio" class="w30 s16"></svg></p>
 <p data-cue="none"><input type="range" id="AnimSpeed" value="0.1" min="0.005" max="0.8" step="0.005" /></p>
 <p data-cue="none">
@@ -247,9 +247,10 @@
 
 <script type="text/javascript">
 
+
 page({title: "Planetary Motion (Kepler’s Laws)", s: "2028.1.1", a: 1,
     svg2: [
-        ["#Helio", "p20/circ/img/kep", "helio", 160],
+        ["#Helio", "p20/circ/img/kep", "helio"],
         ["#Orbit", "p20/circ/img/kep", "orbit"],
     ],
 });

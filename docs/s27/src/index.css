@@ -40,6 +40,10 @@ left: 0;
 border-bottom: 1px solid var(--blue);
 text-align: center;
 
+p.BtnGrid {
+    margin: 0.5em auto;
+}
+
 button  {
     color: var(--blue);
     margin: 0.1em 0.5em;

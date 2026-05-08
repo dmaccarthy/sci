@@ -180,44 +180,52 @@
         <p class="TeX">\lambda_{max} = \frac{c}{f_{min}} = \rm \frac{3.00\times 10^8\ m/s}{2.05\times 10^{16}\ Hz} = 14.6\ nm</p>
     </div>
 
-<!-- First use energy conservation:
-Ei = 350 keV
-Ef = 15.0 keV + 280 keV + hf = 350 keV
-hf = Ef – (15.0 keV + 280 keV) = 350 keV – (15.0 keV + 280 keV) = 55.0 keV = 8.80 × 10–15 J
-Now divide both sides by h:
-f = 55.0 × 103 eV / (4.14 × 10–15 eV·s) = 1.33 × 1019 Hz
-Calculate the momentum and wavelength:
-λ = c/f = 3.00 × 108 m/s / (1.33 × 1019 Hz) = 22.6 pm
-p = E/c = 8.80 × 10–15 J / (3.00 × 108 m/s) = 2.93 × 10–23 N·s -->
-
     <li>An electron is accelerated from rest by a potential difference of 350 kV. The electron collides with a proton, transferring 15.0 keV of kinetic energy to the proton while also emitting a single photon. The electron continues to move with a kinetic energy of 280 keV. Determine the emitted photon’s: energy, momentum, wavelength, and frequency.</li>
+    <div class="Answer">
+        <p>First use energy conservation...</p>
+        <p class="TeX">E_i = \rm 350\ keV</p>
+        <p class="TeX">E_f = {\rm 280\ keV + 15.0\ keV} + E_{photon}</p>
+        <p class="TeX">E_{photon} = E_f - \rm 280\ keV + 15.0\ keV</p>
+        <p class="TeX">E_{photon} = \rm (350 - (280 + 15.0))\ keV = 55.0\ keV = 8.80\times 10^{-15}\ J</p>
+        <p>For the photon...</p>
+        <p class="TeX">p = \frac{E}{c} = \rm \frac{8.80\times 10^{-15}\ J}{3.00\times 10^8\ m/s} = 2.93\times 10^{-23}\ N\cdot s</p>
+        <p class="TeX">f = \frac{E}{h} = \rm \frac{8.80\times 10^{-15}\ J}{4.14\times 10^{-15}\ eV\cdot s} = 1.33\times 10^{19}\ Hz</p>
+        <p class="TeX">\lambda = \frac{c}{f} = \rm \frac{3.00\times 10^8\ m/s}{1.33\times 10^{19}\ Hz} = 22.6\ pm</p>
+    </div>
 
     <li><ol type="a">
         <li>A toy sailboat is exposed to a beam of x-ray photons of frequency 2.50 × 10<sup>19</sup> Hz. Assume that the boat’s sail absorbs all the photons’ momentum. How many photons per second would need to be absorbed to produce a force of 1.00 N on the sail? [Hint: Think “impulse”.]</li>
+        <div class="Answer">
+            <p>Calculate the momentum of each photon...</p>
+            <p class="TeX">p = \frac{E}{c} = \frac{hf}{c} = \rm 5.53\times 10^{-23}\ N\cdot s</p>
+            <p>Calculate the impulse experienced by the boat...</p>
+            <p class="TeX">\Delta p_{boat} = F\Delta t = \rm 1.00\ N\cdot 1.00\ s = 1.00\ N\cdot s</p>
+            <p>Since <span class="TeX">p</span> is the momentum of a single photon, then <span class="TeX">np</span> is the initial momentum of <span class="TeX">n</span> photons.</p>
+            <p>The final momentum of the photons is zero because the photons are absorbed...</p>
+            <p class="TeX">\Delta p_{photons} = p_f - p_i = 0 - np = -np</p>
+            <p>Based on the law of momentum conservation (Newton’s 3<sup>rd</sup> Law), the impulse experienced by the boat is equal and opposite to that of the photons...</p>
+            <p class="TeX">np = \rm 1.00\ N\cdot s</p>
+            <p class="TeX">n= \frac{\rm 1.00\ N\cdot s}{p} = \rm \frac{1.00\ N\cdot s}{5.53\times 10^{-23}\ N\cdot s} = 1.81\times 10^{22}</p>
+        </div>
+
         <li>Calculate the total power of the x-ray beam needed to exert a 1.00 N force on the boat. Would an x-ray beam be an efficient method of propulsion? Explain.</li>
+        <div class="Answer">
+            <p>The energy of each photon is...</p>
+            <p class="TeX">E = hf = \rm 1.66\times 10^{-14}\ J</p>
+            <p>The energy of <span class="TeX">n</span> photons is...</p>
+            <p class="TeX">nE = \rm 1.81\times 10^{22}\cdot 1.66\times 10^{-14}\ J = 3.00\times 10^8\ J</p>
+            <p>This is the energy required <em>each second</em>! A power requirement of 300 megawatts to produce 1.00 newton of force is not very energy efficient!</p>
+        </div>
     </ol></li>
 
-<!-- a)
-Calculate the momentum of each photon...
+
+<!--
+a)
 p = E / c = hf / c = (6.63 × 10–34 J·s) (2.50 × 1019 Hz) / (3.00 × 108 m/s) = 5.53 × 10–23 N·s
-Calculate the impulse experienced by the boat...
-ΔpBoat = F Δt = 1.00 N × 1.00 s = 1.00 N·s.
-Since p is the momentum of a single photon, then np is the initial momentum of n photons...
-The final momentum of the photons is zero because the photons are absorbed:
-pPhotons = pf – pi = 0 – np = –np
-Based on the law of momentum conservation (Newton’s 3rd Law), the impulse experienced by the boat is equal and opposite to that of the photons...
-np = 1.00 N·s
-n = 1.00 N·s / p = 1.00 N·s / (5.53 × 10–23 N·s) = 1.81 × 1022
 
 b) 
-The energy of each photon is:
 E = hf = (6.63 × 10–34 J·s) (2.50 × 1019 Hz) = 1.66 × 10–14 J
-The energy of n photons is:
-nE = 1.81 × 1022 (1.66 × 10–14 J) = 3.00 × 108 J
-The power is:
-P = ΔE / Δt = 3.00 × 108 J / 1.00 s = 3.00 × 108 W = 300 MW
-300 megawatts is enough to power a small city! This is not an efficient method of generating 1.00 newton of force on a toy sailboat. -->
-
+-->
 
     <li>Comment on this statement: “Millikan’s oil drop experiment relied on the fact that electric charge is quantized.”</li>
     <p class="Answer">Millikan’s oil drop experiment measured the electric charge of many different individual oil droplets. Millikan deduced the elementary charge unit by assuming that the oil droplet charge would always be an exact multiple of the elementary charge, i.e. that electric charge is quantized.</p>

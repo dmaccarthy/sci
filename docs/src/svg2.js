@@ -151,7 +151,6 @@ cs_size(sz) {
     return new RArray(w, h);
 }
 
-
 coord_from_parent(xy) {
 /* Apply rotation and shift to convert parent <g> coordinates xy relative to child */
     let a = this.theta * this.svg.angleDir;
@@ -374,6 +373,17 @@ poly(points, closed) {
     let attr = {points: this.svg.pts_str(points)};
     return $(closed)[0] instanceof SVGElement ? $(closed).attr(attr) :
         this.create_child(closed ? "polygon" : "polyline", attr);
+}
+
+rect_round(w, h, r) {
+/* Rectangle with rounder corners */
+    let [x, y] = [w/2, h/2];
+    let g = this.group();
+    let p = g.path([r - x, -y]);
+    p.hor(x - r).arc_to([x, r - y], r).ver(y - r).arc_to([x - r, y], r);
+    p.hor(r - x).arc_to([-x, y - r], r).ver(r - y).arc_to([r - x, -y], r);
+    p.update();
+    return g;
 }
 
 

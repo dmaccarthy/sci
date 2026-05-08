@@ -68,7 +68,7 @@ get_image.map = {
 
 function font_size(s) {
     /* Adjust the font size */
-    let b = $("body");
+    let f, b = $("body");
     if (s === false) {
         b.css("font-size", "");
         localStorage.removeItem("font-size");

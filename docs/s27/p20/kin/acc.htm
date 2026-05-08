@@ -1,0 +1,306 @@
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Acceleration</h1>
+</section>
+
+<section class="Slide"><h3>Accelerated Motion</h3>
+<p><em class="Defn">Uniform motion</em> means that an object’s instantaneous velocity is constant.</p>
+<ul>
+    <li>A <span class="TeX">{\va{d}}</span>-<span class="TeX">t</span> graph for uniform motion will be a straight line (constant slope).</li>
+    <li>A <span class="TeX">{\va{v}}</span>-<span class="TeX">t</span> graph for uniform motion will be a <em>horizontal</em> line.</li>
+</ul>
+<div>
+    <p><em class="Defn">Accelerated motion</em> means that the object’s instantaneous velocity is <u>not</u> constant.</p>
+    <div>
+        <p class="Caption">Motion of a Falling Ball: <span class="TeX">\va{v}</span><span class="NoBold"> vs. </span><span class="TeX">t</span></p>
+        <p class="Center NoTop" data-cue="prev"><svg class="s16" data-svg2="p20/kin/img/acc.js#vt"></svg></p>
+    </div>
+</div>
+<div>
+<ul><li>A <span class="TeX">{\va{d}}</span>-<span class="TeX">t</span> graph for 1D accelerated motion will be a curve (changing slope).</li></ul>
+<div>
+    <p class="Caption">Motion of a Falling Ball: <span class="TeX">\va{d}</span><span class="NoBold"> vs. </span><span class="TeX">t</span></p>
+    <p class="Center NoTop" data-cue="prev"><svg class="s16" data-svg2="p20/kin/img/acc.js#dt"></svg></p>
+</div>
+</div>
+<ul>
+    <li>If the force causing the acceleration is constant, the <span class="TeX">{\va{d}}</span>-<span class="TeX">t</span> graph will be a <em>parabola</em> and the <span class="TeX">{\va{v}}</span>-<span class="TeX">t</span> graph will be a sloped line.</li>
+    <li>Otherwise both graphs will be curves. The exact shape of the curves will depend on the force.</li>
+</ul>
+<table class="Normal">
+	<tr><th rowspan="2">Type of Motion</th><th colspan="2">Shape of Graph</th></tr>
+	<tr><th><span class="TeX">\va{d}</span>-<span class="TeX">t</span></th><th><span class="TeX">\va{v}</span>-<span class="TeX">t</span></th></tr>
+	<tr><td style="width:50%">Uniform<br/>(Constant <span class="TeX">{\va{v}}</span>)</td><td class="Center" style="width:25%">Linear</td><td class="Center" style="width:25%">Horizontal</td></tr>
+	<tr><td>Uniform Accelerated<br/>(Constant <span class="TeX">{\va{a}}</span>)</td><td class="Center">Parabolic</td><td class="Center">Linear</td></tr>
+	<tr><td>Non-Uniform Accelerated<br/>(Neither Constant)</td><td class="Center">Curved</td><td class="Center">Curved</td></tr>
+</table>
+</section>
+
+<section class="Slide"><h3>Acceleration</h3>
+<p><em class="Defn">Acceleration</em> is defined as the rate at which the instantaneous velocity is changing:</p>
+<p class="TeX">{\va{a}} = {\Delta{\va{v}}\over\Delta t} = {{\va{v}}_f - {\va{v}}_i \over\Delta t}</p>
+<ul>
+    <li>Acceleration is the <em>slope</em> of the <span class="TeX">{\va{v}}</span>-<span class="TeX">t</span> graph.</li>
+    <li>The SI unit of acceleration is (m/s)/s, or m/s<sup>2</sup>.</li>
+    <li>An acceleration of +3.0 m/s<sup>2</sup> means the velocity is changing by +3.0 m/s every second.</li>
+    <li>Near Earth’s surface, gravity produces an acceleration of 9.81 m/s<sup>2</sup> [down] when there is no air resistance and no other forces acting on the object.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Displacement</h3>
+<p>The displacement of an object can be calculated as:</p><p class="TeX">\Delta{\va{d}} = {\va{v}}_{avg}\Delta t</p>
+<ul>
+    <li>This is really just the <em>area</em> under the <span class="TeX">{\va{v}}</span>-<span class="TeX">t</span> graph.</li>
+    <li>If the acceleration is constant (<span class="TeX">{\va{v}}</span>-<span class="TeX">t</span> graph is a straight line), we can use a simple average between the initial and final velocities.</li>
+    <li>If the acceleration is <em>not</em> constant (the <span class="TeX">{\va{v}}</span>-<span class="TeX">t</span> graph is a curved), we need calculus to determine the displacement (area) accurately.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+    <p data-cue="none" class="Blue">Calculate the acceleration of the ball based on the graph.</p>
+    <p>Identify the variables from the graph:</p>
+    <ul>
+        <li><span class="TeX">t_i = \rm{0.0\ s}</span></li>
+        <li><span class="TeX">t_f = \rm{4.0\ s}</span></li>
+        <li><span class="TeX">\va{v}_i = \rm{0.0\ m/s}</span></li>
+        <li><span class="TeX">\va{v}_f = \rm{-39\ m/s}</span></li>
+        <li class="Red"><span class="TeX">\va{a} =\ ?</span></li>
+    </ul>
+    <div>
+        <p>Select the relevant relationship (equation) and evaluate:</p>
+        <p class="TeX">\va{a} = {\Delta \va{v}\over \Delta t} = \rm{-39\ m/s - 0.0\ m/s \over 4.0\ s - 0.0\ s} = \rm{-9.8\ m/s^2}</p>
+    </div>
+    <ul><li>Is the answer reasonable?</li></ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+    <p data-cue="none" class="Blue">A car is travelling at 60.0 km/h. How long will it take to accelerate to 80.0 km/h is the car can accelerate at a rate of 3.00 m/s<sup>2</sup>?</p>
+    <p>Identify the variables and convert to standard SI units:</p>
+    <ul>
+        <li><span class="TeX">\va{v}_i = \rm{+60.0\ km/h = +16.667\ m/s}</span></li>
+        <li><span class="TeX">\va{v}_f = \rm{+80.0\ km/h = +22.222\ m/s}</span></li>
+        <li><span class="TeX">\va{a} = \rm{+3.00\ m/s^2}</span></li>
+        <li class="Red"><span class="TeX">\Delta t =\ ?</span></li>
+    </ul>
+    <div>
+        <p>Select the relevant relationship (equation):</p>
+        <p class="TeX">\va{a} = {\Delta \va{v}\over \Delta t}</p>
+    </div>
+    <div>
+        <p>Rearrange the equation to isolate the unknown:</p>
+        <p class="TeX">\va{a}{\color{red}{\Delta t}} = {\Delta \va{v}\over \Delta t} \color{red}{\Delta t}</p>
+    </div>
+    <p class="TeX">\va{a}\Delta t = \Delta \va{v}</p>
+    <p class="TeX">{\va{a}\Delta t \over \color{red}{\va{a}}} = {\Delta \va{v} \over \color{red}{\va{a}}}</p>
+    <p class="TeX">\Delta t = {\Delta \va{v} \over \va{a}}</p>
+    <div>
+        <p>Evaluate, including units:</p>
+        <p class="TeX">\Delta t = \rm{+22.222\ m/s - (+16.667\ m/s) \over +3.00\ m/s^2}</p>
+    </div>
+    <p class="TeX">\Delta t = \rm{1.85\ s}</p>
+    <ul><li>Is the answer reasonable?</li></ul>
+</section>
+
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
+<ol>
+    <li>A car accelerates from 50.0 km/h to 80.0 km/h in 4.00 seconds. Calculate the car’s acceleration. [Important: km/h is not the standard SI unit of velocity!]</li>
+    <div class="Answer">
+    <p>Given:</p>
+    <p data-cue="none" class="TeX">{\va{v}}_i = \rm{50.0\ km/h = 50.0 \frac{1000\ m}{3600\ s} = 13.889\ m/s}</p>
+    <p class="TeX">{\va{v}}_f = \rm{80.0\ km/h = 80.0 \frac{1000\ m}{3600\ s} = 22.222\ m/s}</p>
+    <p class="TeX">\Delta t = \rm{4.00\ s}</p>
+    <p>Solution:</p>
+    <p data-cue="prev" class="TeX">\va{a} = \frac{\Delta{\va{v}}}{\Delta t} = \rm{\frac{22.222\ m/s - 13.889\ m/s}{4.00\ s} = +2.08\ m/s^2}</p>
+    </div>
+
+    <li>A soccer ball kicked straight up reaches its highest point in 2.50 seconds. Calculate the velocity with which the ball was kicked. Neglect the effects of air resistance.</li>
+    <div class="Answer">
+    <p>Given / Assumed:</p>
+    <p data-cue="none" class="TeX">\Delta t = \rm 2.50\ s</p>
+    <p class="TeX">\va{v}_f = \rm 0.00\ m/s</p>
+    <p class="TeX">\va{a} = \rm -9.81\ m/s^2</p>
+    <p>Isolate the initial velocity:</p>
+    <p data-cue="prev" class="TeX">\va{a} = \frac{\va{v}_f - \va{v}_i}{\Delta t}</p>
+    <p class="TeX">\va{a} \Delta t = \va{v}_f - \va{v}_i</p>
+    <p class="TeX">\va{a} \Delta t + \va{v}_i = \va{v}_f</p>
+    <p class="TeX">\va{v}_i = \va{v}_f - \va{a} \Delta t</p>
+    <p>Evaluate:</p>
+    <p data-cue="prev" class="TeX">\va{v}_i = \rm 0.00\ m/s - (-9.81\ m/s^2)\ 2.50\ s = +24.5\ m/s</p>
+    </div>    
+</ol>
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
+<ol>
+<li>An apple falls from a tree, beginning from rest and striking the ground with a downward velocity of 5.00 m/s.
+<ol type="a">
+    <li>Assuming that gravity is solely responsible for the apple’s acceleration, how long did it take the apple to fall?</li>
+    <div class="Answer">
+<p>Given:</p>
+<p class="TeX">{\va{v}}_i = \rm{0.00\ m/s}</p>
+<p class="TeX">{\va{v}}_f = \rm{-5.00\ m/s}</p>
+<p class="TeX">\va{a} = \rm{-9.81\ m/s^2}</p>
+
+<p>Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delta t</span>...</p>
+<p class="TeX">\va{a} = \frac{\Delta{\va{v}}}{\Delta t}</p>
+<p class="TeX">\va{a}\Delta t = {\va{v}}_f - {\va{v}}_i</p>
+<p class="TeX">\Delta t = \frac{{\va{v}}_f - {\va{v}}_i}{\va{a}}
+        = \rm{\frac{-5.00\ m/s - 0.00\ m/s}{-9.81\ m/s^2} = 0.510\ s}</p>
+    </div>
+    
+    <li>When the effects of air resistance are considered, would the acceleration be larger or smaller? Would the final velocity be faster or slower? Would the time increase or decrease? Justify your answers.</li>
+    <p class="Answer">Air resistance causes the apple to lose some of its energy so it will fall more slowly. This means the time will be larger and the final velocity and acceleration will be smaller.</p>
+</ol></li>
+
+<li>Traffic radar recorded data for a speeding car. A graph of the data is shown below.
+<div>
+    <p class="Caption">Motion of a Speeding Car: <span class="TeX">\va{v}</span><spa class="NoBold"> vs. </span><span class="TeX">t</span></p>
+    <p class="Center NoTop" data-cue="prev"><svg class="s16" data-svg2="p20/kin/img/acc.js#vt_radar"></svg></p>
+</div>
+<ol type="a">
+    <li>At what time did the speeding car begin to slow down?</li>
+    <p class="Answer">According to the graph, the velocity remained constant for the first 3.0 seconds and then the car began to decelerate (i.e. accelerate in the negative direction).</p>
+
+    <li>What was the car’s acceleration for the time interval over which it was slowing?</li>
+    <div class="Answer">
+
+<p>Given:</p>
+<p class="TeX">{\va{v}}_i = \rm{+125\ km/h = +125\ \frac{1000\ m}{3600\ s} = +34.7222\ m/s}</p>
+<p class="TeX">{\va{v}}_f = \rm{0.00\ m/s}</p>
+<p class="TeX">\Delta t = \rm{8.00\ s - 3.00\ s = 5.00\ s}</p>
+
+<p>Solution:</p>
+<p class="TeX">\va{a} = \frac{\Delta{\va{v}}}{\Delta t} = \rm{\frac{0.00\ m/s - 34.7222\ m/s}{5.00\ s} = -6.94\ m/s^2}</p>
+    </div>
+
+    <li>What was the car’s average acceleration for the entire 8.00-second time?</li>
+    <!-- <div class="Answer">
+<p>Given:</p>
+<p class="TeX">{\va{v}}_i = \rm{34.7222\ m/s}</p>
+<p class="TeX">{\va{v}}_f = \rm{0.00\ m/s}</p>
+<p class="TeX">\Delta t = \rm{8.00\ s}</p>
+
+<p>Solution:</p> -->
+<p class="TeX Answer">\va{a} = \frac{\Delta{\va{v}}}{\Delta t} = \rm{\frac{0.00\ m/s - 34.7222\ m/s}{8.00\ s} = -4.34\ m/s^2}</p>
+    <!-- </div> -->
+
+    <li>Calculate the displacement of the car over the 8.00 seconds of the motion.</li>
+    <div class="Answer">
+
+<p>Rearrange the velocity equation to isolate <span class="TeX">\Delta \va{d}</span>...</p>
+<p class="TeX">\va{v} = \frac{\Delta\va{d}}{\Delta t}</p>
+<p class="TeX">\Delta\va{d} = \va{v}\Delta t</p>
+
+<p>For the first 3.00 seconds (uniform motion):</p>
+<p class="TeX">\Delta\va{d} = \rm{+34.7222\ m/s\cdot 3.00\ s = +104\ m}</p>
+
+<p>For the next 5.00 seconds (accelerated motion), use the <em>average</em> velocity:</p>
+<p class="TeX">\Delta\va{d} = \rm{\frac{+34.7222\ m/s + 0.00\ m/s}{2}\cdot 5.00\ s = +86.8\ m}</p>
+
+<p>The total displacement for both parts of the motion combined is +191 m.</p>
+    </div>
+
+</ol></li>
+
+<li>A cyclist riding at +9.20 m/s applies her brakes, causing an acceleration of –1.20 m/s<sup>2</sup>.
+<ol type="a">
+    <li>Explain the significance of the acceleration being negative.</li>
+    <p class="Answer">This means that the velocity is decreasing.</p>
+
+    <li>By rearranging the acceleration formula, calculate the time it takes for the cyclist to come to rest.</li>
+    <div class="Answer">
+<p>Given:</p>
+<p class="TeX">{\va{v}}_i = \rm{+9.20\ m/s}</p>
+<p class="TeX">{\va{v}}_f = \rm{0.00\ m/s}</p>
+<p class="TeX">\va{a} = \rm{-1.20\ m/s^2}</p>
+
+<p>Solution: Rearrange the acceleration equation to isolate <span class="TeX">\Delta t</span>...</p>
+<p class="TeX">\va{a} = \frac{\Delta{\va{v}}}{\Delta t}</p>
+<p class="TeX">\va{a}\Delta t = {\va{v}}_f - {\va{v}}_i</p>
+<p class="TeX">\Delta t = \frac{{\va{v}}_f - {\va{v}}_i}{\va{a}}
+        = \rm{\frac{0.00\ m/s - 9.20\ m/s}{-1.20\ m/s^2} = 7.67\ s}</p>
+    </div>
+
+    <li>Graph the cyclist’s velocity versus time.</li>
+    <div class="Answer">
+<p>The velocity is a straight line from (0.00 s, +9.20 m/s) to (7.67 s, 0.00 m/s).
+    Alternatively, you can make a table of values by starting at 9.20 m/s at <span class="TeX">t</span> = 0 and decreasing by 1.20 m/s every second.</p>
+<p><a href="https://www.desmos.com/calculator/lab9pasn3z" target="Desmos2">Graph</a></p>
+    </div>
+
+    <li>Calculate the cyclist’s instantaneous velocity 2.00 seconds after she began braking. (Find what <span class="TeX">{\va{v}}_f</span> becomes when you change <span class="TeX">\Delta t</span> to 2.00 s.) Is your answer in agreement with your graph?</li>
+    <div class="Answer">
+<p>Given:</p>
+<p class="TeX">{\va{v}}_i = \rm{+9.20\ m/s}</p>
+<p class="TeX">\va{a} = \rm{-1.20\ m/s^2}</p>
+<p class="TeX">\Delta t = \rm{2.00\ s}</p>
+
+<p>Solution: Rearrange the acceleration equation to isolate <span class="TeX">{\va{v}}_f</span>...</p>
+<p class="TeX">\va{a} = \frac{\Delta{\va{v}}}{\Delta t}</p>
+<p class="TeX">\va{a}\Delta t = {\va{v}}_f - {\va{v}}_i</p>
+<p class="TeX">{\va{v}}_f = \va{a}\Delta t + {\va{v}}_i
+    = \rm{-1.20\ m/s^2\cdot 2.00\ s + 9.20\ m/s = +6.80\ m/s}</p>
+    </div>
+
+    <li>Given that the cyclist accelerated uniformly from 9.20 m/s to 0.00 m/s, estimate the average velocity of the cyclist over the entire motion. Use the result to calculate her displacement while braking.</li>
+    <div class="Answer">
+    <p>The average velocity is likely the arithmetic average of the initial and final velocities:</p>
+    <p class="TeX">{\va{v}}_{avg} = \frac{{\va{v}}_i + {\va{v}}_f}{2}
+        = \rm{\frac{+9.20\ m/s + 0.00\ m/s}{2} = +4.60\ m/s}</p>
+    <p>The displacement (as in #3d) is:</p>
+    <p class="TeX">\Delta\va{d} = \va{v}\Delta t = \rm{+4.60\ m/s\cdot 7.67\ s = +35.3\ m}</p>
+    </div>
+
+    <li>Calculate the area of the triangle formed by the line on your graph and the axes. Compare this area with the displacement you calculated in (e).</li>
+    <p class="Answer TeX">\rm{Area = \frac{Base\times Height}{2} = \frac{7.67\ s\times 9.20\ m/s}{2} = 35.3\ m}</p>
+</ol></li>
+<!-- </ol>
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
+<ol> -->
+<li>Define acceleration. What does this quantity mean? For example, what does it tell us about an object’s motion if its acceleration is +2.0 m/s<sup>2</sup>?</li>
+<p class="Answer">Acceleration is the <em>rate</em> at which the velocity <em>changes</em>. An acceleration of +2.0 m/s<sup>2</sup> means that every second, the velocity changes by +2.0 m/s.</p>
+
+<li><ol type="a">
+    <li>Discuss the effect of Earth’s surface gravity on moving objects.</li>
+    <p class="Answer">In the absence of air resistance and other forces, gravity near the Earth’s surface causes an acceleration of 9.81 m/s<sup>2</sup> in the downward direction.</p>
+    <li>How does the acceleration due to gravity change for a spacecraft as it moves further from Earth?</li>
+    <p class="Answer">Gravity grows weaker as we move farther from Earth.</p>
+    <li>How would the accelerations due to gravity on Mars or Jupiter compare to Earth?</li>
+    <p class="Answer">Mars has weaker surface gravity than Earth; Jupiter has stronger surface gravity.</p>
+</ol>
+
+<li>Relate the <span class="TeX">\va{v}{\text -}t</span> graph to the five kinematic quantities: <span class="TeX">\Delta t</span>, <span class="TeX">\Delta\va{d}</span>, <span class="TeX">{\va{v}}_i</span>, <span class="TeX">{\va{v}}_f</span>, and <span class="TeX">\va{a}</span>.</li>
+<p class="Answer"><span class="TeX">\Delta t</span> is the <em>base</em> of the graph. <span class="TeX">\Delta\va{d}</span> is the <em>area</em>. <span class="TeX">\va{a}</span> is the <em>slope</em>. <span class="TeX">\va{v}_i</span> and <span class="TeX">\va{v}_f</span> are the <em>heights</em> at the left and right ends of the graph.</p>
+
+<li>In Physics, we try to avoid the term “deceleration”. Instead, we can say that the acceleration is positive or negative. Explain what positive and negative mean when referring to acceleration. Does a negative acceleration always mean slowing down? Does positive acceleration mean speeding up?</li>
+<p class="Answer">For acceleration, positive or negative indicates the <em>direction</em> of the acceleration, not necessarily whether it is speeding up or slowing down. When an object is speeding up, the acceleration will have the same sign as the velocity (either both positive or both negative). When an object is slowing, the acceleration and velocity will have opposite signs.</p>
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {up: "p20/home", prev: "p20/kin/graph", next: "p20/kin/uam"
+}
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#18", "p20/kin/img/acc", "vt"],
+        ["#25", "p20/kin/img/acc", "dt"],
+        ["#164", "p20/kin/img/acc", "vt_radar"],
+    ],
+});
+
+</script>

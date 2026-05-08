@@ -1,7 +1,7 @@
 import os
 
-fldr = "p20/circ/"
-files = ["ucm", "ac", "appWt", "kep", "orbit"]
+fldr = "p20/kin/"
+files = ["displ", "vel", "graph", "acc", "uam", "rev"]
 
 def svg_line(line, n):
     line = line.split("=")[1].split(">")[0].split("#")
