@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2>
-<div id="LessonNotes" class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Wave-Particle Duality</h1>
@@ -75,22 +74,71 @@
 
 </div></section>
 
-<section class="Post NoPrintIcon" data-show="2024.12.9.10" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1o6_I3Bh8B35CCi4qzT0Y5b78NeLyajPFCc5zCHHd7go">Answer Key</button>
-    </p>
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse Expand">
+<ol>
+
+<li>An electron is accelerated from rest by a potential difference of 1.25 kV.
+<ol type="a">
+    <li>Determine the electron’s speed.</li>
+    <div class="Answer">
+        <p>The work done by the potential difference determines the electron kinetic energy...</p>
+        <p class="TeX">q\Delta V = \Delta E_k = \frac{1}{2}mv_f^2</p>
+        <p class="TeX">\frac{2q\Delta V}{m} = v_f^2</p>
+        <p class="TeX">v_f = \sqrt{\frac{2q\Delta V}{m}} = \rm \sqrt{\frac{2\cdot 1.60\times 10^{-19}\ C\cdot 1250\ V}{9.11\times 10^{-31}\ kg}} = 2.10\times 10^7\ m/s</p>
+    </div>
+
+    <li>What is its de Broglie wavelength?</li>
+    <p class="Answer TeX">\lambda = \frac{h}{p} = \frac{h}{mv} = \rm \frac{6.63\times 10^{-34}\ J\cdot s}{9.11\times 10^{-31}\ kg\cdot 2.10\times 10^7\ m/s} = 3.47\times 10^{-11}\ m</p>
+
+    <li>Would the electron behave more like a particle or a wave when it is incident on a crystal with an atom spacing of 2.37 × 10<sup>–10</sup> m?</li>
+    <p class="Answer">Since the wavelength is only slightly smaller than the spacing, the electron would behave as a wave.</p>
+</ol>
+</li>
+
+<li>Neutrons exhibit diffraction from a crystal just as electrons and x-rays do. Estimate the speed at which the neutron’s behaviour would change from wave-like to particle-like when it is incident on a crystal with an atom spacing of 4.25 × 10<sup>–10</sup> m.</li>
+<div class="Answer">
+    <p class="TeX">\lambda = \frac{h}{p} = \frac{h}{mv}</p>
+    <p class="TeX">\lambda mv = h</p>
+    <p class="TeX">v = \frac{h}{\lambda m} = \rm \frac{6.63\times 10^{-34}\ J\cdot s}{4.25\times 10^{-10}\ m \cdot 1.67\times 10^{-27}\ kg} = 934\ m/s</p>
+</div>
+
+<li>Calculate the de Broglie wavelength of a 182 g billiard ball moving at 75.0 cm/s. Why is it unlikely that a billiard ball would behave as a wave?</li>
+<div class="Answer">
+    <p class="TeX">\lambda = \frac{h}{p} = \frac{h}{mv} = \rm \frac{6.63\times 10^{-34}\ J\cdot s}{0.182 kg\cdot 0.750\ m/s} = 4.86\times 10^{-33}\ m</p>
+    <p>Since this is 10<sup>19</sup> times smaller than a single nucleus, a billiard ball will never be part of a system this small!</p>
+</div>
+
+<li>
+<ol type="a">
+    <li>Calculate the speed of an electron that has a wavelength equal to the wavelength of a 2.50 × 10<sup>17</sup> Hz UV wave.</li>
+    <div class="Answer">
+        <p>For the UV photon...</p>
+        <p class="TeX">\lambda = \frac{c}{f} = \rm \frac{3.00\times 10^8\ m/s}{2.50\times 10^{17}\ Hz} = 1.20\times 10^{-9}\ m</p>
+        <p>For the electron...</p>
+        <p class="TeX">v = \frac{h}{\lambda m} = \rm \frac{6.63\times 10^{-34}\ J\cdot s}{1.20\times 10^{-9}\ m \cdot 9.11\times 10^{-31}\ kg} = 6.06\times 10^5\ m/s</p>
+    </div>
+
+    <li>Calculate the energy of the electron.</li>
+    <p class="Answer TeX">E_k = \frac{1}{2}mv^2 = \rm \frac{1}{2}\cdot 9.11\times 10^{-31}\ kg\cdot (6.06\times 10^5\ m/s)^2 = 1.68\times 10^{-19}\ J</p>
+
+    <li>Compare the photon and the electron in terms of (i) speed, (ii) momentum, (iii) energy.</li>
+    <div class="Answer">
+        <p>The electron’s speed (6.06 × 10<sup>5</sup> m/s) is only 1/500<sup>th</sup> of the speed of light.</p>
+        <p>Because they have the same deBroglie wavelength, their momenta are equal!</p>
+        <p>The photon energy is...</p>
+        <p class="TeX">E = hf = \rm 6.63\times 10^{-34}\ J\cdot s\cdot 2.50\times 10^{17}\ Hz = 1.66\times 10^{-16}\ J</p>
+        <p>This is nearly 1000 times more than the electron. Since the photon has less mass (i.e. none) compared to the electron, it needs much more energy to have the same momentum!</p>
+    </div>
+</ol>
+</li>
+
+</ol>
 </div></section>
 
 <script type="text/javascript">
 
-loadFeed.data = {
-    title: `${siteData.lesson}15.3 — Wave-Particle Duality`,
-    answerDate: "2024.12.6.10",
-    num: "15.3",
-    up: "p30/units/D",
-    prev: "p30/atom/model",
-    next: "p30/atom/bohr",
+loadFeed.data = {up: "p30/units/D", prev: "p30/atom/model", next: "p30/atom/bohr",
 }
 
 </script>

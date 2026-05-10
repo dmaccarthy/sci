@@ -221,6 +221,9 @@
 
 "atom/crt#": {"t": "Lab: Thomson’s CRT Experiment", "s": "2026.5.11"},
 "atom/crt": {"t": "@Thomson’s CRT Experiment", "n": "15.1", "cal": "2026.5.13", "s": "2026.5.11", "a": "2026.5.14"},
+"atom/model": {"t": "@Atomic Models", "n": "15.2", "s": "2026.5.14", "a": "2026.5.15"},
+"atom/dual": {"t": "@Wave-Particle Duality", "n": "15.3", "s": "2026.5.15", "a": "2026.5.19"},
+"atom/bohr": {"t": "@Bohr’s Model of the Atom", "n": "15.4", "s": "2026.5.19", "a": "2026.5.20"},
 
 "photon/bbr": {"t": "@Thermal (Blackbody) Radiation", "n": "14.1", "s": "2026.4.27", "a": "2026.4.29"},
 "photon/photon": {"t": "@Photons", "n": "14.2", "s": "2026.4.29", "a": "2026.4.30"},

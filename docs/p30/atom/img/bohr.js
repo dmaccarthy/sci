@@ -24,4 +24,17 @@ eld: (sel) => {
     );
 },
 
+Q69: (sel) => {
+    let E = [0, 1.23, 2.65, 4.90, 9.35, 15.02]
+    let svg = new SVG2(sel, {scale: [36, 20], lrbt: [-3.4, 4.1, -16, 1], grid: 0});
+    let lines = svg.group("#0065fe@2");
+    for (let i=0;i<E.length;i++) {
+        let n = i ? 6 - i : "\\infty";
+        let Ei = -E[i];
+        lines.line([-1, Ei], [1, Ei]);
+        svg.mjax(`n=${n}`, {scale: 0.75}, [-1.4, Ei, "r"]);
+        svg.mjax(`${Ei.toFixed(2)}\\rm\\ eV`, {scale: 0.7}, [4, Ei, "r"]);
+    }
+},
+
 });
