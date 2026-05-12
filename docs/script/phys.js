@@ -214,3 +214,43 @@ const dopp = function(info) {
     else v = (fo * vs - fs * vo) / (fo - fs);
     return {fs: fs, fo: fo, vs: vs, vo: vo, v: v}
 }
+
+
+class TVM {
+
+    constructor(opt) {
+        console.log(6, opt);
+        this.set(opt);
+    }
+
+    set(opt) {
+        if (opt) for (let k in opt) this[k] = opt[k];
+    }
+
+    fv(n) {
+        let data = [];
+        let v = this.pv;
+        let i = 0;
+        let p = this.pay;
+        let r = this.rate / this.payments / 100;
+        let paid = v != 0 && i >= n;
+        while (!paid) {
+            i++;
+            let int = round(v * r, 2);
+            let b = round(v + int + p, 2);
+            if (n == null) paid = v * b < 0;
+            if (paid) {
+                p -= b;
+                b = 0;
+            }
+            data.push([int, b]);
+            v = b;
+            if (paid) p = 0;
+            if (n && !paid) paid = i >= n;
+        }
+        return {value: v, sched: data};
+    }
+
+}
+
+// let tvm = new TVM({pv: -39390, pay: 766, rate: 6.25, payments: 12});

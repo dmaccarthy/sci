@@ -1,6 +1,15 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
+"shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2026.5.13", "a": "2026.5.15", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
+"shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2026.5.15", "a": "2026.5.19", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
+"shm/shm#": {"t": "Lab: Simple Harmonic Motion", "s": "2028.1"},
+"shm/T": {"t": "@Period of SHM", "n": "7.3", "s": "2028.1", "a": "2028.1", "h": "1vXy1OAuyVKjbA7keUdNGsdEeziXTtbfZ"},
+"shm/pend": {"t": "@Simple Pendulum", "n": "7.4", "s": "2028.1", "a": "2028.1.15", "h": ["1MK2kinnt7LqC6oNuexuG8I-pLO3a9Vn_", ["Lab Handout", "1lzT9ZH7uAndjdccNUGfVP-pZgWaXFwoL"]]},
+"shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2028.1"},
+"shm/E": {"t": "@Energy of SHM", "n": "7.5", "s": "2028.1", "a": "2028.1.19", "h": "1XSPOdyignakoikoijuwV4Q28Bsj_0vWW"},
+"shm/res": {"t": "@Mechanical Resonance", "n": "7.6", "s": "9999", "a": "9999"},
+
 "circ/ucm": {"t": "@Uniform Circular Motion", "n": "5.1", "s": "2026.5.4", "a": "2026.5.5", "h": ["1fqMM5ic06x89f7JBMBXIacbQq8YcBof3", ["Lab Handout", "1-jnHSM_u6Id-91RZKC7DWkwdgOvFyw5p"]]},
 "circ/ac": {"t": "@Centripetal Acceleration", "n": "5.2", "s": "2026.5.5", "a": "2026.5.6", "h": "1tmxkh7RP9_0NDxKb4Yc-SMVUhVnZEkYx"},
 "circ/ucm#": {"t": "Lab: Uniform Circular Motion", "s": "2026.5.6"},
@@ -57,15 +66,6 @@
 "uD/@": {"t": "Unit D Exam", "s": "2028.1", "css": {"font-weight": "bold"}},
 "rewrite/@": {"t": "Rewrite", "s": "2028.1", "css": {"font-weight": "bold"}},
 "wave/stand#": {"t": "Lab: Air Column Resonance", "s": "2028.1"},
-
-"shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2028.1", "a": "2028.1.7", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
-"shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2028.1", "a": "2028.1.8", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
-"shm/shm#": {"t": "Lab: Simple Harmonic Motion", "s": "2028.1"},
-"shm/T": {"t": "@Period of SHM", "n": "7.3", "s": "2028.1", "a": "2028.1", "h": "1vXy1OAuyVKjbA7keUdNGsdEeziXTtbfZ"},
-"shm/pend": {"t": "@Simple Pendulum", "n": "7.4", "s": "2028.1", "a": "2028.1.15", "h": ["1MK2kinnt7LqC6oNuexuG8I-pLO3a9Vn_", ["Lab Handout", "1lzT9ZH7uAndjdccNUGfVP-pZgWaXFwoL"]]},
-"shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2028.1"},
-"shm/E": {"t": "@Energy of SHM", "n": "7.5", "s": "2028.1", "a": "2028.1.19", "h": "1XSPOdyignakoikoijuwV4Q28Bsj_0vWW"},
-"shm/res": {"t": "@Mechanical Resonance", "n": "7.6", "s": "9999", "a": "9999"},
 
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2026.1.29", "a": "2026.1.30", "h": ["18p-OXXK3JAQa5ZGEWJf-n7DzfDvUgrl4", ["Lab Activity", "1Qw9-sMCtUa5jgGg6QfbgUp7NmCxxaOeP"]]},
 "skill/expDes#": {"t": "Lab: Self-Designed Experiment", "s": "2026.1.30"},
@@ -124,15 +124,19 @@
 "bio3/photo#": {"t": "Lab: Aquatic Plants", "s": "2026.5.8"},
 "bio3/spec#": {"t": "Lab: Cell Specialization in the Leaf", "s": "2026.5.8"},
 "bio3/gas": {"t": "@Gas Exchange", "n": "B09", "s": "2026.5.11", "a": "2026.5.12", "h": "1e7cqEoyiGylXu1kGiqIirve77G5dQ-HY"},
-"bio3/water": {"t": "@Water Transport", "n": "B10", "s": "2028.1", "a": "2028.1", "h": "1Xmh_PKoNKNLpz9SluyEX2GcxFxZeiIJ3"},
-"bio3/sys": {"t": "@Plant Control Systems", "n": "B11", "s": "2028.1", "a": "2028.1", "h": "1a_1OkqFUIRiwcGDw_3zrsiC9xqqJEWgm"},
-"unitC#": {"t": "Biology Unit Review", "s": "2028.1"},
+"bio3/water": {"t": "@Water Transport", "n": "B10", "s": "2026.5.12", "a": "2026.5.13", "h": "1Xmh_PKoNKNLpz9SluyEX2GcxFxZeiIJ3"},
+"bio3/sys": {"t": "@Plant Control Systems", "n": "B11", "s": "2026.5.12", "a": "2026.5.13", "h": "1a_1OkqFUIRiwcGDw_3zrsiC9xqqJEWgm"},
 "qb3/@": {"t": "Quiz: Plant Systems (Chapter 9)", "s": "2026.5.14", "css": {"font-weight": "bold"}},
-"uC/@": {"t": "Biology Unit Exam", "s": "2028.1", "css": {"font-weight": "bold"}},
+"unitC#prj1": {"t": "Project: Stem Cells", "s": "2026.5.13"},
+"unitC#prj2": {"t": "Project: Stem Cells (<i>continued</i>)", "s": "2026.5.15"},
+"unitC#rerv": {"t": "Biology Unit Review", "s": "2028.1"},
+"uC/@": {"t": "Biology Unit Exam", "s": "2026.5.19", "css": {"font-weight": "bold"}},
 
-"clim1/heatcap": {"t": "@Heat Capacity", "n": "E1", "s": "2027.12", "a": "2027.12", "h": ["1muqgYeE_5_XQG5tT_dc_gUJw1DaApbnQ", ["Lab Activity", {"gdrv": "1lEE1UBJpp3t5kXDBswuWKSb_xa39G0Nf", "show": "2027.11"}]]},
-"clim1/heatcap#": {"t": "Lab: Food Energy", "s": "2027.12"},
-"clim1/latent": {"t": "@Latent Heat", "n": "E2", "s": "2027.12", "a": "2027.12", "h": "1fGbBR64XxX1RjLBMfHqfB-NHm5hmSLxG"},
+"muttart/@": {"t": "Field Trip: Muttart Conservatory", "s": "2026.5.22", "css": {"font-weight": "bold"}},
+
+"clim1/heatcap": {"t": "@Heat Capacity", "n": "E1", "s": "2026.5.20", "a": "2026.5.21", "h": ["1-NJ_lBw6ExtPjwAtiqf24n3RjXuzp3c4", ["Lab Activity", {"gdrv": "_", "show": "2026.5.25"}]]},
+"clim1/heatcap#": {"t": "Lab: Food Energy", "s": "2026.5.25"},
+"clim1/latent": {"t": "@Latent Heat", "n": "E2", "s": "2026.5.21", "a": "2026.5.25", "h": "1-NJ_lBw6ExtPjwAtiqf24n3RjXuzp3c4"},
 "clim1/transfer": {"t": "@Heat Transfer", "n": "E3", "s": "2027.12", "a": "2027.12", "h": "_"},
 
 "rewrite/@": {"t": "Rewrite", "s": "2028.1", "css": {"font-weight": "bold"}},

@@ -1,6 +1,7 @@
 :root {
     --icon: 2em;
     --btn: 4em;
+    --grey0: #fafafa;
     --grey1: #f4f4f4;
     --grey2: #d0d0d0;
     --lightblue: #f0f0f8;
@@ -33,11 +34,13 @@ li > a:hover {text-decoration: underline}
 
 #Top {
 
-background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 248, 1) 100%);
+/* background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 248, 1) 100%); */
+background-color: var(--grey0);
+
 position: fixed;
 top: 0;
 left: 0;
-border-bottom: 1px solid var(--blue);
+border-bottom: 1px solid var(--grey2);
 text-align: center;
 
 p.BtnGrid {
@@ -111,7 +114,9 @@ body {font-size: 16px}
 #Top button > span {display: inline}
 
 #Left {
-    background: linear-gradient(90deg, rgba(220, 220, 248, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    /* background: linear-gradient(90deg, rgba(220, 220, 248, 1) 0%, rgba(255, 255, 255, 1) 100%); */
+    border-right: 1px solid var(--grey2);
+    background-color: var(--grey0);
     max-width: 30%;
     width: 320px; /*24em;*/
     height: 100vh;
@@ -120,7 +125,6 @@ body {font-size: 16px}
     top: 0;
     left: 0;
     padding: 6px;
-    border-right: 1px solid var(--blue);
     font-size: 90%;
 }
 

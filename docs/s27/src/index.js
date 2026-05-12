@@ -480,7 +480,7 @@ function metrics(force, sel) {
 }
 
 function svg_aspect() {
-    let svg = $("svg[data-aspect]");
+    let svg = $("[data-aspect]:is(svg, iframe)");
     for (let e of svg) {
         e = $(e);
         let h = Math.round(parseFloat(e.css("width")) / jeval_frac(e.attr("data-aspect")));
