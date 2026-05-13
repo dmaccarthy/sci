@@ -1152,6 +1152,13 @@ lines_to(...points) {
     return this;
 }
 
+lines(...points) {
+    for (let [x, y] of points) {
+        this.line_to([this.x + x, this.y + y);
+    }
+    return this;
+}
+
 hor(x) { // Move horizontally
     let svg = this.svg;
     let f = (x) => x.toFixed(svg.decimals);

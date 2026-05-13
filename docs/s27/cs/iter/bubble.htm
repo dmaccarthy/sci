@@ -1,0 +1,48 @@
+<section class="Post" data-action="slides">
+<!-- <h3>Lesson Notes</h3> -->
+    <p>You can read about this algorithm at <a target="Bubble" href="https://en.wikipedia.org/wiki/Bubble_sort">Wikipedia</a>.</p>
+<!-- <pre data-echo="io" class="Code">[<span class="Blue">8, 5</span>, 7, 2, 6, 1]
+[5, <span class="Blue">8, 7</span>, 2, 6, 1]
+[5, 7, <span class="Blue">8, 2</span>, 6, 1]
+[5, 7, 2, <span class="Blue">8, 6</span>, 1]
+[5, 7, 2, 6, <span class="Blue">8, 1</span>]
+[5, 7, 2, 6, 1, 8]</pre>
+
+<pre data-echo="io" class="Code">[<span class="Blue">5, 7</span>, 2, 6, 1, 8]
+[5, <span class="Blue">7, 2</span>, 6, 1, 8]
+[5, 2, <span class="Blue">7, 6</span>, 1, 8]
+[5, 2, 6, <span class="Blue">7, 1</span>, 8]
+[5, 2, 6, 1, 7, 8]</pre>
+
+<pre data-echo="io" class="Code">[<span class="Blue">5, 2</span>, 6, 1, 7, 8]
+[2, <span class="Blue">5, 6</span>, 1, 7, 8]
+[2, 5, <span class="Blue">6, 1</span>, 7, 8]
+[2, 5, 1, <span class="Blue">6, 7</span>, 8]
+[<span class="Blue">2, 5</span>, 1, 6, 7, 8]
+[2, <span class="Blue">5, 1</span>, 6, 7, 8]
+[2, 1, <span class="Blue">5, 6</span>, 7, 8]
+[<span class="Blue">2, 1</span>, 5, 6, 7, 8]
+[1, <span class="Blue">2, 5</span>, 6, 7, 8]
+[<span class="Blue">1, 2</span>, 5, 6, 7, 8]
+</pre> -->
+
+</section>
+
+<section class="Post" data-action="ide">
+<h3>Assignment</h3>
+<p class="Red">Do not use any of Python’s list sorting methods for any of these tasks; you must impelement the algorithm’s logic yourself.</p>
+<ol class="Assign">
+    <li>Implement a bubble sort algorithm by completing the function <code>bubbleSort</code> in the program <code>iter3_sort.py</code>.
+    Do not use the operators <code>&lt;</code> and <code>&gt;</code> when comparing values as this will require different versions of the function to
+    sort in ascending and descending order. Instead, the program stub provides two functions, <code>ascend</code> and
+    <code>descend</code>, to perform comparisons. You can specify which one you want to use by assigning to the global variable
+    <code>compare</code>. These functions return <code>True</code> when the arguments are passed in the incorrect order (and
+    need to be swapped) or <code>False</code> when no swap is necessary.</li>
+</ol>
+</section>
+
+<script type="text/javascript">
+
+page({title: "Bubble Sort"});
+
+</script>

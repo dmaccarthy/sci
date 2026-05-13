@@ -1,6 +1,7 @@
 <section class="Post" data-action="slides">
-<h3>Classes (Data Types)</h3><div class="Collapse Expand">
-<p>In <a href="#cs_new/sp1/type">Structured Programming 1</a>, you learned that all data objects stored by a Python program have an associated <em class="Defn">class</em> which describes the type
+
+<h3>Classes (Data Types)</h3>
+<p>In <a href="#cs/sp/type">Structured Programming 1</a>, you learned that all data objects stored by a Python program have an associated <em class="Defn">class</em> which describes the type
     of data being represented. (Classes are also known simply as “data types”.)  Python 3 classes include <code>bool</code>
     (<code>True</code> or <code>False</code>), <code>int</code> (numbers with no decimal part), <code>float</code> (numbers that
     include a decimal part), and <code>str</code> (sequences of Unicode characters). The class of a data object determines how
@@ -16,10 +17,8 @@ print(3 + "5")     <span class="Comment"># Exception!!</span></pre>
     their encoding and behaviour is built into the computer’s hardware. The <code>str</code> class is more complicated; it can
     be thought of as a sequence of integer values where each integer represents a specific character encoded in Unicode
     (e.g. the character “A” is represented by the integer 65).</p>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Tuples</h3><div class="Collapse Expand">
+<h3>Tuples</h3>
 <p>Sometimes, we may need to encode sequences of other data. For example, graphics coordinates can be represented by sequences
     of two numbers that represent the <i>x</i> and <i>y</i> positions, and colours are represented by sequences of 3 (RGB) or 4 (RGBA) values
     between 0 and 255...</p>
@@ -47,10 +46,9 @@ print(b)   <span class="Comment"># 240</span></pre>
 <pre data-echo="py" class="Code" contenteditable="true">
 empty = ()      <span class="Comment"># Empty tuple</span>
 faves = (99,)   <span class="Comment"># Singleton</span></pre>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Indexing</h3><div class="Collapse Expand">
+
+<h3>Indexing</h3>
 <p>You may not want to “unpack” a tuple into a large number of individual variables to access the data. Python uses
     indices (plural of index) to allow access to items without unpacking. An <em class="Defn">index</em> is an integer that tells us how far from the beginning of the tuple each object is located. Thus, the first item in the tuple has an index of 0, while the second item has an index of 1, and so on. Python also supports negative indices, which describe an object’s position from the end of the tuple: an index of -1 refers to the last item while -2 refers to the second last one.</p>
 <p>Individual objects in a <code>tuple</code> can be referenced by the <code>tuple</code>’s variable name, followed by the
@@ -65,10 +63,8 @@ print(favNumbers[-1])     <span class="Comment"># 42</span></pre>
     to assign a new value to an existing item in the <code>tuple</code>...</p>
 <pre data-echo="d01_ex5.py" data-title="1" class="Code" contenteditable="true">favNumbers = 4, 8, 15, 16, 23, 42
 favNumbers[1] = 9</pre>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Other <code>tuple</code> Operations</h3><div class="Collapse Expand">
+<h3>Other <code>tuple</code> Operations</h3>
 <p>Python has an <code>in</code> operator that tests whether a particular value exists in a <code>tuple</code>, a <code>len</code>
     function that determines the number of items in a <code>tuple</code>, and an <code>index</code> method that returns the
     index of the first occurrence of a value in the <code>tuple</code>...</p>
@@ -76,10 +72,8 @@ favNumbers[1] = 9</pre>
 print(len(favNumbers))         <span class="Comment"># 6</span>
 print(9 in favNumbers)         <span class="Comment"># False</span>
 print(favNumbers.index(23))    <span class="Comment"># 4</span></pre>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Slicing</h3><div class="Collapse Expand">
+<h3>Slicing</h3>
 <p>Python allows you to extract <em class="Defn">slices</em> of a <code>tuple</code> into a new <code>tuple</code>. Consider the following example...</p>
 <pre data-echo="d01_ex7.py" data-title="1" class="Code" contenteditable="true">favNumbers = 4, 8, 15, 16, 23, 42
 teens = favNumbers[2:4]
@@ -93,10 +87,8 @@ print(oneDigit, teens, biggies)</pre>
     assumes the start (end) of the slice should be the start (end) of the <code>tuple</code>. Thus <code>favNumbers[:2]</code>
     takes a slice from the beginning up to (but not including) index 2. The expression <code>favNumbers[-2:]</code> means a
     slice starting with the second last item and going to the end.</p>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Strings</h3><div class="Collapse Expand">
+<h3>Strings</h3>
 <p>The string data type (class <code>str</code>) is similar to a <code>tuple</code> in the sense that it is a sequence of items,
     the items being individual Unicode characters. The constructor for the <code>tuple</code> class can explicitly convert a
     string to a <code>tuple</code>...</p>
@@ -108,10 +100,8 @@ print(letters)</pre>
     converting them to <code>tuple</code>...</p>
 <pre data-echo="d01_ex9.py" data-title="1" class="Code" contenteditable="true">place = "Sherwood Park"
 print(place[-4:])</pre>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Lists</h3><div class="Collapse Expand">
+<h3>Lists</h3>
 <p>A <code>list</code> is a Python data structure that is similar to a <code>tuple</code>, except that where a <code>tuple</code> is immutable,
     a <code>list</code> is <em class="Defn">mutable</em>. You can add, remove, and modify items within a <code>list</code> without
     having to copy all of the data into a new data structure. In Python, lists are created using <em>square</em> brackets...</p>
@@ -130,10 +120,10 @@ print(favNumList)</pre>
     are also available for lists. Because lists are mutable, Python provides additional methods for inserting, removing, and
     appending items to a <code>list</code>, and for sorting lists. These methods are described in the <a target="Py" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">Python documentation</a>.
     You should be familiar with the <code>append</code>, <code>extend</code>, <code>remove</code>, and <code>insert</code> methods in particular.</p>
-</div></section>
+</section>
 
 <section class="Post" data-action="ide">
-<h3>Assignment</h3><div class="Collapse Expand">
+<h3>Assignment</h3>
 <ol class="Assign">
 <li>The program <code>d01_copy.py</code> creates a <code>list</code> of data, and then runs the assignment <code>dataCopy = data</code>.
     This line does not copy the <code>list</code>; it simply creates a duplicate reference (name) for the same <code>list</code> object!
@@ -155,24 +145,11 @@ print(favNumList)</pre>
     300, the program should print [2, 2, 3, 5, 5], a <code>list</code> of prime numbers whose product is the number provided.
     Use appropriate modular programming and exception handling techniques. Hint: Write a separate function to calculate the
     smallest prime factor of a number.</li></ol>
-</div></section>
-
-<script type="text/javascript">
-    
-loadFeed.data = {
-    title: "Tuples & Lists",
-    up: `cs_new/home`,
-    next: "cs_new/ds/iter",
-}
-
-</script>
+</section>
 
 <script type="text/javascript">
 
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
+page({title: "Tuples & Lists",
 });
 
 </script>

@@ -1,5 +1,5 @@
 <section class="Post" data-action="slides">
-<h3>List Comprehensions</h3><div class="Collapse Expand">
+<h3>List Comprehensions</h3>
 <p>We saw is the last lesson that list comprehensions provide a “shortcut” for producing lists from existing sequences. In the example below <code>range(5)</code> creates a sequence of the numbers 0 through 4, and the list comprehension (shown in blue) squares each of these numbers to produce a new <code>list</code>.</p>
 
 <pre data-echo="py" class="Code" contenteditable="true">
@@ -28,10 +28,8 @@ print(squares)     <span class="Comment"># [0, 1, 4, 9, 16]</span></pre>
     <span class="Blue">return fibSeq</span>
 
 for n in fib(10): print(n)  <span class="Comment"># 0 1 1 2 3 5 8 13 21 34</span></pre>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Generator Functions</h3><div class="Collapse Expand">
+<h3>Generator Functions</h3>
 <p>Python provides a shortcut for situations like the example above...</p>
 <pre data-echo="d06_ex2.py" data-title="1" class="Code" contenteditable="true">def fib(n):
     <span class="Comment">"Yield the first n terms of the Fibonacci sequence"</span>
@@ -86,10 +84,8 @@ print(fib(10))</pre>
     same result that a regular function would produce...</p>
 <pre data-echo="py" class="Code" contenteditable="true">
 print(list(fib(10)))   <span class="Comment"># [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span></pre>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Infinite Sequences</h3><div class="Collapse Expand">
+<h3>Infinite Sequences</h3>
 <p>In math, there is a special number known as Euler’s number (<span class="TeX">e</span>) that can be calculated as the sum of an infinite series...</p>
 <p class="TeX">e = 1 + 1 + \frac{1}{2} + \frac{1}{6} + \frac{1}{24} + ...</p>
 <p>Each term in the series is calculated by dividing the previous term by the total number of previous terms; i.e. the second term is the first term divided by 1, the third term is the second term divided by 2, etc.  We can use a generator function to represent the entire infinite sequence...</p>
@@ -120,33 +116,18 @@ def eulerSum():
 print("e =", eulerSum())</pre>
 <p>It should be noted that many programmers consider the use of <code>break</code> to be inelegant and a technique that produces less readable code.
     Therefore, <code>break</code> should not be used if there is an alternative way to achieve your algorithm without making it much more complex.</p>
-</div></section>
+</section>
 
 <section class="Post" data-action="ide">
-<h3>Assignment</h3><div class="Collapse Expand">
+<h3>Assignment</h3>
 <ol class="Assign">
     <li>Complete the program <code>d06_askNums.py</code> to use a <u>generator function</u> to collect a sequence of numbers from the user, one at a time. The user will determine how many numbers to enter. Ignore any input that cannot be converted to a number.</li>
     <li>Complete the program <code>d06_primes.py</code> to use a <u>generator function</u> to create a sequence of prime numbers. Remember that a prime number is a positive integer that has exactly two whole-number factors: itself and the number 1. The function should take one optional argument that specifies the number of terms to generate. If no arguments are passed, the function should generate the entire (infinite) sequence!</li>
 </ol>
-</div></section>
-
-<script type="text/javascript">
-    
-loadFeed.data = {
-    title: "Generator Functions",
-    up: `cs_new/home`,
-    prev: "cs_new/ds/comp",
-    next: "cs_new/ds/array",
-}
-
-</script>
+</section>
 
 <script type="text/javascript">
 
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
-});
+page({title: "Generator Functions"});
 
 </script>

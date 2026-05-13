@@ -1,5 +1,5 @@
 <section class="Post" data-action="slides">
-<h3>Sets</h3><div class="Collapse Expand">
+<h3>Sets</h3>
 <p>All of the iterable data types that we have looked at so far — strings, tuples, lists, and range objects — represent <em>ordered</em> sequences.
     Python includes a <code>set</code> class that can be used for <em>unordered</em> collections of objects.</p>
 <p>Suppose we wanted to create a data structure to represent the four suits in a deck of cards. Although we <em>could</em> use a tuple or list, the order of the suits usually doesn’t matter.  For such a circumstance, we might choose to use a <code>set</code> rather than a <code>tuple</code>...</p>
@@ -35,10 +35,8 @@ data = sorted(dataAsSet)
 print(data)                     <span class="Comment"># [0, 1, 4, 5, 7, 12]</span></pre>
 
 <p>See the <a target="Py" href="https://docs.python.org/3/library/stdtypes.html?#set-types-set-frozenset">Python docmentation</a> for more information on the set and frozenset classes.</p>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Dictionaries</h3><div class="Collapse Expand">
+<h3>Dictionaries</h3>
 <p>Suppose you wanted to create an object to represent personal data for one of your friends (name, email, birthday, phone
     number). You might use a <code>set</code> because the order in which the items are stored is not important...</p>
 <pre data-echo="py" class="Code" contenteditable="true">
@@ -75,10 +73,8 @@ print(myFriend)</pre>
     information the item contains. However, the Python interpreter allows you to use any immutable object as a key,
     including <code>int</code>, <code>float</code>, <code>bool</code> and <code>tuple</code> instances. (In the case of tuples,
     all of the items in the <code>tuple</code> must also be immutable).</p>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Dictionaries &amp; Iteration</h3><div class="Collapse Expand">
+<h3>Dictionaries &amp; Iteration</h3>
 <p>When you use a <code>for-in</code> loop with a <code>dict</code> instance as the iterable, the loop iterates through the
     <em>keys</em>, not the item <em>values</em>. The <code>dict</code> class has a <code>values</code> method that you can use if you want to
     iterate through the item values rather than the keys, and a <code>items</code> method to iterate through (key, value)
@@ -115,10 +111,10 @@ print("Jane Doe" in myFriend)             <span class="Comment"># False</span>
 print("name" in myFriend)                 <span class="Comment"># True</span>
 print("Jane Doe" in myFriend.values())    <span class="Comment"># True</span>
 print("name" in myFriend.values())        <span class="Comment"># False</span></pre>
-</div></section>
+</section>
 
 <section class="Post" data-action="ide">
-<h3>Assignment</h3><div class="Collapse Expand">
+<h3>Assignment</h3>
 <ol class="Assign">
 <li>Open the current standings from the <a target="NHL" href="https://www.nhl.com/standings/">National Hockey League</a> website.
     Complete the program <code>d03_pacific.py</code> to encode the data for the Pacific Division as a Python 3 dictionary.
@@ -135,26 +131,10 @@ print("name" in myFriend.values())        <span class="Comment"># False</span></
     <li>Finally, complete the function <code>prettyFormat</code> to display a card in a user-friendly format. For example,
         rather than printing <code>{"suit": "Hearts", "value": 12}</code>, we would like the card to be displayed as <code>"Queen of Hearts"</code>.</li>
     </ol>
-</li></ol>
-</div></section>
-
-<script type="text/javascript">
-    
-loadFeed.data = {
-    title: "Dictionaries & Sets",
-    up: `cs_new/home`,
-    prev: "cs_new/ds/iter",
-    next: "cs_new/ds/args",
-}
-
-</script>
+</li></ol></section>
 
 <script type="text/javascript">
 
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
-});
+page({title: "Dictionaries & Sets"});
 
 </script>

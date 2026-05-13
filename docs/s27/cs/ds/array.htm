@@ -1,13 +1,13 @@
 <style type="text/css">
 
-th {background-color:lightblue}
+th {background-color:var(--mediumblue)}
 th, td {min-width:5em}
-tr:nth-child(1) > th:nth-child(1) {border:none; background-color:#ffffff00}
+tr:nth-child(1) > th:nth-child(1) {border:none; background-color:#fff0}
 
 </style>
 
 <section class="Post" data-action="slides">
-<h3>Arrays</h3><div class="Collapse Expand">
+<h3>Arrays</h3>
 <p>An <em class="Defn">array</em> is a list-like data structure. The main difference between a <code>list</code> and an
     <code>array</code> is that the items within an <code>array</code> must all be the same data type. This has the advantage
     that every item in the <code>array</code> uses the same number of bytes and can therefore be located very easily. For
@@ -43,10 +43,8 @@ print(fibArray.itemsize) <span class="Comment"># Probably 8</span></pre>
 <p>The main advantage is the increased efficiency of arrays compared to tuples or lists.  A sequence of 94 numbers is small
     enough that the efficiency advantage of arrays is probably outweighed by the 8-byte restriction. For large sequences,
     such as a complicated scientific or engineering calculation, the efficiency of arrays is probably worth the limitations.</p>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>2D Lists &amp; Arrays</h3><div class="Collapse Expand">
+<h3>2D Lists &amp; Arrays</h3>
 <p>Lists and tuples can contain items that are themselves lists or tuples. A list of lists is often called a 2D list. (A list of 2D lists would be a 3D list!) Multidimensional lists are useful for storing matrices and other table-like data. Suppose we have the following data table:</p>
 
 <table class="Auto Center TD">
@@ -84,10 +82,10 @@ table2 = [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</pre>
 
 <p>Python does not support 2D arrays using the standard library <code>array</code> module. There are third-party libraries such as <a target="numpy" href="https://www.numpy.org/">numpy</a> that have this feature. 2D arrays are usually required to be <em>rectangular</em>; that is, each row must contain the same number of columns.</p>
 
-</div></section>
+</section>
 
 <section class="Post" data-action="ide">
-<h3>Assignment</h3><div class="Collapse Expand">
+<h3>Assignment</h3>
 <ol class="Assign">
 <li>The program <code>d07_arrays.py</code> generates one million random numbers (type <code>float</code>) into a <code>list</code>
     (using the <code>makeList</code> function) and then performs a calculation on each item in the <code>list</code>. It
@@ -103,25 +101,10 @@ table2 = [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</pre>
     generated but not processed the same way as the <code>list</code> and <code>array</code>.</li>
 </ol></li>
 </ol>
-</div></section>
-
-<script type="text/javascript">
-    
-loadFeed.data = {
-    title: "Arrays",
-    up: `cs_new/home`,
-    prev: "cs_new/ds/gen",
-    next: "cs_new/ds/prj_fwd",
-}
-
-</script>
+</section>
 
 <script type="text/javascript">
 
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
-});
+page({title: "Arrays"});
 
 </script>

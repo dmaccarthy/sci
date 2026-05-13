@@ -1,5 +1,5 @@
 <section class="Post" data-action="slides">
-<h3>Positional Arguments</h3><div class="Collapse Expand">
+<h3>Positional Arguments</h3>
 <p>One useful application of iterable data structures like tuples and dictionaries is that they allow us to write functions that can accept a non-fixed number of arguments. The function below has two parameters, and therefore it must be called with two arguments...</p>
 <pre class="Code" contenteditable="true" data-echo="d04_ex1.py" data-title="1">def add(a, b):
     return a + b
@@ -35,10 +35,8 @@ print(add(1, 2, 3, 4))         <span class="Comment"># 1 + 2 = 3</span></pre>
 print(add(1, 2, 3, 4))</pre>
 
 <p>(*Practical, but “totally” unnecessary, since Python has a built-in function <code>sum</code> that does the same thing.)</p>
-</div></section>
 
-<section class="Post" data-action="slides">
-<h3>Keyword Arguments</h3><div class="Collapse Expand">
+<h3>Keyword Arguments</h3>
 <p>Python also permits functions to accept arguments identified by a keyword rather than by position...</p>
 <pre class="Code" contenteditable="true" data-echo="d04_ex4.py" data-title="1">def add(a, b, *args, <span class="Blue">**kwargs</span>):
     print("Positional:", args)
@@ -57,10 +55,10 @@ print(total)</pre>
     keyword arguments last. The following will produce an exception because a non-keyword argument (4) is passed after a
     keyword argument (<code>user=name</code>)...</p>
 <pre class="Code" contenteditable="true" data-echo="d04_ex5.py" data-title="1">total = add(1,2,3, <span class="Blue">user=name, 4</span>, year=2021)</pre>
-</div></section>
+</section>
 
 <section class="Post" data-action="ide">
-<h3>Assignment</h3><div class="Collapse Expand">
+<h3>Assignment</h3>
 <ol class="Assign">
 <li>The Pythagoras formula describes the relationship between the three sides of a right angle triangle, where <span class="TeX">c</span> is the
     longest side (hypotenuse):
@@ -80,28 +78,10 @@ The formulas for converting <em>to</em> Celsius are:
 Complete the program <code>d04_temp.py</code> so that the <code>temperature</code> function will accept the
     temperature in any of the units, using keywords <code>C</code>, <code>K</code>, or <code>F</code>. The function should
     return a <u>dictionary</u> that contains the temperature in all three units.</li></ol>
-</div></section>
-
-<script type="text/javascript">
-    
-loadFeed.data = {
-    title: "Positional & Keyword Arguments",
-    up: `cs_new/home`,
-    prev: "cs_new/ds/dict",
-    next: "cs_new/ds/comp",
-}
-
-</script>
-
-
-
+</section>
 
 <script type="text/javascript">
 
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
-});
+page({title: "Positional & Keyword Arguments"});
 
 </script>

@@ -1,5 +1,5 @@
 <section class="Post" data-action="slides">
-<h3>Iterating through Sequences</h3><div class="Collapse Expand">
+<h3>Iterating through Sequences</h3>
 <p>In Python 3, tuples, lists, and strings are examples of <em class="Defn">iterable</em> objects.
     This means that the data is a <em>sequence</em> that can be looped through. You saw in CS 10 that Python
     includes a <code>while</code> loop that can be used to repeat one or more instructions until the
@@ -55,10 +55,10 @@ print(15 in range(8))    <span class="Comment"># False</span></pre>
 for index, letter in enumerate(phrase):
     print(f"The {index}th letter is '{letter}'.")
 </pre>
-</div></section>
+</section>
 
 <section class="Post" data-action="ide">
-<h3>Assignment</h3><div class="Collapse Expand">
+<h3>Assignment</h3>
 <ol class="Assign"><li>How common are each of the 26 letters in an English text? Complete the function <code>letterFrequency</code>
     in the program <code>d02_letters.py</code> to find out. The program will load and print some text, and then
     pass the text as a single string object to the <code>letterFrequency</code> function. Your function should
@@ -67,25 +67,10 @@ for index, letter in enumerate(phrase):
     1 for ‘B’ and so on, up to 25 for ‘Z’. Also complete the function <code>printResults</code> to display
     the results in a user-friendly way. Your functions should use a <code>for-in</code> loop to iterate through
     strings and lists rather than a <code>while</code> loop.</li></ol>
-</div></section>
-
-<script type="text/javascript">
-    
-loadFeed.data = {
-    title: "Iteration",
-    up: `cs_new/home`,
-    prev: "cs_new/ds/list",
-    next: "cs_new/ds/dict",
-}
-
-</script>
+</section>
 
 <script type="text/javascript">
 
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
-});
+page({title: "Iteration"});
 
 </script>
