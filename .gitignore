@@ -1,7 +1,7 @@
 node_modules/
 docs/tools/exam/*
 docs/_test/*
-docs/s27/*.py
 docs/s27/s27a/*
 docs/s27/cs/_prj/
 docs/s27/img.py
+docs/s27/s27.py
