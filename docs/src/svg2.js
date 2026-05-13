@@ -1154,7 +1154,7 @@ lines_to(...points) {
 
 lines(...points) {
     for (let [x, y] of points) {
-        this.line_to([this.x + x, this.y + y);
+        this.line_to([this.x + x, this.y + y]);
     }
     return this;
 }
