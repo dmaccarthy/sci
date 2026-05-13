@@ -1,8 +1,27 @@
 <section class="Post" data-action="cal"></section>
 
+<section class="Post" data-action="correct">
+<div class="Red">
+<h3>Instructions</h3>
+<p>Complete the programming tasks below by the due dates announced in class. Use VS Code to create, edit, and test your programs. Create the program files in the <code>cs10/python</code> folder of your Computing Science OneDrive folder.</p>
+<p>All programs should have a docstring and relevant comments, and should use the “IPO” (Input, Processing, Output) program structure. Use descriptive names for variables.</p>
+<p>Use only programming techniques that have been covered in these lessons. Examples that you find on the web often use
+techniques that are considered bad programmming practice that should be avoided.</p>
+</div>
+
+<div class="Projects">Loading...</div>
+</section>
+
 <script type="text/javascript">
 
-page({title: "Computing Science 10"});
+page({title: "Computing Science 10", project: "cs/prj10.txt"});
+
+page.init = async() => {
+    return cs_projects(page.get("project")).then(() => {
+        let f = page.get("abc");
+        if (f) f();
+    });
+}
 
 page.cal("cs", [
     {t: "Python Project 1", s: "2026.2.17", f: "sp/x"},

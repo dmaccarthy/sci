@@ -24,7 +24,7 @@ page.cal.make = () => {
         return `${day}, ${mon} ${d.getDate()}`;
     }
 
-    let [c, data] = page._data._cal;
+    let [c, data] = page.get("_cal");
     let e = $("main > article > section.Post[data-action='cal']");
     let tbl = $("<table>").addClass("Calendar").appendTo(e);
     let tr = $("<tr>").appendTo($("<thead>").appendTo(tbl));

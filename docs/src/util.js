@@ -115,6 +115,11 @@ function unicode_to_base64(utext) {
     return btoa(String.fromCharCode(...data));
 }
 
+function base64_to_unicode(btext) {
+    let data = Uint8Array.from(atob(btext), c => c.charCodeAt(0));
+    return new TextDecoder().decode(data);
+}
+
 function hide_cell(tbl, r, c, hide) {
     // Hide the contents of a table cell
     let tr = $(tbl).find("tr")[r];

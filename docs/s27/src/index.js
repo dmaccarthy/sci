@@ -128,6 +128,37 @@ function copy_or_open(ei) {
     }
 }
 
+async function cs_projects(prj) {
+    // Generate CS summative project pages
+    return fetch(`${prj}?_${new Date().getTime()}`).then(r => {
+        return r.ok ? r.text() : "";
+    }).then(t => {
+        let div = $("main div.Projects").html(base64_to_unicode(t));
+        let dates = page.get("project_dates");
+        let h3 = div.find("h3").addClass("Link");
+        for (let h of h3) {
+            h = $(h);
+            let s = h.attr("data-name");
+            if (s) s = new Date(dates[s]) < new Date();
+            if (s) {
+                h.next("div").hide();
+                h.on("click", ev => {
+                    let h = $(ev.currentTarget);
+                    for (let d of div.children("div")) {
+                        d = $(d);
+                        if (d[0] == h.next("div")[0]) d.slideToggle();
+                        else if (d.is(":visible")) d.slideUp();
+                    }
+                });
+            }
+            else {
+                h.next("div").remove();
+                h.remove();
+            }
+        }
+    });
+}
+
 
 /*** Navigation tree ***/
 
@@ -155,6 +186,7 @@ page.clear = () => {
     page._data = {};
     page._run = [];
     page._final = [];
+    delete page.init;
     $("#Top button").removeClass("Selected");
     $("main").css({visibility: "hidden"});
 }
@@ -200,6 +232,16 @@ page.onload = (feed, args) => {
 
     // Add page content to DOM and set page title
     let art = $("main > article").html(page._cache[feed]);
+
+    // Initialize page
+    after = () => page.after_init(art, args ? args.action : null);
+    if (page.init) page.init().then(after);
+    else after();
+}
+
+page.after_init = (art, args) => {
+    // Run tasks after custom page.init function finishes
+
     let data = page._data;
 
     // Enable copy/open operation on .Code elements
@@ -220,28 +262,27 @@ page.onload = (feed, args) => {
         e.prepend("<br/>").prepend(get_image(e.attr("data-icon"), 1));
     }
 
-    args = args ? args.action : null;
-    let after = () => { // Actions to perform after SVG2 scripts have run
-
-        // Run page scripts
-        for (let f of page._run) {
-            try {f()} catch(err) {console.warn(err)};
-        }
-        page.vars();
-
-        // Render TeX using MathJax, then fix page metrics
-        mjax_render(art.find(".TeX"), 0, "2px").then(() => {
-            metrics(1, args);
-            setTimeout(() => {
-                $("body, main").css({visibility: "visible"});
-                metrics(1, args);
-            }, 10);
-        });
-    }
-
     // Load SVG2 animations
+    let after = () => page.after_svg(art, args);
     if (data.svg2) scripts(data.svg2).then(after);
     else after();
+}
+
+page.after_svg = (art, args) => {
+    // Run page scripts
+    for (let f of page._run) {
+        try {f()} catch(err) {console.warn(err)};
+    }
+    page.vars();
+
+    // Render TeX using MathJax, then fix page metrics
+    mjax_render(art.find(".TeX"), 0, "2px").then(() => {
+        metrics(1, args);
+        setTimeout(() => {
+            $("body, main").css({visibility: "visible"});
+            metrics(1, args);
+        }, 10);
+    });
 }
 
 page.tab = () => $("#Top button.Selected").attr("data-action");
@@ -249,7 +290,7 @@ page.post = () => $("main article > section.Post").filter(`[data-action='${page.
 
 page.set_title = () => {
     let title = page.post().attr("data-title");
-    if (!title) title = page._data.title;
+    if (!title) title = page.get("title");
     document.title = $("#MainTitle").html(title ? title : "Page").text();
 }
 
@@ -345,6 +386,7 @@ page.vars.map = {
 
 /*** Page scripts ***/
 
+page.get = (k) => page._data[k]; 
 page.run = (...args) => {for (let a of args) page._run.push(a)}
 page.final = (...args) => {for (let a of args) page._final.push(a)}
 
@@ -502,8 +544,6 @@ function scroll_bottom(t) {
 
 
 /*** Swipe handlers ***/
-
-// console.warn("Swipe active!!");
 
 function swipe(delta) {
     /* Go to next or previous page on horizontal swipe */

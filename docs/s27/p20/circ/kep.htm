@@ -275,7 +275,7 @@ page.run(() => {
         let t = svg.timeFactor = parseFloat(e.val());
         e.attr({title: `1 second : ${t.toFixed(4)} years`});
     }).trigger("change");
-    $("#Zodiac").on("change", page._data.zodiac);
+    $("#Zodiac").on("change", page.get("zodiac"));
     $("#Retrograde").on("change", () => {
         let e = $("#Helio g.Arrow");
         let z = $("#Zodiac");
@@ -289,7 +289,7 @@ page.run(() => {
             e.fadeIn();
             z[0].disabled = false;
         }
-        page._data.zodiac();
+        page.get("zodiac")();
     }).trigger("change");
 });
 

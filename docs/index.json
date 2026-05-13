@@ -3,10 +3,10 @@
 
 "shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2026.5.13", "a": "2026.5.15", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
 "shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2026.5.15", "a": "2026.5.19", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
-"shm/shm#": {"t": "Lab: Simple Harmonic Motion", "s": "2028.1"},
-"shm/T": {"t": "@Period of SHM", "n": "7.3", "s": "2028.1", "a": "2028.1", "h": "1vXy1OAuyVKjbA7keUdNGsdEeziXTtbfZ"},
-"shm/pend": {"t": "@Simple Pendulum", "n": "7.4", "s": "2028.1", "a": "2028.1.15", "h": ["1MK2kinnt7LqC6oNuexuG8I-pLO3a9Vn_", ["Lab Handout", "1lzT9ZH7uAndjdccNUGfVP-pZgWaXFwoL"]]},
-"shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2028.1"},
+"shm/shm#": {"t": "Lab: Simple Harmonic Motion", "s": "2026.5.21"},
+"shm/T": {"t": "@Period of SHM", "n": "7.3", "s": "2026.5.20", "a": "2026.5.22", "h": "1vXy1OAuyVKjbA7keUdNGsdEeziXTtbfZ"},
+"shm/pend": {"t": "@Simple Pendulum", "n": "7.4", "s": "2026.5.22", "a": "2026.5.27", "h": ["1MK2kinnt7LqC6oNuexuG8I-pLO3a9Vn_", ["Lab Handout", "1lzT9ZH7uAndjdccNUGfVP-pZgWaXFwoL"]]},
+"shm/pend#": {"t": "Lab: Simple Pendulum", "s": "2026.5.25"},
 "shm/E": {"t": "@Energy of SHM", "n": "7.5", "s": "2028.1", "a": "2028.1.19", "h": "1XSPOdyignakoikoijuwV4Q28Bsj_0vWW"},
 "shm/res": {"t": "@Mechanical Resonance", "n": "7.6", "s": "9999", "a": "9999"},
 
@@ -100,7 +100,7 @@
 "q2/@": {"t": "Quiz: Two-Dimensional Motion", "s": "2026.3.10", "css": {"font-weight": "bold"}},
 "uA/@": {"t": "Unit A Exam", "s": "2026.3.13", "css": {"font-weight": "bold"}},
 
-"galaxy/@": {"t": "Galaxyland", "s": "2027", "attr": {"href": "1DfO81FZvQzby3lBU9qp39PLeIkiXuBwd", "target": "Galaxy"}}
+"galaxy/@": {"t": "Field Trip: Galaxyland", "s": "2026.5.26", "css": {"font-weight": "bold"}, "attrx": {"href": "https://drive.google.com/file/d/1DfO81FZvQzby3lBU9qp39PLeIkiXuBwd", "target": "Galaxy"}}
 },
 
 "s10": {"home": {"t": "@Science 10"},
@@ -223,11 +223,17 @@
 
 "p30": {"home": {"t": "@Physics 30"},
 
+"nuke/iso": {"t": "@Isotopes & Mass Spectrometry", "n": "16.1", "s": "2026.5.20", "a": "2026.5.21", "h": [["Worksheet", "1K8ZtfpKL3lbtvyfSnvzTxwkiV5rCyG7D"], ["Solutions", "1e4c-RxyuZ16VC3ol1ah-T0PWcT1KtLeO"]]},
+
 "atom/crt#": {"t": "Lab: Thomson’s CRT Experiment", "s": "2026.5.11"},
 "atom/crt": {"t": "@Thomson’s CRT Experiment", "n": "15.1", "cal": "2026.5.13", "s": "2026.5.11", "a": "2026.5.14"},
-"atom/model": {"t": "@Atomic Models", "n": "15.2", "s": "2026.5.14", "a": "2026.5.15"},
+"atom/model": {"t": "@Atomic Models", "n": "15.2", "s": "2026.5.14", "h": ["14UfugA4BaZjv00eJBdV5ZezcVx5JZZpT", ["Solutions", {"show": "2026.5.15", "gdrv": "1Vmp2D8hsh9Htomg3LCff0jw7LBfYIuykza5VzObz_a8"}]]},
 "atom/dual": {"t": "@Wave-Particle Duality", "n": "15.3", "s": "2026.5.15", "a": "2026.5.19"},
 "atom/bohr": {"t": "@Bohr’s Model of the Atom", "n": "15.4", "s": "2026.5.19", "a": "2026.5.20"},
+"qD1/@": {"t": "Quiz: Physics of Atoms", "s": "2026.5.25", "css": {"font-weight": "bold"}},
+"qD2/@": {"t": "Quiz: Nuclear Physics", "s": "2026.6.3", "css": {"font-weight": "bold"}},
+"uD/@": {"t": "Unit D Exam", "s": "2026.6.8", "css": {"font-weight": "bold"}},
+"f/@": {"t": "Field Test [Tentative]", "s": "2026.6.11", "css": {"font-weight": "bold"}},
 
 "photon/bbr": {"t": "@Thermal (Blackbody) Radiation", "n": "14.1", "s": "2026.4.27", "a": "2026.4.29"},
 "photon/photon": {"t": "@Photons", "n": "14.2", "s": "2026.4.29", "a": "2026.4.30"},

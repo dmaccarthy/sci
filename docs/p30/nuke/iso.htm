@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2>
-<div id="LessonNotes" class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Isotopes &amp; Mass Spectroscopy</h1>
@@ -62,23 +61,91 @@
 
 </div></section>
 
-<section class="Post NoPrintIcon" data-show="2024.12.10.10" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1K8ZtfpKL3lbtvyfSnvzTxwkiV5rCyG7D">Isotopes Worksheet</button>
-        <button data-icon="gdrv" data-gdrv="12uMlJAh4t1ZBhlRVMGPwcVX8OGo1QsDf_m9PUMG2BDs">Answer Key</button>
-    </p>
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+    <li>A mass spectrometer includes a velocity selector with <span class="TeX">|\va{E}|</span> = 2.40 × 10<sup>4</sup> N/C and <span class="TeX">B</span> = 0.590 T, which is also the magnetic field strength inside the detector. A sample of singly charged <span class="NoWrap">(<span class="TeX">q</span> = +1<i>e</i>)</span> Li-7 ions is injected into the spectrometer.
+    <ol type="a">
+        <li>What velocity do the ions entering the spectrometer have? What happens to the ions that are moving too fast or slow?</li>
+        <div class="Answer">
+            <p>When the electric and magnetic forces are balanced...</p>
+            <p class="TeX">F_e = F_m</p>
+            <p class="TeX">q|\va{E}| = qvB</p>
+            <p class="TeX">|\va{E}| = vB</p>
+            <p class="TeX">v = \frac{|\va{E}|}{B} = \rm \frac{|2.40\times 10^4\ N/C|}{0.590\ T} = 4.07\times 10^4\ m/s</p>
+        </div>
+
+        <li>What radius do the ions have while moving inside the mass spectrometer?</li>
+        <div class="Answer">
+Since the magnetic force (Fm = qvB) causes uniform circular motion (ac = v2/r), we can write Newton’s 2nd Law as…
+Fm = mac
+qvB = mv2/r
+r = mv / (qB)
+= 7 · 1.67 × 10–27 kg · 4.07 × 104 m/s / (1.60 × 10–19 C · 0.590 T)
+= 5.04 × 10–3 m
+
+            <p class="TeX"></p>
+        </div>
+
+        <li>If there were a few Li-6 ions present in the sample, what radius would ions of this isotope have?</li>
+        <div class="Answer">
+r = mv / (qB)
+= 6 · 1.67 × 10–27 kg · 4.07 × 104 m/s / (1.60 × 10–19 C · 0.590 T)
+= 4.32 × 10–3 m
+
+            <p class="TeX"></p>
+        </div>
+    </ol></li>
+
+    <li>A sample of carbon ions is accelerated by a potential difference of 792 V, then injected into a mass spectrometer with a magnetic field strength of 926 mT. Calculate the radius of the ion trajectories for C-11, C-12, C-13, and C-14, assuming that all ions are singly charged.</li>
+    <div class="Answer">
+The speed of the particles is determined by the work that the accelerating voltage does…
+qVacc = Ek = ½ mv2
+2qVacc = mv2
+2qVacc / m = v2
+v = √(2qVacc / m)
+As in the previous question,
+r = mv / (qB)
+We can eliminate v using the previous equation.
+r = m √(2qVacc / m) / (qB)
+To simplify, move the first m into the square root sign by changing it to m2…
+r = √(m2 · 2qVacc / m) / (qB)
+= √(2mVacc / q) / B
+Evaluating for the four different masses gives…
+r = 1.46 cm (C-11), 1.52 cm (C-12), 1.58 cm (C-13) and 1.64 cm (C-14)
+Sample calculation for C-11...
+r = √(2mVacc / q) / B
+= √(2 (11 · 1.67 × 10–27 kg) (792 V) / (1.60 × 10–19 C)) / 0.926 T
+
+        <p class="TeX"></p>
+    </div>
+
+    <li>A sample of ions is accelerated by a potential difference of 1.35 kV and injected into a mass spectrometer with <span class="TeX">B</span> = 1.06 T. The trajectory of the ions has a radius of 15.0 mm. What is the likely identity of the isotope assuming that the ions are singly charged?</li>
+    <div class="Answer">
+Since the magnetic force (Fm = qvB) causes uniform circular motion (ac = v2/r), we can write Newton’s 2nd Law as…
+Fm = mac
+qvB = mv2/r
+v = qBr / m
+The speed of the particles is determined by the work that the accelerating voltage does…
+qVacc = Ek = ½ mv2
+Combine the two equations by substituting for v...
+The speed of the particles is determined by the work that the accelerating voltage does…
+qVacc = ½ m (qBr / m)2
+2qVacc = m (q2B2r2 / m2)
+2Vacc =  qB2r2 / m
+m = qB2r2 / (2Vacc)
+= 1.60 × 10–19 C (1.06 T)2 (0.0150 m)2 / (2 · 1350 V)
+= 1.50 × 10–26 kg = 9mp
+The isotope is probably Beryllium-9.
+
+        <p class="TeX"></p>
+    </div>
+</ol>
 </div></section>
 
 <script type="text/javascript">
 
-loadFeed.data = {
-    title: `${siteData.lesson}16.1 — Isotopes & Mass Spectrometry`,
-    answerDate: "2024.12.10.10",
-    num: "16.1",
-    up: "p30/units/D",
-    prev: "p30/atom/rev",
-    next: "p30/nuke/radio",
+loadFeed.data = {up: "p30/units/D", prev: "p30/atom/rev", //next: "p30/nuke/radio",
 }
 
 </script>
