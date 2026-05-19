@@ -46,7 +46,6 @@ function open_on_click(ev) {
 
 function get_image(key, element) {
     // Get image URL from @key
-    // if (key == "today") return calendar_icon.url();
     img = key.indexOf("://") == -1 ? get_image.map[key] : key;
     if (!img) {
         img = `../media/${key}`;
@@ -62,6 +61,12 @@ get_image.map = {
     ps: "https://powerschool.eips.ca/favicon-196x196.png",
     python: "https://www.python.org/static/favicon.ico",
 };
+
+get_image.svg = {
+    copy: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><style>* {stroke: #0065fe; stroke-width: 3; stroke-linejoin: round} polyline {fill: white} .Corner, rect {fill: #0065fe; fill-opacity: 0.2}</style><rect x="2" y="2" width="60" height="80"></rect><polyline points="77,98 37,98 37,18 97,18 97,78 77,98 77,78"></polyline><line x1="42" y1="50" x2="90" y2="50"></line><line x1="42" y1="35" x2="90" y2="35"></line><line x1="42" y1="65" x2="90" y2="65"></line><line x1="42" y1="80" x2="77" y2="80"></line><polyline class="Corner" points="77,98 77,78 97,78 77,98"></polyline></svg>`,
+    new_tab: `<svg viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><style>* {fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round}</style><polyline points="40,8 0,8 0,100 92,100 92,60"></polyline><polyline points="60,0 100,0 100,40"></polyline><line x1="100" y1="0" x2="50" y2="50"></line></svg>`,
+    download: `<svg viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><style>* {fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round;}</style><line x1="50" y1="0" x2="50" y2="75"></line><polyline points="20,50 50,75 80,50"></polyline><polyline points="0,80 0,100 100,100 100,80"></polyline></svg>`,
+}
 
 
 /*** Miscellaneous functions ***/
@@ -123,9 +128,8 @@ function copy_or_open(ei) {
 
     let span = $("<span>").addClass("Buttons").appendTo(p);
     title = {copy: "Copy to clipboard", new_tab: "Open in new browser tab", download: "Download"};
-    for (let b of ["copy", "new_tab", "download"]) {
-        $("<img>").attr({"data-echo": b, alt: b, title: title[b], src: `../media/${b}.svg`}).appendTo(span);
-    }
+    for (let b of ["copy", "new_tab", "download"])
+        get_image(b, true).attr({"data-echo": b, title: title[b]}).appendTo(span);
 }
 
 async function cs_projects(prj) {
@@ -419,6 +423,11 @@ let courses = ["s10", "p20", "p30", "cs"];
 
 
 $(() => {
+    // Add SVG dataURLs to get_image/map
+    for (let k in get_image.svg)
+        get_image.map[k] = "data:image/svg+xml;base64," + unicode_to_base64(get_image.svg[k]);
+    delete get_image.svg;
+
     console.log("Teacher:", teacher());
 
     document.addEventListener("touchstart", swipe.event, {passive: true});
@@ -450,7 +459,6 @@ $(() => {
     });
 
     $("#Top button[data-action='cal']").prepend(calendar_icon());
-    // $("#Top button[data-action='review']").prepend(calendar_icon("←"));
     page.clear();
     let trees = [...fn_eval(x => x + "/tree", courses)];
     page._tree = new CourseTree("#Left > ul.TreeTop ul");

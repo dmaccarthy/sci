@@ -1,5 +1,5 @@
-<section class="Post" data-action="html5">
-<h3>Adding Video</h3><div class="Collapse Expand">
+<section class="Post" data-action="slides">
+<h3>Adding Video</h3>
 
 <p>HTML5 introduced a <code>&lt;video&gt;</code> tag for embedding video files in web pages.
 	Because different browsers may support different video formats, you can list multiple
@@ -14,10 +14,7 @@
   &lt;source src="https://dmaccarthy.github.io/sci/media/movie.ogv" type="video/ogg"&gt;
 &lt;/video&gt;</pre>
 
-</div></section>
-
-<section class="Post" data-action="html5">
-<h3>YouTube</h3><div class="Collapse Expand">
+<h3>YouTube</h3>
 
 <p>Rather than upload videos to your own web server, many web pages rely on video hosting
 	services such as YouTube to provide embedded video. By including videos in this manner,
@@ -25,39 +22,29 @@
 	page, visit the video’s YouTube page and obtain the HTML code from the Share/Embed
 	section.</p>
 
-<pre class="Code" contenteditable="true" data-title="1" data-echo="youtube_embed.html">&lt;iframe src="https://www.youtube.com/embed/Vd5duzNtBuI"
+<pre class="Code" contenteditable="true" data-title="1" data-echo="w09_youtube.html">&lt;iframe src="https://www.youtube.com/embed/Vd5duzNtBuI"
     width="640" height="360" frameborder="0" allowfullscreen&gt;&lt/iframe&gt;</pre>
-<p><em>Depending on your web browser settings, you may or may not be able to preview the example as a “data blob”. Instead, you can download the example and then open the downloaded file with your web browser.
-    <b>Important</b>: Never open downloaded files that do not come from a trusted source!</em></p>
-</div>
-</div></section>
+<p><em>Depending on your web browser settings, you may or may not be able to preview the example as a “data blob”. Instead, you can use Python to open the example with a ‘localhost’ server...</em></p>
+<ul>
+    <li><b>Important</b>: The localhost server has minimal security protections and should never be used to open files from unknown or untrusted sources!</li>
+    <li>In <em>VS Code</em>, locate and open the Python file <code>cs10/web/server.py</code>.</li>
+    <li>Run the program.</li>
+    <li>Use your web browser to open the URL <a target="Demo" href="http://localhost:8000">http://localhost:8000</a>. [The browser will report an error if the localhost server is not running on port 8000.]</li>
+    <li>Select the file <code>w09_youtube.html</code>.</li>
+</ul>
+</section>
 
 <section class="Post" data-action="ide">
-<h3>Assignment</h3><div class="Collapse Expand">
+<h3>Assignment</h3>
 <ol class="Assign">
     <li>Use the file <code>w09_myPage.html</code> to create a webpage on a topic of your choice. It can be about
     you; a hobby, game, or TV show you like; your favourite musician or sports team, etc. Make your page visually
     appealing to your viewers and include video.</li>
 </ol>
-</div></section>
-
-<script type="text/javascript">
-    
-loadFeed.data = {
-    title: "Video",
-    up: "cs_new/web1/home",
-    prev: "cs_new/web1/img",
-    next: "cs_new/web1/list",
-}
-  
-</script>
+</section>
 
 <script type="text/javascript">
 
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
-});
+page({title: "Video"});
 
 </script>
