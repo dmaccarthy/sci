@@ -230,7 +230,7 @@
 "atom/model": {"t": "@Atomic Models", "n": "15.2", "s": "2026.5.14", "h": ["14UfugA4BaZjv00eJBdV5ZezcVx5JZZpT", ["Solutions", {"show": "2026.5.15", "gdrv": "1Vmp2D8hsh9Htomg3LCff0jw7LBfYIuykza5VzObz_a8"}]]},
 "atom/dual": {"t": "@Wave-Particle Duality", "n": "15.3", "s": "2026.5.15", "a": "2026.5.19"},
 "atom/bohr": {"t": "@Bohr’s Model of the Atom", "n": "15.4", "s": "2026.5.19", "a": "2026.5.20"},
-"qD1/@": {"t": "Quiz: Physics of Atoms", "s": "2026.5.25", "css": {"font-weight": "bold"}},
+"qD1/@": {"t": "Quiz: Physics of Atoms", "s": "2026.5.22", "css": {"font-weight": "bold"}},
 "qD2/@": {"t": "Quiz: Nuclear Physics", "s": "2026.6.3", "css": {"font-weight": "bold"}},
 "uD/@": {"t": "Unit D Exam", "s": "2026.6.8", "css": {"font-weight": "bold"}},
 "f/@": {"t": "Field Test [Tentative]", "s": "2026.6.11", "css": {"font-weight": "bold"}},
