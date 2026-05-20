@@ -1,0 +1,87 @@
+<section class="Post" data-action="slides">
+<p>Functions often call other functions to help perform their tasks. For example, a function that chooses a random
+    RGB colour could use Python’s <code>randint</code> function to produce each of the three values...</p>
+<pre class="Code" data-echo="rec1_ex1.py" data-title="1">from random import randint
+
+def randColor():
+    return [randint(0, 255) for i in range(3)]
+
+print(randColor())</pre>
+<p>In some circumstances, a function may want to call itself. This is known as <em class="Defn">recursion</em>.</p>
+<p>One example could be calculating factorials, represented in math by an exclamation point following a number.
+    Factorials occur in the study of permutations and combinations. The factorial of a whole number is calculated by multiplying that number by all preceding natural numbers...</p>
+<pre class="IO">6! = 6 × 5 × 4 × 3 × 2 × 1 = 720</pre>
+
+<p>One thing we can observe about this, is that the factorial of a number is equal to that number multiplied by the factorial of the preceding number, i.e. <span class="TeX">6! = 6 × 5!</span> Or more generally:</p>
+<p class="TeX">n! = n × (n - 1)!</p>
+<p>We could try to implement this as a recursive Python function...</p>
+<pre class="Code" data-echo="py">def factorial(n):
+    return n * factorial(n-1)</pre>
+
+<p>The problem is that the recursion would occur forever. Eventually, we need to end the recursion and return a value.
+    We do this by providing a <em class="Defn">base case</em>: when <span class="TeX">n = 0</span>, the factorial evaluates to <span class="TeX">1</span> and so no recursion is needed...</p>
+<pre class="Code" data-echo="rec1_ex2.py" data-title="1">def factorial(n):
+    <span class="Comment">"Calculate factorial recursively"</span>
+    return 1 if n == 0 else n * factorial(n-1)</pre>
+
+<p>Of course, recursion is not necessary to calculate factorials. We could use iteration (loops) to perform the same calculation without recursion...</p>
+<pre class="Code" data-echo="rec1_ex3.py" data-title="1">def factorial(n):
+    <span class="Comment">"Calculate factorial iteratively"</span>
+    fact = 1
+    while n > 1:
+        fact *= n
+        n -= 1
+    return fact</pre>
+
+<p>Recursion and iteration give us two alternatives for solving the same problem. We can decide which algorithm is preferable based on the complexity of the problem and the relative efficiency of the alternatives.</p>
+</section>
+
+<section class="Post" data-action="ide">
+<h3>Assignment</h3>
+<ol class="Assign">
+<li>Complete the program <code>rec1_math.py</code> by writing functions to perform some common math calculations recursively.
+<ul>
+<li><code>power(x, n)</code>: Calculates <span class="TeX">x^n</span>.</li>
+<li><code>sumWhole(n)</code>: Calculates the sum of the first <span class="TeX">n</span> whole numbers.</li>
+<li><code>factor(n)</code>: A <a href="#cs_new/ds/gen">generator function</a> that yields all of the prime factors of any integer greater than 1.</li>
+</ul></li>
+
+<li><p>You learned about a <a href="#cs_new/iter/bsearch">binary search algorithm</a> in an earlier course, which searches for a particular value (target) in a <em>sorted</em> list.
+    This algorithm can be implemented recursively as follows. Compare the <u>middle</u> item of the list to the target. If it matches, you have found what you’re looking for and the function can return the index where the target was found. If the middle item is too “small”, recursively call the binary search on the portion of the list after the middle item*; otherwise make the recursive call on the portion of the list before the middle item. (*In this case, the index being returned needs to be adjusted by the number of items up to and including the middle item of the original list!)</p>
+<p>Implement a recursive binary search by completing the program <code>rec1_bsearch.py</code>.
+    The argument <code>compare</code> is a more generalizable version of the <code>==</code>, <code>&lt;</code>, and <code>&gt;</code> operators;
+    the function returns 0 for <code>==</code>, 1 for <code>&lt;</code>, and -1 for <code>&gt;</code>.
+    First complete the <code>bsearch</code> function to locate a single occurrence of the target.
+    Then complete the <code>findAll</code> function to locate all occurrences.</p></li>
+
+<li>
+<p>The <em>Towers of Hanoi</em> is a puzzle wherein rings or disks of different sizes are stacked in three “towers”. The disks are originally stacked from largest (bottom) to smallest (top) in the left-most tower.</p>
+<p class="Center"><iframe data-aspect="16/9" src="https://www.youtube.com/embed/zP9tPttNk6I" allowfullscreen="true" width="1280" frameborder="0"></iframe></p>
+<p>The centre and right towers are initially empty. The object of the puzzle is to move all disks from the left to the centre tower, observing the following rules:</p>
+<ul>
+<li>You can only move one disk at a time.</li>
+<li>You cannot stack a larger disk on top of a smaller disk.</li>
+</ul>
+<p>The video above shows a solution for 8 disks. The puzzle can be solved recursively; to move <span class="TeX">n</span> disks from tower <b>a</b> to tower <b>b</b>, do the following...</p>
+<ul>
+<li>Move <span class="TeX">n - 1</span> disks from tower <b>a</b> to <b>c</b>.</li>
+<li>Move <span class="TeX">1</span> disk from tower <b>a</b> to <b>b</b>.</li>
+<li>Move <span class="TeX">n - 1</span> disks from tower <b>c</b> to <b>b</b>.</li>
+</ul>
+<p>The base case (where no recursion is needed) occurs when <span class="TeX">n = 0</span> and nothing needs to be done!
+    Complete the program <code>rec1_hanoi.py</code> by writing a <code>moveDisks</code> function that recursively
+    moves the disks represented by the <code>towers</code> variable. This variable refers to a list of four items:
+    <code>towers[0]</code> contains an integer representing the number of moves that have occured; <code>towers[1]</code>
+    contains a list of disk numbers for the first tower; <code>towers[2]</code> and <code>towers[3]</code> contain
+    similar lists for the second and third towers.</p>
+<p>The <code>output</code> function should be called to print the state of the towers each time a disk is moved.
+    The number of moves required should be <span class="TeX">2^n - 1</span>, where <span class="TeX">n</span> is the number of disks.</p>
+</li>
+</ol>
+</section>
+
+<script type="text/javascript">
+
+page({title: "Recursion"});
+
+</script>

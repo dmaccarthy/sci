@@ -66,7 +66,7 @@
 <section class="Slide"><h3 class="Blue">Example 1</h3>
     <p data-cue="none" class="Blue">A moon has an orbital radius of 8.00 × 10<sup>8</sup> metres and an orbital period of 12.0 days around some planet. At what radius should a satellite orbit so that its period would be 6.00 hours</p>
     <p class="TeX">\left(\frac{T_2}{T_1}\right)^2 = \left(\frac{r_2}{r_1}\right)^3</p>
-    <p>Take the cube root of both sides:</p>
+    <p>Take the cube root of both sides (i.e. divide both exponents by 3):</p>
     <p class="TeX">\left(\frac{T_2}{T_1}\right)^{2/3} = \frac{r_2}{r_1}</p>
     <p>Multiply by <span class="TeX">r_1</span>:</p>
     <p class="TeX">\left(\frac{T_2}{T_1}\right)^{2/3} r_1 = r_2</p>
@@ -85,7 +85,7 @@
 </p>
 </section>
 
-<section class="Post" data-show="1" data-answers="1" data-title="Planetary Motion" data-action="graph">
+<section class="Post" data-show="9999" data-answers="1" data-title="Planetary Motion" data-action="graph">
 <h3>Data Analysis</h3>
 <ol><li>The data table below, from <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/" target="NASA">NASA</a>, shows the orbital radius and period of the six innermost planets. The radius of Earth’s orbit is defined as one <em class=Defn">astronomical unit</em> (au) and the orbits of the other planets are given in au as well.
 
@@ -248,8 +248,7 @@
 
 <script type="text/javascript">
 
-
-page({title: "Planetary Motion (Kepler’s Laws)", s: "2028.1.1", a: 1,
+page({title: "Planetary Motion (Kepler’s Laws)", s: "2026.1.1", a: 1,
     svg2: [
         ["#Helio", "p20/circ/img/kep", "helio"],
         ["#Orbit", "p20/circ/img/kep", "orbit"],

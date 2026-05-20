@@ -60,6 +60,9 @@ get_image.map = {
     bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
     ps: "https://powerschool.eips.ca/favicon-196x196.png",
     python: "https://www.python.org/static/favicon.ico",
+    gdrv: "https://upload.wikimedia.org/wikipedia/commons/1/16/Google_Drive_Logo_05.2026.png",
+    gdoc: "https://upload.wikimedia.org/wikipedia/commons/8/84/Google_Docs_Logo_05.2026.png",
+    gsheet: "https://upload.wikimedia.org/wikipedia/commons/5/50/Google_Sheets_Logo_05.2026.png",
 };
 
 get_image.svg = {
