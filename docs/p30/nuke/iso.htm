@@ -98,39 +98,32 @@
         <p class="TeX">r = \frac{mv}{qB}</p>
         <p>We can eliminate <span class="TeX">v</span> using the previous equation...</p>
         <p class="TeX">r = \frac{m}{qB}\cdot \sqrt{\frac{2qV_{acc}}{m}} = \frac{1}{B}\cdot \sqrt{\frac{2mV_{acc}}{q}}</p>
-        <p>Evaluating for the four different masses gives...</p>
-r = 1.46 cm (C-11), 1.52 cm (C-12), 1.58 cm (C-13) and 1.64 cm (C-14)
-Sample calculation for C-11...
-r = √(2mVacc / q) / B
-= √(2 (11 · 1.67 × 10–27 kg) (792 V) / (1.60 × 10–19 C)) / 0.926 T
+        <p>Evaluating for carbon-12, the most common isotope...</p>
+        <p class="TeX">r = \rm \frac{1}{0.926\ T}\cdot \sqrt{\frac{2\ (12\cdot 1.67\times 10^{-27}\ kg)\ 792\ V}{1.60\times 10^{-19}\ C}} = 0.01520\ m = 1.52\ cm</p>
+        <p>We can simply change the 12 in the numerator to the other isotope masses to get the radii for the other isotopes of carbon: C-11 (1.46 cm), C-13 (1.58 cm), C-14 (1.64 cm).</p>
     </div>
 
     <li>A sample of ions is accelerated by a potential difference of 1.35 kV and injected into a mass spectrometer with <span class="TeX">B</span> = 1.06 T. The trajectory of the ions has a radius of 15.0 mm. What is the likely identity of the isotope assuming that the ions are singly charged?</li>
     <div class="Answer">
-Since the magnetic force (Fm = qvB) causes uniform circular motion (ac = v2/r), we can write Newton’s 2nd Law as…
-Fm = mac
-qvB = mv2/r
-v = qBr / m
-The speed of the particles is determined by the work that the accelerating voltage does…
-qVacc = Ek = ½ mv2
-Combine the two equations by substituting for v...
-The speed of the particles is determined by the work that the accelerating voltage does…
-qVacc = ½ m (qBr / m)2
-2qVacc = m (q2B2r2 / m2)
-2Vacc =  qB2r2 / m
-m = qB2r2 / (2Vacc)
-= 1.60 × 10–19 C (1.06 T)2 (0.0150 m)2 / (2 · 1350 V)
-= 1.50 × 10–26 kg = 9mp
-The isotope is probably Beryllium-9.
-
-        <p class="TeX"></p>
+        <p>Since the magnetic force <span class="NoWrap">(<span class="TeX">F_m = qvB</span>)</span> causes uniform circular motion <span class="NoWrap">(<span class="TeX">a_c = \frac{v^2}{r}</span>)</span>, we can write Newton’s 2<sup>nd</sup> Law as...</p>
+        <p class="TeX">F_m = ma_c</p>
+        <p class="TeX">qvB = m\frac{v^2}{r}</p>
+        <p class="TeX">qB = \frac{mv}{r}</p>
+        <p class="TeX">v = \frac{qBr}{m}</p>
+        <p>The speed of the particles is determined by the work that the accelerating voltage does...</p>
+        <p class="TeX">qV_{acc} = \Delta E_k = \frac{1}{2}mv^2</p>
+        <p>Combine the two equations by substituting for v...</p>
+        <p class="TeX">qV_{acc} = \frac{1}{2}m\left(\frac{qBr}{m}\right)^2 = \frac{m}{2}\cdot\frac{q^2B^2r^2}{m^2} = \frac{q^2B^2r^2}{2m}</p>
+        <p class="TeX">V_{acc} = \frac{qB^2r^2}{2m}</p>
+        <p class="TeX">m = \frac{qB^2r^2}{2V_{acc}} = {\rm \frac{1.60\times 10^{-19}\ C\cdot (1.06\ T)^2\cdot (0.0150\ m)^2}{2\cdot 1350\ V} = 1.50\times 10^{-26}\ kg} = 9m_p</p>
+        <p>The isotope is probably Beryllium-9.</p>
     </div>
 </ol>
 </div></section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "p30/units/D", prev: "p30/atom/rev", //next: "p30/nuke/radio",
+loadFeed.data = {up: "p30/units/D", prev: "p30/atom/rev", next: "p30/nuke/radio",
 }
 
 </script>

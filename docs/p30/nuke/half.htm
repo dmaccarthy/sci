@@ -1,5 +1,5 @@
 <section class="Post" data-icon="simulation">
-<h2 class="Collapse">Simulation</h2><div class="Collapse Expand Center">
+<h2 class="Collapse">Simulation</h2><div class="Collapse Center">
 <p>Time: <span id="Time"><a href="javascript:loadFeed.sim.startSim()">Click to start</a></span>
     <span style="padding-left:2em">Decays: <span id="Count">0</span></span></p>
 <p><svg id="Sample"></svg></p>
@@ -7,8 +7,7 @@
 </div></section>
 
 <section class="Post" data-icon="help">
-<h2 class="Collapse">Simulation Help</h2>
-<div class="Collapse">
+<h2 class="Collapse">Simulation Help</h2><div class="Collapse">
 <p>This page simulates the decay of a sample of radioactive nuclei with a random half-life. Use the link labelled “Click to start” above the drawing to begin the simulation.
     As it runs, the elapsed time and the total number of decays will be displayed</p>
 <p>The light blue circles represent parent nuclei (not drawn to scale!) while the red circles are the daughter nuclei (the product of the decay).
@@ -92,12 +91,94 @@
 
 </div></section>
 
-<section class="Post NoPrintIcon" data-show="2024.12.17.10" data-icon="gdrv">
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+    <li>A sample of Tl-210 decays by α-decay with a half-life of 1.3 minutes.
+    <ol type="a">
+        <li>Write a nuclear reaction equation for this decay.</li>
+        <p class="Answer TeX">\rm {_{81}^{210}}Tl \rightarrow {_2^4}{He}  + {_{79}^{206}}Au</p>
+
+        <li>If the initial activity of the sample is 25.0 kBq (kilobecquerels), determine the activity after 1.0 minutes, 5.0 minutes and 30.0 minutes.</li>
+        <div class="Answer">
+            <p>After 1.00 minute...</p>
+            <p class="TeX">n = \rm \frac{1.0\ min}{1.3\ min} = 0.769</p>
+            <p class="TeX">A = A_0 \left(\frac{1}{2}\right)^n = \rm 25.0\ kBq\cdot \left(\frac{1}{2}\right)^{0.769} = 14.7\ kBq</p>
+            <p>After 5.00 minutes...</p>
+            <p class="TeX">n = \rm \frac{5.0\ min}{1.3\ min} = 3.85</p>
+            <p class="TeX">A = A_0 \left(\frac{1}{2}\right)^n = \rm 25.0\ kBq\cdot \left(\frac{1}{2}\right)^{3.85} = 1.74\ kBq</p>
+            <p>After 30.0 minutes...</p>
+            <p class="TeX">n = \rm \frac{30.0\ min}{1.3\ min} = 23.1</p>
+            <p class="TeX">A = A_0 \left(\frac{1}{2}\right)^n = \rm 25.0\ kBq\cdot \left(\frac{1}{2}\right)^{23.1} = 2.83\ mBq</p>
+        </div>
+    </ol></li>
+
+    <li>Bismuth-214 decays into Po-214 with a half-life of 20 minutes. The Po-214 decays almost instantly (half-life < 1 ms) into Pb-210.
+    <ol type="a">
+        <li>What type of decays are these? Write a nuclear reaction equation for each decay.</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_{83}^{214}}Bi \rightarrow {_{-1}^0}{\mathit e}  + {_{84}^{214}}Po + {_0^0}{\overline\nu}</p>
+            <p class="TeX">\rm {_{84}^{214}}Po \rightarrow {_2^4}{He}  + {_{82}^{210}}Pb</p>
+        </div>
+
+        <li>The activity of a sample of Bi-214 is found to be 1.40 μCi (microcuries). What was the sample’s activity 80 minutes before this measurement?</li>
+        <div class="Answer">
+            <p class="TeX">n = \rm \frac{80\ min}{20\ min} = 4.00</p>
+            <p class="TeX">A = A_0 \left(\frac{1}{2}\right)^n</p>
+            <p class="TeX">A_0 = A\cdot 2^n = \rm 1.40\ \mu Ci\cdot 2^{4.00} = 22.4\ \mu Ci</p>
+        </div>
+    </ol></li>
+
+    <li>Determine the age of a leather artefact based on radiocarbon dating data if the C-14 activity of the sample is 0.050 Bq and the activity of an equal mass of carbon today has an activity of 0.200 Bq.</li>
+    <div class="Answer">
+        <p class="TeX"></p>
+A = A0 (½)n
+2n = A0 / A = 0.200 Bq / 0.050 Bq = 4.00
+n = 2 = t / T1/2
+t = nT1/2 = 2 · 5730 y = 11 460 y
+    </div>
+
+    <li>A radioactive isotope has a half-life of 2.50 years. Determine the activity of the sample after 6.00 years, as a percentage of the initial activity.</li>
+    <div class="Answer">
+        <p class="TeX"></p>
+n = 6.00 y / 2.50 y = 2.40
+A = A0 (½)n = 100% (½)2.40 = 18.9%
+    </div>
+
+    <li>A rock sample contains 1.25 × 10<sup>19</sup> atoms of U-238 <span class="NoWrap">(<span class="TeX">T_{1/2}</span></span> = 4.5 × 10<sup>9</sup> yr).
+    <ol type="a">
+        <li>What percentage of the atoms in the sample will have decayed since the extinction of the dinosaurs, approximately 6.5 × 10<sup>7</sup> years ago?</li>
+        <div class="Answer">
+            <p class="TeX"></p>
+n = 6.5 × 107 y / (4.5 × 109 y) = 0.014
+N = N0 (½)n = 100% (½)0.014 = 99%
+Since 99% of U-238 nuclei remain, 1% have decayed into Th-234.
+        </div>
+
+        <li>How many atoms will have decayed over this time period?</li>
+        <div class="Answer">
+            <p class="TeX"></p>
+1% × (1.25 × 1019) = 1.25 × 1017
+        </div>
+
+        <li>How many of the U-238 nuclei will remain 15 billion years from now (i.e. when the universe is about twice as old as it is believed to be now)?</li>
+        <div class="Answer">
+            <p class="TeX"></p>
+n = 1.5 × 1010 y / (4.5 × 109 y) = 3.3
+N = N0 (½)n = 1.25 × 1019 (½)3.3 = 1.24 × 1018
+        </div>
+    </ol></li>
+
+
+</ol>
+</div></section>
+
+<!-- <section class="Post NoPrintIcon" data-show="2024.12.17.10" data-icon="gdrv">
     <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
     <p class="BtnGrid">
         <button data-icon="gdrv" data-gdrv="18UYJgyheUIIkO5WSYLT6BRvSCIYf3mNY-NZ65xNFJZ4">Answer Key</button>
     </p>
-</div></section>
+</div></section> -->
 
 <script type="text/javascript" data-init="sim">
 
@@ -176,13 +257,7 @@ loadFeed.sim.update = () => {
     setTimeout(f.update, 100);
 }
 
-loadFeed.data = {
-    title: `${siteData.lesson}16.4 — Half-life`,
-    answerDate: "2024.12.17.10",
-    num: "16.4",
-    up: "p30/units/D",
-    prev: "p30/nuke/rn",
-    next: "p30/nuke/energy",
+loadFeed.data = {up: "p30/units/D", prev: "p30/nuke/rn", //next: "p30/nuke/energy",
 }
 
 </script>

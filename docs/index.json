@@ -223,7 +223,10 @@
 
 "p30": {"home": {"t": "@Physics 30"},
 
-"nuke/iso": {"t": "@Isotopes & Mass Spectrometry", "n": "16.1", "s": "2026.5.20", "a": "2026.5.21", "h": [["Worksheet", "1K8ZtfpKL3lbtvyfSnvzTxwkiV5rCyG7D"], ["Solutions", "1e4c-RxyuZ16VC3ol1ah-T0PWcT1KtLeO"]]},
+"nuke/iso": {"t": "@Isotopes & Mass Spectrometry", "n": "16.1", "s": "2026.5.20", "a": "2026.5.21", "h": [["Worksheet", "1K8ZtfpKL3lbtvyfSnvzTxwkiV5rCyG7D"], ["Solutions", {"gdrv": "1e4c-RxyuZ16VC3ol1ah-T0PWcT1KtLeO", "show": "2026.5.21"}]]},
+"nuke/radio": {"t": "@Radioactivity", "n": "16.2", "s": "2026.5.21", "a": "2026.5.22"},
+"nuke/rn": {"t": "@Nuclear Reactions", "n": "16.3", "s": "2026.5.25", "a": "2026.5.26"},
+"nuke/half": {"t": "@Half-life", "n": "16.4", "s": "2026.5.26", "a": "2026.5.27"},
 
 "atom/crt#": {"t": "Lab: Thomson’s CRT Experiment", "s": "2026.5.11"},
 "atom/crt": {"t": "@Thomson’s CRT Experiment", "n": "15.1", "cal": "2026.5.13", "s": "2026.5.11", "a": "2026.5.14"},

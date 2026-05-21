@@ -55,8 +55,6 @@ pre.Code, pre.CodeScroll {
 pre.CodeScroll {max-height: 20em}
 
 .WideScroll, .AutoScroll {
-    /* margin: auto;
-    margin-bottom: 1em; */
     max-width: calc(100% - 2px);
     overflow: auto;
     padding-bottom: 1em;
@@ -101,11 +99,12 @@ tr:nth-child(even) th:nth-child(odd), tr:nth-child(odd) th:nth-child(even) {back
 
 }
 
-/* li p {margin-bottom: 0} */
 li > p {margin-bottom: 0}
 table.TD6 td {min-width: 6em}
 table.TD8 td {min-width: 8em}
 .Bottom {margin-bottom: 1em}
+.ExtraSpace:is(ol, ul) > li {margin-bottom: 0.5; margin-top: 0.5em}
+.Bottom:not(ol, ul), .Bottom:is(ol, ul)  li {margin-bottom: 1em}
 .Top {margin-top: 1em}
 .NoBottom {margin-bottom: 0}
 .NoTop {margin-top: 0}
