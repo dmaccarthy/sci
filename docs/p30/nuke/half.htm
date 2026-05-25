@@ -131,54 +131,39 @@
 
     <li>Determine the age of a leather artefact based on radiocarbon dating data if the C-14 activity of the sample is 0.050 Bq and the activity of an equal mass of carbon today has an activity of 0.200 Bq.</li>
     <div class="Answer">
-        <p class="TeX"></p>
-A = A0 (½)n
-2n = A0 / A = 0.200 Bq / 0.050 Bq = 4.00
-n = 2 = t / T1/2
-t = nT1/2 = 2 · 5730 y = 11 460 y
+        <p class="TeX">A = A_0 \left(\frac{1}{2}\right)^n</p>
+        <p class="TeX">2^n\cdot A = A_0</p>
+        <p class="TeX">2^n\cdot = \frac{A_0}{A} = \rm \frac{0.200\ Bq}{0.0500\ Bq} = 4.00</p>
+        <p class="TeX">n = \frac{t}{T_{1/2}} = 2.00</p>
+        <p class="TeX">t = 2.00\cdot T_{1/2} = \rm 2.00\cdot 5730\ yr = 1.15\times 10^4\ yr</p>
     </div>
 
     <li>A radioactive isotope has a half-life of 2.50 years. Determine the activity of the sample after 6.00 years, as a percentage of the initial activity.</li>
     <div class="Answer">
-        <p class="TeX"></p>
-n = 6.00 y / 2.50 y = 2.40
-A = A0 (½)n = 100% (½)2.40 = 18.9%
+         <p class="TeX">n = \rm \frac{6.00\ yr}{2.50\ yr} = 2.40</p>
+        <p class="TeX">A = A_0 \left(\frac{1}{2}\right)^n = \rm 100\%\cdot \left(\frac{1}{2}\right)^{2.40} = 18.9\%</p>
     </div>
 
     <li>A rock sample contains 1.25 × 10<sup>19</sup> atoms of U-238 <span class="NoWrap">(<span class="TeX">T_{1/2}</span></span> = 4.5 × 10<sup>9</sup> yr).
     <ol type="a">
         <li>What percentage of the atoms in the sample will have decayed since the extinction of the dinosaurs, approximately 6.5 × 10<sup>7</sup> years ago?</li>
         <div class="Answer">
-            <p class="TeX"></p>
-n = 6.5 × 107 y / (4.5 × 109 y) = 0.014
-N = N0 (½)n = 100% (½)0.014 = 99%
-Since 99% of U-238 nuclei remain, 1% have decayed into Th-234.
+            <p class="TeX">n = \rm \frac{6.5\times 10^7\ yr}{4.5\times 10^9\ yr} = 0.014</p>
+            <p class="TeX">N = N_0 \left(\frac{1}{2}\right)^n = \rm 100\%\cdot \left(\frac{1}{2}\right)^{0.014} = 99\%</p>
+            <p>Since 99% of U-238 nuclei remain, 1% have decayed into Th-234.</p>
         </div>
 
         <li>How many atoms will have decayed over this time period?</li>
-        <div class="Answer">
-            <p class="TeX"></p>
-1% × (1.25 × 1019) = 1.25 × 1017
-        </div>
+        <p class="Answer TeX">1\%\cdot 1.25\times 10^{19} = 1.25\times 10^{17}</p>
 
         <li>How many of the U-238 nuclei will remain 15 billion years from now (i.e. when the universe is about twice as old as it is believed to be now)?</li>
         <div class="Answer">
-            <p class="TeX"></p>
-n = 1.5 × 1010 y / (4.5 × 109 y) = 3.3
-N = N0 (½)n = 1.25 × 1019 (½)3.3 = 1.24 × 1018
+            <p class="TeX">n = \rm \frac{1.5\times 10^{10}\ yr}{4.5\times 10^9\ yr} = 3.3</p>
+            <p class="TeX">N = N_0 \left(\frac{1}{2}\right)^n = \rm 1.25\times 10^{19}\cdot \left(\frac{1}{2}\right)^{3.3} = 1.24\times 10^{18}</p>
         </div>
     </ol></li>
-
-
 </ol>
 </div></section>
-
-<!-- <section class="Post NoPrintIcon" data-show="2024.12.17.10" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="18UYJgyheUIIkO5WSYLT6BRvSCIYf3mNY-NZ65xNFJZ4">Answer Key</button>
-    </p>
-</div></section> -->
 
 <script type="text/javascript" data-init="sim">
 
@@ -257,7 +242,7 @@ loadFeed.sim.update = () => {
     setTimeout(f.update, 100);
 }
 
-loadFeed.data = {up: "p30/units/D", prev: "p30/nuke/rn", //next: "p30/nuke/energy",
+loadFeed.data = {up: "p30/units/D", prev: "p30/nuke/rn", next: "p30/nuke/energy",
 }
 
 </script>

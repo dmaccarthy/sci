@@ -1,6 +1,5 @@
 <section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2>
-<div id="LessonNotes" class="Collapse">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Nuclear Energy</h1>
@@ -48,24 +47,152 @@
 
 </div></section>
 
-<section class="Post NoPrintIcon" data-show="2024.12.17.10" data-icon="gdrv">
-    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="link.svg" data-open="https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses">NIST Data</button><!-- data-gdrv="1XBdapwVh_d7ikGvZ9zWRTP_2jYY_GG1IUjOn-_c1aaE" -->
-        <button data-icon="gdrv" data-gdrv="1HyjtHhnUoKr6l7tXJbSVVLL2s1jkrTtNyu8LltwNjIo">Answer Key</button>
-        <button data-show="9999" data-icon="atom.svg" data-feed="p30/nuke/nist/mass">Isotope Masses</button>
-    </p>
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+    <li>A certain nuclear reaction transforms 1.00% of the initial mass into other forms of energy. The energy released can be used to generate electricity. The entire process has an overall efficiency of 12.0%. What mass of reactants would be required each day to power a 500 MW electric generating station?</li>
+    <div class="Answer">
+        <p class="TeX">\Delta E_{useful} = P_{useful}\Delta t = \rm 5.00\times 10^8\ W\cdot 8.64\times 10^4\ s = 4.32\times 10^{13}\ J</p>
+        <p class="TeX">\Delta E_{input} = \frac{\Delta E_{useful}}{\varepsilon} = \rm \frac{4.32\times 10^{13}\ J}{0.120} = 3.64\times 10^{14}\ J</p>
+        <p class="TeX">\Delta m = \frac{\Delta E_{input}}{c^2} = \rm \frac{3.64\times 10^{14}\ J}{(3.00\times 10^8\ m/s)^2} = 4.00\times 10^{-3}\ kg</p>
+        <p>Since the converted (4.00 grams) represents 1.00% of the reactant mass, the mass of the reactant would need to be 4.00 g / 0.0100 = 400 grams per day.</p>
+    </div>
+
+    <li>Convert a mass of 1.00 MeV/c<sup>2</sup> into standard SI units.</li>
+    <p class="Answer TeX">\rm 1.00\ \frac{MeV}{{\mathit c}^2} = 1.00\ \frac{1.60\times 10^{-13}\ J}{(3.00\times 10^8\ m/s)^2} = 1.78\times 10^{-30}\ kg</p>
+
+    <p class="Ital">For the following problems, you will need to refer to the table of isotope masses from the <a target="NIST" href="https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses">National Institute of Standards and Technology</a>.</p>
+    <!-- <p><a data-gdrv="1XBdapwVh_d7ikGvZ9zWRTP_2jYY_GG1IUjOn-_c1aaE">Google Drive Format</a></p> -->
+
+    <li>Write a balanced reaction equation and calculate the energy released for each nuclear reaction:
+    <ol type="a">
+        <li>β– decay of Np-239</li>
+        <div class="Answer">
+            <p class="Answer TeX">\rm {_{93}^{239}}Np \rightarrow {_{-1}^0}{\mathit e}  + {_{94}^{239}}Pu + {_0^0}{\overline\nu}</p>
+            <p><a target="Calc" href="./?Np-239=Pu-239#p30/nuke/nist/mass">Calculation</a></p>
+        </div>
+
+        <li>β– decay of H-3</li>
+        <div class="Answer">
+            <p class="Answer TeX">\rm {_1^3}H \rightarrow {_{-1}^0}{\mathit e}  + {_2^3}He + {_0^0}{\overline\nu}</p>
+            <p><a target="Calc" href="./?H-3=He-3#p30/nuke/nist/mass">Calculation</a></p>
+        </div>
+
+        <li>β+ decay of K-40</li>
+        <div class="Answer">
+            <p class="Answer TeX">\rm {_{19}^{40}}K \rightarrow {_1^0}{\overline{\mathit e} }  + {_{18}^{40}}Ar + {_0^0}\nu</p>
+            <p><a target="Calc" href="./?K-40=Ar-40#p30/nuke/nist/mass">Calculation</a></p>
+        </div>
+
+        <li>α decay of Pu-239</li>
+        <div class="Answer">
+            <p class="Answer TeX">\rm {_{94}^{239}}Pu \rightarrow {_2^4}{He}  + {_{92}^{235}}U</p>
+            <p><a target="Calc" href="./?Pu-239=U-235+He-4#p30/nuke/nist/mass">Calculation</a></p>
+        </div>
+
+        <li>Fusion of three helium-4 nuclei into carbon-12</li>
+        <div class="Answer">
+            <p class="Answer TeX">\rm 3\left({_2^4}He\right) \rightarrow {_6^{12}}C</p>
+            <p><a target="Calc" href="./?He-4*3=C-12#p30/nuke/nist/mass">Calculation</a></p>
+        </div>
+        </ol>
+    </li>
+
+    <li>When U-239 undergoes β– decay, 1.27 MeV of energy is released.
+    <ol type="a">
+        <li>Write the nuclear reaction equation.</li>
+        <p class="Answer TeX">\rm {_{92}^{239}}U \rightarrow {_{-1}^0}{\mathit e}  + {_{93}^{239}}Np + {_0^0}{\overline\nu}</p>
+
+        <li>Determine the mass of U-239 in atomic mass units to 5 decimal places.</li>
+        <div class="Answer">
+            <p>Convert the energy change to joules...</p>
+            <p class="TeX">\Delta E = \rm -1.27\times 10^6\ eV \cdot \frac{1.60\times 10^{-19}\ J}{1\ eV} = -2.03\times 10^{-13}\ J</p>
+            <p class="TeX">\Delta m = \frac{\Delta E_{input}}{c^2} = \rm \frac{-2.03\times 10^{-13}\ J}{(3.00\times 10^8\ m/s)^2} = -2.26\times 10^{-30}\ kg = -0.00136\ u</p>
+            <p class="TeX">m_i = m_f - \Delta m = \rm (239.0529314 - (-0.00136))\ u = 239.05429\ u</p>
+        </div>
+    </ol>
+    </li>
+
+    <li>Calculate the mass defect, nuclear binding energy and NBE per nucleon for:
+    <ol type="a">
+        <li>Deuterium (Hydrogen-2)</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_1^2}H \rightarrow {_1^1}H + {_0^1}{\mathit n}</p>
+            <p><a target="Calc" href="./?H-2=H+n#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{2} = \rm 1.11\ MeV = 1.78\times 10^{-13}\ J</p>
+        </div>
+
+        <li>Tritium (Hydrogen-3)</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_1^3}H \rightarrow {_1^1}H + 2\left({_0^1}{\mathit n}\right)</p>
+            <p><a target="Calc" href="./?H-3=H*1+n*2#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{3} = \rm 2.83\ MeV = 4.52\times 10^{-13}\ J</p>
+        </div>
+
+        <li>Helium-3</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_2^3}He \rightarrow 2\left({_1^1}H\right) + {_0^1}{\mathit n}</p>
+            <p><a target="Calc" href="./?He-3=H*2+n*1#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{3} = \rm 2.57\ MeV = 4.12\times 10^{-13}\ J</p>
+        </div>
+
+        <li>Carbon-12</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_6^{12}}C \rightarrow 6\left({_1^1}H\right) + 6\left({_0^1}{\mathit n}\right)</p>
+            <p><a target="Calc" href="./?C-12=H*6+n*6#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{12} = \rm 7.68\ MeV = 1.23\times 10^{-12}\ J</p>
+        </div>
+
+        <li>Carbon-14</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_6^{14}}C \rightarrow 6\left({_1^1}H\right) + 8\left({_0^1}{\mathit n}\right)</p>
+            <p><a target="Calc" href="./?C-14=H*6+n*8#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{14} = \rm 7.52\ MeV = 1.20\times 10^{-12}\ J</p>
+        </div>
+
+        <li>Nitrogen-14</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_7^{14}}N \rightarrow 7\left({_1^1}H\right) + 7\left({_0^1}{\mathit n}\right)</p>
+            <p><a target="Calc" href="./?N-14=H*7+n*7#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{14} = \rm 7.48\ MeV = 1.20\times 10^{-12}\ J</p>
+        </div>
+
+        <li>Oxygen-16</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_8^{16}}O \rightarrow 8\left({_1^1}H\right) + 8\left({_0^1}{\mathit n}\right)</p>
+            <p><a target="Calc" href="./?O-16=H*8+n*8#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{16} = \rm 7.98\ MeV = 1.28\times 10^{-12}\ J</p>
+        </div>
+
+        <li>Iron-56</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_{26}^{56}}Fe \rightarrow 26\left({_1^1}H\right) + 30\left({_0^1}{\mathit n}\right)</p>
+            <p><a target="Calc" href="./?Fe-56=H*26+n*30#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{56} = \rm 8.79\ MeV = 1.41\times 10^{-12}\ J</p>
+        </div>
+
+        <li>Silver-109</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_{47}^{109}}Ag \rightarrow 47\left({_1^1}H\right) + 62\left({_0^1}{\mathit n}\right)</p>
+            <p><a target="Calc" href="./?Ag-109=H*47+n*62#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{109} = \rm 8.55\ MeV = 1.37\times 10^{-12}\ J</p>
+        </div>
+
+        <li>Uranium-238</li>
+        <div class="Answer">
+            <p class="TeX">\rm {_{92}^{146}}U \rightarrow 92\left({_1^1}H\right) + 146\left({_0^1}{\mathit n}\right)</p>
+            <p><a target="Calc" href="./?U-238=H*92+n*146#p30/nuke/nist/mass">Calculation</a></p>
+            <p class="TeX">\frac{\Delta E}{238} = \rm 7.57\ MeV = 1.21\times 10^{-12}\ J</p>
+        </div>
+
+    </ol>
+    </li>
+</ol>
 </div></section>
 
 <script type="text/javascript">
 
-loadFeed.data = {
-    title: `${siteData.lesson}16.5 — Nuclear Energy`,
-    answerDate: "2024.12.18.10",
-    num: "16.5",
-    up: "p30/units/D",
-    prev: "p30/nuke/half",
-    next: "p30/nuke/fiss",
+loadFeed.data = {up: "p30/units/D", prev: "p30/nuke/half", next: "p30/nuke/fiss",
 }
 
 </script>
