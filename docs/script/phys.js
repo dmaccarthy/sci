@@ -254,3 +254,59 @@ class TVM {
 }
 
 // let tvm = new TVM({pv: -39390, pay: 766, rate: 6.25, payments: 12});
+
+
+/*** Get isotope mass data from JSON file; data from:
+ * https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses
+***/
+
+async function isotopes() {
+    if (isotopes._data) return new Promise(r => r(isotopes._data));
+    return fetch(isotopes.url).then(r => r.json()).then(d => {
+        isotopes._data = d;
+        return d;
+    });
+}
+
+isotopes.url = "p30/nuke/nist/isotopes.json";
+
+isotopes.find = (elem, A) => {
+    let data = isotopes._data;
+    if (typeof(elem) == "string") data = data[elem];
+    else {
+        for (let s in data) {
+            if (data[s].Z == elem) {
+                elem = s;
+                data = data[s];
+                break;
+            }
+        }
+    }
+    if (elem == "n") A = 1;
+    if (A) for (let i in data.iso) if (A == i) {
+        data.A = parseInt(A);
+        data.m = data.iso[i];
+    }
+    return {symbol: elem, ...data};
+}
+
+isotopes.mass = (s, label) => {
+    let tbl = $("<tbody>"), tr;
+    let m = 0;
+    for (let r of s.split("+")) {
+        let [iso, coeff] = r.split("*");
+        if (coeff == null) coeff = 1;
+        iso = isotopes.find(...iso.split("-"));
+        tr = $("<tr>").appendTo(tbl);
+        tr.append($("<td>").addClass("TeX").html(`\\rm _{${iso.Z}}^{${iso.A}}${iso.symbol}`));
+        tr.append($("<td>").html(coeff));
+        tr.append($("<td>").html(iso.m));
+        let mi = coeff * iso.m;
+        tr.append($("<td>").html(mi));
+        m += mi;
+    }
+    tr = $("<tr>").appendTo(tbl);
+    tr.append($("<td>").addClass("Right").attr({colspan: 3}).html(label ? label : "Total").append("&nbsp;"));
+    tr.append($("<td>").html(m));
+    return {tbody: tbl, m: m};
+}

@@ -7,6 +7,12 @@ function jeval_frac(s) {
     return jeval(s[0]) / (s.length > 1 ? jeval(s[1]) : 1);
 }
 
+function sciNot(x, prec, tex) {
+    let [c, n] = `${x}`.split("e");
+    if (prec != null) c = parseFloat(c).toPrecision(prec);
+    return n ? (tex ? `${c}\\times 10^{${n}}` : `${c} × 10<sup>${n}</sup> `) : c;
+}
+
 function click_cycle(e, n, ...f) {
     e.cycleStatus = n;
     $(e).click(ev => {
