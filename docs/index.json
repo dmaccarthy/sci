@@ -1,8 +1,20 @@
 {
 "p20": {"home": {"t": "@Physics 20"},
 
+"wave/harm": {"t": "@Harmonic Waves", "n": "8.1", "s": "2026.6.1", "a": "2026.6.2", "h": "16XKv7sKPI89XB5raKSgIhSCc8sSLnjwg"},
+"wave/dopp": {"t": "@Doppler Effect", "n": "8.2", "s": "2026.6.2", "a": "2026.6.3", "h": "1vO-QttkvOGe2cleueAxyyAM5e9sOBz9-"},
+"wave/beat": {"t": "@Interference & Beats", "n": "8.3", "s": "2026.6.3", "a": "2026.6.4", "h": "1ycVlE7Pq1HFEMdunjhJd3woTh9-uppZc"},
+"wave/stand": {"t": "@Standing Waves", "n": "8.4", "s": "2026.6.4", "a": "2026.6.5", "h": "1ngjzdLy8Pegrdn2IU12owSOVA2HCxUBv"},
 "q8/@": {"t": "Quiz: Waves", "s": "2026.6.8", "css": {"font-weight": "bold"}},
 "uD/@": {"t": "Unit D Exam", "s": "2026.6.10", "css": {"font-weight": "bold"}},
+
+"jun5/@": {"t": "Modified Schedule: No Block 1 Class", "s": "2026.6.5"},
+"jun11/@": {"t": "Modified Schedule: No Block 1 Class", "s": "2026.6.11"},
+"home#r1": {"t": "Course Review [Kinematics]", "s": "2026.6.4"},
+"home#r2": {"t": "Course Review [Dynamics / Gravity]", "s": "2026.6.9"},
+"home#r3": {"t": "Course Review [Energy / Circular Motion]", "s": "2026.6.10"},
+
+"rewrite/@": {"t": "Rewrite", "s": "2028.1", "css": {"font-weight": "bold"}},
 
 "shm/eqm": {"t": "@Equilibrium & Oscillations", "n": "7.1", "s": "2026.5.13", "a": "2026.5.15", "h": "1dBQgpZfObkuX9uQpTgKPRke9ORGICexX"},
 "shm/shm": {"t": "@Simple Harmonic Motion", "n": "7.2", "s": "2026.5.15", "a": "2026.5.19", "h": ["1J3Mucf6goYtj3jvf8fmsdAVG_5dEiGyi", ["Lab Handout", "1OwUDvVXSaSPkEnqUrk_lJQUeKxmAjGhi"]]},
@@ -63,12 +75,6 @@
 "dyn/adv#": {"t": "@Dynamics in 2D <i>(continued)</i>", "s": "2026.3.31"},
 "q3/@": {"t": "Quiz: Newton’s Laws", "s": "2026.4.2", "css": {"font-weight": "bold"}},
 
-"wave/harm": {"t": "@Harmonic Waves", "n": "8.1", "s": "2028.1", "a": "2028.1.20", "h": "16XKv7sKPI89XB5raKSgIhSCc8sSLnjwg"},
-"wave/dopp": {"t": "@Doppler Effect", "n": "8.2", "s": "2028.1", "a": "2028.1.21", "h": "1vO-QttkvOGe2cleueAxyyAM5e9sOBz9-"},
-"wave/beat": {"t": "@Interference & Beats", "n": "8.3", "s": "20281", "a": "2028.1.22", "h": "1ycVlE7Pq1HFEMdunjhJd3woTh9-uppZc"},
-"wave/stand": {"t": "@Standing Waves", "n": "8.4", "s": "2028.1", "a": "2028.1.22", "h": "1ngjzdLy8Pegrdn2IU12owSOVA2HCxUBv"},
-"rewrite/@": {"t": "Rewrite", "s": "2028.1", "css": {"font-weight": "bold"}},
-
 "skill/expDes": {"t": "@Experiment Design", "n": "0.1", "s": "2026.1.29", "a": "2026.1.30", "h": ["18p-OXXK3JAQa5ZGEWJf-n7DzfDvUgrl4", ["Lab Activity", "1Qw9-sMCtUa5jgGg6QfbgUp7NmCxxaOeP"]]},
 "skill/expDes#": {"t": "Lab: Self-Designed Experiment", "s": "2026.1.30"},
 "skill/scatter": {"t": "@Scatter Plots & Slope", "n": "0.2", "s": "2026.2.2", "a": "2026.2.3", "h" : "17zcHFBR8lomZvcNFIdtCXl8frUdgJnPY"},
@@ -114,8 +120,16 @@
 "clim2/graph": {"t": "@Climatographs", "n": "E5", "s": "2026.5.28", "a": "2026.5.29", "h": "1AUHw9wCVeENc8_tWSWqZAgZMWftfJqgg"},
 "clim2/biome": {"t": "@Biomes & Adaptations", "n": "E6", "s": "2026.6.1", "h": "1nTLWmoX2f3sccfEnc6pF-ACoYmpUga9A"},
 "clim2/ncc": {"t": "@Natural Climate Change", "n": "E7", "s": "2026.6.2", "a": "2026.6.3", "h": "1eFGQPB9vy7YohkC_iD3fMNP0PwIDkYp2"},
+"uD/@": {"t": "Climate / Biomes Unit Exam", "s": "2026.6.5", "css": {"font-weight": "bold"}},
 
+"home#r1": {"t": "Course Review [Climate]", "s": "2026.6.3"},
+"home#r2": {"t": "Course Review [Chemistry]", "s": "2026.6.5"},
+"home#r3": {"t": "Course Review [Physics]", "s": "2026.6.8"},
+"home#r4": {"t": "Course Review [Biology]", "s": "2026.6.9"},
 "rewrite/@": {"t": "Rewrite", "s": "2028.1", "css": {"font-weight": "bold"}},
+"jun4/@": {"t": "Modified Schedule: No Block 2 Class", "s": "2026.6.4"},
+"jun10/@": {"t": "Modified Schedule: No Block 2 Class", "s": "2026.6.10"},
+"jun11/@": {"t": "Last Day of Classes!", "s": "2026.6.11"},
 
 "bio1/micro": {"t": "@Microscopes", "n": "B01", "s": "2026.4.24", "a": "2026.4.25", "h": ["1NaoR9DwGmrW9MR5VXZoJDBB_PV_Q5DjQ", ["Lab Handout", "1gy9Zz3__GK3EZtWQL05_a9MpZdFQnY8b"]]},
 "bio1/micro#": {"t": "Lab: The Letter “e”", "s": "2026.4.24"},
@@ -238,6 +252,14 @@
 "qD2/@": {"t": "Quiz: Nuclear Physics", "s": "2026.6.5", "css": {"font-weight": "bold"}},
 "uD/@": {"t": "Unit D Exam", "s": "2026.6.9", "css": {"font-weight": "bold"}},
 "f/@": {"t": "Field Test", "s": "2026.6.8", "css": {"font-weight": "bold"}},
+
+"may28/@": {"t": "Grad Assembly", "s": "2026.5.28"},
+"jun1/@": {"t": "Course Review [Physics of Matter]", "s": "2026.6.1"},
+"jun3/@": {"t": "Course Review [Momentum]", "s": "2026.6.3"},
+"jun4/@": {"t": "Modified Schedule: No Block 4 Class", "s": "2026.6.4"},
+"jun5/@": {"t": "Course Review [Electric & Magnetic Fields]", "s": "2026.6.5"},
+"jun10/@": {"t": "Modified Schedule: No Block 4 Class", "s": "2026.6.10"},
+"jun11/@": {"t": "Course Review [Electromagnetic Radiation]", "s": "2026.6.11"},
 
 "atom/crt#": {"t": "Lab: Thomson’s CRT Experiment", "s": "2026.5.11"},
 "atom/crt": {"t": "@Thomson’s CRT Experiment", "n": "15.1", "cal": "2026.5.13", "s": "2026.5.11", "a": "2026.5.14"},
