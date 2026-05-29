@@ -209,6 +209,7 @@ page.load = (feed, args) => {
         [feed, args] = feed.split("@");
         if (args) args = qs_args(null, args);
     }
+    if (feed.split("/")[0] == "cs_new") feed = `cs/${feed.substring(7)}`;
     if (page._cache[feed]) return page.onload(feed);
     console.log("Fetching page:", feed);
     fetch(feed + ".htm?_" + (new Date().getTime())).then(r => {
