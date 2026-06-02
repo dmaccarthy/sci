@@ -530,7 +530,7 @@ function metrics(force, sel) {
     $("body").css({"margin-left": (w + 8) + "px", "margin-top" : (top.outerHeight() + 20) + "px"});
     svg_aspect();
     scroll_mjax();
-    $(window).scrollTop(0);
+    // $(window).scrollTop(0);
 }
 
 function svg_aspect() {
