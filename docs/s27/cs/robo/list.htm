@@ -1,5 +1,5 @@
-<section class="Post" data-action="robot">
-<h3>Python Lists</h3><div class="Collapse Expand">
+<section class="Post" data-action="slides">
+<h3>Python Lists</h3>
 <p>You learned in <a href="#cs_new/sp1/home">Structured Programming</a> that Python supports several different simple (or “primitive”)
     data types each represented by a class: <code>int</code>, <code>float</code>, <code>bool</code>,
     <code>str</code>. Python also provides more advanced data types for more complicated data.
@@ -21,10 +21,8 @@ print(data[1:3])  <span class="Comment"># [True, "robot"]</span></pre>
 print(5 in data)       <span class="Comment"># True</span>
 print("r" in data)     <span class="Comment"># False</span>
 print("r" not in data) <span class="Comment"># True</span></pre>
-</div></section>
 
-<section class="Post" data-action="robot">
-<h3>Modifying Lists</h3><div class="Collapse Expand">
+<h3>Modifying Lists</h3>
 <p>You can use the <code>append</code> method to add a single item to the end of the list, or the
     <code>extend</code> method to add a sequence of items to the end of list.</p>
 <pre data-echo="r06_ex3.py" data-title="1" class="Code">data = [1, 2]
@@ -36,10 +34,8 @@ print(data)         <span class="Comment"># [1, 2, 3, 4, 5]</span></pre></pre>
     it creates a whole new copy of the list rather than just adding more data to the existing list.</p>
 <pre data-echo="py" class="Code">data += [6, 7]
 </pre>
-</div></section>
 
-<section class="Post" data-action="robot">
-<h3>Iteration</h3><div class="Collapse Expand">
+<h3>Iteration</h3>
 <p>You can “iterate” (loop) through a list using a <code>while</code> loop with a counter, or by using a <code>for</code> loop.</p>
 <pre data-echo="r06_ex4.py" data-title="1" class="Code">data = [5, True, "robot", 3.14]
 
@@ -50,10 +46,10 @@ while count < len(data):
 
 for item in data:
     print(item)</pre>
-</div></section>
+</section>
 
 <section class="Post" data-action="ide">
-<h3>Assignment</h3><div class="Collapse Expand">
+<h3>Assignment</h3>
 <ol class="Assign">
 <li>One way to use lists with robotics is to use a list to represent movement patterns. In the example
     below, the list <code>data</code> means we want the robot to move forward for 3 seconds, turn by 135°,
@@ -70,7 +66,7 @@ Complete the <code>brain</code> function so that the robot follows the instructi
 <li>Copy your <code>r06_directions.py</code> program as <code>r06_letter.py</code>. Without changing
     the <code>brain</code> function, make the robot draw a letter “F” by changing the data in the list.</li>
 <li>The next simulation is of a robot party...
-<p class="Center"><img src="cs_new/robo/img/party.webp"/></p>
+<p class="Center"><img src="cs/robo/img/party.webp"/></p>
 <p>Your robot (the red one at the centre) is to mingle with the other robots. Each time your robot
     bumps into another robot, the other robot will introduce itself. You can use the variable
     <code>robot.greet</code> to find the name of the most recent robot that introduced itself to yours.
@@ -96,21 +92,6 @@ Party.run(brain)</pre></li>
 
 <script type="text/javascript">
 
-loadFeed.data = {
-    title: "Lists",
-    up: `cs_new/robo/home`,
-    prev: "cs_new/robo/soccer",
-    next: "cs_new/robo/park",
-}
-  
-</script>
-
-<script type="text/javascript">
-
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
-});
+page({title: "Lists"});
 
 </script>

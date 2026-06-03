@@ -142,12 +142,14 @@ async function cs_projects(prj) {
     }).then(t => {
         let div = $("main div.Projects").html(base64_to_unicode(t));
         let dates = page.get("project_dates");
+        let none = true;
         let h3 = div.find("h3").addClass("Link");
         for (let h of h3) {
             h = $(h);
             let s = h.attr("data-name");
             if (s) s = new Date(dates[s]) < new Date();
             if (s) {
+                none = false;
                 h.next("div").hide();
                 h.on("click", ev => {
                     let h = $(ev.currentTarget);
@@ -163,6 +165,7 @@ async function cs_projects(prj) {
                 h.remove();
             }
         }
+        if (none) $("<p>").html("There are no projects currently available.").appendTo("section[data-action='cs_prj']");
     });
 }
 
@@ -210,8 +213,8 @@ page.load = (feed, args) => {
         if (args) args = qs_args(null, args);
     }
     if (feed.split("/")[0] == "cs_new") feed = `cs/${feed.substring(7)}`;
-    if (page._cache[feed]) return page.onload(feed);
-    console.log("Fetching page:", feed);
+    if (page._cache[feed]) return page.onload(feed, args);
+    console.log("Fetching page: ", feed);
     fetch(feed + ".htm?_" + (new Date().getTime())).then(r => {
         if (r.ok) r.text().then(t => {
             page._cache[feed] = t;
@@ -508,6 +511,7 @@ function arrange(sel) {
     e = $("#MainTitle");
     if (noleft && sel == "tree") e.hide();
     else e.show();
+    $(window).scrollTop(0);
 }
 
 function metrics(force, sel) {
@@ -530,7 +534,6 @@ function metrics(force, sel) {
     $("body").css({"margin-left": (w + 8) + "px", "margin-top" : (top.outerHeight() + 20) + "px"});
     svg_aspect();
     scroll_mjax();
-    // $(window).scrollTop(0);
 }
 
 function svg_aspect() {
