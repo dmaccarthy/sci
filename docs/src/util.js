@@ -13,6 +13,50 @@ function sciNot(x, prec, tex) {
     return n ? (tex ? `${c}\\times 10^{${n}}` : `${c} × 10<sup>${n}</sup> `) : c;
 }
 
+let HSV = {
+
+fromRGB: (r, g, b) => {
+    let max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let v = max / 2.55, h;
+    let d = max - min;
+    let s = (max === 0 ? 0 : 100 * d / max);
+    switch (max) {
+        case min: h = 0; break;
+        case r: h = (g - b) + d * (g < b ? 6: 0); h /= 6 * d; break;
+        case g: h = (b - r) + d * 2; h /= 6 * d; break;
+        case b: h = (r - g) + d * 4; h /= 6 * d; break;
+    }
+    return {h: 360 * h, s: s, v: v};
+},
+
+u_RGB: (h, s, v) => {
+// https://stackoverflow.com/questions/17242144/javascript-convert-hsb-hsv-color-to-rgb-accurately#17243070
+    let r, g, b, i, f, p, q, t;
+    i = Math.floor(h * 6);
+    f = h * 6 - i;
+    p = v * (1 - s);
+    q = v * (1 - f * s);
+    t = v * (1 - (1 - f) * s);
+    switch (i % 6) {
+        case 0: r = v, g = t, b = p; break;
+        case 1: r = q, g = v, b = p; break;
+        case 2: r = p, g = v, b = t; break;
+        case 3: r = p, g = q, b = v; break;
+        case 4: r = t, g = p, b = v; break;
+        case 5: r = v, g = p, b = q; break;
+    }
+    return {
+        r: Math.round(r * 255),
+        g: Math.round(g * 255),
+        b: Math.round(b * 255)
+    };
+},
+
+toRGB: (h, s, v) => HSV.u_RGB(h/360, s/100, v/100),
+
+};
+
+
 function click_cycle(e, n, ...f) {
     e.cycleStatus = n;
     $(e).click(ev => {
