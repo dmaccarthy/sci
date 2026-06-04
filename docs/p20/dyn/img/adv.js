@@ -42,7 +42,7 @@ fbd2: (sel) => {
 },
 
 fbd3: (sel, a) => {
-    let svg = new SVG2(sel, {size: [400, 300], lrbt: [-1, 1, -0.7], margin: 1});
+    let svg = new SVG2(sel, {size: [400, 304], lrbt: [-1, 1, -0.7], margin: 1});
     let applied = a == null;
     if (!a) a = 8;
     let p = new RArray(1, tan(a)), Fg = 0.6, Fn = Fg * cos(a), dy = 0.02;
@@ -75,7 +75,9 @@ fbd3: (sel, a) => {
 
     if (applied) {
         fric = $(fric).hide();
-        svg.$.on("click", () => fric.fadeToggle());
+        svg.$.on("click", ev => {
+            if (!ev.ctrlKey) fric.fadeToggle();
+        });
     }
     else $(fric).remove();
 
