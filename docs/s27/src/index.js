@@ -214,7 +214,7 @@ page.load = (feed, args) => {
     }
     if (feed.split("/")[0] == "cs_new") feed = `cs/${feed.substring(7)}`;
     if (page._cache[feed]) return page.onload(feed, args);
-    console.log("Fetching page: ", feed);
+    console.log("Fetching page:", feed);
     fetch(feed + ".htm?_" + (new Date().getTime())).then(r => {
         if (r.ok) r.text().then(t => {
             page._cache[feed] = t;
@@ -225,12 +225,19 @@ page.load = (feed, args) => {
 }
 
 page.onload = (feed, args) => {
+    let page_info = {s: 9999, a: 1};
     page.clear();
 
     // Update navigation tree
-    let top = $("#Left ul.TreeTop > li > ul > li").removeClass("Hidden");
-    page._tree.select(feed);
-    if (feed.split("/").length > 1) top.filter(".Collapsed").addClass("Hidden");
+    try {
+        let top = $("#Left ul.TreeTop > li > ul > li").removeClass("Hidden");
+        let pg = page._tree.select(feed);
+        page_info.title = pg.children("a")[0].innerHTML
+        let more = pg.attr("data-page");
+        if (more) Object.assign(page_info, JSON.parse(more));
+        if (feed.split("/").length > 1) top.filter(".Collapsed").addClass("Hidden");
+    }
+    catch(err) {}
 
     // Update browser history
     page._feed = feed;
@@ -245,6 +252,7 @@ page.onload = (feed, args) => {
     let art = $("main > article").html(page._cache[feed]);
 
     // Initialize page
+    page(page_info);
     after = () => page.after_init(art, args ? args.action : null);
     if (page.init) page.init().then(after);
     else after();
@@ -343,7 +351,8 @@ page.handouts = data => {
     p = $("<p>").addClass("BtnGrid BtnLink").appendTo(p);
     let icons = {gdrv: 1, gdoc: 1, open: "link"};
     for (let item of h) {
-        let [title, action] = item instanceof Array ? item : ["Assignment", item];
+        let [title, action] = item instanceof Array ? item : ["@", item];
+        if (title.charAt(0) == '@') title = "Assignment" + title.substring(1);
         if (typeof(action) == "string") action = {gdrv: action};
         if (!action.icon) for (let a in icons) if (action[a])
             action.icon = icons[a] == 1 ? a : icons[a];
@@ -426,6 +435,7 @@ page.click = ev => {
 }
 
 
+// let courses = ["p20"];
 let courses = ["s10", "p20", "p30", "cs"];
 
 
@@ -437,8 +447,8 @@ $(() => {
 
     console.log("Teacher:", teacher());
 
-    document.addEventListener("touchstart", swipe.event, {passive: true});
-    document.addEventListener("touchend", swipe.event, {passive: true});
+    // document.addEventListener("touchstart", swipe.event, {passive: true});
+    // document.addEventListener("touchend", swipe.event, {passive: true});
 
     let w = $(window).on("resize", metrics).on("click", page.click);
     w.on("popstate", ev => page.load(location.hash.substring(1)));
@@ -473,7 +483,8 @@ $(() => {
         let feed = location.hash.substring(1);
         if (feed) feed = feed.replace("cs_new/", "cs/");
         else feed = "home";
-        t.select(feed.split('@')[0]);
+        try {t.select(feed.split('@')[0])}
+        catch(err) {console.warn("Page not found in tree!")}
         mjax_wait().then(() => {
             font_size(true);
             page.load(feed);
@@ -511,6 +522,7 @@ function arrange(sel) {
     e = $("#MainTitle");
     if (noleft && sel == "tree") e.hide();
     else e.show();
+    console.log("Scroll 525");
     $(window).scrollTop(0);
 }
 
@@ -554,6 +566,7 @@ function scroll_mjax() {
 function scroll_bottom(t) {
     let h = $("html");
     let y = h[0].scrollHeight - $(window).height();
+    console.log("Scroll 569");
     h.animate({scrollTop: y < 0 ? 0 : y}, t ? t : 500);
 }
 

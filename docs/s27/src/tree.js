@@ -48,7 +48,8 @@ select(id) {
     let e = this.find(id).addClass("Selected");
     if (e.children("ul").addClass("LeftBorder").length == 0)
         e.closest("ul").addClass("LeftBorder");
-    for (e of this.path(e)) e.removeClass("Collapsed");
+    for (let ei of this.path(e)) ei.removeClass("Collapsed");
+    return e;
 }
 
 onclick(event) {
