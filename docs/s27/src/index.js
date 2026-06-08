@@ -423,6 +423,7 @@ page.metrics = () => {
 }
 
 page.show_post = n => {
+    try {
     let i = 0;
     for (let p of page._posts.hide()) {
         p = $(p);
@@ -434,6 +435,8 @@ page.show_post = n => {
     }
     page.metrics();
     $(window).scrollTop(0);
+    }
+    catch(err) {$("body").html(err)}
 }
 
 page.menu = (u, menu) => {
