@@ -1,0 +1,16 @@
+<section class="Post" data-action="Home">
+<h3>Structured Programming 1</h3>
+<ul class="Menu"></ul>
+<h3>Structured Programming 2</h3>
+<ul class="Menu"></ul>
+</section>
+
+<script type="text/javascript">
+
+page.run(() => {
+    page.menu("cs/cs10/sp");
+    let li = $("main > article ul.Menu > li");
+    for (let i=9;i<=25;i++) $(li[i]).remove();
+});
+
+</script>

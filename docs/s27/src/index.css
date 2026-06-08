@@ -170,7 +170,17 @@ p.EchoControl {
 
 p.EchoControl * {vertical-align: middle}
 
-p.EchoControl > span.Buttons {float: right}
+p.EchoControl > span.Buttons {
+    float: right;
+
+    svg {
+        padding: 0.25em 0.25em 0.25em 0.75em;
+        width: 1.25em;
+        height: 1.25em;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+}
 
 p.EchoControl > span.CodeTitle {
     color: black;

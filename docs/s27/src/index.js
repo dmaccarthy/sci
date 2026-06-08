@@ -6,6 +6,42 @@
 //     return t / (24000 * 3600);
 // }
 
+page.echo = ei => {
+    // Enable copy/open operation on [data-echo] elements
+    let echo = ei.attr("data-echo");
+    let p = $("<p>").addClass("EchoControl").insertBefore(ei);
+    let title  = ei.attr("data-title");
+    if (title == "1") title = echo;
+    echo = echo.split(".");
+    echo = echo[echo.length - 1];
+    if (!title) title = {
+        html: "HTML Code",
+        htm: "HTML Code",
+        xml: "XML Code",
+        py: "Python Code",
+        text: "Plain Text",
+        css: "CSS Code",
+        js: "Javascript Code",
+        json: "JSON Data",
+        svg: "SVG Code",
+        csv: "CSV Data",
+        io: "Program Output",
+    }[echo];
+    if (!title) title = "Plain Text";
+    p.html($("<span>").html(title).addClass("CodeTitle"));
+
+    let svg = {
+        copy: `<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><style>* {stroke: #0065fe; stroke-width: 3; stroke-linejoin: round} polyline {fill: white} .Corner, rect {fill: #0065fe; fill-opacity: 0.2}</style><rect x="2" y="2" width="60" height="80"></rect><polyline points="77,98 37,98 37,18 97,18 97,78 77,98 77,78"></polyline><line x1="42" y1="50" x2="90" y2="50"></line><line x1="42" y1="35" x2="90" y2="35"></line><line x1="42" y1="65" x2="90" y2="65"></line><line x1="42" y1="80" x2="77" y2="80"></line><polyline class="Corner" points="77,98 77,78 97,78 77,98"></polyline></svg>`,
+        new_tab: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><style>* {fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round}</style><polyline points="40,8 0,8 0,100 92,100 92,60"></polyline><polyline points="60,0 100,0 100,40"></polyline><line x1="100" y1="0" x2="50" y2="50"></line></svg>`,
+        download: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><style>* {fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round;}</style><line x1="50" y1="0" x2="50" y2="75"></line><polyline points="20,50 50,75 80,50"></polyline><polyline points="0,80 0,100 100,100 100,80"></polyline></svg>`,
+    };
+
+    let span = $("<span>").addClass("Buttons").appendTo(p);
+    title = {copy: "Copy to clipboard", new_tab: "Open in new browser tab", download: "Download"};
+    for (let b of ["copy", "new_tab", "download"])
+        $("<span>").html(svg[b]).attr({title: title[b]}).appendTo(span);
+}
+
 function teacher() {
     return btoa(localStorage.getItem("teacher_code")) == teacher.code &&
         parseInt(localStorage.getItem("teacher_mode")) > 0;
@@ -233,7 +269,6 @@ page.unpublish = art => {
 }
 
 page.onload = (id, args) => {
-    clog(id, "page.onload...");
     /* Initialize a page when HTML content is loaded */
 
     // Update browser history
@@ -267,11 +302,15 @@ page.onload = (id, args) => {
         try {page.init()} catch(err) {console.warn(err)};
     }
 
-    // Embed YouTube videos
+    // YouTube videos, calendar, variables
     page.video("main > article *[data-yt]");
-
-    // Create calendar
     for (let e of art.find("[data-cal]")) page.calendar(e);
+    page.vars();
+
+    // Activate echo actions
+    $(".IO").removeClass("IO").addClass("Code");
+    $("pre.Code, pre.CodeScroll").attr({spellcheck: false});
+    for (let e of $("[data-echo]")) page.echo($(e));
 
     // Render SVG2 and TeX
     mjax_wait().then(() => {
@@ -287,7 +326,6 @@ page.onload = (id, args) => {
                 if (page._run) for (let f of page._run) {
                     try {f()} catch(err) {console.warn(err)};
                 }
-            clog("onload Done!");
             });
         }
         if (data.svg2) scripts(data.svg2).then(after_svg);
@@ -356,16 +394,23 @@ page.calendar = e => {
 }
 
 page.icon = k => {
-    if (k == "Calendar") return calendar_icon();
-    if (k.split(' ')[0] == "Coding") k = "vscode";
-    let img = {notes: "slides", assignment: "assign"}[k.toLowerCase()];
-    if (!img) {
-        console.warn(`Guessing icon: '${k}'`);
-        img = k;
-    }
+    k = k.toLowerCase();
+    if (k == "calendar") return calendar_icon();
+    let img = {notes: "slides", assignment: "assign", ide: "vscode"}[k];
+    if (!img) img = page.icon.map[k] ? page.icon.map[k] : k;
     if (img.indexOf('.') == -1) img += ".svg";
-    return $("<img>").attr({src: `../media/${img}`});
+    if (img.indexOf("://") == -1) img = `../media/${img}`;
+    return $("<img>").attr({src: img});
 }
+
+page.icon.map = {
+    bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
+    ps: "https://powerschool.eips.ca/favicon-196x196.png",
+    python: "https://www.python.org/static/favicon.ico",
+    gdrv: "https://upload.wikimedia.org/wikipedia/commons/1/16/Google_Drive_Logo_05.2026.png",
+    gdoc: "https://upload.wikimedia.org/wikipedia/commons/8/84/Google_Docs_Logo_05.2026.png",
+    gsheet: "https://upload.wikimedia.org/wikipedia/commons/5/50/Google_Sheets_Logo_05.2026.png",
+};
 
 page.posts = (art) => {
     /* Create links to individual posts */
@@ -378,11 +423,12 @@ page.posts = (art) => {
     for (let p of posts) {
         p = $(p);
         let a0 = p.attr("data-action");
-        let a = {slides: "Notes", correct: "Assignment", anim: "Animation"}[a0];
-        if (!a) a = a0;
-        a = a.charAt(0).toUpperCase() + a.substring(1);
+        if (a0 == "ide") p.attr({"data-title": "Coding Practice"});
+        let title = p.attr("data-title");
+        if (!title) title = {slides: "Notes", assign: "Assignment", anim: "Animation", link: "Links"}[a0];
+        if (!title) title = a0.charAt(0).toUpperCase() + a0.substring(1);
         let btn = $("<button>").attr("data-action", a0).appendTo(e);
-        btn.html(page.icon(a)).append(a);
+        btn.html(page.icon(a0)).append(title);
     }
     e.show();
 }
@@ -425,8 +471,6 @@ page.metrics = () => {
 }
 
 page.show_post = n => {
-    clog(n, "page.show_post...");
-    try {
     let i = 0;
     for (let p of page._posts.hide()) {
         p = $(p);
@@ -438,9 +482,6 @@ page.show_post = n => {
     }
     page.metrics();
     $(window).scrollTop(0);
-    }
-    catch(err) {$("body").html(err)}
-    clog("show_post Done!");
 }
 
 page.menu = (u, menu) => {
@@ -457,12 +498,25 @@ page.jump = n => {
     if (n >= 0 && n < home._seq.length) home.go(home._seq[n]);
 }
 
+page.vars = () => {
+    for (let e of $(".Var")) {
+        e = $(e);
+        e.html(page.vars.map[e.html()]);
+    }
+}
+
+page.vars.map = {
+    email: "david.maccarthy@eips.ca",
+    currentYear: (new Date().getFullYear()),
+}
+
+
 $(() => {
     console.log("Teacher:", teacher());
     home.sequence();
     home.go(location.hash.substring(1));
     $("#Top").on("click", ev => {
-        let a = $(ev.target).attr("data-action");
+        let a = $(ev.target).closest("[data-action]").attr("data-action");
         if (a) page.show_post(a);
     })
 });
@@ -492,11 +546,19 @@ $(() => {
         }
     });
     w.on("click", ev => {
-        let feed = $(ev.target).closest("[data-feed]").attr("data-feed");
+        let target = $(ev.target);
+
+        // Open feed
+        let feed = target.closest("[data-feed]").attr("data-feed");
         if (feed) home.go(feed);
+
+        // Echo controls
+        let svg = target.closest("svg");
+        let i = 0, action;
+        for (let a of svg.closest("p.EchoControl > span.Buttons").find("svg")) {
+            if (a == svg[0]) action = i;
+            i++;
+        }
+        if (action != null) code_echo(target.closest("p.EchoControl").next("pre[data-echo]"), action);
     });
 });
-
-function clog(x) {
-    $("#Cons").append($("<p>").html(x));
-}

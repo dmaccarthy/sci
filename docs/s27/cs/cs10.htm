@@ -1,40 +1,14 @@
-<section class="Post" data-action="cal"></section>
-
-<section class="Post" data-action="cs_prj">
-<div class="Red">
-<h3>Instructions</h3>
-<ul>
-    <li>Complete the programming tasks below by the due dates announced in class.</li>
-    <li>Use <em>VS Code</em> to create, edit, and test your programs. Be sure each program does what it is required to do!</li>
-    <li>Create the program files in the <code>cs10/python</code> folder of your Computing Science OneDrive folder.</li>
-    <li>All programs should have a docstring and relevant comments.</li>
-    <li>Use the “IPO” (Input, Processing, Output) program structure.</li>
-    <li>Use descriptive names for variables.</li>
-    <li>Use only programming techniques that have been covered in these lessons. Examples that you find on the web often use techniques that are considered bad programmming practice that should be avoided.</li>
-</ul>
-</div>
-
-<div class="Projects">Loading...</div>
+<section class="Post" data-action="python" data-title="Courses">
+<p>Please select a course:</p>
+<ul class="Menu"></ul>
 </section>
+
+<section class="Post" data-action="Calendar" data-cal="cs10"></section>
 
 <script type="text/javascript">
 
-page({title: "Computing Science 10", project: "cs/prj10.txt"});
-
-page.init = async() => {
-    return cs_projects(page.get("project")).then(() => {
-        let f = page.get("abc");
-        if (f) f();
-    });
-}
-
-page.cal("cs", [
-    {t: "Python Project 1", s: "2026.2.17", f: "cs10@action=cs_prj"},
-    {t: "Python Project 2", s: "2026.2.26", f: "cs10@action=cs_prj"},
-    {t: "Quiz: Structured Programming in Python", s: "2026.3.13"},
-    {t: "Final Day in Computer Lab", s: "2026.6.9"},
-    {t: "Class Moved to Room  186", s: "2026.6.10"},
-    {t: "Class Moved to Room  186", s: "2026.6.11"},
-]);
+page.run(() => {
+    page.menu("cs/cs10");
+});
 
 </script>
