@@ -233,6 +233,7 @@ page.unpublish = art => {
 }
 
 page.onload = (id, args) => {
+    clog(id, "page.onload...");
     /* Initialize a page when HTML content is loaded */
 
     // Update browser history
@@ -286,6 +287,7 @@ page.onload = (id, args) => {
                 if (page._run) for (let f of page._run) {
                     try {f()} catch(err) {console.warn(err)};
                 }
+            clog("onload Done!");
             });
         }
         if (data.svg2) scripts(data.svg2).then(after_svg);
@@ -423,6 +425,7 @@ page.metrics = () => {
 }
 
 page.show_post = n => {
+    clog(n, "page.show_post...");
     try {
     let i = 0;
     for (let p of page._posts.hide()) {
@@ -437,6 +440,7 @@ page.show_post = n => {
     $(window).scrollTop(0);
     }
     catch(err) {$("body").html(err)}
+    clog("show_post Done!");
 }
 
 page.menu = (u, menu) => {
@@ -492,3 +496,7 @@ $(() => {
         if (feed) home.go(feed);
     });
 });
+
+function clog(x) {
+    $("#Cons").append($("<p>").html(x));
+}
