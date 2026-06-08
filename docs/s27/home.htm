@@ -1,14 +1,14 @@
-<section class="Post Center" data-action="links">
-<p>Please choose one of these courses, or click the <em>Help</em> icon at the top of this page.</p>
+<section class="Post Center" data-action="Courses">
+<p>Please choose one of these courses:</p>
 <p class="BtnGrid BtnLink">
-    <button data-feed="s10/home"><img src="../media/microscope.svg"/><br/>Science 10</button> &nbsp;
-    <button data-feed="p20/home"><img src="../media/rocket.svg"/><br/>Physics 20</button> &nbsp;
-    <button data-feed="p30/home"><img src="../media/atom.svg"/><br/>Physics 30</button> &nbsp;
-    <button data-feed="cs/home"><img src="../media/laptop.svg"/><br/>Computing Science</button>
+    <button data-feed="s10"><img src="../media/microscope.svg"/><br/>Science 10</button> &nbsp;
+    <button data-feed="p20"><img src="../media/rocket.svg"/><br/>Physics 20</button> &nbsp;
+    <button data-feed="p30"><img src="../media/atom.svg"/><br/>Physics 30</button> &nbsp;
+    <button data-feed="cs"><img src="../media/laptop.svg"/><br/>Computing Science</button>
 </p>
 </section>
 
-<section class="Post" data-action="help">
+<section class="Post" data-action="Help">
     <p>This website is updated regularly. If the page appears to be broken, you may need to refresh the page once or twice to ensure your browser is using the most up-to-date files.</p>
     <p>If the text is difficult to read, you can <a class="Link" onclick="font_size(1.05)">increase</a> or <a class="Link" onclick="font_size(1/1.05)">decrease</a> the font size, or <a onclick="font_size(false)">reset</a> to the default size.</p>
     <p>Most pages have several sections, such as the <em>Lesson Notes</em> or <em>Assignment</em>. You can click the icons along the top of the page to move between sections...</p>
@@ -21,13 +21,16 @@
 
 <script type="text/javascript">
 
-page({title: "Mr. Mac’s Website"});
+page.run(() => page.menu("home"));
 
-page.run(() => {
-    if (page.help) {
-        metrics(1, "help");
-        delete page.help;
-    }
-});
+
+// page({title: "Mr. Mac’s Website"});
+
+// page.run(() => {
+//     if (page.help) {
+//         metrics(1, "help");
+//         delete page.help;
+//     }
+// });
 
 </script>

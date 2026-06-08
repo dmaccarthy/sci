@@ -46,7 +46,6 @@ function open_on_click(ev) {
 
 function get_image(key, element) {
     // Get image URL from @key
-    // if (key == "today") return calendar_icon.url();
     img = key.indexOf("://") == -1 ? get_image.map[key] : key;
     if (!img) {
         img = `../media/${key}`;
@@ -61,14 +60,23 @@ get_image.map = {
     bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
     ps: "https://powerschool.eips.ca/favicon-196x196.png",
     python: "https://www.python.org/static/favicon.ico",
+    gdrv: "https://upload.wikimedia.org/wikipedia/commons/1/16/Google_Drive_Logo_05.2026.png",
+    gdoc: "https://upload.wikimedia.org/wikipedia/commons/8/84/Google_Docs_Logo_05.2026.png",
+    gsheet: "https://upload.wikimedia.org/wikipedia/commons/5/50/Google_Sheets_Logo_05.2026.png",
 };
+
+get_image.svg = {
+    copy: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><style>* {stroke: #0065fe; stroke-width: 3; stroke-linejoin: round} polyline {fill: white} .Corner, rect {fill: #0065fe; fill-opacity: 0.2}</style><rect x="2" y="2" width="60" height="80"></rect><polyline points="77,98 37,98 37,18 97,18 97,78 77,98 77,78"></polyline><line x1="42" y1="50" x2="90" y2="50"></line><line x1="42" y1="35" x2="90" y2="35"></line><line x1="42" y1="65" x2="90" y2="65"></line><line x1="42" y1="80" x2="77" y2="80"></line><polyline class="Corner" points="77,98 77,78 97,78 77,98"></polyline></svg>`,
+    new_tab: `<svg viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><style>* {fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round}</style><polyline points="40,8 0,8 0,100 92,100 92,60"></polyline><polyline points="60,0 100,0 100,40"></polyline><line x1="100" y1="0" x2="50" y2="50"></line></svg>`,
+    download: `<svg viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><style>* {fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round;}</style><line x1="50" y1="0" x2="50" y2="75"></line><polyline points="20,50 50,75 80,50"></polyline><polyline points="0,80 0,100 100,100 100,80"></polyline></svg>`,
+}
 
 
 /*** Miscellaneous functions ***/
 
 function font_size(s) {
     /* Adjust the font size */
-    let f, b = $("body");
+    let b = $("body");
     if (s === false) {
         b.css("font-size", "");
         localStorage.removeItem("font-size");
@@ -123,9 +131,42 @@ function copy_or_open(ei) {
 
     let span = $("<span>").addClass("Buttons").appendTo(p);
     title = {copy: "Copy to clipboard", new_tab: "Open in new browser tab", download: "Download"};
-    for (let b of ["copy", "new_tab", "download"]) {
-        $("<img>").attr({"data-echo": b, alt: b, title: title[b], src: `../media/${b}.svg`}).appendTo(span);
-    }
+    for (let b of ["copy", "new_tab", "download"])
+        get_image(b, true).attr({"data-echo": b, title: title[b]}).appendTo(span);
+}
+
+async function cs_projects(prj) {
+    // Generate CS summative project pages
+    return fetch(`${prj}?_${new Date().getTime()}`).then(r => {
+        return r.ok ? r.text() : "";
+    }).then(t => {
+        let div = $("main div.Projects").html(base64_to_unicode(t));
+        let dates = page.get("project_dates");
+        let none = true;
+        let h3 = div.find("h3").addClass("Link");
+        for (let h of h3) {
+            h = $(h);
+            let s = h.attr("data-name");
+            if (s) s = new Date(dates[s]) < new Date();
+            if (s) {
+                none = false;
+                h.next("div").hide();
+                h.on("click", ev => {
+                    let h = $(ev.currentTarget);
+                    for (let d of div.children("div")) {
+                        d = $(d);
+                        if (d[0] == h.next("div")[0]) d.slideToggle();
+                        else if (d.is(":visible")) d.slideUp();
+                    }
+                });
+            }
+            else {
+                h.next("div").remove();
+                h.remove();
+            }
+        }
+        if (none) $("<p>").html("There are no projects currently available.").appendTo("section[data-action='cs_prj']");
+    });
 }
 
 
@@ -155,6 +196,7 @@ page.clear = () => {
     page._data = {};
     page._run = [];
     page._final = [];
+    delete page.init;
     $("#Top button").removeClass("Selected");
     $("main").css({visibility: "hidden"});
 }
@@ -170,7 +212,8 @@ page.load = (feed, args) => {
         [feed, args] = feed.split("@");
         if (args) args = qs_args(null, args);
     }
-    if (page._cache[feed]) return page.onload(feed);
+    if (feed.split("/")[0] == "cs_new") feed = `cs/${feed.substring(7)}`;
+    if (page._cache[feed]) return page.onload(feed, args);
     console.log("Fetching page:", feed);
     fetch(feed + ".htm?_" + (new Date().getTime())).then(r => {
         if (r.ok) r.text().then(t => {
@@ -182,12 +225,19 @@ page.load = (feed, args) => {
 }
 
 page.onload = (feed, args) => {
+    let page_info = {s: 9999, a: 1};
     page.clear();
 
     // Update navigation tree
-    let top = $("#Left ul.TreeTop > li > ul > li").removeClass("Hidden");
-    page._tree.select(feed);
-    if (feed.split("/").length > 1) top.filter(".Collapsed").addClass("Hidden");
+    try {
+        let top = $("#Left ul.TreeTop > li > ul > li").removeClass("Hidden");
+        let pg = page._tree.select(feed);
+        page_info.title = pg.children("a")[0].innerHTML
+        let more = pg.attr("data-page");
+        if (more) Object.assign(page_info, JSON.parse(more));
+        if (feed.split("/").length > 1) top.filter(".Collapsed").addClass("Hidden");
+    }
+    catch(err) {}
 
     // Update browser history
     page._feed = feed;
@@ -200,6 +250,17 @@ page.onload = (feed, args) => {
 
     // Add page content to DOM and set page title
     let art = $("main > article").html(page._cache[feed]);
+
+    // Initialize page
+    page(page_info);
+    after = () => page.after_init(art, args ? args.action : null);
+    if (page.init) page.init().then(after);
+    else after();
+}
+
+page.after_init = (art, args) => {
+    // Run tasks after custom page.init function finishes
+
     let data = page._data;
 
     // Enable copy/open operation on .Code elements
@@ -220,28 +281,27 @@ page.onload = (feed, args) => {
         e.prepend("<br/>").prepend(get_image(e.attr("data-icon"), 1));
     }
 
-    args = args ? args.action : null;
-    let after = () => { // Actions to perform after SVG2 scripts have run
-
-        // Run page scripts
-        for (let f of page._run) {
-            try {f()} catch(err) {console.warn(err)};
-        }
-        page.vars();
-
-        // Render TeX using MathJax, then fix page metrics
-        mjax_render(art.find(".TeX"), 0, "2px").then(() => {
-            metrics(1, args);
-            setTimeout(() => {
-                $("body, main").css({visibility: "visible"});
-                metrics(1, args);
-            }, 10);
-        });
-    }
-
     // Load SVG2 animations
+    let after = () => page.after_svg(art, args);
     if (data.svg2) scripts(data.svg2).then(after);
     else after();
+}
+
+page.after_svg = (art, args) => {
+    // Run page scripts
+    for (let f of page._run) {
+        try {f()} catch(err) {console.warn(err)};
+    }
+    page.vars();
+
+    // Render TeX using MathJax, then fix page metrics
+    mjax_render(art.find(".TeX"), 0, "2px").then(() => {
+        metrics(1, args);
+        setTimeout(() => {
+            $("body, main").css({visibility: "visible"});
+            metrics(1, args);
+        }, 10);
+    });
 }
 
 page.tab = () => $("#Top button.Selected").attr("data-action");
@@ -249,7 +309,7 @@ page.post = () => $("main article > section.Post").filter(`[data-action='${page.
 
 page.set_title = () => {
     let title = page.post().attr("data-title");
-    if (!title) title = page._data.title;
+    if (!title) title = page.get("title");
     document.title = $("#MainTitle").html(title ? title : "Page").text();
 }
 
@@ -291,7 +351,8 @@ page.handouts = data => {
     p = $("<p>").addClass("BtnGrid BtnLink").appendTo(p);
     let icons = {gdrv: 1, gdoc: 1, open: "link"};
     for (let item of h) {
-        let [title, action] = item instanceof Array ? item : ["Assignment", item];
+        let [title, action] = item instanceof Array ? item : ["@", item];
+        if (title.charAt(0) == '@') title = "Assignment" + title.substring(1);
         if (typeof(action) == "string") action = {gdrv: action};
         if (!action.icon) for (let a in icons) if (action[a])
             action.icon = icons[a] == 1 ? a : icons[a];
@@ -345,6 +406,7 @@ page.vars.map = {
 
 /*** Page scripts ***/
 
+page.get = (k) => page._data[k]; 
 page.run = (...args) => {for (let a of args) page._run.push(a)}
 page.final = (...args) => {for (let a of args) page._final.push(a)}
 
@@ -373,14 +435,20 @@ page.click = ev => {
 }
 
 
+// let courses = ["p20"];
 let courses = ["s10", "p20", "p30", "cs"];
 
 
 $(() => {
+    // Add SVG dataURLs to get_image/map
+    for (let k in get_image.svg)
+        get_image.map[k] = "data:image/svg+xml;base64," + unicode_to_base64(get_image.svg[k]);
+    delete get_image.svg;
+
     console.log("Teacher:", teacher());
 
-    document.addEventListener("touchstart", swipe.event, {passive: true});
-    document.addEventListener("touchend", swipe.event, {passive: true});
+    // document.addEventListener("touchstart", swipe.event, {passive: true});
+    // document.addEventListener("touchend", swipe.event, {passive: true});
 
     let w = $(window).on("resize", metrics).on("click", page.click);
     w.on("popstate", ev => page.load(location.hash.substring(1)));
@@ -408,7 +476,6 @@ $(() => {
     });
 
     $("#Top button[data-action='cal']").prepend(calendar_icon());
-    // $("#Top button[data-action='review']").prepend(calendar_icon("←"));
     page.clear();
     let trees = [...fn_eval(x => x + "/tree", courses)];
     page._tree = new CourseTree("#Left > ul.TreeTop ul");
@@ -416,7 +483,8 @@ $(() => {
         let feed = location.hash.substring(1);
         if (feed) feed = feed.replace("cs_new/", "cs/");
         else feed = "home";
-        t.select(feed.split('@')[0]);
+        try {t.select(feed.split('@')[0])}
+        catch(err) {console.warn("Page not found in tree!")}
         mjax_wait().then(() => {
             font_size(true);
             page.load(feed);
@@ -454,6 +522,8 @@ function arrange(sel) {
     e = $("#MainTitle");
     if (noleft && sel == "tree") e.hide();
     else e.show();
+    // $("body").prepend($("<p>").html("525"));
+    $(window).scrollTop(0);
 }
 
 function metrics(force, sel) {
@@ -476,11 +546,10 @@ function metrics(force, sel) {
     $("body").css({"margin-left": (w + 8) + "px", "margin-top" : (top.outerHeight() + 20) + "px"});
     svg_aspect();
     scroll_mjax();
-    $(window).scrollTop(0);
 }
 
 function svg_aspect() {
-    let svg = $("svg[data-aspect]");
+    let svg = $("[data-aspect]:is(svg, iframe)");
     for (let e of svg) {
         e = $(e);
         let h = Math.round(parseFloat(e.css("width")) / jeval_frac(e.attr("data-aspect")));
@@ -503,31 +572,28 @@ function scroll_bottom(t) {
 
 /*** Swipe handlers ***/
 
-// console.warn("Swipe active!!");
+// function swipe(delta) {
+//     /* Go to next or previous page on horizontal swipe */
+//     let r = delta.mag(), a = delta.dir(), w = $(window).width();
+//     if (r > Math.min(150, 0.6 * w) && Math.abs(sin(a)) < 0.5) {
+//         let left = Math.abs(a) > 90;
+//         page.jump(left ? 1 : -1);
+//     }
+// }
 
-function swipe(delta) {
-    /* Go to next or previous page on horizontal swipe */
-    let r = delta.mag(), a = delta.dir(), w = $(window).width();
-    if (r > Math.min(150, 0.6 * w) && Math.abs(sin(a)) < 0.5) {
-        let left = Math.abs(a) > 90;
-        // $("main article").append(left ? "Next" : "Prev");
-        page.jump(left ? 1 : -1);
-    }
-}
-
-swipe.event = ev => {
-    /* Record touchstart and dispatch touchend events */
-    let coords = e => {
-        e = e.changedTouches[0];
-        return new RArray(e.clientX, e.clientY);
-    }
-    if (ev.type == "touchstart") swipe.xy = coords(ev);
-    else if (ev.type == "touchend") {
-        let [x, y] = coords(ev);
-        swipe(coords(ev).minus(swipe.xy));
-        delete swipe.xy;
-    }
-}
+// swipe.event = ev => {
+//     /* Record touchstart and dispatch touchend events */
+//     let coords = e => {
+//         e = e.changedTouches[0];
+//         return new RArray(e.clientX, e.clientY);
+//     }
+//     if (ev.type == "touchstart") swipe.xy = coords(ev);
+//     else if (ev.type == "touchend") {
+//         let [x, y] = coords(ev);
+//         swipe(coords(ev).minus(swipe.xy));
+//         delete swipe.xy;
+//     }
+// }
 
 
 /*** Printing ***/

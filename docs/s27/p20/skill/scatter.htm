@@ -57,11 +57,11 @@ SVG2.cache( -> scripts.cache[] =
     </div>
     <ul>
 	    <li>Calculate the <em class="Defn">rise</em> by subtracting the <span class="TeX">y</span>-coordinates (the responding variable):
-            <p data-cue="prev" class="TeX">\Delta m = m_2 - m_1 =\mathrm{78.5\ kg - 81.1\ kg = -2.6\ kg}</p></li>
+            <p data-cue="prev" class="TeX">\Delta m = m_2 - m_1 =\rm{78.5\ kg - 81.1\ kg = -2.6\ kg}</p></li>
         <li>The symbol <span class="TeX">\Delta</span> is the Greek letter “delta”. It is used in Science and Math to mean “difference”.</li>
 	    <li>Calculate the <em class="Defn">run</em> by subtracting the <span class="TeX">x</span>-coordinates (the manipulated variable):
-            <p data-cue="prev" class="TeX">\Delta t = t_2 - t_1 = \mathrm{30.0\ d - 0.0\ d = 30.0\ d}</p></li>
-	    <li>Calculate the slope by dividing:<p class="TeX">k = {\Delta m\over \Delta t} = \mathrm{{-2.6\ kg\over 30.0\ d} = -0.087\ kg/d}</p></li>
+            <p data-cue="prev" class="TeX">\Delta t = t_2 - t_1 = \rm{30.0\ d - 0.0\ d = 30.0\ d}</p></li>
+	    <li>Calculate the slope by dividing:<p class="TeX">k = {\Delta m\over \Delta t} = \rm{{-2.6\ kg\over 30.0\ d} = -0.087\ kg/d}</p></li>
         <li>Slope represents the rate at which the responding variable changes relative to the manipulated variable.</li>
 	    <li>The person’s mass is decreasing by an average of 0.087 kilograms per day.</li>
     </ul>
@@ -175,7 +175,7 @@ SVG2.cache( -> scripts.cache[] =
         <li>Calculate the slope of the best-fit line, including units.</li>
         <div class="Answer">
             <p>Using the points (0 J, 18.4 °C) and (3500 J, 32.1 °C) the slope is:</p>
-            <p class="TeX">k = \mathrm{\frac{(32.1-18.4)\ ^\circ C}{(3500 - 0)\ J} = 0.00391\ ^\circ C/J}</p>
+            <p class="TeX">k = \rm{\frac{(32.1-18.4)\ ^\circ C}{(3500 - 0)\ J} = 0.00391\ ^\circ C/J}</p>
         </div>
 
         <li>Interpret the meaning of the slope.</li>
@@ -207,7 +207,7 @@ SVG2.cache( -> scripts.cache[] =
     <li>Calculate the slope of the best-fit line.</li>
     <div class="Answer">
         <p>Using the points (5, 64%) and (19, 50%) the slope is:</p>
-        <p class="TeX">k = \mathrm{\frac{(50 - 64)\%}{19 - 5} = -1.0\%}</p>
+        <p class="TeX">k = \rm{\frac{(50 - 64)\%}{19 - 5} = -1.0\%}</p>
     </div>
     <li>What is the significance of the slope?</li>
     <p class="Answer">This means that based on this data a student’s mark drops by 1.0% for each additional absence.</p>
@@ -244,17 +244,25 @@ SVG2.cache( -> scripts.cache[] =
 
     <li>Calculate the slope of the best-fit line.</li>
     <div class="Answer">
-        <p>Using the points (0.00 m, 96.9 kPa) and (8.00 m, 175.7 kPa) the slope is:</p>
-        <p class="TeX">k = \mathrm{\frac{(175.7-96.9)\ kPa}{(8.00 - 0.00)\ m} = 9.85\ kPa/m}</p>
+        <p>Using the points (0.0 m, 97 kPa) and (8.0 m, 176 kPa) the slope is:</p>
+        <p class="TeX">k = \rm{\frac{(176-97)\ kPa}{(8.0 - 0.0)\ m} = 9.9\ kPa/m}</p>
     </div>
 
     <li>What is the significance of the slope?</li>
-    <p class="Answer">A slope of 9.85 kPa/m means that the pressure increases by 9.85 kilopascals for every increase in depth of 1.0 metre.</p>
+    <p class="Answer">A slope of 9.9 kPa/m means that the pressure increases by 9.9 kilopascals for every increase in depth of 1.0 metre.</p>
 
-    <li>Estimate how deep the divers would need to go to encounter water pressure of 300 kPa. Explain how you obtained your answer. Is this an interpolation or extrapolation?</li>
+    <li>Write the equation of the best-fit line in the form: <span class="TeX">P = kh + b</span></li>
+    <p class="Answer TeX">P = 9.9 {\rm\frac{kPa}{m}}\ h + \rm 97\ kPa</p>
+
+    <li>Use your equation to estimate the pressure at a depth of 4.50 metres. Is this an interpolation or extrapolation?</li>
     <div class="Answer">
-        <p>300 kPa is 203.1 kPa more than at a depth of zero (where it is 96.9 kPa), so this would occur at an approximate depth of:</p>
-        <p class="TeX">\mathrm{\frac{203.1\ kPa}{9.85\ kPa/m} = 20.6\ m}</p>
+        <p class="TeX">P = \rm 9.9 \frac{kPa}{m}\ 4.50\ m + 97\ kPa = 142\ kPa</p>
+    </div>
+
+    <li>Use your equation to estimate how deep the divers would need to go to encounter water pressure of 300 kPa. Is this an interpolation or extrapolation?</li>
+    <div class="Answer">
+        <p class="TeX">P - {\rm 97\ kPa} = 9.9 {\rm\frac{kPa}{m}}\ h</p>
+        <p class="TeX">h = \frac{P - {\rm 97\ kPa}}{9.9 {\rm\frac{kPa}{m}}} = \rm \frac{(300 - 97)\ kPa}{9.9 \frac{kPa}{m}} = 20.5\ m</p>
     </div>
 </ol>
 </li>

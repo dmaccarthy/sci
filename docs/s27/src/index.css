@@ -9,44 +9,28 @@
     --blue: #0065fe;
 }
 
-
-ul.TreeTop {
-
-list-style-type: none;
-color: var(--blue);
-padding-left: 0;
-
-li.XX.Selected > ul, .LeftBorder {border-left:1px solid #0065fe}
-
-ul {
-    list-style-type: none;
-    color: var(--blue);
-    margin-left: 0.75em;
-    padding-left: 0.75em;
+body {
+    font-family: "Noto Sans", "Open Sans", Oxygen, sans-serif;
+    font-size: 14px;
+    /* visibility: hidden; */
 }
 
-li {padding: 2px 0 2px 0}
-li.Collapsed > ul {display: none}
-li.Selected > a {font-weight: bold}
-li > a {cursor: pointer}
-li > a:hover {text-decoration: underline}
-
-}
+body.Present {font-size: 225%}
+body:not(.Present) *:is(.Present, ._Present), .Hidden {display: none}
+body:is(.Present, .Slides) td.Reveal span {display: none}
 
 #Top {
+    width: calc(100% - 12px);
+    padding: 6px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid lightgrey;
 
-/* background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 248, 1) 100%); */
-background-color: var(--grey0);
-
-position: fixed;
-top: 0;
-left: 0;
-border-bottom: 1px solid var(--grey2);
-text-align: center;
-
-p.BtnGrid {
-    margin: 0.5em auto;
-}
+    p {margin: 0}
+    p.Icons {text-align: center; margin-top: 0.5em}
+    p.Crumbs > a:last-child {font-weight: bold}
 
 button  {
     color: var(--blue);
@@ -60,8 +44,8 @@ button  {
 
 button.Selected  {border-bottom: 3px solid var(--blue)}
 button:not(.Selected):hover  {border-bottom: 3px solid red}
-button > span {display: none}
-button > * {vertical-align: middle}
+/* button > span {display: none}
+button > * {vertical-align: middle} */
 
 button > *:is(img, svg) {
     width: var(--icon);
@@ -76,16 +60,6 @@ button > *:is(img, svg) {
     text-align: center;
     color: var(--blue);
 }
-
-body {
-    font-family: "Noto Sans", "Open Sans", Oxygen, sans-serif;
-    font-size: 14px;
-    visibility: hidden;
-}
-
-body.Present {font-size: 225%}
-body:not(.Present) *:is(.Present, ._Present), .Hidden {display: none}
-body:is(.Present, .Slides) td.Reveal span {display: none}
 
 button {
     font-size: 90%;
@@ -112,22 +86,6 @@ p.BtnGrid {
 @media (min-width: 840px) {
 
 body {font-size: 16px}
-#Top button > span {display: inline}
-
-#Left {
-    /* background: linear-gradient(90deg, rgba(220, 220, 248, 1) 0%, rgba(255, 255, 255, 1) 100%); */
-    border-right: 1px solid var(--grey2);
-    background-color: var(--grey0);
-    max-width: 30%;
-    width: 320px; /*24em;*/
-    height: 100vh;
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 6px;
-    font-size: 90%;
-}
 
 }
 
@@ -273,15 +231,6 @@ div.Message {
     top: 25vh;
     display: none;
 }
-
-/* li p {margin-bottom: 0} */
-/* li > p {margin-bottom: 0} */
-/* div.Answer {margin-bottom: 0.75em}
-
-p.Answer {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-} */
 
 p.Caption {
     font-weight: bold;
