@@ -353,6 +353,18 @@ page.calendar = e => {
     $("<p>").addClass("Center").append(a).appendTo(e);
 }
 
+page.icon = k => {
+    if (k == "Calendar") return calendar_icon();
+    if (k.split(' ')[0] == "Coding") k = "vscode";
+    let img = {notes: "slides", assignment: "assign"}[k.toLowerCase()];
+    if (!img) {
+        console.warn(`Guessing icon: '${k}'`);
+        img = k;
+    }
+    if (img.indexOf('.') == -1) img += ".svg";
+    return $("<img>").attr({src: `../media/${img}`});
+}
+
 page.posts = (art) => {
     /* Create links to individual posts */
     let e = $("#Top > p.Icons");
@@ -361,17 +373,14 @@ page.posts = (art) => {
         e.hide();
         return;
     }
-    // let sep = false;
     for (let p of posts) {
         p = $(p);
         let a0 = p.attr("data-action");
         let a = {slides: "Notes", correct: "Assignment", anim: "Animation"}[a0];
         if (!a) a = a0;
         a = a.charAt(0).toUpperCase() + a.substring(1);
-        // if (sep) e.append("&nbsp; · &nbsp;");
-        // else sep = true;
-        e.append($("<button>").attr("data-action", a0).html(a));
-        // e.append($("<span>").addClass("Link").attr("data-action", a0).html(a));
+        let btn = $("<button>").attr("data-action", a0).appendTo(e);
+        btn.html(page.icon(a)).append(a);
     }
     e.show();
 }

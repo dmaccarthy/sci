@@ -1,5 +1,5 @@
 :root {
-    --icon: 2em;
+    --icon: 1.5em;
     --btn: 4em;
     --grey0: #fafafa;
     --grey1: #f4f4f4;
@@ -34,7 +34,8 @@ body:is(.Present, .Slides) td.Reveal span {display: none}
 
 button  {
     color: var(--blue);
-    margin: 0.1em 0.5em;
+    margin: 0.5em;
+    /* margin-top: 0.1em; */
     padding-bottom: 4px;
     background-color: #fff0;
     cursor: pointer;
@@ -44,8 +45,8 @@ button  {
 
 button.Selected  {border-bottom: 3px solid var(--blue)}
 button:not(.Selected):hover  {border-bottom: 3px solid red}
-/* button > span {display: none}
-button > * {vertical-align: middle} */
+/* button > span {display: none} */
+button > * {vertical-align: middle}
 
 button > *:is(img, svg) {
     width: var(--icon);
