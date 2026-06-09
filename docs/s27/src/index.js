@@ -31,9 +31,9 @@ page.echo = ei => {
     p.html($("<span>").html(title).addClass("CodeTitle"));
 
     let svg = {
-        copy: `<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><style>* {stroke: #0065fe; stroke-width: 3; stroke-linejoin: round} polyline {fill: white} .Corner, rect {fill: #0065fe; fill-opacity: 0.2}</style><rect x="2" y="2" width="60" height="80"></rect><polyline points="77,98 37,98 37,18 97,18 97,78 77,98 77,78"></polyline><line x1="42" y1="50" x2="90" y2="50"></line><line x1="42" y1="35" x2="90" y2="35"></line><line x1="42" y1="65" x2="90" y2="65"></line><line x1="42" y1="80" x2="77" y2="80"></line><polyline class="Corner" points="77,98 77,78 97,78 77,98"></polyline></svg>`,
-        new_tab: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><style>* {fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round}</style><polyline points="40,8 0,8 0,100 92,100 92,60"></polyline><polyline points="60,0 100,0 100,40"></polyline><line x1="100" y1="0" x2="50" y2="50"></line></svg>`,
-        download: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><style>* {fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round;}</style><line x1="50" y1="0" x2="50" y2="75"></line><polyline points="20,50 50,75 80,50"></polyline><polyline points="0,80 0,100 100,100 100,80"></polyline></svg>`,
+        copy: `<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g style="stroke: #0065fe; stroke-width: 3; stroke-linejoin: round"><rect style="fill: #0065fe; fill-opacity: 0.2" x="2" y="2" width="60" height="80"></rect><polyline style="fill: white" points="77,98 37,98 37,18 97,18 97,78 77,98 77,78"></polyline><line x1="42" y1="50" x2="90" y2="50"></line><line x1="42" y1="35" x2="90" y2="35"></line><line x1="42" y1="65" x2="90" y2="65"></line><line x1="42" y1="80" x2="77" y2="80"></line><polyline style="fill: #0065fe; fill-opacity: 0.2" points="77,98 77,78 97,78 77,98"></polyline></g></svg>`,
+        new_tab: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><g style="fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round"><polyline points="40,8 0,8 0,100 92,100 92,60"></polyline><polyline points="60,0 100,0 100,40"></polyline><line x1="100" y1="0" x2="50" y2="50"></line></g></svg>`,
+        download: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><g style="fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round"><line x1="50" y1="0" x2="50" y2="75"></line><polyline points="20,50 50,75 80,50"></polyline><polyline points="0,80 0,100 100,100 100,80"></polyline></g></svg>`,
     };
 
     let span = $("<span>").addClass("Buttons").appendTo(p);
@@ -156,10 +156,10 @@ home.crumbs = id => {
             let pg = home.find(path);
             p.append(" / ");
             let a = $("<a>").html(pg.title).appendTo(p);
-            // if (path != id)
             a.attr("href", "#" + path);
         }
     }
+    for (let c of [10, 20, 30]) p.children(`a[href="#cs/cs${c}"]`).html(c);
     $("#Top").html(p).append($("<p>").addClass("Icons"));
 }
 
@@ -302,9 +302,12 @@ page.onload = (id, args) => {
         try {page.init()} catch(err) {console.warn(err)};
     }
 
-    // YouTube videos, calendar, variables
+    // YouTube videos, images, calendar, variables
     page.video("main > article *[data-yt]");
-    for (let e of art.find("[data-cal]")) page.calendar(e);
+    for (let e of art.find("[data-icon]"))
+        $(e).prepend("<br/>").prepend(page.icon($(e).attr("data-icon")));
+    for (let e of art.find("[data-cal]"))
+        page.calendar(e);
     page.vars();
 
     // Activate echo actions
@@ -422,10 +425,18 @@ page.posts = (art) => {
     }
     for (let p of posts) {
         p = $(p);
-        let a0 = p.attr("data-action");
-        if (a0 == "ide") p.attr({"data-title": "Coding Practice"});
         let title = p.attr("data-title");
-        if (!title) title = {slides: "Notes", assign: "Assignment", anim: "Animation", link: "Links"}[a0];
+        let a0 = p.attr("data-action");
+        if (!title && a0 == "ide") {
+            title = "Coding Practice";
+            // p.attr({"data-title": "Coding Practice"});
+        }
+        let map = {anim: "animation", correct: "assign", ide: "vscode"};
+        for (let k in map) if (a0 == k) {
+            a0 = map[k];
+            p.attr("data-action", a0);
+        }
+        if (!title) title = {slides: "Notes", assign: "Assignment", link: "Links", graph: "Data Analysis"}[a0];
         if (!title) title = a0.charAt(0).toUpperCase() + a0.substring(1);
         let btn = $("<button>").attr("data-action", a0).appendTo(e);
         btn.html(page.icon(a0)).append(title);
@@ -548,9 +559,16 @@ $(() => {
     w.on("click", ev => {
         let target = $(ev.target);
 
-        // Open feed
-        let feed = target.closest("[data-feed]").attr("data-feed");
-        if (feed) home.go(feed);
+        // Open feed or link
+        let info = {}
+        for (let k of ["feed", "open", "gdrv", "gdoc"]) {
+            let i = target.closest(`[data-${k}]`).attr("data-" + k);
+            if (i) info[k] = i;
+        }
+        if (info.feed) home.go(info.feed);
+        if (info.gdrv) window.open("https://drive.google.com/file/d/" + info.gdrv);
+        if (info.gdoc) window.open("https://docs.google.com/document/d/" + info.gdoc);
+        if (info.open) window.open(info.open);
 
         // Echo controls
         let svg = target.closest("svg");

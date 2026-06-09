@@ -1,4 +1,4 @@
-SVG2.cache("cs_new/web1/img/tuscany.js", {
+scripts.cache["cs/cs10/web/img/tuscany"] = {
 
 main: (sel) => {
     let svg = new SVG2(sel, {scale: 56, lrbt: [-3, 3, -5, 4.25]});
@@ -42,4 +42,4 @@ spec: (sel) => {
     g.text("Home", [0, y - 0.8]).css("#0065fe", {"text-decoration": "underline"})
 },
 
-});
+};

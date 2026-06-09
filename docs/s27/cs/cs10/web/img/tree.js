@@ -1,4 +1,4 @@
-scripts.cache["cs/web/img/tree"] = {
+scripts.cache["cs/cs10/web/img/tree"] = {
 
 nhl: (sel) => {
     let svg = new SVG2(sel, {scale: 180, lrbt: [-0.5, 3.5, -0.3, 3.3]});

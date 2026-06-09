@@ -1,0 +1,17 @@
+<section class="Post" data-action="Home">
+<p>CSE 1210 and 1220 introduce students to web-based markup languages such as XML, HTML, and CSS...</p>
+<h3>Client-Side Scripting 1</h3>
+<ul class="Menu"></ul>
+<h3>Client-Side Scripting 2</h3>
+<ul class="Menu"></ul>
+</section>
+
+<script type="text/javascript">
+
+page.run(() => {
+    page.menu("cs/cs10/web");
+    let li = $("main > article ul.Menu > li");
+    for (let i=11;i<=26;i++) $(li[i]).remove();
+});
+
+</script>

@@ -167,7 +167,9 @@
 <h3>Assignment</h3>
 <ol class="Assign">
 	<li>Suppose you were creating an HTML document that allowed users to play checkers in their browser.
-		<p class="Center"><img style="border:1px solid black" alt="Checkers" data-aspect="1" width="256" height="256" data-aspect="1" src="cs/web/img/checkers.svg"/></p>
+		<p class="Center">
+            <img style="border:1px solid black" alt="Checkers" data-aspect="1" width="256" height="256" src="cs/cs10/web/img/checkers.svg"/>
+        </p>
 		<p>Your document could use an 8 by 8 <code>&lt;table&gt;</code> for the board. The colours of the squares need to
 			alternate. (This <a target="nth" href="https://www.w3schools.com/cssref/sel_nth-child.asp">reference</a> could be useful!)</p>
         <p>Complete the document <code>w13_checkers.html</code> to display the checkerboard like the illustration above.</p>
@@ -179,18 +181,20 @@
     &lt;circle cx="0" cy="0" r="39" style="fill: <span class="Red">red</span>; stroke: black; stroke-width: 1"&gt;&lt;/circle&gt;
 &lt;/svg&gt;</pre>
 
-	<li>Copy your files <code>w09_Tuscany.html</code> and <code>w09_specials.html</code> as
-		<code>w13_Tuscany.html</code> and <code>w13_specials.html</code>. Use styles to make the appearance of the page closer to	what the restaurant manager requested:
-    <p class="Center"><img data-aspect="337/519" src="cs/web/img/tuscany.svg" alt="Main"/></p></li>
-    <p class="Center"><img data-aspect="281/547" src="cs/web/img/specials.svg" alt="Specials"/></p></li>
+	<li>Copy your files <code>w09_Tuscany.html</code> and <code>w09_specials.html</code> as 		<code>w13_Tuscany.html</code> and <code>w13_specials.html</code>. Use styles to make the appearance of the page closer to	what the restaurant manager requested:
+    <p class="Center"><svg id="Tuscany_Main"></svg></p>
+    <p class="Center"><svg id="Tuscany_Spec"></svg></p>
 
-	<li><p>Copy your files <code>w08_whatsOn.html</code> as <code>w13_whatsOn.html</code>.
-		Use styles to make the webpage more visually appealing.</p></li>
+	<li>Copy your files <code>w08_whatsOn.html</code> as <code>w13_whatsOn.html</code>.
+		Use styles to make the webpage more visually appealing.</li>
 </ol>
 </section>
 
 <script type="text/javascript">
 
-page({title: "Stylesheets (CSS)"});
+page({title: "Stylesheets (CSS)", svg2: [
+    ["#Tuscany_Main", "cs/cs10/web/img/tuscany", "main"],
+    ["#Tuscany_Spec", "cs/cs10/web/img/tuscany", "spec"],
+]});
 
 </script>

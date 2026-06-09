@@ -99,6 +99,9 @@ margin: auto;
 li {margin: 0.4em 0}
 p, ol, ul {margin: 1em 0}
 
+section.Post ol, section.Post ul {padding-left: 1.25em}
+section.Post *:is(ol, ul):not(.Menu) li {padding: 0.15em 0.5em}
+
 p.BtnGrid > button {
     min-width: calc(var(--btn) + 3.5em);
     min-height: calc(var(--btn) + 1em);
@@ -148,11 +151,10 @@ td.Reveal span {color: red}
 .NoTop {margin-top: 0}
 .NoBorder, table.NoBorder *:is(td, th) {border: none}
 
-a, .Blue, .Link, .BtnLink > button, #Title {
+a, .Blue, .Link, .BtnLink button, #Title {
     color: var(--blue);
     text-decoration: none;
 }
-
 
 *:is(a, .Link, .BtnLink > button):hover {
     cursor: pointer;

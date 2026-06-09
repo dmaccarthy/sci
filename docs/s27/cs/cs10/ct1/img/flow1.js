@@ -1,4 +1,4 @@
-scripts.cache["cs/ct1/img/flow1"] = {
+scripts.cache["cs/cs10/ct1/img/flow1"] = {
 
 factor: (sel) => {
     let svg = new SVG2(sel, {scale: 148, lrbt: [-0.6, 3.75, -3.5, 1.7]});
