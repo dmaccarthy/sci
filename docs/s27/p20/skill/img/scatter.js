@@ -6,7 +6,7 @@ wtLoss: (sel, tog) => {
     css($(e.find("line")[30]), "black@1").appendTo(e);
 
     // Tick marks and labels
-    let opt = {size: ["-6", 0], label: 0, shift: "-8", css: 15};
+    let opt = {size: ["-6", 0], label: 0, shift: "-8", css: ["sans", 15]};
     svg.ticks({x: [0, 31, 3], ...opt}).shift_by([0, 77]).css(".Toggle0");
     svg.ticks({y: [77, 82.1, 1], ...opt}).css(".Toggle1");
     let g = svg.group("sans", 18);

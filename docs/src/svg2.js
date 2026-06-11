@@ -375,16 +375,23 @@ poly(points, closed) {
         this.create_child(closed ? "polygon" : "polyline", attr);
 }
 
-rect_round(w, h, r) {
-/* Rectangle with rounder corners */
-    let [x, y] = [w/2, h/2];
-    let g = this.group();
-    let p = g.path([r - x, -y]);
-    p.hor(x - r).arc_to([x, r - y], r).ver(y - r).arc_to([x - r, y], r);
-    p.hor(r - x).arc_to([-x, y - r], r).ver(r - y).arc_to([r - x, -y], r);
-    p.update();
-    return g;
+rect_round(size, r, posn, selector) {
+/* Rectangle with rounded corners */
+    let rect = this.rect(size, posn, selector);
+    r = this.px_radius(r);
+    return rect.attr({rx: r, ry: r});
 }
+
+// rect_round(w, h, r) {
+// /* Rectangle with rounder corners */
+//     let [x, y] = [w/2, h/2];
+//     let g = this.group();
+//     let p = g.path([r - x, -y]);
+//     p.hor(x - r).arc_to([x, r - y], r).ver(y - r).arc_to([x - r, y], r);
+//     p.hor(r - x).arc_to([-x, y - r], r).ver(r - y).arc_to([r - x, -y], r);
+//     p.update();
+//     return g;
+// }
 
 
 /*** Images ***/

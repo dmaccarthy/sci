@@ -1,4 +1,4 @@
-<section class="Post Center" data-action="home" data-title="Courses">
+<section class="Post Center" data-action="list" data-title="Courses">
 <p>Please choose one of these courses:</p>
 <p class="BtnGrid BtnLink">
     <button data-feed="s10"><img src="../media/microscope.svg"/><br/>Science 10</button> &nbsp;
@@ -8,10 +8,14 @@
 </p>
 </section>
 
+<section  data-show="9999.1.1" class="Post Center" data-action="teacher" data-title="SVG">
+    <p class="Center"><svg id="SVG_Sketch"></svg></p>
+</section>
+
 <section class="Post" data-action="Help">
     <p>This website is updated regularly. If the page appears to be broken, you may need to refresh the page once or twice to ensure your browser is using the most up-to-date files.</p>
     <p>If the text is difficult to read, you can <a class="Link" onclick="font_size(1.05)">increase</a> or <a class="Link" onclick="font_size(1/1.05)">decrease</a> the font size, or <a onclick="font_size(false)">reset</a> to the default size.</p>
-    <p>Most pages have several sections, such as the <em>Lesson Notes</em> or <em>Assignment</em>. You can click the icons along the top of the page to move between sections...</p>
+    <p>Most pages have several sections, such as the <em>Notes</em> or <em>Assignment</em>. You can click the icons along the top of the page to move between sections...</p>
     <p>Most courses have a <em>Calendar</em> section in the course home page. The calendar will show you the class schedule including the dates of upcoming quizzes and exams. You can use the links in the calendar to navigate to any lesson.</p>
     <p>If you are viewing the page on a wide screen device, there will be a navigation tree along the left side of the page. Use this to locate a specific lesson or select a different course. You can type <code>Ctrl+]</code> to go to the next lesson directly and <code>Ctrl+[</code> to go to the previous lesson.</p>
     <p>If you are using a narrow screen, you can click on the <em>Home</em> icon at the top of the page to see the navigation tree. You can swipe left or right to go to the next or previous lesson on touchscreen devices.</p>
@@ -23,14 +27,8 @@
 
 page.run(() => page.menu("home"));
 
-
-// page({title: "Mr. Mac’s Website"});
-
-// page.run(() => {
-//     if (page.help) {
-//         metrics(1, "help");
-//         delete page.help;
-//     }
-// });
+page({svg2: [
+    ["#SVG_Sketch", "img/general", "list_icon"],
+]});
 
 </script>

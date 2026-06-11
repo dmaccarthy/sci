@@ -12,7 +12,7 @@
 body {
     font-family: "Noto Sans", "Open Sans", Oxygen, sans-serif;
     font-size: 14px;
-    /* visibility: hidden; */
+    margin: 10px;
 }
 
 body.Present {font-size: 225%}
@@ -86,21 +86,31 @@ p.BtnGrid {
 
 @media (min-width: 840px) {
 
-body {font-size: 16px}
+body {
+    font-size: 16px;
+    /* margin: 1em; */
+}
 
 }
 
+body:not(.Present) {
+    main {max-width: 960px}
+}
 
 main {
 
-max-width: 960px;
 margin: auto;
 
-li {margin: 0.4em 0}
-p, ol, ul {margin: 1em 0}
+p, li {margin: 0.75em 0}
+ul.Menu > li {margin: 0.25em 0}
 
-section.Post ol, section.Post ul {padding-left: 1.25em}
-section.Post *:is(ol, ul):not(.Menu) li {padding: 0.15em 0.5em}
+
+ol, ul {
+    margin-left: 1em;
+    padding-left: 0.6em;
+}
+
+ol[type='a'] {margin-left: 0.5em} 
 
 p.BtnGrid > button {
     min-width: calc(var(--btn) + 3.5em);

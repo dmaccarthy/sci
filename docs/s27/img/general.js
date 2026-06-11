@@ -43,13 +43,24 @@ expDes1: (sel) => {
 anim_icon: (sel) => {
 /* Draw the animation icon */
     let svg = new SVG2(sel, {scale: 32, lrbt: [-4, 3, -4.1, 2.9]});
-    svg.rect_round(5, 5, 0.5).css("white", "red@10").config({theta: 15}).shift_by([-0.5, -1]);
-    svg.rect_round(5, 5, 0.5).css("white", "#0065fe@10");
+    svg.group("white", "red@10").config({theta: 15}).shift_by([-0.5, -1]).rect_round([5, 5], 0.5);
+    css(svg.rect_round([5, 5], 0.5), "white", "#0065fe@10");
     let r = 1.8;
     let c = new RArray(-0.35, 0);
     let pts = [];
     for (let i=0;i<3;i++) pts.push(c.plus(vec2d(r, 120*i)));
     css(svg.poly(pts, 1), "none@", "#0065fe");
+},
+
+list_icon: (sel) => {
+/* Draw the animation icon */
+    let svg = new SVG2(sel, {scale: 28, grid: 0, lrbt: [-1.2, 4, -2.6, 2.6]});
+    let g = svg.group("none@", "#0065fe");
+    let h = 0.4;
+    for (let y = -2; y < 2.1; y += 4/3) {
+        g.rect_round([3.5, h], "3", [2, y]);
+        g.rect_round([h, h], "3", [-0.75, y]);
+    }
 },
 
 };

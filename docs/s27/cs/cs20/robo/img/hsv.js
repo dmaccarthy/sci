@@ -1,4 +1,4 @@
-scripts.cache["cs/robo/img/hsv"] = {
+scripts.cache["cs/cs20/robo/img/hsv"] = {
 
 wheel: (sel, args) => {
 /* Draw a color wheel with tick marks and hue/sat markers using SVG2 */
@@ -14,7 +14,7 @@ wheel: (sel, args) => {
     }
 
     // Color wheel
-    let url = v => scripts.cache["cs/robo/img/hsv"].colorWheelURL(180, v / 100);
+    let url = v => scripts.cache["cs/cs20/robo/img/hsv"].colorWheelURL(180, v / 100);
     svg.image(url(v), [2, 2]);
 
     svg.set_v = (v) => { // Re-draw color wheel with different Val
@@ -64,13 +64,13 @@ colorWheelURL: (r, v) => {
     let w = 2 * r + 1;
     let cv = $("<canvas>").attr({width: w, height: w})[0];
     let cx = cv.getContext("2d");
-    let img = scripts.cache["cs/robo/img/hsv"].colorWheelImg(r, v);
+    let img = scripts.cache["cs/cs20/robo/img/hsv"].colorWheelImg(r, v);
     cx.putImageData(img, 0, 0);
     return cv.toDataURL();
 },
 
 blue: (sel) => {
-    let svg = scripts.cache["cs/robo/img/hsv"].wheel(sel, [0, 0, 100]);
+    let svg = scripts.cache["cs/cs20/robo/img/hsv"].wheel(sel, [0, 0, 100]);
     svg.$.children("g.HueSat").remove();
     let v = vec2d, r = 0.6, a = 205, b = 260;
     let p = svg.path(v(r, a)).arc_to(v(r, b), r).line_to(v(1, b)).arc_to(v(1, a), 1, 2).close().update();

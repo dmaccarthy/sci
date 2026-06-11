@@ -42,6 +42,19 @@ page.echo = ei => {
         $("<span>").html(svg[b]).attr({title: title[b]}).appendTo(span);
 }
 
+page.svg2 = (svg, mod) => {
+    /* Create and open an HTML blob displaying the image */
+    svg = svg.closest("svg:not(.NoOpen)");
+    if (svg.length) {
+        let opt = mod & 4 ? {type: "png"} : {};
+        if (mod == 6) {
+            let s = parseFloat(prompt("Scale factor?", 3));
+            if (!isNaN(s)) opt.scale = s;
+        }
+        SVG2.open(svg[0], opt).then(console.log);
+    }
+}
+
 function teacher() {
     return btoa(localStorage.getItem("teacher_code")) == teacher.code &&
         parseInt(localStorage.getItem("teacher_mode")) > 0;
@@ -475,10 +488,12 @@ page.video = s => {
 }
 
 page.metrics = () => {
+    clearTimeout(page.metrics.timeout);
     let h = $("#Top").height();
     $("body").css("margin-top", `${h + 24}px`);
     svg_aspect();
     scroll_mjax();
+    page.metrics.timeout = setTimeout(page.metrics, 2000);
 }
 
 page.show_post = n => {
@@ -496,17 +511,27 @@ page.show_post = n => {
 }
 
 page.menu = (u, menu) => {
-    /* Create a menu in a <ul> */
-    let ul = $("main > article").find(menu ? menu : "ul.Menu");
-    for (let item of home.find(u).items) {
+    /* Create a menu in a <table> or <ul> */
+    let ul = $("main > article").find(menu ? menu : ".Menu");
+    let table = ul[0].tagName.toUpperCase() == "TABLE";
+    let add = table ? item => {
+        console.log(item);
+    } : item => {
         let a = $("<a>").html(item.title).attr({href: '#' + (u == "home" ? '' : `${u}/`) + item.page});
         let li = $("<li>").html(a).appendTo(ul);
     }
+    for (let item of home.find(u).items) add(item);
 }
 
 page.jump = n => {
     n += home._seq.indexOf(home.path(page.onload._current[0]));
     if (n >= 0 && n < home._seq.length) home.go(home._seq[n]);
+}
+
+page.bottom = t => {
+    let h = $("html");
+    let y = h[0].scrollHeight - $(window).height();
+    h.animate({scrollTop: y < 0 ? 0 : y}, t ? t : 350);
 }
 
 page.vars = () => {
@@ -522,6 +547,86 @@ page.vars.map = {
 }
 
 
+// Slideshow functions
+
+function slideshow() {
+    $("#Top, #MainTitle, section.Post:not(:visible)").remove();
+    $("body").addClass("Present").css({margin: "8px", "font-size": ""});
+    let all_cues = slideshow.cues = [];
+    let cues = $("main").css({"max-width": "100%"}).find("section.Post:visible").find(slideshow.select).hide();
+    for (let c of cues) {
+        if ($(c).attr("data-cue") == "prev") all_cues[all_cues.length - 1].push(c);
+        else all_cues.push([c]);
+    }
+    let sections = slideshow.sections = [-1];
+    $("section.Post[data-action='assign'] > ol").addClass("SlideBreak");
+    for (let i=0;i<all_cues.length;i++) {
+        let e = all_cues[i][0];
+        if (e.tagName == "SECTION" || $(e).filter("li").parent().hasClass("SlideBreak")) sections.push(i);
+    }
+    sections.push(all_cues.length);
+    slideshow.next_cue = 0;
+    for (let i of sections) {
+        try {$(all_cues[i][0]).css("margin-top", "4em")}
+        catch(err) {}
+    }
+    svg_aspect();
+}
+
+slideshow.select = "[data-cue=true], *:is(p, h2, h3, table, ol, ul, li, div, section):not([data-cue=none], :first-child)";
+
+slideshow.scroll = (s) => {
+    svg_aspect();
+    scroll_mjax();
+    if (s) page.bottom();
+}
+
+slideshow.next = (prev, t) => {
+    if (t == null) t = 500;
+    let i = slideshow.next_cue;
+    let scroll = true;
+    if (prev && i > 0) {
+        let cues = slideshow.cues[--slideshow.next_cue];
+        for (let c of cues) $(c).fadeOut(t);
+    }
+    else if (!prev && i < slideshow.cues.length) {
+        let cues = slideshow.cues[slideshow.next_cue++];
+        for (let c of cues) $(c).fadeIn(t);
+    }
+    else scroll = false;
+    if (t) slideshow.scroll(scroll);
+    console.log(`Cue: ${slideshow.next_cue - 1}`);
+}
+
+slideshow.goto = (n) => {
+    n = Math.min(Math.max(0, n), slideshow.cues.length - 1);
+    while (slideshow.next_cue > n+1) slideshow.next(1, 0);
+    while (slideshow.next_cue <= n) slideshow.next(0, 0);
+    slideshow.scroll(1);
+}
+
+slideshow.key = (key, mod) => {
+    if (!mod) {
+        let down = 1 + ["PageDown", "ArrowDown"].indexOf(key);
+        let up = 1 + ["PageUp", "ArrowUp"].indexOf(key);
+        let n = down ? 0 : (up ? 1 : -1);
+        let sections = slideshow.sections;
+        if (n > -1) {
+            let i = slideshow.next_cue - 1;
+            let s = 0;
+            while (s < sections.length && i >= sections[s]) s++;
+            if (s && up == 1) s -= 1;
+            s = sections[n ? s - 1 : s];
+            if (down == 2) s -= 1;
+            slideshow.goto(s);
+        }
+        else if (key == "ArrowRight") slideshow.next();
+        else if (key == "ArrowLeft") slideshow.next(1);
+    }
+}
+
+
+
 $(() => {
     console.log("Teacher:", teacher());
     home.sequence();
@@ -535,6 +640,10 @@ $(() => {
 $(() => {
     let w = $(window).on("popstate", ev => home.go(location.hash.substring(1)));
     w.on("resize", page.metrics);
+    w.on("beforeprint", () => {
+        $("#Top").remove();
+        $("main").css("max-width", "100vw");
+    }).on("afterprint", () => location.reload());
     w.on("keydown", ev => {
         ev = ev.originalEvent;
         let [key, code] = [ev.key, ev.code];
@@ -557,7 +666,12 @@ $(() => {
         }
     });
     w.on("click", ev => {
+        let mod = (ev.shiftKey ? 1 : 0) + (ev.ctrlKey ? 2 : 0) + (ev.altKey ? 4 : 0);
         let target = $(ev.target);
+        if (mod & 6) {
+            page.svg2(target, mod);
+            return;
+        }
 
         // Open feed or link
         let info = {}
