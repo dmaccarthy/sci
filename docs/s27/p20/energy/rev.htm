@@ -1,0 +1,117 @@
+<section class="Post" data-action="slides">
+<h3>Notes</h3><div class="Collapse Expand">
+
+<section class="Slide">
+<p><em class="Defn">Mechanical energy</em> (measured in joules) includes kinetic, rotational, gravitational potential, and elastic potential energy.
+    <p class="TeX">E_k = {1\over 2}mv^2</p>
+    <p class="TeX">E_g = mgh</p>
+    <p class="TeX">E_{elas} = {1\over 2}k(\Delta L)^2</p>
+</p>
+<ul>
+    <li>The equation for rotational energy depends on the shape (e.g. sphere or cylinder) and mass distribution (e.g. solid or hollow)</li>
+    <li>Other (non-mechanical) forms of energy include thermal energy, sound, chemical, nuclear, electrical and electromagnetic energy.</li>
+</ul>
+
+<p><em class="Defn">Law of Energy Conservation</em>: Energy can be transformed from one form to another, but the <b>total</b> energy always remains constant.
+    <p class="TeX">\Sigma E_i = \Sigma E_f</p>
+</p>
+<ul><li>On an energy bar chart, the <em>total</em> of all bars will always be constant. (Click chart for animation.)</li></ul>
+<p class="Center"><svg data-svg2="p20/energy/img/cons.js#bar" class="s18"></svg></p>
+<ul>
+    <li>Any energy that is going to be <em>added</em> to a system must be included with the <em>initial</em> energy.</li>
+    <li>Any energy that is <em>removed</em> from a system must be included with the <em>final</em> energy.</li>
+</ul>
+
+<p>Mechanical energy transformations are caused by <em class="Defn">forces</em> (measured in newtons). The <em>amount</em> of energy that a force transforms is called the <em class="Defn">work</em>.
+    <p class="TeX">W = \va{F}_\parallel \cdot \Delta\va{d} = |\va{F}|\cdot|\Delta\va{d}|\cos\theta</p>
+</p>
+<ul>
+    <li>When more than one force does work, the change in kinetic energy will equal the <em>total</em> work done by all forces:
+        <p class="TeX">\Delta E_k = \Sigma W</p></li>
+</ul>
+
+<p><em class="Defn">Power</em> (measured in watts) is the <em>rate</em> at which a force does work.
+    <p class="TeX">P = {\Delta E\over \Delta t}</p></p>
+<p><em class="Defn">Efficiency</em> is the ratio of the <em>useful</em> energy output compared to the energy input.
+    <p class="TeX">\epsilon = {\Delta E_{useful}\over |\Delta E_{input}|}</p></p>
+</section>
+
+</div></section>
+
+<section class="Post" data-action="gdrv" data-show="1" data-answers="1">
+    <h3>Handouts</h3><div class="Collapse">
+    <p class="Var">handouts</p>
+    <p class="BtnGrid"><button data-action="gdrv" data-show="1" data-gdrv="1sZuwy-6di7xH6VN7lnLASA9FiX8Bd0Gy">Assignment</button></p>
+    <div class="Answer"><h3>Answer Key</h3><ol>
+
+    <li><ol type="a">
+        <li><br/><svg data-svg2="p20/energy/img/rev.js#Q1"></svg></li>
+        <li>–1.18 kJ</li>
+        <li>–97.9 N</li>
+        <li></li>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>96.5 kJ</li>
+        <li>197 m</li>
+        <li>58.9 m/s</li>
+    </ol></li>
+
+    <li>255 N; 10.2 kJ</li>
+    <li>0.453</li>
+
+    <li><ol type="a">
+        <li>2.97 kJ</li>
+        <li>6.03 W</li>
+    </ol></li>
+
+    <li><ol type="a">
+        <li>429 N/m</li>
+        <li>26.3 J</li>
+        <li>20.8 m/s</li>
+        <li>18.4 m</li>
+        <li><br/><svg data-svg2="p20/energy/img/rev.js#Q6"></svg></li>
+        <!--  <li></li> -->
+    </ol></li>
+
+    <li>0.436</li>
+    <li><br/><svg data-svg2="p20/energy/img/rev.js#Q8"></svg></li>
+
+    <li><ol type="a">
+        <li>5.89 m/s<sup>2</sup></li>
+        <li>–4.91 J</li>
+        <li>3.92 m/s<sup>2</sup></li>
+    </ol></li>
+
+    </ol></div>
+</div></section>
+
+<script type="text/javascript">
+
+tmp = chapRev() ? 1 : 0;
+
+loadFeed.data = {
+    title: `${siteData.lesson}Energy & Work Review`,
+    showDate: "2027",
+    answerDate: "2027",
+    num: "6.7",
+    up: "p20/home",
+    prev: ["p20/energy/power", "p20/grav/rev"][tmp],
+    next: ["p20/circ/ucm", "p20/circ/rev"][tmp],
+}
+
+</script>
+
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#19", "p20/energy/img/cons", "bar" class],
+        ["#48", "p20/energy/img/rev", "Q1"],
+        ["#73", "p20/energy/img/rev", "Q6"],
+        ["#78", "p20/energy/img/rev", "Q8"],
+    ],
+});
+
+</script>

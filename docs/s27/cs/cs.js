@@ -14,10 +14,10 @@ page.cal.cs30 = [
 ];
 
 // Courses...
-home.item("home", {page: "cs", title: "Computing Science"});
-home.item("cs", {page: "cs10", title: "Computing Science 10"});
-home.item("cs", {page: "cs20", title: "Computing Science 20"});
-home.item("cs", {page: "cs30", title: "Computing Science 30"});
+home.item("home", {page: "cs", icon: "laptop", title: "Computing Science"});
+home.item("cs", {page: "cs10", icon: "python", title: "Computing Science 10"});
+home.item("cs", {page: "cs20", icon: "sc8pr", title: "Computing Science 20"});
+home.item("cs", {page: "cs30", icon: "laptop", title: "Computing Science 30"});
 
 // CS 10...
 _ = d => home.item("cs/cs10", d);

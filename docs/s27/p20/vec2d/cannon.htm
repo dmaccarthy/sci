@@ -1,0 +1,154 @@
+<section class="Post" data-action="simulation">
+<style type="text/css">
+
+#SimControls td {
+    border: none;
+    padding: 0.5em;
+    text-align: left;
+}
+
+#SimControls * {vertical-align: middle}
+#SimControls input {width: 8em}
+
+</style>
+<h3>Simulation</h3>
+<div class="Collapse Expand Center">
+<p><svg id="Sim"></svg>
+<table id="SimControls">
+    <tr><td>Angle</td><td><input type="number" onchange="loadFeed.sim.launchAngle()" id="LaunchAngle" value="0" min="0" max="85" step="5" /></td></tr>
+    <tr><td>Elevation</td><td><input type="number" id="Elev" value="10" min="0" max="60" step="5" onchange="loadFeed.sim.elevate()"/></td></tr>
+    <tr><td>Slow Motion</td><td><input type="range" id="SloMo" value="1" min="0.02" max="1" step="0.005" /></td></tr>
+</table>
+
+</div></section>
+
+<section class="Post" data-action="help">
+<h3>Help</h3>
+<div class="Collapse">
+    <p>Click on the animation to fire the cannon, or to pause, resume or reset.</p>
+    <p>Adjust the launch angle and cannon elevation using the numerical inputs.</p>
+    <p>Use the Slow Motion slider to adjust the animation speed. The animation plays in real time when the slider is all the way to the right. The further left the slider is moved, the slower the animation will run.</p>
+    <p>Reloading the animation will change the muzzle speed!</p>
+</div></section>
+
+<script type="text/javascript" data-init="sim">
+
+loadFeed.sim = () => {
+    let svg = loadFeed.sim.svg = new SVG2("#Sim", {scale: 3.6, margin: [24, 2, 12, 0], grid: 5, lrbt: [0, 195, 0, 105]});
+    let opt = {size: ["-6", "6"], shift: "-9", css: 14};
+    svg.ticks({x: [0, 191, 10], ...opt});
+    svg.ticks({y: [0, 101, 10], ...opt});
+    Object.assign(opt, {size: 0, label: 0, shift: "24"});
+    svg.ticks({x: [0, 191, 50], ...opt});
+    let g = svg.group("sans", 15);
+    g.text("50", [3, 50, "left"]);
+    g.text("100 m", [3, 100, "left"]);
+
+    let size = new RArray(534.16, 408.55).times(0.042);
+    let castle = svg.castle = svg.group(".Castle");
+    castle.image("p20/vec2d/img/castle.svg", size).then(() => castle.align([175, 0, 0.5, 0.7]));
+
+    svg.gradient("Platform", "lightgrey", "grey", 100, 40, 0, 60);
+    svg.platform = svg.group("black@1", {fill: "url(#Platform)"});
+    svg.clock = svg.text("0.00 sec", [185, 95, "r"], 0, ["mono", 24]);
+
+    svg.vi = uniform(37, 42);
+    svg.ball = svg.group("red", "black@1");
+    svg.ball.circle(0.65);
+
+    size = new RArray(336.6, 66.4).times(0.03);
+    svg.cannon = g = svg.group("none");
+    g.image("p20/vec2d/img/cannon.svg", size);
+    css(g.circle(2.5), ".Wheel", "brown@2");
+    g.align([0, 0, 0.5, 1]);
+
+    svg.bird = svg.group();
+    svg.bird.image("p20/vec2d/img/bird.svg", [10, 10]);
+    svg.dog = svg.group();
+    svg.dog.image("p20/vec2d/img//dog.svg", [10, 10]);
+
+    loadFeed.sim.elevate();
+
+    svg.beforeupdate = function() {
+        svg.timeFactor = parseFloat($("#SloMo").val());
+        let t = svg.time;
+        let b = svg.ball;
+        let x = b.initVel[0] * t;
+        let y = svg.hi + t * (b.initVel[1] - 9.81 / 2 * t);
+        if (y < 0) {
+            svg.done = true;
+            svg.pause();
+        }
+        b.align([y < 0 ? [b.landing, 0] : [x, y], [0.5, 0.5]]);
+        svg.clock.text = `${t.toFixed(2)} sec`;
+        svg.bird.config({shift: [0, y]});
+        svg.dog.config({shift: [x, 0]});
+    };
+
+    svg.$.on("click", () => {
+        if (svg.done) loadFeed.sim.launchAngle();
+        else svg.toggle();  
+    });
+
+    // svg.realign_text(400);
+    // setTimeout(() => svg.realign_text(false), 12000);
+}
+
+loadFeed.sim.elevate = () => {
+    let svg = loadFeed.sim.svg;
+    svg.pause();
+    let e = $("#Elev");
+    let y = svg.hi = parseFloat(e.val());
+    y -= 2.5;
+    svg.platform.$.html("");
+    svg.platform.poly([[-5, y], [5, y], [5, -10], [-5, -10]]);
+    loadFeed.sim.launchAngle();
+}
+
+loadFeed.sim.launchAngle = () => {
+    let svg = loadFeed.sim.svg.pause();
+    let a = Math.round(parseFloat($("#LaunchAngle").val()));
+    if (!isNaN(a)) {
+        a = a < 0 ? 0 : (a > 90 ? 90 : a);
+        svg.cannon.config({theta: a});
+    }
+    $("#LaunchAngle").val(svg.cannon.theta.toFixed(0));
+    let y = svg.hi + uniform(-0.1, 0.1);
+    let v = svg.ball.initVel = vec2d(svg.vi, a);
+    let vf = -root(v[1] * v[1] + 2 * y * 9.81);
+    let t = (v[1] - vf) / 9.81;
+    svg.ball.align([0, y, 0.5, 0.5]).config({hang: t, landing: v[0] * t});
+    svg.cannon.align([0, y, 0.5, 0.5]);
+
+    let p = svg.parab;
+    if (p) p.config({animated: false}).$.remove();
+    svg.parab = p = svg.locus((t) => [v[0] * t, y + t * (v[1] - 9.81 / 2 * t)], [0, svg.ball.hang]);
+    p.css("none", "lightgrey@1").config({animated: true}).$.insertBefore(svg.castle.$);
+
+    p.beforeupdate = function() {
+        let svg = this.svg;
+        let t = svg.time;
+        let t1 = svg.ball.hang;
+        this.param[1] = t ? Math.min(t, t1) : t1;
+    }
+
+    svg.clock.config({text: "0.00 sec"});
+    svg.config({time: 0, done: false});
+};
+
+loadFeed.data = {
+    title: "Motion of a Cannonball",
+    up: "p20/vec2d/proj",
+}
+
+</script>
+
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+    ],
+});
+
+</script>

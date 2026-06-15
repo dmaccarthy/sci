@@ -6,54 +6,6 @@
 //     return t / (24000 * 3600);
 // }
 
-page.echo = ei => {
-    // Enable copy/open operation on [data-echo] elements
-    let echo = ei.attr("data-echo");
-    let p = $("<p>").addClass("EchoControl").insertBefore(ei);
-    let title  = ei.attr("data-title");
-    if (title == "1") title = echo;
-    echo = echo.split(".");
-    echo = echo[echo.length - 1];
-    if (!title) title = {
-        html: "HTML Code",
-        htm: "HTML Code",
-        xml: "XML Code",
-        py: "Python Code",
-        text: "Plain Text",
-        css: "CSS Code",
-        js: "Javascript Code",
-        json: "JSON Data",
-        svg: "SVG Code",
-        csv: "CSV Data",
-        io: "Program Output",
-    }[echo];
-    if (!title) title = "Plain Text";
-    p.html($("<span>").html(title).addClass("CodeTitle"));
-
-    let svg = {
-        copy: `<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g style="stroke: #0065fe; stroke-width: 3; stroke-linejoin: round"><rect style="fill: #0065fe; fill-opacity: 0.2" x="2" y="2" width="60" height="80"></rect><polyline style="fill: white" points="77,98 37,98 37,18 97,18 97,78 77,98 77,78"></polyline><line x1="42" y1="50" x2="90" y2="50"></line><line x1="42" y1="35" x2="90" y2="35"></line><line x1="42" y1="65" x2="90" y2="65"></line><line x1="42" y1="80" x2="77" y2="80"></line><polyline style="fill: #0065fe; fill-opacity: 0.2" points="77,98 77,78 97,78 77,98"></polyline></g></svg>`,
-        new_tab: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><g style="fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round"><polyline points="40,8 0,8 0,100 92,100 92,60"></polyline><polyline points="60,0 100,0 100,40"></polyline><line x1="100" y1="0" x2="50" y2="50"></line></g></svg>`,
-        download: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><g style="fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round"><line x1="50" y1="0" x2="50" y2="75"></line><polyline points="20,50 50,75 80,50"></polyline><polyline points="0,80 0,100 100,100 100,80"></polyline></g></svg>`,
-    };
-
-    let span = $("<span>").addClass("Buttons").appendTo(p);
-    title = {copy: "Copy to clipboard", new_tab: "Open in new browser tab", download: "Download"};
-    for (let b of ["copy", "new_tab", "download"])
-        $("<span>").html(svg[b]).attr({title: title[b]}).appendTo(span);
-}
-
-page.svg2 = (svg, mod) => {
-    /* Create and open an HTML blob displaying the image */
-    svg = svg.closest("svg:not(.NoOpen)");
-    if (svg.length) {
-        let opt = mod & 4 ? {type: "png"} : {};
-        if (mod == 6) {
-            let s = parseFloat(prompt("Scale factor?", 3));
-            if (!isNaN(s)) opt.scale = s;
-        }
-        SVG2.open(svg[0], opt).then(console.log);
-    }
-}
 
 function teacher() {
     return btoa(localStorage.getItem("teacher_code")) == teacher.code &&
@@ -73,6 +25,7 @@ function msg(html, time) {
         e.fadeOut(1500);
         setTimeout(() => {e.remove()}, 1600);
     }, time ? time : 2500);
+    return e;
 }
 
 function svg_aspect() {
@@ -108,6 +61,40 @@ function scroll_mjax() {
     }
 }
 
+async function cs_projects(prj) {
+    // Generate CS summative project pages
+    return fetch(`${prj}?_${new Date().getTime()}`).then(r => {
+        return r.ok ? r.text() : "";
+    }).then(t => {
+        let div = $("main div.Projects").html(base64_to_unicode(t));
+        let dates = page.get("project_dates");
+        let none = true;
+        let h3 = div.find("h3").addClass("Link");
+        for (let h of h3) {
+            h = $(h);
+            let s = h.attr("data-name");
+            if (s) s = new Date(dates[s]) < new Date();
+            if (s) {
+                none = false;
+                h.next("div").hide();
+                h.on("click", ev => {
+                    let h = $(ev.currentTarget);
+                    for (let d of div.children("div")) {
+                        d = $(d);
+                        if (d[0] == h.next("div")[0]) d.slideToggle();
+                        else if (d.is(":visible")) d.slideUp();
+                    }
+                });
+            }
+            else {
+                h.next("div").remove();
+                h.remove();
+            }
+        }
+        if (none) $("<p>").addClass("Center Bold").html("There are no projects currently available.").appendTo("#Project");
+    });
+}
+
 
 /*** SVG2 animations ***/
 
@@ -122,7 +109,7 @@ async function scripts(args) {
     let p = [];
     let url = x => `../s27/${x}.js?_${new Date().getTime()}`;
     for (let a of args) if (!scripts.cache[a[1]]) {
-        a = a[1];
+    a = a[1];
         scripts.cache[a] = true;
         console.log(`Fetching: ${a}.js`);
         p.push(fetch(url(a)).then(r => r.ok ? r.text() : null).then(t => t ? _eval(t) : null));
@@ -156,8 +143,12 @@ home.find = id => {
 
 home.item = (id, item) => {
     let node = home.find(id);
-    if (node.items == null) node.items = [];
-    node.items.push(item);
+    if (node) {
+        if (item.data == null) item.data = {s: "9999.1.1", a: "9999.1.1"};
+        if (node.items == null) node.items = [];
+        node.items.push(item);
+    }
+    else console.warn("Cannot find node: " + id);
 }
 
 home.crumbs = id => {
@@ -194,7 +185,7 @@ home.go = (id) => {
         else {
             if (page.onload._current) page.onload(...page.onload._current);
             else home.go("home");
-            msg(`Unable to load page:<br/>${id}`);
+            msg(`Unable to load page:<br/>${id}`).addClass("NoFade");
         }
     });
 }
@@ -253,9 +244,62 @@ function page(data) {Object.assign(page._data, data)}
 page._cache = {};
 page.cal = {};
 
-page.get = (k) => page._data[k]; 
+page.get = k => {
+    let v = page._data[k];
+    return v ? v : home.find(page.onload._current[0])[k];
+}
+
 page.run = (...args) => {for (let a of args) page._run.push(a)}
 page.final = (...args) => {for (let a of args) page._final.push(a)}
+
+page.echo = ei => {
+    // Enable copy/open operation on [data-echo] elements
+    let echo = ei.attr("data-echo");
+    let p = $("<p>").addClass("EchoControl").insertBefore(ei);
+    let title  = ei.attr("data-title");
+    if (title == "1") title = echo;
+    echo = echo.split(".");
+    echo = echo[echo.length - 1];
+    if (!title) title = {
+        html: "HTML Code",
+        htm: "HTML Code",
+        xml: "XML Code",
+        py: "Python Code",
+        text: "Plain Text",
+        css: "CSS Code",
+        js: "Javascript Code",
+        json: "JSON Data",
+        svg: "SVG Code",
+        csv: "CSV Data",
+        io: "Program Output",
+    }[echo];
+    if (!title) title = "Plain Text";
+    p.html($("<span>").html(title).addClass("CodeTitle"));
+
+    let svg = {
+        copy: `<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g style="stroke: #0065fe; stroke-width: 3; stroke-linejoin: round"><rect style="fill: #0065fe; fill-opacity: 0.2" x="2" y="2" width="60" height="80"></rect><polyline style="fill: white" points="77,98 37,98 37,18 97,18 97,78 77,98 77,78"></polyline><line x1="42" y1="50" x2="90" y2="50"></line><line x1="42" y1="35" x2="90" y2="35"></line><line x1="42" y1="65" x2="90" y2="65"></line><line x1="42" y1="80" x2="77" y2="80"></line><polyline style="fill: #0065fe; fill-opacity: 0.2" points="77,98 77,78 97,78 77,98"></polyline></g></svg>`,
+        new_tab: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><g style="fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round"><polyline points="40,8 0,8 0,100 92,100 92,60"></polyline><polyline points="60,0 100,0 100,40"></polyline><line x1="100" y1="0" x2="50" y2="50"></line></g></svg>`,
+        download: `<svg width="108" height="108" viewBox="-4 -4 108 108" xmlns="http://www.w3.org/2000/svg"><g style="fill: none; stroke: #0065fe; stroke-width: 6; stroke-linejoin: round"><line x1="50" y1="0" x2="50" y2="75"></line><polyline points="20,50 50,75 80,50"></polyline><polyline points="0,80 0,100 100,100 100,80"></polyline></g></svg>`,
+    };
+
+    let span = $("<span>").addClass("Buttons").appendTo(p);
+    title = {copy: "Copy to clipboard", new_tab: "Open in new browser tab", download: "Download"};
+    for (let b of ["copy", "new_tab", "download"])
+        $("<span>").html(svg[b]).attr({title: title[b]}).appendTo(span);
+}
+
+page.svg2 = (svg, mod) => {
+    /* Create and open an HTML blob displaying the image */
+    svg = svg.closest("svg:not(.NoOpen)");
+    if (svg.length) {
+        let opt = mod & 4 ? {type: "png"} : {};
+        if (mod == 6) {
+            let s = parseFloat(prompt("Scale factor?", 3));
+            if (!isNaN(s)) opt.scale = s;
+        }
+        SVG2.open(svg[0], opt).then(console.log);
+    }
+}
 
 page.clear = () => {
     if (page._final) for (let f of page._final) {
@@ -264,9 +308,10 @@ page.clear = () => {
     delete page.init;
     page._run = [];
     page._final = [];
-    page._data = {s: "9999.1.1", a: 1};
+    page._data = {};
     $("div.Message").remove();
-    $("main *:is(article, #MainTitle)").html("x");
+    $("main *:is(article, #MainTitle)").html("");
+    msg("Drawing graphics...<br/>This shouldn’t take long!", 99999);
 }
 
 page.unpublish = art => {
@@ -283,7 +328,7 @@ page.unpublish = art => {
 
 page.onload = (id, args) => {
     /* Initialize a page when HTML content is loaded */
-
+    
     // Update browser history
     page.onload._current = [id, args];
     let hash = location.hash.substring(1);
@@ -328,25 +373,35 @@ page.onload = (id, args) => {
     $("pre.Code, pre.CodeScroll").attr({spellcheck: false});
     for (let e of $("[data-echo]")) page.echo($(e));
 
-    // Render SVG2 and TeX
-    mjax_wait().then(() => {
-        let after_svg = () => {
-            let show = () => {
-                let vis = {visibility: "visible"};
-                $("#MainTitle").css(vis);
-                art.css(vis);
-                page.show_post(0);
-            }
-            mjax_render(art.find(".TeX"), 0, "2px").then(() => {
-                show();
-                if (page._run) for (let f of page._run) {
-                    try {f()} catch(err) {console.warn(err)};
-                }
-            });
+    // td.Reveal
+    for (let e of $("td.Reveal")) {
+        e = $(e);
+        e.html($("<span>").html(e.html()));
+    }
+
+    // Render SVG2 and TeX then show the page
+    page.svg_tex(art, data).then(() => {
+        let vis = {visibility: "visible"};
+        $("#MainTitle").css(vis);
+        art.css(vis);
+        page.show_post(0);
+        $("div.Message:not(.NoFade)").remove();
+        for (let f of page._run) {
+            try {f()} catch(err) {console.warn(err)};
         }
-        if (data.svg2) scripts(data.svg2).then(after_svg);
-        else after_svg();
     });
+
+}
+
+page.svg_tex = async(art, data) => {
+    /* Render TeX and SVG2 asnychronously */
+
+    let p2 = data.svg2 ? scripts(data.svg2) : null;
+    let p1 = mjax_wait().then(async() => {
+        return mjax_render(art.find(".TeX"), 0, "3px");
+    });
+    if (p2) await p2;
+    await p1;
 }
 
 page.calendar = e => {
@@ -452,7 +507,7 @@ page.posts = (art) => {
         if (!title) title = {slides: "Notes", assign: "Assignment", link: "Links", graph: "Data Analysis"}[a0];
         if (!title) title = a0.charAt(0).toUpperCase() + a0.substring(1);
         let btn = $("<button>").attr("data-action", a0).appendTo(e);
-        btn.html(page.icon(a0)).append(title);
+        btn.html(page.icon(a0)).append(title); // $("<span>").html(title)
     }
     e.show();
 }
@@ -498,9 +553,12 @@ page.metrics = () => {
 
 page.show_post = n => {
     let i = 0;
+    $("#MainTitle").html(page.get("title"));
     for (let p of page._posts.hide()) {
         p = $(p);
         if (i == n || p.attr("data-action") == n) {
+            let title = p.attr("data-maintitle");
+            if (title) $("#MainTitle").html(title);
             p.fadeIn();
             $($("#Top > p.Icons > button").removeClass("Selected")[i]).addClass("Selected");
         }
@@ -513,11 +571,16 @@ page.show_post = n => {
 page.menu = (u, menu) => {
     /* Create a menu in a <table> or <ul> */
     let ul = $("main > article").find(menu ? menu : ".Menu");
+    let feed = p => (u == "home" ? '' : `${u}/`) + p.page;
     let table = ul[0].tagName.toUpperCase() == "TABLE";
+    if (table) ul = $("<tbody>").appendTo(ul);
     let add = table ? item => {
-        console.log(item);
+        let tr = $("<tr>").appendTo(ul).attr("data-feed", feed(item));
+        let td = $("<td>").appendTo(tr);
+        if (item.icon) td.html(page.icon(item.icon));
+        tr.append($("<td>").html(item.title));
     } : item => {
-        let a = $("<a>").html(item.title).attr({href: '#' + (u == "home" ? '' : `${u}/`) + item.page});
+        let a = $("<a>").html(item.title).attr({href: '#' + feed(item)});
         let li = $("<li>").html(a).appendTo(ul);
     }
     for (let item of home.find(u).items) add(item);
@@ -672,6 +735,8 @@ $(() => {
             page.svg2(target, mod);
             return;
         }
+
+        target.closest(".Reveal").children().fadeToggle();
 
         // Open feed or link
         let info = {}

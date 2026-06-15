@@ -1,7 +1,6 @@
 <section class="Post" data-action="slides">
-<h3>Lesson Notes</h3><div class="Collapse">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Acceleration</h1>
 </section>
 
@@ -15,14 +14,14 @@
     <p><em class="Defn">Accelerated motion</em> means that the object’s instantaneous velocity is <u>not</u> constant.</p>
     <div>
         <p class="Caption">Motion of a Falling Ball: <span class="TeX">\va{v}</span><span class="NoBold"> vs. </span><span class="TeX">t</span></p>
-        <p class="Center NoTop" data-cue="prev"><svg class="s16" data-svg2="p20/kin/img/acc.js#vt"></svg></p>
+        <p class="Center NoTop" data-cue="prev"><svg id="Graph_vt" class="s16"></svg></p>
     </div>
 </div>
 <div>
 <ul><li>A <span class="TeX">{\va{d}}</span>-<span class="TeX">t</span> graph for 1D accelerated motion will be a curve (changing slope).</li></ul>
 <div>
     <p class="Caption">Motion of a Falling Ball: <span class="TeX">\va{d}</span><span class="NoBold"> vs. </span><span class="TeX">t</span></p>
-    <p class="Center NoTop" data-cue="prev"><svg class="s16" data-svg2="p20/kin/img/acc.js#dt"></svg></p>
+    <p class="Center NoTop" data-cue="prev"><svg id="Graph_dt" class="s16"></svg></p>
 </div>
 </div>
 <ul>
@@ -103,10 +102,10 @@
     <ul><li>Is the answer reasonable?</li></ul>
 </section>
 
-</div></section>
+</section>
 
 <section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Review</h3><div class="Collapse">
+<h3>Review</h3>
 <ol>
     <li>A car accelerates from 50.0 km/h to 80.0 km/h in 4.00 seconds. Calculate the car’s acceleration. [Important: km/h is not the standard SI unit of velocity!]</li>
     <div class="Answer">
@@ -133,10 +132,8 @@
     <p data-cue="prev" class="TeX">\va{v}_i = \rm 0.00\ m/s - (-9.81\ m/s^2)\ 2.50\ s = +24.5\ m/s</p>
     </div>    
 </ol>
-</div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Practice</h3><div class="Collapse">
+<h3>Practice</h3>
 <ol>
 <li>An apple falls from a tree, beginning from rest and striking the ground with a downward velocity of 5.00 m/s.
 <ol type="a">
@@ -161,7 +158,7 @@
 <li>Traffic radar recorded data for a speeding car. A graph of the data is shown below.
 <div>
     <p class="Caption">Motion of a Speeding Car: <span class="TeX">\va{v}</span><spa class="NoBold"> vs. </span><span class="TeX">t</span></p>
-    <p class="Center NoTop" data-cue="prev"><svg class="s16" data-svg2="p20/kin/img/acc.js#vt_radar"></svg></p>
+    <p class="Center NoTop" data-cue="prev"><svg id="Radar" class="s16"></svg></p>
 </div>
 <ol type="a">
     <li>At what time did the speeding car begin to slow down?</li>
@@ -284,23 +281,14 @@
 <li>In Physics, we try to avoid the term “deceleration”. Instead, we can say that the acceleration is positive or negative. Explain what positive and negative mean when referring to acceleration. Does a negative acceleration always mean slowing down? Does positive acceleration mean speeding up?</li>
 <p class="Answer">For acceleration, positive or negative indicates the <em>direction</em> of the acceleration, not necessarily whether it is speeding up or slowing down. When an object is speeding up, the acceleration will have the same sign as the velocity (either both positive or both negative). When an object is slowing, the acceleration and velocity will have opposite signs.</p>
 </ol>
-</div></section>
+</section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "p20/home", prev: "p20/kin/graph", next: "p20/kin/uam"
-}
-
-</script>
-<script type="text/javascript">
-
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-        ["#18", "p20/kin/img/acc", "vt"],
-        ["#25", "p20/kin/img/acc", "dt"],
-        ["#164", "p20/kin/img/acc", "vt_radar"],
-    ],
-});
+page({svg2: [
+    ["#Graph_vt", "p20/kin/img/acc", "vt"],
+    ["#Graph_dt", "p20/kin/img/acc", "dt"],
+    ["#Radar", "p20/kin/img/acc", "vt_radar"],
+]});
 
 </script>

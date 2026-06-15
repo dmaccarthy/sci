@@ -1,16 +1,31 @@
-<section class="Post" data-action="Calendar" data-cal="p20">
-</section>
+<section class="Post" data-action="Calendar" data-cal="p20"></section>
 
 <section class="Post" data-action="list" data-title="Chapters">
-<p>Please select a chapter:</p>
-<ul class="Menu"></ul>
-<!-- <table class="Menu"></table> -->
+<!-- <p>Please select a chapter:</p> -->
+<table class="Menu"></table>
+</section>
+
+<section class="Post" data-action="link">
+    <!-- <h2>Course Links</h2> -->
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="1W1GLdlJP6u0ivIPomSkc_ZqimbXxW0xa">Data Sheet</button>
+        <button data-icon="gdrv" data-gdrv="1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE">Graph Paper</button>
+        <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/152928">Brightspace</button>
+        <button data-icon="link" data-open="https://www.physicsclassroom.com/calcpad/energy/problems">Physics<br/>Classroom</button>
+        <button data-icon="ps" data-open="https://powerschool.eips.ca/public/">PowerSchool</button>
+        <button data-icon="gdoc" data-gdoc="1mws9vDw-VcDDDkICEgX4mVaJTUG215EUq-WEJMbxwP4">Course<br/>Outline</button>
+        <button data-icon="sal.webp" data-open="https://salcomp.ca">Salisbury <br/>Composite</button>
+        <button data-icon="pdf" data-open="https://www.alberta.ca/system/files/custom_downloaded_images/edc-calculator-information-and-rules.pdf">Approved<br/>Calculators</button>
+        <button data-icon="link" data-open="https://curriculum.learnalberta.ca/curriculum/en/pos/SCIPHY_20_30">Program<br/>of Studies</button>
+        <!-- Diploma Exam Info: https://www.alberta.ca/writing-diploma-exams -->
+    </p>
 </section>
 
 <script type="text/javascript">
 
 page.run(() => {
     page.menu("p20");
+    page.show_post(1);
 });
 
 </script>

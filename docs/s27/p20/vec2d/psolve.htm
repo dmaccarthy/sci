@@ -1,0 +1,122 @@
+<section class="Post" data-action="simulation">
+<h3>Solver</h3><div class="Collapse Expand">
+
+<table id="Projectile" class="Center TD6 Bottom">
+    <tr><th></th><th class="TeX">x</th><th class="TeX">y</th></tr>
+    <tr><td><span class="TeX">\va{a}</span> / (m/s<sup>2</sup>)</td><td class="Bold">0.00</td><td id="ay" contenteditable="true"/>-9.81</td></tr>
+    <tr><td><span class="TeX">\va{v}_i</span> / (m/s)</td><td id="vx" rowspan="2" contenteditable="true">10.0</td><td id="viy" contenteditable="true">10.0</td></tr>
+    <tr><td><span class="TeX">\va{v}_f</span> / (m/s)</td><td id="vfy" contenteditable="true"></td></tr>
+    <tr><td><span class="TeX">\Delta\va{d}</span> / m</td><td id="dx" contenteditable="true"></td><td id="dy" contenteditable="true">0.00</td></tr>
+    <tr><td><span class="TeX">\Delta t</span> / s</td><td id="txy" contenteditable="true" colspan="2"></td></tr>
+</table>
+<p class="Center"><button onclick="loadFeed.solve()">Solve</button></p>
+
+</div></section>
+
+<script type="text/javascript" data-init="init">
+
+loadFeed.init = () => {
+    let data = $("#Projectile td[contenteditable]");
+    data.on("blur", ev => {
+        let e = $(ev.currentTarget);
+        let x = parseFloat(e.text());
+        e.html(isNaN(x) ? "" : x.toPrecision(5));
+    })
+}
+
+loadFeed.solve = () => {
+    let data = {}, prj = $("#Projectile");
+    for (let k of ['ay', 'viy', 'vfy', 'dy', 'txy', 'vx', 'dx']) {
+        let x = parseFloat($('#' + k).text());
+        if (!isNaN(x)) data[k] = x;
+    }
+
+    let count = (keys) => {
+        let i = 0;
+        for (let k of keys) if (data[k] != null) i++
+        return i;
+    }
+
+    let solvex = (d) => {
+        if (d.txy == null) {
+            d.txy = d.dx / d.vx;
+            $('#txy').html(d.txy.toPrecision(5));
+        }
+        else if (d.vx == null) {
+            d.vx = d.dx / d.txy;
+            $('#vx').html(d.vx.toPrecision(5));
+        }
+        else {
+            d.dx = d.vx * d.txy;
+            $('#dx').html(d.dx.toPrecision(5));
+        }
+    }
+
+    let solvey = (d) => {
+        let x = {a: d.ay, vi: d.viy, vf: d.vfy, d: d.dy, t: d.txy};
+        let soln = uam();
+        console.log(soln);
+    }
+
+    let [nx, ny, txy] = [count(['vx', 'dx']), count(['ay', 'viy', 'vfy', 'dy']), count(['txy'])];
+    if (nx + ny + txy != 4) console.log("Bad data!");
+    else if (nx + txy == 2) {
+        solvex(data);
+        solvey(data);
+    }
+    else {
+        solvey(data);
+        solvex(data);
+    }
+
+    return;
+    let data_in = $("#Projectile td input");
+    for (let e of data_in) {
+        let v = $(e).val();
+        if (v) data[e.id] = parseFloat(v);
+    }
+    let getData = (xy, ...args) => {
+        let obj = {};
+        for (let a of args) {
+            let v = data[a + xy]
+            if (v != null) obj[a] = v;
+        }
+        return obj;
+    }
+    let datax = getData('x', 'v', 'd');
+    let datay = getData('y', 'a', 'vi', 'vf', 'd');
+    let t = data.txy;
+    if (t != null) datax.t = datay.t = t;
+    if (count_keys(datay) == 3) {
+        data = uam(datay);
+        if (t == null) datax.t = data.t;
+    }
+    else data = null;
+    if (count_keys(datax) == 2) {
+        if (datax.t == null) datax.t = datax.d / datax.v;
+        else if (datax.v == null) datax.v = datax.d / datax.t;
+        else datax.d = datax.v * datax.t;
+    }
+    if (data == null) {
+        datay.t = datax.t;
+        data = uam(datay);
+    }
+    console.log(datax, data);
+}
+
+loadFeed.data = {
+    title: `${siteData.lesson}Projectile Motion Solver`,
+    // num: "2.6",
+    up: "p20/vec2d/proj",
+}
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+    ],
+});
+
+</script>

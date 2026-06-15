@@ -1,5 +1,4 @@
 :root {
-    --icon: 1.5em;
     --btn: 4em;
     --grey0: #fafafa;
     --grey1: #f4f4f4;
@@ -21,7 +20,7 @@ body:is(.Present, .Slides) td.Reveal span {display: none}
 
 #Top {
     width: calc(100% - 12px);
-    padding: 6px;
+    padding: 0.3em 0.3em 0 0.3em;
     position: fixed;
     top: 0;
     left: 0;
@@ -29,13 +28,13 @@ body:is(.Present, .Slides) td.Reveal span {display: none}
     border-bottom: 1px solid lightgrey;
 
     p {margin: 0}
-    p.Icons {text-align: center; margin-top: 0.5em}
+    p.Icons {text-align: center}
+    p.Crumbs {margin-bottom: 0.2em}
     p.Crumbs > a:last-child {font-weight: bold}
 
 button  {
     color: var(--blue);
     margin: 0.5em;
-    /* margin-top: 0.1em; */
     padding-bottom: 4px;
     background-color: #fff0;
     cursor: pointer;
@@ -45,12 +44,12 @@ button  {
 
 button.Selected  {border-bottom: 3px solid var(--blue)}
 button:not(.Selected):hover  {border-bottom: 3px solid red}
-/* button > span {display: none} */
+button > span {padding-top: 0.5em}
 button > * {vertical-align: middle}
 
 button > *:is(img, svg) {
-    width: var(--icon);
-    height: var(--icon);
+    width: 1.58762em;
+    height: 1.58762em;
     padding: 0 0.5em;
 }
 
@@ -86,10 +85,7 @@ p.BtnGrid {
 
 @media (min-width: 840px) {
 
-body {
-    font-size: 16px;
-    /* margin: 1em; */
-}
+body {font-size: 16px}
 
 }
 
@@ -100,6 +96,7 @@ body:not(.Present) {
 main {
 
 margin: auto;
+margin-bottom: 2em;
 
 p, li {margin: 0.75em 0}
 ul.Menu > li {margin: 0.25em 0}
@@ -125,14 +122,51 @@ img[data-echo] {
     cursor: pointer;
 }
 
-table.Calendar {
-    width: 40em;
+table:is(.Calendar, .Menu) {
     min-width: 12em;
     max-width: calc(100% - 4px);
+}
 
-    tbody > tr:nth-child(even) {background-color: var(--lightblue)}
+table.Calendar {
+    width: 40em;
+
+    tbody > tr:nth-child(odd) {background-color: var(--lightblue)}
     td:nth-child(1) {text-align: center; width: 8em}
     th {text-align: center; color: white; background-color: var(--blue)}
+}
+
+table.Menu {
+
+tr * {vertical-align: middle}
+tr:nth-child(odd) {background-color: var(--lightblue)}
+
+tr:hover {
+    background-color: var(--blue);
+    color: white;
+    cursor: pointer;
+}
+
+td {border: none}
+
+td:nth-child(1) {
+    width: 5em;
+    text-align: center;
+
+    img {
+        width: 2.75em;
+        height: 2.75em;
+        padding: 0.2em;
+    }
+}
+
+td:nth-child(2) {
+    padding: 0 1em 0 0.25em;
+    font-weight: bold;
+    font-size: 125%;
+    height: 2.5em;
+}
+
+color: var(--blue);
 
 }
 
@@ -161,12 +195,12 @@ td.Reveal span {color: red}
 .NoTop {margin-top: 0}
 .NoBorder, table.NoBorder *:is(td, th) {border: none}
 
-a, .Blue, .Link, .BtnLink button, #Title {
+a, .Blue, .Link, .BtnGrid:not(.NoLink) button, #Title {
     color: var(--blue);
     text-decoration: none;
 }
 
-*:is(a, .Link, .BtnLink > button):hover {
+*:is(a, .Link, .BtnGrid:not(.NoLink) > button):hover {
     cursor: pointer;
     text-decoration: underline;
 }

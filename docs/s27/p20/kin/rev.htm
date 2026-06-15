@@ -1,5 +1,4 @@
-<section class="Post" data-action="slides">
-<h3>Notes</h3><div class="Collapse Expand">
+<section class="Post" data-action="slides" data-maintitle="Motion in 1D">
 
 <section class="Slide"><h3>Displacement</h3>
 <p>A <em class="Defn">coordinate</em> is a measurement that describes an object’s <em class="Defn">position</em>.</p>
@@ -17,7 +16,7 @@
     <li>Displacment is measured in a straight line, even when the motion is not straight.</li>
     <li>A <em class="Defn">vector diagram</em> is a <em>tip-to-tail</em> illustration of the motion.</li>
 </ul>
-<p class="Center"><svg data-svg2="p20/kin/img/bike.js#soccer"></svg>
+<p class="Center"><svg id="Soccer"></svg>
 </section>
 
 <section class="Slide"><h3>Velocity &amp; Acceleration</h3>
@@ -42,7 +41,7 @@
     <li>A <span class="TeX">\va{v}</span> vs. <span class="TeX">t</span> graph is linear with a slope equal to the acceleration.</li>
 </ul>
 
-<p class="Center"><svg id="Graph1" data-svg2="p20/kin/img/uam.js#vt" class="w24"></svg></p>
+<p class="Center"><svg id="Graph_vt" class="w24"></svg></p>
 <ul>
     <li>The area under any section of this graph (shaded area above) is equal to the displacement.</li>
     <li>The <span class="TeX">\va{d}</span> vs. <span class="TeX">t</span> graph is a parabola.</li>
@@ -63,9 +62,9 @@
     <li>When solving for one of the velocities using the third of these equations, note that the solution can be either positive or negative. You will have to use the context of the problem to decide which is the correct solution.</li>
 </ul>
 </section>
-</div></section>
+</section>
 
-<section data-show="9999" data-answers="9999" class="Post" data-action="gdrv">
+<section data-show="9999.1.1" data-answers="9999.1.1" class="Post" data-action="gdrv">
     <h3>Handouts</h3><div class="Collapse">
     <p class="Var">handouts</p>
     <p class="BtnGrid"><button data-action="gdrv" data-show="1" data-gdrv="1bypg5QGOzbW2ViXabB4fwy9fnjdcN6qn">Assignment</button></p>
@@ -136,26 +135,9 @@
 
 <script type="text/javascript">
 
-tmp = chapRev() ? 1 : 0;
-
-loadFeed.data = {
-    title: `One-Dimensional Motion Review`,
-    num: "1.6",
-    up: "p20/home",
-    prev: ["p20/kin/uam", "p20/skill/rev"][tmp],
-    next: ["p20/vec2d/trig", "p20/vec2d/rev"][tmp],
-}
-
-</script>
-
-<script type="text/javascript">
-
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-        ["#20", "p20/kin/img/bike", "soccer"],
-        ["#45", "p20/kin/img/uam", "vt" class],
-    ],
-});
+page({svg2: [
+    ["#Soccer", "p20/kin/img/bike", "soccer"],
+    ["#Graph_vt", "p20/kin/img/uam", "vt"],
+]});
 
 </script>

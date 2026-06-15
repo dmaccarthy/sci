@@ -1,11 +1,35 @@
-<section class="Post" data-action="python" data-title="Courses">
-<p>Please select a course:</p>
-<ul class="Menu"></ul>
+<section class="Post" data-action="list" data-title="Courses">
+<table class="Menu"></table>
 </section>
 
 <section class="Post" data-action="Calendar" data-cal="cs10"></section>
 
+<section class="Post" id="Project" data-action="ide" data-title="Coding Projects">
+<div class="Red">
+<h3>Instructions</h3>
+<ul>
+    <li>Complete the programming tasks below by the due dates announced in class.</li>
+    <li>Use <em>VS Code</em> to create, edit, and test your programs. Be sure each program does what it is required to do!</li>
+    <li>You must do all of the coding <em>in class</em> without using a coding agent or copying code from the internet; the code you write must be entirely your own!</li>
+    <li>Create the files in the <code>cs10/python</code> or <code>cs10/web</code> folder of your Computing Science OneDrive folder, as appropriate.</li>
+    <li>All programs should have a docstring and relevant comments.</li>
+    <li>Use the “IPO” (Input, Processing, Output) program structure.</li>
+    <li>Use descriptive names for variables.</li>
+    <li>Use only programming techniques that have been covered in these lessons. Examples that you find on the web often use techniques that are considered bad programmming practice that should be avoided.</li>
+</ul>
+</div>
+
+<div class="Projects" style="margin-top:2em">Loading...</div>
+</section>
+
 <script type="text/javascript">
+
+page.init = async() => {
+    return cs_projects("cs/cs10/prj10.txt").then(() => {
+        let f = page.get("abc");
+        if (f) f();
+    });
+}
 
 page.run(() => {
     page.menu("cs/cs10");

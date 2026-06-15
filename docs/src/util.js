@@ -236,7 +236,7 @@ async function sleep(t) {await new Promise(r => setTimeout(r, t))}
 
 async function mjax_wait(t) {
     // Wait until MathJax.typesetPromise is available
-    while (!MathJax.typesetPromise) await sleep(t ? t : 50);
+    while (!MathJax.tex2svgPromise) await sleep(t ? t : 50);
     return new Promise(res => res());
 }
 
