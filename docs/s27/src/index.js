@@ -1,3 +1,33 @@
+/*** Swipe handlers ***/
+
+function swipe(delta) {
+    /* Go to next or previous page on horizontal swipe */
+    let r = delta.mag(), a = delta.dir(), w = $(window).width();
+    if (r > Math.min(150, 0.6 * w) && Math.abs(sin(a)) < 0.5) {
+        let left = Math.abs(a) > 90;
+        // page.jump(left ? 1 : -1);
+        $($("#Swiper td").css("background-color", "")[left ? 0 : 1]).css("background-color", "#0065fe");
+    }
+}
+
+swipe.event = ev => {
+    /* Record touchstart and dispatch touchend events */
+    let coords = e => {
+        e = e.changedTouches[0];
+        return new RArray(e.clientX, e.clientY);
+    }
+    if (ev.type == "touchstart") swipe.xy = coords(ev);
+    else if (ev.type == "touchend") {
+        let [x, y] = coords(ev);
+        swipe(coords(ev).minus(swipe.xy));
+        delete swipe.xy;
+    }
+}
+
+$(window).on("touchstart", swipe.event).on("touchend", swipe.event);
+
+
+
 /*** Miscellaneous functions ***/
 
 // Date.prototype.days_since = function(d0) {
