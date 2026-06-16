@@ -352,20 +352,25 @@ page.onload = (id, args) => {
     let hide = {visibility: "hidden"};
     $("#MainTitle").css(hide);
     let art = $("main > article").css(hide).html(page._cache[id]);
-    if (!teacher()) page.unpublish(art);
-    page.posts(art);
 
     // Run initialization function
     if (page.init) {
         try {page.init()} catch(err) {console.warn(err)};
     }
 
+    // Handouts
+    for (let e of art.find("[data-action='handouts']"))
+        page.handouts($(e));
+
+    if (!teacher()) page.unpublish(art);
+    page.posts(art);
+
     // YouTube videos, images, calendar, variables
     page.video("main > article *[data-yt]");
     for (let e of art.find("[data-icon]"))
         $(e).prepend("<br/>").prepend(page.icon($(e).attr("data-icon")));
     for (let e of art.find("[data-cal]"))
-        page.calendar(e);
+        page.calendar($(e));
     page.vars();
 
     // Activate echo actions
@@ -393,6 +398,18 @@ page.onload = (id, args) => {
 
 }
 
+page.handouts = e => {
+    let div = e.find(".json");
+    let info = JSON.parse(div.text());
+    div.remove();
+    let p = $("<p>").addClass("BtnGrid").appendTo(e);
+    for (let item of info) {
+        if (typeof(item) == "string") item = ["Assignment", item];
+        if (typeof(item[1]) == "string") item[1] = {"data-gdrv": item[1], "data-icon": "gdrv"};
+        $("<button>").attr(item[1]).html(item[0]).appendTo(p);
+    }
+}
+
 page.svg_tex = async(art, data) => {
     /* Render TeX and SVG2 asnychronously */
 
@@ -407,7 +424,6 @@ page.svg_tex = async(art, data) => {
 page.calendar = e => {
     /* Render the course calendar*/
 
-    e = $(e);
     let crse = e.attr("data-cal");
     let cal = [];
     for (let item of page.cal[crse]) { // Non-lesson items
@@ -479,6 +495,7 @@ page.icon.map = {
     ps: "https://powerschool.eips.ca/favicon-196x196.png",
     python: "https://www.python.org/static/favicon.ico",
     gdrv: "https://upload.wikimedia.org/wikipedia/commons/1/16/Google_Drive_Logo_05.2026.png",
+    handouts: "https://upload.wikimedia.org/wikipedia/commons/1/16/Google_Drive_Logo_05.2026.png",
     gdoc: "https://upload.wikimedia.org/wikipedia/commons/8/84/Google_Docs_Logo_05.2026.png",
     gsheet: "https://upload.wikimedia.org/wikipedia/commons/5/50/Google_Sheets_Logo_05.2026.png",
 };
@@ -504,13 +521,17 @@ page.posts = (art) => {
             a0 = map[k];
             p.attr("data-action", a0);
         }
-        if (!title) title = {slides: "Notes", assign: "Assignment", link: "Links", graph: "Data Analysis"}[a0];
+        if (!title) title = page.posts._titles[a0];
         if (!title) title = a0.charAt(0).toUpperCase() + a0.substring(1);
         let btn = $("<button>").attr("data-action", a0).appendTo(e);
         btn.html(page.icon(a0)).append(title); // $("<span>").html(title)
     }
     e.show();
 }
+
+page.posts._titles = {
+    slides: "Notes", assign: "Assignment", link: "Links", graph: "Data Analysis", group: "Activity", gdrv: "Handouts", web: "Web Activity"
+};
 
 page.video = s => {
     /* Embed a <video> or YouTube <iframe> */

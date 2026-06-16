@@ -1,0 +1,168 @@
+<section class="Post" data-show="1" data-answers="1" data-action="web">
+
+<h3>Web Activity</h3>
+<p class="BtnGrid">
+    <button data-icon="link" data-open="https://www.ccohs.ca/oshanswers/chemicals/whmis_ghs/pictograms.html#section-1-hdr">WHMIS 2015</button>
+    <button data-icon="link" data-open="https://www.ccohs.ca/oshanswers/legisl/msds_lab.html#section-11-hdr">WHMIS 1988</button>
+</p>
+<ol>
+<li>Familiarize yourself with the pictograms for both WHMIS 2015 and WHMIS 1988 by following the links.
+    Label each of the pictograms below with its meaning and state whether each is from WHMIS 2015 or 1988.
+<ol class="WHMIS" type="a">
+    <li>Health Hazard: may cause or suspected of causing serious health effects (2015)</li>
+    <li>Toxic Effects (1988)</li>
+    <li>Gas Cylinder: gases under pressure (2015)</li>
+    <li>Corrosion: corrosive to metals as well as skin, eyes (2015)</li>
+    <li>Environment: may cause damage to aquatic environment (2015)</li>
+    <li>Biohazard: organisms or toxins that can cause diseases in people or animals (1988)</li>
+    <li>Exclamation Mark: may cause less serious health effects or damage to the ozone layer (2015)</li>
+    <li>Dangerously Reactive (1988)</li>
+    <li>Exploding bomb: explosion or reactivity hazard (2015)</li>
+    <li>Flame over Circle: oxidizing hazard (2015)</li>
+    <li>Flame: fire hazard (2015)</li>
+    <li>Skull &amp; Crossbones: can cause death or toxicity with short exposure to small amounts (2015)</li>
+</ol>
+</li>
+<li class="NoPageBreak">The label from a container of a chemical that is commonly used in high-school laboratories is shown below. Refer to this label to answer these questions.
+    <table class="Top Bottom" style="width: 36em; max-width: 100%; font-size: 90%;">
+        <tr><td>Name</td><td>copper(II) sulfate pentahydrate</td><td rowspan="7" class="Center" style="width: 30%; border-bottom: none">
+            <img data-whmis="0"/><br/><img data-whmis="1"/>
+        </td></tr>
+        <tr><td>Formula</td><td>CuSO<sub>4</sub> · 5H<sub>2</sub>O</td></tr>
+        <tr><td>Risks</td><td>Toxic</td></tr>
+        <tr><td>Lungs</td><td>Toxic dust (avoid inhalation)</td></tr>
+        <tr><td>Skin</td><td>Slight absorption</td></tr>
+        <tr><td>Fire</td><td>N/A</td></tr>
+        <tr><td>Reactivity</td><td>Reacts with powdered metals</td></tr>
+        <tr><td>Precautions</td><td>Goggles, gloves, aprons</td><td style="font-weight: bold; border-top: none" rowspan="2">
+            <p>Caution</p>
+            <p>Harmful if swallowed!</p>
+            <p>Wash thoroughly after handling</p>
+        </td></tr>
+        <tr><td>First Aid</td><td>Flush exposed area with water. In case of ingestion induce vomiting immediately as directed by medical personnel. Get immediate medical attention.</td></tr>
+        <tr><td>Disposal</td><td>Use waste container</td><td>UN #3077</td></tr>
+    </table>
+    <ol type="a">
+        <li>According to the chemical’s label, what is the name and chemical formula of the substance?</li>
+        <div class="Answer">copper(II) sulfate pentahydrate, <span class="TeX">\rm{CuSO_4 \cdot 5 H_2O}</span></div>
+        
+        <li>Is the substance dangerous to your health? If so, in what way is it dangerous?</li>
+        <div class="Answer">It is toxic.</div>
+        
+        <li>What safety precaution should you take when handling the substance during an investigation?</li>
+        <div class="Answer">Wear goggles, gloves, aprons.</div>
+        
+        <li>How should you dispose of excess amounts of the chemical?</li>
+        <div class="Answer">Use a proper waste disposal container.</div>
+        
+        <li>A fellow student has accidentally swallowed some of the chemical. What should you do?</li>
+        <div class="Answer">Induce vomiting immediately as directly by medical personnel. Get immediate medical attention.</div>
+    </ol>
+</li>    
+</ol>
+<script type="text/javascript">
+
+page.init = () => {
+    let sz = {width: "6em", height: "6em"}, i = 0;
+    let source = ["health_hazard", "toxic", "gas_cylinder", "corrosion",
+        "environment", "biohazardous", "exclamation_mark", "reactive",
+        "exploding_bomb", "flame_circle", "flame", "skull_crossbones"];
+    let media = "../media/whmis";
+    let ol = $("ol.WHMIS");
+    for (let li of ol.find("li")) {
+        let src = source[i++];
+        let svg = ["reactive", "toxic"].indexOf(src) == -1 ? "svg" : "webp";
+        let img = $("<img>").css(sz).attr({alt: "WHMIS Pictogram", src: `${media}/${src}.${svg}`});
+        li = $(li);
+        let p = $("<p>").addClass("Answer").html(li.html());
+        li.html(p).prepend($("<p>").html(img));
+    };
+    ol.find("li *").css("vertical-align", "top");
+
+    let imgs = $("img[data-whmis]");
+    for (let i=0;i<imgs.length;i++) {
+        let src = ["exclamation_mark", "environment"][i];
+        $(imgs[i]).attr({alt: "WHMIS Pictogram", src: `${media}/${src}.svg`}).css(sz);        
+    }
+
+};
+
+
+
+</script>
+</section>
+
+<section class="Post" data-action="slides">
+
+<section class="Slide Center Present">
+<h1 id="Title">WHMIS / Lab Safety</h1>
+<p data-cue="none"><img class="s20" src="https://sbt.blob.core.windows.net/storyboards/oliversmith/lab-safety.png" alt="Lab Safety"/></p>
+</section>
+
+<section class="Slide"><h3>WHMIS 1988</h3>
+<p>WHMIS stands for <em class="Defn">Workplace Hazardous Materials Information System</em>.</p>
+<ul>
+    <li>WHMIS is the Canadian government system for identifying hazards in the workplace.</li>
+    <li>WHMIS requires hazardous material to be properly labelled and for the label to include a warning and pictogram.
+        <p class="Center"><img class="w10" src="../media/whmis/reactive.webp" alt="Pictogram"/></p>
+    </li>
+</ul>
+<ul>
+    <li>Your textbook illustrates the pictograms for WHMIS 1988, the year WHMIS was first standardized.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>WHMIS 2015 &amp; GHS</h3>
+<p>The <em class="Defn">Global Harmonized System</em> (GHS) is an international agreement to use the same hazard pictograms in different countries.</p>
+<ul>
+    <li>WHMIS was revised in 2015 to be compatible with the GHS.</li>
+    <li>WHMIS 2015 pictograms are easily recognized by the red diamond outline.
+        <p class="Center"><img class="w10" src="../media/whmis/skull_crossbones.svg" alt="Pictogram"/></p>
+    </li>
+</ul>
+<ul><li>WHMIS 2015 pictograms are shown on the WHMIS website.</li></ul>
+</section>
+
+<section class="Slide"><h3>Safety Data Sheets</h3>
+<p>Another requirement is that each hazardous material have an available <em class="Defn">Material Safety Data Sheet</em> (MSDS or SDS).</p>
+<p>Every SDS has a number of requirements including:</p>
+<ul>
+    <li>Name & Formula</li>
+    <li>Physical Properties</li>
+    <li>Stability & Reactivity</li>
+    <li>Potential Health Effects</li>
+    <li>Handling & Storage</li>
+    <li>Disposal</li>
+</ul>
+</section>
+
+</section>
+
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Assignment</h3>
+<ol>
+    <li>What do WHMIS and GHS stand for? What is WHMIS?</li>
+    <p class="Answer">Workplace Hazardous Material Information System; Global Harmonized System. A system for describing dangerous materials in the lab or workplace.</p>
+    
+    <li>What is the difference between WHMIS 1988 and WHMIS 2015?</li>
+    <p class="Answer">Pictographs have changed to comply with GHS.</p>
+    
+    <li>What does MSDS stand for? What does it mean?</li>
+    <p class="Answer">Material Safety Data Sheet. Detailed information about each chemical.</p>
+    
+    <li>List 5 key points that must be on all MSDS labels.</li>
+    <p class="Answer">Name & Formula, Physics Properties, Stability & Reactivity, Potential Health Effects, Handling & Storage, Disposal</p>
+</ol>
+</section>
+
+<section class="Post" data-show="1" data-action="group">
+<h3>Activity</h3>
+<ol>
+    <li>Write down as many laboratory safety rules as you can think of. Rules should address working with chemicals, glassware, heat, electrical equipment, and other tools.</li>
+    <li>After discussing the rules as a class, make a lab safety poster for <b><u>one</u></b> of the rules you created. Posters may be posted in the classroom and must therefore be appropriate!</li>
+</ol>
+</section>
+
+<section class="Post" data-show="1" data-action="handouts">
+<div class="json">["1TRd2vNgQvuczfoBTDJRQdNXt2OcfKBNP"]</div>
+</section>

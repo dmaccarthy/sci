@@ -123,15 +123,13 @@ img[data-echo] {
 }
 
 table:is(.Calendar, .Menu) {
-    min-width: 12em;
+    min-width: 24em;
     max-width: calc(100% - 4px);
 }
 
 table.Calendar {
-    width: 40em;
-
     tbody > tr:nth-child(odd) {background-color: var(--lightblue)}
-    td:nth-child(1) {text-align: center; width: 8em}
+    td:nth-child(1) {text-align: center; min-width: 6em}
     th {text-align: center; color: white; background-color: var(--blue)}
 }
 
@@ -195,12 +193,12 @@ td.Reveal span {color: red}
 .NoTop {margin-top: 0}
 .NoBorder, table.NoBorder *:is(td, th) {border: none}
 
-a, .Blue, .Link, .BtnGrid:not(.NoLink) button, #Title {
+a, span[data-feed], .Blue, .Link, .BtnGrid:not(.NoLink) button, #Title {
     color: var(--blue);
     text-decoration: none;
 }
 
-*:is(a, .Link, .BtnGrid:not(.NoLink) > button):hover {
+*:is(a, span[data-feed], .Link, .BtnGrid:not(.NoLink) > button):hover {
     cursor: pointer;
     text-decoration: underline;
 }

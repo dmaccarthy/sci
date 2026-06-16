@@ -5,18 +5,18 @@ page.cal.p20 = [ // Calendar items
 ];
 
 { // Chapters
-home.item("home", {page: "p20", icon: "rocket", title: "Physics 20"});
+home.item("home", {page: "p20", icon: "rocket", title: "Physics 20", data: {cal: false}});
 _ = d => home.item("p20", d);
-_({page: "skill", icon: "graph", title: "Math & Science 10 Review"});
-_({page: "kin", icon: "train", title: "One-Dimensional Motion"});
-// _({page: "vec2d", icon: "soccer", title: "Two-Dimensional Motion"});
-// _({page: "dyn", icon: "rocket", title: "Newton’s Laws"});
-// _({page: "grav", icon: "earth", title: "Gravitation"});
-// _({page: "energy", icon: "archer.webp", title: "Energy & Work"});
-// _({page: "circ", icon: "midway", title: "Circular & Planetary Motion"});
-// _({page: "shm", icon: "crane", title: "Simple Harmonic Motion"});
-// _({page: "wave", icon: "speaker", title: "Mechanical Waves"});
-// _({page: "rev", icon:"review", icon: "rocket", title: "Course Review"});
+_({page: "skill", icon: "graph", title: "Math & Science 10 Review", data: {cal: false}});
+_({page: "kin", icon: "train", title: "One-Dimensional Motion", data: {cal: false}});
+// _({page: "vec2d", icon: "soccer", title: "Two-Dimensional Motion", data: {cal: false}});
+// _({page: "dyn", icon: "rocket", title: "Newton’s Laws", data: {cal: false}});
+// _({page: "grav", icon: "earth", title: "Gravitation", data: {cal: false}});
+// _({page: "energy", icon: "archer.webp", title: "Energy & Work", data: {cal: false}});
+_({page: "circ", icon: "midway", title: "Circular & Planetary Motion", data: {cal: false}});
+// _({page: "shm", icon: "crane", title: "Simple Harmonic Motion", data: {cal: false}});
+// _({page: "wave", icon: "speaker", title: "Mechanical Waves, data: {cal: false}"});
+// _({page: "rev", icon:"review", icon: "rocket", title: "Course Review", data: {cal: false}});
 }
 
 { // Review
@@ -26,7 +26,7 @@ _({page: "scatter", icon: "graph", title: "Scatter Plots", data: {s: "2026.9.1",
 _({page: "algebra", title: "Algebra"});
 _({page: "sciNot", title: "Significant Digits & Scientific Notation"});
 _({page: "si", title: "SI Units"});
-_({page: "rev", icon:"review", icon:"review", title: "Chapter Review"});
+_({page: "rev", icon:"review", icon:"review", title: "Chapter Review", data: {cal: false}});
 }
 
 { // Kin
@@ -36,7 +36,7 @@ _({page: "vel", title: "Velocity & Speed"});
 _({page: "graph", title: "Motion Graphs"});
 _({page: "acc", title: "Acceleration"});
 _({page: "uam", title: "Uniform Accelerated Motion"});
-_({page: "rev", icon:"review", title: "Chapter Review"});
+_({page: "rev", icon:"review", title: "Chapter Review", data: {cal: false}});
 }
 
 { // Vec2d
@@ -47,7 +47,7 @@ _({page: "diag", title: ""});
 _({page: "polar", title: ""});
 _({page: "arith", title: ""});
 _({page: "proj", title: ""});
-_({page: "rev", icon:"review", title: "Chapter Review"});
+_({page: "rev", icon:"review", title: "Chapter Review", data: {cal: false}});
 }
 
 { // Dyn
@@ -57,7 +57,7 @@ _({page: "n3", title: "Newton’s 3<sup>rd</sup> Law"});
 _({page: "weight", title: "Mass & Weight"});
 _({page: "fric", title: "Contact Forces"});
 _({page: "adv", title: "Dynamics in 2D"});
-_({page: "rev", icon:"review", title: "Chapter Review"});
+_({page: "rev", icon:"review", title: "Chapter Review", data: {cal: false}});
 }
 
 { // Grav
@@ -85,12 +85,12 @@ _({page: "rev", icon:"review", title: "Chapter Review"});
 
 { // Circ
 _ = d => home.item("p20/circ", d);
-_({page: "ucm", title: ""});
-_({page: "ac", title: ""});
-_({page: "appWt", title: ""});
-_({page: "kep", title: "Planetary Motion (Kepler’s Laws)", data: {s: "2026.1.1", a: "9999.1.1"}});
-_({page: "orbit", title: ""});
-_({page: "rev", icon:"review", title: "Chapter Review"});
+_({page: "ucm", title: "Uniform Circular Motion"});
+_({page: "ac", title: "Centripetal Acceleration"});
+_({page: "appWt", title: "Apparent Weight"});
+_({page: "kep", title: "Planetary Motion (Kepler’s Laws)", data: {s: "9999.1.1", a: "9999.1.1"}});
+_({page: "orbit", title: "Circular Orbital Motion"});
+_({page: "rev", icon:"review", title: "Chapter Review", data: {cal: false}});
 }
 
 {// SHM
