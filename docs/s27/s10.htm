@@ -1,7 +1,6 @@
 <section class="Post" data-action="Calendar" data-cal="s10"></section>
 
-<section class="Post" data-action="list" data-title="Chapters">
-<!-- <p>Please select a chapter:</p> -->
+<section class="Post" data-action="list" data-title="Units of Study">
 <table class="Menu"></table>
 </section>
 
@@ -10,11 +9,12 @@
     <p class="BtnGrid">
         <button data-icon="gdrv" data-gdrv="1LKvFJ5g8151lKNbhlDPKlcnZhztq-6uF">Data Booklet</button>
         <button data-icon="gdrv" data-gdrv="1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE">Graph Paper</button>
-        <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/">Brightspace</button>
+        <!-- <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/">Brightspace</button> -->
         <button data-icon="ps" data-open="https://powerschool.eips.ca/public/">PowerSchool</button>
         <button data-icon="gdoc" data-gdoc="1uG-2oAJHwaB7KSxu8HL69MNY0U-CMj0d_wc0vgrOkXQ">Course<br/>Outline</button>
         <button data-icon="sal.webp" data-open="https://salcomp.ca">Salisbury<br/>Composite</button>
         <button data-icon="pdf.svg" data-open="https://www.alberta.ca/system/files/custom_downloaded_images/edc-calculator-information-and-rules.pdf">Approved<br/>Calculators</button>
+        <!-- https://www.alberta.ca/writing-diploma-exams#jumplinks-4 -->
         <button data-icon="link" data-open="https://curriculum.learnalberta.ca/curriculum/en/pos/SCIGEN_10">Program<br/>of Studies</button>
     </p>
 </section>
@@ -23,7 +23,7 @@
 
 page.run(() => {
     page.menu("s10");
-    // page.show_post(1);
+    // page.show_post("list");
 });
 
 </script>

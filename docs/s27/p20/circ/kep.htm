@@ -268,7 +268,6 @@ page({zodiac: () => {
 page.run(() => {
     console.log("Hiding...");
     let svg = $("#Helio")[0].svg2.pause();
-    page.final(() => svg.pause());
 
     svg.$.find(".Zodiac, .Arrow").hide();
     $("#AnimSpeed").on("change", (ev) => {

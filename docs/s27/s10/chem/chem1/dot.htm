@@ -1,21 +1,6 @@
-<!-- <section class="Post" data-show="9999" data-action="teacher.svg">
-<h2 class="Collapse NoPrintIcon">Teacher Notes</h3><div class="Collapse">
-<p><b>Class 9</b></p>
-<ul>
-    <li>Complete and correct the Review from <a href="#s10/chem1/bohr">Bohr Model</a>.</li>
-    <li>Complete and correct Chemistry Formative Review #2.</li>
-    <li>Go over Lesson Notes.</li>
-    <li>Complete and correct the Practice questions.</li>
-    <li>If extra time is available, assign reading from ...</li>
-    <li>As we are in the lab tomorrow, students are to complete the Review for homework.</li>
-</ul>
-</div>
-</section> -->
-
 <section class="Post" data-action="slides">
-<h3>Lesson Notes</h3><div class="Collapse">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Periodic Table and Dot Diagrams</h1>
 </section>
 
@@ -26,7 +11,7 @@
         <li>These gases are called the <em class="Defn">noble gases</em> (or inert gases).</li>
         <li>Dmitri Mendeleev (1869) listed all elements known at the time in order by atomic number.</li>
         <li>More elements were added as they were discovered.
-            <p class="Center"><svg class="s28" data-svg2="s10/chem1/img/dot.js#pt"></svg></p>
+            <p class="Center"><svg class="s28" id="PerTbl"></svg></p>
         </li>
     </ul>
     <ul>
@@ -82,32 +67,32 @@
     <p>A <em class="Defn">Lewis dot diagram</em> or <em class="Defn">electron dot diagram</em> is an illustration of an atom’s valence electrons.</p>
     <ul>
         <li>The noble gas argon has an atomic number of 18. Its energy level diagram looks like this:
-            <p class="Center"><svg class="s5" data-svg2='s10/chem1/img/bohr.js#bohr#[18, 40]'></svg></p>
+            <p class="Center"><svg class="s5" id="Bohr_Ar"></svg></p>
         </li>
         <li>The dot diagram illustrates the eight valence electrons as dots.
-            <p class="Center"><svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["Ar", 0, 8]'></svg></p>
+            <p class="Center"><svg class="s6" id="Dot_Ar"></svg></p>
         </li>
         <li>Atoms prefer to have <em>filled valence levels</em>.</li>
         <li>Argon (and all other noble gases) have filled valence levels to start with.</li>
         <li>This is why they don’t react or form ions; they are happy with the electrons that they already have.</li>
         <li>Group 17 elements like chlorine, are one electron short of having a filled valence.
-            <p class="Center"><svg class="s5" data-svg2='s10/chem1/img/bohr.js#bohr#[17, 35]'></svg></p>
+            <p class="Center"><svg class="s5" id="Bohr_Cl"></svg></p>
         </li>
         <li>The dot diagram looks like this:
-            <p class="Center"><svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["Cl", 0, 7]'></svg></p>
+            <p class="Center"><svg class="s6" id="Dot_Cl"></svg></p>
         </li>
         <li>To fill its valence level, chlorine (and other Group 17 elements) need to gain one electron.
-            <p class="Center"><svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["Cl", -1, 8]'></svg></p>
+            <p class="Center"><svg class="dot" id="Dot_Cl_ion"></svg></p>
         </li>
         <li>This is why group 17 elements form ions with a charge of 1–.</li>
         <li>Group 1 elements like sodium have only one electron in their valence level.
-            <p class="Center"><svg class="s5" data-svg2='s10/chem1/img/bohr.js#bohr#[11, 23]'></svg></p>
+            <p class="Center"><svg class="s5" id="Bohr_Na"></svg></p>
         </li>
         <li>The dot diagram looks like this:
-            <p class="Center"><svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["Na", 0, 1]'></svg></p>
+            <p class="Center"><svg class="s6" id="Dot_Na"></svg></p>
         </li>
         <li>It is easier for them to lose that one electron than to gain seven.
-            <p class="Center"><svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["Na", 1, 0]'></svg></p>
+            <p class="Center"><svg class="dot" id="Dot_Na_ion"></svg></p>
         </li>
         <li>This is why group 1 elements form ions with a charge of 1+.</li>
     </ul>
@@ -116,8 +101,8 @@
 <section class="Slide"><h3>Paired &amp; Unpaired Electrons</h3>
     <p>There may be more than one way to arrange the valence electrons:</p>
     <table class="Two Center"><tr>
-        <td><svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["P", 0, -5]'></svg></td>
-        <td><svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["P", 0, 5]'></svg></td>
+        <td><svg class="s6" id="Dot_P_alt"></svg></td>
+        <td><svg class="s6" id="Dot_P"></svg></td>
     </tr></table>
     <ul>
         <li>Since electrons repel each other, they will not “pair up” unless there is no room to remain “unpaired”.</li>
@@ -129,30 +114,24 @@
     <p>Hydrogen and helium (period 1) are different because the first energy level can hold a maximum of two electrons.</p>
     <ul>
         <li>The two electrons in helium have no choice but to be paired.
-            <p class="Center"><svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["He", 0, -2]'></svg></p>
+            <p class="Center"><svg class="s6" id="He"></svg></p>
         </li>
         <li>Hydrogen has a single valence electron, just like the group 1 elements.
-            <p class="Center"><svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["H", 0, 1]'></svg></p>
+            <p class="Center"><svg class="s6" id="H"></svg></p>
         </li>
         <li>Hydrogen can give up its electron to form an ion with charge 1+, just like group 1.
-            <p class="Center"><svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["H", 1, 0]'></svg></p>
+            <p class="Center"><svg class="dot" id="H_ion"></svg></p>
         </li>
         <li>Hydrogen is also like group 17! It can fill its valence shell by <em>gaining</em> one electron.
-            <p class="Center"><svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["H", -1, -2]'></svg></p>
+            <p class="Center"><svg class="dot" id="hydride"></svg></p>
         </li>
     </ul>
 </section>
 
-</div></section>
+</section>
 
 <section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Practice</h3><div class="Collapse">
-<style class="NoPresent">
-
-table.Periodic {td, th {width: 12%}}
-table.Periodic {th.Wider {width: 20%}}
-
-</style>
+<h3>Practice</h3>
 <ol>
 <li>On your Science 10 Data Booklet periodic table, use colours, labels, arrows, lines, etc. to identify the following:
 <ul>
@@ -168,7 +147,7 @@ table.Periodic {th.Wider {width: 20%}}
 </ul></li>
 
 <li class="NoPageBreak">Complete this table...
-    <table class="Center H3 Top Bottom Periodic">
+    <table id="PTable" class="Center H3 Top Bottom">
         <thead><tr><th class="Wider">Element</th><th>Atomic Number</th><th>Period Number</th>
             <th>Group Number</th><th class="Wider">Group Name</th><th>Metal?</th><th>SATP Phase</th></tr></thead>
         <tbody><tr><td>chlorine</td><td><span class="Answer">17</span></td><td><span class="Answer">3</span></td>
@@ -229,47 +208,45 @@ table.Periodic {th.Wider {width: 20%}}
 <li>Draw Lewis dot diagrams for each of these atoms and ions.<ol type="a">
     <li>nitrogen atom and nitride ion</li>
     <p class="Answer">
-        <svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["N", 0, 5]'></svg> &nbsp;
-        <svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["N", -3, 8]'></svg>
+        <svg class="s6" id="N"></svg> &nbsp;
+        <svg class="dot" id="N_ion"></svg>
     </p>
 
     <li>aluminum atom and ion</li>
     <p class="Answer">
-        <svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["Al", 0, 3]'></svg> &nbsp;
-        <svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["Al", 3, 0]'></svg>
+        <svg class="s6" id="Al"></svg> &nbsp;
+        <svg class="dot" id="Al_ion"></svg>
     </p>
 
     <li>chlorine atom and chloride ion</li>
     <p class="Answer">
-        <svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["Cl", 0, 7]'></svg> &nbsp;
-        <svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["Cl", -1, 8]'></svg>
+        <svg class="s6" id="Cl_x"></svg> &nbsp;
+        <svg class="dot" id="Cl_xi"></svg>
     </p>
 
     <li>oxygen atom and oxide ion</li>
     <p class="Answer">
-        <svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["O", 0, 6]'></svg> &nbsp;
-        <svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["O", -2, 8]'></svg>
+        <svg class="s6" id="O"></svg> &nbsp;
+        <svg class="dot" id="oxide"></svg>
     </p>
 
     <li>hydrogen atom, hydride ion, and H<sup>+</sup> ion</li>
     <p class="Answer">
-        <svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["H", 0, 1]'></svg> &nbsp;
-        <svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["H", -1, -2]'></svg> &nbsp;
-        <svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["H", 1, 0]'></svg>
+        <svg class="s6" id="H_x"></svg> &nbsp;
+        <svg class="dot" id="H_m"></svg> &nbsp;
+        <svg class="dot" id="H_p"></svg>
     </p>
 
     <li>sulfur atom and sulfide ion</li>
     <p class="Answer">
-        <svg class="s6" data-svg2='s10/chem1/img/bohr.js#dot#["S", 0, 6]'></svg> &nbsp;
-        <svg class="dot" data-svg2='s10/chem1/img/bohr.js#dot#["S", -2, 8]'></svg>
+        <svg class="s6" id="S"></svg> &nbsp;
+        <svg class="dot" id="sulfide"></svg>
     </p>
 </ol>
 </li>
 </ol>
-</div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h2 data-booklet="no" class="Collapse">Review</h3><div class="Collapse">
+<h3>Review</h3>
 <ol>
 <li>Define the following terms:
 <ol type="a">
@@ -313,56 +290,51 @@ table.Periodic {th.Wider {width: 20%}}
 <p class="Answer">An illustration of an atom or ion’s <b>valence</b> electrons. These electrons, and how they are paired, determines the chemical behaviour of the atom.</p>
 </li>
 </ol>
-</div></section>
+</section>
 
-<section class="Post" data-show="1" data-action="gdrv">
-    <h3>Handouts</h3><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-action="gdrv" data-gdrv="1jQ_fdBq_tSECaZ-jHqoMrMH8O80Y03U-">Assignment</button>
-    </p>
-</div></section>
+<section class="Post" data-show="1" data-action="handouts">
+<div class="json">[
+    "1jQ_fdBq_tSECaZ-jHqoMrMH8O80Y03U-",
+    ["Lab Handout", "1_2mGTVeTMz6UK4ErqUf9gYzORZr8wwy8"]
+]</div>
+</section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "s10/unitA", prev: "s10/chem1/bohr", next: "s10/chem2/ionic"
-}
+page({svg2: [
+    ["#PerTbl", "s10/chem/chem1/img/dot", "pt"],
+    ["#Bohr_Ar", "s10/chem/chem1/img/bohr", "bohr", [18, 40]],
+    ["#Dot_Ar", "s10/chem/chem1/img/bohr", "dot", ["Ar", 0, 8]],
+    ["#Bohr_Cl", "s10/chem/chem1/img/bohr", "bohr", [17, 35]],
+    ["#Dot_Cl", "s10/chem/chem1/img/bohr", "dot", ["Cl", 0, 7]],
+    ["#Dot_Cl_ion", "s10/chem/chem1/img/bohr", "dot", ["Cl", -1, 8]],
+    ["#Bohr_Na", "s10/chem/chem1/img/bohr", "bohr", [11, 23]],
+    ["#Dot_Na", "s10/chem/chem1/img/bohr", "dot", ["Na", 0, 1]],
+    ["#Dot_Na_ion", "s10/chem/chem1/img/bohr", "dot", ["Na", 1, 0]],
+    ["#Dot_P_alt", "s10/chem/chem1/img/bohr", "dot", ["P", 0, -5]],
+    ["#Dot_P", "s10/chem/chem1/img/bohr", "dot", ["P", 0, 5]],
+    ["#He", "s10/chem/chem1/img/bohr", "dot", ["He", 0, -2]],
+    ["#H", "s10/chem/chem1/img/bohr", "dot", ["H", 0, 1]],
+    ["#H_ion", "s10/chem/chem1/img/bohr", "dot", ["H", 1, 0]],
+    ["#hydride", "s10/chem/chem1/img/bohr", "dot", ["H", -1, -2]],
+    ["#N", "s10/chem/chem1/img/bohr", "dot", ["N", 0, 5]],
+    ["#N_ion", "s10/chem/chem1/img/bohr", "dot", ["N", -3, 8]],
+    ["#Al", "s10/chem/chem1/img/bohr", "dot", ["Al", 0, 3]],
+    ["#Al_ion", "s10/chem/chem1/img/bohr", "dot", ["Al", 3, 0]],
+    ["#Cl_x", "s10/chem/chem1/img/bohr", "dot", ["Cl", 0, 7]],
+    ["#Cl_xi", "s10/chem/chem1/img/bohr", "dot", ["Cl", -1, 8]],
+    ["#O", "s10/chem/chem1/img/bohr", "dot", ["O", 0, 6]],
+    ["#oxide", "s10/chem/chem1/img/bohr", "dot", ["O", -2, 8]],
+    ["#H_x", "s10/chem/chem1/img/bohr", "dot", ["H", 0, 1]],
+    ["#H_m", "s10/chem/chem1/img/bohr", "dot", ["H", -1, -2]],
+    ["#H_p", "s10/chem/chem1/img/bohr", "dot", ["H", 1, 0]],
+    ["#S", "s10/chem/chem1/img/bohr", "dot", ["S", 0, 6]],
+    ["#sulfide", "s10/chem/chem1/img/bohr", "dot", ["S", -2, 8]],
+]});
 
-</script>
-<script type="text/javascript">
-
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-        ["#29", "s10/chem1/img/dot", "pt"],
-        ["#85", 's10/chem1/img/bohr", "bohr", "[18, 40]'],
-        ["#88", 's10/chem1/img/bohr", "dot", "["Ar", 0, 8]'],
-        ["#94", 's10/chem1/img/bohr", "bohr", "[17, 35]'],
-        ["#97", 's10/chem1/img/bohr", "dot", "["Cl", 0, 7]'],
-        ["#100", 's10/chem1/img/bohr", "dot", "["Cl", -1, 8]'],
-        ["#104", 's10/chem1/img/bohr", "bohr", "[11, 23]'],
-        ["#107", 's10/chem1/img/bohr", "dot", "["Na", 0, 1]'],
-        ["#110", 's10/chem1/img/bohr", "dot", "["Na", 1, 0]'],
-        ["#119", 's10/chem1/img/bohr", "dot", "["P", 0, -5]'],
-        ["#120", 's10/chem1/img/bohr", "dot", "["P", 0, 5]'],
-        ["#132", 's10/chem1/img/bohr", "dot", "["He", 0, -2]'],
-        ["#135", 's10/chem1/img/bohr", "dot", "["H", 0, 1]'],
-        ["#138", 's10/chem1/img/bohr", "dot", "["H", 1, 0]'],
-        ["#141", 's10/chem1/img/bohr", "dot", "["H", -1, -2]'],
-        ["#232", 's10/chem1/img/bohr", "dot", "["N", 0, 5]'],
-        ["#233", 's10/chem1/img/bohr", "dot", "["N", -3, 8]'],
-        ["#238", 's10/chem1/img/bohr", "dot", "["Al", 0, 3]'],
-        ["#239", 's10/chem1/img/bohr", "dot", "["Al", 3, 0]'],
-        ["#244", 's10/chem1/img/bohr", "dot", "["Cl", 0, 7]'],
-        ["#245", 's10/chem1/img/bohr", "dot", "["Cl", -1, 8]'],
-        ["#250", 's10/chem1/img/bohr", "dot", "["O", 0, 6]'],
-        ["#251", 's10/chem1/img/bohr", "dot", "["O", -2, 8]'],
-        ["#256", 's10/chem1/img/bohr", "dot", "["H", 0, 1]'],
-        ["#257", 's10/chem1/img/bohr", "dot", "["H", -1, -2]'],
-        ["#258", 's10/chem1/img/bohr", "dot", "["H", 1, 0]'],
-        ["#263", 's10/chem1/img/bohr", "dot", "["S", 0, 6]'],
-        ["#264", 's10/chem1/img/bohr", "dot", "["S", -2, 8]'],
-    ],
+page.run(() => {
+    let th = $("#PTable th").css({width: "12%"});
+    th.filter(".Wider").css({width: "20%"});
 });
 
 </script>

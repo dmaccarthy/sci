@@ -171,7 +171,7 @@ home.go = (id) => {
     let args;
     id = id.split('@');
     [id, args] = id;
-    args = args == null ? {} : qs_args(args);
+    args = args == null ? {} : qs_args(null, args);
     if (page._cache[id]) {
         page.onload(id, args);
         return;
@@ -302,15 +302,25 @@ page.svg2 = (svg, mod) => {
 }
 
 page.clear = () => {
+    /* Get ready to draw a new page */
+
+    // Finalization scripts
+    for (let e of $("main > article svg")) {
+        if (e.svg2 instanceof SVG2) e.svg2.pause();
+    }
     if (page._final) for (let f of page._final) {
         try {f()} catch(err) {console.warn(err)};
     }
+
+    // Reset page data and content
     delete page.init;
     page._run = [];
     page._final = [];
     page._data = {};
-    $("div.Message").remove();
     $("main *:is(article, #MainTitle)").html("");
+
+    // Message to user
+    $("div.Message").remove();
     msg("Drawing graphics...<br/>This shouldn’t take long!", 99999);
 }
 
@@ -385,15 +395,19 @@ page.onload = (id, args) => {
     }
 
     // Render SVG2 and TeX then show the page
-    page.svg_tex(art, data).then(() => {
-        let vis = {visibility: "visible"};
-        $("#MainTitle").css(vis);
-        art.css(vis);
-        page.show_post(0);
-        $("div.Message:not(.NoFade)").remove();
-        for (let f of page._run) {
-            try {f()} catch(err) {console.warn(err)};
-        }
+    mjax_wait().then(() => {
+        page.svg_tex(art, data).then(() => {
+            let vis = {visibility: "visible"};
+            $("#MainTitle").css(vis);
+            art.css(vis);
+            let a = $(`#Top p.Icons button[data-action='${args.post}']`);
+            a = a.length ? args.post : 0;
+            page.show_post(a);
+            $("div.Message:not(.NoFade)").remove();
+            for (let f of page._run) {
+                try {f()} catch(err) {console.warn(err)};
+            }
+        });
     });
 
 }
@@ -412,11 +426,8 @@ page.handouts = e => {
 
 page.svg_tex = async(art, data) => {
     /* Render TeX and SVG2 asnychronously */
-
     let p2 = data.svg2 ? scripts(data.svg2) : null;
-    let p1 = mjax_wait().then(async() => {
-        return mjax_render(art.find(".TeX"), 0, "3px");
-    });
+    let p1 = mjax_render(art.find(".TeX"), 0, "3px");
     if (p2) await p2;
     await p1;
 }
@@ -595,10 +606,13 @@ page.menu = (u, menu) => {
     let feed = p => (u == "home" ? '' : `${u}/`) + p.page;
     let table = ul[0].tagName.toUpperCase() == "TABLE";
     if (table) ul = $("<tbody>").appendTo(ul);
+    let icon = i => i ? (i.icon ? i.icon : icon(i.parent)) : null;
     let add = table ? item => {
         let tr = $("<tr>").appendTo(ul).attr("data-feed", feed(item));
         let td = $("<td>").appendTo(tr);
-        if (item.icon) td.html(page.icon(item.icon));
+        let img = item.icon;
+        if (!img) img = item._parent.icon;
+        if (img) td.html(page.icon(img));
         tr.append($("<td>").html(item.title));
     } : item => {
         let a = $("<a>").html(item.title).attr({href: '#' + feed(item)});
@@ -718,8 +732,6 @@ function swipe(delta) {
     if (r > Math.min(150, 0.6 * w) && Math.abs(sin(a)) < 0.5) {
         let left = Math.abs(a) > 90;
         page.jump(left ? 1 : -1);
-        // s10/chem/expDes
-        // $($("#Swiper td").css("background-color", "")[left ? 0 : 1]).css("background-color", "#0065fe");
     }
 }
 
