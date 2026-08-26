@@ -1,4 +1,4 @@
-<section class="Post" data-icon="simulation">
+<section class="Post" data-action="simulation">
 <style type="text/css">
 
 #SimControls td {
@@ -11,7 +11,7 @@
 #SimControls input {width: 8em}
 
 </style>
-<h2 class="Collapse">Simulation</h2>
+<h3>Simulation</h3>
 <div class="Collapse Expand Center">
 <p><svg id="Sim"></svg>
 <table id="SimControls">
@@ -22,8 +22,8 @@
 
 </div></section>
 
-<section class="Post" data-icon="help">
-<h2 class="Collapse">Help</h2>
+<section class="Post" data-action="help">
+<h3>Help</h3>
 <div class="Collapse">
     <p>Click on the animation to fire the cannon, or to pause, resume or reset.</p>
     <p>Adjust the launch angle and cannon elevation using the numerical inputs.</p>
@@ -140,5 +140,15 @@ loadFeed.data = {
     title: "Motion of a Cannonball",
     up: "p20/vec2d/proj",
 }
+
+</script>
+
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+    ],
+});
 
 </script>

@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Universal Gravitation</h1>
@@ -159,8 +159,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
     <li>A satellite orbiting the Earth experiences a centripetal acceleration of 7.06 m/s<sup>2</sup> due to Earth’s gravity.
     <ol type="a">
@@ -313,8 +313,8 @@
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li><ol type="a">
         <li>State the relationship between the force of gravity (<span class="TeX">{\va{F}}_g</span>) between two masses (<span class="TeX">m_1</span> and <span class="TeX">m_2</span>) and their separation (<span class="TeX">r</span>).</li>
@@ -339,5 +339,15 @@
 loadFeed.data = {
     up: "p20/home", prev: "p20/da/pwr", next: "p20/grav/cav",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#263", "p20/vec2d/img/arith", "tri"],
+    ],
+});
 
 </script>

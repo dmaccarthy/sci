@@ -1,4 +1,4 @@
-SVG2.cache("p20/kin/img/uam.js", {
+scripts.cache["p20/kin/img/uam"] = {
 
 vt: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 5, 0, 24], grid: [0.5, 2], margin: [56, 14, 28, 12]});
@@ -34,4 +34,4 @@ zag: (sel) => {
     css(svg.poly([[0, 0], [1, -8], [3, 6], [4.5, -6], [5, -2.5]]), "none", "#0065fe@2");
 },
 
-});
+};

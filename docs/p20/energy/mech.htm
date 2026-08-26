@@ -1,5 +1,5 @@
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol>
     <li><ol type="a">
         <li>A 1200 kg car has 125 kilojoules of kinetic energy. Calculate the speed of the car.</li>
@@ -33,8 +33,8 @@
 </ol>
 </div></section>
 
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Mechanical Energy</h1>
@@ -139,8 +139,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
 <li>A baseball player hits a home run. The 250-gram baseball has a height of 9.25 metres and a speed of 24.0 m/s when it goes over the centre field wall.
 <ol type="a">
@@ -233,8 +233,8 @@
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li>Define energy and state the standard SI unit for energy.</li>
     <p class="Answer">Energy is the ability to do work or create motion. It is measured in joules (J).</p>
@@ -276,5 +276,21 @@
 
 loadFeed.data = {up: "p20/home", prev: "p20/grav/rev", next: "p20/energy/cons",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#30", "p20/energy/img/mech", "CarHill"],
+        ["#129", "p20/energy/img/cons", "bar" class],
+        ["#157", "p20/energy/img/mech", "Baseball"],
+        ["#172", "p20/energy/img/mech", "Q2"],
+        ["#185", "p20/energy/img/mech", "ToyCar"],
+        ["#207", "p20/energy/img/mech", "Pinball"],
+        ["#230", "p20/energy/img/mech", "Q6"],
+    ],
+});
 
 </script>

@@ -1,28 +1,33 @@
-<!-- <section class="Post NoPrintIcon" data-icon="warn.svg">
-    <h2>Summer is Here!</h2>
-    <p>Classes have concluded for 2024-2025. See you again in August!</p>
-</section> -->
+<section class="Post" data-action="home" data-title="Courses">
+<table class="Menu"></table>
+<!-- <p>Please choose one of these courses:</p>
+<p class="BtnGrid BtnLink">
+    <button data-feed="s10"><img src="../media/microscope.svg"/><br/>Science 10</button> &nbsp;
+    <button data-feed="p20"><img src="../media/rocket.svg"/><br/>Physics 20</button> &nbsp;
+    <button data-feed="p30"><img src="../media/atom.svg"/><br/>Physics 30</button> &nbsp;
+    <button data-feed="cs"><img src="../media/laptop.svg"/><br/>Computing Science</button>
+</p> -->
+<p class="Center" style="font-size: 85%; margin-top: 2em">© 2022-2026 by <a target="email" href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
+</section>
 
-<section class="Post NoPrintIcon" data-feed="s10/home" data-title="Science 10" data-icon="microscope.svg"></section>
-<section class="Post NoPrintIcon" data-feed="p20/home" data-title="Physics 20" data-icon="rocket.svg"></section>
-<section class="Post NoPrintIcon" data-feed="p30/home" data-title="Physics 30" data-icon="atom.svg"></section>
-<section class="Post NoPrintIcon" data-show="9999" data-feed="s14/home" data-title="Science 14" data-icon="microscope.svg"></section>
-<!-- <section class="Post NoPrintIcon" data-link="https://eips.brightspace.com/d2l/home/138410" data-title="Science 14" data-icon="testtube.webp"></section> -->
-<section class="Post NoPrintIcon" data-feed="cs_new/home" data-title="Computing Science" data-icon="laptop.svg"></section>
+<section  data-show="9999.1.1" class="Post Center" data-action="teacher" data-title="SVG">
+    <p class="Center"><svg id="SVG_Sketch"></svg></p>
+</section>
 
-<section class="Post NoPrintIcon Collapse" data-icon="link.svg">
-    <h2 class="Collapse">Links</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="ps" data-open="https://powerschool.eips.ca/public/">PowerSchool</button>
-        <button data-icon="sal" data-open="https://salcomp.ca">Salisbury Composite</button>
-    </p>
-    </div>
+<section class="Post" data-action="Help">
+    <p>This website is updated regularly. If the page appears to be broken, you may need to refresh the page once or twice to ensure your browser is using the most up-to-date files.</p>
+    <p>If the text is difficult to read, you can <a class="Link" onclick="font_size(1.05)">increase</a> or <a class="Link" onclick="font_size(1/1.05)">decrease</a> the font size, or <a onclick="font_size(false)">reset</a> to the default size.</p>
+    <p>Most pages have several sections, such as the <em>Notes</em> or <em>Assignment</em>. You can click the icons along the top of the page to move between sections.</p>
+    <p>Most courses have a <em>Calendar</em> section in the course home page. The calendar will show you the class schedule including the dates of upcoming quizzes and exams. You can use the links in the calendar to navigate to any lesson.</p>
+    <p>On touchscreen devices, you can swipe left or right to go to the next or previous topic. On a computer or laptop, type <code>Ctrl+]</code> to go to the next topic and <code>Ctrl+[</code> to go to the previous one.</p>
 </section>
 
 <script type="text/javascript">
-    
-loadFeed.data = {
-    title: "Mr. Mac’s Website",
-}
+
+page.run(() => page.menu("home"));
+
+page({svg2: [
+    ["#SVG_Sketch", "img/general", "molecule"],
+]});
 
 </script>

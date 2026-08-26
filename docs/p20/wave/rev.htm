@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Notes</h2><div class="Collapse Expand">
+<section class="Post" data-action="slides">
+<h3>Notes</h3><div class="Collapse Expand">
 
 <section class="Slide">
 
@@ -65,10 +65,10 @@
 
 </div></section>
 
-<section data-show="9999" class="Post" data-icon="gdrv" data-answers="1">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+<section data-show="9999" class="Post" data-action="gdrv" data-answers="1">
+    <h3>Handouts</h3><div class="Collapse">
     <p class="Var">handouts</p>
-    <p class="BtnGrid"><button data-icon="gdrv" data-show="1" data-gdrv="1ppTMpxHl55bVgv0WZ852LeihDQDqLFj3">Assignment</button></p>
+    <p class="BtnGrid"><button data-action="gdrv" data-show="1" data-gdrv="1ppTMpxHl55bVgv0WZ852LeihDQDqLFj3">Assignment</button></p>
     <div class="Answer"><h3>Answer Key</h3><ol>
 
     <li><ol type="a">
@@ -110,5 +110,18 @@ loadFeed.data = {
     prev: ["p20/wave/stand", "p20/shm/rev"][tmp],
     next: "p20/home",
 }
+
+</script>
+
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#11", "p20/wave/img/harm", "trWave"],
+        ["#18", "p20/wave/img/harm", "longWave"],
+        ["#56", "p20/wave/img/stand", "stand", "3" data-harmonic],
+    ],
+});
 
 </script>

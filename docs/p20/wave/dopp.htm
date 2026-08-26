@@ -1,10 +1,10 @@
-<section class="Post" data-icon="video">
-    <h2 class="Collapse">Video</h2>
+<section class="Post" data-action="video">
+    <h3>Video</h3>
     <div class="Collapse" data-yt="a3RfULw7aAY"></div>
 </section>
 
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Doppler Effect</h1>
@@ -116,8 +116,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
     <li>The siren of a fire engine emits sound waves at 1250 Hz. What frequency does a pedestrian hear if the pedestrian is walking toward the siren at 2.00 m/s and the fire truck is moving toward the pedestrian at 24.0 m/s?</li>
     <div class="Answer">
@@ -182,8 +182,8 @@
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li>Explain what the <em class="Defn">Doppler Effect</em> (also called <em class="Defn">Doppler Shift</em>) is and derive the equation for the one-dimensional, non-relativistic Doppler Effect.</li>
     <li>Explain how the Doppler Effect is of practical use in traffic enforcement, meteorology, aviation, and astrophysics.</li>
@@ -194,5 +194,18 @@
 
 loadFeed.data = {up: "p20/home", prev: "p20/wave/harm", next: "p20/wave/beat",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#124", "p20/wave/img/dopp", "Q1"],
+        ["#131", "p20/wave/img/dopp", "Q2"],
+        ["#132", "p20/wave/img/dopp", "Q2x"],
+        ["#163", "p20/wave/img/dopp", "Q3"],
+    ],
+});
 
 </script>

@@ -1,4 +1,4 @@
-SVG2.cache("p20/circ/img/ac.js", {
+scripts.cache["p20/circ/img/ac"] = {
 
 delta_v: (sel) => {
     let v = [vec2d(4, 120), vec2d(4, -90)];
@@ -104,4 +104,4 @@ ucm: (sel) => {
     return svg.play();
 },
 
-});
+};

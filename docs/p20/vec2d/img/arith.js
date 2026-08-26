@@ -1,4 +1,4 @@
-SVG2.cache("p20/vec2d/img/arith.js", {
+scripts.cache["p20/vec2d/img/arith"] = {
 
 ship: (sel) => {
     let svg = new SVG2(sel, {size: [400, 300], lrbt: [-0.06, 1.04, -0.06], margin: 4});
@@ -43,13 +43,13 @@ Ex1_init: (sel) => {
 },
 
 Ex1: (sel) => {
-    let svg = SVG2.cache_run("p20/vec2d/img/arith.js", "Ex1_init", sel);
+    let svg = scripts.cache["p20/vec2d/img/arith"].Ex1_init(sel);
     svg.vec_cycle(svg.$.find("g.TipToTail2D"), 1);
     return svg;
 },
 
 trig: (sel) => {
-    let svg = SVG2.cache_run("p20/vec2d/img/arith.js", "Ex1_init", sel);
+    let svg = scripts.cache["p20/vec2d/img/arith"].Ex1_init(sel);
     svg.$.find(".Component, .MJax").remove();
     let [x, y] = vec2d(50, 60);
     svg.line([x-15, y], [x+15, y]).css({stroke: "black"});
@@ -149,4 +149,4 @@ tri: (sel) => {
     );
 },
 
-});
+};

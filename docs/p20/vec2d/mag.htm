@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Magnitude &amp; Direction</h1>
@@ -38,18 +38,18 @@
 <p>The size of a vector (i.e. the length of the arrow on a vector diagram) is called the vector’s <em class="Defn">magnitude</em>.</p>
 <ul>
     <li>When we use a magnitude and a direction to describe a 2D vector, we call this the <em class="Defn">polar form</em> of the vector.</li>
-    <li>For example, <span class="TeX">\Delta\va{d} = 12\ \mathrm{m}\ [−14°]</span> means a displacement of 12 metres in a direction 14° clockwise from the +<span class="TeX">x</span>-direction.</li>
+    <li>For example, <span class="TeX">\Delta\va{d} = 12\ \rm{m}\ [−14°]</span> means a displacement of 12 metres in a direction 14° clockwise from the +<span class="TeX">x</span>-direction.</li>
 </ul>
 </section>
 </div></section>
 
-<section class="Post" data-icon="video">
-    <h2 class="Collapse">Video</h2>
+<section class="Post" data-action="video">
+    <h3>Video</h3>
     <div class="Collapse" data-yt="lMbTTjejaug"></div>
 </section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
     <li>Express each of these directions as a positive angle.
     <ol type="a">
@@ -142,5 +142,18 @@
 loadFeed.data = {
     up: "p20/home", prev: "p20/vec2d/trig", next: "p20/vec2d/diag",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#11", "p20/kin/img/bike", "bike" class],
+        ["#18", "p20/vec2d/img/mag", "dir2d"],
+        ["#105", "p20/vec2d/img/mag", "hiker"],
+        ["#117", "p20/vec2d/img/mag", "soccer"],
+    ],
+});
 
 </script>

@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Harmonic Waves</h1>
@@ -74,8 +74,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
     <li><ol type="a">
         <li>Draw a graph of a harmonic wave moving along a string with an amplitude of 2.00 cm and a wavelength of 5.00 cm.</li>
@@ -194,8 +194,8 @@
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li>Define a <em class="Defn">mechanical wave</em> and its <em class="Defn">medium</em>.</li>
 
@@ -220,5 +220,21 @@
 
 loadFeed.data = {up: "p20/home", prev: "p20/shm/rev", next: "p20/wave/dopp",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#35", "p20/wave/img/harm", "trWave"],
+        ["#45", "p20/wave/img/harm", "longWave"],
+        ["#67", "p20/wave/img/harm", "ray"],
+        ["#83", "p20/wave/img/harm", "Q1"],
+        ["#145", "p20/wave/img/harm", "Q6"],
+        ["#146", "p20/wave/img/harm", "Q6x"],
+        ["#185", 'p20/wave/img/harm", "Q7'],
+    ],
+});
 
 </script>

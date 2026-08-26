@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Power &amp; Efficiency</h1>
@@ -62,8 +62,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice<span data-print="Practice"></span></h3><div class="Collapse">
 <div id="Practice">
 <ol>
     <!-- Treadmill question moved to sys.htm -->
@@ -126,8 +126,8 @@
 <!-- </ol>
 </div></div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li><ol type="a">
         <li>Define power.</li>
@@ -145,11 +145,11 @@
 </ol>
 </div></section>
 
-<!-- <section class="Post"  data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+<!-- <section class="Post"  data-show="1" data-action="gdrv">
+    <h3>Handouts</h3><div class="Collapse">
     <p class="Var">handouts</p>
     <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="15bM4GYgv7qiypZ4j-DA6rCVhkpNrlPXu">Assignment</button>
+        <button data-action="gdrv" data-gdrv="15bM4GYgv7qiypZ4j-DA6rCVhkpNrlPXu">Assignment</button>
     </p>
 </div></section> -->
 
@@ -158,5 +158,15 @@
 loadFeed.data = {
     up: "p20/home", prev: "p20/energy/work2d", next: "p20/energy/rev",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#97", "p20/energy/img/power", "sprint"],
+    ],
+});
 
 </script>

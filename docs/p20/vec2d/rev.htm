@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Notes</h3><div class="Collapse">
 
 <section class="Slide">
 <p><em class="Defn">Vectors</em> are quantities that involve a direction, such as displacement, velocity, acceleration, and force.</p>
@@ -8,8 +8,8 @@
     <li>To illustrate the addition of two or more vectors, the vectors are drawn in a <em>tip-to-tail</em> fashion.</li>
 </ul>
 <p class="Center"><svg class="s14" data-svg2="p20/vec2d/img/diag.js#Q4" id="Q4"></svg></p>
-<p><em class="Defn">Cartesian Form</em> means that a 2D vector is described as separate <span class="TeX">x</span>- and <span class="TeX">y</span>-<em class="Defn">components</em>; <span class="TeX NoWrap">\Delta \vec{\bf d} = \mathrm{(-16.6, 10.4)\ m}</span>.</p>
-<p><em class="Defn">Polar Form</em> describes a vector by its <em class="Defn">magnitude</em> and its <em class="Defn">direction</em>; <span class="TeX NoWrap">\Delta \vec{\bf d}_1 = \mathrm{19.6\ m\ [148°]}</span>.</p>
+<p><em class="Defn">Cartesian Form</em> means that a 2D vector is described as separate <span class="TeX">x</span>- and <span class="TeX">y</span>-<em class="Defn">components</em>; <span class="TeX NoWrap">\Delta \vec{\bf d} = \rm{(-16.6, 10.4)\ m}</span>.</p>
+<p><em class="Defn">Polar Form</em> describes a vector by its <em class="Defn">magnitude</em> and its <em class="Defn">direction</em>; <span class="TeX NoWrap">\Delta \vec{\bf d}_1 = \rm{19.6\ m\ [148°]}</span>.</p>
 <ul>
     <li>The direction is an angle measured <em>counter-clockwise</em> from the <span class="NoWrap"><span class="TeX">+x</span>-direction</span>.</li>
     <li>We can convert a vector from polar to Cartesian form:
@@ -48,5 +48,15 @@ loadFeed.data = {
     next: ["p20/dyn/n2", "p20/dyn/rev"][tmp],
     // handouts: [["Assignment", {gdrv: "1kb_4eSt2FFF3ZbeyU--nvrQO3KnxgWAT"}]],
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#10", "p20/vec2d/img/diag", "Q4" id],
+    ],
+});
 
 </script>

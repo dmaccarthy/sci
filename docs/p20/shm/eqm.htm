@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Equilibrium & Oscillations</h1>
@@ -39,7 +39,7 @@ body.Present div[data-yt] iframe {
 	<li>The graph above uses the equilibrium position as the origin.</li>
 	<li>We use the symbol <span class="TeX">\va{d}</span> for the position relative to an <em>arbitrary</em> origin, and <span class="TeX">\va{x}</span> as the position relative to equilibrium.</li>
 	<li><em class="Defn">Period</em> (<span class="TeX">T</span>) is the time it takes for each cycle or repetition of the motion.</li>
-	<li>The reciprocal of period is called <em class="Defn">frequency</em>:<p class="TeX">f = {1\over T}</p></li>
+	<li>The reciprocal of period is called <em class="Defn">frequency</em>:<p class="TeX">f = \frac{1}{T}</p></li>
     <li>The unit of frequency is called hertz: Hz = s<sup>–1</sup>.</li>
 </ul>
 <p>We will see in a future lesson that SHM occurs when the restoring force is <em>directly proportional</em> to the object’s distance from equilibrium.</p>
@@ -48,8 +48,8 @@ body.Present div[data-yt] iframe {
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice<span data-print="Practice"></span></h3><div class="Collapse">
 <div id="Practice">
 <ol>
     <li>A simple pendulum is constructed by hanging a mass from a string and attaching the other end of the string to a fixed location. If we can neglect air resistance, the motion of the mass will be determined by the gravity and tension forces.
@@ -114,8 +114,8 @@ body.Present div[data-yt] iframe {
 <!-- </ol>
 </div></div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li><ol type="a">
         <li>Define <em class="Defn">equilibrium</em>.</li>
@@ -145,5 +145,16 @@ loadFeed.toggle = () => {
 
 loadFeed.data = {up: "p20/home", prev: "p20/circ/rev", next: "p20/shm/shm",
 }
+
+</script>
+<script type="text/javascript">
+
+page({svg2: [
+    ["#10", "p20/shm/img/eqm", "eqm"],
+    ["#33", "p20/shm/img/shm", "x_t"],
+    ["#60", "p20/shm/img/eqm", "pend"],
+    ["#66", "p20/shm/img/eqm", "pend", "8"],
+    ["#74", "p20/shm/img/eqm", "mass"],
+]});
 
 </script>

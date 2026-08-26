@@ -1,12 +1,6 @@
-<section class="Post" data-icon="video">
-    <h2 class="Collapse">Retrograde Motion of Mars</h2>
-    <div class="Collapse" data-yt="1E3vlf-Esqk"></div>
-</section>
+<section class="Post" data-action="slides">
 
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
-
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Planetary Motion (Kepler’s Laws)</h1>
 </section>
 
@@ -17,6 +11,9 @@
     <li>This belief was based on the observation that there is no sensation of motion while at rest on Earth, and also on theological beliefs.</li>
     <li>Models with the Earth at the centre are called <em class="Defn">geocentric</em>.</li>
     <li>One of the major problems with the geocentric model is that it does not adequately explain the observed <em class="Defn">retrograde motion</em> of planets like Mars.</li>
+</ul>
+<div data-yt="1E3vlf-Esqk"></div>
+<ul>
     <li>When seen in Earth’s sky, every few years Mars seems to stop in its orbit, reverse direction for a few months, and then return to its original path.</li>
 </ul>
 <p>Copernicus constructed a new model with the Sun at the centre of the solar system, with Earth and the other planets orbiting around the Sun in perfect circles.</p>
@@ -29,7 +26,7 @@
 <section class="Slide"><h3>Kepler</h3>
 <p>Johannes Kepler used precise telescope observations (made by Tycho Brahe) to conclude that the heliocentric model was generally correct, but that the orbits of the planets were not perfect circles.</p>
 <p><b data-cue="none">Kepler’s 1<sup>st</sup> Law</b>: Planets orbit the Sun along ellipse-shaped trajectories with the Sun located at one of the focus points.</p>
-<p data-cue="prev" class="Center"><svg class="s20" data-svg2="p20/circ/img/kep.js#orbit"></svg></p>
+<p data-cue="prev" class="Center"><svg class="s20" id="Orbit"></svg></p>
 <p class="Center NoPresent">F = Focus; C = Geometric Centre<br/>P = Perihelion; A = Aphelion</p>
 <ul>
     <li>An ellipse is a “stretched” circle.</li>
@@ -69,7 +66,7 @@
 <section class="Slide"><h3 class="Blue">Example 1</h3>
     <p data-cue="none" class="Blue">A moon has an orbital radius of 8.00 × 10<sup>8</sup> metres and an orbital period of 12.0 days around some planet. At what radius should a satellite orbit so that its period would be 6.00 hours</p>
     <p class="TeX">\left(\frac{T_2}{T_1}\right)^2 = \left(\frac{r_2}{r_1}\right)^3</p>
-    <p>Take the cube root of both sides:</p>
+    <p>Take the cube root of both sides (i.e. divide both exponents by 3):</p>
     <p class="TeX">\left(\frac{T_2}{T_1}\right)^{2/3} = \frac{r_2}{r_1}</p>
     <p>Multiply by <span class="TeX">r_1</span>:</p>
     <p class="TeX">\left(\frac{T_2}{T_1}\right)^{2/3} r_1 = r_2</p>
@@ -77,11 +74,19 @@
     <p class="TeX">T_2 = \rm \frac{6.00\ {\bcancel h}}{24.0\ {\bcancel h}/d} = 0.250\ d</p>
     <p class="TeX">r_2 = \rm \left(\frac{0.250\ {\bcancel d}}{12.0\ {\bcancel d}}\right)^{2/3} 8.00\times 10^8\ m = 6.06 \times 10^7\ m</p>
 </section>    
+</section>
 
-</div></section>
+<section class="Post Center" data-title="Heliocentric Model" data-action="anim">
+<p><svg id="Helio" class="w30 s16"></svg></p>
+<p data-cue="none"><input type="range" id="AnimSpeed" value="0.1" min="0.005" max="0.8" step="0.005" /></p>
+<p data-cue="none">
+    <span class="NoWrap"><input type="checkbox" id="Retrograde" /> <label for="Retrograde">Earth → Mars</label></span>
+    <span class="NoWrap"><input type="checkbox" id="Zodiac" disabled="disabled" /> <label for="Zodiac">Constellations</label></span>
+</p>
+</section>
 
-<section class="Post" data-show="1" data-answers="9999" data-icon="correct">
-<h2 class="Collapse">Data Analysis</h2><div class="Collapse">
+<section class="Post" data-show="9999" data-answers="1" data-action="graph">
+<h3>Data Analysis</h3>
 <ol><li>The data table below, from <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/" target="NASA">NASA</a>, shows the orbital radius and period of the six innermost planets. The radius of Earth’s orbit is defined as one <em class=Defn">astronomical unit</em> (au) and the orbits of the other planets are given in au as well.
 
 <table class="Three Center TD6 Top Bottom">
@@ -103,38 +108,42 @@
     <li>Square both sides of your equation to make all exponents into whole numbers.</li>
 </ol>
 </li></ol>
-</div></section>
+</section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3>
 <ol>
-    <li>An unidentified object, possibly a comet or dwarf planet, orbits our Sun with a mean orbital radius of 8.32 × 10<sup>12</sup> m. Use Kepler’s 3<sup>rd</sup> Law to calculate the object’s orbital period. [Hint: Express the mean orbital radius in au first.]</li>
+    <li>An unidentified object, possibly a comet or dwarf planet, orbits our Sun with a mean orbital radius of 8.32 × 10<sup>12</sup> m. Use Kepler’s 3<sup>rd</sup> Law to calculate the object’s orbital period. [Hint: Express the mean orbital radius in au first.]
     <div class="Answer">
         <p class="TeX">r = \rm \frac{8.32\times 10^{12}\ m}{1.496\times 10^{11}\ m/au} = 55.6\ au</p>
         <p class="TeX">T = \sqrt{kr^3} = \rm \sqrt{1.00\ \frac{yr^2}{au^3}\cdot (55.6\ au)^3} = 415\ yr</p>
     </div>   
+    </li>
 
     <li>Scientists planning to launch a research satellite to study the Sun want the satellite to orbit the Sun with a period of 3.00 years.
     <ol type="a">
-        <li>At what mean orbital radius does the satellite need to orbit the Sun? Answer in astronomical units and in metres.</li>
+        <li>At what mean orbital radius does the satellite need to orbit the Sun? Answer in astronomical units and in metres.
         <div class="Answer">
             <p class="TeX">T^2 = kr^3</p>
             <p class="TeX">\frac{T^2}{k} = r^3</p>
             <p class="TeX">r = \left(\frac{T^2}{k}\right)^{1/3}</p>
             <p class="TeX">r = \rm \left(\frac{(3.00\ yr)^2}{1.00\ yr^2/au^3}\right)^{1/3} = 2.08\ au = 3.12\times 10^{11}\ m</p>
         </div>
+        </li>
     
-        <li>How many times larger than Earth’s orbital radius is this? Explain why the orbital radius is not three times bigger than Earth’s even though the orbital period is exactly three times that of Earth.</li>
+        <li>How many times larger than Earth’s orbital radius is this? Explain why the orbital radius is not three times bigger than Earth’s even though the orbital period is exactly three times that of Earth.
         <p class="Answer">The satellite orbits at 2.08 times the orbital radius of Earth (i.e. 2.08 au) even though the period is three times larger than Earth’s. This is because Kepler’s 3rd Law is non-linear; the orbital period and orbital radius have different exponents in the equation.</p>
+        </li>
     </ol></li>
 
     <li>An interstellar spacecraft discovers a planet orbiting a nearby star with an orbital radius of 7.21 × 10<sup>11</sup> m and a period of 206 days.
     <ol type="a">
-        <li>What is the “Kepler coefficient” (<span class="TeX">k</span>) for this star?</li>
+        <li>What is the “Kepler coefficient” (<span class="TeX">k</span>) for this star?
         <div class="Answer">
             <p class="TeX">T^2 = kr^3</p>
             <p class="TeX">k = \frac{T^2}{r^3} = \rm \frac{(206\ d)^2}{(7.21\times 10^{11}\ m)^3} = 1.13\times 10^{-31}\ d^2/m^3</p>
         </div>
+        </li>
 
         <li>If the spacecraft wants to orbit with a period of 21.0 days, what orbital radius should it enter?</li>
         <div class="Answer">
@@ -180,12 +189,7 @@
             <p class="TeX">r_2 = \rm 1.82\times 10^6\ m \left(\frac{24.0\ h}{1.93\ h}\right)^{2/3} = 9.77\times 10^6\ m</p>
         </div>
     </ol></li>
-<!-- </ol>
-</div></div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
-<ol> -->
     <li>Explain the difference between geocentric and heliocentric models of the solar system, and why Copernicus believed the heliocentric model is correct.</li>
     <p class="Answer">Geocentric models have a stationary Earth at the centre. Heliocentric models have the Sun at the centre with Earth orbiting like the other planets do. The retrogradem otion of Mars, when observed from Earth, is one of the main reasons Copernicus favoured a heliocentric model.</p>
 
@@ -243,20 +247,50 @@
 </ol>
 </section>
 
-<!-- <section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Links &amp; Handouts</h2><div class="Collapse">
-    <p class="Var">handouts</p>
-    <p class="BtnGrid">
-        <button data-icon="gdrv" data-gdrv="1YEDIoFTUR7ok2rVPBobgvs7EvhQqQoph">Data Analysis</button>
-        <button data-icon="earth.svg" data-feed="p20/circ/helio">Heliocentric Model</button>
-        <button data-icon="https://d3ufh70wg9uzo4.cloudfront.net/favicon.ico" data-open="https://stellarium-web.org/">Stellarium</button>
-        <button data-icon="gdrv" data-gdrv="1RKU3L4bG_5mQrDuAhXK2uv0DGSttWO8u">Assignment</button>
-    </p>
-</div></section> -->
-
 <script type="text/javascript">
 
-loadFeed.data = {up: "p20/home", prev: "p20/circ/appWt", next: "p20/circ/orbit",
-}
+page({title: "Planetary Motion (Kepler’s Laws)",
+    svg2: [
+        ["#Helio", "p20/circ/img/kep", "helio"],
+        ["#Orbit", "p20/circ/img/kep", "orbit"],
+    ],
+});
+
+page({zodiac: () => {
+    let checkr = $("#Retrograde")[0].checked;
+    let checkz = $("#Zodiac")[0].checked;
+    let z = $("#Helio g.Zodiac");
+    let vis = z.is(":visible");
+    if (!vis && checkr && checkz) z.fadeIn();
+    else if (vis && !(checkr && checkz)) z.fadeOut();
+}});
+
+page.run(() => {
+    console.log("Hiding...");
+    let svg = $("#Helio")[0].svg2.pause();
+
+    svg.$.find(".Zodiac, .Arrow").hide();
+    $("#AnimSpeed").on("change", (ev) => {
+        let e = $(ev.currentTarget);
+        let t = svg.timeFactor = parseFloat(e.val());
+        e.attr({title: `1 second : ${t.toFixed(4)} years`});
+    }).trigger("change");
+    $("#Zodiac").on("change", page.get("zodiac"));
+    $("#Retrograde").on("change", () => {
+        let e = $("#Helio g.Arrow");
+        let z = $("#Zodiac");
+        let vis = e.is(":visible");
+        let check = $("#Retrograde")[0].checked;
+        if (vis && !check) {
+            e.fadeOut();
+            z[0].disabled = true;
+        }
+        else if (check && !vis) {
+            e.fadeIn();
+            z[0].disabled = false;
+        }
+        page.get("zodiac")();
+    }).trigger("change");
+});
 
 </script>

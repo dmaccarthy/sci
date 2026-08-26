@@ -1,10 +1,10 @@
-<section class="Post" data-icon="video">
-    <h2 class="Collapse">Visualizing Gravity</h2>
+<section class="Post" data-action="video">
+    <h3>Visualizing Gravity</h3>
     <div class="Collapse" data-yt="MTY1Kje0yLg"></div>
 </section>
 
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Gravitational Fields</h1>
@@ -63,8 +63,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
 <li><ol type="a">
     <li>Sketch a diagram of the gravitational field surrounding a planet of mass 8.25 × 10<sup>24</sup> kg.</li>
@@ -121,8 +121,8 @@
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li><ol type="a">
         <li>Define <em class="Defn">equipotential</em> and explain how an illustration of equipotentials can help us visualize gravity near a large mass.</li>
@@ -151,5 +151,15 @@
 loadFeed.data = {
     up: "p20/home", prev: "p20/grav/cav", next: "p20/grav/rev",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#88", "p20/grav/img/field", "binstar"],
+    ],
+});
 
 </script>

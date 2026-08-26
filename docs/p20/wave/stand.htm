@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 <style type="text/css">
 
 #Harmonic, #OddHarmonic {
@@ -129,8 +129,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
     <li><ol type="a">
         <li>An open air column has a third harmonic of 900 Hz. What is the length of the air column? </li>
@@ -213,8 +213,8 @@ The air column must be closed (<span class="TeX">n</span> = 1, 3, 5...) so that 
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li>Describe what happens to a wave when it reaches the end of the medium through which it is moving.</li>
 
@@ -231,8 +231,8 @@ The air column must be closed (<span class="TeX">n</span> = 1, 3, 5...) so that 
 </ol>
 </div></section>
 
-<section class="Post" data-icon="video" data-show="1">
-    <h2 class="Collapse">Lab Video</h2><div class="Collapse">
+<section class="Post" data-action="video" data-show="1">
+    <h3>Lab Video</h3><div class="Collapse">
         <p class="Collapse" data-yt="VRPE_GQq2vE" data-opt="{'width': 640, 'aspect': '640/368', 'border': '1'}"></p>
 </div></section>
 
@@ -262,5 +262,17 @@ loadFeed.init = () => {
 
 loadFeed.data = {up: "p20/home", prev: "p20/wave/beat", next: "p20/wave/rev",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#44", "p20/wave/img/stand", "stand"],
+        ["#56", "p20/wave/img/stand", "stand", "2"],
+        ["#97", "p20/wave/img/stand", "stand", "[1, 1]"],
+    ],
+});
 
 </script>

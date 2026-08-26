@@ -1,33 +1,26 @@
-<section class="Post NoPrintIcon" data-feed="p30/units/A" data-title="Unit A: Momentum & Impulse" data-icon="train.svg"></section>
-<section class="Post NoPrintIcon" data-feed="p30/units/B" data-title="Unit B: Electric & Magnetic Fields" data-icon="magnet.svg"></section>
-<section class="Post NoPrintIcon" data-feed="p30/units/C" data-title="Unit C: Electromagnetic Radiation" data-icon="xray.svg"></section>
-<section class="Post NoPrintIcon" data-feed="p30/units/D" data-title="Unit D: Physics of Matter" data-icon="atom.svg"></section>
+<section class="Post" data-action="slides">
+<h2 class="Collapse">Hi</h2>
+<p>Hello.</p>
+<p class="TeX">\va{a} = \frac{\va{v}_f - \va{v}_i}{\Delta t}</p>
+</section>
 
-<section class="Post" data-icon="link.svg">
-    <h2 class="Collapse NoPrintIcon">Course Links</h2><div class="Collapse">
-    <p class="BtnGrid">
-        <button data-icon="pdf.svg" data-open="https://www.alberta.ca/system/files/custom_downloaded_images/edc-physics30-data-booklet.pdf">Data Booklet</button>
-        <button data-icon="gdrv" data-gdrv="1tiA8XrfPUxsZ2d-HDPP-8KMeRMngHalE">Graph Paper</button>
-        <button data-icon="bs" data-open="https://eips.brightspace.com/d2l/home/152914">Brightspace</button>
-        <button data-icon="ps" data-open="https://powerschool.eips.ca/public/">PowerSchool</button>
-        <button data-icon="sal" data-open="https://salcomp.ca">Salisbury Composite</button>
-        <button data-icon="gdoc" data-gdoc="1PktyeLmX0ZHEexPV2fYMQ_wZp4Tx9TTqd6DEexQYJYI">Course Outline</button>
-        <button data-icon="link.svg" data-open="https://www.alberta.ca/writing-diploma-exams">Diploma Exam Info</button>
-        <button data-icon="link.svg" data-open="https://curriculum.learnalberta.ca/curriculum/en/pos/SCIPHY_20_30">Program of Studies</button>
-        <button data-icon="link.svg" data-open="https://www.physicsclassroom.com/calcpad">Physics Classroom</button>
-    </p>
-</div></section>
+<section class="Post" data-action="correct">
+<h2 class="Collapse">Bye</h2>
+<p>Goodbye.</p>
+<p class="TeX">C=2\pi r</p>
+</section>
 
-<script type="text/javascript" data-initx="today">
+<section class="Post" data-action="cal"></section>
 
-loadFeed.today = () => {
-    if (qs_args("today")) {
-        history.replaceState({}, "", feedURL(loadFeed.current));
-        loadFeed("_today_");
-    }
-}
+<script type="text/javascript">
 
-loadFeed.data = {title: "Physics 30", today: true, up: "home"
-}
+page({title: "Physics 30", svg2: [
+]});
+
+// page.run(() => alert("Hello, world!"));
+
+page.cal("p30", [
+    {"t": "Quiz: ", "s": "2026.4.21", "class": "Bold"},
+]);
 
 </script>

@@ -1,4 +1,4 @@
-SVG2.cache("p20/kin/img/graph.js", {
+scripts.cache["p20/kin/img/graph"] = {
 
 bike: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 4, -6, 8], grid: [0.5, 1], margin: [54, 10, 10, 10]});
@@ -103,4 +103,4 @@ skydive: (sel) => { // Motion of an skydiver v-t graph
     svg.$.on("click", () => g.fadeToggle());
 },
 
-});
+};

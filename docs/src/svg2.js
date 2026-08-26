@@ -905,32 +905,32 @@ error_bar_x(x0, x1, y, dy) {return this.error_bar_y(y, x0, x1, dy, 1)}
 
 /*** Diagrams  ***/
 
-edot(n, r) {
-/* Electron dot diagram */
-    if (!r) r = 1;
-    let d = 0.25 * r;
-    let pts = [[-r, d], [-r, -d]];
-    if (n == -1) n = 2;
-    else {
-        pts = [[-r, 0], [0, r], [r, 0], [0, -r], [-r, 0], [0, r], [r, 0], [0, -r]];
-        if (n > 4) {
-            for (let i=0;i<n-4;i++) {
-                pts[i][1 - i % 2] = d;
-                pts[i + 4][1 - i % 2] = -d;
-            }
-        }
-    }
-    let g = this.group({stroke: "none"});
-    for (let i=0;i<n;i++) g.circle(0.125 * r, pts[i]);
-    return g;
-}
+// edot(n, r) {
+// /* Electron dot diagram */
+//     if (!r) r = 1;
+//     let d = 0.25 * r;
+//     let pts = [[-r, d], [-r, -d]];
+//     if (n == -1) n = 2;
+//     else {
+//         pts = [[-r, 0], [0, r], [r, 0], [0, -r], [-r, 0], [0, r], [r, 0], [0, -r]];
+//         if (n > 4) {
+//             for (let i=0;i<n-4;i++) {
+//                 pts[i][1 - i % 2] = d;
+//                 pts[i + 4][1 - i % 2] = -d;
+//             }
+//         }
+//     }
+//     let g = this.group({stroke: "none"});
+//     for (let i=0;i<n;i++) g.circle(0.125 * r, pts[i]);
+//     return g;
+// }
 
 tip_to_tail(vecs, options) {
 /* Draw a 2D "tip-to-tail" vector diagram */
     if (options == null) options = {};
     let g = this.group(".TipToTail2D");
     let pt = new RArray(0, 0);
-    let opt = Object.assign({tail: "7"}, options);
+    let opt = {tail: "7", ...options};
     for (let v of vecs) {
         let pt0 = pt;
         let tmp = pt0.plus([v[0], 0]);
@@ -1575,6 +1575,12 @@ pts_str(pts) {
 /*** Styling ***/
 
 static style(e, ...rules) {
+    if (e instanceof Array) {
+        for (let ei of e) SVG2.style(ei, ...rules);
+        return e;
+    }
+    if (e instanceof SVG2group) e = e.$;
+    else if (!(e instanceof $)) e = $(e);
     let unit = (s) => isNaN(s) ? s : `${s}px`;
     for (let r of rules) {
         let s = ["string", "number"].indexOf(typeof(r));
@@ -1702,6 +1708,7 @@ click_toggle(n, click, init, solo, ...a) {
 
 static vec_diag(sel, vecs, opt) {
 /* Draw a vector diagram in an <svg> tag */
+    console.warn("SVG2.vec_diag is deprecated!");
     let svg = new SVG2(sel, opt);
     if (!opt) opt = {};
     let g = svg.tip_to_tail(vecs);
@@ -1734,29 +1741,6 @@ vec_cycle(g, res) {
     );
     else this.$.on("click", () => g.find(".Component").fadeToggle());
     return this;
-}
-
-static vec_diag_table(sym, vecs, prec, scale) {
-/* Compose a table showing vector addition */
-    let tbl = $("<table>").addClass("VectorTable");
-    let thead = $("<thead>").appendTo(tbl);
-    let tr = $("<tr>").appendTo(thead);
-    let v = sym.charAt(0) == "Δ" ? `\\Delta\\va{${sym.substring(1)}}` : `\\va{${sym}}`;
-    for (let x of [`|${v}|`, `\\theta`, `${v}_x`, `${v}_y`])
-        tr.append($("<th>").addClass("TeX").html(x));
-    tr = $("<tr>").appendTo(thead);
-    for (let x of [`\\sqrt{(${v}_x)^2 + (${v}_y)^2}`, `\\tan^{-1}\\frac{${v}_y}{${v}_x}`, `|${v}| \\cos\\theta`, `|${v}| \\sin\\theta`])
-        tr.append($("<th>").html($("<p>").html(x).addClass("TeX")));
-    let tbody = $("<tbody>").appendTo(tbl);
-    let pt = new RArray(0, 0);
-    for (let v of vecs) {
-        if (scale) v = new RArray(...v).times(scale);
-        pt = pt.plus(v);
-        tbody.append(new RArray(...v).tr(prec ? prec : 4));
-    }
-    tbody.append(new RArray(...pt).tr(prec ? prec : 4).addClass("Resultant"));
-    renderTeX(thead.find(".TeX"));
-    return tbl;
 }
 
 static ebg(sel, Emax, step, data, options) {

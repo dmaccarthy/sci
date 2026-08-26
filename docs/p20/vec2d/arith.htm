@@ -1,7 +1,6 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Vector Arithmetic</h1>
 </section>
 
@@ -9,7 +8,7 @@
 <p>A <em class="Defn">vector diagram</em> is a <u>tip-to-tail</u> illustration of two or more vectors being added.</p>
 <p class="Blue"><b>Example 1</b></p>
 <p data-cue="prev" class="Blue">Illustrate the displacement of an object that moves 50 m [+60°] and then 40 m [+340°].</p>
-<p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#Ex1" class="s18"></svg></p>
+<p class="Center"><svg id="Ex1" class="s18"></svg></p>
 <ul>
     <li>We can take the original starting point as the origin.</li>
     <li>Note that the second part of the displacement begins from the point where the first displacement ends.</li>
@@ -25,7 +24,7 @@
 
 <section class="Slide"><h3>Component Method</h3>
 <p>A more accurate and reliable method of vector addition is the <em class="Defn">component method</em>.</p>
-<p data-cue="prev" class="Center" id="Ex1Dup"><svg data-svg2="p20/vec2d/img/arith.js#Ex1" class="s18"></svg></p>
+<p data-cue="prev" class="Center"><svg id="Ex1Dup" class="s18"></svg></p>
 <ul><li>Convert each vector to Cartesian form:</li></ul>
 <p class="TeX">\Delta{\va{d}}_{1x} = 50\ {\rm m}\cdot\cos(60^\circ) = +25\ {\rm m}</p>
 <p class="TeX">\Delta{\va{d}}_{1y} = 50\ {\rm m}\cdot\sin(60^\circ) = +43\ {\rm m}</p>
@@ -51,7 +50,7 @@
 
 <section class="Slide"><h3>Trigonometry Method</h3>
 <p>You could also find the resultant vector by solving the triangle using trigonometry.</p>
-<p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#trig" class="s20"></svg></p>
+<p class="Center"><svg id="TrigMeth" class="s20"></svg></p>
 <ul>
     <li>Because the triangle does not contain a right angle, you must use the Law of Cosines and Law of Sines.</li>
     <li>This method is never required; you can always use the component method.</li>
@@ -73,7 +72,7 @@
 
 <section class="Slide"><h3 class="Blue">Example 2</h3>
 <p data-cue="none" class="Blue">Calculate the net force acting on a mass that experiences a gravitational force of 98.1 N, a normal force of 96.6 N [+80.0°] and a friction force of 8.00 N [+170°].</p>
-<p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#Ex2" class="s10"></svg></p>
+<p class="Center"><svg id="Ex2" class="s10"></svg></p>
 <table class="TD6 Center Five Bottom">
     <tr class="NoBold"><th class="Bold">Force</th><th><span class="TeX">|\va{F}|</span> / N</th><th><span class="TeX">\theta</span></th><th><span class="TeX">\va{F}_x = \\ |\va{F}|\cos\theta</span></th><th><span class="TeX">\va{F}_y = \\ |\va{F}|\sin\theta</span></th></tr>
     <tr><td>Gravity</td><td>98.1</td><td>+270°</td><td>0</td><td>–98.1</td></tr>
@@ -89,7 +88,7 @@
 <p data-cue="prev" class="TeX">\va{a} = \frac{\Delta\va{v}}{\Delta t}</p>
 <p data-cue="prev">where</p>
 <p data-cue="prev" class="TeX">\Delta\va{v} = \va{v}_f - \va{v}_i</p>
-<p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#Ex3" class="s14"></svg></p>
+<p class="Center"><svg id="Ex3" class="s14"></svg></p>
 <table class="TD6 Center Five Bottom">
     <tr class="NoBold"><th class="Bold">Velocity</th><th><span class="TeX">|\va{v}|</span> / (m/s)</th><th><span class="TeX">\theta</span></th><th><span class="TeX">\va{v}_x = \\ |\va{v}|\cos\theta</span></th><th><span class="TeX">\va{v}_y = \\ |\va{v}|\sin\theta</span></th></tr>
     <tr><td class="TeX">\va{v}_f</td><td>7.25</td><td>+75.0°</td><td class="Reveal"><span>+1.88</span></td><td class="Reveal"><span>+7.00</span></td></tr>
@@ -100,10 +99,10 @@
 <p class="TeX">\va{a} = \frac{\Delta\va{v}}{\Delta t} = \rm \frac{5.31\ m/s\ [+15.0^\circ]}{20.0\ s} = 0.256\ m/s^2 \ [+15.0^\circ]</p>
 </section>
 
-</div></section>
+</section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3>
 <ol>
     <li>Three students (Kelly, Chris, and Sam) are pulling on a backpack, each trying to get the backpack away from the others. Kelly exerts a force of 82.0 N [+25.0°] on the backpack; Chris exerts a force of (–57.4, +48.2) N; Sam exerts a force of 86.0 N [–63.5°].<ol type="a">
         <li>Express Kelly and Sam’s force in Cartesian form.</li>
@@ -111,27 +110,27 @@
 <p>For Kelly...</p>
 <p class="TeX">\begin{align}
 \vec{\bf F}_x &= |\vec{\bf F}|\cos\theta
-\\ &= \mathrm{82.0\ N\cdot \cos(+25.0^\circ)}
-\\ &= \mathrm{+74.3\ N}
+\\ &= \rm{82.0\ N\cdot \cos(+25.0^\circ)}
+\\ &= \rm{+74.3\ N}
 \end{align}</p>
 
 <p class="TeX">\begin{align}
 \vec{\bf F}_y &= |\vec{\bf F}|\sin\theta
-\\ &= \mathrm{82.0\ N\cdot \sin(+25.0^\circ)}
-\\ &= \mathrm{+34.7\ N}
+\\ &= \rm{82.0\ N\cdot \sin(+25.0^\circ)}
+\\ &= \rm{+34.7\ N}
 \end{align}</p>
 
 <p>For Sam...</p>
 <p class="TeX">\begin{align}
 \vec{\bf F}_x &= |\vec{\bf F}|\cos\theta
-\\ &= \mathrm{86.0\ N\cdot \cos(-63.5^\circ)}
-\\ &= \mathrm{+38.4\ N}
+\\ &= \rm{86.0\ N\cdot \cos(-63.5^\circ)}
+\\ &= \rm{+38.4\ N}
 \end{align}</p>
 
 <p class="TeX">\begin{align}
 \vec{\bf F}_y &= |\vec{\bf F}|\sin\theta
-\\ &= \mathrm{86.0\ N\cdot \sin(-63.5^\circ)}
-\\ &= \mathrm{-77.0\ N}
+\\ &= \rm{86.0\ N\cdot \sin(-63.5^\circ)}
+\\ &= \rm{-77.0\ N}
 \end{align}</p>
 </div>
         <li>Calculate the net force on the backpack by adding the three forces to each other</li>
@@ -159,22 +158,22 @@
     <div class="Answer">
         <p><a target="Q4" href="./?{%22v%22:%22@(5,111.7156),[1.85,0]%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
         <p>Since we know the magnitudes of the current and paddling velocity, we can calculate the magnitude of the resultant velocity using Pythagoras:</p>
-        <p class="TeX">\vec{\bf v}_{net} = \mathrm{\sqrt{(5.00\ m/s)^2 - (1.85\ m/s)^2} = 4.65\ m/s}</p>
+        <p class="TeX">\vec{\bf v}_{net} = \rm{\sqrt{(5.00\ m/s)^2 - (1.85\ m/s)^2} = 4.65\ m/s}</p>
         <p>We can now calculate the paddling velocty in Cartesian form:</p>
         <p class="TeX">\begin{align}
         \vec{\bf v}_{paddle} &= \vec{\bf v}_{net} - \vec{\bf v}_{current}
-        \\ &= \mathrm{(0.00, +4.65)\ m/s - (1.85, 0.00)\ m/s}
-        \\ &= \mathrm{(-1.85, +4.65)\ m/s}
+        \\ &= \rm{(0.00, +4.65)\ m/s - (1.85, 0.00)\ m/s}
+        \\ &= \rm{(-1.85, +4.65)\ m/s}
         \end{align}</p>
 
         <p>The direction of the paddling velocity is:</p>
-        <p class="TeX">\theta = \mathrm{\tan^{-1}\left(\frac{+4.65}{-1.85}\right) + 180^\circ = 112^\circ}</p>
+        <p class="TeX">\theta = \rm{\tan^{-1}\left(\frac{+4.65}{-1.85}\right) + 180^\circ = 112^\circ}</p>
         <p>(i.e. 22° upstream from straight across)</p>
     </div>
 
     <li>
         <p>A spacecraft (‘S’) moves between a planet (‘P’) and its moon (‘M’) as illustrated below.</p>
-        <p class="Center"><svg data-svg2="p20/vec2d/img/arith.js#ship" class="s16"></svg></p>
+        <p class="Center"><svg id="Ship" class="s16"></svg></p>
         <p>The observed acceleration of the spacecraft due to the combined gravity of the planet and moon has a direction of +270º. Mission Control calculates that the gravity due to the planet only is 0.462 m/s<sup>2</sup> [+230º]. The moon’s direction relative to the spacecraft is +300º, however the moon’s mass is unknown so Mission Control cannot calculate its gravitational field strength.</p>
         <ol type="a">
         <li>Sketch and label a vector diagram (“tip-to-tail”) of the two gravitational fields and the resultant (net) gravitational field.</li>
@@ -190,8 +189,8 @@
         </table>
         <div class="Answer">
         <p>Convert the planet’s gravity to Cartesian form by multiplying 0.462 m/s<sup>2</sup> by the cosine and the sine of 230°:</p>
-        <p class="TeX">\vec{\bf g}_x = \mathrm{0.462\ m/s^2\cdot\cos(230^\circ) = -0.297\ m/s^2}</p>
-        <p class="TeX">\vec{\bf g}_y = \mathrm{0.462\ m/s^2\cdot\sin(230^\circ) = -0.354\ m/s^2}</p>
+        <p class="TeX">\vec{\bf g}_x = \rm{0.462\ m/s^2\cdot\cos(230^\circ) = -0.297\ m/s^2}</p>
+        <p class="TeX">\vec{\bf g}_y = \rm{0.462\ m/s^2\cdot\sin(230^\circ) = -0.354\ m/s^2}</p>
         <p>We know that the net gravity has an <i>x</i>-component of exactly zero because the direction is 270°, so the <i>x</i>-component for the moon must be the exact opposite of the planet’s...</i></p>
         <table class="Auto Center TD Black">
             <tr><th>Object</th><th><span class="TeX">|\vec{\bf g}|</span></th><th><span class="TeX">\theta</span></th><th><span class="TeX">\vec{\bf g}_x</span></th><th><span class="TeX">\vec{\bf g}_y</span></th></tr>
@@ -201,10 +200,10 @@
         </table>
         <p>Next, solve for the magnitude of the moon’s gravity and then its <i>y</i>-component:</p>
         <p class="TeX">\vec{\bf g}_x = |\vec{\bf g}|\cos\theta</p>
-        <p class="TeX">|\vec{\bf g}| = \frac{\vec{\bf g}_x}{\cos\theta} = \mathrm{\frac{+0.297\ m/s^2}{\cos(300^\circ)} = 0.594\ m/s^2}</p>
-        <p class="TeX">\vec{\bf g}_y = |\vec{\bf g}|\sin\theta = \mathrm{0.594\ m/s^2\cdot\sin(300^\circ) = -0.514\ m/s^2}</p>
+        <p class="TeX">|\vec{\bf g}| = \frac{\vec{\bf g}_x}{\cos\theta} = \rm{\frac{+0.297\ m/s^2}{\cos(300^\circ)} = 0.594\ m/s^2}</p>
+        <p class="TeX">\vec{\bf g}_y = |\vec{\bf g}|\sin\theta = \rm{0.594\ m/s^2\cdot\sin(300^\circ) = -0.514\ m/s^2}</p>
         <p>Finally, add the <i>y</i>-components to determine the resultant gravity:</p>
-        <p class="TeX">\Sigma\vec{\bf g}_y = \mathrm{-0.354\ m/s^2 + (-0.514\ m/s^2) = -0.868\ m/s^2}</p>
+        <p class="TeX">\Sigma\vec{\bf g}_y = \rm{-0.354\ m/s^2 + (-0.514\ m/s^2) = -0.868\ m/s^2}</p>
         <table class="Auto Center TD Black">
             <tr><th>Object</th><th><span class="TeX">|\vec{\bf g}|</span></th><th><span class="TeX">\theta</span></th><th><span class="TeX">\vec{\bf g}_x</span></th><th><span class="TeX">\vec{\bf g}_y</span></th></tr>
             <tr><td>Planet</td><td>0.462</td><td>230°</td><td class="Red">-0.297</td><td class="Red">-0.354</td></tr>
@@ -214,10 +213,10 @@
         </div>
     </ol></li>
 </ol>
-</div></section>
+<!-- </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct"> -->
+<h3>Review</h3>
 <ol>
     <li>Which form of 2D vector (polar or Cartesian) is more convenient when adding or subtracting vectors?</li>
     <p class="Answer">Cartesian</p>
@@ -237,18 +236,24 @@
     <li>Explain how to subtract vectors.</li>
     <p class="Answer">To subtract a vector, add its negative! In Cartesian form, reverse the signs of both the <span class="TeX">x</span>- and <span class="TeX">y</span>-components. In polar form, add or subtract 180° from the direction.</p>
 </ol>
-</div></section>
+</section>
 
-<script type="text/javascript" data-init="init">
+<script type="text/javascript">
 
-loadFeed.init = () => {
-    $("td.Reveal").on("click", (ev) => {
-        $(ev.currentTarget).find("span").fadeToggle();
-    });
-    $("#Ex1Dup").addClass("Present").find("svg").trigger("click");
-}
+page({svg2: [
+    ["#Ex1", "p20/vec2d/img/arith", "Ex1"],
+    ["#Ex1Dup", "p20/vec2d/img/arith", "Ex1"],
+    ["#TrigMeth", "p20/vec2d/img/arith", "trig"],
+    ["#Ex2", "p20/vec2d/img/arith", "Ex2"],
+    ["#Ex3", "p20/vec2d/img/arith", "Ex3"],
+    ["#Ship", "p20/vec2d/img/arith", "ship"],
+],
+});
 
-loadFeed.data = {up: "p20/home", prev: "p20/vec2d/polar", next: "p20/vec2d/proj",
-}
+page.run(() => {
+    let e = $("#Ex1Dup");
+    e.parent().addClass("Present");
+    e.find("svg").trigger("click");
+});
 
 </script>

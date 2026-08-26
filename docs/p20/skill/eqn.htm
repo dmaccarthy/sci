@@ -1,7 +1,6 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Model Equations</h1>
 </section>
 
@@ -18,7 +17,7 @@
 
 <section class="Slide"><h3>Slope</h3>
 <p data-cue="none" class="Caption">Output of a 12-Volt Battery</p>
-<p data-cue="none" class="Center"><svg class="s20" data-svg2="p20/skill/img/eqn.js#scatter"></svg></p>
+<p data-cue="none" class="Center"><svg class="s20" id="Scatter"></svg></p>
 <div>
     <p>Slope can be calculated as “rise” divided by “run”:</p>
     <p data-cue="prev" class="TeX">k = \frac{y_2 - y_1}{x_2 - x_1}</p>
@@ -75,11 +74,10 @@
 <p class="TeX">I = \rm{\frac{{\color{red} 0.0\ V} - 11.4\ V}{-1.9\ V/A} = 6.0\ A}</p>
 <ul><li>A prediction <em>outside</em> the range of data is called <em class="Defn">extrapolation</em>.</li></ul>
 </section>
+</section>
 
-</div></section>
-
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3>
 <ol>
     <li>Science 10 students performed an experiment for their “Heat” chapter in which they measured the temperature (<span class="TeX">T</span>) of some water as they burned a marshmallow beneath it. They constructed a scatter plot for the temperature as a function of the time (<span class="TeX">t</span>) for which the water was heated. They noted that their best-fit line passed through the points <span class="NoWrap">(0.0 s, 18 °C)</span> and <span class="NoWrap">(20.0 s, 25 °C).</span>
     <ol type="a">
@@ -147,10 +145,10 @@
     </ol></li>
 
 </ol>
-</div></section>
+<!-- </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct"> -->
+<h3>Practice</h3>
 <ol>
 
     <li><p class="Bottom">Students recorded how the length of a spring changed as they stretched it by applying more force.</p>
@@ -238,11 +236,14 @@
     <li>Define <em class="Defn">interpolation</em> and <em class="Defn">extrapolation</em> and explain how a model equation makes this easier.</li>
     <p class="Answer">Interpolation is when you use the model equation to make predictions about data within the range of available data. Extrapolation is when your predictions extend beyond the range of available data. </p>
 </ol>
-</div></section>
+</section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "p20/home", prev: "p20/skill/si", next: "p20/skill/rev",
-}
+page({title: "Linear Relations", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        ["#Scatter", "p20/skill/img/eqn", "scatter"],
+    ],
+});
 
 </script>

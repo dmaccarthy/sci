@@ -1,7 +1,6 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Significant Digits &amp; Scientific Notation</h1>
 </section>
 
@@ -44,7 +43,6 @@
     </ul>
 </section>
 
-
 <section class="Slide"><h3 class="Blue">Example 2</h3>
     <p data-cue="none" class="Blue">Calculate the <em>change in</em> the temperature of a solution that is initially at 15.0 °C and is then heated to 17.2 °C.</p>
     <p class="TeX">\Delta T = T_f - T_i = \rm (17.2 - 15.0)\ ^\circ C = 2.2\ ^\circ C</p>
@@ -57,7 +55,7 @@
 
 <section class="Slide"><h3>Big Numbers</h3>
     <p data-cue="none">The radius of Earth’s orbit around the Sun is about:</p>
-    <p data-cue="none" class="Center"><svg class="s11" data-svg2="p20/skill/img/sciNot.js#au"></svg></p>
+    <p data-cue="none" class="Center"><svg class="s11" id="au"></svg></p>
     <ul class="NoTop NoBottom">
         <li>We can avoid writing the zeroes by using powers of 10.</li>
         <li>Each time we multiply (or divide) by 10, we move the decimal point in the number.</li>
@@ -76,7 +74,7 @@
 
 <section class="Slide"><h3>Small Numbers</h3>
     <p data-cue="none">The electric charge of an electron is:</p>
-    <p data-cue="none" class="Center"><svg class="s22" data-svg2="p20/skill/img/sciNot.js#qe"></svg></p>
+    <p data-cue="none" class="Center"><svg class="s22" id="qe"></svg></p>
     <ul class="NoTop">
         <li>Because the number is very small, we have to move the decimal point in the opposite direction.</li>
         <li>For small numbers, the power will have a <em>negative</em> exponent in scientific notation.</li>
@@ -103,8 +101,8 @@
 
 </section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3>
 <ol>
     <li>Convert the following measurements to scientific notation:<ol type="a">
         <li>299 800 000 m/s</li>
@@ -129,10 +127,10 @@
         <p class="Answer">7.02 × 10<sup>1</sup> km/h or 70.2 km/h</p>
     </ol></li>
 </ol>
-</div></section>
+</section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3>
 <ol>
 
 <li>Calculate the result of each expression and round each answer to the correct number of significant digits.<ol type="a">
@@ -226,18 +224,21 @@
 
 <li>Explain how to enter numbers in scientific notation on a graphing calculator, a spreadsheet, or similar computer program.</li>
 <p class="Answer">Many calculators and computer programs use the letter “E”, or a button labelled “EE” to abbreviate scientific notation. You can enter the number 5.0 × 10<sup>–4</sup> as <code>5.0E-4</code>.</p>
-</ol></div>
+</ol>
+</section>
 
-</div></section>
-
-<section class="Post" data-icon="video">
+<section class="Post" data-action="video">
     <h2 class="Collapse">Video</h2>
     <div class="Collapse" data-yt="trdbaV4TaAo"></div>
 </section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "p20/home", prev: "p20/skill/algebra", next: "p20/skill/si",
-}
+page({title: "Scientific Notation", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        ["#au", "p20/skill/img/sciNot", "au"],
+        ["#qe", "p20/skill/img/sciNot", "qe"]
+    ],
+});
 
 </script>

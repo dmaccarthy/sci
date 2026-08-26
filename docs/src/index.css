@@ -1,0 +1,340 @@
+:root {
+    --btn: 4em;
+    --grey0: #fafafa;
+    --grey1: #f4f4f4;
+    --grey2: #d0d0d0;
+    --lightblue: #f0f0f8;
+    --mediumblue: #60b5fe;
+    --blue: #0065fe;
+}
+
+body {
+    font-family: "Noto Sans", "Open Sans", Oxygen, sans-serif;
+    font-size: 14px;
+    margin: 10px;
+}
+
+body.Present {font-size: 225%}
+body:not(.Present) *:is(.Present, ._Present), .Hidden {display: none}
+body:is(.Present, .Slides) td.Reveal span {display: none}
+
+#Top {
+    width: calc(100% - 12px);
+    padding: 0.3em 0.3em 0 0.3em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid lightgrey;
+
+    p {margin: 0}
+    p.Icons {text-align: center}
+    p.Crumbs {margin-bottom: 0.2em}
+    p.Crumbs > a:last-child {font-weight: bold}
+
+button  {
+    color: var(--blue);
+    margin: 0.5em;
+    padding-bottom: 4px;
+    background-color: #fff0;
+    cursor: pointer;
+    border: none;
+    border-bottom: 3px solid #fff0;
+}
+
+button.Selected  {border-bottom: 3px solid var(--blue)}
+button:not(.Selected):hover  {border-bottom: 3px solid red}
+button > span {padding-top: 0.5em}
+button > * {vertical-align: middle}
+
+button > *:is(img, svg) {
+    width: 1.58762em;
+    height: 1.58762em;
+    padding: 0 0.5em;
+}
+
+}
+
+#MainTitle {
+    font-size: 200%;
+    text-align: center;
+    color: var(--blue);
+}
+
+button {
+    font-size: 90%;
+    background-color: #fff0;
+    border: none;
+    margin: 1em;
+}
+
+button > *:is(img, svg) {
+    width: var(--btn);
+    height: var(--btn);
+}
+
+p.BtnGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+}
+
+
+@media (min-width: 840px) {
+
+body {font-size: 16px}
+
+}
+
+body:not(.Present) {
+    main {max-width: 960px}
+}
+
+main {
+
+margin: auto;
+margin-bottom: 2em;
+
+p, li {margin: 0.75em 0}
+ul.Menu > li {margin: 0.25em 0}
+
+
+ol, ul {
+    margin-left: 1em;
+    padding-left: 0.6em;
+}
+
+ol[type='a'] {margin-left: 0.5em} 
+
+p.BtnGrid > button {
+    min-width: calc(var(--btn) + 3.5em);
+    min-height: calc(var(--btn) + 1em);
+}
+
+img[data-echo] {
+    vertical-align: middle;
+    width: 1.25em;
+    height: 1.25em;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+table:is(.Calendar, .Menu) {
+    min-width: 24em;
+    max-width: calc(100% - 4px);
+}
+
+table.Calendar {
+    tbody > tr:nth-child(odd) {background-color: var(--lightblue)}
+    td:nth-child(1) {text-align: center; min-width: 6em}
+    th {text-align: center; color: white; background-color: var(--blue)}
+}
+
+table.Menu {
+
+tr * {vertical-align: middle}
+tr:nth-child(odd) {background-color: var(--lightblue)}
+
+tr:hover {
+    background-color: var(--blue);
+    color: white;
+    cursor: pointer;
+}
+
+td {border: none}
+
+td:nth-child(1) {
+    width: 5em;
+    text-align: center;
+
+    img {
+        width: 2.75em;
+        height: 2.75em;
+        padding: 0.2em;
+    }
+}
+
+td:nth-child(2) {
+    padding: 0 1em 0 0.25em;
+    font-weight: bold;
+    font-size: 125%;
+    height: 2.5em;
+}
+
+color: var(--blue);
+
+}
+
+}
+
+td.Reveal span {color: red}
+
+.TeX, .TeX_Pending {visibility: hidden}
+[data-aspect], .Wide {max-width: 96%}
+.Center, *[data-latex]:not(span) {text-align: center}
+.Left {text-align: left}
+.Right {text-align: right}
+.Defn {text-decoration: underline}
+.Answer, .Red {color: red}
+.Comment {color: #999999}
+.DocString {color: green}
+.Grey {color: grey}
+.Black {color: black}
+.Ital {font-style: italic}
+.Bold {font-weight: bold}
+.NoBold {font-weight: normal}
+.NoWrap {white-space: nowrap}
+.Bottom {margin-bottom: 1em}
+.Top {margin-top: 1em}
+.NoBottom {margin-bottom: 0}
+.NoTop {margin-top: 0}
+.NoBorder, table.NoBorder *:is(td, th) {border: none}
+
+a, span:is([data-feed], [data-open], [data-gdrv]), .Blue, .Link, .BtnGrid:not(.NoLink) button, #Title {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+*:is(a, span:is([data-feed], [data-open], [data-gdrv]), .Link, .BtnGrid:not(.NoLink) > button):hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+p.EchoControl {
+    width: calc(100% - 2em);
+    padding: 0.35em 0.5em;
+    margin: 1em auto 0 auto;
+    background-color: var(--grey1);
+    border-bottom: 1px solid black;
+    color: var(--blue);
+}
+
+p.EchoControl * {vertical-align: middle}
+
+p.EchoControl > span.Buttons {
+    float: right;
+
+    svg {
+        padding: 0.25em 0.25em 0.25em 0.75em;
+        width: 1.25em;
+        height: 1.25em;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+}
+
+p.EchoControl > span.CodeTitle {
+    color: black;
+    font-style: italic;
+}
+
+.Code, .CodeScroll, code {
+    font-family: "Noto Sans Mono", monospace;
+    font-weight:bold;
+}
+
+pre.Code, pre.CodeScroll {
+    width: calc(100% - 2em);
+    background-color: var(--grey1);
+    margin: 0 auto 1em auto;
+    padding: 0.5em;
+    color: black;
+    overflow: auto;
+}
+
+pre.CodeScroll {max-height: 20em}
+
+.WideScroll, .AutoScroll {
+    max-width: calc(100% - 2px);
+    overflow: auto;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+table td, table th {
+    min-width: 4em;
+    border: 1px solid black;
+    padding: 0.2em;
+}
+
+table.Two td, table.Two th {width: 50%}
+table.Three td {width: 33.33%}
+table.Four td {width: 25%}
+table.Five td {width: 20%}
+table.Six td {width: 16.667%}
+table.TD6 td {min-width: 6em}
+table.TD8 td {min-width: 8em}
+
+div.Message {
+    font-weight: bold;
+    font-size: 133%;
+    padding: 0.6em;
+    border-radius: 0.2em;
+    background-color: #a0a0a0;
+    color: white;
+    text-align: center;
+    min-width: 12rem;
+    width: 20rem;
+    max-width: 80vw;
+    position: fixed;
+    top: 25vh;
+    display: none;
+}
+
+p.Caption {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.w4, body.Present .s4 {width: 4em}
+.w5, body.Present .s5 {width: 5em}
+.w6, body.Present .s6 {width: 6em}
+.w7, body.Present .s7 {width: 7em}
+body.Present .dot {width: 7.35em}
+.w8, body.Present .s8 {width: 8em}
+.w10, body.Present .s10 {width: 10em}
+.w11, body.Present .s11 {width: 11em}
+.w12, body.Present .s12 {width: 12em}
+.w14, body.Present .s14 {width: 14em}
+.w16, body.Present .s16 {width: 16em}
+.w18, body.Present .s18 {width: 18em}
+.w20, body.Present .s20 {width: 20em}
+.w22, body.Present .s22 {width: 22em}
+.w24, body.Present .s24 {width: 24em}
+.w28, body.Present .s28 {width: 28em}
+.w30, body.Present .s30 {width: 30em}
+.w32, body.Present .s32 {width: 32em}
+.w36, body.Present .s36 {width: 36em}
+
+
+table.VectorTable {
+
+td, th {
+    text-align: center;
+    min-width: 6em;
+    width: 25%;
+}
+
+tr:not(.Resultant):nth-child(even) td:nth-child(even), tr:not(.Resultant):nth-child(odd) td:nth-child(odd)
+    {background-color: #ffe8e8}
+
+tr:not(.Resultant):nth-child(even) td:nth-child(odd), tr:not(.Resultant):nth-child(odd) td:nth-child(even)
+    {background-color: #ffd8d8}
+
+tr.Resultant td:nth-child(even) {background-color: #d8d8ff}
+tr.Resultant td:nth-child(odd) {background-color: #e8e8ff}
+
+tr:nth-child(even) th:nth-child(even), tr:nth-child(odd) th:nth-child(odd) {background-color: #e8e8e8}
+tr:nth-child(even) th:nth-child(odd), tr:nth-child(odd) th:nth-child(even) {background-color: #d8d8d8}
+
+}
+
+
+

@@ -1,4 +1,4 @@
-SVG2.cache("p20/circ/img/appWt.js", {
+scripts.cache["p20/circ/img/appWt"] = {
 
 roller: (sel) => {
     let cart = (g, size, pos) => {
@@ -143,5 +143,4 @@ book: (sel) => {
     Fn.mjax("\\va{F}_n", null, [0.2, -0.75], "red");
 },
 
-
-});
+};

@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Non-Isolated Systems</h1>
@@ -66,8 +66,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
 <li>A 500-gram ball is dropped from a height of 2.00 metres.
 <ol type="a">
@@ -224,8 +224,8 @@
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li>Define <em class="Defn">open</em>, <em class="Defn">closed</em>, and <em class="Defn">isolated systems</em>.</li>
     <p class="Answer">An open system allows both matter and energy into/out of the system. A closed system allows energy but not matter into/out of the system. An isolated system allows neither nergy nor matter in or out of the system.</p>
@@ -262,5 +262,27 @@
     
 loadFeed.data = {up: "p20/home", prev: "p20/energy/cons", next: "p20/energy/work",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#30", "p20/energy/img/sys", "bar" class],
+        ["#33", "p20/energy/img/sys", "flow1" class],
+        ["#90", "p20/energy/img/sys", "Q1"],
+        ["#91", "p20/energy/img/sys", "flow1", "1"],
+        ["#110", "p20/energy/img/sys", "Q2"],
+        ["#116", "p20/energy/img/sys", "flow2"],
+        ["#125", "p20/energy/img/sys", "archer"],
+        ["#126", "p20/energy/img/sys", "Q3"],
+        ["#134", "p20/energy/img/sys", "flow3"],
+        ["#155", "p20/energy/img/sys", "Q4"],
+        ["#156", "p20/energy/img/sys", "flow4" class],
+        ["#169", "p20/energy/img/sys", "Q5"],
+        ["#192", "p20/energy/img/sys", "Q5", "21.7"],
+    ],
+});
 
 </script>

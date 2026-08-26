@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Mass &amp; Weight</h1>
@@ -76,8 +76,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
     <li>Determine the <em>weight</em> on Earth of objects with masses:<ol type="a">
         <li>1.00 kg</li>
@@ -203,8 +203,8 @@
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
 <li>Define <em class="Defn">mass</em> and <em class="Defn">weight</em>; explain how these differ.</li>
 <div class="Answer">
@@ -231,5 +231,17 @@ loadFeed.falcon = () => {
 }
 
 loadFeed.data = {up: "p20/home", prev: "p20/dyn/n3", next: "p20/dyn/fric"}
+
+</script>
+
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#123", "p20/dyn/img/weight", "skydive" class],
+        ["#172", "p20/dyn/img/weight", "scale" class],
+    ],
+});
 
 </script>

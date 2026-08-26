@@ -1,12 +1,12 @@
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol><li>Solve for all missing sides and angles in each of these right-angle triangles. Show all calculations.
     <p class="Center"><svg class="s24" data-svg2="p20/vec2d/img/trig.js#pretest"></svg></p>
 </li></ol>
 </div></section>
 
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Trigonometry</h1>
@@ -66,8 +66,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
 <li>Students conducting a motion experiment set up a ramp that has a length of 1.50 metres. The ramp is inclined so that the bottom of the ramp is on the floor and the higher end of the ramp is 25.0 cm above the floor.
 <ol type="a">
@@ -170,15 +170,31 @@
 </ol>
 </div></section>
 
-<!-- <section class="Post NoPrintIcon" data-show="1" data-icon="gdrv">
-    <h2 class="Collapse">Handouts</h2><div class="Collapse">
+<!-- <section class="Post NoPrintIcon" data-show="1" data-action="gdrv">
+    <h3>Handouts</h3><div class="Collapse">
     <p class="Var">handouts</p>
-    <p class="BtnGrid"><button data-icon="gdrv" data-gdrv="1dbeWmeTW-5YhaXQN7aZ2-6ZTevsGuHXo">Assignment</button></p>
+    <p class="BtnGrid"><button data-action="gdrv" data-gdrv="1dbeWmeTW-5YhaXQN7aZ2-6ZTevsGuHXo">Assignment</button></p>
 </div></section> -->
 
 <script type="text/javascript">
 
 loadFeed.data = {up: "p20/home", prev: "p20/kin/rev", next: "p20/vec2d/mag",
 }
+
+</script>
+
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#4", "p20/vec2d/img/trig", "pretest"],
+        ["#18", "p20/vec2d/img/trig", "similar"],
+        ["#76", "p20/vec2d/img/trig", "ramp"],
+        ["#92", "p20/vec2d/img/trig", "Q2"],
+        ["#103", "p20/vec2d/img/trig", "ball8"],
+        ["#123", "p20/vec2d/img/trig", "star"],
+    ],
+});
 
 </script>

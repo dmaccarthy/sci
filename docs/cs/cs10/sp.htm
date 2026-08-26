@@ -1,0 +1,21 @@
+<section class="Post" data-action="Home">
+<p>CSE 1110 and 1120 introduce students to the structured programming paradigm using the Python programming language...</p>
+<h3 class="Center">Structured Programming 1</h3>
+<table class="Menu"></table>
+<h3 class="Center">Structured Programming 2</h3>
+<table class="Menu"></table>
+</section>
+
+<script type="text/javascript">
+
+page.run(() => {
+    page.menu("cs/cs10/sp");
+    let tbl = $("main > article table.Menu");
+    let e = tbl.find("tr");
+    for (let i=9;i<=25;i++) $(e[i]).remove();
+    e = $("tr:nth-child(1) td:nth-child(2)");
+    e.css({width: "16em"});
+    $("main > article h3").css({"margin-top": "2.5em"});
+});
+
+</script>

@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Period of SHM</h1>
@@ -67,8 +67,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
     <li><ol type="a">
         <li>A vertical spring with <span class="TeX">k</span> = 850 N/m compresses 2.80 cm (at equilibrium) when an object is placed on top of it. Determine the weight and mass of the object. [hint: At equilibrium, the elastic and gravity forces are balanced!]</li>
@@ -175,8 +175,8 @@ Since the elastic force is 23.8 N up, the force of gravity (weight) is 23.8 N do
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li><ol type="a">
         <li>Derive the equation for the period of SHM.</li>
@@ -198,5 +198,19 @@ Since the elastic force is 23.8 N up, the force of gravity (weight) is 23.8 N do
 
 loadFeed.data = {up: "p20/home", prev: "p20/shm/shm", next: "p20/shm/pend",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#10", "p20/shm/img/shm", "v_t", "[2,1]"],
+        ["#148", 'p20/shm/img/shm", "shm'],
+        ["#150", 'p20/shm/img/shm", "shm", "[0,[0.95,0.2,1],[8.77,2,0,"cm"]]'],
+        ["#151", 'p20/shm/img/shm", "shm", "[1,[0.95,0.2,1],[58,15,0,"cm"]]'],
+        ["#152", 'p20/shm/img/shm", "shm", "[2,[0.95,0.2,1],[3.84,1,0]]'],
+    ],
+});
 
 </script>

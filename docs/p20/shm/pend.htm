@@ -1,10 +1,10 @@
-<section class="Post" data-icon="video">
-    <h2 class="Collapse">Video</h2>
+<section class="Post" data-action="video">
+    <h3>Video</h3>
     <div class="Collapse" data-yt="JsIgubUjTck"></div>
 </section>
 
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Simple Pendulum</h1>
@@ -61,8 +61,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
     <li><ol type="a">
         <li>Calculate the period of a 1.00 m long simple pendulum when <span class="TeX">g</span> = 9.81 m/s<sup>2</sup>.</li>
@@ -130,8 +130,8 @@
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li><ol type="a">
         <li>Derive an expression for the period of a simple pendulum.</li>
@@ -148,5 +148,16 @@
 
 loadFeed.data = {up: "p20/home", prev: "p20/shm/T", next: "p20/shm/E",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#16", "p20/shm/img/pend", "fbd"],
+        ["#17", "p20/shm/img/pend", "vec"],
+    ],
+});
 
 </script>

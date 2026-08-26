@@ -1,7 +1,6 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Velocity &amp; Speed</h1>
 </section>
 
@@ -19,7 +18,7 @@
 </section>
 
 <section class="Slide"><h3>Motion Graph</h3>
-    <p data-cue="none" class="Center"><svg id="Graph1" data-svg2="p20/kin/img/graph.js#bike" class="s20"></svg></p>
+    <p data-cue="none" class="Center"><svg id="Graph1" class="s20"></svg></p>
     <p data-cue="none" class="Present TeX">\va{v} = {\Delta\va{d}\over \Delta t}</p>
     <p class="TeX">\va{v} = \rm{(+7.0\ m) - (-5.0\ m)\over 4.0\ s - 0.0\ s}</p>
     <p class="TeX">= \rm{{+12.0\ m \over 4.0\ s}}</p>
@@ -105,10 +104,10 @@
     </ul>
 </section>
 
-</div></section>
+</section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3>
 <ol>
     <li>How long will it take an aircraft that travels at 425 km/h to fly 550 km from Edmonton to Saskatoon?</li>
     <div class="Answer">
@@ -134,10 +133,10 @@
         </ol></li>
 
 </ol>
-</div></section>
+<!-- </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct"> -->
+<h3>Practice</h3>
 <ol>
 
 <li>A car drives from Sherwood Park to Calgary, a displacement of 285 km [south], in 3.25 hours.
@@ -219,8 +218,8 @@
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
 <li><ol type="a">
     <li>Give the mathematical definition of <em class="Defn">velocity</em> and explain what this definition means.</li>
@@ -239,11 +238,14 @@
 <li>Define <em class="Defn">speed</em> and explain how it is similar to and different from velocity.</li>
 <p class="Answer">Speed is the <em>distance travelled</em> (not displacement!) per second. Speed is a scalar.</p>
 </ol>
-</div></section>
+</section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "p20/home", prev: "p20/kin/displ", next: "p20/kin/graph",
-}
+page({title: "Velocity & Speed", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        ["#Graph1", "p20/kin/img/graph", "bike"],
+    ],
+});
 
 </script>

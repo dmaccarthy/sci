@@ -1,4 +1,4 @@
-SVG2.cache("p20/kin/img/acc.js", {
+scripts.cache["p20/kin/img/acc"] = {
 
 vt: (sel) => {
     let pt = [2.5, -9.81 * 2.5];
@@ -44,4 +44,4 @@ vt_radar: (sel) => {
     css(svg.poly([[0, 125], [3, 125], [8, 0]]), "none", "#0065fe@2");
 },
 
-});
+};

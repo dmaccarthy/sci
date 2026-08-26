@@ -1,4 +1,4 @@
-SVG2.cache("p20/circ/img/ucm.js", {
+scripts.cache["p20/circ/img/ucm"] = {
 
 earth: (sel) => {
     let [x1, x2] = [0.06, 0.32];
@@ -24,4 +24,4 @@ earth: (sel) => {
     ]) g.text(t, p);
 },
 
-});
+};

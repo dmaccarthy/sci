@@ -1,4 +1,4 @@
-SVG2.cache("p20/kin/img/displ.js", {
+scripts.cache["p20/kin/img/displ"] = {
 
 Q1a: (sel) => {
     let svg = SVG2.vec_diag(sel, [[7.2, 0]], {shift: [-4, 0],
@@ -37,4 +37,4 @@ Q3: (sel) => {
     svg.gtext("km", 18, [5.5, -0.85]);
 },
 
-});
+};

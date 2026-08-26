@@ -232,6 +232,8 @@ async function mjax_render(e, mode, bbox) {
     });
 }
 
+renderTeX = async e => mjax_render(e, 0, "3px");
+
 async function sleep(t) {await new Promise(r => setTimeout(r, t))}
 
 async function mjax_wait(t) {
@@ -254,8 +256,6 @@ function mjax_img(tex) {
     // Use MathJax to render LaTeX as SVG; return jquery object containing <img>
     return mjax_url(tex).then(u => $("<img>").attr({src: u}));
 }
-
-renderTeX = mjax_render;
 
 async function load_img(url) {
     return new Promise(res => {

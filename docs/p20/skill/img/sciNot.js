@@ -1,4 +1,4 @@
-SVG2.cache("p20/skill/img/sciNot.js", {
+scripts.cache["p20/skill/img/sciNot"] = {
 
 au: (sel) => {
     let [x, y, dy] = [-0.79, -0.1, 0.17];
@@ -22,4 +22,4 @@ qe: (sel) => {
     svg.$.on("click", () => svg.$.find("polyline").toggle());
 },
 
-});
+}

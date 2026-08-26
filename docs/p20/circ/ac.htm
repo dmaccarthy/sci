@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <style type="text/css">
 
@@ -93,8 +93,8 @@ body.Present #delta_v {
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
     <li>A satellite orbits the Earth in a circular path. The satellite’s period is 3.98 hours and the acceleration due to Earth’s gravity is 2.45 m/s<sup>2</sup>. (Remember that <span class="TeX">g</span> becomes smaller than 9.81 m/s<sup>2</sup> the further one gets from Earth’s surface.) Calculate the satellite’s speed and the radius of its orbit.</li>
     <div class="Answer">
@@ -209,8 +209,8 @@ body.Present #delta_v {
 <!-- </ol>
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li>Explain how an object exhibiting uniform circular motion is accelerating even though its speed is constant.</li>
     <p class="Answer">Velocity is a <em>vector</em>; the object is accelerating because the <em>direction</em> of the velocity is changing even though its magnitude is not.</p>
@@ -239,5 +239,19 @@ body.Present #delta_v {
 
 loadFeed.data = {up: "p20/home", prev: "p20/circ/ucm", next: "p20/circ/appWt",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#29", "p20/circ/img/ac", "orbit"],
+        ["#30", "p20/circ/img/ac", "delta_v"],
+        ["#91", "p20/circ/img/ac", "ucm"],
+        ["#142", "p20/circ/img/ac", "car"],
+        ["#179", "p20/circ/img/ac", "merry"],
+    ],
+});
 
 </script>

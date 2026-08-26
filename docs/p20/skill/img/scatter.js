@@ -1,4 +1,4 @@
-SVG2.cache("p20/skill/img/scatter.js", {
+scripts.cache["p20/skill/img/scatter"] = {
 
 wtLoss: (sel, tog) => {
     let svg = new SVG2(sel, {size: [640, 400], lrbt: [0, 30, 77, 82], grid: [1, 0.25], margin: [64, 10, 54, 10]});
@@ -6,7 +6,7 @@ wtLoss: (sel, tog) => {
     css($(e.find("line")[30]), "black@1").appendTo(e);
 
     // Tick marks and labels
-    let opt = {size: ["-6", 0], label: 0, shift: "-8", css: 15};
+    let opt = {size: ["-6", 0], label: 0, shift: "-8", css: ["sans", 15]};
     svg.ticks({x: [0, 31, 3], ...opt}).shift_by([0, 77]).css(".Toggle0");
     svg.ticks({y: [77, 82.1, 1], ...opt}).css(".Toggle1");
     let g = svg.group("sans", 18);
@@ -23,4 +23,4 @@ wtLoss: (sel, tog) => {
     if (tog) svg.click_toggle(4, 0);
 },
 
-});
+};

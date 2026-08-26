@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Feeds</title>
+<title>Loading...</title>
 <script type="text/javascript">
 
 // MathJax configuration
@@ -20,69 +20,30 @@ window.MathJax = {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style/common.css?_v=4"/>
-<link rel="stylesheet" href="style/feed.css?_v=3"/>
+<link rel="stylesheet" href="src/index.css?_v=20260621"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/14.8.1/math.min.js"></script> -->
-<script type="text/javascript" src="src/svg2.js?_v=37"></script>
-<script type="text/javascript" src="src/util.js?_v=25"></script>
-<script type="text/javascript" src="src/math.js?_v=8"></script>
-<script type="text/javascript" src="script/phys.js?_v=3"></script>
-<script type="text/javascript" src="media/dataimg.js?_v=2"></script>
-<script type="text/javascript" src="script/feed.js?_v=26"></script>
-<script type="text/javascript" src="script/sci.js?_v=5"></script>
-<style type="text/css">
-
-#Top, #Main, #Copy {display:none}
-#Copy {font-size: 80%}
-
-</style>
+<script type="text/javascript" src="src/svg2.js?_v=20260621"></script>
+<script type="text/javascript" src="src/vec_diag.js?_v=20260621"></script>
+<script type="text/javascript" src="src/util.js?_v=20260621"></script>
+<script type="text/javascript" src="src/math.js?_v=20260621"></script>
+<script type="text/javascript" src="src/phys.js?_v=20260621"></script>
+<script type="text/javascript" src="src/chem.js?_v=20260621"></script>
+<script type="text/javascript" src="src/index.js"></script>
+<script type="text/javascript" src="s10/s10.js?_v=20260621"></script>
+<script type="text/javascript" src="p20/p20.js?_v=20260621"></script>
 <script type="text/javascript">
 
-Object.assign(siteData, {
-    handouts: "Here are the links to some resources for this lessson, including printable versions of handouts provided in class.",
-    uhandout: "Here are the links to some resources for this unit, including printable versions of handouts provided in class.",
-    linkHand: "Here are the handouts and links for this lesson:",
-    assign: `<li>Keep your completed answers organized in your Physics 20 binder.</li>
-    <li data-cue="none">Be prepared to hand in the assignment and/or your Physics 20 binder when requested by your teacher.</li>
-    <li data-cue="none">This assignment is to be completed by the end of this class, unless the teacher tells you otherwise.</li>`,
-    remember: "These questions are to check what you already know from your previous courses or experiences.",
-    useful: "Here are some links that may be useful for this chapter...",
-    practice: "Here is a printable version of the <em>Practice &amp; Review</em> questions for this chapter...",
-    ipo: `All programming assignments require the use of good programming techniques, including:<ul>
-    <li>Internal documentation (docstrings and comments)</li>
-    <li>Descriptive variable names</li>
-    <li>No global variables (constants are okay)</li>
-    <li>Functions (methods) that perform a single task</li>
-    <li>IPO structure within each procedure (input first, then processing, and output only after all processing is complete)</li>
-    </ul>`,
-});
-
-siteData.assign10 = siteData.assign.replaceAll("Physics 20", "Science 10");
-
-let tmp, _;
-    
-let svgTrack = () => {
-    let svg = $("svg").on("mousemove", (ev) => {
-        if (ev.ctrlKey) console.log(ev.currentTarget.svg2.event_coords(ev).coords);
-    });
-    return svg[0].svg2;
-}
-
-let svgn = (n) => $("svg[data-svg2x]")[n].svg2;
+// home.item("home", {page: "p30", title: "Physics 30", icon: "magnet"});
 
 </script>
+<script type="text/javascript" src="cs/cs.js?_v=20260621"></script>
 </head>
 <body>
-<nav id="Top">
-<span id="TopTitle">Mr. Mac’s Website</span>
-<span id="Buttons">
-    <a data-id="today" title="Click to open the class calendar"><img data-src="$today"/></a>
-    <a data-id="prev" title="Click to go to the previous lesson"><img src="media/prev.svg"/></a>
-    <a data-id="next" title="Click to go to the next lesson"><img src="media/next.svg"/></a>
-</span>
-</nav>
-<main id="Main"></main>
-<p class="Center" id="Copy">© 2022-2026 by <a href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
+<main>
+<h2 id="MainTitle"></h2>
+<article></article>
+</main>
+<nav id="Top"></nav>
 </body>
 </html>

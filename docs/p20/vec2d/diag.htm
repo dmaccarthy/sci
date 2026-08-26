@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Examples</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Examples</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Vector Diagrams</h1>
@@ -25,8 +25,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <p class="Center NoPresent"><em>Use graph paper for all vector diagrams.</em></p>
 <ol>
 
@@ -126,5 +126,23 @@
 
 loadFeed.data = {up: "p20/home", prev: "p20/vec2d/mag", next: "p20/vec2d/polar",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#10", "p20/vec2d/img/diag", "Ex1"],
+        ["#16", "p20/vec2d/img/diag", "Ex2"],
+        ["#22", "p20/vec2d/img/diag", "Ex3"],
+        ["#36", "p20/vec2d/img/diag", "Q1"],
+        ["#45", "p20/vec2d/img/diag", "Q2"],
+        ["#53", "p20/vec2d/img/diag", "Q3"],
+        ["#61", "p20/vec2d/img/diag", "Q4"],
+        ["#78", "p20/vec2d/img/diag", "Q5", "[3.404,14,0.12]"],
+        ["#96", "p20/vec2d/img/diag", "Q5", "[3.5,14]"],
+    ],
+});
 
 </script>

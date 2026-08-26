@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Projectile Motion</h1>
@@ -112,8 +112,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice</h3><div class="Collapse">
 <ol>
 <li>An object is thrown horizontally (i.e. with a direction of 0°) with a speed of 8.00 m/s from the top of a 12.5 m tall building. A Physics 20 students made a table of the <span class="TeX">x</span>- and <span class="TeX">y</span>-components of all kinematics vectors and filled in the known quantities, as shown below. Note that since the acceleration has no <span class="TeX">x</span>-component, this means that the initial and final <span class="TeX">x</span>-velocities are the same. Also note that time is a scalar, so it does not have separate <span class="TeX">x</span>- and <span class="TeX">y</span>-components.
     <table class="Center Top Bottom">
@@ -299,8 +299,8 @@
 
 </section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li>Define <em class="Defn">projectile motion</em>, including<ol type="a">
         <li>the shape of the trajectory,</li>
@@ -331,5 +331,15 @@ loadFeed.notes = () => {
 
 loadFeed.data = {up: "p20/home", prev: "p20/vec2d/arith", next: "p20/vec2d/rev"
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#131", "p20/vec2d/img/proj", "Q1"],
+    ],
+});
 
 </script>

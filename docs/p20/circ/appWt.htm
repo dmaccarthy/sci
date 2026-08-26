@@ -1,5 +1,5 @@
-<section class="Post" data-icon="slides">
-<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+<section class="Post" data-action="slides">
+<h3>Lesson Notes</h3><div class="Collapse">
 
 <section class="Slide Center">
 <h1 id="Title">Apparent Weight</h1>
@@ -65,8 +65,8 @@
 
 </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Practice<span data-print="Practice"></span></h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Practice<span data-print="Practice"></span></h3><div class="Collapse">
 <div id="Practice">
 <ol>
     <li>A 65.0 kg cyclist rides over the top of a hill that has a radius of 15.0 m. The cyclist’s speed is 20.0 km/h.
@@ -158,8 +158,8 @@
 <!-- </ol>
 </div></div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-icon="correct">
-<h2 class="Collapse">Review</h2><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct">
+<h3>Review</h3><div class="Collapse">
 <ol> -->
     <li>Explain the difference between <em class="Defn">actual weight</em> and <em class="Defn">apparent weight</em>.</li>
     <p class="Answer">Actual weight refers to the force of gravity. Apparent weight refers to the forces that can be sensed, which usually means all forces <em>except</em> gravity.</p>
@@ -186,5 +186,23 @@ loadFeed.init = () => {
 
 loadFeed.data = {up: "p20/home", prev: "p20/circ/ac", next: "p20/circ/kep",
 }
+
+</script>
+<script type="text/javascript">
+
+page({title: "?", s: "2028.1.1", a: 1, handou: "",
+    svg2: [
+        // ["#id", "jsfile", "name", arg],
+        ["#18", "p20/circ/img/appWt", "loopy"],
+        ["#31", "p20/circ/img/appWt", "roller"],
+        ["#56", "p20/circ/img/appWt", "roller"],
+        ["#87", "p20/circ/img/appWt", "stick"],
+        ["#106", "p20/circ/img/appWt", "loop"],
+        ["#118", "p20/circ/img/appWt", "rope"],
+        ["#131", "p20/circ/img/appWt", "car"],
+        ["#139", "p20/circ/img/appWt", "astro"],
+        ["#150", "p20/circ/img/appWt", "book"],
+    ],
+});
 
 </script>

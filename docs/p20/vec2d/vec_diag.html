@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>2D Vector Diagrams</title>
+<script type="text/javascript">
+
+// MathJax configuration
+
+window.MathJax = {
+    startup: {typeset: false},
+    loader: {load: ['[tex]/bbox', '[tex]/physics']},
+    tex: {packages: {'[+]': ['bbox', 'physics']}}
+};
+
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+<link rel="shortcut icon" type="image/svg+xml" href="../../media/rocket.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../src/index.css?_v=20260618"/>
+<style type="text/css">
+
+body {font-size: 15px}
+
+#SVG > svg {
+    max-height: 80vh;
+    max-width: calc(100% - 10px);
+}
+
+textarea {
+    max-width: 960px;
+    width: calc(100% - 10px);
+}
+
+table.VectorTable thead {cursor: pointer}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../../src/svg2.js?_v=20260618"></script>
+<script type="text/javascript" src="../../src/util.js?_v=20260618"></script>
+<script type="text/javascript" src="../../src/math.js?_v=20260618"></script>
+<script type="text/javascript" src="../../src/phys.js?_v=20260618"></script>
+<script type="text/javascript" src="../../src/vec_diag.js?_v=20260618"></script>
+<script type="text/javascript">
+
+function draw(data) {
+    // Get vector data
+    if (data) {
+        $("#Shift")[0].checked = data.shift ? true : false;
+        $("textarea").val(data.v);
+    }
+    else {
+        data = {...draw.data, v: $("textarea").val()};
+        if ($("#Shift")[0].checked) data.shift = 1;
+        else delete data.shift;
+    }
+
+    // Update history
+    draw.data = data;
+    let n = draw.hist.indexOf(data.v);
+    if (n > -1) draw.hist.splice(n, 1);
+    draw.hist.push(data.v);
+    let url = `vec_diag.html?${JSON.stringify(data)}`;
+    history.replaceState({}, "", url);
+
+    // Parse vectors
+    let vecs = data.v.replaceAll('@', "vec2d");
+    vecs = new Function(`return [${vecs}];`)();
+
+    // Create drawing
+    let opt = {origin: true, removeZero: true, shift: data.shift, margin: 20, cycle: 1};
+    let svg = vector_diagram(vecs, opt);
+    $("#SVG").html(svg.$);
+
+    // Show units
+    let exp = svg.vector_scale;
+    exp = exp ? exp.toFixed(0) : '';
+    $("#Units").html((exp ? `10<sup>${exp.replace('-', '–')}</sup> ` : '') + data.unit);
+
+    // Draw table
+    if (data.shift) vecs = vecs.slice(1);
+    let tbl = $("#Table").html(vector_diagram.table(data.symbol, vecs));
+    tbl.find("thead").on("click", units).attr({title: "Click to change symbol and units."});
+    if (vecs.length < 2) tbl.find("tbody tr.Resultant").remove();
+    // console.log(tr[0]);
+}
+
+$(() => {
+    $("#MainTitle").html(document.title);
+    mjax_wait().then(() => {
+        draw(url_data());
+        $(window).on("resize", size).on("keydown", ev => {
+            if (ev.target == $("textarea")[0]) return;
+            if (ev.key == "ArrowLeft") draw.go(1);
+            else if (ev.key == "ArrowRight") draw.go();
+        });
+        size();
+    });
+});
+
+function url_data() {
+    let data = decodeURIComponent(location.search.substring(1));
+    if (!data) data = '{"v": "[3,4]"}';
+    data = JSON.parse(data); 
+    return {symbol: "v", unit: "m/s", ...data};
+}
+
+draw.save = (ev, png) => {
+    let opt = png ? {type: "png"} : {};
+    if (png && ev.altKey) {
+        let s = parseFloat(prompt("Scale factor?", 3));
+        if (!isNaN(s)) opt.scale = s;
+    }
+    SVG2.open("#SVG > svg", opt).then(console.log);
+}
+
+draw.hist = [];
+
+draw.go = prev => {
+    let hist = draw.hist, h;
+    let n = hist.length - 1;
+    if (n < 1) return;
+    if (prev) {
+        h = hist.splice(n - 1, 2);
+        hist.splice(0, 0, h[1]);
+        h = h[0];
+    }
+    else h = hist.splice(0, 1)[0];
+    $("textarea").val(h);
+    draw();
+}
+
+function units() {
+    let sym = prompt("Symbol?", "Δd");
+    if (sym) {
+        let unit = prompt("Unit?", "N·s");
+        if (unit) 
+            draw({...draw.data, symbol: sym, unit: unit});
+        
+    }
+}
+
+function size() {
+    clearTimeout(size._timer);
+    aspect();
+    size._timer = setTimeout(size, 2000);
+}
+
+</script>
+</head>
+<body class="Center" style="margin: 4px">
+<h2 id="MainTitle"></h2>
+<textarea rows="5" onblur="draw()" title="Enter one or more vectors"></textarea>
+<p><input id="Shift" type="checkbox" onchange="draw()"/> <label for="Shift">Shift</label></p>
+<p>The diagram units are <span id="Units"></span>.</p>
+<p id="SVG">SVG</p>
+<p>
+    <span class="Link" onclick="draw.save(event)" title="Save diagram as SVG file">SVG</span> &nbsp; ▪ &nbsp;
+    <span class="Link" onclick="draw.save(event, 1)" title="Save diagram as PNG file">PNG</span>
+</p>
+<div id="Table" style="margin-bottom: 1em"></div>
+</body>
+</html>

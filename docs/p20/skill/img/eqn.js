@@ -1,4 +1,4 @@
-SVG2.cache("p20/skill/img/eqn.js", {
+scripts.cache["p20/skill/img/eqn"] = {
 
 scatter: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 5, 0, 12], grid: [0.5, 1], margin: [56, 10, 28, 12]});
@@ -20,4 +20,4 @@ scatter: (sel) => {
     svg.$.on("click", () => g.fadeToggle());
 },
 
-});
+};

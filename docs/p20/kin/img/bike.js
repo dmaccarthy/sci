@@ -1,4 +1,4 @@
-SVG2.cache("p20/kin/img/bike.js", {
+scripts.cache["p20/kin/img/bike"] = {
 
 bike: (sel) => {
 	let svg = new SVG2(sel, {scale: 32, grid: 0, lrbt: [-7, 10, -1.7, 4.2]});
@@ -38,4 +38,4 @@ soccer: (sel) => {
     svg.$.on("click", () => {r.fadeToggle()});
 },
 
-});
+};
