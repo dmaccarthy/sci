@@ -506,7 +506,7 @@ page.icon = k => {
     let img = {notes: "slides", assignment: "assign", ide: "vscode"}[k];
     if (!img) img = page.icon.map[k] ? page.icon.map[k] : k;
     if (img.indexOf('.') == -1) img += ".svg";
-    if (img.indexOf("://") == -1) img = `../media/${img}`;
+    if (img.indexOf("://") == -1) img = `./media/${img}`;
     return $("<img>").attr({src: img});
 }
 
