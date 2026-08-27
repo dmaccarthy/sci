@@ -1,16 +1,21 @@
 <section class="Post" data-action="home" data-title="Courses">
+
+<div class="Center" data-show="9999.1.1" style="margin-bottom: 3em">
+    <p class="Red" style="font-family:'Noto Sans Mono', monospace; font-size:400%; margin: 0.25em auto">tinyurl.com/sal186</p>
+</div>
+
 <table class="Menu"></table>
 <!-- <p>Please choose one of these courses:</p>
 <p class="BtnGrid BtnLink">
-    <button data-feed="s10"><img src="../media/microscope.svg"/><br/>Science 10</button> &nbsp;
-    <button data-feed="p20"><img src="../media/rocket.svg"/><br/>Physics 20</button> &nbsp;
-    <button data-feed="p30"><img src="../media/atom.svg"/><br/>Physics 30</button> &nbsp;
-    <button data-feed="cs"><img src="../media/laptop.svg"/><br/>Computing Science</button>
+    <button data-feed="s10"><img src="./media/microscope.svg"/><br/>Science 10</button> &nbsp;
+    <button data-feed="p20"><img src="./media/rocket.svg"/><br/>Physics 20</button> &nbsp;
+    <button data-feed="p30"><img src="./media/atom.svg"/><br/>Physics 30</button> &nbsp;
+    <button data-feed="cs"><img src="./media/laptop.svg"/><br/>Computing Science</button>
 </p> -->
 <p class="Center" style="font-size: 85%; margin-top: 2em">© 2022-2026 by <a target="email" href="mailto:david.maccarthy@eips.ca">D.G. MacCarthy</a></p>
 </section>
 
-<section  data-show="9999.1.1" class="Post Center" data-action="teacher" data-title="SVG">
+<section data-show="9999.1.1" class="Post Center" data-action="teacher" data-title="SVG">
     <p class="Center"><svg id="SVG_Sketch"></svg></p>
 </section>
 
@@ -24,7 +29,9 @@
 
 <script type="text/javascript">
 
-page.run(() => page.menu("home"));
+page.run(() => {
+    page.menu("home");
+});
 
 page({svg2: [
     ["#SVG_Sketch", "img/general", "molecule"],

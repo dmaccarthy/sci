@@ -17,15 +17,15 @@ page.cal.s10 = [ // Calendar items
 home.item("home", {page: "s10", icon: "microscope", title: "Science 10", data: {cal: false}});
 _ = d => home.item("s10", d);
 _({page: "chem", icon: "testtube.webp", title: "Chemistry", data: {cal: false, s: "9999.1.1"}});
-_({page: "phys", icon: "soccer", title: "Physics", data: {cal: false, s: "9999.1.1"}});
-_({page: "bio", icon: "microscope", title: "Biology", data: {cal: false}});
-_({page: "clim", icon: "earth", title: "Climate", data: {cal: false}});
+_({page: "phys", icon: "soccer", title: "Physics", data: {cal: false, hide: 1}});
+_({page: "bio", icon: "microscope", title: "Biology", data: {cal: false, hide: 1}});
+_({page: "clim", icon: "earth", title: "Climate", data: {cal: false, hide: 1}});
 }
 
 { // Matter
 home.item("s10/chem", {page: "chem1", icon: "atom", title: "Part 1: #Matter", data: {cal: false}});
 _ = d => home.item("s10/chem/chem1", d);
-_({page: "whmis", title: "WHMIS & Lab Safety", data: {s: "2026.8.31", a: "2026.9.1"}});
+_({page: "whmis", title: "WHMIS & Lab Safety", data: {s: "2026.8.27", a: "2026.9.1"}});
 
 /* Reversed order so 'classify' is on a Wednesday */
 _({page: "expDes", title: "Experiment Design", data: {s: "2026.9.3", a: "2026.9.4"}});
@@ -38,7 +38,7 @@ _({page: "dot", title: "Periodic Table & Dot Diagrams", data: {s: "2026.9.11", a
 }
 
 { // Compounds
-home.item("s10/chem", {page: "chem2", icon: "salt", title: "Part 2: #Compounds", data: {cal: false}});
+home.item("s10/chem", {page: "chem2", icon: "salt", title: "Part 2: #Compounds", data: {cal: false, s: "9999.1.1"}});
 _ = d => home.item("s10/chem/chem2", d);
 _({page: "ionic", title: "Binary Ionic Compounds", data: {s: "2026.9.14", a: "2026.9.16"}});
 _({page: "molec", title: "Molecular Compounds", data: {s: "12026.9.16", a: "12026.9.18"}});
@@ -48,7 +48,7 @@ _({page: "water", title: "Properties of Water", data: {s: "12026.9.23", a: "1202
 }
 
 { // Reactions
-home.item("s10/chem", {page: "chem3", icon: "testtube.webp", title: "Part 3: #Reactions", data: {cal: false}});
+home.item("s10/chem", {page: "chem3", icon: "testtube.webp", title: "Part 3: #Reactions", data: {cal: false, s: "9999.1.1"}});
 _ = d => home.item("s10/chem/chem3", d);
 _({page: "rxn", title: "Chemical Reactions", data: {s: "12026.9.25", a: "12026.9.28"}});
 _({page: "rxn_fd", title: "Formation & Decomposition", data: {s: "12026.11.1", a: "12026.11.1"}});

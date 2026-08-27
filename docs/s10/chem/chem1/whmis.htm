@@ -67,7 +67,7 @@ page.init = () => {
     let source = ["health_hazard", "toxic", "gas_cylinder", "corrosion",
         "environment", "biohazardous", "exclamation_mark", "reactive",
         "exploding_bomb", "flame_circle", "flame", "skull_crossbones"];
-    let media = "../media/whmis";
+    let media = "./media/whmis";
     let ol = $("ol.WHMIS");
     for (let li of ol.find("li")) {
         let src = source[i++];
@@ -102,7 +102,7 @@ page.init = () => {
 <ul>
     <li>WHMIS is the Canadian government system for identifying hazards in the workplace.</li>
     <li>WHMIS requires hazardous material to be properly labelled and for the label to include a warning and pictogram.
-        <p class="Center"><img class="w10" src="../media/whmis/reactive.webp" alt="Pictogram"/></p>
+        <p class="Center"><img class="w10" src="./media/whmis/reactive.webp" alt="Pictogram"/></p>
     </li>
 </ul>
 <ul>
@@ -115,7 +115,7 @@ page.init = () => {
 <ul>
     <li>WHMIS was revised in 2015 to be compatible with the GHS.</li>
     <li>WHMIS 2015 pictograms are easily recognized by the red diamond outline.
-        <p class="Center"><img class="w10" src="../media/whmis/skull_crossbones.svg" alt="Pictogram"/></p>
+        <p class="Center"><img class="w10" src="./media/whmis/skull_crossbones.svg" alt="Pictogram"/></p>
     </li>
 </ul>
 <ul><li>WHMIS 2015 pictograms are shown on the <a target="WHMIS" href="https://www.ccohs.ca/oshanswers/chemicals/whmis_ghs/pictograms.html#section-1-hdr">WHMIS website</a>.</li></ul>

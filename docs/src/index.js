@@ -153,7 +153,8 @@ home.item = (id, item) => {
 
 home.crumbs = id => {
     let p = $("<p>").html($("<a>").html("Home").attr("href", "#home")).addClass("Crumbs");
-    if (id != "home") {
+    if (id == "home") p.hide();
+    else {
         let path = "";
         for (let item of id.split("/")) {
             path = path.length ? `${path}/${item}` : item;
@@ -327,7 +328,7 @@ page.clear = () => {
 page.unpublish = art => {
     /* Remove posts with future publication date */
     let t = new Date();
-    for (let post of art.find("section.Post[data-show]")) {
+    for (let post of art.find("[data-show]")) { // "section.Post[data-show]"
         post = $(post);
         let s = post.attr("data-show");
         if (new Date(s == '1' ? page._data.s : s) > t) post.remove();
@@ -628,7 +629,8 @@ page.menu = (u, menu) => {
         let a = $("<a>").html(item.title).attr({href: '#' + feed(item)});
         let li = $("<li>").html(a).appendTo(ul);
     }
-    for (let item of home.find(u).items) add(item);
+    for (let item of home.find(u).items)
+        if (!item.data.hide) add(item);
 }
 
 page.jump = n => {
