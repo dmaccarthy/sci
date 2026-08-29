@@ -1,0 +1,204 @@
+<section class="Post" data-show="9999" data-icon="html5">
+<h2 class="Collapse">Tank Protractor</h2>
+<div class="Collapse">
+    <p class="Center"><svg id="TankProtractor" data-svg2="p30/emr/img/refr.js#tank"></svg></p>
+</div>
+</section>
+
+<section class="Post NoPrintIcon" data-icon="video">
+<h2 class="Collapse">Refraction Demo</h2>
+    <div class="Collapse" data-yt="#PLpVmtCaB-lymeU79p8sxIsej26C2dlAQc"></div>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Refraction</h1>
+</section>
+
+<section id="tr" class="Slide"><h3>Waves at a Boundary</h3>
+<p>When an incident wave reaches a <em>boundary</em> between two different media, <em class="Defn">Huygens’ Principle</em> states that each point on the boundary should be treated as a point source of wavelets spreading out in all directions.</p>
+<ul>
+    <li>The wavelets that remain in the incident medium create a <em class="Defn">reflected wave</em>.</li>
+    <li>The wavelets that pass into the new medium create a <em class="Defn">transmitted</em> or <em class="Defn">refracted</em> wave</em>.</li>
+    <li>The reflected and refracted wave will both have the <em>same frequency</em> as the incident wave, since the incident wave is the <em>source</em> of the reflected and refracted waves.</li>
+    <li>The reflected wave will also have the same speed and wavelength as the incident wave, because they move through the same medium.</li>
+    <li>The refracted wave will have a different speed and wavelength because it moves through a different medium:
+        <p class="TeX">\frac{v_1}{\lambda_1} = f_1 = f_2 = \frac{v_2}{\lambda_2}</p></li>
+    <li>The subscript <span class="TeX">1</span> identifies the incident/reflected waves/medium and <span class="TeX">2</span> identifies the refracted wave and medium.</li>
+    <li>We can rearrange this as
+        <p class="TeX">\frac{\lambda_1}{\lambda_2} = \frac{v_1}{v_2}</p>
+        which says that the wavelength increases or descreases by the same factor as the speed of the wave.</li>
+</ul>
+</section>
+
+<section id="snell" class="Slide"><h3>Snell’s Law</h3>
+<p>A 2D or 3D wave may reach the boundary at some angle of incidence to the boundary, <span class="TeX">\theta_1</span>.</p>
+<ul>
+    <li>Because one side of the wave will cross into the new medium earlier than the other side, causing it to speed up or slow down, the wavefront will not remain straight.</li>
+    <!-- <li>As shown in the animation below, the wave will bend to a different direction as it crosses the boundary.</li>
+</ul>
+<p class="Center">
+<video class="Wide" width="512" height="512" controls="1">
+    <source src="https://media.davidmaccarthy.repl.co/snell.mp4" type="video/mp4">
+</video></p>
+<ul> -->
+    <li>The bending of a wave as it changes speed is called <em class="Defn">refraction</em>.</li>
+    <li>We can derive an equation from the triangles in the animation below</li>
+</ul>
+<p class="Center">
+    <iframe id="Desmos" class="w24" src="https://www.desmos.com/calculator/52pe8xzeel?embed" width="512" height="384" data-aspect="4/3" frameborder="0"></iframe>
+</p>
+<div>
+    <p class="TeX">\sin\theta_1 = \frac{v_1\Delta t}{Hyp}</p>
+    <p class="TeX">\sin\theta_2 = \frac{v_2\Delta t}{Hyp}</p>    
+</div>
+<ul>
+    <li>Dividing the two equations:
+        <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2}</p></li>
+    <li>Combining this with the equation from the previous section gives us <em class="Defn">Snell’s Law of Refraction</em>:
+        <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2} = \frac{\lambda_1}{\lambda_2}</p></li>
+    <li>For light waves, we can express this ratio in terms of the index of fraction:
+        <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{c/n_1}{c/n_2} = \frac{n_2}{n_1}</p></li>
+    <li>The angles of incidence and refraction, <span class="TeX">\theta_1</span> and <span class="TeX">\theta_2</span>, are measured between the <em>direction of propagation</em> and the <em>normal</em> (a line perpendicular to the boundary at the point if incidence).</li>
+</ul>
+</p>
+</section>
+
+<section id="ex1" class="Slide"><h3>Example 1</h3>
+<p class="Blue">Calculate the angle of refraction when a light wave passes from air into glass with <span class="TeX">n=1.50</span> when <span class="TeX">\theta_1 = 60.0^\circ</span>.</p>
+<p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{n_2}{n_1}</p>
+<p class="TeX">\sin\theta_1 = \frac{n_2}{n_1} \sin\theta_2</p>
+<p class="TeX">\begin{align} \sin\theta_2 &= \frac{n_1}{n_2} \sin\theta_1 \\\\&= \frac{1.00}{1.50} \sin(60.0^\circ) \\\\&= 0.577 \end{align}</p>
+<p class="TeX">\theta_2 = \sin^{-1}(0.577) = 35.3^\circ</p>
+</section>
+
+<section id="ex2" class="Slide"><h3>Example 2</h3>
+<p class="Blue">Calculate the angle of refraction when a light wave passes from glass with <span class="TeX">n=1.50</span> into air when <span class="TeX">\theta_1 = 60.0^\circ</span>.</p>
+<p class="TeX">\begin{align} \sin\theta_2 &= \frac{n_1}{n_2} \sin\theta_1 \\\\ &= \frac{1.50}{1.00} \sin(60.0^\circ) \\\\ &= 1.30 \end{align}</p>
+<p class="TeX">\theta_2 = \sin^{-1}(1.30) = \mathrm{Undefined!}</p>
+</section>
+
+<section id="tir" class="Slide"><h3>Total Internal Reflection</h3>
+<p>The example above has no solution because the <span class="TeX">\sin</span> function cannot exceed 1.</p>
+<ul>
+    <li>When the angle of incidence is too large for there to be solution for the angle of refraction, <em class="Defn">total internal reflection</em> occurs.</li>
+    <li>There is no refracted wave; the waves energy is completely reflected back into the incident medium.</li>
+    <li>Total internal reflection can only happen when the wave speeds up; never when it slows down.</li>
+    <li>Total internal reflection is very useful, for example, in sending signals through fibre optic cables.</li>
+    <li>Because of total internal reflection, there is no loss of signal strength when the cable bends!</li>
+    <li>The angle of incidence at which total internal refelection begins is called the <em class="Defn">critical angle</em>.</li>
+    <li>To calculate the critical angle, set <span class="TeX">\theta_2 = 90^\circ</span>, the maximum possible value.</li>
+</ul>
+</section>
+
+<section id="ex3" class="Slide"><h3>Example 3</h3>
+<p class="Blue">Calculate the critical angle when light wave passes from glass with <span class="TeX">n=1.50</span> into air.</p>
+<p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{n_2}{n_1}</p>
+<p class="TeX">\begin{align} \sin\theta_1 &= \frac{n_2}{n_1} \sin\theta_2 \\\\ &= \frac{1.00}{1.50} \sin 90^\circ \\\\ &= 0.667 \end{align}</p>
+<p class="TeX">\theta_1 = \sin^{-1}(0.667) = 41.8^\circ</p>
+</section>
+
+<section id="disp" class="Slide"><h3>Dispersion</h3>
+<p>In some materials, the speed of light varies depending on the frequency.</p>
+<ul>
+    <li>When this is the case, different colours of light will refract to different angles.</li>
+    <li>This phenomenon is called <em class="Defn">dispersion</em>.</li>
+    <li>Dispersion is how a glass prism is able to break white light into the colours of the rainbow.</li>
+</ul>
+<p class="Center"><img class="w20" alt="NASA Image" src="https://upload.wikimedia.org/wikipedia/commons/1/19/PrismAndLight_gespiegelt.jpg"/></p>
+<ul>
+    <li>Typically, shorter wavelengths have higher refractive indices, causing violet light to refract more than red light.</li>
+    <li>This is opposite to the situation for diffraction, where shorter wavelengths diffract less.</li>
+</ul>
+</section>
+
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+
+<li><ol type="a">
+    <li> A wave has a wavelength of 1.20 m while traveling along a string with a wave velocity of 820 m/s. What is the frequency of the wave?</li>
+    <p class="Answer TeX">f = \frac{v}{\lambda} = \rm \frac{820\ m/s}{1.20\ m} = 683\ Hz</p>
+
+    <li>The wave passes into a thicker string in which the wave speed is only 575 m/s. Determine the wave’s frequency and wavelength in this string.</li>
+    <div class="Answer">
+        <p>According to Huygens’ Principle, the frequency remains unchanged at 683 Hz...</p>
+        <p class="TeX">\lambda = \frac{v}{f} = \rm \frac{575\ m/s}{683\ Hz} = 0.841\ m</p>
+    </div>
+</ol></li>
+
+<li>A light wave with wavelength 520 nm travels from air into water with <span class="TeX">n</span> = 1.30. The angle of incidence is 42.0°. Calculate the speed, wavelength, and angle of refraction for the light wave transmitted into the water.</li>
+<div class="Answer">
+    <p class="TeX">v_2 = \frac{c}{n_2} = \rm \frac{3.00\times 10^8\ m/s}{1.30} = 2.31\times 10^8\ m/s</p>
+    <p class="TeX">\frac{\lambda_2}{\lambda_1} = \frac{n_1}{n_2}</p>
+    <p class="TeX">\lambda_2 = \lambda_1\cdot \frac{n_1}{n_2} = \rm 520\ nm\cdot \frac{1.00}{1.30} = 400\ nm</p>
+    <p class="TeX">\frac{\sin\theta_2}{\sin\theta_1} = \frac{n_1}{n_2}</p>
+    <p class="TeX">\sin\theta_2 = \sin\theta_1\cdot \frac{n_1}{n_2}</p>
+    <p class="TeX">\theta_2 = \sin^{-1}\left(\sin\theta_1\cdot \frac{n_1}{n_2}\right) = \rm \sin^{-1}\left(\sin 42.0^\circ\cdot \frac{1.00}{1.30}\right) = 31.0^\circ</p>
+</div>
+
+<li>Surface waves on a region of deep water travel at 3.00 m/s. When the waves approach shallow water, the speed becomes 2.35 m/s. Calculate the angle of incidence needed to produce a refraction angle of 45.0°.</li>
+<div class="Answer">
+    <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2}</p>
+    <p class="TeX">\sin\theta_1 = \sin\theta_2\cdot \frac{v_1}{v_2}</p>
+    <p class="TeX">\theta_1 = \sin^{-1}\left(\sin\theta_2\cdot \frac{v_1}{v_2}\right) = \rm \sin^{-1}\left(\sin 45.0^\circ\cdot \frac{3.00\ m/s}{2.35\ m/s}\right) = 64.5^\circ</p>
+</div>
+
+<li>A laser beam with <span class="TeX">\lambda</span> = 628 nm in air passes into water. The angle of incidence is observed to be 27.4° and the refraction angle is 21.4°. Calculate the index of refraction and speed of light for the water.</li>
+<div class="Answer">
+    <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{n_2}{n_1}</p>
+    <p class="TeX">n_2 = n_1\cdot\frac{\sin\theta_1}{\sin\theta_2} = \rm 1.00\cdot\frac{\sin 27.4^\circ}{\sin 21.4^\circ} = 1.26</p>
+    <p class="TeX">v_2 = \frac{c}{n_2} = \rm \frac{3.00\times 10^8\ m/s}{1.26} = 2.38\times 10^8\ m/s</p>
+</div>
+
+<li>Light with wavelength 630 nm travels through a fibre optic cable (<span class="TeX">n</span> = 1.60).
+<ol type="a">
+    <li>At a bend in the cable, the light strikes the surface of the cable with an incident angle of 32.0°. With what refraction angle does the light enter the air?</li>
+    <div class="Answer">
+        <p class="TeX">\theta_2 = \sin^{-1}\left(\sin\theta_1\cdot \frac{n_1}{n_2}\right) = \rm \sin^{-1}\left(\sin 32.0^\circ\cdot \frac{1.60}{1.00}\right) = 58.0^\circ</p>
+    </div>
+
+    <li>What is the maximum angle of incidence for which an angle of refraction exists? What happens if the angle of incidence exceeds this angle?</li>
+    <div class="Answer">
+        <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{n_2}{n_1}</p>
+        <p class="TeX">\sin\theta_1 = \sin\theta_2\cdot \frac{n_2}{n_1}</p>
+        <p>Use the maximum possible angle of refraction, <span class="TeX">\theta_2</span> = 90.0°...</p>
+        <p class="TeX">\theta_1 = \sin^{-1} \left(\sin\theta_2\cdot \frac{n_2}{n_1}\right) = \rm \sin^{-1} \left(\sin 90.0^\circ\cdot \frac{1.00}{1.60}\right) = 38.7^\circ</p>
+        <p>If the incident angle exceeds the critical angle of 38.7°, total internal reflection occurs; there is no refracted wave.</p>
+    </div>
+</ol></li>
+
+<li>Earthquakes produce waves that travel through rock in the Earth’s crust. The wave speed depends on the type of rock. If a wave refracts from an angle of 18.5° to 24.1° when it passes through a boundary between different rock types, calculate the wave speed in the incident medium if the speed in the refraction medium is 8.21 km/s.</li>
+<div class="Answer">
+    <p class="TeX">\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2}</p>
+    <p class="TeX">v_1 = v_2\cdot\frac{\sin\theta_1}{\sin\theta_2} = \rm 8.21\ km/s\cdot\frac{\sin 18.5^\circ}{\sin 24.1^\circ} = 6.38\ km/s</p>
+</div>
+
+<li><ol type="a">
+    <li>Sometimes, different wavelengths of a wave will travel at different speeds. In a particular glass prism, red light has an index of refraction of 1.52 while violet light has <span class="TeX">n</span> = 1.60. Calculate the speeds of red and of violet light in this type of glass.</li>
+    <div class="Answer">
+        <p class="TeX">v_{red} = \frac{c}{n_{red}} = \rm \frac{3.00\times 10^8\ m/s}{1.52} = 1.97\times 10^8\ m/s</p>
+        <p class="TeX">v_{violet} = \frac{c}{n_{violet}} = \rm \frac{3.00\times 10^8\ m/s}{1.60} = 1.88\times 10^8\ m/s</p>
+    </div>
+
+    <li>If a mixture of light containing both red and violet strikes the prism (from air) with an incidence angle of 64.1°, what will the refraction angle be for the red light? What will it be for the violet light?</li>
+    <div class="Answer">
+        <p class="TeX">\theta_{red} = \sin^{-1}\left(\sin\theta_1\cdot \frac{n_1}{n_{red}}\right) = \rm \sin^{-1}\left(\sin 64.1^\circ\cdot \frac{1.00}{1.52}\right) = 36.3^\circ</p>
+        <p class="TeX">\theta_{violet} = \sin^{-1}\left(\sin\theta_1\cdot \frac{n_1}{n_{violet}}\right) = \rm \sin^{-1}\left(\sin 64.1^\circ\cdot \frac{1.00}{1.60}\right) = 34.2^\circ</p>
+    </div>
+</ol></li>
+
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    up: "p30/units/C", prev: "p30/emr/diff", next: "p30/emr/rev",
+}
+
+</script>

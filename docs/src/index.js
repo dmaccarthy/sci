@@ -660,7 +660,7 @@ page.vars.map = {
 /*** Slideshow functions ***/
 
 function slideshow() {
-    $("#Top, #MainTitle, section.Post:not(:visible)").remove();
+    $("#Top, #MainTitle, section.Post:not(:visible), .NoPresent").remove();
     $("body").addClass("Present").css({margin: "8px", "font-size": ""});
     let all_cues = slideshow.cues = [];
     let cues = $("main").css({"max-width": "100%"}).find("section.Post:visible").find(slideshow.select).hide();
@@ -683,7 +683,7 @@ function slideshow() {
     svg_aspect();
 }
 
-slideshow.select = "[data-cue=true], *:is(p, h2, h3, table, ol, ul, li, div, section):not([data-cue=none], :first-child)";
+slideshow.select = "[data-cue=true], *:is(p, h2, h3, h4, table, ol, ul, li, div, section):not([data-cue=none], :first-child)";
 
 slideshow.scroll = (s) => {
     svg_aspect();

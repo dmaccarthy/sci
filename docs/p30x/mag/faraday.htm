@@ -1,0 +1,116 @@
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Electromagnetic Induction</h1>
+</section>
+
+<section class="Slide"><h3>EM Induction</h3>
+<p>A motor converts electrical energy into mechanical energy.</p>
+<p>A <em class="Defn">generator</em> converts mechanical energy into electrical energy!</p>
+<ul>
+    <li>Generators use magnetic forces to transform energy.</li>
+    <li>The mechanism for this energy transformation was discovered by Michael Faraday and is called <em class="Defn">electromagnetic induction</em> (i.e. “inducing” electric forces by the use of magnetism).</li>
+    <li>The illustration below shows a simple generator.
+        <p class="Center"><img class="w20" src="p30/mag/img/gen.webp" alt="Generator"/></p>
+    </li>
+    <li>A conductor is moved through a magnetic field.</li>
+    <li>The magnetic force (which can be determined using the Third Hand Rule) pushes electrons to one end of the conductor, making it negative and the other end positive.</li>
+    <li>Electric potential energy has been produced!</li>
+    <li>The ends of the conductor can be used as positive and negative terminals (just like a battery) to power a circuit.</li>
+    <li>The voltage produced by a generator is often referred to as the “EMF” (<em class="Defn">electromotive force</em>).</li>
+    <li>Note that EMF is not actually measuring force, but potential difference!</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Faraday’s Law</h3>
+<p><em class="Defn">Faraday’s Law</em> states that an EMF will be produced in a circuit if one or more of the following conditions is met:</p>
+<ol>
+    <li>The average magnetic field experienced by the circuit changes. (This can be accomplished by moving the circuit and the external magnet closer together or farther apart.)</li>
+    <li>The angle between the field and the circuit changes. (This can be accomplished by rotating either the circuit or the magnet. Most practical generators use this method of generating an EMF.)</li>
+    <li>The area of the circuit changes. (This requires changing the shape of the circuit.)</li>
+</ol>
+</section>
+
+<section class="Slide"><h3>Lenz’s Law</h3>
+<p>Since energy is conserved, the gain of electrical energy must be accompanied by a loss of mechanical energy.</p>
+<ul>
+    <li>This observation is known as <em class="Defn">Lenz’s Law</em>.</li>
+    <li>The moving conductor (or magnet) must experience a magnetic force in the direction <em>opposite</em> to the motion whenever electrical energy is being generated.</li>
+    <li>We can use this fact to determine the direction of the induced current.</li>
+</ul> 
+</section>
+
+<section class="Slide"><h3 class="Blue">Example</h3>
+<p data-cue="none" class="Blue">Predict whether an EMF will be induced, and if so the location of the North pole and the direction of current flow when the coil is rotated clockwise through a magnetic field directed to the right.</p>
+<p data-cue="none" class="Center"><svg class="s12" data-svg2="p30/mag/img/faraday.js#lenz_law"></svg></p>
+<ul>
+    <li>An EMF will be produced because the angle between the coil and <span class="TeX">\va{B}</span> is changing.</li>
+    <li>The magnetic force must produce a <em>counterclockwise</em> torque to oppose the clockwise motion.</li>
+    <li>The “top” of the solenoid is South because it is attracted to the North pole of the external magnet and the “bottom” is North because it is repelled.</li>
+    <li>The Second Hand Rule gives the direction of the induced current, which tells us which end of the coil becomes negative and which becomes positive.</li>
+    <li>Electrical energy is gained and the solenoid loses rotational energy as electrons move through the solenoid.</li>
+    <li>As with a battery, electrons flow from + to – <em>inside</em> the source where electrical energy is <em>gained</em>, and from – to + <em>outside</em> of the source where electrical energy is <em>lost</em> to the loads connected into the circuit.</li>
+</ul>
+</section>
+
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+    <li>For each situation, decide whether there will be an induced EMF. If there is, (i) state whether it is due to a change in area, magnetic field strength, or angle; and (ii) determine the direction of the induced current.
+    <ol type="a">
+        <li>This circuit has three fixed sides and one moveable side, which is slid in the direction indicated. There is a uniform magnetic field directed into the page.</li>
+        <p class="Center"><svg class="s16" data-svg2="p30/mag/img/faraday.js#moveable"></svg></p>
+        <div class="Answer">
+            <p>There is an induced voltage (“EMF”) because the area of the circuit is increasing. There are two ways to determine the direction of the electron flow...</p>
+            <p>Method 1: Using the 3<sup>rd</sup> Left Hand Rule, we can see that since there is a velocity to the right, and a magnetic field into the page, there must be a magnetic force acting on the electrons in the wire pushing them to the bottom of the moving side. This will result in a clockwise electron flow through the circuit.</p>
+            <p>Method 2: According to Lenz’s Law, since the moving wire is moving to the right, there must be a magnetic force acting to the left. Since <span class="TeX">\va{B}</span> is into the page, the 3<sup>rd</sup> Left Hand Rule says the electron current in the moving side is toward the bottom of the page. Therefore, the electrons flow clockwise around the circuit.</p>
+            <p>Note that Method 1 focuses on the gain in electric energy (i.e. current in the circuit) resulting from the generator effect. Method 2 focuses on the loss of mechanical energy experienced by the moving wire. Both methods must give the same answer for the direction of the current.</p>
+        </div>
+
+        <li>A loop of conducting wire is moved from a region of weak magnetic field to strong as illustrated.</li>
+        <p class="Center"><svg class="s16" data-svg2="p30/mag/img/faraday.js#loop"></svg></p>
+        <p class="Answer">There is an induced voltage (“EMF”) because the magnetic field strength (as experienced by the coil) is increasing. Since <span class="TeX">\va{v}</span> is to the right, there must be a magnetic force acting to the left. This means that the magnet (located to the right, where the field lines are closer together) is repelling the coil. Thus the top of the coil is its north pole and the direction of the current is given by the 2<sup>nd</sup> Hand Rule.</p>
+
+        <li>A bar magnet is plunged into a solenoid as shown in the diagram below<!--, on the left-->.</li>
+        <p class="Center"><svg class="s8" data-svg2="p30/mag/img/faraday.js#plunge"></svg></p>
+        <p class="Answer">There is an induced voltage (“EMF”) because the magnetic field strength (as experienced by the coil) is increasing. Since <span class="TeX">\va{v}</span> is down, there must be a magnetic force acting up; the coil repels the bar magnet so the top of the coil is its south pole. Based on the 2<sup>nd</sup> Left Hand Rule the electrons flow up through the coil and then down through the ammeter.</p>
+    
+        <li>The solenoid/ammeter circuit is rotated counterclockwise through a uniform magnetic field in the direction shown <!--above, on the right--> below.</li>
+        <p class="Center"><svg class="s8" data-svg2="p30/mag/img/faraday.js#ccw"></svg></p>
+        <p class="Answer">There is an induced voltage (“EMF”) because the angle between the coil and the magnetic field is changing. Since the rotation is counterclockwise, the magnetic forces must act clockwise on the coil; the top of the coil is the north pole. Based on the 2<sup>nd</sup> Left Hand Rule the electrons flow down through the coil and then up through the ammeter.</p>
+
+        <li>Repeat (d) for a magnetic field directed out of the page instead of to the right.</li>
+        <p class="Answer">The angle between the coil and the magnetic field remains constant at 90°. According to Faraday’s Law, no EMF is induced.</p>
+    </ol></li>
+
+    <li>A “slider” is dropped through a 1.00 m long tube as illustrated. A “photogate” is placed at the bottom of the tube to determine the speed of the slider as it emerges.
+    <p class="Center"><svg class="s8" data-svg2="p30/mag/img/faraday.js#tube"></svg></p>
+    <p>Measurements are made the following combinations: (1) magnetic slider and PVC (plastic) tube, (2) magnetic slider and aluminum tube, (3) non-magnetic slider and PVC (plastic) tube, (4) non-magnetic slider and aluminum tube. Neither PVC nor aluminum can be magnetized, although PVC is a non-conductor and aluminum is a conductor.</p>
+    <p>Students were surprised to discover that three of the four measurements resulted in the same speed <span class="NoWrap">(<span class="TeX">v_f</span></span> = 4.38 m/s), while one of the measurements produced a significantly different result <span class="NoWrap">(<span class="TeX">v_f</span></span> = 1.86 m/s).</p>
+    <p>Which of the results was the different one? Explain why the behaviour was different. Also, calculate the acceleration of the slider for each case.</p>
+    </li>
+    <div class="Answer">
+        <p>The combination of a magnetic slider and an aluminum (conductor) tube acts as a generator. The falling magnet means the aluminum tube below the magnet’s position experiences an increasing magnetic field strength and produces an induced current that repels the slider, while the aluminum tube above the magnet’s position experiences a decreasing magnetic field strength and produces an induced current that attracts the slider. These magnetic forces slow the falling slider as the mechanical energy is transformed into electrical energy. This effect cannot occur for a non-magnetic slider or for a non-conducting tube.</p>
+        <p>Use uniform acclerated motion to find the acceleration...</p>
+        <p class="TeX">\va{a} = \frac{v_f^2 - v_i^2}{2\Delta\va{d}}</p>
+        <p>We can ignore the initial velocity because it is zero...</p>
+        <p class="TeX">\va{a} = \frac{v_f^2}{2\Delta\va{d}}</p>
+        <p>Using <span class="TeX">v_f</span> = 4.38 m/s...</p>
+        <p class="TeX">\va{a} = \rm \frac{(4.38\ m/s)^2}{2\cdot 1.00\ m} = 9.59\ m/s^2</p>
+        <p>Using <span class="TeX">v_f</span> = 1.86 m/s...</p>
+        <p class="TeX">\va{a} = \rm \frac{(1.86\ m/s)^2}{2\cdot 1.00\ m} = 1.73\ m/s^2</p>
+        <p>The accleration was only slightly less than <span class="TeX">g</span>, probably because of air resistance, when EM induction did <em>not</em> occur. When induction <em>did</em> occur, the acceleration of only 1.73 m/s<sup>2</sup> indicates a magnetic force nearly as strong as gravity. The mechanical energy lost by the falling slider was converted to electrical energy, and ultimately to heat as the moving electrons in the aluminum collided with nuclei.</p>
+    </div>
+
+</ol></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    up: "p30/units/B", prev: "p30/mag/motor", next: "p30/mag/rev",
+}
+
+</script>

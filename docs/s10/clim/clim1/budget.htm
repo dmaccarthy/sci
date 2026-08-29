@@ -1,16 +1,14 @@
-<section class="Post" data-show="1" data-action="group.svg">
+<section class="Post" data-show="1" data-action="group">
 <h3>Discussion</h3>
-<div class="Collapse">
-<h3>Seasons</h3>
-    <p data-cue="none">What causes the seasons?</p>
-    <p>Why is it summer in the southern hemisphere when it is winter in the northern hemisphere?</p>
-</div></section>
+<ol data-cue="none">
+    <li>What causes the seasons?</p>
+    <li>Why is it summer in the southern hemisphere when it is winter in the northern hemisphere?</p>
+</ol>
+</section>
 
 <section class="Post" data-action="slides">
-<h3>Lesson Notes</h3>
-<div class="Collapse">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Energy Budget &amp; Greenhouse Effect</h1>
 </section>
 
@@ -100,10 +98,10 @@
     </ul>
 </section>
 
-</div></section>
+</section>
 
 <section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Review</h3><div class="Collapse">
+<h3>Review</h3>
 <ol>
     <li>Define <em class="Defn">open</em>, <em class="Defn">closed</em> and <em class="Defn">isolated</em> systems. Which type of system is Earth?</li>
     <div class="Answer">
@@ -136,20 +134,16 @@
         <p class="Answer">It would be much colder as more infrared radiation would carry energy away from the Earth.</p>
     </ol></li>
 </ol>
-</div></section>
+</section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "s10/unitD", prev: "s10/clim1/transfer", next: "s10/clim2/graph",
-}
-
-</script>
-<script type="text/javascript">
-
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
+page.run(() => {
+    page.show_post("slides");
 });
 
 </script>
+
+<section class="Post" data-show="1" data-action="handouts">
+<div class="json">["1g2fAzVRccnGAeDTVzMJBUUmR8j5INQ-v"]</div>
+</section>

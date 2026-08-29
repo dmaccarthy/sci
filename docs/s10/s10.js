@@ -17,15 +17,15 @@ page.cal.s10 = [ // Calendar items
 home.item("home", {page: "s10", icon: "microscope", title: "Science 10", data: {cal: false}});
 _ = d => home.item("s10", d);
 _({page: "chem", icon: "testtube.webp", title: "Chemistry", data: {cal: false, s: "9999.1.1"}});
-_({page: "phys", icon: "soccer", title: "Physics", data: {cal: false, hide: 1}});
-_({page: "bio", icon: "microscope", title: "Biology", data: {cal: false, hide: 1}});
-_({page: "clim", icon: "earth", title: "Climate", data: {cal: false, hide: 1}});
+_({page: "phys", icon: "soccer", title: "Physics", data: {cal: false, s: "9999.1.1"}});
+_({page: "bio", icon: "microscope", title: "Biology", data: {cal: false, s: "9999.1.1"}});
+_({page: "clim", icon: "earth", title: "Climate", data: {cal: false, s: "9999.1.1"}});
 }
 
 { // Matter
 home.item("s10/chem", {page: "chem1", icon: "atom", title: "Part 1: #Matter", data: {cal: false}});
 _ = d => home.item("s10/chem/chem1", d);
-_({page: "whmis", title: "WHMIS & Lab Safety", data: {s: "2026.8.27", a: "2026.9.1"}});
+_({page: "whmis", title: "WHMIS & Lab Safety", data: {s: "2026.8.31", a: "2026.9.1"}});
 
 /* Reversed order so 'classify' is on a Wednesday */
 _({page: "expDes", title: "Experiment Design", data: {s: "2026.9.3", a: "2026.9.4"}});
@@ -103,4 +103,21 @@ _({page: "spec", title: "Cell Specialization"});
 _({page: "gas", title: "Gas Exchange"});
 _({page: "water", title: "Water Transport"});
 _({page: "sys", title: "Plant Control Systems"});
+}
+
+{ // Heat & Climate
+home.item("s10/clim", {page: "clim1", icon: "earth", title: "Part 1: #Heat & Climate", data: {cal: false}});
+_ = d => home.item("s10/clim/clim1", d);
+_({page: "heatcap", title: "Heat Capacity"});
+_({page: "latent", title: "Latent Heat"});
+_({page: "transfer", title: "Heat Transfer"});
+_({page: "budget", title: "Earth’s Energy Budget"});
+}
+
+{ // Climate & Biomes
+home.item("s10/clim", {page: "clim2", icon: "earth", title: "Part 2: #Climate & Biomes", data: {cal: false}});
+_ = d => home.item("s10/clim/clim2", d);
+_({page: "graph", title: "Climatographs"});
+_({page: "biome", title: "Biomes"});
+_({page: "ncc", title: "Natural Climate Change"});
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NIST Isotope Data</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../../../src/util.js?_"></script>
+
+<script type="text/javascript">
+
+/*
+
+UI: https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses
+Data: https://physics.nist.gov/cgi-bin/Compositions/stand_alone.pl?ele=&all=all&ascii=html&isotype=all
+Download data as nist_data.html
+
+*/
+
+async function nist() {
+// Parse isotope masses from NIST HTML file into JSON.
+    return fetch(nist.url).then(r => r.text()).then(t => {
+        let num = c => {
+            c = c.charCodeAt(0);
+            return c >= 48 && c <= 57;
+        }
+        let split = s => {
+            let r = [];
+            for (let c of s.split(" "))
+                if (c.length && c.charCodeAt(0) < 128) r.push(c);
+            return r;
+        }
+        let isotope = (sym, item) => {
+            let i = 0;
+            while (!num(item[i])) i++;
+            data[sym].iso[parseInt(item[i])] = parseFloat(item[i+1]);
+        };
+        let data = {n: {Z: 0, iso: {1: 1.00866491606}}};
+        let pre = $(t).filter("pre").text().split(/\r\n|\n/);
+        for (let i=0;i<pre.length;i++) {
+            let item = pre[i];
+            if (num(item)) {
+                item = split(item);
+                let sym = item[1];
+                data[sym] = {Z: parseInt(item[0]), iso: {}};
+                item.splice(0, 1);
+                isotope(sym, item);
+                while (pre[++i].charAt(0) != "_") isotope(sym, split(pre[i]));
+            }
+        }
+        return data;
+    });
+}
+
+nist.url = "nist_data.html";
+
+$(nist().then(data => {
+    blobify(JSON.stringify(data), "application/json").then(b => b.save(`isotopes_${new Date().getTime()}.json`));
+}));
+
+</script>
+</head>
+<body>
+</body>
+</html>

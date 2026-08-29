@@ -1,4 +1,4 @@
-SVG2.cache("s10/clim2/img/graph.js", {
+scripts.cache["s10/clim/clim2/img/graph"] = {
 
 london_uk: (sel) => {
     let svg = new SVG2(sel, {size: [521, 360], lrbt: [0, 12, 0, 90], grid: [1, 5], margin: [62, 62, 28, 12]});
@@ -31,4 +31,4 @@ london_uk: (sel) => {
     svg.click_toggle(9, 0);
 },
 
-});
+};

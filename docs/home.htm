@@ -31,6 +31,10 @@
 
 page.run(() => {
     page.menu("home");
+    if (!teacher()) {
+        $("table.Menu tr[data-feed='p30']").remove();
+        $("table.Menu tr[data-feed='p20']").remove();
+    }
 });
 
 page({svg2: [

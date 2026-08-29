@@ -1,0 +1,248 @@
+<section class="Post" data-show="1" data-icon="simulation">
+<style type="text/css">
+
+#SimControls td {
+    min-width: 5em;
+}
+
+#SimControls tr:first-child td {
+    border: none;
+    padding-bottom: 0.5em;     
+}
+
+#SimControls input[type='text'] {
+    font-size: 100%;
+    text-align: center;
+    width: 6em;
+    margin: 2px;
+    border: none;
+}
+
+</style>
+<h2 class="Collapse">Principal Ray Diagram</h2><div class="Collapse">
+    <p class="Center"><svg id="RayApplet" data-svg2="p30/optics/img/pr.js#diag"></svg></p>
+    <table id="SimControls" class="Center Bottom">
+    <tr><td colspan="2">
+        <input type="radio" name="device" checked="1"/> Mirror &nbsp;
+        <input type="radio" name="device"/> Lens
+    </td></tr>
+    <tr>
+        <td><span class="TeX">f</span></td>
+        <td><input type="text" value="1"/></td>
+    </tr>
+    <tr class="Blue">
+        <td><span class="TeX">d_o</span></td>
+        <td><input class="Blue" type="text" value="3"/></td>
+    </tr>
+    <tr class="Red">
+        <td><span class="TeX">d_i</span></td>
+        <td><input class="Red" type="text"/></td>
+    </tr>
+    <tr>
+        <td><span class="TeX">m</span></td>
+        <td><input type="text"/></td>
+    </tr>
+    </table>
+    
+</div>
+
+<script type="text/javascript" data-init="sim">
+
+loadFeed.sim = () => {
+    loadFeed.sim.given = [0, 1];
+    $("#SimControls input").on("change", (ev) => {
+        let e = $("#SimControls input");
+        let given = loadFeed.sim.given;
+        for (let i=0;i<4;i++) if (i != given[1] && e[i+2] == ev.currentTarget)
+            loadFeed.sim.given = [given[1], i];
+        loadFeed.sim.draw();
+    });
+    loadFeed.sim.draw(true);
+
+    let copy = () => {
+        let e = $("#RayApplet");
+        if (e.html()) {
+            let html = e[0].outerHTML;
+            $("#PrRayDiagCopy").html(html).find("svg").addClass("w28");
+        }
+        else setTimeout(copy, 500);
+    }
+    copy();
+
+    let t = click_cycle.toggle;
+    let svg = () => $("#RayApplet")[0].svg2;
+    click_cycle($("#RayApplet")[0], -1,
+        () => {t(svg(), false, 0, 1, 2, 3, 4)},
+        () => {t(svg(), true, 0)},
+        () => {t(svg(), true, 1)},
+        () => {t(svg(), true, 2)},
+        () => {t(svg(), true, 3)},
+        () => {t(svg(), true, 4)},
+    );
+}
+    
+loadFeed.sim.solve = () => {
+    let given = loadFeed.sim.given;
+    let n = Math.pow(2, given[0]) + Math.pow(2, given[1]);
+    let e = $("#SimControls input[type='text']");
+    let data = [];
+    for (let ei of e) data.push(parseFloat($(ei).val()));
+    let [f, d, di, m] = data;
+    if (n == 3) { // f, do
+        di = 1 / (1/f - 1/d);
+        m = -di / d;
+    }
+    else if (n == 5) { // f, di
+        d = 1 / (1/f - 1/di);
+        m = -di / d;
+    }
+    else if (n == 9) { // f, m
+        d = f * (1 - 1/m);
+        di = -m * d;
+    }
+    else if (n == 6) { // do, di
+        m = -di / d;
+        f = 1 / (1/d + 1/di);
+    }
+    else if (n == 10) { // do, m
+        di = -m * d;
+        f = 1 / (1/d + 1/di);
+    }
+    else { // di, m
+        d = -di / m;
+        f = 1 / (1/d + 1/di);
+    }
+    if (d < 0) {d = -d; di = -di; f = -f}
+    data = [f, d, di, m];
+    for (let i=0;i<4;i++) $(e[i]).val(data[i].toPrecision(4));
+    return data;
+}
+
+loadFeed.sim.draw = (first) => {
+    let data = loadFeed.sim.solve();
+    if (first) return;
+    let ok = true;
+    for (let x of data) if (!isFinite(x)) ok = false;
+    let e = $("#RayApplet").html(ok ? "" : `<text x="351" y="100" style="text-anchor: middle">No finite solution!</text>`);
+    if (ok) {
+        let lens = $("#SimControls input[type='radio']")[1].checked;
+        SVG2.cache_run("p30/optics/img/pr.js", "diag", "#RayApplet", lens, ...data)
+    }
+}
+
+</script>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Principal Rays</h1>
+</section>
+
+<section class="Slide"><h3>Concave Mirror</h3>
+<p>Curved mirrors are generally classified as concave or convex.</p>
+<ul>
+    <li>A <em class="Defn">concave mirror</em> has its reflective side on the inside of the curve.</li>
+</ul>
+<p class="Center"><img class="w24" alt="Concave" src="p30/optics/img/concave.webp"/></p>
+<ul>
+    <li >The line joining the centre of the mirror’s surface (called the <em class="Defn">vertex</em>) to the centre of curvature (C) is called the <em class="Defn">principal axis</em>.</li>
+    <li>Incident rays that are parallel to the principal axis are called <em class="Defn">paraxial</em>.</li>
+    <li>Paraxial rays that strike the mirror <em>close to</em> the vertex will reflect through a point halfway between the vertex and centre. This point is called the <em class="Defn">focus</em> of the mirror.</li>
+</ul>
+<p>One application of this phenomenon is a satellite dish.</p>
+<p class="Center">
+    <a target="WC" href="https://commons.wikimedia.org/wiki/File:SatelliteDishBrickWall2.jpg"><img class="w20" alt="Dish" src="p30/optics/img/dish.webp"/></a>
+</p>
+<ul>
+    <li>The signals from the satellite are the parallel incident rays.</li>
+    <li>The dish concentrates these rays to the focal point where the receiver is located.</li>
+    <li>Incident rays that are <em>not</em> extremely close to the principal axis will not reflect through the focus.</li>
+    <li>This fact — that spherical mirrors do not have a precise focus for all paraxial rays — is called <em class="Defn">spherical aberration.</em></li>
+    <li>This means that sphere-shaped mirrors produce fuzzy images.</li>
+    <li>Most curved mirrors are shaped as <em class="Defn">paraboloids</em> instead of spheres, because paraboloids have a sharp focus.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Convex Mirror</h3>
+<p>A <em class="Defn">convex mirror</em> has its reflective side on the outside of the curve.</p>
+<p class="Center"><img class="w24" alt="Concave" src="p30/optics/img/convex.webp"/></p>
+<ul>
+    <li>There is still a focus midway between the vertex and centre of curvature, but the reflected rays travel directly <em>away</em> from the focal point.</li>
+    <li>This focus is called a <em class="Defn">virtual focus</em>.</li>
+    <li>Concave mirrors have a <em class="Defn">real</em> focus.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Principal Rays</h3>
+<p>For curved mirrors, we can use the focal point to draw two of the reflected rays without having to measure any angles.</p>
+<p class="Center" id="PrRayDiagCopy">&nbsp;</p>
+<ol>  
+    <li>An incident ray parallel to the principal axis will reflect through (or away from, if the mirror is convex) the focus.</li>
+    <li>An incident ray in line with the focus will reflect parallel to the principal axis.</li>
+</ol>
+<p>There is also a third ray that can be drawn using the centre of curvature.</p>
+<ol start="3">  
+    <li>An incident ray in line with the centre of curvature will reflect directly back through the centre of curvature (since the angles of incidence and reflection will be 0º).</li>
+</ol>
+<p>We typically define the following variables for curved mirror situations:</p>
+<div class="Center">
+    <p><span class="TeX">f</span> = Distance from vertex to focus</p>     
+    <p><span class="TeX">d_o</span> = Distance from vertex to object</p>     
+    <p><span class="TeX">d_i</span> = Distance from vertex to image</p>     
+    <p><span class="TeX">m</span> = Magnification of the image</p>     
+</div>
+<ul>
+    <li>Positive values are used for <span class="TeX">f</span> and <span class="TeX">d_i</span> to indicate the focus or image is real.</li>
+    <li>Negative values are used for a virtual focus or image.</li>
+    <li>An image is <em class="Defn">upright</em> (<span class="TeX">m>0</span>) when it is on the same side of the principal axis as the object, and <em class="Defn">inverted</em> (<span class="TeX">m<0</span>) when on the opposite side.</li>
+    <li>An image is <em class="Defn">enlarged</em> or <em class="Defn">magnified</em> (<span class="TeX">|m|>1</span>) when it is further from the principal axis than the object, and <em class="Defn">reduced</em> (<span class="TeX">|m|<1</span>) when it is closer.</li>
+</ul>
+</section>
+</div></section>
+
+<!-- <section class="Post NoPrintIcon" data-show="2024.11.5.10" data-icon="gdrv">
+    <h2 class="Collapse">Practice &amp; Review</h2><div class="Collapse">
+    <p class="BtnGrid">
+        <button data-icon="gdrv" data-gdrv="11tYqkSZ8bQQLH9c3FR5VjBFoyg_oDU-vOM18pZLlm6k">Answer Key</button>
+    </p>
+</div></section> -->
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+
+<li><ol type="a">
+    <li>For a concave spherical mirror of radius 8.0 cm, where would the image be produced for an object 1.0 cm tall placed vertically on the principal axis 7.0 cm from the mirror? Classify the image (real/virtual and upright/inverted). Use an accurate principal ray diagram to solve this question. The sketch below is not to scale.</li>
+    <p class="Answer">Since the radius of the mirror is 8.0 cm, the centre of curvature (C) is 8.0 cm from the vertex, and the focal point (F) is at the midpoint, 4.0 cm from the vertex. Based on the <a target="Q1a" href="../?[0,4,7,%22cm%22]#p30/optics/pr_soln">ray diagram</a>, a real, inverted, image is produced at <span class="TeX">d_i</span> = 9.3 cm. The image is enlarged to about 1.4 cm.</p>
+
+    <li>Repeat (a) for a convex mirror.</li>
+    <p class="Answer">Based on the <a target="Q1b" href="../?[0,-4,7,%22cm%22]#p30/optics/pr_soln">ray diagram</a>, a virtual, upright, reduced image is produced at <span class="TeX">d_i</span> = –2.5 cm.</p>
+</ol></li>
+
+<li>Use precise principal ray diagrams to locate and classify the image produced by the following situations:
+<ol type="a">
+    <li><span class="TeX">f</span> = 3.0 cm, <span class="TeX">d_o</span> = 2.0 cm</li>
+    <p class="Answer">Based on the <a target="Q2a" href="../?[0,3,2,%22cm%22]#p30/optics/pr_soln">ray diagram</a>, a virtual, upright, enlarged image is produced at <span class="TeX">d_i</span> = –6.0 cm.</p>
+
+    <li><span class="TeX">f</span> = –3.0 cm, <span class="TeX">d_o</span> = 2.0 cm</li>
+    <p class="Answer">Based on the <a target="Q2b" href="../?[0,-3,2,%22cm%22]#p30/optics/pr_soln">ray diagram</a>, a virtual, upright, reduced image is produced at <span class="TeX">d_i</span> = –1.2 cm.</p>
+
+    <li><span class="TeX">f</span> = –5.0 cm, <span class="TeX">d_o</span> = 5.0 cm</li>
+    <p class="Answer">Based on the <a target="Q2c" href="../?[0,-5,5,%22cm%22]#p30/optics/pr_soln">ray diagram</a>, a virtual, upright, reduced image is produced at <span class="TeX">d_i</span> = –2.5 cm.</p>
+</ol></li>
+
+<li>If you look closely at a flashlight, you will usually find a concave mirror positioned so that the light bulb is located at the focal point. Explain the purpose of the mirror.</li>
+<p class="Answer">If the light bulb is placed at the mirror’s focus, the light will reflect from the mirror and travel in rays (almost) parallel to the principal axis.</p>
+
+</ol>
+</div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    up: "p30/units/C", prev: "p30/optics/rays", next: "p30/optics/mirror",
+}
+
+</script>

@@ -1,11 +1,11 @@
 page.cal.p20 = [ // Calendar items
-    ["2026.8.31", "Classes Begin"],
-    ["2026.9.10", "Kinematics Quiz", {class: "Bold"}],
-    ["2027.1.20", "Exam Week Begins"],
+    ["2027.2.1", "Classes Begin"],
+    ["2027.2.16", "Kinematics Quiz", {class: "Bold"}],
+    ["2027.6.17", "Exam Week Begins"],
 ];
 
 { // Chapters
-if (teacher()) home.item("home", {page: "p20", icon: "rocket", title: "Physics 20", data: {cal: false}});
+home.item("home", {page: "p20", icon: "rocket", title: "Physics 20", data: {cal: false}});
 _ = d => home.item("p20", d);
 _({page: "skill", icon: "graph", title: "Math & Science 10 Review", data: {cal: false}});
 _({page: "kin", icon: "train", title: "One-Dimensional Motion", data: {cal: false}});
@@ -21,8 +21,8 @@ _({page: "circ", icon: "midway", title: "Circular & Planetary Motion", data: {ca
 
 { // Review
 _ = d => home.item("p20/skill", d);
-_({page: "expDes", icon: "testtube.webp", title: "Experiment Design", data: {s: "2026.8.31", a: "2026.9.1"}});
-_({page: "scatter", icon: "graph", title: "Scatter Plots", data: {s: "2026.9.1", a: "2026.9.2"}});
+_({page: "expDes", icon: "testtube.webp", title: "Experiment Design", data: {s: "2027.2.1", a: "2027.2.2"}});
+_({page: "scatter", icon: "graph", title: "Scatter Plots", data: {s: "2027.2.2", a: "2027.2.3"}});
 _({page: "algebra", title: "Algebra"});
 _({page: "sciNot", title: "Significant Digits & Scientific Notation"});
 _({page: "si", title: "SI Units"});

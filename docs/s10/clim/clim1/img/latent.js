@@ -1,4 +1,4 @@
-SVG2.cache("s10/clim1/img/latent.js", {
+scripts.cache["s10/clim/clim1/img/latent"] = {
 
 water: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 3.25, -50, 125], grid: [0.25, 12.5], margin: [64, 4, 12, 12]});
@@ -22,4 +22,4 @@ water: (sel) => {
     g.text("e", [3, 112]);
 },
 
-});
+};

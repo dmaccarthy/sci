@@ -1,7 +1,6 @@
 <section class="Post" data-action="slides">
-<h3>Lesson Notes</h3><div class="Collapse">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Latent Heat</h1>
 </section>
 
@@ -15,7 +14,7 @@
 
 <section class="Slide"><h3>Phase Changes</h3>
     <p data-cue="none" class="Caption">Heating Curve for 1 kg of Water</p>
-    <p data-cue="none" class="Center"><svg class="s20" data-svg2="s10/clim1/img/latent.js#water"></svg></p>
+    <p data-cue="none" class="Center"><svg class="s20" id="Water"></svg></p>
     <p>When a <em class="Defn">phase change</em> occurs (e.g. solid to liquid) the heat goes <em>entirely</em> into potential energy.</p>
     <ul>
         <li>The temperature remains constant while the phase change is occuring.</li>
@@ -76,10 +75,10 @@
     <p>The total heat needed is 33.4 kJ + 15.5 kJ = 48.9 kJ</p>
 </section>
 
-</div></section>
+</section>
 
 <section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Practice</h3><div class="Collapse">
+<h3>Practice</h3>
 <ol>
     <li><ol type="a">
         <li>How much heat (energy) does it take to make 8.00 moles of ice at 0.0 °C melt completely into liquid water?</li>
@@ -156,10 +155,10 @@
         <p class="TeX">m = nM = \rm{1.10\ mol\cdot 18.02\ g/mol = 19.9\ g}</p>
     </div>
 </ol>
-</div></section>
+<!-- </div></section>
 
-<section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Review</h3><div class="Collapse">
+<section class="Post" data-show="1" data-answers="1" data-action="correct"> -->
+<h3>Review</h3>
 <ol>
     <li><ol type="a">
         <li>Define <em class="Defn">phase change</em>.</li>
@@ -185,21 +184,16 @@
     <li>Explain what a “heating curve” is and how to interpret the horizontal and sloped sections of the graph.</li>
     <p class="Answer">This is a graph showing how temperature changes as more heat is added. The horizontal sections, where heat is being added but the temperature is not changing, correspond to phase changes. The lengths of the horizontal segments are proportional to the latent heat. The sloped sections represent rising temperature for one specific phase. The slope of each segment is inversely proportional to the specific heat capacity; steeper lines correspond to lower heat capacities.</p>
 </ol>
-</div></section>
+</section>
+
+<section class="Post" data-show="1" data-action="handouts">
+<div class="json">["1-NJ_lBw6ExtPjwAtiqf24n3RjXuzp3c4"]</div>
+</section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "s10/unitD", prev: "s10/clim1/heatcap", next: "s10/clim1/transfer",
-}
-
-</script>
-<script type="text/javascript">
-
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-        ["#18", "s10/clim1/img/latent", "water"],
-    ],
-});
+page({svg2: [
+    ["#Water", "s10/clim/clim1/img/latent", "water"],
+]});
 
 </script>

@@ -1,0 +1,332 @@
+<!-- <section class="Post" data-icon="video">
+    <h2 class="Collapse">Video</h2>
+    <div class="Collapse" data-yt="#PLpVmtCaB-lymqo9502rf1ax_xrq2M_QeT"></div>
+</section> -->
+
+<section class="Post" data-icon="simulation">
+<h2 class="Collapse">Simulation</h2><div class="Collapse">
+    <p class="Center"><svg id="CoulombSim"></svg></p>
+    <p class="Center">Calibration: <span id="mN_per_deg"></span> mN/°</p>
+    <p class="Center"><a href="javascript:loadFeed.verify()">Experiment Code</a>: <span id="ExpCode"></span></p>
+    <p class="Center"><a target="Sheet" href="https://docs.google.com/spreadsheets/d/1SgnvIkxA_DB5h0m89dqp_gZkm7lDIQO6h5TdT2pVkeU/">Google Sheets</a></p>
+</div>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Coulomb’s Law</h1>
+</section>
+
+<section class="Slide"><h3>Coulomb’s Hypothesis</h3>
+<p>The force of gravity between two masses, according to Newton, is:</p>
+<p class="TeX">F_g = {Gm_1 m_2\over r^2}</p>
+<div>
+    <p>Coulomb proposed that a similar relationship might describe the electric force between two charges:</p>
+    <p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
+</div>
+<ul>
+    <li>The electric force should depend on the charges (<span class="TeX">q_1</span> and <span class="TeX">q_2</span>) instead of the masses.</li>
+    <li>The constant (<span class="TeX">k</span>) for electric force must be different than for gravity (<span class="TeX">G</span>); charge and mass have different units.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Coulomb’s Experiment</h3>
+<p>To test whether his hypothesis was correct, Coulomb measured the electric force using a <em class="Defn">torsion balance</em>.</p>
+<p class="Center"><img data-aspect="355/419" class="s16" src="p30/elec/img/tb.webp" alt="Torsion Balance"/></p>
+<ul>
+    <li>A torsion balance was later used by Cavendish to measure gravitational force.</li>
+    <li>When a torsion (twisting force) is applied, the apparatus will twist until the wire’s tendency to untwist balances the torsion.</li>
+    <li>The angle at which the torsions balance tells us how strong the force is.</li>
+    <li>Coulomb manipulated the separation between the charges to see how the electric force  would change.</li>
+    <li>If the hypothesis is correct a graph of the raw data (<span class="TeX">F_e</span> vs. <span class="TeX">r</span>) will be <em>non-linear</em>.</li>
+    <li>A graph of <span class="TeX">F_e</span> vs. <span class="TeX">r^{-2}</span> should show a <em>direct</em> relationship with a slope <span class="TeX">kq_1 q_2</span>.</li>
+    <li>If we can measure the two charges, we can calculate <span class="TeX">k</span> from the slope of the graph.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Coulomb’s Law</h3>
+<p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
+<div>
+    <p>The accepted value of Coulomb’s constant is:</p>
+    <p class="TeX">k = 8.99\times 10^9\ \rm{N\cdot m^2/C^2}</p>
+</div>
+<ul>
+    <li>This means that two charges of 1 coulomb each that are 1 metre apart will repel (or attract if they have opposite signs) with a force of 8.99 <em>billion</em> newtons!</li>
+    <li>The electric force is typically much stronger than gravity.</li>
+    <li>Technically, Coulomb’s Law only applies to <em class="Defn">point charges</em>.</li>
+    <li>Coulomb’s Law can be used as an approximation when the separation between the objects is much larger than the size of the objects.</li>
+    <li>The separation <span class="TeX">r</span> is measured from the <em>centres</em> of the charges.</li>
+    <li>The equation tells us only the <em>magnitude</em> of the electric force.</li>
+    <li>The <em>direction</em> of the force depends on whether the charges attract (opposite sign) or repel (same sign).</li>
+</ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 1</h3>
+<p class="Blue">Calculate the electric force between a +5.00 μC charge and a −2.00 μC charge that are 20.0 cm apart.</p>
+<p class="TeX">F_e = \rm \frac{(8.99\times 10^9\ \frac{N\cdot m^2}{C^2}) (5.00\times 10^{-6}\ C) (2.00\times 10^{-6}\ C)}{(0.200\ m)^2} = 2.25\ N</p>
+<p>This force is <em>attractive</em>.</p>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 2</h3>
+<p class="Blue">Calculate the separation between two 75.0 nC charges that repel each other with a force of 1.50 newtons.</p>
+<p class="TeX">F_e = \left|{kq_1 q_2\over r^2}\right|</p>
+<p class="TeX">F_e r^2 = |kq_1q_2|</p>
+<p class="TeX">r^2 = {|kq_1q_2|\over F_e}</p>
+<p class="TeX">r = \sqrt{|kq_1q_2|\over F_e} = \rm{{8.99\times 10^9 (7.50\times 10^{-8})^2\over 1.50}\ m = 5.81\ mm}</p>
+</section>
+
+<section class="Slide"><h3>Inverse Square Law</h3>
+<p>Coulomb’s Law is an <em class="Defn">inverse square</em> law.</p>
+<ul>
+    <li>This means that when the separation is <em>doubled</em>, the force will be <em><u>four</u> times weaker!</em></li>
+</ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example 3</h3>
+<p class="Blue">Two charges, <span class="TeX">q_1</span> and <span class="TeX">q_2</span>, exert an electric force <span class="TeX">F_1</span> on each other when separated by a distance <span class="TeX">r</span>. If one of the charges is doubled and the separation is tripled, the electric force becomes <span class="TeX">F_2</span>. Calculate the ratio <span class="TeX">F_2:F_1</span>.</p>
+<p class="TeX">F_1 = \left|{kq_1 q_2\over r^2}\right|</p>
+<p class="TeX">F_2 = \left|{k(2q_1)q_2\over(3r)^2}\right| = {2\over 9}\left|{kq_1 q_2\over r^2}\right|</p>
+<p class="TeX">{F_2 \over F_1} = {2\over 9} = 0.\bar{2}</p>
+<p class="TeX">{F_1 \over F_2} = {9\over 2} = 4.5</p>
+</section>
+
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+    <li>Determine the electric force between charges of +6.00 microcoulombs and –6.00 μC that are separated by 32.0 cm. Is the force attractive or repulsive?</li>
+    <div class="Answer">
+        <p class="TeX">F_e = \frac{k|q_1 q_2|}{r^2}</p>
+        <p class="TeX">F_e = \rm \frac{8.99\times 10^9\ N\cdot m^2/C^2\ (6.00\times 10^{-6}\ C)^2}{(0.320\ m)^2}</p>
+        <p class="TeX">F_e = \rm 3.16\ N</p>
+        <p>The force is attractive because the charges have opposite signs.</p>
+    </div>
+
+    <li>Two charges of +2.50 μC exert forces of 65.0 N on each other. What is the separation between the two charges? Is the force attractive or repulsive?</li>
+    <div class="Answer">
+        <p class="TeX">F_e = \frac{k|q_1 q_2|}{r^2}</p>
+        <p class="TeX">F_e r^2 = k|q_1 q_2|</p>
+        <p class="TeX">r^2 = \frac{k|q_1 q_2|}{F_e}</p>
+        <p class="TeX">r = \sqrt{\frac{k|q_1 q_2|}{F_e}}</p>
+        <p class="TeX">r = \rm \sqrt{\frac{8.99\times 10^9\ N\cdot m^2/C^2\cdot (2.50\times 10^{-6}\ C)^2}{65.0\ N}}</p>
+        <p class="TeX">r = \rm 0.0294\ m</p>
+        <p>The force is repulsive since the charges are both positive.</p>
+    </div>
+
+    <li>When charges <span class="TeX">q_1</span> and <span class="TeX">q_2</span> are placed a distance <span class="TeX">r</span> apart, the magnitude of the electrical force they experience is <span class="TeX">F_1</span>. When charges <span class="TeX">2.00 q_1</span> and <span class="TeX">3.00 q_2</span> are placed a distance <span class="TeX">2.00 r</span> apart, the magnitude of the force is <span class="TeX">F_2</span>. Determine the ratio <span class="TeX">F_2</span> : <span class="TeX">F_1</span>.</li>
+    <div class="Answer">
+        <p class="TeX">F_1 = \frac{k|q_1 q_2|}{r^2}</p>
+        <p class="TeX">F_2 = \frac{k|(2.00q_1) (3.00q_2)|}{(2.00r)^2}</p>
+        <p class="TeX">F_2 = \frac{6.00 k|q_1 q_2|}{4.00r^2} = 1.50 \frac{k|q_1 q_2|}{r^2}</p>
+        <p>When we divide the forces, all of the variables cancel!</p>
+        <p class="TeX">\frac{F_2}{F_1} = 1.50</p>
+    </div>
+
+    <li><p>An electron has a charge of –1.60 × 10<sup>–19</sup> C and a proton has a charge of +1.60 × 10<sup>–19</sup> C. In a hydrogen atom, the electron orbits the proton at a radius of about 5.29 × 10<sup>–11</sup> m.</p>
+    <ol type="a">
+        <li>Determine the electric force experienced by the electron.</li>
+        <div class="Answer">
+            <p class="TeX">F_e = \frac{k|q_1q_2|}{r^2}</p>
+            <p class="TeX">F_e = \rm \frac{8.99\times 10^9\ N\cdot m^2/C^2\ (1.60\times 10^{-19}\ C)^2}{(5.29\times 10^{-11}\ m)^2}</p>
+            <p class="TeX">F_e = \rm 8.22\times 10^{-8}\ N</p>
+            <p>The force is attractive because the charges have opposite signs.</p>
+        </div>
+
+        <li>The mass of an electron is 9.11 × 10<sup>–31</sup> kg. Determine the electron’s acceleration.</li>
+        <div class="Answer">
+            <p>Use Newton’s 2nd Law...</p>
+            <p class="TeX">F = ma</p>
+            <p class="TeX">a = \frac{F}{m} = \rm \frac{8.22\times 10^{-8}\ N}{9.11\times 10^{-31}\ kg} = 9.03\times 10^{22}\ m/s^2</p>
+        </div>
+
+        <li>Calculate the electron’s speed. Assume uniform circular motion.</li>
+        <div class="Answer">
+            <p>For uniform circular motion...</p>
+            <p class="TeX">a = \frac{v^2}{r}</p>
+            <p class="TeX">ar = v^2</p>
+            <p class="TeX">v = \sqrt{ar} = \rm  \sqrt{9.03\times 10^{22}\ m/s^2\cdot 5.29\times 10^{-11}\ m} = 2.19\times 10^6\ m/s</p>
+        </div>
+
+        <li>How many times larger is the electric force between the proton and electron compared to the gravitational attraction? The proton’s mass is 1.67 × 10<sup>–27</sup> kg.</li>
+        <div class="Answer">
+            <p class="TeX">F_g = \frac{Gm_1m_2}{r^2}</p>
+            <p class="TeX">F_g = \rm \frac{6.67\times 10^{-11}\ N\cdot m^2/kg^2\cdot 1.67\times 10^{-27}\ kg \cdot 9.11\times 10^{-31}\ kg}{(5.29\times 10^{-11}\ m)^2}</p>
+            <p class="TeX">F_g = 3.63\times 10^{-47}\ N</p>
+            <p>Calculate the ratio of the electric to the gravitational force...</p>
+            <p class="TeX">\frac{F_e}{F_g} = \rm \frac{8.22\times 10^{-8}\ N}{3.63\times 10^{-47}\ N} = 2.27\times 10^{39}</p>
+        </div>
+    </ol></li>
+
+    <li>
+        <p>Two charges, +8.00 μC and –2.00 μC are placed 20.0 cm apart as illustrated.</p>
+        <p class="Center"><svg class="s16" data-svg2="p30/elec/img/coulomb.js#pm"></svg></p>
+    <ol type="a">
+        <li>A third charge is positioned so that it experiences no net force. Should the third charge be positioned between the charges, to the left of the + charge, or to the right of the – charge? Explain.</li>
+        <p class="Answer">The third charge must be closer to the smaller of the charges (i.e. the negative one) if the forces are to balance. The charge can <b>not</b> be located <em>between</em> the + and – charge since the two forces would then be in the same direction and could not balance. Thus the third charge must be to the right of the negative charge.</p>
+
+        <li>Determine the exact location (i.e. how many centimetres from the + or – charge) of the third charge.</li>
+        <div class="Answer">
+            <p>Let’s call the third charge <span class="TeX">q</span>, the two charges illustrated <span class="TeX">Q_1</span> and <span class="TeX">Q_2</span>, the separation between these <span class="TeX">r</span> = 20.0 cm, and the unknown position of the third charge from the negative source <span class="TeX">x</span>. Equate the two forces...</p>
+            <p class="TeX">F_1 = F_2</p>
+            <p class="TeX">\frac{k|Q_1q|}{(x+r)^2} = \frac{k|Q_2q|}{x^2}</p>
+            <p>We can cancel the <span class="TeX">kq</span> which appear on both sides...</p>
+            <p class="TeX">\frac{|Q_1|}{(x+r)^2} = \frac{|Q_2|}{x^2}</p>
+            <p class="TeX">\left|\frac{Q_1}{Q_2}\right| x^2 = (x+r)^2</p>
+            <p>We know that <span class="TeX">Q_1</span> is 4 times larger than <span class="TeX">Q_2</span>...</p>
+            <p class="TeX">4x^2 = (x+r)^2</p>
+            <p>Square root both sides...</p>
+            <p class="TeX">2x = x+r</p>
+            <p>Then subtract <span class="TeX">x</span>...</p>
+            <p class="TeX">x = r = \rm 20.0\ cm</p>
+            <p>This means that the test charge is exactly twice as far from <span class="TeX">Q_1</span> (40.0 cm) compared to <span class="TeX">Q_2</span> (20.0 cm) to compensate for the fact that the magnitude of <span class="TeX">Q_1</span> is four times as large.</p>
+        </div>
+    </ol></li>
+
+    <li><p>A charge, <span class="TeX">q_A</span> = +6.25 × 10<sup>–7</sup> C, experiences electrostatic forces due to two nearby charges. Charge <span class="TeX">q_B</span> = –2.50 × 10<sup>–6</sup> C is located 12.0 cm to the left of charge “A” and charge <span class="TeX">q_C</span> = +1.85 × 10<sup>–6</sup> C is located 7.50 cm below “A”.</p>
+    <ol type="a">
+        <li>Use Coulomb’s Law to calculate the magnitude of the electrostatic force that “B” exerts on “A”. Is the force attractive or repulsive? Write the force vector as an ordered pair (2D Cartesian vector).</li>
+        <div class="Answer">
+            <p class="TeX">F_{AB} = \frac{k|q_Aq_B|}{r_{AB}^2}</p>
+            <p class="TeX">F_{AB} = \rm \frac{8.99\times 10^9\ N\cdot m^2/C^2\cdot 6.25\times 10^{-7}\ C \cdot 2.50\times 10^{-6}\ C}{(0.120\ m)^2}</p>
+            <p class="TeX">F_{AB} = \rm 0.975\ N</p>
+            <p>The force is attractive (charges are opposite sign) so “A” is pulled toward “B”; i.e. to the left...</p>
+            <p class="TeX">\va{F}_{AB} = \rm (-0.975, 0)\ N</p>
+        </div>
+
+        <li>Use Coulomb’s Law to calculate the magnitude of the electrostatic force that “C” exerts on “A”. Is the force attractive or repulsive? Write the force vector in Cartesian form.</li>
+        <div class="Answer">
+            <p class="TeX">F_{AC} = \frac{k|q_Aq_C|}{r_{AC}^2}</p>
+            <p class="TeX">F_{AC} = \rm \frac{8.99\times 10^9\ N\cdot m^2/C^2\cdot 6.25\times 10^{-7}\ C \cdot 1.85\times 10^{-6}\ C}{(0.0750\ m)^2}</p>
+            <p class="TeX">F_{AC} = \rm 1.85\ N</p>
+            <p>The force is repulsive (charges are both positive) so “A” is pushed away from “C” ; i.e. up...</p>
+            <p class="TeX">\va{F}_{AC} = \rm (0, +1.85)\ N</p>
+        </div>
+
+        <li>Calculate the net force that “A” experiences due to the combined effects of “B” and “C”. Express the answer in polar form.</li>
+        <div class="Answer">
+            <p class="TeX">\va{F}_A = \va{F}_{AB} + \va{F}_{AC}</p>
+            <p class="TeX">\va{F}_A = \rm (-0.975, 0)\ N + (0, +1.85)\ N = (-0.975, +1.85)\ N</p>
+            <p>We can convert this to polar form using the Pythagoras and <span class="TeX">\tan^{-1}</span> formulas:</p>
+            <p class="TeX">\va{F}_A = \rm 2.09\ N\ [118^\circ]</p>
+        </div>
+
+        <li>Charge “A” has a mass of 75.0 g. Neglecting gravity, what will its acceleration be? Is it reasonable to neglect gravity? Explain.</li>
+        <div class="Answer">
+            <p>Use Newton’s 2nd Law...</p>
+            <p class="TeX">F = ma</p>
+            <p class="TeX">a = \frac{F}{m} = \rm \frac{2.09\ N\ [118^\circ]}{0.0750\ kg} = 27.9\ m/s^2\ [118^\circ]</p>
+            <p>It is <b>not</b> reasonable to ignore gravity since the calculated acceleration is only about <span class="TeX">3g</span>. Including gravity would change the answer by about one-third. It is only reasonable to ignore gravity when the acceleration would be many times larger than gravity. For example, an acceleration of <span class="TeX">50g</span> would be incorrect by no more than 2% if we neglected gravity.</p>
+        </div>
+    </ol></li>
+
+    <li><p>A van de Graff generator is used to give two metal spheres identical charges of –5.00 μC. The metal spheres are then placed far away from the van de Graff, 18.0 cm apart as illustrated below. A charged, cork ball of mass 2.25 g, placed 6.00 cm directly above one of the spheres as illustrated, is observed to accelerate at 690 m/s<sup>2</sup> [95.25°]. (The force of gravity can be neglected.)</p>
+    <p class="Center"><svg class="s16" data-svg2="p30/elec/img/coulomb.js#cork"></svg></p>
+    <ol type="a">
+        <li>Is the cork ball positive or negative? Explain.</li>
+        <p class="Answer">Negative. The direction of the force indicates that the sources are repelling the cork.</p>
+
+        <li>Using the cork ball’s mass and acceleration, determine the net force it experiences.</li>
+        <p class="Answer TeX">F = ma = \rm 2.25\times 10^{-3}\ kg\cdot 690\ m/s^2\ [95.25^\circ] = 1.55\ N\ [95.25^\circ]</p>
+
+        <li>Use trigonometry to find the distance and angle between the cork ball and the farther sphere.</li>
+        <div class="Answer">
+            <p>By Pythagoras...</p>
+            <p class="TeX">r = \rm\sqrt{0.180^2 + 0.0600^2}\ m = 0.190\ m</p>
+            <p>Using the tangent ratio...</p>
+            <p class="TeX">\theta = \rm \tan^{-1}\frac{0.0600\ m}{0.180\ m} = 18.4^\circ</p>
+        </div>
+
+        <li>Draw a vector diagram showing the addition of the two electrostatic forces and the net force.</li>
+        <p class="Answer"><a target="Q7" href="./?{%22v%22:%22[0,1.498635],%20@(0.14974,161.565)%22,%22symbol%22:%22F%22,%22unit%22:%22N%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+
+        <li>Determine the net charge of the cork ball. [Hint: Use the sine law to solve for either one of the two electrostatic forces. Then use Coulomb’s Law to find the charge.]</li>
+        <div class="Answer">
+            <p>The angles in the triangle are 5.25º (bottom, 95.25º – 90º), 108.4º (top right, 90º + 18.4º), and 66.35º (top left, 180º – (108.4º + 5.25º)). The force between the cork and <span class="TeX">Q_1</span> (at the origin) is...</p>
+            <p class="TeX">F_1 = F_{net}\rm \frac{\sin 66.35^\circ}{\sin 108.4^\circ} = 1.50\ N</p>
+            <p>Now solve for the charge of the cork...</p>
+            <p class="TeX">F_1 = \frac{k|Q_1q|}{r_1^2}</p>
+            <p class="TeX">F_1r_1^2 = k|Q_1q|</p>
+            <p class="TeX">|q| = \frac{F_1r_1^2}{k|Q_1|} = \rm \frac{1.50\ N\ (0.0600\ m)^2}{8.99\times 10^9\ N\cdot m^2/C^2\cdot 5.00\times 10^{-6}\ C} = 1.20\times 10^{-7}\ C</p>
+            <p>We have already determined that the charge is negative...</p>
+            <p class="TeX">q = \rm -1.20\times 10^{-7}\ C</p>
+        </div>
+    </ol></li>
+
+</ol></div></section>
+
+<script type="text/javascript" data-init="sim">
+
+loadFeed.sim = () => {
+    let R = 44;
+    let svg = loadFeed.final = new SVG2("#CoulombSim", {scale: 7, lrbt: [-R, R, -R, R]});
+
+    // Set charge and force calibration
+    svg.charge = 1e-6 * uniform(2, 6);
+    let q = (svg.charge * 1e6).toFixed(4);
+    $("#ExpCode").html(btoa(btoa(q)));
+    let f = (8.99e12 * sq(svg.charge / 0.4) / uniform(50, 80)).toPrecision(3);
+    $("#mN_per_deg").html(f);
+    svg.force = -parseFloat(f) / 1000;
+
+    // Draw protractor
+    svg.circle(R).css({fill: "#f0f0f0", "fill-opacity": 0.4, stroke: "#c0c0c0"});
+    let g = svg.group({stroke: "#c0c0c0"});
+    let t = svg.group("sans", {fill: "#909090"});
+    for (let i=0;i<360;i++) {
+        let p = vec2d(R, i);
+        if (i % 20) {
+            let r = i % 10 ? (i % 5 ? 1 : 2 ) : 3;
+            g.line(vec2d(R - r, i), p);
+        }
+        else {
+            g.line([0, 0], p);
+            t.gtext(i > 270 ? i - 360 : i, [], vec2d(40, i));
+        }
+    }
+
+    // Draw spheres
+    g = svg.group().config({thetaMode: 0, animated: true});
+    svg.circle(0.7, [0, 0]).css({fill: "white", stroke: "black"});
+    let [p1, p2] = [[40, 0], [-25, 0]];
+    g.line(p1, p2).css({stroke: "black", "stroke-width": "4px"});
+    g.circle(2.4, p1).css({fill: "red", stroke: "black"});
+    g.circle(3.4, p2).css({fill: "#B0B0B0", stroke: "black"});
+    svg.blue = svg.group("#0065fe", "black@1").config({shift: vec2d(40, -60)});
+    svg.blue.circle(2.4);
+
+    g.beforeupdate = function() {
+        // Calculate angular speed of torsion balance
+        let svg = this.svg;
+        let p = vec2d(40, this.theta);
+        let dx = p.minus(svg.blue.shift);
+        let r = dx.mag() / 100;
+        let Fe = vec2d(8.99e9 * sq(svg.charge) / sq(r), dx.dir());
+        let unit = vec2d(1, this.theta + 90);
+        let F = Fe.dot(unit) + svg.force * this.theta;
+        let omega = 0.95 * this.omega + 10 * F;
+        this.omega = Math.max(-200, Math.min(omega, 200));
+    }
+
+    svg.play().$.on("click", (ev) => {
+        let theta = svg.event_coords(ev).coords.dir();
+        svg.blue.config({shift: vec2d(40, theta)});
+    });
+}
+
+loadFeed.verify = (a) => {
+    let q = parseFloat(prompt("Enter your charge in microcoulombs..."));
+    if (!isNaN(q)) {
+        let c = prompt("Enter your Experiment Code", $("#ExpCode").html());
+        c = parseFloat(atob(atob(c)));
+        c = (q - c) / c * 100;
+        alert(`Your calculated charge is off by ${c.toFixed(2)}%`);
+    }
+}
+
+loadFeed.data = {up: "p30/units/B", prev: "p30/elec/da", next: "p30/elec/Efield",
+}
+
+</script>

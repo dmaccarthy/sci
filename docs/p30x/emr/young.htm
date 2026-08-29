@@ -1,0 +1,227 @@
+<section class="Post NoPrintIcon" data-icon="video">
+    <h2 class="Collapse">Video</h2>
+    <div class="Collapse" data-yt="VUUGCtFzFX8"></div>
+</section>
+
+<section class="Post" data-icon="slides">
+<h2 class="Collapse">Lesson Notes</h2><div class="Collapse">
+
+<section class="Slide Center">
+<h1 id="Title">Young’s Experiment</h1>
+</section>
+
+<section class="Slide"><h3>Huygens’ Principle</h3>
+<p>What is the nature of light?</p>
+<ul>
+    <li>Sir Isaac Newton believed that light was composed of <em class="Defn">corpuscles</em> (particles).</li>
+    <li>Newton’s view was opposed by Christiaan Huygens who believed that light was a <em class="Defn">wave</em>.</li>
+    <li>Huygens was one of the first scientists to study waves systematically. He developed what is now known as <em class="Defn">Huygens’ Principle</em>...</li>
+    <li>Each point on a wave can be considered as a point source producing circular (for 2D) or spherical (for 3D) <em class="Defn">wavelets</em>.</li>
+    <li>The future shape of the wave may be determined by adding up all of these wavelets.</li>
+    <li>When waves overlap to produce a larger wave (crest+crest or trough+trough) we call this <em class="Defn">constructive interference</em>.</li>
+    <li>When waves overlap to produce a smaller wave (crest+trough) we call this <em class="Defn">destructive interference</em>.</li>
+    <li>The simplest example of Huygens’ Principle is a wave (e.g. water waves) passing through a very narrow opening in a barrier.</li>
+    <li>The opening can be treated as a single point source: the waves should spread out in a semi-circular pattern on the other side of the barrier.
+        <p class="Center"><svg class="s18" data-svg2="p30/emr/img/young.js#single"></svg></p>
+    </li>
+    <li>The grey arrows represent the direction of energy flow.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Two-Source Interference</h3>
+<p>When there are <em>two</em> narrow openings in the barrier, the wavelets from one opening will overlap and interfere with the wavelets from the other opening.</p>
+<p class="Center"><iframe class="s20" src="https://www.desmos.com/calculator/21caae048a?embed" width="640" height="480" data-aspect="4/3" style="border: 1px solid #ccc" frameborder=0></iframe></p>
+<ul>
+    <li>Constructive interference will occur wherever two crests (blue) or two troughs (red) overlap.</li>
+    <li>Locations of maximum constructive interference are called <em class="Defn">interference maxima</em> or <em class="Defn">anti-nodes</em>.</li>
+    <li>Destructive interference will occur where a crest overlaps a trough.</li>
+    <li>Locations of complete destructive interference are called <em class="Defn">interference minima</em> or <em class="Defn">nodes</em>.</li>
+    <li>The result of two-source interference will be an alternating pattern of maxima and minima.</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Geometry of 2-Source Interference</h3>
+<p>All points along the <em class="Defn">central maximum</em> are the same distance from both sources.</p>
+<ul>
+    <li>These points will always experience constructive inteference.</li>
+    <li>Destructive interference will occur at points that are one-half of a wavelength closer to one source than the other, because one wave will be exactly <span class="TeX">\frac{1}{2}\lambda</span> ahead of the other.</li>
+    <li>When the <em class="Defn">path difference</em> is exactly <span class="TeX">\lambda</span> or an exact <em>multiple</em> (<span class="TeX">n\lambda</span>, if <span class="TeX">n</span> is a whole number) another maximum will occur.</li>
+    <li>We can derive an equation for the locations of the maxima and minima from the diagram below.
+        <p class="Center"><svg class="s16" data-svg2="p30/emr/img/young.js#geom"></svg></p>
+    </li>
+</ul>
+<ul>
+    <li>Points <span class="TeX">S_1</span> and <span class="TeX">S_2</span> are the sources and <span class="TeX">d</span> is the distance between them.</li>
+    <li>Point <span class="TeX">P</span> is an arbitrary point far away from the sources.</li>
+    <li>Point <span class="TeX">Q</span> is the same distance from <span class="TeX">P</span> as <span class="TeX">S_2</span>, so that the triangle <span class="TeX">PQS_2</span> is isoceles.</li>
+    <li>The segment <span class="TeX">S_1Q</span> is the <em>path difference</em>, <span class="TeX">n\lambda</span>.</li>
+    <li>When <span class="TeX">P</span> is very far away (many times larger than <span class="NoWrap"><span class="TeX">d</span>),</span> the angle at <span class="TeX">P</span> will be very close to zero and the angles at <span class="TeX">Q</span> and <span class="TeX">S_2</span> will be very close to 90º.</li>
+    <li>We can approximate the triangle <span class="TeX">QS_1S_2</span> as a right triangle since the angle at <span class="TeX">Q</span> is about 90º:
+        <p class="TeX">\sin\theta = \frac{n\lambda}{d}</p></li>
+</ul>
+</section>
+
+<section class="Slide"><h3 class="Blue">Example</h3>
+<p data-cue="none" class="Blue">Water waves with a wavelength of 2.00 metres pass through two openings separated by 5.00 metres. Find the locations of all the maxima.</p>
+<p class="TeX">\theta = \sin^{-1}\left(\frac{n\lambda}{d}\right)</p>
+<p>The <em>central maximum</em> (<span class="TeX">n=0</span>) is always located at <span class="TeX">\theta = 0^\circ</span>.</p>
+<div>
+    <p>The <em>first-order maximum</em> (<span class="TeX">n=1</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{1\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{23.6^\circ}</p>
+</div>
+<div>
+    <p>The <em>second-order maximum</em> (<span class="TeX">n=2</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{2\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{53.1^\circ}</p>
+</div>
+<div>
+    <p>There are no higher-order maxima; if we attempt to set <span class="TeX">n=3</span>, the expression in brackets will be greater than 1:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{3\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{No\ Solution!}</p>
+</div>
+<div>
+    <p>Because the <span class="TeX">\sin</span> function has a maximum value of 1, there will only be solutions for:</p>
+    <p class="TeX">n \le \frac{d}{\lambda}</p>
+</div>
+<p class="Blue">Find the locations of all the minima.</p>
+<div>
+    <p>The <em>first-order minimum</em> (<span class="TeX">n=0.5</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{0.5\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{11.5^\circ}</p>
+</div>
+<div>
+    <p>The <em>second-order minimum</em> (<span class="TeX">n=1.5</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{1.5\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{36.9^\circ}</p>
+</div>
+<div>
+    <p>The <em>third-order minimum</em> (<span class="TeX">n=2.5</span>) will be at:</p>
+    <p class="TeX">\theta = \sin^{-1}\left(\frac{\mathrm{2.5\cdot 2.00\ m}}{\mathrm{5.00\ m}}\right) = \mathrm{90.0^\circ}</p>
+</div>
+</section>
+
+<section class="Slide"><h3>Young’s Experiment</h3>
+<p>To settle the dispute between Newton and Huygens, Thomas Young conducted his <em class="Defn">double-slit experiment</em> in 1801.</p>
+<ul>
+    <li>Light will be passed through a double-slit (two narrow openings set close together).</li>
+    <li>If light is a wave, like Huygens believed, an interference pattern of alternating bright (maxima) and dark (minima) spots should be produced.</li>
+    <li>If light is made of particles, like Newton believed, there should be two bright spots produced corresponding to the two slits.</li>
+    <li>The results show an interfernce pattern, supporting Huygens’ belief that light is a wave.
+        <p class="Center Top"><a href="https://commons.wikimedia.org/wiki/File:Single_slit_and_double_slit2.jpg" title="Click for source" target="Src">
+            <img src="p30/emr/img/dbl_maxima.webp" alt="Interference" class="w24"/>
+        </a></p>        
+    </li>
+</ul>
+<ul>
+    <li>The variation in brightness is due to the fact that the slits are not points (as we assumed) but rather have a finite width.</li>
+    <li>An additional benefit of Young’s experiment was that it provided a method of separating light into different colours (wavelengths).</li>
+    <li>Furthermore, the equation can be rearranged to calculate the wavelength of light:
+        <p class="TeX">\lambda = \frac{d\sin\theta}{n}</p></li>
+    <li>It is through measurements based on Young’s experiment that we know visible light has wavelengths ranging from just under 400 nm (violet) to around 750 nm (red).</li>
+</ul>
+</section>
+
+<section class="Slide"><h3>Spectroscopy</h3>
+<p>A device that uses this phenomenon to separate and measure wavelengths is called a <em class="Defn">spectroscope</em>.</p>
+<ul>
+    <li>Spectroscopes typically use a <em class="Defn">diffraction grating</em> with several hundred evenly spaced slits rather than just two.</li>
+    <li>A diffraction grating produces an interference pattern that obeys the same equation as the double-slit, but the maxima are better-defined.</li>
+    <li>A diffraction grating is often described by the number of lines per mm; for example, 300 lines per mm means:
+        <p class="TeX">d = \frac{1}{300}\ \mathrm{mm} = 3.33\times 10^{-6}\ \mathrm{m}</p></li>
+    <li>Spectroscopy is the branch of science that deals with the analysis of light sources.</li>
+    <li>It is used in chemistry as a method of identifying substances (since the pattern of light that each substance emits or absorbs is unique).</li>
+    <li>It is also used in astronomy where the objects of study are often too far away to collect any data other than the EMR that they emit, absorb, or reflect.</li>
+</ul>
+</section>
+
+</div></section>
+
+<section class="Post" data-show="1" data-answers="1" data-icon="correct">
+<h2 class="Collapse">Practice</h2><div class="Collapse">
+<ol>
+
+<li>Green light is observed through a diffraction grating with 500 lines per mm. The second-order interference maximum is observed at 30.0°.
+<ol type="a">
+    <li>Calculate the wavelength and frequency of the green light wave.</li>
+    <div class="Answer">
+        <p class="TeX">d = \rm \frac{1}{500} \ mm = 2.00\times 10^{-6}\ m</p>
+        <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.00\times 10^{-6}\ m\cdot \sin 30.0^\circ}{2} = 5.00\times 10^{-7}\ m = 500\ nm</p>
+        <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{5.00\times 10^{-7}\ m} = 6.00\times 10^{14}\ Hz</p>
+    </div>
+
+    <li>Predict the locations of the first- and third-order maxima.</li>
+    <div class="Answer">
+        <p class="TeX">d\sin\theta = n\lambda</p>
+        <p class="TeX">\sin\theta = \frac{n\lambda}{d}</p>
+        <p class="TeX">\theta = \sin^{-1}\frac{n\lambda}{d}</p>
+        <p class="TeX">\theta_1 = \rm \sin^{-1}\left(\frac{1\cdot 5.00\times 10^{-7}\ m}{2.00\times 10^{-6}\ m}\right) = 14.5^\circ</p>
+        <p class="TeX">\theta_3 = \rm \sin^{-1}\left(\frac{3\cdot 5.00\times 10^{-7}\ m}{2.00\times 10^{-6}\ m}\right) = 48.6^\circ</p>
+    </div>
+
+</ol>
+</li>
+
+<li>Determine the angle of the first- and second-order maxima for light with <span class="TeX">\lambda</span> = 492 nm passing through a diffraction grating with 700 lines per mm.</li>
+<div class="Answer">
+    <p class="TeX">d = \rm \frac{1}{700} \ mm = 1.43\times 10^{-6}\ m</p>
+    <p>The algebra is the same as the previous question...</p>
+    <p class="TeX">\theta = \sin^{-1}\frac{n\lambda}{d}</p>
+    <p class="TeX">\theta_1 = \rm \sin^{-1}\left(\frac{1\cdot 4.92\times 10^{-7}\ m}{1.43\times 10^{-6}\ m}\right) = 20.1^\circ</p>
+    <p class="TeX">\theta_2 = \rm \sin^{-1}\left(\frac{2\cdot 4.92\times 10^{-7}\ m}{1.43\times 10^{-6}\ m}\right) = 43.5^\circ</p>
+</div>
+
+<li>Light passes through a green filter and then through a diffraction grating with 250 lines per mm. A first-order maximum is observed at an angle of 7.24°.
+<ol type="a">
+    <li>Calculate the wavelength of the green light.</li>
+    <div class="Answer">
+        <p class="TeX">d = \rm \frac{1}{250} \ mm = 4.00\times 10^{-6}\ m</p>
+        <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{4.00\times 10^{-6}\ m\cdot \sin 7.24^\circ}{1} = 5.04\times 10^{-7}\ m = 504\ nm</p>
+    </div>
+
+    <li>Predict the angle at which the second-order maximum will be located.</li>
+    <div class="Answer">
+        <p class="TeX">\theta = \sin^{-1}\frac{n\lambda}{d}</p>
+        <p class="TeX">\theta_2 = \rm \sin^{-1}\left(\frac{2\cdot 5.04\times 10^{-7}\ m}{4.00\times 10^{-6}\ m}\right) = 14.6^\circ</p>
+    </div>
+
+    <li>[Attempt to...] Calculate the angle at which the 8<sup>th</sup>-order maximum will be located. Can you explain your result? [Hint: Can the path difference ever by more than <span class="NoWrap"><span class="TeX">d</span>?</span> Compare <span class="TeX">8\lambda</span> to <span class="NoWrap"><span class="TeX">d</span>.]</span></li>
+    <div class="Answer">
+        <p class="TeX">\theta_8 = \rm \sin^{-1}\left(\frac{8\cdot 5.04\times 10^{-7}\ m}{4.00\times 10^{-6}\ m}\right) = \sin^{-1}(1.008) = Undefined!</p>
+        <p>The <span class="TeX">\sin^{-1}</span> function does not have a solution when the argument exceeds 1; there is only a solution when:</p>
+        <p class="TeX">n\lambda &lt; d</p>
+        <p class="TeX">n &lt; \frac{d}{\lambda}</p>
+    </div>
+</ol>
+</li>
+
+<li>Light with <span class="TeX">\lambda</span> = 650 nm produces a first-order maximum at an angle of 12.6°. What is the slit spacing of the diffraction grating used?</li>
+<div class="Answer">
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n}</p>
+    <p class="TeX">d = \frac{n\lambda}{\sin\theta} = \rm \frac{1\cdot 6.50\times 10^{-7}\ m}{\sin 12.6^\circ} = 2.98\times 10^{-6}\ m</p>
+</div>
+
+<li>A spectroscope is a device that uses a diffraction grating to separate light into different wavelengths. When light from a hydrogen gas discharge tube passes through a spectroscope, different colours of light are observed to produce first-order maxima at angles of 9.2°, 9.5°, 10.0°, 11.2° and 15.2°. The spectroscope uses a grating with 400 lines per mm. Calculate the wavelengths and frequencies of these five observed colours of light.</li>
+<div class="Answer">
+    <p class="TeX">d = \rm \frac{1}{400} \ mm = 2.50\times 10^{-6}\ m</p>
+    <p>For 9.2°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 9.2^\circ}{1} = 4.0\times 10^{-7}\ m</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{4.0\times 10^{-7}\ m} = 7.5\times 10^{14}\ Hz</p>
+    <p>For 9.5°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 9.5^\circ}{1} = 4.1\times 10^{-7}\ m</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{4.1\times 10^{-7}\ m} = 7.3\times 10^{14}\ Hz</p>
+    <p>For 10.0°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 10.0^\circ}{1} = 434\ nm</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{4.34\times 10^{-7}\ m} = 6.91\times 10^{14}\ Hz</p>
+    <p>For 11.2°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 11.2^\circ}{1} = 486\ nm</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{4.86\times 10^{-7}\ m} = 6.18\times 10^{14}\ Hz</p>
+    <p>For 15.2°...</p>
+    <p class="TeX">\lambda = \frac{d\sin\theta}{n} = \rm \frac{2.50\times 10^{-6}\ m\cdot \sin 15.2^\circ}{1} = 655\ nm</p>
+    <p class="TeX">f = \frac{c}{\lambda} = \rm \frac{3.00\times 10^8\ m/s}{6.55\times 10^{-7}\ m} = 4.58\times 10^{14}\ Hz</p>
+</div>
+
+</ol></div></section>
+
+<script type="text/javascript">
+
+loadFeed.data = {
+    up: "p30/units/C", prev: "p30/emr/c", next: "p30/emr/maxwell",
+}
+
+</script>
