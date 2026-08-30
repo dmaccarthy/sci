@@ -21,4 +21,10 @@ _({page: "", icon: "nuke.webp", title: "Nuclear & Particle Physics", data: {cal:
 _ = d => home.item("p30/mom", d);
 _({page: "energy", icon: "", title: "Work & Energy Review", data: {s: "2027.2.1", a: "2027.2.2"}});
 _({page: "mom", icon: "", title: "Momentum", data: {s: "2027.2.2", a: "2027.2.3"}});
+_({page: "impulse", icon: "", title: "Impulse", data: {s: "9999.1.1", a: "9999.1.1"}});
+_({page: "cons", icon: "", title: "Momentum Conservation", data: {s: "9999.1.1", a: "9999.1.1"}});
+_({page: "coll1d", icon: "", title: "1D Collisions", data: {s: "9999.1.1", a: "9999.1.1"}});
+_({page: "vec2d", icon: "", title: "2D Vectors Review", data: {s: "9999.1.1", a: "9999.1.1"}});
+_({page: "coll2d", icon: "", title: "2D Collisions", data: {s: "9999.1.1", a: "9999.1.1"}});
+_({page: "rev", icon: "", title: "Chapter Review", data: {s: "9999.1.1", a: "9999.1.1"}});
 }

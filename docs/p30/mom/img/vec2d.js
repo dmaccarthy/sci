@@ -1,4 +1,4 @@
-SVG2.cache("p30/mom/img/vec2d.js", {
+scripts.cache["p30/mom/img/vec2d"] = {
 
 p2d: (sel) => {
     let F1 = vec2d(20, 15), F2 = vec2d(30, 75);
@@ -33,4 +33,4 @@ boat: (sel) => {
     svg.mjax("\\va{v}", null, [-10, 8], "#0065fe");
 },
 
-});
+};

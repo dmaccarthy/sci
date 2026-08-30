@@ -1,4 +1,4 @@
-SVG2.cache("p30/mom/img/impulse.js", {
+scripts.cache["p30/mom/img/impulse"] = {
 
 bat: (sel) => {
     let svg = new SVG2(sel, {size: [480, 360], lrbt: [0, 0.3, 0, 110], grid: [0.02, 10], margin: [60, 20, 48, 4]});
@@ -11,4 +11,4 @@ bat: (sel) => {
     css(svg.poly([[0, 0], [0.08, 100], [0.18, 100], [0.3, 0]]), ".Locus", "none", "#0065fe@2");
 },
 
-});
+};
