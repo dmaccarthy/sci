@@ -475,7 +475,8 @@ page.calendar = e => {
     tr.append($("<th>").html("Description"));
     tbl = $("<tbody>").appendTo(tbl);
 
-    let old = x => new Date(x[0]) <= new Date();
+    // let old = x => new Date(x[0]) <= new Date();
+    let old = x => (new Date(x[0]) - new Date())/3600000 < -18;
     let show = teacher() ? x => 1 : x => new Date(x[0]) < new Date("9000");
     let date = d => {
         let day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][d.getDay()];
