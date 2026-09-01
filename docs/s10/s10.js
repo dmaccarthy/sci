@@ -25,7 +25,7 @@ _({page: "clim", icon: "earth", title: "Climate", data: {cal: false, s: "9999.1.
 { // Matter
 home.item("s10/chem", {page: "chem1", icon: "atom", title: "Part 1: #Matter", data: {cal: false}});
 _ = d => home.item("s10/chem/chem1", d);
-_({page: "whmis", title: "WHMIS & Lab Safety", data: {s: "2026.8.31", a: "2026.9.1"}});
+_({page: "whmis", title: "WHMIS & Lab Safety", data: {s: "2026.8.31", a: "2026.9.2"}});
 
 /* Reversed order so 'classify' is on a Wednesday */
 _({page: "expDes", title: "Experiment Design", data: {s: "2026.9.3", a: "2026.9.4"}});
