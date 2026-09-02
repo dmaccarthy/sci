@@ -485,6 +485,7 @@ page.calendar = e => {
     }
 
     for (let item of cal) if (show(item)) {
+        console.log(item);
         tr = $("<tr>").appendTo(tbl);
         if (old(item)) tr.addClass("Old").hide();
         $("<td>").html(date(item[0])).appendTo(tr);
@@ -790,6 +791,7 @@ $(() => {
         else if (ev.ctrlKey) {
             if (ev.altKey) {
                 if (key == 'n') window.open(location.href);
+                else if (key == 's') {for (let i of "34") window.open(`seating.html?b=${i}`)}
                 else if (key == 'p') slideshow();
                 else if (key == 't') {
                     let mode = 2 - parseInt(localStorage.getItem("teacher_mode"));
