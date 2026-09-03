@@ -75,4 +75,15 @@ molecule: sel => {
     svg.$.on("click", () => svg.$.find(".Toggle").fadeToggle())
 },
 
+enemy: sel => {
+    let svg = new SVG2(sel, {scale: 4, grid: 10, lrbt: [-100, 100, -100, 100]});
+    console.log(0, svg.$);
+    let coord = () => 200 * Math.random() - 100;
+    let pt = () => [coord(), coord()];
+    let g = svg.group("black@1", "#0065fe");
+    for (let i=0;i<3;i++) g.circle("8", pt());
+    g = svg.group("red");
+    for (let i=0;i<50;i++) g.circle("3", pt());
+},
+
 };

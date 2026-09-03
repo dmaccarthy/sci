@@ -5,7 +5,11 @@ page.cal.cs10 = [
     ["2026.9.16", "Due: Structured Programming 1", {attr: {class: "Ital"}}],
     ["2026.9.17", "Python Project #1", {f: "#cs/cs10@post=vscode"}],
     ["2026.9.21", "Quiz: Structured Programming 1", {attr: {class: "Bold"}}],
-    ["2026.9.22", "Python Project #2", {f: "#cs/cs10@post=vscode"}],
+    ["2026.10.1", "Due: Structured Programming 2<br/>(up to “Input & Output”)", {attr: {class: "Ital"}}],
+    ["2026.10.5", "Python Project #2", {f: "#cs/cs10@post=vscode"}],
+    ["2026.10.9", "Due: Structured Programming 2", {attr: {class: "Ital"}}],
+    ["2026.10.13", "Quiz: Structured Programming 2", {attr: {class: "Bold"}}],
+    ["2026.10.14", "Python Project #3", {f: "#cs/cs10@post=vscode"}],
     // ["2029.8.31", "Sal", {f: "https://salcomp.ca", class: "Sal", attr: {target: "Sal"}}],
 ];
 
