@@ -485,7 +485,6 @@ page.calendar = e => {
     }
 
     for (let item of cal) if (show(item)) {
-        console.log(item);
         tr = $("<tr>").appendTo(tbl);
         if (old(item)) tr.addClass("Old").hide();
         $("<td>").html(date(item[0])).appendTo(tr);

@@ -1,16 +1,26 @@
 { // Calendar items
 
 page.cal.cs10 = [
-    ["2029.8.31", "First Day for Students"],
+    ["2026.8.31", "First Day for Students"],
+    ["2026.9.16", "Due: Structured Programming 1", {attr: {class: "Ital"}}],
+    ["2026.9.17", "Python Project #1", {f: "#cs/cs10@post=vscode"}],
+    ["2026.9.21", "Quiz: Structured Programming 1", {attr: {class: "Bold"}}],
+    ["2026.9.22", "Python Project #2", {f: "#cs/cs10@post=vscode"}],
     // ["2029.8.31", "Sal", {f: "https://salcomp.ca", class: "Sal", attr: {target: "Sal"}}],
 ];
 
 page.cal.cs20 = [
-    ["2029.8.31", "First Day for Students"],
+    ["2026.8.31", "First Day for Students"],
+    ["2026.9.15", "Due: Procedural Programming", {attr: {class: "Ital"}}],
+    ["2026.10.15", "Due: Data Structures", {attr: {class: "Ital"}}],
+    ["2026.10.16", "Quiz: Procedural Programming / Data Structures", {attr: {class: "Bold"}}],
+    ["2026.10.19", "Programming Project #1", {f: "#cs/cs20@post=vscode"}],
+    ["2026.11.6", "Due: Game Project", {attr: {class: "Ital"}}],
+    ["2026.11.16", "Programming Project #2", {f: "#cs/cs20@post=vscode"}],
 ];
 
 page.cal.cs30 = [
-    ["2029.8.31", "First Day for Students"],
+    ["2026.8.31", "First Day for Students"],
 ];
 }
 
