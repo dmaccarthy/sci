@@ -25,6 +25,8 @@ page.cal.cs20 = [
 
 page.cal.cs30 = [
     ["2026.8.31", "First Day for Students"],
+    ["2026.9.18", "Due: Iterative Algorithms", {attr: {class: "Ital"}}],
+    ["2026.9.21", "Iterative Project #1", {f: "#cs/cs30@post=vscode"}],
 ];
 }
 

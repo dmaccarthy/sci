@@ -15,7 +15,7 @@
     <li>Use descriptive names for variables.</li>
     <li>Use procedural programming techniques; i.e. one function for each separate task the program performs.</li>
     <li>Use only programming techniques that have been covered in these lessons. Examples that you find on the web often use techniques that are considered bad programmming practice that should be avoided.</li>
-    <li>Specifically, do not use <code>break</code>, <code>continue</code>, <code>exit()</code>, or <code>while True</code>, </li>
+    <li>Specifically, do not use <code>break</code>, <code>continue</code>, <code>exit()</code>, or <code>while True</code>, when there are better to ways to control the program flow.</li>
 </ul>
 </div>
 
@@ -26,7 +26,10 @@
 
 page.init = async() => {
     return cs_projects("cs/cs30/prj30.txt").then(() => {
-        mjax_wait().then(renderTeX);
+        mjax_wait().then(() => {
+            renderTeX();
+            page.get("enemy")("#Enemy");
+        });
     });
 }
 
