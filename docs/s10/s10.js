@@ -1,10 +1,10 @@
 page.cal.s10 = [ // Calendar items
     ["2026.9.1", "Lab Safety (<i>continued</i>)", {attr: {"data-feed": "s10/chem/chem1/whmis@post=group"}}],
     ["2026.9.9", "Lab: Metals & Non-Metals", {attr: {"data-feed": "s10/chem/chem1/dot@post=handouts"}}],
-    ["2026.9.15", "Quiz: Matter [Tentative]", {attr: {class: "Bold"}}],
-    ["12026.9.17", "Lab: Ionic & Molecular Substances", {attr: {"data-feed": "s10/chem/chem2/ionic@post=handouts"}}],
+    ["2026.9.15", "Quiz: Matter", {attr: {class: "Bold"}}],
+    ["2026.9.17", "Lab: Ionic & Molecular Substances", {attr: {"data-feed": "s10/chem/chem2/ionic@post=handouts"}}],
     ["12026.9.22", "Lab: Acids & Bases", {attr: {"data-feed": "s10/chem/chem2/acid@post=handouts"}}],
-    ["12026.9.24", "Quiz: Compounds [Tentative]", {attr: {class: "Bold"}}],
+    ["2026.9.24", "Quiz: Compounds [Tentative]", {attr: {class: "Bold"}}],
     ["12026.9.25", "Lab: Evidence of Chemical Reactions", {attr: {"data-feed": "s10/chem/chem3/rxn@post=handouts"}}],
     ["12026.10.7", "Project: Antacids (Planning)", {attr: {"data-gdrv": "17KvjCnoFdUihVRdvUVlJNrnUtAyX4N0l"}}],
     ["12026.10.7", "Project: Antacids (Lab)", {attr: {"data-gdrv": "17KvjCnoFdUihVRdvUVlJNrnUtAyX4N0l"}}],
@@ -41,8 +41,8 @@ _({page: "dot", title: "Periodic Table & Dot Diagrams", data: {s: "2026.9.11", a
 home.item("s10/chem", {page: "chem2", icon: "salt", title: "Part 2: #Compounds", data: {cal: false, s: "9999.1.1"}});
 _ = d => home.item("s10/chem/chem2", d);
 _({page: "ionic", title: "Binary Ionic Compounds", data: {s: "2026.9.14", a: "2026.9.16"}});
-_({page: "molec", title: "Molecular Compounds", data: {s: "12026.9.16", a: "12026.9.18"}});
-_({page: "poly", title: "Polyatomic Ions & Solubility", data: {s: "12026.9.18", a: "12026.9.21"}});
+_({page: "molec", title: "Molecular Compounds", data: {s: "2026.9.16", a: "2026.9.18"}});
+_({page: "poly", title: "Polyatomic Ions & Solubility", data: {s: "2026.9.18", a: "2026.9.21"}});
 _({page: "acid", title: "Acids & Bases", data: {s: "12026.9.21", a: "12026.9.23"}});
 _({page: "water", title: "Properties of Water", data: {s: "12026.9.23", a: "12026.9.23 16:00"}});
 }
