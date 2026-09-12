@@ -1,4 +1,4 @@
-SVG2.cache("p30/mom/img/coll2d.js", {
+scripts.cache["p30/mom/img/coll2d"] = {
 
 Ex1: (sel) => {
     let svg = SVG2.vec_diag(sel, [[0, 27], [-24, 0]], {lrbt: [-26, 6, -4, 34], scale: 12,
@@ -47,4 +47,4 @@ Ex3: (sel) => {
 
 }
 
-});
+};

@@ -1,5 +1,5 @@
-<section class="Post" data-show="9999" data-action="correct">
-<h3>Formative</h3><div class="Collapse">
+<section class="Post" data-show="9999" data-action="review">
+<h3>Formative Assignment</h3>
 <ol>
     <li>Two Physics 20 students are riding in the bumper cars during the class field trip to Galaxyland. One student is driving her car with a velocity of 2.00 m/s [0.00º]. The combined mass of the student and bumper car is 100 kg. She crashes her car into a classmate whose car has a mass (including driver) of 125 kg and a velocity of 1.40 m/s [+90.0º].
     <ol type="a">
@@ -27,7 +27,7 @@
     
         <li>Draw a “tip-to-tail” vector diagram showing the addition of the two momenta.</li>
         <div class="Answer">
-            <p><a target="Q1" href="./?{%22v%22:%22[200,0],[0,175]%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+            <p><a target="Q1" href="p20/vec2d/vec_diag.html?{%22v%22:%22[200,0],[0,175]%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}">Solution</a></p>
             <p>If we want to express the total momentum in polar form:</p>
             <p class="TeX">\begin{align}
                 \left|\Sigma\va{p}\right| &= \sqrt{(\Sigma\va{p}_x)^2 + (\Sigma\va{p}_y)^2}
@@ -61,12 +61,11 @@
         </div>
     </ol></li>
 </ol>
-</div></section>
+</section>
 
 <section class="Post" data-action="slides">
-<h3>Lesson Notes</h3><div class="Collapse">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Collisions in 2D</h1>
 </section>
 
@@ -93,7 +92,7 @@
     <p class="TeX">{\va{p}}_{iA} = m_A {\va{v}}_{iA} = {\rm{1500\ kg\cdot 18.0\ m/s\ [north] = 27000\ N\cdot s\ [north]}}</p>
     <p class="TeX">{\va{p}}_{iB} = m_B {\va{v}}_{iB} = {\rm{1200\ kg\cdot 20.0\ m/s\ [west] = 24000\ N\cdot s\ [west]}}</p>
     <p>To add the 2D vectors, draw them <em class="Defn">tip-to-tail</em> starting at the origin.</p>
-    <p class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex1" class="s20"></svg></p>
+    <p class="Center"><svg id="Ex1" class="s20"></svg></p>
     <ul>
         <li>The resultant vector goes from the origin to the tip of the last vector.</li>
         <li>Because the triangle contains a right angle, we can solve for the missing sides and/or angles using trigonometry.</li>
@@ -109,7 +108,7 @@
 
 <section class="Slide"><h3>Example 2</h3>
     <p class="Blue">A 1500 kg car moving at 18.0 m/s [north] and a 1200 kg car moving at 20.0 m/s [30.0° south of west] collide in an intersection. Calculate the final velocity of the cars if they stick together after the collision.</p>
-    <p class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex2" class="s20"></svg></p>
+    <p class="Center"><svg id="Ex2" class="s20"></svg></p>
     <p>Because the triangle does <b>not</b> contain a right angle, we must use components to add the vectors.</p>
     <table class="Normal">
         <thead><tr><th></th><th>x</th><th>y</th></tr></thead>
@@ -131,7 +130,7 @@
         <p>Since only one ball is initially in motion, its momentum is the total momentum of the system:</p>
         <p class="TeX">\Sigma{\va{p}} = m_A {\va{v}}_{iA} = {\rm{0.170\ kg\cdot 2.50\ m/s\ [0^\circ] = 0.425\ N\cdot s\ [0^\circ]}}</p>
     </div>
-    <p class="Center"><svg data-svg2="p30/mom/img/coll2d.js#Ex3" class="s20"></svg></p>
+    <p class="Center"><svg id="Ex3" class="s20"></svg></p>
     <ul>
         <li>Draw the two final momentum vectors tip-to-tail.</li>
         <li>The resultant vector must equal the initial momentum, since momentum must be conserved.</li>
@@ -155,10 +154,18 @@
     </ul>
 </section>
 
-</div></section>
+</section>
+
+<section class="Post" data-show="1" data-answers="1" data-action="summary">
+<h3>Summary</h3>
+<ol>
+    <li>Explain how to show the addition of two or more momentum vectors using a vector diagram.</li>
+    <li>Explain how to add (or subtract) momentum vectors using components.</li>
+</ol>
+</section>
 
 <section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Practice</h3><div class="Collapse">
+<h3>Practice</h3>
 <p class="Center"><i>Include an accurate vector diagram drawn on graph paper for each collision!</i></p>
 <ol>
     <li>A 1250 kg car moving at 75.0 km/h [south] collides with a 1000 kg car at 55.0 km/h [west]. The cars become entangled and remain attached after the collision.
@@ -176,7 +183,7 @@
             \\[8pt] &= \rm {15278\ N\cdot s\ [180.0^\circ]}
             \\[8pt] &= \rm {(-15278, 0.00) \ N\cdot s}
         \end{align}</p>
-        <p><a target="Q2" href="./?{%22v%22:%22@(26.042,-90),@(15.278,180)%22,%22unit%22:%22kN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+        <p><a target="Q2" href="p20/vec2d/vec_diag.html?{%22v%22:%22@(26.042,-90),@(15.278,180)%22,%22symbol%22:%22p%22,%22unit%22:%22kN%C2%B7s%22}">Solution</a></p>
         <p>Now calculate the total momentum by adding all of the <span class="TeX">x</span> components and then all of the <span class="TeX">y</span> components independently:</p>
         <p class="TeX">\begin{align}
             \Sigma\va{p} &= \va{p}_{iA} + \va{p}_{iB}
@@ -243,7 +250,7 @@
         <p class="TeX">\theta = \rm \tan^{-1}\left(\frac{+17088\ N\cdot s}{+22360\ N\cdot s}\right) = 37.4^\circ</p>
         <p class="TeX">v_{fC} = \frac{p_{fC}}{m_C} = \rm \frac{28142\ N\cdot s}{606\ kg} = 46.4\ m/s</p>
 
-        <p><a target="Q3" href="./?{%22v%22:%22@(22.36,180),@(17.088,-90),@(28.14195,37.3879)%22,%22unit%22:%22kN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+        <p><a target="Q3" href="p20/vec2d/vec_diag.html?{%22v%22:%22@(22.36,180),@(17.088,-90),@(28.14195,37.3879)%22,%22symbol%22:%22p%22,%22unit%22:%22kN%C2%B7s%22}">Solution</a></p>
     </div>
 
     <li>Two spacecraft are planning to “dock”. The first spacecraft (<span class="TeX">m_A</span> = 5.00 × 10<sup>3</sup> kg) has an initial velocity of 5.60 km/s in the +<span class="TeX">x</span>-direction. The second spacecraft (<span class="TeX">m_B</span> = 6.80 × 10<sup>3</sup> kg) has an initial velocity of 4.85 km/s. The second spacecraft is approaching from the bottom right (i.e. the velocity is directed up and left) at a bearing of 114°.
@@ -256,7 +263,9 @@
             <p class="TeX">\va{p}_{iA} = \rm 2.80\times 10^7\ N\cdot s\ [0.00^\circ]</p>
             <p class="TeX">\va{p}_{iB} = m_B\va{v}_{iB} = \rm 6.80\times 10^3\ kg\cdot 4.85\times 10^3\ m/s\ [114^\circ]</p>
             <p class="TeX">\va{p}_{iB} = \rm 3.30\times 10^7\ N\cdot s\ [114^\circ]</p>
-            <p>Convert these vectors to Cartesian form and then add them: <a target="Q4" href="./?{%22v%22:%22@(28,0),@(32.98,114)%22,%22symbol%22:%22p%22,%22unit%22:%22MN%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram &amp; Calculations</a></p>
+            <p>Convert these vectors to Cartesian form and then add them:
+                <a target="Q4" href="p20/vec2d/vec_diag.html?{%22v%22:%22@(28,0),@(32.98,114)%22,%22symbol%22:%22p%22,%22unit%22:%22MN%C2%B7s%22}">Vector Diagram &amp; Calculations</a>
+            </p>
         </div>
 
 <!--
@@ -309,8 +318,10 @@ sin θ  = pB sin 66.0° / Σp
 
     <li>Two billiard balls have masses <span class="TeX">m_A</span> = 172 g and <span class="TeX">m_B</span> = 143 g and initial velocities of <span class="TeX">\va{v}_{iA}</span> = 3.40 m/s [east] and <span class="TeX">\va{v}_{iB}</span> = 2.40 m/s [southwest]. After the collision, billiard ball “A” continues to move with <span class="TeX">\va{v}_{fA}</span> = 2.90 m/s [30.0° south of east]. Determine the final velocity of the other ball. Include an appropriate vector diagram(s).</li>
     <div class="Answer">
-        <p><a target="Q6i" href="./?{%22v%22:%22@(0.5848,0),@(0.3432,225)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Before Collision</a> &
-        <a target="Q6f" href="./?{%22v%22:%22@(0.4988,-30),@(0.090104,175.72)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">After Collision</a></p>
+        <p>
+            <a target="Q6i" href="p20/vec2d/vec_diag.html?{%22v%22:%22@(0.5848,0),@(0.3432,225)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}">Before Collision</a> &amp;
+            <a target="Q6f" href="p20/vec2d/vec_diag.html?{%22v%22:%22@(0.4988,-30),@(0.090104,175.72)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}">After Collision</a>
+        </p>
 
 <!--
 
@@ -373,7 +384,9 @@ vBf = pBf / mB
             <p class="TeX">\va{p}_{fA} = \rm (-6.19, -26.9)\ kN\cdot s</p>
             <p>We can express this momentum vector in polar form by using the Pythagoras and <span class="TeX">\tan^{-1}</span> equations:</p>
             <p class="TeX">\va{p}_{fA} = \rm 27.6\ kN\cdot s\ [257^\circ]</p>
-            <p><a target="Rev" href="./?{%22v%22:%22@(8.75,-45),@(27.6257,-102.94)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+            <p>
+                <a target="Rev" href="p20/vec2d/vec_diag.html?{%22v%22:%22@(8.75,-45),@(27.6257,-102.94)%22,%22symbol%22:%22p%22,%22unit%22:%22kN%C2%B7s%22}">Vector Diagram</a>
+            </p>
             <p>Now that we know the momentum of “A” after the collison, we can calculate its velocity:</p>
             <p class="TeX">\va{v}_{fA} = \frac{\va{p}_{fA}}{m_A} = \rm \frac{2.76\times 10^4\ N\cdot s\ [257^\circ]}{1490\ kg} = 18.5\ m/s\ [257^\circ]</p>
         </div>
@@ -453,7 +466,9 @@ vBf = 6.94 m/s
             \\[6pt] &= \rm {(+24.4517, -3.5045) \times 10^{-20}\ N\cdot s}
             \\[6pt] &= \rm {2.47\times 10^{-19}\ N\cdot s\ [-8.20^\circ]}
         \end{align}</p>
-        <p><a target="Q5" href="./?{%22v%22:%22@(2.47015e-19,-8.1562),@(6.6132e-20,32)%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+        <p>
+            <a target="Q5" href="p20/vec2d/vec_diag.html?{%22v%22:%22@(2.47015e-19,-8.1562),@(6.6132e-20,32)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}">Vector Diagram</a>
+        </p>
         <p>To get the velocity, divide the proton’s momentum by its mass:</p>
         <p class="TeX">\begin{align}
             \va{v}_{fP} &= \frac{\va{p}_{fP}}{m_P}
@@ -466,7 +481,9 @@ vBf = 6.94 m/s
     <ol type="a">
         <li>Find the final speeds (i.e. the magnitudes of the velocity vectors) of the two billiard balls. [Hint: Before attempting to calculate the speeds, determine the momenta of the billiard balls.]</li>
         <div class="Answer">
-            <p><a target="Q7" href="./?{%22v%22:%22@(0.57681,24),@(0.35062,-42)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+            <p>
+                <a target="Q7" href="p20/vec2d/vec_diag.html?{%22v%22:%22@(0.57681,24),@(0.35062,-42)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}">Vector Diagram</a>
+            </p>
             <p>Divide the final momenta by each mass to find the velocities. We do not need to calculate the directions because these are given in the question:</p>
             <p class="TeX">v_{fA} = \frac{p_{fA}}{m_A} = \rm \frac{0.577 \ N\cdot s}{0.350\ kg} = 1.65\ m/s</p>
             <p class="TeX">v_{fB} = \frac{p_{fB}}{m_B} = \rm \frac{0.351 \ N\cdot s}{0.300\ kg} = 1.17\ m/s</p>
@@ -499,7 +516,9 @@ vBf = 6.94 m/s
         <li>Calculate the initial momentum of the moving asteroid and draw a labelled vector diagram to illustrate the conservation of momentum.</li>
         <div class="Answer">
             <p class="TeX">\va{p}_{iA} = m_A \va{v}_{iA} = \rm 2.50\times 10^{11}\ kg\cdot 687\ m/s\ [0.00^\circ] = 1.72\times 10^{14}\ N\cdot s\ [0.00^\circ]</p>
-            <p><a target="Q8" href="./?{%22v%22:%22@(1.1191e14,-14),@(6.8723e13,23.2)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}#p20/vec2d/vec_diag">Vector Diagram</a></p>
+            <p>
+                <a target="Q8" href="p20/vec2d/vec_diag.html?{%22v%22:%22@(1.1191e14,-14),@(6.8723e13,23.2)%22,%22symbol%22:%22p%22,%22unit%22:%22N%C2%B7s%22}">Vector Diagram</a>
+            </p>
         </div>
 
         <li>Determine the final speeds of the two asteroids.</li>
@@ -539,31 +558,18 @@ vBf = 6.94 m/s
     </ol></li>
 
 </ol>
-</div></section>
-
-<section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Review</h3><div class="Collapse">
-<ol>
-    <li>Explain how to show the addition of two or more momentum vectors using a vector diagram.</li>
-    <li>Explain how to add (or subtract) momentum vectors using components.</li>
-</ol>
-</div></section>
+</section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "p30/units/A", prev: "p30/mom/vec2d", next: "p30/mom/rev",
-}
-
-</script>
-<script type="text/javascript">
-
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-        ["#96", "p30/mom/img/coll2d", "Ex1" class],
-        ["#112", "p30/mom/img/coll2d", "Ex2" class],
-        ["#134", "p30/mom/img/coll2d", "Ex3" class],
-    ],
+page.run(() => {
+    page.show_post("slides");
 });
+
+page({title: "2D Collisions", svg2: [
+    ["#Ex1", "p30/mom/img/coll2d", "Ex1"],
+    ["#Ex2", "p30/mom/img/coll2d", "Ex2"],
+    ["#Ex3", "p30/mom/img/coll2d", "Ex3"],
+]});
 
 </script>

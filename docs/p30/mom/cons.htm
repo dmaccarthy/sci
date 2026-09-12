@@ -1,5 +1,5 @@
-<section class="Post" data-show="9999" data-action="correct">
-<h3>Formative</h3><div class="Collapse">
+<section class="Post" data-show="9999" data-action="review">
+<h3>Formative Assignment</h3>
 <ol>
 <li><ol type="a">
     <li>A 3500 kg rail car moving at 15.0 km/h collides with another rail car and slows to 8.00 km/h as a result. How much impulse did the first rail car experience?</li>
@@ -38,12 +38,11 @@
     <p>The airbag slows the passenger over a longer time (compared to the sudden impact of the windshield) and therefore reduces the force, making severe injury less likely.</p>
 </div>
 </ol>
-</div></section>
+</section>
 
 <section class="Post" data-action="slides">
-<h3>Lesson Notes</h3><div class="Collapse">
 
-<section class="Slide Center">
+<section class="Slide Center Present">
 <h1 id="Title">Momentum Conservation</h1>
 </section>
 
@@ -111,17 +110,17 @@
 <p class="TeX">{\vec {\bf v}_{Bf}} = {{\vec {\bf p}_{Bf}}\over m_B} = \rm{+125\ N\cdot s\over 150\ kg} = +0.833\ m/s</p>
 </section>
 
-</div></section>
+</section>
 
-<section class="Post" data-answers="1" data-action="correct">
-<h3>Summary</h3><div class="Collapse">
+<section class="Post" data-answers="1" data-action="summary">
+<h3>Summary</h3>
 <ol>
     <li>Explain the <em class="Defn">Law of Momentum Conservation</em> and how it relates to Newton’s Laws of Motion.</li>
 </ol>
-</div></section>
+</section>
 
 <section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Practice</h3><div class="Collapse">
+<h3>Practice</h3>
 <ol>
 <li><ol type="a">
     <li>As a book slides across the floor, it loses both momentum and kinetic energy. What causes these losses? Where does the lost momentum and the lost kinetic energy go?</li>
@@ -220,26 +219,14 @@
 </div>
 
 </ol>
-</div></section>
+</section>
 
-<script type="text/javascript" data-init="init">
-
-loadFeed.init = () => {
-    let rev = $("td.Reveal").on("click", (ev) => {
-        $(ev.currentTarget).children("span").fadeToggle();
-    });
-}
-
-loadFeed.data = {up: "p30/units/A", prev: "p30/mom/impulse", next: "p30/mom/coll1d",
-}
-
-</script>
 <script type="text/javascript">
 
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
+page.run(() => {
+    page.show_post("slides");
 });
+
+page({title: "Momentum Conservation"});
 
 </script>

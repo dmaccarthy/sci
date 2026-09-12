@@ -1,5 +1,5 @@
-<section class="Post" data-show="9999" data-action="correct">
-<h3>Formative</h3><div class="Collapse">
+<section class="Post" data-show="9999" data-action="review">
+<h3>Formative Assignment</h3>
 <ol>
 <!-- <li><ol type="a">
     <li>A moving train collides with a stationary rail car and they couple together (the car attaches to the other cars of the train). Discuss all energy and momentum transfers / transformations.</li>
@@ -52,7 +52,7 @@
         <p>This means that the work done on one car will <em>not</em> just be the negative of the work done on the other car. There will be a loss of mechanical energy from the system which typically produces sound and/or thermal energy while the cars are in contact.</p>
     </div>
 </ol></li>
-</ol></div></section>
+</ol></section>
 
 <!-- Formative
 
@@ -118,9 +118,9 @@
 -->
 
 <section class="Post" data-action="slides">
-<h3>Lesson Notes</h3><div class="Collapse">
 
-<section class="Slide Center">
+
+<section class="Slide Center Present">
 <h1 id="Title">Elastic &amp; Inelatic Collisions</h1>
 </section>
 
@@ -147,10 +147,10 @@
     </ul>
     </section>
 
-</div></section>
+</section>
 
-<section class="Post" data-answers="1" data-action="correct">
-<h3>Summary</h3><div class="Collapse">
+<section class="Post" data-answers="1" data-action="summary">
+<h3>Summary</h3>
 <ol>
     <li>Define <em class="Defn">elastic</em> and <em class="Defn">inelastic</em> collisions.</li>
     <div class="Answer">Elastic means that mechanical energy as well as momentum is conserved. Inelastic means that only momentum is conserved as some of the mechanical energy is transformed into non-mechanical forms such as sound or thermal energy.</div>
@@ -158,10 +158,10 @@
     <li>What does it mean to say that a collision in which the objects remain attached after the collision is “completely” inelastic.</li>
     <div class="Answer">The loss of mechanical energy is greatest (while momentum is conserved) when the two masses stick together.</div>
 </ol>
-</div></section>
+</section>
 
 <section class="Post" data-show="1" data-answers="1" data-action="correct">
-<h3>Practice</h3><div class="Collapse">
+<h3>Practice</h3>
 <ol>
     <li>Physicists use a particle accelerator to produce a 1D collision between a proton <span class="NoWrap">(<span class="TeX">m_p</span></span> = 1.67 × 10<sup>–27</sup> <span class="NoWrap">kg)</span> initially at rest and a particle of unknown mass moving at +6.00 × 10<sup>7</sup> m/s. As a result of the collision, the unknown particle is slowed to a velocity of +3.59 × 10<sup>7</sup> m/s while the proton is accelerated to a velocity of +9.59 × 10<sup>7</sup> m/s.
     <ol type="a">
@@ -262,20 +262,14 @@
         <p>Question 4 is not a collision, and momentum conservation does not apply because there are unbalanced external forces acting on the system.</p>
     </div>
 </ol>
-</div></section>
+</section>
 
 <script type="text/javascript">
 
-loadFeed.data = {up: "p30/units/A", prev: "p30/mom/cons", next: "p30/mom/vec2d",
-}
-
-</script>
-<script type="text/javascript">
-
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
+page.run(() => {
+    page.show_post("slides");
 });
+
+page({title: "1D Collisions"});
 
 </script>
