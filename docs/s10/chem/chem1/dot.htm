@@ -122,7 +122,7 @@
         <li>Hydrogen can give up its electron to form an ion with charge 1+, just like group 1.
             <p class="Center"><svg class="s8" id="H_ion"></svg></p>
         </li>
-        <li>Hydrogen is also like group 17! It can fill its valence shell by <em>gaining</em> one electron.
+        <li>Hydrogen is also like group 17! It can fill its valence shell by <em>gaining</em> one electron. (Although it does this much less often than forming a positive ion.)
             <p class="Center"><svg class="s8" id="hydride"></svg></p>
         </li>
     </ul>
@@ -301,40 +301,47 @@
 
 <script type="text/javascript">
 
+_b = ["s10/chem/chem1/img/bohr", "bohr"];
+_d = [_b[0], "dot"];
+
 page({svg2: [
     ["#PerTbl", "s10/chem/chem1/img/dot", "pt"],
-    ["#Bohr_Ar", "s10/chem/chem1/img/bohr", "bohr", [18, 40]],
-    ["#Dot_Ar", "s10/chem/chem1/img/bohr", "dot", ["Ar", 0, "2222"]],
-    ["#Bohr_Cl", "s10/chem/chem1/img/bohr", "bohr", [17, 35]],
-    ["#Dot_Cl", "s10/chem/chem1/img/bohr", "dot", ["Cl", 0, "2212"]],
-    ["#Dot_Cl_ion", "s10/chem/chem1/img/bohr", "dot", ["Cl", -1, "2222"]],
-    ["#Bohr_Na", "s10/chem/chem1/img/bohr", "bohr", [11, 23]],
-    ["#Dot_Na", "s10/chem/chem1/img/bohr", "dot", ["Na", 0, "0100"]],
-    ["#Dot_Na_ion", "s10/chem/chem1/img/bohr", "dot", ["Na", 1]],
-    ["#Dot_P_alt", "s10/chem/chem1/img/bohr", "dot", ["P", 0, "2201"]],
-    ["#Dot_P", "s10/chem/chem1/img/bohr", "dot", ["P", 0, "1211"]],
-    ["#He", "s10/chem/chem1/img/bohr", "dot", ["He", 0, "0200"]],
-    ["#H", "s10/chem/chem1/img/bohr", "dot", ["H", 0, "0100"]],
-    ["#H_ion", "s10/chem/chem1/img/bohr", "dot", ["H", 1, "0000"]],
-    ["#hydride", "s10/chem/chem1/img/bohr", "dot", ["H", -1, "0200"]],
-    ["#N", "s10/chem/chem1/img/bohr", "dot", ["N", 0, "1211", "red"]],
-    ["#N_ion", "s10/chem/chem1/img/bohr", "dot", ["N", -3, "2222", "red"]],
-    ["#Al", "s10/chem/chem1/img/bohr", "dot", ["Al", 0, "1101", "red"]],
-    ["#Al_ion", "s10/chem/chem1/img/bohr", "dot", ["Al", 3, "0000", "red"]],
-    ["#Cl_x", "s10/chem/chem1/img/bohr", "dot", ["Cl", 0, "2212", "red"]],
-    ["#Cl_xi", "s10/chem/chem1/img/bohr", "dot", ["Cl", -1, "2222", "red"]],
-    ["#O", "s10/chem/chem1/img/bohr", "dot", ["O", 0, "2211", "red"]],
-    ["#oxide", "s10/chem/chem1/img/bohr", "dot", ["O", -2, "2222", "red"]],
-    ["#H_x", "s10/chem/chem1/img/bohr", "dot", ["H", 0, "0100", "red"]],
-    ["#H_m", "s10/chem/chem1/img/bohr", "dot", ["H", -1, "0200", "red"]],
-    ["#H_p", "s10/chem/chem1/img/bohr", "dot", ["H", 1, "0000", "red"]],
-    ["#S", "s10/chem/chem1/img/bohr", "dot", ["S", 0, "2211", "red"]],
-    ["#sulfide", "s10/chem/chem1/img/bohr", "dot", ["S", -2, "2222", "red"]],
+    ["#Bohr_Ar", ..._b, [18, 40]],
+    ["#Dot_Ar", ..._d, ["Ar", 0, "2222"]],
+    ["#Bohr_Cl", ..._b, [17, 35]],
+    ["#Dot_Cl", ..._d, ["Cl", 0, "2212"]],
+    ["#Dot_Cl_ion", ..._d, ["Cl", -1, "2222"]],
+    ["#Bohr_Na", ..._b, [11, 23]],
+    ["#Dot_Na", ..._d, ["Na", 0, "0100"]],
+    ["#Dot_Na_ion", ..._d, ["Na", 1]],
+    ["#Dot_P_alt", ..._d, ["P", 0, "2201"]],
+    ["#Dot_P", ..._d, ["P", 0, "1211"]],
+    ["#He", ..._d, ["He", 0, "0200"]],
+    ["#H", ..._d, ["H", 0, "0100"]],
+    ["#H_ion", ..._d, ["H", 1, "0000"]],
+    ["#hydride", ..._d, ["H", -1, "0200"]],
+    ["#N", ..._d, ["N", 0, "1211", "red"]],
+    ["#N_ion", ..._d, ["N", -3, "2222", "red"]],
+    ["#Al", ..._d, ["Al", 0, "1101", "red"]],
+    ["#Al_ion", ..._d, ["Al", 3, "0000", "red"]],
+    ["#Cl_x", ..._d, ["Cl", 0, "2212", "red"]],
+    ["#Cl_xi", ..._d, ["Cl", -1, "2222", "red"]],
+    ["#O", ..._d, ["O", 0, "2211", "red"]],
+    ["#oxide", ..._d, ["O", -2, "2222", "red"]],
+    ["#H_x", ..._d, ["H", 0, "0100", "red"]],
+    ["#H_m", ..._d, ["H", -1, "0200", "red"]],
+    ["#H_p", ..._d, ["H", 1, "0000", "red"]],
+    ["#S", ..._d, ["S", 0, "2211", "red"]],
+    ["#sulfide", ..._d, ["S", -2, "2222", "red"]],
 ]});
 
 page.run(() => {
     let th = $("#PTable th").css({width: "12%"});
     th.filter(".Wider").css({width: "20%"});
+});
+
+page.final(() => {
+    delete window._b; delete window._d;
 });
 
 </script>
