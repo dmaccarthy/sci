@@ -1,6 +1,7 @@
 page.cal.p20 = [ // Calendar items
-    ["2027.2.1", "Classes Begin"],
-    ["2027.2.16", "Kinematics Quiz", {class: "Bold"}],
+    // ["2027.2.1", "Classes Begin"],
+    ["2027.2.2", "Lab: Bouncing Ball", {attr: {"data-feed": "p20/skill/expDes@post=handouts"}}],
+    ["2027.2.16", "Kinematics Quiz [Tentative]", {class: "Bold"}],
     ["2027.6.17", "Exam Week Begins"],
 ];
 
@@ -21,9 +22,9 @@ _({page: "circ", icon: "midway", title: "Circular & Planetary Motion", data: {ca
 
 { // Review
 _ = d => home.item("p20/skill", d);
-_({page: "expDes", icon: "testtube.webp", title: "Experiment Design", data: {s: "2027.2.1", a: "2027.2.2"}});
-_({page: "scatter", icon: "graph", title: "Scatter Plots", data: {s: "2027.2.2", a: "2027.2.3"}});
-_({page: "algebra", title: "Algebra"});
+_({page: "expDes", icon: "testtube.webp", title: "Experiment Design & Analysis", data: {s: "2027.2.1", a: "2027.2.2"}});
+_({page: "scatter", icon: "graph", title: "Scatter Plots", data: {s: "2027.2.3", a: "2027.2.8"}});
+_({page: "algebra", title: "Algebra", data: {s: "2027.2.8", a: "2027.2.9"}});
 _({page: "sciNot", title: "Significant Digits & Scientific Notation"});
 _({page: "si", title: "SI Units"});
 _({page: "rev", icon:"review", icon:"review", title: "Chapter Review", data: {cal: false}});
@@ -46,6 +47,7 @@ _ = d => home.item("p20/vec2d", d);
 // _({page: "diag", title: ""});
 // _({page: "polar", title: ""});
 _({page: "arith", title: "Vector Arithmetic"});
+_({page: "cannon", title: "Cannonball Simulation"});
 // _({page: "proj", title: ""});
 _({page: "rev", icon:"review", title: "Chapter Review", data: {cal: false}});
 }

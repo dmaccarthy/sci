@@ -1,4 +1,4 @@
-<section class="Post" data-action="simulation">
+<section class="Post" data-action="sim" data-title="Simulation">
 <style type="text/css">
 
 #SimControls td {
@@ -11,19 +11,19 @@
 #SimControls input {width: 8em}
 
 </style>
-<h3>Simulation</h3>
+<!-- <h3>Simulation</h3> -->
 <div class="Collapse Expand Center">
 <p><svg id="Sim"></svg>
 <table id="SimControls">
-    <tr><td>Angle</td><td><input type="number" onchange="loadFeed.sim.launchAngle()" id="LaunchAngle" value="0" min="0" max="85" step="5" /></td></tr>
-    <tr><td>Elevation</td><td><input type="number" id="Elev" value="10" min="0" max="60" step="5" onchange="loadFeed.sim.elevate()"/></td></tr>
+    <tr><td>Angle</td><td><input type="number" onchange="page.get('launch_angle')()" id="LaunchAngle" value="0" min="0" max="85" step="5" /></td></tr>
+    <tr><td>Elevation</td><td><input type="number" id="Elev" value="10" min="0" max="60" step="5" onchange="page.get('elevate')()"/></td></tr>
     <tr><td>Slow Motion</td><td><input type="range" id="SloMo" value="1" min="0.02" max="1" step="0.005" /></td></tr>
 </table>
 
 </div></section>
 
 <section class="Post" data-action="help">
-<h3>Help</h3>
+<!-- <h3>Help</h3> -->
 <div class="Collapse">
     <p>Click on the animation to fire the cannon, or to pause, resume or reset.</p>
     <p>Adjust the launch angle and cannon elevation using the numerical inputs.</p>
@@ -31,10 +31,13 @@
     <p>Reloading the animation will change the muzzle speed!</p>
 </div></section>
 
-<script type="text/javascript" data-init="sim">
+<script type="text/javascript">
 
-loadFeed.sim = () => {
-    let svg = loadFeed.sim.svg = new SVG2("#Sim", {scale: 3.6, margin: [24, 2, 12, 0], grid: 5, lrbt: [0, 195, 0, 105]});
+page({
+
+sim: () => {
+    let svg = new SVG2("#Sim", {scale: 3.6, margin: [24, 2, 12, 0], grid: 5, lrbt: [0, 195, 0, 105]}); // loadFeed.sim.svg
+    page({svg: svg});
     let opt = {size: ["-6", "6"], shift: "-9", css: 14};
     svg.ticks({x: [0, 191, 10], ...opt});
     svg.ticks({y: [0, 101, 10], ...opt});
@@ -67,7 +70,7 @@ loadFeed.sim = () => {
     svg.dog = svg.group();
     svg.dog.image("p20/vec2d/img//dog.svg", [10, 10]);
 
-    loadFeed.sim.elevate();
+    page.get("elevate")();
 
     svg.beforeupdate = function() {
         svg.timeFactor = parseFloat($("#SloMo").val());
@@ -86,27 +89,16 @@ loadFeed.sim = () => {
     };
 
     svg.$.on("click", () => {
-        if (svg.done) loadFeed.sim.launchAngle();
+        if (svg.done) page.get("launch_angle")();
         else svg.toggle();  
     });
 
     // svg.realign_text(400);
     // setTimeout(() => svg.realign_text(false), 12000);
-}
+},
 
-loadFeed.sim.elevate = () => {
-    let svg = loadFeed.sim.svg;
-    svg.pause();
-    let e = $("#Elev");
-    let y = svg.hi = parseFloat(e.val());
-    y -= 2.5;
-    svg.platform.$.html("");
-    svg.platform.poly([[-5, y], [5, y], [5, -10], [-5, -10]]);
-    loadFeed.sim.launchAngle();
-}
-
-loadFeed.sim.launchAngle = () => {
-    let svg = loadFeed.sim.svg.pause();
+launch_angle: () => {
+    let svg = page.get("svg").pause();
     let a = Math.round(parseFloat($("#LaunchAngle").val()));
     if (!isNaN(a)) {
         a = a < 0 ? 0 : (a > 90 ? 90 : a);
@@ -134,21 +126,22 @@ loadFeed.sim.launchAngle = () => {
 
     svg.clock.config({text: "0.00 sec"});
     svg.config({time: 0, done: false});
-};
+},
 
-loadFeed.data = {
-    title: "Motion of a Cannonball",
-    up: "p20/vec2d/proj",
-}
+elevate: () => {
+    let svg = page.get("svg");
+    svg.pause();
+    let e = $("#Elev");
+    let y = svg.hi = parseFloat(e.val());
+    y -= 2.5;
+    svg.platform.$.html("");
+    svg.platform.poly([[-5, y], [5, y], [5, -10], [-5, -10]]);
+    page.get("launch_angle")();
+},
 
-</script>
-
-<script type="text/javascript">
-
-page({title: "?", s: "2028.1.1", a: 1, handou: "",
-    svg2: [
-        // ["#id", "jsfile", "name", arg],
-    ],
 });
+
+
+page.run(page.get("sim"));
 
 </script>
