@@ -345,6 +345,8 @@ page.unpublish = art => {
     }
 }
 
+page.current = () => page.onload._current;
+
 page.onload = (id, args) => {
     /* Initialize a page when HTML content is loaded */
     
