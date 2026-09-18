@@ -4,19 +4,19 @@ page.cal.s10 = [ // Calendar items
     ["2026.9.15", "Quiz: Matter", {attr: {class: "Bold"}}],
     ["2026.9.17", "Lab: Ionic & Molecular Substances", {attr: {"data-feed": "s10/chem/chem2/ionic@post=handouts"}}],
     ["2026.9.22", "Lab: Acids & Bases", {attr: {"data-feed": "s10/chem/chem2/acid@post=handouts"}}],
-    ["2026.9.24", "Quiz: Compounds [Tentative]", {attr: {class: "Bold"}}],
+    ["2026.9.24", "Quiz: Compounds", {attr: {class: "Bold"}}],
     ["2026.9.25", "Lab: Evidence of Chemical Reactions", {attr: {"data-feed": "s10/chem/chem3/rxn@post=handouts"}}],
-    ["12026.10.7", "Project: Antacids (Planning)", {attr: {"data-gdrv": "17KvjCnoFdUihVRdvUVlJNrnUtAyX4N0l"}}],
-    ["12026.10.7", "Project: Antacids (Lab)", {attr: {"data-gdrv": "17KvjCnoFdUihVRdvUVlJNrnUtAyX4N0l"}}],
-    ["12026.10.9", "Quiz: Reactions [Tentative]", {attr: {class: "Bold"}}],
-    ["12026.10.15", "Unit Exam: Chemistry [Tentative]", {attr: {class: "Bold"}}],
+    ["2026.10.7", "Project: Antacids (Planning)", {attr: {"data-feed": "s10/chem"}}],
+    ["2026.10.8", "Project: Antacids (Lab)", {attr: {"data-feed": "s10/chem"}}],
+    ["2026.10.16", "Quiz: Reactions [Tentative]", {attr: {class: "Bold"}}],
+    ["2026.10.20", "Unit Exam: Chemistry [Tentative]", {attr: {class: "Bold"}}],
     ["2027.1.28", "Final Exam [Tentative]", {attr: {class: "Bold"}}],
 ];
 
 { // Units
 home.item("home", {page: "s10", icon: "microscope", title: "Science 10", data: {cal: false}});
 _ = d => home.item("s10", d);
-_({page: "chem", icon: "testtube.webp", title: "Chemistry", data: {cal: false, s: "9999.1.1"}});
+_({page: "chem", icon: "testtube.webp", title: "Chemistry", data: {cal: false, s: "2026.10.7"}});
 _({page: "phys", icon: "soccer", title: "Physics", data: {cal: false, s: "9999.1.1"}});
 _({page: "bio", icon: "microscope", title: "Biology", data: {cal: false, s: "9999.1.1"}});
 _({page: "clim", icon: "earth", title: "Climate", data: {cal: false, s: "9999.1.1"}});
@@ -38,7 +38,7 @@ _({page: "dot", title: "Periodic Table & Dot Diagrams", data: {s: "2026.9.11", a
 }
 
 { // Compounds
-home.item("s10/chem", {page: "chem2", icon: "salt", title: "Part 2: #Compounds", data: {cal: false, s: "9999.1.1"}});
+home.item("s10/chem", {page: "chem2", icon: "salt", title: "Part 2: #Compounds", data: {cal: false}});
 _ = d => home.item("s10/chem/chem2", d);
 _({page: "ionic", title: "Binary Ionic Compounds", data: {s: "2026.9.14", a: "2026.9.16"}});
 _({page: "molec", title: "Molecular Compounds", data: {s: "2026.9.16", a: "2026.9.18"}});
@@ -48,15 +48,15 @@ _({page: "water", title: "Properties of Water", data: {s: "2026.9.23", a: "2026.
 }
 
 { // Reactions
-home.item("s10/chem", {page: "chem3", icon: "testtube.webp", title: "Part 3: #Reactions", data: {cal: false, s: "9999.1.1"}});
+home.item("s10/chem", {page: "chem3", icon: "testtube.webp", title: "Part 3: #Reactions", data: {cal: false}});
 _ = d => home.item("s10/chem/chem3", d);
-_({page: "rxn", title: "Chemical Reactions", data: {s: "12026.9.25", a: "12026.9.28"}});
-_({page: "rxn_fd", title: "Formation & Decomposition", data: {s: "12026.11.1", a: "12026.11.1"}});
-_({page: "rxn_c", title: "Hydrocarbon Combustion", data: {s: "12026.11.1", a: "12026.11.1"}});
-_({page: "rxn_sr", title: "Single Replacement", data: {s: "12026.11.1", a: "12026.11.1"}});
-_({page: "rxn_dr", title: "Double Replacement", data: {s: "12026.11.1", a: "12026.11.1"}});
-_({page: "scinot", title: "Scientific Notation", data: {s: "12026.11.1", a: "12026.11.1"}});
-_({page: "mole", title: "Molar Mass", data: {s: "12026.11.1", a: "12026.11.1"}});
+_({page: "rxn", title: "Chemical Reactions", data: {s: "2026.9.28", a: "2026.9.29"}});
+_({page: "rxn_fd", title: "Formation & Decomposition", data: {s: "2026.9.29", a: "2026.10.1"}});
+_({page: "rxn_c", title: "Hydrocarbon Combustion", data: {s: "2026.10.1", a: "2026.10.5"}});
+_({page: "rxn_sr", title: "Single Replacement", data: {s: "2026.10.5", a: "2026.10.6"}});
+_({page: "rxn_dr", title: "Double Replacement", data: {s: "2026.10.6", a: "2026.10.7"}});
+_({page: "scinot", title: "Scientific Notation", data: {s: "2026.10.9", a: "2026.10.13"}});
+_({page: "mole", title: "Molar Mass", data: {s: "2026.10.14", a: "2026.10.15"}});
 }
 
 { // Motion
