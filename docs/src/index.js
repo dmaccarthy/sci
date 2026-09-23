@@ -536,19 +536,20 @@ page.posts = (art) => {
         p = $(p);
         let title = p.attr("data-title");
         let a0 = p.attr("data-action");
-        if (!title && a0 == "ide") {
-            title = "Coding Practice";
-            // p.attr({"data-title": "Coding Practice"});
-        }
-        let map = {anim: "animation", correct: "assign", ide: "vscode"};
+        let map = {anim: "animation", practice: ["assign", "Practice"], correct: "assign",
+            summary: ["list", "Summary"], ide: ["vscode", "Coding Practice"]};
         for (let k in map) if (a0 == k) {
             a0 = map[k];
+            if (a0 instanceof Array) {
+                if (!title) title = a0[1];
+                a0 = a0[0];
+            }
             p.attr("data-action", a0);
         }
         if (!title) title = page.posts._titles[a0];
         if (!title) title = a0.charAt(0).toUpperCase() + a0.substring(1);
         let btn = $("<button>").attr("data-action", a0).appendTo(e);
-        btn.html(page.icon(a0)).append(title); // $("<span>").html(title)
+        btn.html(page.icon(a0)).append(title);
     }
     e.show();
 }
