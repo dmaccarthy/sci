@@ -34,6 +34,14 @@ window.MathJax = {
 <script type="text/javascript" src="p20/p20.js?_v=20260917"></script>
 <script type="text/javascript" src="p30/p30.js?_v=20260911"></script>
 <script type="text/javascript" src="cs/cs.js?_v=20260917"></script>
+<script>
+
+if (teacher()) {
+    home.item("home", {page: "secret", icon: "rocket", title: "Secret!", data: {cal: false}});
+    _ = d => home.item("secret", d);
+}
+
+</script>
 </head>
 <body>
 <main>
