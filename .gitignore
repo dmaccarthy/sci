@@ -1,7 +1,8 @@
 node_modules/
-docs/tools/exam/*
-docs/_test/*
 docs/cs/_prj/
+docs/p30x/
+docs/new/
 docs/img.py
 docs/s27.py
+docs/secret.htm
 seating.html
