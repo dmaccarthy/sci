@@ -4,15 +4,15 @@
 	repeatedly. Here is a program that keeps printing random numbers until it gets a number greater
 	than 99.</p>
 
-<pre data-echo="s12_ex1.py" data-title="1" class="Code">from random import uniform
+<pre data-echo="s12_ex1.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">uniform</span>
 
-num = uniform(0, 100)       <span class="Comment"># Get the first number</span>
-<span class="Blue">while num <= 99:</span>            <span class="Comment"># LOOP...</span>
-    print(num)              <span class="Comment">#   Print the number</span>
-    num = uniform(0, 100)   <span class="Comment">#   Get a new number</span>
-print(num)                  <span class="Comment"># Print the last number</span></pre>
+<span class="n">num</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>       <span class="c1"># Get the first number</span>
+<span class="hlb"><span class="k">while</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="mi">99</span><span class="p">:</span></span>            <span class="c1"># LOOP...</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>              <span class="c1">#   Print the number</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1">#   Get a new number</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>                  <span class="c1"># Print the last number</span></pre>
 
-<p>The <code>while</code> statement (shown above in blue) tells Python to repeat all of the indented
+<p>The <code>while</code> statement (highlighted above) tells Python to repeat all of the indented
 	instructions as long as a certain condition remains <code>True</code>.  The <code>while</code>
 	statement and the indented block that immediately follows it is called a <em class="Defn">loop</em>.</p>
 
@@ -25,19 +25,19 @@ print(num)                  <span class="Comment"># Print the last number</span>
 <p>In Python, <em class="Defn">indentation</em> is used to structure loops just as it is for <code>if-elif-else</code> blocks. Only the two indented statements in the example are repeated. The final statement in the program is unindented to show that it is not part of the loop. It will only run once, after the loop is finished.</p>
 <p>Python allows you to have <em class="Defn">nested</em> indented blocks, for example an <code>if</code> statement inside a <code>while </code> loop:</p>
 
-<pre data-echo="s12_ex2.py" data-title="1" class="Code">from random import randint
+<pre data-echo="s12_ex2.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
 
-roll = None
-while roll != 7:
-    die1 = randint(1, 6)
-    die2 = randint(1, 6)
-    roll = die1 + die2
-    if roll == 2:
-        print("Snake eyes!")
-    elif roll == 12:
-        print("Boxcars!")
-    else:
-        print(f"You rolled a {roll}.")</pre>
+<span class="n">roll</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">while</span> <span class="n">roll</span> <span class="o">!=</span> <span class="mi">7</span><span class="p">:</span>
+    <span class="n">die1</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">die2</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">roll</span> <span class="o">=</span> <span class="n">die1</span> <span class="o">+</span> <span class="n">die2</span>
+    <span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Snake eyes!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Boxcars!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You rolled a </span><span class="si">{</span><span class="n">roll</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></pre>
 </section>
 
 <section class="Post" data-action="ide">

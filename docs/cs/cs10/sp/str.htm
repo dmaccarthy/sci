@@ -5,18 +5,18 @@
 	quote character may be used; however, you cannot use one type of quote to start the
 	string literal and the other quote character to end the string.</p>
 
-<pre data-echo="s17_ex1.py" data-title="1" class="Code">print("Hi there!")
-print('Greetings!')
-print("This is bad.')    <span class="Comment"># Syntax Error!</span></pre>
+<pre data-echo="s17_ex1.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi there!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Greetings!&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is bad.&#39;</span><span class="p">)</span>    <span class="c1"># Syntax Error!</span></pre>
 
 <p>As we have already seen with docstrings, Python also allows you to create “long”
 	string literals that are identified by three consecutive single or double quote
 	characters to start and end the string. String literals expressed this way may extend
 	over multiple lines.</p>
 
-<pre data-echo="s17_ex2.py" data-title="1" class="Code">print("""This string
-   takes up
-  three lines.""")</pre>
+<pre data-echo="s17_ex2.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;This string</span>
+<span class="s2">   takes up</span>
+<span class="s2">  three lines.&quot;&quot;&quot;</span><span class="p">)</span></pre>
 
 <h3>Escape Characters</h3>
 
@@ -25,13 +25,13 @@ print("This is bad.')    <span class="Comment"># Syntax Error!</span></pre>
 	single quotes to start and end the string literal, you cannot include the single quote
 	character (which also serves as the apostrophe) within the string data.</p>
 
-<pre data-echo="s17_ex3.py" data-title="1" class="Code">print('That's mine!')   <span class="Comment"># Syntax Error!</span></pre>
+<pre data-echo="s17_ex3.py" data-title="1" class="Python Code"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;That&#39;s mine!&#39;</span><span class="p">)</span>   <span class="c1"># Syntax Error!</span></pre>
 
 <p>Normally, you would use double quotes to enclose a string that contains a single quote
 	character, and single quotes to enclose a string that contains double quotes.</p>
 
-<pre data-echo="s17_ex4.py" data-title="1" class="Code">print("That's mine!")
-print('"Sabre Pride"')</pre>
+<pre data-echo="s17_ex4.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;That&#39;s mine!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;Sabre Pride&quot;&#39;</span><span class="p">)</span></pre>
 
 <p>Things become difficult when a string contains both single and double quote characters.
 	In cases like this, the character that would otherwise confuse the interpreter must be
@@ -40,15 +40,15 @@ print('"Sabre Pride"')</pre>
 <p>In the example below, the backslash character indicates that the single quote immediately
 	following it is part of the string data and does not mark the end of the string literal.</p>
 
-<pre data-echo="s17_ex5.py" data-title="1" class="Code">print('She said, "That<span class="Blue">\'</span>s mine!"')</pre>
+<pre data-echo="s17_ex5.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;She said, &quot;That</span><span class="se">\&#39;</span><span class="s1">s mine!&quot;&#39;</span><span class="p">)</span></pre>
 
 <p>Other common escape sequences are <code>\n</code> which represents a “new line” (also called line
 	feed or LF) character and <code>\t</code> which represents a tab character. These are
 	demonstrated in the first line below.</p>
 
-<pre data-echo="s17_ex6.py" data-title="1" class="Code">print('Line 1<span class="Blue">\n</span>Line 2\<span class="Blue">n\t</span>Line 3')
-print('<span class="Blue">\u00A9</span> 2023')
-print('C:<span class="Blue">\\</span>Python38<span class="Blue">\\</span>python.exe')</pre>
+<pre data-echo="s17_ex6.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Line 1</span><span class="se">\n</span><span class="s1">Line 2</span><span class="se">\n\t</span><span class="s1">Line 3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u00A9</span><span class="s1"> 2023&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Python38</span><span class="se">\\</span><span class="s1">python.exe&#39;</span><span class="p">)</span></pre>
 
 <p>You can use escape sequences to include Unicode characters in string data even when
 	the character cannot be typed from your keyboard. Unicode escape sequences consist of
@@ -68,24 +68,24 @@ print('C:<span class="Blue">\\</span>Python38<span class="Blue">\\</span>python.
 
 <p>The <code>+</code> operator can be used to join two or more strings to make a new, larger string.</p>
 
-<pre data-echo="s17_ex7.py" data-title="1" class="Code">str1 = 'Hello, '
-str2 = 'world!'
-str3 = str1 + str2
-print(str3)          <span class="Comment"># Hello, world!</span></pre>
+<pre data-echo="s17_ex7.py" data-title="1" class="Python Code"><span></span><span class="n">str1</span> <span class="o">=</span> <span class="s1">&#39;Hello, &#39;</span>
+<span class="n">str2</span> <span class="o">=</span> <span class="s1">&#39;world!&#39;</span>
+<span class="n">str3</span> <span class="o">=</span> <span class="n">str1</span> <span class="o">+</span> <span class="n">str2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str3</span><span class="p">)</span>          <span class="c1"># Hello, world!</span></pre>
 
 <p>The <code>*</code> operator can be used to repeat a string several times.</p>
 
-<pre data-echo="s17_ex8.py" data-title="1" class="Code">print(3 * 'Hi!')     <span class="Comment"># Hi!Hi!Hi!</pre>
+<pre data-echo="s17_ex8.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>     <span class="c1"># Hi!Hi!Hi!</span></pre>
 
 <p>The <code>in</code> operator can be used to check if a string contains a specific
 	letter or sequence of letters.</p>
 
-<pre data-echo="s17_ex9.py" data-title="1" class="Code">print('a' in 'Hi!')   <span class="Comment"># False</span></pre>
+<pre data-echo="s17_ex9.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>   <span class="c1"># False</span></pre>
 
 <p>Python has a <code>len</code> (length) function that will return the number
 	of characters in a string.</p>
 
-<pre data-echo="s17_ex10.py" data-title="1" class="Code">print(len("Hi there!"))   <span class="Comment"># 9</span></pre>
+<pre data-echo="s17_ex10.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;Hi there!&quot;</span><span class="p">))</span>   <span class="c1"># 9</span></pre>
 
 <h3>Indices &amp; Slices</h3>
 
@@ -99,12 +99,12 @@ print(str3)          <span class="Comment"># Hello, world!</span></pre>
 	To select a single character from a string, the string expression is followed by square
 	brackets enclosing the index to be selected.</p>
 
-<pre data-echo="s17_ex11.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
-print(sal[0])        <span class="Comment"># S</span>
-print(sal[1])        <span class="Comment"># a</span>
-print(sal[10])       <span class="Comment"># C</span>
-print(sal[-1])       <span class="Comment"># l</span>
-print(sal[-8])       <span class="Comment"># h</span></pre>
+<pre data-echo="s17_ex11.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>        <span class="c1"># S</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>        <span class="c1"># a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>       <span class="c1"># C</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>       <span class="c1"># l</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">])</span>       <span class="c1"># h</span></pre>
 
 <p>To select several consecutive characters from a string, we use the same notation with
 	the starting and ending indices separated by a colon. Python calls this a <em class="Defn">slice</em>. Note that the starting index is
@@ -112,17 +112,17 @@ print(sal[-8])       <span class="Comment"># h</span></pre>
 	creates a string from the characters with indices 10 through 13 with the index 14 not
 	included.</p>
 
-<pre data-echo="s17_ex12.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
-print(sal[10:14])    <span class="Comment"># Comp</span></pre>
+<pre data-echo="s17_ex12.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">14</span><span class="p">])</span>    <span class="c1"># Comp</span></pre>
 
 <p>If you include the colon but omit the starting index, Python assumes you want to
 	start from the beginning of the string. If you include the colon but omit the ending
 	index, Python assumes you want to go to the end of the string.</p>
 
-<pre data-echo="s17_ex13.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
-print(sal[:3])       <span class="Comment"># Sal</span>
-print(sal[20:])      <span class="Comment"># High School</span>
-print(sal[-6:])      <span class="Comment"># School</span></pre>
+<pre data-echo="s17_ex13.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>       <span class="c1"># Sal</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">20</span><span class="p">:])</span>      <span class="c1"># High School</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">:])</span>      <span class="c1"># School</span></pre>
 
 <h3>String Methods</h3>
 
@@ -133,9 +133,9 @@ print(sal[-6:])      <span class="Comment"># School</span></pre>
 	the <code>str.format</code> method we used for formatting output. Rather than passing
 	the string as an argument, type the string or its variable followed by <code>.find</code>.</p>
 
-<pre data-echo="s17_ex14.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
-index = sal.find("is")
-print(index)                 <span class="Comment"># 3</span></pre>
+<pre data-echo="s17_ex14.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">sal</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;is&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>                 <span class="c1"># 3</span></pre>
 
 <p>Some additional string methods that you may find useful are.</p>
 <ul>
@@ -148,10 +148,10 @@ print(index)                 <span class="Comment"># 3</span></pre>
 
 <p>Here are some examples.</p>
 
-<pre data-echo="s17_ex15.py" data-title="1" class="Code">sal = "Salisbury Composite High School"
-print(sal.upper())
-print(sal.lower())
-print(sal.replace("o", "q"))</pre>
+<pre data-echo="s17_ex15.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">))</span></pre>
 
 <p>See the <a href="https://docs.python.org/3/library/stdtypes.html?#str"
 	target="Py3">Python documentation</a> for more information on string methods.</p>
@@ -214,14 +214,14 @@ Thanks for playing.
 Your record: 1 win and 0 losses.
 Goodbye.</pre>
 
-<pre data-echo="py" class="Code">from random import choice
+<pre data-echo="py" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
 
-clue, answer = choice([
-    ("70's Movie", "STAR WARS"),
-    ("Canadian City", "VANCOUVER, BC"),
-    ("Pro Athlete", "CONNOR MCDAVID")
-])
-</pre>
+<span class="n">clue</span><span class="p">,</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">choice</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;70&#39;s Movie&quot;</span><span class="p">,</span> <span class="s2">&quot;STAR WARS&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Canadian City&quot;</span><span class="p">,</span> <span class="s2">&quot;VANCOUVER, BC&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Pro Athlete&quot;</span><span class="p">,</span> <span class="s2">&quot;CONNOR MCDAVID&quot;</span><span class="p">)</span>
+<span class="p">])</span></pre>
+
 </ol>
 </section>
 <script type="text/javascript">

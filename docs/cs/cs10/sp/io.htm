@@ -16,19 +16,19 @@
 <p>Each <code>print</code> statement prints its data on a separate line. If the argument is an expression, Python
 	<em class="Defn">evaluates</em> it before printing. In the example below, the second line will print <code>10</code>.</p>
 
-<pre data-echo="s06_ex1.py" data-title="1" class="Code">print("Hello!")
-print(5 * 2)</pre>
+<pre data-echo="s06_ex1.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span></pre>
 
 <p>You can print several pieces of data on a single line by passing multiple arguments to the same
 	<code>print</code> call...</p>
 
-<pre data-echo="s06_ex2.py" data-title="1" class="Code">print("Hello!", 5 * 2)</pre>
+<pre data-echo="s06_ex2.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span></pre>
 
 <p>Python adds a space character between the data being printed. If you want to specify a separator other than
 	a space, you can specify the separator as the final argument...</p>
 
-<pre data-echo="s06_ex3.py" data-title="1" class="Code">pi = 3.14
-print("Hello!", pi, 5 * 2, <span class="Blue">sep=</span>" ;-) ")</pre>
+<pre data-echo="s06_ex3.py" data-title="1" class="Python Code"><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; ;-) &quot;</span><span class="p">)</span></pre>
 
 <p>Note that you have to explicitly tell Python that you are using a custom separator using the keyword
 	<code>sep</code>, as shown in blue in the example above. Otherwise, Python will just think that the last
@@ -45,8 +45,8 @@ print("Hello!", pi, 5 * 2, <span class="Blue">sep=</span>" ;-) ")</pre>
 	data will be saved in the computer’s memory. Your program will need to assign a variable name to the data if
 	it wants to use it later...</p>
 
-<pre data-echo="s06_ex4.py" data-title="1" class="Code">user_name = <span class="Blue">input("Please tell me your name: ")</span>
-print("Hello, ", user_name, "!", sep="")</pre>
+<pre data-echo="s06_ex4.py" data-title="1" class="Python Code"><span></span><span class="n">user_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please tell me your name: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span><span class="p">,</span> <span class="n">user_name</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span></pre>
 
 <p>Note again that <em>literal</em> text is quoted (<code>"Hello, "</code>) while variable names are not (<code>user_name</code>).</p>
 
@@ -57,35 +57,35 @@ print("Hello, ", user_name, "!", sep="")</pre>
 	function <code>textinput</code> (which has to be imported from <code>turtle</code>) instead of
 	<code>input</code>...</p>
 
-<pre data-echo="s06_ex5.py" data-title="1" class="Code">from turtle import textinput, setup, speed, penup, pendown, pencolor, left, forward, exitonclick
+<pre data-echo="s06_ex5.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">textinput</span><span class="p">,</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">exitonclick</span>
 
-<span class="Comment"># Ask for color</span>
-color = <span class="Blue">textinput("Color", "What color triangle do you want?")</span>
+<span class="c1"># Ask for color</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">textinput</span><span class="p">(</span><span class="s2">&quot;Color&quot;</span><span class="p">,</span> <span class="s2">&quot;What color triangle do you want?&quot;</span><span class="p">)</span>
 
-<span class="Comment"># Assign canvas and triangle size</span>
-canvas_size = 300
-sides = 3
-side_length = 2 / sides * canvas_size
+<span class="c1"># Assign canvas and triangle size</span>
+<span class="n">canvas_size</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">sides</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">side_length</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">sides</span> <span class="o">*</span> <span class="n">canvas_size</span>
 
-<span class="Comment"># Set the canvas size and turtle speed</span>
-setup(canvas_size, canvas_size)
-speed(1)
+<span class="c1"># Set the canvas size and turtle speed</span>
+<span class="n">setup</span><span class="p">(</span><span class="n">canvas_size</span><span class="p">,</span> <span class="n">canvas_size</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="Comment"># Move turtle into position</span>
-penup()
-left(90)
-forward(side_length / 2)
-left(150)
+<span class="c1"># Move turtle into position</span>
+<span class="n">penup</span><span class="p">()</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="n">side_length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
 
-<span class="Comment"># Draw a triangle</span>
-pencolor(color)
-pendown()
-for side in range(int(sides)):
-    forward(side_length)
-    left(360 / sides)
+<span class="c1"># Draw a triangle</span>
+<span class="n">pencolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+<span class="n">pendown</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">side</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">sides</span><span class="p">)):</span>
+    <span class="n">forward</span><span class="p">(</span><span class="n">side_length</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">(</span><span class="mi">360</span> <span class="o">/</span> <span class="n">sides</span><span class="p">)</span>
 
-<span class="Comment"># Finished!</span>
-exitonclick()</pre>
+<span class="c1"># Finished!</span>
+<span class="n">exitonclick</span><span class="p">()</span></pre>
 
 <p>The <code>textinput</code> function uses a popup window to obtain input from the user. The function takes two
 	arguments: a title for the popup window, and a message to prompt the user.</p>
@@ -115,9 +115,10 @@ Age: 15
 Grade: 10</pre></li>
 
 <li>The program does not behave the way its programmer intended! Read the program to figure out what it is <em>supposed</em> to do. Then run the program to see what it actually does. Describe what the program is supposed to do and actually does in the comments at the end of the file.
-<pre data-echo="s06_number.py" data-title="1" class="Code">num = input("What is your favourite number? ")
-print(2 * num)
-print(2 + num)</pre></li>
+<pre data-echo="s06_number.py" data-title="1" class="Python Code"><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your favourite number? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">num</span><span class="p">)</span></pre>
+</li>
 </ol>
 </section>
 

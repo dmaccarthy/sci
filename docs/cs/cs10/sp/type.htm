@@ -3,9 +3,9 @@
 
 <p>We saw in the last assignment that the program below did not produce the expected output!</p>
 
-<pre data-echo="s06_number.py" data-title="1" class="Code">num = input("What is your favourite number? ")
-print(2 * num)
-print(2 + num)</pre>
+<pre data-echo="s06_number.py" data-title="1" class="Python Code"><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your favourite number? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">num</span><span class="p">)</span></pre>
 
 <p>If you type <code>5</code> when prompted for your favourite number, you might expect
 	the program to print <code>10</code> (2 * 5) and <code>7</code> (2 + 5) as its output.
@@ -16,9 +16,9 @@ print(2 + num)</pre>
 	text. When your program multiplies text by a number, it repeats the text the specified
 	number of times...</p>
 
-<pre data-echo="s07_ex1.py" data-title="1" class="Code">print(2 * "Hi")   <span class="Comment"># HiHi</span>
-print(2 * 5)      <span class="Comment"># 10</span>
-print(2 * "5")    <span class="Comment"># 55</span></pre>
+<pre data-echo="s07_ex1.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="s2">&quot;Hi&quot;</span><span class="p">)</span>   <span class="c1"># HiHi</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>      <span class="c1"># 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="s2">&quot;5&quot;</span><span class="p">)</span>    <span class="c1"># 55</span></pre>
 
 <p>Python crashes when you try to add text to a number because it doesn’t know how to do
 	this! When Python keeps track of your program’s data, it also tracks the <em>type</em>
@@ -36,17 +36,17 @@ print(2 * "5")    <span class="Comment"># 55</span></pre>
 	as shown in blue below. Python also has a function called <code>type</code> that lets
 	you find out the class of any data or expression...</p>
 
-<pre data-echo="s07_ex2.py" data-title="1" class="Code">fiveText = "5"
-fiveNum = <span class="Blue">float</span>(fiveText)
-fiveInt = <span class="Blue">int</span>(fiveText)
+<pre data-echo="s07_ex2.py" data-title="1" class="Python Code"><span></span><span class="n">fiveText</span> <span class="o">=</span> <span class="s2">&quot;5&quot;</span>
+<span class="n">fiveNum</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">fiveText</span><span class="p">)</span>
+<span class="n">fiveInt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fiveText</span><span class="p">)</span>
 
-print(2 * fiveText)     <span class="Comment"># 55</span>
-print(2 * fiveNum)      <span class="Comment"># 10.0</span>
-print(2 * fiveInt)      <span class="Comment"># 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">fiveText</span><span class="p">)</span>     <span class="c1"># 55</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">fiveNum</span><span class="p">)</span>      <span class="c1"># 10.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">fiveInt</span><span class="p">)</span>      <span class="c1"># 10</span>
 
-print(type(fiveText))   <span class="Comment"># &lt;class 'str'&gt;</span>
-print(type(fiveNum))    <span class="Comment"># &lt;class 'float'&gt;</span>
-print(type(fiveInt))    <span class="Comment"># &lt;class 'int'&gt;</span></pre>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">fiveText</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">fiveNum</span><span class="p">))</span>    <span class="c1"># &lt;class &#39;float&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">fiveInt</span><span class="p">))</span>    <span class="c1"># &lt;class &#39;int&#39;&gt;</span></pre>
 
 <p>When using Python’s <code>input</code> function to obtain user input, remember that
 	the data will always be encoded as a <code>str</code>. If you want numerical input,
@@ -56,9 +56,9 @@ print(type(fiveInt))    <span class="Comment"># &lt;class 'int'&gt;</span></pre>
 	work as expected, as long as you provide input that can be converted to an integer.
 	If you provided invalid input, the program will crash...</p>
 
-<pre data-echo="s07_ex3.py" data-title="1" class="Code">num = <span class="Blue">int(</span>input("What is your favourite number? ")<span class="Blue">)</span>
-print(2 * num)
-print(2 + num)</pre>
+<pre data-echo="s07_ex3.py" data-title="1" class="Python Code"><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your favourite number? &quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">num</span><span class="p">)</span></pre>
 
 </section>
 
@@ -75,16 +75,17 @@ Please enter another number: <span class="Blue">7</span>
 The average is 5.5</pre>
 
 <li>The program below calculates the sales tax and total price for an item that costs $4.99 when the sales tax rate is 5%. Modify the program so that user can input the tax rate and price from the keyboard.</li>
-<pre data-echo="s07_tax.py" data-title="1" class="Code"><span class="Comment"># Input</span>
-taxRate = 0.05
-price = 4.99
 
-<span class="Comment"># Processing</span>
-tax = round(taxRate * price, 2)
-total = price + tax
+<pre data-echo="s07_tax.py" data-title="1" class="Python Code"><span></span><span class="c1"># Input</span>
+<span class="n">taxRate</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">price</span> <span class="o">=</span> <span class="mf">4.99</span>
 
-<span class="Comment"># Output</span>
-print(f"The sales tax is ${tax} and the total is ${total}.")</pre>
+<span class="c1"># Processing</span>
+<span class="n">tax</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">taxRate</span> <span class="o">*</span> <span class="n">price</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">price</span> <span class="o">+</span> <span class="n">tax</span>
+
+<span class="c1"># Output</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The sales tax is $</span><span class="si">{</span><span class="n">tax</span><span class="si">}</span><span class="s2"> and the total is $</span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></pre>
 
 <li>Complete the assignment in this Word document in your OneDrive Computing Science folder:
 	<p class="Center"><code>cs10/python/s07_types.docx</code></p>

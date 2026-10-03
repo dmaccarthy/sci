@@ -9,48 +9,48 @@
 <p>Here is an example from the previous lesson with four comment lines added to	explain what
     the program is doing.</p>
 
-<pre data-echo="s04_ex1.py" data-title="1" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+<pre data-echo="s04_ex1.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">backward</span><span class="p">,</span> <span class="n">exitonclick</span>
 
-<span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
-setup(600, 480)
-speed(1)
-pencolor("red")
+<span class="c1"># Set the canvas size, turtle speed, and pen color</span>
+<span class="n">setup</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pencolor</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
-<span class="Comment"># Move turtle into position</span>
-penup()
-backward(200)
-left(45)
+<span class="c1"># Move turtle into position</span>
+<span class="n">penup</span><span class="p">()</span>
+<span class="n">backward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
 
-<span class="Comment"># Start drawing</span>
-pendown()
-forward(200)
+<span class="c1"># Start drawing</span>
+<span class="n">pendown</span><span class="p">()</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 
-<span class="Comment"># Finished!</span>
-exitonclick()</pre>
+<span class="c1"># Finished!</span>
+<span class="n">exitonclick</span><span class="p">()</span></pre>
 
 <p>Comments can also be used to temporarily disable one or more instructions without
 	actually deleting the code. If we want to see what the program would do if we took
 	out the <code>penup()</code> instruction, we could add a <code>#</code> character to
 	the beginning of the line. This is commonly called “commenting out” the instruction.</p>
 
-<pre data-echo="py" class="Code">from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+<pre data-echo="py" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">backward</span><span class="p">,</span> <span class="n">exitonclick</span>
 
-<span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
-setup(600, 480)
-speed(1)
-pencolor("red")
+<span class="c1"># Set the canvas size, turtle speed, and pen color</span>
+<span class="n">setup</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pencolor</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
-<span class="Comment"># Move turtle into position</span>
-<span class="Blue"># penup()</span>
-backward(200)
-left(45)
+<span class="c1"># Move turtle into position</span>
+<span class="c1 hlb"># penup()</span>
+<span class="n">backward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
 
-<span class="Comment"># Start drawing</span>
-pendown()
-forward(200)
+<span class="c1"># Start drawing</span>
+<span class="n">pendown</span><span class="p">()</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 
-<span class="Comment"># Finished!</span>
-exitonclick()</pre>
+<span class="c1"># Finished!</span>
+<span class="n">exitonclick</span><span class="p">()</span></pre>
 
 <h3>Docstrings</h3>
 
@@ -64,31 +64,31 @@ exitonclick()</pre>
     in quotation marks. If the docstring does not fit on a single line, it needs to be enclosed
     in <em>triple</em> quotes, as in the example below.</p>
 
-<pre data-echo="py" class="Code"><span class="DocString">"""
-An example of a Python 3 'Turtle Graphics' program.
+<pre data-echo="py" class="Python Code"><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">An example of a Python 3 &#39;Turtle Graphics&#39; program.</span>
 
-Author: D. MacCarthy &lt;david.maccarthy@eips.ca&gt;
+<span class="sd">Author: D. MacCarthy &lt;david.maccarthy@eips.ca&gt;</span>
 
-"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
     
-from turtle import setup, speed, pencolor, penup, pendown, left, forward, backward, exitonclick
+<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">backward</span><span class="p">,</span> <span class="n">exitonclick</span>
 
-<span class="Comment"># Set the canvas size, turtle speed, and pen color</span>
-setup(600, 480)
-speed(1)
-pencolor("red")
+<span class="c1"># Set the canvas size, turtle speed, and pen color</span>
+<span class="n">setup</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pencolor</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
-<span class="Comment"># Move turtle into position</span>
-penup()
-backward(200)
-left(45)
+<span class="c1"># Move turtle into position</span>
+<span class="n">penup</span><span class="p">()</span>
+<span class="n">backward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
 
-<span class="Comment"># Start drawing</span>
-pendown()
-forward(200)
+<span class="c1"># Start drawing</span>
+<span class="n">pendown</span><span class="p">()</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 
-<span class="Comment"># Finished!</span>
-exitonclick()</pre>
+<span class="c1"># Finished!</span>
+<span class="n">exitonclick</span><span class="p">()</span></pre>
 
 <p>Most IDE’s will display comments and docstrings in different colours from the
 	program instructions to make them easy to identify.</p>

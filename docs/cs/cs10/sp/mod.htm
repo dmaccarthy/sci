@@ -10,8 +10,8 @@
 	<code>max</code>, <code>sum</code>, and <code>len</code>. You can get a complete list of built-ins
 	by running the following:</p>
 
-<pre data-echo="s08_ex1.py" data-title="1" class="Code">for b in sorted(vars(__builtins__)):
-    print(b)</pre>
+<pre data-echo="s08_ex1.py" data-title="1" class="Python Code"><span></span><span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></pre>
 
 <p>Python does not load all available features automatically. If it did, programs would use far
 	more memory than they need to and would take much longer to load. Instead, most available features
@@ -20,15 +20,15 @@
 	functions. Use the <code>from-import</code> statement to import functions, classes, and data from
 	a module. Import statements are usually placed at the beginning of the source code, right after the docstring.</p>
 
-<pre data-echo="s08_ex2.py" data-title="1" class="Code">from turtle import setup, forward, exitonclick
+<pre data-echo="s08_ex2.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">exitonclick</span>
 
-setup(500, 500)
-forward(200)
-exitonclick()</pre>
+<span class="n">setup</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">exitonclick</span><span class="p">()</span></pre>
 
 <p>It is also possible to use a “wildcard” to import <b>all</b> names of functions, classes, and data
 	from a module...<p>
-<pre data-echo="py" class="Code">from turtle import *</pre>
+<pre data-echo="py" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span></pre>
 
 <p>It is generally better to avoid wildcard imports. Importing names that your program does not actually
 	use requires more memory and makes Python run less efficiently. It also increases the likelihood of
@@ -40,13 +40,13 @@ exitonclick()</pre>
 	and <a href="https://docs.python.org/3/library/random.html" target="_r"><code>random</code></a>,
 	modules for performing mathematical and random number calculations.</p>
 
-<pre data-echo="s08_ex3.py" data-title="1" class="Code">from math import pi, sqrt
-from random import randint, uniform
+<pre data-echo="s08_ex3.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span><span class="p">,</span> <span class="n">uniform</span>
 
-print(pi)
-print(sqrt(2))
-print(randint(1,6))
-print(uniform(1,6))</pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span></pre>
 
 <h3>Site Packages</h3>
 
@@ -72,9 +72,9 @@ print(uniform(1,6))</pre>
 <p>The Python Software Foundation maintains an extensive <a href="https://pypi.org/" target="_pypi">index of available packages</a>.</p>
 
 <p>Here is an example of how to import from a package. As long as the package (<code>sal_py</code>) has been properly installed, there is no difference between importing from the standard library and from the package. If <code>sal_py</code> is not installed, the program will raise a <code>ModuleNotFoundError</code>. (To see this, try misspelling <code>sal_py</code> as <code>salpy</code>.)</p>
-<pre data-echo="s08_ex4.py" data-title="1" class="Code">from sal_py import message
+<pre data-echo="s08_ex4.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">sal_py</span> <span class="kn">import</span> <span class="n">message</span>
 
-print(message)</pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></pre>
 
 </section>
 
@@ -93,17 +93,17 @@ print(message)</pre>
 <li>The program below is supposed to simulate rolling a pair of dice. Currently, the program
     always rolls a 6 and a 3. Modify the program to randomize the roll using the <code>randint</code>
     function from the <code>random</code> module.</li>
-<pre data-echo="s08_dice.py" data-title="1" class="Code"><span class="DocString">"Simulate rolling a pair of dice"</span>
+<pre data-echo="s08_dice.py" data-title="1" class="Python Code"><span></span><span class="s2">&quot;Simulate rolling a pair of dice&quot;</span>
 
-<span class="Comment"># Input</span>
-die1 = 6
-die2 = 3
+<span class="c1"># Input</span>
+<span class="n">die1</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">die2</span> <span class="o">=</span> <span class="mi">3</span>
 
-<span class="Comment"># Processing</span>
-total = die1 + die2
+<span class="c1"># Processing</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">die1</span> <span class="o">+</span> <span class="n">die2</span>
 
-<span class="Comment"># Output</span>
-print(f"You rolled {die1} + {die2} = {total}")</pre>
+<span class="c1"># Output</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You rolled </span><span class="si">{</span><span class="n">die1</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">die2</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></pre>
 </ol>
 </section>
 

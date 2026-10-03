@@ -2,42 +2,42 @@
 <h3>Numerical Accumulators</h3>
 
 <p>One common use of iteration (loops) is for <em class="Defn">accumulation</em>. This
-	involves performing some sort of total over a set of data. The example below shows iteration
+	involves performing some sort of <b>total</b> over a set of data. The example below shows iteration
     over a set of student marks. The program performs three totals:</p>
 <ul>
-<li>total number of students in the class (<code><span class="Blue">student</span></code>)</li>
-<li>total number of students who earned an “A” (<code><span class="Red">grade_A</span></code>)</li>
+<li>total number of students in the class (<code>student</code>)</li>
+<li>total number of students who earned an “A” (<code>grade_A</code>)</li>
 <li>total of all the individual student marks (<code><span class="Green">total_marks</span></code>)</li>
 </ul>
 
-<pre data-echo="s16_ex1.py" data-title="1" class="Code">from sal_cs import marks_list
+<pre data-echo="s16_ex1.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">sal_cs</span> <span class="kn">import</span> <span class="n">marks_list</span>
 
-<span class="Comment"># Initialize accumulators</span>
-<span class="Blue">student = 0</span>
-<span class="Red">grade_A = 0</span>
-<span class="Green">total_marks = 0</span>
+<span class="c1"># Initialize accumulators</span>
+<span class="n">student</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">grade_A</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_marks</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="Comment"># Iterate</span>
-template = "Student {} earned a mark of {}."
-for mark in marks_list():
-    <span class="Blue">student += 1</span>         <span class="Comment"># Count students</span>
-    <span class="Red">if mark >= 80:</span>       <span class="Comment"># Count students with an 'A'</span>
-        <span class="Red">grade_A += 1</span>
-    <span class="Green">total_marks += mark</span>  <span class="Comment"># Total marks</span>
-    print(template.format(student, mark))
+<span class="c1"># Iterate</span>
+<span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;Student </span><span class="si">{}</span><span class="s2"> earned a mark of </span><span class="si">{}</span><span class="s2">.&quot;</span>
+<span class="k">for</span> <span class="n">mark</span> <span class="ow">in</span> <span class="n">marks_list</span><span class="p">():</span>
+    <span class="n">student</span> <span class="o">+=</span> <span class="mi">1</span>         <span class="c1"># Count students</span>
+    <span class="k">if</span> <span class="n">mark</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>       <span class="c1"># Count students with an &#39;A&#39;</span>
+        <span class="n">grade_A</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">total_marks</span> <span class="o">+=</span> <span class="n">mark</span>  <span class="c1"># Total marks</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">student</span><span class="p">,</span> <span class="n">mark</span><span class="p">))</span>
 
-<span class="Comment"># Output totals</span>
-print("\nStudents =", student)
-print("Total =", total_marks)
-print("Average =", total_marks / student)
-print("Students with an A =", grade_A)</pre>
+<span class="c1"># Output totals</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Students =&quot;</span><span class="p">,</span> <span class="n">student</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total =&quot;</span><span class="p">,</span> <span class="n">total_marks</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average =&quot;</span><span class="p">,</span> <span class="n">total_marks</span> <span class="o">/</span> <span class="n">student</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Students with an A =&quot;</span><span class="p">,</span> <span class="n">grade_A</span><span class="p">)</span></pre>
 
 <p>Each total is performed using an <em class="Defn">accumulator</em> variable, which have been colour-coded in the example above.
     Before the loop begins, each accumulator is initialized to a value of <code>0</code>. As we iterate
     through the data, examining each student’s mark one at a time, we count the number of students in the
-    class by adding <code>1</code> to the <code><span class="Blue">student</span></code> variable
+    class by adding <code>1</code> to the <code>student</code> variable
     each pass through the loop.</p>
-<p>We do the same for the <code><span class="Red">grade_A</span></code> accumulator, but only when
+<p>We do the same for the <code>grade_A</code> accumulator, but only when
     the mark is 80 or higher. This allows us to count how many students earned an “A”. Finally, we
     use the <code><span class="Green">total_marks</span></code> accumulator to keep a running total
     of all the students’ marks.</p>
@@ -46,20 +46,20 @@ print("Students with an A =", grade_A)</pre>
 <h3>String Accumulators</h3>
 
 <p>We can also use accumulation with strings. Suppose you had a secret message and wanted to encrypt
-    it. You could initialize the accumulator variable (<code><span class="Blue">cypher</span></code>)
+    it. You could initialize the accumulator variable (<code>cypher</code>)
     to an empty string, <code>""</code>. As you iterate through the original message, one letter at
     a time, you would add the encrypted letter to the cypher string.</p>
 
-<pre data-echo="s16_ex2.py" data-title="1" class="Code"><span class="Comment"># Input</span>
-plain = "This is a secret message!"
+<pre data-echo="s16_ex2.py" data-title="1" class="Python Code"><span></span><span class="c1"># Input</span>
+<span class="n">plain</span> <span class="o">=</span> <span class="s2">&quot;This is a secret message!&quot;</span>
 
-<span class="Comment"># Processing</span>
-<span class="Blue">cypher = ""</span>
-for letter in plain:
-    <span class="Blue">cypher += chr(ord(letter) + 3)</span>
+<span class="c1"># Processing</span>
+<span class="n">cypher</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">plain</span><span class="p">:</span>
+    <span class="n">cypher</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="Comment"># Output</span>
-print(cypher)</pre>
+<span class="c1"># Output</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cypher</span><span class="p">)</span></pre>
 
 <p>The program above encrypts the message by shifting each letter by three places based on its Unicode value;
     <code>'a'</code> gets converted to <code>'d'</code>, and <code>'T'</code> gets converted to <code>'W'</code>.

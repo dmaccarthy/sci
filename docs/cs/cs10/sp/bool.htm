@@ -8,15 +8,15 @@
 <p>One way to produce a Boolean result is to use one of Python’s comparison operators. <em class="Defn">Comparison
 	operators</em> are operators that compare two values for equality or inequality.</p>
 
-<pre data-echo="s10_ex1.py" data-title="1" class="Code">a = 3
-b = 5
-print(a == b)             <span class="Comment"># False</span>
-print(a != b)             <span class="Comment"># True</span>
-print(a > b)              <span class="Comment"># False</span>
+<pre data-echo="s10_ex1.py" data-title="1" class="Python Code"><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>             <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">)</span>             <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span>              <span class="c1"># False</span>
 
-a_is_smaller = a < b
-print(a_is_smaller)       <span class="Comment"># True</span>
-print(type(a_is_smaller)) <span class="Comment"># &lt;class 'bool'&gt;</span></pre>
+<span class="n">a_is_smaller</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a_is_smaller</span><span class="p">)</span>       <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a_is_smaller</span><span class="p">))</span> <span class="c1"># &lt;class &#39;bool&#39;&gt;</span></pre>
 
 <p>Note that we use a <em>double</em> equal sign for the equality operator, since a single equal sign is the
 	assignment operator! The operator <code>!=</code> is the inequality operator; it tests whether two expressions
@@ -30,35 +30,34 @@ print(type(a_is_smaller)) <span class="Comment"># &lt;class 'bool'&gt;</span></p
 	These operators can be used to check if a string contains a particular letter or substring, and whether a
 	sequence of numbers (e.g a color code) contains a specific value.</p>
 
-<pre data-echo="s10_ex2.py" data-title="1" class="Code">word = "Computing Science"
-print("i" in word)         <span class="Comment"># True</span>
-print("z" in word)         <span class="Comment"># False</span>
-print("put" in word)       <span class="Comment"># True</span>
-print("ping" in word)      <span class="Comment"># False</span>
-print("ping" not in word)  <span class="Comment"># True</span>
+<pre data-echo="s10_ex2.py" data-title="1" class="Python Code"><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;Computing Science&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i&quot;</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>         <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z&quot;</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>         <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;put&quot;</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>       <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ping&quot;</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>      <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ping&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>  <span class="c1"># True</span>
 
-red = 255, 0, 0            <span class="Comment"># Numerical code for color red</span>
-print(0 in red)            <span class="Comment"># True</span>
-print(100 in red)          <span class="Comment"># False</span>
-print(255 in red)          <span class="Comment"># True</span></pre>
+<span class="n">red</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>            <span class="c1"># Numerical code for color red</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="ow">in</span> <span class="n">red</span><span class="p">)</span>            <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">100</span> <span class="ow">in</span> <span class="n">red</span><span class="p">)</span>          <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">255</span> <span class="ow">in</span> <span class="n">red</span><span class="p">)</span>          <span class="c1"># True</span></pre>
 
 <h3>Boolean (Logical) Operators</h3>
 
 <p>We often need to combine two or more Boolean values or expressions to create a “final” result. For example,
 	if we wanted to know if a number was between 1 and 100, we would have to check two conditions.</p>
 
-<pre data-echo="s10_ex3.py" data-title="1" class="Code">a = 57
-print(a &gt;= 1)                <span class="Comment"># True</span>
-print(a &lt;= 100)              <span class="Comment"># True</span>
-print(a &gt;= 1 and a &lt;= 100)   <span class="Comment"># True</span>
-print(a &gt;= 1 or a &lt;= 100)    <span class="Comment"># True</span>
+<pre data-echo="s10_ex3.py" data-title="1" class="Python Code"><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">57</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>              <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>    <span class="c1"># True</span>
 
-a = 107
-print(a &gt;= 1)                <span class="Comment"># True</span>
-print(a &lt;= 100)              <span class="Comment"># False</span>
-print(a &gt;= 1 and a &lt;= 100)   <span class="Comment"># False</span>
-print(a &gt;= 1 or a &lt;= 100)    <span class="Comment"># True</span>
-</pre>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">107</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>              <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>    <span class="c1"># True</span></pre>
 
 <p>The <code>and</code> operator combines two Boolean values or expressions to check if <b>both</b> are
 	<code>True</code>. In the example above, the program evaluates the expression <code>a >= 1 and a <= 100</code>.
@@ -77,14 +76,14 @@ print(a &gt;= 1 or a &lt;= 100)    <span class="Comment"># True</span>
 <p>The third Boolean operator is <code>not</code>. The <code>not</code> operator reverses <code>True</code> to
 	<code>False</code> and <code>False</code> to <code>True</code>.</p>
 
-<pre data-echo="s10_ex4.py" data-title="1" class="Code">a = 3 &lt; 5
-b = "her" in "Sherwood Park"
+<pre data-echo="s10_ex4.py" data-title="1" class="Python Code"><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;her&quot;</span> <span class="ow">in</span> <span class="s2">&quot;Sherwood Park&quot;</span>
 
-print(a)            <span class="Comment"># True</span>
-print(not a)        <span class="Comment"># False</span>
-print(not a or b)   <span class="Comment"># True</span>
-print(not (a or b)) <span class="Comment"># False</span>
-print(a and not b)  <span class="Comment"># False</span></pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>            <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">a</span><span class="p">)</span>        <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">a</span> <span class="ow">or</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">a</span> <span class="ow">or</span> <span class="n">b</span><span class="p">))</span> <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># False</span></pre>
 
 <p>For Boolean operators, the order of operations is <code>not</code> first, then <code>and</code>, and
 	<code>or</code> last. Python evaluates the final expression in the example above as follows:</p>

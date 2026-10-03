@@ -637,6 +637,19 @@ page.menu = (u, menu) => {
         if (!item.data.hide) add(item);
 }
 
+page.copy = () => {
+    let post = $($("main section.Post:visible").html());
+    let eqns = post.find("p[data-latex]");
+    for (let eq of eqns) {
+        eq = $(eq);
+        eq.html(eq.attr("data-latex"));
+    }
+    let data = new ClipboardItem({
+      'text/html': new Blob([post[0].innerHTML], {type: 'text/html'})
+    });
+    navigator.clipboard.write([data]);
+}
+
 page.jump = n => {
     n += home._seq.indexOf(home.path(page.onload._current[0]));
     if (n >= 0 && n < home._seq.length) home.go(home._seq[n]);
@@ -658,6 +671,20 @@ page.vars = () => {
 page.vars.map = {
     email: "david.maccarthy@eips.ca",
     currentYear: (new Date().getFullYear()),
+}
+
+
+/*** ***/
+
+function pysh() {
+    let text = "";
+    let pre = $("pre.Code");
+    for (let e of pre) {
+        e = $(e);
+        text += "\n***" + e.attr("data-echo") + "\n" + e.text() + "\n";
+    }
+    console.log(text);
+    return "$end$";
 }
 
 
@@ -795,6 +822,7 @@ $(() => {
                 if (key == 'n') window.open(location.href);
                 else if (key == 's') {for (let i of "34") window.open(`seating.html?b=${i}`)}
                 else if (key == 'p') slideshow();
+                else if (key == 'c') page.copy();
                 else if (key == 't') {
                     let mode = 2 - parseInt(localStorage.getItem("teacher_mode"));
                     localStorage.setItem("teacher_mode", mode);
