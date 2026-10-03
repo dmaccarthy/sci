@@ -784,9 +784,13 @@ swipe.event = ev => {
         e = e.changedTouches[0];
         return new RArray(e.clientX, e.clientY);
     }
-    if (ev.type == "touchstart") swipe.xy = coords(ev);
-    else if (ev.type == "touchend") {
-        let [x, y] = coords(ev);
+    if (ev.type == "touchstart") {
+        // console.log(ev);
+        if ($(ev.target).closest("pre.Code, p.AutoScroll").length) return;
+        swipe.xy = coords(ev);
+    }
+    else if (ev.type == "touchend" && swipe.xy) {
+        // let [x, y] = coords(ev);
         swipe(coords(ev).minus(swipe.xy));
         delete swipe.xy;
     }
