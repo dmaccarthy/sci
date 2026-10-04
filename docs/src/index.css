@@ -95,6 +95,8 @@ body:not(.Present) {
 
 main {
 
+article {padding-bottom: 2em}
+
 margin: auto;
 margin-bottom: 2em;
 
