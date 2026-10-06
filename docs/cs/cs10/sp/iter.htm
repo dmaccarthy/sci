@@ -8,7 +8,7 @@
 	<em class="Defn">iterate</em> through a <em class="Defn">sequence</em>. One type of sequence is a string; Python
 	treats each string as a sequence of individual characters.</p>
 
-<pre data-echo="s14_ex1.py" data-title="1" class="Python Code"><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<pre data-echo="s14_ex1.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
 <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span></pre>
 
@@ -23,7 +23,7 @@
 	statement within a <code>for</code> loop, for example. The program below will print each of the
 	lower case letters and punctutation marks on its own line, but will ignore any upper case letters.</p>
 
-<pre data-echo="s14_ex2.py" data-title="1" class="Python Code"><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<pre data-echo="s14_ex2.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
 <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="n">letter</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span></pre>
@@ -34,7 +34,7 @@
 
 <p>Besides strings, other types of sequences that you can iterate through include files	and lists of numbers or other data.</p>
 
-<pre data-echo="s14_ex3.py" data-title="1" class="Python Code"><span></span><span class="n">data</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span>
+<pre data-echo="s14_ex3.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">data</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span>
 <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span></pre>
 
@@ -44,7 +44,7 @@
 	you an alternate way to loop with a counter. The following example runs the loop ten times, with the
 	variable <code>count</code> keeping track of how many times the loop has run.</p>
 
-<pre data-echo="s14_ex4.py" data-title="1" class="Python Code"><span></span><span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<pre data-echo="s14_ex4.py" data-title="1" class="Pygments Python Code"><span></span><span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span></pre>
 
 <p>This is more concise than using a <code>while</code> loop with a counter, because you do not need
@@ -53,7 +53,7 @@
 <p>You can pass more arguments to the <code>range</code> function to create other sequences of
     numbers. For example, if you want to count by twos, starting at 10 and ending at (but not
     including!) 20...</p>
-<pre data-echo="s14_ex5.py" data-title="1" class="Python Code"><span></span><span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+<pre data-echo="s14_ex5.py" data-title="1" class="Pygments Python Code"><span></span><span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span></pre>
 </section>
 
@@ -69,7 +69,7 @@
     display only the letters that have already been guessed, as well as spaces and punctuation marks.
     Letters that have not yet been guessed would be shown as a blank or placeholder character such as
     a star.</li>
-<pre data-echo="s14_hangman.py" data-title="1" class="Python Code"><span></span><span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;STAR WARS&quot;</span>
+<pre data-echo="s14_hangman.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;STAR WARS&quot;</span>
 <span class="n">guesses</span> <span class="o">=</span> <span class="s2">&quot;AESD&quot;</span></pre>
 
 <p>Complete the program using a <code>for</code> loop to iterate through the letters in <code>answer</code>

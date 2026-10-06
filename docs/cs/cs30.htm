@@ -11,7 +11,7 @@
     <li>Complete the programming tasks below by the due dates announced in class.</li>
     <li>Use <em>VS Code</em> to create, edit, and test your programs. Be sure each program does what it is required to do!</li>
     <li>You must do all of the coding <em>in class</em> without using a coding agent or copying code from the internet; the code you write must be entirely your own!</li>
-    <li>All programs should have a docstring and relevant comments.</li>
+    <li>All programs and functions should have a docstring and relevant comments.</li>
     <li>Use descriptive names for variables.</li>
     <li>Use procedural programming techniques; i.e. one function for each separate task the program performs.</li>
     <li>Use only programming techniques that have been covered in these lessons. Examples that you find on the web often use techniques that are considered bad programmming practice that should be avoided.</li>
@@ -26,6 +26,7 @@
 
 page.init = async() => {
     return cs_projects("cs/cs30/prj30.txt").then(() => {
+        for (let ei of $("pre[data-echo]:not(.Echoed)")) page.echo($(ei));
         mjax_wait().then(() => {
             renderTeX();
             page.get("enemy")("#Enemy");

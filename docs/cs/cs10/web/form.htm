@@ -22,12 +22,11 @@
 
 <p>The HTML code for the form is:</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;form&gt;
-  &lt;label for="user"&gt;Username&lt;/label&gt;: &lt;input type="text" id="user" name="user" value="guest"/&gt;
-  &lt;label for="pass"&gt;Password&lt;/label&gt;: &lt;input type="password" id="pass" name="pass"/&gt;
-  &lt;input type="submit" value="Login"/&gt;
-&lt;/form&gt;</pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;user&quot;</span><span class="p">&gt;</span>Username<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;user&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;user&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;guest&quot;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;pass&quot;</span><span class="p">&gt;</span>Password<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;pass&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;pass&quot;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Login&quot;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span></pre>
 
 <p>Each <code>input</code> is a self-closing tag. The <code>type</code> attribute is
 	used to specify the kind of input you want.</p>
@@ -51,12 +50,11 @@
 	more securely than the default method. Whether a form needs to use the <em>post</em> method
 	or the default method is determined by the server to which it is being submitted.</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;form <span class="Blue">action</span>="https://dmaccarthy.vercel.app/formecho" <span class="Blue">method</span>="post"&gt;
-  &lt;label for="user"&gt;Username&lt;/label&gt;: &lt;input type="text" id="user" name="user" value="guest"/&gt;
-  &lt;label for="pass"&gt;Password&lt;/label&gt;: &lt;input type="password" id="pass" name="pass"/&gt;
-  &lt;input type="submit" value="Login"/&gt;
-&lt;/form&gt;</pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;https://dmaccarthy.vercel.app/formecho&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;user&quot;</span><span class="p">&gt;</span>Username<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;user&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;user&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;guest&quot;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;pass&quot;</span><span class="p">&gt;</span>Password<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;pass&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;pass&quot;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Login&quot;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span></pre>
 
 <h3>Other Inputs</h3>
 
@@ -90,32 +88,32 @@
 </form>
 
 <p>Here is the HTML code for the form above:</p>
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;form action="https://dmaccarthy.vercel.app/formecho" method="post" enctype="multipart/form-data"&gt;
-  &lt;p&gt;&lt;input type="checkbox" name="student" id="student" value="yes" /&gt; &lt;label for="student"&gt;Current Student&lt;/label&gt;&lt;/p&gt;
-  &lt;p&gt;
-    &lt;input type="radio" name="grade" id="gr10" value="10" checked="checked" /&gt; &lt;label for="gr10"&gt;Grade 10&lt;/label&gt;&lt;br/&gt;
-    &lt;input type="radio" name="grade" id="gr11" value="11" /&gt; &lt;label for="gr11"&gt;Grade 11&lt;/label&gt;&lt;br/&gt;
-    &lt;input type="radio" name="grade" id="gr12" value="12" /&gt; &lt;label for="gr12"&gt;Grade 12&lt;/label&gt;
-  &lt;/p&gt;
-  &lt;p&gt;&lt;label for="res"&gt;Residence&lt;/label&gt;: &lt;select name="res" id="res"&gt;
-    &lt;option value="ShPk"&gt;Sherwood Park&lt;/option&gt;
-    &lt;option value="Fort"&gt;Fort Saskatchewan&lt;/option&gt;
-    &lt;option value="Ard"&gt;Ardrossan&lt;/option&gt;
-    &lt;option value="County"&gt;Strathcona County&lt;/option&gt;
-    &lt;option value="Edm"&gt;Edmonton&lt;/option&gt;
-    &lt;option value="Other"&gt;Other&lt;/option&gt;
-  &lt;/select&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;label for="file"&gt;Application Form&lt;/label&gt;: &lt;input type="file" id="file" name="file"/&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;input type="submit" value="Send"/&gt;&lt;/p&gt;
-&lt;/form&gt;</pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;https://dmaccarthy.vercel.app/formecho&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;student&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;student&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;yes&quot;</span> <span class="p">/&gt;</span> <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;student&quot;</span><span class="p">&gt;</span>Current Student<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;grade&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;gr10&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">checked</span><span class="o">=</span><span class="s">&quot;checked&quot;</span> <span class="p">/&gt;</span> <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;gr10&quot;</span><span class="p">&gt;</span>Grade 10<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;grade&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;gr11&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;11&quot;</span> <span class="p">/&gt;</span> <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;gr11&quot;</span><span class="p">&gt;</span>Grade 11<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;grade&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;gr12&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;12&quot;</span> <span class="p">/&gt;</span> <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;gr12&quot;</span><span class="p">&gt;</span>Grade 12<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;res&quot;</span><span class="p">&gt;</span>Residence<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>: <span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;res&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;res&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;ShPk&quot;</span><span class="p">&gt;</span>Sherwood Park<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Fort&quot;</span><span class="p">&gt;</span>Fort Saskatchewan<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Ard&quot;</span><span class="p">&gt;</span>Ardrossan<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;County&quot;</span><span class="p">&gt;</span>Strathcona County<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Edm&quot;</span><span class="p">&gt;</span>Edmonton<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Other&quot;</span><span class="p">&gt;</span>Other<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;file&quot;</span><span class="p">&gt;</span>Application Form<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;file&quot;</span><span class="p">/&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Send&quot;</span><span class="p">/&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span></pre>
 
 <p>The file input allows the user to select a file from their computer and upload it to
 	the server. To permit the file to be uploaded, you have to add an additional attribute
 	called <code>enctype</code> (encoding type) to the <code>form</code> element:<p>
 
-<pre class="Code" data-echo="copy">
-enctype="multipart/form-data"</pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code">
+<span class="na">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span>
+</pre>
 
 <p>Without this extra attribute, the browser will only submit the file name, not the actual
 	contents of the file. (You can edit the form above to remove this attribute and see how the server

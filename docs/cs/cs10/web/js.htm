@@ -1,5 +1,4 @@
 <section class="Post" data-action="slides">
-<h3>JavaScript</h3>
 
 <p><em Class="Defn">JavaScript</em> (also call ECMAScript) is a programming language that is used to make HTML
 	documents interactive. The JavaScript interpreter is built into your web browser.</p>
@@ -10,8 +9,7 @@
 	<code>alert('Hello!')</code>. This causes a message box to appear with the message
 	‘Hello!’</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;p onclick = "<span class="Blue">alert('Hello!')</span>"&gt;Click Me!&lt;/p&gt;</pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">onclick </span><span class="o">=</span> <span class="s">&quot;alert(&#39;Hello!&#39;)&quot;</span><span class="p">&gt;</span>Click Me!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
 
 <p>In addition to the <code>onclick</code> attribute, there are several other attribute
 	names that you can use to attach to JavaScript code to <em class="Defn">events</em> that
@@ -21,16 +19,15 @@
 	element (<code>&lt;img&gt;</code>), and <code>this.style</code> refers to the element’s CSS
 	styles.</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;p onclick = "alert('Hello!')"&gt;
-  &lt;img
-    src = "https://dmaccarthy.github.io/sci/media/laptop.svg"
-    alt = "Laptop"
-    width = "128"
-    <span class="Blue">onclick = "this.style.display='none'"
-    onmouseover = "this.style.width='192px'"
-    onmouseout = "this.style.width='96px'"</span> /&gt;
-&lt;/p&gt;</pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">onclick </span><span class="o">=</span> <span class="s">&quot;alert(&#39;Hello!&#39;)&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span>
+    <span class="na">src </span><span class="o">=</span> <span class="s">&quot;https://dmaccarthy.github.io/sci/media/laptop.svg&quot;</span>
+    <span class="na">alt </span><span class="o">=</span> <span class="s">&quot;Laptop&quot;</span>
+    <span class="na">width </span><span class="o">=</span> <span class="s">&quot;128&quot;</span>
+    <span class="na">onclick </span><span class="o">=</span> <span class="s">&quot;this.style.display=&#39;none&#39;&quot;</span>
+    <span class="na">onmouseover </span><span class="o">=</span> <span class="s">&quot;this.style.width=&#39;192px&#39;&quot;</span>
+    <span class="na">onmouseout </span><span class="o">=</span> <span class="s">&quot;this.style.width=&#39;96px&#39;&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
 
 <h3>Functions</h3>
 
@@ -39,27 +36,26 @@
 	instruction, you can define a function within a <code>&lt;script&gt;</code> tag (usually located
 	in your document <code>&lt;head&gt;</code>.)</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;head&gt;
-&lt;script type="text/javascript"&gt;
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
 
-<span class="Blue">function myAction(elem) {
-  let pad = parseInt(prompt("How much padding?"));
-  elem.style.padding = pad + "px";
-  elem.style.border = "2px solid blue";
-  document.getElementById("Laptop").style.width = "192px";
-}</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">myAction</span><span class="p">(</span><span class="nx">elem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">pad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;How much padding?&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="nx">elem</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">padding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pad</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;px&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">elem</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">border</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2px solid blue&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;Laptop&quot;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;192px&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
-&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;p onclick = "<span class="Blue">myAction(this)</span>"&gt;
-  &lt;img id = "Laptop"
-    alt = "Laptop"
-    width = "128"
-    src = "https://dmaccarthy.github.io/sci/media/laptop.svg"/&gt;
-&lt;/p&gt;
-&lt;/body&gt;</pre>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">onclick </span><span class="o">=</span> <span class="s">&quot;myAction(this)&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">id </span><span class="o">=</span> <span class="s">&quot;Laptop&quot;</span>
+    <span class="na">alt </span><span class="o">=</span> <span class="s">&quot;Laptop&quot;</span>
+    <span class="na">width </span><span class="o">=</span> <span class="s">&quot;128&quot;</span>
+    <span class="na">src </span><span class="o">=</span> <span class="s">&quot;https://dmaccarthy.github.io/sci/media/laptop.svg&quot;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></pre>
 
 <p>Note that JavaScript has its own syntax and vocabulary which are different than Python’s.
 	JavaScript instructions end with a semi-colon. JavaScript uses curly brackets rather than

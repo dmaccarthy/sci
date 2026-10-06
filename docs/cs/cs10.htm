@@ -33,6 +33,7 @@ page.init = async() => {
     return cs_projects("cs/cs10/prj10.txt").then(() => {
         let f = page.get("abc");
         if (f) f();
+        for (let ei of $("pre[data-echo]:not(.Echoed)")) page.echo($(ei));
     });
 }
 

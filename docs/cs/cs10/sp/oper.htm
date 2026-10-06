@@ -6,7 +6,7 @@
 	and readable way than using a function. The two expressions below both produce 8 as a result, but the first
 	line (using the <code>+</code>  operator) is easier to understand than using the <code>sum</code> function.</p>
 
-<pre data-echo="s09_ex1.py" data-title="1" class="Python Code"><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span>         <span class="c1"># Good!</span>
+<pre data-echo="s09_ex1.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span>         <span class="c1"># Good!</span>
 <span class="n">y</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>   <span class="c1"># Not so good</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></pre>
 
@@ -14,7 +14,7 @@
 
 <p>Just like in Math, Python follows an order of operations when evaluating expressions that use operators.</p>
 
-<pre data-echo="s09_ex2.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>      <span class="c1"># 11 (Multiplication has precedence)</span>
+<pre data-echo="s09_ex2.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>      <span class="c1"># 11 (Multiplication has precedence)</span>
 <span class="nb">print</span><span class="p">((</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1"># 16 (Brackets have precedence)</span></pre>
 
 <p>As the two statements above demonstrate, multiplication has a higher precedence than addition, and therefore
@@ -22,7 +22,7 @@
 	within the parentheses are always performed before those outside the brackets. When there are multiple pairs
 	of brackets, Python evaluates the innermost ones first and then works outwards.</p>
 
-<pre data-echo="s09_ex3.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">((</span><span class="mi">6</span> <span class="o">-</span> <span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="p">))</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># -4</span></pre>
+<pre data-echo="s09_ex3.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">((</span><span class="mi">6</span> <span class="o">-</span> <span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="p">))</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># -4</span></pre>
 
 <p>The order of precedence for Python operators, from highest precedence to lowest, is shown below. We will
 	learn about categories 3 and 4 in the next lesson.</p>
@@ -52,7 +52,7 @@
 	exact integer, Python rounds the answer <em>down</em> to the next lowest integer; if you want to round to the
 	<em>closest</em> integer, you should use the <code>round</code> built-in function instead.</p>
 
-<pre data-echo="s09_ex4.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>         <span class="c1"># 1.75</span>
+<pre data-echo="s09_ex4.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>         <span class="c1"># 1.75</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">4</span><span class="p">)</span>        <span class="c1"># 1</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># 2</span></pre>
 
@@ -63,18 +63,18 @@
 	called the <em class="Defn">remainder</em> (3). The floor division and modulo operators perform these
 	calculations.</p>
 
-<pre data-echo="s09_ex5.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># Quotient = 1</span>
+<pre data-echo="s09_ex5.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># Quotient = 1</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">4</span><span class="p">)</span>    <span class="c1"># Remainder = 3</span></pre>
 
 <p>One important use of the modulo operator is to check if one number is a multiple of another. The remainder
 	will always be zero when you divide a number by one of its factors.</p>
 
-<pre data-echo="s09_ex6.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">4</span><span class="p">)</span>    <span class="c1"># 3 ... 7 is NOT a multiple of 4</span>
+<pre data-echo="s09_ex6.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">4</span><span class="p">)</span>    <span class="c1"># 3 ... 7 is NOT a multiple of 4</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">8</span> <span class="o">%</span> <span class="mi">4</span><span class="p">)</span>    <span class="c1"># 0 ... 8 IS a multiple of 4</span></pre>
 
 <p>If you attempt to use these operators on floating point numbers, the answers will also be floats.</p>
 
-<pre data-echo="s09_ex7.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">7.2</span> <span class="o">//</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># 1.0</span>
+<pre data-echo="s09_ex7.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">7.2</span> <span class="o">//</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># 1.0</span>
 <span class="nb">print</span><span class="p">(</span><span class="mf">7.2</span> <span class="o">%</span> <span class="mf">4.0</span><span class="p">)</span>  <span class="c1"># 3.2</span></pre>
 
 </section>

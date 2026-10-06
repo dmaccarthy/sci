@@ -1,23 +1,23 @@
-.Python {
-    /* Styles for Python syntax highlighting via pygments */
+.Pygments {
+    /* Styles for syntax highlighting via pygments */
 
     font-weight: normal;
 
     .hll, .hlb {background-color: #D8D8FF}
     .hlb {font-weight: bold}
     .mi, .mf {color: #098693} /* Integer, Float */
-    .p, .sa, .si {color: #0000FF} /* Brackets, String.Affix */
-    .k, .kn, .ow {color: #8035E9} /* Keywords */
-    .nb, .nf {color: #774313} /* Name */
+    .p, .o, .sa, .si {color: #0000FF} /* Brackets, Operators, String.Affix */
+    .k, .kn, .ow, .nt, .kd {color: #8035E9; font-weight: bold} /* Keywords, Tag Names, Operator.Word */
+    .nb, .nf, .na {color: #774313} /* Name */
     .nn, .kc {color: #0065FE} /* Namespace, Constants */
+    .nc {color: #0000FF; font-weight: bold} /* Class */
+    .ni {color: #8080FF; font-weight: bold} /* Entity 717171 */
     .c, .c1, .cs {color: #408000} /* Comment */
     .s, .s1, .s2, .sd {color: #AC1515} /* String */
     .sd {font-style: italic} /* Docstring */
     .se {color: red; font-weight: bold} /* Escape */
 
-
     /* .o {color: #666666} Operator */
-
     .err {border: 1px solid #FF0000} /* Error */
     .ch {color: #3D7B7B; font-style: italic} /* Comment.Hashbang */
     .cm {color: #3D7B7B; font-style: italic} /* Comment.Multiline */
@@ -34,19 +34,14 @@
     .gs {font-weight: bold} /* Generic.Strong */
     .gu {color: #800080; font-weight: bold} /* Generic.Subheading */
     .gt {color: #0044DD} /* Generic.Traceback */
-    .kd {color: #008000; font-weight: bold} /* Keyword.Declaration */
     .kp {color: #008000} /* Keyword.Pseudo */
     .kr {color: #008000; font-weight: bold} /* Keyword.Reserved */
     .kt {color: #B00040} /* Keyword.Type */
     .m {color: #666666} /* Literal.Number */
-    .na {color: #687822} /* Name.Attribute */
-    .nc {color: #0000FF; font-weight: bold} /* Name.Class */
     .no {color: #880000} /* Name.Constant */
     .nd {color: #AA22FF} /* Name.Decorator */
-    .ni {color: #717171; font-weight: bold} /* Name.Entity */
     .ne {color: #CB3F38; font-weight: bold} /* Name.Exception */
     .nl {color: #767600} /* Name.Label */
-    .nt {color: #008000; font-weight: bold} /* Name.Tag */
     .nv {color: #19177C} /* Name.Variable */
     .w {color: #bbbbbb} /* Text.Whitespace */
     .mb {color: #666666} /* Literal.Number.Bin */
@@ -69,3 +64,7 @@
 
 }
 
+.Pygments.HTML {
+    .p {color: #8035E9}
+    .k {color: #AC1515}
+}

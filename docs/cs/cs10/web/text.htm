@@ -13,10 +13,10 @@
 	no tag name, no attributes, and no child nodes. Consider the two <code>Country</code> element nodes
 	in this examples...</p>
 
-<pre class="Code" data-echo="xml" contenteditable="true">&lt;Examples&gt;
-  &lt;Country name="Canada" capital="Ottawa" /&gt;
-  &lt;Country capital="Ottawa"&gt;<span class="Blue">Canada</span>&lt;/Country&gt;
-&lt;/Examples&gt;</pre>
+<pre data-echo="xml" class="Pygments XML Code" contenteditable="true"><span></span><span class="nt">&lt;Examples&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Country</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Canada&quot;</span><span class="w"> </span><span class="na">capital=</span><span class="s">&quot;Ottawa&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Country</span><span class="w"> </span><span class="na">capital=</span><span class="s">&quot;Ottawa&quot;</span><span class="nt">&gt;</span>Canada<span class="nt">&lt;/Country&gt;</span>
+<span class="nt">&lt;/Examples&gt;</span></pre>
 
 <p>Both examples are valid XML, and both contain (almost) the same information. The difference is that
 	the second example includes the country name (“Canada”) as a child <em>text node</em>, while the
@@ -31,14 +31,14 @@
 	(i.e. text that is much smaller than a single line on the computer monitor) while using text nodes
 	for larger quantities, such as a complete paragraph from a novel or essay...</p>
 
-<pre class="Code" data-echo="xml" contenteditable="true">&lt;Novel title="A Christmas Carol" subtitle="A Ghost Story of Christmas" author="Charles Dickens" year="1843"&gt;
-    &lt;Chapter number="Stave I" title="Marley's Ghost"&gt;
-        &lt;Paragraph number="1"&gt;<span class="Blue">Marley was dead: to begin with. There is no doubt whatever about that. The register of his burial was signed by the clergyman, the clerk, the undertaker, and the chief mourner. Scrooge signed it: and Scrooge's name was good upon 'Change, for anything he chose to put his hand to. Old Marley was as dead as a door-nail.</span>&lt;/Paragraph&gt;
-        &lt;Paragraph number="2"&gt;<span class="Blue">Mind! I don't mean to say that I know, of my own knowledge, what there is particularly dead about a door-nail. I might have been inclined, myself, to regard a coffin-nail as the deadest piece of ironmongery in the trade. But the wisdom of our ancestors is in the simile; and my unhallowed hands shall not disturb it, or the Country's done for. You will therefore permit me to repeat, emphatically, that Marley was as dead as a door-nail.</span>&lt;/Paragraph&gt;
-        <span class="Comment">&lt;!-- More paragraphs go here... --&gt;</span>
-    &lt;/Chapter&gt;
-    <span class="Comment">&lt;!-- More chapters go here... --&gt;</span>
-&lt;/Novel&gt;</pre>
+<pre data-echo="xml" class="Pygments XML Code" contenteditable="true"><span></span><span class="nt">&lt;Novel</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;A Christmas Carol&quot;</span><span class="w"> </span><span class="na">subtitle=</span><span class="s">&quot;A Ghost Story of Christmas&quot;</span><span class="w"> </span><span class="na">author=</span><span class="s">&quot;Charles Dickens&quot;</span><span class="w"> </span><span class="na">year=</span><span class="s">&quot;1843&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Chapter</span><span class="w"> </span><span class="na">number=</span><span class="s">&quot;Stave I&quot;</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Marley&#39;s Ghost&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Paragraph</span><span class="w"> </span><span class="na">number=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>Marley<span class="w"> </span>was<span class="w"> </span>dead:<span class="w"> </span>to<span class="w"> </span>begin<span class="w"> </span>with.<span class="w"> </span>There<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span>doubt<span class="w"> </span>whatever<span class="w"> </span>about<span class="w"> </span>that.<span class="w"> </span>The<span class="w"> </span>register<span class="w"> </span>of<span class="w"> </span>his<span class="w"> </span>burial<span class="w"> </span>was<span class="w"> </span>signed<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>clergyman,<span class="w"> </span>the<span class="w"> </span>clerk,<span class="w"> </span>the<span class="w"> </span>undertaker,<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>chief<span class="w"> </span>mourner.<span class="w"> </span>Scrooge<span class="w"> </span>signed<span class="w"> </span>it:<span class="w"> </span>and<span class="w"> </span>Scrooge&#39;s<span class="w"> </span>name<span class="w"> </span>was<span class="w"> </span>good<span class="w"> </span>upon<span class="w"> </span>&#39;Change,<span class="w"> </span>for<span class="w"> </span>anything<span class="w"> </span>he<span class="w"> </span>chose<span class="w"> </span>to<span class="w"> </span>put<span class="w"> </span>his<span class="w"> </span>hand<span class="w"> </span>to.<span class="w"> </span>Old<span class="w"> </span>Marley<span class="w"> </span>was<span class="w"> </span>as<span class="w"> </span>dead<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>door-nail.<span class="nt">&lt;/Paragraph&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Paragraph</span><span class="w"> </span><span class="na">number=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>Mind!<span class="w"> </span>I<span class="w"> </span>don&#39;t<span class="w"> </span>mean<span class="w"> </span>to<span class="w"> </span>say<span class="w"> </span>that<span class="w"> </span>I<span class="w"> </span>know,<span class="w"> </span>of<span class="w"> </span>my<span class="w"> </span>own<span class="w"> </span>knowledge,<span class="w"> </span>what<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>particularly<span class="w"> </span>dead<span class="w"> </span>about<span class="w"> </span>a<span class="w"> </span>door-nail.<span class="w"> </span>I<span class="w"> </span>might<span class="w"> </span>have<span class="w"> </span>been<span class="w"> </span>inclined,<span class="w"> </span>myself,<span class="w"> </span>to<span class="w"> </span>regard<span class="w"> </span>a<span class="w"> </span>coffin-nail<span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>deadest<span class="w"> </span>piece<span class="w"> </span>of<span class="w"> </span>ironmongery<span class="w"> </span>in<span class="w"> </span>the<span class="w"> </span>trade.<span class="w"> </span>But<span class="w"> </span>the<span class="w"> </span>wisdom<span class="w"> </span>of<span class="w"> </span>our<span class="w"> </span>ancestors<span class="w"> </span>is<span class="w"> </span>in<span class="w"> </span>the<span class="w"> </span>simile;<span class="w"> </span>and<span class="w"> </span>my<span class="w"> </span>unhallowed<span class="w"> </span>hands<span class="w"> </span>shall<span class="w"> </span>not<span class="w"> </span>disturb<span class="w"> </span>it,<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span>Country&#39;s<span class="w"> </span>done<span class="w"> </span>for.<span class="w"> </span>You<span class="w"> </span>will<span class="w"> </span>therefore<span class="w"> </span>permit<span class="w"> </span>me<span class="w"> </span>to<span class="w"> </span>repeat,<span class="w"> </span>emphatically,<span class="w"> </span>that<span class="w"> </span>Marley<span class="w"> </span>was<span class="w"> </span>as<span class="w"> </span>dead<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>door-nail.<span class="nt">&lt;/Paragraph&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- More paragraphs go here... --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/Chapter&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- More chapters go here... --&gt;</span>
+<span class="nt">&lt;/Novel&gt;</span></pre>
 
 <h3>Comment Nodes</h3>
 <p>Another feature of XML is <em class="Defn">comment node</em>. In computer programming, a “comment”
@@ -50,11 +50,11 @@
 <p>In XML, comments are enclosed in tags just as element nodes are. Instead of using a tag name, a
 	special sequence of symbols is used to identify comments...</p>
 
-<pre class="Code" data-echo="xml" contenteditable="true">&lt;Root data="Some Text"&gt;
-    <span class="Blue">This is a text node!</span>
-    <span class="Comment">&lt;!-- This is a comment node --&gt;</span>
-&lt;/Root &gt;
-<span class="Comment">&lt;!-- This is another comment node --&gt;</span></pre>
+<pre data-echo="xml" class="Pygments XML Code" contenteditable="true"><span></span><span class="nt">&lt;Root</span><span class="w"> </span><span class="na">data=</span><span class="s">&quot;Some Text&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span>This<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>text<span class="w"> </span>node!
+<span class="w">    </span><span class="cm">&lt;!-- This is a comment node --&gt;</span>
+<span class="nt">&lt;/Root &gt;</span>
+<span class="cm">&lt;!-- This is another comment node --&gt;</span></pre>
 
 <p>Note that the characters <code>!--</code> appear immediately after the less than symbol
 	(<code>&lt;</code>) to identify the beginning of the comment’s tag, and the characters <code>--</code>

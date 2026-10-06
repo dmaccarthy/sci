@@ -9,7 +9,7 @@
 	and organized. Python provides a function called <code>format</code> that gives you more control
 	over how data is converted to text to be displayed in the console.</p>
 
-<pre data-echo="s15_ex1.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<pre data-echo="s15_ex1.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your favourite number? &quot;</span><span class="p">))</span>
 <span class="n">root</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -23,14 +23,14 @@ The square root of 6.0 is 2.449489742783178 .</pre>
     and to remove the unnecessary space before the period. To do this, we create a <em class="Defn">template</em>
     string that shows what we want the output to like like, using curly brackets <code>{}</code> as
     placeholders to show where the data will be inserted.</p>
-<pre data-echo="py" class="Python Code"><span></span><span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;The square root of </span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2">.&quot;</span></pre>
+<pre data-echo="py" class="Pygments Python Code"><span></span><span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;The square root of </span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2">.&quot;</span></pre>
 
 <p>You can use any variable name you want; you don’t have to call it <code>template</code>.</p>
 <p>We can type an optional <em class="Defn">format specifier</em> inside the braces. In the example below, <code>.2f</code> is a format code that tells
     Python we want to insert data as a floating point number with two decimal places. Python requires a colon
     immediately before the format specifier.</p>
 
-<pre data-echo="s15_ex2.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<pre data-echo="s15_ex2.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your favourite number? &quot;</span><span class="p">))</span>
 <span class="n">root</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -48,7 +48,7 @@ The square root of 6.00 is 2.45.</pre>
 <p>When a program displays data in a table, such as sports league standings, we want to make sure the
     columns line up properly. We can do this with a template and the <code>format</code> function as well.</p>
 
-<pre data-echo="s15_ex3.py" data-title="1" class="Python Code"><span></span><span class="n">standings</span> <span class="o">=</span> <span class="p">[</span>
+<pre data-echo="s15_ex3.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">standings</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s2">&quot;Pandas&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">&quot;Gryphons&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">&quot;Bears&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
@@ -95,7 +95,7 @@ The square root of 6.00 is 2.45.</pre>
     This is basically an abbreviated syntax for formatting strings. The example below does the same as <code>s15_ex2.py</code> above,
     but uses an f-string (shown in <span class="Blue">blue</span>) rather than an explicit call to the <code>format</code> method.
     Note the <code>f</code> before the opening quotation mark of the f-string!</p>
-<pre data-echo="s15_ex4.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<pre data-echo="s15_ex4.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your favourite number? &quot;</span><span class="p">))</span>
 <span class="n">root</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -106,7 +106,7 @@ The square root of 6.00 is 2.45.</pre>
     you should still create a template and call the <code>format</code> method
     for each data record, as you learned in the previous sections of this lesson.</p>
 <p>F-strings also allow you to include an <em>expression</em> rather than just a single variable name...</p>
-<pre data-echo="s15_ex4.py" data-title="1" class="Python Code"><span></span><span class="c1"># Program &#39;s15_ex4.py&#39; continued...</span>
+<pre data-echo="s15_ex4.py" data-title="1" class="Pygments Python Code"><span></span><span class="c1"># Program &#39;s15_ex4.py&#39; continued...</span>
 
 <span class="c1"># This also works!</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The square root of </span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">sqrt</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></pre>

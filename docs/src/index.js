@@ -255,7 +255,8 @@ page.final = (...args) => {for (let a of args) page._final.push(a)}
 
 page.echo = ei => {
     // Enable copy/open operation on [data-echo] elements
-    let echo = ei.attr("data-echo");
+    if (ei.hasClass("Echoed")) return;
+    let echo = ei.addClass("Echoed").attr("data-echo");
     let p = $("<p>").addClass("EchoControl").insertBefore(ei);
     let title  = ei.attr("data-title");
     if (title == "1") title = echo;
@@ -355,6 +356,7 @@ page.onload = (id, args) => {
     let hash = location.hash.substring(1);
     if (hash != id) {
         let url = "./#" + id;
+        if (args.post) url += `@post=${args.post}`;
         if (hash) history.pushState({}, "", url);
         else history.replaceState({}, "", url);
     }
@@ -810,7 +812,7 @@ $(() => {
 });
 
 $(() => {
-    let w = $(window).on("popstate", ev => home.go(location.hash.substring(1)));
+    let w = $(window).on("popstate", () => home.go(location.hash.substring(1)));
     w.on("resize", page.metrics).on("touchstart", swipe.event).on("touchend", swipe.event);
     w.on("beforeprint", () => {
         $("#Top, .NoPrint").remove();
@@ -823,7 +825,8 @@ $(() => {
         if ($("body").hasClass("Present")) slideshow.key(code, mod);
         else if (ev.ctrlKey) {
             if (ev.altKey) {
-                if (key == 'n') window.open(location.href);
+                if (key == 'n') window.open("http://localhost:8000/#" + location.href.split("#")[1]);
+                else if (key == 'g') window.open("https://dmaccarthy.github.io/sci/#" + location.href.split("#")[1]);
                 else if (key == 's') {for (let i of "34") window.open(`seating.html?b=${i}`)}
                 else if (key == 'p') slideshow();
                 else if (key == 'c') page.copy();

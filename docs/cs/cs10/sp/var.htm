@@ -3,7 +3,7 @@
 
 <p>Here is a program that draws a blue triangle...</p>
 
-<pre data-echo="s05_ex1.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">exitonclick</span>
+<pre data-echo="s05_ex1.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">exitonclick</span>
 
 <span class="c1"># Set the canvas size and turtle speed</span>
 <span class="n">setup</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
@@ -34,7 +34,7 @@
 
 <p>A better approach, is to use <em class="Defn">variables</em>, as shown in the program below.</p>
 
-<pre data-echo="s05_ex2.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">exitonclick</span>
+<pre data-echo="s05_ex2.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">exitonclick</span>
 
 <span class="c1"># Assign canvas and triangle size</span>
 <span class="n hlb">canvas_size</span> <span class="o">=</span> <span class="mi">300</span>
@@ -67,7 +67,7 @@
     The next line then <em>calculates</em> the triangle side length by multiplying the canvas
 	size by two-thirds, assigning the result to a second variable <code>side_length</code>.</p>
 
-<pre data-echo="py" class="Python Code"><span></span><span class="n">canvas_size</span> <span class="o">=</span> <span class="mi">300</span>
+<pre data-echo="py" class="Pygments Python Code"><span></span><span class="n">canvas_size</span> <span class="o">=</span> <span class="mi">300</span>
 <span class="n">side_length</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">canvas_size</span></pre>
 
 <p>When the program calls the <code>setup</code> and <code>forward</code> functions later on, it
@@ -96,7 +96,7 @@
     between different versions of Python.</li>
 </ul>
 
-<pre data-echo="s05_ex3.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">keyword</span> <span class="kn">import</span> <span class="n">kwlist</span>
+<pre data-echo="s05_ex3.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">keyword</span> <span class="kn">import</span> <span class="n">kwlist</span>
 
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">kwlist</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></pre>
 
@@ -112,7 +112,7 @@
 
 <li>In the program below, identify which variable names are valid in Python and which are not.
     Comment out the lines with invalid names and explain within the comment what is wrong with the name.
-<pre data-echo="s05_names.py" data-title="1" class="Python Code"><span></span><span class="n">player1</span> <span class="o">=</span> <span class="mi">1</span>
+<pre data-echo="s05_names.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">player1</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">player</span> <span class="n">one</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">playerOne</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="mi">1</span><span class="n">player</span> <span class="o">=</span> <span class="mi">4</span>
@@ -122,7 +122,7 @@
 
 <li>The program below is similar to the triangle example, except that the number of sides has been made into a variable: <code>sides = 3</code>. We would like to be able to change the value of this variable to <code>4</code> to draw a square, <code>5</code> for a pentagon, and so on. Try changing the number of sides and see what happens.
     
-<pre data-echo="s05_polygon.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">exitonclick</span>
+<pre data-echo="s05_polygon.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">exitonclick</span>
 
 <span class="c1"># Assign canvas and shape size</span>
 <span class="n">canvas_size</span> <span class="o">=</span> <span class="mi">300</span>

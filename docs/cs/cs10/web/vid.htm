@@ -9,10 +9,10 @@
 <p>In the example below, the HTML embeds a video resized to 640 by 360 pixels with user controls (play, pause, etc.) displayed.
     Two versions of the video are provided for the browser to choose from: an MP4 and an OGV format.</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">&lt;video width="640" height="360" controls="1"&gt;
-  &lt;source src="https://dmaccarthy.github.io/sci/media/movie.mp4" type="video/mp4"&gt;
-  &lt;source src="https://dmaccarthy.github.io/sci/media/movie.ogv" type="video/ogg"&gt;
-&lt;/video&gt;</pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">video</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;640&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;360&quot;</span> <span class="na">controls</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmaccarthy.github.io/sci/media/movie.mp4&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;video/mp4&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmaccarthy.github.io/sci/media/movie.ogv&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;video/ogg&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">video</span><span class="p">&gt;</span></pre>
 
 <h3>YouTube</h3>
 
@@ -22,8 +22,9 @@
 	page, visit the video’s YouTube page and obtain the HTML code from the Share/Embed
 	section.</p>
 
-<pre class="Code" contenteditable="true" data-title="1" data-echo="w09_youtube.html">&lt;iframe src="https://www.youtube.com/embed/Vd5duzNtBuI"
-    width="640" height="360" frameborder="0" allowfullscreen&gt;&lt/iframe&gt;</pre>
+<pre data-echo="w09_youtube.html" data-title="1" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.youtube.com/embed/Vd5duzNtBuI&quot;</span>
+    <span class="na">width</span><span class="o">=</span><span class="s">&quot;640&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;360&quot;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span></pre>
+
 <p><em>Depending on your web browser settings, you may or may not be able to preview the example as a “data blob”. Instead, you can use Python to open the example with a ‘localhost’ server...</em></p>
 <ul>
     <li><b>Important</b>: The localhost server has minimal security protections and should never be used to open files from unknown or untrusted sources!</li>

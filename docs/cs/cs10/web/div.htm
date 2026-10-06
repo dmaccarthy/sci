@@ -9,50 +9,48 @@
 
 <p>HTML also provides a <code>&lt;div&gt;</code> tag as a general-purpose division that can be used	to apply layout and styling to a portion of your document. Styling a <code>&lt;div&gt;</code> element	with <code>color</code> or <code>text-align</code> properties, for example, applies those	properties to all applicable child nodes of the <code>&lt;div&gt;</code> element.</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;style type="text/css"&gt;
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
 
-<span class="Blue">div</span> {
-  width: 50%;
-  margin: auto;
-  text-align: center;
-  font-size: 200%;
-  color: red;
-  border: 2px solid blue;
-}
+<span class="nt">div</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">blue</span><span class="p">;</span>
+<span class="p">}</span>
 
-&lt;/style&gt;
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 
-&lt;p&gt;This paragraph is &lt;b&gt;not&lt;/b&gt; part of the &amp;lt;div&amp;gt;!&lt;/p&gt;
-<span class="Blue">&lt;div&gt;</span>
-  &lt;p&gt;This paragraph &lt;b&gt;is&lt;/b&gt; part of the &amp;lt;div&amp;gt;!&lt;/p&gt;
-  &lt;p&gt;&lt;img src="https://dmaccarthy.github.io/sci/cs/cs10/web/img/checkers.svg" alt="Image"/&gt;&lt;/p&gt;
-<span class="Blue">&lt;/div&gt;</span></pre>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This paragraph is <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>not<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> part of the <span class="ni">&amp;lt;</span>div<span class="ni">&amp;gt;</span>!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This paragraph <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>is<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> part of the <span class="ni">&amp;lt;</span>div<span class="ni">&amp;gt;</span>!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmaccarthy.github.io/sci/cs/cs10/web/img/checkers.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Image&quot;</span><span class="p">/&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></pre>
 
 <p>When using <code>&lt;div&gt;</code> or similar tags, you can use the <code>position</code> CSS property to control the location of the division:</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;style type="text/css"&gt;
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
 
-div {
-  width: 128px;
-  height: 128px;
-  overflow: auto;
-  <span class="Blue">position: absolute;
-  top: 8px;
-  left: 8px;</span>
-  text-align: center;
-  border: 2px solid blue;
-  background-color: #aaf;
-}
+<span class="nt">div</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">blue</span><span class="p">;</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">#aaf</span><span class="p">;</span>
+<span class="p">}</span>
 
-&lt;/style&gt;
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 
-&lt;p&gt;This paragraph is &lt;b&gt;not&lt;/b&gt; part of the &amp;lt;div&amp;gt;!&lt;/p&gt;
-&lt;div&gt;
-  &lt;p&gt;Absolute position!&lt;/p&gt;
-  &lt;p&gt;&lt;img src="https://dmaccarthy.github.io/sci/cs/cs10/web2/img/checkers.svg" alt="Image"/&gt;&lt;/p&gt;
-&lt;/div&gt;</pre>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This paragraph is <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>not<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> part of the <span class="ni">&amp;lt;</span>div<span class="ni">&amp;gt;</span>!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Absolute position!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmaccarthy.github.io/sci/cs/cs10/web/img/checkers.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Image&quot;</span><span class="p">/&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></pre>
 
 <p>In the example above, an <em>absolute position</em> is used so that the <code>&lt;div&gt;</code> is always displayed 8 pixels from the top left corner of the document, as specified by the 	<code>top</code> and <code>left</code> properties. You can use <code>bottom</code> or <code>right</code> instead, to position the element from another corner of the document.</p>
 

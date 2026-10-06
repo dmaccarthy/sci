@@ -12,7 +12,7 @@ or <code>continue</code> statements or the <code>exit</code> function, and do no
 <p>Algorithms often involve “branching”, where the answer to a True/False decision determines which
 	instructions will be executed.  Python uses an <code>if-elif-else</code> structure to achieve branching.</p>
 
-<pre data-echo="s11_ex1.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<pre data-echo="s11_ex1.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a number: &quot;</span><span class="p">))</span>
 <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
@@ -32,7 +32,7 @@ or <code>continue</code> statements or the <code>exit</code> function, and do no
 <p>The <code>if</code> block can be followed by an <code>else</code> block to specify instructions that
 	are executed when the condition is <code>False</code>.</p>
 
-<pre data-echo="s11_ex2.py" data-title="1" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<pre data-echo="s11_ex2.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a number: &quot;</span><span class="p">))</span>
 <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
@@ -44,7 +44,7 @@ or <code>continue</code> statements or the <code>exit</code> function, and do no
 <p>When there are more than two possible conditions, you can use the <code>elif</code> (“else if”)
 	keyword to specify additional tests.</p>
 
-<pre data-echo="s11_ex3.py" data-title="1" class="Python Code"><span></span><span class="n">age</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter your age: &quot;</span><span class="p">))</span>
+<pre data-echo="s11_ex3.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">age</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter your age: &quot;</span><span class="p">))</span>
 <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You are too young to be admitted to this movie!&quot;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>

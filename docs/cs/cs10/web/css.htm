@@ -6,10 +6,9 @@
 	in a webpage. HTML allows you much greater flexibility by adding a <code>style</code>
 	attribute to any element tag.</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;p <span class="Blue">style="color: red; background-color: yellow; text-align: center"</span>&gt;
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color: red; background-color: yellow; text-align: center&quot;</span><span class="p">&gt;</span>
   Red on Yellow
-&lt;/p&gt;</pre>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
 
 <p>In the example above, the style attribute has three parts separated by semi-colons:</p>
 <ul>
@@ -28,26 +27,25 @@
 	<code>&lt;style&gt;</code>. The acronym CSS, which appears in the <code>type</code> attribute, stands
 	for <em class="Defn">Cascading Style Sheets</em>.</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;head&gt;
-  &lt;style type="text/css"&gt;
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
 
-    <span class="Blue">body {
-      background-color: yellow;			
-      text-align: center;			
-    }
+<span class="w">    </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">yellow</span><span class="p">;</span><span class="w">			</span>
+<span class="w">      </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w">			</span>
+<span class="w">    </span><span class="p">}</span>
 
-    p {
-      color: red;
-    }</span>
+<span class="w">    </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h2&gt;Title!&lt;/h2&gt;
-  &lt;p&gt;This is red text on a yellow background.&lt;/p&gt;
-  &lt;p&gt;So is this!&lt;/p&gt;
-&lt;/body&gt;</pre>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Title!<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is red text on a yellow background.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>So is this!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></pre>
 
 <p>In this example, the <code>background-color</code> and <code>text-align</code> properties
 	are set for the <code>&lt;body&gt;</code> tag, so that the entire page is centred on a yellow
@@ -59,26 +57,25 @@
 <p>Sometimes, you may want to apply a style to a single paragraph or other element, rather than
 	to all <code>&lt;p&gt;</code> elements. You can do this using a unique <code>id</code> attribute.</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;head&gt;
-  &lt;style type="text/css"&gt;
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
 
-    body {
-      background-color: yellow;			
-      text-align: center;			
-    }
+<span class="w">    </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">yellow</span><span class="p">;</span><span class="w">			</span>
+<span class="w">      </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w">			</span>
+<span class="w">    </span><span class="p">}</span>
 
-    <span class="Blue">#Red</span> {
-      color:red;
-    }
+<span class="w">    </span><span class="p">#</span><span class="nn">Red</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">color</span><span class="p">:</span><span class="kc">red</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h2&gt;Title!&lt;/h2&gt;
-  &lt;p&gt;This is paragraph.&lt;/p&gt;
-  &lt;p <span class="Blue">id="Red"</span>&gt;This one is red!&lt;/p&gt;
-&lt;/body&gt;</pre>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Title!<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is paragraph.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;Red&quot;</span><span class="p">&gt;</span>This one is red!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></pre>
 
 <p>Note that within the <code>&lt;style&gt;</code> element, the ID name is preceded by a hash tag
 	character, <code>#Red</code>. The hash tag tells the browser that <code>Red</code> is an
@@ -89,27 +86,26 @@
 	the <code>&lt;style&gt;</code> tag, we have used <code>.Red</code> to indicate a style that applies
 	to all elements with the class <code>Red</code>.</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;head&gt;
-  &lt;style type="text/css"&gt;
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
 
-    body {
-      background-color: yellow;			
-      text-align: center;			
-    }
+<span class="w">    </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">yellow</span><span class="p">;</span><span class="w">			</span>
+<span class="w">      </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w">			</span>
+<span class="w">    </span><span class="p">}</span>
 
-    <span class="Blue">.Red</span> {
-      color: red;
-    }
+<span class="w">    </span><span class="p">.</span><span class="nc">Red</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h2&gt;Title!&lt;/h2&gt;
-  &lt;p <span class="Blue">class="Red"</span>&gt;This paragraph is red!&lt;/p&gt;
-  &lt;p&gt;This paragraph is not red.&lt;/p&gt;
-  &lt;p <span class="Blue">class="Red"</span>&gt;This one is red too!&lt;/p&gt;
-&lt;/body&gt;</pre>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Title!<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;Red&quot;</span><span class="p">&gt;</span>This paragraph is red!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This paragraph is not red.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;Red&quot;</span><span class="p">&gt;</span>This one is red too!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></pre>
 
 <p>We can combine tag names and classes to have more control over styling. For example, we can
 	create a style <code>p.Red</code> that would apply to all <code>&lt;p&gt;</code> elements that have
@@ -118,23 +114,22 @@
 
 <p>If we want to get fancy...</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;head&gt;
-  &lt;style type="text/css"&gt;
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
 
-    <span class="Blue">form.Awesome input[type=text].Red</span> {
-      color: red;
-      font-size: 200%;
-      font-family: monospace;
-    }
+<span class="w">    </span><span class="nt">form</span><span class="p">.</span><span class="nc">Awesome</span><span class="w"> </span><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span><span class="p">.</span><span class="nc">Red</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="w">      </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">      </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">monospace</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;form class="Awesome"&gt;
-    &lt;input type="text" class="Red" value="Hello"/&gt;
-  &lt;/form&gt;
-&lt;/body&gt;</pre>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;Awesome&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;Red&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Hello&quot;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></pre>
 
 <p>In the example above, the style we have defined only applies to text inputs that have a class
 	<code>Red</code> and that are enclosed within a <code>&lt;form&gt;</code> that has class
@@ -144,14 +139,13 @@
 	is applied to all <code>&lt;h2&gt;</code> tags; to <code>&lt;p&gt;</code> tags that have the class <code>Title</code>;
 	and to any <code>&lt;span&gt;</code> tag, but only when the mouse is hovering over the element.</p>
 
-<pre class="Code" contenteditable="true" data-echo="html">
-&lt;style type="text/css"&gt;
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
 
-  <span class="Blue">h2, p.Title, span:hover</span> {
-    color: red;
-  }
+<span class="w">  </span><span class="nt">h2</span><span class="o">,</span><span class="w"> </span><span class="nt">p</span><span class="p">.</span><span class="nc">Title</span><span class="o">,</span><span class="w"> </span><span class="nt">span</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-&lt;/style&gt;</pre>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></pre>
 
 <p>The examples on this page show many of the most common style properties, such as
 	<code>color</code> and <code>text-align</code>. You can visit an <a target="W3"
@@ -177,9 +171,9 @@
           (Notice that SVG images are XML files!) Next, edit the code below to change the word <code>red</code> to <code>black</code> and
           download the revised code for the black checker. Rename the second file as <code>checker_black.svg</code>.</p>
     </li>
-    <pre class="Code" contenteditable="true" data-echo="checker_red.svg" data-title="1">&lt;svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="-40 -40 80 80"&gt;
-    &lt;circle cx="0" cy="0" r="39" style="fill: <span class="Red">red</span>; stroke: black; stroke-width: 1"&gt;&lt;/circle&gt;
-&lt;/svg&gt;</pre>
+<pre data-echo="checker_red.svg" data-title="1" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">svg</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;80&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;80&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;-40 -40 80 80&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">circle</span> <span class="na">cx</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">cy</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">r</span><span class="o">=</span><span class="s">&quot;39&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;fill: red; stroke: black; stroke-width: 1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">circle</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span></pre>
 
 	<li>Copy your files <code>w09_Tuscany.html</code> and <code>w09_specials.html</code> as 		<code>w13_Tuscany.html</code> and <code>w13_specials.html</code>. Use styles to make the appearance of the page closer to	what the restaurant manager requested:
     <p class="Center"><svg id="Tuscany_Main"></svg></p>

@@ -5,7 +5,7 @@
 	quote character may be used; however, you cannot use one type of quote to start the
 	string literal and the other quote character to end the string.</p>
 
-<pre data-echo="s17_ex1.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi there!&quot;</span><span class="p">)</span>
+<pre data-echo="s17_ex1.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi there!&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Greetings!&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is bad.&#39;</span><span class="p">)</span>    <span class="c1"># Syntax Error!</span></pre>
 
@@ -14,7 +14,7 @@
 	characters to start and end the string. String literals expressed this way may extend
 	over multiple lines.</p>
 
-<pre data-echo="s17_ex2.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;This string</span>
+<pre data-echo="s17_ex2.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;This string</span>
 <span class="s2">   takes up</span>
 <span class="s2">  three lines.&quot;&quot;&quot;</span><span class="p">)</span></pre>
 
@@ -25,12 +25,12 @@
 	single quotes to start and end the string literal, you cannot include the single quote
 	character (which also serves as the apostrophe) within the string data.</p>
 
-<pre data-echo="s17_ex3.py" data-title="1" class="Python Code"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;That&#39;s mine!&#39;</span><span class="p">)</span>   <span class="c1"># Syntax Error!</span></pre>
+<pre data-echo="s17_ex3.py" data-title="1" class="Pygments Python Code"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;That&#39;s mine!&#39;</span><span class="p">)</span>   <span class="c1"># Syntax Error!</span></pre>
 
 <p>Normally, you would use double quotes to enclose a string that contains a single quote
 	character, and single quotes to enclose a string that contains double quotes.</p>
 
-<pre data-echo="s17_ex4.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;That&#39;s mine!&quot;</span><span class="p">)</span>
+<pre data-echo="s17_ex4.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;That&#39;s mine!&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;Sabre Pride&quot;&#39;</span><span class="p">)</span></pre>
 
 <p>Things become difficult when a string contains both single and double quote characters.
@@ -40,13 +40,13 @@
 <p>In the example below, the backslash character indicates that the single quote immediately
 	following it is part of the string data and does not mark the end of the string literal.</p>
 
-<pre data-echo="s17_ex5.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;She said, &quot;That</span><span class="se">\&#39;</span><span class="s1">s mine!&quot;&#39;</span><span class="p">)</span></pre>
+<pre data-echo="s17_ex5.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;She said, &quot;That</span><span class="se">\&#39;</span><span class="s1">s mine!&quot;&#39;</span><span class="p">)</span></pre>
 
 <p>Other common escape sequences are <code>\n</code> which represents a “new line” (also called line
 	feed or LF) character and <code>\t</code> which represents a tab character. These are
 	demonstrated in the first line below.</p>
 
-<pre data-echo="s17_ex6.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Line 1</span><span class="se">\n</span><span class="s1">Line 2</span><span class="se">\n\t</span><span class="s1">Line 3&#39;</span><span class="p">)</span>
+<pre data-echo="s17_ex6.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Line 1</span><span class="se">\n</span><span class="s1">Line 2</span><span class="se">\n\t</span><span class="s1">Line 3&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u00A9</span><span class="s1"> 2023&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Python38</span><span class="se">\\</span><span class="s1">python.exe&#39;</span><span class="p">)</span></pre>
 
@@ -68,24 +68,24 @@
 
 <p>The <code>+</code> operator can be used to join two or more strings to make a new, larger string.</p>
 
-<pre data-echo="s17_ex7.py" data-title="1" class="Python Code"><span></span><span class="n">str1</span> <span class="o">=</span> <span class="s1">&#39;Hello, &#39;</span>
+<pre data-echo="s17_ex7.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">str1</span> <span class="o">=</span> <span class="s1">&#39;Hello, &#39;</span>
 <span class="n">str2</span> <span class="o">=</span> <span class="s1">&#39;world!&#39;</span>
 <span class="n">str3</span> <span class="o">=</span> <span class="n">str1</span> <span class="o">+</span> <span class="n">str2</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">str3</span><span class="p">)</span>          <span class="c1"># Hello, world!</span></pre>
 
 <p>The <code>*</code> operator can be used to repeat a string several times.</p>
 
-<pre data-echo="s17_ex8.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>     <span class="c1"># Hi!Hi!Hi!</span></pre>
+<pre data-echo="s17_ex8.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>     <span class="c1"># Hi!Hi!Hi!</span></pre>
 
 <p>The <code>in</code> operator can be used to check if a string contains a specific
 	letter or sequence of letters.</p>
 
-<pre data-echo="s17_ex9.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>   <span class="c1"># False</span></pre>
+<pre data-echo="s17_ex9.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>   <span class="c1"># False</span></pre>
 
 <p>Python has a <code>len</code> (length) function that will return the number
 	of characters in a string.</p>
 
-<pre data-echo="s17_ex10.py" data-title="1" class="Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;Hi there!&quot;</span><span class="p">))</span>   <span class="c1"># 9</span></pre>
+<pre data-echo="s17_ex10.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;Hi there!&quot;</span><span class="p">))</span>   <span class="c1"># 9</span></pre>
 
 <h3>Indices &amp; Slices</h3>
 
@@ -99,7 +99,7 @@
 	To select a single character from a string, the string expression is followed by square
 	brackets enclosing the index to be selected.</p>
 
-<pre data-echo="s17_ex11.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<pre data-echo="s17_ex11.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>        <span class="c1"># S</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>        <span class="c1"># a</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>       <span class="c1"># C</span>
@@ -112,14 +112,14 @@
 	creates a string from the characters with indices 10 through 13 with the index 14 not
 	included.</p>
 
-<pre data-echo="s17_ex12.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<pre data-echo="s17_ex12.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">14</span><span class="p">])</span>    <span class="c1"># Comp</span></pre>
 
 <p>If you include the colon but omit the starting index, Python assumes you want to
 	start from the beginning of the string. If you include the colon but omit the ending
 	index, Python assumes you want to go to the end of the string.</p>
 
-<pre data-echo="s17_ex13.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<pre data-echo="s17_ex13.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>       <span class="c1"># Sal</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="mi">20</span><span class="p">:])</span>      <span class="c1"># High School</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">:])</span>      <span class="c1"># School</span></pre>
@@ -133,7 +133,7 @@
 	the <code>str.format</code> method we used for formatting output. Rather than passing
 	the string as an argument, type the string or its variable followed by <code>.find</code>.</p>
 
-<pre data-echo="s17_ex14.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<pre data-echo="s17_ex14.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
 <span class="n">index</span> <span class="o">=</span> <span class="n">sal</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;is&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>                 <span class="c1"># 3</span></pre>
 
@@ -148,7 +148,7 @@
 
 <p>Here are some examples.</p>
 
-<pre data-echo="s17_ex15.py" data-title="1" class="Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
+<pre data-echo="s17_ex15.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">sal</span> <span class="o">=</span> <span class="s2">&quot;Salisbury Composite High School&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sal</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">))</span></pre>
@@ -214,7 +214,7 @@ Thanks for playing.
 Your record: 1 win and 0 losses.
 Goodbye.</pre>
 
-<pre data-echo="py" class="Python Code"><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+<pre data-echo="py" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
 
 <span class="n">clue</span><span class="p">,</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">choice</span><span class="p">([</span>
     <span class="p">(</span><span class="s2">&quot;70&#39;s Movie&quot;</span><span class="p">,</span> <span class="s2">&quot;STAR WARS&quot;</span><span class="p">),</span>
