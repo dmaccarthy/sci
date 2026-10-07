@@ -1,43 +1,27 @@
 <section class="Post" data-action="slides">
 <h3>Formatting Tags</h3>
 
-<p>Sometimes you may want to emphasize some of the words in your text with bold type or italics. HTML provides tags to accomplish this.
-	The code below produces a paragraph of text all in the default style.</p>
+<p>Sometimes you may want to emphasize some of the words in your text. HTML provides tags to accomplish this. The code below produces a paragraph of text all in the default style.</p>
 
-<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>My favourite movie is Raiders of the Lost Ark.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>My favourite 80’s movie is Raiders of the Lost Ark.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
 
-<p>Suppose you want the word "favourite" to be in bold type and the movie title to be in italics.
-	To do this, you would change your code to:</p>
+<p>Suppose you want to emphasize the word "favourite" and the movie title. To do this, you could change your code to:</p>
 
-<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>My <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>favourite<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> movie is <span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>Raiders of the Lost Ark<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>My <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>favourite<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> 80’s movie is <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Raiders of the Lost Ark<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
 
-<p>The <code>&lt;b&gt;</code> (bold) and <code>&lt;i&gt;</code> (italics) tags split the paragraph text
-	into several different nodes. The text with <code>&lt;b&gt;</code> as its parent element (i.e.
-	the word "favourite") will be displayed in bold while the text with <code>&lt;i&gt;</code> as
-	its parent ("Raiders of the Lost Ark") will be italicized. The rest of the text, which
-	has the <code>&lt;p&gt;</code> tag as its parent, will be displayed using the default style
-	for paragraphs.</p>
+<p>The <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> tags split the paragraph text into several different nodes. The <code>&lt;em&gt;</code> tag is short for emphasis. Most browsers will display this text in italics by default. The <code>&lt;strong&gt;</code> tag usually causes text to be displayed in bold.</p>
 
-<p>HTML also has an <code>&lt;em&gt;</code> (emphasis) tag. By default, the <code>&lt;em&gt;</code> tag
-	italicizes text, the same as the <code>&lt;i&gt;</code> tag. However, as we will learn in a
-	future lesson, the <code>&lt;em&gt;</code> tag can be customized to emphasize the text in any
-	way you want. You can make text bold and italicized and underlined and a different
-	colour if you want to.</p>
+<p>We will learn in a future lesson how to customize the style in which each element’s text is displayed.</p>
 
 <h3>Anchors &amp; Hyperlinks</h3>
 
-<p>Another useful HTML tag is the anchor tag, abbreviated as the letter <code>&lt;a&gt;</code>.
-	An anchor is a portion of your document that links to another document on the web.
-	You can mark off text as an anchor exactly as you mark off text to be bold or
-	italicized.</p>
+<p>Another useful HTML tag is the anchor tag, abbreviated as the letter <code>&lt;a&gt;</code>. An anchor is a portion of your document that links to another document on the web. You can mark off text as an anchor exactly as you mark off text to be emphasized.</p>
 
-<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Please visit the <span class="p">&lt;</span><span class="nt">a</span><span class="p">&gt;</span>Sal Comp website<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Please visit the <span class="p">&lt;</span><span class="nt">a</span><span class="p">&gt;</span>Sal Comp website<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
 
-<p>To make the anchor actually work, you need to specify the web address (uniform
-	resource locator or URL) of the document being linked. You do this by giving the
-	anchor element an <code>href</code> (short for hypertext reference) attribute.</p>
+<p>To make the anchor actually work, you need to specify the web address (uniform resource locator or URL) of the document being linked. You do this by giving the anchor element an <code>href</code> (hypertext reference) attribute.</p>
 
-<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Please visit the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.salcomp.ca&quot;</span><span class="p">&gt;</span>Sal Comp website<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Please visit the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.salcomp.ca&quot;</span><span class="p">&gt;</span>Sal Comp website<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
 
 <p>There are two ways to specify a URL. The example above is an <em class="Defn">absolute
 	URL</em>; it begins with <code>https://</code> or another protocol that your browser
@@ -62,14 +46,11 @@
 	for the line break tag) support a <code>title</code> attribute. This attribute is
 	used to display additional information when the mouse is positioned over the text.</p>
 
-<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Good job!&quot;</span><span class="p">&gt;</span>Place your mouse here.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span class="p">&lt;</span><span class="nt">p</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Good job!&quot;</span><span class="p">&gt;</span>Place your mouse here.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
 
-<p>Sometimes, you may want to attach a title to a specific word or words (not the whole
-	paragraph) without changing the style of the words to bold or italics. There is a tag
-	called <code>&lt;span&gt;</code> that can be used to mark off text without changing its
-	appearance:</p>
+<p>Sometimes, you may want to attach a title to a specific word or words (not the whole paragraph) without changing the style in which the text is displayed. There is a tag called <code>&lt;span&gt;</code> that can be used to mark off text without changing its appearance:</p>
 
-<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I go to <span class="p">&lt;</span><span class="nt">span</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Great School!&quot;</span><span class="p">&gt;</span>Sal Comp<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
+<pre data-echo="html" contenteditable="true" class="Pygments HTML Code"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I go to <span class="p">&lt;</span><span class="nt">span</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Great School!&quot;</span><span class="p">&gt;</span>Sal Comp<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></pre>
     
 </section>
 
