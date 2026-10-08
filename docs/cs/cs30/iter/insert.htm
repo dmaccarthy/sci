@@ -1,6 +1,38 @@
 <section class="Post" data-action="slides">
-<!-- <h3>Lesson Notes</h3> -->
 <p>You can read about this algorithm at <a target="Bubble" href="https://en.wikipedia.org/wiki/Insertion_sort">Wikipedia</a>.</p>
+
+<style type="text/css">
+
+#InsertSort {
+
+margin-top: 4em;
+
+button {
+    width: 5em;
+    height: 2em;
+    background-color: #0065fe40;
+    border: 1px solid blue;
+    border-radius: 0.35em;
+    color: blue;
+    font-weight: bold;
+}
+
+td {border: none}
+td.Active {background-color: #0065fe40}
+td.NextSwap {border-left:3px solid black}
+td.Sorted {background-color: #ff000080}
+
+}
+
+</style>
+<div id="InsertSort" class="Center">
+    <table><tbody><tr></tr></tbody></table>
+    <p>
+        <button onclick="page.get('step')()">Step</button>
+        <button onclick="page.get('init')()">Reset</button>
+    </p>
+</div>
+
 </section>
 
 <section class="Post" data-action="ide">
@@ -13,6 +45,63 @@
 
 <script type="text/javascript">
 
-page({title: "Insertion Sort"});
+page({title: "Insertion Sort",
+
+isort: {},
+
+init: () => {
+    /* Generate random data and initialize its state */
+    let num = [];
+    for (let i=0; i<8; i++) num.push(Math.round(20 * Math.random()));
+    Object.assign(page.get("isort"), {sorted: 0, found: -1, data: num});
+    $($("#InsertSort button")[0]).show();
+    page.get("redraw")();
+},
+
+redraw: () => {
+    /* Draw and highlight the current state of the data */
+    let isort = page.get("isort");
+    let tr = $("#InsertSort tr").html("");
+    for (let n of isort.data) tr.append($("<td>").html(n));
+    let td = tr.children("td");
+    for (let i=0; i<=isort.sorted; i++) $(td[i]).addClass("Sorted");
+    if (isort.found > -1) {
+        $(td[isort.sorted+1]).addClass("Active");
+        $(td[isort.found]).addClass("NextSwap");
+    }
+},
+
+step: () => {
+    /* Execute one single step in the selection sort */
+    let isort = page.get("isort");
+    let num = isort.data;
+    if (isort.found == -1) {
+        let x = num[isort.sorted + 1];
+        let j = isort.sorted + 1;
+        let i = 0;
+        while (i <= isort.sorted) {
+            if (x < num[i]) {
+                j = i;
+                i = isort.sorted;
+            }
+            i++;
+        }
+        isort.found = j;
+    }
+    else {
+        isort.sorted++;
+        let x = num.splice(isort.sorted, 1);
+        num.splice(isort.found, 0, x);
+        isort.found = -1;
+    }
+    if (isort.sorted == num.length - 1) $($("#InsertSort button")[0]).hide();
+    page.get("redraw")();
+},
+
+});
+
+page.run(() => {
+    page.get("init")();
+});
 
 </script>

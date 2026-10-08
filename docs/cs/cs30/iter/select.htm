@@ -1,6 +1,39 @@
 <section class="Post" data-action="slides">
-<!-- <h3>Lesson Notes</h3> -->
+
 <p>You can read about this algorithm at <a target="Bubble" href="https://en.wikipedia.org/wiki/Selection_sort">Wikipedia</a>.</p>
+
+<style type="text/css">
+
+#SelectSort {
+
+margin-top: 4em;
+
+button {
+    width: 5em;
+    height: 2em;
+    background-color: #0065fe40;
+    border: 1px solid blue;
+    border-radius: 0.35em;
+    color: blue;
+    font-weight: bold;
+}
+
+td {border: none}
+td.Active {background-color: #0065fe40}
+td.NextSwap {border:1px solid  #0065fe}
+td.Sorted {background-color: #ff000080}
+
+}
+
+</style>
+<div id="SelectSort" class="Center">
+    <table><tbody><tr></tr></tbody></table>
+    <p>
+        <button onclick="page.get('step')()">Step</button>
+        <button onclick="page.get('init')()">Reset</button>
+    </p>
+</div>
+
 </section>
 
 <section class="Post" data-action="ide">
@@ -13,9 +46,63 @@
 </ol>
 </section>
 
-
 <script type="text/javascript">
 
-page({title: "Selection Sort"});
+page({title: "Selection Sort",
+
+ssort: {},
+
+init: () => {
+    /* Generate random data and initialize its state */
+    let num = [];
+    for (let i=0; i<8; i++) num.push(Math.round(20 * Math.random()));
+    Object.assign(page.get("ssort"), {sorted: -1, selected: -1, data: num});
+    $($("#SelectSort button")[0]).show();
+    page.get("redraw")();
+},
+
+redraw: () => {
+    /* Draw and highlight the current state of the data */
+    let ssort = page.get("ssort");
+    let tr = $("#SelectSort tr").html("");
+    for (let n of ssort.data) tr.append($("<td>").html(n));
+    let td = tr.children("td");
+    for (let i=0; i<=ssort.sorted; i++) $(td[i]).addClass("Sorted");
+    if (ssort.selected > -1) {
+        $(td[ssort.selected]).addClass("Active");
+        $(td[ssort.sorted + 1]).addClass("NextSwap");
+    }
+},
+
+step: () => {
+    /* Execute one single step in the selection sort */
+    let ssort = page.get("ssort");
+    let num = ssort.data;
+    if (ssort.selected == -1) {
+        let min = ssort.sorted + 1;
+        let v = num[min];
+        for (let i=min+1; i<num.length; i++) {
+            if (num[i] < v) {v = num[i]; min = i}
+        }
+        ssort.selected = min;
+    }
+    else {
+        let v = num[++ssort.sorted];
+        num[ssort.sorted] = num[ssort.selected];
+        num[ssort.selected] = v;
+        ssort.selected = -1;
+    }
+    if (ssort.sorted == 6) {
+        $($("#SelectSort button")[0]).hide();
+        ssort.sorted = 7;
+    }
+    page.get("redraw")();
+},
+
+});
+
+page.run(() => {
+    page.get("init")();
+});
 
 </script>
