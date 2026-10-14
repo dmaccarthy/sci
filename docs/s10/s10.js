@@ -8,8 +8,9 @@ page.cal.s10 = [ // Calendar items
     ["2026.9.25", "Lab: Evidence of Chemical Reactions", {attr: {"data-feed": "s10/chem/chem3/rxn@post=handouts"}}],
     ["2026.10.7", "Project: Antacids (Planning)", {attr: {"data-feed": "s10/chem"}}],
     ["2026.10.8", "Project: Antacids (Lab)", {attr: {"data-feed": "s10/chem"}}],
-    ["2026.10.16", "Quiz: Reactions [Tentative]", {attr: {class: "Bold"}}],
-    ["2026.10.20", "Unit Exam: Chemistry [Tentative]", {attr: {class: "Bold"}}],
+    ["2026.10.13", "Lab: Motion of a Cart", {attr: {"data-feed": "s10/phys/phys1/graph@post=handouts"}}],
+    ["2026.10.16", "Quiz: Reactions", {attr: {class: "Bold"}}],
+    ["2026.10.20", "Unit Exam: Chemistry", {attr: {class: "Bold"}}],
     ["2027.1.28", "Final Exam [Tentative]", {attr: {class: "Bold"}}],
 ];
 
@@ -62,8 +63,8 @@ _({page: "mole", title: "Molar Mass", data: {s: "2026.10.14", a: "2026.10.15"}})
 { // Motion
 home.item("s10/phys", {page: "phys1", icon: "train", title: "Part 1: #Motion", data: {cal: false}});
 _ = d => home.item("s10/phys/phys1", d);
-_({page: "si", title: "SI Units"});
-_({page: "graph", title: "Graphing Data"});
+_({page: "si", title: "SI Units", data: {s: "2026.10.15", a: "2026.10.19"}});
+_({page: "graph", title: "Graphing Data", data: {cal: "2026.10.19", s: "2026.10.13", a: "2026.10.20"}});
 _({page: "displ", title: "Position & Displacement"});
 _({page: "vel", title: "Velocity & Speed"});
 _({page: "acc", title: "Acceleration"});
