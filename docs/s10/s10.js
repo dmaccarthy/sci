@@ -10,7 +10,9 @@ page.cal.s10 = [ // Calendar items
     ["2026.10.8", "Project: Antacids (Lab)", {attr: {"data-feed": "s10/chem"}}],
     ["2026.10.13", "Lab: Motion of a Cart", {attr: {"data-feed": "s10/phys/phys1/graph@post=handouts"}}],
     ["2026.10.16", "Quiz: Reactions", {attr: {class: "Bold"}}],
+    ["2026.10.19", "Chemistry Review", {attr: {"data-feed": "s10/chem"}}],
     ["2026.10.20", "Unit Exam: Chemistry", {attr: {class: "Bold"}}],
+    ["2026.10.28", "Quiz: Motion", {attr: {class: "Bold"}}],
     ["2027.1.28", "Final Exam [Tentative]", {attr: {class: "Bold"}}],
 ];
 
@@ -63,11 +65,11 @@ _({page: "mole", title: "Molar Mass", data: {s: "2026.10.14", a: "2026.10.15"}})
 { // Motion
 home.item("s10/phys", {page: "phys1", icon: "train", title: "Part 1: #Motion", data: {cal: false}});
 _ = d => home.item("s10/phys/phys1", d);
-_({page: "si", title: "SI Units", data: {s: "2026.10.15", a: "2026.10.19"}});
-_({page: "graph", title: "Graphing Data", data: {cal: "2026.10.19", s: "2026.10.13", a: "2026.10.20"}});
-_({page: "displ", title: "Position & Displacement"});
-_({page: "vel", title: "Velocity & Speed"});
-_({page: "acc", title: "Acceleration"});
+_({page: "si", title: "SI Units", data: {s: "2026.10.15", a: "2026.10.21"}});
+_({page: "graph", title: "Graphing Data", data: {cal: "2026.10.21", s: "2026.10.13", a: "2026.10.22"}});
+_({page: "displ", title: "Position & Displacement", data: {s: "2026.10.22", a: "2026.10.23"}});
+_({page: "vel", title: "Velocity & Speed", data: {s: "2026.10.23", a: "2026.10.26"}});
+_({page: "acc", title: "Acceleration", data: {s: "2026.10.26", a: "2026.10.27"}});
 }
 
 { // Energy

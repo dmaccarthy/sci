@@ -404,7 +404,8 @@ page.onload = (id, args) => {
     // td.Reveal
     for (let e of $("td.Reveal")) {
         e = $(e);
-        e.html($("<span>").html(e.html()));
+        let h = e.html();
+        e.html("&nbsp;").append($("<span>").html(h)).append("&nbsp;");
     }
 
     // Render SVG2 and TeX then show the page
@@ -850,7 +851,7 @@ $(() => {
             return;
         }
 
-        target.closest(".Reveal").children().fadeToggle();
+        target.closest(".Reveal").children("span").fadeToggle();
 
         // Open feed or link
         let info = {}
