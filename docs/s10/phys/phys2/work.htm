@@ -68,9 +68,9 @@
     </ol></li>
 
     <li>A 50.0 kg skier starts from rest (point A) at the top of a 34.0-metre high ski hill.
-    <p class="Center"><img alt="Hill" width="384" data-aspect="283/211" src="s10/phys2/img/hill.webp" class="s16"/></p>
+    <p data-cue="none" class="Center"><svg id="SkiHill" class="s20"></svg></p>
     <ol type="a">
-        <li>Calculate the speed of the skier (assuming no change in mechanical energy) at the bottom of the hill (point D, <span class="TeX">h</span> = 0.0 m).</li>
+        <li>Calculate the speed of the skier (assuming no change in mechanical energy) at the bottom of the hill (point C, <span class="TeX">h</span> = 0.0 m).</li>
         <div class="Answer">
             <p>At the top of the hill, there is only gravitational potential energy...</p>
             <p class="TeX">E = mgh_i = \rm{50.0\ kg\cdot 9.81\ m/s^2\cdot 34.0\ m = 1.67\times 10^4\ J}</p>
@@ -89,7 +89,7 @@
         <p>There is no difference in the final speed!</p>
     </div>
 
-    <li>Calculate the speed of the skier (assuming no change in mechanical energy) at point C (<span class="TeX">h</span> = 10.0 m).</li>
+    <li>Calculate the speed of the skier (assuming no change in mechanical energy) at point B (<span class="TeX">h</span> = 10.0 m).</li>
     <div class="Answer">
         <p class="TeX">E_g = mgh = \rm{50.0\ kg\cdot 9.81\ m/s^2\cdot 10.0\ m = 4.91\times 10^3\ J}</p>
         <p>Since total energy is conserved, the kinetic energy at this point is...</p>
@@ -168,3 +168,11 @@
 <section class="Post" data-show="1" data-action="handouts">
 <div class="json">["147isR3tlcLknZVhiawQprJ37F6TAjiMY", ["Lab: Pendulum Energy", "1NI_gCl094XeqjnK3DZcA4fc30LpH-Wt5"]]</div>
 </section>
+
+<script type="text/javascript">
+
+page({svg2: [
+    ["#SkiHill", "s10/phys/phys2/img/work", "hill"],
+]});
+
+</script>
