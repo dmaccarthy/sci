@@ -45,11 +45,9 @@ sparker: sel => {
 
 student: (sel, arrow) => {
     let svg = new SVG2(sel, {scale: 10, lrbt: [-15, 30, -3, 6], margin: [14, 14, 2, 6]});
+    svg.ticks({x: [-20, 31, 1], label: 0, skip: 5, major: 1.7,
+        size: ["-5", 0], anchor: true, css: ["sans", 15]});
     svg.line([-17, 0], [32, 0]).css({stroke: "black"});
-
-    let opt = {anchor: true, css: ["sans", 15]}
-    svg.ticks({x: [-15, 31, 1], ...opt, size: ["-6", 0]});
-    svg.ticks({x: [-15, 31, 5], ...opt, label: 0});
 
     let text = svg.group("sans", 15);
     let disp = svg.group("arrow");
@@ -64,6 +62,26 @@ student: (sel, arrow) => {
             disp.arrow({tail: [x, y], tip: [traj[i], y]}, {tail: "7"});
         }
     }
+    if (arrow) disp.arrow({tail: [-10, 4], tip: [30, 4]}, {tail: "7"}).css("#0065fe");
+},
+
+car: sel => {
+    let svg = new SVG2(sel, {scale: 48, grid:0.5, lrbt: [-4.5, 7, -1, 1], margin: 2});
+
+    let opt = {anchor: true, css: ["sans", 15]}
+    svg.ticks({x: [-4, 6.1, 1], ...opt, size: ["-6", 0]});
+    svg.ticks({x: [-4, 6.1, 1], ...opt, label: 0});
+    svg.$.find(".Zero").remove();
+    svg.text("km", [6.2, -0.48, "bl"], 0, opt.css);
+    replace(svg.$.find("text"), '-', '–');
+
+    let g = svg.group("arrow");
+    let dy = 0.25;
+    opt = {tail: "7"};
+    g.arrow({tip: [6, 0]}, opt);
+    g.arrow({tail: [6, dy], tip: [-4, dy]}, opt);
+    g.arrow({tail: [-4, 2*dy], tip: [4, 2*dy]}, opt);
+    g.arrow({tail: [0, -dy], tip: [4, -dy]}, opt).css("#0065fe");
 },
 
 patrol: (sel, x0) => {

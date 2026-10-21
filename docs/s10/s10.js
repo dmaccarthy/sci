@@ -8,7 +8,7 @@ page.cal.s10 = [ // Calendar items
     ["2026.9.25", "Lab: Evidence of Chemical Reactions", {attr: {"data-feed": "s10/chem/chem3/rxn@post=handouts"}}],
     ["2026.10.7", "Project: Antacids (Planning)", {attr: {"data-feed": "s10/chem"}}],
     ["2026.10.8", "Project: Antacids (Lab)", {attr: {"data-feed": "s10/chem"}}],
-    ["2026.10.13", "Lab: Motion of a Cart", {attr: {"data-feed": "s10/phys/phys1/graph@post=handouts"}}],
+    ["2026.10.13", "Lab: Motion of a Cart", {attr: {"data-feed": "s10/phys/phys1/displ@post=handouts"}}],
     ["2026.10.16", "Quiz: Reactions", {attr: {class: "Bold"}}],
     ["2026.10.19", "Chemistry Review", {attr: {"data-feed": "s10/chem"}}],
     ["2026.10.20", "Unit Exam: Chemistry", {attr: {class: "Bold"}}],
@@ -66,7 +66,7 @@ _({page: "mole", title: "Molar Mass", data: {s: "2026.10.14", a: "2026.10.15"}})
 home.item("s10/phys", {page: "phys1", icon: "train", title: "Part 1: #Motion", data: {cal: false}});
 _ = d => home.item("s10/phys/phys1", d);
 _({page: "si", title: "SI Units", data: {s: "2026.10.15", a: "2026.10.21"}});
-_({page: "graph", title: "Graphing Data", data: {cal: "2026.10.21", s: "2026.10.13", a: "2026.10.22"}});
+_({page: "graph", title: "Graphing Data", data: {s: "2026.10.21", a: "2026.10.22"}});
 _({page: "displ", title: "Position & Displacement", data: {s: "2026.10.22", a: "2026.10.23"}});
 _({page: "vel", title: "Velocity & Speed", data: {s: "2026.10.23", a: "2026.10.26"}});
 _({page: "acc", title: "Acceleration", data: {s: "2026.10.26", a: "2026.10.27"}});
@@ -75,7 +75,7 @@ _({page: "acc", title: "Acceleration", data: {s: "2026.10.26", a: "2026.10.27"}}
 { // Energy
 home.item("s10/phys", {page: "phys2", title: "Part 2: #Energy", data: {cal: false}});
 _ = d => home.item("s10/phys/phys2", d);
-_({page: "mech", title: "Mechanical Energy"});
+_({page: "mech", title: "Mechanical Energy", data: {s: "2026.10.27", a: "2026.10.29"}});
 _({page: "work", title: "Energy Transformations"});
 _({page: "we", title: "Work-Energy Theorem"});
 _({page: "eff", title: "Efficiency"});

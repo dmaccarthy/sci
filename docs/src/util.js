@@ -13,6 +13,13 @@ function sciNot(x, prec, tex) {
     return n ? (tex ? `${c}\\times 10^{${n}}` : `${c} × 10<sup>${n}</sup> `) : c;
 }
 
+function replace(sel, c, r) {
+    for (let e of $(sel)) {
+        e = $(e);
+        e.html(e.html().replaceAll(c, ));
+    }
+}
+
 let HSV = {
 
 fromRGB: (r, g, b) => {
