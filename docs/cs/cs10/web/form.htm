@@ -124,9 +124,8 @@
 <h3>Assignment</h3>
 <ol class="Assign">
 	<li><p>Create a HTML5 document, <code>w12_catalog.html</code>, containing a form like
-		the one illustrated below. Your form should submit to:</p>
-        <p class="Center"><code>https://dmaccarthy.vercel.app/formecho</code></p>
-		<p class="Center"><img class="Wide" src="cs/cs10/web/img/search.webp" alt="Form"/></p>
+		the one illustrated below. Your form should submit to: <code>https://dmaccarthy.vercel.app/formecho</code></p>
+		<p class="Center"><svg id="Library"></svg></p>
 	</li>
 	<li>Design a survey containing four questions about a topic of your choice, to be
 		administered (hypothetically) to your classmates. Your survey should be implemented
@@ -138,7 +137,9 @@
 
 <script type="text/javascript">
 
-page({title: "Forms"});
+page({title: "Forms",
+    svg2: [["#Library", "cs/cs10/web/img/form", "lib"]],
+});
 
 page.run(() => {
 	$("main article form").css({margin: "2em auto"});
