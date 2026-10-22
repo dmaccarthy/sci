@@ -16,7 +16,7 @@ function sciNot(x, prec, tex) {
 function replace(sel, c, r) {
     for (let e of $(sel)) {
         e = $(e);
-        e.html(e.html().replaceAll(c, ));
+        e.html(e.html().replaceAll(c, r));
     }
 }
 

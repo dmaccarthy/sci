@@ -12,7 +12,7 @@ page.cal.s10 = [ // Calendar items
     ["2026.10.16", "Quiz: Reactions", {attr: {class: "Bold"}}],
     ["2026.10.19", "Chemistry Review", {attr: {"data-feed": "s10/chem"}}],
     ["2026.10.20", "Unit Exam: Chemistry", {attr: {class: "Bold"}}],
-    ["2026.10.28", "Quiz: Motion", {attr: {class: "Bold"}}],
+    ["2026.10.29", "Quiz: Motion", {attr: {class: "Bold"}}],
     ["2027.1.28", "Final Exam [Tentative]", {attr: {class: "Bold"}}],
 ];
 
@@ -76,7 +76,7 @@ _({page: "acc", title: "Acceleration", data: {s: "2026.10.26", a: "2026.10.27"}}
 home.item("s10/phys", {page: "phys2", title: "Part 2: #Energy", data: {cal: false}});
 _ = d => home.item("s10/phys/phys2", d);
 _({page: "mech", title: "Mechanical Energy", data: {s: "2026.10.27", a: "2026.10.29"}});
-_({page: "work", title: "Energy Transformations"});
+_({page: "work", title: "Energy Transformations", data: {s: "2026.10.28", a: "2026.10.30"}});
 _({page: "we", title: "Work-Energy Theorem"});
 _({page: "eff", title: "Efficiency"});
 _({page: "heat", title: "Theories of Heat"});
