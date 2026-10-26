@@ -62,7 +62,10 @@ student: (sel, arrow) => {
             disp.arrow({tail: [x, y], tip: [traj[i], y]}, {tail: "7"});
         }
     }
-    if (arrow) disp.arrow({tail: [-10, 4], tip: [30, 4]}, {tail: "7"}).css("#0065fe");
+    if (arrow) {
+        let g = disp.arrow({tail: [-10, 4], tip: [30, 4]}, {tail: "7"}).css("#0065fe").$;
+        svg.$.on("click", () => g.fadeToggle());
+    }
 },
 
 car: sel => {
@@ -81,7 +84,8 @@ car: sel => {
     g.arrow({tip: [6, 0]}, opt);
     g.arrow({tail: [6, dy], tip: [-4, dy]}, opt);
     g.arrow({tail: [-4, 2*dy], tip: [4, 2*dy]}, opt);
-    g.arrow({tail: [0, -dy], tip: [4, -dy]}, opt).css("#0065fe");
+    g = g.arrow({tail: [0, -dy], tip: [4, -dy]}, opt).css("#0065fe").$;
+    svg.$.on("click", () => g.fadeToggle());
 },
 
 patrol: (sel, x0) => {

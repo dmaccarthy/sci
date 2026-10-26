@@ -13,7 +13,10 @@ page.cal.s10 = [ // Calendar items
     ["2026.10.19", "Chemistry Review", {attr: {"data-feed": "s10/chem"}}],
     ["2026.10.20", "Unit Exam: Chemistry", {attr: {class: "Bold"}}],
     ["2026.10.29", "Quiz: Motion", {attr: {class: "Bold"}}],
+    ["2026.11.4", "Lab: Energy of a Pendulum (Block 4)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
+    ["2026.11.5", "Lab: Energy of a Pendulum (Block 3)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
     ["2027.1.28", "Final Exam [Tentative]", {attr: {class: "Bold"}}],
+    ["2026.11.6", "Quiz: Energy", {attr: {class: "Bold"}}],
 ];
 
 { // Units
@@ -69,17 +72,17 @@ _({page: "si", title: "SI Units", data: {s: "2026.10.15", a: "2026.10.21"}});
 _({page: "graph", title: "Graphing Data", data: {s: "2026.10.21", a: "2026.10.22"}});
 _({page: "displ", title: "Position & Displacement", data: {s: "2026.10.22", a: "2026.10.23"}});
 _({page: "vel", title: "Velocity & Speed", data: {s: "2026.10.23", a: "2026.10.26"}});
-_({page: "acc", title: "Acceleration", data: {s: "2026.10.26", a: "2026.10.27"}});
+_({page: "acc", title: "Acceleration", data: {s: "2026.10.26", a: "2026.10.28"}});
 }
 
 { // Energy
 home.item("s10/phys", {page: "phys2", title: "Part 2: #Energy", data: {cal: false}});
 _ = d => home.item("s10/phys/phys2", d);
-_({page: "mech", title: "Mechanical Energy", data: {s: "2026.10.27", a: "2026.10.29"}});
-_({page: "work", title: "Energy Transformations", data: {s: "2026.10.28", a: "2026.10.30"}});
-_({page: "we", title: "Work-Energy Theorem"});
-_({page: "eff", title: "Efficiency"});
-_({page: "heat", title: "Theories of Heat"});
+_({page: "mech", title: "Mechanical Energy", data: {s: "2026.10.28", a: "2026.10.30"}});
+_({page: "work", title: "Energy Transformations", data: {s: "2026.10.30", a: "2026.11.2"}});
+_({page: "we", title: "Work-Energy Theorem", data: {s: "2026.11.2", a: "2026.11.3"}});
+_({page: "eff", title: "Efficiency", data: {s: "2026.11.3", a: "2026.11.4"}});
+_({page: "heat", title: "Theories of Heat", data: {s: "2026.11.4", a: "2026.11.5 15:20"}});
 }
 
 { // Cells

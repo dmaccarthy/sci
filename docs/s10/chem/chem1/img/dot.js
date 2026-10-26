@@ -65,6 +65,6 @@ pt: (sel, diatomic) => {
         stairs.push([c++, r]);
     }
     css(svg.poly(stairs), "none", "red@3");
-}
+},
 
 };

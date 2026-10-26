@@ -37,6 +37,19 @@ dot: (sel, args) => {
         if (q > 1) s = `${q}${s}`;
         m.text.text(s, [0.6, 0.5, "l"], 0, 20);
     }
+    return svg;
+},
+
+
+bad_P: (sel, args) => {
+    console.log("Bad!");
+    let svg = scripts.cache["s10/chem/chem1/img/bohr"].dot(sel, args);
+    let g = svg.group("none", "red@5");
+    let r = 0.5;
+    g.line(vec2d(r, 135), vec2d(r, 315));
+    g.circle(r);
+    svg.$.on("click", () => g.$.fadeToggle());
+
 },
 
 carbon: (sel) => {
