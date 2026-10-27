@@ -56,20 +56,39 @@ print(randColor())</pre>
 
 <li>
 <p>The <em>Towers of Hanoi</em> is a puzzle wherein rings or disks of different sizes are stacked in three “towers”. The disks are originally stacked from largest (bottom) to smallest (top) in the left-most tower.</p>
-<p class="Center"><iframe data-aspect="16/9" src="https://www.youtube.com/embed/zP9tPttNk6I" allowfullscreen="true" width="1280" frameborder="0"></iframe></p>
+<div class="Center">
+    <p>Discs: &nbsp; <select class="w4" onchange="$('#Hanoi')[0].svg2.hanoi(parseInt(this.value))">
+        <option>3</option>
+        <option selected="1">4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+    </select> &nbsp; &nbsp; Animation Speed: <select onchange="$('#Hanoi')[0].svg2.frameRate = parseInt(this.value)" class="w6">
+        <option value="3">Slow</option>
+        <option value="6" selected="1">Normal</option>
+        <option value="12">Fast</option>
+        <option value="30">Fastest</option>
+    </select></p>
+    <p><svg id="Hanoi"></svg><br/>
+    <em>Click to play / pause animation.</em></p>
+</div>
+
 <p>The centre and right towers are initially empty. The object of the puzzle is to move all disks from the left to the centre tower, observing the following rules:</p>
 <ul>
 <li>You can only move one disk at a time.</li>
 <li>You cannot stack a larger disk on top of a smaller disk.</li>
 </ul>
-<p>The video above shows a solution for 8 disks. The puzzle can be solved recursively; to move <span class="TeX">n</span> disks from tower <b>a</b> to tower <b>b</b>, do the following...</p>
+<p>The animation above illustrates a solution that uses recursion. To move <span class="TeX">n</span> disks from tower <b>a</b> to tower <b>b</b>, do the following...</p>
 <ul>
 <li>Move <span class="TeX">n - 1</span> disks from tower <b>a</b> to <b>c</b>.</li>
 <li>Move <span class="TeX">1</span> disk from tower <b>a</b> to <b>b</b>.</li>
 <li>Move <span class="TeX">n - 1</span> disks from tower <b>c</b> to <b>b</b>.</li>
 </ul>
-<p>The base case (where no recursion is needed) occurs when <span class="TeX">n = 0</span> and nothing needs to be done!
-    Complete the program <code>rec1_hanoi.py</code> by writing a <code>moveDisks</code> function that recursively
+<p>The base case occurs when <span class="TeX">n = 1</span>; no recursion is needed to move a single disk.</p>
+<p>Complete the program <code>rec1_hanoi.py</code> by writing a <code>moveDisks</code> function that recursively
     moves the disks represented by the <code>towers</code> variable. This variable refers to a list of four items:
     <code>towers[0]</code> contains an integer representing the number of moves that have occured; <code>towers[1]</code>
     contains a list of disk numbers for the first tower; <code>towers[2]</code> and <code>towers[3]</code> contain
@@ -82,6 +101,10 @@ print(randColor())</pre>
 
 <script type="text/javascript">
 
-page({title: "Recursion"});
+page({svg2: [
+    ["#Hanoi", "cs/cs30/rec/img/rec", "hanoi"],
+]});
+
+page.run(() => $("#Hanoi")[0].svg2.hanoi(4, 1));
 
 </script>
