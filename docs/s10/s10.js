@@ -12,6 +12,7 @@ page.cal.s10 = [ // Calendar items
     ["2026.10.16", "Quiz: Reactions", {attr: {class: "Bold"}}],
     ["2026.10.19", "Chemistry Review", {attr: {"data-feed": "s10/chem"}}],
     ["2026.10.20", "Unit Exam: Chemistry", {attr: {class: "Bold"}}],
+    ["2026.10.27", "Acceleration (continued)", {attr: {"data-feed": "s10/phys/phys1/acc"}}],
     ["2026.10.29", "Quiz: Motion", {attr: {class: "Bold"}}],
     ["2026.11.4", "Lab: Energy of a Pendulum (Block 4)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
     ["2026.11.5", "Lab: Energy of a Pendulum (Block 3)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
