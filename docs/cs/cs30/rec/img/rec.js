@@ -2,15 +2,15 @@ scripts.cache["cs/cs30/rec/img/rec"] = {
 
 hanoi: sel => {
     // Create an animation instance
-    let svg = new SVG2(sel, {size: [540, 192], lrbt: [-0.5, 2.5, -1, 11]}).config({frameRate: 6});
+    let svg = new SVG2(sel, {size: [540, 192], lrbt: [-0.5, 2.5, -1, 12.5]}).config({frameRate: 10, move: 10});
 
     // Draw the ground and tower axes
     let lines = svg.group("black@3").shift_by([0, "-1"]);
-    for (let x=0;x<3;x++) lines.line([x, 10], [x, 0]);
+    for (let x=0;x<3;x++) lines.line([x, 12], [x, 0]);
     lines.line([-0.5, 0], [2.5, 0]);
 
     // Draw the move counter
-    let step = svg.text("0", [2.4, 11, "tr"], 0, ["sans", 28]).$;
+    let step = svg.text("0", [2.4, 12.4, "tr"], 0, ["sans", 28]).$;
 
     // Create a group to contain the disks
     let disk_group = svg.group("black@1");
@@ -57,12 +57,9 @@ hanoi: sel => {
         return [soln, items];
     }
 
-    let draw = i => {
-        /* Position the disks for the specified move number */
-        if (i >= soln.length) {
-            svg.pause();
-            svg.tower_step = -1;
-        }
+    let draw = svg.hanoi_draw = i => {
+        let [soln, items, step] = svg.hanoi_data;
+        if (i >= soln.length) svg.pause();
         else {
             svg.tower_step = i;
             step.find("text").html(i); // Move counter
@@ -75,25 +72,19 @@ hanoi: sel => {
 
     svg.beforeupdate = () => {
         /* Perform one move every 10 animation frames */
-        if (svg.frameCount % 10 == 0) draw(svg.tower_step + 1);
+        if (svg.frameCount % svg.move == 0) draw(svg.tower_step + 1);
     }
 
-    let soln = [], items; // Closure variables
-
-    svg.hanoi = (disks, wait) => {
+    svg.hanoi = disks => {
         /* Start the animation */
-        [soln, items] = init(disks);
+        let [soln, items] = init(disks);
+        svg.hanoi_data = [soln, items, step];
         draw(0);
         svg.frameCount = 1;
-        if (!wait) svg.play();
     }
 
-    svg.$.on("click", () => {
-        /* Play/pause/restart the animation */
-        if (soln.length) {
-            svg.toggle();
-            if (svg.playing) svg.frameCount = -1;
-        }
+    svg.$.on("click", () => { // Play/pause
+        if (svg.hanoi_data) svg.toggle();
     });
 },
 

@@ -57,7 +57,7 @@ print(randColor())</pre>
 <li>
 <p>The <em>Towers of Hanoi</em> is a puzzle wherein rings or disks of different sizes are stacked in three “towers”. The disks are originally stacked from largest (bottom) to smallest (top) in the left-most tower.</p>
 <div class="Center">
-    <p>Discs: &nbsp; <select class="w4" onchange="$('#Hanoi')[0].svg2.hanoi(parseInt(this.value))">
+    <p>Disks: &nbsp; <select class="Center w4" onchange="$('#Hanoi')[0].svg2.hanoi(parseInt(this.value))">
         <option>3</option>
         <option selected="1">4</option>
         <option>5</option>
@@ -66,14 +66,15 @@ print(randColor())</pre>
         <option>8</option>
         <option>9</option>
         <option>10</option>
-    </select> &nbsp; &nbsp; Animation Speed: <select onchange="$('#Hanoi')[0].svg2.frameRate = parseInt(this.value)" class="w6">
-        <option value="3">Slow</option>
-        <option value="6" selected="1">Normal</option>
-        <option value="12">Fast</option>
-        <option value="30">Fastest</option>
-    </select></p>
-    <p><svg id="Hanoi"></svg><br/>
-    <em>Click to play / pause animation.</em></p>
+        <option>11</option>
+        <option>12</option>
+    </select> &nbsp; Moves per Second: <input type="number" value="1" min="1" max="20" onchange="page.get('speed')(this)" class="Center w4"/></p>
+    <p>
+        <span class="Link" onclick="page.get('step')(1)">Move</span> &nbsp;
+        <span class="Link" onclick="page.get('step')(-1)">Back</span> &nbsp;
+        <span class="Link" onclick="page.get('step')()">Reset</span> 
+    </p>
+    <p><svg id="Hanoi"></svg><br/><em>Click to play / pause animation.</em></p>
 </div>
 
 <p>The centre and right towers are initially empty. The object of the puzzle is to move all disks from the left to the centre tower, observing the following rules:</p>
@@ -101,10 +102,25 @@ print(randColor())</pre>
 
 <script type="text/javascript">
 
-page({svg2: [
-    ["#Hanoi", "cs/cs30/rec/img/rec", "hanoi"],
-]});
+page({
+    svg2: [["#Hanoi", "cs/cs30/rec/img/rec", "hanoi"]],
+    speed: e => {
+        let f = Math.max(0.2, Math.min(parseFloat(e.value), 60));
+        e.value = f;
+        let svg = $('#Hanoi')[0].svg2;
+        let fps = Math.max(10, Math.min(60, 10 * f));
+        svg.move = Math.max(1, Math.round(fps / f));
+        svg.frameRate = svg.move * f;
+    },
+    step: n => {
+        let svg = $('#Hanoi')[0].svg2.pause();
+        let steps = svg.hanoi_data[0].length
+        n = n == null ? 0 : svg.tower_step + Math.round(n);
+        if (svg.tower_step == -1) n += steps;
+        if (n >= 0 && n < steps) svg.hanoi_draw(n);
+    },
+});
 
-page.run(() => $("#Hanoi")[0].svg2.hanoi(4, 1));
+page.run(() => $("#Hanoi")[0].svg2.hanoi(4));
 
 </script>
