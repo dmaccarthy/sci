@@ -13,11 +13,13 @@ page.cal.s10 = [ // Calendar items
     ["2026.10.19", "Chemistry Review", {attr: {"data-feed": "s10/chem"}}],
     ["2026.10.20", "Unit Exam: Chemistry", {attr: {class: "Bold"}}],
     ["2026.10.27", "Acceleration (continued)", {attr: {"data-feed": "s10/phys/phys1/acc"}}],
-    ["2026.10.29", "Quiz: Motion", {attr: {class: "Bold"}}],
+    ["2026.10.28", "Kinematics (Motion) Review", {attr: {"data-feed": "s10/phys/phys1"}}],
+    ["2026.10.29", "Quiz: Kinematics", {attr: {class: "Bold"}}],
     ["2026.11.4", "Lab: Energy of a Pendulum (Block 4)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
     ["2026.11.5", "Lab: Energy of a Pendulum (Block 3)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
+    ["2026.11.20", "Quiz: Energy", {attr: {class: "Bold"}}],
+    ["2026.11.24", "Unit Exam: Physics [Tentative]", {attr: {class: "Bold"}}],
     ["2027.1.28", "Final Exam [Tentative]", {attr: {class: "Bold"}}],
-    ["2026.11.6", "Quiz: Energy", {attr: {class: "Bold"}}],
 ];
 
 { // Units
@@ -79,11 +81,11 @@ _({page: "acc", title: "Acceleration", data: {s: "2026.10.26", a: "2026.10.28"}}
 { // Energy
 home.item("s10/phys", {page: "phys2", title: "Part 2: #Energy", data: {cal: false}});
 _ = d => home.item("s10/phys/phys2", d);
-_({page: "mech", title: "Mechanical Energy", data: {s: "2026.10.28", a: "2026.10.30"}});
-_({page: "work", title: "Energy Transformations", data: {s: "2026.10.30", a: "2026.11.2"}});
-_({page: "we", title: "Work-Energy Theorem", data: {s: "2026.11.2", a: "2026.11.3"}});
-_({page: "eff", title: "Efficiency", data: {s: "2026.11.3", a: "2026.11.4"}});
-_({page: "heat", title: "Theories of Heat", data: {s: "2026.11.4", a: "2026.11.5 15:20"}});
+_({page: "mech", title: "Mechanical Energy", data: {s: "2026.10.30", a: "2026.11.2"}});
+_({page: "work", title: "Energy Transformations", data: {s: "2026.11.2", a: "2026.11.3"}});
+_({page: "we", title: "Work-Energy Theorem", data: {s: "2026.11.3", a: "2026.11.5"}});
+_({page: "eff", title: "Efficiency", data: {s: "2026.11.4", a: "2026.11.5 15:20"}});
+_({page: "heat", title: "Theories of Heat", data: {s: "2026.11.6", a: "2026.11.16"}});
 }
 
 { // Cells
