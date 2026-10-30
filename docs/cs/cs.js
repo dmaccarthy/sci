@@ -3,14 +3,22 @@
 page.cal.cs10 = [
     ["2026.8.31", "First Day for Students"],
     ["2026.9.16", "Due: Structured Programming 1", {attr: {class: "Ital"}}],
-    ["2026.9.17", "Python Project #1", {f: "#cs/cs10@post=vscode"}],
+    ["2026.9.17", "Python Project #1", {f: "#cs/cs10@post=code"}],
     ["2026.9.21", "Quiz: Structured Programming 1", {attr: {class: "Bold"}}],
     ["2026.10.1", "Due: Structured Programming 2<br/>(up to “Iteration & Searching”)", {attr: {class: "Ital"}}],
-    ["2026.10.5", "Python Project #2", {f: "#cs/cs10@post=vscode"}],
+    ["2026.10.5", "Python Project #2", {f: "#cs/cs10@post=code"}],
     ["2026.10.9", "Due: Structured Programming 2", {attr: {class: "Ital"}}],
     ["2026.10.13", "Quiz: Structured Programming 2", {attr: {class: "Bold"}}],
-    ["2026.10.14", "Python Project #3", {f: "#cs/cs10@post=vscode"}],
-    // ["2029.8.31", "Sal", {f: "https://salcomp.ca", class: "Sal", attr: {target: "Sal"}}],
+    ["2026.10.14", "Python Project #3", {f: "#cs/cs10@post=code"}],
+    ["2026.11.4", "Due: Client-Side Scripting 1<br/>(up to “Entities”)", {attr: {class: "Ital"}}],
+    ["2026.11.5", "XML Coding Project", {f: "#cs/cs10@post=code"}],
+    ["2026.11.18", "Due: Client-Side Scripting 1", {attr: {class: "Ital"}}],
+    ["2026.11.19", "HTML Coding Project #1", {f: "#cs/cs10@post=code"}],
+    ["2026.11.20", "Quiz: XML & HTML", {attr: {class: "Bold"}}],
+    ["2026.12.11", "Due: Client-Side Scripting 2", {attr: {class: "Ital"}}],
+    ["2026.12.14", "HTML Coding Project #2", {f: "#cs/cs10@post=code"}],
+    ["2027.1.14", "Due: Computing Science 1", {attr: {class: "Ital"}}],
+    ["2027.1.15", "Quiz: Computing Science", {attr: {class: "Bold"}}],
 ];
 
 page.cal.cs20 = [
@@ -18,15 +26,19 @@ page.cal.cs20 = [
     ["2026.9.15", "Due: Procedural Programming", {attr: {class: "Ital"}}],
     ["2026.10.15", "Due: Data Structures", {attr: {class: "Ital"}}],
     ["2026.10.16", "Quiz: Procedural Programming / Data Structures", {attr: {class: "Bold"}}],
-    ["2026.10.19", "Programming Project #1", {f: "#cs/cs20@post=vscode"}],
+    ["2026.10.19", "Programming Project #1", {f: "#cs/cs20@post=code"}],
     ["2026.11.6", "Due: Game Project", {attr: {class: "Ital"}}],
-    ["2026.11.16", "Programming Project #2", {f: "#cs/cs20@post=vscode"}],
+    ["2026.11.16", "Programming Project #2", {f: "#cs/cs20@post=code"}],
 ];
 
 page.cal.cs30 = [
     ["2026.8.31", "First Day for Students"],
     ["2026.9.18", "Due: Iterative Algorithms", {attr: {class: "Ital"}}],
-    ["2026.9.21", "Iterative Project #1", {f: "#cs/cs30@post=vscode"}],
+    ["2026.9.21", "Iterative Project #1", {f: "#cs/cs30@post=code"}],
+    ["2026.10.30", "Due: Object-Oriented Programming 1", {attr: {class: "Ital"}}],
+    ["2026.11.20", "Due: Recursive Algorithms", {attr: {class: "Ital"}}],
+    ["2026.12.11", "Due: Dynamic Data Structures", {attr: {class: "Ital"}}],
+    ["2027.1.15", "Due: Java Project", {attr: {class: "Ital"}}],
 ];
 }
 

@@ -6,8 +6,8 @@ page.cal.s10 = [ // Calendar items
     ["2026.9.22", "Lab: Acids & Bases", {attr: {"data-feed": "s10/chem/chem2/acid@post=handouts"}}],
     ["2026.9.24", "Quiz: Compounds", {attr: {class: "Bold"}}],
     ["2026.9.25", "Lab: Evidence of Chemical Reactions", {attr: {"data-feed": "s10/chem/chem3/rxn@post=handouts"}}],
-    ["2026.10.7", "Project: Antacids (Planning)", {attr: {"data-feed": "s10/chem"}}],
-    ["2026.10.8", "Project: Antacids (Lab)", {attr: {"data-feed": "s10/chem"}}],
+    ["2026.10.7", "Project: Antacids (Planning)", {attr: {"data-feed": "s10/chem@post=gdrv"}}],
+    ["2026.10.8", "Project: Antacids (Lab)", {attr: {"data-feed": "s10/chem@post=gdrv"}}],
     ["2026.10.13", "Lab: Motion of a Cart", {attr: {"data-feed": "s10/phys/phys1/displ@post=handouts"}}],
     ["2026.10.16", "Quiz: Reactions", {attr: {class: "Bold"}}],
     ["2026.10.19", "Chemistry Review", {attr: {"data-feed": "s10/chem"}}],
@@ -18,6 +18,9 @@ page.cal.s10 = [ // Calendar items
     ["2026.11.4", "Lab: Energy of a Pendulum (Block 4)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
     ["2026.11.5", "Lab: Energy of a Pendulum (Block 3)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
     ["2026.11.20", "Quiz: Energy", {attr: {class: "Bold"}}],
+    ["2026.11.16", "Project: Energy Transforming Device (Planning)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
+    ["2026.11.17", "Project: Energy Transforming Device (Building)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
+    ["2026.11.18", "Project: Energy Transforming Device (Testing)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
     ["2026.11.24", "Unit Exam: Physics [Tentative]", {attr: {class: "Bold"}}],
     ["2027.1.28", "Final Exam [Tentative]", {attr: {class: "Bold"}}],
 ];
@@ -26,7 +29,7 @@ page.cal.s10 = [ // Calendar items
 home.item("home", {page: "s10", icon: "microscope", title: "Science 10", data: {cal: false}});
 _ = d => home.item("s10", d);
 _({page: "chem", icon: "testtube.webp", title: "Chemistry", data: {cal: false, s: "2026.10.7"}});
-_({page: "phys", icon: "soccer", title: "Physics", data: {cal: false, s: "9999.1.1"}});
+_({page: "phys", icon: "soccer", title: "Physics", data: {cal: false, s: "2026.11.16"}});
 _({page: "bio", icon: "microscope", title: "Biology", data: {cal: false, s: "9999.1.1"}});
 _({page: "clim", icon: "earth", title: "Climate", data: {cal: false, s: "9999.1.1"}});
 }

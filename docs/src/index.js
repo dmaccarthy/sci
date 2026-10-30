@@ -510,7 +510,7 @@ page.calendar = e => {
 page.icon = k => {
     k = k.toLowerCase();
     if (k == "calendar") return calendar_icon();
-    let img = {notes: "slides", assignment: "assign", ide: "vscode"}[k];
+    let img = {notes: "slides", assignment: "assign"}[k];
     if (!img) img = page.icon.map[k] ? page.icon.map[k] : k;
     if (img.indexOf('.') == -1) img += ".svg";
     if (img.indexOf("://") == -1) img = `./media/${img}`;
@@ -521,6 +521,7 @@ page.icon.map = {
     bs: "https://s.brightspace.com/lib/branding/1.0.0/brightspace/favicon.svg",
     ps: "https://powerschool.eips.ca/favicon-196x196.png",
     python: "https://www.python.org/static/favicon.ico",
+    code: "vscode.svg",
     gdrv: "https://upload.wikimedia.org/wikipedia/commons/1/16/Google_Drive_Logo_05.2026.png",
     handouts: "https://upload.wikimedia.org/wikipedia/commons/1/16/Google_Drive_Logo_05.2026.png",
     gdoc: "https://upload.wikimedia.org/wikipedia/commons/8/84/Google_Docs_Logo_05.2026.png",
@@ -539,8 +540,8 @@ page.posts = (art) => {
         p = $(p);
         let title = p.attr("data-title");
         let a0 = p.attr("data-action");
-        let map = {anim: "animation", practice: ["assign", "Practice"], correct: "assign",
-            summary: ["list", "Summary"], ide: ["vscode", "Coding Practice"]};
+        let map = {anim: "animation", practice: ["assign", "Practice"],
+            correct: "assign",            summary: ["list", "Summary"]};
         for (let k in map) if (a0 == k) {
             a0 = map[k];
             if (a0 instanceof Array) {
@@ -558,7 +559,7 @@ page.posts = (art) => {
 }
 
 page.posts._titles = {
-    slides: "Notes", assign: "Assignment", link: "Links", graph: "Data Analysis", group: "Activity", gdrv: "Handouts", web: "Web Activity"
+    slides: "Notes", assign: "Assignment", link: "Links", graph: "Data Analysis", group: "Activity", gdrv: "Handouts", web: "Web Activity", code: "Coding Practice"
 };
 
 page.video = s => {

@@ -1,49 +1,33 @@
 <section class="Post" data-action="slides">
 <h3>I/O</h3>
 
-<p>Two of the key operations that programs can perform are input and output (I/O). <em class="Defn">Input</em>
-	involves moving information into the computer’s memory from somewhere else, such as the keyboard or mouse;
-	a file stored on a hard disk, DVD, or USB drive; or a network connection (e.g. WiFi, Bluetooth, or Ethernet).
-	<em class="Defn">Output</em> involves sending information from the computer’s memory to another location,
-	such as a monitor or printer, a file, or a network connection.</p>
+<p>Two of the key operations that programs can perform are input and output (I/O). <em class="Defn">Input</em> involves moving information into the computer’s memory from somewhere else, such as the keyboard or mouse; a file stored on a hard disk, DVD, or USB drive; or a network connection (e.g. WiFi, Bluetooth, or Ethernet). <em class="Defn">Output</em> involves sending information from the computer’s memory to another location, such as a monitor or printer, a file, or a network connection.</p>
 
 <h3>Console Output</h3>
 
-<p>Python contains a <code>print</code> function that prints data to the <em class="Defn">console</em>, a text-only
-	area of the screen. The <code>print</code> function is one of several <em>built-in</em> functions, which means
-	that Python always loads it automatically. Unlike most functions, built-ins do not need to be imported.</p>
+<p>Python contains a <code>print</code> function that prints data to the <em class="Defn">console</em>, a text-only area of the screen. The <code>print</code> function is one of several <em>built-in</em> functions, which means that Python always loads it automatically. Unlike most functions, built-ins do not need to be imported.</p>
 
-<p>Each <code>print</code> statement prints its data on a separate line. If the argument is an expression, Python
-	<em class="Defn">evaluates</em> it before printing. In the example below, the second line will print <code>10</code>.</p>
+<p>Each <code>print</code> statement prints its data on a separate line. If the argument is an expression, Python <em class="Defn">evaluates</em> it before printing. In the example below, the second line will print <code>10</code>.</p>
 
 <pre data-echo="s06_ex1.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span></pre>
 
-<p>You can print several pieces of data on a single line by passing multiple arguments to the same
-	<code>print</code> call...</p>
+<p>You can print several pieces of data on a single line by passing multiple arguments to the same <code>print</code> call...</p>
 
 <pre data-echo="s06_ex2.py" data-title="1" class="Pygments Python Code"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span></pre>
 
-<p>Python adds a space character between the data being printed. If you want to specify a separator other than
-	a space, you can specify the separator as the final argument...</p>
+<p>Python adds a space character between the data being printed. If you want to specify a separator other than a space, you can specify the separator as the final argument...</p>
 
 <pre data-echo="s06_ex3.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; ;-) &quot;</span><span class="p">)</span></pre>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n hlb">sep</span><span class="o">=</span><span class="s2">&quot; ;-) &quot;</span><span class="p">)</span></pre>
 
-<p>Note that you have to explicitly tell Python that you are using a custom separator using the keyword
-	<code>sep</code>, as shown in blue in the example above. Otherwise, Python will just think that the last
-	argument is a regular argument to be printed.</p>
+<p>Note that you have to explicitly tell Python that you are using a custom separator using the keyword <code>sep</code>, as highlighted in the example above. Otherwise, Python will just think that the last argument is a regular argument to be printed.</p>
 
-<p>Also note that literal text like <code>"Hello!"</code> needs to be in quotes. You can use either double quotes
-	as in the example, or single quotes like <code>'Hello!'</code>. Python assumes that <em>unquoted</em> text
-	like <code>pi</code> or <code>print</code> is a variable or function name, or a reserved word like
-	<code>import</code>.</p>
+<p>Also note that literal text like <code>"Hello!"</code> needs to be in quotes. You can use either double quotes as in the example, or single quotes like <code>'Hello!'</code>. Python assumes that <em>unquoted</em> text like <code>pi</code> or <code>print</code> is a variable or function name, or a reserved word like <code>import</code>.</p>
 
 <h3>Console Input</h3>
 
-<p>Python has another built-in function called <code>input</code> that asks the user to enter some data. The
-	data will be saved in the computer’s memory. Your program will need to assign a variable name to the data if
-	it wants to use it later...</p>
+<p>Python has another built-in function called <code>input</code> that asks the user to enter some data. The data will be saved in the computer’s memory. Your program will need to assign a variable name to the data if it wants to use it later...</p>
 
 <pre data-echo="s06_ex4.py" data-title="1" class="Pygments Python Code"><span></span><span class="n">user_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please tell me your name: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span><span class="p">,</span> <span class="n">user_name</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span></pre>
@@ -52,10 +36,7 @@
 
 <h3>Turtle Graphics Input</h3>
 
-<p>When running a turtle graphics program, you might want to ask the user to input some data to control how the
-	turtle behaves. Rather than having to switch between the turtle graphics window and the console, you can use the
-	function <code>textinput</code> (which has to be imported from <code>turtle</code>) instead of
-	<code>input</code>...</p>
+<p>When running a turtle graphics program, you might want to ask the user to input some data to control how the turtle behaves. Rather than having to switch between the turtle graphics window and the console, you can use the function <code>textinput</code> (which has to be imported from <code>turtle</code>) instead of <code>input</code>...</p>
 
 <pre data-echo="s06_ex5.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">textinput</span><span class="p">,</span> <span class="n">setup</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">penup</span><span class="p">,</span> <span class="n">pendown</span><span class="p">,</span> <span class="n">pencolor</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">exitonclick</span>
 
@@ -87,22 +68,18 @@
 <span class="c1"># Finished!</span>
 <span class="n">exitonclick</span><span class="p">()</span></pre>
 
-<p>The <code>textinput</code> function uses a popup window to obtain input from the user. The function takes two
-	arguments: a title for the popup window, and a message to prompt the user.</p>
+<p>The <code>textinput</code> function uses a popup window to obtain input from the user. The function takes two arguments: a title for the popup window, and a message to prompt the user.</p>
 
-<p>When asking for numerical input, use the <code>numinput</code> function instead of <code>textinput</code>.
-	This will reject any user response that cannot be interpreted as a number.</p>
+<p>When asking for numerical input, use the <code>numinput</code> function instead of <code>textinput</code>. This will reject any user response that cannot be interpreted as a number.</p>
 
 <h3>IPO Structure</h3>
-<p>Wherever possible, you should perform all input at the beginning of the program, then perform any calculations
-	or other processing, and finally output the results. This is called the IPO (Input-Processing-Output) structure.<p> 
+<p>Wherever possible, you should perform all input at the beginning of the program, then perform any calculations or other processing, and finally output the results. This is called the IPO (Input-Processing-Output) structure.<p> 
 </section>
 
-<section class="Post" data-action="ide">
+<section class="Post" data-action="code">
 <h3>Assignment</h3>
 <ol class="Assign">
-<li>Copy your completed program <code>s05_polygon.py</code> as <code>s06_polygon.py</code>. Modify the program so that it asks the user for the size, number of sides, and color of the shape.
-    All user input should be performed in turtle graphics; do not make the user switch between the console and graphics windows.</li>
+<li>Copy your completed program <code>s05_polygon.py</code> as <code>s06_polygon.py</code>. Modify the program so that it asks the user for the size, number of sides, and color of the shape. All user input should be performed in turtle graphics; do not make the user switch between the console and graphics windows.</li>
 
 <li>Write a console program <code>s06_userInfo.py</code> to prompt the user to enter his or her name, age, and grade. Then print the information back to the user as in the example below. The black text is printed by the program and the blue text is entered by the user. Include a docstring and comments, and use the IPO program structure.
 <pre data-echo="ex6.io" class="Code" style="color:black">Please tell me your name: <span class="Blue">Chris</span>
@@ -121,9 +98,3 @@ Grade: 10</pre></li>
 </li>
 </ol>
 </section>
-
-<script type="text/javascript">
-
-page({title: "Input & Output"});
-
-</script>
