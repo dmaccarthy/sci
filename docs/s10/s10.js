@@ -21,6 +21,7 @@ page.cal.s10 = [ // Calendar items
     ["2026.11.16", "Project: Energy Transforming Device (Planning)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
     ["2026.11.17", "Project: Energy Transforming Device (Building)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
     ["2026.11.18", "Project: Energy Transforming Device (Testing)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
+    ["2026.11.19", "Energy Transforming Technologies", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
     ["2026.11.24", "Unit Exam: Physics [Tentative]", {attr: {class: "Bold"}}],
     ["2027.1.28", "Final Exam [Tentative]", {attr: {class: "Bold"}}],
 ];

@@ -541,7 +541,7 @@ page.posts = (art) => {
         let title = p.attr("data-title");
         let a0 = p.attr("data-action");
         let map = {anim: "animation", practice: ["assign", "Practice"],
-            correct: "assign",            summary: ["list", "Summary"]};
+            correct: "assign", summary: ["list", "Summary"]};
         for (let k in map) if (a0 == k) {
             a0 = map[k];
             if (a0 instanceof Array) {

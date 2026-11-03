@@ -5,7 +5,7 @@ hanoi: sel => {
     let svg = new SVG2(sel, {size: [540, 192], lrbt: [-0.5, 2.5, -1, 12.5]}).config({frameRate: 10, move: 10});
 
     // Draw the ground and tower axes
-    let lines = svg.group("black@5").shift_by([0, "-2"]);
+    let lines = svg.group("black@5").shift_by([0, "-1"]);
     for (let x=0;x<3;x++) lines.line([x, 12], [x, 0]);
     css(lines.line([-0.5, 0], [2.5, 0]), "@3");
 
