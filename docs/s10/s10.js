@@ -15,8 +15,7 @@ page.cal.s10 = [ // Calendar items
     ["2026.10.27", "Acceleration (continued)", {attr: {"data-feed": "s10/phys/phys1/acc"}}],
     ["2026.10.28", "Kinematics (Motion) Review", {attr: {"data-feed": "s10/phys/phys1"}}],
     ["2026.10.29", "Quiz: Kinematics", {attr: {class: "Bold"}}],
-    ["2026.11.4", "Lab: Energy of a Pendulum (Block 4)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
-    ["2026.11.5", "Lab: Energy of a Pendulum (Block 3)", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
+    ["2026.11.4", "Lab: Energy of a Pendulum", {attr: {"data-feed": "s10/phys/phys2/work@post=handouts"}}],
     ["2026.11.20", "Quiz: Energy", {attr: {class: "Bold"}}],
     ["2026.11.16", "Project: Energy Transforming Device (Planning)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
     ["2026.11.17", "Project: Energy Transforming Device (Building)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
@@ -88,7 +87,7 @@ _ = d => home.item("s10/phys/phys2", d);
 _({page: "mech", title: "Mechanical Energy", data: {s: "2026.10.30", a: "2026.11.2"}});
 _({page: "work", title: "Energy Transformations", data: {s: "2026.11.2", a: "2026.11.3"}});
 _({page: "we", title: "Work-Energy Theorem", data: {s: "2026.11.3", a: "2026.11.5"}});
-_({page: "eff", title: "Efficiency", data: {s: "2026.11.4", a: "2026.11.5 15:20"}});
+_({page: "eff", title: "Efficiency", data: {cal: "2026.11.5", s: "2026.11.4", a: "2026.11.6"}});
 _({page: "heat", title: "Theories of Heat", data: {s: "2026.11.6", a: "2026.11.16"}});
 }
 
