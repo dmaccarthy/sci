@@ -1,12 +1,13 @@
 <section class="Post" data-action="slides">
 <p>Functions often call other functions to help perform their tasks. For example, a function that chooses a random
     RGB colour could use Python’s <code>randint</code> function to produce each of the three values...</p>
-<pre class="Code" data-echo="rec1_ex1.py" data-title="1">from random import randint
+<pre data-echo="rec1_ex1.py" data-title="1" class="Pygments Python Code"><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
 
-def randColor():
-    return [randint(0, 255) for i in range(3)]
+<span class="k">def</span> <span class="nf">randColor</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 
-print(randColor())</pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">randColor</span><span class="p">())</span></pre>
+
 <p>In some circumstances, a function may want to call itself. This is known as <em class="Defn">recursion</em>.</p>
 <p>One example could be calculating factorials, represented in math by an exclamation point following a number.
     Factorials occur in the study of permutations and combinations. The factorial of a whole number is calculated by multiplying that number by all preceding natural numbers...</p>
@@ -15,23 +16,23 @@ print(randColor())</pre>
 <p>One thing we can observe about this, is that the factorial of a number is equal to that number multiplied by the factorial of the preceding number, i.e. <span class="TeX">6! = 6 × 5!</span> Or more generally:</p>
 <p class="TeX">n! = n × (n - 1)!</p>
 <p>We could try to implement this as a recursive Python function...</p>
-<pre class="Code" data-echo="py">def factorial(n):
-    return n * factorial(n-1)</pre>
+<pre data-echo="py" class="Pygments Python Code"><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span></pre>
 
 <p>The problem is that the recursion would occur forever. Eventually, we need to end the recursion and return a value.
     We do this by providing a <em class="Defn">base case</em>: when <span class="TeX">n = 0</span>, the factorial evaluates to <span class="TeX">1</span> and so no recursion is needed...</p>
-<pre class="Code" data-echo="rec1_ex2.py" data-title="1">def factorial(n):
-    <span class="Comment">"Calculate factorial recursively"</span>
-    return 1 if n == 0 else n * factorial(n-1)</pre>
+<pre data-echo="rec1_ex2.py" data-title="1" class="Pygments Python Code"><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s2">&quot;Calculate factorial recursively&quot;</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span></pre>
 
 <p>Of course, recursion is not necessary to calculate factorials. We could use iteration (loops) to perform the same calculation without recursion...</p>
-<pre class="Code" data-echo="rec1_ex3.py" data-title="1">def factorial(n):
-    <span class="Comment">"Calculate factorial iteratively"</span>
-    fact = 1
-    while n > 1:
-        fact *= n
-        n -= 1
-    return fact</pre>
+<pre data-echo="rec1_ex3.py" data-title="1" class="Pygments Python Code"><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="s2">&quot;Calculate factorial iteratively&quot;</span>
+    <span class="n">fact</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">fact</span> <span class="o">*=</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">fact</span></pre>
 
 <p>Recursion and iteration give us two alternatives for solving the same problem. We can decide which algorithm is preferable based on the complexity of the problem and the relative efficiency of the alternatives.</p>
 </section>
