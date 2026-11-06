@@ -1,42 +1,44 @@
 page.cal.p20 = [ // Calendar items
     // ["2027.2.1", "Classes Begin"],
-    ["2027.2.2", "Lab: Bouncing Ball", {attr: {"data-feed": "p20/skill/expDes@post=handouts"}}],
-    ["2027.2.16", "Kinematics Quiz [Tentative]", {class: "Bold"}],
+    ["2027.2.1", "Video Lab: Bouncing Ball", {attr: {"data-feed": "p20/kin/scatter@post=handouts"}}],
+    // ["2027.2.16", "Kinematics Quiz [Tentative]", {class: "Bold"}],
     ["2027.6.17", "Exam Week Begins"],
 ];
 
 { // Chapters
 home.item("home", {page: "p20", icon: "rocket", title: "Physics 20", data: {cal: false}});
 _ = d => home.item("p20", d);
-_({page: "skill", icon: "graph", title: "Math & Science 10 Review", data: {cal: false}});
+// _({page: "skill", icon: "graph", title: "Math & Science 10 Review", data: {cal: false}});
 _({page: "kin", icon: "train", title: "One-Dimensional Motion", data: {cal: false}});
-_({page: "vec2d", icon: "soccer", title: "Two-Dimensional Motion", data: {cal: false}});
+// _({page: "vec2d", icon: "soccer", title: "Two-Dimensional Motion", data: {cal: false}});
 // _({page: "dyn", icon: "rocket", title: "Newton’s Laws", data: {cal: false}});
 // _({page: "grav", icon: "earth", title: "Gravitation", data: {cal: false}});
 // _({page: "energy", icon: "archer.webp", title: "Energy & Work", data: {cal: false}});
-_({page: "circ", icon: "midway", title: "Circular & Planetary Motion", data: {cal: false}});
+// _({page: "circ", icon: "midway", title: "Circular & Planetary Motion", data: {cal: false}});
 // _({page: "shm", icon: "crane", title: "Simple Harmonic Motion", data: {cal: false}});
 // _({page: "wave", icon: "speaker", title: "Mechanical Waves, data: {cal: false}"});
 // _({page: "rev", icon:"review", icon: "rocket", title: "Course Review", data: {cal: false}});
 }
 
+/*
 { // Review
 _ = d => home.item("p20/skill", d);
-_({page: "expDes", icon: "testtube.webp", title: "Experiment Design & Analysis", data: {s: "2027.2.1", a: "2027.2.2"}});
-_({page: "scatter", icon: "graph", title: "Scatter Plots", data: {s: "2027.2.3", a: "2027.2.8"}});
-_({page: "algebra", title: "Algebra", data: {s: "2026.2.8", a: "2027.2.9"}});
+_({page: "expDes", title: "Experiment Design & Analysis", data: {s: "2027.2.9", a: "2027.2.10"}});
 _({page: "sciNot", title: "Significant Digits & Scientific Notation"});
 _({page: "si", title: "SI Units"});
 _({page: "rev", icon:"review", icon:"review", title: "Chapter Review", data: {cal: false}});
 }
+*/
 
 { // Kin
 _ = d => home.item("p20/kin", d);
-_({page: "displ", title: "Position & Displacement"});
-_({page: "vel", title: "Velocity & Speed"});
-_({page: "graph", title: "Motion Graphs"});
-_({page: "acc", title: "Acceleration"});
-_({page: "uam", title: "Uniform Accelerated Motion"});
+_({page: "scatter", title: "Scatter Plots & Slope", data: {s: "2027.2.1", cal: "2027.2.2", a: "2027.2.3"}});
+_({page: "displ", title: "Position & Displacement", data: {s: "2027.2.3", a: "2027.2.8"}});
+_({page: "algebra", title: "Algebra", data: {s: "2027.2.9", a: "2027.2.10"}});
+// _({page: "vel", title: "Velocity & Speed"});
+// _({page: "graph", title: "Motion Graphs"});
+// _({page: "acc", title: "Acceleration"});
+// _({page: "uam", title: "Uniform Accelerated Motion"});
 _({page: "rev", icon:"review", title: "Chapter Review", data: {cal: false}});
 }
 

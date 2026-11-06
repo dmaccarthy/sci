@@ -1,4 +1,4 @@
-scripts.cache["p20/skill/img/scatter"] = {
+scripts.cache["p20/kin/img/scatter"] = {
 
 wtLoss: (sel, tog) => {
     let svg = new SVG2(sel, {size: [640, 400], lrbt: [0, 30, 77, 82], grid: [1, 0.25], margin: [64, 10, 54, 10]});
