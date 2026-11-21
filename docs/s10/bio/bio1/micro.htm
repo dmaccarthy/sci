@@ -154,7 +154,8 @@
 <script type="text/javascript">
 
 page.run(() => {
-    page.show_post("slides");
+    console.log(page.current());
+    if (page.current()[1].post == null) page.show_post("slides");
 });
 
 </script>

@@ -21,7 +21,9 @@ page.cal.s10 = [ // Calendar items
     ["2026.11.17", "Project: Energy Transforming Device (Building)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
     ["2026.11.18", "Project: Energy Transforming Device (Testing)", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
     ["2026.11.19", "Energy Transforming Technologies", {attr: {"data-feed": "s10/phys@post=gdoc"}}],
+    ["2026.11.23", "Lab: The Letter 'e'", {attr: {"data-feed": "s10/bio/bio1/micro@post=handouts"}}],
     ["2026.11.24", "Unit Exam: Physics", {attr: {class: "Bold"}}],
+    ["2026.11.26", "Lab: Onion Cells", {attr: {"data-feed": "s10/bio/bio1/org@post=handouts"}}],
     ["2027.1.28", "Final Exam", {attr: {class: "Bold"}}],
 ];
 
@@ -94,9 +96,9 @@ _({page: "heat", title: "Theories of Heat", data: {s: "2026.11.6", a: "2026.11.1
 { // Cells
 home.item("s10/bio", {page: "bio1", title: "Part 1: #Cells", data: {cal: false}});
 _ = d => home.item("s10/bio/bio1", d);
-_({page: "micro", title: "Microscopes"});
-_({page: "cell", title: "Cell Theory"});
-_({page: "org", title: "Organelles"});
+_({page: "micro", title: "Microscopes", data: {s: "2026.11.23", a: "2026.11.25"}});
+_({page: "cell", title: "Cell Theory", data: {s: "2026.11.25", a: "2026.11.27"}});
+_({page: "org", title: "Organelles", data: {cal: "2026.11.27", s: "2026.11.26", a: "2026.11.30"}});
 }
 
 { // Transport
