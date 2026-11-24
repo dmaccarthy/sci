@@ -376,6 +376,18 @@ page.onload = (id, args) => {
     $("#MainTitle").css(hide);
     let art = $("main > article").css(hide).html(page._cache[id]);
 
+    // Textbook reference
+    let text_ref = {"@PP": "Pearson Physics", "@SF": "ScienceFocus 10"};
+    for (let e of art.find("[data-text-ref]")) {
+        e = $(e);
+        let h = e.attr("data-text-ref");
+        for (let k in text_ref) h = h.replace(k, text_ref[k]);
+        if (e.hasClass("NoSpan")) {
+            e.addClass("Ital PrintOnly NoBold Center").html(`[${h}]`);
+        }
+        else $("<span>").addClass("Ital PrintOnly NoBold").css({float: "right"}).html(`[${h}]`).appendTo(e);
+    }
+
     // Run initialization function
     if (page.init) {
         try {page.init()} catch(err) {console.warn(err)};
@@ -695,7 +707,7 @@ function pysh() {
 /*** Slideshow functions ***/
 
 function slideshow() {
-    $("#Top, #MainTitle, section.Post:not(:visible), .NoPresent").remove();
+    $("#Top, #MainTitle, section.Post:not(:visible), .NoPresent, .PrintOnly").remove();
     $("body").addClass("Present").css({margin: "8px", "font-size": ""});
     let all_cues = slideshow.cues = [];
     let cues = $("main").css({"max-width": "100%"}).find("section.Post:visible").find(slideshow.select).hide();
@@ -817,6 +829,7 @@ $(() => {
     let w = $(window).on("popstate", () => home.go(location.hash.substring(1)));
     w.on("resize", page.metrics).on("touchstart", swipe.event).on("touchend", swipe.event);
     w.on("beforeprint", () => {
+        $("body").addClass("Print");
         $("#Top, .NoPrint").remove();
         $("main").css("max-width", "100vw");
     }).on("afterprint", () => location.reload());

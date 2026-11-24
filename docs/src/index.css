@@ -8,6 +8,9 @@
     --blue: #0065fe;
 }
 
+h2, h3 {break-after: avoid}
+.PageBreak {break-before: page}
+
 body {
     font-family: "Noto Sans", "Open Sans", Oxygen, sans-serif;
     font-size: 14px;
@@ -16,7 +19,7 @@ body {
 
 body.Present {font-size: 225%}
 body:not(.Present) *:is(.Present, ._Present), .Hidden {display: none}
-body:is(.Present, .Slides) td.Reveal span {display: none}
+body:is(.Present, .Slides) td.Reveal span, body:not(.Print) .PrintOnly {display: none}
 
 #Top {
     width: calc(100% - 12px);
