@@ -98,7 +98,7 @@ _({page: "heat", title: "Theories of Heat", data: {s: "2026.11.6", a: "2026.11.1
 home.item("s10/bio", {page: "bio1", title: "Part 1: #Cells", data: {cal: false}});
 _ = d => home.item("s10/bio/bio1", d);
 _({page: "micro", title: "Microscopes", data: {s: "2026.11.25", a: "2026.11.25"}});
-_({page: "cell", title: "Cell Theory", data: {s: "2026.11.25", a: "2026.11.27"}});
+_({page: "cell", title: "Cell Theory", data: {s: "2026.11.26", a: "2026.11.27"}});
 _({page: "org", title: "Organelles", data: {cal: "2026.11.27", s: "2026.11.26", a: "2026.11.30"}});
 }
 
